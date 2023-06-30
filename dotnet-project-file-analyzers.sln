@@ -24,9 +24,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rules", "Rules", "{50507CD3
 		rules\Proj0001.md = rules\Proj0001.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompliantCSharp", "projects\CompliantCSharp\CompliantCSharp.csproj", "{1A2C9D4D-2E3C-4726-ABC9-C77B41AE1DA9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompliantCSharp", "projects\CompliantCSharp\CompliantCSharp.csproj", "{1A2C9D4D-2E3C-4726-ABC9-C77B41AE1DA9}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "CompliantVB", "projects\CompliantVB\CompliantVB.vbproj", "{74F59396-7A67-474A-A404-97B038C237F3}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CompliantVB", "projects\CompliantVB\CompliantVB.vbproj", "{74F59396-7A67-474A-A404-97B038C237F3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{1BF2B41D-E15B-4E95-AAE0-9B33B4A1523E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{E6209CFA-DDCD-497E-8B85-804B58B8FAEC}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\build-test.yaml = .github\workflows\build-test.yaml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +64,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1A2C9D4D-2E3C-4726-ABC9-C77B41AE1DA9} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
 		{74F59396-7A67-474A-A404-97B038C237F3} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
+		{1BF2B41D-E15B-4E95-AAE0-9B33B4A1523E} = {BED71055-3C56-4C5B-9D83-A7B2CCD3B8CA}
+		{E6209CFA-DDCD-497E-8B85-804B58B8FAEC} = {1BF2B41D-E15B-4E95-AAE0-9B33B4A1523E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3AD1EF71-7465-4ED1-81AD-504C430C8251}
