@@ -11,8 +11,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
-    <PackageProjectUrl>http://www.github.com/Corniel/dotnet-project-analyzers</PackageProjectUrl>
-    <RepositoryUrl>http://www.github.com/Corniel/dotnet-project-analyzers</RepositoryUrl>
+    <PackageProjectUrl>http://www.github.com/Corniel/dotnet-project-files-analyzers</PackageProjectUrl>
+    <RepositoryUrl>http://www.github.com/Corniel/dotnet-project-files-analyzers</RepositoryUrl>
     <PackageTags>Code Analysis;Project files;csproj;vbproj</PackageTags>
     <Version>1.0.0</Version>
     <PackageReleaseNotes>
