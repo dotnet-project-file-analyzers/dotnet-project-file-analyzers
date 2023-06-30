@@ -17,7 +17,7 @@
     <Version>1.0.0</Version>
     <PackageReleaseNotes>
 v1.0.0
-- Proj0001: .NET project file could not be located
+- Proj0001: .NET project file could not be located.
     </PackageReleaseNotes>
   </PropertyGroup>
 
