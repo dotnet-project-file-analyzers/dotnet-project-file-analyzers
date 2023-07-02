@@ -25,12 +25,11 @@ public sealed class Nodes<T> : IEnumerable<T> where T : Node
     /// </param>
     public T this[int index] => Items.Skip(index).FirstOrDefault();
 
-    /// <summary>The parent 
-    /// 
-    /// </summary>
+    /// <summary>The parent node.</summary>
     private Node Parent { get; set; }
 
-    [DebuggerBrowsable(DebuggerBrowsableState.Never), ExcludeFromCodeCoverage]
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    [ExcludeFromCodeCoverage/* Justification = "Debug experience only." */]
     private string DebuggerDisplay
         => string.Format(CultureInfo.InvariantCulture, "{0} Count = {1}", typeof(T).Name, Count);
 
@@ -39,9 +38,9 @@ public sealed class Nodes<T> : IEnumerable<T> where T : Node
 
     /// <inheritdoc />
     [ExcludeFromCodeCoverage]
-    IEnumerator IEnumerable.GetEnumerator() =>GetEnumerator();
+    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
     /// <summary>Helper property to select the needed children.</summary>
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private IEnumerable<T> Items=> Parent.GetAllChildren().Where(child => child is T).Cast<T>();
+    private IEnumerable<T> Items => Parent.GetAllChildren().Where(child => child is T).Cast<T>();
 }

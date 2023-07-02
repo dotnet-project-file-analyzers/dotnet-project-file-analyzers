@@ -13,8 +13,8 @@ public sealed class Project : Node
     public Nodes<ItemGroup> ItemGroups => GetChildren<ItemGroup>();
 
     public static Project Load(FileInfo file)
-        => new (XElement.Load(file.OpenRead(), LoadOptions.PreserveWhitespace | LoadOptions.SetLineInfo));
-    
+        => new(XElement.Load(file.OpenRead(), LoadOptions.PreserveWhitespace | LoadOptions.SetLineInfo));
+
     public static Project? Create(Compilation compilation)
     {
         if (compilation.SourceModule.ContainingAssembly is { } assembly)
@@ -36,6 +36,7 @@ public sealed class Project : Node
         }
         return null;
     }
+
     private static FileInfo? GetFile(DirectoryInfo dir, string fileName)
     {
         FileInfo? file;
