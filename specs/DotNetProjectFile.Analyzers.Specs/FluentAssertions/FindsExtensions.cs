@@ -6,7 +6,7 @@ namespace FluentAssertions;
 internal static class FindsExtensions
 {
     public static void HasNoIssues(this ProjectAnalyzerVerifyContext context)
-        => context.HasIssues();
+        => context.HasIssues(Array.Empty<Issue>());
 
     public static void HasIssue(this ProjectAnalyzerVerifyContext context, Issue issue)
         => context.HasIssues(issue);

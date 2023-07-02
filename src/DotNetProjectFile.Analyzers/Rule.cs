@@ -6,7 +6,7 @@ public static class Rule
         id: 0001,
         title: ".NET project file could not be located",
         message: "The project file '{0}' could not be located.",
-        description: "In order to make this rules work, the project file should be located.",
+        description: "In order to make these rules work, the project file should be located.",
         tags: new[] { "Configuration" },
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,

@@ -2,7 +2,7 @@
 
 public enum Category
 {
-    Clairity,
+    Clarity,
     Configuration,
     Reliability,
 }
