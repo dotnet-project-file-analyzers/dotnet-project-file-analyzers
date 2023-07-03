@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <RootNamespace>CompliantVB</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <OptionStrict>On</OptionStrict>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="*.??proj" Visible="false" />
+  </ItemGroup>
+
+</Project>
