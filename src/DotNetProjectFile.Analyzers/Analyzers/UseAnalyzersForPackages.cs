@@ -24,7 +24,7 @@ public sealed class UseAnalyzersForPackages : ProjectFileAnalyzer
         }
     }
 
-    public static readonly PackageAnalyzer[] Analyzers = new PackageAnalyzer[]
+    private static readonly PackageAnalyzer[] Analyzers = new PackageAnalyzer[]
     {
         new("FluentAssertions.Analyzers", "FluentAssertions"),
         new("Microsoft.AspNetCore.Components.Analyzers", "Microsoft.AspNetCore"),
