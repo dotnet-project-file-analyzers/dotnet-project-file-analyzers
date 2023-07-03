@@ -59,13 +59,19 @@ public static class ProjectFileResolver
     private static Func<FileInfo, string, bool> IsProject(string language)
         => language switch
         {
-            LanguageNames.CSharp => (f, n) => IsProject(f, ".csproj", n),
-            LanguageNames.VisualBasic => (f, n) => IsProject(f, ".vbproj", n),
-            _ => (_, _) => false,
+            LanguageNames.CSharp => IsCSharpProject,
+            LanguageNames.VisualBasic => IsVBProject,
+            _ => NoMatch,
         };
 
-    private static bool IsProject(FileInfo file, string extension, string assemblyName)
+    private static bool IsCSharpProject(FileInfo file, string name) => IsProject(file, name, ".csproj");
+
+    private static bool IsVBProject(FileInfo file, string name) => IsProject(file, name, ".vbproj");
+
+    private static bool NoMatch(FileInfo _, string __) => false;
+
+    private static bool IsProject(FileInfo file, string name, string extension)
         => file.Exists
         && string.Equals(file.Extension, extension, StringComparison.OrdinalIgnoreCase)
-        && string.Equals(Path.GetFileNameWithoutExtension(file.Name), assemblyName, StringComparison.OrdinalIgnoreCase);
+        && string.Equals(Path.GetFileNameWithoutExtension(file.Name), name, StringComparison.OrdinalIgnoreCase);
 }
