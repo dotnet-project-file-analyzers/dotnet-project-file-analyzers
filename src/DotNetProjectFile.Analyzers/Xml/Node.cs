@@ -9,10 +9,7 @@ namespace DotNetProjectFile.Xml;
 public class Node
 {
     /// <summary>Initializes a new instance of the <see cref="Node"/> class.</summary>
-    protected Node(XElement element)
-    {
-        Element = element;
-    }
+    protected Node(XElement element) => Element = element;
 
     internal XElement Element { get; }
 
@@ -58,6 +55,7 @@ public class Node
     => element.Name.LocalName switch
     {
         null => null,
+        nameof(Import) /*.................*/ => new Import(element),
         nameof(ItemGroup) /*..............*/ => new ItemGroup(element),
         nameof(PackageReference) /*.......*/ => new PackageReference(element),
         nameof(PropertyGroup) /*..........*/ => new PropertyGroup(element),

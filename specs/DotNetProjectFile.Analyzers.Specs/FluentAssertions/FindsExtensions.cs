@@ -18,6 +18,11 @@ internal static class FindsExtensions
             .Select(Issue.FromDiagnostic)
             .ToArray();
 
+        foreach(var issue in reported) 
+        {
+            Console.WriteLine(issue);
+        }
+
         reported.Should().BeEquivalentTo(issues);
     }
 }

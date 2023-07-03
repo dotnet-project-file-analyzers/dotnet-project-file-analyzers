@@ -12,6 +12,15 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor UseAnalyzersForPackages => New(
+        id: 1001,
+        title: "Use analyzers ",
+        message: "Use {0} to analyze {1}.",
+        description: "",
+        tags: new[] { "" },
+        category: Category.CodeQuality,
+        isEnabled: true);
+
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
     private static DiagnosticDescriptor New(

@@ -5,4 +5,5 @@ public enum Category
     Clarity,
     Configuration,
     Reliability,
+    CodeQuality,
 }
