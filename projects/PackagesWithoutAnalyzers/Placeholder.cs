@@ -3,20 +3,20 @@ using System;
 
 namespace PackagesWithoutAnalyzers;
 
-public class Placeholder : Microsoft.AspNetCore.Mvc.ControllerBase
+public sealed class Placeholder : Microsoft.AspNetCore.Mvc.ControllerBase
 {
     [MongoDB.Bson.Serialization.Attributes.BsonId]
     public Qowaiv.Uuid Id { get; init; }
 
-    [NUnit.Framework.Test]
-    public void NUnit_Test() => Math.Sqrt(9).Should().Be(3);
+    public static readonly Type[] GetAttributes = new[]
+    {
+        typeof(NUnit.Framework.TestAttribute),
+        typeof(Xunit.FactAttribute),
+    };
 
-    [Xunit.Fact]
-    public void xunit_Test() => Math.Sqrt(4).Should().Be(2);
+    public static void Log() => Serilog.Log.Debug("Hello, world!");
 
-    public void Log() => Serilog.Log.Debug("Hello, world!");
-
-    public void Fx(Microsoft.Azure.Functions.Extensions.DependencyInjection.FunctionsStartup startup) 
+    public static void Fx(Microsoft.Azure.Functions.Extensions.DependencyInjection.FunctionsStartup startup) 
         => startup.Should().NotBeNull();
 
     public static Microsoft.EntityFrameworkCore.DbContext? Table() => null;

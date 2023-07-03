@@ -9,8 +9,6 @@ public sealed class UseAnalyzersForPackages : ProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var projects = context.Project.GetProjects().ToArray();  
-
         var packageReferences = context.Project.GetProjects()
             .SelectMany(p => p.ItemGroups)
             .SelectMany(group => group.PackageReferences)
