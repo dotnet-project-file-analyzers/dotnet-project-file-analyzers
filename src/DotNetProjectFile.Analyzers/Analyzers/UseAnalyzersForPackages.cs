@@ -1,5 +1,4 @@
 ﻿using Microsoft.CodeAnalysis.Diagnostics;
-using System.Text.RegularExpressions;
 
 namespace DotNetProjectFile.Analyzers;
 
@@ -10,7 +9,10 @@ public sealed class UseAnalyzersForPackages : ProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var packageReferences = context.Project.ItemGroups
+        var projects = context.Project.GetProjects().ToArray();  
+
+        var packageReferences = context.Project.GetProjects()
+            .SelectMany(p => p.ItemGroups)
             .SelectMany(group => group.PackageReferences)
             .ToArray();
 

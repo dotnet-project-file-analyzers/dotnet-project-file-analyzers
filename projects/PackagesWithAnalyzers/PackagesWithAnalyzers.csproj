@@ -30,4 +30,8 @@
     <PackageReference Include="xunit.analyzers" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AdditionalFiles Include="*.??proj" Visible="false" />
+  </ItemGroup>
+
 </Project>

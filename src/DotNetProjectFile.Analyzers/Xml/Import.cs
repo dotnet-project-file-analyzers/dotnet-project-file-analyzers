@@ -2,7 +2,9 @@
 
 namespace DotNetProjectFile.Xml;
 
-public class Import : Node
+public sealed class Import : Node
 {
     public Import(XElement element) : base(element) { }
+
+    public string? Project => GetAttribute();
 }
