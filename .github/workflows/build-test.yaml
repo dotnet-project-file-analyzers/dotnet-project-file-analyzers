@@ -14,6 +14,6 @@ jobs:
       with:
         dotnet-version: '7.0.x'
     - name: Build with dotnet
-      run: dotnet build --configuration Release
+      run: dotnet build build.sln --configuration Release
     - name: Run unit tests
-      run: dotnet test --no-build --configuration Release
+      run: dotnet test build.sln --no-build --configuration Release

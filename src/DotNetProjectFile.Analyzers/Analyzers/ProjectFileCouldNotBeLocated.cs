@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.IO;
+﻿using DotNetProjectFile.Xml;
 using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace DotNetProjectFile.Analyzers;
@@ -13,7 +13,8 @@ public sealed class ProjectFileCouldNotBeLocated : ProjectFileAnalyzer
 
     private void Locate(CompilationAnalysisContext context)
     {
-        if (ProjectFileResolver.Resolve(context) is null)
+        var projects = Projects.Init(context);
+        if (projects.EntryPoint(context.Compilation.Assembly) is null)
         {
             context.ReportDiagnostic(Diagnostic.Create(Descriptor, Location.None, context.Compilation.SourceModule.ContainingAssembly.Name));
         }

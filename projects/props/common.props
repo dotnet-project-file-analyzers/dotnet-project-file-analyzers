@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <ItemGroup>
+    <AdditionalFiles Include="../props/common.props" Link="Properties/common.props" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+  </ItemGroup>
+  
+</Project>

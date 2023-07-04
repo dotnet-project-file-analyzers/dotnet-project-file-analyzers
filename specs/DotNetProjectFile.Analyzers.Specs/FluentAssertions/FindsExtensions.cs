@@ -1,5 +1,6 @@
 ﻿using CodeAnalysis.TestTools.Contexts;
 using Microsoft.CodeAnalysis;
+using System.Text;
 
 namespace FluentAssertions;
 
@@ -18,6 +19,32 @@ internal static class FindsExtensions
             .Select(Issue.FromDiagnostic)
             .ToArray();
 
-        reported.Should().BeEquivalentTo(issues);
+        var extra = reported.Except(issues).ToArray();
+        var missing = issues.Except(reported).ToArray();
+        var both = reported.Intersect(issues).ToArray();
+
+        if(extra.Any() || missing.Any())
+        {
+            var sb = new StringBuilder();
+            sb.Append("Verification failed:");
+            if (extra.Any()) sb.Append($" {extra.Length} extra");
+            if (extra.Any() && missing.Any()) sb.Append(",");
+            if (missing.Any()) sb.Append($" {missing.Length} missing");
+            sb.AppendLine(".");
+            foreach(var i in extra)
+            {
+                sb.AppendLine($"[+] {i}");
+            }
+            foreach (var i in missing)
+            {
+                sb.AppendLine($"[-] {i}");
+            }
+            foreach(var i in both)
+            {
+                sb.AppendLine($"[ ] {i}");
+            }
+
+            throw new AssertionException(sb.ToString());
+        }
     }
 }

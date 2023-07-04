@@ -1,4 +1,6 @@
-﻿namespace DotNetProjectFile;
+﻿#pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
+
+namespace DotNetProjectFile;
 
 public static class Rule
 {
@@ -10,6 +12,19 @@ public static class Rule
         tags: new[] { "Configuration" },
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor UseAnalyzersForPackages => New(
+        id: 1001,
+        title: "Use analyzers for packages",
+        message: "Use {0} to analyze {1}.",
+        description:
+            "Some NuGet packages come with there own/dedicated Roslyn analyzers; " +
+            "they just contain rules to improve the usage of those packages. " +
+            "In order to get the best out of those NuGet packages, their " +
+            "analyzer(s) should be used.",
+        tags: new[] { "roslyn", "analyzer", "NuGet" },
+        category: Category.CodeQuality,
         isEnabled: true);
 
 #pragma warning disable S107 // Methods should not have too many parameters

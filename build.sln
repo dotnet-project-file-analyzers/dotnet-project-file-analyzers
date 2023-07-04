@@ -7,40 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetProjectFile.Analyzers
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetProjectFile.Analyzers.Specs", "specs\DotNetProjectFile.Analyzers.Specs\DotNetProjectFile.Analyzers.Specs.csproj", "{626C7F5F-15EA-42AA-B4F8-5BD2A86B8FE6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BED71055-3C56-4C5B-9D83-A7B2CCD3B8CA}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		.gitattributes = .gitattributes
-		.gitignore = .gitignore
-		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
-		LICENSE.md = LICENSE.md
-		README.md = README.md
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{46AE4B0F-B941-4E9F-B307-7D7D1E168F64}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rules", "Rules", "{50507CD3-2049-4539-8A37-D370EE0F91F7}"
-	ProjectSection(SolutionItems) = preProject
-		rules\Proj0001.md = rules\Proj0001.md
-		rules\Proj1001.md = rules\Proj1001.md
-	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompliantCSharp", "projects\CompliantCSharp\CompliantCSharp.csproj", "{1A2C9D4D-2E3C-4726-ABC9-C77B41AE1DA9}"
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "CompliantVB", "projects\CompliantVB\CompliantVB.vbproj", "{74F59396-7A67-474A-A404-97B038C237F3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{1BF2B41D-E15B-4E95-AAE0-9B33B4A1523E}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{E6209CFA-DDCD-497E-8B85-804B58B8FAEC}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\build-test.yaml = .github\workflows\build-test.yaml
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoAdditionalFiles", "projects\NoAdditionalFiles\NoAdditionalFiles.csproj", "{9B0241FD-A840-41AB-BE7E-BB3512CEA2D0}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackagesWithAnalyzers", "projects\PackagesWithAnalyzers\PackagesWithAnalyzers.csproj", "{5D9A3040-DBCD-4401-8B2F-369586DEF29F}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackagesWithoutAnalyzers", "projects\PackagesWithoutAnalyzers\PackagesWithoutAnalyzers.csproj", "{BE7A8A3A-49A3-44AD-A57A-FA91217D6E80}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{00669DF6-1449-41AA-8AD3-FA84194CE5B4}"
 	ProjectSection(SolutionItems) = preProject
@@ -73,14 +46,6 @@ Global
 		{9B0241FD-A840-41AB-BE7E-BB3512CEA2D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B0241FD-A840-41AB-BE7E-BB3512CEA2D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B0241FD-A840-41AB-BE7E-BB3512CEA2D0}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D9A3040-DBCD-4401-8B2F-369586DEF29F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D9A3040-DBCD-4401-8B2F-369586DEF29F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D9A3040-DBCD-4401-8B2F-369586DEF29F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D9A3040-DBCD-4401-8B2F-369586DEF29F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BE7A8A3A-49A3-44AD-A57A-FA91217D6E80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BE7A8A3A-49A3-44AD-A57A-FA91217D6E80}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BE7A8A3A-49A3-44AD-A57A-FA91217D6E80}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BE7A8A3A-49A3-44AD-A57A-FA91217D6E80}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -88,11 +53,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1A2C9D4D-2E3C-4726-ABC9-C77B41AE1DA9} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
 		{74F59396-7A67-474A-A404-97B038C237F3} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
-		{1BF2B41D-E15B-4E95-AAE0-9B33B4A1523E} = {BED71055-3C56-4C5B-9D83-A7B2CCD3B8CA}
-		{E6209CFA-DDCD-497E-8B85-804B58B8FAEC} = {1BF2B41D-E15B-4E95-AAE0-9B33B4A1523E}
 		{9B0241FD-A840-41AB-BE7E-BB3512CEA2D0} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
-		{5D9A3040-DBCD-4401-8B2F-369586DEF29F} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
-		{BE7A8A3A-49A3-44AD-A57A-FA91217D6E80} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
 		{00669DF6-1449-41AA-8AD3-FA84194CE5B4} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution

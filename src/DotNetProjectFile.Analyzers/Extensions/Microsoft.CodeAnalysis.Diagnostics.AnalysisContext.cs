@@ -1,4 +1,5 @@
 ﻿using DotNetProjectFile.IO;
+using DotNetProjectFile.Xml;
 
 namespace Microsoft.CodeAnalysis.Diagnostics;
 
@@ -9,7 +10,8 @@ internal static class AnalysisContextExtensions
     public static void RegisterProjectFileAction(this AnalysisContext context, Action<ProjectFileAnalysisContext> action)
         => context.RegisterCompilationAction(c =>
         {
-            if (ProjectFileResolver.Resolve(c) is { } project)
+            var projects = Projects.Init(c);
+            if (projects.EntryPoint(c.Compilation.Assembly) is { } project)
             {
                 action.Invoke(new(project, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
             }
