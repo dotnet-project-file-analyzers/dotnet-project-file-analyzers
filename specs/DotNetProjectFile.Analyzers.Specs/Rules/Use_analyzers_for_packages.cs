@@ -4,6 +4,9 @@ using Microsoft.CodeAnalysis.Diagnostics;
 
 namespace Rules.Use_analyzers_for_packages;
 
+#if RELEASE
+[TestFixture(Ignore = "Build has difficulties resolving (some) NuGet packages")]
+#endif
 public class Reports
 {
     [Test]
@@ -22,6 +25,9 @@ public class Reports
             new("Proj1001", "Use xunit.analyzers to analyze xunit.abstractions."));
 }
 
+#if RELEASE
+[TestFixture(Ignore = "Build has difficulties resolving (some) NuGet packages")]
+#endif
 public class Guards
 {
     [TestCase("CompliantCSharp.cs")]

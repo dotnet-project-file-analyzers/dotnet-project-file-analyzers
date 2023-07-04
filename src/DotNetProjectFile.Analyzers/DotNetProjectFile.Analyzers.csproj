@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <LangVersion>11.0</LangVersion>
     <RootNamespace>DotNetProjectFile</RootNamespace>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
   </PropertyGroup>
 
   <PropertyGroup Label="Package settings">
@@ -28,8 +29,8 @@ v1.0.0
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="3.*" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.*" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.6.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.6.0" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
