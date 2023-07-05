@@ -11,7 +11,7 @@ public class Reports
         => new DefineUsingsExplicit()
         .ForProject("ImplicitUsings.cs")
         .HasIssue(
-            new Issue("Proj0003", "Define usings explicit.").WithSpan(4, 6, 4, 43));
+            new Issue("Proj0003", "Define usings explicit.").WithSpan(4, 5, 4, 42));
 }
 
 public class Guards

@@ -52,6 +52,7 @@ project directly. Within this solution, that could like:
         OutputItemType="Analyzer"
         SetTargetFramework="TargetFramework=netstandard2.0" />
   </ItemGroup>
+
 </Project>
 ```
 
