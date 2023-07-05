@@ -81,6 +81,7 @@ public class Node
         nameof(ImplicitUsings) /*.........*/ => new ImplicitUsings(element, Project),
         nameof(Import) /*.................*/ => new Import(element, Project),
         nameof(ItemGroup) /*..............*/ => new ItemGroup(element, Project),
+        nameof(NuGetAudit) /*.............*/ => new NuGetAudit(element, Project),
         nameof(PackageReference) /*.......*/ => new PackageReference(element, Project),
         nameof(PropertyGroup) /*..........*/ => new PropertyGroup(element, Project),
         _ => new Unknown(element, Project),

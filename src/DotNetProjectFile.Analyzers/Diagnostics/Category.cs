@@ -7,4 +7,5 @@ public enum Category
     Configuration,
     Reliability,
     Obsolete,
+    Security,
 }

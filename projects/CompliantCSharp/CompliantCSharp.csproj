@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
+    <NuGetAudit>true</NuGetAudit>
   </PropertyGroup>
   
   <ItemGroup>
