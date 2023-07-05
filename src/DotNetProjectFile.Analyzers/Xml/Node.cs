@@ -39,17 +39,10 @@ public class Node
 
     private Location GetLocation()
     {
-        if (Project.SourceText is { })
-        {
-            var path = Project.Path.FullName;
-            var linePositionSpan = LineInfo.LinePositionSpan();
-            var textSpan = Project.SourceText.TextSpan(linePositionSpan);
-            return Location.Create(path, textSpan, linePositionSpan);
-        }
-        else
-        {
-            return Location.None;
-        }
+        var path = Project.Path.FullName;
+        var linePositionSpan = LineInfo.LinePositionSpan();
+        var textSpan = Project.Text.TextSpan(linePositionSpan);
+        return Location.Create(path, textSpan, linePositionSpan);
     }
 
     /// <summary>Represents the node as an <see cref="string"/>.</summary>

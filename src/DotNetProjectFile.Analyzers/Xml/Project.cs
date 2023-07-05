@@ -6,18 +6,19 @@ namespace DotNetProjectFile.Xml;
 
 public sealed class Project : Node
 {
-    private Project(XElement element, FileInfo path, SourceText? sourceText, Projects projects) : base(element, null!)
+    private Project(FileInfo path, SourceText text, Projects projects)
+        : base(XElement.Parse(text.ToString(), LoadOptions), null!)
     {
         Path = path;
-        SourceText = sourceText;
+        Text = text;
         Projects = projects;
     }
 
     public FileInfo Path { get; }
 
-    internal readonly Projects Projects;
+    public SourceText Text { get; }
 
-    internal readonly SourceText? SourceText;
+    internal readonly Projects Projects;
 
     public Nodes<Import> Imports => GetChildren<Import>();
 
@@ -40,21 +41,14 @@ public sealed class Project : Node
         yield return this;
     }
 
-    public static Project Load(FileInfo file, Projects projects) => new(
-        XElement.Load(file.OpenRead(), LoadOptions),
-        file,
-        null,
-        projects);
-
-    internal static Project Load(AdditionalText text, Projects projects)
+    public static Project Load(FileInfo file, Projects projects)
     {
-        var sourcText = text.GetText()!;
-        return new(
-            XElement.Parse(sourcText.ToString(), LoadOptions),
-            new(text.Path),
-            sourcText,
-            projects);
+        using var reader = file.OpenText();
+        return new(file, SourceText.From(reader.ReadToEnd()), projects);
     }
+
+    public static Project Load(AdditionalText text, Projects projects)
+        => new(new(text.Path), text.GetText()!, projects);
 
     private static readonly LoadOptions LoadOptions = LoadOptions.PreserveWhitespace | LoadOptions.SetLineInfo;
 }
