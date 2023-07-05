@@ -18,7 +18,7 @@ public static class Rule
         id: 0002,
         title: "Upgrade legacy .NET project files",
         message: "Upgrade legacy .NET project file.",
-        description: "In order to make these rules work, the project file should be located.",
+        description: ".NET legacy projects are not supported.",
         tags: new[] { "project file", "legacy", "obsolete" },
         category: Category.Obsolete,
         severity: DiagnosticSeverity.Warning,
@@ -33,6 +33,18 @@ public static class Rule
             "per file, consider global using statements.",
         tags: new[] { "Configuration", "usings", "global" },
         category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor RunNuGetSecurityAudit => New(
+        id: 0004,
+        title: "Run NuGet security audits automatically",
+        message: "Run NuGet security audits automatically.",
+        description:
+            "To reduce security issues, NuGets security audit should be run on " +
+            "every build automatically.",
+        tags: new[] { "security", "NuGet", "vulnerability" },
+        category: Category.Security,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 

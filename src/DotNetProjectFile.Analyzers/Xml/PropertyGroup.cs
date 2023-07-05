@@ -9,7 +9,7 @@ public sealed class PropertyGroup : Node
 
     public Nodes<ImplicitUsings> ImplicitUsings => GetChildren<ImplicitUsings>();
 
-    public NullableContextOptions? Nullable => GetNode<NullableContextOptions?>();
+    public Nodes<NuGetAudit> NuGetAudits => GetChildren<NuGetAudit>();
 
     public string? RootNamespace => GetNode();
 }

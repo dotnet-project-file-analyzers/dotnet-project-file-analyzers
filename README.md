@@ -36,6 +36,7 @@ In a props file:
 * [**Proj0001** .NET project file could not be located](rules/Proj0001.md)
 * [**Proj0002** Upgrade legacy .NET project files](rules/Proj0002.md)
 * [**Proj0003** Define usings explicit](rules/Proj0003.md)
+* [**Proj0004** Run NuGet security audits automatically](rules/Proj0004.md)
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
 
 ## Reference an analyzer from a project
