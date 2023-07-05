@@ -1,6 +1,4 @@
 ﻿using CodeAnalysis.TestTools.Contexts;
-using Microsoft.CodeAnalysis;
-using System.Text;
 
 namespace FluentAssertions;
 

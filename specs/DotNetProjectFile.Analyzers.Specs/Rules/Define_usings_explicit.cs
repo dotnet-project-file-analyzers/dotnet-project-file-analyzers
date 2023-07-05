@@ -1,8 +1,4 @@
-﻿using CodeAnalysis.TestTools;
-using DotNetProjectFile.Analyzers;
-using Microsoft.CodeAnalysis.Diagnostics;
-
-namespace Rules.Define_usings_explicit;
+﻿namespace Rules.Define_usings_explicit;
 
 public class Reports
 {

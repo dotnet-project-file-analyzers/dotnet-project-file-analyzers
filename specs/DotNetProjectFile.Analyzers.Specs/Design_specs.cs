@@ -1,6 +1,4 @@
-﻿using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.Diagnostics;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace Design_specs;
 

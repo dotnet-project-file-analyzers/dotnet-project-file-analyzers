@@ -1,5 +1,4 @@
-﻿using CodeAnalysis.TestTools;
-using CodeAnalysis.TestTools.Contexts;
+﻿using CodeAnalysis.TestTools.Contexts;
 
 namespace Microsoft.CodeAnalysis.Diagnostics;
 
