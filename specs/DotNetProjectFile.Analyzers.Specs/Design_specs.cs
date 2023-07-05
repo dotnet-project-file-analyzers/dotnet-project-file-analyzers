@@ -8,6 +8,10 @@ public class Rules
     public void Ids_are_unique()
         => Descriptors.Select(d => d.Id).Should().OnlyHaveUniqueItems();
 
+    [TestCaseSource(nameof(Descriptors))]
+    public void have_mark_down_documentation(DiagnosticDescriptor descriptor)
+        => new FileInfo($"../../../../../rules/{descriptor.Id:0000}.md").Exists.Should().BeTrue(because: $"{descriptor.Id:0000}.md should exist.");
+
     [TestCaseSource(nameof(Types))]
     public void in_DotNetProjectFile_Analyzers_namespace(Type type)
         => type.Namespace.Should().Be("DotNetProjectFile.Analyzers");
@@ -28,8 +32,9 @@ public class Rules
 
     public static IEnumerable<DiagnosticDescriptor> Descriptors
         => typeof(DotNetProjectFile.Rule)
-        .GetFields(BindingFlags.Public | BindingFlags.Static)
-        .Where(f => f.FieldType == typeof(DiagnosticDescriptor))
-        .Select(f => (DiagnosticDescriptor)f.GetValue(null)!);
+        .GetProperties(BindingFlags.Public | BindingFlags.Static)
+        .Where(f => f.PropertyType == typeof(DiagnosticDescriptor))
+        .Select(f => (DiagnosticDescriptor)f.GetValue(null)!)
+        .ToArray();
 }
 

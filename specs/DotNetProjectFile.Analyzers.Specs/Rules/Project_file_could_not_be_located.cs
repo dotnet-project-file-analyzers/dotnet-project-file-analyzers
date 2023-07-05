@@ -6,7 +6,7 @@ public class Has_no_issues
     [TestCase("CompliantVB.vb")]
     [TestCase("NoAdditionalFiles.cs")]
     public void For(string project)
-        => new ProjectFileCouldNotBeLocated()
+        => new GuardUnsupported()
         .ForProject(project)
         .HasNoIssues();
 }
