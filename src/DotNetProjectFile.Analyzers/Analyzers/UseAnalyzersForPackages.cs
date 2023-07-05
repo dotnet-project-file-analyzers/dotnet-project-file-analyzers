@@ -7,7 +7,7 @@ public sealed class UseAnalyzersForPackages : ProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var packageReferences = context.Project.GetSelfAndAncestors()
+        var packageReferences = context.Project.AncestorsAndSelf()
             .SelectMany(p => p.ItemGroups)
             .SelectMany(group => group.PackageReferences)
             .ToArray();

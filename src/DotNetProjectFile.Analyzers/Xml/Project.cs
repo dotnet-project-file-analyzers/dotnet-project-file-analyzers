@@ -26,13 +26,13 @@ public sealed class Project : Node
 
     public Nodes<ItemGroup> ItemGroups => GetChildren<ItemGroup>();
 
-    public IEnumerable<Project> GetSelfAndAncestors()
+    public IEnumerable<Project> AncestorsAndSelf()
     {
         foreach (var import in Imports)
         {
             if (import.Value is { } project)
             {
-                foreach (var p in project.GetSelfAndAncestors())
+                foreach (var p in project.AncestorsAndSelf())
                 {
                     yield return p;
                 }
