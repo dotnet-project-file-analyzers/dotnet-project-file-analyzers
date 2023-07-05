@@ -20,4 +20,6 @@ public sealed class Placeholder : Microsoft.AspNetCore.Mvc.ControllerBase
         => startup.Should().NotBeNull();
 
     public static Microsoft.EntityFrameworkCore.DbContext? Table() => null;
+
+    public static Microsoft.CodeAnalysis.Accessibility GetAccessibility() => default;
 }

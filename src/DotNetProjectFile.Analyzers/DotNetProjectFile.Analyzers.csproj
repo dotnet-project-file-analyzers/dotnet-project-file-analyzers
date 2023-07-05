@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <LangVersion>11.0</LangVersion>
     <RootNamespace>DotNetProjectFile</RootNamespace>
+    <NuGetAudit>true</NuGetAudit>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
   </PropertyGroup>
 
@@ -20,6 +21,8 @@
     <Version>1.0.0</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+ToBeReleased
+- Proj0002: Added Microsoft.CodeAnalysis.Analyzers as analyzer to add.
 v1.0.0
 - Proj0001: .NET project file could not be located
 - Proj0002: Upgrade legacy .NET project file
@@ -41,6 +44,7 @@ v1.0.0
 
   <ItemGroup Label="Analyzers">
     <PackageReference Include="AsyncFixer" Version="*-*" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="*" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
     <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
     <PackageReference Include="SonarAnalyzer.CSharp" Version="*" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
     <PackageReference Include="StyleCop.Analyzers" Version="*-*" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
