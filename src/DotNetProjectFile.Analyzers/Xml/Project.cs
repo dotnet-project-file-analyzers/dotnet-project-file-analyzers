@@ -1,19 +1,24 @@
-﻿using System.IO;
+﻿using Microsoft.CodeAnalysis.Text;
+using System.IO;
 using System.Xml.Linq;
 
 namespace DotNetProjectFile.Xml;
 
 public sealed class Project : Node
 {
-    public Project(XElement element, FileInfo location, Projects projects) : base(element)
+    private Project(FileInfo path, SourceText text, Projects projects)
+        : base(XElement.Parse(text.ToString(), LoadOptions), null!)
     {
-        Location = location;
+        Path = path;
+        Text = text;
         Projects = projects;
     }
 
-    public FileInfo Location { get; }
+    public FileInfo Path { get; }
 
-    private readonly Projects Projects;
+    public SourceText Text { get; }
+
+    internal readonly Projects Projects;
 
     public Nodes<Import> Imports => GetChildren<Import>();
 
@@ -21,14 +26,13 @@ public sealed class Project : Node
 
     public Nodes<ItemGroup> ItemGroups => GetChildren<ItemGroup>();
 
-    public IEnumerable<Project> GetProjects()
+    public IEnumerable<Project> AncestorsAndSelf()
     {
         foreach (var import in Imports)
         {
-            var location = new FileInfo(Path.Combine(Location.Directory.FullName, import.Project));
-            if (Projects.TryResolve(location) is { } project)
+            if (import.Value is { } project)
             {
-                foreach (var p in project.GetProjects())
+                foreach (var p in project.AncestorsAndSelf())
                 {
                     yield return p;
                 }
@@ -37,13 +41,14 @@ public sealed class Project : Node
         yield return this;
     }
 
-    public static Project Load(FileInfo file, Projects projects) => new(
-        XElement.Load(file.OpenRead(), LoadOptions.PreserveWhitespace | LoadOptions.SetLineInfo),
-        file,
-        projects);
+    public static Project Load(FileInfo file, Projects projects)
+    {
+        using var reader = file.OpenText();
+        return new(file, SourceText.From(reader.ReadToEnd()), projects);
+    }
 
-    internal static Project Load(AdditionalText text, Projects projects) => new(
-        XElement.Parse(text.GetText()?.ToString()),
-        new(text.Path),
-        projects);
+    public static Project Load(AdditionalText text, Projects projects)
+        => new(new(text.Path), text.GetText()!, projects);
+
+    private static readonly LoadOptions LoadOptions = LoadOptions.PreserveWhitespace | LoadOptions.SetLineInfo;
 }

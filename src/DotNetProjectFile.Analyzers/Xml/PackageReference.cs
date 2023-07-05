@@ -4,9 +4,7 @@ namespace DotNetProjectFile.Xml;
 
 public sealed class PackageReference : Node
 {
-    public PackageReference(XElement element) : base(element)
-    {
-    }
+    public PackageReference(XElement element, Project project) : base(element, project) { }
 
     public string? Include => GetAttribute();
 

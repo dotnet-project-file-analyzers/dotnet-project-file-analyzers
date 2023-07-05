@@ -4,17 +4,10 @@ namespace DotNetProjectFile.Xml;
 
 public sealed class PropertyGroup : Node
 {
-    public enum ImplicitUsingKind
-    {
-        disable,
-        enable,
-        @true,
-    }
-
     /// <summary>Initializes a new instance of the <see cref="PropertyGroup"/> class.</summary>
-    public PropertyGroup(XElement element) : base(element) { }
+    public PropertyGroup(XElement element, Project project) : base(element, project) { }
 
-    public ImplicitUsingKind? ImplicitUsings => GetNode<ImplicitUsingKind?>();
+    public Nodes<ImplicitUsings> ImplicitUsings => GetChildren<ImplicitUsings>();
 
     public NullableContextOptions? Nullable => GetNode<NullableContextOptions?>();
 

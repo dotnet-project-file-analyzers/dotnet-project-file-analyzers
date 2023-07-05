@@ -14,6 +14,18 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor DefineUsingsExplicit => New(
+        id: 0003,
+        title: "Define usings explicit",
+        message: "Define usings explicit.",
+        description:
+            "The included namespaces should be clear. To reduce the statements " +
+            "per file, consider global using statements.",
+        tags: new[] { "Configuration", "usings", "global" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor UseAnalyzersForPackages => New(
         id: 1001,
         title: "Use analyzers for packages",

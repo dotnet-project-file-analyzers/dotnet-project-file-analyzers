@@ -1,7 +1,9 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.IO;
+using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Linq;
 using DotNetProjectFile.Xml.Conversion;
+using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Xml;
 
@@ -9,9 +11,15 @@ namespace DotNetProjectFile.Xml;
 public class Node
 {
     /// <summary>Initializes a new instance of the <see cref="Node"/> class.</summary>
-    protected Node(XElement element) => Element = element;
+    protected Node(XElement element, Project? project)
+    {
+        Element = element;
+        Project = project ?? (this as Project) ?? throw new ArgumentNullException(nameof(project));
+    }
 
-    internal XElement Element { get; }
+    internal readonly XElement Element;
+
+    internal readonly Project Project;
 
     /// <summary>Gets the local name of the <see cref="Node"/>.</summary>
     public virtual string LocalName => GetType().Name;
@@ -21,6 +29,21 @@ public class Node
 
     /// <summary>Get the line info.</summary>
     public IXmlLineInfo LineInfo => Element;
+
+    public int Length => ToString().Length;
+
+    public Location Location => location ??= GetLocation();
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private Location? location;
+
+    private Location GetLocation()
+    {
+        var path = Project.Path.FullName;
+        var linePositionSpan = LineInfo.LinePositionSpan();
+        var textSpan = Project.Text.TextSpan(linePositionSpan);
+        return Location.Create(path, textSpan, linePositionSpan);
+    }
 
     /// <summary>Represents the node as an <see cref="string"/>.</summary>
     /// <remarks>
@@ -51,18 +74,19 @@ public class Node
     internal IEnumerable<Node> GetAllChildren()
         => Element.Elements().Select(Create).OfType<Node>();
 
-    internal static Node? Create(XElement element)
+    internal Node? Create(XElement element)
     => element.Name.LocalName switch
     {
         null => null,
-        nameof(Import) /*.................*/ => new Import(element),
-        nameof(ItemGroup) /*..............*/ => new ItemGroup(element),
-        nameof(PackageReference) /*.......*/ => new PackageReference(element),
-        nameof(PropertyGroup) /*..........*/ => new PropertyGroup(element),
-        _ => new Unknown(element),
+        nameof(ImplicitUsings) /*.........*/ => new ImplicitUsings(element, Project),
+        nameof(Import) /*.................*/ => new Import(element, Project),
+        nameof(ItemGroup) /*..............*/ => new ItemGroup(element, Project),
+        nameof(PackageReference) /*.......*/ => new PackageReference(element, Project),
+        nameof(PropertyGroup) /*..........*/ => new PropertyGroup(element, Project),
+        _ => new Unknown(element, Project),
     };
 
-    private T? Convert<T>(string? value, string? propertyName)
+    protected T? Convert<T>(string? value, [CallerMemberName] string? propertyName = null)
         => Converters.TryConvert<T>(value, GetType(), propertyName!);
 
     private static readonly TypeConverters Converters = new();

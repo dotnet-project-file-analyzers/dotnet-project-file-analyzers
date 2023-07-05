@@ -1,5 +1,7 @@
 ﻿global using DotNetProjectFile.Diagnostics;
+global using DotNetProjectFile.Xml;
 global using Microsoft.CodeAnalysis;
+global using Microsoft.CodeAnalysis.Diagnostics;
 global using System;
 global using System.Collections;
 global using System.Collections.Generic;
