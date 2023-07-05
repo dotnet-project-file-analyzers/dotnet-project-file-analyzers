@@ -38,8 +38,8 @@ In a props file:
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
 
 ## Reference an analyzer from a project
-For debugging/development purposes, it can be useful reference the analyzer
-project directly. Within this solution, that could like:
+For debugging/development purposes, it can be useful to reference the analyzer
+project directly. Within this solution, that would look like:
 
 ``` XML
 <Project Sdk="Microsoft.NET.Sdk">
