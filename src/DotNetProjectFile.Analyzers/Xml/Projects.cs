@@ -31,6 +31,8 @@ public sealed class Projects
             else if (AdditionalTexts.TryGetValue(location, out var additional)
                 && IsProject(location))
             {
+                var line = additional.GetText()!.Lines[0];
+                var loc = Location.Create(location.FullName, line.Span, default);
                 project = Project.Load(additional, this);
                 Resolved[location] = project;
                 return project;

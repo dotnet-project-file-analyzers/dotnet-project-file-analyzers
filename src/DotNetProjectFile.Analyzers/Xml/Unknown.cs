@@ -9,7 +9,7 @@ public sealed class Unknown : Node
     /// <param name="element">
     /// The corresponding <see cref="XElement"/>.
     /// </param>
-    public Unknown(XElement element) : base(element) { }
+    public Unknown(XElement element, Project project) : base(element, project) { }
 
     /// <summary>Gets the local name of the <see cref="Unknown"/>.</summary>
     public override string LocalName => Element.Name.LocalName;

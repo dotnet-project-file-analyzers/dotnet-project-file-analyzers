@@ -20,7 +20,7 @@ public sealed class ItemGroup : Node
     /// <param name="element">
     /// The corresponding <see cref="XElement"/>.
     /// </param>
-    public ItemGroup(XElement element) : base(element) { }
+    public ItemGroup(XElement element, Project project) : base(element, project) { }
 
     /// <summary>Gets the child package references.</summary>
     public Nodes<PackageReference> PackageReferences => GetChildren<PackageReference>();

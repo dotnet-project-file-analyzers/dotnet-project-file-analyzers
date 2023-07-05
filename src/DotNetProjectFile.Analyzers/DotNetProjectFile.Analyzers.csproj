@@ -19,6 +19,8 @@
     <PackageReleaseNotes>
 v1.0.0
 - Proj0001: .NET project file could not be located.
+- Proj0003: Define usings explicit.
+- Proj1001: Use analyzers for packages.
     </PackageReleaseNotes>
   </PropertyGroup>
 

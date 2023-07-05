@@ -1,6 +1,4 @@
-﻿using Microsoft.CodeAnalysis.Diagnostics;
-
-namespace DotNetProjectFile.Analyzers;
+﻿namespace DotNetProjectFile.Analyzers;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseAnalyzersForPackages : ProjectFileAnalyzer
@@ -9,7 +7,7 @@ public sealed class UseAnalyzersForPackages : ProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var packageReferences = context.Project.GetProjects()
+        var packageReferences = context.Project.GetSelfAndAccestors()
             .SelectMany(p => p.ItemGroups)
             .SelectMany(group => group.PackageReferences)
             .ToArray();
@@ -19,7 +17,7 @@ public sealed class UseAnalyzersForPackages : ProjectFileAnalyzer
             if (packageReferences.None(analyzer.IsMatch)
                 && context.Compilation.ReferencedAssemblyNames.FirstOrDefault(analyzer.IsMatch) is { } reference)
             {
-                context.ReportDiagnostic(Descriptor, analyzer.Package, reference.Name);
+                context.ReportDiagnostic(Descriptor, Location.None, analyzer.Package, reference.Name);
             }
         }
     }

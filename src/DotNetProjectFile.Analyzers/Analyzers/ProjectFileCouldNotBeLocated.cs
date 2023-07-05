@@ -1,7 +1,4 @@
-﻿using DotNetProjectFile.Xml;
-using Microsoft.CodeAnalysis.Diagnostics;
-
-namespace DotNetProjectFile.Analyzers;
+﻿namespace DotNetProjectFile.Analyzers;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ProjectFileCouldNotBeLocated : ProjectFileAnalyzer
