@@ -9,8 +9,9 @@ public static class XmlLineInfoExtensions
     {
         var start = info.LinePositionStart();
         var end = info is XElement element && element.NextNode is IXmlLineInfo next
-            ? new LinePosition(next.LineNumber - 1, next.LinePosition - 2)
-            : new LinePosition(info.LineNumber - 1, info.LinePosition + 1);
+            ? next.LinePositionStart()
+            : start.Expand(right: +1);
+
         return new(start, end);
     }
 
