@@ -14,9 +14,9 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
-    public static DiagnosticDescriptor UpdateLegacyProject => New(
+    public static DiagnosticDescriptor UpdateLegacyProjects => New(
         id: 0002,
-        title: "Upgrade legacy .NET project file",
+        title: "Upgrade legacy .NET project files",
         message: "Upgrade legacy .NET project file.",
         description: "In order to make these rules work, the project file should be located.",
         tags: new[] { "project file", "legacy", "obsolete" },

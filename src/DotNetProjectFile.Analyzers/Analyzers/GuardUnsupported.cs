@@ -5,7 +5,7 @@ public sealed class GuardUnsupported : ProjectFileAnalyzer
 {
     public GuardUnsupported() : base(
         Rule.ProjectFileCouldNotBeLocated,
-        Rule.UpdateLegacyProject) { }
+        Rule.UpdateLegacyProjects) { }
 
     protected override void Register(AnalysisContext context)
         => context.RegisterCompilationAction(Locate);
@@ -23,7 +23,7 @@ public sealed class GuardUnsupported : ProjectFileAnalyzer
         }
         else if (project.Element.Name.Namespace is { } ns && !string.IsNullOrEmpty(ns.NamespaceName))
         {
-            context.ReportDiagnostic(Diagnostic.Create(Rule.UpdateLegacyProject, project.Location));
+            context.ReportDiagnostic(Diagnostic.Create(Rule.UpdateLegacyProjects, project.Location));
         }
     }
 
