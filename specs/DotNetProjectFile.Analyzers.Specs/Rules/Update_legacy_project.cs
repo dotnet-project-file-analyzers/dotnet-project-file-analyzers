@@ -11,7 +11,7 @@ public class Has_no_issues
 }
 
 #if RELEASE
-[TestFixture(Ignore = "Build has difficulties resolving (some) NuGet packages")]
+[TestFixture(Ignore = "To allow .NET framework projects to be build, the image has to change to windows.")]
 #endif
 public class Reports
 {
