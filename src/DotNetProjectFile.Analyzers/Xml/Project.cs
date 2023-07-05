@@ -15,7 +15,7 @@ public sealed class Project : Node
 
     public FileInfo Path { get; }
 
-    private readonly Projects Projects;
+    internal readonly Projects Projects;
 
     internal readonly SourceText? SourceText;
 
@@ -25,14 +25,13 @@ public sealed class Project : Node
 
     public Nodes<ItemGroup> ItemGroups => GetChildren<ItemGroup>();
 
-    public IEnumerable<Project> GetSelfAndAccestors()
+    public IEnumerable<Project> GetSelfAndAncestors()
     {
         foreach (var import in Imports)
         {
-            var location = new FileInfo(System.IO.Path.Combine(Path.Directory.FullName, import.Project));
-            if (Projects.TryResolve(location) is { } project)
+            if (import.Value is { } project)
             {
-                foreach (var p in project.GetSelfAndAccestors())
+                foreach (var p in project.GetSelfAndAncestors())
                 {
                     yield return p;
                 }

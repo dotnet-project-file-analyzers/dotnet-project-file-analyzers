@@ -7,7 +7,7 @@ public sealed class DefineUsingsExplicit : ProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.GetSelfAndAccestors()
+        if (context.Project.GetSelfAndAncestors()
             .SelectMany(p => p.PropertyGroups)
             .SelectMany(g => g.ImplicitUsings)
             .LastOrDefault(i => IsEnabled(i.Value)) is { } node)

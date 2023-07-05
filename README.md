@@ -36,3 +36,23 @@ In a props file:
 * [**Proj0001** .NET project file could not be located](rules/Proj0001.md)
 * [**Proj0003** Define usings explicit](rules/Proj0003.md)
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
+
+## Reference an analyzer from a project
+For debugging/development purposes, it can be useful reference the analyzer
+project directly. Within this solution, that could like:
+
+``` XML
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup Label="Analyzer">
+    <ProjectReference
+        Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
+        PrivateAssets="all"
+        ReferenceOutputAssembly="false"
+        OutputItemType="Analyzer"
+        SetTargetFramework="TargetFramework=netstandard2.0" />
+  </ItemGroup>
+</Project>
+```
+
+More info can be found here: https://www.meziantou.net/referencing-an-analyzer-from-a-project.htm

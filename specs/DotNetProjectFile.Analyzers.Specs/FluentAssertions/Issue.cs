@@ -1,5 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
+using System.Text;
 
 namespace FluentAssertions;
 
@@ -15,9 +16,19 @@ internal sealed record Issue(
             Span = new(new(lineStart, posStart), new(lineEnd, posEnd)),
         };
 
-    public override string ToString() => Severity == DiagnosticSeverity.Warning
-        ? $"{Id} {Message} ({Span})"
-        : $"{Id} {Message} ({Span}, {Severity})";
+    public override string ToString()
+    {
+        var sb = new StringBuilder($"{Id} {Message}");
+        if (Span != default)
+        {
+            sb.Append($" @[{Span}]");
+        }
+        if (Severity != DiagnosticSeverity.Warning)
+        {
+            sb.Append($" {Severity}");
+        }
+        return sb.ToString();
+    }
 
     public static Issue FromDiagnostic(Diagnostic diagnostic)
         => new(diagnostic.Id, diagnostic.GetMessage(), diagnostic.Location.GetLineSpan().Span, diagnostic.Severity);
