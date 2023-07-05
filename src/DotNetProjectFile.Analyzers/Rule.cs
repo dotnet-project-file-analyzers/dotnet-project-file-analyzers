@@ -14,6 +14,16 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor UpdateLegacyProject => New(
+        id: 0002,
+        title: "Upgrade legacy .NET project file",
+        message: "Upgrade legacy .NET project file.",
+        description: "In order to make these rules work, the project file should be located.",
+        tags: new[] { "project file", "legacy", "obsolete" },
+        category: Category.Obsolete,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor DefineUsingsExplicit => New(
         id: 0003,
         title: "Define usings explicit",

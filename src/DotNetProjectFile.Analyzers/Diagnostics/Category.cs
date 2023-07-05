@@ -3,7 +3,8 @@
 public enum Category
 {
     Clarity,
+    CodeQuality,
     Configuration,
     Reliability,
-    CodeQuality,
+    Obsolete,
 }
