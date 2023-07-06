@@ -6,7 +6,7 @@ namespace PackagesWithoutAnalyzers;
 public sealed class Placeholder : Microsoft.AspNetCore.Mvc.ControllerBase
 {
     [MongoDB.Bson.Serialization.Attributes.BsonId]
-    public Qowaiv.Uuid Id { get; init; }
+    public Guid Id { get; init; }
 
     public static readonly Type[] GetAttributes = new[]
     {
