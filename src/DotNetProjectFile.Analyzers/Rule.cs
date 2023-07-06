@@ -48,6 +48,18 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor DefinePackageReferenceAssetsAsAttributes => New(
+        id: 0005,
+        title: "Define package reference assets as attributes",
+        message: "Define package reference assets of '{0}' as attributes.",
+        description:
+            "To reduce security issues, NuGets security audit should be run on " +
+            "every build automatically.",
+        tags: new[] { "security", "NuGet", "vulnerability" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor UseAnalyzersForPackages => New(
         id: 1001,
         title: "Use analyzers for packages",
