@@ -23,11 +23,13 @@
     <PackageReleaseNotes>
 ToBeReleased
 - Proj0002: Added Microsoft.CodeAnalysis.Analyzers as analyzer to add.
+- Proj0005: Define package reference assets as attributes. (new rule)
+- Proj1001: Dropped Qowaiv.Analyzers.CSharp due to FP's.
 v1.0.0
-- Proj0001: .NET project file could not be located
-- Proj0002: Upgrade legacy .NET project file
-- Proj0003: Define usings explicit
-- Proj1001: Use analyzers for packages
+- Proj0001: .NET project file could not be located. (new rule)
+- Proj0002: Upgrade legacy .NET project file. (new rule)
+- Proj0003: Define usings explicit. (new rule)
+- Proj1001: Use analyzers for packages. (new rule)
     </PackageReleaseNotes>
   </PropertyGroup>
 

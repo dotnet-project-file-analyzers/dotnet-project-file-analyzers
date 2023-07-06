@@ -31,7 +31,6 @@ public sealed class UseAnalyzersForPackages : ProjectFileAnalyzer
         new("Microsoft.EntityFrameworkCore.Analyzers", "Microsoft.EntityFrameworkCore"),
         new("MongoDB.Analyzer", "MongoDB"),
         new("NUnit.Analyzers", "NUnit"),
-        new("Qowaiv.Analyzers.CSharp", "Qowaiv"),
         new("SerilogAnalyzer", "Serilog"),
         new("xunit.analyzers", "xunit"),
     };

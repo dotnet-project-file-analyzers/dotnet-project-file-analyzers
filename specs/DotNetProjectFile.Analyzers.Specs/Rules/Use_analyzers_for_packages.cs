@@ -20,7 +20,6 @@ public class Reports
             new("Proj1001", "Use Microsoft.EntityFrameworkCore.Analyzers to analyze Microsoft.EntityFrameworkCore.Abstractions."),
             new("Proj1001", "Use MongoDB.Analyzer to analyze MongoDB.Bson."),
             new("Proj1001", "Use NUnit.Analyzers to analyze nunit.framework."),
-            new("Proj1001", "Use Qowaiv.Analyzers.CSharp to analyze Qowaiv."),
             new("Proj1001", "Use SerilogAnalyzer to analyze Serilog."),
             new("Proj1001", "Use xunit.analyzers to analyze xunit.abstractions."));
 }
