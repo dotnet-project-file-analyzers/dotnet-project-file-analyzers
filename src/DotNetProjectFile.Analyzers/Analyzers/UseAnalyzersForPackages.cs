@@ -27,6 +27,7 @@ public sealed class UseAnalyzersForPackages : ProjectFileAnalyzer
         new("FluentAssertions.Analyzers", "FluentAssertions"),
         new("Microsoft.AspNetCore.Components.Analyzers", "Microsoft.AspNetCore"),
         new("Microsoft.Azure.Functions.Analyzers", "Microsoft.Azure.Functions"),
+        new("Microsoft.CodeAnalysis.Analyzers", "Microsoft.CodeAnalysis"),
         new("Microsoft.EntityFrameworkCore.Analyzers", "Microsoft.EntityFrameworkCore"),
         new("MongoDB.Analyzer", "MongoDB"),
         new("NUnit.Analyzers", "NUnit"),

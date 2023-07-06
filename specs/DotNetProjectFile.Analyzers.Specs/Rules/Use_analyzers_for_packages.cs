@@ -1,4 +1,7 @@
-﻿namespace Rules.Use_analyzers_for_packages;
+﻿using CodeAnalysis.TestTools;
+using System.Runtime.Intrinsics.X86;
+
+namespace Rules.Use_analyzers_for_packages;
 
 #if RELEASE
 [TestFixture(Ignore = "Build has difficulties resolving (some) NuGet packages")]
@@ -13,6 +16,7 @@ public class Reports
             new("Proj1001", "Use FluentAssertions.Analyzers to analyze FluentAssertions."),
             new("Proj1001", "Use Microsoft.AspNetCore.Components.Analyzers to analyze Microsoft.AspNetCore.Antiforgery."),
             new("Proj1001", "Use Microsoft.Azure.Functions.Analyzers to analyze Microsoft.Azure.Functions.Extensions."),
+            new("Proj1001", "Use Microsoft.CodeAnalysis.Analyzers to analyze Microsoft.CodeAnalysis.CSharp."),
             new("Proj1001", "Use Microsoft.EntityFrameworkCore.Analyzers to analyze Microsoft.EntityFrameworkCore.Abstractions."),
             new("Proj1001", "Use MongoDB.Analyzer to analyze MongoDB.Bson."),
             new("Proj1001", "Use NUnit.Analyzers to analyze nunit.framework."),
