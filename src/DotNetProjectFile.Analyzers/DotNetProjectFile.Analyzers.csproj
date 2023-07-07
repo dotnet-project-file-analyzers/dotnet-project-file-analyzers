@@ -22,8 +22,9 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
 ToBeRealeased
-- Proj0006: Add additional files to improve static code analysis (NEW RULE)
-- Proj1000: Use the .NET project file analyzers (NEW RULE)
+- Proj0006: Add additional files to improve static code analysis. (NEW RULE)
+- Proj0007: Remove empty nodes. (NEW RULE)
+- Proj1000: Use the .NET project file analyzers. (NEW RULE)
 v1.0.1
 - Proj0002: Added Microsoft.CodeAnalysis.Analyzers as analyzer to add.
 - Proj0005: Define package reference assets as attributes. (NEW RULE)

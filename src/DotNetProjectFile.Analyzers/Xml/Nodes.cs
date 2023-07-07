@@ -42,5 +42,5 @@ public sealed class Nodes<T> : IEnumerable<T> where T : Node
 
     /// <summary>Helper property to select the needed children.</summary>
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private IEnumerable<T> Items => Parent.GetAllChildren().Where(child => child is T).Cast<T>();
+    private IEnumerable<T> Items => Parent.AllChildren().Where(child => child is T).Cast<T>();
 }
