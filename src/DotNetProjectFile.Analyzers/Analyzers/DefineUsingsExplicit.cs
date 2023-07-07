@@ -7,12 +7,12 @@ public sealed class DefineUsingsExplicit : ProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.AncestorsAndSelf()
+        foreach (var @implicit in context.Project.AncestorsAndSelf()
             .SelectMany(p => p.PropertyGroups)
             .SelectMany(g => g.ImplicitUsings)
-            .LastOrDefault(i => IsEnabled(i.Value)) is { } node)
+            .Where(i => IsEnabled(i.Value)))
         {
-            context.ReportDiagnostic(Descriptor, node.Location);
+            context.ReportDiagnostic(Descriptor, @implicit.Location);
         }
     }
 
