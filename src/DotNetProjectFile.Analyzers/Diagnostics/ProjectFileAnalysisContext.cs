@@ -1,6 +1,4 @@
-﻿using Microsoft.CodeAnalysis.Diagnostics;
-
-namespace DotNetProjectFile.Diagnostics;
+﻿namespace DotNetProjectFile.Diagnostics;
 
 /// <summary>The context required to analyze a .NET project file.</summary>
 public readonly struct ProjectFileAnalysisContext

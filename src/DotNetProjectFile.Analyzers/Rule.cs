@@ -60,6 +60,18 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor AddAdditionalFile => New(
+        id: 0006,
+        title: "Add additional files to improve static code analysis",
+        message: "Add '{0}' to the additional files.",
+        description:
+            "By adding additional non-compiling files, those files become " +
+            "available in the analyzer context too.",
+        tags: new[] { "code analysis" },
+        category: Category.CodeQuality,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",
