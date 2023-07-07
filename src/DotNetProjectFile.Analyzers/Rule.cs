@@ -60,6 +60,15 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
+        id: 1000,
+        title: "Use the .NET project file analyzers",
+        message: "Use the .NET project file analyzers.",
+        description: "To improve the code quality of the .NET project files.",
+        tags: new[] { "roslyn", "analyzer", "cbproj", "vbproj" },
+        category: Category.CodeQuality,
+        isEnabled: true);
+
     public static DiagnosticDescriptor UseAnalyzersForPackages => New(
         id: 1001,
         title: "Use analyzers for packages",

@@ -6,4 +6,5 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0002** Upgrade legacy .NET project files](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/Proj0002.md)
 * [**Proj0003** Define usings explicit](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/Proj0003.md)
 * [**Proj0004** Run NuGet security audits automatically](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/Proj0004.md)
+* [**Proj1000** Use the .NET project file analyzers](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/Proj1001.md)

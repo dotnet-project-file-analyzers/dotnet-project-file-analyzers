@@ -21,6 +21,8 @@
     <Version>1.0.1</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+ToBeRealeased
+- Proj1000: Use the .NET project file analyzers (NEW RULE)
 v1.0.1
 - Proj0002: Added Microsoft.CodeAnalysis.Analyzers as analyzer to add.
 - Proj0005: Define package reference assets as attributes. (NEW RULE)

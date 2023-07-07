@@ -1,5 +1,4 @@
-﻿using Microsoft.CodeAnalysis.Diagnostics;
-using System.Collections.Immutable;
+﻿using System.Collections.Immutable;
 
 namespace DotNetProjectFile;
 

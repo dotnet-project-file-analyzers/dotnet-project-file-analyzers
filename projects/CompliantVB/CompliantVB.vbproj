@@ -7,8 +7,12 @@
     <OptionStrict>On</OptionStrict>
   </PropertyGroup>
 
+  <ItemGroup Label="Analyzers">
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+  </ItemGroup>
+  
   <ItemGroup>
-    <AdditionalFiles Include="*.??proj" Visible="false" />
+    <AdditionalFiles Include="*.vbproj" Visible="false" />
   </ItemGroup>
 
 </Project>

@@ -1,7 +1,4 @@
-﻿using CodeAnalysis.TestTools;
-using System.Runtime.Intrinsics.X86;
-
-namespace Rules.Use_analyzers_for_packages;
+﻿namespace Rules.Use_analyzers_for_packages;
 
 #if RELEASE
 [TestFixture(Ignore = "Build has difficulties resolving (some) NuGet packages")]
