@@ -4,9 +4,13 @@
     <TargetFramework>net7.0</TargetFramework>
     <NuGetAudit>true</NuGetAudit>
   </PropertyGroup>
-  
+
+  <ItemGroup Label="Analyzers">
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+  </ItemGroup>
+
   <ItemGroup>
-    <AdditionalFiles Include="*.??proj" Visible="false" />
+    <AdditionalFiles Include="*.csproj" Visible="false" />
   </ItemGroup>
 
 </Project>
