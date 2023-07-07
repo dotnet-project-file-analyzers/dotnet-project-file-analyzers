@@ -5,7 +5,7 @@ internal class Remove_empty_nodes
     public class Reports
     {
         [Test]
-        public void empy_nodes()
+        public void empty_nodes()
             => new RemoveEmptyNodes()
             .ForProject("EmptyNodes.cs")
             .HasIssues(

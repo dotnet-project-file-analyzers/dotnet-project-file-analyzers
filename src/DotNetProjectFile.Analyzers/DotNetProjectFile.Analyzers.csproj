@@ -7,6 +7,7 @@
     <RootNamespace>DotNetProjectFile</RootNamespace>
     <NuGetAudit>true</NuGetAudit>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
   <PropertyGroup Label="Package settings">
