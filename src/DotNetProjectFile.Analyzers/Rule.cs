@@ -72,6 +72,16 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor RemoveEmptyNodes => New(
+        id: 0007,
+        title: "Remove empty nodes",
+        message: "Remove empty {0} node.",
+        description: "Empty nodes only add noise, as they contain no information.",
+        tags: new[] { "noise" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",

@@ -1,9 +1,8 @@
-﻿using System.IO;
+﻿using DotNetProjectFile.Xml.Conversion;
+using Microsoft.CodeAnalysis.Text;
 using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Linq;
-using DotNetProjectFile.Xml.Conversion;
-using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Xml;
 
@@ -54,6 +53,14 @@ public class Node
     /// <summary>Gets the a <see cref="Nodes{T}"/> of children.</summary>
     public Nodes<T> GetChildren<T>() where T : Node => new(this);
 
+    /// <summary>Get all children.</summary>
+    /// <remarks>
+    /// This function exists as source for the <see cref="Nodes{T}"/>.
+    /// With this construction, we can expose all children as collection.
+    /// </remarks>
+    public IEnumerable<Node> AllChildren()
+        => Element.Elements().Select(Create).OfType<Node>();
+
     /// <summary>Gets the <see cref="string"/> value of a child element.</summary>
     public string? GetAttribute([CallerMemberName] string? propertyName = null)
         => Element.Attribute(propertyName)?.Value;
@@ -65,14 +72,6 @@ public class Node
     /// <summary>Gets the value of a child element.</summary>
     public T? GetNode<T>([CallerMemberName] string? propertyName = null)
         => Convert<T>(GetNode(propertyName), propertyName);
-
-    /// <summary>Get all children.</summary>
-    /// <remarks>
-    /// This function exists as source for the <see cref="Nodes{T}"/>.
-    /// With this construction, we can expose all children as collection.
-    /// </remarks>
-    internal IEnumerable<Node> GetAllChildren()
-        => Element.Elements().Select(Create).OfType<Node>();
 
     internal Node? Create(XElement element)
     => element.Name.LocalName switch

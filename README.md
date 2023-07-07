@@ -39,6 +39,7 @@ In a props file:
 * [**Proj0004** Run NuGet security audits automatically](rules/Proj0004.md)
 * [**Proj0005** Define package reference assets as attributes](rules/Proj0005.md)
 * [**Proj0006** Add additional files to improve static code analysis](rules/Proj0006.md)
+* [**Proj0007** Remove empty nodes](rules/Proj0007.md)
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
 
