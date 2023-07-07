@@ -13,7 +13,7 @@ In the project file:
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-	<AdditionalFiles Include="*.??proj" Visible="false" />
+    <AdditionalFiles Include="*.??proj" Visible="false" />
   </ItemGroup>
 
 </Project>
@@ -26,7 +26,7 @@ In a props file:
 <Project>
 
   <ItemGroup>
-	<AdditionalFiles Include="../props/{file_name}" Link="Properties/{file_name}" />
+    <AdditionalFiles Include="../props/{file_name}" Link="Properties/{file_name}" />
   </ItemGroup>
 
 </Project>
@@ -37,6 +37,8 @@ In a props file:
 * [**Proj0002** Upgrade legacy .NET project files](rules/Proj0002.md)
 * [**Proj0003** Define usings explicit](rules/Proj0003.md)
 * [**Proj0004** Run NuGet security audits automatically](rules/Proj0004.md)
+* [**Proj0005** Define package reference assets as attributes](rules/Proj0005.md)
+* [**Proj0006** Add additional files to improve static code analysis](rules/Proj0006.md)
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
 
@@ -49,11 +51,11 @@ project directly. Within this solution, that would look like:
 
   <ItemGroup Label="Analyzer">
     <ProjectReference
-        Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
-        PrivateAssets="all"
-        ReferenceOutputAssembly="false"
-        OutputItemType="Analyzer"
-        SetTargetFramework="TargetFramework=netstandard2.0" />
+      Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
+      PrivateAssets="all"
+      ReferenceOutputAssembly="false"
+      OutputItemType="Analyzer"
+      SetTargetFramework="TargetFramework=netstandard2.0" />
   </ItemGroup>
 
 </Project>
