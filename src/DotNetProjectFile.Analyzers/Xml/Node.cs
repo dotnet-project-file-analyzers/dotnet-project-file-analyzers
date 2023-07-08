@@ -77,6 +77,7 @@ public class Node
     => element.Name.LocalName switch
     {
         null => null,
+        nameof(Folder) /*.................*/ => new Folder(element, Project),
         nameof(ImplicitUsings) /*.........*/ => new ImplicitUsings(element, Project),
         nameof(Import) /*.................*/ => new Import(element, Project),
         nameof(ItemGroup) /*..............*/ => new ItemGroup(element, Project),

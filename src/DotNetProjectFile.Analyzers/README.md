@@ -9,5 +9,6 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0005** Define package reference assets as attributes](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/Proj0005.md)
 * [**Proj0006** Add additional files to improve static code analysis](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/Proj0006.md)
 * [**Proj0007** Remove empty nodes](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/Proj0007.md)
+* [**Proj0008** Remove folder nodes](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/Proj0008.md)
 * [**Proj1000** Use the .NET project file analyzers](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/Proj1001.md)
