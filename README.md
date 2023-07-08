@@ -7,7 +7,7 @@ that report issues on .NET project files.
 To fully benefit from these analyzers is is recommended to add the project file
 (and imported projects/props) as additional files.
 
-In the project file:
+To add a project file:
 
 ``` XML
 <Project Sdk="Microsoft.NET.Sdk">
@@ -19,7 +19,7 @@ In the project file:
 </Project>
 ```
 
-In a props file:
+To add a props file:
 
 ``` XML
 <?xml version="1.0" encoding="utf-8"?>
