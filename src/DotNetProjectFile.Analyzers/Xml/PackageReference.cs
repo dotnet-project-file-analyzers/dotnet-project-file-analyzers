@@ -6,7 +6,7 @@ public sealed class PackageReference : Node
 {
     public PackageReference(XElement element, Project project) : base(element, project) { }
 
-    public string? Include => GetAttribute();
+    public string? Include => Attribute();
 
-    public string? Version => GetAttribute();
+    public string? Version => Attribute();
 }

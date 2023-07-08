@@ -23,11 +23,11 @@ public sealed class Project : Node
 
     internal readonly Projects Projects;
 
-    public Nodes<Import> Imports => GetChildren<Import>();
+    public Nodes<Import> Imports => Children<Import>();
 
-    public Nodes<PropertyGroup> PropertyGroups => GetChildren<PropertyGroup>();
+    public Nodes<PropertyGroup> PropertyGroups => Children<PropertyGroup>();
 
-    public Nodes<ItemGroup> ItemGroups => GetChildren<ItemGroup>();
+    public Nodes<ItemGroup> ItemGroups => Children<ItemGroup>();
 
     public IEnumerable<Project> AncestorsAndSelf()
     {

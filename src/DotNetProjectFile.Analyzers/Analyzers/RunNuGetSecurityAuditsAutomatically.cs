@@ -9,7 +9,7 @@ public sealed class RunNuGetSecurityAuditsAutomatically : ProjectFileAnalyzer
     {
         var audits = context.Project.AncestorsAndSelf()
           .SelectMany(p => p.PropertyGroups)
-          .SelectMany(g => g.NuGetAudits);
+          .SelectMany(g => g.NuGetAudit);
 
         if (audits.None() || audits.Any(a => a.Value != true))
         {

@@ -11,7 +11,7 @@ public sealed class RemoveEmptyNodes : ProjectFileAnalyzer
     {
         foreach (var node in context.Project
             .AncestorsAndSelf()
-            .SelectMany(p => p.AllChildren()))
+            .SelectMany(p => p.Children()))
         {
             Report(node, context, 1);
         }
@@ -21,7 +21,7 @@ public sealed class RemoveEmptyNodes : ProjectFileAnalyzer
     {
         var noChildren = true;
 
-        foreach (var child in node.AllChildren())
+        foreach (var child in node.Children())
         {
             noChildren = false;
             Report(child, context, level + 1);
