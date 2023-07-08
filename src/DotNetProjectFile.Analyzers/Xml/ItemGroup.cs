@@ -8,6 +8,7 @@ namespace DotNetProjectFile.Xml;
 /// - Compile
 /// - Content
 /// - EmbeddedResource
+/// - Folder
 /// - Import
 /// - None
 /// - PackageReference
@@ -24,4 +25,7 @@ public sealed class ItemGroup : Node
 
     /// <summary>Gets the child package references.</summary>
     public Nodes<PackageReference> PackageReferences => GetChildren<PackageReference>();
+
+    /// <summary>Gets the child folders.</summary>
+    public Nodes<Folder> Folders => GetChildren<Folder>();
 }
