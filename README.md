@@ -1,13 +1,32 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/LICENSE.md)
+[![Code of Conduct](https://img.shields.io/badge/%E2%9D%A4-code%20of%20conduct-blue.svg?style=flat)](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/CODE_OF_CONDUCT.md)
+
+| Package | NuGet |
+|---------|-------|
+| [DotNetProjectFile.Analyzers](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/) | [![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers?style=flat-square&label=version)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers?style=flat-square)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/) |
+
 # .NET project file analyzers
 Contains [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/)
 (static code) [diagnostic analyzers](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.diagnostics.diagnosticanalyzer)
 that report issues on .NET project files.
 
+## Installation
+To use the analyzers, you must include the analyzer package in your project file:
+``` XML
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.*" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+  </ItemGroup>
+
+</Project>
+```
+
 ## Additional files
 To fully benefit from these analyzers is is recommended to add the project file
 (and imported projects/props) as additional files.
 
-In the project file:
+To add a project file:
 
 ``` XML
 <Project Sdk="Microsoft.NET.Sdk">
@@ -19,7 +38,7 @@ In the project file:
 </Project>
 ```
 
-In a props file:
+To add a props file:
 
 ``` XML
 <?xml version="1.0" encoding="utf-8"?>
