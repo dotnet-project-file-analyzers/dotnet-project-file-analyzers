@@ -1,5 +1,7 @@
 ﻿#pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
+using DotNetProjectFile.Xml;
+
 namespace DotNetProjectFile;
 
 public static class Rule
@@ -83,16 +85,28 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor RemoveFolderNodes => New(
-       id: 0008,
-       title: "Remove folder nodes",
-       message: "Remove folder node '{0}'.",
-       description:
-        "Folders nodes only add noise. They are leftovers of directories " +
-        "created in the IDE, without adding an actual file to it.",
-       tags: new[] { "noise" },
-       category: Category.Clarity,
-       severity: DiagnosticSeverity.Warning,
-       isEnabled: true);
+        id: 0008,
+        title: "Remove folder nodes",
+        message: "Remove folder node '{0}'.",
+        description:
+            "Folders nodes only add noise. They are leftovers of directories " +
+            "created in the IDE, without adding an actual file to it.",
+        tags: new[] { "noise" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineSingleTargetFramework => New(
+        id: 0009,
+        title: "Use the TragetFramework node for a single target framework",
+        message: "Use the TargetFramework node instead.",
+        description:
+            "To prevent confusion, only use the TargetFrameworks node when " +
+            "there are multiple target frameworks.",
+        tags: new[] { "target framework", "confusion" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
 
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
