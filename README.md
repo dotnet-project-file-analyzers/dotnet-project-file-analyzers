@@ -10,6 +10,18 @@ Contains [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/)
 (static code) [diagnostic analyzers](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.diagnostics.diagnosticanalyzer)
 that report issues on .NET project files.
 
+## Installation
+To use the analyzers, you must include the analyzer package in your project file:
+``` XML
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.*" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+  </ItemGroup>
+
+</Project>
+```
+
 ## Additional files
 To fully benefit from these analyzers is is recommended to add the project file
 (and imported projects/props) as additional files.
