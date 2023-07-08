@@ -7,9 +7,11 @@ public sealed class PropertyGroup : Node
     /// <summary>Initializes a new instance of the <see cref="PropertyGroup"/> class.</summary>
     public PropertyGroup(XElement element, Project project) : base(element, project) { }
 
-    public Nodes<ImplicitUsings> ImplicitUsings => GetChildren<ImplicitUsings>();
+    public Nodes<TargetFramework> TargetFramework => Children<TargetFramework>();
 
-    public Nodes<NuGetAudit> NuGetAudits => GetChildren<NuGetAudit>();
+    public Nodes<TargetFrameworks> TargetFrameworks => Children<TargetFrameworks>();
 
-    public string? RootNamespace => GetNode();
+    public Nodes<ImplicitUsings> ImplicitUsings => Children<ImplicitUsings>();
+
+    public Nodes<NuGetAudit> NuGetAudit => Children<NuGetAudit>();
 }

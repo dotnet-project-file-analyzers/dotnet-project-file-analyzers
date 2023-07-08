@@ -24,8 +24,8 @@ public sealed class ItemGroup : Node
     public ItemGroup(XElement element, Project project) : base(element, project) { }
 
     /// <summary>Gets the child package references.</summary>
-    public Nodes<PackageReference> PackageReferences => GetChildren<PackageReference>();
+    public Nodes<PackageReference> PackageReferences => Children<PackageReference>();
 
     /// <summary>Gets the child folders.</summary>
-    public Nodes<Folder> Folders => GetChildren<Folder>();
+    public Nodes<Folder> Folders => Children<Folder>();
 }
