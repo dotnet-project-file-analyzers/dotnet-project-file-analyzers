@@ -38,11 +38,13 @@ v1.0.0
 - Proj0003: Define usings explicit. (NEW RULE)
 - Proj1001: Use analyzers for packages. (NEW RULE)
     </PackageReleaseNotes>
+    <PackageIcon>logo_128x128.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup Label="Package files">
     <None Update="tools\*.ps1" Pack="true" PackagePath="\" />
     <None Include="$(OutputPath)\DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
+    <None Include="..\..\design\logo_128x128.png" Pack="true" PackagePath="\" />
     <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 

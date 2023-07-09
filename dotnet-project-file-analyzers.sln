@@ -78,6 +78,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TargetFrameworksSingle", "p
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TargetFrameworksMultiple", "projects\TargetFrameworksMultiple\TargetFrameworksMultiple.csproj", "{41FE5E25-4A10-4042-B88E-7F285916B417}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "design", "design", "{D2F3FB65-3FCE-4424-B2F6-7BF054A424D2}"
+	ProjectSection(SolutionItems) = preProject
+		design\logo.psd = design\logo.psd
+		design\logo_128x128.png = design\logo_128x128.png
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -180,6 +186,7 @@ Global
 		{B1495B4E-FA18-446E-B01B-935784FF8915} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
 		{FAFC92E1-9F20-4D21-9DD2-B8BB9F373250} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
 		{41FE5E25-4A10-4042-B88E-7F285916B417} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
+		{D2F3FB65-3FCE-4424-B2F6-7BF054A424D2} = {BED71055-3C56-4C5B-9D83-A7B2CCD3B8CA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3AD1EF71-7465-4ED1-81AD-504C430C8251}
