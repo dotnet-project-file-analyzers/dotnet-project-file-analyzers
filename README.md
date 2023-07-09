@@ -5,7 +5,7 @@
 |---------|-------|
 | [DotNetProjectFile.Analyzers](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/) | [![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers?style=flat-square&label=version)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers?style=flat-square)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/) |
 
-[.NET project file analyzers logo](design/logo_128x128.png)
+![.NET project file analyzers logo](design/logo_128x128.png)
 # .NET project file analyzers
 Contains [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/)
 (static code) [diagnostic analyzers](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.diagnostics.diagnosticanalyzer)
