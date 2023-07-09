@@ -1,4 +1,4 @@
-![.NET project file analyzers logo](design/logo_128x128.png)
+[.NET project file analyzers logo](design/logo_128x128.png)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/LICENSE.md)
 [![Code of Conduct](https://img.shields.io/badge/%E2%9D%A4-code%20of%20conduct-blue.svg?style=flat)](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/CODE_OF_CONDUCT.md)
 
