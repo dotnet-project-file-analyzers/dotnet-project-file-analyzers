@@ -1,5 +1,4 @@
 ﻿using DotNetProjectFile.IO;
-using Microsoft.CodeAnalysis.Diagnostics;
 using System.IO;
 
 namespace DotNetProjectFile.MsBuild;
@@ -94,16 +93,31 @@ public sealed class Projects
 
     public static Projects Init(CompilationAnalysisContext context)
     {
-        var projects = new Projects(context.Compilation.Options.Language);
-
-        foreach (var additional in context.Options.AdditionalFiles)
+        lock (cacheLock)
         {
-            var location = new FileInfo(additional.Path);
-            if (projects.IsProject(location))
+            if (Last is { } && context.Compilation == Last && Cached is { })
             {
-                projects.AdditionalTexts[location] = additional;
+                return Cached;
+            }
+            else
+            {
+                Last = context.Compilation;
+                Cached = new Projects(context.Compilation.Options.Language);
+
+                foreach (var additional in context.Options.AdditionalFiles)
+                {
+                    var location = new FileInfo(additional.Path);
+                    if (Cached.IsProject(location))
+                    {
+                        Cached.AdditionalTexts[location] = additional;
+                    }
+                }
+                return Cached;
             }
         }
-        return projects;
     }
+
+    private static Projects? Cached;
+    private static Compilation? Last;
+    private static readonly object cacheLock = new();
 }

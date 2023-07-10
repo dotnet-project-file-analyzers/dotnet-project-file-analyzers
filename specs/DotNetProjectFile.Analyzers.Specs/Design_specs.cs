@@ -13,8 +13,8 @@ public class Rules
         => new FileInfo($"../../../../../rules/{descriptor.Id:0000}.md").Exists.Should().BeTrue(because: $"{descriptor.Id:0000}.md should exist.");
 
     [TestCaseSource(nameof(Types))]
-    public void in_DotNetProjectFile_Analyzers_namespace(Type type)
-        => type.Namespace.Should().Be("DotNetProjectFile.Analyzers");
+    public void in_DotNetProjectFile_Analyzers_MsBuild_namespace(Type type)
+        => type.Namespace.Should().Be("DotNetProjectFile.Analyzers.MsBuild");
 
     [TestCaseSource(nameof(Types))]
     public void Has_supported_diagnostics(Type type)

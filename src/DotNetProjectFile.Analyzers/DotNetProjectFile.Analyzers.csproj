@@ -66,4 +66,9 @@ v1.0.0
   <ItemGroup>
     <PackageReference Include="BackwardsCompatibleFeatures" Version="2.*" PrivateAssets="all" IncludeAssets="compile" />
   </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="*.csproj" Visible="false" />
+  </ItemGroup>
+  
 </Project>
