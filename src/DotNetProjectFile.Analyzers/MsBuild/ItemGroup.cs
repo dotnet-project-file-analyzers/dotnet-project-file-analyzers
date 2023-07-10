@@ -1,6 +1,6 @@
 ﻿using System.Xml.Linq;
 
-namespace DotNetProjectFile.Xml;
+namespace DotNetProjectFile.MsBuild;
 
 /// <summary>Represents an item group in a Visual Studio project file.</summary>
 /// <remarks>

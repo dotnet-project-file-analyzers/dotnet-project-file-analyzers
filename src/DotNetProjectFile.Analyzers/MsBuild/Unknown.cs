@@ -1,6 +1,6 @@
 ﻿using System.Xml.Linq;
 
-namespace DotNetProjectFile.Xml;
+namespace DotNetProjectFile.MsBuild;
 
 /// <summary>Represents an unknown node. So, a node that is not specified by VSDom.Projects.</summary>
 public sealed class Unknown : Node

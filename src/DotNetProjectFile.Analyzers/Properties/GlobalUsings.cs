@@ -1,5 +1,5 @@
 ﻿global using DotNetProjectFile.Diagnostics;
-global using DotNetProjectFile.Xml;
+global using DotNetProjectFile.MsBuild;
 global using Microsoft.CodeAnalysis;
 global using Microsoft.CodeAnalysis.Diagnostics;
 global using System;

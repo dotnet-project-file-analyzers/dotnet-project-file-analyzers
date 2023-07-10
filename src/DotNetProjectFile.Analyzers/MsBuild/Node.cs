@@ -1,12 +1,12 @@
-﻿using DotNetProjectFile.Xml.Conversion;
+﻿using DotNetProjectFile.MsBuild.Conversion;
 using Microsoft.CodeAnalysis.Text;
 using System.Runtime.CompilerServices;
 using System.Xml;
 using System.Xml.Linq;
 
-namespace DotNetProjectFile.Xml;
+namespace DotNetProjectFile.MsBuild;
 
-/// <summary>Represents node in a .NET project file.</summary>
+/// <summary>Represents node in a MS Build project file.</summary>
 public class Node
 {
     /// <summary>Initializes a new instance of the <see cref="Node"/> class.</summary>

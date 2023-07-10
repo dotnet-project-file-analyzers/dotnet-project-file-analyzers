@@ -1,7 +1,7 @@
 ﻿using System.IO;
 using System.Xml.Linq;
 
-namespace DotNetProjectFile.Xml;
+namespace DotNetProjectFile.MsBuild;
 
 public sealed class Import : Node
 {

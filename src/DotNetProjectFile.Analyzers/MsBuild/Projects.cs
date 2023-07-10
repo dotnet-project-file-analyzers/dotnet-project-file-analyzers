@@ -2,7 +2,7 @@
 using Microsoft.CodeAnalysis.Diagnostics;
 using System.IO;
 
-namespace DotNetProjectFile.Xml;
+namespace DotNetProjectFile.MsBuild;
 
 public sealed class Projects
 {

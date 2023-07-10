@@ -1,10 +1,10 @@
 ﻿namespace DotNetProjectFile.Diagnostics;
 
-/// <summary>The context required to analyze a .NET project file.</summary>
+/// <summary>The context required to analyze a MS Build project file.</summary>
 public readonly struct ProjectFileAnalysisContext
 {
     /// <summary>Gets the project file.</summary>
-    public readonly Xml.Project Project;
+    public readonly MsBuild.Project Project;
 
     /// <summary>Gets the compilation.</summary>
     public readonly Compilation Compilation;
@@ -19,7 +19,7 @@ public readonly struct ProjectFileAnalysisContext
     private readonly Action<Diagnostic> Report;
 
     /// <summary>Initializes a new instance of the <see cref="ProjectFileAnalysisContext"/> struct.</summary>
-    public ProjectFileAnalysisContext(Xml.Project project, Compilation compilation, AnalyzerOptions options, CancellationToken cancellationToken, Action<Diagnostic> report)
+    public ProjectFileAnalysisContext(MsBuild.Project project, Compilation compilation, AnalyzerOptions options, CancellationToken cancellationToken, Action<Diagnostic> report)
     {
         Project = project;
         Compilation = compilation;
