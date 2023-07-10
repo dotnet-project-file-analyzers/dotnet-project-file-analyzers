@@ -7,12 +7,9 @@ public sealed class RemoveFolderNodes : MsBuildProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var folder in context.Project
-             .AncestorsAndSelf()
-             .SelectMany(p => p.ItemGroups)
-             .SelectMany(p => p.Folders))
+        foreach (var folder in context.Project.ItemGroups.SelectMany(p => p.Folders))
         {
-            context.ReportDiagnostic(Descriptor, folder.Location, folder.Include?.TrimEnd('/', '\\'));
+            context.ReportDiagnostic(Descriptor, folder, folder.Include?.TrimEnd('/', '\\'));
         }
     }
 }

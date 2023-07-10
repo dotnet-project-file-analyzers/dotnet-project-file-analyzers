@@ -29,6 +29,6 @@ public sealed class Import : Node
     private Project? GetValue()
     {
         var location = new FileInfo(Path.Combine(Project.Path.Directory.FullName, Attribute("Project")));
-        return Project.Projects.TryResolve(location);
+        return Project.Projects.TryResolve(location, isProject: false);
     }
 }
