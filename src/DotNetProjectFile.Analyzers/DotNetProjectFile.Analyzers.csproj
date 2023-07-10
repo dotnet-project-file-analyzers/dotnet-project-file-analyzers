@@ -31,9 +31,9 @@ v1.0.2
 - Proj0009: Use the TragetFramework node for a single target framework. (NEW RULE)
 - Proj1000: Use the .NET project file analyzers. (NEW RULE)
 v1.0.1
-- Proj0002: Added Microsoft.CodeAnalysis.Analyzers as analyzer to add.
+- Proj0002: Added Microsoft.CodeAnalysis.Analyzers as analyzer to add. (FN)
 - Proj0005: Define package reference assets as attributes. (NEW RULE)
-- Proj1001: Dropped Qowaiv.Analyzers.CSharp due to FP's.
+- Proj1001: Dropped Qowaiv.Analyzers.CSharp. (FP)
 v1.0.0
 - Proj0001: MS Build project file could not be located. (NEW RULE)
 - Proj0002: Upgrade legacy MS Build project file. (NEW RULE)
