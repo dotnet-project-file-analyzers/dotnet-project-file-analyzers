@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Reflection;
 
-namespace DotNetProjectFile.Xml.Conversion;
+namespace DotNetProjectFile.MsBuild.Conversion;
 
 internal sealed class TypeConverters
 {

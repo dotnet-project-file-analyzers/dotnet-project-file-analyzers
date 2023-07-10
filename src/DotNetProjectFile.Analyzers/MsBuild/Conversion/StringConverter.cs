@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Globalization;
 
-namespace DotNetProjectFile.Xml.Conversion;
+namespace DotNetProjectFile.MsBuild.Conversion;
 
 internal sealed class StringConverter : TypeConverter
 {

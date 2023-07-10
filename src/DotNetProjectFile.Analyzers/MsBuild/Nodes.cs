@@ -1,6 +1,6 @@
 ﻿using System.Globalization;
 
-namespace DotNetProjectFile.Xml;
+namespace DotNetProjectFile.MsBuild;
 
 /// <summary>Represents a collection of <see cref="Node"/>s.</summary>
 [DebuggerTypeProxy(typeof(Diagnostics.CollectionDebugView))]

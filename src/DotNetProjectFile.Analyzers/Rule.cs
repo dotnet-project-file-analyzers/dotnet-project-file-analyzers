@@ -1,14 +1,12 @@
 ﻿#pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
-using DotNetProjectFile.Xml;
-
 namespace DotNetProjectFile;
 
 public static class Rule
 {
     public static DiagnosticDescriptor ProjectFileCouldNotBeLocated => New(
         id: 0001,
-        title: ".NET project file could not be located",
+        title: "MS Build project file could not be located",
         message: "The project file '{0}' could not be located.",
         description: "In order to make these rules work, the project file should be located.",
         tags: new[] { "Configuration" },
@@ -18,9 +16,9 @@ public static class Rule
 
     public static DiagnosticDescriptor UpdateLegacyProjects => New(
         id: 0002,
-        title: "Upgrade legacy .NET project files",
-        message: "Upgrade legacy .NET project file.",
-        description: ".NET legacy projects are not supported.",
+        title: "Upgrade legacy MS Build project files",
+        message: "Upgrade legacy MS Build project file.",
+        description: "MS Build legacy projects are not supported.",
         tags: new[] { "project file", "legacy", "obsolete" },
         category: Category.Obsolete,
         severity: DiagnosticSeverity.Warning,
@@ -112,7 +110,7 @@ public static class Rule
         id: 1000,
         title: "Use the .NET project file analyzers",
         message: "Use the .NET project file analyzers.",
-        description: "To improve the code quality of the .NET project files.",
+        description: "To improve the code quality of .NET project files.",
         tags: new[] { "roslyn", "analyzer", "cbproj", "vbproj" },
         category: Category.CodeQuality,
         isEnabled: true);

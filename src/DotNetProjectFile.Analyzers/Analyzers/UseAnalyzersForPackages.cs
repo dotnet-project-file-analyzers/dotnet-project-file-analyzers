@@ -47,7 +47,7 @@ public sealed class UseAnalyzersForPackages : ProjectFileAnalyzer
 
         public string Match { get; }
 
-        public bool IsMatch(Xml.PackageReference reference)
+        public bool IsMatch(PackageReference reference)
             => string.Equals(reference.Include, Package, StringComparison.OrdinalIgnoreCase);
 
         public bool IsMatch(AssemblyIdentity assembly)

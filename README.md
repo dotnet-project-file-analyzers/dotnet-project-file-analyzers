@@ -24,7 +24,7 @@ To use the analyzers, you must include the analyzer package in your project file
 ```
 
 ## Additional files
-To fully benefit from these analyzers is is recommended to add the project file
+To fully benefit from these analyzers it is recommended to add the project file
 (and imported projects/props) as additional files.
 
 To add a project file:
@@ -54,7 +54,7 @@ To add a props file:
 
 ## Rules
 * [**Proj0001** .NET project file could not be located](rules/Proj0001.md)
-* [**Proj0002** Upgrade legacy .NET project files](rules/Proj0002.md)
+* [**Proj0002** Upgrade legacy MS Build project files](rules/Proj0002.md)
 * [**Proj0003** Define usings explicit](rules/Proj0003.md)
 * [**Proj0004** Run NuGet security audits automatically](rules/Proj0004.md)
 * [**Proj0005** Define package reference assets as attributes](rules/Proj0005.md)

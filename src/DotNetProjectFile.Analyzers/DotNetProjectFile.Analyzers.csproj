@@ -35,8 +35,8 @@ v1.0.1
 - Proj0005: Define package reference assets as attributes. (NEW RULE)
 - Proj1001: Dropped Qowaiv.Analyzers.CSharp due to FP's.
 v1.0.0
-- Proj0001: .NET project file could not be located. (NEW RULE)
-- Proj0002: Upgrade legacy .NET project file. (NEW RULE)
+- Proj0001: MS Build project file could not be located. (NEW RULE)
+- Proj0002: Upgrade legacy MS Build project file. (NEW RULE)
 - Proj0003: Define usings explicit. (NEW RULE)
 - Proj1001: Use analyzers for packages. (NEW RULE)
     </PackageReleaseNotes>
