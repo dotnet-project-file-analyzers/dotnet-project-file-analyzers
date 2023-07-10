@@ -34,6 +34,7 @@ public sealed class RemoveEmptyNodes : ProjectFileAnalyzer
     }
 
     private static bool IsEmpty(XElement element, int level)
-        => level == 1
-        || (element.Attributes().None() && string.IsNullOrWhiteSpace(element.Value));
+        => element.Name.LocalName != nameof(Import)
+        && (level == 1
+            || (element.Attributes().None() && string.IsNullOrWhiteSpace(element.Value)));
 }

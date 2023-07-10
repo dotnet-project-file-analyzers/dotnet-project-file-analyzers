@@ -38,6 +38,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{00669DF6-1449-41AA-8AD3-FA84194CE5B4}"
 	ProjectSection(SolutionItems) = preProject
 		projects\props\common.props = projects\props\common.props
+		projects\props\simple.props = projects\props\simple.props
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetProjectFile.Analyzers", "src\DotNetProjectFile.Analyzers\DotNetProjectFile.Analyzers.csproj", "{EB081E61-BCAB-40B8-9358-A5914F223F37}"
@@ -72,11 +73,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackagesWithoutAnalyzers", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EmptyNodes", "projects\EmptyNodes\EmptyNodes.csproj", "{A073D9E7-F9C7-4531-A972-6766CC170B9A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FolderNodes", "projects\FolderNodes\FolderNodes.csproj", "{B1495B4E-FA18-446E-B01B-935784FF8915}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FolderNodes", "projects\FolderNodes\FolderNodes.csproj", "{B1495B4E-FA18-446E-B01B-935784FF8915}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TargetFrameworksSingle", "projects\TargetFrameworksSingle\TargetFrameworksSingle.csproj", "{FAFC92E1-9F20-4D21-9DD2-B8BB9F373250}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TargetFrameworksSingle", "projects\TargetFrameworksSingle\TargetFrameworksSingle.csproj", "{FAFC92E1-9F20-4D21-9DD2-B8BB9F373250}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TargetFrameworksMultiple", "projects\TargetFrameworksMultiple\TargetFrameworksMultiple.csproj", "{41FE5E25-4A10-4042-B88E-7F285916B417}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TargetFrameworksMultiple", "projects\TargetFrameworksMultiple\TargetFrameworksMultiple.csproj", "{41FE5E25-4A10-4042-B88E-7F285916B417}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "design", "design", "{D2F3FB65-3FCE-4424-B2F6-7BF054A424D2}"
 	ProjectSection(SolutionItems) = preProject
