@@ -7,7 +7,7 @@ public class Reports
         => new AddAdditionalFile()
         .ForProject("EmptyProject.cs")
         .HasIssue(
-            new Issue("Proj0006", "Add 'EmptyProject.csproj' to the additional files.").WithSpan(0, 1, 0, 2));
+            new Issue("Proj0006", "Add 'EmptyProject.csproj' to the additional files."));
 }
 
 public class Guards
