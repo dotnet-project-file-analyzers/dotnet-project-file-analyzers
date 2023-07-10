@@ -19,7 +19,7 @@ public sealed class Projects
         ? EntryPointFromAdditionTexts(assembly.Name) ?? EntryPointFromAssembly(assembly)
         : null;
 
-    public Project? TryResolve(FileInfo location)
+    public Project? TryResolve(FileInfo location, bool isProject)
     {
         lock (locker)
         {
@@ -30,13 +30,13 @@ public sealed class Projects
             else if (AdditionalTexts.TryGetValue(location, out var additional)
                 && IsProject(location))
             {
-                project = Project.Load(additional, this);
+                project = Project.Load(additional, this, isProject);
                 Resolved[location] = project;
                 return project;
             }
             else if (IsProject(location))
             {
-                project = Project.Load(location, this);
+                project = Project.Load(location, this, isProject);
                 Resolved[location] = project;
                 return project;
             }
@@ -51,7 +51,7 @@ public sealed class Projects
     {
         var projects = AdditionalTexts.Keys.Where(IsProject)
             .Where(l => HasName(l, name))
-            .Select(TryResolve)
+            .Select(f => TryResolve(f, isProject: true))
             .ToArray();
 
         return projects.Length == 1 ? projects[0] : null;
@@ -69,7 +69,7 @@ public sealed class Projects
         var projects = directories.SelectMany(d => d.EnumerateFiles())
             .Where(IsProject)
             .Where(l => HasName(l, assembly.Name))
-            .Select(TryResolve)
+            .Select(f => TryResolve(f, isProject: true))
             .ToArray();
 
         return projects.Length == 1 ? projects[0] : null;

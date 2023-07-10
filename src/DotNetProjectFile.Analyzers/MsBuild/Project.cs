@@ -6,16 +6,19 @@ namespace DotNetProjectFile.MsBuild;
 
 public sealed class Project : Node
 {
-    private Project(FileInfo path, SourceText text, Projects projects, bool isAdditional)
+    private Project(FileInfo path, SourceText text, Projects projects, bool isAdditional, bool isProject)
         : base(XElement.Parse(text.ToString(), LoadOptions), null!)
     {
         Path = path;
         Text = text;
         Projects = projects;
         IsAdditional = isAdditional;
+        IsProject = isProject;
     }
 
     public bool IsAdditional { get; }
+
+    public bool IsProject { get; }
 
     public FileInfo Path { get; }
 
@@ -44,14 +47,14 @@ public sealed class Project : Node
         yield return this;
     }
 
-    public static Project Load(FileInfo file, Projects projects)
+    public static Project Load(FileInfo file, Projects projects, bool isProject)
     {
         using var reader = file.OpenText();
-        return new(file, SourceText.From(reader.ReadToEnd()), projects, isAdditional: false);
+        return new(file, SourceText.From(reader.ReadToEnd()), projects, isAdditional: false, isProject);
     }
 
-    public static Project Load(AdditionalText text, Projects projects)
-        => new(new(text.Path), text.GetText()!, projects, isAdditional: true);
+    public static Project Load(AdditionalText text, Projects projects, bool isProject)
+        => new(new(text.Path), text.GetText()!, projects, isAdditional: true, isProject);
 
     private static readonly LoadOptions LoadOptions = LoadOptions.PreserveWhitespace | LoadOptions.SetLineInfo;
 }

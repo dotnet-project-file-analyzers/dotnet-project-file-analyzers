@@ -7,17 +7,20 @@ public sealed class UseAnalyzersForPackages : MsBuildProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var packageReferences = context.Project.AncestorsAndSelf()
+        if (context.Project.IsProject)
+        {
+            var packageReferences = context.Project.AncestorsAndSelf()
             .SelectMany(p => p.ItemGroups)
             .SelectMany(group => group.PackageReferences)
             .ToArray();
 
-        foreach (var analyzer in Analyzers)
-        {
-            if (packageReferences.None(analyzer.IsMatch)
-                && context.Compilation.ReferencedAssemblyNames.FirstOrDefault(analyzer.IsMatch) is { } reference)
+            foreach (var analyzer in Analyzers)
             {
-                context.ReportDiagnostic(Descriptor, context.Project, analyzer.Package, reference.Name);
+                if (packageReferences.None(analyzer.IsMatch)
+                    && context.Compilation.ReferencedAssemblyNames.FirstOrDefault(analyzer.IsMatch) is { } reference)
+                {
+                    context.ReportDiagnostic(Descriptor, context.Project, analyzer.Package, reference.Name);
+                }
             }
         }
     }

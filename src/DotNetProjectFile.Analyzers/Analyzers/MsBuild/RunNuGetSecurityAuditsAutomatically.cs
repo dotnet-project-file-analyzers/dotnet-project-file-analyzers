@@ -7,13 +7,16 @@ public sealed class RunNuGetSecurityAuditsAutomatically : MsBuildProjectFileAnal
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var audits = context.Project.AncestorsAndSelf()
-          .SelectMany(p => p.PropertyGroups)
-          .SelectMany(g => g.NuGetAudit);
-
-        if (audits.None() || audits.Any(a => a.Value != true))
+        if (context.Project.IsProject)
         {
-            context.ReportDiagnostic(Descriptor, context.Project);
+            var audits = context.Project.AncestorsAndSelf()
+              .SelectMany(p => p.PropertyGroups)
+              .SelectMany(g => g.NuGetAudit);
+
+            if (audits.None() || audits.Any(a => a.Value != true))
+            {
+                context.ReportDiagnostic(Descriptor, context.Project);
+            }
         }
     }
 }

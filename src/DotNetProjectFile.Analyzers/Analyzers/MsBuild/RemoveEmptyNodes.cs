@@ -34,5 +34,5 @@ public sealed class RemoveEmptyNodes : MsBuildProjectFileAnalyzer
     private static bool IsEmpty(XElement element, int level)
         => element.Name.LocalName != nameof(Import)
         && (level == 1
-            || element.Attributes().None() && string.IsNullOrWhiteSpace(element.Value));
+        || (element.Attributes().None() && string.IsNullOrWhiteSpace(element.Value)));
 }
