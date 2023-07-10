@@ -1,7 +1,7 @@
-﻿namespace DotNetProjectFile.Analyzers;
+﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class DefinePackageReferenceAssetsAsAttributes : ProjectFileAnalyzer
+public sealed class DefinePackageReferenceAssetsAsAttributes : MsBuildProjectFileAnalyzer
 {
     public DefinePackageReferenceAssetsAsAttributes() : base(Rule.DefinePackageReferenceAssetsAsAttributes) { }
 

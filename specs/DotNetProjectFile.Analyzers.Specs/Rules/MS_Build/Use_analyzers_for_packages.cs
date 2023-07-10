@@ -1,4 +1,4 @@
-﻿namespace Rules.Use_analyzers_for_packages;
+﻿namespace Rules.MS_Build.Use_analyzers_for_packages;
 
 #if RELEASE
 [TestFixture(Ignore = "Build has difficulties resolving (some) NuGet packages")]

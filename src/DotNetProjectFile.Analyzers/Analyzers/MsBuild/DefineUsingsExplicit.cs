@@ -1,7 +1,7 @@
-﻿namespace DotNetProjectFile.Analyzers;
+﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class DefineUsingsExplicit : ProjectFileAnalyzer
+public sealed class DefineUsingsExplicit : MsBuildProjectFileAnalyzer
 {
     public DefineUsingsExplicit() : base(Rule.DefineUsingsExplicit) { }
 

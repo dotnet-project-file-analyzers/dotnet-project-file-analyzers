@@ -1,9 +1,9 @@
-﻿namespace Specs.Rules.Define_single_target_framework;
+﻿namespace Rules.MS_Build.Define_single_target_framework;
 
 public class Reports
 {
     [Test]
-    public void defined_in_traget_frameworks()
+    public void defined_in_target_frameworks()
         => new DefineSingleTargetFramework()
         .ForProject("TargetFrameworksSingle.cs")
         .HasIssues(

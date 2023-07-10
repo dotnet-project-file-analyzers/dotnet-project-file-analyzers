@@ -1,7 +1,7 @@
-﻿namespace DotNetProjectFile.Analyzers;
+﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class AddAdditionalFile : ProjectFileAnalyzer
+public sealed class AddAdditionalFile : MsBuildProjectFileAnalyzer
 {
     public AddAdditionalFile() : base(Rule.AddAdditionalFile) { }
 

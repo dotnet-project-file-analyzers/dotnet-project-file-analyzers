@@ -26,7 +26,7 @@ public class Rules
         .Languages.Should().BeEquivalentTo("C#", "Visual Basic");
 
     private static IEnumerable<Type> Types
-        => typeof(DotNetProjectFile.ProjectFileAnalyzer).Assembly
+        => typeof(MsBuildProjectFileAnalyzer).Assembly
         .GetTypes()
         .Where(t => !t.IsAbstract && t.IsAssignableTo(typeof(DiagnosticAnalyzer)));
 

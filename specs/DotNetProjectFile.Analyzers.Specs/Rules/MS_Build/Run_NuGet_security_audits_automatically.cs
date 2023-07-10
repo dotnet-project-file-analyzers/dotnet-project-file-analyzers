@@ -1,4 +1,4 @@
-﻿namespace Rules.Run_NuGet_security_audits_automatically;
+﻿namespace Rules.MS_Build.Run_NuGet_security_audits_automatically;
 
 public class Reports
 {

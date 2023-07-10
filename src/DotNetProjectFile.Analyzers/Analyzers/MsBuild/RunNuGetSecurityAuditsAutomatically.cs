@@ -1,7 +1,7 @@
-﻿namespace DotNetProjectFile.Analyzers;
+﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class RunNuGetSecurityAuditsAutomatically : ProjectFileAnalyzer
+public sealed class RunNuGetSecurityAuditsAutomatically : MsBuildProjectFileAnalyzer
 {
     public RunNuGetSecurityAuditsAutomatically() : base(Rule.RunNuGetSecurityAudit) { }
 

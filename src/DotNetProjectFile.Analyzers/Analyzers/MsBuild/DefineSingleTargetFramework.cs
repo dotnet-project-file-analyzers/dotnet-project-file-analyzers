@@ -1,7 +1,7 @@
-﻿namespace DotNetProjectFile.Analyzers;
+﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class DefineSingleTargetFramework : ProjectFileAnalyzer
+public sealed class DefineSingleTargetFramework : MsBuildProjectFileAnalyzer
 {
     public DefineSingleTargetFramework() : base(Rule.DefineSingleTargetFramework) { }
 

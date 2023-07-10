@@ -1,9 +1,9 @@
 ﻿using System.Xml.Linq;
 
-namespace DotNetProjectFile.Analyzers;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class RemoveEmptyNodes : ProjectFileAnalyzer
+public sealed class RemoveEmptyNodes : MsBuildProjectFileAnalyzer
 {
     public RemoveEmptyNodes() : base(Rule.RemoveEmptyNodes) { }
 
@@ -36,5 +36,5 @@ public sealed class RemoveEmptyNodes : ProjectFileAnalyzer
     private static bool IsEmpty(XElement element, int level)
         => element.Name.LocalName != nameof(Import)
         && (level == 1
-            || (element.Attributes().None() && string.IsNullOrWhiteSpace(element.Value)));
+            || element.Attributes().None() && string.IsNullOrWhiteSpace(element.Value));
 }

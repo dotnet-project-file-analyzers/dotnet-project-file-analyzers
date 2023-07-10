@@ -1,7 +1,7 @@
-﻿namespace DotNetProjectFile.Analyzers;
+﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class UseAnalyzersForPackages : ProjectFileAnalyzer
+public sealed class UseAnalyzersForPackages : MsBuildProjectFileAnalyzer
 {
     public UseAnalyzersForPackages() : base(Rule.UseAnalyzersForPackages) { }
 

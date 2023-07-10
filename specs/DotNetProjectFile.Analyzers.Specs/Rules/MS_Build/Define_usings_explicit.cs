@@ -1,4 +1,4 @@
-﻿namespace Rules.Define_usings_explicit;
+﻿namespace Rules.MS_Build.Define_usings_explicit;
 
 public class Reports
 {

@@ -1,4 +1,4 @@
-﻿namespace Rules.Use_dotnet_project_file_analyzers;
+﻿namespace Rules.MS_Build.Use_dotnet_project_file_analyzers;
 
 public class Reports
 {

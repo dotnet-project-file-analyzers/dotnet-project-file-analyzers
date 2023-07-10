@@ -1,10 +1,10 @@
 ﻿using System.Collections.Immutable;
 
-namespace DotNetProjectFile;
+namespace DotNetProjectFile.Analyzers;
 
-public abstract class ProjectFileAnalyzer : DiagnosticAnalyzer
+public abstract class MsBuildProjectFileAnalyzer : DiagnosticAnalyzer
 {
-    protected ProjectFileAnalyzer(DiagnosticDescriptor primaryDiagnostic, params DiagnosticDescriptor[] supportedDiagnostics)
+    protected MsBuildProjectFileAnalyzer(DiagnosticDescriptor primaryDiagnostic, params DiagnosticDescriptor[] supportedDiagnostics)
         => SupportedDiagnostics = new[] { primaryDiagnostic }.Concat(supportedDiagnostics).ToImmutableArray();
 
     public sealed override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; }

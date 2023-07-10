@@ -1,4 +1,4 @@
-﻿namespace Specs.Rules.Remove_empty_nodes;
+﻿namespace Rules.MS_Build.Remove_empty_nodes;
 
 public class Reports
 {
