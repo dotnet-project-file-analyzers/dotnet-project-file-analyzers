@@ -19,10 +19,10 @@
     <Authors>Corniel Nobel</Authors>
     <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
     <PackageTags>Code Analysis;Project files;csproj;vbproj</PackageTags>
-    <Version>1.0.3</Version>
+    <Version>1.0.4</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-ToBeReleased
+v1.0.4
 - Proj1003: Use Sonar Analyzers. (NEW RULE)
 v1.0.3
 - Proj0007: &lt;Import &gt; is never an empty node. (FP)
