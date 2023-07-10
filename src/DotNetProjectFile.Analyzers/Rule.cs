@@ -128,6 +128,15 @@ public static class Rule
         category: Category.CodeQuality,
         isEnabled: true);
 
+    public static DiagnosticDescriptor UseSonarAnalyzers => New(
+        id: 1003,
+        title: "Use Sonar analyzers for packages",
+        message: "Add {0}.",
+        description: "Improve the code quality by adding Sonar's Roslyn analyzers.",
+        tags: new[] { "roslyn", "analyzer", "NuGet", "Sonar" },
+        category: Category.CodeQuality,
+        isEnabled: true);
+
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
     private static DiagnosticDescriptor New(

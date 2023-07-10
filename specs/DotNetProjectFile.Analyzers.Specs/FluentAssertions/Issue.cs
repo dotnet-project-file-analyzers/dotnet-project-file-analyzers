@@ -5,9 +5,11 @@ namespace FluentAssertions;
 internal sealed record Issue(
     string Id,
     string Message, 
-    LinePositionSpan Span = default,
+    LinePositionSpan Span,
     DiagnosticSeverity Severity = DiagnosticSeverity.Warning)
 {
+    public Issue(string id, string message) : this(id, message, new(new(0, 1), new(0, 2))) { }
+
     public Issue WithSpan(int lineStart, int posStart, int lineEnd, int posEnd)
         => this with
         {

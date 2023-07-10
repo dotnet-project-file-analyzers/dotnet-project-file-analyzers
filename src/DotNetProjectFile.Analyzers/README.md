@@ -13,3 +13,4 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0009** Use the TragetFramework node for a single target framework](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/Proj0009.md)
 * [**Proj1000** Use the .NET project file analyzers](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/Proj1001.md)
+* [**Proj1003** Use Sonar analyzers](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/rules/rules/Proj1003.md)

@@ -21,7 +21,7 @@ public class Guards
         }
 
         // Do not reference project to itself.
-        context.HasIssue(new Issue("Proj1000", "Use the .NET project file analyzers.").WithSpan(0, 1, 0, 2));
+        context.HasIssue(new Issue("Proj1000", "Use the .NET project file analyzers."));
     }
 
     private static IEnumerable<DiagnosticAnalyzer> Analyzers

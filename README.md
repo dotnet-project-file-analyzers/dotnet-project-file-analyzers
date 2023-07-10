@@ -64,6 +64,7 @@ To add a props file:
 * [**Proj0009** Use the TragetFramework node for a single target framework](rules/Proj0009.md)
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
+* [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)
 
 ## Reference an analyzer from a project
 For debugging/development purposes, it can be useful to reference the analyzer

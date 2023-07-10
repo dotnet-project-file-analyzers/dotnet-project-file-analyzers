@@ -22,6 +22,8 @@
     <Version>1.0.3</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+ToBeReleased
+- Proj1003: Use Sonar Analyzers. (NEW RULE)
 v1.0.3
 - Proj0007: &lt;Import &gt; is never an empty node. (FP)
 v1.0.2
@@ -50,7 +52,7 @@ v1.0.0
     <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Label="Roslyn dependencies">
     <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.6.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.6.0" />
   </ItemGroup>
