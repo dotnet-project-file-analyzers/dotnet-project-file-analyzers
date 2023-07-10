@@ -17,10 +17,14 @@ public class Reports
             new Issue("Proj1003", "Add SonarAnalyzer.VisualBasic."));
 }
 
+
+#if RELEASE
+[TestFixture(Ignore = "Build has difficulties resolving (some) NuGet packages")]
+#endif
 public class Guards
 {
-    [TestCase("CompliantCSharp.cs")]
-    [TestCase("CompliantVB.vb")]
+    [TestCase("SonarCS.cs")]
+    [TestCase("SonarVB.vb")]
     public void Projects_with_analyzers(string project)
          => new UseSonarAnalyzers()
         .ForProject(project)
