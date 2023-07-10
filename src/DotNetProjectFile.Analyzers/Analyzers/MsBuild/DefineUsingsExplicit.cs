@@ -7,12 +7,11 @@ public sealed class DefineUsingsExplicit : MsBuildProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var @implicit in context.Project.AncestorsAndSelf()
-            .SelectMany(p => p.PropertyGroups)
+        foreach (var @implicit in context.Project.PropertyGroups
             .SelectMany(g => g.ImplicitUsings)
             .Where(i => IsEnabled(i.Value)))
         {
-            context.ReportDiagnostic(Descriptor, @implicit.Location);
+            context.ReportDiagnostic(Descriptor, @implicit);
         }
     }
 

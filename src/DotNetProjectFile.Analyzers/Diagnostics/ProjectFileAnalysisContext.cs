@@ -29,6 +29,6 @@ public readonly struct ProjectFileAnalysisContext
     }
 
     /// <summary>Reports a diagnostic about the project file.</summary>
-    public void ReportDiagnostic(DiagnosticDescriptor descriptor, Location location, params object?[]? messageArgs)
-        => Report(Diagnostic.Create(descriptor, location, messageArgs));
+    public void ReportDiagnostic(DiagnosticDescriptor descriptor, Node node, params object?[]? messageArgs)
+        => Report(Diagnostic.Create(descriptor, node.Location, messageArgs));
 }

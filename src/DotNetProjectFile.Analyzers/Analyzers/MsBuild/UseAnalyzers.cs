@@ -14,7 +14,7 @@ public sealed class UseAnalyzers : MsBuildProjectFileAnalyzer
 
         if (packageReferences.None(r => r.Include.Contains("DotNetProjectFile.Analyzers", StringComparison.OrdinalIgnoreCase)))
         {
-            context.ReportDiagnostic(Descriptor, context.Project.Location);
+            context.ReportDiagnostic(Descriptor, context.Project);
         }
     }
 }

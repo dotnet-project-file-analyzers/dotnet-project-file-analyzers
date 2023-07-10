@@ -13,7 +13,7 @@ public sealed class RunNuGetSecurityAuditsAutomatically : MsBuildProjectFileAnal
 
         if (audits.None() || audits.Any(a => a.Value != true))
         {
-            context.ReportDiagnostic(Descriptor, context.Project.Location);
+            context.ReportDiagnostic(Descriptor, context.Project);
         }
     }
 }

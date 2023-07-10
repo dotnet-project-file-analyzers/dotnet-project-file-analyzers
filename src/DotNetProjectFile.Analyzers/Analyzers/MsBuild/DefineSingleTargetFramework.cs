@@ -7,12 +7,11 @@ public sealed class DefineSingleTargetFramework : MsBuildProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var frameworks in context.Project.AncestorsAndSelf()
-            .SelectMany(p => p.PropertyGroups)
+        foreach (var frameworks in context.Project.PropertyGroups
             .SelectMany(p => p.TargetFrameworks)
             .Where(f => f.Values.Count <= 1))
         {
-            context.ReportDiagnostic(Descriptor, frameworks.Location);
+            context.ReportDiagnostic(Descriptor, frameworks);
         }
     }
 }

@@ -7,12 +7,11 @@ public sealed class DefinePackageReferenceAssetsAsAttributes : MsBuildProjectFil
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var reference in context.Project.AncestorsAndSelf()
-            .SelectMany(p => p.ItemGroups)
+        foreach (var reference in context.Project.ItemGroups
             .SelectMany(g => g.PackageReferences)
             .Where(HasAssetsElement))
         {
-            context.ReportDiagnostic(Descriptor, reference.Location, reference.Include);
+            context.ReportDiagnostic(Descriptor, reference, reference.Include);
         }
     }
 

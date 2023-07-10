@@ -17,7 +17,7 @@ public sealed class UseAnalyzersForPackages : MsBuildProjectFileAnalyzer
             if (packageReferences.None(analyzer.IsMatch)
                 && context.Compilation.ReferencedAssemblyNames.FirstOrDefault(analyzer.IsMatch) is { } reference)
             {
-                context.ReportDiagnostic(Descriptor, Location.None, analyzer.Package, reference.Name);
+                context.ReportDiagnostic(Descriptor, context.Project, analyzer.Package, reference.Name);
             }
         }
     }

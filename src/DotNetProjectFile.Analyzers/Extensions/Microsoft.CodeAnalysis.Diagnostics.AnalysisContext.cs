@@ -11,7 +11,10 @@ internal static class AnalysisContextExtensions
             if (projects.EntryPoint(c.Compilation.Assembly) is { } project
                 && string.IsNullOrEmpty(project.Element.Name.NamespaceName))
             {
-                action.Invoke(new(project, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                foreach (var p in project.AncestorsAndSelf())
+                {
+                    action.Invoke(new(p, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                }
             }
         });
 }

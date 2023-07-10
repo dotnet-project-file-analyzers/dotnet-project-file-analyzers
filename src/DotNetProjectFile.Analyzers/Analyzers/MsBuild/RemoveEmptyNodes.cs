@@ -9,9 +9,7 @@ public sealed class RemoveEmptyNodes : MsBuildProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var node in context.Project
-            .AncestorsAndSelf()
-            .SelectMany(p => p.Children()))
+        foreach (var node in context.Project.Children())
         {
             Report(node, context, 1);
         }
@@ -29,7 +27,7 @@ public sealed class RemoveEmptyNodes : MsBuildProjectFileAnalyzer
 
         if (noChildren && IsEmpty(node.Element, level))
         {
-            context.ReportDiagnostic(Descriptor, node.Location, node.LocalName);
+            context.ReportDiagnostic(Descriptor, node, node.LocalName);
         }
     }
 
