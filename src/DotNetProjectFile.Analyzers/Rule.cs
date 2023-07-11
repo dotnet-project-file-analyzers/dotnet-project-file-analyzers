@@ -78,7 +78,7 @@ public static class Rule
         message: "Remove empty {0} node.",
         description: "Empty nodes only add noise, as they contain no information.",
         tags: new[] { "noise" },
-        category: Category.Clarity,
+        category: Category.Noise,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
@@ -90,7 +90,7 @@ public static class Rule
             "Folders nodes only add noise. They are leftovers of directories " +
             "created in the IDE, without adding an actual file to it.",
         tags: new[] { "noise" },
-        category: Category.Clarity,
+        category: Category.Noise,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
@@ -137,11 +137,20 @@ public static class Rule
         category: Category.CodeQuality,
         isEnabled: true);
 
+    public static DiagnosticDescriptor DefineData => New(
+        id: 2001,
+        title: "Define data in a resource file",
+        message: "Resource does not contain any data.",
+        description: "A resource file without `<data>` elements is of no use.",
+        tags: new[] { "resx", "resources" },
+        category: Category.Noise,
+        isEnabled: true);
+
     public static DiagnosticDescriptor SortDataAlphabetically => New(
         id: 2002,
         title: "Sort resource file values alphabetically",
         message: "Resource values should be ordered alphabetically by their names.",
-        description: 
+        description:
             "To improve readability, and reduce the number of merge conflicts, " +
             "the `<data>` elements should be sorted based on the `@name` attribute.",
         tags: new[] { "resx", "resources" },
