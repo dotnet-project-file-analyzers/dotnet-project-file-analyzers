@@ -13,7 +13,8 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0009** Use the TragetFramework node for a single target framework](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0009.md)
 * [**Proj1000** Use the .NET project file analyzers](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj1001.md)
-* [**Proj1003** Use Sonar analyzers](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/rules/Proj1003.md)
+* [**Proj1003** Use Sonar analyzers](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj1003.md)
 
 ## Resource file rules
-* [**Proj2002** Sort resource file values alphabetically](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/rules/Proj2002.md)
+* [**Proj2001** Define data in a resource file](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj2001.md)
+* [**Proj2002** Sort resource file values alphabetically](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj2002.md)
