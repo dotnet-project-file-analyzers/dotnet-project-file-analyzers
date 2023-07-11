@@ -14,7 +14,9 @@ public class Rules
 
     [TestCaseSource(nameof(Types))]
     public void in_DotNetProjectFile_Analyzers_MsBuild_namespace(Type type)
-        => type.Namespace.Should().Be("DotNetProjectFile.Analyzers.MsBuild");
+        => type.Namespace.Should().BeOneOf(
+            "DotNetProjectFile.Analyzers.MsBuild",
+            "DotNetProjectFile.Analyzers.Resx");
 
     [TestCaseSource(nameof(Types))]
     public void Has_supported_diagnostics(Type type)
