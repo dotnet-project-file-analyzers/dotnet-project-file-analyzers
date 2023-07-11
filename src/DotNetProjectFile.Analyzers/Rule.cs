@@ -96,12 +96,24 @@ public static class Rule
 
     public static DiagnosticDescriptor DefineSingleTargetFramework => New(
         id: 0009,
-        title: "Use the TragetFramework node for a single target framework",
+        title: "Use the TargetFramework node for a single target framework",
         message: "Use the TargetFramework node instead.",
         description:
             "To prevent confusion, only use the TargetFrameworks node when " +
             "there are multiple target frameworks.",
         tags: new[] { "target framework", "confusion" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineOutputType => New(
+        id: 0010,
+        title: "Define the OutputType explicitly",
+        message: "Define the OutputType explicitly.",
+        description:
+            "To prevent confusion, explicitly define the OutputType " +
+            "as 'Library', 'Exe', 'WinExe' or 'Module'.",
+        tags: new[] { "Configuration", "confusion" },
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -141,7 +153,7 @@ public static class Rule
         id: 2002,
         title: "Sort resource file values alphabetically",
         message: "Resource values should be ordered alphabetically by their names.",
-        description: 
+        description:
             "To improve readability, and reduce the number of merge conflicts, " +
             "the `<data>` elements should be sorted based on the `@name` attribute.",
         tags: new[] { "resx", "resources" },
