@@ -47,7 +47,7 @@ public sealed class UseAnalyzersForPackages : MsBuildProjectFileAnalyzer
         new("Microsoft.Azure.Functions.Analyzers", "Microsoft.Azure.Functions"),
         new("Microsoft.CodeAnalysis.Analyzers", "Microsoft.CodeAnalysis"),
         new("Microsoft.EntityFrameworkCore.Analyzers", "Microsoft.EntityFrameworkCore"),
-        new("Microsoft.ServiceHub.Analyzers", "Microsoft.ServiceHub.Framework"),
+        new("Microsoft.ServiceHub.Analyzers", "Microsoft.ServiceHub"),
         new("MongoDB.Analyzer", "MongoDB"),
         new("Moq.Analyzers", "Moq"),
         new("NSubstitute.Analyzers.CSharp", "NSubstitute", LanguageNames.CSharp),
