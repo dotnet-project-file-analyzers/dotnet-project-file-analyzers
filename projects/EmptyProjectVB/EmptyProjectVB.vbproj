@@ -3,6 +3,7 @@
   <PropertyGroup>
     <RootNamespace>EmptyProjectVB</RootNamespace>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
 
 </Project>

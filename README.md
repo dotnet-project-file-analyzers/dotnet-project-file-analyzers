@@ -67,6 +67,7 @@ To add a props file:
 * [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)
 
 ## Resource file rules
+* [**Proj2001** Define data in a resource file](/rules/Proj2001.md)
 * [**Proj2002** Sort resource file values alphabetically](rules/Proj2002.md)
 
 ## Reference an analyzer from a project
