@@ -14,4 +14,6 @@ public sealed class PropertyGroup : Node
     public Nodes<ImplicitUsings> ImplicitUsings => Children<ImplicitUsings>();
 
     public Nodes<NuGetAudit> NuGetAudit => Children<NuGetAudit>();
+
+    public Nodes<OutputType> OutputType => Children<OutputType>();
 }
