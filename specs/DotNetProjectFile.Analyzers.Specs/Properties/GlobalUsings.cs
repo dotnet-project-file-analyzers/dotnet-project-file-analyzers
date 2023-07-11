@@ -7,3 +7,4 @@ global using Microsoft.CodeAnalysis.Diagnostics;
 global using NUnit.Framework;
 global using System.Diagnostics.Contracts;
 global using System.Text;
+global using Resx = DotNetProjectFile.Analyzers.Resx;

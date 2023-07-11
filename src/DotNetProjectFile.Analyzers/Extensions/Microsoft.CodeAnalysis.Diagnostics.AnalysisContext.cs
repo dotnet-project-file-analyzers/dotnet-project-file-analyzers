@@ -17,4 +17,14 @@ internal static class AnalysisContextExtensions
                 }
             }
         });
+
+    /// <summary>Registers an action on <see cref="ProjectFileAnalysisContext"/>.</summary>
+    public static void RegisterResourceFileAction(this AnalysisContext context, Action<ResourceFileAnalysisContext> action)
+        => context.RegisterCompilationAction(c =>
+        {
+            foreach (var resource in DotNetProjectFile.Resx.Resources.Resolve(c.Options.AdditionalFiles))
+            {
+                action.Invoke(new(resource, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+            }
+        });
 }

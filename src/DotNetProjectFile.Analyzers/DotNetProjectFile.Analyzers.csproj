@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../../props/common.props"/>
+  <Import Project="../../props/common.props" />
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -18,10 +18,12 @@
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Authors>Corniel Nobel</Authors>
     <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
-    <PackageTags>Code Analysis;Project files;csproj;vbproj</PackageTags>
+    <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
     <Version>1.0.5</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+ToBeReleased
+- Prop2002: Sort resource file values alphabetically. (NEW RULE)
 v1.0.5
 - Proj1003: Sonar Analyzers defined in prop. (FP)
 v1.0.4

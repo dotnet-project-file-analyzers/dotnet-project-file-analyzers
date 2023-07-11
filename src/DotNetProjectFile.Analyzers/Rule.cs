@@ -137,6 +137,17 @@ public static class Rule
         category: Category.CodeQuality,
         isEnabled: true);
 
+    public static DiagnosticDescriptor SortDataAlphabetically => New(
+        id: 2002,
+        title: "Sort resource file values alphabetically",
+        message: "Resource values should be ordered alphabetically by their names.",
+        description: 
+            "To improve readability, and reduce the number of merge conflicts, " +
+            "the `<data>` elements should be sorted based on the `@name` attribute.",
+        tags: new[] { "resx", "resources" },
+        category: Category.Clarity,
+        isEnabled: true);
+
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
     private static DiagnosticDescriptor New(

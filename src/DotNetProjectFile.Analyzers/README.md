@@ -1,7 +1,7 @@
 # [.NET project file analyzers](https://github.com/Corniel/dotnet-project-file-analyzers/)
 The package contains analyzers that analyze .NET project files.
 
-## Rules
+## MS Build project file rules
 * [**Proj0001** MS Build project file could not be located](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0001.md)
 * [**Proj0002** Upgrade legacy MS Build project files](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0002.md)
 * [**Proj0003** Define usings explicit](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0003.md)
@@ -14,3 +14,6 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj1000** Use the .NET project file analyzers](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj1001.md)
 * [**Proj1003** Use Sonar analyzers](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/rules/Proj1003.md)
+
+## Resource file rules
+* [**Proj2002** Sort resource file values alphabetically](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/rules/Proj2002.md)
