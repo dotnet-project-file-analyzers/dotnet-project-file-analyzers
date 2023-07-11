@@ -21,8 +21,6 @@ public sealed class UseAnalyzersForPackages : MsBuildProjectFileAnalyzer
 
             foreach (var analyzer in unusedAnalyzers)
             {
-                var z = context.Compilation.ReferencedAssemblyNames.Select(x => x.Name).ToList();
-
                 var matched = context.Compilation.ReferencedAssemblyNames
                     .Where(analyzer.IsMatch)
                     .OrderBy(asm => asm.Name.Length)
