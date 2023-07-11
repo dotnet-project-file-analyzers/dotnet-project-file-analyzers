@@ -11,7 +11,7 @@ public partial class Node : Locatable
         Resource = resource ?? (this as Resource) ?? throw new ArgumentNullException(nameof(resource));
     }
 
-    private readonly XElement Element;
+    internal readonly XElement Element;
 
     public Resource Resource { get; }
 
