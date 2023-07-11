@@ -23,6 +23,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
 ToBeReleased
+- Prop1001: Reported dependency is now nearest name match. (FN)
+- Prop1001: Added 14 new package specific analyzers. (FN)
 - Prop2002: Sort resource file values alphabetically. (NEW RULE)
 v1.0.5
 - Proj1003: Sonar Analyzers defined in prop. (FP)
