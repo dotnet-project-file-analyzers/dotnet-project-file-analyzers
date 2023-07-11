@@ -9,10 +9,11 @@ public sealed class UseAnalyzersForPackages : MsBuildProjectFileAnalyzer
     {
         if (context.Project.IsProject)
         {
-            var packageReferences = context.Project.AncestorsAndSelf()
-            .SelectMany(p => p.ItemGroups)
-            .SelectMany(group => group.PackageReferences)
-            .ToArray();
+            var packageReferences = context.Project
+                .AncestorsAndSelf()
+                .SelectMany(p => p.ItemGroups)
+                .SelectMany(group => group.PackageReferences)
+                .ToArray();
 
             foreach (var analyzer in Analyzers)
             {

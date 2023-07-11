@@ -9,10 +9,11 @@ public sealed class UseAnalyzers : MsBuildProjectFileAnalyzer
     {
         if (context.Project.IsProject)
         {
-            var packageReferences = context.Project.AncestorsAndSelf()
-            .SelectMany(p => p.ItemGroups)
-            .SelectMany(group => group.PackageReferences)
-            .ToArray();
+            var packageReferences = context.Project
+                .AncestorsAndSelf()
+                .SelectMany(p => p.ItemGroups)
+                .SelectMany(group => group.PackageReferences)
+                .ToArray();
 
             if (packageReferences.None(r => r.Include.Contains("DotNetProjectFile.Analyzers", StringComparison.OrdinalIgnoreCase)))
             {

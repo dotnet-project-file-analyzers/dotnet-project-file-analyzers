@@ -1,12 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="../../props/common.props"/>
+  
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
     <IsTestProject>true</IsTestProject>
     <RootNamespace>Specs</RootNamespace>
-    <NuGetAudit>true</NuGetAudit>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,10 +28,8 @@
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="AsyncFixer" Version="*" />
     <PackageReference Include="FluentAssertions.Analyzers" Version="*" />
     <PackageReference Include="NUnit.Analyzers" Version="*" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="*" />
   </ItemGroup>
 
   <ItemGroup>
