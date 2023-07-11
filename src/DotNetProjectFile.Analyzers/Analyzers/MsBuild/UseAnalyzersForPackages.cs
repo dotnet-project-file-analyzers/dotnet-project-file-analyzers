@@ -37,9 +37,13 @@ public sealed class UseAnalyzersForPackages : MsBuildProjectFileAnalyzer
 
     private static readonly PackageAnalyzer[] Analyzers = new PackageAnalyzer[]
     {
+        new("Ardalis.ApiEndpoints.CodeAnalyzers", "Ardalis.ApiEndpoints"),
         new("FakeItEasy.Analyzer.CSharp", "FakeItEasy", LanguageNames.CSharp),
         new("FakeItEasy.Analyzer.VisualBasic", "FakeItEasy", LanguageNames.VisualBasic),
         new("FluentAssertions.Analyzers", "FluentAssertions"),
+        new("Libplanet.Analyzers", "Libplanet"),
+        new("Lucene.Net.Analysis.Common", "Lucene.Net"),
+        new("MassTransit.Analyzers", "MassTransit"),
         new("MessagePackAnalyzer", "MessagePack"),
         new("MessagePipe.Analyzer", "MessagePipe"),
         new("Microsoft.AspNetCore.Components.Analyzers", "Microsoft.AspNetCore"),
