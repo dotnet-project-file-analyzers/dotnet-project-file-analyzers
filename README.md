@@ -52,7 +52,7 @@ To add a props file:
 </Project>
 ```
 
-## Rules
+## MS Build project file rules
 * [**Proj0001** MS Build project file could not be located](rules/Proj0001.md)
 * [**Proj0002** Upgrade legacy MS Build project files](rules/Proj0002.md)
 * [**Proj0003** Define usings explicit](rules/Proj0003.md)
@@ -65,6 +65,9 @@ To add a props file:
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
 * [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)
+
+## Resource file rules
+* [**Proj2002** Sort resource file values alphabetically](rules/Proj2002.md)
 
 ## Reference an analyzer from a project
 For debugging/development purposes, it can be useful to reference the analyzer
