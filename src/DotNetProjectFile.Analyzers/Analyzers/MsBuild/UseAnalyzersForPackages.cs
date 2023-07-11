@@ -16,16 +16,15 @@ public sealed class UseAnalyzersForPackages : MsBuildProjectFileAnalyzer
                 .ToArray();
 
             var unusedAnalyzers = Analyzers
-                .Where(analyzer => analyzer.Language is null || analyzer.Language == context.Compilation.Options.Language)
+                .Where(analyzer => analyzer.IsApplicable(context.Compilation.Options.Language))
                 .Where(analyzer => packageReferences.None(analyzer.IsMatch));
 
             foreach (var analyzer in unusedAnalyzers)
             {
-                var matched = context.Compilation.ReferencedAssemblyNames
+                if (context.Compilation.ReferencedAssemblyNames
                     .Where(analyzer.IsMatch)
                     .OrderBy(asm => asm.Name.Length)
-                    .FirstOrDefault();
-                if (matched is { } reference)
+                    .FirstOrDefault() is { } reference)
                 {
                     context.ReportDiagnostic(Descriptor, context.Project, analyzer.Package, reference.Name);
                 }
@@ -62,6 +61,9 @@ public sealed class UseAnalyzersForPackages : MsBuildProjectFileAnalyzer
 
     private sealed record PackageAnalyzer(string Package, string Match, string? Language = null)
     {
+        public bool IsApplicable(string compilationLanguage)
+            => Language is null || Language == compilationLanguage;
+
         public bool IsMatch(PackageReference reference)
             => string.Equals(reference.Include, Package, StringComparison.OrdinalIgnoreCase);
 
