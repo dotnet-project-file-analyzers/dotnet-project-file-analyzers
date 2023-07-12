@@ -8,7 +8,7 @@ internal sealed record Issue(
     LinePositionSpan Span,
     DiagnosticSeverity Severity = DiagnosticSeverity.Warning)
 {
-    public Issue(string id, string message) : this(id, message, new(new(0, 1), new(0, 2))) { }
+    public Issue(string id, string message, DiagnosticSeverity severity = DiagnosticSeverity.Warning) : this(id, message, new(new(0, 1), new(0, 2)), severity) { }
 
     public Issue WithSpan(int lineStart, int posStart, int lineEnd, int posEnd)
         => this with

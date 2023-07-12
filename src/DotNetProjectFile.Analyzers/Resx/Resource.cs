@@ -1,18 +1,20 @@
 ﻿using Microsoft.CodeAnalysis.Text;
 using System.Globalization;
 using System.IO;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace DotNetProjectFile.Resx;
 
 public sealed class Resource : Node
 {
-    public Resource(FileInfo path, XElement element, SourceText sourceText, CultureInfo culture)
+    public Resource(FileInfo path, XElement element, SourceText sourceText, CultureInfo culture, XmlException? exception)
         : base(element, null)
     {
         Path = path;
         SourceText = sourceText;
         Culture = culture;
+        Exception = exception;
         Data = Children<Data>();
     }
 
@@ -24,24 +26,28 @@ public sealed class Resource : Node
 
     public Nodes<Data> Data { get; }
 
+    public XmlException? Exception { get; }
+
     public static Resource Load(AdditionalText text)
     {
         var file = new FileInfo(text.Path);
         var sourceText = text.GetText()!;
-        var element = TryElement(sourceText);
+        var element = TryElement(sourceText, out var exception);
         var culture = TryCulture(file);
-        return new(file, element, sourceText, culture);
+        return new(file, element, sourceText, culture, exception);
     }
 
-    private static XElement TryElement(SourceText sourceText)
+    private static XElement TryElement(SourceText sourceText, out XmlException? exception)
     {
+        exception = null;
         try
         {
             return XElement.Parse(sourceText.ToString(), LoadOptions);
         }
-        catch
+        catch (XmlException x)
         {
-            return XElement.Parse(@"<root valid=""false"" />", LoadOptions);
+            exception = x;
+            return XElement.Parse(@"<root />", LoadOptions);
         }
     }
 

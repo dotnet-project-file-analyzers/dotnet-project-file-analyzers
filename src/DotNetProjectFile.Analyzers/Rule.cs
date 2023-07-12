@@ -137,6 +137,16 @@ public static class Rule
         category: Category.CodeQuality,
         isEnabled: true);
 
+    public static DiagnosticDescriptor EmbedValidResourceFiles => New(
+        id: 2000,
+        title: "Embed valid resource files",
+        message: "Invalid XML: {0}",
+        description: "A resource file should contain valid XML.",
+        tags: new[] { "resx", "resources" },
+        category: Category.Noise,
+        isEnabled: true,
+        severity: DiagnosticSeverity.Error);
+
     public static DiagnosticDescriptor DefineData => New(
         id: 2001,
         title: "Define data in a resource file",
