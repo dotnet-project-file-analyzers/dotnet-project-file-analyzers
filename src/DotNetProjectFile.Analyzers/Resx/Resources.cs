@@ -15,6 +15,15 @@ public sealed class Resources : IReadOnlyCollection<Resource>
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
+    internal IReadOnlyCollection<Resource> Parents(Resource resource)
+       => resource.ForInvariantCulture
+       ? Array.Empty<Resource>()
+       : (IReadOnlyCollection<Resource>)resource.Culture.Ancestors()
+           .Select(resource.Path.Satellite)
+           .Select(file => items.TryGetValue(file, out var parent) ? parent : null)
+           .OfType<Resource>()
+           .ToArray();
+
     public static Resources Resolve(Compilation compilation, IEnumerable<AdditionalText> additionalFiles)
         => Cache.Get(compilation, () => New(additionalFiles));
 
@@ -31,15 +40,6 @@ public sealed class Resources : IReadOnlyCollection<Resource>
 
         return resources;
     }
-
-    internal IReadOnlyCollection<Resource> Parents(Resource resource)
-        => resource.ForInvariantCulture
-        ? Array.Empty<Resource>()
-        : (IReadOnlyCollection<Resource>)resource.Culture.Ancestors()
-            .Select(resource.Path.Satellite)
-            .Select(file => items.TryGetValue(file, out var parent) ? parent : null)
-            .OfType<Resource>()
-            .ToArray();
 
     private static readonly CompilationCache<Resources> Cache = new();
 }
