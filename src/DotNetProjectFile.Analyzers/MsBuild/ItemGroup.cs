@@ -21,11 +21,15 @@ public sealed class ItemGroup : Node
     /// <param name="element">
     /// The corresponding <see cref="XElement"/>.
     /// </param>
-    public ItemGroup(XElement element, Project project) : base(element, project) { }
+    public ItemGroup(XElement element, Project project) : base(element, project)
+    {
+        PackageReferences = Children<PackageReference>();
+        Folders = Children<Folder>();
+    }
 
     /// <summary>Gets the child package references.</summary>
-    public Nodes<PackageReference> PackageReferences => Children<PackageReference>();
+    public Nodes<PackageReference> PackageReferences { get; }
 
     /// <summary>Gets the child folders.</summary>
-    public Nodes<Folder> Folders => Children<Folder>();
+    public Nodes<Folder> Folders { get; }
 }

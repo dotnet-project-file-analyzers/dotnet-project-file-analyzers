@@ -108,6 +108,18 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor DefineOutputType => New(
+        id: 0010,
+        title: "Define the project output type explicitly",
+        message: "Define the <OutputType> node explicitly.",
+        description:
+            "To prevent confusion, explicitly define the OutputType " +
+            "as 'Library', 'Exe', 'WinExe' or 'Module'.",
+        tags: new[] { "Configuration", "confusion" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",

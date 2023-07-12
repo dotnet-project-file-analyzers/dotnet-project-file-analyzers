@@ -3,6 +3,7 @@
   <PropertyGroup>
     <RootNamespace>CompliantVB</RootNamespace>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <OutputType>Library</OutputType>
     <NuGetAudit>true</NuGetAudit>
     <OptionStrict>On</OptionStrict>
   </PropertyGroup>

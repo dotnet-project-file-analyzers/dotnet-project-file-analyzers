@@ -5,6 +5,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>11.0</LangVersion>
+    <OutputType>Library</OutputType>
     <RootNamespace>DotNetProjectFile</RootNamespace>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -23,6 +24,9 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
 ToBeReleased
+- Proj0010: Define OutputType explicitly. (NEW RULE)
+- Proj1001: Reported dependency with missing analyser is now nearest name match. (FP)
+- Proj1001: Added 14 new package specific analyzers. (FN)
 - Prop2000: Embed valid resource files. (NEW RULE)
 - Prop2001: Define data in a resource file. (NEW RULE)
 - Proj2002: Sort resource file values alphabetically. (NEW RULE)

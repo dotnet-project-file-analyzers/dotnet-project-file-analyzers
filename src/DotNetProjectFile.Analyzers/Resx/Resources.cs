@@ -1,4 +1,5 @@
-﻿using DotNetProjectFile.IO;
+using DotNetProjectFile.Caching;
+using DotNetProjectFile.IO;
 using System.Globalization;
 using System.IO;
 
@@ -14,7 +15,10 @@ public sealed class Resources : IReadOnlyCollection<Resource>
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
-    public static Resources Resolve(IEnumerable<AdditionalText> additionalFiles)
+    public static Resources Resolve(Compilation compilation, IEnumerable<AdditionalText> additionalFiles)
+        => Cache.Get(compilation, () => New(additionalFiles));
+
+    private static Resources New(IEnumerable<AdditionalText> additionalFiles)
     {
         var resources = new Resources();
 
@@ -36,4 +40,6 @@ public sealed class Resources : IReadOnlyCollection<Resource>
             .Select(file => items.TryGetValue(file, out var parent) ? parent : null)
             .OfType<Resource>()
             .ToArray();
+
+    private static readonly CompilationCache<Resources> Cache = new();
 }
