@@ -12,7 +12,7 @@
     <PackageReference Include="Ardalis.ApiEndpoints" Version="4.1.0" />
     <PackageReference Include="FakeItEasy" Version="7.4.0" />
     <PackageReference Include="FluentAssertions" Version="6.11.0" />
-    <PackageReference Include="Libplanet" Version="2.5.0-dev.202378114052" />
+    <PackageReference Include="Libplanet" Version="2.5.0" />
     <PackageReference Include="Lucene.Net" Version="4.8.0-beta00016" />
     <PackageReference Include="MassTransit" Version="8.0.16" />
     <PackageReference Include="MessagePack" Version="2.5.124" />
