@@ -96,10 +96,10 @@ public static class Rule
 
     public static DiagnosticDescriptor DefineSingleTargetFramework => New(
         id: 0009,
-        title: "Use the TargetFramework node for a single target framework",
-        message: "Use the TargetFramework node instead.",
+        title: "Use the <TargetFramework> node for a single target framework",
+        message: "Use the <TargetFramework> node instead.",
         description:
-            "To prevent confusion, only use the TargetFrameworks node when " +
+            "To prevent confusion, only use the <TargetFrameworks> node when " +
             "there are multiple target frameworks.",
         tags: new[] { "target framework", "confusion" },
         category: Category.Clarity,
@@ -148,6 +148,16 @@ public static class Rule
         tags: new[] { "roslyn", "analyzer", "NuGet", "Sonar" },
         category: Category.CodeQuality,
         isEnabled: true);
+
+    public static DiagnosticDescriptor EmbedValidResourceFiles => New(
+        id: 2000,
+        title: "Embed valid resource files",
+        message: "Resource file {0}",
+        description: "A resource file should contain valid XML.",
+        tags: new[] { "resx", "resources" },
+        category: Category.Noise,
+        isEnabled: true,
+        severity: DiagnosticSeverity.Error);
 
     public static DiagnosticDescriptor DefineData => New(
         id: 2001,
