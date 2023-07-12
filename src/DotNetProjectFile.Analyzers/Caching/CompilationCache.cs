@@ -11,11 +11,11 @@ public sealed class CompilationCache<T> where T : class
     private readonly T[] Values;
     private int Next;
 
-    public CompilationCache(int capacity = 8)
+    public CompilationCache(int capacity = 16)
     {
         Capacity = capacity;
-        Keys = new Compilation[8];
-        Values = new T[8];
+        Keys = new Compilation[capacity];
+        Values = new T[capacity];
     }
 
     public int Capacity { get; }
