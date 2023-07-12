@@ -1,10 +1,11 @@
-﻿using DotNetProjectFile.Caching;
+using DotNetProjectFile.Caching;
 using DotNetProjectFile.IO;
+using System.Globalization;
 using System.IO;
 
 namespace DotNetProjectFile.Resx;
 
-internal sealed class Resources : IReadOnlyCollection<Resource>
+public sealed class Resources : IReadOnlyCollection<Resource>
 {
     private readonly Dictionary<FileInfo, Resource> items = new(FileSystemEqualityComparer.File);
 
@@ -13,6 +14,15 @@ internal sealed class Resources : IReadOnlyCollection<Resource>
     public IEnumerator<Resource> GetEnumerator() => items.Values.GetEnumerator();
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+
+    internal IReadOnlyCollection<Resource> Parents(Resource resource)
+       => resource.ForInvariantCulture
+       ? Array.Empty<Resource>()
+       : (IReadOnlyCollection<Resource>)resource.Culture.Ancestors()
+           .Select(resource.Path.Satellite)
+           .Select(file => items.TryGetValue(file, out var parent) ? parent : null)
+           .OfType<Resource>()
+           .ToArray();
 
     public static Resources Resolve(Compilation compilation, IEnumerable<AdditionalText> additionalFiles)
         => Cache.Get(compilation, () => New(additionalFiles));
@@ -24,7 +34,7 @@ internal sealed class Resources : IReadOnlyCollection<Resource>
         foreach (var additional in additionalFiles
             .Where(a => string.Equals(Path.GetExtension(a.Path), ".resx", StringComparison.OrdinalIgnoreCase)))
         {
-            var resource = Resource.Load(additional);
+            var resource = Resource.Load(additional, resources);
             resources.items[resource.Path] = resource;
         }
 

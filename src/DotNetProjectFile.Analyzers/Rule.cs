@@ -1,5 +1,7 @@
 ﻿#pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
+using System.Text.RegularExpressions;
+
 namespace DotNetProjectFile;
 
 public static class Rule
@@ -155,7 +157,7 @@ public static class Rule
         message: "Resource file {0}",
         description: "A resource file should contain valid XML.",
         tags: new[] { "resx", "resources" },
-        category: Category.Noise,
+        category: Category.Bug,
         isEnabled: true,
         severity: DiagnosticSeverity.Error);
 
@@ -177,6 +179,17 @@ public static class Rule
             "the `<data>` elements should be sorted based on the `@name` attribute.",
         tags: new[] { "resx", "resources" },
         category: Category.Clarity,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor AddInvariantFallbackResources => New(
+        id: 2003,
+        title: "Add invariant fallback resources",
+        message: "Add invariant fallback resource.",
+        description:
+            "To ensure that localized values can be resolved, a localized resource " +
+            "file must have a culture invariant alternative.",
+        tags: new[] { "resx", "resources", "invariant", "localization" },
+        category: Category.Bug,
         isEnabled: true);
 
 #pragma warning disable S107 // Methods should not have too many parameters
