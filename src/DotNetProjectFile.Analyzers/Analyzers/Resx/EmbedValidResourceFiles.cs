@@ -10,8 +10,7 @@ public sealed class EmbedValidResourceFiles : ResourceFileAnalyzer
     protected override void Register(AnalysisContext context)
     => context.RegisterCompilationAction(c =>
     {
-        foreach (var resource in DotNetProjectFile.Resx.Resources
-            .Resolve(c.Options.AdditionalFiles))
+        foreach (var resource in Resources.Resolve(c.Compilation, c.Options.AdditionalFiles))
         {
             Register(new ResourceFileAnalysisContext(resource, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
         }

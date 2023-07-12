@@ -1,4 +1,5 @@
-﻿using DotNetProjectFile.IO;
+﻿using DotNetProjectFile.Caching;
+using DotNetProjectFile.IO;
 using System.IO;
 
 namespace DotNetProjectFile.MsBuild;
@@ -92,32 +93,22 @@ public sealed class Projects
         => string.Equals(Path.GetFileNameWithoutExtension(file.FullName), name, StringComparison.OrdinalIgnoreCase);
 
     public static Projects Init(CompilationAnalysisContext context)
-    {
-        lock (cacheLock)
-        {
-            if (Last is { } && context.Compilation == Last && Cached is { })
-            {
-                return Cached;
-            }
-            else
-            {
-                Last = context.Compilation;
-                Cached = new Projects(context.Compilation.Options.Language);
+        => Cache.Get(context.Compilation, () => New(context));
 
-                foreach (var additional in context.Options.AdditionalFiles)
-                {
-                    var location = new FileInfo(additional.Path);
-                    if (Cached.IsProject(location))
-                    {
-                        Cached.AdditionalTexts[location] = additional;
-                    }
-                }
-                return Cached;
+    private static Projects New(CompilationAnalysisContext context)
+    {
+        var projects = new Projects(context.Compilation.Options.Language);
+
+        foreach (var additional in context.Options.AdditionalFiles)
+        {
+            var location = new FileInfo(additional.Path);
+            if (projects.IsProject(location))
+            {
+                projects.AdditionalTexts[location] = additional;
             }
         }
+        return projects;
     }
 
-    private static Projects? Cached;
-    private static Compilation? Last;
-    private static readonly object cacheLock = new();
+    private static readonly CompilationCache<Projects> Cache = new();
 }
