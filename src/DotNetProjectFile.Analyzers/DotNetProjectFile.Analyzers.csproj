@@ -23,6 +23,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
 ToBeReleased
+- Proj1001: Reported dependency with missing analyser is now nearest name match. (FP)
+- Proj1001: Added 14 new package specific analyzers. (FN)
 - Prop2000: Embed valid resource files. (NEW RULE)
 - Prop2002: Sort resource file values alphabetically. (NEW RULE)
 - Proj2002: Sort resource file values alphabetically. (NEW RULE)

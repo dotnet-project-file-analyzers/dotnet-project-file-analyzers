@@ -10,15 +10,27 @@ public class Reports
         => new UseAnalyzersForPackages()
         .ForProject("PackagesWithoutAnalyzers.cs")
         .HasIssues(
+            new("Proj1001", "Use Ardalis.ApiEndpoints.CodeAnalyzers to analyze Ardalis.ApiEndpoints."),
+            new("Proj1001", "Use FakeItEasy.Analyzer.CSharp to analyze FakeItEasy."),
             new("Proj1001", "Use FluentAssertions.Analyzers to analyze FluentAssertions."),
-            new("Proj1001", "Use Microsoft.AspNetCore.Components.Analyzers to analyze Microsoft.AspNetCore.Antiforgery."),
+            new("Proj1001", "Use Libplanet.Analyzers to analyze Libplanet."),
+            new("Proj1001", "Use Lucene.Net.Analysis.Common to analyze Lucene.Net."),
+            new("Proj1001", "Use MassTransit.Analyzers to analyze MassTransit."),
+            new("Proj1001", "Use MessagePackAnalyzer to analyze MessagePack."),
+            new("Proj1001", "Use MessagePipe.Analyzer to analyze MessagePipe."),
+            new("Proj1001", "Use Microsoft.AspNetCore.Components.Analyzers to analyze Microsoft.AspNetCore."),
             new("Proj1001", "Use Microsoft.Azure.Functions.Analyzers to analyze Microsoft.Azure.Functions.Extensions."),
-            new("Proj1001", "Use Microsoft.CodeAnalysis.Analyzers to analyze Microsoft.CodeAnalysis.CSharp."),
-            new("Proj1001", "Use Microsoft.EntityFrameworkCore.Analyzers to analyze Microsoft.EntityFrameworkCore.Abstractions."),
+            new("Proj1001", "Use Microsoft.CodeAnalysis.Analyzers to analyze Microsoft.CodeAnalysis."),
+            new("Proj1001", "Use Microsoft.EntityFrameworkCore.Analyzers to analyze Microsoft.EntityFrameworkCore."),
+            new("Proj1001", "Use Microsoft.ServiceHub.Analyzers to analyze Microsoft.ServiceHub.Framework."),
             new("Proj1001", "Use MongoDB.Analyzer to analyze MongoDB.Bson."),
+            new("Proj1001", "Use Moq.Analyzers to analyze Moq."),
+            new("Proj1001", "Use NSubstitute.Analyzers.CSharp to analyze NSubstitute."),
             new("Proj1001", "Use NUnit.Analyzers to analyze nunit.framework."),
+            new("Proj1001", "Use RuntimeContracts.Analyzer to analyze RuntimeContracts."),
             new("Proj1001", "Use SerilogAnalyzer to analyze Serilog."),
-            new("Proj1001", "Use xunit.analyzers to analyze xunit.abstractions."));
+            new("Proj1001", "Use xunit.analyzers to analyze xunit.core."),
+            new("Proj1001", "Use ZeroFormatter.Analyzer to analyze ZeroFormatter."));
 }
 
 #if RELEASE
