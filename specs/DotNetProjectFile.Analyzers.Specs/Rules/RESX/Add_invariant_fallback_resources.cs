@@ -1,13 +1,13 @@
-﻿namespace Rules.RESX.Add_invariant_resources;
+﻿namespace Rules.RESX.Add_invariant_fallback_resources;
 
 public class Reports
 {
     [Test]
     public void missing_invariant_resource()
-        => new Resx.AddInvariantResources()
+        => new Resx.AddInvariantFallbackResources()
         .ForProject("ResxNoInvariant.cs")
         .HasIssue(
-            new Issue("Proj2003", "Add invariant resource."));
+            new Issue("Proj2003", "Add invariant fallback resource."));
 }
 
 public class Guards
@@ -15,7 +15,7 @@ public class Guards
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantVB.vb")]
     public void sorted_data(string project)
-         => new Resx.AddInvariantResources()
+         => new Resx.AddInvariantFallbackResources()
         .ForProject(project)
         .HasNoIssues();
 }
@@ -24,7 +24,7 @@ public class Ignores
 {
     [Test]
     public void invalid_resources()
-         => new Resx.AddInvariantResources()
+         => new Resx.AddInvariantFallbackResources()
         .ForProject("ResxNoXml.cs")
         .HasNoIssues();
 }

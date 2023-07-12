@@ -37,6 +37,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rules", "Rules", "{50507CD3
 		rules\Proj2000.md = rules\Proj2000.md
 		rules\Proj2001.md = rules\Proj2001.md
 		rules\Proj2002.md = rules\Proj2002.md
+		rules\Proj2003.md = rules\Proj2003.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{00669DF6-1449-41AA-8AD3-FA84194CE5B4}"

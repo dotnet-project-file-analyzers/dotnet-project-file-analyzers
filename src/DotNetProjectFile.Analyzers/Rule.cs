@@ -1,5 +1,7 @@
 ﻿#pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
+using System.Text.RegularExpressions;
+
 namespace DotNetProjectFile;
 
 public static class Rule
@@ -167,14 +169,14 @@ public static class Rule
         category: Category.Clarity,
         isEnabled: true);
 
-    public static DiagnosticDescriptor AddInvariantResources => New(
+    public static DiagnosticDescriptor AddInvariantFallbackResources => New(
         id: 2003,
-        title: "Add invariant resources",
-        message: "Add invariant resource.",
+        title: "Add invariant fallback resources",
+        message: "Add invariant fallback resource.",
         description:
-            "To ensure that resources can be resolved, there should always be " +
-            "a invariant, default resource.",
-        tags: new[] { "resx", "resources", "cultureInfo" },
+            "To ensure that localized values can be resolved, a localized resource " +
+            "file must have a culture invariant alternative.",
+        tags: new[] { "resx", "resources", "invariant", "localization" },
         category: Category.Bug,
         isEnabled: true);
 

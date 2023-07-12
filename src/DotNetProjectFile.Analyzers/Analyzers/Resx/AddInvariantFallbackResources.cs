@@ -1,9 +1,9 @@
 ﻿namespace DotNetProjectFile.Analyzers.Resx;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class AddInvariantResources : ResourceFileAnalyzer
+public sealed class AddInvariantFallbackResources : ResourceFileAnalyzer
 {
-    public AddInvariantResources() : base(Rule.AddInvariantResources) { }
+    public AddInvariantFallbackResources() : base(Rule.AddInvariantFallbackResources) { }
 
     protected override void Register(ResourceFileAnalysisContext context)
     {
