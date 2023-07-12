@@ -29,21 +29,11 @@ public sealed class Resources : IReadOnlyCollection<Resource>
     }
 
     internal IReadOnlyCollection<Resource> Parents(Resource resource)
-    {
-        if (resource.ForInvariantCulture)
-        {
-            return Array.Empty<Resource>();
-        }
-        else
-        {
-            var parents = resource.Culture.Ancestors()
-                .Select(resource.Path.Satellite)
-                .Select(file => items.TryGetValue(file, out var parent) ? parent : null)
-                .Where(r => r is { })
-                .Cast<Resource>()
-                .ToArray();
-
-            return parents;
-        }
-    }
+        => resource.ForInvariantCulture
+        ? Array.Empty<Resource>()
+        : (IReadOnlyCollection<Resource>)resource.Culture.Ancestors()
+            .Select(resource.Path.Satellite)
+            .Select(file => items.TryGetValue(file, out var parent) ? parent : null)
+            .OfType<Resource>()
+            .ToArray();
 }
