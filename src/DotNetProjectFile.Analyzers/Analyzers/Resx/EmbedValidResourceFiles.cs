@@ -1,4 +1,4 @@
-﻿using System;
+﻿using DotNetProjectFile.Resx;
 
 namespace DotNetProjectFile.Analyzers.Resx;
 
@@ -11,8 +11,7 @@ public sealed class EmbedValidResourceFiles : ResourceFileAnalyzer
     => context.RegisterCompilationAction(c =>
     {
         foreach (var resource in DotNetProjectFile.Resx.Resources
-            .Resolve(c.Options.AdditionalFiles)
-            .Where(r => r.Exception is { }))
+            .Resolve(c.Options.AdditionalFiles))
         {
             Register(new ResourceFileAnalysisContext(resource, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
         }
@@ -20,9 +19,31 @@ public sealed class EmbedValidResourceFiles : ResourceFileAnalyzer
 
     protected override void Register(ResourceFileAnalysisContext context)
     {
-        context.ReportDiagnostic(
-            Descriptor,
-            context.Resource,
-            context.Resource.Exception!.Message);
+        var resource = context.Resource;
+
+        if (!context.Resource.IsXml)
+        {
+            context.ReportDiagnostic(Descriptor, resource, "contains no XML.");
+        }
+        else
+        {
+            if (resource.Headers.None(h => Matches(h, "resmimetype", t => t == "text/microsoft-resx")))
+            {
+                context.ReportDiagnostic(Descriptor, resource, @"misses <resheader name=""resmimetype""> with value ""text/microsoft-resx"".");
+            }
+            if (resource.Headers.None(h => Matches(h, "reader", t => t.StartsWith("System.Resources.ResXResourceReader"))))
+            {
+                context.ReportDiagnostic(Descriptor, resource, @"misses <resheader name=""reader""> with value ""System.Resources.ResXResourceReader"".");
+            }
+            if (resource.Headers.None(h => Matches(h, "writer", t => t.StartsWith("System.Resources.ResXResourceWriter"))))
+            {
+                context.ReportDiagnostic(Descriptor, resource, @"misses <resheader name=""writer""> with value ""System.Resources.ResXResourceWriter"".");
+            }
+        }
     }
+
+    private static bool Matches(ResHeader header, string name, Func<string, bool> match)
+        => header.Name == name
+        && header.Value?.Text is { Length: > 0 } text
+        && match(text);
 }

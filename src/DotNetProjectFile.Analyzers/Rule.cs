@@ -140,7 +140,7 @@ public static class Rule
     public static DiagnosticDescriptor EmbedValidResourceFiles => New(
         id: 2000,
         title: "Embed valid resource files",
-        message: "Invalid XML: {0}",
+        message: "Resource file {0}",
         description: "A resource file should contain valid XML.",
         tags: new[] { "resx", "resources" },
         category: Category.Noise,

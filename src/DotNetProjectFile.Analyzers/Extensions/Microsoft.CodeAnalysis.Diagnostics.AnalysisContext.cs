@@ -24,7 +24,7 @@ internal static class AnalysisContextExtensions
         {
             foreach (var resource in DotNetProjectFile.Resx.Resources
                 .Resolve(c.Options.AdditionalFiles)
-                .Where(r => r.Exception is null))
+                .Where(r => r.IsXml))
             {
                 action.Invoke(new(resource, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
             }

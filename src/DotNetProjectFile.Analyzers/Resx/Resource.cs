@@ -8,13 +8,14 @@ namespace DotNetProjectFile.Resx;
 
 public sealed class Resource : Node
 {
-    public Resource(FileInfo path, XElement element, SourceText sourceText, CultureInfo culture, XmlException? exception)
+    public Resource(FileInfo path, XElement element, SourceText sourceText, CultureInfo culture, bool isXml)
         : base(element, null)
     {
         Path = path;
         SourceText = sourceText;
         Culture = culture;
-        Exception = exception;
+        IsXml = isXml;
+        Headers = Children<ResHeader>();
         Data = Children<Data>();
     }
 
@@ -24,30 +25,32 @@ public sealed class Resource : Node
 
     public CultureInfo Culture { get; }
 
+    public Nodes<ResHeader> Headers { get; }
+
     public Nodes<Data> Data { get; }
 
-    public XmlException? Exception { get; }
+    public bool IsXml { get; }
 
     public static Resource Load(AdditionalText text)
     {
         var file = new FileInfo(text.Path);
         var sourceText = text.GetText()!;
-        var element = TryElement(sourceText, out var exception);
+        var isXml = TryElement(sourceText, out var element);
         var culture = TryCulture(file);
-        return new(file, element, sourceText, culture, exception);
+        return new(file, element, sourceText, culture, isXml);
     }
 
-    private static XElement TryElement(SourceText sourceText, out XmlException? exception)
+    private static bool TryElement(SourceText sourceText, out XElement element)
     {
-        exception = null;
         try
         {
-            return XElement.Parse(sourceText.ToString(), LoadOptions);
+            element = XElement.Parse(sourceText.ToString(), LoadOptions);
+            return true;
         }
-        catch (XmlException x)
+        catch (XmlException)
         {
-            exception = x;
-            return XElement.Parse(@"<root />", LoadOptions);
+            element = XElement.Parse(@"<root />", LoadOptions);
+            return false;
         }
     }
 
