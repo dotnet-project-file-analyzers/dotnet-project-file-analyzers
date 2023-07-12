@@ -108,8 +108,8 @@ public static class Rule
 
     public static DiagnosticDescriptor DefineOutputType => New(
         id: 0010,
-        title: "Define the OutputType explicitly",
-        message: "Define the OutputType explicitly.",
+        title: "Define the project output type explicitly",
+        message: "Define the <OutputType> node explicitly.",
         description:
             "To prevent confusion, explicitly define the OutputType " +
             "as 'Library', 'Exe', 'WinExe' or 'Module'.",
