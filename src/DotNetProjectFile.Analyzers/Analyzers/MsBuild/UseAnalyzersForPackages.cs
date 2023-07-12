@@ -15,9 +15,9 @@ public sealed class UseAnalyzersForPackages : MsBuildProjectFileAnalyzer
                 .SelectMany(group => group.PackageReferences)
                 .ToArray();
 
-            var unusedAnalyzers = Analyzers
-                .Where(analyzer => analyzer.IsApplicable(context.Compilation.Options.Language))
-                .Where(analyzer => packageReferences.None(analyzer.IsMatch));
+            var unusedAnalyzers = Analyzers.Where(analyzer
+                => analyzer.IsApplicable(context.Compilation.Options.Language)
+                && packageReferences.None(analyzer.IsMatch));
 
             foreach (var analyzer in unusedAnalyzers)
             {
