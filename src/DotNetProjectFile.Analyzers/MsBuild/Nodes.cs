@@ -16,8 +16,7 @@ public sealed class Nodes<T> : IReadOnlyList<T> where T : Node
     /// </param>
     public Nodes(Node parent) => Items = parent.Element
         .Elements().Select(parent.Create)
-        .Where(child => child is T)
-        .Cast<T>()
+        .OfType<T>()
         .ToArray();
 
     /// <summary>Gets the number of items.</summary>
