@@ -22,7 +22,7 @@ internal static class AnalysisContextExtensions
     public static void RegisterResourceFileAction(this AnalysisContext context, Action<ResourceFileAnalysisContext> action)
         => context.RegisterCompilationAction(c =>
         {
-            foreach (var resource in DotNetProjectFile.Resx.Resources.Resolve(c.Compilation, c.Options.AdditionalFiles))
+            foreach (var resource in DotNetProjectFile.Resx.Resources.Resolve(c.Compilation, c.Options.AdditionalFiles).Where(r => r.IsXml))
             {
                 action.Invoke(new(resource, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
             }
