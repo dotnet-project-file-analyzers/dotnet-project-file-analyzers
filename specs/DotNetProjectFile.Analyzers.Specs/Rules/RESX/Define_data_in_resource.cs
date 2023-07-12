@@ -19,3 +19,12 @@ public class Guards
         .ForProject(project)
         .HasNoIssues();
 }
+
+public class Ignores
+{
+    [Test]
+    public void invalid_resources()
+         => new Resx.DefineData()
+        .ForProject("ResxNoXml.cs")
+        .HasNoIssues();
+}
