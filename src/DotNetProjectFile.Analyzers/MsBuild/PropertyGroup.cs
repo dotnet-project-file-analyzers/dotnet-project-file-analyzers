@@ -11,6 +11,7 @@ public sealed class PropertyGroup : Node
         TargetFrameworks = Children<TargetFrameworks>();
         ImplicitUsings = Children<ImplicitUsings>();
         NuGetAudit = Children<NuGetAudit>();
+        OutputType = Children<OutputType>();
     }
 
     public Nodes<TargetFramework> TargetFramework { get; }
@@ -20,4 +21,6 @@ public sealed class PropertyGroup : Node
     public Nodes<ImplicitUsings> ImplicitUsings { get; }
 
     public Nodes<NuGetAudit> NuGetAudit { get; }
+
+    public Nodes<OutputType> OutputType { get; }
 }

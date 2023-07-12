@@ -73,6 +73,7 @@ public class Node
         nameof(Import) /*...........*/ => new Import(element, Project),
         nameof(ItemGroup) /*........*/ => new ItemGroup(element, Project),
         nameof(NuGetAudit) /*.......*/ => new NuGetAudit(element, Project),
+        nameof(OutputType) /*.......*/ => new OutputType(element, Project),
         nameof(PackageReference) /*.*/ => new PackageReference(element, Project),
         nameof(PropertyGroup) /*....*/ => new PropertyGroup(element, Project),
         nameof(TargetFramework) /*..*/ => new TargetFramework(element, Project),
