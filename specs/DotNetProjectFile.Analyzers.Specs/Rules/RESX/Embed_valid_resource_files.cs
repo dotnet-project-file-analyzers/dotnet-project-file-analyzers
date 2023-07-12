@@ -3,11 +3,11 @@
 public class Reports
 {
     [Test]
-    public void unsorted_data()
+    public void no_XML()
         => new Resx.EmbedValidResourceFiles()
         .ForProject("ResxNoXml.cs")
         .HasIssue(
-            new Issue("Proj2000", "Invalid XML: Unexpected end of file has occurred. The following elements are not closed: root. Line 1, position 7."));
+            new Issue("Proj2000", "Invalid XML: Unexpected end of file has occurred. The following elements are not closed: root. Line 2, position 1."));
 }
 
 public class Guards
