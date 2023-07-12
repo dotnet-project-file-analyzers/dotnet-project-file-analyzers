@@ -143,7 +143,7 @@ public static class Rule
         message: "Resource file {0}",
         description: "A resource file should contain valid XML.",
         tags: new[] { "resx", "resources" },
-        category: Category.Noise,
+        category: Category.Bug,
         isEnabled: true,
         severity: DiagnosticSeverity.Error);
 
@@ -165,6 +165,17 @@ public static class Rule
             "the `<data>` elements should be sorted based on the `@name` attribute.",
         tags: new[] { "resx", "resources" },
         category: Category.Clarity,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor AddInvariantResources => New(
+        id: 2003,
+        title: "Add invariant resources",
+        message: "Add invariant resource.",
+        description:
+            "To ensure that resources can be resolved, there should always be " +
+            "a invariant, default resource.",
+        tags: new[] { "resx", "resources", "cultureInfo" },
+        category: Category.Bug,
         isEnabled: true);
 
 #pragma warning disable S107 // Methods should not have too many parameters
