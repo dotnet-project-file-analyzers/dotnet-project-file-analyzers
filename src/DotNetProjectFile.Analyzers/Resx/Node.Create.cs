@@ -8,8 +8,9 @@ public partial class Node
         => element.Name.LocalName switch
         {
             null => null,
-            "data" /*..*/ => new Data(element, Resource),
-            "value" /*.*/ => new Value(element, Resource),
+            "resheader" /*.*/ => new ResHeader(element, Resource),
+            "data" /*......*/ => new Data(element, Resource),
+            "value" /*.....*/ => new Value(element, Resource),
             _ => new Unknown(element, Resource),
         };
 }

@@ -16,5 +16,6 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj1003** Use Sonar analyzers](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj1003.md)
 
 ## Resource file rules
+* [**Proj2000** Embed valid resource files](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj2000.md)
 * [**Proj2001** Define data in a resource file](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj2001.md)
 * [**Proj2002** Sort resource file values alphabetically](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj2002.md)

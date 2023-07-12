@@ -1,18 +1,21 @@
 ﻿using Microsoft.CodeAnalysis.Text;
 using System.Globalization;
 using System.IO;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace DotNetProjectFile.Resx;
 
 public sealed class Resource : Node
 {
-    public Resource(FileInfo path, XElement element, SourceText sourceText, CultureInfo culture)
+    public Resource(FileInfo path, XElement element, SourceText sourceText, CultureInfo culture, bool isXml)
         : base(element, null)
     {
         Path = path;
         SourceText = sourceText;
         Culture = culture;
+        IsXml = isXml;
+        Headers = Children<ResHeader>();
         Data = Children<Data>();
     }
 
@@ -22,26 +25,32 @@ public sealed class Resource : Node
 
     public CultureInfo Culture { get; }
 
+    public Nodes<ResHeader> Headers { get; }
+
     public Nodes<Data> Data { get; }
+
+    public bool IsXml { get; }
 
     public static Resource Load(AdditionalText text)
     {
         var file = new FileInfo(text.Path);
         var sourceText = text.GetText()!;
-        var element = TryElement(sourceText);
+        var isXml = TryElement(sourceText, out var element);
         var culture = TryCulture(file);
-        return new(file, element, sourceText, culture);
+        return new(file, element, sourceText, culture, isXml);
     }
 
-    private static XElement TryElement(SourceText sourceText)
+    private static bool TryElement(SourceText sourceText, out XElement element)
     {
         try
         {
-            return XElement.Parse(sourceText.ToString(), LoadOptions);
+            element = XElement.Parse(sourceText.ToString(), LoadOptions);
+            return true;
         }
-        catch
+        catch (XmlException)
         {
-            return XElement.Parse(@"<root valid=""false"" />", LoadOptions);
+            element = XElement.Parse(@"<root />", LoadOptions);
+            return false;
         }
     }
 
