@@ -5,28 +5,29 @@ namespace DotNetProjectFile.MsBuild;
 /// <summary>Represents a collection of <see cref="Node"/>s.</summary>
 [DebuggerTypeProxy(typeof(CollectionDebugView))]
 [DebuggerDisplay("{DebuggerDisplay}")]
-public sealed class Nodes<T> : IEnumerable<T> where T : Node
+public sealed class Nodes<T> : IReadOnlyList<T> where T : Node
 {
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private readonly IReadOnlyList<T> Items;
+
     /// <summary>Initializes a new instance of the <see cref="Nodes{T}"/> class.</summary>
     /// <param name="parent">
     /// The parent <see cref="Node"/>.
     /// </param>
-    public Nodes(Node parent)
-    {
-        Parent = parent;
-    }
+    public Nodes(Node parent) => Items = parent.Element
+        .Elements().Select(parent.Create)
+        .Where(child => child is T)
+        .Cast<T>()
+        .ToArray();
 
     /// <summary>Gets the number of items.</summary>
-    public int Count => Items.Count();
+    public int Count => Items.Count;
 
     /// <summary>Gets the specified item.</summary>
     /// <param name="index">
     /// The index of the item.
     /// </param>
-    public T this[int index] => Items.Skip(index).FirstOrDefault();
-
-    /// <summary>The parent node.</summary>
-    private Node Parent { get; set; }
+    public T this[int index] => Items[index];
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [ExcludeFromCodeCoverage/* Justification = "Debug experience only." */]
@@ -39,8 +40,4 @@ public sealed class Nodes<T> : IEnumerable<T> where T : Node
     /// <inheritdoc />
     [ExcludeFromCodeCoverage]
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-
-    /// <summary>Helper property to select the needed children.</summary>
-    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private IEnumerable<T> Items => Parent.Children().Where(child => child is T).Cast<T>();
 }

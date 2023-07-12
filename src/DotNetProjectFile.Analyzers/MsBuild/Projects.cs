@@ -92,7 +92,7 @@ public sealed class Projects
     private static bool HasName(FileInfo file, string? name)
         => string.Equals(Path.GetFileNameWithoutExtension(file.FullName), name, StringComparison.OrdinalIgnoreCase);
 
-    public static Projects Init(CompilationAnalysisContext context) 
+    public static Projects Init(CompilationAnalysisContext context)
         => Cache.Get(context.Compilation, () => New(context));
 
     private static Projects New(CompilationAnalysisContext context)
