@@ -23,7 +23,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
 ToBeReleased
-- Prop2002: Sort resource file values alphabetically. (NEW RULE)
+- Proj2002: Sort resource file values alphabetically. (NEW RULE)
 v1.0.5
 - Proj1003: Sonar Analyzers defined in prop. (FP)
 v1.0.4

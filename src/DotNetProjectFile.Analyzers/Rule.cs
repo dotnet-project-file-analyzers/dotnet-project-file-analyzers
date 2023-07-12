@@ -96,10 +96,10 @@ public static class Rule
 
     public static DiagnosticDescriptor DefineSingleTargetFramework => New(
         id: 0009,
-        title: "Use the TragetFramework node for a single target framework",
-        message: "Use the TargetFramework node instead.",
+        title: "Use the <TargetFramework> node for a single target framework",
+        message: "Use the <TargetFramework> node instead.",
         description:
-            "To prevent confusion, only use the TargetFrameworks node when " +
+            "To prevent confusion, only use the <TargetFrameworks> node when " +
             "there are multiple target frameworks.",
         tags: new[] { "target framework", "confusion" },
         category: Category.Clarity,
