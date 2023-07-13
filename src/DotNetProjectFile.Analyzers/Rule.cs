@@ -1,7 +1,5 @@
 ﻿#pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
-using System.Text.RegularExpressions;
-
 namespace DotNetProjectFile;
 
 public static class Rule
@@ -191,6 +189,17 @@ public static class Rule
         tags: new[] { "resx", "resources", "invariant", "localization" },
         category: Category.Bug,
         isEnabled: true);
+
+    public static DiagnosticDescriptor AddInvariantFallbackValues => New(
+       id: 2004,
+       title: "Add invariant fallback values",
+       message: "Add invariant fallback value for '{0}'.",
+       description:
+           "To ensure that localized values can be resolved, a localized value " +
+           "file must have a culture invariant alternative.",
+       tags: new[] { "resx", "resources", "invariant", "localization" },
+       category: Category.Bug,
+       isEnabled: true);
 
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.

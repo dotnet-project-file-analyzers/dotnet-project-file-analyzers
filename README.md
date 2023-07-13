@@ -72,6 +72,7 @@ To add a props file:
 * [**Proj2001** Define data in a resource file](rules/Proj2001.md)
 * [**Proj2002** Sort resource file values alphabetically](rules/Proj2002.md)
 * [**Proj2003** Add invariant fallback resources](rules/Proj2003.md)
+* [**Proj2004** Add invariant fallback values](rules/Proj2004.md)
 
 ## Reference an analyzer from a project
 For debugging/development purposes, it can be useful to reference the analyzer

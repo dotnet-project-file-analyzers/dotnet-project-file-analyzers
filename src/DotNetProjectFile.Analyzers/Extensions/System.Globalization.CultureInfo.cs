@@ -6,16 +6,12 @@ internal static class CultureInfoExtensions
     {
         var parent = culture.Parent;
 
-        while (parent is { })
+        while (!parent.IsInvariant())
         {
             yield return parent;
             parent = parent.Parent;
-
-            if (parent.IsInvariant())
-            {
-                yield break;
-            }
         }
+        yield return CultureInfo.InvariantCulture;
     }
 
     public static bool IsInvariant(this CultureInfo culture) => culture == CultureInfo.InvariantCulture;

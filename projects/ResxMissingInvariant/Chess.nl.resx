@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+   <resheader name="reader">
+    <value>System.Resources.ResXResourceReader</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter</value>
+  </resheader>
+  <data name="Knight" xml:space="preserve">
+    <value>Paard</value>
+  </data>
+  <data name="Pawn" xml:space="preserve">
+    <value>Pion</value>
+  </data>
+  <data name="Queen" xml:space="preserve">
+    <value>Dame</value>
+  </data>
+</root>

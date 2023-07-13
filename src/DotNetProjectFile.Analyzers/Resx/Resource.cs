@@ -5,8 +5,11 @@ using System.Xml.Linq;
 
 namespace DotNetProjectFile.Resx;
 
+[DebuggerDisplay("Culture = {Culture.Name}, Count = {Data.Count}")]
 public sealed class Resource : Node
 {
+    private readonly Dictionary<string, Data> lookup = new();
+
     public Resource(
         ResourceFileInfo path,
         XElement element,
@@ -21,6 +24,11 @@ public sealed class Resource : Node
         Resources = resources;
         Headers = Children<ResHeader>();
         Data = Children<Data>();
+
+        foreach (var data in Data.Where(d => d.Name is { Length: > 0 }))
+        {
+            lookup[data.Name!] = data;
+        }
     }
 
     public ResourceFileInfo Path { get; }
@@ -43,6 +51,8 @@ public sealed class Resource : Node
     public bool IsXml { get; }
 
     public bool ForInvariantCulture => Culture.IsInvariant();
+
+    public bool Contains(string? name) => name is { } && lookup.ContainsKey(name);
 
     public static Resource Load(AdditionalText text, Resources resources)
     {
