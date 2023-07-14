@@ -13,14 +13,14 @@ internal static class NodeFactory
 {
     private static readonly Type[] constructorArgumentTypes = GetConstructorParameterTypes();
     private static readonly ParameterExpression[] constructorArgumentExpressions = constructorArgumentTypes.Select(x => Expression.Parameter(x)).ToArray();
-    private static readonly IReadOnlyDictionary<string, ConstructorFunc> constructors = BuildConstructorMap();
+    private static readonly IReadOnlyDictionary<string, ConstructorFunc> map = BuildConstructorMap();
 
     public static Node? Create(XElement element, Node parent, Project project)
         => element.Name.LocalName switch
         {
-            null => null,
-            string name when constructors.TryGetValue(name, out var con) => con(element, parent, project),
-            _ => new Unknown(element, parent, project),
+            null /*.......................................*/ => null,
+            var n when map.TryGetValue(n, out var con) /*.*/ => con(element, parent, project),
+            _ /*..........................................*/ => new Unknown(element, parent, project),
         };
 
     private static Type[] GetConstructorParameterTypes()
