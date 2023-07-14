@@ -81,7 +81,7 @@ public class Node
         nameof(PropertyGroup) /*....*/ => new PropertyGroup(element, this, Project),
         nameof(TargetFramework) /*..*/ => new TargetFramework(element, this, Project),
         nameof(TargetFrameworks) /*.*/ => new TargetFrameworks(element, this, Project),
-        _ => new Unknown(element, Project),
+        _ => new Unknown(element, this, Project),
     };
 
     protected T? Convert<T>(string? value, [CallerMemberName] string? propertyName = null)
