@@ -21,7 +21,7 @@ public sealed class ItemGroup : Node
     /// <param name="element">
     /// The corresponding <see cref="XElement"/>.
     /// </param>
-    public ItemGroup(XElement element, Project project) : base(element, project)
+    public ItemGroup(XElement element, Node parent, Project project) : base(element, parent, project)
     {
         PackageReferences = Children<PackageReference>();
         Folders = Children<Folder>();

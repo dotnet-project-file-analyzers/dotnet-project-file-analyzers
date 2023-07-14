@@ -1,7 +1,7 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
 using System.Xml.Linq;
-using ConstructorFunc = System.Func<System.Xml.Linq.XElement, DotNetProjectFile.MsBuild.Project, DotNetProjectFile.MsBuild.Node>;
+using ConstructorFunc = System.Func<System.Xml.Linq.XElement, DotNetProjectFile.MsBuild.Node, DotNetProjectFile.MsBuild.Project, DotNetProjectFile.MsBuild.Node>;
 
 namespace DotNetProjectFile.MsBuild;
 
@@ -15,7 +15,7 @@ public static class NodeFactory
     private static readonly ParameterExpression[] constructorArgumentExpressions = constructorArgumentTypes.Select(x => Expression.Parameter(x)).ToArray();
     private static readonly IReadOnlyDictionary<string, ConstructorFunc> constructors = BuildConstructorMap();
 
-    public static Node? Create(XElement element, Project project)
+    public static Node? Create(XElement element, Node parent, Project project)
     {
         var name = element.Name.LocalName;
 
@@ -26,10 +26,10 @@ public static class NodeFactory
 
         if (constructors.TryGetValue(name, out var constructor))
         {
-            return constructor(element, project);
+            return constructor(element, parent, project);
         }
 
-        return new Unknown(element, project);
+        return new Unknown(element, parent, project);
     }
 
     private static Type[] GetConstructorParameterTypes()

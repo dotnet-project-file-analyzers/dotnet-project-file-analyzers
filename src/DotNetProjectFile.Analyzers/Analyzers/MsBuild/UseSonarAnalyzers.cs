@@ -10,7 +10,7 @@ public sealed class UseSonarAnalyzers : MsBuildProjectFileAnalyzer
         if (context.Project.IsProject
             && Include(context.Compilation.Options.Language) is { } include
             && context.Project
-                .AncestorsAndSelf()
+                .ImportsAndSelf()
                 .SelectMany(p => p.ItemGroups)
                 .SelectMany(i => i.PackageReferences).None(p => Includes(p, include)))
         {

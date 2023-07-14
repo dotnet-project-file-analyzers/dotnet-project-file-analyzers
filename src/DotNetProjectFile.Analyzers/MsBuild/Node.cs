@@ -10,9 +10,10 @@ namespace DotNetProjectFile.MsBuild;
 public class Node
 {
     /// <summary>Initializes a new instance of the <see cref="Node"/> class.</summary>
-    protected Node(XElement element, Project? project)
+    protected Node(XElement element, Node? parent, Project? project)
     {
         Element = element;
+        Parent = parent;
         Project = project ?? (this as Project) ?? throw new ArgumentNullException(nameof(project));
     }
 
@@ -20,11 +21,15 @@ public class Node
 
     internal readonly Project Project;
 
+    public Node? Parent { get; }
+
     /// <summary>Gets the local name of the <see cref="Node"/>.</summary>
     public virtual string LocalName => GetType().Name;
 
     /// <summary>Gets the label of the node.</summary>
     public string? Label => Attribute();
+
+    public string? Condition => Attribute();
 
     /// <summary>Get the line info.</summary>
     public IXmlLineInfo LineInfo => Element;
@@ -50,6 +55,17 @@ public class Node
     /// </remarks>
     public override string ToString() => Element.ToString();
 
+    public IEnumerable<Node> AncestorsAndSelf()
+    {
+        var parent = this;
+
+        while (parent is { })
+        {
+            yield return parent;
+            parent = parent.Parent;
+        }
+    }
+
     /// <summary>Gets the a <see cref="Nodes{T}"/> of children.</summary>
     public Nodes<T> Children<T>() where T : Node => new(this);
 
@@ -65,7 +81,7 @@ public class Node
     public string? Attribute([CallerMemberName] string? propertyName = null)
         => Element.Attribute(propertyName)?.Value;
 
-    internal Node? Create(XElement element) => NodeFactory.Create(element, Project);
+    internal Node? Create(XElement element) => NodeFactory.Create(element, this, Project);
 
     protected T? Convert<T>(string? value, [CallerMemberName] string? propertyName = null)
         => Converters.TryConvert<T>(value, GetType(), propertyName!);

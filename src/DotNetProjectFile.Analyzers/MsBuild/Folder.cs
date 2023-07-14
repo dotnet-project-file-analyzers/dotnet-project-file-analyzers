@@ -5,7 +5,7 @@ namespace DotNetProjectFile.MsBuild;
 
 public sealed class Folder : Node
 {
-    public Folder(XElement element, Project project) : base(element, project) { }
+    public Folder(XElement element, Node parent, Project project) : base(element, parent, project) { }
 
     public string? Include => Attribute();
 
