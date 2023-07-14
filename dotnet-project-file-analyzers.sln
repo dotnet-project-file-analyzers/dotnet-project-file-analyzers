@@ -32,6 +32,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rules", "Rules", "{50507CD3
 		rules\Proj0008.md = rules\Proj0008.md
 		rules\Proj0009.md = rules\Proj0009.md
 		rules\Proj0010.md = rules\Proj0010.md
+		rules\Proj0011.md = rules\Proj0011.md
 		rules\Proj1000.md = rules\Proj1000.md
 		rules\Proj1001.md = rules\Proj1001.md
 		rules\Proj1003.md = rules\Proj1003.md
@@ -115,7 +116,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResxNoHeaders", "projects\R
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResxNoInvariant", "projects\ResxNoInvariant\ResxNoInvariant.csproj", "{5522D7B2-00F5-45C6-81B7-47EA8D899FF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResxMissingInvariant", "projects\ResxMissingInvariant\ResxMissingInvariant.csproj", "{DF3076CB-B7AD-4BC8-8079-AAEC10B5D4D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResxMissingInvariant", "projects\ResxMissingInvariant\ResxMissingInvariant.csproj", "{DF3076CB-B7AD-4BC8-8079-AAEC10B5D4D9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

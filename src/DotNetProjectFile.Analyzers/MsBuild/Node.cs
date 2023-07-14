@@ -71,6 +71,7 @@ public class Node
         nameof(Folder) /*...........*/ => new Folder(element, Project),
         nameof(ImplicitUsings) /*...*/ => new ImplicitUsings(element, Project),
         nameof(Import) /*...........*/ => new Import(element, Project),
+        nameof(IsPackable) /*........*/ => new IsPackable(element, Project),
         nameof(ItemGroup) /*........*/ => new ItemGroup(element, Project),
         nameof(NuGetAudit) /*.......*/ => new NuGetAudit(element, Project),
         nameof(OutputType) /*.......*/ => new OutputType(element, Project),
