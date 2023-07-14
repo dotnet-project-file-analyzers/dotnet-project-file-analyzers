@@ -29,6 +29,8 @@ public class Node
     /// <summary>Gets the label of the node.</summary>
     public string? Label => Attribute();
 
+    public string? Condition => Attribute();
+
     /// <summary>Get the line info.</summary>
     public IXmlLineInfo LineInfo => Element;
 
@@ -52,6 +54,17 @@ public class Node
     /// The <see cref="XNode.ToString()"/> of the underlying <see cref="XElement"/> is called.
     /// </remarks>
     public override string ToString() => Element.ToString();
+
+    public IEnumerable<Node> AncestorsAndSelf()
+    {
+        var parent = this;
+
+        while (parent is { })
+        {
+            yield return parent;
+            parent = parent.Parent;
+        }
+    }
 
     /// <summary>Gets the a <see cref="Nodes{T}"/> of children.</summary>
     public Nodes<T> Children<T>() where T : Node => new(this);
