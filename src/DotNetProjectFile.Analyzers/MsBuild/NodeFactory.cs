@@ -16,21 +16,12 @@ internal static class NodeFactory
     private static readonly IReadOnlyDictionary<string, ConstructorFunc> constructors = BuildConstructorMap();
 
     public static Node? Create(XElement element, Node parent, Project project)
-    {
-        var name = element.Name.LocalName;
-
-        if (name is null)
+        => element.Name.LocalName switch
         {
-            return null;
-        }
-
-        if (constructors.TryGetValue(name, out var constructor))
-        {
-            return constructor(element, parent, project);
-        }
-
-        return new Unknown(element, parent, project);
-    }
+            null => null,
+            string name when constructors.TryGetValue(name, out var con) => con(element, parent, project),
+            _ => new Unknown(element, parent, project),
+        };
 
     private static Type[] GetConstructorParameterTypes()
     {
