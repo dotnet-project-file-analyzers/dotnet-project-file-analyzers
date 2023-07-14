@@ -5,7 +5,7 @@ namespace DotNetProjectFile.MsBuild;
 
 public sealed class Import : Node
 {
-    public Import(XElement element, Project project) : base(element, project) { }
+    public Import(XElement element, Node parent, Project project) : base(element, parent, project) { }
 
     public Project? Value
     {

@@ -7,7 +7,7 @@ namespace DotNetProjectFile.MsBuild;
 public sealed class Project : Node
 {
     private Project(FileInfo path, SourceText text, Projects projects, bool isAdditional, bool isProject)
-        : base(XElement.Parse(text.ToString(), LoadOptions), null!)
+        : base(XElement.Parse(text.ToString(), LoadOptions), null, null)
     {
         Path = path;
         Text = text;

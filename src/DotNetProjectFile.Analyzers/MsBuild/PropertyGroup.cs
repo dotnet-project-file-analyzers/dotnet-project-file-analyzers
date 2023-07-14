@@ -5,7 +5,7 @@ namespace DotNetProjectFile.MsBuild;
 public sealed class PropertyGroup : Node
 {
     /// <summary>Initializes a new instance of the <see cref="PropertyGroup"/> class.</summary>
-    public PropertyGroup(XElement element, Project project) : base(element, project)
+    public PropertyGroup(XElement element, Node parent, Project project) : base(element, parent, project)
     {
         TargetFramework = Children<TargetFramework>();
         TargetFrameworks = Children<TargetFrameworks>();
