@@ -10,9 +10,10 @@ namespace DotNetProjectFile.MsBuild;
 public class Node
 {
     /// <summary>Initializes a new instance of the <see cref="Node"/> class.</summary>
-    protected Node(XElement element, Project? project)
+    protected Node(XElement element, Node? parent, Project? project)
     {
         Element = element;
+        Parent = parent;
         Project = project ?? (this as Project) ?? throw new ArgumentNullException(nameof(project));
     }
 
@@ -20,11 +21,15 @@ public class Node
 
     internal readonly Project Project;
 
+    public Node? Parent { get; }
+
     /// <summary>Gets the local name of the <see cref="Node"/>.</summary>
     public virtual string LocalName => GetType().Name;
 
     /// <summary>Gets the label of the node.</summary>
     public string? Label => Attribute();
+
+    public string? Condition => Attribute();
 
     /// <summary>Get the line info.</summary>
     public IXmlLineInfo LineInfo => Element;
@@ -50,6 +55,17 @@ public class Node
     /// </remarks>
     public override string ToString() => Element.ToString();
 
+    public IEnumerable<Node> AncestorsAndSelf()
+    {
+        var parent = this;
+
+        while (parent is { })
+        {
+            yield return parent;
+            parent = parent.Parent;
+        }
+    }
+
     /// <summary>Gets the a <see cref="Nodes{T}"/> of children.</summary>
     public Nodes<T> Children<T>() where T : Node => new(this);
 
@@ -68,17 +84,17 @@ public class Node
     internal Node? Create(XElement element) => element.Name.LocalName switch
     {
         null => null,
-        nameof(Folder) /*...........*/ => new Folder(element, Project),
-        nameof(ImplicitUsings) /*...*/ => new ImplicitUsings(element, Project),
-        nameof(Import) /*...........*/ => new Import(element, Project),
-        nameof(ItemGroup) /*........*/ => new ItemGroup(element, Project),
-        nameof(NuGetAudit) /*.......*/ => new NuGetAudit(element, Project),
-        nameof(OutputType) /*.......*/ => new OutputType(element, Project),
-        nameof(PackageReference) /*.*/ => new PackageReference(element, Project),
-        nameof(PropertyGroup) /*....*/ => new PropertyGroup(element, Project),
-        nameof(TargetFramework) /*..*/ => new TargetFramework(element, Project),
-        nameof(TargetFrameworks) /*.*/ => new TargetFrameworks(element, Project),
-        _ => new Unknown(element, Project),
+        nameof(Folder) /*...........*/ => new Folder(element, this, Project),
+        nameof(ImplicitUsings) /*...*/ => new ImplicitUsings(element, this, Project),
+        nameof(Import) /*...........*/ => new Import(element, this, Project),
+        nameof(ItemGroup) /*........*/ => new ItemGroup(element, this, Project),
+        nameof(NuGetAudit) /*.......*/ => new NuGetAudit(element, this, Project),
+        nameof(OutputType) /*.......*/ => new OutputType(element, this, Project),
+        nameof(PackageReference) /*.*/ => new PackageReference(element, this, Project),
+        nameof(PropertyGroup) /*....*/ => new PropertyGroup(element, this, Project),
+        nameof(TargetFramework) /*..*/ => new TargetFramework(element, this, Project),
+        nameof(TargetFrameworks) /*.*/ => new TargetFrameworks(element, this, Project),
+        _ => new Unknown(element, this, Project),
     };
 
     protected T? Convert<T>(string? value, [CallerMemberName] string? propertyName = null)

@@ -10,7 +10,7 @@ public sealed class RunNuGetSecurityAuditsAutomatically : MsBuildProjectFileAnal
         if (context.Project.IsProject)
         {
             var audits = context.Project
-                .AncestorsAndSelf()
+                .ImportsAndSelf()
                 .SelectMany(p => p.PropertyGroups)
                 .SelectMany(g => g.NuGetAudit);
 

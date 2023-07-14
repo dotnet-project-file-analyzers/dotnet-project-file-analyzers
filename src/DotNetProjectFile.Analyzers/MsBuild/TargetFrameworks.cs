@@ -4,7 +4,7 @@ namespace DotNetProjectFile.MsBuild;
 
 public sealed class TargetFrameworks : Node
 {
-    public TargetFrameworks(XElement element, Project? project) : base(element, project) { }
+    public TargetFrameworks(XElement element, Node parent, Project project) : base(element, parent, project) { }
 
     public IReadOnlyList<string> Values
         => Element.Value?.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
