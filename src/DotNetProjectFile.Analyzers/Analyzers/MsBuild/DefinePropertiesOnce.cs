@@ -1,4 +1,6 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+﻿using System.Xml.Linq;
+
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class DefinePropertiesOnce : MsBuildProjectFileAnalyzer
@@ -21,17 +23,22 @@ public sealed class DefinePropertiesOnce : MsBuildProjectFileAnalyzer
     private sealed class PropertyComparer : IEqualityComparer<Node>
     {
         public bool Equals(Node x, Node y)
-            => x.LocalName == y.LocalName
+            => Name(x) == Name(y)
             && Condition(x) == Condition(y);
 
         public int GetHashCode(Node obj)
-            => (obj.LocalName.GetHashCode() * 13)
+            => (Name(obj).GetHashCode() * 13)
             ^ Condition(obj).GetHashCode();
 
+        private static string Name(Node node)
+            => node.LocalName == nameof(TargetFrameworks)
+            ? nameof(TargetFramework)
+            : node.LocalName;
+
         private static string Condition(Node node)
-        => node.AncestorsAndSelf()
-        .Select(n => n.Condition)
-        .FirstOrDefault(c => c is { })
-        ?? string.Empty;
+            => node.AncestorsAndSelf()
+            .Select(n => n.Condition)
+            .FirstOrDefault(c => c is { })
+            ?? string.Empty;
     }
 }

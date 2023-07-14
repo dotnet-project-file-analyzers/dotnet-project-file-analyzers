@@ -6,6 +6,7 @@
     <ImplicitUsings>disable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <ProductName>Test project</ProductName>
+    <Authors>Corniel Nobel, Wesley Baartman</Authors>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -15,6 +16,11 @@
 
   <PropertyGroup Condition="'1' == '1'">
     <ProductName>Test project</ProductName>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Authors Condition="'2' == '1'">Corniel Nobel, Wesley Baartman</Authors>
+    <ProductName Condition="'1' == '1'">Test project</ProductName>
   </PropertyGroup>
 
 </Project>

@@ -6,6 +6,13 @@
     <NuGetAudit>true</NuGetAudit>
   </PropertyGroup>
 
+  <PropertyGroup Label="Package">
+    <Authors>Corniel Nobel, Wesley Baartman</Authors>
+    <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
+    <ProductName>.NET project file analyzers</ProductName>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
   <ItemGroup>
     <AdditionalFiles Include="../../props/common.props" Link="Properties/common.props" />
   </ItemGroup>

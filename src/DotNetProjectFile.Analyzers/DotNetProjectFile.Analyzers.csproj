@@ -13,12 +13,9 @@
 
   <PropertyGroup Label="Package settings">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</PackageProjectUrl>
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
-    <Authors>Corniel Nobel</Authors>
-    <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
     <Version>1.0.6</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
