@@ -122,7 +122,7 @@ public static class Rule
         id: 0011,
         title: "Define properties once",
         message: "Property <{0}> has been already defined.",
-        description: "Defining properties multiple times .. TODO .",
+        description: "MS Build will only select one value of a property.",
         tags: new[] { "Configuration", "confusion" },
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,

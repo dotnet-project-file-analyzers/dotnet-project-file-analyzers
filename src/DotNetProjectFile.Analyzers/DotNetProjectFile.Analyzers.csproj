@@ -20,6 +20,8 @@
     <Version>1.0.6</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+ToBeReleased
+- Proj0011: Define properties once (NEW RULE)
 v1.0.6
 - Proj0010: Define OutputType explicitly. (NEW RULE)
 - Proj1001: Reported dependency with missing analyser is now nearest name match. (FP)
