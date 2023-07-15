@@ -18,10 +18,6 @@ public class RunAll
     public string File { get; set; } = string.Empty;
 
     [Benchmark]
-    public Task<Compilation> GetCompilation()
-        => Context!.GetCompilationAsync();
-
-    [Benchmark]
     public Task<IReadOnlyCollection<Diagnostic>> GetDiagnostics()
         => Context!.GetDiagnosticsAsync();
 
