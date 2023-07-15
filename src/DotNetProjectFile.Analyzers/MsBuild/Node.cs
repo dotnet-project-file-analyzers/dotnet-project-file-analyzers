@@ -80,6 +80,7 @@ public class Node
     /// <summary>Gets the <see cref="string"/> value of a child element.</summary>
     public string? Attribute([CallerMemberName] string? propertyName = null)
         => Element.Attribute(propertyName)?.Value;
+
     internal Node? Create(XElement element) => NodeFactory.Create(element, this, Project);
 
     protected T? Convert<T>(string? value, [CallerMemberName] string? propertyName = null)
