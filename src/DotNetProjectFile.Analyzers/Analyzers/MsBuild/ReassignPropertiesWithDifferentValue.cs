@@ -7,6 +7,8 @@ public sealed class ReassignPropertiesWithDifferentValue : MsBuildProjectFileAna
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
+        if (context.Project.Imports.None()) { return; }
+
         foreach (var prop in context.Project.PropertyGroups.SelectMany(p => p.Children()))
         {
             if (EarlierAssignement(prop, context.Project) is { } previous
@@ -19,7 +21,7 @@ public sealed class ReassignPropertiesWithDifferentValue : MsBuildProjectFileAna
 
     private static Node? EarlierAssignement(Node node, MsBuildProject project)
     {
-        foreach (var import in project.ImportsAndSelf().Skip(1))
+        foreach (var import in project.ImportsAndSelf().Reverse().Skip(1))
         {
             if (import.PropertyGroups
                 .SelectMany(p => p.Children())

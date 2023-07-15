@@ -7,11 +7,9 @@ public class Reports
        => new ReassignPropertiesWithDifferentValue()
        .ForProject("ReassignProperties.cs")
        .HasIssues(
-            new Issue("Proj0012", "Property <OutputType> has previously be defined with the same value.").WithSpan(/*......*/6, 5, 6, 36),
-            new Issue("Proj0012", "Property <TargetFramework> has previously be defined with the same value.").WithSpan(/*.*/5, 5, 5, 45),
-            new Issue("Proj0012", "Property <Nullable> has previously be defined with the same value.").WithSpan(/*........*/6, 5, 6, 31),
-            new Issue("Proj0012", "Property <OutputType> has previously be defined with the same value.").WithSpan(/*......*/7, 5, 7, 36),
-            new Issue("Proj0012", "Property <NuGetAudit> has previously be defined with the same value.").WithSpan(/*......*/8, 5, 8, 34));
+            new Issue("Proj0012", "Property <OutputType> has previously be defined with the same value.").WithSpan(/*.*/6, 5, 6, 36),
+            new Issue("Proj0012", "Property <Nullable> has previously be defined with the same value.").WithSpan(/*...*/6, 5, 6, 31),
+            new Issue("Proj0012", "Property <OutputType> has previously be defined with the same value.").WithSpan(/*.*/7, 5, 7, 36));
 }
 
 public class Guards
