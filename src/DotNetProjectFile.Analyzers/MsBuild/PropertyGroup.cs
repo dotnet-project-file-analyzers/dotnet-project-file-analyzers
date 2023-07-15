@@ -12,6 +12,7 @@ public sealed class PropertyGroup : Node
         ImplicitUsings = Children<ImplicitUsings>();
         NuGetAudit = Children<NuGetAudit>();
         OutputType = Children<OutputType>();
+        IsPackable = Children<IsPackable>();
     }
 
     public Nodes<TargetFramework> TargetFramework { get; }
@@ -23,4 +24,6 @@ public sealed class PropertyGroup : Node
     public Nodes<NuGetAudit> NuGetAudit { get; }
 
     public Nodes<OutputType> OutputType { get; }
+
+    public Nodes<IsPackable> IsPackable { get; }
 }

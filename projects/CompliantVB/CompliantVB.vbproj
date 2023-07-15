@@ -5,6 +5,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <OutputType>Library</OutputType>
     <NuGetAudit>true</NuGetAudit>
+    <IsPackable>true</IsPackable>
     <OptionStrict>On</OptionStrict>
   </PropertyGroup>
 
