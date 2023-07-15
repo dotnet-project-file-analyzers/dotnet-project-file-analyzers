@@ -16,7 +16,7 @@ public class Reports
            new Issue("Proj0207", "Define the <Copyright> node explicitly or define the <IsPackable> node with value 'false'."),
            new Issue("Proj0208", "Define the <PackageReleaseNotes> node explicitly or define the <IsPackable> node with value 'false'."),
            new Issue("Proj0209", "Define the <PackageReadmeFile> node explicitly or define the <IsPackable> node with value 'false'."),
-           new Issue("Proj0210", "Define the project license explicitly or define the <IsPackable> node with value 'false'."),
+           new Issue("Proj0210", "Define the <PackageLicenseExpression> or <PackageLicenseFile> node explicitly or define the <IsPackable> node with value 'false'."),
            new Issue("Proj0212", "Define the <PackageIcon> node explicitly or define the <IsPackable> node with value 'false'."),
            new Issue("Proj0213", "Define the <PackageIconUrl> node explicitly or define the <IsPackable> node with value 'false'."));
 

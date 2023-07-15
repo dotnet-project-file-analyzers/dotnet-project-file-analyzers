@@ -6,7 +6,6 @@
     <OutputType>Library</OutputType>
     <NuGetAudit>true</NuGetAudit>
     <IsPackable>false</IsPackable>
-    <IsPackable>true</IsPackable>
     <OptionStrict>On</OptionStrict>
   </PropertyGroup>
 
