@@ -11,7 +11,7 @@ public sealed class ImplicitUsings : Node
         @true,
     }
 
-    public ImplicitUsings(XElement element, Project project) : base(element, project) { }
+    public ImplicitUsings(XElement element, Node parent, Project project) : base(element, parent, project) { }
 
     public Kind? Value => Convert<Kind?>(Element.Value);
 }

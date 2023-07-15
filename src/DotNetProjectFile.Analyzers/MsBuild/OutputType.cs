@@ -12,7 +12,7 @@ public sealed class OutputType : Node
         WinExe,
     }
 
-    public OutputType(XElement element, Project project) : base(element, project) { }
+    public OutputType(XElement element, Node parent, Project project) : base(element, parent, project) { }
 
     public Kind? Value => Convert<Kind?>(Element.Value);
 }

@@ -10,7 +10,7 @@ public sealed class UseAnalyzers : MsBuildProjectFileAnalyzer
         if (context.Project.IsProject)
         {
             var packageReferences = context.Project
-                .AncestorsAndSelf()
+                .ImportsAndSelf()
                 .SelectMany(p => p.ItemGroups)
                 .SelectMany(group => group.PackageReferences)
                 .ToArray();

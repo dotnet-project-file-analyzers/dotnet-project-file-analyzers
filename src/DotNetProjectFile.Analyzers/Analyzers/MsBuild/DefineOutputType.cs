@@ -10,7 +10,7 @@ public sealed class DefineOutputType : MsBuildProjectFileAnalyzer
         if (context.Project.IsProject)
         {
             var outputTypes = context.Project
-                .AncestorsAndSelf()
+                .ImportsAndSelf()
                 .SelectMany(p => p.PropertyGroups)
                 .SelectMany(g => g.OutputType);
 

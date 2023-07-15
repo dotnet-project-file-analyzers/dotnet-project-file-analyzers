@@ -7,7 +7,7 @@ namespace DotNetProjectFile.MsBuild;
 public sealed class Project : Node
 {
     private Project(FileInfo path, SourceText text, Projects projects, bool isAdditional, bool isProject)
-        : base(XElement.Parse(text.ToString(), LoadOptions), null!)
+        : base(XElement.Parse(text.ToString(), LoadOptions), null, null)
     {
         Path = path;
         Text = text;
@@ -32,13 +32,13 @@ public sealed class Project : Node
 
     public Nodes<ItemGroup> ItemGroups => Children<ItemGroup>();
 
-    public IEnumerable<Project> AncestorsAndSelf()
+    public IEnumerable<Project> ImportsAndSelf()
     {
         foreach (var import in Imports)
         {
             if (import.Value is { } project)
             {
-                foreach (var p in project.AncestorsAndSelf())
+                foreach (var p in project.ImportsAndSelf())
                 {
                     yield return p;
                 }

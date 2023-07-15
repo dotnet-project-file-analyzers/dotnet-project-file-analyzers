@@ -118,6 +118,16 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor DefinePropertiesOnce => New(
+        id: 0011,
+        title: "Define properties once",
+        message: "Property <{0}> has been already defined.",
+        description: "MS Build will only select one value of a property.",
+        tags: new[] { "Configuration", "confusion" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0012,
         title: "Define the project packability explicitly",
