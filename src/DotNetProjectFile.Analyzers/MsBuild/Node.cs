@@ -10,7 +10,7 @@ public abstract class Node<T> : Node
     protected Node(XElement element, Node? parent, Project? project)
         : base(element, parent, project) { }
 
-    public override object? Val => Value;
+    public sealed override object? Val => Value;
 
     public abstract T? Value { get; }
 }
@@ -32,7 +32,7 @@ public abstract class Node
 
     public Node? Parent { get; }
 
-    public virtual object? Val { get; }
+    public virtual object? Val => Element.Value;
 
     /// <summary>Gets the local name of the <see cref="Node"/>.</summary>
     public virtual string LocalName => GetType().Name;

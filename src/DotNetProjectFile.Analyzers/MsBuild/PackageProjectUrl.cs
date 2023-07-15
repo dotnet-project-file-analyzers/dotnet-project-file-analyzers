@@ -1,8 +1,8 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class PackageProjectUrl : Node
+public sealed class PackageProjectUrl : Node<string>
 {
     public PackageProjectUrl(XElement element, Node parent, Project project) : base(element, parent, project) { }
 
-    public string Value => Element.Value;
+    public override string? Value => Element.Value;
 }

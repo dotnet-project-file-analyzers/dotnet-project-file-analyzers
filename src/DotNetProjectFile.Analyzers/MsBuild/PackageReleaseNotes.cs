@@ -1,8 +1,8 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class PackageReleaseNotes : Node
+public sealed class PackageReleaseNotes : Node<string>
 {
     public PackageReleaseNotes(XElement element, Node parent, Project project) : base(element, parent, project) { }
 
-    public string Value => Element.Value;
+    public override string? Value => Element.Value;
 }
