@@ -33,8 +33,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rules", "Rules", "{50507CD3
 		rules\Proj0009.md = rules\Proj0009.md
 		rules\Proj0010.md = rules\Proj0010.md
 		rules\Proj0011.md = rules\Proj0011.md
-		rules\Proj1000.md = rules\Proj1000.md
 		rules\Proj0012.md = rules\Proj0012.md
+		rules\Proj1000.md = rules\Proj1000.md
 		rules\Proj1001.md = rules\Proj1001.md
 		rules\Proj1003.md = rules\Proj1003.md
 		rules\Proj2000.md = rules\Proj2000.md
@@ -119,7 +119,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResxNoInvariant", "projects
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResxMissingInvariant", "projects\ResxMissingInvariant\ResxMissingInvariant.csproj", "{DF3076CB-B7AD-4BC8-8079-AAEC10B5D4D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PropertiesTwice", "projects\PropertiesTwice\PropertiesTwice.csproj", "{CA2B4CAD-663A-4992-975A-4D4EAFB60587}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertiesTwice", "projects\PropertiesTwice\PropertiesTwice.csproj", "{CA2B4CAD-663A-4992-975A-4D4EAFB60587}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoIsPackable", "projects\NoIsPackable\NoIsPackable.csproj", "{1EE26CAE-4ADF-4D12-9E12-C5D918EF5AEB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -243,6 +245,10 @@ Global
 		{CA2B4CAD-663A-4992-975A-4D4EAFB60587}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA2B4CAD-663A-4992-975A-4D4EAFB60587}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA2B4CAD-663A-4992-975A-4D4EAFB60587}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1EE26CAE-4ADF-4D12-9E12-C5D918EF5AEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1EE26CAE-4ADF-4D12-9E12-C5D918EF5AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1EE26CAE-4ADF-4D12-9E12-C5D918EF5AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1EE26CAE-4ADF-4D12-9E12-C5D918EF5AEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -280,6 +286,7 @@ Global
 		{5522D7B2-00F5-45C6-81B7-47EA8D899FF9} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
 		{DF3076CB-B7AD-4BC8-8079-AAEC10B5D4D9} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
 		{CA2B4CAD-663A-4992-975A-4D4EAFB60587} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
+		{1EE26CAE-4ADF-4D12-9E12-C5D918EF5AEB} = {46AE4B0F-B941-4E9F-B307-7D7D1E168F64}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3AD1EF71-7465-4ED1-81AD-504C430C8251}
