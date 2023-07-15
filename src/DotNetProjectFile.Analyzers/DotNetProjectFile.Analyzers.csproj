@@ -12,8 +12,11 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
-  <PropertyGroup Label="Package settings">
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  
+  <PropertyGroup Label="Package settings">
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</PackageProjectUrl>
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>

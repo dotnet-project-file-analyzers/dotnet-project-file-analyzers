@@ -7,17 +7,13 @@ public sealed class DefineIsPackable : MsBuildProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.IsProject)
-        {
-            var isPackables = context.Project
+        if (context.Project.IsProject
+            && context.Project
                 .ImportsAndSelf()
                 .SelectMany(p => p.PropertyGroups)
-                .SelectMany(g => g.IsPackable);
-
-            if (isPackables.None())
-            {
-                context.ReportDiagnostic(Descriptor, context.Project);
-            }
+                .SelectMany(g => g.IsPackable).None())
+        {
+            context.ReportDiagnostic(Descriptor, context.Project);
         }
     }
 }
