@@ -8,9 +8,21 @@ public class Rules
     public void Ids_are_unique()
         => Descriptors.Select(d => d.Id).Should().OnlyHaveUniqueItems();
 
-    [TestCaseSource(nameof(Descriptors))]
-    public void have_mark_down_documentation(DiagnosticDescriptor descriptor)
-        => new FileInfo($"../../../../../rules/{descriptor.Id:0000}.md").Exists.Should().BeTrue(because: $"{descriptor.Id:0000}.md should exist.");
+    [TestCaseSource(nameof(RuleIds))]
+    public void have_mark_down_documentation(string id)
+        => new FileInfo($"../../../../../rules/{id}.md").Exists.Should().BeTrue(because: $"{id}.md should exist.");
+
+    [TestCaseSource(nameof(RuleIds))]
+    public void mentioned_in_README_root(string id)
+        => ReadmeRootText
+        .Contains($"](rules/{id}.md)")
+        .Should().BeTrue(because: $"Rule {id} should be mentioned");
+
+    [TestCaseSource(nameof(RuleIds))]
+    public void mentioned_in_README_package(string id)
+        => ReadmePackageText
+        .Contains($"](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/{id}.md)")
+        .Should().BeTrue(because: $"Rule {id} should be mentioned");
 
     [TestCaseSource(nameof(Types))]
     public void in_DotNetProjectFile_Analyzers_MsBuild_namespace(Type type)
@@ -32,11 +44,18 @@ public class Rules
         .GetTypes()
         .Where(t => !t.IsAbstract && t.IsAssignableTo(typeof(DiagnosticAnalyzer)));
 
-    public static IEnumerable<DiagnosticDescriptor> Descriptors
+    private static IEnumerable<DiagnosticDescriptor> Descriptors
         => typeof(DotNetProjectFile.Rule)
         .GetProperties(BindingFlags.Public | BindingFlags.Static)
         .Where(f => f.PropertyType == typeof(DiagnosticDescriptor))
-        .Select(f => (DiagnosticDescriptor)f.GetValue(null)!)
-        .ToArray();
+        .Select(f => (DiagnosticDescriptor)f.GetValue(null)!);
+
+    private static readonly string[] RuleIds = Descriptors.Select(d => d.Id).ToArray();
+
+    private static readonly FileInfo ReadmeRoot = new("../../../../../README.md");
+    private static readonly FileInfo ReadmePackage = new("../../../../../src/DotNetProjectFile.Analyzers/README.md");
+
+    private readonly string ReadmeRootText = ReadmeRoot.OpenText().ReadToEnd();
+    private readonly string ReadmePackageText = ReadmePackage.OpenText().ReadToEnd();
 }
 

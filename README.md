@@ -64,6 +64,7 @@ To add a props file:
 * [**Proj0009** Use the TragetFramework node for a single target framework](rules/Proj0009.md)
 * [**Proj0010** Define OutputType explicitly](rules/Proj0010.md)
 * [**Proj0011** Define properties once](rules/Proj0011.md)
+* [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
 * [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)
