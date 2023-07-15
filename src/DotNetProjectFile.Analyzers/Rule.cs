@@ -226,7 +226,7 @@ public static class Rule
 
     public static DiagnosticDescriptor DefineCopyright => New(
         id: 0207,
-        title: "Define the project authors explicitly",
+        title: "Define the project copyright explicitly",
         message: "Define the <Copyright> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
             "To ensure the creation of well-formed packages, " +
@@ -254,7 +254,7 @@ public static class Rule
 
     public static DiagnosticDescriptor DefineReadMeFile => New(
         id: 0209,
-        title: "Define the project release notes explicitly",
+        title: "Define the project readme file explicitly",
         message: "Define the <PackageReadmeFile> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
             "To ensure the creation of well-formed packages, " +
@@ -283,7 +283,7 @@ public static class Rule
 
     public static DiagnosticDescriptor DefineLicenseFile => New(
         id: 0211,
-        title: "Define the project license expression explicitly",
+        title: "Define the project license file explicitly",
         message: "Define the <PackageLicenseFile> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
             "To ensure the creation of well-formed packages " +
@@ -298,7 +298,7 @@ public static class Rule
 
     public static DiagnosticDescriptor DefineLicenseUrl => New(
         id: 0212,
-        title: "Define the project license expression explicitly",
+        title: "Define the project license URL explicitly",
         message: "Define the <PackageLicenseUrl> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
             "To ensure the creation of well-formed packages " +
@@ -313,7 +313,7 @@ public static class Rule
 
     public static DiagnosticDescriptor DefineIcon => New(
         id: 0213,
-        title: "Define the project license expression explicitly",
+        title: "Define the project icon file explicitly",
         message: "Define the <PackageIcon> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
             "To ensure the creation of well-formed packages " +
@@ -328,7 +328,7 @@ public static class Rule
 
     public static DiagnosticDescriptor DefineIconUrl => New(
         id: 0214,
-        title: "Define the project license expression explicitly",
+        title: "Define the project icon URL explicitly",
         message: "Define the <PackageIconUrl> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
             "To ensure the creation of well-formed packages " +
