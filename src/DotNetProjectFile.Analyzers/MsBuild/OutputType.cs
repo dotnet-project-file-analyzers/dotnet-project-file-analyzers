@@ -1,6 +1,6 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class OutputType : Node
+public sealed class OutputType : Node<OutputType.Kind?>
 {
     public enum Kind
     {
@@ -12,5 +12,5 @@ public sealed class OutputType : Node
 
     public OutputType(XElement element, Node parent, Project project) : base(element, parent, project) { }
 
-    public Kind? Value => Convert<Kind?>(Element.Value);
+    public override Kind? Value => Convert<Kind?>(Element.Value);
 }

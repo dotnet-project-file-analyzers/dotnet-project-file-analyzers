@@ -9,7 +9,8 @@ public sealed class ReassignPropertiesWithDifferentValue : MsBuildProjectFileAna
     {
         foreach (var prop in context.Project.PropertyGroups.SelectMany(p => p.Children()))
         {
-            if (EarlierAssignement(prop, context.Project) is { } previous)
+            if (EarlierAssignement(prop, context.Project) is { } previous
+                && Equals(prop.Val, previous.Val))
             {
                 context.ReportDiagnostic(Descriptor, prop, prop.LocalName);
             }

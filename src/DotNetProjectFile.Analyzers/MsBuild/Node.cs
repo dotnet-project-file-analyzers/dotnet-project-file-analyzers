@@ -5,8 +5,18 @@ using System.Xml;
 
 namespace DotNetProjectFile.MsBuild;
 
+public abstract class Node<T> : Node
+{
+    protected Node(XElement element, Node? parent, Project? project)
+        : base(element, parent, project) { }
+
+    public override object? Val => Value;
+
+    public abstract T? Value { get; }
+}
+
 /// <summary>Represents node in a MS Build project file.</summary>
-public class Node
+public abstract class Node
 {
     /// <summary>Initializes a new instance of the <see cref="Node"/> class.</summary>
     protected Node(XElement element, Node? parent, Project? project)
@@ -21,6 +31,8 @@ public class Node
     internal readonly Project Project;
 
     public Node? Parent { get; }
+
+    public virtual object? Val { get; }
 
     /// <summary>Gets the local name of the <see cref="Node"/>.</summary>
     public virtual string LocalName => GetType().Name;

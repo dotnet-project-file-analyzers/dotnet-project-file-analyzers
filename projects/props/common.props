@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
 
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <NuGetAudit>true</NuGetAudit>
+  </PropertyGroup>
+  
   <ItemGroup>
     <AdditionalFiles Include="../props/common.props" Link="Properties/common.props" />
   </ItemGroup>

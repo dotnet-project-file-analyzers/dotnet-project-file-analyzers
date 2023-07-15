@@ -9,7 +9,7 @@ public sealed class DefineSingleTargetFramework : MsBuildProjectFileAnalyzer
     {
         foreach (var frameworks in context.Project.PropertyGroups
             .SelectMany(p => p.TargetFrameworks)
-            .Where(f => f.Values.Count <= 1))
+            .Where(f => f.Value.Count <= 1))
         {
             context.ReportDiagnostic(Descriptor, frameworks);
         }

@@ -1,6 +1,6 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class ImplicitUsings : Node
+public sealed class ImplicitUsings : Node<ImplicitUsings.Kind?>
 {
     public enum Kind
     {
@@ -11,5 +11,5 @@ public sealed class ImplicitUsings : Node
 
     public ImplicitUsings(XElement element, Node parent, Project project) : base(element, parent, project) { }
 
-    public Kind? Value => Convert<Kind?>(Element.Value);
+    public override Kind? Value => Convert<Kind?>(Element.Value);
 }
