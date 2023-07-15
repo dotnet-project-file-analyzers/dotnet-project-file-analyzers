@@ -34,6 +34,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rules", "Rules", "{50507CD3
 		rules\Proj0010.md = rules\Proj0010.md
 		rules\Proj0011.md = rules\Proj0011.md
 		rules\Proj0200.md = rules\Proj0200.md
+		rules\Proj0201.md = rules\Proj0201.md
+		rules\Proj0202.md = rules\Proj0202.md
+		rules\Proj0203.md = rules\Proj0203.md
+		rules\Proj0204.md = rules\Proj0204.md
+		rules\Proj0205.md = rules\Proj0205.md
+		rules\Proj0206.md = rules\Proj0206.md
+		rules\Proj0207.md = rules\Proj0207.md
+		rules\Proj0208.md = rules\Proj0208.md
+		rules\Proj0209.md = rules\Proj0209.md
+		rules\Proj0210.md = rules\Proj0210.md
+		rules\Proj0211.md = rules\Proj0211.md
+		rules\Proj0212.md = rules\Proj0212.md
+		rules\Proj0213.md = rules\Proj0213.md
+		rules\Proj0214.md = rules\Proj0214.md
 		rules\Proj1000.md = rules\Proj1000.md
 		rules\Proj1001.md = rules\Proj1001.md
 		rules\Proj1003.md = rules\Proj1003.md
@@ -122,6 +136,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertiesTwice", "projects\PropertiesTwice\PropertiesTwice.csproj", "{CA2B4CAD-663A-4992-975A-4D4EAFB60587}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoIsPackable", "projects\NoIsPackable\NoIsPackable.csproj", "{1EE26CAE-4ADF-4D12-9E12-C5D918EF5AEB}"
+EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Benchmarks", "specs\Benchmarks\Benchmarks.csproj", "{AF8214B5-B932-4EC8-9032-B5BA20E81D55}"
 EndProject
 Global
