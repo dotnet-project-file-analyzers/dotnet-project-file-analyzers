@@ -10,7 +10,22 @@ public sealed class PropertyGroup : Node
         ImplicitUsings = Children<ImplicitUsings>();
         NuGetAudit = Children<NuGetAudit>();
         OutputType = Children<OutputType>();
+
         IsPackable = Children<IsPackable>();
+        Version = Children<Version>();
+        Description = Children<Description>();
+        Authors = Children<Authors>();
+        PackageTags = Children<PackageTags>();
+        RepositoryUrl = Children<RepositoryUrl>();
+        PackageProjectUrl = Children<PackageProjectUrl>();
+        Copyright = Children<Copyright>();
+        PackageReleaseNotes = Children<PackageReleaseNotes>();
+        PackageReadmeFile = Children<PackageReadmeFile>();
+        PackageLicenseExpression = Children<PackageLicenseExpression>();
+        PackageLicenseFile = Children<PackageLicenseFile>();
+        PackageLicenseUrl = Children<PackageLicenseUrl>();
+        PackageIcon = Children<PackageIcon>();
+        PackageIconUrl = Children<PackageIconUrl>();
     }
 
     public Nodes<TargetFramework> TargetFramework { get; }
@@ -24,4 +39,32 @@ public sealed class PropertyGroup : Node
     public Nodes<OutputType> OutputType { get; }
 
     public Nodes<IsPackable> IsPackable { get; }
+
+    public Nodes<Version> Version { get; }
+
+    public Nodes<Description> Description { get; }
+
+    public Nodes<Authors> Authors { get; }
+
+    public Nodes<PackageTags> PackageTags { get; }
+
+    public Nodes<RepositoryUrl> RepositoryUrl { get; }
+
+    public Nodes<PackageProjectUrl> PackageProjectUrl { get; }
+
+    public Nodes<Copyright> Copyright { get; }
+
+    public Nodes<PackageReleaseNotes> PackageReleaseNotes { get; }
+
+    public Nodes<PackageReadmeFile> PackageReadmeFile { get; }
+
+    public Nodes<PackageLicenseExpression> PackageLicenseExpression { get; }
+
+    public Nodes<PackageLicenseFile> PackageLicenseFile { get; }
+
+    public Nodes<PackageLicenseUrl> PackageLicenseUrl { get; }
+
+    public Nodes<PackageIcon> PackageIcon { get; }
+
+    public Nodes<PackageIconUrl> PackageIconUrl { get; }
 }
