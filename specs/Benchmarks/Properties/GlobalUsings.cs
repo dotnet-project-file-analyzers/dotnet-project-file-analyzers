@@ -1,0 +1,11 @@
+﻿global using BenchmarkDotNet.Attributes;
+global using CodeAnalysis.TestTools;
+global using CodeAnalysis.TestTools.Contexts;
+global using DotNetProjectFile.Analyzers;
+global using Microsoft.CodeAnalysis;
+global using Microsoft.CodeAnalysis.Diagnostics;
+global using System;
+global using System.Collections.Generic;
+global using System.IO;
+global using System.Linq;
+global using System.Threading.Tasks;
