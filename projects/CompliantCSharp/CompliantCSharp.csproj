@@ -5,6 +5,7 @@
     <OutputType>Library</OutputType>
     <NuGetAudit>true</NuGetAudit>
     <IsPackable>false</IsPackable>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup Label="Analyzers">

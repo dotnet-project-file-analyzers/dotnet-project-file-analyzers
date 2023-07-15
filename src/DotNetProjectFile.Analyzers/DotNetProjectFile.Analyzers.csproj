@@ -12,8 +12,11 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
   </PropertyGroup>
 
-  <PropertyGroup Label="Package settings">
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  
+  <PropertyGroup Label="Package settings">
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</PackageProjectUrl>
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
@@ -39,6 +42,8 @@ ToBeReleased
 - Proj0212: Define the project license URL explicitly. (NEW RULE)
 - Proj0213: Define the project icon file explicitly. (NEW RULE)
 - Proj0214: Define the project icon URL explicitly. (NEW RULE)
+- Proj0011: Define properties once (NEW RULE)
+- Proj0200: Define IsPackable explicitly. (NEW RULE)
 v1.0.6
 - Proj0010: Define OutputType explicitly. (NEW RULE)
 - Proj1001: Reported dependency with missing analyser is now nearest name match. (FP)
