@@ -61,6 +61,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{00669DF6-1449-41AA-8AD3-FA84194CE5B4}"
 	ProjectSection(SolutionItems) = preProject
 		projects\props\common.props = projects\props\common.props
+		projects\props\common1.props = projects\props\common1.props
 		projects\props\common2.props = projects\props\common2.props
 		projects\props\simple.props = projects\props\simple.props
 	EndProjectSection

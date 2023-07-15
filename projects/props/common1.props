@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project>
 
-  <Import Project="common1.props"/>
-
   <PropertyGroup>
     <OutputType>Library</OutputType>
+    <NuGetAudit>true</NuGetAudit>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
-
+  
   <ItemGroup>
-    <AdditionalFiles Include="../props/common2.props" Link="Properties/common2.props" />
+    <AdditionalFiles Include="../props/common1.props" Link="Properties/common1.props" />
   </ItemGroup>
   
 </Project>
-
