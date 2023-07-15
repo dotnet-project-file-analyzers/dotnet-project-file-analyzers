@@ -141,7 +141,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineVersion => New(
-        id: 0013,
+        id: 0201,
         title: "Define the project version explicitly",
         message: "Define the <Version> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
@@ -155,7 +155,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineDescription => New(
-        id: 0014,
+        id: 0202,
         title: "Define the project description explicitly",
         message: "Define the <Description> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
@@ -169,7 +169,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineAuthors => New(
-        id: 0015,
+        id: 0203,
         title: "Define the project authors explicitly",
         message: "Define the <Authors> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
@@ -183,7 +183,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineTags => New(
-        id: 0016,
+        id: 0204,
         title: "Define the project tags explicitly",
         message: "Define the <PackageTags> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
@@ -197,7 +197,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineRepositoryUrl => New(
-        id: 0017,
+        id: 0205,
         title: "Define the project repository URL explicitly",
         message: "Define the <RepositoryUrl> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
@@ -211,7 +211,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineUrl => New(
-        id: 0018,
+        id: 0206,
         title: "Define the project URL explicitly",
         message: "Define the <PackageProjectUrl> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
@@ -225,7 +225,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineCopyright => New(
-        id: 0019,
+        id: 0207,
         title: "Define the project authors explicitly",
         message: "Define the <Copyright> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
@@ -239,7 +239,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineReleaseNotes => New(
-        id: 0020,
+        id: 0208,
         title: "Define the project release notes explicitly",
         message: "Define the <PackageReleaseNotes> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
@@ -253,7 +253,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineReadMeFile => New(
-        id: 0021,
+        id: 0209,
         title: "Define the project release notes explicitly",
         message: "Define the <PackageReadmeFile> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
@@ -267,7 +267,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineLicenseExpression => New(
-        id: 0022,
+        id: 0210,
         title: "Define the project license expression explicitly",
         message: "Define the <PackageLicenseExpression> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
@@ -282,7 +282,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineLicenseFile => New(
-        id: 0023,
+        id: 0211,
         title: "Define the project license expression explicitly",
         message: "Define the <PackageLicenseFile> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
@@ -297,7 +297,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineLicenseUrl => New(
-        id: 0024,
+        id: 0212,
         title: "Define the project license expression explicitly",
         message: "Define the <PackageLicenseUrl> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
@@ -312,7 +312,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineIcon => New(
-        id: 0025,
+        id: 0213,
         title: "Define the project license expression explicitly",
         message: "Define the <PackageIcon> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
@@ -327,7 +327,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineIconUrl => New(
-        id: 0026,
+        id: 0214,
         title: "Define the project license expression explicitly",
         message: "Define the <PackageIconUrl> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
