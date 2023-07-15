@@ -9,12 +9,12 @@ public sealed class DefineIsPackable : MsBuildProjectFileAnalyzer
     {
         if (context.Project.IsProject)
         {
-            var outputTypes = context.Project
+            var isPackables = context.Project
                 .ImportsAndSelf()
                 .SelectMany(p => p.PropertyGroups)
                 .SelectMany(g => g.IsPackable);
 
-            if (outputTypes.None())
+            if (isPackables.None())
             {
                 context.ReportDiagnostic(Descriptor, context.Project);
             }
