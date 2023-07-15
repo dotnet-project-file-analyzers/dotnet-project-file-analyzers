@@ -128,6 +128,18 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor DefineIsPackable => New(
+        id: 0012,
+        title: "Define the project packability explicitly",
+        message: "Define the <IsPackable> node explicitly.",
+        description:
+            "To prevent confusion, explicitly define the " +
+            "<IsPackable> node.",
+        tags: new[] { "Configuration", "confusion" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",

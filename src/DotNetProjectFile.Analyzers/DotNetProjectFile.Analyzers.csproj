@@ -6,6 +6,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>11.0</LangVersion>
     <OutputType>Library</OutputType>
+    <IsPackable>true</IsPackable>
     <RootNamespace>DotNetProjectFile</RootNamespace>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -22,6 +23,7 @@
     <PackageReleaseNotes>
 ToBeReleased
 - Proj0011: Define properties once (NEW RULE)
+- Proj0012: Define IsPackable explicitly. (NEW RULE)
 v1.0.6
 - Proj0010: Define OutputType explicitly. (NEW RULE)
 - Proj1001: Reported dependency with missing analyser is now nearest name match. (FP)
