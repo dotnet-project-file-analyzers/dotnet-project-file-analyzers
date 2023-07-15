@@ -33,6 +33,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rules", "Rules", "{50507CD3
 		rules\Proj0009.md = rules\Proj0009.md
 		rules\Proj0010.md = rules\Proj0010.md
 		rules\Proj0011.md = rules\Proj0011.md
+		rules\Proj0012.md = rules\Proj0012.md
 		rules\Proj0200.md = rules\Proj0200.md
 		rules\Proj0201.md = rules\Proj0201.md
 		rules\Proj0202.md = rules\Proj0202.md
@@ -170,7 +171,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WithLicenseFile", "projects\WithLicenseFile\WithLicenseFile.csproj", "{188095BA-5AEF-4EAD-9330-9930D4A8C2FF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WithLicenseUrl", "projects\WithLicenseUrl\WithLicenseUrl.csproj", "{C6611228-1213-4D02-B115-F08ED942A8CB}"
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReassignProperties", "projects\ReassignProperties\ReassignProperties.csproj", "{1D89858A-FB69-40A3-A0D3-26670A87281B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReassignProperties", "projects\ReassignProperties\ReassignProperties.csproj", "{1D89858A-FB69-40A3-A0D3-26670A87281B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
