@@ -119,7 +119,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineIsPackable => New(
-        id: 0011,
+        id: 0012,
         title: "Define the project packability explicitly",
         message: "Define the <IsPackable> node explicitly.",
         description:
