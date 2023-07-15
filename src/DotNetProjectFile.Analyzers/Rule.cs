@@ -252,7 +252,7 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
-    public static DiagnosticDescriptor DefineReadMeFile => New(
+    public static DiagnosticDescriptor DefineReadmeFile => New(
         id: 0209,
         title: "Define the project readme file explicitly",
         message: "Define the <PackageReadmeFile> node explicitly or define the <IsPackable> node with value 'false'.",
