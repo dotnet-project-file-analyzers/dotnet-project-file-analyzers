@@ -20,13 +20,27 @@
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</PackageProjectUrl>
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
+    <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
     <Version>1.0.6</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
 ToBeReleased
-- Proj0011: Define properties once (NEW RULE)
+- Proj0011: Define properties once. (NEW RULE)
 - Proj0200: Define IsPackable explicitly. (NEW RULE)
+- Proj0201: Define the project version explicitly. (NEW RULE)
+- Proj0202: Define the project description explicitly. (NEW RULE)
+- Proj0203: Define the project authors explicitly. (NEW RULE)
+- Proj0204: Define the project tags explicitly. (NEW RULE)
+- Proj0205: Define the project repository URL explicitly. (NEW RULE)
+- Proj0206: Define the project URL explicitly. (NEW RULE)
+- Proj0207: Define the project copyright explicitly. (NEW RULE)
+- Proj0208: Define the project release notes explicitly. (NEW RULE)
+- Proj0209: Define the project readme file explicitly. (NEW RULE)
+- Proj0210: Define the project license explicitly. (NEW RULE)
+- Proj0211: Avoid using deprecated license definition. (NEW RULE)
+- Proj0212: Define the project icon file explicitly. (NEW RULE)
+- Proj0213: Define the project icon URL explicitly. (NEW RULE)
 v1.0.6
 - Proj0010: Define OutputType explicitly. (NEW RULE)
 - Proj1001: Reported dependency with missing analyser is now nearest name match. (FP)
@@ -59,6 +73,7 @@ v1.0.0
 - Proj1001: Use analyzers for packages. (NEW RULE)
     </PackageReleaseNotes>
     <PackageIcon>logo_128x128.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup Label="Package files">

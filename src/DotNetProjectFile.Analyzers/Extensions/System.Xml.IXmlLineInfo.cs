@@ -1,5 +1,4 @@
 ﻿using Microsoft.CodeAnalysis.Text;
-using System.Xml.Linq;
 
 namespace System.Xml;
 

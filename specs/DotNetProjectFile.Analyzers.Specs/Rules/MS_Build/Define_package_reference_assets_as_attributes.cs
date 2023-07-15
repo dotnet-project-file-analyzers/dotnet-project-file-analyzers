@@ -14,7 +14,9 @@ public class Reports
 public class Guards
 {
     [TestCase("CompliantCSharp.cs")]
+    [TestCase("CompliantCSharpPackage.cs")]
     [TestCase("CompliantVB.vb")]
+    [TestCase("CompliantVBPackage.vb")]
     [TestCase("PackageReferenceAssetsAsAttributes.cs")]
     public void assets_as_attributes_or_without(string project)
          => new DefinePackageReferenceAssetsAsAttributes()

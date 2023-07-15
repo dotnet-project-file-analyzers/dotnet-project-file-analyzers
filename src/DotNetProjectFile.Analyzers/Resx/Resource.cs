@@ -1,7 +1,6 @@
 ﻿using Microsoft.CodeAnalysis.Text;
 using System.Globalization;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace DotNetProjectFile.Resx;
 

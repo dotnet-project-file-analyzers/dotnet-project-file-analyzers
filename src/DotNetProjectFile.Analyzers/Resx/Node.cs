@@ -1,5 +1,4 @@
 ﻿using DotNetProjectFile.CodeAnalysis;
-using System.Xml.Linq;
 
 namespace DotNetProjectFile.Resx;
 

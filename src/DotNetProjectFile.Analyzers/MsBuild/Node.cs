@@ -2,7 +2,6 @@
 using Microsoft.CodeAnalysis.Text;
 using System.Runtime.CompilerServices;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace DotNetProjectFile.MsBuild;
 

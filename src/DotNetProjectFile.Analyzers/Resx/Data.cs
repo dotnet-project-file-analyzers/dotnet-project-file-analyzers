@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace DotNetProjectFile.Resx;
+﻿namespace DotNetProjectFile.Resx;
 
 public sealed class Data : Node
 {
