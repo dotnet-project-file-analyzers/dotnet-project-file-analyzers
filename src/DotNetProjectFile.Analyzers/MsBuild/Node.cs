@@ -81,21 +81,7 @@ public class Node
     public string? Attribute([CallerMemberName] string? propertyName = null)
         => Element.Attribute(propertyName)?.Value;
 
-    internal Node? Create(XElement element) => element.Name.LocalName switch
-    {
-        null => null,
-        nameof(Folder) /*...........*/ => new Folder(element, this, Project),
-        nameof(ImplicitUsings) /*...*/ => new ImplicitUsings(element, this, Project),
-        nameof(Import) /*...........*/ => new Import(element, this, Project),
-        nameof(ItemGroup) /*........*/ => new ItemGroup(element, this, Project),
-        nameof(NuGetAudit) /*.......*/ => new NuGetAudit(element, this, Project),
-        nameof(OutputType) /*.......*/ => new OutputType(element, this, Project),
-        nameof(PackageReference) /*.*/ => new PackageReference(element, this, Project),
-        nameof(PropertyGroup) /*....*/ => new PropertyGroup(element, this, Project),
-        nameof(TargetFramework) /*..*/ => new TargetFramework(element, this, Project),
-        nameof(TargetFrameworks) /*.*/ => new TargetFrameworks(element, this, Project),
-        _ => new Unknown(element, this, Project),
-    };
+    internal Node? Create(XElement element) => NodeFactory.Create(element, this, Project);
 
     protected T? Convert<T>(string? value, [CallerMemberName] string? propertyName = null)
         => Converters.TryConvert<T>(value, GetType(), propertyName!);
