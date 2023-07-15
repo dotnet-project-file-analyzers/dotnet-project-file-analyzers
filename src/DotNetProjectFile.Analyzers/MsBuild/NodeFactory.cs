@@ -39,14 +39,9 @@ internal static class NodeFactory
         .ToDictionary(ci => ci.DeclaringType.Name, GenerateConstructor);
 
     private static ConstructorInfo? GetValidNodeConstructor(Type type)
-    {
-        if (type.IsAbstract || !typeof(Node).IsAssignableFrom(type))
-        {
-            return null;
-        }
-
-        return type.GetConstructor(constructorArgumentTypes);
-    }
+        => type.IsAbstract || !typeof(Node).IsAssignableFrom(type)
+            ? null
+            : type.GetConstructor(constructorArgumentTypes);
 
     private static ConstructorFunc GenerateConstructor(ConstructorInfo ci)
     {
