@@ -275,7 +275,7 @@ public static class Rule
     public static DiagnosticDescriptor DefineLicense => New(
         id: 0210,
         title: "Define the project license expression explicitly",
-        message: "Define the project license explicitly or define the <IsPackable> node with value 'false'.",
+        message: "Define the <PackageLicenseExpression> or <PackageLicenseFile> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
             "To ensure the creation of well-formed packages " +
             "and for maximum compatibility with external tools, " +

@@ -39,7 +39,9 @@ public class Reports
 public class Guards
 {
     [TestCase("CompliantCSharp.cs")]
+    [TestCase("CompliantCSharpPackage.cs")]
     [TestCase("CompliantVB.vb")]
+    [TestCase("CompliantVBPackage.vb")]
     [TestCase("PackagesWithAnalyzers.cs")]
     public void Projects_without_issues(string project)
          => new UseAnalyzersForPackages()
