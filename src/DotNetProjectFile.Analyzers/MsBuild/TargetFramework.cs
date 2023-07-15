@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace DotNetProjectFile.MsBuild;
+﻿namespace DotNetProjectFile.MsBuild;
 
 public sealed class TargetFramework : Node
 {

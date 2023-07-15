@@ -140,6 +140,207 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor DefineVersion => New(
+        id: 0013,
+        title: "Define the project version explicitly",
+        message: "Define the <Version> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages, " +
+            "explicitly define the <Version> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineDescription => New(
+        id: 0014,
+        title: "Define the project description explicitly",
+        message: "Define the <Description> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages, " +
+            "explicitly define the <Description> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineAuthors => New(
+        id: 0015,
+        title: "Define the project authors explicitly",
+        message: "Define the <Authors> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages, " +
+            "explicitly define the <Authors> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineTags => New(
+        id: 0016,
+        title: "Define the project tags explicitly",
+        message: "Define the <PackageTags> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages, " +
+            "explicitly define the <PackageTags> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineRepositoryUrl => New(
+        id: 0017,
+        title: "Define the project repository URL explicitly",
+        message: "Define the <RepositoryUrl> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages, " +
+            "explicitly define the <RepositoryUrl> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineUrl => New(
+        id: 0018,
+        title: "Define the project URL explicitly",
+        message: "Define the <PackageProjectUrl> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages, " +
+            "explicitly define the <PackageProjectUrl> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineCopyright => New(
+        id: 0019,
+        title: "Define the project authors explicitly",
+        message: "Define the <Copyright> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages, " +
+            "explicitly define the <Copyright> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineReleaseNotes => New(
+        id: 0020,
+        title: "Define the project release notes explicitly",
+        message: "Define the <PackageReleaseNotes> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages, " +
+            "explicitly define the <PackageReleaseNotes> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineReadMeFile => New(
+        id: 0021,
+        title: "Define the project release notes explicitly",
+        message: "Define the <PackageReadmeFile> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages, " +
+            "explicitly define the <PackageReadmeFile> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineLicenseExpression => New(
+        id: 0022,
+        title: "Define the project license expression explicitly",
+        message: "Define the <PackageLicenseExpression> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages " +
+            "and for maximum compatibility with external tools, " +
+            "explicitly define the <PackageLicenseExpression> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineLicenseFile => New(
+        id: 0023,
+        title: "Define the project license expression explicitly",
+        message: "Define the <PackageLicenseFile> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages " +
+            "and for maximum compatibility with external tools, " +
+            "explicitly define the <PackageLicenseFile> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineLicenseUrl => New(
+        id: 0024,
+        title: "Define the project license expression explicitly",
+        message: "Define the <PackageLicenseUrl> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages " +
+            "and for maximum compatibility with external tools, " +
+            "explicitly define the deprecated <PackageLicenseUrl> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineIcon => New(
+        id: 0025,
+        title: "Define the project license expression explicitly",
+        message: "Define the <PackageIcon> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages " +
+            "and for maximum compatibility with external tools, " +
+            "explicitly define the <PackageIcon> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefineIconUrl => New(
+        id: 0026,
+        title: "Define the project license expression explicitly",
+        message: "Define the <PackageIconUrl> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages " +
+            "and for maximum compatibility with external tools, " +
+            "explicitly define the deprecated <PackageIconUrl> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",

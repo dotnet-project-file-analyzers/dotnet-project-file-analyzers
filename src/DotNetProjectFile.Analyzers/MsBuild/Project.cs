@@ -1,6 +1,5 @@
 ﻿using Microsoft.CodeAnalysis.Text;
 using System.IO;
-using System.Xml.Linq;
 
 namespace DotNetProjectFile.MsBuild;
 
