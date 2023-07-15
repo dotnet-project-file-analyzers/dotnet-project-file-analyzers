@@ -1,5 +1,11 @@
 ﻿#pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
+using DotNetProjectFile.MsBuild;
+using DotNetProjectFile.Resx;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+
 namespace DotNetProjectFile;
 
 public static class Rule
@@ -266,14 +272,15 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
-    public static DiagnosticDescriptor DefineLicenseExpression => New(
+    public static DiagnosticDescriptor DefineLicense => New(
         id: 0210,
         title: "Define the project license expression explicitly",
-        message: "Define the <PackageLicenseExpression> node explicitly or define the <IsPackable> node with value 'false'.",
+        message: "Define the project license explicitly or define the <IsPackable> node with value 'false'.",
         description:
             "To ensure the creation of well-formed packages " +
             "and for maximum compatibility with external tools, " +
-            "explicitly define the <PackageLicenseExpression> node or " +
+            "explicitly define the <PackageLicenseExpression> " +
+            "or <PackageLicenseFile>` node. Alternatively " +
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: new[] { "Configuration", "NuGet", "package" },
@@ -281,38 +288,21 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
-    public static DiagnosticDescriptor DefineLicenseFile => New(
+    public static DiagnosticDescriptor AvoidLicenseUrl => New(
         id: 0211,
-        title: "Define the project license file explicitly",
-        message: "Define the <PackageLicenseFile> node explicitly or define the <IsPackable> node with value 'false'.",
+        title: "Avoid using deprecated license definition",
+        message: "Replace deprecated <PackageLicenseUrl> with <PackageLicenseExpression> or <PackageLicenseFile> node.",
         description:
-            "To ensure the creation of well-formed packages " +
-            "and for maximum compatibility with external tools, " +
-            "explicitly define the <PackageLicenseFile> node or " +
-            "disable package generation by defining the " +
-            "<IsPackable> node with value 'false'.",
+            "The <PackageLicenseUrl> node has been deprecated " +
+            "and should be replaced by either the " +
+            "<PackageLicenseExpression> or the <PackageLicenseFile> node.",
         tags: new[] { "Configuration", "NuGet", "package" },
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
-
-    public static DiagnosticDescriptor DefineLicenseUrl => New(
-        id: 0212,
-        title: "Define the project license URL explicitly",
-        message: "Define the <PackageLicenseUrl> node explicitly or define the <IsPackable> node with value 'false'.",
-        description:
-            "To ensure the creation of well-formed packages " +
-            "and for maximum compatibility with external tools, " +
-            "explicitly define the deprecated <PackageLicenseUrl> node or " +
-            "disable package generation by defining the " +
-            "<IsPackable> node with value 'false'.",
-        tags: new[] { "Configuration", "NuGet", "package" },
-        category: Category.Configuration,
+        category: Category.Obsolete,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineIcon => New(
-        id: 0213,
+        id: 0212,
         title: "Define the project icon file explicitly",
         message: "Define the <PackageIcon> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
@@ -327,7 +317,7 @@ public static class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor DefineIconUrl => New(
-        id: 0214,
+        id: 0213,
         title: "Define the project icon URL explicitly",
         message: "Define the <PackageIconUrl> node explicitly or define the <IsPackable> node with value 'false'.",
         description:

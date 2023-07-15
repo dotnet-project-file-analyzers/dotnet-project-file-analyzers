@@ -13,9 +13,7 @@ public sealed class DefinePackageInfo : MsBuildProjectFileAnalyzer
         Rule.DefineCopyright,
         Rule.DefineReleaseNotes,
         Rule.DefineReadmeFile,
-        Rule.DefineLicenseExpression,
-        Rule.DefineLicenseFile,
-        Rule.DefineLicenseUrl,
+        Rule.DefineLicense,
         Rule.DefineIcon,
         Rule.DefineIconUrl) { }
 
@@ -35,11 +33,15 @@ public sealed class DefinePackageInfo : MsBuildProjectFileAnalyzer
         Analyze(context, Rule.DefineCopyright, g => g.Copyright);
         Analyze(context, Rule.DefineReleaseNotes, g => g.PackageReleaseNotes);
         Analyze(context, Rule.DefineReadmeFile, g => g.PackageReadmeFile);
-        Analyze(context, Rule.DefineLicenseExpression, g => g.PackageLicenseExpression);
-        Analyze(context, Rule.DefineLicenseFile, g => g.PackageLicenseFile);
-        Analyze(context, Rule.DefineLicenseUrl, g => g.PackageLicenseUrl);
         Analyze(context, Rule.DefineIcon, g => g.PackageIcon);
         Analyze(context, Rule.DefineIconUrl, g => g.PackageIconUrl);
+
+        Analyze(context, Rule.DefineLicense, g =>
+        {
+            var files = g.PackageLicenseFile as IEnumerable<Node>;
+            var expressions = g.PackageLicenseExpression as IEnumerable<Node>;
+            return files.Concat(expressions);
+        });
     }
 
     private static bool IsLikelyPackableProject(ProjectFileAnalysisContext context)
@@ -50,17 +52,15 @@ public sealed class DefinePackageInfo : MsBuildProjectFileAnalyzer
             .SelectMany(g => g.IsPackable)
             .Any(n => n.Value == true);
 
-    private static IEnumerable<T> GetNodes<T>(ProjectFileAnalysisContext context, Func<PropertyGroup, Nodes<T>> getNodes)
-        where T : Node
+    private static IEnumerable<Node> GetNodes(ProjectFileAnalysisContext context, Func<PropertyGroup, IEnumerable<Node>> getNodes)
         => context.Project
             .ImportsAndSelf()
             .SelectMany(p => p.PropertyGroups)
             .SelectMany(g => getNodes(g));
 
-    private static void Analyze<T>(ProjectFileAnalysisContext context, DiagnosticDescriptor descriptor, Func<PropertyGroup, Nodes<T>> getNodes)
-        where T : Node
+    private static void Analyze(ProjectFileAnalysisContext context, DiagnosticDescriptor descriptor, Func<PropertyGroup, IEnumerable<Node>> getNodes)
     {
-        var found = GetNodes<T>(context, getNodes);
+        var found = GetNodes(context, getNodes);
 
         if (found.None())
         {

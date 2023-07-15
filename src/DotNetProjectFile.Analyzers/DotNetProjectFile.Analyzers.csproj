@@ -17,6 +17,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</PackageProjectUrl>
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
+    <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
     <Version>1.0.6</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
@@ -70,6 +71,7 @@ v1.0.0
 - Proj1001: Use analyzers for packages. (NEW RULE)
     </PackageReleaseNotes>
     <PackageIcon>logo_128x128.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
   </PropertyGroup>
 
   <ItemGroup Label="Package files">
