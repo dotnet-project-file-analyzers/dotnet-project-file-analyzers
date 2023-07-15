@@ -134,6 +134,16 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor ReassignPropertiesWithDifferentValue => New(
+        id: 0012,
+        title: "Reassign properties with a different value",
+        message: "Property <{0}> has previously be defined with the same value.",
+        description: "Reassigning a property with the same value is considered noise.",
+        tags: new[] { "Configuration", "confusion" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",

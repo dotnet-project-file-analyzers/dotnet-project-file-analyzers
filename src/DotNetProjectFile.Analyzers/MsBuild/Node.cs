@@ -30,6 +30,11 @@ public class Node
 
     public string? Condition => Attribute();
 
+    public IEnumerable<string> Conditions()
+        => AncestorsAndSelf()
+        .Select(n => n.Condition)
+        .OfType<string>();
+
     /// <summary>Get the line info.</summary>
     public IXmlLineInfo LineInfo => Element;
 
