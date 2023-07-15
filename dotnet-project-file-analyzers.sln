@@ -122,6 +122,7 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PropertiesTwice", "projects\PropertiesTwice\PropertiesTwice.csproj", "{CA2B4CAD-663A-4992-975A-4D4EAFB60587}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NoIsPackable", "projects\NoIsPackable\NoIsPackable.csproj", "{1EE26CAE-4ADF-4D12-9E12-C5D918EF5AEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Benchmarks", "specs\Benchmarks\Benchmarks.csproj", "{AF8214B5-B932-4EC8-9032-B5BA20E81D55}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -249,6 +250,10 @@ Global
 		{1EE26CAE-4ADF-4D12-9E12-C5D918EF5AEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EE26CAE-4ADF-4D12-9E12-C5D918EF5AEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EE26CAE-4ADF-4D12-9E12-C5D918EF5AEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF8214B5-B932-4EC8-9032-B5BA20E81D55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF8214B5-B932-4EC8-9032-B5BA20E81D55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF8214B5-B932-4EC8-9032-B5BA20E81D55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF8214B5-B932-4EC8-9032-B5BA20E81D55}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
