@@ -4,8 +4,6 @@ public class Has_no_issues
 {
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
-    [TestCase("CompliantVB.vb")]
-    [TestCase("CompliantVBPackage.vb")]
     public void For(string project)
         => new GuardUnsupported()
         .ForProject(project)

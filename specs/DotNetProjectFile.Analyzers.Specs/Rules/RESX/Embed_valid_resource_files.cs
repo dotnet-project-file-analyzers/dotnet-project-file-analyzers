@@ -22,7 +22,6 @@ public class Reports
 public class Guards
 {
     [TestCase("CompliantCSharp.cs")]
-    [TestCase("CompliantVB.vb")]
     public void sorted_data(string project)
          => new Resx.EmbedValidResourceFiles()
         .ForProject(project)

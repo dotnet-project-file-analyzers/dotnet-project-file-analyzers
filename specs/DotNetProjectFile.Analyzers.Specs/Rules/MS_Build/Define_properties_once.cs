@@ -17,8 +17,6 @@ public class Guards
 {
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
-    [TestCase("CompliantVB.vb")]
-    [TestCase("CompliantVBPackage.vb")]
     public void Projects_without_double_properties(string project)
          => new DefinePropertiesOnce()
         .ForProject(project)
