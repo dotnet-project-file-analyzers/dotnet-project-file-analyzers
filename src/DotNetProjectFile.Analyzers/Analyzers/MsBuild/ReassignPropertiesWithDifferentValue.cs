@@ -11,7 +11,7 @@ public sealed class ReassignPropertiesWithDifferentValue : MsBuildProjectFileAna
 
         foreach (var prop in context.Project.PropertyGroups.SelectMany(p => p.Children()))
         {
-            if (EarlierAssignement(prop, context.Project) is { } previous
+            if (EarlierAssignement(prop) is { } previous
                 && Equals(prop.Val, previous.Val))
             {
                 context.ReportDiagnostic(Descriptor, prop, prop.LocalName);
@@ -19,9 +19,9 @@ public sealed class ReassignPropertiesWithDifferentValue : MsBuildProjectFileAna
         }
     }
 
-    private static Node? EarlierAssignement(Node node, MsBuildProject project)
+    private static Node? EarlierAssignement(Node node)
     {
-        foreach (var import in project.ImportsAndSelf().Reverse().Skip(1))
+        foreach (var import in node.Project.ImportsAndSelf().Reverse().Skip(1))
         {
             if (import.PropertyGroups
                 .SelectMany(p => p.Children())
