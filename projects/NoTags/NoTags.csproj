@@ -10,6 +10,7 @@
     <Version>1.0.0</Version>
     <Description>Awesome library</Description>
     <Authors>Corniel Nobel; Wesley Baartman</Authors>
+    <PackageId>DotNetProjectFile.Anayzers</PackageId>
     <RepositoryUrl>https://github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <PackageProjectUrl>https://github.com/Corniel/dotnet-project-file-analyzers</PackageProjectUrl>
     <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>

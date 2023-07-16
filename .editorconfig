@@ -38,7 +38,6 @@ dotnet_diagnostic.CA1860.severity = none    #  Prefer comparing 'Length' to 0 ra
 
 dotnet_diagnostic.S100.severity  = none     # Properties should be named in PascalCase
 dotnet_diagnostic.S101.severity  = none     # Types should be named in PascalCase
-dotnet_diagnostic.S1694.severity = none     # An abstract class should have both abstract and concrete methods.
 dotnet_diagnostic.S3376.severity = none     # Attribute, EventArgs, and Exception type names should end with the type being extended
 dotnet_diagnostic.S4136.severity = none     # All method overloads should be adjacent.
 
@@ -47,7 +46,6 @@ dotnet_diagnostic.S1144.severity = warning  # Unused private types or members sh
 dotnet_diagnostic.S1185.severity = warning  # Overriding members should do more than simply call the same member in the base class
 dotnet_diagnostic.S1479.severity = warning  # Consider reworking this 'switch' to reduce the number of 'case's to at most 30
 dotnet_diagnostic.S1858.severity = warning  # "ToString()" calls should not be redundant
-dotnet_diagnostic.S1694.severity = warning  # Convert this 'abstract' class to a concrete type with a protected constructor.
 dotnet_diagnostic.S2302.severity = warning  # "nameof" should be used
 dotnet_diagnostic.S2342.severity = warning  # Rename this enumeration to match naming convention
 dotnet_diagnostic.S2436.severity = warning  # Types and methods should not have too many generic parameters
