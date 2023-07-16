@@ -26,6 +26,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
 ToBeReleased
+- Removed unnecessary dependencies.
 - Proj0011: Define properties once. (NEW RULE)
 - Proj0200: Define IsPackable explicitly. (NEW RULE)
 - Proj0201: Define the project version explicitly. (NEW RULE)
@@ -84,8 +85,7 @@ v1.0.0
   </ItemGroup>
 
   <ItemGroup Label="Roslyn dependencies">
-    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.6.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="4.6.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.6.0" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
