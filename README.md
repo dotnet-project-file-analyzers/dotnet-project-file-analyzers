@@ -79,6 +79,7 @@ To add a props file:
 * [**Proj0211** Avoid using deprecated license definition](rules/Proj0211.md)
 * [**Proj0212** Define the project icon file explicitly](rules/Proj0212.md)
 * [**Proj0213** Define the project icon URL explicitly](rules/Proj0213.md)
+* [**Proj0214** Define the NuGet project ID explicitly](rules/Proj0214.md)
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
 * [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)

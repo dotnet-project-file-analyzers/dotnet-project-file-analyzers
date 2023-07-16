@@ -19,6 +19,7 @@ public sealed class PropertyGroup : Node
         RepositoryUrl = Children<RepositoryUrl>();
         PackageProjectUrl = Children<PackageProjectUrl>();
         Copyright = Children<Copyright>();
+        PackageId = Children<PackageId>();
         PackageReleaseNotes = Children<PackageReleaseNotes>();
         PackageReadmeFile = Children<PackageReadmeFile>();
         PackageLicenseExpression = Children<PackageLicenseExpression>();
@@ -49,6 +50,8 @@ public sealed class PropertyGroup : Node
     public Nodes<PackageTags> PackageTags { get; }
 
     public Nodes<RepositoryUrl> RepositoryUrl { get; }
+
+    public Nodes<PackageId> PackageId { get; }
 
     public Nodes<PackageProjectUrl> PackageProjectUrl { get; }
 

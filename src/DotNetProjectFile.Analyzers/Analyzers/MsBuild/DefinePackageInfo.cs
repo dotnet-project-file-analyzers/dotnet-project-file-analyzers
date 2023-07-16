@@ -15,7 +15,8 @@ public sealed class DefinePackageInfo : MsBuildProjectFileAnalyzer
         Rule.DefineReadmeFile,
         Rule.DefineLicense,
         Rule.DefineIcon,
-        Rule.DefineIconUrl) { }
+        Rule.DefineIconUrl,
+        Rule.DefinePackageId) { }
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
@@ -32,6 +33,7 @@ public sealed class DefinePackageInfo : MsBuildProjectFileAnalyzer
         Analyze(context, Rule.DefineReadmeFile, g => g.PackageReadmeFile);
         Analyze(context, Rule.DefineIcon, g => g.PackageIcon);
         Analyze(context, Rule.DefineIconUrl, g => g.PackageIconUrl);
+        Analyze(context, Rule.DefinePackageId, g => g.PackageId);
 
         Analyze(context, Rule.DefineLicense, g =>
         {

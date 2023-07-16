@@ -341,6 +341,20 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor DefinePackageId => New(
+        id: 0214,
+        title: "Define the NuGet project ID explicitly",
+        message: "Define the <PackageId> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages, " +
+            "explicitly define the <PackageId> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",

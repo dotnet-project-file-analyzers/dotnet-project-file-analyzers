@@ -18,6 +18,7 @@
   
   <PropertyGroup Label="Package settings">
     <RepositoryType>git</RepositoryType>
+    <PackageId>DotNetProjectFile.Analyzers</PackageId>
     <PackageProjectUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</PackageProjectUrl>
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
@@ -42,6 +43,7 @@ v1.0.7
 - Proj0211: Avoid using deprecated license definition. (NEW RULE)
 - Proj0212: Define the project icon file explicitly. (NEW RULE)
 - Proj0213: Define the project icon URL explicitly. (NEW RULE)
+- Proj0214: Define the NuGet project ID explicitly. (NEW RULE)
 v1.0.6
 - Proj0010: Define OutputType explicitly. (NEW RULE)
 - Proj1001: Reported dependency with missing analyser is now nearest name match. (FP)
