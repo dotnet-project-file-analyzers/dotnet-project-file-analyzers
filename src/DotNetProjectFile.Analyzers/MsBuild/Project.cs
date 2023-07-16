@@ -31,6 +31,7 @@ public sealed class Project : Node
 
     public Nodes<ItemGroup> ItemGroups => Children<ItemGroup>();
 
+    /// <summary>Loops through all imports and self.</summary>
     public IEnumerable<Project> ImportsAndSelf()
     {
         foreach (var import in Imports)
@@ -44,6 +45,22 @@ public sealed class Project : Node
             }
         }
         yield return this;
+    }
+
+    /// <summary>Loops through all imports and self reversed.</summary>
+    public IEnumerable<Project> SelfAndImports()
+    {
+        yield return this;
+        foreach (var import in Imports)
+        {
+            if (import.Value is { } project)
+            {
+                foreach (var p in project.SelfAndImports())
+                {
+                    yield return p;
+                }
+            }
+        }
     }
 
     public static Project Load(FileInfo file, Projects projects, bool isProject)

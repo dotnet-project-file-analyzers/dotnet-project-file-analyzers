@@ -1,4 +1,4 @@
-﻿global using DotNetProjectFile.Diagnostics;
+global using DotNetProjectFile.Diagnostics;
 global using DotNetProjectFile.MsBuild;
 global using Microsoft.CodeAnalysis;
 global using Microsoft.CodeAnalysis.Diagnostics;
@@ -10,3 +10,4 @@ global using System.Diagnostics.CodeAnalysis;
 global using System.Linq;
 global using System.Threading;
 global using System.Xml.Linq;
+global using MsBuildProject = DotNetProjectFile.MsBuild.Project;

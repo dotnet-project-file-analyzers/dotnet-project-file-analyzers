@@ -6,7 +6,7 @@ using System.Xml;
 namespace DotNetProjectFile.MsBuild;
 
 /// <summary>Represents node in a MS Build project file.</summary>
-public class Node
+public abstract class Node
 {
     /// <summary>Initializes a new instance of the <see cref="Node"/> class.</summary>
     protected Node(XElement element, Node? parent, Project? project)
@@ -22,6 +22,8 @@ public class Node
 
     public Node? Parent { get; }
 
+    public virtual object? Val => Element.Value;
+
     /// <summary>Gets the local name of the <see cref="Node"/>.</summary>
     public virtual string LocalName => GetType().Name;
 
@@ -29,6 +31,11 @@ public class Node
     public string? Label => Attribute();
 
     public string? Condition => Attribute();
+
+    public IEnumerable<string> Conditions()
+        => AncestorsAndSelf()
+        .Select(n => n.Condition)
+        .OfType<string>();
 
     /// <summary>Get the line info.</summary>
     public IXmlLineInfo LineInfo => Element;

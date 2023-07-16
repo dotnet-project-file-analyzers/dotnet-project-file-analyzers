@@ -22,12 +22,12 @@
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
-    <Version>1.0.6</Version>
+    <Version>1.0.7</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-ToBeReleased
-- Removed unnecessary dependencies.
+v1.0.7
 - Proj0011: Define properties once. (NEW RULE)
+- Proj0012: Reassign properties with different value. (NEW RULE)
 - Proj0200: Define IsPackable explicitly. (NEW RULE)
 - Proj0201: Define the project version explicitly. (NEW RULE)
 - Proj0202: Define the project description explicitly. (NEW RULE)

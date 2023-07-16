@@ -1,6 +1,6 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class Unknown : Node
+public sealed class Unknown : Node<string>
 {
     public Unknown(XElement element, Node parent, Project project) : base(element, parent, project) { }
 
