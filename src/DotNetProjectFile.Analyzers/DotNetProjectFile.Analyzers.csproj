@@ -25,8 +25,6 @@
     <Version>1.0.7</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-ToBeReleased
-- Removed unnecessary dependencies.
 v1.0.7
 - Proj0011: Define properties once. (NEW RULE)
 - Proj0012: Reassign properties with different value. (NEW RULE)

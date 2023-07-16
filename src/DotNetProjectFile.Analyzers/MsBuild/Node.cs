@@ -5,8 +5,6 @@ using System.Xml;
 
 namespace DotNetProjectFile.MsBuild;
 
-
-
 /// <summary>Represents node in a MS Build project file.</summary>
 public abstract class Node
 {
