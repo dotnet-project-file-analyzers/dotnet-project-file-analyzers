@@ -37,5 +37,9 @@
   <ItemGroup>
     <AdditionalFiles Include="*.vbproj" Visible="false" />
   </ItemGroup>
-  
+
+  <PropertyGroup>
+    <MyType>Empty</MyType>
+  </PropertyGroup>
+
 </Project>
