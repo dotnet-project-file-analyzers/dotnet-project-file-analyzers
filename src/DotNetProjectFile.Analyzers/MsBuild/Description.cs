@@ -1,8 +1,6 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class Description : Node<string>
+public sealed class Description : StringValueNode
 {
     public Description(XElement element, Node parent, Project project) : base(element, parent, project) { }
-
-    public override string? Value => Element.Value;
 }

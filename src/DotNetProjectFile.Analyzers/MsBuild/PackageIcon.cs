@@ -1,8 +1,6 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class PackageIcon : Node<string>
+public sealed class PackageIcon : StringValueNode
 {
     public PackageIcon(XElement element, Node parent, Project project) : base(element, parent, project) { }
-
-    public override string? Value => Element.Value;
 }
