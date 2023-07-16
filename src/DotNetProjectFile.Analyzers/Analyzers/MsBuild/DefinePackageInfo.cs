@@ -19,10 +19,7 @@ public sealed class DefinePackageInfo : MsBuildProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!IsLikelyPackableProject(context))
-        {
-            return;
-        }
+        if (!IsPackable(context.Project)) { return; }
 
         Analyze(context, Rule.DefineVersion, g => g.Version);
         Analyze(context, Rule.DefineDescription, g => g.Description);
@@ -44,13 +41,9 @@ public sealed class DefinePackageInfo : MsBuildProjectFileAnalyzer
         });
     }
 
-    private static bool IsLikelyPackableProject(ProjectFileAnalysisContext context)
-        => context.Project.IsProject
-        && context.Project
-            .ImportsAndSelf()
-            .SelectMany(p => p.PropertyGroups)
-            .SelectMany(g => g.IsPackable)
-            .Any(n => n.Value == true);
+    private static bool IsPackable(MsBuildProject project)
+        => project.IsProject
+        && project.Property<bool?, IsPackable>(g => g.IsPackable, MsBuildDefaults.IsPackage).GetValueOrDefault();
 
     private static IEnumerable<Node> GetNodes(ProjectFileAnalysisContext context, Func<PropertyGroup, IEnumerable<Node>> getNodes)
         => context.Project
