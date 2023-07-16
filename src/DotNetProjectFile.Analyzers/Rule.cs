@@ -137,7 +137,7 @@ public static class Rule
     public static DiagnosticDescriptor ReassignPropertiesWithDifferentValue => New(
         id: 0012,
         title: "Reassign properties with a different value",
-        message: "Property <{0}> has previously be defined with the same value.",
+        message: "Property <{0}> has been previously defined with the same value.",
         description: "Reassigning a property with the same value is considered noise.",
         tags: new[] { "Configuration", "confusion" },
         category: Category.Clarity,

@@ -21,7 +21,7 @@ public sealed class ReassignPropertiesWithDifferentValue : MsBuildProjectFileAna
 
     private static Node? EarlierAssignement(Node node)
     {
-        foreach (var import in node.Project.ImportsAndSelf().Reverse().Skip(1))
+        foreach (var import in node.Project.SelfAndImports().Skip(1))
         {
             if (import.PropertyGroups
                 .SelectMany(p => p.Children())
