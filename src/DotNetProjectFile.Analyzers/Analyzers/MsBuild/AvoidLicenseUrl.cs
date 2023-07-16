@@ -7,17 +7,9 @@ public sealed class AvoidLicenseUrl : MsBuildProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.IsProject)
+        foreach (var lincensUrl in context.Project.PropertyGroups.SelectMany(g => g.PackageLicenseUrl))
         {
-            var nodes = context.Project
-                .ImportsAndSelf()
-                .SelectMany(p => p.PropertyGroups)
-                .SelectMany(g => g.PackageLicenseUrl);
-
-            if (nodes.Any())
-            {
-                context.ReportDiagnostic(Descriptor, context.Project);
-            }
+            context.ReportDiagnostic(Descriptor, lincensUrl);
         }
     }
 }
