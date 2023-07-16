@@ -5,15 +5,7 @@ using System.Xml;
 
 namespace DotNetProjectFile.MsBuild;
 
-public abstract class Node<T> : Node
-{
-    protected Node(XElement element, Node? parent, Project? project)
-        : base(element, parent, project) { }
 
-    public sealed override object? Val => Value;
-
-    public abstract T? Value { get; }
-}
 
 /// <summary>Represents node in a MS Build project file.</summary>
 public abstract class Node

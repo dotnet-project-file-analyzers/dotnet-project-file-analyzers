@@ -10,6 +10,4 @@ public sealed class ImplicitUsings : Node<ImplicitUsings.Kind?>
     }
 
     public ImplicitUsings(XElement element, Node parent, Project project) : base(element, parent, project) { }
-
-    public override Kind? Value => Convert<Kind?>(Element.Value);
 }

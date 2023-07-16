@@ -11,6 +11,4 @@ public sealed class OutputType : Node<OutputType.Kind?>
     }
 
     public OutputType(XElement element, Node parent, Project project) : base(element, parent, project) { }
-
-    public override Kind? Value => Convert<Kind?>(Element.Value);
 }
