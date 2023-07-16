@@ -1,6 +1,8 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class Version : StringValueNode
+public sealed class Version : Node<string>
 {
     public Version(XElement element, Node parent, Project project) : base(element, parent, project) { }
+
+    public override string? Value => Element.Value;
 }

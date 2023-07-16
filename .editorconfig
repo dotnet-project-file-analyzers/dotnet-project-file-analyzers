@@ -38,7 +38,6 @@ dotnet_diagnostic.CA1860.severity = none    #  Prefer comparing 'Length' to 0 ra
 
 dotnet_diagnostic.S100.severity  = none     # Properties should be named in PascalCase
 dotnet_diagnostic.S101.severity  = none     # Types should be named in PascalCase
-dotnet_diagnostic.S1694.severity = none     #  An abstract class should have both abstract and concrete methods.
 dotnet_diagnostic.S3376.severity = none     # Attribute, EventArgs, and Exception type names should end with the type being extended
 dotnet_diagnostic.S4136.severity = none     # All method overloads should be adjacent.
 
