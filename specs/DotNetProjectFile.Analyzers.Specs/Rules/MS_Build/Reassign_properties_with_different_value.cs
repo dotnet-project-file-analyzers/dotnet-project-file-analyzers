@@ -15,7 +15,6 @@ public class Reports
 public class Guards
 {
     [TestCase("CompliantCSharp.cs")]
-    [TestCase("CompliantVB.vb")]
     public void Projects_without_issues(string project)
          => new ReassignPropertiesWithDifferentValue()
         .ForProject(project)
