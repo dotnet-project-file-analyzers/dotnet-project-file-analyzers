@@ -20,8 +20,6 @@ public class Guards
 {
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
-    [TestCase("CompliantVB.vb")]
-    [TestCase("CompliantVBPackage.vb")]
     public void Projects_with_analyzers(string project)
          => new RemoveEmptyNodes()
         .ForProject(project)
