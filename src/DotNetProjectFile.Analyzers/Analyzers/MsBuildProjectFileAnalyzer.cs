@@ -9,7 +9,9 @@ public abstract class MsBuildProjectFileAnalyzer : DiagnosticAnalyzer
 
     public sealed override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; }
 
-    public DiagnosticDescriptor Descriptor => SupportedDiagnostics[0];
+    protected virtual bool ApplyToProps => true;
+
+    protected DiagnosticDescriptor Descriptor => SupportedDiagnostics[0];
 
     public sealed override void Initialize(AnalysisContext context)
     {
@@ -19,7 +21,13 @@ public abstract class MsBuildProjectFileAnalyzer : DiagnosticAnalyzer
     }
 
     protected virtual void Register(AnalysisContext context)
-        => context.RegisterProjectFileAction(Register);
+        => context.RegisterProjectFileAction(c =>
+        {
+            if (c.Project.IsProject || ApplyToProps)
+            {
+                Register(c);
+            }
+        });
 
     protected abstract void Register(ProjectFileAnalysisContext context);
 }

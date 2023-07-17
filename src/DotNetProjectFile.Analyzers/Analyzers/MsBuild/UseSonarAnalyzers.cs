@@ -5,10 +5,11 @@ public sealed class UseSonarAnalyzers : MsBuildProjectFileAnalyzer
 {
     public UseSonarAnalyzers() : base(Rule.UseSonarAnalyzers) { }
 
+    protected override bool ApplyToProps => false;
+
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.IsProject
-            && Include(context.Compilation.Options.Language) is { } include
+        if (Include(context.Compilation.Options.Language) is { } include
             && context.Project
                 .ImportsAndSelf()
                 .SelectMany(p => p.ItemGroups)
