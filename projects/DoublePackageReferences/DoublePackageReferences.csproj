@@ -1,6 +1,6 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\props\DoublePackageReferences.props" />
+  <Import Project="../props/DoublePackageReferences.props" />
   
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
@@ -16,6 +16,14 @@
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <PackageReference Include="Qowaiv" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="*.csproj" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="../../props/DoublePackageReferences.props" />
   </ItemGroup>
 
 </Project>
