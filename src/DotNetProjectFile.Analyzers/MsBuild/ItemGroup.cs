@@ -22,11 +22,15 @@ public sealed class ItemGroup : Node
     public ItemGroup(XElement element, Node parent, Project project) : base(element, parent, project)
     {
         PackageReferences = Children<PackageReference>();
+        ProjectReferences = Children<ProjectReference>();
         Folders = Children<Folder>();
     }
 
     /// <summary>Gets the child package references.</summary>
     public Nodes<PackageReference> PackageReferences { get; }
+
+    /// <summary>Gets the child project references.</summary>
+    public Nodes<ProjectReference> ProjectReferences { get; }
 
     /// <summary>Gets the child folders.</summary>
     public Nodes<Folder> Folders { get; }

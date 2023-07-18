@@ -29,6 +29,8 @@
     <PackageReleaseNotes>
 ToBeReleased
 - Proj0013: Include package references only once. (NEW RULE)
+- Proj0015: Order package references alphabetically. (NEW RULE)
+- Proj0016: Order project references alphabetically. (NEW RULE)
 - Proj0400: Define the project publishability explicitly. (NEW RULE)
 v1.0.7
 - Proj0011: Define properties once. (NEW RULE)
