@@ -30,7 +30,7 @@ public abstract class Node
     /// <summary>Gets the label of the node.</summary>
     public string? Label => Attribute();
 
-    public string? Condition => Attribute();
+    public virtual string? Condition => Attribute();
 
     public IEnumerable<string> Conditions()
         => AncestorsAndSelf()
