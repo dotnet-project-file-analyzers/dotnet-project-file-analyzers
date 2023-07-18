@@ -15,14 +15,10 @@ public sealed class IncludeProjectReferencesOnce : MsBuildProjectFileAnalyzer
         foreach (var reference in context.Project
             .ImportsAndSelf()
             .SelectMany(p => p.ItemGroups)
-            .SelectMany(i => i.ProjectReferences))
+            .SelectMany(i => i.ProjectReferences)
+            .Where(r => r.Include is not null))
         {
             var key = Reference.Create(reference);
-
-            if (string.IsNullOrWhiteSpace(key.Name))
-            {
-                continue;
-            }
 
             if (lookup.TryGetValue(key, out var existing))
             {
@@ -51,7 +47,8 @@ public sealed class IncludeProjectReferencesOnce : MsBuildProjectFileAnalyzer
             // Paths are resolved in order to find duplicate paths that are not lexically equal.
             var root = reference.Project;
             var rootDir = Path.GetDirectoryName(root.Path.FullName);
-            var combined = Path.Combine(rootDir, reference.Include);
+            var unixFriendly = reference.Include.Replace(@"\", "/"); // Make sure it works on Unix based systems.
+            var combined = Path.Combine(rootDir, unixFriendly);
             var fullPath = Path.GetFullPath(combined);
             var lower = fullPath.ToLowerInvariant(); // MSBuild is case insensitive on Windows.
             Console.WriteLine(lower);
