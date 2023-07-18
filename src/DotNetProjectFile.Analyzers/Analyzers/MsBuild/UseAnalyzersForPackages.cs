@@ -5,29 +5,28 @@ public sealed class UseAnalyzersForPackages : MsBuildProjectFileAnalyzer
 {
     public UseAnalyzersForPackages() : base(Rule.UseAnalyzersForPackages) { }
 
+    protected override bool ApplyToProps => false;
+
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.IsProject)
+        var packageReferences = context.Project
+            .ImportsAndSelf()
+            .SelectMany(p => p.ItemGroups)
+            .SelectMany(group => group.PackageReferences)
+            .ToArray();
+
+        var unusedAnalyzers = Analyzers.Where(analyzer
+            => analyzer.IsApplicable(context.Compilation.Options.Language)
+            && packageReferences.None(analyzer.IsMatch));
+
+        foreach (var analyzer in unusedAnalyzers)
         {
-            var packageReferences = context.Project
-                .ImportsAndSelf()
-                .SelectMany(p => p.ItemGroups)
-                .SelectMany(group => group.PackageReferences)
-                .ToArray();
-
-            var unusedAnalyzers = Analyzers.Where(analyzer
-                => analyzer.IsApplicable(context.Compilation.Options.Language)
-                && packageReferences.None(analyzer.IsMatch));
-
-            foreach (var analyzer in unusedAnalyzers)
+            if (context.Compilation.ReferencedAssemblyNames
+                .Where(analyzer.IsMatch)
+                .OrderBy(asm => asm.Name.Length)
+                .FirstOrDefault() is { } reference)
             {
-                if (context.Compilation.ReferencedAssemblyNames
-                    .Where(analyzer.IsMatch)
-                    .OrderBy(asm => asm.Name.Length)
-                    .FirstOrDefault() is { } reference)
-                {
-                    context.ReportDiagnostic(Descriptor, context.Project, analyzer.Package, reference.Name);
-                }
+                context.ReportDiagnostic(Descriptor, context.Project, analyzer.Package, reference.Name);
             }
         }
     }

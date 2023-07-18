@@ -5,19 +5,13 @@ public sealed class RunNuGetSecurityAuditsAutomatically : MsBuildProjectFileAnal
 {
     public RunNuGetSecurityAuditsAutomatically() : base(Rule.RunNuGetSecurityAudit) { }
 
+    protected override bool ApplyToProps => false;
+
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.IsProject)
+        if (context.Project.Property<bool?, NuGetAudit>(g => g.NuGetAudit, MsBuildDefaults.NuGetAudit) != true)
         {
-            var audits = context.Project
-                .ImportsAndSelf()
-                .SelectMany(p => p.PropertyGroups)
-                .SelectMany(g => g.NuGetAudit);
-
-            if (audits.None() || audits.Any(a => a.Value != true))
-            {
-                context.ReportDiagnostic(Descriptor, context.Project);
-            }
+            context.ReportDiagnostic(Descriptor, context.Project);
         }
     }
 }

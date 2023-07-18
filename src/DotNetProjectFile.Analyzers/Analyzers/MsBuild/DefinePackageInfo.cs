@@ -18,6 +18,8 @@ public sealed class DefinePackageInfo : MsBuildProjectFileAnalyzer
         Rule.DefineIconUrl,
         Rule.DefinePackageId) { }
 
+    protected override bool ApplyToProps => false;
+
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (!IsPackable(context.Project)) { return; }
@@ -44,8 +46,7 @@ public sealed class DefinePackageInfo : MsBuildProjectFileAnalyzer
     }
 
     private static bool IsPackable(MsBuildProject project)
-        => project.IsProject
-        && project.Property<bool?, IsPackable>(g => g.IsPackable, MsBuildDefaults.IsPackage).GetValueOrDefault();
+        => project.Property<bool?, IsPackable>(g => g.IsPackable, MsBuildDefaults.IsPackage).GetValueOrDefault();
 
     private static IEnumerable<Node> GetNodes(ProjectFileAnalysisContext context, Func<PropertyGroup, IEnumerable<Node>> getNodes)
         => context.Project
