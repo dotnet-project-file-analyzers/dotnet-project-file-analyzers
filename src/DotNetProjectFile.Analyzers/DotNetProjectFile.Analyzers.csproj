@@ -7,6 +7,7 @@
     <LangVersion>11.0</LangVersion>
     <OutputType>Library</OutputType>
     <IsPackable>true</IsPackable>
+    <IsPublishable>false</IsPublishable>
     <RootNamespace>DotNetProjectFile</RootNamespace>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -28,6 +29,7 @@
     <PackageReleaseNotes>
 ToBeReleased
 - Proj0013: Include package references only once. (NEW RULE)
+- Proj0400: Define the project publishability explicitly. (NEW RULE)
 v1.0.7
 - Proj0011: Define properties once. (NEW RULE)
 - Proj0012: Reassign properties with different value. (NEW RULE)

@@ -50,6 +50,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rules", "Rules", "{50507CD3
 		rules\Proj0212.md = rules\Proj0212.md
 		rules\Proj0213.md = rules\Proj0213.md
 		rules\Proj0214.md = rules\Proj0214.md
+		rules\Proj0400.md = rules\Proj0400.md
 		rules\Proj1000.md = rules\Proj1000.md
 		rules\Proj1001.md = rules\Proj1001.md
 		rules\Proj1003.md = rules\Proj1003.md
@@ -178,7 +179,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WithLicenseUrl", "projects\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ReassignProperties", "projects\ReassignProperties\ReassignProperties.csproj", "{1D89858A-FB69-40A3-A0D3-26670A87281B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoublePackageReferences", "projects\DoublePackageReferences\DoublePackageReferences.csproj", "{49E400B2-336B-44B7-9F8F-5F42C1D77C79}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoublePackageReferences", "projects\DoublePackageReferences\DoublePackageReferences.csproj", "{49E400B2-336B-44B7-9F8F-5F42C1D77C79}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
