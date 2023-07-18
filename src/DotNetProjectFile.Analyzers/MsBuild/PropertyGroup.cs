@@ -12,6 +12,7 @@ public sealed class PropertyGroup : Node
         OutputType = Children.Typed<OutputType>();
 
         IsPackable = Children.Typed<IsPackable>();
+        IsPublishable = Children.Typed<IsPublishable>();
         Version = Children.Typed<Version>();
         Description = Children.Typed<Description>();
         Authors = Children.Typed<Authors>();
