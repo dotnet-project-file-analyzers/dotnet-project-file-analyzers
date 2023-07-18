@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EmptyNodes\EmptyNodes.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include=".\..\..\Projects\EmptyNodes\EmptyNodes.csproj" />
+  </ItemGroup>
+
+</Project>

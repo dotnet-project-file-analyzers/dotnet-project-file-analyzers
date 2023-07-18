@@ -154,6 +154,16 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor IncludeProjectReferencesOnce => New(
+        id: 0014,
+        title: "Include project references only once",
+        message: "Project '{0}' is already referenced.",
+        description: "Including project references twice is considered noise.",
+        tags: new[] { "Configuration", "confusion" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor OrderPackageReferencesAlphabetically => New(
         id: 0015,
         title: "Order package references alphabetically",
