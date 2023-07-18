@@ -25,11 +25,11 @@ public sealed class Project : Node
 
     internal readonly Projects Projects;
 
-    public Nodes<Import> Imports => Children<Import>();
+    public Nodes<Import> Imports => Children.OfType<Import>();
 
-    public Nodes<PropertyGroup> PropertyGroups => Children<PropertyGroup>();
+    public Nodes<PropertyGroup> PropertyGroups => Children.OfType<PropertyGroup>();
 
-    public Nodes<ItemGroup> ItemGroups => Children<ItemGroup>();
+    public Nodes<ItemGroup> ItemGroups => Children.OfType<ItemGroup>();
 
     public TValue? Property<TValue, TNode>(Func<PropertyGroup, Nodes<TNode>> selector, TValue? @default = default)
         where TNode : Node<TValue>

@@ -9,7 +9,7 @@ public sealed class ReassignPropertiesWithDifferentValue : MsBuildProjectFileAna
     {
         if (context.Project.Imports.None()) { return; }
 
-        foreach (var prop in context.Project.PropertyGroups.SelectMany(p => p.Children()))
+        foreach (var prop in context.Project.PropertyGroups.SelectMany(p => p.Children))
         {
             if (EarlierAssignement(prop) is { } previous
                 && Equals(prop.Val, previous.Val))
@@ -24,7 +24,7 @@ public sealed class ReassignPropertiesWithDifferentValue : MsBuildProjectFileAna
         foreach (var import in node.Project.SelfAndImports().Skip(1))
         {
             if (import.PropertyGroups
-                .SelectMany(p => p.Children())
+                .SelectMany(p => p.Children)
                 .FirstOrDefault(n => Same(node, n)) is { } previous)
             {
                 return previous;

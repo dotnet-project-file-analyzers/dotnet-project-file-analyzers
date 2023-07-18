@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.MsBuild;
 
 /// <summary>Represents an item group in a Visual Studio project file.</summary>
 /// <remarks>
@@ -21,6 +21,8 @@ public sealed class ItemGroup : Node
     /// </param>
     public ItemGroup(XElement element, Node parent, Project project) : base(element, parent, project)
     {
+        PackageReferences = Children.OfType<PackageReference>();
+        Folders = Children.OfType<Folder>();
         PackageReferences = Children<PackageReference>();
         ProjectReferences = Children<ProjectReference>();
         Folders = Children<Folder>();

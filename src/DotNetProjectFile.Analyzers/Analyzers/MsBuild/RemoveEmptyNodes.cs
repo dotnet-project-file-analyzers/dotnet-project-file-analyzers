@@ -7,7 +7,7 @@ public sealed class RemoveEmptyNodes : MsBuildProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var node in context.Project.Children())
+        foreach (var node in context.Project.Children)
         {
             Report(node, context, 1);
         }
@@ -17,7 +17,7 @@ public sealed class RemoveEmptyNodes : MsBuildProjectFileAnalyzer
     {
         var noChildren = true;
 
-        foreach (var child in node.Children())
+        foreach (var child in node.Children)
         {
             noChildren = false;
             Report(child, context, level + 1);
