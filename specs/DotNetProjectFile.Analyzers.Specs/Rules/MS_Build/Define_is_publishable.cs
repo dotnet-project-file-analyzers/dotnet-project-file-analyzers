@@ -5,7 +5,7 @@ public class Reports
     [Test]
     public void on_no_is_publishable()
        => new DefineIsPublishable()
-       .ForProject("OnlyTargetFramework.cs")
+       .ForProject("EmptyProject.cs")
        .HasIssue(
            new Issue("Proj0400", "Define the <IsPublishable> node explicitly."));
 }
