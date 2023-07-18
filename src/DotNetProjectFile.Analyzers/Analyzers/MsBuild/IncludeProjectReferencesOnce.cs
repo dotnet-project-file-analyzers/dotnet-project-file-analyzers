@@ -53,7 +53,8 @@ public sealed class IncludeProjectReferencesOnce : MsBuildProjectFileAnalyzer
             var rootDir = Path.GetDirectoryName(root.Path.FullName);
             var combined = Path.Combine(rootDir, reference.Include);
             var fullPath = Path.GetFullPath(combined);
-            var lower = fullPath.ToLowerInvariant(); // MSBuild is case insensitive.
+            var lower = fullPath.ToLowerInvariant(); // MSBuild is case insensitive on Windows.
+            Console.WriteLine(lower);
             return lower;
         }
     }
