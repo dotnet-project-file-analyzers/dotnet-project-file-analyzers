@@ -18,12 +18,4 @@
     <PackageReference Include="Qowaiv" Version="6.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <AdditionalFiles Include="*.csproj" Visible="false" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="../../props/DoublePackageReferences.props" />
-  </ItemGroup>
-
 </Project>
