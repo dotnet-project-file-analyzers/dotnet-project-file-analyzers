@@ -154,6 +154,26 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor OrderPackageReferencesAlphabetically => New(
+        id: 0015,
+        title: "Order package references alphabetically",
+        message: "Package '{0}' is not ordered alphabetically and should appear before '{1}'.",
+        description: "Not ordering package references alphabetically is considered noise.",
+        tags: new[] { "Configuration", "confusion" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor OrderProjectReferencesAlphabetically => New(
+        id: 0016,
+        title: "Order project references alphabetically",
+        message: "Project '{0}' is not ordered alphabetically and should appear before '{1}'.",
+        description: "Not ordering project references alphabetically is considered noise.",
+        tags: new[] { "Configuration", "confusion" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
