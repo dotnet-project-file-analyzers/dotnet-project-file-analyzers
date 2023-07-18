@@ -13,6 +13,9 @@ public sealed class Project : Node
         Projects = projects;
         IsAdditional = isAdditional;
         IsProject = isProject;
+        Imports = Children.Typed<Import>();
+        PropertyGroups = Children.NestedTyped<PropertyGroup>();
+        ItemGroups = Children.NestedTyped<ItemGroup>();
     }
 
     public bool IsAdditional { get; }
@@ -25,11 +28,11 @@ public sealed class Project : Node
 
     internal readonly Projects Projects;
 
-    public Nodes<Import> Imports => Children.Typed<Import>();
+    public Nodes<Import> Imports { get; }
 
-    public Nodes<PropertyGroup> PropertyGroups => Children.Typed<PropertyGroup>();
+    public Nodes<PropertyGroup> PropertyGroups { get; }
 
-    public Nodes<ItemGroup> ItemGroups => Children.Typed<ItemGroup>();
+    public Nodes<ItemGroup> ItemGroups { get; }
 
     public TValue? Property<TValue, TNode>(Func<PropertyGroup, Nodes<TNode>> selector, TValue? @default = default)
         where TNode : Node<TValue>
