@@ -157,7 +157,7 @@ public static class Rule
     public static DiagnosticDescriptor OrderPackageReferencesAlphabetically => New(
         id: 0014,
         title: "Order package references alphabetically",
-        message: "Package '{0}' is not ordered alphabetically.",
+        message: "Package '{0}' is not ordered alphabetically and should appear before '{1}'.",
         description: "Not ordering package references alphabetically is considered noise.",
         tags: new[] { "Configuration", "confusion" },
         category: Category.Clarity,

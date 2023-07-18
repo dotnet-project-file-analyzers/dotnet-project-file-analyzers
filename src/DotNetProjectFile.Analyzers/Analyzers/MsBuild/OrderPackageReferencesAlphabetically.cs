@@ -18,16 +18,18 @@ public sealed class OrderPackageReferencesAlphabetically : MsBuildProjectFileAna
 
     private void AnalyzeGroup(ProjectFileAnalysisContext context, Nodes<PackageReference> references)
     {
-        var expectedOrder = references.OrderBy(r => r.Include);
+        var expectedOrder = references.OrderBy(r => r.Include ?? r.Update ?? string.Empty);
         var firstDifference = references
             .Zip(expectedOrder, (found, expected) => (found, expected))
             .FirstOrDefault(pair => pair.found != pair.expected);
 
         if (firstDifference != default)
         {
-            var reference = firstDifference.found;
-            var name = reference.Include ?? reference.Update ?? string.Empty;
-            context.ReportDiagnostic(Descriptor, reference, name);
+            var found = firstDifference.found;
+            var expected = firstDifference.expected;
+            var foundName = found.Include ?? found.Update ?? string.Empty;
+            var expectedName = expected.Include ?? expected.Update ?? string.Empty;
+            context.ReportDiagnostic(Descriptor, expected, expectedName, foundName);
         }
     }
 }
