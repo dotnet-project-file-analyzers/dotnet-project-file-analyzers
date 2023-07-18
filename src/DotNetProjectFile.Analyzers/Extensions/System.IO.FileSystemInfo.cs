@@ -11,4 +11,7 @@ internal static class SystemFileSystemInfoExtensions
             current = current.Parent;
         }
     }
+
+    public static FileInfo File(this DirectoryInfo directory, string path)
+        => new(Path.Combine(directory.FullName, path));
 }

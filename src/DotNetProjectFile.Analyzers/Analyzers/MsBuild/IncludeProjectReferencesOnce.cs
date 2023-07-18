@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using DotNetProjectFile.IO;
+using System.IO;
 using ProjectReference = DotNetProjectFile.MsBuild.ProjectReference;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
@@ -44,14 +45,10 @@ public sealed class IncludeProjectReferencesOnce : MsBuildProjectFileAnalyzer
                 return string.Empty;
             }
 
-            // Paths are resolved in order to find duplicate paths that are not lexically equal.
-            var root = reference.Project;
-            var rootDir = Path.GetDirectoryName(root.Path.FullName);
-            var unixFriendly = reference.Include.Replace(@"\", "/"); // Make sure it works on Unix based systems.
-            var combined = Path.Combine(rootDir, unixFriendly);
-            var fullPath = Path.GetFullPath(combined);
-            var lower = fullPath.ToLowerInvariant(); // MSBuild is case insensitive on Windows.
-            return lower;
+            var location = reference.Project.Path.Directory.File(reference.Include);
+
+            // file system is case insensitive on Windows.
+            return FileSystem.Normalize(location.FullName).ToUpperInvariant();
         }
     }
 }
