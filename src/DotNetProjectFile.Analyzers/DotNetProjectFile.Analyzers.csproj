@@ -26,6 +26,8 @@
     <Version>1.0.7</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+ToBeReleased
+- Proj0013: Include package references only once. (NEW RULE)
 v1.0.7
 - Proj0011: Define properties once. (NEW RULE)
 - Proj0012: Reassign properties with different value. (NEW RULE)
