@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <Choose>
+    <When Condition="'$(TargetFramework)'=='net7.0'">
+      <PropertyGroup>
+        <NuGetAudit>true</NuGetAudit>
+      </PropertyGroup>
+      <ItemGroup>
+        <Folder Include="When/" />
+      </ItemGroup>
+    </When>
+    <Otherwise>
+      <PropertyGroup>
+        <NuGetAudit>false</NuGetAudit>
+      </PropertyGroup>
+      <ItemGroup>
+        <Folder Include="Otherwise/" />
+      </ItemGroup>
+    </Otherwise>
+  </Choose>
+
+</Project>
