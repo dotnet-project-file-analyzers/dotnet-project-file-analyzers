@@ -14,6 +14,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0010** Define OutputType explicitly](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0010.md)
 * [**Proj0011** Define properties once](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0011.md)
 * [**Proj0012** Reassign properties with different value](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0012.md)
+* [**Proj0013** Include package references only once](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0013.md)
 * [**Proj0200** Define IsPackable explicitly](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0200.md)
 * [**Proj0201** Define the project version explicitly](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0201.md)
 * [**Proj0202** Define the project description explicitly](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0202.md)

@@ -65,6 +65,7 @@ To add a props file:
 * [**Proj0010** Define OutputType explicitly](rules/Proj0010.md)
 * [**Proj0011** Define properties once](rules/Proj0011.md)
 * [**Proj0012** Reassign properties with different value](rules/Proj0012.md)
+* [**Proj0013** Include package references only once](rules/Proj0013.md)
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
 * [**Proj0201** Define the project version explicitly](rules/Proj0201.md)
 * [**Proj0202** Define the project description explicitly](rules/Proj0202.md)
