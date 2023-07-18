@@ -144,6 +144,16 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor IncludePackageReferencesOnce => New(
+        id: 0013,
+        title: "Include package references once",
+        message: "Package '{0}' is already referenced.",
+        description: "Including package references twice is considered noise.",
+        tags: new[] { "Configuration", "confusion" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",

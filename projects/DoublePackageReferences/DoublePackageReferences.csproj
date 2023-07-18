@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\props\DoublePackageReferences.props" />
+  
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Qowaiv" Version="5.0.0" />
+    <PackageReference Include="Qowaiv" Version="5.1.1" />
+    <PackageReference Update="Qowaiv" Version="6.4.1" />
+    <PackageReference Update="Qowaiv" Version="6.4.2" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <PackageReference Include="Qowaiv" Version="6.0.0" />
+  </ItemGroup>
+
+</Project>
