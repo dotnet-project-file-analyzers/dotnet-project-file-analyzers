@@ -492,7 +492,7 @@ public static class Rule
 
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
-    private static DiagnosticDescriptor New(
+    public static DiagnosticDescriptor New(
         int id,
         string title,
         string message,

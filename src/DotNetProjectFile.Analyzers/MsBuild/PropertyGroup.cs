@@ -5,28 +5,28 @@ public sealed class PropertyGroup : Node
     /// <summary>Initializes a new instance of the <see cref="PropertyGroup"/> class.</summary>
     public PropertyGroup(XElement element, Node parent, Project project) : base(element, parent, project)
     {
-        TargetFramework = Children.OfType<TargetFramework>();
-        TargetFrameworks = Children.OfType<TargetFrameworks>();
-        ImplicitUsings = Children.OfType<ImplicitUsings>();
-        NuGetAudit = Children.OfType<NuGetAudit>();
-        OutputType = Children.OfType<OutputType>();
+        TargetFramework = Children.Typed<TargetFramework>();
+        TargetFrameworks = Children.Typed<TargetFrameworks>();
+        ImplicitUsings = Children.Typed<ImplicitUsings>();
+        NuGetAudit = Children.Typed<NuGetAudit>();
+        OutputType = Children.Typed<OutputType>();
 
-        IsPackable = Children.OfType<IsPackable>();
-        Version = Children.OfType<Version>();
-        Description = Children.OfType<Description>();
-        Authors = Children.OfType<Authors>();
-        PackageTags = Children.OfType<PackageTags>();
-        RepositoryUrl = Children.OfType<RepositoryUrl>();
-        PackageProjectUrl = Children.OfType<PackageProjectUrl>();
-        Copyright = Children.OfType<Copyright>();
-        PackageId = Children.OfType<PackageId>();
-        PackageReleaseNotes = Children.OfType<PackageReleaseNotes>();
-        PackageReadmeFile = Children.OfType<PackageReadmeFile>();
-        PackageLicenseExpression = Children.OfType<PackageLicenseExpression>();
-        PackageLicenseFile = Children.OfType<PackageLicenseFile>();
-        PackageLicenseUrl = Children.OfType<PackageLicenseUrl>();
-        PackageIcon = Children.OfType<PackageIcon>();
-        PackageIconUrl = Children.OfType<PackageIconUrl>();
+        IsPackable = Children.Typed<IsPackable>();
+        Version = Children.Typed<Version>();
+        Description = Children.Typed<Description>();
+        Authors = Children.Typed<Authors>();
+        PackageTags = Children.Typed<PackageTags>();
+        RepositoryUrl = Children.Typed<RepositoryUrl>();
+        PackageProjectUrl = Children.Typed<PackageProjectUrl>();
+        Copyright = Children.Typed<Copyright>();
+        PackageId = Children.Typed<PackageId>();
+        PackageReleaseNotes = Children.Typed<PackageReleaseNotes>();
+        PackageReadmeFile = Children.Typed<PackageReadmeFile>();
+        PackageLicenseExpression = Children.Typed<PackageLicenseExpression>();
+        PackageLicenseFile = Children.Typed<PackageLicenseFile>();
+        PackageLicenseUrl = Children.Typed<PackageLicenseUrl>();
+        PackageIcon = Children.Typed<PackageIcon>();
+        PackageIconUrl = Children.Typed<PackageIconUrl>();
     }
 
     public Nodes<TargetFramework> TargetFramework { get; }

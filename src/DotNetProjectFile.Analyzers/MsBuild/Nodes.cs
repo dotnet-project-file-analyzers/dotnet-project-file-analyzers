@@ -22,7 +22,7 @@ public sealed class Nodes<T> : IReadOnlyList<T> where T : Node
     /// </param>
     public T this[int index] => Items[index];
 
-    public Nodes<TOut> OfType<TOut>() where TOut : T
+    public Nodes<TOut> Typed<TOut>() where TOut : T
         => new(Items.OfType<TOut>().ToArray());
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]

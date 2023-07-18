@@ -21,11 +21,8 @@ public sealed class ItemGroup : Node
     /// </param>
     public ItemGroup(XElement element, Node parent, Project project) : base(element, parent, project)
     {
-        PackageReferences = Children.OfType<PackageReference>();
-        Folders = Children.OfType<Folder>();
-        PackageReferences = Children<PackageReference>();
-        ProjectReferences = Children<ProjectReference>();
-        Folders = Children<Folder>();
+        PackageReferences = Children.Typed<PackageReference>();
+        Folders = Children.Typed<Folder>();
     }
 
     /// <summary>Gets the child package references.</summary>
