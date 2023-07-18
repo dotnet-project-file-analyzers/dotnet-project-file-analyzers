@@ -3,11 +3,11 @@
 public class Reports
 {
     [Test]
-    public void on_no_is_packable()
+    public void on_not_alphabetical_order()
        => new OrderPackageReferencesAlphabetically()
        .ForProject("NonAlphabeticalPackageReferences.cs")
        .HasIssue(
-           new Issue("Proj0014", "Package 'Qowaiv.Analyzers.CSharp' is not ordered alphabetically and should appear before 'StyleCop.Analyzers'.").WithSpan(9, 5, 9, 70));
+           new Issue("Proj0015", "Package 'Qowaiv.Analyzers.CSharp' is not ordered alphabetically and should appear before 'StyleCop.Analyzers'.").WithSpan(9, 5, 9, 70));
 }
 
 public class Guards
