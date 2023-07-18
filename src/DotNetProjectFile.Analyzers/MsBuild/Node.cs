@@ -14,6 +14,7 @@ public abstract class Node
         Element = element;
         Parent = parent;
         Project = project ?? (this as Project) ?? throw new ArgumentNullException(nameof(project));
+        children = new(element.Elements().Select(Create).OfType<Node>().ToArray());
     }
 
     internal readonly XElement Element;
@@ -73,15 +74,17 @@ public abstract class Node
     }
 
     /// <summary>Gets the a <see cref="Nodes{T}"/> of children.</summary>
-    public Nodes<T> Children<T>() where T : Node => new(this);
+    public Nodes<T> Children<T>() where T : Node => new(Children().OfType<T>().ToArray());
 
     /// <summary>Get all children.</summary>
     /// <remarks>
     /// This function exists as source for the <see cref="Nodes{T}"/>.
     /// With this construction, we can expose all children as collection.
     /// </remarks>
-    public IEnumerable<Node> Children()
-        => Element.Elements().Select(Create).OfType<Node>();
+    public Nodes<Node> Children() => children;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private readonly Nodes<Node> children;
 
     /// <summary>Gets the <see cref="string"/> value of a child element.</summary>
     public string? Attribute([CallerMemberName] string? propertyName = null)

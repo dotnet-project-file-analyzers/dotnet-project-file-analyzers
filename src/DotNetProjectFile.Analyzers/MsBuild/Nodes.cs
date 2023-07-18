@@ -11,13 +11,7 @@ public sealed class Nodes<T> : IReadOnlyList<T> where T : Node
     private readonly IReadOnlyList<T> Items;
 
     /// <summary>Initializes a new instance of the <see cref="Nodes{T}"/> class.</summary>
-    /// <param name="parent">
-    /// The parent <see cref="Node"/>.
-    /// </param>
-    public Nodes(Node parent) => Items = parent.Element
-        .Elements().Select(parent.Create)
-        .OfType<T>()
-        .ToArray();
+    public Nodes(IReadOnlyList<T> items) => Items = items;
 
     /// <summary>Gets the number of items.</summary>
     public int Count => Items.Count;
