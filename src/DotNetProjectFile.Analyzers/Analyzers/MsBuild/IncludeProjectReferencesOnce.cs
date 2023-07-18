@@ -51,7 +51,6 @@ public sealed class IncludeProjectReferencesOnce : MsBuildProjectFileAnalyzer
             var combined = Path.Combine(rootDir, unixFriendly);
             var fullPath = Path.GetFullPath(combined);
             var lower = fullPath.ToLowerInvariant(); // MSBuild is case insensitive on Windows.
-            Console.WriteLine(lower);
             return lower;
         }
     }
