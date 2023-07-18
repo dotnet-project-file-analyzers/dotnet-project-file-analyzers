@@ -7,6 +7,7 @@
     <LangVersion>11.0</LangVersion>
     <OutputType>Library</OutputType>
     <IsPackable>true</IsPackable>
+    <IsPublishable>false</IsPublishable>
     <RootNamespace>DotNetProjectFile</RootNamespace>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
