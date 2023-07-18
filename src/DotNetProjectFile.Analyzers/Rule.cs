@@ -146,7 +146,7 @@ public static class Rule
 
     public static DiagnosticDescriptor IncludePackageReferencesOnce => New(
         id: 0013,
-        title: "Include package references once",
+        title: "Include package references only once",
         message: "Package '{0}' is already referenced.",
         description: "Including package references twice is considered noise.",
         tags: new[] { "Configuration", "confusion" },
