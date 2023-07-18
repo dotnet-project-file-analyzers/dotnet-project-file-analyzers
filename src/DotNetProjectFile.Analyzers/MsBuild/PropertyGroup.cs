@@ -27,6 +27,7 @@ public sealed class PropertyGroup : Node
         PackageLicenseUrl = Children<PackageLicenseUrl>();
         PackageIcon = Children<PackageIcon>();
         PackageIconUrl = Children<PackageIconUrl>();
+        IsPublishable = Children<IsPublishable>();
     }
 
     public Nodes<TargetFramework> TargetFramework { get; }
@@ -70,4 +71,6 @@ public sealed class PropertyGroup : Node
     public Nodes<PackageIcon> PackageIcon { get; }
 
     public Nodes<PackageIconUrl> PackageIconUrl { get; }
+
+    public Nodes<IsPublishable> IsPublishable { get; }
 }

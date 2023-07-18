@@ -355,6 +355,18 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor DefineIsPublishable => New(
+        id: 0400,
+        title: "Define the project publishability explicitly",
+        message: "Define the <IsPublishable> node explicitly.",
+        description:
+            "To prevent confusion, explicitly define the " +
+            "<IsPublishable> node.",
+        tags: new[] { "Configuration", "confusion" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",

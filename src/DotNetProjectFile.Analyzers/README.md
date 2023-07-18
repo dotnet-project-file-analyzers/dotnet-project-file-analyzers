@@ -29,6 +29,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0212** Define the project icon file explicitly](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0212.md)
 * [**Proj0213** Define the project icon URL explicitly](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0213.md)
 * [**Proj0214** Define the NuGet project ID explicitly](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0214.md)
+* [**Proj0400** Define the project publishability explicitly](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj0400.md)
 * [**Proj1000** Use the .NET project file analyzers](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj1001.md)
 * [**Proj1003** Use Sonar analyzers](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/Proj1003.md)
