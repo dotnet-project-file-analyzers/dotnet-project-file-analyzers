@@ -5,6 +5,7 @@
     <OutputType>Library</OutputType>
     <NuGetAudit>true</NuGetAudit>
     <IsPackable>true</IsPackable>
+    <IsPublishable>false</IsPublishable>
   </PropertyGroup>
 
   <PropertyGroup Label="PackageInfo">
