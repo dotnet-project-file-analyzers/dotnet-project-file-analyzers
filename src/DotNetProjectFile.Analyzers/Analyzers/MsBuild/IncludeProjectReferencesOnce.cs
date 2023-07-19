@@ -17,7 +17,7 @@ public sealed class IncludeProjectReferencesOnce : MsBuildProjectFileAnalyzer
             .ImportsAndSelf()
             .SelectMany(p => p.ItemGroups)
             .SelectMany(i => i.ProjectReferences)
-            .Where(r => r.Include is not null))
+            .Where(r => r.Value is not null))
         {
             var key = Reference.Create(reference);
 
@@ -35,20 +35,7 @@ public sealed class IncludeProjectReferencesOnce : MsBuildProjectFileAnalyzer
     private record struct Reference(string Name, string Condition)
     {
         public static Reference Create(ProjectReference reference) => new(
-            Name: GetName(reference),
+            Name: FileSystem.Normalize(reference.Value!.FullName).ToLowerInvariant(),
             Condition: string.Join(" And ", reference.Conditions()));
-
-        private static string GetName(ProjectReference reference)
-        {
-            if (reference.Include is null)
-            {
-                return string.Empty;
-            }
-
-            var location = reference.Project.Path.Directory.File(reference.Include);
-
-            // file system is case insensitive on Windows.
-            return FileSystem.Normalize(location.FullName).ToUpperInvariant();
-        }
     }
 }
