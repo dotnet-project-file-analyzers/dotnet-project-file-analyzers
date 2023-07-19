@@ -8,7 +8,7 @@ public class Reports
        .ForProject("WithLicenseUrl.cs")
        .HasIssue(
             new Issue("Proj0211", "Replace deprecated <PackageLicenseUrl> with <PackageLicenseExpression> or <PackageLicenseFile> node.")
-                .WithSpan(29, 5, 29, 120));
+                .WithSpan(29, 5, 29, 101));
 }
 
 public class Guards
