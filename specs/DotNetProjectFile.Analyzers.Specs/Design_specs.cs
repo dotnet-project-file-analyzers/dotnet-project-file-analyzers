@@ -21,7 +21,7 @@ public class Rules
     [TestCaseSource(nameof(RuleIds))]
     public void mentioned_in_README_package(string id)
         => ReadmePackageText
-        .Contains($"](https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/rules/{id}.md)")
+        .Contains($"](https://dotnet-project-file-analyzers.github.io/rules/{id}.md)")
         .Should().BeTrue(because: $"Rule {id} should be mentioned");
 
     [TestCaseSource(nameof(Types))]

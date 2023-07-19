@@ -27,7 +27,7 @@
   </PropertyGroup>
 
   <PropertyGroup Label="UnderTest">
-    <PackageLicenseUrl>https://github.com/Corniel/dotnet-project-file-analyzers/blob/main/LICENSE.md</PackageLicenseUrl>
+    <PackageLicenseUrl>https://dotnet-project-file-analyzers.github.io/LICENSE.md</PackageLicenseUrl>
   </PropertyGroup>
 
 </Project>
