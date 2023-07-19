@@ -9,7 +9,7 @@ public sealed class Folder : Node<DirectoryInfo>
     public string? Include => Attribute();
 
     public override DirectoryInfo? Value
-        => Include is { }
-        ? new(Path.Combine(Project.Path.FullName, Include))
+        => Include is { Length: > 0 }
+        ? Project.Path.Directory.SelectDirectory(Include)
         : null;
 }

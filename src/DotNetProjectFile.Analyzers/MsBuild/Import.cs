@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Microsoft.CodeAnalysis;
+using System.IO;
 
 namespace DotNetProjectFile.MsBuild;
 
@@ -26,8 +27,7 @@ public sealed class Import : Node<Project>
     private bool init;
 
     private Project? GetValue()
-    {
-        var location = new FileInfo(Path.Combine(Project.Path.Directory.FullName, Attribute("Project")));
-        return Project.Projects.TryResolve(location, isProject: false);
-    }
+        => Attribute(nameof(Project)) is { } project
+            ? Project.Projects.TryResolve(Project.Path.Directory.SelectFile(project), isProject: false)
+            : null;
 }

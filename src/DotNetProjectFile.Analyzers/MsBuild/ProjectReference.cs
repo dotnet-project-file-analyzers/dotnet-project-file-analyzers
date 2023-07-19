@@ -15,6 +15,6 @@ public sealed class ProjectReference : Node<FileInfo>
 
     private FileInfo? GetValue()
         => Include is { Length: > 0 }
-        ? Project.Path.Directory.File(Include)
+        ? Project.Path.Directory.SelectFile(Include)
         : null;
 }

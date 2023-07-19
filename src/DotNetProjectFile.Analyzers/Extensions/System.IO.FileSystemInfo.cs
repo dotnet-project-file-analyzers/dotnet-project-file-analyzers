@@ -14,6 +14,9 @@ internal static class SystemFileSystemInfoExtensions
         }
     }
 
-    public static FileInfo File(this DirectoryInfo directory, string path)
+    public static FileInfo SelectFile(this DirectoryInfo directory, string path)
+        => new(FileSystem.Normalize(Path.Combine(directory.FullName, path)));
+
+    public static DirectoryInfo SelectDirectory(this DirectoryInfo directory, string path)
         => new(FileSystem.Normalize(Path.Combine(directory.FullName, path)));
 }
