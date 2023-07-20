@@ -20,50 +20,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 		.github\workflows\build-test.yaml = .github\workflows\build-test.yaml
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rules", "Rules", "{50507CD3-2049-4539-8A37-D370EE0F91F7}"
-	ProjectSection(SolutionItems) = preProject
-		rules\Proj0001.md = rules\Proj0001.md
-		rules\Proj0002.md = rules\Proj0002.md
-		rules\Proj0003.md = rules\Proj0003.md
-		rules\Proj0004.md = rules\Proj0004.md
-		rules\Proj0005.md = rules\Proj0005.md
-		rules\Proj0006.md = rules\Proj0006.md
-		rules\Proj0007.md = rules\Proj0007.md
-		rules\Proj0008.md = rules\Proj0008.md
-		rules\Proj0009.md = rules\Proj0009.md
-		rules\Proj0010.md = rules\Proj0010.md
-		rules\Proj0011.md = rules\Proj0011.md
-		rules\Proj0012.md = rules\Proj0012.md
-		rules\Proj0013.md = rules\Proj0013.md
-		rules\Proj0014.md = rules\Proj0014.md
-		rules\Proj0015.md = rules\Proj0015.md
-		rules\Proj0016.md = rules\Proj0016.md
-		rules\Proj0200.md = rules\Proj0200.md
-		rules\Proj0201.md = rules\Proj0201.md
-		rules\Proj0202.md = rules\Proj0202.md
-		rules\Proj0203.md = rules\Proj0203.md
-		rules\Proj0204.md = rules\Proj0204.md
-		rules\Proj0205.md = rules\Proj0205.md
-		rules\Proj0206.md = rules\Proj0206.md
-		rules\Proj0207.md = rules\Proj0207.md
-		rules\Proj0208.md = rules\Proj0208.md
-		rules\Proj0209.md = rules\Proj0209.md
-		rules\Proj0210.md = rules\Proj0210.md
-		rules\Proj0211.md = rules\Proj0211.md
-		rules\Proj0212.md = rules\Proj0212.md
-		rules\Proj0213.md = rules\Proj0213.md
-		rules\Proj0214.md = rules\Proj0214.md
-		rules\Proj0400.md = rules\Proj0400.md
-		rules\Proj1000.md = rules\Proj1000.md
-		rules\Proj1001.md = rules\Proj1001.md
-		rules\Proj1003.md = rules\Proj1003.md
-		rules\Proj2000.md = rules\Proj2000.md
-		rules\Proj2001.md = rules\Proj2001.md
-		rules\Proj2002.md = rules\Proj2002.md
-		rules\Proj2003.md = rules\Proj2003.md
-		rules\Proj2004.md = rules\Proj2004.md
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{00669DF6-1449-41AA-8AD3-FA84194CE5B4}"
 	ProjectSection(SolutionItems) = preProject
 		projects\props\common.props = projects\props\common.props
@@ -189,7 +145,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NonAlphabeticalProjectReferences", "projects\NonAlphabeticalProjectReferences\NonAlphabeticalProjectReferences.csproj", "{B7FC4C41-DB01-4601-BD69-D3A6E901CBDB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoubleProjectReferences", "projects\DoubleProjectReferences\DoubleProjectReferences.csproj", "{52DD6A7B-995B-40F7-9500-5F643064E960}"
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ChooseWhen", "projects\ChooseWhen\ChooseWhen.csproj", "{12251088-DE11-4DF8-871A-AD731663D2FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChooseWhen", "projects\ChooseWhen\ChooseWhen.csproj", "{12251088-DE11-4DF8-871A-AD731663D2FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
