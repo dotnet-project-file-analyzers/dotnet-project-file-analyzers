@@ -6,13 +6,10 @@ namespace Design_specs;
 public class Rules
 {
     [Test]
-    public void Ids_are_unique()
-        => Descriptors.Select(d => d.Id).Should().OnlyHaveUniqueItems();
+    public void have_unique_ids()
+        => AlleRules.Select(d => d.Id).Should().OnlyHaveUniqueItems();
 
-    /// <remarks>
-    /// To 
-    /// </remarks>
-    [TestCaseSource(nameof(Descriptors))]
+    [TestCaseSource(nameof(AlleRules))]
     public async Task have_mark_down_documentation(Rule rule)
     {
         using var client = new HttpClient();
@@ -24,8 +21,8 @@ public class Rules
         content.Should().StartWith($"# {rule.Id}: ");
     }
 
-    [TestCaseSource(nameof(Descriptors))]
-    public async Task mentioned_in_README_root(Rule rule)
+    [TestCaseSource(nameof(AlleRules))]
+    public async Task are_mentioned_in_README_root(Rule rule)
     {
         IndexContext ??= await GetIndexContext();
         IndexContext
@@ -33,14 +30,14 @@ public class Rules
             .Should().BeTrue(because: $"Rule {rule} should be mentioned");
     }
 
-    [TestCaseSource(nameof(Descriptors))]
-    public void mentioned_in_README_package(Rule rule)
+    [TestCaseSource(nameof(AlleRules))]
+    public void are_mentioned_in_README_package(Rule rule)
         => ReadmePackageText
         .Contains($"](https://dotnet-project-file-analyzers.github.io/rules/{rule.Id}.md)")
         .Should().BeTrue(because: $"Rule {rule} should be mentioned");
 
     [TestCaseSource(nameof(Types))]
-    public void in_DotNetProjectFile_Analyzers_MsBuild_namespace(Type type)
+    public void defined_in_DotNetProjectFile_Analyzers_MsBuild_namespace(Type type)
         => type.Namespace.Should().BeOneOf(
             "DotNetProjectFile.Analyzers.MsBuild",
             "DotNetProjectFile.Analyzers.Resx");
@@ -59,7 +56,7 @@ public class Rules
         .GetTypes()
         .Where(t => !t.IsAbstract && t.IsAssignableTo(typeof(DiagnosticAnalyzer)));
 
-    private static IEnumerable<Rule> Descriptors
+    private static IEnumerable<Rule> AlleRules
         => typeof(DotNetProjectFile.Rule)
         .GetProperties(BindingFlags.Public | BindingFlags.Static)
         .Where(f => f.PropertyType == typeof(DiagnosticDescriptor))
@@ -82,6 +79,7 @@ public class Rules
     }
 }
 
+/// <remarks>Wrapper for better display of test resources in IDE.</remarks>
 public sealed record Rule(DiagnosticDescriptor Descriptor)
 {
     public string Id => Descriptor.Id;
