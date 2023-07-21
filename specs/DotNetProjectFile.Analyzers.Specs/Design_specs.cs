@@ -14,7 +14,7 @@ public class Rules
     {
         using var client = new HttpClient();
         
-        var response = await client.GetAsync(rule.HelpLinkUri);
+        var response = await client.GetAsync(rule.HelpLinkUri.Replace(".html", ".md"));
         response.Should().HaveStatusCode(HttpStatusCode.OK);
 
         var content = await response.Content.ReadAsStringAsync();
@@ -33,7 +33,7 @@ public class Rules
     [TestCaseSource(nameof(AlleRules))]
     public void are_mentioned_in_README_package(Rule rule)
         => ReadmePackageText
-        .Contains($"](https://dotnet-project-file-analyzers.github.io/rules/{rule.Id}.md)")
+        .Contains($"]({rule.HelpLinkUri})")
         .Should().BeTrue(because: $"Rule {rule} should be mentioned");
 
     [TestCaseSource(nameof(Types))]
