@@ -2,5 +2,5 @@
 
 public static class FileSystem
 {
-    public static readonly IComparer<string> PathCompare = new FilePathComparer();
+    public static readonly IComparer<string?> PathCompare = new FilePathComparer();
 }

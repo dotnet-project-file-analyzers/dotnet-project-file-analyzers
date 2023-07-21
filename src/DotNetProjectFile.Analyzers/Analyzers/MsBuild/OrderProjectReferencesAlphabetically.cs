@@ -21,7 +21,7 @@ public sealed class OrderProjectReferencesAlphabetically : MsBuildProjectFileAna
 
     private void AnalyzeGroup(ProjectFileAnalysisContext context, Nodes<ProjectReference> references)
     {
-        var expectedOrder = references.OrderBy(r => r.Include ?? string.Empty, FileSystem.PathCompare);
+        var expectedOrder = references.OrderBy(r => r.Include, FileSystem.PathCompare);
         var firstDifference = references
             .Zip(expectedOrder, (found, expected) => (found, expected))
             .FirstOrDefault(pair => pair.found != pair.expected);

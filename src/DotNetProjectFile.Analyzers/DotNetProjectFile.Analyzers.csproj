@@ -24,9 +24,11 @@
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
-    <Version>1.0.8</Version>
+    <Version>1.0.9</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+v1.0.9
+- Proj0016: Improve ordering of file paths. (FP &amp; FN)
 v1.0.8
 - Proj0013: Include package references only once. (NEW RULE)
 - Proj0014: Include project references only once. (NEW RULE)

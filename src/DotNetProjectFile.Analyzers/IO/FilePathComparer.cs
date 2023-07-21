@@ -1,10 +1,12 @@
 ﻿namespace DotNetProjectFile.IO;
 
-public sealed class FilePathComparer : IComparer<string>
+public sealed class FilePathComparer : IComparer<string?>
 {
     /// <inheritdoc />
-    public int Compare(string x, string y)
+    public int Compare(string? x, string? y)
     {
+        x ??= string.Empty;
+        y ??= string.Empty;
         int? compare = null;
         var xs = x.GetEnumerator();
         var ys = y.GetEnumerator();
