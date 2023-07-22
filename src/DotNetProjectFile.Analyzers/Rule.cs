@@ -511,5 +511,5 @@ public static class Rule
             defaultSeverity: severity,
             isEnabledByDefault: isEnabled,
             description: description,
-            helpLinkUri: $"https://dotnet-project-file-analyzers.github.io/rules/Proj{id:0000}.md");
+            helpLinkUri: $"https://dotnet-project-file-analyzers.github.io/rules/Proj{id:0000}.html");
 }
