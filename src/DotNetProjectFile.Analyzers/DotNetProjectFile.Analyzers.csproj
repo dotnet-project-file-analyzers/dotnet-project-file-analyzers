@@ -27,6 +27,8 @@
     <Version>1.0.9</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+ToBeReleased
+- Improved message for Proj2002 to be more informative.
 v1.0.9
 - Proj0016: Improve ordering of file paths. (FP &amp; FN)
 v1.0.8

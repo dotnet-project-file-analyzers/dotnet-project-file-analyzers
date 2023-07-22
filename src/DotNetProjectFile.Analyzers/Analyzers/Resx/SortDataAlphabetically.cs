@@ -7,18 +7,18 @@ public sealed class SortDataAlphabetically : ResourceFileAnalyzer
 
     protected override void Register(ResourceFileAnalysisContext context)
     {
-        var sorted = context.Resource.Data
-            .Select(d => d.Name)
-            .OrderBy(d => d)
-            .ToArray();
+        var expectedOrder = context.Resource.Data.OrderBy(r => r.Name);
+        var firstDifference = context.Resource.Data
+            .Zip(expectedOrder, (found, expected) => (found, expected))
+            .FirstOrDefault(pair => pair.found != pair.expected);
 
-        for (var i = 0; i < sorted.Length; i++)
+        if (firstDifference != default)
         {
-            if (context.Resource.Data[i].Name != sorted[i])
-            {
-                context.ReportDiagnostic(Descriptor, context.Resource.Data[i]);
-                return;
-            }
+            var found = firstDifference.found;
+            var expected = firstDifference.expected;
+            var foundName = found.Name ?? string.Empty;
+            var expectedName = expected.Name ?? string.Empty;
+            context.ReportDiagnostic(Descriptor, expected, expectedName, foundName);
         }
     }
 }
