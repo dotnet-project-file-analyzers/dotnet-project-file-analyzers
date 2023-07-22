@@ -1,4 +1,5 @@
 global using DotNetProjectFile.Analyzers.Helpers;
+global using DotNetProjectFile.Caching;
 global using DotNetProjectFile.Diagnostics;
 global using DotNetProjectFile.IO;
 global using DotNetProjectFile.MsBuild;

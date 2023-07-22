@@ -1,5 +1,4 @@
-﻿using DotNetProjectFile.Caching;
-using System.IO;
+﻿using System.IO;
 
 namespace DotNetProjectFile.MsBuild;
 
