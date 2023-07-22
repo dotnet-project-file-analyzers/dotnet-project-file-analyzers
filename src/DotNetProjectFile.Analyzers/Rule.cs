@@ -1,10 +1,5 @@
 ﻿#pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
-using DotNetProjectFile.MsBuild;
-using DotNetProjectFile.Resx;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 
 namespace DotNetProjectFile;
 

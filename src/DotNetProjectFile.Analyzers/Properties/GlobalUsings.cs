@@ -1,4 +1,6 @@
+global using DotNetProjectFile.Analyzers.Helpers;
 global using DotNetProjectFile.Diagnostics;
+global using DotNetProjectFile.IO;
 global using DotNetProjectFile.MsBuild;
 global using Microsoft.CodeAnalysis;
 global using Microsoft.CodeAnalysis.Diagnostics;

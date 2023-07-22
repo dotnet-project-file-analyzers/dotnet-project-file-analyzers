@@ -1,5 +1,3 @@
-using Microsoft.CodeAnalysis;
-
 namespace DotNetProjectFile.MsBuild;
 
 /// <summary>Represents an item group in a Visual Studio project file.</summary>
