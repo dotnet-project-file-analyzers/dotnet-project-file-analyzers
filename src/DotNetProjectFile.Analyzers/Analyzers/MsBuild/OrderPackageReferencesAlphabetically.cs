@@ -1,6 +1,4 @@
-﻿using DotNetProjectFile.IO;
-
-namespace DotNetProjectFile.Analyzers.MsBuild;
+﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class OrderPackageReferencesAlphabetically : MsBuildProjectFileAnalyzer
@@ -19,19 +17,8 @@ public sealed class OrderPackageReferencesAlphabetically : MsBuildProjectFileAna
     }
 
     private void AnalyzeGroup(ProjectFileAnalysisContext context, Nodes<PackageReference> references)
-    {
-        var expectedOrder = references.OrderBy(r => r.IncludeOrUpdate);
-        var firstDifference = references
-            .Zip(expectedOrder, (found, expected) => (found, expected))
-            .FirstOrDefault(pair => pair.found != pair.expected);
-
-        if (firstDifference != default)
+        => references.CheckAlphabeticalOrder(r => r.IncludeOrUpdate, (expected, found) =>
         {
-            var found = firstDifference.found;
-            var expected = firstDifference.expected;
-            var foundName = found.Include ?? found.Update ?? string.Empty;
-            var expectedName = expected.Include ?? expected.Update ?? string.Empty;
-            context.ReportDiagnostic(Descriptor, expected, expectedName, foundName);
-        }
-    }
+            context.ReportDiagnostic(Descriptor, expected, expected.IncludeOrUpdate, found.IncludeOrUpdate);
+        });
 }

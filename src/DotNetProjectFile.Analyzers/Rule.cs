@@ -1,11 +1,5 @@
 ﻿#pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
-using DotNetProjectFile.MsBuild;
-using DotNetProjectFile.Resx;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-
 namespace DotNetProjectFile;
 
 public static class Rule
@@ -460,7 +454,7 @@ public static class Rule
     public static DiagnosticDescriptor SortDataAlphabetically => New(
         id: 2002,
         title: "Sort resource file values alphabetically",
-        message: "Resource values should be ordered alphabetically by their names.",
+        message: "Resource '{0}' is not ordered alphabetically and should appear before '{1}'.",
         description:
             "To improve readability, and reduce the number of merge conflicts, " +
             "the `<data>` elements should be sorted based on the `@name` attribute.",

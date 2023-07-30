@@ -1,5 +1,3 @@
-using DotNetProjectFile.Caching;
-using DotNetProjectFile.IO;
 using System.Globalization;
 using System.IO;
 

@@ -1,5 +1,4 @@
-﻿using DotNetProjectFile.IO;
-using ProjectReference = DotNetProjectFile.MsBuild.ProjectReference;
+﻿using ProjectReference = DotNetProjectFile.MsBuild.ProjectReference;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
@@ -20,19 +19,8 @@ public sealed class OrderProjectReferencesAlphabetically : MsBuildProjectFileAna
     }
 
     private void AnalyzeGroup(ProjectFileAnalysisContext context, Nodes<ProjectReference> references)
-    {
-        var expectedOrder = references.OrderBy(r => r.Include, FileSystem.PathCompare);
-        var firstDifference = references
-            .Zip(expectedOrder, (found, expected) => (found, expected))
-            .FirstOrDefault(pair => pair.found != pair.expected);
-
-        if (firstDifference != default)
+        => references.CheckAlphabeticalOrder(r => r.Include, (expected, found) =>
         {
-            var found = firstDifference.found;
-            var expected = firstDifference.expected;
-            var foundName = found.Include ?? string.Empty;
-            var expectedName = expected.Include ?? string.Empty;
-            context.ReportDiagnostic(Descriptor, expected, expectedName, foundName);
-        }
-    }
+            context.ReportDiagnostic(Descriptor, expected, expected.Include, found.Include);
+        });
 }

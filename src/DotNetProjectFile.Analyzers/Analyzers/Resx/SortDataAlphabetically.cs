@@ -6,19 +6,8 @@ public sealed class SortDataAlphabetically : ResourceFileAnalyzer
     public SortDataAlphabetically() : base(Rule.SortDataAlphabetically) { }
 
     protected override void Register(ResourceFileAnalysisContext context)
-    {
-        var sorted = context.Resource.Data
-            .Select(d => d.Name)
-            .OrderBy(d => d)
-            .ToArray();
-
-        for (var i = 0; i < sorted.Length; i++)
+        => context.Resource.Data.CheckAlphabeticalOrder(r => r.Name, (expected, found) =>
         {
-            if (context.Resource.Data[i].Name != sorted[i])
-            {
-                context.ReportDiagnostic(Descriptor, context.Resource.Data[i]);
-                return;
-            }
-        }
-    }
+            context.ReportDiagnostic(Descriptor, expected, expected.Name, found.Name);
+        });
 }
