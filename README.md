@@ -30,7 +30,7 @@ Install-Package DotNetProjectFile.Analyzers
 ```
 
 ## Rules
-There packaage contains rules about the MS Build project files (including
+This package contains rules about the MS Build project files (including
 imported props), and RESX files. The complete overview can be found at
 [dotnet-project-file-analyzers.github.io](https://dotnet-project-file-analyzers.github.io/).
 
