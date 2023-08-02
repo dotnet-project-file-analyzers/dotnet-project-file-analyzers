@@ -30,6 +30,7 @@
 ToBeReleased
 - Proj0202: Both &lt;Description&gt; and &lt;PackageDescription&gt; are fine. (FP)
 - Improved message for Proj2002 to be more informative.
+- Depend on Microsoft.CodeAnalysis.Workspaces.Common version 4.0.1.
 v1.0.9
 - Proj0016: Improve ordering of file paths. (FP &amp; FN)
 v1.0.8
