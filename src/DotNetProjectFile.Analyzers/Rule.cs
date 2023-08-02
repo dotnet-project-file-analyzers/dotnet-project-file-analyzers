@@ -185,7 +185,7 @@ public static class Rule
         description: "Using directives can not be both static and an alias.",
         tags: new[] { "Bug", "Code Generation" },
         category: Category.Bug,
-        severity: DiagnosticSeverity.Warning,
+        severity: DiagnosticSeverity.Error,
         isEnabled: true);
 
     public static DiagnosticDescriptor OrderUsingDirectivesByType => New(
