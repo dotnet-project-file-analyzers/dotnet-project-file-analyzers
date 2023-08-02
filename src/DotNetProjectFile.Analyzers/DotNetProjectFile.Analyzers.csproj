@@ -28,6 +28,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
 ToBeReleased
+- Proj0202: Both &lt;Description&gt; and &lt;PackageDescription&gt; are fine. (FP)
 - Improved message for Proj2002 to be more informative.
 v1.0.9
 - Proj0016: Improve ordering of file paths. (FP &amp; FN)

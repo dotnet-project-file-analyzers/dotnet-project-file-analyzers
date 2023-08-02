@@ -207,12 +207,11 @@ public static class Rule
     public static DiagnosticDescriptor DefineDescription => New(
         id: 0202,
         title: "Define the project description explicitly",
-        message: "Define the <Description> node explicitly or define the <IsPackable> node with value 'false'.",
+        message: "Define the <Description> or <PackageDescription> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
-            "To ensure the creation of well-formed packages, " +
-            "explicitly define the <Description> node or " +
-            "disable package generation by defining the " +
-            "<IsPackable> node with value 'false'.",
+            "To ensure the creation of well-formed packages, explicitly define " +
+            "the <Description> or <PackageDescription> node or disable package " +
+            "generation by defining the <IsPackable> node with value 'false'.",
         tags: new[] { "Configuration", "NuGet", "package" },
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,

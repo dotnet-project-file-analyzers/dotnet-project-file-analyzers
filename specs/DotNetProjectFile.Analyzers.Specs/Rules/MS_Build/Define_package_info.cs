@@ -8,7 +8,7 @@ public class Reports
        .ForProject("NoPackageInfo.cs")
        .HasIssues(
            new Issue("Proj0201", "Define the <Version> node explicitly or define the <IsPackable> node with value 'false'."),
-           new Issue("Proj0202", "Define the <Description> node explicitly or define the <IsPackable> node with value 'false'."),
+           new Issue("Proj0202", "Define the <Description> or <PackageDescription> node explicitly or define the <IsPackable> node with value 'false'."),
            new Issue("Proj0203", "Define the <Authors> node explicitly or define the <IsPackable> node with value 'false'."),
            new Issue("Proj0204", "Define the <PackageTags> node explicitly or define the <IsPackable> node with value 'false'."),
            new Issue("Proj0205", "Define the <RepositoryUrl> node explicitly or define the <IsPackable> node with value 'false'."),
@@ -33,7 +33,7 @@ public class Reports
        => new DefinePackageInfo()
        .ForProject("NoDescription.cs")
        .HasIssue(
-           new Issue("Proj0202", "Define the <Description> node explicitly or define the <IsPackable> node with value 'false'."));
+           new Issue("Proj0202", "Define the <Description> or <PackageDescription> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
     public void on_no_authors()
@@ -110,6 +110,7 @@ public class Guards
 {
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
+    [TestCase("PackageDescription.cs")]
     [TestCase("WithLicenseFile.cs")]
     public void Projects_without_issues(string project)
          => new DefinePackageInfo()

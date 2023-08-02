@@ -25,7 +25,7 @@ public sealed class DefinePackageInfo : MsBuildProjectFileAnalyzer
         if (!IsPackable(context.Project)) { return; }
 
         Analyze(context, Rule.DefineVersion, g => g.Version);
-        Analyze(context, Rule.DefineDescription, g => g.Description);
+        Analyze(context, Rule.DefineDescription, g => Nodes.Concat(g.Description, g.PackageDescription));
         Analyze(context, Rule.DefineAuthors, g => g.Authors);
         Analyze(context, Rule.DefineTags, g => g.PackageTags);
         Analyze(context, Rule.DefineRepositoryUrl, g => g.RepositoryUrl);
@@ -36,13 +36,7 @@ public sealed class DefinePackageInfo : MsBuildProjectFileAnalyzer
         Analyze(context, Rule.DefineIcon, g => g.PackageIcon);
         Analyze(context, Rule.DefineIconUrl, g => g.PackageIconUrl);
         Analyze(context, Rule.DefinePackageId, g => g.PackageId);
-
-        Analyze(context, Rule.DefineLicense, g =>
-        {
-            var files = g.PackageLicenseFile as IEnumerable<Node>;
-            var expressions = g.PackageLicenseExpression as IEnumerable<Node>;
-            return files.Concat(expressions);
-        });
+        Analyze(context, Rule.DefineLicense, g => Nodes.Concat(g.PackageLicenseFile, g.PackageLicenseExpression));
     }
 
     private static bool IsPackable(MsBuildProject project)
