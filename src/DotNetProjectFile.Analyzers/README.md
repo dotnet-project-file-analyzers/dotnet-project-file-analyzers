@@ -21,6 +21,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0017** Can't create alias for static using directive](https://dotnet-project-file-analyzers.github.io/rules/Proj0017.html)
 * [**Proj0018** Order using directives by type](https://dotnet-project-file-analyzers.github.io/rules/Proj0018.html)
 * [**Proj0019** Order using directives alphabetically](https://dotnet-project-file-analyzers.github.io/rules/Proj0019.html)
+* [**Proj0020** Item group should only contain nodes of a single type](https://dotnet-project-file-analyzers.github.io/rules/Proj0020.html)
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)
 * [**Proj0201** Define the project version explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0201.html)
 * [**Proj0202** Define the project description explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0202.html)
