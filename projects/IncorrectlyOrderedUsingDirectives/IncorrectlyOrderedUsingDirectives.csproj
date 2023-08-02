@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="NamespaceB" />
+    <Using Include="NamespaceA.Placeholder" Alias="PlaceholderA" />
+    <Using Include="NamespaceA" />
+    <Using Include="NamespaceB.Placeholder" Static="true" />
+    <Using Include="NamespaceB.Placeholder" Static="true" Alias="Foo" />
+  </ItemGroup>
+
+</Project>

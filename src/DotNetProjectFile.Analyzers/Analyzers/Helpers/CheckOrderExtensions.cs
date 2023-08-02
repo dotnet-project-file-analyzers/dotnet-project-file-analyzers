@@ -1,6 +1,6 @@
 ﻿namespace DotNetProjectFile.Analyzers.Helpers;
 
-public static class CheckAlphabeticalOrderExtensions
+public static class CheckOrderExtensions
 {
     public static void CheckAlphabeticalOrder<T>(this IEnumerable<T> enumerable, Func<T, string?> getName, Action<T, T> onError)
     {
@@ -14,7 +14,7 @@ public static class CheckAlphabeticalOrderExtensions
         }
     }
 
-    private static bool HasDifference<T>(this IEnumerable<(T Expected, T Found)> values, out T expected, out T found)
+    public static bool HasDifference<T>(this IEnumerable<(T Expected, T Found)> values, out T expected, out T found)
     {
         foreach ((var eExpected, var eFound) in values)
         {

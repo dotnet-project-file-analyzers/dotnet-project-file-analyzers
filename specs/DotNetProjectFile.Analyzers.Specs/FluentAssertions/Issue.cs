@@ -16,6 +16,12 @@ internal sealed record Issue(
             Span = new(new(lineStart, posStart), new(lineEnd, posEnd)),
         };
 
+    public Issue WithSeverity(DiagnosticSeverity severity)
+        => this with
+        {
+            Severity = severity,
+        };
+
     public override string ToString()
     {
         var sb = new StringBuilder($"{Id} {Message}");

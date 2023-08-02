@@ -178,6 +178,36 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor StaticAliasUsingNotSupported => New(
+        id: 0017,
+        title: "Can't create alias for static using directive",
+        message: "Using directive for '{0}' can not be both an alias and static.",
+        description: "Using directives can not be both static and an alias.",
+        tags: new[] { "Bug", "Code Generation" },
+        category: Category.Bug,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor OrderUsingDirectivesByType => New(
+        id: 0018,
+        title: "Order using directives by type",
+        message: "{0} directive for '{1}' is should appear before {2} directive for '{3}'.",
+        description: "Not ordering using directives by type is considered noise.",
+        tags: new[] { "Configuration", "confusion" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor OrderUsingDirectivesAlphabetically => New(
+        id: 0019,
+        title: "Order using directives alphabetically",
+        message: "{0} directive '{1}' is not ordered alphabetically and should appear before '{2}'.",
+        description: "Not ordering using directives alphabetically is considered noise.",
+        tags: new[] { "Configuration", "confusion" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
