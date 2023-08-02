@@ -20,14 +20,15 @@ public sealed class PropertyGroup : Node
         RepositoryUrl = Children.Typed<RepositoryUrl>();
         PackageProjectUrl = Children.Typed<PackageProjectUrl>();
         Copyright = Children.Typed<Copyright>();
+        PackageDescription = Children.Typed<PackageDescription>();
         PackageId = Children.Typed<PackageId>();
-        PackageReleaseNotes = Children.Typed<PackageReleaseNotes>();
-        PackageReadmeFile = Children.Typed<PackageReadmeFile>();
         PackageLicenseExpression = Children.Typed<PackageLicenseExpression>();
         PackageLicenseFile = Children.Typed<PackageLicenseFile>();
         PackageLicenseUrl = Children.Typed<PackageLicenseUrl>();
         PackageIcon = Children.Typed<PackageIcon>();
         PackageIconUrl = Children.Typed<PackageIconUrl>();
+        PackageReleaseNotes = Children.Typed<PackageReleaseNotes>();
+        PackageReadmeFile = Children.Typed<PackageReadmeFile>();
     }
 
     public Nodes<TargetFramework> TargetFramework { get; }
@@ -60,7 +61,7 @@ public sealed class PropertyGroup : Node
 
     public Nodes<PackageReleaseNotes> PackageReleaseNotes { get; }
 
-    public Nodes<PackageReadmeFile> PackageReadmeFile { get; }
+    public Nodes<PackageDescription> PackageDescription { get; }
 
     public Nodes<PackageLicenseExpression> PackageLicenseExpression { get; }
 
@@ -71,6 +72,8 @@ public sealed class PropertyGroup : Node
     public Nodes<PackageIcon> PackageIcon { get; }
 
     public Nodes<PackageIconUrl> PackageIconUrl { get; }
+
+    public Nodes<PackageReadmeFile> PackageReadmeFile { get; }
 
     public Nodes<IsPublishable> IsPublishable { get; }
 }
