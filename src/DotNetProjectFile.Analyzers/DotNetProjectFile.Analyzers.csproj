@@ -44,6 +44,7 @@ v1.0.10
 - Proj0017: Can't create alias for static using directive. (NEW RULE)
 - Proj0018: Order using directives by type. (NEW RULE)
 - Proj0019: Order using directives alphabetically. (NEW RULE)
+- Proj0020: Item group should only contain nodes of a single type. (NEW RULE)
 - Proj0202: Both &lt;Description&gt; and &lt;PackageDescription&gt; are fine. (FP)
 - Improved message for Proj2002 to be more informative.
 - Depend on Microsoft.CodeAnalysis.Workspaces.Common version 4.0.1.
