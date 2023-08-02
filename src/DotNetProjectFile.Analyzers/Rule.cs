@@ -208,6 +208,16 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor ItemGroupShouldBeUniform => New(
+        id: 0020,
+        title: "Item group should only contain nodes of a single type",
+        message: "<ItemGroup> should only contain nodes of a single type.",
+        description: "Mixing nodes of different types in a single <ItemGroup> is considered noise.",
+        tags: new[] { "Configuration", "confusion" },
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
