@@ -20,34 +20,8 @@ To use the analyzers, you must include the analyzer package in your project file
 </Project>
 ```
 
-## Additional files
-To fully benefit from these analyzers it is recommended to add the project file
-(and imported projects/props) as additional files.
-
-To add a project file:
-
-``` XML
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <AdditionalFiles Include="*.??proj" Visible="false" />
-  </ItemGroup>
-
-</Project>
-```
-
-To add a props file:
-
-``` XML
-<?xml version="1.0" encoding="utf-8"?>
-<Project>
-
-  <ItemGroup>
-    <AdditionalFiles Include="../props/{file_name}" Link="Properties/{file_name}" />
-  </ItemGroup>
-
-</Project>
-```
+## GitHub repository
+The source code can be found at GitHub: [github.com/dotnet-project-file-analyzers](https://github.com/dotnet-project-file-analyzers).
 
 ## MS Build project file rules
 * [**Proj0001** MS Build project file could not be located](rules/Proj0001.md)
@@ -93,6 +67,35 @@ To add a props file:
 * [**Proj2003** Add invariant fallback resources](rules/Proj2003.md)
 * [**Proj2004** Add invariant fallback values](rules/Proj2004.md)
 
+## Additional files
+To fully benefit from these analyzers it is recommended to add the project file
+(and imported projects/props) as additional files.
+
+To add a project file:
+
+``` XML
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <AdditionalFiles Include="*.??proj" Visible="false" />
+  </ItemGroup>
+
+</Project>
+```
+
+To add a props file:
+
+``` XML
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <ItemGroup>
+    <AdditionalFiles Include="../props/{file_name}" Link="Properties/{file_name}" />
+  </ItemGroup>
+
+</Project>
+```
+
 ## Reference an analyzer from a project
 For debugging/development purposes, it can be useful to reference the analyzer
 project directly. Within this solution, that would look like:
@@ -112,4 +115,4 @@ project directly. Within this solution, that would look like:
 </Project>
 ```
 
-More info can be found here: https://www.meziantou.net/referencing-an-analyzer-from-a-project.htm
+More info about referencing project files can be found at [meziantou.net](https://www.meziantou.net/referencing-an-analyzer-from-a-project.htm).
