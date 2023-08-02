@@ -24,6 +24,7 @@ public sealed class ItemGroup : Node
         PackageReferences = Children.Typed<PackageReference>();
         ProjectReferences = Children.Typed<ProjectReference>();
         Folders = Children.Typed<Folder>();
+        Usings = Children.Typed<Using>();
     }
 
     /// <summary>Gets the child package references.</summary>
@@ -31,6 +32,9 @@ public sealed class ItemGroup : Node
 
     /// <summary>Gets the child project references.</summary>
     public Nodes<ProjectReference> ProjectReferences { get; }
+
+    /// <summary>Gets the child project references.</summary>
+    public Nodes<Using> Usings { get; }
 
     /// <summary>Gets the child folders.</summary>
     public Nodes<Folder> Folders { get; }
