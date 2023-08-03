@@ -24,10 +24,10 @@
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
-    <Version>1.0.9</Version>
+    <Version>1.0.10</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-ToBeReleased
+v1.0.10
 - Proj0017: Can't create alias for static using directive. (NEW RULE)
 - Proj0018: Order using directives by type. (NEW RULE)
 - Proj0019: Order using directives alphabetically. (NEW RULE)
