@@ -43,16 +43,21 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new Package("Polyfill", isPrivateAsset: true),
         new Package("PolySharp", isPrivateAsset: true));
 
-    private readonly IReadOnlyCollection<Package> items;
+    private readonly Dictionary<string, Package> items;
 
     private Packages(params Package[] packages)
     {
-        items = packages;
+        items = packages.ToDictionary(p => p.Name, p => p);
     }
 
     public int Count => items.Count;
 
-    public IEnumerator<Package> GetEnumerator() => items.GetEnumerator();
+    public Package? TryGet(string? name)
+        => name is { Length: > 0 } && items.TryGetValue(name, out var package)
+            ? package
+            : null;
+
+    public IEnumerator<Package> GetEnumerator() => items.Values.GetEnumerator();
 
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }

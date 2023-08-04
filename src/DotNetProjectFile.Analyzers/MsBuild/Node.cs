@@ -76,9 +76,13 @@ public abstract class Node
     /// <summary>Get all children.</summary>
     public Nodes<Node> Children { get; }
 
-    /// <summary>Gets the <see cref="string"/> value of a child element.</summary>
+    /// <summary>Gets the <see cref="string"/> value of an attribute.</summary>
     public string? Attribute([CallerMemberName] string? propertyName = null)
         => Element.Attribute(propertyName)?.Value;
+
+    /// <summary>Gets the <see cref="string"/> value of a child element.</summary>
+    public string? Child([CallerMemberName] string? propertyName = null)
+        => Element.Element(propertyName)?.Value;
 
     internal Node? Create(XElement element) => NodeFactory.Create(element, this, Project);
 

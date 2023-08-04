@@ -522,6 +522,17 @@ public static class Rule
        category: Category.Bug,
        isEnabled: true);
 
+    public static DiagnosticDescriptor SomeRule => New(
+       id: 2100,
+       title: "Add invariant fallback values",
+       message: "Mark this <PackageReference> as a private asset.",
+       description:
+           "To ensure that localized values can be resolved, a localized value " +
+           "file must have a culture invariant alternative.",
+       tags: new[] { "resx", "resources", "invariant", "localization" },
+       category: Category.CodeQuality,
+       isEnabled: true);
+
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
     public static DiagnosticDescriptor New(
