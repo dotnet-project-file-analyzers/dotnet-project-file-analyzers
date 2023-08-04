@@ -16,7 +16,7 @@
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
-  
+
   <PropertyGroup Label="Package settings">
     <RepositoryType>git</RepositoryType>
     <PackageId>DotNetProjectFile.Analyzers</PackageId>
@@ -94,6 +94,7 @@ v1.0.0
     </PackageReleaseNotes>
     <PackageIcon>logo_128x128.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
   </PropertyGroup>
 
   <ItemGroup Label="Package files">
@@ -119,5 +120,5 @@ v1.0.0
   <ItemGroup>
     <AdditionalFiles Include="*.csproj" Visible="false" />
   </ItemGroup>
-  
+
 </Project>
