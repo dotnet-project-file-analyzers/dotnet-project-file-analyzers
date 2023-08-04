@@ -47,7 +47,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
 
     private Packages(params Package[] packages)
     {
-        items = packages.ToDictionary(p => p.Name, p => p);
+        items = packages.ToDictionary(p => p.Name, p => p, StringComparer.OrdinalIgnoreCase);
     }
 
     public int Count => items.Count;
