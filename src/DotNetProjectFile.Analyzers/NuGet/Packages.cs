@@ -41,7 +41,8 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new Package("coverlet.msbuild", isPrivateAsset: true),
         new Package("NUnit3TestAdapter", isPrivateAsset: true),
         new Package("Polyfill", isPrivateAsset: true),
-        new Package("PolySharp", isPrivateAsset: true));
+        new Package("PolySharp", isPrivateAsset: true),
+        new Package("Vogen", isPrivateAsset: true));
 
     private readonly Dictionary<string, Package> items;
 
