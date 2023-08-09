@@ -40,6 +40,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj1000** Use the .NET project file analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1000.html)
 * [**Proj1001** Use analyzers for packages](https://dotnet-project-file-analyzers.github.io/rules/Proj1001.html)
 * [**Proj1003** Use Sonar analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1003.html)
+* [**Proj1100** Avoid using Moq](https://dotnet-project-file-analyzers.github.io/rules/Proj1100.html)
 
 ## Resource file rules
 * [**Proj2000** Embed valid resource files](https://dotnet-project-file-analyzers.github.io/rules/Proj2000.html)
