@@ -465,7 +465,7 @@ public static class Rule
         id: 1100,
         title: "Avoid using Moq",
         message: "Do not use Moq.",
-        description: "Moq has build in data harvesting that violates GDPR.",
+        description: "Moq has built in data harvesting that violates GDPR.",
         tags: new[] { "GDPR", "privacy" },
         category: Category.Security,
         isEnabled: true);
