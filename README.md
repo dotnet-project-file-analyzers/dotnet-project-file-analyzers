@@ -62,6 +62,7 @@ The source code can be found at GitHub: [github.com/dotnet-project-file-analyzer
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
 * [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)
+* [**Proj1100** Avoid using Moq](rules/Proj1100.md)
 
 ## Resource file rules
 * [**Proj2000** Embed valid resource files](rules/Proj2000.md)
