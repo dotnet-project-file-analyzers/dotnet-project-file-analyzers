@@ -27,6 +27,8 @@
     <Version>1.0.10</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+ToBeReleased:
+- Proj0015, Proj0016: Order references that are substrings of each other. (FP &amp; FN)
 v1.0.10
 - Proj0017: Can't create alias for static using directive. (NEW RULE)
 - Proj0018: Order using directives by type. (NEW RULE)

@@ -17,22 +17,14 @@ public class Compares
             "substring",
             "sub",
         }
-        .OrderBy(x => x, FileSystem.PathCompare)
-        .Should().BeEquivalentTo(
-            "sub",
-            "substring"
-        );
+        .Should().BeInDescendingOrder(FileSystem.PathCompare);
 
     [Test]
     public void shorter_paths_first()
-        => new[] 
+        => new[]
         {
+            @"..\Root.AspNetCore\Root.AspNetCore.csproj",
             @"..\Root.AspNetCore.Builder.Abstractions\Root.AspNetCore.Builder.Abstractions.csproj",
-            @"..\Root.AspNetCore\Root.AspNetCore.csproj",
         }
-        .OrderBy(x => x, FileSystem.PathCompare)
-        .Should().BeEquivalentTo(
-            @"..\Root.AspNetCore\Root.AspNetCore.csproj",
-            @"..\Root.AspNetCore.Builder.Abstractions\Root.AspNetCore.Builder.Abstractions.csproj"
-        );
+        .Should().BeInAscendingOrder(FileSystem.PathCompare);
 }
