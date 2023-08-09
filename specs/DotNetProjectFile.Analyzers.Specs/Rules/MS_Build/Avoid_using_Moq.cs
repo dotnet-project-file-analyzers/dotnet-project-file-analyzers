@@ -7,12 +7,14 @@ public class Reports
        => new AvoidUsingMoq()
        .ForProject("UsesMoq.cs")
        .HasIssue(
-            new Issue("Proj1100", " Do not use Moq.")
-                .WithSpan(29, 5, 9, 55));
+            new Issue("Proj1100", "Do not use Moq.")
+                .WithSpan(9, 5, 9, 55));
 }
 
 public class Guards
 {
+    [TestCase("PackagesWithAnalyzers.cs")]
+    [TestCase("PackagesWithoutAnalyzers.cs")]
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     public void Projects_without_issues(string project)
