@@ -461,6 +461,15 @@ public static class Rule
         category: Category.CodeQuality,
         isEnabled: true);
 
+    public static DiagnosticDescriptor AvoidUsingMoq => New(
+        id: 1100,
+        title: "Avoid using Moq",
+        message: "Do not use Moq.",
+        description: "Moq has built in data harvesting that violates GDPR.",
+        tags: new[] { "GDPR", "privacy" },
+        category: Category.Security,
+        isEnabled: true);
+
     public static DiagnosticDescriptor EmbedValidResourceFiles => New(
         id: 2000,
         title: "Embed valid resource files",
