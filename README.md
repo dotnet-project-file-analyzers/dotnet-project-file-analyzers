@@ -1,14 +1,13 @@
-| Package | NuGet |
-|---------|-------|
-| [DotNetProjectFile.Analyzers](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/) | [![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers?style=flat-square&label=version)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers?style=flat-square)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/) |
-
 ![.NET project file analyzers logo](design/logo_128x128.png)
 # .NET project file analyzers
-Contains [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/)
-(static code) [diagnostic analyzers](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.diagnostics.diagnosticanalyzer)
+is a [NuGet](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/) package
+containing [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/)
+(static code) [analyzers](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.diagnostics.diagnosticanalyzer)
 that report issues on .NET project files.
 
 ## Installation
+[![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/)
+
 To use the analyzers, you must include the analyzer package in your project file:
 ``` XML
 <Project Sdk="Microsoft.NET.Sdk">
@@ -19,9 +18,17 @@ To use the analyzers, you must include the analyzer package in your project file
 
 </Project>
 ```
+Or via the command line:
+``` bash
+dotnet package add DotNetProjectFile.Analyzers
+```
 
 ## GitHub repository
-The source code can be found at GitHub: [github.com/dotnet-project-file-analyzers](https://github.com/dotnet-project-file-analyzers).
+The source code can be found at GitHub: [github.com/dotnet-project-file-analyzers](https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers).
+
+## Issues and suggestions
+Issues (false positives, false negatives, etc.), and (rule) suggestions can be
+reported a the [GibHub repository](https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers/issues).
 
 ## MS Build project file rules
 * [**Proj0001** MS Build project file could not be located](rules/Proj0001.md)
@@ -99,24 +106,3 @@ To add a props file:
 
 </Project>
 ```
-
-## Reference an analyzer from a project
-For debugging/development purposes, it can be useful to reference the analyzer
-project directly. Within this solution, that would look like:
-
-``` XML
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup Label="Analyzer">
-    <ProjectReference
-      Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
-      PrivateAssets="all"
-      ReferenceOutputAssembly="false"
-      OutputItemType="Analyzer"
-      SetTargetFramework="TargetFramework=netstandard2.0" />
-  </ItemGroup>
-
-</Project>
-```
-
-More info about referencing project files can be found at [meziantou.net](https://www.meziantou.net/referencing-an-analyzer-from-a-project.htm).
