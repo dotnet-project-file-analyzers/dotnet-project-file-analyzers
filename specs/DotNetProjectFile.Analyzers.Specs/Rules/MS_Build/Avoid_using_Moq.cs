@@ -1,4 +1,4 @@
-﻿namespace Specs.Rules.MS_Build.Avoid_using_Moq;
+﻿namespace Rules.MS_Build.Avoid_using_Moq;
 
 public class Reports
 {

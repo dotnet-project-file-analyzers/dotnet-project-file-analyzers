@@ -7,18 +7,33 @@ public sealed class AvoidUsingMoq : MsBuildProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
+        var reported = false;
+
         foreach (var reference in context.Project.ItemGroups
             .SelectMany(i => i.PackageReferences)
             .Where(IsMoq))
         {
             context.ReportDiagnostic(Descriptor, reference);
+            reported = true;
+        }
+
+        if (!reported && context.Compilation.ReferencedAssemblyNames.Any(IsMoq))
+        {
+            context.ReportDiagnostic(Descriptor, context.Project);
         }
     }
 
     private static bool IsMoq(PackageReference reference)
-        => string.Equals(reference.Include, "Moq", StringComparison.OrdinalIgnoreCase)
+        => IsMoq(reference.Include)
         && reference.Version is { Length: > 0 } version
         && IsSuspiciousVersion(version);
+
+    private static bool IsMoq(AssemblyIdentity assembly)
+        => IsMoq(assembly.Name)
+        && assembly.Version >= new System.Version(4, 20);
+
+    private static bool IsMoq(string? name)
+        => string.Equals(name, "Moq", StringComparison.OrdinalIgnoreCase);
 
     private static bool IsSuspiciousVersion(string version)
         => version.Contains("*")
