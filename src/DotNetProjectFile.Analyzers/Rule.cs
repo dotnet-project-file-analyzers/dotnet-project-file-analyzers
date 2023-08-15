@@ -522,16 +522,16 @@ public static class Rule
        category: Category.Bug,
        isEnabled: true);
 
-    public static DiagnosticDescriptor SomeRule => New(
-       id: 2100,
-       title: "Add invariant fallback values",
-       message: "Mark this <PackageReference> as a private asset.",
-       description:
-           "To ensure that localized values can be resolved, a localized value " +
-           "file must have a culture invariant alternative.",
-       tags: new[] { "resx", "resources", "invariant", "localization" },
-       category: Category.CodeQuality,
-       isEnabled: true);
+    public static DiagnosticDescriptor ExcludePrivateAssetDependencies => New(
+        id: 2100,
+        title: "Exclude private assets as project file dependency.",
+        message: "Mark the package reference \"{0}\" as a private asset.",
+        description:
+            "Private assets (such as analyzers) will not result in being a " +
+            "project dependency after being compiled.",
+        tags: new[] { "private", "asset", "dependencies", "dependency" },
+        category: Category.CodeQuality,
+        isEnabled: true);
 
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.

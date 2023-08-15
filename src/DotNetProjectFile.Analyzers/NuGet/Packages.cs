@@ -4,15 +4,16 @@ public sealed class Packages : IReadOnlyCollection<Package>
 {
     public static readonly Packages All = new(
 
+        // Generic analyzers
         new Analyzer("AsyncFixer"),
         new Analyzer("DotNetProjectFile.Analyzers"),
-        new Analyzer("Microsoft.AspNetCore.Components.Analyzers"),
         new Analyzer("Microsoft.CodeAnalysis.NetAnalyzers"),
-        new Analyzer("Qowaiv.Analyzers.CShar"),
+        new Analyzer("Qowaiv.Analyzers.CSharp"),
         new Analyzer("SonarAnalyzer.CSharp", language: LanguageNames.CSharp),
         new Analyzer("SonarAnalyzer.VisualBasic", language: LanguageNames.VisualBasic),
         new Analyzer("StyleCop.Analyzers"),
 
+        // Specific analyzers
         new Analyzer("Ardalis.ApiEndpoints.CodeAnalyzers", "Ardalis.ApiEndpoints"),
         new Analyzer("FakeItEasy.Analyzer.CSharp", "FakeItEasy", LanguageNames.CSharp),
         new Analyzer("FakeItEasy.Analyzer.VisualBasic", "FakeItEasy", LanguageNames.VisualBasic),
@@ -37,6 +38,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new Analyzer("xunit.analyzers", "xunit"),
         new Analyzer("ZeroFormatter.Analyzer", "ZeroFormatter"),
 
+        // Private assets
         new Package("coverlet.collector", isPrivateAsset: true),
         new Package("coverlet.msbuild", isPrivateAsset: true),
         new Package("NUnit3TestAdapter", isPrivateAsset: true),
@@ -47,9 +49,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
     private readonly Dictionary<string, Package> items;
 
     private Packages(params Package[] packages)
-    {
-        items = packages.ToDictionary(p => p.Name, p => p, StringComparer.OrdinalIgnoreCase);
-    }
+        => items = packages.ToDictionary(p => p.Name, p => p, StringComparer.OrdinalIgnoreCase);
 
     public int Count => items.Count;
 

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup Label="Compliant">
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="*" PrivateAssets="All" />
+    <PackageReference Include="Qowaiv" Version="6.4.4" />
+    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup Label="Non-compliant">
+    <PackageReference Include="coverlet.collector" Version="*" />
+    <PackageReference Include="NUnit.Analyzers" Version="*" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+  </ItemGroup>
+
+</Project>
