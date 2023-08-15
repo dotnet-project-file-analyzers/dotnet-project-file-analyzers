@@ -27,4 +27,13 @@ public class Compares
             @"..\Root.AspNetCore.Builder.Abstractions\Root.AspNetCore.Builder.Abstractions.csproj",
         }
         .Should().BeInAscendingOrder(FileSystem.PathCompare);
+
+    [Test]
+    public void case_insensitive()
+         => new[]
+        {
+            @"covlet",
+            @"Qowaiv",
+        }
+        .Should().BeInAscendingOrder(FileSystem.PathCompare);
 }
