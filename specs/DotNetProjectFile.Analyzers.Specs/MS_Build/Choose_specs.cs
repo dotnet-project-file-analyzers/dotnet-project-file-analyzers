@@ -1,7 +1,7 @@
 ﻿using DotNetProjectFile;
 using DotNetProjectFile.Diagnostics;
 
-namespace MS_Build.Choose_specs;
+namespace Rules.MS_Build.Choose_specs;
 
 public class Project_contains
 {

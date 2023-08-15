@@ -23,6 +23,9 @@ public sealed class FilePathComparer : IComparer<string?>
         int compare = Update(x).CompareTo(Update(y));
         return compare == 0 ? null : compare;
 
-        static char Update(char ch) => ch == '/' || ch == '\\' ? char.MinValue : ch;
+        static char Update(char ch)
+            => ch == '/' || ch == '\\'
+            ? char.MinValue
+            : char.ToUpperInvariant(ch);
     }
 }
