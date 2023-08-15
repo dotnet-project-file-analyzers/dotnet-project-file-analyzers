@@ -7,8 +7,8 @@ public class Reports
         => new ExcludePrivateAssetDependencies()
         .ForProject("PrivateAssets.cs")
         .HasIssues(
-            new Issue("Proj2100", @"Mark the package reference ""coverlet.collector"" as a private asset.").WithSpan(16, 05, 16, 65),
-            new Issue("Proj2100", @"Mark the package reference ""NUnit.Analyzers"" as a private asset.").WithSpan(17, 05, 17, 143));
+            new Issue("Proj1200", @"Mark the package reference ""coverlet.collector"" as a private asset.").WithSpan(16, 05, 16, 65),
+            new Issue("Proj1200", @"Mark the package reference ""NUnit.Analyzers"" as a private asset.").WithSpan(17, 05, 17, 143));
 }
 
 public class Guards

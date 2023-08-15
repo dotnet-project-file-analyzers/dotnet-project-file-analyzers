@@ -470,6 +470,17 @@ public static class Rule
         category: Category.Security,
         isEnabled: true);
 
+    public static DiagnosticDescriptor ExcludePrivateAssetDependencies => New(
+      id: 1200,
+      title: "Exclude private assets as project file dependency",
+      message: "Mark the package reference \"{0}\" as a private asset.",
+      description:
+          "Private assets (such as analyzers) will not result in being a " +
+          "project dependency after being compiled.",
+      tags: new[] { "private", "asset", "dependencies", "dependency" },
+      category: Category.CodeQuality,
+      isEnabled: true);
+
     public static DiagnosticDescriptor EmbedValidResourceFiles => New(
         id: 2000,
         title: "Embed valid resource files",
@@ -521,17 +532,6 @@ public static class Rule
        tags: new[] { "resx", "resources", "invariant", "localization" },
        category: Category.Bug,
        isEnabled: true);
-
-    public static DiagnosticDescriptor ExcludePrivateAssetDependencies => New(
-        id: 2100,
-        title: "Exclude private assets as project file dependency.",
-        message: "Mark the package reference \"{0}\" as a private asset.",
-        description:
-            "Private assets (such as analyzers) will not result in being a " +
-            "project dependency after being compiled.",
-        tags: new[] { "private", "asset", "dependencies", "dependency" },
-        category: Category.CodeQuality,
-        isEnabled: true);
 
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
