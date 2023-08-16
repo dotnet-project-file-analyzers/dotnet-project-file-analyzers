@@ -11,4 +11,6 @@ public sealed class PackageReference : Node
     public string? Version => Attribute();
 
     public string IncludeOrUpdate => Include ?? Update ?? string.Empty;
+
+    public string? PrivateAssets => Attribute() ?? Child();
 }

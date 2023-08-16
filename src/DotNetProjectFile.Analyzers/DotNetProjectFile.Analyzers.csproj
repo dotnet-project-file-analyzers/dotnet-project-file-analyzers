@@ -24,10 +24,11 @@
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
-    <Version>1.0.11</Version>
+    <Version>1.0.12</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-ToBeRelaesed
+v1.0.12
+- Proj1200: Exclude private assets as project file dependency. (NEW RULE)
 - Proj0015, Proj0016: Order references case-insensitive. (FP &amp; FN)
 v1.0.11
 - Proj0015, Proj0016: Order references that are substrings of each other. (FP &amp; FN)
