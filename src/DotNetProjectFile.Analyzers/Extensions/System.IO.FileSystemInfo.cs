@@ -1,4 +1,6 @@
-﻿namespace System.IO;
+﻿using DotNetProjectFile.IO;
+
+namespace System.IO;
 
 internal static class SystemFileSystemInfoExtensions
 {
@@ -11,4 +13,10 @@ internal static class SystemFileSystemInfoExtensions
             current = current.Parent;
         }
     }
+
+    public static FileInfo SelectFile(this DirectoryInfo directory, string path)
+        => new(FileSystem.Normalize(Path.Combine(directory.FullName, path)));
+
+    public static DirectoryInfo SelectDirectory(this DirectoryInfo directory, string path)
+        => new(FileSystem.Normalize(Path.Combine(directory.FullName, path)));
 }

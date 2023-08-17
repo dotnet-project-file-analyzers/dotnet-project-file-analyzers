@@ -5,9 +5,9 @@ namespace DotNetProjectFile.MsBuild;
 public sealed class Projects
 {
     private readonly object locker = new();
-    private readonly Dictionary<FileInfo, AdditionalText> AdditionalTexts = new(FileSystemEqualityComparer.File);
+    private readonly Dictionary<FileInfo, AdditionalText> AdditionalTexts = new(FileSystem.FileComparer);
 
-    private readonly Dictionary<FileInfo, Project> Resolved = new(FileSystemEqualityComparer.File);
+    private readonly Dictionary<FileInfo, Project> Resolved = new(FileSystem.FileComparer);
 
     public Projects(string language) => Language = language;
 
@@ -62,7 +62,7 @@ public sealed class Projects
             .Where(path => path is { })
             .Select(path => new FileInfo(path))
             .SelectMany(file => file.GetAncestors())
-            .Distinct(FileSystemEqualityComparer.Directory)
+            .Distinct(FileSystem.DirectoryComparer)
             .Where(f => f.Exists);
 
         var projects = directories.SelectMany(d => d.EnumerateFiles())
