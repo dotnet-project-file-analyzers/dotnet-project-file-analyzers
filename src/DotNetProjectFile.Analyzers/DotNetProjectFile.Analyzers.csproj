@@ -24,9 +24,11 @@
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
-    <Version>1.0.12</Version>
+    <Version>1.0.13</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+v1.0.13
+- Proj0004: Only report when &lt;NuGetAudit&gt; is explicitly disabled. (FP)
 v1.0.12
 - Proj1200: Exclude private assets as project file dependency. (NEW RULE)
 - Proj0015, Proj0016: Order references case-insensitive. (FP &amp; FN)
