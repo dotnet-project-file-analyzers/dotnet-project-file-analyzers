@@ -9,7 +9,7 @@ public sealed class RunNuGetSecurityAuditsAutomatically : MsBuildProjectFileAnal
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.Property<bool?, NuGetAudit>(g => g.NuGetAudit, MsBuildDefaults.NuGetAudit) != true)
+        if (context.Project.Property<bool?, NuGetAudit>(g => g.NuGetAudit, MsBuildDefaults.NuGetAudit) == false)
         {
             context.ReportDiagnostic(Descriptor, context.Project);
         }
