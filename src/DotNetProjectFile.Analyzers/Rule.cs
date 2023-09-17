@@ -191,7 +191,7 @@ public static class Rule
     public static DiagnosticDescriptor OrderUsingDirectivesByType => New(
         id: 0018,
         title: "Order using directives by type",
-        message: "{0} directive for '{1}' is should appear before {2} directive for '{3}'.",
+        message: "{0} directive for '{1}' should appear before {2} directive for '{3}'.",
         description: "Not ordering using directives by type is considered noise.",
         tags: new[] { "Configuration", "confusion" },
         category: Category.Clarity,
