@@ -22,7 +22,7 @@ public sealed class OrderUsingDirectivesByType : MsBuildProjectFileAnalyzer
         var expectedGroups = foundGroups.OrderBy(found => found.Key);
         var zipped = expectedGroups.Zip(foundGroups, (f, e) => (f, e));
 
-        if (zipped.HasDifference(out var expected, out var found))
+        if (zipped.HasDifference(GroupEqual, out var expected, out var found))
         {
             var expectedType = expected.Key.GetPrettyName();
             var expectedFirst = expected.First();
@@ -31,4 +31,8 @@ public sealed class OrderUsingDirectivesByType : MsBuildProjectFileAnalyzer
             context.ReportDiagnostic(Descriptor, expectedFirst, expectedType, expectedFirst.Include, foundType, foundFirst.Include);
         }
     }
+
+    private static bool GroupEqual(IGrouping<UsingType, Using> x, IGrouping<UsingType, Using> y)
+        => x.Key == y.Key
+        && x.SequenceEqual(y);
 }

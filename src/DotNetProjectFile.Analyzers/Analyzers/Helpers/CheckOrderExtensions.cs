@@ -14,11 +14,15 @@ public static class CheckOrderExtensions
         }
     }
 
-    public static bool HasDifference<T>(this IEnumerable<(T Expected, T Found)> values, out T expected, out T found)
+    public static bool HasDifference<T>(
+        this IEnumerable<(T Expected, T Found)> values,
+        Func<T, T, bool> compareEquality,
+        out T expected,
+        out T found)
     {
         foreach ((var eExpected, var eFound) in values)
         {
-            if (!Equals(eExpected, eFound))
+            if (!compareEquality(eExpected, eFound))
             {
                 expected = eExpected;
                 found = eFound;
@@ -30,4 +34,10 @@ public static class CheckOrderExtensions
         found = default!;
         return false;
     }
+
+    public static bool HasDifference<T>(
+        this IEnumerable<(T Expected, T Found)> values,
+        out T expected,
+        out T found)
+        => values.HasDifference((x, y) => Equals(x, y), out expected, out found);
 }

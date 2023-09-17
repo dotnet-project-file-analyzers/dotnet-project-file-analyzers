@@ -27,6 +27,9 @@
     <Version>1.0.13</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+TO BE RELEASED
+- Proj0018: Fix false positive reports always triggering. (FP)
+- Proj0018: Fix typo in message.
 v1.0.13
 - Proj0004: Only report when &lt;NuGetAudit&gt; is explicitly disabled. (FP)
 v1.0.12

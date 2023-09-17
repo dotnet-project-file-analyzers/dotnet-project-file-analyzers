@@ -38,4 +38,10 @@
     <AdditionalFiles Include="*.csproj" Visible="false" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Using Include="System"/>
+    <Using Include="System.Collections"/>
+    <Using Include="System.Collections.Generic"/>
+  </ItemGroup>
+
 </Project>
