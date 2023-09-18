@@ -4,7 +4,7 @@
 public readonly struct ProjectFileAnalysisContext
 {
     /// <summary>Gets the project file.</summary>
-    public readonly MsBuild.Project Project;
+    public readonly MsBuildProject Project;
 
     /// <summary>Gets the compilation.</summary>
     public readonly Compilation Compilation;
@@ -19,7 +19,7 @@ public readonly struct ProjectFileAnalysisContext
     private readonly Action<Diagnostic> Report;
 
     /// <summary>Initializes a new instance of the <see cref="ProjectFileAnalysisContext"/> struct.</summary>
-    public ProjectFileAnalysisContext(MsBuild.Project project, Compilation compilation, AnalyzerOptions options, CancellationToken cancellationToken, Action<Diagnostic> report)
+    public ProjectFileAnalysisContext(MsBuildProject project, Compilation compilation, AnalyzerOptions options, CancellationToken cancellationToken, Action<Diagnostic> report)
     {
         Project = project;
         Compilation = compilation;

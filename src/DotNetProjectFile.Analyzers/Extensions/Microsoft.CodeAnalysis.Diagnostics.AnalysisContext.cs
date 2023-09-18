@@ -7,8 +7,7 @@ internal static class AnalysisContextExtensions
     public static void RegisterProjectFileAction(this AnalysisContext context, Action<ProjectFileAnalysisContext> action)
         => context.RegisterCompilationAction(c =>
         {
-            var projects = Projects.Init(c);
-            if (projects.EntryPoint(c.Compilation.Assembly) is { } project
+            if (Projects.Init(c).EntryPoint(c) is { } project
                 && string.IsNullOrEmpty(project.Element.Name.NamespaceName))
             {
                 foreach (var p in project.ImportsAndSelf())
