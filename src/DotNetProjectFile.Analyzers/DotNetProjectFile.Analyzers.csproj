@@ -24,10 +24,10 @@
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
-    <Version>1.0.13</Version>
+    <Version>1.0.14</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-TO BE RELEASED
+v1.0.14
 - Proj0018: Fix false positive reports always triggering. (FP)
 - Proj0018: Fix typo in message.
 v1.0.13
