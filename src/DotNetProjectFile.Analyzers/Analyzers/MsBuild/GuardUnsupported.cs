@@ -13,8 +13,7 @@ public sealed class GuardUnsupported : MsBuildProjectFileAnalyzer
 
     private void Locate(CompilationAnalysisContext context)
     {
-        var projects = Projects.Init(context);
-        if (projects.EntryPoint(context.Compilation.Assembly) is not { } project)
+        if (Projects.Init(context).EntryPoint(context) is not { } project)
         {
             context.ReportDiagnostic(
                 Diagnostic.Create(

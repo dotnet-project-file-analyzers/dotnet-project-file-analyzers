@@ -18,6 +18,10 @@ public sealed class Project : Node
         ItemGroups = Children.NestedTyped<ItemGroup>();
     }
 
+    public Project? DirectoryBuildProps { get; internal set; }
+
+    public bool IsDirectoryBuildProps => "Directory.Build.props".Equals(Path.Name, StringComparison.OrdinalIgnoreCase);
+
     public bool IsAdditional { get; }
 
     public bool IsProject { get; }
@@ -53,6 +57,11 @@ public sealed class Project : Node
     /// <summary>Loops through all imports and self.</summary>
     public IEnumerable<Project> ImportsAndSelf()
     {
+        if (DirectoryBuildProps is { })
+        {
+            yield return DirectoryBuildProps;
+        }
+
         foreach (var import in Imports)
         {
             if (import.Value is { } project)
@@ -79,6 +88,11 @@ public sealed class Project : Node
                     yield return p;
                 }
             }
+        }
+
+        if (DirectoryBuildProps is { })
+        {
+            yield return DirectoryBuildProps;
         }
     }
 

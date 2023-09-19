@@ -6,17 +6,26 @@ public sealed class Projects
 {
     private readonly object locker = new();
     private readonly Dictionary<FileInfo, AdditionalText> AdditionalTexts = new(FileSystemEqualityComparer.File);
-
     private readonly Dictionary<FileInfo, Project> Resolved = new(FileSystemEqualityComparer.File);
 
     public Projects(string language) => Language = language;
 
     public string Language { get; }
 
-    public Project? EntryPoint(IAssemblySymbol? assembly)
-        => assembly is { }
-        ? EntryPointFromAdditionTexts(assembly.Name) ?? EntryPointFromAssembly(assembly)
-        : null;
+    public Project? EntryPoint(CompilationAnalysisContext context)
+    {
+        if (context.Compilation.Assembly is { } assembly 
+            && (EntryPointFromAdditionTexts(assembly.Name) ?? EntryPointFromAssembly(assembly)) is { } entryPoint)
+        {
+            if (entryPoint.DirectoryBuildProps is null
+                && DirectoryBuildProps(context.Compilation.Assembly) is { } props)
+            {
+                entryPoint.DirectoryBuildProps = props;
+            }
+            return entryPoint;
+        }
+        return null;
+    }
 
     public Project? TryResolve(FileInfo location, bool isProject)
     {
@@ -46,6 +55,14 @@ public sealed class Projects
         }
     }
 
+    private Project? DirectoryBuildProps(IAssemblySymbol assembly)
+        => GetAncestorDirectories(assembly)
+            .Select(dir => dir.File("Directory.Build.props"))
+            .FirstOrDefault(f => f.Exists) is { } location
+        && TryResolve(location, false) is { } props
+            ? props
+            : null;
+
     private Project? EntryPointFromAdditionTexts(string name)
     {
         var projects = AdditionalTexts.Keys.Where(IsProject)
@@ -58,12 +75,7 @@ public sealed class Projects
 
     private Project? EntryPointFromAssembly(IAssemblySymbol assembly)
     {
-        var directories = assembly.Locations.Select(l => l.SourceTree?.FilePath)
-            .Where(path => path is { })
-            .Select(path => new FileInfo(path))
-            .SelectMany(file => file.GetAncestors())
-            .Distinct(FileSystemEqualityComparer.Directory)
-            .Where(f => f.Exists);
+        var directories = GetAncestorDirectories(assembly);
 
         var projects = directories.SelectMany(d => d.EnumerateFiles())
             .Where(IsProject)
@@ -73,6 +85,15 @@ public sealed class Projects
 
         return projects.Length == 1 ? projects[0] : null;
     }
+
+    private static IEnumerable<DirectoryInfo> GetAncestorDirectories(IAssemblySymbol assembly)
+      => assembly.Locations
+          .Select(l => l.SourceTree?.FilePath)
+          .Where(path => path is { })
+          .Select(path => new FileInfo(path))
+          .SelectMany(file => file.GetAncestors())
+          .Distinct(FileSystemEqualityComparer.Directory)
+          .Where(f => f.Exists);
 
     private bool IsProject(FileInfo location)
         => location.Exists
