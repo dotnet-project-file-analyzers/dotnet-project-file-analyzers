@@ -11,8 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.13.6" />
-    <PackageReference Include="CodeAnalysis.TestTools" Version="1.1.0" />
+    <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
+    <PackageReference Include="CodeAnalysis.TestTools" Version="2.0.0" />
   </ItemGroup>
 
 </Project>
