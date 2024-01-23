@@ -21,7 +21,7 @@ public class Project_contains
     private sealed class NodeReporter : MsBuildProjectFileAnalyzer
     {
         public NodeReporter() 
-            : base(Rule.New(9999, "", "Found {0}.", "", Array.Empty<string>(), Category.Reliability)) { }
+            : base(Rule.New(9999, "", "Found {0}.", "", [], Category.Reliability)) { }
 
         protected override void Register(ProjectFileAnalysisContext context)
         {

@@ -1,13 +1,10 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class GuardUnsupported : MsBuildProjectFileAnalyzer
+public sealed class GuardUnsupported() : MsBuildProjectFileAnalyzer(
+    Rule.ProjectFileCouldNotBeLocated,
+    Rule.UpdateLegacyProjects)
 {
-    public GuardUnsupported() : base(
-        Rule.ProjectFileCouldNotBeLocated,
-        Rule.UpdateLegacyProjects)
-    { }
-
     protected override void Register(AnalysisContext context)
         => context.RegisterCompilationAction(Locate);
 

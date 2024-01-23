@@ -1,6 +1,4 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class PackageReleaseNotes : Node<string>
-{
-    public PackageReleaseNotes(XElement element, Node parent, Project project) : base(element, parent, project) { }
-}
+public sealed class PackageReleaseNotes(XElement element, Node parent, MsBuildProject project)
+    : Node<string>(element, parent, project) { }

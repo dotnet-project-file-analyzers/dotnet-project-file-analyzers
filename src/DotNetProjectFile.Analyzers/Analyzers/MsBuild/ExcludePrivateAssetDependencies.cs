@@ -1,10 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class ExcludePrivateAssetDependencies : MsBuildProjectFileAnalyzer
+public sealed class ExcludePrivateAssetDependencies() : MsBuildProjectFileAnalyzer(Rule.ExcludePrivateAssetDependencies)
 {
-    public ExcludePrivateAssetDependencies() : base(Rule.ExcludePrivateAssetDependencies) { }
-
     protected override bool ApplyToProps => false;
 
     protected override void Register(ProjectFileAnalysisContext context)

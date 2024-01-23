@@ -1,10 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class UseSonarAnalyzers : MsBuildProjectFileAnalyzer
+public sealed class UseSonarAnalyzers() : MsBuildProjectFileAnalyzer(Rule.UseSonarAnalyzers)
 {
-    public UseSonarAnalyzers() : base(Rule.UseSonarAnalyzers) { }
-
     protected override bool ApplyToProps => false;
 
     protected override void Register(ProjectFileAnalysisContext context)

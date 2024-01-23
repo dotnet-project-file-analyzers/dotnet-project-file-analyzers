@@ -1,28 +1,26 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class DefinePackageInfo : MsBuildProjectFileAnalyzer
+public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
+    Rule.DefineVersion,
+    Rule.DefineDescription,
+    Rule.DefineAuthors,
+    Rule.DefineTags,
+    Rule.DefineRepositoryUrl,
+    Rule.DefineUrl,
+    Rule.DefineCopyright,
+    Rule.DefineReleaseNotes,
+    Rule.DefineReadmeFile,
+    Rule.DefineLicense,
+    Rule.DefineIcon,
+    Rule.DefineIconUrl,
+    Rule.DefinePackageId)
 {
-    public DefinePackageInfo() : base(
-        Rule.DefineVersion,
-        Rule.DefineDescription,
-        Rule.DefineAuthors,
-        Rule.DefineTags,
-        Rule.DefineRepositoryUrl,
-        Rule.DefineUrl,
-        Rule.DefineCopyright,
-        Rule.DefineReleaseNotes,
-        Rule.DefineReadmeFile,
-        Rule.DefineLicense,
-        Rule.DefineIcon,
-        Rule.DefineIconUrl,
-        Rule.DefinePackageId) { }
-
     protected override bool ApplyToProps => false;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!IsPackable(context.Project)) { return; }
+        if (!IsPackable(context.Project)) return;
 
         Analyze(context, Rule.DefineVersion, g => g.Version);
         Analyze(context, Rule.DefineDescription, g => Nodes.Concat(g.Description, g.PackageDescription));

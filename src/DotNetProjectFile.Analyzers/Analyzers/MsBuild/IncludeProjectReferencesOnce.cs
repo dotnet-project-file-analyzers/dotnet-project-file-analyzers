@@ -4,10 +4,8 @@ using ProjectReference = DotNetProjectFile.MsBuild.ProjectReference;
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class IncludeProjectReferencesOnce : MsBuildProjectFileAnalyzer
+public sealed class IncludeProjectReferencesOnce() : MsBuildProjectFileAnalyzer(Rule.IncludeProjectReferencesOnce)
 {
-    public IncludeProjectReferencesOnce() : base(Rule.IncludeProjectReferencesOnce) { }
-
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var lookup = new Dictionary<Reference, ProjectReference>();

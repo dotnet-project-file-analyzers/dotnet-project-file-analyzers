@@ -5,7 +5,7 @@ namespace FluentAssertions;
 internal static class FindsExtensions
 {
     public static void HasNoIssues(this ProjectAnalyzerVerifyContext context)
-        => context.HasIssues(Array.Empty<Issue>());
+        => context.HasIssues();
 
     public static void HasIssue(this ProjectAnalyzerVerifyContext context, Issue issue)
         => context.HasIssues(issue);
@@ -26,7 +26,7 @@ internal static class FindsExtensions
             var sb = new StringBuilder();
             sb.Append("Verification failed:");
             if (extra.Any()) sb.Append($" {extra.Length} extra");
-            if (extra.Any() && missing.Any()) sb.Append(",");
+            if (extra.Any() && missing.Any()) sb.Append(',');
             if (missing.Any()) sb.Append($" {missing.Length} missing");
             sb.AppendLine(".");
             foreach(var i in extra)

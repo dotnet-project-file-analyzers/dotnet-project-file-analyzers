@@ -1,10 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class RemoveFolderNodes : MsBuildProjectFileAnalyzer
+public sealed class RemoveFolderNodes() : MsBuildProjectFileAnalyzer(Rule.RemoveFolderNodes)
 {
-    public RemoveFolderNodes() : base(Rule.RemoveFolderNodes) { }
-
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var folder in context.Project.ItemGroups.SelectMany(p => p.Folders))

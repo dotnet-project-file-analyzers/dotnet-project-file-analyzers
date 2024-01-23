@@ -3,10 +3,8 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class OrderProjectReferencesAlphabetically : MsBuildProjectFileAnalyzer
+public sealed class OrderProjectReferencesAlphabetically() : MsBuildProjectFileAnalyzer(Rule.OrderProjectReferencesAlphabetically)
 {
-    public OrderProjectReferencesAlphabetically() : base(Rule.OrderProjectReferencesAlphabetically) { }
-
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var references in context.Project

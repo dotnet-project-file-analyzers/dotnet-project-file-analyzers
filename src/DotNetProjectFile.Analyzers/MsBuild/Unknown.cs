@@ -1,8 +1,7 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class Unknown : Node<string>
+public sealed class Unknown(XElement element, Node parent, MsBuildProject project)
+    : Node<string>(element, parent, project)
 {
-    public Unknown(XElement element, Node parent, Project project) : base(element, parent, project) { }
-
     public override string LocalName => Element.Name.LocalName;
 }

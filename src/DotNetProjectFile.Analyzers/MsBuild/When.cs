@@ -1,6 +1,4 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class When : Node
-{
-    public When(XElement element, Node parent, MsBuildProject project) : base(element, parent, project) { }
-}
+public sealed class When(XElement element, Node parent, MsBuildProject project)
+    : Node(element, parent, project) { }

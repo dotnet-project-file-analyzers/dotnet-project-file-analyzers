@@ -1,10 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class OrderUsingDirectivesByType : MsBuildProjectFileAnalyzer
+public sealed class OrderUsingDirectivesByType() : MsBuildProjectFileAnalyzer(Rule.OrderUsingDirectivesByType)
 {
-    public OrderUsingDirectivesByType() : base(Rule.OrderUsingDirectivesByType) { }
-
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var directives in context.Project

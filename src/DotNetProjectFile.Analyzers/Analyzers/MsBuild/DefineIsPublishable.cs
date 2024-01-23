@@ -1,10 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class DefineIsPublishable : MsBuildProjectFileAnalyzer
+public sealed class DefineIsPublishable() : MsBuildProjectFileAnalyzer(Rule.DefineIsPublishable)
 {
-    public DefineIsPublishable() : base(Rule.DefineIsPublishable) { }
-
     protected override bool ApplyToProps => false;
 
     protected override void Register(ProjectFileAnalysisContext context)

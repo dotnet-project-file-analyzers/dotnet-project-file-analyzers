@@ -1,10 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class DefineIsPackable : MsBuildProjectFileAnalyzer
+public sealed class DefineIsPackable() : MsBuildProjectFileAnalyzer(Rule.DefineIsPackable)
 {
-    public DefineIsPackable() : base(Rule.DefineIsPackable) { }
-
     protected override bool ApplyToProps => false;
 
     protected override void Register(ProjectFileAnalysisContext context)
