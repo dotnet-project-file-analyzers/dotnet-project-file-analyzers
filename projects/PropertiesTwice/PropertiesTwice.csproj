@@ -22,5 +22,9 @@
     <Authors Condition="'2' == '1'">Corniel Nobel; Wesley Baartman</Authors>
     <ProductName Condition="'1' == '1'">Test project</ProductName>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <AdditionalFiles Include="*.csproj" Visible="false" />
+  </ItemGroup>
 
 </Project>
