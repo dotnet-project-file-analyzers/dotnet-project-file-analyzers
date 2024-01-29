@@ -9,4 +9,10 @@
     <AdditionalFileItemNames>$(AdditionalFileItemNames);EmbeddedResource</AdditionalFileItemNames>
   </PropertyGroup>
   
+  <ItemGroup>
+    <AdditionalFiles Include="*.csproj" Visible="false" />
+	<AdditionalFiles Include="*.resx" />
+  </ItemGroup>
+
+  
 </Project>

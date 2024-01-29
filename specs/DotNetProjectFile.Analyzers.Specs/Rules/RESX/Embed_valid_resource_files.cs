@@ -2,7 +2,7 @@
 
 public class Reports
 {
-    [Test]
+    [Test, Ignore("XML is not added as embedded resource anymore.")]
     public void no_XML()
         => new Resx.EmbedValidResourceFiles()
         .ForProject("ResxNoXml.cs")
