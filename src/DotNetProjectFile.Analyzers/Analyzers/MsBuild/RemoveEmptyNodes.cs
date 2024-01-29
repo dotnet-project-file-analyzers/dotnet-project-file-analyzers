@@ -1,10 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class RemoveEmptyNodes : MsBuildProjectFileAnalyzer
+public sealed class RemoveEmptyNodes() : MsBuildProjectFileAnalyzer(Rule.RemoveEmptyNodes)
 {
-    public RemoveEmptyNodes() : base(Rule.RemoveEmptyNodes) { }
-
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var node in context.Project.Children)

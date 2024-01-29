@@ -1,10 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class AvoidUsingMoq : MsBuildProjectFileAnalyzer
+public sealed class AvoidUsingMoq() : MsBuildProjectFileAnalyzer(Rule.AvoidUsingMoq)
 {
-    public AvoidUsingMoq() : base(Rule.AvoidUsingMoq) { }
-
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var reported = false;

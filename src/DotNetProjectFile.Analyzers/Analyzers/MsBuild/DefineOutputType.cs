@@ -1,10 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class DefineOutputType : MsBuildProjectFileAnalyzer
+public sealed class DefineOutputType() : MsBuildProjectFileAnalyzer(Rule.DefineOutputType)
 {
-    public DefineOutputType() : base(Rule.DefineOutputType) { }
-
     protected override bool ApplyToProps => false;
 
     protected override void Register(ProjectFileAnalysisContext context)

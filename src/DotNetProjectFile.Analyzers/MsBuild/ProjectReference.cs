@@ -1,8 +1,7 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class ProjectReference : Node
+public sealed class ProjectReference(XElement element, Node parent, MsBuildProject project)
+    : Node(element, parent, project)
 {
-    public ProjectReference(XElement element, Node parent, MsBuildProject project) : base(element, parent, project) { }
-
     public string? Include => Attribute();
 }

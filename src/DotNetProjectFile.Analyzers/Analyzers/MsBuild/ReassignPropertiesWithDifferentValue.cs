@@ -1,13 +1,11 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class ReassignPropertiesWithDifferentValue : MsBuildProjectFileAnalyzer
+public sealed class ReassignPropertiesWithDifferentValue() : MsBuildProjectFileAnalyzer(Rule.ReassignPropertiesWithDifferentValue)
 {
-    public ReassignPropertiesWithDifferentValue() : base(Rule.ReassignPropertiesWithDifferentValue) { }
-
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.Imports.None()) { return; }
+        if (context.Project.Imports.None()) return;
 
         foreach (var prop in context.Project.PropertyGroups.SelectMany(p => p.Children))
         {

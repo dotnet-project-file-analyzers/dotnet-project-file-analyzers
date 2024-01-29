@@ -1,10 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class AddAdditionalFile : MsBuildProjectFileAnalyzer
+public sealed class AddAdditionalFile() : MsBuildProjectFileAnalyzer(Rule.AddAdditionalFile)
 {
-    public AddAdditionalFile() : base(Rule.AddAdditionalFile) { }
-
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (!context.Project.IsAdditional)

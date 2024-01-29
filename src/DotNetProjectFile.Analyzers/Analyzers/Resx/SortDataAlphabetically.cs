@@ -1,10 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.Resx;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class SortDataAlphabetically : ResourceFileAnalyzer
+public sealed class SortDataAlphabetically() : ResourceFileAnalyzer(Rule.SortDataAlphabetically)
 {
-    public SortDataAlphabetically() : base(Rule.SortDataAlphabetically) { }
-
     protected override void Register(ResourceFileAnalysisContext context)
         => context.Resource.Data.CheckAlphabeticalOrder(r => r.Name, (expected, found) =>
         {

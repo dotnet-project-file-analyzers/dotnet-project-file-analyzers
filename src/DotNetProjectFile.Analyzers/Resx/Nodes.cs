@@ -3,18 +3,16 @@
 namespace DotNetProjectFile.Resx;
 
 /// <summary>Represents a collection of <see cref="Node"/>s.</summary>
+/// <remarks>Initializes a new instance of the <see cref="Nodes{T}"/> class.</remarks>
+/// <param name="parent">
+/// The parent <see cref="Node"/>.
+/// </param>
 [DebuggerTypeProxy(typeof(CollectionDebugView))]
 [DebuggerDisplay("{DebuggerDisplay}")]
-public sealed class Nodes<T> : IReadOnlyList<T> where T : Node
+public sealed class Nodes<T>(Node parent) : IReadOnlyList<T> where T : Node
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private readonly IReadOnlyList<T> Items;
-
-    /// <summary>Initializes a new instance of the <see cref="Nodes{T}"/> class.</summary>
-    /// <param name="parent">
-    /// The parent <see cref="Node"/>.
-    /// </param>
-    public Nodes(Node parent) => Items = parent.Element
+    private readonly IReadOnlyList<T> Items = parent.Element
         .Elements().Select(parent.Create)
         .Where(child => child is T)
         .Cast<T>()

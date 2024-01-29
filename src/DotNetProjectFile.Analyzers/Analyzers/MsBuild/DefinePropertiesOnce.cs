@@ -1,10 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class DefinePropertiesOnce : MsBuildProjectFileAnalyzer
+public sealed class DefinePropertiesOnce() : MsBuildProjectFileAnalyzer(Rule.DefinePropertiesOnce)
 {
-    public DefinePropertiesOnce() : base(Rule.DefinePropertiesOnce) { }
-
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var props = new HashSet<Node>(new PropertyComparer());

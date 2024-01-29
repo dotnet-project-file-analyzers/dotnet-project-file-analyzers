@@ -1,10 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class DefineUsingsExplicit : MsBuildProjectFileAnalyzer
+public sealed class DefineUsingsExplicit() : MsBuildProjectFileAnalyzer(Rule.DefineUsingsExplicit)
 {
-    public DefineUsingsExplicit() : base(Rule.DefineUsingsExplicit) { }
-
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var @implicit in context.Project.PropertyGroups

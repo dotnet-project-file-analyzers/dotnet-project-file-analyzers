@@ -2,19 +2,17 @@
 
 namespace DotNetProjectFile.MsBuild;
 
-public sealed class Projects
+public sealed class Projects(string language)
 {
     private readonly object locker = new();
     private readonly Dictionary<FileInfo, AdditionalText> AdditionalTexts = new(FileSystemEqualityComparer.File);
     private readonly Dictionary<FileInfo, Project> Resolved = new(FileSystemEqualityComparer.File);
 
-    public Projects(string language) => Language = language;
-
-    public string Language { get; }
+    public string Language { get; } = language;
 
     public Project? EntryPoint(CompilationAnalysisContext context)
     {
-        if (context.Compilation.Assembly is { } assembly 
+        if (context.Compilation.Assembly is { } assembly
             && (EntryPointFromAdditionTexts(assembly.Name) ?? EntryPointFromAssembly(assembly)) is { } entryPoint)
         {
             if (entryPoint.DirectoryBuildProps is null

@@ -1,9 +1,8 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class TargetFrameworks : Node<IReadOnlyList<string>>
+public sealed class TargetFrameworks(XElement element, Node parent, MsBuildProject project)
+    : Node<IReadOnlyList<string>>(element, parent, project)
 {
-    public TargetFrameworks(XElement element, Node parent, Project project) : base(element, parent, project) { }
-
     public override IReadOnlyList<string> Value
         => Element.Value?.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
         ?? Array.Empty<string>();

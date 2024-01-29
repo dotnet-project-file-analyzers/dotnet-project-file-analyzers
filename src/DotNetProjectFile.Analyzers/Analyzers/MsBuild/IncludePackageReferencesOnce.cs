@@ -1,10 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class IncludePackageReferencesOnce : MsBuildProjectFileAnalyzer
+public sealed class IncludePackageReferencesOnce() : MsBuildProjectFileAnalyzer(Rule.IncludePackageReferencesOnce)
 {
-    public IncludePackageReferencesOnce() : base(Rule.IncludePackageReferencesOnce) { }
-
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var lookup = new Dictionary<Reference, PackageReference>();
