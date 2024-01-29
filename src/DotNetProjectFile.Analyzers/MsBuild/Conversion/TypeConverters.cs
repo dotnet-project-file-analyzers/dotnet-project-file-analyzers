@@ -52,7 +52,7 @@ internal sealed class TypeConverters
         return converter;
     }
 
-    private readonly Dictionary<PropertyInfo, TypeConverter> PropertyStore = new();
+    private readonly Dictionary<PropertyInfo, TypeConverter> PropertyStore = [];
     private readonly Dictionary<Type, TypeConverter> TypeStore = new()
     {
         [typeof(string)] = new StringConverter(),

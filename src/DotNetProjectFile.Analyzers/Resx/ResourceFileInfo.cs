@@ -25,7 +25,7 @@ public sealed class ResourceFileInfo
     public ResourceFileInfo Satellite(CultureInfo culture)
     {
         var name = Path.GetFileNameWithoutExtension(Name);
-        name = name.Substring(0, name.Length - Culture.Name.Length - 1);
+        name = name[..(name.Length - Culture.Name.Length - 1)];
         name = Path.Combine(Info.Directory.FullName, name);
 
         return culture.IsInvariant()

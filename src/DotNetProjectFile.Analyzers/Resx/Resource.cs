@@ -7,7 +7,7 @@ namespace DotNetProjectFile.Resx;
 [DebuggerDisplay("Culture = {Culture.Name}, Count = {Data.Count}")]
 public sealed class Resource : Node
 {
-    private readonly Dictionary<string, Data> lookup = new();
+    private readonly Dictionary<string, Data> lookup = [];
 
     public Resource(
         ResourceFileInfo path,
