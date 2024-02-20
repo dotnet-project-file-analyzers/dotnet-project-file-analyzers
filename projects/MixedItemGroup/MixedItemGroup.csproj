@@ -9,4 +9,9 @@
     <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Files\*" />
+    <EmbeddedResource Include="Files\*" />
+  </ItemGroup>
+
 </Project>
