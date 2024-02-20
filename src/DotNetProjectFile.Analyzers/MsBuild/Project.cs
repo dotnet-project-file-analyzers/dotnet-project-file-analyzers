@@ -5,13 +5,13 @@ namespace DotNetProjectFile.MsBuild;
 
 public sealed class Project : Node
 {
-    private Project(FileInfo path, SourceText text, Projects projects, bool isAdditional, bool isProject)
+    private Project(FileInfo path, SourceText text, Projects projects, AdditionalText? additionalText, bool isProject)
         : base(XElement.Parse(text.ToString(), LoadOptions), null, null)
     {
         Path = path;
         Text = text;
         Projects = projects;
-        IsAdditional = isAdditional;
+        AdditionalText = additionalText;
         IsProject = isProject;
         Imports = Children.Typed<Import>();
         PropertyGroups = Children.NestedTyped<PropertyGroup>();
@@ -22,7 +22,9 @@ public sealed class Project : Node
 
     public bool IsDirectoryBuildProps => "Directory.Build.props".Equals(Path.Name, StringComparison.OrdinalIgnoreCase);
 
-    public bool IsAdditional { get; }
+    public AdditionalText? AdditionalText { get; }
+
+    public bool IsAdditional => AdditionalText is { };
 
     public bool IsProject { get; }
 
@@ -99,11 +101,21 @@ public sealed class Project : Node
     public static Project Load(FileInfo file, Projects projects, bool isProject)
     {
         using var reader = file.OpenText();
-        return new(file, SourceText.From(reader.ReadToEnd()), projects, isAdditional: false, isProject);
+        return new(
+            path: file,
+            text: SourceText.From(reader.ReadToEnd()),
+            projects: projects,
+            additionalText: null,
+            isProject: isProject);
     }
 
     public static Project Load(AdditionalText text, Projects projects, bool isProject)
-        => new(new(text.Path), text.GetText()!, projects, isAdditional: true, isProject);
+        => new(
+            path: new(text.Path),
+            text: text.GetText()!,
+            projects: projects,
+            additionalText: text,
+            isProject: isProject);
 
     private static readonly LoadOptions LoadOptions = LoadOptions.PreserveWhitespace | LoadOptions.SetLineInfo;
 }
