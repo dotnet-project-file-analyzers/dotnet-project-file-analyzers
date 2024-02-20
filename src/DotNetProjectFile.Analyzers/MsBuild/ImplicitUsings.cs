@@ -1,6 +1,7 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class ImplicitUsings : Node<ImplicitUsings.Kind?>
+public sealed class ImplicitUsings(XElement element, Node parent, Project project)
+    : Node<ImplicitUsings.Kind?>(element, parent, project)
 {
     public enum Kind
     {
@@ -8,6 +9,4 @@ public sealed class ImplicitUsings : Node<ImplicitUsings.Kind?>
         enable,
         @true,
     }
-
-    public ImplicitUsings(XElement element, Node parent, Project project) : base(element, parent, project) { }
 }

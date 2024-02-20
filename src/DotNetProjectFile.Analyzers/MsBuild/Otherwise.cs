@@ -1,9 +1,8 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class Otherwise : Node
+public sealed class Otherwise(XElement element, Node parent, MsBuildProject project)
+    : Node(element, parent, project)
 {
-    public Otherwise(XElement element, Node parent, MsBuildProject project) : base(element, parent, project) { }
-
     public override string Condition => condition ??= GetCondtion();
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]

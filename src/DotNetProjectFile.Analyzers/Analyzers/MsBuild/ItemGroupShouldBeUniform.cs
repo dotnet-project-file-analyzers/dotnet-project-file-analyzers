@@ -3,17 +3,17 @@
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ItemGroupShouldBeUniform : MsBuildProjectFileAnalyzer
 {
-    private static readonly IReadOnlyCollection<IReadOnlyCollection<string>> Exceptions =
+    private static readonly IReadOnlyCollection<IReadOnlyCollection<Type>> Exceptions =
         [
             [
-                "Compile",
-                "EmbeddedResource",
-                "Content",
-                "None",
+                typeof(Compile),
+                typeof(EmbeddedResource),
+                typeof(Content),
+                typeof(None),
             ],
         ];
 
-    private static readonly IReadOnlyDictionary<string, IReadOnlyCollection<string>> Allowed
+    private static readonly IReadOnlyDictionary<Type, IReadOnlyCollection<Type>> Allowed
         = GenerateAllowList();
 
     public ItemGroupShouldBeUniform() : base(Rule.ItemGroupShouldBeUniform) { }
@@ -30,18 +30,18 @@ public sealed class ItemGroupShouldBeUniform : MsBuildProjectFileAnalyzer
 
     private void AnalyzeGroup(ProjectFileAnalysisContext context, ItemGroup group)
     {
-        if (group.Children.FirstOrDefault()?.LocalName is not { } type)
+        if (group.Children.FirstOrDefault()?.GetType() is not { } type)
         {
             return;
         }
 
-        if (group.Children.Any(n => !CombinationIsAllowed(type, n.LocalName)))
+        if (group.Children.Any(n => !CombinationIsAllowed(type, n.GetType())))
         {
             context.ReportDiagnostic(Descriptor, group);
         }
     }
 
-    private static bool CombinationIsAllowed(string first, string second)
+    private static bool CombinationIsAllowed(Type first, Type second)
     {
         if (first == second)
         {
@@ -57,13 +57,13 @@ public sealed class ItemGroupShouldBeUniform : MsBuildProjectFileAnalyzer
         }
     }
 
-    private static IReadOnlyDictionary<string, IReadOnlyCollection<string>> GenerateAllowList()
+    private static IReadOnlyDictionary<Type, IReadOnlyCollection<Type>> GenerateAllowList()
     {
-        var result = new Dictionary<string, IReadOnlyCollection<string>>();
+        var result = new Dictionary<Type, IReadOnlyCollection<Type>>();
 
         foreach (var list in Exceptions)
         {
-            var set = new HashSet<string>(list);
+            var set = new HashSet<Type>(list);
             foreach (var item in set)
             {
                 result[item] = set;

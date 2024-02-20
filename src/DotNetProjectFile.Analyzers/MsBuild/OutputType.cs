@@ -1,6 +1,7 @@
 ﻿namespace DotNetProjectFile.MsBuild;
 
-public sealed class OutputType : Node<OutputType.Kind?>
+public sealed class OutputType(XElement element, Node parent, Project project)
+    : Node<OutputType.Kind?>(element, parent, project)
 {
     public enum Kind
     {
@@ -9,6 +10,4 @@ public sealed class OutputType : Node<OutputType.Kind?>
         Module,
         WinExe,
     }
-
-    public OutputType(XElement element, Node parent, Project project) : base(element, parent, project) { }
 }
