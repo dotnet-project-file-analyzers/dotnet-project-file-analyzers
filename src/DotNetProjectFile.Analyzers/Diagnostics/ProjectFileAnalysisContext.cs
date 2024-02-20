@@ -6,7 +6,7 @@ public sealed class ProjectFileAnalysisContext
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private readonly Action<Diagnostic> Report;
 
-    /// <summary>Initializes a new instance of the <see cref="ProjectFileAnalysisContext"/> struct.</summary>
+    /// <summary>Initializes a new instance of the <see cref="ProjectFileAnalysisContext"/> class.</summary>
     public ProjectFileAnalysisContext(MsBuildProject project, Compilation compilation, AnalyzerOptions options, CancellationToken cancellationToken, Action<Diagnostic> report)
     {
         Project = project;
