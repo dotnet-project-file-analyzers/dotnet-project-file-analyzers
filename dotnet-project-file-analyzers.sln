@@ -147,6 +147,13 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DoubleProjectReferences", "projects\DoubleProjectReferences\DoubleProjectReferences.csproj", "{52DD6A7B-995B-40F7-9500-5F643064E960}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageDescription", "projects\PackageDescription\PackageDescription.csproj", "{B0A4EBF1-7614-4E4D-BCF0-FC00F181728F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ChooseWhen", "projects\ChooseWhen\ChooseWhen.csproj", "{12251088-DE11-4DF8-871A-AD731663D2FC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IncorrectlyOrderedUsingDirectives", "projects\IncorrectlyOrderedUsingDirectives\IncorrectlyOrderedUsingDirectives.csproj", "{B1B3CA45-9606-40EF-8224-6F2A1F46FF2A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PackageDescription", "projects\PackageDescription\PackageDescription.csproj", "{B0A4EBF1-7614-4E4D-BCF0-FC00F181728F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MixedItemGroup", "projects\MixedItemGroup\MixedItemGroup.csproj", "{CDE5C2E9-BC30-4028-B959-28F56464F748}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UsesMoq", "projects\UsesMoq\UsesMoq.csproj", "{3B627642-EFE1-4789-A4FE-8214BFB7BE97}"
 EndProject
