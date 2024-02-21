@@ -430,6 +430,20 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
+        id: 600,
+        title: "Avoid generating packages on build if not packable",
+        message: "Avoid defining <GeneratePackageOnBuild> node explicitly when <IsPackable> is 'false'.",
+        description:
+            "The <GeneratePackageOnBuild> option has no effect " +
+            "when <IsPackable> the node is disabled. " +
+            "Removing the <GeneratePackageOnBuild> " +
+            "node will reduce noise.",
+        tags: new[] { "Configuration", "NuGet", "package" },
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",
