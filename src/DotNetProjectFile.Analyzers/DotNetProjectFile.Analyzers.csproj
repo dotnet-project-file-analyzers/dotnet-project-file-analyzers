@@ -27,6 +27,8 @@
     <Version>1.1.0</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+ToBeReleased:
+- Proj0006: Directory.Build.Props is not required to be added as additional file. (FP)
 v1.1.0
 - Support of Directory.Build.props.
 v1.0.14
