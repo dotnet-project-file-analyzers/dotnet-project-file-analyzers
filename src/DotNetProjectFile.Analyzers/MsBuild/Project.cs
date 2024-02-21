@@ -18,7 +18,10 @@ public sealed class Project : Node
         ItemGroups = Children.NestedTyped<ItemGroup>();
     }
 
+#pragma warning disable QW0011 // Define properties as immutables
+    // is initialized after creation (only). Hard to accomplish otherwise.
     public Project? DirectoryBuildProps { get; internal set; }
+#pragma warning restore QW0011 // Define properties as immutables
 
     public bool IsDirectoryBuildProps => "Directory.Build.props".Equals(Path.Name, StringComparison.OrdinalIgnoreCase);
 
@@ -32,7 +35,7 @@ public sealed class Project : Node
 
     public SourceText Text { get; }
 
-    internal readonly Projects Projects;
+    internal Projects Projects { get; }
 
     public Nodes<Import> Imports { get; }
 

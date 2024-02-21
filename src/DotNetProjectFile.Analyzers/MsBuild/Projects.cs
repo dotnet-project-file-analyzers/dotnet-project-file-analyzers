@@ -62,27 +62,22 @@ public sealed class Projects(string language)
             : null;
 
     private Project? EntryPointFromAdditionTexts(string name)
-    {
-        var projects = AdditionalTexts.Keys.Where(IsProject)
+        => AdditionalTexts.Keys
+            .Where(IsProject)
             .Where(l => HasName(l, name))
             .Select(f => TryResolve(f, isProject: true))
-            .ToArray();
-
-        return projects.Length == 1 ? projects[0] : null;
-    }
+            .ToArray() is { Length: 1 } projects
+                ? projects[0]
+                : null;
 
     private Project? EntryPointFromAssembly(IAssemblySymbol assembly)
-    {
-        var directories = GetAncestorDirectories(assembly);
-
-        var projects = directories.SelectMany(d => d.EnumerateFiles())
+        => GetAncestorDirectories(assembly).SelectMany(d => d.EnumerateFiles())
             .Where(IsProject)
             .Where(l => HasName(l, assembly.Name))
             .Select(f => TryResolve(f, isProject: true))
-            .ToArray();
-
-        return projects.Length == 1 ? projects[0] : null;
-    }
+            .ToArray() is { Length: 1 } projects
+                ? projects[0]
+                : null;
 
     private static IEnumerable<DirectoryInfo> GetAncestorDirectories(IAssemblySymbol assembly)
       => assembly.Locations
