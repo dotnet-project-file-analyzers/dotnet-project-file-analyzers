@@ -28,6 +28,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
 TO BE RELEASED
+- Proj0006: Directory.Build.Props is not required to be added as additional file. (FP)
 - Proj0020: Item group should only contain nodes of a single type. (NEW RULE)
 v1.1.0
 - Support of Directory.Build.props.
