@@ -67,6 +67,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0213** Define the project icon URL explicitly](rules/Proj0213.md)
 * [**Proj0214** Define the NuGet project ID explicitly](rules/Proj0214.md)
 * [**Proj0400** Define the project publishability explicitly](rules/Proj0400.md)
+* [**Proj0600** Avoid generating packages on build if not packable](rules/Proj0600.md)
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
 * [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)
