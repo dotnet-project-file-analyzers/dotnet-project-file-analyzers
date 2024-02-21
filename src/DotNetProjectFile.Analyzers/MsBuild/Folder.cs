@@ -2,10 +2,9 @@
 
 namespace DotNetProjectFile.MsBuild;
 
-public sealed class Folder : Node<DirectoryInfo>
+public sealed class Folder(XElement element, Node parent, Project project)
+    : Node<DirectoryInfo>(element, parent, project)
 {
-    public Folder(XElement element, Node parent, Project project) : base(element, parent, project) { }
-
     public string? Include => Attribute();
 
     public override DirectoryInfo? Value
