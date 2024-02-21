@@ -4,21 +4,14 @@
 /// A limited cache (default capacity of 8), to prevent re-processing project
 /// files, by bounding the result to the current compilation.
 /// </summary>
-public sealed class CompilationCache<T> where T : class
+public sealed class CompilationCache<T>(int capacity = 16) where T : class
 {
     private readonly object locker = new();
-    private readonly Compilation[] Keys;
-    private readonly T[] Values;
+    private readonly Compilation[] Keys = new Compilation[capacity];
+    private readonly T[] Values = new T[capacity];
     private int Next;
 
-    public CompilationCache(int capacity = 16)
-    {
-        Capacity = capacity;
-        Keys = new Compilation[capacity];
-        Values = new T[capacity];
-    }
-
-    public int Capacity { get; }
+    public int Capacity { get; } = capacity;
 
     public T Get(Compilation compilation, Func<T> create)
     {

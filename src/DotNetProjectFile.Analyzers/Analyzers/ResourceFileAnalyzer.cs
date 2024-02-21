@@ -2,12 +2,11 @@
 
 namespace DotNetProjectFile.Analyzers;
 
-public abstract class ResourceFileAnalyzer : DiagnosticAnalyzer
+public abstract class ResourceFileAnalyzer(
+    DiagnosticDescriptor primaryDiagnostic,
+    params DiagnosticDescriptor[] supportedDiagnostics) : DiagnosticAnalyzer
 {
-    protected ResourceFileAnalyzer(DiagnosticDescriptor primaryDiagnostic, params DiagnosticDescriptor[] supportedDiagnostics)
-        => SupportedDiagnostics = new[] { primaryDiagnostic }.Concat(supportedDiagnostics).ToImmutableArray();
-
-    public sealed override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; }
+    public sealed override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = new[] { primaryDiagnostic }.Concat(supportedDiagnostics).ToImmutableArray();
 
     public DiagnosticDescriptor Descriptor => SupportedDiagnostics[0];
 

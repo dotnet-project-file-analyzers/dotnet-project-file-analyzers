@@ -2,12 +2,11 @@
 
 namespace DotNetProjectFile.Analyzers;
 
-public abstract class MsBuildProjectFileAnalyzer : DiagnosticAnalyzer
+public abstract class MsBuildProjectFileAnalyzer(
+    DiagnosticDescriptor primaryDiagnostic,
+    params DiagnosticDescriptor[] supportedDiagnostics) : DiagnosticAnalyzer
 {
-    protected MsBuildProjectFileAnalyzer(DiagnosticDescriptor primaryDiagnostic, params DiagnosticDescriptor[] supportedDiagnostics)
-        => SupportedDiagnostics = new[] { primaryDiagnostic }.Concat(supportedDiagnostics).ToImmutableArray();
-
-    public sealed override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; }
+    public sealed override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = new[] { primaryDiagnostic }.Concat(supportedDiagnostics).ToImmutableArray();
 
     protected virtual bool ApplyToProps => true;
 

@@ -14,7 +14,7 @@ internal static class NodeFactory
     private static readonly ParameterExpression[] constructorArgumentExpressions = constructorArgumentTypes.Select(x => Expression.Parameter(x)).ToArray();
     private static readonly IReadOnlyDictionary<string, ConstructorFunc> map = BuildConstructorMap();
 
-    public static Node? Create(XElement element, Node parent, Project project)
+    public static Node? Create(XElement element, Node parent, MsBuildProject project)
         => element.Name.LocalName switch
         {
             null /*.......................................*/ => null,

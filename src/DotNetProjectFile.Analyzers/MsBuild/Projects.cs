@@ -10,7 +10,7 @@ public sealed class Projects(string language)
 
     public string Language { get; } = language;
 
-    public Project? EntryPoint(CompilationAnalysisContext context)
+    public MsBuildProject? EntryPoint(CompilationAnalysisContext context)
     {
         if (context.Compilation.Assembly is { } assembly
             && (EntryPointFromAdditionTexts(assembly.Name) ?? EntryPointFromAssembly(assembly)) is { } entryPoint)
@@ -25,7 +25,7 @@ public sealed class Projects(string language)
         return null;
     }
 
-    public Project? TryResolve(FileInfo location, bool isProject)
+    public MsBuildProject? TryResolve(FileInfo location, bool isProject)
     {
         lock (locker)
         {
@@ -53,7 +53,7 @@ public sealed class Projects(string language)
         }
     }
 
-    private Project? DirectoryBuildProps(IAssemblySymbol assembly)
+    private MsBuildProject? DirectoryBuildProps(IAssemblySymbol assembly)
         => GetAncestorDirectories(assembly)
             .Select(dir => dir.File("Directory.Build.props"))
             .FirstOrDefault(f => f.Exists) is { } location
@@ -61,28 +61,23 @@ public sealed class Projects(string language)
             ? props
             : null;
 
-    private Project? EntryPointFromAdditionTexts(string name)
-    {
-        var projects = AdditionalTexts.Keys.Where(IsProject)
+    private MsBuildProject? EntryPointFromAdditionTexts(string name)
+        => AdditionalTexts.Keys
+            .Where(IsProject)
             .Where(l => HasName(l, name))
             .Select(f => TryResolve(f, isProject: true))
-            .ToArray();
+            .ToArray() is { Length: 1 } projects
+                ? projects[0]
+                : null;
 
-        return projects.Length == 1 ? projects[0] : null;
-    }
-
-    private Project? EntryPointFromAssembly(IAssemblySymbol assembly)
-    {
-        var directories = GetAncestorDirectories(assembly);
-
-        var projects = directories.SelectMany(d => d.EnumerateFiles())
+    private MsBuildProject? EntryPointFromAssembly(IAssemblySymbol assembly)
+        => GetAncestorDirectories(assembly).SelectMany(d => d.EnumerateFiles())
             .Where(IsProject)
             .Where(l => HasName(l, assembly.Name))
             .Select(f => TryResolve(f, isProject: true))
-            .ToArray();
-
-        return projects.Length == 1 ? projects[0] : null;
-    }
+            .ToArray() is { Length: 1 } projects
+                ? projects[0]
+                : null;
 
     private static IEnumerable<DirectoryInfo> GetAncestorDirectories(IAssemblySymbol assembly)
       => assembly.Locations

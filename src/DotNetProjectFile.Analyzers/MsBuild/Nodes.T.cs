@@ -3,15 +3,13 @@
 namespace DotNetProjectFile.MsBuild;
 
 /// <summary>Represents a collection of <see cref="Node"/>s.</summary>
+/// <remarks>Initializes a new instance of the <see cref="Nodes{T}"/> class.</remarks>
 [DebuggerTypeProxy(typeof(CollectionDebugView))]
 [DebuggerDisplay("{DebuggerDisplay}")]
-public sealed class Nodes<T> : IReadOnlyList<T> where T : Node
+public sealed class Nodes<T>(IReadOnlyList<T> items) : IReadOnlyList<T> where T : Node
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private readonly IReadOnlyList<T> Items;
-
-    /// <summary>Initializes a new instance of the <see cref="Nodes{T}"/> class.</summary>
-    public Nodes(IReadOnlyList<T> items) => Items = items;
+    private readonly IReadOnlyList<T> Items = items;
 
     /// <summary>Gets the number of items.</summary>
     public int Count => Items.Count;

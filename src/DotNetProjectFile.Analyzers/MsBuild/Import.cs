@@ -2,10 +2,10 @@
 
 namespace DotNetProjectFile.MsBuild;
 
-public sealed class Import(XElement element, Node parent, Project project)
+public sealed class Import(XElement element, Node parent, MsBuildProject project)
     : Node<Project>(element, parent, project)
 {
-    public override Project? Value
+    public override MsBuildProject? Value
     {
         get
         {
@@ -19,12 +19,12 @@ public sealed class Import(XElement element, Node parent, Project project)
     }
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private Project? value;
+    private MsBuildProject? value;
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private bool init;
 
-    private Project? GetValue()
+    private MsBuildProject? GetValue()
     {
         var location = new FileInfo(Path.Combine(Project.Path.Directory.FullName, Attribute("Project")));
         return Project.Projects.TryResolve(location, isProject: false);

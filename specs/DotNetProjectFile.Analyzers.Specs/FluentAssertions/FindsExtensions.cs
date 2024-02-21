@@ -1,4 +1,5 @@
 ﻿using CodeAnalysis.TestTools.Contexts;
+using FluentAssertions.Execution;
 
 namespace FluentAssertions;
 
@@ -42,7 +43,7 @@ internal static class FindsExtensions
                 sb.AppendLine($"[ ] {i}");
             }
 
-            throw new AssertionException(sb.ToString());
+            Execute.Assertion.FailWith(sb.ToString());
         }
     }
 }

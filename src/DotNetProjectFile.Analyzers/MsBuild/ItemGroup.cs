@@ -19,7 +19,7 @@ public sealed class ItemGroup : Node
     /// <param name="element">
     /// The corresponding <see cref="XElement"/>.
     /// </param>
-    public ItemGroup(XElement element, Node parent, Project project) : base(element, parent, project)
+    public ItemGroup(XElement element, Node parent, MsBuildProject project) : base(element, parent, project)
     {
         PackageReferences = Children.Typed<PackageReference>();
         ProjectReferences = Children.Typed<ProjectReference>();
