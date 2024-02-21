@@ -9,7 +9,7 @@ namespace DotNetProjectFile.MsBuild;
 public abstract class Node
 {
     /// <summary>Initializes a new instance of the <see cref="Node"/> class.</summary>
-    protected Node(XElement element, Node? parent, Project? project)
+    protected Node(XElement element, Node? parent, MsBuildProject? project)
     {
         Element = element;
         Parent = parent;

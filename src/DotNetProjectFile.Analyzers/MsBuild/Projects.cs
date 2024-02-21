@@ -10,7 +10,7 @@ public sealed class Projects(string language)
 
     public string Language { get; } = language;
 
-    public Project? EntryPoint(CompilationAnalysisContext context)
+    public MsBuildProject? EntryPoint(CompilationAnalysisContext context)
     {
         if (context.Compilation.Assembly is { } assembly
             && (EntryPointFromAdditionTexts(assembly.Name) ?? EntryPointFromAssembly(assembly)) is { } entryPoint)
@@ -25,7 +25,7 @@ public sealed class Projects(string language)
         return null;
     }
 
-    public Project? TryResolve(FileInfo location, bool isProject)
+    public MsBuildProject? TryResolve(FileInfo location, bool isProject)
     {
         lock (locker)
         {
@@ -53,7 +53,7 @@ public sealed class Projects(string language)
         }
     }
 
-    private Project? DirectoryBuildProps(IAssemblySymbol assembly)
+    private MsBuildProject? DirectoryBuildProps(IAssemblySymbol assembly)
         => GetAncestorDirectories(assembly)
             .Select(dir => dir.File("Directory.Build.props"))
             .FirstOrDefault(f => f.Exists) is { } location
@@ -61,7 +61,7 @@ public sealed class Projects(string language)
             ? props
             : null;
 
-    private Project? EntryPointFromAdditionTexts(string name)
+    private MsBuildProject? EntryPointFromAdditionTexts(string name)
         => AdditionalTexts.Keys
             .Where(IsProject)
             .Where(l => HasName(l, name))
@@ -70,7 +70,7 @@ public sealed class Projects(string language)
                 ? projects[0]
                 : null;
 
-    private Project? EntryPointFromAssembly(IAssemblySymbol assembly)
+    private MsBuildProject? EntryPointFromAssembly(IAssemblySymbol assembly)
         => GetAncestorDirectories(assembly).SelectMany(d => d.EnumerateFiles())
             .Where(IsProject)
             .Where(l => HasName(l, assembly.Name))

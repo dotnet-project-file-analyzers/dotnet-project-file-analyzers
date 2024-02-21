@@ -2,14 +2,8 @@
 
 /// <summary>Allows the debugger to display collections.</summary>
 [ExcludeFromCodeCoverage]
-internal sealed class CollectionDebugView
+internal sealed class CollectionDebugView(IEnumerable enumeration)
 {
-    /// <summary>Initializes a new instance of the <see cref="CollectionDebugView"/> class.</summary>
-    /// <param name="enumeration">
-    /// The collection to show the elements of.
-    /// </param>
-    public CollectionDebugView(IEnumerable enumeration) => this.enumeration = enumeration;
-
     /// <summary>The array that is shown by the debugger.</summary>
     [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
 #pragma warning disable S2365 // Properties should not make collection or array copies
@@ -19,5 +13,5 @@ internal sealed class CollectionDebugView
 #pragma warning restore S2365 // Properties should not make collection or array copies
 
     /// <summary>A reference to the enumeration to display.</summary>
-    private readonly IEnumerable enumeration;
+    private readonly IEnumerable enumeration = enumeration;
 }

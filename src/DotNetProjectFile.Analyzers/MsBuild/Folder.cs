@@ -2,7 +2,7 @@
 
 namespace DotNetProjectFile.MsBuild;
 
-public sealed class Folder(XElement element, Node parent, Project project)
+public sealed class Folder(XElement element, Node parent, MsBuildProject project)
     : Node<DirectoryInfo>(element, parent, project)
 {
     public string? Include => Attribute();

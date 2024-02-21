@@ -20,7 +20,7 @@ public sealed class Project : Node
 
 #pragma warning disable QW0011 // Define properties as immutables
     // is initialized after creation (only). Hard to accomplish otherwise.
-    public Project? DirectoryBuildProps { get; internal set; }
+    public MsBuildProject? DirectoryBuildProps { get; internal set; }
 #pragma warning restore QW0011 // Define properties as immutables
 
     public bool IsDirectoryBuildProps => "Directory.Build.props".Equals(Path.Name, StringComparison.OrdinalIgnoreCase);

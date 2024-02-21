@@ -15,7 +15,7 @@ public sealed class Resources : IReadOnlyCollection<Resource>
 
     internal IReadOnlyCollection<Resource> Parents(Resource resource)
        => resource.ForInvariantCulture
-       ? Array.Empty<Resource>()
+       ? []
        : (IReadOnlyCollection<Resource>)resource.Culture.Ancestors()
            .Select(resource.Path.Satellite)
            .Select(file => items.TryGetValue(file, out var parent) ? parent : null)
