@@ -8,13 +8,6 @@ public class Reports
         .ForProject("EmptyProject.cs")
         .HasIssue(
             new Issue("Proj0006", "Add 'EmptyProject.csproj' to the additional files."));
-
-    [Test]
-    public void Directory_Build_props_not_being_added()
-        => new AddAdditionalFile()
-        .ForProject("WithDirectoryBuildProps.cs")
-        .HasIssue(
-            new Issue("Proj0006", "Add 'Directory.Build.props' to the additional files."));
 }
 
 public class Guards
@@ -24,5 +17,11 @@ public class Guards
     public void project_files_as_additional(string project)
          => new AddAdditionalFile()
         .ForProject(project)
+        .HasNoIssues();
+
+    [Test]
+    public void Directory_Build_props_not_being_added()
+        => new AddAdditionalFile()
+        .ForProject("WithDirectoryBuildProps.cs")
         .HasNoIssues();
 }
