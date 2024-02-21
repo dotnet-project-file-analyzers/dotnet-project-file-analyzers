@@ -14,6 +14,7 @@ public class Guards
 {
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
+    [TestCase("EmptyProject.cs")]
     public void Projects_without_issues(string project)
          => new AvoidGeneratePackageOnBuildWhenNotPackable()
         .ForProject(project)
