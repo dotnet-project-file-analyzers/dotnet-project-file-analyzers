@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Using Include="MixedItemGroup" />
+    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Files\*" />
+    <EmbeddedResource Include="Files\*" />
+  </ItemGroup>
+
+</Project>

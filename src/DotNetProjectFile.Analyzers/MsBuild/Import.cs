@@ -2,10 +2,9 @@
 
 namespace DotNetProjectFile.MsBuild;
 
-public sealed class Import : Node<Project>
+public sealed class Import(XElement element, Node parent, Project project)
+    : Node<Project>(element, parent, project)
 {
-    public Import(XElement element, Node parent, Project project) : base(element, parent, project) { }
-
     public override Project? Value
     {
         get
