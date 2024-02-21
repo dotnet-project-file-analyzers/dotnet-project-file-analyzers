@@ -64,7 +64,9 @@ To add a props file:
 ```
 
 ## Adjusting severity
-In order to adjust the severity of certain rules it is possible to use a `.globalconfig` file.
+As of the time of writing, it is [unfortunately not possible](https://github.com/dotnet/roslyn/issues/37876) to change the severity of rules using an `.editorconfig` file.
+It is however possible to adjust the severity using a [Global AnalyzerConfig](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuration-files#global-analyzerconfig)
+(`.globalconfig`) file located in the same directory as the project file or in one of its (grand)parent directories.
 The following `.globalconfig` file will disable rule `Proj0010` and raise `Proj0011` to error level:
 
 ``` INI
