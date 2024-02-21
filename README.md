@@ -63,6 +63,26 @@ To add a props file:
 </Project>
 ```
 
+## Adjusting severity
+In order to adjust the severity of certain rules it is possible to use a `.globalconfig` file.
+The following `.globalconfig` file will disable rule `Proj0010` and raise `Proj0011` to error level:
+
+``` INI
+is_global = true
+
+dotnet_diagnostic.Proj0010.severity = none  # Define the <OutputType> node explicitly.
+dotnet_diagnostic.Proj0011.severity = error # Property <{0}> has been already defined.
+```
+
+Furthermore, it is also possible to disable warnings through the `<NoWarn>` tags inside a `<PropertyGroup>` tag inside your `.csproj` file.
+An example of disabling rules `Proj0010` and `Proj0011` through the `.csproj` file:
+
+``` XML
+<PropertyGroup>
+  <NoWarn>Proj0010;Proj0011</NoWarn>
+</PropertyGroup>
+```
+
 ## Reference an analyzer from a project
 For debugging/development purposes, it can be useful to reference the analyzer
 project directly. Within this solution, that would look like:
