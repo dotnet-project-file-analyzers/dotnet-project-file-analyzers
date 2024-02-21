@@ -6,6 +6,7 @@
     <NuGetAudit>true</NuGetAudit>
     <IsPackable>true</IsPackable>
     <IsPublishable>false</IsPublishable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Label="PackageInfo">

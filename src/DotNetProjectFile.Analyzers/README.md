@@ -38,6 +38,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0213** Define the project icon URL explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0213.html)
 * [**Proj0214** Define the NuGet project ID explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0214.html)
 * [**Proj0400** Define the project publishability explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0400.html)
+* [**Proj0600** Avoid generating packages on build if not packable](https://dotnet-project-file-analyzers.github.io/rules/Proj0600.html)
 * [**Proj1000** Use the .NET project file analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1000.html)
 * [**Proj1001** Use analyzers for packages](https://dotnet-project-file-analyzers.github.io/rules/Proj1001.html)
 * [**Proj1003** Use Sonar analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1003.html)

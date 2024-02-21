@@ -29,6 +29,7 @@ public sealed class PropertyGroup : Node
         PackageIconUrl = Children.Typed<PackageIconUrl>();
         PackageReleaseNotes = Children.Typed<PackageReleaseNotes>();
         PackageReadmeFile = Children.Typed<PackageReadmeFile>();
+        GeneratePackageOnBuild = Children.Typed<GeneratePackageOnBuild>();
     }
 
     public Nodes<TargetFramework> TargetFramework { get; }
@@ -76,4 +77,6 @@ public sealed class PropertyGroup : Node
     public Nodes<PackageReadmeFile> PackageReadmeFile { get; }
 
     public Nodes<IsPublishable> IsPublishable { get; }
+
+    public Nodes<GeneratePackageOnBuild> GeneratePackageOnBuild { get; }
 }

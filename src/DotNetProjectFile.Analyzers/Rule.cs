@@ -9,7 +9,7 @@ public static class Rule
         title: "MS Build project file could not be located",
         message: "The project file '{0}' could not be located.",
         description: "In order to make these rules work, the project file should be located.",
-        tags: new[] { "Configuration" },
+        tags: ["Configuration"],
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -19,7 +19,7 @@ public static class Rule
         title: "Upgrade legacy MS Build project files",
         message: "Upgrade legacy MS Build project file.",
         description: "MS Build legacy projects are not supported.",
-        tags: new[] { "project file", "legacy", "obsolete" },
+        tags: ["project file", "legacy", "obsolete"],
         category: Category.Obsolete,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -31,7 +31,7 @@ public static class Rule
         description:
             "The included namespaces should be clear. To reduce the statements " +
             "per file, consider global using statements.",
-        tags: new[] { "Configuration", "usings", "global" },
+        tags: ["Configuration", "usings", "global"],
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -43,7 +43,7 @@ public static class Rule
         description:
             "To reduce security issues, NuGets security audit should be run on " +
             "every build automatically.",
-        tags: new[] { "security", "NuGet", "vulnerability" },
+        tags: ["security", "NuGet", "vulnerability"],
         category: Category.Security,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -55,7 +55,7 @@ public static class Rule
         description:
             "To reduce security issues, NuGets security audit should be run on " +
             "every build automatically.",
-        tags: new[] { "security", "NuGet", "vulnerability" },
+        tags: ["security", "NuGet", "vulnerability"],
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -67,7 +67,7 @@ public static class Rule
         description:
             "By adding additional non-compiling files, those files become " +
             "available in the analyzer context too.",
-        tags: new[] { "code analysis" },
+        tags: ["code analysis"],
         category: Category.CodeQuality,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -77,7 +77,7 @@ public static class Rule
         title: "Remove empty nodes",
         message: "Remove empty {0} node.",
         description: "Empty nodes only add noise, as they contain no information.",
-        tags: new[] { "noise" },
+        tags: ["noise"],
         category: Category.Noise,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -89,7 +89,7 @@ public static class Rule
         description:
             "Folders nodes only add noise. They are leftovers of directories " +
             "created in the IDE, without adding an actual file to it.",
-        tags: new[] { "noise" },
+        tags: ["noise"],
         category: Category.Noise,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -101,7 +101,7 @@ public static class Rule
         description:
             "To prevent confusion, only use the <TargetFrameworks> node when " +
             "there are multiple target frameworks.",
-        tags: new[] { "target framework", "confusion" },
+        tags: ["target framework", "confusion"],
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -113,7 +113,7 @@ public static class Rule
         description:
             "To prevent confusion, explicitly define the OutputType " +
             "as 'Library', 'Exe', 'WinExe' or 'Module'.",
-        tags: new[] { "Configuration", "confusion" },
+        tags: ["Configuration", "confusion"],
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -123,7 +123,7 @@ public static class Rule
         title: "Define properties once",
         message: "Property <{0}> has been already defined.",
         description: "MS Build will only select one value of a property.",
-        tags: new[] { "Configuration", "confusion" },
+        tags: ["Configuration", "confusion"],
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -133,7 +133,7 @@ public static class Rule
         title: "Reassign properties with a different value",
         message: "Property <{0}> has been previously defined with the same value.",
         description: "Reassigning a property with the same value is considered noise.",
-        tags: new[] { "Configuration", "confusion" },
+        tags: ["Configuration", "confusion"],
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -143,7 +143,7 @@ public static class Rule
         title: "Include package references only once",
         message: "Package '{0}' is already referenced.",
         description: "Including package references twice is considered noise.",
-        tags: new[] { "Configuration", "confusion" },
+        tags: ["Configuration", "confusion"],
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -153,7 +153,7 @@ public static class Rule
         title: "Include project references only once",
         message: "Project '{0}' is already referenced.",
         description: "Including project references twice is considered noise.",
-        tags: new[] { "Configuration", "confusion" },
+        tags: ["Configuration", "confusion"],
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -163,7 +163,7 @@ public static class Rule
         title: "Order package references alphabetically",
         message: "Package '{0}' is not ordered alphabetically and should appear before '{1}'.",
         description: "Not ordering package references alphabetically is considered noise.",
-        tags: new[] { "Configuration", "confusion" },
+        tags: ["Configuration", "confusion"],
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -173,7 +173,7 @@ public static class Rule
         title: "Order project references alphabetically",
         message: "Project '{0}' is not ordered alphabetically and should appear before '{1}'.",
         description: "Not ordering project references alphabetically is considered noise.",
-        tags: new[] { "Configuration", "confusion" },
+        tags: ["Configuration", "confusion"],
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -183,7 +183,7 @@ public static class Rule
         title: "Can't create alias for static using directive",
         message: "Using directive for '{0}' can not be both an alias and static.",
         description: "Using directives can not be both static and an alias.",
-        tags: new[] { "Bug", "Code Generation" },
+        tags: ["Bug", "Code Generation"],
         category: Category.Bug,
         severity: DiagnosticSeverity.Error,
         isEnabled: true);
@@ -193,7 +193,7 @@ public static class Rule
         title: "Order using directives by type",
         message: "{0} directive for '{1}' should appear before {2} directive for '{3}'.",
         description: "Not ordering using directives by type is considered noise.",
-        tags: new[] { "Configuration", "confusion" },
+        tags: ["Configuration", "confusion"],
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -203,7 +203,7 @@ public static class Rule
         title: "Order using directives alphabetically",
         message: "{0} directive '{1}' is not ordered alphabetically and should appear before '{2}'.",
         description: "Not ordering using directives alphabetically is considered noise.",
-        tags: new[] { "Configuration", "confusion" },
+        tags: ["Configuration", "confusion"],
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -213,7 +213,7 @@ public static class Rule
         title: "Item group should only contain nodes of a single type",
         message: "<ItemGroup> should only contain nodes of a single type.",
         description: "Mixing nodes of different types in a single <ItemGroup> is considered noise.",
-        tags: new[] { "Configuration", "confusion" },
+        tags: ["Configuration", "confusion"],
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -225,7 +225,7 @@ public static class Rule
         description:
             "To prevent confusion, explicitly define the " +
             "<IsPackable> node.",
-        tags: new[] { "Configuration", "confusion" },
+        tags: ["Configuration", "confusion"],
         category: Category.Clarity,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -239,7 +239,7 @@ public static class Rule
             "explicitly define the <Version> node or " +
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
-        tags: new[] { "Configuration", "NuGet", "package" },
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Reliability,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -252,7 +252,7 @@ public static class Rule
             "To ensure the creation of well-formed packages, explicitly define " +
             "the <Description> or <PackageDescription> node or disable package " +
             "generation by defining the <IsPackable> node with value 'false'.",
-        tags: new[] { "Configuration", "NuGet", "package" },
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -266,7 +266,7 @@ public static class Rule
             "explicitly define the <Authors> node or " +
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
-        tags: new[] { "Configuration", "NuGet", "package" },
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -280,7 +280,7 @@ public static class Rule
             "explicitly define the <PackageTags> node or " +
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
-        tags: new[] { "Configuration", "NuGet", "package" },
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -294,7 +294,7 @@ public static class Rule
             "explicitly define the <RepositoryUrl> node or " +
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
-        tags: new[] { "Configuration", "NuGet", "package" },
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -308,7 +308,7 @@ public static class Rule
             "explicitly define the <PackageProjectUrl> node or " +
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
-        tags: new[] { "Configuration", "NuGet", "package" },
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -322,7 +322,7 @@ public static class Rule
             "explicitly define the <Copyright> node or " +
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
-        tags: new[] { "Configuration", "NuGet", "package" },
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -336,7 +336,7 @@ public static class Rule
             "explicitly define the <PackageReleaseNotes> node or " +
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
-        tags: new[] { "Configuration", "NuGet", "package" },
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -350,7 +350,7 @@ public static class Rule
             "explicitly define the <PackageReadmeFile> node or " +
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
-        tags: new[] { "Configuration", "NuGet", "package" },
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -366,7 +366,7 @@ public static class Rule
             "or <PackageLicenseFile>` node. Alternatively " +
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
-        tags: new[] { "Configuration", "NuGet", "package" },
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -379,7 +379,7 @@ public static class Rule
             "The <PackageLicenseUrl> node has been deprecated " +
             "and should be replaced by either the " +
             "<PackageLicenseExpression> or the <PackageLicenseFile> node.",
-        tags: new[] { "Configuration", "NuGet", "package" },
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Obsolete,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -394,7 +394,7 @@ public static class Rule
             "explicitly define the <PackageIcon> node or " +
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
-        tags: new[] { "Configuration", "NuGet", "package" },
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -409,7 +409,7 @@ public static class Rule
             "explicitly define the deprecated <PackageIconUrl> node or " +
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
-        tags: new[] { "Configuration", "NuGet", "package" },
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -423,7 +423,7 @@ public static class Rule
             "explicitly define the <PackageId> node or " +
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
-        tags: new[] { "Configuration", "NuGet", "package" },
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
@@ -435,8 +435,22 @@ public static class Rule
         description:
             "To prevent confusion, explicitly define the " +
             "<IsPublishable> node.",
-        tags: new[] { "Configuration", "confusion" },
+        tags: ["Configuration", "confusion"],
         category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
+        id: 600,
+        title: "Avoid generating packages on build if not packable",
+        message: "Avoid defining <GeneratePackageOnBuild> node explicitly when <IsPackable> is 'false'.",
+        description:
+            "The <GeneratePackageOnBuild> option has no effect " +
+            "when <IsPackable> the node is disabled. " +
+            "Removing the <GeneratePackageOnBuild> " +
+            "node will reduce noise.",
+        tags: ["Configuration", "NuGet", "package"],
+        category: Category.Configuration,
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
@@ -445,7 +459,7 @@ public static class Rule
         title: "Use the .NET project file analyzers",
         message: "Use the .NET project file analyzers.",
         description: "To improve the code quality of .NET project files.",
-        tags: new[] { "roslyn", "analyzer", "cbproj", "vbproj" },
+        tags: ["roslyn", "analyzer", "cbproj", "vbproj"],
         category: Category.CodeQuality,
         isEnabled: true);
 
@@ -458,7 +472,7 @@ public static class Rule
             "they just contain rules to improve the usage of those packages. " +
             "In order to get the best out of those NuGet packages, their " +
             "analyzer(s) should be used.",
-        tags: new[] { "roslyn", "analyzer", "NuGet" },
+        tags: ["roslyn", "analyzer", "NuGet"],
         category: Category.CodeQuality,
         isEnabled: true);
 
@@ -467,7 +481,7 @@ public static class Rule
         title: "Use Sonar analyzers for packages",
         message: "Add {0}.",
         description: "Improve the code quality by adding Sonar's Roslyn analyzers.",
-        tags: new[] { "roslyn", "analyzer", "NuGet", "Sonar" },
+        tags: ["roslyn", "analyzer", "NuGet", "Sonar"],
         category: Category.CodeQuality,
         isEnabled: true);
 
@@ -476,7 +490,7 @@ public static class Rule
         title: "Avoid using Moq",
         message: "Do not use Moq.",
         description: "Moq has built in data harvesting that violates GDPR.",
-        tags: new[] { "GDPR", "privacy" },
+        tags: ["GDPR", "privacy"],
         category: Category.Security,
         isEnabled: true);
 
@@ -487,7 +501,7 @@ public static class Rule
       description:
           "Private assets (such as analyzers) will not result in being a " +
           "project dependency after being compiled.",
-      tags: new[] { "private", "asset", "dependencies", "dependency" },
+      tags: ["private", "asset", "dependencies", "dependency"],
       category: Category.CodeQuality,
       isEnabled: true);
 
@@ -496,7 +510,7 @@ public static class Rule
         title: "Embed valid resource files",
         message: "Resource file {0}",
         description: "A resource file should contain valid XML.",
-        tags: new[] { "resx", "resources" },
+        tags: ["resx", "resources"],
         category: Category.Bug,
         isEnabled: true,
         severity: DiagnosticSeverity.Error);
@@ -506,7 +520,7 @@ public static class Rule
         title: "Define data in a resource file",
         message: "Resource does not contain any data.",
         description: "A resource file without `<data>` elements is of no use.",
-        tags: new[] { "resx", "resources" },
+        tags: ["resx", "resources"],
         category: Category.Noise,
         isEnabled: true);
 
@@ -517,7 +531,7 @@ public static class Rule
         description:
             "To improve readability, and reduce the number of merge conflicts, " +
             "the `<data>` elements should be sorted based on the `@name` attribute.",
-        tags: new[] { "resx", "resources" },
+        tags: ["resx", "resources"],
         category: Category.Clarity,
         isEnabled: true);
 
@@ -528,7 +542,7 @@ public static class Rule
         description:
             "To ensure that localized values can be resolved, a localized resource " +
             "file must have a culture invariant alternative.",
-        tags: new[] { "resx", "resources", "invariant", "localization" },
+        tags: ["resx", "resources", "invariant", "localization"],
         category: Category.Bug,
         isEnabled: true);
 
@@ -539,7 +553,7 @@ public static class Rule
        description:
            "To ensure that localized values can be resolved, a localized value " +
            "file must have a culture invariant alternative.",
-       tags: new[] { "resx", "resources", "invariant", "localization" },
+       tags: ["resx", "resources", "invariant", "localization"],
        category: Category.Bug,
        isEnabled: true);
 

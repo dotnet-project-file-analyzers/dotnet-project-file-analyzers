@@ -24,12 +24,13 @@
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-TO BE RELEASED
+v1.2.0
 - Proj0006: Directory.Build.Props is not required to be added as additional file. (FP)
 - Proj0020: Item group should only contain nodes of a single type. (NEW RULE)
+- Proj0600: Avoid &lt;GeneratePackageOnBuild&gt; if &lt;IsPackable&gt; is false. (NEW RULE)
 v1.1.0
 - Support of Directory.Build.props.
 v1.0.14
