@@ -46,4 +46,8 @@
     <Using Include="System.Collections.Generic"/>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="../../design/logo_128x128.png" />
+  </ItemGroup>
+
 </Project>
