@@ -3,15 +3,11 @@
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <OutputType>Library</OutputType>
+    <NuGetAudit>true</NuGetAudit>
     <IsPackable>true</IsPackable>
     <IsPublishable>false</IsPublishable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-  </PropertyGroup>
-
-  <PropertyGroup Label="Validation">
-    <NuGetAudit>true</NuGetAudit>
-    <EnablePackageValidation>true</EnablePackageValidation>
-    <PackageValidationBaselineVersion>0.1.0</PackageValidationBaselineVersion>
+    <DevelopmentDependency>true</DevelopmentDependency>
   </PropertyGroup>
 
   <PropertyGroup Label="PackageInfo">
