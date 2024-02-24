@@ -20,7 +20,7 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!IsPackable(context.Project)) return;
+        if (!context.Project.IsPackable()) return;
 
         Analyze(context, Rule.DefineVersion, g => g.Version);
         Analyze(context, Rule.DefineDescription, g => Nodes.Concat(g.Description, g.PackageDescription));
@@ -36,9 +36,6 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
         Analyze(context, Rule.DefinePackageId, g => g.PackageId);
         Analyze(context, Rule.DefineLicense, g => Nodes.Concat(g.PackageLicenseFile, g.PackageLicenseExpression));
     }
-
-    private static bool IsPackable(MsBuildProject project)
-        => project.Property<bool?, IsPackable>(g => g.IsPackable, MsBuildDefaults.IsPackage).GetValueOrDefault();
 
     private static IEnumerable<Node> GetNodes(ProjectFileAnalysisContext context, Func<PropertyGroup, IEnumerable<Node>> getNodes)
         => context.Project

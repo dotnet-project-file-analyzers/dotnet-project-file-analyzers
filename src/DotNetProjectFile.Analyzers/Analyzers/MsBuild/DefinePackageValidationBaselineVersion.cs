@@ -7,7 +7,7 @@ public sealed class DefinePackageValidationBaselineVersion() : MsBuildProjectFil
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!PackageValidationEnabled(context.Project))
+        if (!context.Project.PackageValidationEnabled())
         {
             return;
         }
@@ -20,7 +20,4 @@ public sealed class DefinePackageValidationBaselineVersion() : MsBuildProjectFil
             context.ReportDiagnostic(Descriptor, context.Project);
         }
     }
-
-    private static bool PackageValidationEnabled(MsBuildProject project)
-        => project.Property<bool?, DotNetProjectFile.MsBuild.EnablePackageValidation>(g => g.EnablePackageValidation, MsBuildDefaults.IsPackage).GetValueOrDefault();
 }
