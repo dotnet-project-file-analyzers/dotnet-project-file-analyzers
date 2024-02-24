@@ -431,7 +431,7 @@ public static class Rule
     public static DiagnosticDescriptor EnablePackageValidation => New(
         id: 0240,
         title: "Enable package validation",
-        message: "Define the <EnablePackageValidation> node with value 'true' or define the <IsPackable> node with value 'false'.",
+        message: "Define the <EnablePackageValidation> node with value 'true', define the <IsPackable> node with value 'false' or define the <DevelopmentDependency> node with value 'false'.",
         description:
             "To ensure the (backwards) compatibility " +
             "of the API surface of your package, it is adviced " +

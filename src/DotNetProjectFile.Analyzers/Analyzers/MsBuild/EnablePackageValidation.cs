@@ -7,7 +7,8 @@ public sealed class EnablePackageValidation() : MsBuildProjectFileAnalyzer(Rule.
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.Project.PackageValidationEnabled() && context.Project.IsPackable())
+        var project = context.Project;
+        if (project.IsPackable() && !project.IsDevelopmentDependency() && !project.PackageValidationEnabled())
         {
             context.ReportDiagnostic(Descriptor, context.Project);
         }
