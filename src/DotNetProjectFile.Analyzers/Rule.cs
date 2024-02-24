@@ -428,6 +428,35 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor EnablePackageValidation => New(
+        id: 0240,
+        title: "Enable package validation",
+        message: "Define the <EnablePackageValidation> node with value 'true', define the <IsPackable> node with value 'false' or define the <DevelopmentDependency> node with value 'false'.",
+        description:
+            "To ensure the (backwards) compatibility " +
+            "of the API surface of your package, it is adviced " +
+            "to enable package validation by defining the " +
+            "<EnablePackageValidation> node with value 'true'.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor DefinePackageValidationBaselineVersion => New(
+        id: 0241,
+        title: "Enable package baseline validation",
+        message: "Define the <PackageValidationBaselineVersion> node with a previously released stable version.",
+        description:
+            "To ensure the backwards compatibility " +
+            "of the API surface of your package, it is adviced " +
+            "to enable package baseline validation by defining the " +
+            "<PackageValidationBaselineVersion> node with the version " +
+            "of the previous stable release.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor DefineIsPublishable => New(
         id: 0400,
         title: "Define the project publishability explicitly",

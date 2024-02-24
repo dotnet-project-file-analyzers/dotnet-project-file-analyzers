@@ -27,6 +27,9 @@
     <Version>1.2.0</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+ToBeReleased
+- Proj0240: Enable package validation. (NEW RULE)
+- Proj0241: Enable package baseline validation. (NEW RULE)
 v1.2.0
 - Proj0006: Directory.Build.Props is not required to be added as additional file. (FP)
 - Proj0020: Item group should only contain nodes of a single type. (NEW RULE)

@@ -11,6 +11,8 @@ public sealed class PropertyGroup : Node
         NuGetAudit = Children.Typed<NuGetAudit>();
         OutputType = Children.Typed<OutputType>();
 
+        DevelopmentDependency = Children.Typed<DevelopmentDependency>();
+
         IsPackable = Children.Typed<IsPackable>();
         IsPublishable = Children.Typed<IsPublishable>();
         Version = Children.Typed<Version>();
@@ -30,6 +32,9 @@ public sealed class PropertyGroup : Node
         PackageReleaseNotes = Children.Typed<PackageReleaseNotes>();
         PackageReadmeFile = Children.Typed<PackageReadmeFile>();
         GeneratePackageOnBuild = Children.Typed<GeneratePackageOnBuild>();
+
+        EnablePackageValidation = Children.Typed<EnablePackageValidation>();
+        PackageValidationBaselineVersion = Children.Typed<PackageValidationBaselineVersion>();
     }
 
     public Nodes<TargetFramework> TargetFramework { get; }
@@ -41,6 +46,8 @@ public sealed class PropertyGroup : Node
     public Nodes<NuGetAudit> NuGetAudit { get; }
 
     public Nodes<OutputType> OutputType { get; }
+
+    public Nodes<DevelopmentDependency> DevelopmentDependency { get; }
 
     public Nodes<IsPackable> IsPackable { get; }
 
@@ -79,4 +86,8 @@ public sealed class PropertyGroup : Node
     public Nodes<IsPublishable> IsPublishable { get; }
 
     public Nodes<GeneratePackageOnBuild> GeneratePackageOnBuild { get; }
+
+    public Nodes<EnablePackageValidation> EnablePackageValidation { get; }
+
+    public Nodes<PackageValidationBaselineVersion> PackageValidationBaselineVersion { get; }
 }
