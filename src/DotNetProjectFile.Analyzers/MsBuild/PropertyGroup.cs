@@ -30,6 +30,9 @@ public sealed class PropertyGroup : Node
         PackageReleaseNotes = Children.Typed<PackageReleaseNotes>();
         PackageReadmeFile = Children.Typed<PackageReadmeFile>();
         GeneratePackageOnBuild = Children.Typed<GeneratePackageOnBuild>();
+
+        EnablePackageValidation = Children.Typed<EnablePackageValidation>();
+        PackageValidationBaselineVersion = Children.Typed<PackageValidationBaselineVersion>();
     }
 
     public Nodes<TargetFramework> TargetFramework { get; }
@@ -79,4 +82,8 @@ public sealed class PropertyGroup : Node
     public Nodes<IsPublishable> IsPublishable { get; }
 
     public Nodes<GeneratePackageOnBuild> GeneratePackageOnBuild { get; }
+
+    public Nodes<EnablePackageValidation> EnablePackageValidation { get; }
+
+    public Nodes<PackageValidationBaselineVersion> PackageValidationBaselineVersion { get; }
 }
