@@ -179,13 +179,15 @@ public static class Rule
         tags: ["Configuration", "confusion"],
         category: Category.Clarity);
 
-    public static DiagnosticDescriptor XShouldIncludeSomething => New(
+    public static DiagnosticDescriptor BuildActionsShouldHaveSingleTask => New(
         id: 21,
-        title: "",
-        message: "",
-        description: "",
-        tags: [],
-        category: Category.Bug);
+        title: "Build actions should have a single task",
+        message: "The <{0}> defines multiple tasks.",
+        description:
+            "For readability, a build action should define only one out of the options " +
+            "Include, Exclude, Remove, or Update.",
+        tags: ["Readability"],
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
