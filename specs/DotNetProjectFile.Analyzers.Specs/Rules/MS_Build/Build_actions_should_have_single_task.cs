@@ -7,10 +7,9 @@ public class Reports
         => new BuildActionsShouldHaveSingleTask()
         .ForProject("MultipleBuildActionTasks.cs")
         .HasIssues(
-            new Issue("Proj0021", "The Include 'DoesNotExist.cs' of <None> does not exist.").WithSpan(9, 5, 9, 38),
-            new Issue("Proj0021", "The Include '*.vbproj' of <Content> does not contain any files.").WithSpan(10, 5, 10, 43),
-            new Issue("Proj0021", "The Include '**/*.bin' of <EmbeddedResource> does not contain any files.").WithSpan(10, 5, 10, 43),
-            new Issue("Proj0021", "The Include '*.unknown' of <AdditionalFiles> does not contain any files.").WithSpan(12, 5, 12, 43)
+            new Issue("Proj0021", "The <Content> defines multiple tasks.").WithSpan(12, 5, 12, 52),
+            new Issue("Proj0021", "The <None> defines multiple tasks.").WithSpan(16, 5, 16, 50),
+            new Issue("Proj0021", "The <AdditionalFiles> defines multiple tasks.").WithSpan(20, 5, 20, 67)
         );
 }
 
