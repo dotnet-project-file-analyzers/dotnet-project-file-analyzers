@@ -8,6 +8,9 @@ namespace DotNetProjectFile.MsBuild;
 /// <summary>Represents node in a MS Build project file.</summary>
 public abstract class Node
 {
+    /// <summary>Semi-colon separator char(s).</summary>
+    protected static readonly char[] SemicolonSeparated = [';'];
+
     /// <summary>Initializes a new instance of the <see cref="Node"/> class.</summary>
     protected Node(XElement element, Node? parent, MsBuildProject? project)
     {

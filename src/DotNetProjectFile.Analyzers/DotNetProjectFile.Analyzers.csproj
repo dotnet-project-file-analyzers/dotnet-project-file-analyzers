@@ -28,6 +28,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
 ToBeReleased
+- Proj0021: Build actions should have a single task. (NEW RULE)
 - Proj0240: Enable package validation. (NEW RULE)
 - Proj0241: Enable package baseline validation. (NEW RULE)
 v1.2.0

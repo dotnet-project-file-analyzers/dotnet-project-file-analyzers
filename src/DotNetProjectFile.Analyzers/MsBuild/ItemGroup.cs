@@ -21,11 +21,15 @@ public sealed class ItemGroup : Node
     /// </param>
     public ItemGroup(XElement element, Node parent, MsBuildProject project) : base(element, parent, project)
     {
+        BuildActions = Children.Typed<BuildAction>();
         PackageReferences = Children.Typed<PackageReference>();
         ProjectReferences = Children.Typed<ProjectReference>();
         Folders = Children.Typed<Folder>();
         Usings = Children.Typed<Using>();
     }
+
+    /// <summary>Gets the child build actions references.</summary>
+    public Nodes<BuildAction> BuildActions { get; }
 
     /// <summary>Gets the child package references.</summary>
     public Nodes<PackageReference> PackageReferences { get; }

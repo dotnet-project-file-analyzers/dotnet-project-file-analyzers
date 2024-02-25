@@ -4,6 +4,6 @@ public sealed class TargetFrameworks(XElement element, Node parent, MsBuildProje
     : Node<IReadOnlyList<string>>(element, parent, project)
 {
     public override IReadOnlyList<string> Value
-        => Element.Value?.Split(new[] { ';' }, StringSplitOptions.RemoveEmptyEntries)
-        ?? Array.Empty<string>();
+        => Element.Value?.Split(SemicolonSeparated, StringSplitOptions.RemoveEmptyEntries)
+        ?? [];
 }

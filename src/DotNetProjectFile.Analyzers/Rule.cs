@@ -10,9 +10,7 @@ public static class Rule
         message: "The project file '{0}' could not be located.",
         description: "In order to make these rules work, the project file should be located.",
         tags: ["Configuration"],
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor UpdateLegacyProjects => New(
         id: 0002,
@@ -20,9 +18,7 @@ public static class Rule
         message: "Upgrade legacy MS Build project file.",
         description: "MS Build legacy projects are not supported.",
         tags: ["project file", "legacy", "obsolete"],
-        category: Category.Obsolete,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Obsolete);
 
     public static DiagnosticDescriptor DefineUsingsExplicit => New(
         id: 0003,
@@ -32,9 +28,7 @@ public static class Rule
             "The included namespaces should be clear. To reduce the statements " +
             "per file, consider global using statements.",
         tags: ["Configuration", "usings", "global"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor RunNuGetSecurityAudit => New(
         id: 0004,
@@ -44,9 +38,7 @@ public static class Rule
             "To reduce security issues, NuGets security audit should be run on " +
             "every build automatically.",
         tags: ["security", "NuGet", "vulnerability"],
-        category: Category.Security,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Security);
 
     public static DiagnosticDescriptor DefinePackageReferenceAssetsAsAttributes => New(
         id: 0005,
@@ -56,9 +48,7 @@ public static class Rule
             "To reduce security issues, NuGets security audit should be run on " +
             "every build automatically.",
         tags: ["security", "NuGet", "vulnerability"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor AddAdditionalFile => New(
         id: 0006,
@@ -68,9 +58,7 @@ public static class Rule
             "By adding additional non-compiling files, those files become " +
             "available in the analyzer context too.",
         tags: ["code analysis"],
-        category: Category.CodeQuality,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.CodeQuality);
 
     public static DiagnosticDescriptor RemoveEmptyNodes => New(
         id: 0007,
@@ -78,9 +66,7 @@ public static class Rule
         message: "Remove empty {0} node.",
         description: "Empty nodes only add noise, as they contain no information.",
         tags: ["noise"],
-        category: Category.Noise,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Noise);
 
     public static DiagnosticDescriptor RemoveFolderNodes => New(
         id: 0008,
@@ -90,9 +76,7 @@ public static class Rule
             "Folders nodes only add noise. They are leftovers of directories " +
             "created in the IDE, without adding an actual file to it.",
         tags: ["noise"],
-        category: Category.Noise,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Noise);
 
     public static DiagnosticDescriptor DefineSingleTargetFramework => New(
         id: 0009,
@@ -102,9 +86,7 @@ public static class Rule
             "To prevent confusion, only use the <TargetFrameworks> node when " +
             "there are multiple target frameworks.",
         tags: ["target framework", "confusion"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor DefineOutputType => New(
         id: 0010,
@@ -114,9 +96,7 @@ public static class Rule
             "To prevent confusion, explicitly define the OutputType " +
             "as 'Library', 'Exe', 'WinExe' or 'Module'.",
         tags: ["Configuration", "confusion"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor DefinePropertiesOnce => New(
         id: 0011,
@@ -124,9 +104,7 @@ public static class Rule
         message: "Property <{0}> has been already defined.",
         description: "MS Build will only select one value of a property.",
         tags: ["Configuration", "confusion"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor ReassignPropertiesWithDifferentValue => New(
         id: 0012,
@@ -134,9 +112,7 @@ public static class Rule
         message: "Property <{0}> has been previously defined with the same value.",
         description: "Reassigning a property with the same value is considered noise.",
         tags: ["Configuration", "confusion"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor IncludePackageReferencesOnce => New(
         id: 0013,
@@ -144,9 +120,7 @@ public static class Rule
         message: "Package '{0}' is already referenced.",
         description: "Including package references twice is considered noise.",
         tags: ["Configuration", "confusion"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor IncludeProjectReferencesOnce => New(
         id: 0014,
@@ -154,9 +128,7 @@ public static class Rule
         message: "Project '{0}' is already referenced.",
         description: "Including project references twice is considered noise.",
         tags: ["Configuration", "confusion"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor OrderPackageReferencesAlphabetically => New(
         id: 0015,
@@ -164,9 +136,7 @@ public static class Rule
         message: "Package '{0}' is not ordered alphabetically and should appear before '{1}'.",
         description: "Not ordering package references alphabetically is considered noise.",
         tags: ["Configuration", "confusion"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor OrderProjectReferencesAlphabetically => New(
         id: 0016,
@@ -174,9 +144,7 @@ public static class Rule
         message: "Project '{0}' is not ordered alphabetically and should appear before '{1}'.",
         description: "Not ordering project references alphabetically is considered noise.",
         tags: ["Configuration", "confusion"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor StaticAliasUsingNotSupported => New(
         id: 0017,
@@ -185,8 +153,7 @@ public static class Rule
         description: "Using directives can not be both static and an alias.",
         tags: ["Bug", "Code Generation"],
         category: Category.Bug,
-        severity: DiagnosticSeverity.Error,
-        isEnabled: true);
+        severity: DiagnosticSeverity.Error);
 
     public static DiagnosticDescriptor OrderUsingDirectivesByType => New(
         id: 0018,
@@ -194,9 +161,7 @@ public static class Rule
         message: "{0} directive for '{1}' should appear before {2} directive for '{3}'.",
         description: "Not ordering using directives by type is considered noise.",
         tags: ["Configuration", "confusion"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor OrderUsingDirectivesAlphabetically => New(
         id: 0019,
@@ -204,9 +169,7 @@ public static class Rule
         message: "{0} directive '{1}' is not ordered alphabetically and should appear before '{2}'.",
         description: "Not ordering using directives alphabetically is considered noise.",
         tags: ["Configuration", "confusion"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor ItemGroupShouldBeUniform => New(
         id: 0020,
@@ -214,9 +177,17 @@ public static class Rule
         message: "<ItemGroup> should only contain nodes of a single type.",
         description: "Mixing nodes of different types in a single <ItemGroup> is considered noise.",
         tags: ["Configuration", "confusion"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
+
+    public static DiagnosticDescriptor BuildActionsShouldHaveSingleTask => New(
+        id: 21,
+        title: "Build actions should have a single task",
+        message: "The <{0}> defines multiple tasks.",
+        description:
+            "For readability, a build action should define only one out of the options " +
+            "Include, Exclude, Remove, or Update.",
+        tags: ["Readability"],
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
@@ -226,9 +197,7 @@ public static class Rule
             "To prevent confusion, explicitly define the " +
             "<IsPackable> node.",
         tags: ["Configuration", "confusion"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor DefineVersion => New(
         id: 0201,
@@ -240,9 +209,7 @@ public static class Rule
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Reliability,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Reliability);
 
     public static DiagnosticDescriptor DefineDescription => New(
         id: 0202,
@@ -253,9 +220,7 @@ public static class Rule
             "the <Description> or <PackageDescription> node or disable package " +
             "generation by defining the <IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor DefineAuthors => New(
         id: 0203,
@@ -267,9 +232,7 @@ public static class Rule
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor DefineTags => New(
         id: 0204,
@@ -281,9 +244,7 @@ public static class Rule
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor DefineRepositoryUrl => New(
         id: 0205,
@@ -295,9 +256,7 @@ public static class Rule
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor DefineUrl => New(
         id: 0206,
@@ -309,9 +268,7 @@ public static class Rule
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor DefineCopyright => New(
         id: 0207,
@@ -323,9 +280,7 @@ public static class Rule
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor DefineReleaseNotes => New(
         id: 0208,
@@ -337,9 +292,7 @@ public static class Rule
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor DefineReadmeFile => New(
         id: 0209,
@@ -351,9 +304,7 @@ public static class Rule
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor DefineLicense => New(
         id: 0210,
@@ -367,9 +318,7 @@ public static class Rule
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor AvoidLicenseUrl => New(
         id: 0211,
@@ -380,9 +329,7 @@ public static class Rule
             "and should be replaced by either the " +
             "<PackageLicenseExpression> or the <PackageLicenseFile> node.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Obsolete,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Obsolete);
 
     public static DiagnosticDescriptor DefineIcon => New(
         id: 0212,
@@ -395,9 +342,7 @@ public static class Rule
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor DefineIconUrl => New(
         id: 0213,
@@ -410,9 +355,7 @@ public static class Rule
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor DefinePackageId => New(
         id: 0214,
@@ -424,9 +367,7 @@ public static class Rule
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor EnablePackageValidation => New(
         id: 0240,
@@ -465,9 +406,7 @@ public static class Rule
             "To prevent confusion, explicitly define the " +
             "<IsPublishable> node.",
         tags: ["Configuration", "confusion"],
-        category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
         id: 600,
@@ -479,9 +418,7 @@ public static class Rule
             "Removing the <GeneratePackageOnBuild> " +
             "node will reduce noise.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
@@ -489,8 +426,7 @@ public static class Rule
         message: "Use the .NET project file analyzers.",
         description: "To improve the code quality of .NET project files.",
         tags: ["roslyn", "analyzer", "cbproj", "vbproj"],
-        category: Category.CodeQuality,
-        isEnabled: true);
+        category: Category.CodeQuality);
 
     public static DiagnosticDescriptor UseAnalyzersForPackages => New(
         id: 1001,
@@ -502,8 +438,7 @@ public static class Rule
             "In order to get the best out of those NuGet packages, their " +
             "analyzer(s) should be used.",
         tags: ["roslyn", "analyzer", "NuGet"],
-        category: Category.CodeQuality,
-        isEnabled: true);
+        category: Category.CodeQuality);
 
     public static DiagnosticDescriptor UseSonarAnalyzers => New(
         id: 1003,
@@ -511,8 +446,7 @@ public static class Rule
         message: "Add {0}.",
         description: "Improve the code quality by adding Sonar's Roslyn analyzers.",
         tags: ["roslyn", "analyzer", "NuGet", "Sonar"],
-        category: Category.CodeQuality,
-        isEnabled: true);
+        category: Category.CodeQuality);
 
     public static DiagnosticDescriptor AvoidUsingMoq => New(
         id: 1100,
@@ -520,8 +454,7 @@ public static class Rule
         message: "Do not use Moq.",
         description: "Moq has built in data harvesting that violates GDPR.",
         tags: ["GDPR", "privacy"],
-        category: Category.Security,
-        isEnabled: true);
+        category: Category.Security);
 
     public static DiagnosticDescriptor ExcludePrivateAssetDependencies => New(
       id: 1200,
@@ -531,8 +464,7 @@ public static class Rule
           "Private assets (such as analyzers) will not result in being a " +
           "project dependency after being compiled.",
       tags: ["private", "asset", "dependencies", "dependency"],
-      category: Category.CodeQuality,
-      isEnabled: true);
+      category: Category.CodeQuality);
 
     public static DiagnosticDescriptor EmbedValidResourceFiles => New(
         id: 2000,
@@ -541,7 +473,6 @@ public static class Rule
         description: "A resource file should contain valid XML.",
         tags: ["resx", "resources"],
         category: Category.Bug,
-        isEnabled: true,
         severity: DiagnosticSeverity.Error);
 
     public static DiagnosticDescriptor DefineData => New(
@@ -550,8 +481,7 @@ public static class Rule
         message: "Resource does not contain any data.",
         description: "A resource file without `<data>` elements is of no use.",
         tags: ["resx", "resources"],
-        category: Category.Noise,
-        isEnabled: true);
+        category: Category.Noise);
 
     public static DiagnosticDescriptor SortDataAlphabetically => New(
         id: 2002,
@@ -561,8 +491,7 @@ public static class Rule
             "To improve readability, and reduce the number of merge conflicts, " +
             "the `<data>` elements should be sorted based on the `@name` attribute.",
         tags: ["resx", "resources"],
-        category: Category.Clarity,
-        isEnabled: true);
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor AddInvariantFallbackResources => New(
         id: 2003,
@@ -572,8 +501,7 @@ public static class Rule
             "To ensure that localized values can be resolved, a localized resource " +
             "file must have a culture invariant alternative.",
         tags: ["resx", "resources", "invariant", "localization"],
-        category: Category.Bug,
-        isEnabled: true);
+        category: Category.Bug);
 
     public static DiagnosticDescriptor AddInvariantFallbackValues => New(
        id: 2004,
@@ -583,8 +511,7 @@ public static class Rule
            "To ensure that localized values can be resolved, a localized value " +
            "file must have a culture invariant alternative.",
        tags: ["resx", "resources", "invariant", "localization"],
-       category: Category.Bug,
-       isEnabled: true);
+       category: Category.Bug);
 
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
