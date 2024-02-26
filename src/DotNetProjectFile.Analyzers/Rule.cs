@@ -184,8 +184,7 @@ public static class Rule
         title: "Build actions should have a single task",
         message: "The <{0}> defines multiple tasks.",
         description:
-            "For readability, a build action should define only one out of the options " +
-            "Include, Exclude, Remove, or Update.",
+            "For readability, a build action should define only one task.",
         tags: ["Readability"],
         category: Category.Clarity);
 
