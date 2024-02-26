@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.MsBuild;
 
 /// <summary>
 /// Build action node (&lt;Compile&gt;,&lt;Content&gt;, &lt;None&gt;, &lt;AdditionalFiles&gt;, &lt;EmbeddedResource&gt;).

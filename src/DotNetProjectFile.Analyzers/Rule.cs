@@ -189,6 +189,16 @@ public static class Rule
         tags: ["Readability"],
         category: Category.Clarity);
 
+    public static DiagnosticDescriptor BuildActionIncludeShouldExist => New(
+       id: 22,
+       title: "Build action includes should exist",
+       message: "The Include '{0}' of <{1}> does not {2}.",
+       description:
+        "Build action include statements that do not include any file, are most " +
+        "likely a left over, or a bug.",
+       tags: [],
+       category: Category.Noise);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",

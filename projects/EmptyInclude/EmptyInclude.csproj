@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="*.txt" />
+    <None Include="DoesNotExist.cs" />
+    <Content Include="*.vbproj;*.csproj" />
+    <EmbeddedResource Include="**/*.bin" />
+    <AdditionalFiles Include="*.unknown" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="*.csproj" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup Label="Ignores">
+    <Compile Include="./../ignore/$(Configuration).doc" />
+  </ItemGroup>
+
+</Project>
