@@ -52,6 +52,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0019** Order using directives alphabetically](rules/Proj0019.md)
 * [**Proj0020** Item group should only contain nodes of a single type](rules/Proj0020.md)
 * [**Proj0021** Build actions should have a single task](rules/Proj0021.md)
+* [**Proj0022** Build actions should have a single task](rules/Proj0022.md)
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
 * [**Proj0201** Define the project version explicitly](rules/Proj0201.md)
 * [**Proj0202** Define the project description explicitly](rules/Proj0202.md)
