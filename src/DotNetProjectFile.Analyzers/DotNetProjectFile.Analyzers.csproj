@@ -24,10 +24,10 @@
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-ToBeReleased
+v1.2.1
 - Proj0021: Build actions should have a single task. (NEW RULE)
 - Proj0022: Build action includes should exist. (NEW RULE)
 - Proj0240: Enable package validation. (NEW RULE)

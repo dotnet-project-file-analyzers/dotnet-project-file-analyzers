@@ -26,8 +26,8 @@ public class Rules
     {
         IndexContext ??= await GetIndexContext();
         IndexContext
-            .Contains($@"""/rules/{rule.Id}.html""")
-            .Should().BeTrue(because: $"Rule {rule} should be mentioned");
+            .Contains(@$"""/rules/{rule.Id}.html""")
+            .Should().BeTrue(because: $"Rule {rule.Id} should be mentioned");
     }
 
     [TestCaseSource(nameof(AlleRules))]
