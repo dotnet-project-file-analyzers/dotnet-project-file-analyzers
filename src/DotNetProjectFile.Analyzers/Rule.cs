@@ -184,10 +184,19 @@ public static class Rule
         title: "Build actions should have a single task",
         message: "The <{0}> defines multiple tasks.",
         description:
-            "For readability, a build action should define only one out of the options " +
-            "Include, Exclude, Remove, or Update.",
+            "For readability, a build action should define only one task.",
         tags: ["Readability"],
         category: Category.Clarity);
+
+    public static DiagnosticDescriptor BuildActionIncludeShouldExist => New(
+       id: 22,
+       title: "Build action includes should exist",
+       message: "The Include '{0}' of <{1}> does not {2}.",
+       description:
+        "Build action include statements that do not include any file, are most " +
+        "likely a left over, or a bug.",
+       tags: [],
+       category: Category.Noise);
 
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
