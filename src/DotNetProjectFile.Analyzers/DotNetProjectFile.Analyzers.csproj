@@ -24,9 +24,11 @@
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
-    <Version>1.2.1</Version>
+    <Version>1.2.2</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+v1.2.2
+- Proj0009: TargetFrameworks allowed when overriding imports. (FP)
 v1.2.1
 - Proj0021: Build actions should have a single task. (NEW RULE)
 - Proj0022: Build action includes should exist. (NEW RULE)
