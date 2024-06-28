@@ -180,7 +180,7 @@ public static class Rule
         category: Category.Clarity);
 
     public static DiagnosticDescriptor BuildActionsShouldHaveSingleTask => New(
-        id: 21,
+        id: 0021,
         title: "Build actions should have a single task",
         message: "The <{0}> defines multiple tasks.",
         description:
@@ -189,7 +189,7 @@ public static class Rule
         category: Category.Clarity);
 
     public static DiagnosticDescriptor BuildActionIncludeShouldExist => New(
-       id: 22,
+       id: 0022,
        title: "Build action includes should exist",
        message: "The Include '{0}' of <{1}> does not {2}.",
        description:

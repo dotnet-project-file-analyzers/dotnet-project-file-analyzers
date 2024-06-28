@@ -15,6 +15,7 @@ public class Guards
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     [TestCase("TargetFrameworksMultiple.cs")]
+    [TestCase("TargetFrameworksSingleWithBase.cs")]
     public void Projects_with_analyzers(string project)
          => new DefineSingleTargetFramework()
         .ForProject(project)
