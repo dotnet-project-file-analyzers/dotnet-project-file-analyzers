@@ -74,6 +74,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0600** Avoid generating packages on build if not packable](rules/Proj0600.md)
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
+* [**Proj1002** Use Microsoft's analyzers](rules/Proj1002.md)
 * [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)
 * [**Proj1100** Avoid using Moq](rules/Proj1100.md)
 * [**Proj1200** Exclude private assets as project file dependency](rules/Proj1200.md)
