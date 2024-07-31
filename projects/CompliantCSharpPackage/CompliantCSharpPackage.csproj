@@ -4,6 +4,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <OutputType>Library</OutputType>
     <NuGetAudit>true</NuGetAudit>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <IsPackable>true</IsPackable>
     <IsPublishable>false</IsPublishable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>

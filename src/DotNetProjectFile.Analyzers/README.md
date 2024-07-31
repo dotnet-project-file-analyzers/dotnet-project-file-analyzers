@@ -45,6 +45,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0600** Avoid generating packages on build if not packable](https://dotnet-project-file-analyzers.github.io/rules/Proj0600.html)
 * [**Proj1000** Use the .NET project file analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1000.html)
 * [**Proj1001** Use analyzers for packages](https://dotnet-project-file-analyzers.github.io/rules/Proj1001.html)
+* [**Proj1002** Use Microsoft's analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1002.html)
 * [**Proj1003** Use Sonar analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1003.html)
 * [**Proj1100** Avoid using Moq](https://dotnet-project-file-analyzers.github.io/rules/Proj1100.html)
 * [**Proj1200** Exclude private assets as project file dependency](https://dotnet-project-file-analyzers.github.io/rules/Proj1200.html)

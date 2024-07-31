@@ -6,6 +6,9 @@ internal static class DotNetProjectFileAnalyzerProjectExtensions
     public static bool IsPackable(this MsBuildProject project)
         => project.Property<bool?, IsPackable>(g => g.IsPackable, MsBuildDefaults.IsPackable).GetValueOrDefault();
 
+    public static bool NETAnalyzersEnabled(this MsBuildProject project)
+        => project.Property<bool?, EnableNETAnalyzers>(g => g.EnableNETAnalyzers, MsBuildDefaults.EnableNETAnalyzers).GetValueOrDefault();
+
     public static bool PackageValidationEnabled(this MsBuildProject project)
         => project.Property<bool?, EnablePackageValidation>(g => g.EnablePackageValidation, MsBuildDefaults.EnablePackageValidation).GetValueOrDefault();
 
