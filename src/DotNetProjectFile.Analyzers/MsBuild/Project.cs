@@ -31,6 +31,8 @@ public sealed class Project : Node
 
     public bool IsProject { get; }
 
+    public string? Sdk => Attribute();
+
     public FileInfo Path { get; }
 
     public SourceText Text { get; }

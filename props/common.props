@@ -4,6 +4,7 @@
   <PropertyGroup>
     <LangVersion>12.0</LangVersion>
     <Nullable>enable</Nullable>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <NuGetAudit>true</NuGetAudit>
   </PropertyGroup>
 

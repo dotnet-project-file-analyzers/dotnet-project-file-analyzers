@@ -449,12 +449,20 @@ public static class Rule
         tags: ["roslyn", "analyzer", "NuGet"],
         category: Category.CodeQuality);
 
+    public static DiagnosticDescriptor UseDotNetAnalyzers => New(
+        id: 1002,
+        title: "Use Microsoft's .NET analyzers",
+        message: "Use Microsoft's .NET analyzers by setting <EnableNETAnalyzers> to true.",
+        description: "Improve the code quality by adding Microsoft's Roslyn analyzers.",
+        tags: ["roslyn", "analyzer", "Microsoft"],
+        category: Category.CodeQuality);
+
     public static DiagnosticDescriptor UseSonarAnalyzers => New(
         id: 1003,
         title: "Use Sonar analyzers for packages",
         message: "Add {0}.",
         description: "Improve the code quality by adding Sonar's Roslyn analyzers.",
-        tags: ["roslyn", "analyzer", "NuGet", "Sonar"],
+        tags: ["roslyn", "analyzer", "Sonar"],
         category: Category.CodeQuality);
 
     public static DiagnosticDescriptor AvoidUsingMoq => New(

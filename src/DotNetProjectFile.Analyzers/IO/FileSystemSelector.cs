@@ -54,7 +54,7 @@ public static class FileSystemSelector
             }
         }
         return enumerator
-            .SelectMany(d => d.EnumerateFiles(parts[parts.Length - 1]));
+            .SelectMany(d => d.EnumerateFiles(parts[^1]));
     }
 
     private sealed class RootDirectory(DirectoryInfo root) : IEnumerable<DirectoryInfo>

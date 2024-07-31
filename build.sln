@@ -18,6 +18,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{D43D7549-495B-4A32-A13C-9AF7B6EA893A}"
+	ProjectSection(SolutionItems) = preProject
+		projects\DisableNetAnalyzers\DisableNetAnalyzers.csproj = projects\DisableNetAnalyzers\DisableNetAnalyzers.csproj
+		projects\NoEnableNetAnalyzers\NoEnableNetAnalyzers.csproj = projects\NoEnableNetAnalyzers\NoEnableNetAnalyzers.csproj
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

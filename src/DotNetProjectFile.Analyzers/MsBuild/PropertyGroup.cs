@@ -9,6 +9,7 @@ public sealed class PropertyGroup : Node
         TargetFrameworks = Children.Typed<TargetFrameworks>();
         ImplicitUsings = Children.Typed<ImplicitUsings>();
         NuGetAudit = Children.Typed<NuGetAudit>();
+        EnableNETAnalyzers = Children.Typed<EnableNETAnalyzers>();
         OutputType = Children.Typed<OutputType>();
 
         DevelopmentDependency = Children.Typed<DevelopmentDependency>();
@@ -44,6 +45,8 @@ public sealed class PropertyGroup : Node
     public Nodes<ImplicitUsings> ImplicitUsings { get; }
 
     public Nodes<NuGetAudit> NuGetAudit { get; }
+
+    public Nodes<EnableNETAnalyzers> EnableNETAnalyzers { get; }
 
     public Nodes<OutputType> OutputType { get; }
 

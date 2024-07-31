@@ -27,6 +27,8 @@
     <Version>1.2.2</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+v1.2.3
+- Proj1002: Use Microsoft's .NET analyzers. (NEW RULE)
 v1.2.2
 - Proj0009: TargetFrameworks allowed when overriding imports. (FP)
 v1.2.1
