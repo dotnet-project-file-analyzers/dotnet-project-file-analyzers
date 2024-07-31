@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Test tools">
-    <PackageReference Include="CodeAnalysis.TestTools" Version="2.*" />
+    <PackageReference Include="CodeAnalysis.TestTools" Version="3.*" />
     <PackageReference Include="FluentAssertions" Version="6.*" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.*" />
     <PackageReference Include="NuGet.Common" Version="6.*" />
