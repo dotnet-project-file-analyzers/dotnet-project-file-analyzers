@@ -9,6 +9,10 @@
     <IsPublishable>true</IsPublishable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
   <ItemGroup Label="Analyzers">
     <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
   </ItemGroup>

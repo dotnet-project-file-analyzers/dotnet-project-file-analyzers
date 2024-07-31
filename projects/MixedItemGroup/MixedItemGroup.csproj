@@ -14,4 +14,8 @@
     <EmbeddedResource Include="Files\*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
 </Project>
