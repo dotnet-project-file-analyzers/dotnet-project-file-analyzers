@@ -1,7 +1,7 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class ItemGroupShouldBeUniform : MsBuildProjectFileAnalyzer
+public sealed class ItemGroupShouldBeUniform() : MsBuildProjectFileAnalyzer(Rule.ItemGroupShouldBeUniform)
 {
     private static readonly IReadOnlyCollection<IReadOnlyCollection<Type>> Exceptions =
         [
@@ -16,13 +16,9 @@ public sealed class ItemGroupShouldBeUniform : MsBuildProjectFileAnalyzer
     private static readonly IReadOnlyDictionary<Type, IReadOnlyCollection<Type>> Allowed
         = GenerateAllowList();
 
-    public ItemGroupShouldBeUniform() : base(Rule.ItemGroupShouldBeUniform) { }
-
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var group in context.Project
-            .ImportsAndSelf()
-            .SelectMany(p => p.ItemGroups))
+        foreach (var group in context.Project.ItemGroups)
         {
             AnalyzeGroup(context, group);
         }

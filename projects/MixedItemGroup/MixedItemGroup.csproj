@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +12,10 @@
   <ItemGroup>
     <None Remove="Files\*" />
     <EmbeddedResource Include="Files\*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
   </ItemGroup>
 
 </Project>
