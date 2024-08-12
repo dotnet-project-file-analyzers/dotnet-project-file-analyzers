@@ -16,4 +16,8 @@
     <AdditionalFiles Include="*.vbproj" Visible="false" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="../common/Code.vb" />
+  </ItemGroup>
+
 </Project>
