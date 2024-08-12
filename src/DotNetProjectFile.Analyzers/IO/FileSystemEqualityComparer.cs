@@ -2,12 +2,6 @@
 
 namespace DotNetProjectFile.IO;
 
-internal static class FileSystemEqualityComparer
-{
-    public static readonly FileSystemEqualityComparer<DirectoryInfo> Directory = new();
-    public static readonly FileSystemEqualityComparer<FileInfo> File = new();
-}
-
 internal sealed class FileSystemEqualityComparer<T> : IEqualityComparer<T>
     where T : FileSystemInfo
 {

@@ -1,3 +1,4 @@
+using System.Collections.Concurrent;
 using System.Globalization;
 using System.IO;
 
@@ -5,7 +6,7 @@ namespace DotNetProjectFile.Resx;
 
 public sealed class Resources : IReadOnlyCollection<Resource>
 {
-    private readonly Dictionary<FileInfo, Resource> items = new(FileSystemEqualityComparer.File);
+    private readonly ConcurrentDictionary<IOFile, Resource> items = [];
 
     public int Count => items.Count;
 

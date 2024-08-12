@@ -5,8 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\FolderNodes\FolderNodes.csproj" />
-    <ProjectReference Include="..\EmptyNodes\EmptyNodes.csproj" />
+    <ProjectReference Include="../FolderNodes/FolderNodes.csproj" />
+    <ProjectReference Include="../EmptyNodes/EmptyNodes.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+  
 </Project>

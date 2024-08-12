@@ -5,7 +5,7 @@ namespace DotNetProjectFile.MsBuild;
 
 public sealed class Project : Node
 {
-    private Project(FileInfo path, SourceText text, Projects projects, AdditionalText? additionalText, bool isProject)
+    private Project(IOFile path, SourceText text, Projects projects, AdditionalText? additionalText, bool isProject)
         : base(XElement.Parse(text.ToString(), LoadOptions), null, null)
     {
         Path = path;
@@ -33,7 +33,7 @@ public sealed class Project : Node
 
     public string? Sdk => Attribute();
 
-    public FileInfo Path { get; }
+    public IOFile Path { get; }
 
     public SourceText Text { get; }
 
@@ -103,7 +103,7 @@ public sealed class Project : Node
         }
     }
 
-    public static Project Load(FileInfo file, Projects projects, bool isProject)
+    public static Project Load(IOFile file, Projects projects, bool isProject)
     {
         using var reader = file.OpenText();
         return new(
@@ -116,7 +116,7 @@ public sealed class Project : Node
 
     public static Project Load(AdditionalText text, Projects projects, bool isProject)
         => new(
-            path: new(text.Path),
+            path: IOFile.Parse(text.Path),
             text: text.GetText()!,
             projects: projects,
             additionalText: text,

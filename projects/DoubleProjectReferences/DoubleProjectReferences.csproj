@@ -5,11 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\EmptyNodes\EmptyNodes.csproj" />
+    <ProjectReference Include="../EmptyNodes/EmptyNodes.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include=".\..\..\projects\EmptyNodes\EmptyNodes.csproj" />
+    <ProjectReference Include="./../../projects/EmptyNodes/EmptyNodes.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
   </ItemGroup>
 
 </Project>

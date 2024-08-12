@@ -34,7 +34,7 @@
   </PropertyGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.2.2" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
   </ItemGroup>
 
   <ItemGroup>
@@ -49,6 +49,10 @@
 
   <ItemGroup>
     <None Include="../../design/logo_128x128.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
   </ItemGroup>
 
 </Project>
