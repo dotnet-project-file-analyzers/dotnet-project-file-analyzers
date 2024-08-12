@@ -34,6 +34,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects.common", "Projects.common", "{67CD4711-6DEE-4426-ABD3-700C7D53EEA9}"
 	ProjectSection(SolutionItems) = preProject
 		projects\common\Code.cs = projects\common\Code.cs
+		projects\common\Code.vb = projects\common\Code.vb
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{DF7D0480-2743-4369-9855-07A8CBEDEDD7}"
