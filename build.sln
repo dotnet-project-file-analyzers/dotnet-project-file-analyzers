@@ -25,6 +25,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{D4
 		projects\DoubleProjectReferences\DoubleProjectReferences.csproj = projects\DoubleProjectReferences\DoubleProjectReferences.csproj
 		projects\MixedItemGroup\MixedItemGroup.csproj = projects\MixedItemGroup\MixedItemGroup.csproj
 		projects\NonAlphabeticalPackageReferences\NonAlphabeticalPackageReferences.csproj = projects\NonAlphabeticalPackageReferences\NonAlphabeticalPackageReferences.csproj
+		projects\NonAlphabeticalProjectReferences\NonAlphabeticalProjectReferences.csproj = projects\NonAlphabeticalProjectReferences\NonAlphabeticalProjectReferences.csproj
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects.common", "Projects.common", "{67CD4711-6DEE-4426-ABD3-700C7D53EEA9}"
