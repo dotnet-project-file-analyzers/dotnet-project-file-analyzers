@@ -17,7 +17,7 @@ public sealed class UseSonarAnalyzers() : MsBuildProjectFileAnalyzer(Rule.UseSon
         }
     }
 
-    private bool Includes(PackageReference reference, string include)
+    private static bool Includes(PackageReference reference, string include)
         => string.Equals(reference.Include, include, StringComparison.OrdinalIgnoreCase);
 
     private static string? Include(string language) => language switch

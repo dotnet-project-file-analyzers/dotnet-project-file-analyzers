@@ -24,9 +24,11 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
     public bool HasValue => Parts.Length != 0;
 
     public IODirectory Parent
+#pragma warning disable S2365 // Properties should not make collection or array copies
         => HasValue
         ? new(Parts.Take(Parts.Length - 1).ToArray())
         : throw new InvalidOperationException("Path is empty");
+#pragma warning restore S2365 // Properties should not make collection or array copies
 
     /// <summary>Creates a new sub directory.</summary>
     public IODirectory SubDirectory(params string[] paths)

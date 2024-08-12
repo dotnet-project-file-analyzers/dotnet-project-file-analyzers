@@ -1,4 +1,6 @@
 ﻿#nullable enable
+#pragma warning disable CA2231 // Overload operator equals on overriding value type Equals
+#pragma warning disable S1210 // "Equals" and the comparison operators should be overridden when implementing "IComparable"
 
 using System.ComponentModel;
 using System.IO;
@@ -24,9 +26,11 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
 
     /// <inheritdoc cref="FileInfo.Directory" />
     public IODirectory Directory
+#pragma warning disable S2365 // Properties should not make collection or array copies
         => HasValue
         ? new(Parts.Take(Parts.Length - 1).ToArray())
         : throw new InvalidOperationException("Path is empty");
+#pragma warning restore S2365 // Properties should not make collection or array copies
 
     /// <summary>Creates a <see cref="FileInfo"/> based on the path.</summary>
     private FileInfo File() => new(ToString());
@@ -82,7 +86,7 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
     public string ToString(string? format) => ToString(format, null);
 
     /// <inheritdoc />
-    public string ToString(string? format, IFormatProvider? formatProvider) 
+    public string ToString(string? format, IFormatProvider? formatProvider)
         => IOPath.ToString(Parts, format, formatProvider);
 
     public static IOFile Parse(string? str)

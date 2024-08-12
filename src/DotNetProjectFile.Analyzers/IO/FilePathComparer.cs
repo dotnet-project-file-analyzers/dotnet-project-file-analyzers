@@ -18,7 +18,7 @@ public sealed class FilePathComparer : IComparer<string?>
         return compare ?? x.Length.CompareTo(y.Length);
     }
 
-    private int? Compare(char x, char y)
+    private static int? Compare(char x, char y)
     {
         int compare = Update(x).CompareTo(Update(y));
         return compare == 0 ? null : compare;

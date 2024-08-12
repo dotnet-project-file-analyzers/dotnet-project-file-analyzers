@@ -13,7 +13,7 @@ public sealed class DefineUsingsExplicit() : MsBuildProjectFileAnalyzer(Rule.Def
         }
     }
 
-    private bool IsEnabled(ImplicitUsings.Kind? implicitUsing)
+    private static bool IsEnabled(ImplicitUsings.Kind? implicitUsing)
         => implicitUsing == ImplicitUsings.Kind.@true
         || implicitUsing == ImplicitUsings.Kind.enable;
 }
