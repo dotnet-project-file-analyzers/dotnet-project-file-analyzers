@@ -10,9 +10,7 @@ public class Has_no_issues
         .HasNoIssues();
 }
 
-#if RELEASE
-[TestFixture(Ignore = "To allow .NET framework projects to be build, the image has to change to windows.")]
-#endif
+#if Is_Windows
 public class Reports
 {
     [Test]
@@ -21,3 +19,4 @@ public class Reports
         .ForProject("LegacyProject.cs")
         .HasIssue(new Issue("Proj0002", "Upgrade legacy MS Build project file.").WithSpan(1, 1, 1, 2));
 }
+#endif
