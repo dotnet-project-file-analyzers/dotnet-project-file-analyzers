@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <Using Include="Common" />
-    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" />
+    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="2.0.1" />
   </ItemGroup>
 
   <ItemGroup>
