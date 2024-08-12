@@ -78,6 +78,16 @@ public abstract class Node
     /// <summary>Get all children.</summary>
     public Nodes<Node> Children { get; }
 
+    public IEnumerable<Node> DescendantsAndSelf()
+    {
+        yield return this;
+
+        foreach (var child in Children.SelectMany(n => n.DescendantsAndSelf()))
+        {
+            yield return child;
+        }
+    }
+
     /// <summary>Gets the <see cref="string"/> value of an attribute.</summary>
     public string? Attribute([CallerMemberName] string? propertyName = null)
         => Element.Attribute(propertyName)?.Value;

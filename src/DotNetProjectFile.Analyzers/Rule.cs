@@ -189,14 +189,24 @@ public static class Rule
         category: Category.Clarity);
 
     public static DiagnosticDescriptor BuildActionIncludeShouldExist => New(
-       id: 0022,
-       title: "Build action includes should exist",
-       message: "The Include '{0}' of <{1}> does not {2}.",
-       description:
-        "Build action include statements that do not include any file, are most " +
-        "likely a left over, or a bug.",
-       tags: [],
-       category: Category.Noise);
+        id: 0022,
+        title: "Build action includes should exist",
+        message: "The Include '{0}' of <{1}> does not {2}.",
+        description:
+            "Build action include statements that do not include any file, are most " +
+            "likely a left over, or a bug.",
+        tags: [],
+        category: Category.Noise);
+
+    public static DiagnosticDescriptor UseForwardSlashesInPaths => New(
+        id: 0023,
+        title: "Use forward slashes in paths",
+        message: "<{0} {1}> contains backward slashes.",
+        description:
+            "The use of forward slashes is preferred as they work both for UNIX and" +
+            "Windows. This is not true for backward slashes.",
+        tags: ["UNIX", "Windows", "IO"],
+        category: Category.Reliability);
 
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
