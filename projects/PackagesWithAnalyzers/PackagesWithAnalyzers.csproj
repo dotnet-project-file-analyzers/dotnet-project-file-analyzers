@@ -60,4 +60,8 @@
     <AdditionalFiles Include="*.??proj" Visible="false" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
 </Project>
