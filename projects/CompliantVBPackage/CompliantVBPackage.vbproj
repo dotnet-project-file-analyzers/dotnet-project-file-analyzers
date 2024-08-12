@@ -42,4 +42,8 @@
     <MyType>Empty</MyType>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="../common/Code.vb" />
+  </ItemGroup>
+
 </Project>

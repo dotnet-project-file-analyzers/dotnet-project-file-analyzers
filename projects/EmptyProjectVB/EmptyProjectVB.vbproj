@@ -6,4 +6,8 @@
     <OptionStrict>On</OptionStrict>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Include="../common/Code.vb" />
+  </ItemGroup>
+  
 </Project>
