@@ -5,13 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Using Include="MixedItemGroup" />
+    <Using Include="Common" />
     <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Files\*" />
-    <EmbeddedResource Include="Files\*" />
+    <None Remove="Files/*" />
+    <EmbeddedResource Include="Files/*" />
   </ItemGroup>
 
   <ItemGroup>

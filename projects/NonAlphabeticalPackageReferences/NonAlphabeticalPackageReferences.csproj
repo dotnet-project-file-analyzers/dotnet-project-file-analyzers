@@ -10,4 +10,8 @@
     <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
 </Project>

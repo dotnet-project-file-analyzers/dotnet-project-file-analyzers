@@ -20,11 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{D43D7549-495B-4A32-A13C-9AF7B6EA893A}"
 	ProjectSection(SolutionItems) = preProject
-		projects\CompliantCSharp\CompliantCSharp.csproj = projects\CompliantCSharp\CompliantCSharp.csproj
-		projects\DisableNetAnalyzers\DisableNetAnalyzers.csproj = projects\DisableNetAnalyzers\DisableNetAnalyzers.csproj
+		projects\DoubleProjectReferences\DoubleProjectReferences.csproj = projects\DoubleProjectReferences\DoubleProjectReferences.csproj
 		projects\MixedItemGroup\MixedItemGroup.csproj = projects\MixedItemGroup\MixedItemGroup.csproj
-		projects\NoEnableNetAnalyzers\NoEnableNetAnalyzers.csproj = projects\NoEnableNetAnalyzers\NoEnableNetAnalyzers.csproj
-		projects\PackageReferenceAssetsAsElements\PackageReferenceAssetsAsElements.csproj = projects\PackageReferenceAssetsAsElements\PackageReferenceAssetsAsElements.csproj
+		projects\NonAlphabeticalPackageReferences\NonAlphabeticalPackageReferences.csproj = projects\NonAlphabeticalPackageReferences\NonAlphabeticalPackageReferences.csproj
 	EndProjectSection
 EndProject
 Global
