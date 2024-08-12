@@ -25,6 +25,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{D4
 		projects\NonAlphabeticalPackageReferences\NonAlphabeticalPackageReferences.csproj = projects\NonAlphabeticalPackageReferences\NonAlphabeticalPackageReferences.csproj
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{67CD4711-6DEE-4426-ABD3-700C7D53EEA9}"
+	ProjectSection(SolutionItems) = preProject
+		projects\common\Code.cs = projects\common\Code.cs
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +47,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{67CD4711-6DEE-4426-ABD3-700C7D53EEA9} = {D43D7549-495B-4A32-A13C-9AF7B6EA893A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3AD1EF71-7465-4ED1-81AD-504C430C8251}
