@@ -1,22 +1,21 @@
 ﻿using System.Globalization;
-using System.IO;
 
 namespace DotNetProjectFile.Resx;
 
 public sealed class ResourceFileInfo
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private readonly FileInfo Info;
+    private readonly IOFile Info;
 
-    public ResourceFileInfo(string fileName) : this(new FileInfo(fileName)) { }
+    public ResourceFileInfo(string fileName) : this(IOFile.Parse(fileName)) { }
 
-    public ResourceFileInfo(FileInfo info)
+    public ResourceFileInfo(IOFile info)
     {
         Info = info;
         Culture = TryCulture(Name);
     }
 
-    public string Name => Info.Name;
+    public string Name => Info.NameWithoutExtension;
 
     public string Extension => Info.Extension;
 
@@ -24,28 +23,28 @@ public sealed class ResourceFileInfo
 
     public ResourceFileInfo Satellite(CultureInfo culture)
     {
-        var name = Path.GetFileNameWithoutExtension(Name);
-        name = name[..(name.Length - Culture.Name.Length - 1)];
-        name = Path.Combine(Info.Directory.FullName, name);
+        var name = Info.Name[..(Name.Length - Culture.Name.Length - 1)];
 
-        return culture.IsInvariant()
-            ? new($"{name}{Extension}")
-            : new($"{name}.{culture}{Extension}");
+        var path = culture.IsInvariant()
+            ? Info.Directory.File($"{name}{Extension}")
+            : Info.Directory.File($"{name}.{culture}{Extension}");
+
+        return new(path);
     }
 
     public override string ToString() => Info.ToString();
 
-    public static implicit operator FileInfo(ResourceFileInfo info) => info.Info;
+    public static implicit operator IOFile(ResourceFileInfo info) => info.Info;
 
     private static CultureInfo TryCulture(string name)
     {
         var parts = name.Split('.');
 
-        if (parts.Length > 2)
+        if (parts.Length > 1)
         {
             try
             {
-                return CultureInfo.GetCultureInfo(parts[^2]);
+                return CultureInfo.GetCultureInfo(parts[^1]);
             }
             catch (CultureNotFoundException)
             {

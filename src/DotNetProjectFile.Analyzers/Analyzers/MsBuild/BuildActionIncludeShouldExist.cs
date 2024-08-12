@@ -1,6 +1,4 @@
-﻿using System.IO;
-
-namespace DotNetProjectFile.Analyzers.MsBuild;
+﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class BuildActionIncludeShouldExist() : MsBuildProjectFileAnalyzer(Rule.BuildActionIncludeShouldExist)
@@ -22,7 +20,7 @@ public sealed class BuildActionIncludeShouldExist() : MsBuildProjectFileAnalyzer
         }
     }
 
-    private void Report(MsBuildProject project, DirectoryInfo root, ProjectFileAnalysisContext context)
+    private void Report(MsBuildProject project, IODirectory root, ProjectFileAnalysisContext context)
     {
         foreach (var node in project.ItemGroups.SelectMany(group => group.BuildActions))
         {
@@ -33,7 +31,7 @@ public sealed class BuildActionIncludeShouldExist() : MsBuildProjectFileAnalyzer
         }
     }
 
-    private string Ending(string include)
+    private static string Ending(string include)
         => include.Contains('?') || include.Contains('*')
             ? "match any files"
             : "exist";

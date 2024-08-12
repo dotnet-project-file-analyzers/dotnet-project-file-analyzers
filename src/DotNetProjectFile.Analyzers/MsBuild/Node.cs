@@ -53,10 +53,9 @@ public abstract class Node
 
     private Location GetLocation()
     {
-        var path = Project.Path.FullName;
         var linePositionSpan = LineInfo.LinePositionSpan();
         var textSpan = Project.Text.TextSpan(linePositionSpan);
-        return Location.Create(path, textSpan, linePositionSpan);
+        return Location.Create(Project.Path.ToString(), textSpan, linePositionSpan);
     }
 
     /// <summary>Represents the node as an <see cref="string"/>.</summary>

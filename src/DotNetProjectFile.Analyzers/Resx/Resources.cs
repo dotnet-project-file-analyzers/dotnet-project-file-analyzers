@@ -5,7 +5,7 @@ namespace DotNetProjectFile.Resx;
 
 public sealed class Resources : IReadOnlyCollection<Resource>
 {
-    private readonly Dictionary<FileInfo, Resource> items = new(FileSystemEqualityComparer.File);
+    private readonly Dictionary<IOFile, Resource> items = [];
 
     public int Count => items.Count;
 

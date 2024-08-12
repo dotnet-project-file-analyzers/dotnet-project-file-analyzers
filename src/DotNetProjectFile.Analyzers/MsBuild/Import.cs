@@ -1,9 +1,7 @@
-﻿using System.IO;
-
-namespace DotNetProjectFile.MsBuild;
+﻿namespace DotNetProjectFile.MsBuild;
 
 public sealed class Import(XElement element, Node parent, MsBuildProject project)
-    : Node<Project>(element, parent, project)
+    : Node<MsBuildProject>(element, parent, project)
 {
     public override MsBuildProject? Value
     {
@@ -26,7 +24,7 @@ public sealed class Import(XElement element, Node parent, MsBuildProject project
 
     private MsBuildProject? GetValue()
     {
-        var location = new FileInfo(Path.Combine(Project.Path.Directory.FullName, Attribute("Project")));
-        return Project.Projects.TryResolve(location, isProject: false);
+        var path = Project.Path.Directory.File(Attribute("Project") ?? string.Empty);
+        return Project.Projects.TryResolve(path, isProject: false);
     }
 }

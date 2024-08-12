@@ -1,14 +1,12 @@
-﻿using System.IO;
-
-namespace DotNetProjectFile.MsBuild;
+﻿namespace DotNetProjectFile.MsBuild;
 
 public sealed class Folder(XElement element, Node parent, MsBuildProject project)
-    : Node<DirectoryInfo>(element, parent, project)
+    : Node<IODirectory>(element, parent, project)
 {
     public string? Include => Attribute();
 
-    public override DirectoryInfo? Value
+    public override IODirectory Value
         => Include is { }
-        ? new(Path.Combine(Project.Path.FullName, Include))
-        : null;
+        ? Project.Path.Directory.SubDirectory(Include)
+        : IODirectory.Empty;
 }

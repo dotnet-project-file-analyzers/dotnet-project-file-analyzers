@@ -1,12 +1,13 @@
-﻿using System.IO;
+﻿using System.Collections.Concurrent;
+using System.IO;
 
 namespace DotNetProjectFile.MsBuild;
 
 public sealed class Projects(string language)
 {
     private readonly object locker = new();
-    private readonly Dictionary<FileInfo, AdditionalText> AdditionalTexts = new(FileSystemEqualityComparer.File);
-    private readonly Dictionary<FileInfo, Project> Resolved = new(FileSystemEqualityComparer.File);
+    private readonly ConcurrentDictionary<IOFile, AdditionalText> AdditionalTexts = [];
+    private readonly ConcurrentDictionary<IOFile, Project> Resolved = [];
 
     public string Language { get; } = language;
 
@@ -25,7 +26,7 @@ public sealed class Projects(string language)
         return null;
     }
 
-    public MsBuildProject? TryResolve(FileInfo location, bool isProject)
+    public MsBuildProject? TryResolve(IOFile location, bool isProject)
     {
         lock (locker)
         {
@@ -57,7 +58,7 @@ public sealed class Projects(string language)
         => GetAncestorDirectories(assembly)
             .Select(dir => dir.File("Directory.Build.props"))
             .FirstOrDefault(f => f.Exists) is { } location
-        && TryResolve(location, false) is { } props
+        && TryResolve(IOFile.Parse(location.FullName), false) is { } props
             ? props
             : null;
 
@@ -72,6 +73,7 @@ public sealed class Projects(string language)
 
     private MsBuildProject? EntryPointFromAssembly(IAssemblySymbol assembly)
         => GetAncestorDirectories(assembly).SelectMany(d => d.EnumerateFiles())
+            .Select(f => IOFile.Parse(f.FullName))
             .Where(IsProject)
             .Where(l => HasName(l, assembly.Name))
             .Select(f => TryResolve(f, isProject: true))
@@ -85,10 +87,10 @@ public sealed class Projects(string language)
           .Where(path => path is { })
           .Select(path => new FileInfo(path))
           .SelectMany(file => file.GetAncestors())
-          .Distinct(FileSystemEqualityComparer.Directory)
+          .Distinct(FileSystem.DirectoryComparer)
           .Where(f => f.Exists);
 
-    private bool IsProject(FileInfo location)
+    private bool IsProject(IOFile location)
         => location.Exists
         && IsSupportedExtension(location.Extension);
 
@@ -101,8 +103,8 @@ public sealed class Projects(string language)
             _ => false,
         };
 
-    private static bool HasName(FileInfo file, string? name)
-        => string.Equals(Path.GetFileNameWithoutExtension(file.FullName), name, StringComparison.OrdinalIgnoreCase);
+    private static bool HasName(IOFile file, string? name)
+        => string.Equals(file.NameWithoutExtension, name, StringComparison.OrdinalIgnoreCase);
 
     public static Projects Init(CompilationAnalysisContext context)
         => Cache.Get(context.Compilation, () => New(context));
@@ -113,7 +115,7 @@ public sealed class Projects(string language)
 
         foreach (var additional in context.Options.AdditionalFiles)
         {
-            var location = new FileInfo(additional.Path);
+            var location = IOFile.Parse(additional.Path);
             if (projects.IsProject(location))
             {
                 projects.AdditionalTexts[location] = additional;

@@ -1,5 +1,4 @@
-﻿using System.IO;
-using ProjectReference = DotNetProjectFile.MsBuild.ProjectReference;
+﻿using ProjectReference = DotNetProjectFile.MsBuild.ProjectReference;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
@@ -29,27 +28,15 @@ public sealed class IncludeProjectReferencesOnce() : MsBuildProjectFileAnalyzer(
         }
     }
 
-    private record struct Reference(string Name, string Condition)
+    private record struct Reference(IOFile File, string Condition)
     {
         public static Reference Create(ProjectReference reference) => new(
-            Name: GetName(reference),
+            File: GetName(reference),
             Condition: string.Join(" And ", reference.Conditions()));
 
-        private static string GetName(ProjectReference reference)
-        {
-            if (reference.Include is null)
-            {
-                return string.Empty;
-            }
-
-            // Paths are resolved in order to find duplicate paths that are not lexically equal.
-            var root = reference.Project;
-            var rootDir = Path.GetDirectoryName(root.Path.FullName);
-            var unixFriendly = reference.Include.Replace(@"\", "/"); // Make sure it works on Unix based systems.
-            var combined = Path.Combine(rootDir, unixFriendly);
-            var fullPath = Path.GetFullPath(combined);
-            var lower = fullPath.ToLowerInvariant(); // MSBuild is case insensitive on Windows.
-            return lower;
-        }
+        private static IOFile GetName(ProjectReference reference)
+            => reference.Include is null
+            ? IOFile.Empty
+            : reference.Project.Path.Directory.File(reference.Include);
     }
 }
