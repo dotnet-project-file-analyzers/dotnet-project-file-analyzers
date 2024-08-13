@@ -1,5 +1,4 @@
 ﻿using Microsoft.CodeAnalysis.Text;
-using System.IO;
 
 namespace DotNetProjectFile.MsBuild;
 

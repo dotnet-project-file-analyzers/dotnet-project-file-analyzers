@@ -43,9 +43,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "VB.NET", "VB.NET", "{A4D4C7
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C#", "C#", "{BAD262BB-6053-4EC3-9DA0-B8A8133BB031}"
 	ProjectSection(SolutionItems) = preProject
+		projects\BackwardSlashes\BackwardSlashes.csproj = projects\BackwardSlashes\BackwardSlashes.csproj
 		projects\CompliantCSharp\CompliantCSharp.csproj = projects\CompliantCSharp\CompliantCSharp.csproj
 		projects\CompliantCSharpPackage\CompliantCSharpPackage.csproj = projects\CompliantCSharpPackage\CompliantCSharpPackage.csproj
 		projects\DoubleProjectReferences\DoubleProjectReferences.csproj = projects\DoubleProjectReferences\DoubleProjectReferences.csproj
+		projects\FolderNodes\FolderNodes.csproj = projects\FolderNodes\FolderNodes.csproj
 		projects\MixedItemGroup\MixedItemGroup.csproj = projects\MixedItemGroup\MixedItemGroup.csproj
 		projects\NoBaselineVersion\NoBaselineVersion.csproj = projects\NoBaselineVersion\NoBaselineVersion.csproj
 		projects\NonAlphabeticalPackageReferences\NonAlphabeticalPackageReferences.csproj = projects\NonAlphabeticalPackageReferences\NonAlphabeticalPackageReferences.csproj
@@ -54,6 +56,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C#", "C#", "{BAD262BB-6053-
 		projects\PackagesWithAnalyzers\PackagesWithAnalyzers.csproj = projects\PackagesWithAnalyzers\PackagesWithAnalyzers.csproj
 		projects\PackageValidationDisabled\PackageValidationDisabled.csproj = projects\PackageValidationDisabled\PackageValidationDisabled.csproj
 		projects\PrivateAssets\PrivateAssets.csproj = projects\PrivateAssets\PrivateAssets.csproj
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{B217F3D7-B8D9-4B44-8AEC-05B41098BD1F}"
+	ProjectSection(SolutionItems) = preProject
+		projects\props\common.props = projects\props\common.props
+		projects\props\common1.props = projects\props\common1.props
+		projects\props\common2.props = projects\props\common2.props
+		projects\props\DoublePackageReferences.props = projects\props\DoublePackageReferences.props
+		projects\props\simple.props = projects\props\simple.props
 	EndProjectSection
 EndProject
 Global
@@ -80,6 +91,7 @@ Global
 		{FE3F69F9-CD8C-403D-9E7E-CC28E3DF2A28} = {DF7D0480-2743-4369-9855-07A8CBEDEDD7}
 		{A4D4C767-69F6-46AA-ADBA-C1615A25DD7F} = {D43D7549-495B-4A32-A13C-9AF7B6EA893A}
 		{BAD262BB-6053-4EC3-9DA0-B8A8133BB031} = {D43D7549-495B-4A32-A13C-9AF7B6EA893A}
+		{B217F3D7-B8D9-4B44-8AEC-05B41098BD1F} = {D43D7549-495B-4A32-A13C-9AF7B6EA893A}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3AD1EF71-7465-4ED1-81AD-504C430C8251}

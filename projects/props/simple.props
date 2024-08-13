@@ -2,7 +2,7 @@
 <Project>
 
   <ItemGroup>
-    <AdditionalFiles Include="../props/common.props" Link="Properties/common.props" />
+    <AdditionalFiles Include="../props/simple.props" Link="Properties/simple.props" />
   </ItemGroup>
   
 </Project>

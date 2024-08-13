@@ -29,6 +29,7 @@
     <PackageReleaseNotes>
 v1.2.3
 - Use special IOFile and IOPath to communicate with the file system.
+- Proj0023: Use forward slashes in paths. (NEW RULE)
 - Proj1002: Use Microsoft's .NET analyzers. (NEW RULE)
 v1.2.2
 - Proj0009: TargetFrameworks allowed when overriding imports. (FP)
@@ -125,9 +126,9 @@ v1.0.0
   </PropertyGroup>
 
   <ItemGroup Label="Package files">
-    <None Update="tools\*.ps1" Pack="true" PackagePath="\" />
-    <None Include="$(OutputPath)\DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
-    <None Include="..\..\design\logo_128x128.png" Pack="true" PackagePath="\" />
+    <None Update="tools/*.ps1" Pack="true" PackagePath="/" />
+    <None Include="$(OutputPath)/DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
+    <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
     <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 

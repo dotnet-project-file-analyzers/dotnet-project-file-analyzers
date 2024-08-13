@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 using System.Reflection;
-using ConstructorFunc = System.Func<System.Xml.Linq.XElement, DotNetProjectFile.MsBuild.Node, DotNetProjectFile.MsBuild.Project, DotNetProjectFile.MsBuild.Node>;
+using CtorFunc = System.Func<System.Xml.Linq.XElement, DotNetProjectFile.MsBuild.Node, DotNetProjectFile.MsBuild.Project, DotNetProjectFile.MsBuild.Node>;
 
 namespace DotNetProjectFile.MsBuild;
 
@@ -10,9 +10,9 @@ namespace DotNetProjectFile.MsBuild;
 /// </summary>
 internal static class NodeFactory
 {
-    private static readonly Type[] constructorArgumentTypes = GetConstructorParameterTypes();
-    private static readonly ParameterExpression[] constructorArgumentExpressions = constructorArgumentTypes.Select(x => Expression.Parameter(x)).ToArray();
-    private static readonly IReadOnlyDictionary<string, ConstructorFunc> map = BuildConstructorMap();
+    private static readonly Type[] ctorArgumentTypes = GetCtorParameterTypes();
+    private static readonly ParameterExpression[] ctorArgumentExpressions = ctorArgumentTypes.Select(x => Expression.Parameter(x)).ToArray();
+    private static readonly IReadOnlyDictionary<string, CtorFunc> map = BuildCtorMap();
 
     public static Node? Create(XElement element, Node parent, MsBuildProject project)
         => element.Name.LocalName switch
@@ -22,31 +22,31 @@ internal static class NodeFactory
             _ /*..........................................*/ => new Unknown(element, parent, project),
         };
 
-    private static Type[] GetConstructorParameterTypes()
+    private static Type[] GetCtorParameterTypes()
     {
-        var all = typeof(ConstructorFunc).GenericTypeArguments;
+        var all = typeof(CtorFunc).GenericTypeArguments;
         var result = new Type[all.Length - 1];
         Array.Copy(all, result, result.Length);
         return result;
     }
 
-    private static Dictionary<string, ConstructorFunc> BuildConstructorMap()
+    private static Dictionary<string, CtorFunc> BuildCtorMap()
         => typeof(Node).Assembly
         .GetTypes()
-        .Select(GetValidNodeConstructor)
+        .Select(GetValidNodeCtor)
         .OfType<ConstructorInfo>()
-        .ToDictionary(ci => ci.DeclaringType.Name, GenerateConstructor);
+        .ToDictionary(ci => ci.DeclaringType.Name, GenerateCtor);
 
-    private static ConstructorInfo? GetValidNodeConstructor(Type type)
+    private static ConstructorInfo? GetValidNodeCtor(Type type)
         => type.IsAbstract || !typeof(Node).IsAssignableFrom(type)
             ? null
-            : type.GetConstructor(constructorArgumentTypes);
+            : type.GetConstructor(ctorArgumentTypes);
 
-    private static ConstructorFunc GenerateConstructor(ConstructorInfo ci)
+    private static CtorFunc GenerateCtor(ConstructorInfo ci)
     {
-        var args = constructorArgumentExpressions;
+        var args = ctorArgumentExpressions;
         var create = Expression.New(ci, args);
         var lambda = Expression.Lambda(create, args);
-        return (ConstructorFunc)lambda.Compile();
+        return (CtorFunc)lambda.Compile();
     }
 }

@@ -24,16 +24,7 @@ public sealed class Nodes<T>(IReadOnlyList<T> items) : IReadOnlyList<T> where T 
         => new(Items.OfType<TOut>().ToArray());
 
     public Nodes<TOut> NestedTyped<TOut>() where TOut : T
-        => new(Items.SelectMany(Walk).OfType<TOut>().ToArray());
-
-    private static IEnumerable<Node> Walk(Node node)
-    {
-        yield return node;
-        foreach (var child in node.Children.SelectMany(Walk))
-        {
-            yield return child;
-        }
-    }
+        => new(Items.SelectMany(n => n.DescendantsAndSelf()).OfType<TOut>().ToArray());
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     [ExcludeFromCodeCoverage/* Justification = "Debug experience only." */]
