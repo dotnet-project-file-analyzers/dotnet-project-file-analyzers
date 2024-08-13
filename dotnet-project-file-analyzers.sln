@@ -56,6 +56,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C#", "C#", "{BAD262BB-6053-
 		projects\PackagesWithAnalyzers\PackagesWithAnalyzers.csproj = projects\PackagesWithAnalyzers\PackagesWithAnalyzers.csproj
 		projects\PackageValidationDisabled\PackageValidationDisabled.csproj = projects\PackageValidationDisabled\PackageValidationDisabled.csproj
 		projects\PrivateAssets\PrivateAssets.csproj = projects\PrivateAssets\PrivateAssets.csproj
+		projects\SuppressIssues\SuppressIssues.csproj = projects\SuppressIssues\SuppressIssues.csproj
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{B217F3D7-B8D9-4B44-8AEC-05B41098BD1F}"
