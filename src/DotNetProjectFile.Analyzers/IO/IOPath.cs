@@ -82,5 +82,14 @@ public static class IOPath
     private static readonly char[] Separators = ['/', '\\'];
 
     private static bool InitCaseSensitivity()
-      => !new FileInfo(typeof(IOPath).Assembly.Location.ToUpperInvariant()).Exists;
+    {
+        try
+        {
+            return !new FileInfo(typeof(IOPath).Assembly.Location.ToUpperInvariant()).Exists;
+        }
+        catch
+        {
+            return true;
+        }
+    }
 }
