@@ -17,6 +17,12 @@
     <AdditionalFiles Include="*.vbproj" Visible="false" />
   </ItemGroup>
 
+  <!-- #pragma warning disable Proj0008 -->
+  <ItemGroup>
+    <Folder Include="Suppressed" />
+  </ItemGroup>
+  <!-- #pragma warning restore Proj0008 -->
+
   <ItemGroup>
     <Compile Include="../common/Code.vb" />
   </ItemGroup>
