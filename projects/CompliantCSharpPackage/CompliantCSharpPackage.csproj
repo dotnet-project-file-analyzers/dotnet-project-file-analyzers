@@ -7,8 +7,11 @@
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <IsPackable>true</IsPackable>
     <IsPublishable>false</IsPublishable>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <DevelopmentDependency>true</DevelopmentDependency>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Label="PackageInfo">
