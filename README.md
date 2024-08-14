@@ -23,6 +23,10 @@ Or via the command line:
 dotnet package add DotNetProjectFile.Analyzers
 ```
 
+## Configuration
+How to change the configuration of the rules can be found [here](rules/configuration.md).
+To configure (the severity) of the rules provided
+
 ## GitHub repository
 The source code can be found at GitHub: [github.com/dotnet-project-file-analyzers](https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers).
 
