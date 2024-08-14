@@ -29,6 +29,7 @@
     <PackageReleaseNotes>
 ToBeReleased:
 - Support #pragma warning disable/restore.
+- Proj0242: Generate NuGet packages conditionally. (NEW RULE)
 v1.2.3
 - Use special IOFile and IOPath to communicate with the file system.
 - Proj0023: Use forward slashes in paths. (NEW RULE)

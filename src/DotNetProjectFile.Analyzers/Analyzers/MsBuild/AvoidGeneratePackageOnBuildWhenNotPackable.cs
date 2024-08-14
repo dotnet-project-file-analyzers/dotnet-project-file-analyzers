@@ -12,13 +12,10 @@ public sealed class AvoidGeneratePackageOnBuildWhenNotPackable() : MsBuildProjec
             return;
         }
 
-        var nodes = context.Project
+        foreach (var node in context.Project
             .ImportsAndSelf()
             .SelectMany(p => p.PropertyGroups)
-            .SelectMany(g => g.GeneratePackageOnBuild)
-            .ToArray();
-
-        foreach (var node in nodes)
+            .SelectMany(g => g.GeneratePackageOnBuild))
         {
             context.ReportDiagnostic(Descriptor, node);
         }

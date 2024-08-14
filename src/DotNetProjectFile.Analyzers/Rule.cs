@@ -417,6 +417,18 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor GeneratePackageOnBuildConditionally => New(
+        id: 0242,
+        title: "Generate NuGet packages conditionally",
+        message: "Add a condition to <GeneratePackageOnBuild>.",
+        description:
+            "To ensure that packages are not interdependently shipped in DEBUG " +
+            "(or other) mode, a condtional statement should be defined.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Bug,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor DefineIsPublishable => New(
         id: 0400,
         title: "Define the project publishability explicitly",
