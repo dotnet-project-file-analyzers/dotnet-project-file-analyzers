@@ -1,6 +1,6 @@
 ﻿using DotNetProjectFile.MsBuild;
 
-namespace MS_Build.Pragma_warning;
+namespace MS_Build.Warning_pragma;
 
 public class Parses
 {
@@ -15,9 +15,9 @@ public class Parses
     [TestCase("  #pragma   warning   disable   Proj0007")]
     [TestCase("\r\n    #pragma   warning   disable   Proj0007")]
     public void Disable(string str)
-        => PragmaWarning.TryParse(str, None).Should().Be(new PragmaWarning("Proj0007", true, None));
+        => WarningPragma.TryParse(str, None).Should().Be(new WarningPragma("Proj0007", true, None));
 
     [TestCase("#pragma warning restore Proj0007")]
     public void Restore(string str)
-        => PragmaWarning.TryParse(str, None).Should().Be(new PragmaWarning("Proj0007", false, None));
+        => WarningPragma.TryParse(str, None).Should().Be(new WarningPragma("Proj0007", false, None));
 }

@@ -5,7 +5,7 @@ using System.Xml;
 namespace DotNetProjectFile.MsBuild;
 
 /// <summary>Represents a #pragma warning (disable/restore) in a MS Build project file.</summary>
-public readonly struct PragmaWarning(string diagnosticId, bool disable, Location location)
+public readonly struct WarningPragma(string diagnosticId, bool disable, Location location)
 {
     /// <summary>The diagnostic ID.</summary>
     public string DiagnosticId { get; } = diagnosticId;
@@ -23,14 +23,14 @@ public readonly struct PragmaWarning(string diagnosticId, bool disable, Location
         : $"#pragma warning restore {DiagnosticId}@{Location.GetLineSpan().StartLinePosition}";
 
     /// <summary>Creates a new #pragma warning from an <see cref="XComment"/>.</summary>
-    public static PragmaWarning? New(XComment comment, MsBuildProject project)
+    public static WarningPragma? New(XComment comment, MsBuildProject project)
     {
         var location = Location.Create(project.Path.ToString(), project.Text.TextSpan(comment.LinePositionSpan()), comment.LinePositionSpan());
         return TryParse(comment.Value, location);
     }
 
     /// <summary>Tries to parse a #pragma warning.</summary>
-    public static PragmaWarning? TryParse(string? str, Location location)
+    public static WarningPragma? TryParse(string? str, Location location)
         => str is { }
         && Pattern.Match(str) is { Success: true } match
             ? new(

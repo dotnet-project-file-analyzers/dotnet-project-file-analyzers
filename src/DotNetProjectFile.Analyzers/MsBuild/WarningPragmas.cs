@@ -3,10 +3,10 @@
 /// <summary>Represents a fixed set of #pragma warning's for a MS Build project file.</summary>
 [DebuggerTypeProxy(typeof(CollectionDebugView))]
 [DebuggerDisplay("Count = {Count}")]
-public readonly struct PragmaWarnings(IReadOnlyCollection<PragmaWarning> warnings) : IReadOnlyCollection<PragmaWarning>
+public readonly struct WarningPragmas(IReadOnlyCollection<WarningPragma> warnings) : IReadOnlyCollection<WarningPragma>
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private readonly IReadOnlyCollection<PragmaWarning> Warnings = warnings;
+    private readonly IReadOnlyCollection<WarningPragma> Warnings = warnings;
 
     /// <inheritdoc />
     public int Count => Warnings.Count;
@@ -16,16 +16,16 @@ public readonly struct PragmaWarnings(IReadOnlyCollection<PragmaWarning> warning
         => w.DiagnosticId == diagnosticId
         && w.Location.SourceSpan.Start < location.SourceSpan.Start).IsDisabled;
 
-    public static PragmaWarnings New(MsBuildProject project)
+    public static WarningPragmas New(MsBuildProject project)
     => new([.. project.Element
             .DescendantNodes()
             .OfType<XComment>()
-            .Select(c => PragmaWarning.New(c, project))
-            .OfType<PragmaWarning>()
+            .Select(c => WarningPragma.New(c, project))
+            .OfType<WarningPragma>()
             .OrderByDescending(p => p.Location.SourceSpan.Start)]);
 
     /// <inheritdoc />
-    public IEnumerator<PragmaWarning> GetEnumerator() => Warnings.GetEnumerator();
+    public IEnumerator<WarningPragma> GetEnumerator() => Warnings.GetEnumerator();
 
     /// <inheritdoc />
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();

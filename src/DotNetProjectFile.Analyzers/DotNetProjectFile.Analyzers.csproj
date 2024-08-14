@@ -27,6 +27,8 @@
     <Version>1.2.3.2</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+ToBeReleased:
+- Support #pragma warning disable/restore.
 v1.2.3
 - Use special IOFile and IOPath to communicate with the file system.
 - Proj0023: Use forward slashes in paths. (NEW RULE)
