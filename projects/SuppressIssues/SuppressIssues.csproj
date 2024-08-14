@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <!-- #pragma warning disable Proj0008 -->
+  <!-- #pragma warning disable Proj0001 -->
+  <ItemGroup>
+    <Folder Include="First" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Second" />
+  </ItemGroup>
+  <!--
+#pragma warning restore Proj0008 At own level
+  -->
+  <ItemGroup>
+    <Folder Include="Third" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <AdditionalFiles Include="*.csproj" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
+</Project>

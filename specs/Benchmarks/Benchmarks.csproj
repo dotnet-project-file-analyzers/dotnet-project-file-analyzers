@@ -1,9 +1,9 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net7.0</TargetFramework>
     <Nullable>enable</Nullable>
-    <OutputType>Exe</OutputType>
+    <OutputType>exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -11,8 +11,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.13.12" />
-    <PackageReference Include="CodeAnalysis.TestTools" Version="2.0.0" />
+    <PackageReference Include="BenchmarkDotNet" Version="0.14.0" />
+    <PackageReference Include="CodeAnalysis.TestTools" Version="3.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="nuget.config">
+      <CopyToOutputDirectory>always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>
