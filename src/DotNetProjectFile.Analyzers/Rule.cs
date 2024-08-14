@@ -423,7 +423,7 @@ public static class Rule
         message: "Add a condition to <GeneratePackageOnBuild>.",
         description:
             "To ensure that packages are not interdependently shipped in DEBUG " +
-            "(or other) mode, a condtional statement should be defined.",
+            "(or other) mode, a conditional statement should be defined.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Bug,
         severity: DiagnosticSeverity.Warning,
