@@ -12,9 +12,9 @@ public class Parses
     [TestCase("#pragma warning disable Proj0007 with some ignored text afterwards")]
     [TestCase("  #pragma   warning   disable   Proj0007")]
     public void Disable(string str)
-        => PragmaWarning.TryParse(str).Should().Be(new PragmaWarning("Project0007", true));
+        => PragmaWarning.TryParse(str).Should().Be(new PragmaWarning("Proj0007", true));
 
     [TestCase("#pragma warning restore Proj0007")]
     public void Restore(string str)
-        => PragmaWarning.TryParse(str).Should().Be(new PragmaWarning("Project0007", false));
+        => PragmaWarning.TryParse(str).Should().Be(new PragmaWarning("Proj0007", false));
 }
