@@ -30,5 +30,12 @@ public sealed class ProjectFileAnalysisContext(
 
     /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, Node node, params object?[]? messageArgs)
-        => Report(Diagnostic.Create(descriptor, node.Location, messageArgs));
+    {
+        var pragmaWarnings = (node as MsBuildProject ?? node.Project).PragmaWarnings;
+
+        if (!pragmaWarnings.IsDisabled(descriptor.Id, node.Location))
+        {
+            Report(Diagnostic.Create(descriptor, node.Location, messageArgs));
+        }
+    }
 }

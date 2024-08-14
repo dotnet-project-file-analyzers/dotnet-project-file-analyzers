@@ -1,28 +1,46 @@
-﻿using System.Text.RegularExpressions;
+﻿using Microsoft.CodeAnalysis.Text;
+using System.Text.RegularExpressions;
+using System.Xml;
 
 namespace DotNetProjectFile.MsBuild;
 
-public readonly struct PragmaWarning(string diagnosticId, bool disable)
+/// <summary>Represents a #pragma warning (disable/restore) in a MS Build project file.</summary>
+public readonly struct PragmaWarning(string diagnosticId, bool disable, Location location)
 {
+    /// <summary>The diagnostic ID.</summary>
     public string DiagnosticId { get; } = diagnosticId;
 
-    public bool Disable { get; } = disable;
+    /// <summary>Indicates if the diagnostic is disabled (or restored).</summary>
+    public bool IsDisabled { get; } = disable;
 
+    /// <summary>The location of the #pragma warning.</summary>
+    public Location Location { get; } = location;
+
+    /// <inheritdoc />
     public override string ToString()
-        => Disable
-        ? $"#pragma warning disable {DiagnosticId}"
-        : $"#pragma resore disable {DiagnosticId}";
+        => IsDisabled
+        ? $"#pragma warning disable {DiagnosticId}@{Location.GetLineSpan().StartLinePosition}"
+        : $"#pragma warning restore {DiagnosticId}@{Location.GetLineSpan().StartLinePosition}";
 
-    public static PragmaWarning? TryParse(string? str)
+    /// <summary>Creates a new #pragma warning from an <see cref="XComment"/>.</summary>
+    public static PragmaWarning? New(XComment comment, MsBuildProject project)
+    {
+        var location = Location.Create(project.Path.ToString(), project.Text.TextSpan(comment.LinePositionSpan()), comment.LinePositionSpan());
+        return TryParse(comment.Value, location);
+    }
+
+    /// <summary>Tries to parse a #pragma warning.</summary>
+    public static PragmaWarning? TryParse(string? str, Location location)
         => str is { }
         && Pattern.Match(str) is { Success: true } match
             ? new(
-                match.Groups[nameof(DiagnosticId)].Value,
-                match.Groups[nameof(Disable)].Value == "disable")
+                match.Groups["DiagnosticId"].Value,
+                match.Groups["Disable"].Value == "disable",
+                location)
             : null;
 
     private static readonly Regex Pattern = new(
-        @"^ *#pragma +warning +(?<Disable>disable|restore) +(?<DiagnosticId>\w+)(\s|$)",
-        RegexOptions.CultureInvariant | RegexOptions.Compiled | RegexOptions.ExplicitCapture,
+        @"^\s*#pragma +warning +(?<Disable>disable|restore) +(?<DiagnosticId>\w+)(\s|$)",
+        RegexOptions.CultureInvariant | RegexOptions.ExplicitCapture,
         TimeSpan.FromMilliseconds(100));
 }

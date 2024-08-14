@@ -5,17 +5,18 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <!-- #pragma warning disable Proj0008 At parent level -->
+  <!-- #pragma warning disable Proj0008 -->
   <!-- #pragma warning disable Proj0001 -->
   <ItemGroup>
     <Folder Include="First" />
   </ItemGroup>
 
   <ItemGroup>
-    <!-- #pragma warning disable Proj0008 At own level -->
     <Folder Include="Second" />
   </ItemGroup>
-
+  <!--
+#pragma warning restore Proj0008 At own level
+  -->
   <ItemGroup>
     <Folder Include="Third" />
   </ItemGroup>

@@ -15,6 +15,7 @@ public sealed class Project : Node
         Imports = Children.Typed<Import>();
         PropertyGroups = Children.NestedTyped<PropertyGroup>();
         ItemGroups = Children.NestedTyped<ItemGroup>();
+        PragmaWarnings = PragmaWarnings.New(this);
     }
 
 #pragma warning disable QW0011 // Define properties as immutables
@@ -43,6 +44,8 @@ public sealed class Project : Node
     public Nodes<PropertyGroup> PropertyGroups { get; }
 
     public Nodes<ItemGroup> ItemGroups { get; }
+
+    public PragmaWarnings PragmaWarnings { get; }
 
     public TValue? Property<TValue, TNode>(Func<PropertyGroup, Nodes<TNode>> selector, TValue? @default = default)
         where TNode : Node<TValue>

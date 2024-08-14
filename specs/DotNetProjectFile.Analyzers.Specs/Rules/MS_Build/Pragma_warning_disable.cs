@@ -6,5 +6,5 @@ public class Guard
     public void disabled()
         => new RemoveFolderNodes()
         .ForProject("SuppressIssues.cs")
-        .HasIssue(new Issue("Proj0008", @"Remove folder node 'Third'").WithSpan(19, 05, 19, 30));
+        .HasIssue(new Issue("Proj0008", @"Remove folder node 'Third'.").WithSpan(20, 05, 20, 30));
 }
