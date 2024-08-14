@@ -24,11 +24,12 @@
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
-    <Version>1.2.3.2</Version>
+    <Version>1.2.4</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-ToBeReleased:
+v1.2.4
 - Support #pragma warning disable/restore.
+- Proj0242: Generate NuGet packages conditionally. (NEW RULE)
 v1.2.3
 - Use special IOFile and IOPath to communicate with the file system.
 - Proj0023: Use forward slashes in paths. (NEW RULE)

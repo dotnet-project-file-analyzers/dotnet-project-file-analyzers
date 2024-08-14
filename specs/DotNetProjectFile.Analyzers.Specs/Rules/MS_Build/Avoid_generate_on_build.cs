@@ -7,7 +7,7 @@ public class Reports
        => new AvoidGeneratePackageOnBuildWhenNotPackable()
        .ForProject("GeneratePackageNotPackable.cs")
        .HasIssue(
-           new Issue("Proj0600", "Avoid defining <GeneratePackageOnBuild> node explicitly when <IsPackable> is 'false'.").WithSpan(6, 5, 6, 57));
+           new Issue("Proj0600", "Avoid defining <GeneratePackageOnBuild> node explicitly when <IsPackable> is 'false'.").WithSpan(5, 5, 5, 57));
 }
 
 public class Guards

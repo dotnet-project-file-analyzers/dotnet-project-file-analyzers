@@ -42,6 +42,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0214** Define the NuGet project ID explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0214.html)
 * [**Proj0240** Enable package validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0240.html)
 * [**Proj0241** Enable package baseline validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0241.html)
+* [**Proj0242** Generate NuGet packages conditionally](https://dotnet-project-file-analyzers.github.io/rules/Proj0242.html)
 * [**Proj0400** Define the project publishability explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0400.html)
 * [**Proj0600** Avoid generating packages on build if not packable](https://dotnet-project-file-analyzers.github.io/rules/Proj0600.html)
 * [**Proj1000** Use the .NET project file analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1000.html)
