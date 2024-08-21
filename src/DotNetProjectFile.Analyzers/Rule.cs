@@ -496,14 +496,23 @@ public static class Rule
         category: Category.Security);
 
     public static DiagnosticDescriptor ExcludePrivateAssetDependencies => New(
-      id: 1200,
-      title: "Exclude private assets as project file dependency",
-      message: "Mark the package reference \"{0}\" as a private asset.",
-      description:
-          "Private assets (such as analyzers) will not result in being a " +
-          "project dependency after being compiled.",
-      tags: ["private", "asset", "dependencies", "dependency"],
-      category: Category.CodeQuality);
+        id: 1200,
+        title: "Exclude private assets as project file dependency",
+        message: "Mark the package reference \"{0}\" as a private asset.",
+        description:
+            "Private assets (such as analyzers) will not result in being a " +
+            "project dependency after being compiled.",
+        tags: ["private", "asset", "dependencies", "dependency"],
+        category: Category.CodeQuality);
+
+    public static DiagnosticDescriptor PlaceXmlNodesOnSeperateLines => New(
+        id: 1700,
+        title: "Place XML nodes on seperate lines",
+        message: "Move XML node '{0}' to a new line.",
+        description:
+            "To prevent confusion, place all XML nodes on their own line.",
+        tags: ["style"],
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor EmbedValidResourceFiles => New(
         id: 2000,
@@ -551,15 +560,6 @@ public static class Rule
            "file must have a culture invariant alternative.",
        tags: ["resx", "resources", "invariant", "localization"],
        category: Category.Bug);
-
-    public static DiagnosticDescriptor PlaceXmlNodesOnSeperateLines => New(
-       id: 7001,
-       title: "Place XML nodes on seperate lines",
-       message: "Move XML node '{0}' to a new line.",
-       description:
-           "To prevent confusion, place all XML nodes on their own line.",
-       tags: ["style"],
-       category: Category.Clarity);
 
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
