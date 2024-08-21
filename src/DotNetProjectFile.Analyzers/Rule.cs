@@ -552,6 +552,15 @@ public static class Rule
        tags: ["resx", "resources", "invariant", "localization"],
        category: Category.Bug);
 
+    public static DiagnosticDescriptor PlaceXmlNodesOnSeperateLines => New(
+       id: 7001,
+       title: "Place XML nodes on seperate lines",
+       message: "Move XML node '{0}' to a new line.",
+       description:
+           "To prevent confusion, place all XML nodes on their own line.",
+       tags: ["style"],
+       category: Category.Clarity);
+
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
     public static DiagnosticDescriptor New(
