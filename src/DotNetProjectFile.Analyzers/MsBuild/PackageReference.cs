@@ -9,7 +9,11 @@ public sealed class PackageReference(XElement element, Node parent, MsBuildProje
 
     public string? Version => Attribute();
 
+    public string? VersionOverride => Attribute();
+
     public string IncludeOrUpdate => Include ?? Update ?? string.Empty;
+
+    public string VersionOrVersionOverride => Version ?? VersionOverride ?? string.Empty;
 
     public string? PrivateAssets => Attribute() ?? Child();
 }

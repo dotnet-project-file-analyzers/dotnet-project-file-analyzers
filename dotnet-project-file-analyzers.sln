@@ -53,6 +53,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C#", "C#", "{BAD262BB-6053-
 		projects\MixedItemGroup\MixedItemGroup.csproj = projects\MixedItemGroup\MixedItemGroup.csproj
 		projects\NoBaselineVersion\NoBaselineVersion.csproj = projects\NoBaselineVersion\NoBaselineVersion.csproj
 		projects\NonAlphabeticalPackageReferences\NonAlphabeticalPackageReferences.csproj = projects\NonAlphabeticalPackageReferences\NonAlphabeticalPackageReferences.csproj
+		projects\NonAlphabeticalPackageVersions\NonAlphabeticalPackageVersions.csproj = projects\NonAlphabeticalPackageVersions\NonAlphabeticalPackageVersions.csproj
 		projects\NonAlphabeticalProjectReferences\NonAlphabeticalProjectReferences.csproj = projects\NonAlphabeticalProjectReferences\NonAlphabeticalProjectReferences.csproj
 		projects\PackageReferenceAssetsAsElements\PackageReferenceAssetsAsElements.csproj = projects\PackageReferenceAssetsAsElements\PackageReferenceAssetsAsElements.csproj
 		projects\PackagesWithAnalyzers\PackagesWithAnalyzers.csproj = projects\PackagesWithAnalyzers\PackagesWithAnalyzers.csproj
