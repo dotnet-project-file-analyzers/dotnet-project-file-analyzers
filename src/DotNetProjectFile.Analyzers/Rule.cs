@@ -208,6 +208,14 @@ public static class Rule
         tags: ["UNIX", "Windows", "IO"],
         category: Category.Reliability);
 
+    public static DiagnosticDescriptor OrderPackageVersionsAlphabetically => New(
+        id: 0024,
+        title: "Order package versions alphabetically",
+        message: "Package version for '{0}' is not ordered alphabetically and should appear before '{1}'.",
+        description: "Not ordering package versions alphabetically is considered noise.",
+        tags: ["Configuration", "confusion"],
+        category: Category.Clarity);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",

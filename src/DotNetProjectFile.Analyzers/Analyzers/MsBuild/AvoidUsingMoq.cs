@@ -23,7 +23,7 @@ public sealed class AvoidUsingMoq() : MsBuildProjectFileAnalyzer(Rule.AvoidUsing
 
     private static bool IsMoq(PackageReference reference)
         => IsMoq(reference.Include)
-        && reference.Version is { Length: > 0 } version
+        && reference.VersionOrVersionOverride is { Length: > 0 } version
         && IsSuspiciousVersion(version);
 
     private static bool IsMoq(AssemblyIdentity assembly)

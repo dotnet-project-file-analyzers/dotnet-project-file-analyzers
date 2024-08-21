@@ -25,6 +25,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0021** Build actions should have a single task](https://dotnet-project-file-analyzers.github.io/rules/Proj0021.html)
 * [**Proj0022** Build action includes should exist](https://dotnet-project-file-analyzers.github.io/rules/Proj0022.html)
 * [**Proj0023** Use forward slashes in paths](https://dotnet-project-file-analyzers.github.io/rules/Proj0023.html)
+* [**Proj0024** Order package versions alphabetically](https://dotnet-project-file-analyzers.github.io/rules/Proj0024.html)
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)
 * [**Proj0201** Define the project version explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0201.html)
 * [**Proj0202** Define the project description explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0202.html)
