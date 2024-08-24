@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+   <!-- Of by one -->
+  
+    <PropertyGroup>
+  <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+  
+  <ItemGroup Label="With tabs">
+		<Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
+</Project>
