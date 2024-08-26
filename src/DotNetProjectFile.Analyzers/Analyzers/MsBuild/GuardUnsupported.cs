@@ -8,7 +8,7 @@ public sealed class GuardUnsupported() : MsBuildProjectFileAnalyzer(
     protected override void Register(AnalysisContext context)
         => context.RegisterCompilationAction(Locate);
 
-    private void Locate(CompilationAnalysisContext context)
+    private static void Locate(CompilationAnalysisContext context)
     {
         if (Projects.Init(context).EntryPoint(context) is not { } project)
         {

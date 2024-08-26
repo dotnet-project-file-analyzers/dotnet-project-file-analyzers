@@ -12,12 +12,18 @@ public sealed class Projects(string language)
     public string Language { get; } = language;
 
     public MsBuildProject? EntryPoint(CompilationAnalysisContext context)
+        => EntryPoint(context.Compilation);
+
+    public MsBuildProject? EntryPoint(AdditionalFileAnalysisContext context)
+        => EntryPoint(context.Compilation);
+
+    public MsBuildProject? EntryPoint(Compilation compilation)
     {
-        if (context.Compilation.Assembly is { } assembly
+        if (compilation.Assembly is { } assembly
             && (EntryPointFromAdditionTexts(assembly.Name) ?? EntryPointFromAssembly(assembly)) is { } entryPoint)
         {
             if (entryPoint.DirectoryBuildProps is null
-                && DirectoryBuildProps(context.Compilation.Assembly) is { } props)
+                && DirectoryBuildProps(compilation.Assembly) is { } props)
             {
                 entryPoint.DirectoryBuildProps = props;
             }
@@ -109,11 +115,20 @@ public sealed class Projects(string language)
     public static Projects Init(CompilationAnalysisContext context)
         => Cache.Get(context.Compilation, () => New(context));
 
-    private static Projects New(CompilationAnalysisContext context)
-    {
-        var projects = new Projects(context.Compilation.Options.Language);
+    public static Projects Init(AdditionalFileAnalysisContext context)
+        => Cache.Get(context.Compilation, () => New(context));
 
-        foreach (var additional in context.Options.AdditionalFiles)
+    private static Projects New(CompilationAnalysisContext context)
+        => New(context.Compilation, context.Options);
+
+    private static Projects New(AdditionalFileAnalysisContext context)
+        => New(context.Compilation, context.Options);
+
+    private static Projects New(Compilation compilation, AnalyzerOptions options)
+    {
+        var projects = new Projects(compilation.Options.Language);
+
+        foreach (var additional in options.AdditionalFiles)
         {
             var location = IOFile.Parse(additional.Path);
             if (projects.IsProject(location))

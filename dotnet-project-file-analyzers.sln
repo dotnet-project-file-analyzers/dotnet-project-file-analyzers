@@ -44,8 +44,11 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "C#", "C#", "{BAD262BB-6053-4EC3-9DA0-B8A8133BB031}"
 	ProjectSection(SolutionItems) = preProject
 		projects\BackwardSlashes\BackwardSlashes.csproj = projects\BackwardSlashes\BackwardSlashes.csproj
+		projects\ChooseWhen\ChooseWhen.csproj = projects\ChooseWhen\ChooseWhen.csproj
 		projects\CompliantCSharp\CompliantCSharp.csproj = projects\CompliantCSharp\CompliantCSharp.csproj
 		projects\CompliantCSharpPackage\CompliantCSharpPackage.csproj = projects\CompliantCSharpPackage\CompliantCSharpPackage.csproj
+		projects\DisabledNugetAudit\DisabledNugetAudit.csproj = projects\DisabledNugetAudit\DisabledNugetAudit.csproj
+		projects\DisableNetAnalyzers\DisableNetAnalyzers.csproj = projects\DisableNetAnalyzers\DisableNetAnalyzers.csproj
 		projects\DoubleProjectReferences\DoubleProjectReferences.csproj = projects\DoubleProjectReferences\DoubleProjectReferences.csproj
 		projects\FolderNodes\FolderNodes.csproj = projects\FolderNodes\FolderNodes.csproj
 		projects\GeneratePackageNotPackable\GeneratePackageNotPackable.csproj = projects\GeneratePackageNotPackable\GeneratePackageNotPackable.csproj
