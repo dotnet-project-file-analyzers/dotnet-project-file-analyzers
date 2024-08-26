@@ -26,7 +26,8 @@ public readonly struct WarningPragma(string diagnosticId, bool disable, Location
     public static WarningPragma? New(XComment comment, MsBuildProject project)
     {
         var pos = comment.LinePosition();
-        var span = new LinePositionSpan(pos, pos.Expand(comment.Value.Length));
+        var next = comment.NextNode?.LinePosition() ?? pos.Expand(comment.Value.Length);
+        var span = new LinePositionSpan(pos, next);
         var location = Location.Create(project.Path.ToString(), project.Text.TextSpan(span), span);
         return TryParse(comment.Value, location);
     }

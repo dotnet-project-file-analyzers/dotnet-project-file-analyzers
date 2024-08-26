@@ -23,11 +23,13 @@ public sealed record XmlPositions
 
         var info = (IXmlLineInfo)reader;
 
-        while (!reader.EOF)
-        {
-            reader.Read();
+        reader.MoveToContent();
 
-            if (reader.NodeType == XmlNodeType.Element)
+        var depth = reader.Depth;
+
+        do
+        {
+            if (reader.NodeType == XmlNodeType.Element && depth == reader.Depth)
             {
                 start ??= info.LinePosition().Expand(-1);
             }
@@ -41,8 +43,10 @@ public sealed record XmlPositions
                 next ??= info.LinePosition().Expand(-1);
             }
         }
+        while (reader.Read());
 
-        var final = info.LinePosition().Expand(element.Name.LocalName.Length + 1);
+        var final = element.NextNode?.LinePosition()
+            ?? info.LinePosition().Expand(element.Name.LocalName.Length + 1);
 
         return new()
         {

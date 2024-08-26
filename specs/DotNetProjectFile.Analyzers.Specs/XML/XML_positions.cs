@@ -67,4 +67,14 @@ public class Locates
             StartElement = new(new(00, 00), new(00, 04)),
             EndElement = new(new(00, 09), new(00, 15)),
         });
+
+    /// <remarks>This behavior can be improved on.</remarks>
+    [Test]
+    public void element_with_attributes()
+       => XmlPositions.New(XElement.Parse(@"<elm Id=""SomeId"" />", Options))
+       .Should().Be(new XmlPositions
+       {
+           StartElement = new(new(00, 00), new(00, 05)),
+           EndElement = new(new(00, 00), new(00, 05)),
+       });
 }
