@@ -513,6 +513,14 @@ public static class Rule
       tags: ["private", "asset", "dependencies", "dependency"],
       category: Category.CodeQuality);
 
+    public static DiagnosticDescriptor IndentXml => New(
+      id: 1700,
+      title: "Indent XML files",
+      message: "The element <{0}> has not been properly indented.",
+      description: "To improve readability, XML elements should be properly indented.",
+      tags: ["XML", "indentation"],
+      category: Category.Formatting);
+
     public static DiagnosticDescriptor EmbedValidResourceFiles => New(
         id: 2000,
         title: "Embed valid resource files",

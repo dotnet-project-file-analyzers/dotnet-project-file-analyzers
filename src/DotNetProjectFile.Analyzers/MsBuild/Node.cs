@@ -1,7 +1,6 @@
-﻿using DotNetProjectFile.MsBuild.Conversion;
-using DotNetProjectFile.Resx;
+﻿using DotNetProjectFile.CodeAnalysis;
+using DotNetProjectFile.MsBuild.Conversion;
 using DotNetProjectFile.Xml;
-using Microsoft.CodeAnalysis.Text;
 using System.Runtime.CompilerServices;
 using System.Xml;
 
@@ -21,6 +20,7 @@ public abstract class Node
         Project = project ?? (this as Project) ?? throw new ArgumentNullException(nameof(project));
         Children = new(element.Elements().Select(Create).OfType<Node>().ToArray());
         Positions = XmlPositions.New(element);
+        Depth = AncestorsAndSelf().Count() - 1;
     }
 
     internal readonly XElement Element;
@@ -28,6 +28,8 @@ public abstract class Node
     internal readonly Project Project;
 
     public Node? Parent { get; }
+
+    public int Depth { get; }
 
     public XmlPositions Positions { get; }
 
@@ -51,7 +53,7 @@ public abstract class Node
 
     public int Length => ToString().Length;
 
-    public Location Location => location ??= Location.Create(Project.Path.ToString(), Project.Text.TextSpan(Positions.FullSpan), Positions.FullSpan);
+    public Location Location => location ??= Project.GetLocation(Positions.FullSpan);
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private Location? location;

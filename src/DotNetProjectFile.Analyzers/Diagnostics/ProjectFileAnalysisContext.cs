@@ -1,4 +1,7 @@
-﻿namespace DotNetProjectFile.Diagnostics;
+﻿using DotNetProjectFile.CodeAnalysis;
+using Microsoft.CodeAnalysis.Text;
+
+namespace DotNetProjectFile.Diagnostics;
 
 /// <summary>The context required to analyze a MS Build project file.</summary>
 public sealed class ProjectFileAnalysisContext(
@@ -36,6 +39,19 @@ public sealed class ProjectFileAnalysisContext(
         if (!warningPragmas.IsDisabled(descriptor.Id, node.Location))
         {
             Report(Diagnostic.Create(descriptor, node.Location, messageArgs));
+        }
+    }
+
+    /// <summary>Reports a diagnostic about the project file.</summary>
+    public void ReportDiagnostic(DiagnosticDescriptor descriptor, MsBuildProject project, LinePositionSpan position, params object?[]? messageArgs)
+    {
+        var warningPragmas = project.WarningPragmas;
+
+        var location = project.GetLocation(position);
+
+        if (!warningPragmas.IsDisabled(descriptor.Id, location))
+        {
+            Report(Diagnostic.Create(descriptor, location, messageArgs));
         }
     }
 }

@@ -6,6 +6,7 @@ public enum Category
     Clarity,
     CodeQuality,
     Configuration,
+    Formatting,
     Noise,
     Reliability,
     Obsolete,
