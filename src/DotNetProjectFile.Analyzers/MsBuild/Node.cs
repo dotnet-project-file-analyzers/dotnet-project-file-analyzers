@@ -1,4 +1,6 @@
 ﻿using DotNetProjectFile.MsBuild.Conversion;
+using DotNetProjectFile.Resx;
+using DotNetProjectFile.Xml;
 using Microsoft.CodeAnalysis.Text;
 using System.Runtime.CompilerServices;
 using System.Xml;
@@ -18,6 +20,7 @@ public abstract class Node
         Parent = parent;
         Project = project ?? (this as Project) ?? throw new ArgumentNullException(nameof(project));
         Children = new(element.Elements().Select(Create).OfType<Node>().ToArray());
+        Positions = XmlPositions.New(element);
     }
 
     internal readonly XElement Element;
@@ -25,6 +28,8 @@ public abstract class Node
     internal readonly Project Project;
 
     public Node? Parent { get; }
+
+    public XmlPositions Positions { get; }
 
     public virtual object? Val => Element.Value;
 
@@ -46,17 +51,10 @@ public abstract class Node
 
     public int Length => ToString().Length;
 
-    public Location Location => location ??= GetLocation();
+    public Location Location => location ??= Location.Create(Project.Path.ToString(), Project.Text.TextSpan(Positions.FullSpan), Positions.FullSpan);
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private Location? location;
-
-    private Location GetLocation()
-    {
-        var linePositionSpan = LineInfo.LinePositionSpan();
-        var textSpan = Project.Text.TextSpan(linePositionSpan);
-        return Location.Create(Project.Path.ToString(), textSpan, linePositionSpan);
-    }
 
     /// <summary>Represents the node as an <see cref="string"/>.</summary>
     /// <remarks>

@@ -7,7 +7,7 @@ public class Reports
         => new Resx.SortDataAlphabetically()
         .ForProject("ResxUnsorted.cs")
         .HasIssue(
-            new Issue("Proj2002", "Resource 'B' is not ordered alphabetically and should appear before 'C'.").WithSpan(20, 3, 22, 9));
+            new Issue("Proj2002", "Resource 'B' is not ordered alphabetically and should appear before 'C'.").WithSpan(20, 2, 22, 9));
 }
 
 public class Guards

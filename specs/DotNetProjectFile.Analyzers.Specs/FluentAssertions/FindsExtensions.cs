@@ -18,9 +18,9 @@ internal static class FindsExtensions
             .Select(Issue.FromDiagnostic)
             .ToArray();
 
-        var extra = reported.Except(issues).ToArray();
-        var missing = issues.Except(reported).ToArray();
-        var both = reported.Intersect(issues).ToArray();
+        var extra = reported.Except(issues, Issue.Comparer).ToArray();
+        var missing = issues.Except(reported, Issue.Comparer).ToArray();
+        var both = reported.Intersect(issues, Issue.Comparer).ToArray();
 
         if(extra.Any() || missing.Any())
         {

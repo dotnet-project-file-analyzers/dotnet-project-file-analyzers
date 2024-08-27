@@ -7,11 +7,11 @@ public class Reports
        => new IncludePackageReferencesOnce()
        .ForProject("DoublePackageReferences.cs")
        .HasIssues(
-            new Issue("Proj0013", "Package 'Qowaiv' is already referenced.").WithSpan(05, 5, 05, 57),
-            new Issue("Proj0013", "Package 'Qowaiv' is already referenced.").WithSpan(06, 5, 06, 56),
-            new Issue("Proj0013", "Package 'Qowaiv' is already referenced.").WithSpan(10, 5, 10, 57),
-            new Issue("Proj0013", "Package 'Qowaiv' is already referenced.").WithSpan(11, 5, 11, 57),
-            new Issue("Proj0013", "Package 'Qowaiv' is already referenced.").WithSpan(13, 5, 13, 56));
+            new Issue("Proj0013", "Package 'Qowaiv' is already referenced.").WithSpan(05, 04, 05, 57),
+            new Issue("Proj0013", "Package 'Qowaiv' is already referenced.").WithSpan(06, 04, 06, 56),
+            new Issue("Proj0013", "Package 'Qowaiv' is already referenced.").WithSpan(10, 04, 10, 57),
+            new Issue("Proj0013", "Package 'Qowaiv' is already referenced.").WithSpan(11, 04, 11, 57),
+            new Issue("Proj0013", "Package 'Qowaiv' is already referenced.").WithSpan(13, 04, 13, 56));
 }
 
 public class Guards
