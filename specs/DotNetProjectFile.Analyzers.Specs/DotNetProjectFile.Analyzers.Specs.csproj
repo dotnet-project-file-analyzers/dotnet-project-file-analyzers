@@ -41,7 +41,7 @@
     <PackageReference Include="NUnit.Analyzers" Version="*" PrivateAssets="all" />
   </ItemGroup>
 
-  <ItemGroup>
+  <ItemGroup Label="Test projects">
     <None Include="../../projects/*/*.csproj" Visible="true" Link="Properties/Projects/C#/%(Filename)%(Extension)" />
     <None Include="../../projects/*/*.vbproj" Visible="true" Link="Properties/Projects/VB/%(Filename)%(Extension)" />
   </ItemGroup>
