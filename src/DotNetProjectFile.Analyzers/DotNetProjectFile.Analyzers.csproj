@@ -29,6 +29,7 @@
     <PackageReleaseNotes>
 ToBeReleased
 - Proj0024: Order package versions alphabetically. (NEW RULE)
+- Proj1700: Indent XML. (NEW RULE)
 v1.2.4
 - Support #pragma warning disable/restore.
 - Proj0242: Generate NuGet packages conditionally. (NEW RULE)

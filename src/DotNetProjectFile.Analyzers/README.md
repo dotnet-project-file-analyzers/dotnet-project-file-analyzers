@@ -52,6 +52,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj1003** Use Sonar analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1003.html)
 * [**Proj1100** Avoid using Moq](https://dotnet-project-file-analyzers.github.io/rules/Proj1100.html)
 * [**Proj1200** Exclude private assets as project file dependency](https://dotnet-project-file-analyzers.github.io/rules/Proj1200.html)
+* [**Proj1700** Indent XML](https://dotnet-project-file-analyzers.github.io/rules/Proj1700.html)
 
 ## Resource file rules
 * [**Proj2000** Embed valid resource files](https://dotnet-project-file-analyzers.github.io/rules/Proj2000.html)
