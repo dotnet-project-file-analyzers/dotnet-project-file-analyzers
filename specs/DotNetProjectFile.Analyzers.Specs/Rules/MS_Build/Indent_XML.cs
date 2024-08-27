@@ -6,8 +6,11 @@ public class Reports
     public void malicious_indented()
         => new IndentXml()
         .ForProject("MaliciousIndenting.cs")
-        .HasIssue(
-            new Issue("Proj0003", "Define usings explicit.").WithSpan(4, 5, 4, 43));
+        .HasIssues(
+            new Issue("Proj1700", "The element <PropertyGroup> has not been properly indented." /*...*/).WithSpan(4, 04, 4, 18),
+            new Issue("Proj1700", "The element <TargetFramework> has not been properly indented." /*.*/).WithSpan(5, 02, 5, 18),
+            new Issue("Proj1700", "The element </PropertyGroup> has not been properly indented." /*..*/).WithSpan(6, 05, 6, 21),
+            new Issue("Proj1700", "The element <Compile> has not been properly indented." /*.........*/).WithSpan(9, 04, 9, 43));
 }
 
 public class Guards

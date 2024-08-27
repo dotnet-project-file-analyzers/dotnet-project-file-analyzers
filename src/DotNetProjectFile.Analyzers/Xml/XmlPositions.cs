@@ -29,11 +29,15 @@ public sealed record XmlPositions
 
         do
         {
-            if (reader.NodeType == XmlNodeType.Element && depth == reader.Depth)
+            if (reader.NodeType == XmlNodeType.Element && depth == reader.Depth && start is null)
             {
-                start ??= info.LinePosition().Expand(-1);
+                start = info.LinePosition().Expand(-1);
+                if (reader.IsEmptyElement)
+                {
+                    end = start;
+                }
             }
-            else if (reader.NodeType == XmlNodeType.EndElement)
+            else if (reader.NodeType == XmlNodeType.EndElement && depth == reader.Depth)
             {
                 end ??= info.LinePosition().Expand(-2);
                 next ??= end.Value.Expand(-1);

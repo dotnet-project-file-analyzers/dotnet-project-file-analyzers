@@ -1,5 +1,4 @@
 ﻿using Microsoft.CodeAnalysis.Text;
-using System.Xml;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
@@ -12,23 +11,53 @@ public sealed class IndentXml(char ch, int repeat) : MsBuildProjectFileAnalyzer(
     public IndentXml() : this(' ', 2) { }
 
     protected override void Register(ProjectFileAnalysisContext context)
-        => Walk(context.Project, 0, context.Project.Text, context);
+        => Walk(context.Project, context.Project, context.Project.Text, context);
 
-    private void Walk(Node node, int depth, SourceText text, ProjectFileAnalysisContext context)
+    private void Walk(MsBuildProject project, Node node, SourceText text, ProjectFileAnalysisContext context)
     {
-        var line = node.LineInfo.LinePositionSpan();
-        var prev = new LinePositionSpan(new(line.Start.Line, 0), new(line.Start.Line, line.Start.Character - 1));
-        var span = text.Lines.GetTextSpan(prev);
-        var indentation = text.ToString(span);
-
-        if (indentation != new string(Char, Repeat * depth))
-        {
-            context.ReportDiagnostic(Descriptor, node, node.LocalName);
-        }
+        Report(project, node, text, context, true);
+        Report(project, node, text, context, false);
 
         foreach (var child in node.Children)
         {
-            Walk(child, depth + 1, text, context);
+            Walk(project, child, text, context);
+        }
+    }
+
+    private void Report(MsBuildProject project, Node node, SourceText text, ProjectFileAnalysisContext context, bool start)
+    {
+        if (CheckSelfClosingEnd() || StartAndEndOnSameLine()) { return; }
+
+        var element = start ? node.Positions.StartElement : node.Positions.EndElement;
+
+        if (!ProperlyIndented(element))
+        {
+            var name = start ? node.LocalName : '/' + node.LocalName;
+            context.ReportDiagnostic(Descriptor, project, element, name);
+        }
+
+        bool CheckSelfClosingEnd() => !start && node.Positions.IsSelfClosing;
+
+        bool StartAndEndOnSameLine() => !start && node.Positions.StartElement.End.Line == node.Positions.EndElement.Start.Line;
+
+        bool ProperlyIndented(LinePositionSpan element)
+        {
+            var width = Repeat * node.Depth;
+
+            if (width != element.Start.Character)
+            {
+                return false;
+            }
+            else if (width == 0)
+            {
+                return true;
+            }
+            else
+            {
+                var span = new LinePositionSpan(new(element.Start.Line, 0), new(element.Start.Line, width));
+                var indent = text.ToString(text.Lines.GetTextSpan(span));
+                return indent.All(ch => ch == Char);
+            }
         }
     }
 }

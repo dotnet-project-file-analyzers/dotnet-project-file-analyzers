@@ -516,7 +516,7 @@ public static class Rule
     public static DiagnosticDescriptor IndentXml => New(
       id: 1700,
       title: "Indent XML files",
-      message: "The XML element <{0}> has not been properly indented.",
+      message: "The element <{0}> has not been properly indented.",
       description: "To improve readability, XML elements should be properly indented.",
       tags: ["XML", "indentation"],
       category: Category.Formatting);

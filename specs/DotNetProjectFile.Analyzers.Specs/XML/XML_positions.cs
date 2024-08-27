@@ -58,7 +58,6 @@ public class Locates
         });
     }
 
-
     [Test]
     public void element_with_line_end() 
         => XmlPositions.New(XElement.Parse("<elm>1234</elm>\n", Options))
@@ -77,4 +76,29 @@ public class Locates
            StartElement = new(new(00, 00), new(00, 05)),
            EndElement = new(new(00, 00), new(00, 05)),
        });
+
+    /// <remarks>This behavior can be improved on.</remarks>
+    [Test]
+    public void element_with_child()
+       => XmlPositions.New(XElement.Parse(
+@"<elm>
+  <child>value</child>
+</elm>", Options))
+       .Should().Be(new XmlPositions
+       {
+           StartElement = new(new(00, 00), new(00, 04)),
+           EndElement = new(new(02, 00), new(02, 06)),
+       });
+
+    [Test]
+    public void self_closing_with_attributes()
+        => XmlPositions.New(XElement.Parse(
+            @"<Project>
+  <Compile Include=""../common/Code.cs"" />
+</Project>", Options).Elements().First())
+        .Should().Be(new XmlPositions
+        {
+            StartElement = new(new(01, 02), new(01, 41)),
+            EndElement = new(new(01, 02), new(01, 41)),
+        });
 }
