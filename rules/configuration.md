@@ -1,15 +1,15 @@
 # Configuration of .NET project file analyzers
-Although all **.NET project file analyzers** should work *as is* like a charm,
-there might be reasons to do some adjustments: disabling a specfic rule or
-changing its serverity. The good news is: this can be done.
+Although all **.NET project file analyzers** should work like a charm,
+there might be reasons to do some adjustments: disabling a specific rule or
+changing its severity. The good news is: this can be done.
 
 ## Editor configuration
 Most (but not all) C# and VB.NET rules can be configured in the `.editorconfig`
-file. Unfortunatly, changing the severity (and other configuration) of rules 
+file. Unfortunately, changing the severity (and other configuration) of rules
 in the `.editorconfig` is [**NOT** supported by MS Build](https://github.com/dotnet/roslyn/issues/37876).
 
 ## Analyzer INI file
-Fortunatly, it is possible to define project specfic preferences just as you
+Fortunately, it is possible to define project specific preferences just as you
 would have done in an `.editorconfig` file, using `<EditorConfigFiles>`:
 
 ``` XML
@@ -21,8 +21,8 @@ would have done in an `.editorconfig` file, using `<EditorConfigFiles>`:
 </Project>
 ```
 
-It is recommanded to use the `.ini` extension for such a file, as it helps
-with syntax highlightning. A custom config file could look like this:
+It is recommended to use the `.ini` extension for such a file, as it helps
+with syntax highlighting. A custom config file could look like this:
 
 ``` INI
 is_global = false
@@ -32,10 +32,10 @@ dotnet_diagnostic.Proj0010.severity = none  # Define OutputType explicitly
 ```
 
 ## Global analyzer config
-It is alos possible to configure rule using a [Global AnalyzerConfig](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuration-files#global-analyzerconfig)
+It is also possible to configure rules using a [Global AnalyzerConfig](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuration-files#global-analyzerconfig)
 `.globalconfig` file located in the same directory as the project file or in
 one of its (grand)parent directories. The following `.globalconfig` file will
- disable rule `Proj0010` and raise `Proj0011` to error level:
+disable rule `Proj0010` and raise `Proj0011` to error level:
 
 ``` INI
 is_global = true
@@ -60,8 +60,8 @@ An example of disabling rules `Proj0010` and `Proj0011` through the `.csproj` fi
 </PropertyGroup>
 ```
 
-## Suppress specfic warnings
-Addopted from C-style languages it is possible to suppress
+## Suppress specific warnings
+Adopted from C-style languages, it is possible to suppress
 individual violations and/or [false positives](https://en.wikipedia.org/wiki/False_positives_and_false_negatives).
 In a MS Build project file this would look like:
 
