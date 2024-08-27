@@ -42,6 +42,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="../../projects/*/*.csproj" Visible="true" Link="Properties/Projects/C#/%(Filename)%(Extension)" />
+    <None Include="../../projects/*/*.vbproj" Visible="true" Link="Properties/Projects/VB/%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\..\src\DotNetProjectFile.Analyzers\DotNetProjectFile.Analyzers.csproj" />
   </ItemGroup>
 
