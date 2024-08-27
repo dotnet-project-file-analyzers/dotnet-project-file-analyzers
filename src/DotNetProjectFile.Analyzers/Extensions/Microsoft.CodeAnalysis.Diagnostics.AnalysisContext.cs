@@ -18,6 +18,7 @@ internal static class AnalysisContextExtensions
             }
         });
 
+        // Fallback for detecting files that not have been added as additional files.
         context.RegisterCompilationAction(c =>
         {
             if (Projects.Init(c).EntryPoint(c) is { IsAdditional: false } project
