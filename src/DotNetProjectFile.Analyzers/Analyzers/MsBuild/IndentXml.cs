@@ -26,7 +26,10 @@ public sealed class IndentXml(char ch, int repeat) : MsBuildProjectFileAnalyzer(
 
     private void Report(MsBuildProject project, Node node, SourceText text, ProjectFileAnalysisContext context, bool start)
     {
-        if (CheckSelfClosingEnd() || StartAndEndOnSameLine()) { return; }
+        var checkSelfClosingEnd = !start && node.Positions.IsSelfClosing;
+        var startAndEndOnSameLine = !start && node.Positions.StartElement.End.Line == node.Positions.EndElement.Start.Line;
+
+        if (checkSelfClosingEnd || startAndEndOnSameLine) { return; }
 
         var element = start ? node.Positions.StartElement : node.Positions.EndElement;
 
@@ -35,10 +38,6 @@ public sealed class IndentXml(char ch, int repeat) : MsBuildProjectFileAnalyzer(
             var name = start ? node.LocalName : '/' + node.LocalName;
             context.ReportDiagnostic(Descriptor, project, element, name);
         }
-
-        bool CheckSelfClosingEnd() => !start && node.Positions.IsSelfClosing;
-
-        bool StartAndEndOnSameLine() => !start && node.Positions.StartElement.End.Line == node.Positions.EndElement.Start.Line;
 
         bool ProperlyIndented(LinePositionSpan element)
         {
