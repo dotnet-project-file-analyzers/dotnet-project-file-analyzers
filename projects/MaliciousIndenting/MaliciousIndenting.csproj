@@ -10,4 +10,6 @@
 				<Compile Include="../common/Code.cs" />
   </ItemGroup>
 
+  <ItemGroup><Folder Include="Same line" /></ItemGroup>
+
 </Project>
