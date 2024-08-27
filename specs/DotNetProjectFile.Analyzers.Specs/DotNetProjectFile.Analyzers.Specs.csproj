@@ -42,8 +42,8 @@
   </ItemGroup>
 
   <ItemGroup Label="Test projects">
-    <None Include="../../projects/*/*.csproj" Visible="true" Link="Properties/Projects/C#/%(Filename)%(Extension)" />
-    <None Include="../../projects/*/*.vbproj" Visible="true" Link="Properties/Projects/VB/%(Filename)%(Extension)" />
+    <None Include="../../projects/*/*.csproj" Visible="true" Link="Projects/C#/%(Filename)%(Extension)" />
+    <None Include="../../projects/*/*.vbproj" Visible="true" Link="Projects/VB/%(Filename)%(Extension)" />
   </ItemGroup>
 
   <ItemGroup>

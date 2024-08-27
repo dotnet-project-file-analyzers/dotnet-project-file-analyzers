@@ -5,7 +5,7 @@ public class Reports
     [Test]
     public void malicious_indented()
         => new IndentXml()
-        .ForProject("MaliciousIndenting.cs")
+        .ForProject("FaultyIndenting.cs")
         .HasIssues(
             new Issue("Proj1700", "The element <PropertyGroup> has not been properly indented." /*...*/).WithSpan(04, 04, 04, 18),
             new Issue("Proj1700", "The element <TargetFramework> has not been properly indented." /*.*/).WithSpan(05, 02, 05, 18),
