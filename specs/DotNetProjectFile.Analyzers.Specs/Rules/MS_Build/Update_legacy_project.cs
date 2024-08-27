@@ -17,6 +17,6 @@ public class Reports
     public void Legacy_project()
         => new GuardUnsupported()
         .ForProject("LegacyProject.cs")
-        .HasIssue(new Issue("Proj0002", "Upgrade legacy MS Build project file.").WithSpan(1, 1, 1, 2));
+        .HasIssue(new Issue("Proj0002", "Upgrade legacy MS Build project file."));
 }
 #endif

@@ -1,4 +1,6 @@
 ﻿using DotNetProjectFile.CodeAnalysis;
+using DotNetProjectFile.Xml;
+using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Resx;
 
@@ -8,13 +10,16 @@ public partial class Node : Locatable
     {
         Element = element;
         Resource = resource ?? (this as Resource) ?? throw new ArgumentNullException(nameof(resource));
+        Positions = XmlPositions.New(element);
     }
 
     internal XElement Element { get; }
 
     public Resource Resource { get; }
 
-    public Location Location => location ??= Locations.FromXml(Resource.Path, Resource.SourceText, Element);
+    public XmlPositions Positions { get; }
+
+    public Location Location => location ??= Location.Create(Resource.Path.ToString(), Resource.SourceText.TextSpan(Positions.FullSpan), Positions.FullSpan);
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private Location? location;

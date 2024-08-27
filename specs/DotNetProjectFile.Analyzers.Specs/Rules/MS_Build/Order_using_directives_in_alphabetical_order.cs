@@ -7,8 +7,8 @@ public class Reports
        => new OrderUsingDirectivesAlphabetically()
        .ForProject("IncorrectlyOrderedUsingDirectives.cs")
        .HasIssues(
-           new Issue("CS8085", @"A 'using static' directive cannot be used to declare an alias", DiagnosticSeverity.Error).WithSpan(5, 20, 5, 23),
-           new Issue("Proj0019", @"Using directive 'NamespaceA' is not ordered alphabetically and should appear before 'NamespaceB'.").WithSpan(9, 5, 9, 34));
+           new Issue("CS8085", @"A 'using static' directive cannot be used to declare an alias", DiagnosticSeverity.Error /*.......*/).WithSpan(5, 20, 5, 23),
+           new Issue("Proj0019", @"Using directive 'NamespaceA' is not ordered alphabetically and should appear before 'NamespaceB'.").WithSpan(9, 04, 9, 34));
 }
 
 public class Guards

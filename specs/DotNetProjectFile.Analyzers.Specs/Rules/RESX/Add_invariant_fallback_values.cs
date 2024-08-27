@@ -7,10 +7,10 @@ public class Reports
         => new Resx.AddInvariantFallbackValues()
         .ForProject("ResxMissingInvariant.cs")
         .HasIssues(
-            new Issue("Proj2004", "Add invariant fallback value for 'Bishop'.").WithSpan(11, 3, 13, 9),
-            new Issue("Proj2004", "Add invariant fallback value for 'Rook'.").WithSpan(0014, 3, 16, 9),
-            new Issue("Proj2004", "Add invariant fallback value for 'Knight'.").WithSpan(11, 3, 13, 9),
-            new Issue("Proj2004", "Add invariant fallback value for 'Pawn'.").WithSpan(0014, 3, 16, 9));
+            new Issue("Proj2004", "Add invariant fallback value for 'Bishop'.").WithSpan(11, 2, 13, 9),
+            new Issue("Proj2004", "Add invariant fallback value for 'Rook'.").WithSpan(0014, 2, 16, 9),
+            new Issue("Proj2004", "Add invariant fallback value for 'Knight'.").WithSpan(11, 2, 13, 9),
+            new Issue("Proj2004", "Add invariant fallback value for 'Pawn'.").WithSpan(0014, 2, 16, 9));
 }
 
 public class Guards
