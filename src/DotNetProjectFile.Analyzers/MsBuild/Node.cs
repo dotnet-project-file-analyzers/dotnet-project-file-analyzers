@@ -7,7 +7,7 @@ using System.Xml;
 namespace DotNetProjectFile.MsBuild;
 
 /// <summary>Represents node in a MS Build project file.</summary>
-public abstract class Node
+public abstract class Node : XmlAnalysisNode
 {
     /// <summary>Semi-colon separator char(s).</summary>
     protected static readonly char[] SemicolonSeparated = [';'];
@@ -100,6 +100,8 @@ public abstract class Node
 
     protected T? Convert<T>(string? value, [CallerMemberName] string? propertyName = null)
         => Converters.TryConvert<T>(value, GetType(), propertyName!);
+
+    IEnumerable<XmlAnalysisNode> XmlAnalysisNode.Children() => Children;
 
     private static readonly TypeConverters Converters = new();
 }

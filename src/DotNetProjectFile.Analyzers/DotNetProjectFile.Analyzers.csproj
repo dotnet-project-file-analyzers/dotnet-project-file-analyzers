@@ -27,6 +27,8 @@
     <Version>1.3.1</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+ToBeReleased
+- Proj2100: Indent RESX. (NEW RULE)
 v1.3.1
 - Proj1101: Package references should have stable versions. (NEW RULE)
 v1.3.0
