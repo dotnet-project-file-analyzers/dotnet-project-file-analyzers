@@ -24,7 +24,7 @@
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
-    <Version>1.3.0</Version>
+    <Version>1.3.1</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
 v1.3.1
