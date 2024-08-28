@@ -1,14 +1,15 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+﻿
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class BuildActionIncludeShouldExist() : MsBuildProjectFileAnalyzer(Rule.BuildActionIncludeShouldExist)
 {
-    protected override bool ApplyToProps => false;
+    protected override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
         // Paths in imports are based in the location of the project file.
-        foreach (var project in context.Project.SelfAndImports().Where(p => !p.IsDirectoryBuildProps))
+        foreach (var project in context.Project.SelfAndImports().Where(p => ProjectFileTypes.ProjectFileAndProps.Contains(p.FileType)))
         {
             Report(project, context.Project.Path.Directory, context);
         }

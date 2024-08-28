@@ -16,7 +16,7 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
     Rule.DefineIconUrl,
     Rule.DefinePackageId)
 {
-    protected override bool ApplyToProps => false;
+    protected override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {

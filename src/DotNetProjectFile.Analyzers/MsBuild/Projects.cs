@@ -23,16 +23,21 @@ public sealed class Projects(string language)
             && (EntryPointFromAdditionTexts(assembly.Name) ?? EntryPointFromAssembly(assembly)) is { } entryPoint)
         {
             if (entryPoint.DirectoryBuildProps is null
-                && DirectoryBuildProps(compilation.Assembly) is { } props)
+                && DirectoryProps(compilation.Assembly, "Directory.Build.props") is { } build)
             {
-                entryPoint.DirectoryBuildProps = props;
+                entryPoint.DirectoryBuildProps = build;
+            }
+            if (entryPoint.DirectoryPackagesProps is null
+                && DirectoryProps(compilation.Assembly, "Directory.Packages.props") is { } package)
+            {
+                entryPoint.DirectoryBuildProps = package;
             }
             return entryPoint;
         }
         return null;
     }
 
-    public MsBuildProject? TryResolve(IOFile location, bool isProject)
+    public MsBuildProject? TryResolve(IOFile location)
     {
         lock (locker)
         {
@@ -43,13 +48,13 @@ public sealed class Projects(string language)
             else if (AdditionalTexts.TryGetValue(location, out var additional)
                 && IsProject(location))
             {
-                project = Project.Load(additional, this, isProject);
+                project = Project.Load(additional, this);
                 Resolved[location] = project;
                 return project;
             }
             else if (IsProject(location))
             {
-                project = Project.Load(location, this, isProject);
+                project = Project.Load(location, this);
                 Resolved[location] = project;
                 return project;
             }
@@ -60,19 +65,19 @@ public sealed class Projects(string language)
         }
     }
 
-    private MsBuildProject? DirectoryBuildProps(IAssemblySymbol assembly)
-        => GetAncestorDirectories(assembly)
-            .Select(dir => dir.File("Directory.Build.props"))
-            .FirstOrDefault(f => f.Exists) is { } location
-        && TryResolve(IOFile.Parse(location.FullName), false) is { } props
-            ? props
-            : null;
+    private MsBuildProject? DirectoryProps(IAssemblySymbol assembly, string fileName)
+       => GetAncestorDirectories(assembly)
+           .Select(dir => dir.File(fileName))
+           .FirstOrDefault(f => f.Exists) is { } location
+       && TryResolve(IOFile.Parse(location.FullName)) is { } props
+           ? props
+           : null;
 
     private MsBuildProject? EntryPointFromAdditionTexts(string name)
         => AdditionalTexts.Keys
             .Where(IsProject)
             .Where(l => HasName(l, name))
-            .Select(f => TryResolve(f, isProject: true))
+            .Select(TryResolve)
             .ToArray() is { Length: 1 } projects
                 ? projects[0]
                 : null;
@@ -82,7 +87,7 @@ public sealed class Projects(string language)
             .Select(f => IOFile.Parse(f.FullName))
             .Where(IsProject)
             .Where(l => HasName(l, assembly.Name))
-            .Select(f => TryResolve(f, isProject: true))
+            .Select(TryResolve)
             .ToArray() is { Length: 1 } projects
                 ? projects[0]
                 : null;

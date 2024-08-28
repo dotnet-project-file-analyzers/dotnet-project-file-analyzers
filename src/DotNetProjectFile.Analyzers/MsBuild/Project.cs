@@ -4,14 +4,13 @@ namespace DotNetProjectFile.MsBuild;
 
 public sealed class Project : Node
 {
-    private Project(IOFile path, SourceText text, Projects projects, AdditionalText? additionalText, bool isProject)
+    private Project(IOFile path, SourceText text, Projects projects, AdditionalText? additionalText)
         : base(XElement.Parse(text.ToString(), LoadOptions), null, null)
     {
         Path = path;
         Text = text;
         Projects = projects;
         AdditionalText = additionalText;
-        IsProject = isProject;
         Imports = Children.Typed<Import>();
         PropertyGroups = Children.NestedTyped<PropertyGroup>();
         ItemGroups = Children.NestedTyped<ItemGroup>();
@@ -21,19 +20,26 @@ public sealed class Project : Node
 #pragma warning disable QW0011 // Define properties as immutables
     // is initialized after creation (only). Hard to accomplish otherwise.
     public MsBuildProject? DirectoryBuildProps { get; internal set; }
-#pragma warning restore QW0011 // Define properties as immutables
 
-    public bool IsDirectoryBuildProps => "Directory.Build.props".Equals(Path.Name, StringComparison.OrdinalIgnoreCase);
+    public MsBuildProject? DirectoryPackagesProps { get; internal set; }
+#pragma warning restore QW0011 // Define properties as immutables
 
     public AdditionalText? AdditionalText { get; }
 
     public bool IsAdditional => AdditionalText is { };
 
-    public bool IsProject { get; }
-
     public string? Sdk => Attribute();
 
     public IOFile Path { get; }
+
+    public ProjectFileType FileType => Path switch
+    {
+        _ when Path.Extension.Equals(".csproj", StringComparison.OrdinalIgnoreCase)
+            || Path.Extension.Equals(".vbproj", StringComparison.OrdinalIgnoreCase) => ProjectFileType.ProjectFile,
+        _ when Path.Name.Equals("Directory.Build.props", StringComparison.OrdinalIgnoreCase) => ProjectFileType.DirectoryBuild,
+        _ when Path.Name.Equals("Directory.Packages.props", StringComparison.OrdinalIgnoreCase) => ProjectFileType.DirectoryPackages,
+        _ => ProjectFileType.Props,
+    };
 
     public SourceText Text { get; }
 
@@ -105,24 +111,22 @@ public sealed class Project : Node
         }
     }
 
-    public static Project Load(IOFile file, Projects projects, bool isProject)
+    public static Project Load(IOFile file, Projects projects)
     {
         using var reader = file.OpenText();
         return new(
             path: file,
             text: SourceText.From(reader.ReadToEnd()),
             projects: projects,
-            additionalText: null,
-            isProject: isProject);
+            additionalText: null);
     }
 
-    public static Project Load(AdditionalText text, Projects projects, bool isProject)
+    public static Project Load(AdditionalText text, Projects projects)
         => new(
             path: IOFile.Parse(text.Path),
             text: text.GetText()!,
             projects: projects,
-            additionalText: text,
-            isProject: isProject);
+            additionalText: text);
 
     private static readonly LoadOptions LoadOptions = LoadOptions.PreserveWhitespace | LoadOptions.SetLineInfo;
 }
