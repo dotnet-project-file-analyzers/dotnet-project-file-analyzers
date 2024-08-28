@@ -22,9 +22,6 @@ public partial class Node : XmlAnalysisNode
 
     public string LocalName => Element.Name.LocalName;
 
-    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private Location? location;
-
     /// <summary>Gets the a <see cref="Nodes{T}"/> of children.</summary>
     public Nodes<T> Children<T>() where T : Node => new(this);
 
