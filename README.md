@@ -84,6 +84,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj1002** Use Microsoft's analyzers](rules/Proj1002.md)
 * [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)
 * [**Proj1100** Avoid using Moq](rules/Proj1100.md)
+* [**Proj1101** Package references should have stable versions](rules/Proj1101.md)
 * [**Proj1200** Exclude private assets as project file dependency](rules/Proj1200.md)
 * [**Proj1700** Indent XML](rules/Proj1700.md)
 
