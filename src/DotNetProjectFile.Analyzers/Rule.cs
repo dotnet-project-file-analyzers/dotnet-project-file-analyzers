@@ -503,6 +503,14 @@ public static class Rule
         tags: ["GDPR", "privacy"],
         category: Category.Security);
 
+    public static DiagnosticDescriptor PackageReferencesShouldBeStable => New(
+        id: 1101,
+        title: "Package references should have stable versions",
+        message: "Use a stable version of '{0}', instead of {1}.",
+        description: "The use of nightly builds and other pre-releases should be avoided.",
+        tags: ["NuGet", "Versioning"],
+        category: Category.Reliability);
+
     public static DiagnosticDescriptor ExcludePrivateAssetDependencies => New(
       id: 1200,
       title: "Exclude private assets as project file dependency",
