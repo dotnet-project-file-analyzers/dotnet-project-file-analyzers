@@ -44,10 +44,11 @@
   <ItemGroup Label="Test projects">
     <None Include="../../projects/*/*.csproj" Visible="true" Link="Projects/C#/%(Filename)%(Extension)" />
     <None Include="../../projects/*/*.vbproj" Visible="true" Link="Projects/VB/%(Filename)%(Extension)" />
+    <None Include="../../projects/*/*.resx" Visible="true" Link="Projects/RESX/%(Filename)%(Extension)" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DotNetProjectFile.Analyzers\DotNetProjectFile.Analyzers.csproj" />
+    <ProjectReference Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" />
   </ItemGroup>
 
 </Project>

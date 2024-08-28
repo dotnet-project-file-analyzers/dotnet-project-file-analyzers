@@ -576,6 +576,14 @@ public static class Rule
        tags: ["resx", "resources", "invariant", "localization"],
        category: Category.Bug);
 
+    public static DiagnosticDescriptor IndentResx => New(
+      id: 2100,
+      title: "Indent XML files",
+      message: "The element <{0}> has not been properly indented.",
+      description: "To improve readability, XML elements should be properly indented.",
+      tags: ["XML", "indentation"],
+      category: Category.Formatting);
+
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
     public static DiagnosticDescriptor New(

@@ -18,7 +18,7 @@ public sealed class Resource : Node
         : base(element, null)
     {
         Path = path;
-        SourceText = sourceText;
+        Text = sourceText;
         IsXml = isXml;
         Resources = resources;
         Headers = Children<ResHeader>();
@@ -32,7 +32,7 @@ public sealed class Resource : Node
 
     public ResourceFileInfo Path { get; }
 
-    public SourceText SourceText { get; }
+    public SourceText Text { get; }
 
     public CultureInfo Culture => Path.Culture;
 

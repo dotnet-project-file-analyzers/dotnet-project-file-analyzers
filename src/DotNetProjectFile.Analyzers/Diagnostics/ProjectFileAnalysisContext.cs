@@ -1,4 +1,5 @@
 ﻿using DotNetProjectFile.CodeAnalysis;
+using DotNetProjectFile.Xml;
 using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Diagnostics;
@@ -9,7 +10,7 @@ public sealed class ProjectFileAnalysisContext(
     Compilation compilation,
     AnalyzerOptions options,
     CancellationToken cancellationToken,
-    Action<Diagnostic> report)
+    Action<Diagnostic> report) : DiagnosticReporter
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private readonly Action<Diagnostic> Report = report;
@@ -32,22 +33,15 @@ public sealed class ProjectFileAnalysisContext(
     public CancellationToken CancellationToken { get; } = cancellationToken;
 
     /// <summary>Reports a diagnostic about the project file.</summary>
-    public void ReportDiagnostic(DiagnosticDescriptor descriptor, Node node, params object?[]? messageArgs)
-    {
-        var warningPragmas = (node as MsBuildProject ?? node.Project).WarningPragmas;
-
-        if (!warningPragmas.IsDisabled(descriptor.Id, node.Location))
-        {
-            Report(Diagnostic.Create(descriptor, node.Location, messageArgs));
-        }
-    }
+    public void ReportDiagnostic(DiagnosticDescriptor descriptor, XmlAnalysisNode node, params object?[]? messageArgs)
+        => ReportDiagnostic(descriptor, node.Positions.FullSpan, messageArgs);
 
     /// <summary>Reports a diagnostic about the project file.</summary>
-    public void ReportDiagnostic(DiagnosticDescriptor descriptor, MsBuildProject project, LinePositionSpan position, params object?[]? messageArgs)
+    public void ReportDiagnostic(DiagnosticDescriptor descriptor, LinePositionSpan span, params object?[]? messageArgs)
     {
-        var warningPragmas = project.WarningPragmas;
+        var warningPragmas = Project.WarningPragmas;
 
-        var location = project.GetLocation(position);
+        var location = Project.GetLocation(span);
 
         if (!warningPragmas.IsDisabled(descriptor.Id, location))
         {

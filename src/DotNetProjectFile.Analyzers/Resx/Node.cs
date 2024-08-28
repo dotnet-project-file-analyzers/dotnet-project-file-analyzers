@@ -1,25 +1,26 @@
-﻿using DotNetProjectFile.CodeAnalysis;
-using DotNetProjectFile.Xml;
-using Microsoft.CodeAnalysis.Text;
+﻿using DotNetProjectFile.Xml;
 
 namespace DotNetProjectFile.Resx;
 
-public partial class Node : Locatable
+public partial class Node : XmlAnalysisNode
 {
     protected Node(XElement element, Resource? resource)
     {
         Element = element;
         Resource = resource ?? (this as Resource) ?? throw new ArgumentNullException(nameof(resource));
         Positions = XmlPositions.New(element);
+        Depth = element.Ancestors().Count();
     }
 
     internal XElement Element { get; }
 
     public Resource Resource { get; }
 
+    public int Depth { get; }
+
     public XmlPositions Positions { get; }
 
-    public Location Location => location ??= Location.Create(Resource.Path.ToString(), Resource.SourceText.TextSpan(Positions.FullSpan), Positions.FullSpan);
+    public string LocalName => Element.Name.LocalName;
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private Location? location;
@@ -36,4 +37,6 @@ public partial class Node : Locatable
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private Nodes<Node>? children;
+
+    IEnumerable<XmlAnalysisNode> XmlAnalysisNode.Children() => Children();
 }

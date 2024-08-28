@@ -1,4 +1,6 @@
 ﻿using DotNetProjectFile.CodeAnalysis;
+using DotNetProjectFile.Xml;
+using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Diagnostics;
 
@@ -9,7 +11,7 @@ public readonly struct ResourceFileAnalysisContext(
     Compilation compilation,
     AnalyzerOptions options,
     CancellationToken cancellationToken,
-    Action<Diagnostic> report)
+    Action<Diagnostic> report) : DiagnosticReporter
 {
     /// <summary>Gets the project file.</summary>
     public readonly Resx.Resource Resource = resource;
@@ -27,6 +29,10 @@ public readonly struct ResourceFileAnalysisContext(
     private readonly Action<Diagnostic> Report = report;
 
     /// <summary>Reports a diagnostic about the project file.</summary>
-    public void ReportDiagnostic(DiagnosticDescriptor descriptor, Locatable location, params object?[]? messageArgs)
-        => Report(Diagnostic.Create(descriptor, location.Location, messageArgs));
+    public void ReportDiagnostic(DiagnosticDescriptor descriptor, XmlAnalysisNode node, params object?[]? messageArgs)
+        => ReportDiagnostic(descriptor, node.Positions.FullSpan, messageArgs);
+
+    /// <summary>Reports a diagnostic about the project file.</summary>
+    public void ReportDiagnostic(DiagnosticDescriptor descriptor, LinePositionSpan span, params object?[]? messageArgs)
+        => Report(Diagnostic.Create(descriptor, Resource.GetLocation(span), messageArgs));
 }

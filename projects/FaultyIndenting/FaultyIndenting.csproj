@@ -12,4 +12,8 @@
 
   <ItemGroup><Folder Include="Same line" /></ItemGroup>
 
+  <PropertyGroup>
+    <AdditionalFileItemNames>$(AdditionalFileItemNames);EmbeddedResource</AdditionalFileItemNames>
+  </PropertyGroup>
+
 </Project>
