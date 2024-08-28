@@ -3,7 +3,7 @@
 public class Reports
 {
     [Test]
-    [Ignore("Buildalizer does not output has not artifacts, hence nothing is analyzed.")]
+    [Ignore("Buildalizer does not output any artifacts, hence nothing is analyzed.")]
     public void unstable_versions()
         => new PackageReferencesShouldBeStable()
         .ForProject("UnstablePackageReferences.cs")
