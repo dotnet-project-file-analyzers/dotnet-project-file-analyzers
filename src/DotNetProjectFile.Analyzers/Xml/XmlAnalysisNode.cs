@@ -4,9 +4,9 @@ public interface XmlAnalysisNode
 {
     XmlPositions Positions { get; }
 
-    public string LocalName { get; }
+    string LocalName { get; }
 
-    public int Depth { get; }
+    int Depth { get; }
 
     IEnumerable<XmlAnalysisNode> Children();
 }
