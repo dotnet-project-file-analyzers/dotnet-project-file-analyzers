@@ -28,6 +28,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
 ToBeReleased
+- Proj0800: Configure CPVM. (NEW RULE)
+- Proj0801: Include CPVM file. (NEW RULE)
 - Proj2100: Indent RESX. (NEW RULE)
 v1.3.1
 - Proj1101: Package references should have stable versions. (NEW RULE)

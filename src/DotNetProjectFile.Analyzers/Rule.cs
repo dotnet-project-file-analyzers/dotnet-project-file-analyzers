@@ -459,10 +459,18 @@ public static class Rule
         tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration);
 
-    public static DiagnosticDescriptor UseCentralPackageVersionManagement => New(
+    public static DiagnosticDescriptor ConfigureCentralPackageVersionManagement => New(
         id: 0800,
-        title: "Use Central Package Version Management",
-        message: "The CPVM file 'Directory.Packages.props' could not be located.",
+        title: "Configure Central Package Version Management explicitly",
+        message: "Define the <ManagePackageVersionsCentrally> node with the value 'true', or 'false'.",
+        description: "TODO",
+        tags: ["configuration", "versioning"],
+        category: Category.CPVM);
+
+    public static DiagnosticDescriptor IncludeDirectoryPackagesProps => New(
+        id: 0801,
+        title: "Include 'Directory.Packages.props'",
+        message: "The file 'Directory.Packages.props' could not be located.",
         description: "TODO",
         tags: ["configuration", "versioning"],
         category: Category.CPVM);
