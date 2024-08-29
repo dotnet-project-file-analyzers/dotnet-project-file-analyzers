@@ -1,11 +1,11 @@
-﻿namespace Rules.MS_Build.Configure_CPMV;
+﻿namespace Rules.MS_Build.Configure_CPVM;
 
 public class Reports
 {
     [Test]
-    public void project_without_CPMV()
+    public void project_without_CPVM()
         => new ConfigureCentralPackageVersionManagement()
-        .ForProject("NoCPMV.cs")
+        .ForProject("NoCPVM.cs")
         .HasIssue(new Issue("Proj0800", "Define the <ManagePackageVersionsCentrally> node with the value 'true', or 'false'.")
         .WithSpan(00, 00, 00, 32));
 }
@@ -13,14 +13,14 @@ public class Reports
 public class Guards
 {
     [Test]
-    public void Projects_with_CPMV_file()
+    public void Projects_with_CPVM_file()
         => new ConfigureCentralPackageVersionManagement()
-       .ForProject("UseCPMV.cs")
+       .ForProject("UseCPVM.cs")
        .HasNoIssues();
 
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
-    public void Projects_explicitly_without_CPMV(string project)
+    public void Projects_explicitly_without_CPVM(string project)
          => new ConfigureCentralPackageVersionManagement()
         .ForProject(project)
         .HasNoIssues();
