@@ -463,7 +463,10 @@ public static class Rule
         id: 0800,
         title: "Configure Central Package Version Management explicitly",
         message: "Define the <ManagePackageVersionsCentrally> node with the value 'true', or 'false'.",
-        description: "TODO",
+        description:
+            "In situations where you manage common dependencies for many " +
+            "different projects, you can leverage Central Package Version " +
+            "Management (CPVM) features to do all of this from a single location.",
         tags: ["configuration", "versioning"],
         category: Category.CPVM);
 
@@ -471,7 +474,7 @@ public static class Rule
         id: 0801,
         title: "Include 'Directory.Packages.props'",
         message: "The file 'Directory.Packages.props' could not be located.",
-        description: "TODO",
+        description: "When CPVM is enabled 'Directory.Packages.props' should be resolvable.",
         tags: ["configuration", "versioning"],
         category: Category.CPVM);
 
