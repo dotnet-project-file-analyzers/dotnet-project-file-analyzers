@@ -448,7 +448,7 @@ public static class Rule
         category: Category.Clarity);
 
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
-        id: 600,
+        id: 0600,
         title: "Avoid generating packages on build if not packable",
         message: "Avoid defining <GeneratePackageOnBuild> node explicitly when <IsPackable> is 'false'.",
         description:
@@ -458,6 +458,14 @@ public static class Rule
             "node will reduce noise.",
         tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration);
+
+    public static DiagnosticDescriptor UseCentralPackageVersionManagement => New(
+        id: 0800,
+        title: "Use Central Package Version Management",
+        message: "The CPVM file 'Directory.Packages.props' could not be located.",
+        description: "TODO",
+        tags: ["configuration", "versioning"],
+        category: Category.CPVM);
 
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,

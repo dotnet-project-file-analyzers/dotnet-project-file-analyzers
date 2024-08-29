@@ -3,7 +3,7 @@
 public class Reports
 {
     [Test]
-    public void faultly_indented()
+    public void Faulty_indented()
         => new IndentXml()
         .ForProject("FaultyIndenting.cs")
         .HasIssues(

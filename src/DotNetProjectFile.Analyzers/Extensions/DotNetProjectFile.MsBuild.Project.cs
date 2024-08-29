@@ -13,5 +13,8 @@ internal static class DotNetProjectFileAnalyzerProjectExtensions
         => project.Property<bool?, EnablePackageValidation>(g => g.EnablePackageValidation, MsBuildDefaults.EnablePackageValidation).GetValueOrDefault();
 
     public static bool IsDevelopmentDependency(this MsBuildProject project)
-    => project.Property<bool?, DevelopmentDependency>(g => g.DevelopmentDependency, MsBuildDefaults.DevelopmentDependency).GetValueOrDefault();
+        => project.Property<bool?, DevelopmentDependency>(g => g.DevelopmentDependency, MsBuildDefaults.DevelopmentDependency).GetValueOrDefault();
+
+    public static bool ManagePackageVersionsCentrally(this MsBuildProject project)
+       => project.Property<bool?, ManagePackageVersionsCentrally>(g => g.ManagePackageVersionsCentrally, MsBuildDefaults.ManagePackageVersionsCentrally).GetValueOrDefault();
 }

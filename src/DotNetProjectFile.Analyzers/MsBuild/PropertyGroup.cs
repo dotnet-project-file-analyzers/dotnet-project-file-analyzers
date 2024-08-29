@@ -36,6 +36,8 @@ public sealed class PropertyGroup : Node
 
         EnablePackageValidation = Children.Typed<EnablePackageValidation>();
         PackageValidationBaselineVersion = Children.Typed<PackageValidationBaselineVersion>();
+
+        ManagePackageVersionsCentrally = Children.Typed<ManagePackageVersionsCentrally>();
     }
 
     public Nodes<TargetFramework> TargetFramework { get; }
@@ -93,4 +95,6 @@ public sealed class PropertyGroup : Node
     public Nodes<EnablePackageValidation> EnablePackageValidation { get; }
 
     public Nodes<PackageValidationBaselineVersion> PackageValidationBaselineVersion { get; }
+
+    public Nodes<ManagePackageVersionsCentrally> ManagePackageVersionsCentrally { get; }
 }
