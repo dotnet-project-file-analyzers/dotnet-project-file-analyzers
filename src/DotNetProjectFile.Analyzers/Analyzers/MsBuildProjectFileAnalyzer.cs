@@ -8,7 +8,7 @@ public abstract class MsBuildProjectFileAnalyzer(
 {
     public sealed override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = new[] { primaryDiagnostic }.Concat(supportedDiagnostics).ToImmutableArray();
 
-    protected virtual bool ApplyToProps => true;
+    protected virtual IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.All;
 
     protected DiagnosticDescriptor Descriptor => SupportedDiagnostics[0];
 
@@ -22,7 +22,7 @@ public abstract class MsBuildProjectFileAnalyzer(
     protected virtual void Register(AnalysisContext context)
         => context.RegisterProjectFileAction(c =>
         {
-            if (c.Project.IsProject || ApplyToProps)
+            if (ApplicableTo.Contains(c.Project.FileType))
             {
                 Register(c);
             }

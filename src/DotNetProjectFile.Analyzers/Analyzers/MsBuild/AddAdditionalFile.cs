@@ -5,9 +5,11 @@ public sealed class AddAdditionalFile() : MsBuildProjectFileAnalyzer(Rule.AddAdd
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.Project.IsAdditional && !context.Project.IsDirectoryBuildProps)
+        if (!context.Project.IsAdditional && FileTypes.Contains(context.Project.FileType))
         {
             context.ReportDiagnostic(Descriptor, context.Project, context.Project.Path.Name);
         }
     }
+
+    private static readonly ProjectFileType[] FileTypes = [ProjectFileType.ProjectFile, ProjectFileType.Props];
 }

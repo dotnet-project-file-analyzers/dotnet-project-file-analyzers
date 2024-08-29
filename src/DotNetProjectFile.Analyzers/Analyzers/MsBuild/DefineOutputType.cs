@@ -3,7 +3,7 @@
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class DefineOutputType() : MsBuildProjectFileAnalyzer(Rule.DefineOutputType)
 {
-    protected override bool ApplyToProps => false;
+    protected override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {

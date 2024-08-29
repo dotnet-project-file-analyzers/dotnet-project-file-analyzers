@@ -13,7 +13,7 @@ public sealed class DefinePackageReferenceAssetsAsAttributes() : MsBuildProjectF
         }
     }
 
-    private bool HasAssetsElement(PackageReference reference)
+    private static bool HasAssetsElement(PackageReference reference)
         => reference.Element.Elements()
         .Any(e => e.Name.LocalName.Contains("assets", StringComparison.OrdinalIgnoreCase));
 }
