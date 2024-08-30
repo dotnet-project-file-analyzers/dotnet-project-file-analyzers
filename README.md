@@ -63,7 +63,8 @@ To add a props file:
 
 ## Reference an analyzer from a project
 For debugging/development purposes, it can be useful to reference the analyzer
-project directly. Within this solution, that would look like:
+project directly. As mentioned [here](https://www.meziantou.net/referencing-an-analyzer-from-a-project.htm),
+this can be achieved by adding the following to your project file:
 
 ``` XML
 <Project Sdk="Microsoft.NET.Sdk">
@@ -79,5 +80,3 @@ project directly. Within this solution, that would look like:
 
 </Project>
 ```
-
-See also: [www.meziantou.net](https://www.meziantou.net/referencing-an-analyzer-from-a-project.htm)
