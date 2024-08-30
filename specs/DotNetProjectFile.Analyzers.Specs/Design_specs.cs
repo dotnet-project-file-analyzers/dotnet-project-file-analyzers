@@ -23,7 +23,7 @@ public partial class Rules
     }
 
     [Test]
-    public void Root_Readme_metions_right_number_of_rules()
+    public void Root_Readme_mentions_right_number_of_rules()
     {
         var match = AmountPattern().Match(Root_Readme_Text);
         var amount = int.Parse(match.Groups["amount"].Value);
