@@ -1,9 +1,10 @@
 ﻿using System.Net;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace Design_specs;
 
-public class Rules
+public partial class Rules
 {
     [Test]
     public void have_unique_ids()
@@ -21,18 +22,29 @@ public class Rules
         content.Should().StartWith($"# {rule.Id}: ");
     }
 
-    [TestCaseSource(nameof(AlleRules))]
-    public async Task are_mentioned_in_README_root(Rule rule)
+    [Test]
+    public void Root_Readme_metions_right_number_of_rules()
     {
-        IndexContext ??= await GetIndexContext();
-        IndexContext
+        var match = AmountPattern().Match(Root_Readme_Text);
+        var amount = int.Parse(match.Groups["amount"].Value);
+
+        var all = AlleRules.Count();
+
+        (amount / 10).Should().Be(all / 10, because: $"Mentioned {amount}+ should be approximately {all}.");
+    }
+
+    [TestCaseSource(nameof(AlleRules))]
+    public async Task are_mentioned_in_Web_README(Rule rule)
+    {
+        Web_Index_Context ??= await GetWebIndexContext();
+        Web_Index_Context
             .Contains(@$"""/rules/{rule.Id}.html""")
             .Should().BeTrue(because: $"Rule {rule.Id} should be mentioned");
     }
 
     [TestCaseSource(nameof(AlleRules))]
     public void are_mentioned_in_README_package(Rule rule)
-        => ReadmePackageText
+        => Package_Readme_Text
         .Contains($"]({rule.HelpLinkUri})")
         .Should().BeTrue(because: $"Rule {rule} should be mentioned");
 
@@ -63,20 +75,23 @@ public class Rules
         .Select(f => (DiagnosticDescriptor)f.GetValue(null)!)
         .Select(d => new Rule(d));
 
-    private static readonly FileInfo ReadmePackage = new("../../../../../src/DotNetProjectFile.Analyzers/README.md");
+    private static readonly FileInfo Root_Readme = new("../../../../../README.md");
+    private static readonly FileInfo Package_Readme = new("../../../../../src/DotNetProjectFile.Analyzers/README.md");
 
-    private readonly string ReadmePackageText = ReadmePackage.OpenText().ReadToEnd();
+    private readonly string Root_Readme_Text = Root_Readme.OpenText().ReadToEnd();
+    private readonly string Package_Readme_Text = Package_Readme.OpenText().ReadToEnd();
+    private string? Web_Index_Context;
 
-
-    private string? IndexContext;
-
-    private static async Task<string> GetIndexContext()
+    private static async Task<string> GetWebIndexContext()
     {
         using var client = new HttpClient(); 
         var response = await client.GetAsync("https://dotnet-project-file-analyzers.github.io/");
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadAsStringAsync();
     }
+
+    [GeneratedRegex(@"Contains (?<amount>[0-9]+0)\+ \[Roslyn\]")]
+    private static partial Regex AmountPattern();
 }
 
 /// <remarks>Wrapper for better display of test resources in IDE.</remarks>
