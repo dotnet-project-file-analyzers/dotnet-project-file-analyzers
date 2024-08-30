@@ -26,6 +26,8 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0022** Build action includes should exist](https://dotnet-project-file-analyzers.github.io/rules/Proj0022.html)
 * [**Proj0023** Use forward slashes in paths](https://dotnet-project-file-analyzers.github.io/rules/Proj0023.html)
 * [**Proj0024** Order package versions alphabetically](https://dotnet-project-file-analyzers.github.io/rules/Proj0024.html)
+
+### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)
 * [**Proj0201** Define the project version explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0201.html)
 * [**Proj0202** Define the project description explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0202.html)
@@ -44,15 +46,24 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0240** Enable package validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0240.html)
 * [**Proj0241** Enable package baseline validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0241.html)
 * [**Proj0242** Generate NuGet packages conditionally](https://dotnet-project-file-analyzers.github.io/rules/Proj0242.html)
-* [**Proj0400** Define the project publishability explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0400.html)
 * [**Proj0600** Avoid generating packages on build if not packable](https://dotnet-project-file-analyzers.github.io/rules/Proj0600.html)
+
+### Publishing
+* [**Proj0400** Define the project publishability explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0400.html)
+
+### Central Package Management
 * [**Proj0800** Configure Central Package Management](https://dotnet-project-file-analyzers.github.io/rules/Proj0800.html)
 * [**Proj0801** Include 'Directory.Packages.props'](https://dotnet-project-file-analyzers.github.io/rules/Proj0801.html)
+* [**Proj0802** Enable Central Package Management centrally](https://dotnet-project-file-analyzers.github.io/rules/Proj0802.html)
+
+### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1000.html)
 * [**Proj1001** Use analyzers for packages](https://dotnet-project-file-analyzers.github.io/rules/Proj1001.html)
 * [**Proj1002** Use Microsoft's analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1002.html)
 * [**Proj1003** Use Sonar analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1003.html)
-* [**Proj1100** Avoid using Moq](https://dotnet-project-file-analyzers.github.io/rules/Proj1100.html)
+
+### Other
+* * [**Proj1100** Avoid using Moq](https://dotnet-project-file-analyzers.github.io/rules/Proj1100.html)
 * [**Proj1101** Package references should have stable versions](https://dotnet-project-file-analyzers.github.io/rules/Proj1101.html)
 * [**Proj1200** Exclude private assets as project file dependency](https://dotnet-project-file-analyzers.github.io/rules/Proj1200.html)
 * [**Proj1700** Indent XML](https://dotnet-project-file-analyzers.github.io/rules/Proj1700.html)
