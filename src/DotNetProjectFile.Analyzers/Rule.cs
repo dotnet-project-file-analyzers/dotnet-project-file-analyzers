@@ -490,7 +490,9 @@ public static class Rule
         id: 0803,
         title: "Use VersionOverride only with Central Package Management enabled",
         message: "Use Version instead of VersionOverride when CPM is not enabled.",
-        description: "Enabling it per project would defy the purpose of CPM.",
+        description:
+            "When CPM is not enabled the use of <PackageReference VersionOveride /> " +
+            "`has no effect, and is most likely a mistake.",
         tags: ["Maintainability"],
         category: Category.CPM);
 
