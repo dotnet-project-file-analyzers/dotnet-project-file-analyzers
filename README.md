@@ -59,6 +59,8 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0022** Build actions should have a single task](rules/Proj0022.md)
 * [**Proj0023** Use forward slashes in paths](rules/Proj0023.md)
 * [**Proj0024** Order package versions alphabetically](rules/Proj0024.md)
+
+### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
 * [**Proj0201** Define the project version explicitly](rules/Proj0201.md)
 * [**Proj0202** Define the project description explicitly](rules/Proj0202.md)
@@ -77,12 +79,22 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0240** Enable package validation](rules/Proj0240.md)
 * [**Proj0241** Enable package baseline validation](rules/Proj0241.md)
 * [**Proj0242** Generate NuGet packages conditionally](rules/Proj0242.md)
-* [**Proj0400** Define the project publishability explicitly](rules/Proj0400.md)
 * [**Proj0600** Avoid generating packages on build if not packable](rules/Proj0600.md)
+
+### Publishing
+* [**Proj0400** Define the project publishability explicitly](rules/Proj0400.md)
+
+### Central Package Version Management
+* [**Proj0800** Configure Central Package Management](rules/Proj0800.md)
+* [**Proj0801** Include 'Directory.Packages.props'](rules/Proj0801.md)
+
+### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
 * [**Proj1002** Use Microsoft's analyzers](rules/Proj1002.md)
 * [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)
+
+### Other
 * [**Proj1100** Avoid using Moq](rules/Proj1100.md)
 * [**Proj1101** Package references should have stable versions](rules/Proj1101.md)
 * [**Proj1200** Exclude private assets as project file dependency](rules/Proj1200.md)
