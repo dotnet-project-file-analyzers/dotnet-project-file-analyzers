@@ -1,12 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Qowaiv" VersionOverride="7.0.4" />
+  <ItemGroup Label="Version is also added to satisfy Buildalizer">
+    <PackageReference Include="Qowaiv" Version="7.0.3" VersionOverride="7.0.4" />
   </ItemGroup>
 
   <ItemGroup>
