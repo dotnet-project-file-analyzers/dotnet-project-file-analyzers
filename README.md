@@ -3,9 +3,12 @@
 
 ![.NET project file analyzers logo](design/logo_128x128.png)
 # .NET project file analyzers
-Contains [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/)
+Contains 60+ [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/)
 (static code) [diagnostic analyzers](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.diagnostics.diagnosticanalyzer)
 that report issues on .NET project files.
+
+## Documentation
+The full documentation can be found here: [dotnet-project-file-analyzers.github.io](https://dotnet-project-file-analyzers.github.io/)
 
 ## Installation
 | Package                                                                                  | NuGet                                                                                                                                                                                                                                                |
@@ -17,7 +20,7 @@ To use the analyzers, you must include the analyzer NuGet package in your projec
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>
@@ -28,11 +31,6 @@ or via PowerShell:
 ``` PS
 Install-Package DotNetProjectFile.Analyzers
 ```
-
-## Rules
-This package contains rules about the MS Build project files (including
-imported props), and RESX files. The complete overview can be found at
-[dotnet-project-file-analyzers.github.io](https://dotnet-project-file-analyzers.github.io/).
 
 ## Additional files
 To fully benefit from these analyzers it is recommended to add the project file
@@ -63,31 +61,10 @@ To add a props file:
 </Project>
 ```
 
-## Adjusting severity
-As of the time of writing, it is [unfortunately not possible](https://github.com/dotnet/roslyn/issues/37876) to change the severity of rules using an `.editorconfig` file.
-It is however possible to adjust the severity using a [Global AnalyzerConfig](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuration-files#global-analyzerconfig)
-(`.globalconfig`) file located in the same directory as the project file or in one of its (grand)parent directories.
-The following `.globalconfig` file will disable rule `Proj0010` and raise `Proj0011` to error level:
-
-``` INI
-is_global = true
-
-dotnet_diagnostic.Proj0010.severity = none  # Define the <OutputType> node explicitly.
-dotnet_diagnostic.Proj0011.severity = error # Property <{0}> has been already defined.
-```
-
-Furthermore, it is also possible to disable warnings through the `<NoWarn>` tags inside a `<PropertyGroup>` tag inside your `.csproj` file.
-An example of disabling rules `Proj0010` and `Proj0011` through the `.csproj` file:
-
-``` XML
-<PropertyGroup>
-  <NoWarn>Proj0010;Proj0011</NoWarn>
-</PropertyGroup>
-```
-
 ## Reference an analyzer from a project
 For debugging/development purposes, it can be useful to reference the analyzer
-project directly. Within this solution, that would look like:
+project directly. As mentioned [here](https://www.meziantou.net/referencing-an-analyzer-from-a-project.htm),
+this can be achieved by adding the following to your project file:
 
 ``` XML
 <Project Sdk="Microsoft.NET.Sdk">
@@ -103,5 +80,3 @@ project directly. Within this solution, that would look like:
 
 </Project>
 ```
-
-See also: [www.meziantou.net](https://www.meziantou.net/referencing-an-analyzer-from-a-project.htm)
