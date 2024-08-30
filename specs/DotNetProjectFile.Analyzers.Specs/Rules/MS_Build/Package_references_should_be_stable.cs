@@ -17,7 +17,6 @@ public class Reports
         .ForProject("UnstableVersionsCPM.cs")
         .HasIssue(
             new Issue("Proj1101", "Use a stable version of 'System.IO.Hashing', instead of '9.0.0-preview.7.24405.7'.").WithSpan(08, 04, 08, 94));
-
 }
 
 public class Guards
