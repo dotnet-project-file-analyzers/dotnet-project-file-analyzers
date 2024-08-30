@@ -478,6 +478,14 @@ public static class Rule
         tags: ["configuration", "versioning"],
         category: Category.CPM);
 
+    public static DiagnosticDescriptor EnableCentralPackageManagementCentrally => New(
+        id: 0802,
+        title: "Enable Central Package Management centrally",
+        message: "Enable <ManagePackageVersionsCentrally> in 'Directory.Packages.props' or a shared props file.",
+        description: "Enabling it per project would defy the purpose of CPM.",
+        tags: ["Maintanability"],
+        category: Category.CPM);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",
