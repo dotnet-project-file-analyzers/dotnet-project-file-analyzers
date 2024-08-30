@@ -525,7 +525,7 @@ public static class Rule
     public static DiagnosticDescriptor PackageReferencesShouldBeStable => New(
         id: 1101,
         title: "Package references should have stable versions",
-        message: "Use a stable version of '{0}', instead of {1}.",
+        message: "Use a stable version of '{0}', instead of '{1}'.",
         description: "The use of nightly builds and other pre-releases should be avoided.",
         tags: ["NuGet", "Versioning"],
         category: Category.Reliability);

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageVersion Include="System.IO.Hashing" Version="9.0.0-preview.7.24405.7" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <AdditionalFiles Include="Directory.Packages.props" Link="Properties/Directory.Packages.props" />
+  </ItemGroup>
+
+</Project>

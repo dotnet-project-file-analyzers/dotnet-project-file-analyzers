@@ -9,12 +9,23 @@ public sealed class PackageReferencesShouldBeStable() : MsBuildProjectFileAnalyz
             .SelectMany(i => i.PackageReferences)
             .Where(IsUnstable))
         {
+            context.ReportDiagnostic(Descriptor, package, package.IncludeOrUpdate, package.VersionOrVersionOverride);
+        }
+
+        foreach (var package in context.Project.ItemGroups
+            .SelectMany(i => i.PackageVersions)
+            .Where(IsUnstable))
+        {
             context.ReportDiagnostic(Descriptor, package, package.IncludeOrUpdate, package.Version);
         }
     }
 
     private static bool IsUnstable(PackageReference package)
-        => package.Version is { Length: > 0 } version
+        => package.VersionOrVersionOverride is { Length: > 0 } version
         && version.Contains('-')
         && !"ALL".Equals(package.PrivateAssets, StringComparison.OrdinalIgnoreCase);
+
+    private static bool IsUnstable(PackageVersion package)
+        => package.Version is { Length: > 0 } version
+        && version.Contains('-');
 }
