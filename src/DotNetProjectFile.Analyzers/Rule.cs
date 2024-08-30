@@ -448,7 +448,7 @@ public static class Rule
         category: Category.Clarity);
 
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
-        id: 600,
+        id: 0600,
         title: "Avoid generating packages on build if not packable",
         message: "Avoid defining <GeneratePackageOnBuild> node explicitly when <IsPackable> is 'false'.",
         description:
@@ -458,6 +458,25 @@ public static class Rule
             "node will reduce noise.",
         tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration);
+
+    public static DiagnosticDescriptor ConfigureCentralPackageVersionManagement => New(
+        id: 0800,
+        title: "Configure Central Package Management explicitly",
+        message: "Define the <ManagePackageVersionsCentrally> node with the value 'true', or 'false'.",
+        description:
+            "In situations where you manage common dependencies for many " +
+            "different projects, you can leverage Central Package Version " +
+            "Management (CPM) features to do all of this from a single location.",
+        tags: ["configuration", "versioning"],
+        category: Category.CPM);
+
+    public static DiagnosticDescriptor IncludeDirectoryPackagesProps => New(
+        id: 0801,
+        title: "Include 'Directory.Packages.props'",
+        message: "The file 'Directory.Packages.props' could not be located.",
+        description: "When CPM is enabled 'Directory.Packages.props' should be resolvable.",
+        tags: ["configuration", "versioning"],
+        category: Category.CPM);
 
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,

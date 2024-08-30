@@ -6,6 +6,8 @@
     <Nullable>enable</Nullable>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <NuGetAudit>true</NuGetAudit>
+    <!-- Would interact with all current tests -->
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
   </PropertyGroup>
 
   <PropertyGroup Label="Package">

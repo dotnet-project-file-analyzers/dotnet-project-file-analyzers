@@ -8,6 +8,7 @@
     <IsPackable>true</IsPackable>
     <IsPublishable>false</IsPublishable>
     <DevelopmentDependency>true</DevelopmentDependency>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">

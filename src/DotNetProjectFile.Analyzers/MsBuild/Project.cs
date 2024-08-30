@@ -105,6 +105,11 @@ public sealed class Project : Node
             }
         }
 
+        if (DirectoryPackagesProps is { })
+        {
+            yield return DirectoryPackagesProps;
+        }
+
         if (DirectoryBuildProps is { })
         {
             yield return DirectoryBuildProps;

@@ -30,7 +30,7 @@ public sealed class Projects(string language)
             if (entryPoint.DirectoryPackagesProps is null
                 && DirectoryProps(compilation.Assembly, "Directory.Packages.props") is { } package)
             {
-                entryPoint.DirectoryBuildProps = package;
+                entryPoint.DirectoryPackagesProps = package;
             }
             return entryPoint;
         }

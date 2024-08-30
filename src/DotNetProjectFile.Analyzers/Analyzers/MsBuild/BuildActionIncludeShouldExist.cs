@@ -8,7 +8,7 @@ public sealed class BuildActionIncludeShouldExist() : MsBuildProjectFileAnalyzer
     protected override void Register(ProjectFileAnalysisContext context)
     {
         // Paths in imports are based in the location of the project file.
-        foreach (var project in context.Project.SelfAndImports().Where(p => ProjectFileTypes.ProjectFileAndProps.Contains(p.FileType)))
+        foreach (var project in context.Project.SelfAndImports().Where(p => ProjectFileTypes.ProjectFile_Props.Contains(p.FileType)))
         {
             Report(project, context.Project.Path.Directory, context);
         }

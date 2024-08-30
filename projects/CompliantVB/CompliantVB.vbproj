@@ -7,6 +7,7 @@
     <NuGetAudit>true</NuGetAudit>
     <IsPackable>false</IsPackable>
     <OptionStrict>On</OptionStrict>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
   </PropertyGroup>
 
   <ItemGroup Label="Analyzers">

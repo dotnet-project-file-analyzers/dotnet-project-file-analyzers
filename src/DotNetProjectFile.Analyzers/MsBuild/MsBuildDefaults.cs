@@ -2,9 +2,10 @@
 
 public static class MsBuildDefaults
 {
-    public const bool IsPackable = true;
-    public const bool NuGetAudit = true;
-    public const bool EnableNETAnalyzers = false;
-    public const bool EnablePackageValidation = false;
-    public const bool DevelopmentDependency = false;
+    public static readonly bool? DevelopmentDependency = false;
+    public static readonly bool? EnableNETAnalyzers = false;
+    public static readonly bool? EnablePackageValidation = false;
+    public static readonly bool? IsPackable = true;
+    public static readonly bool? ManagePackageVersionsCentrally = null;
+    public static readonly bool? NuGetAudit = true;
 }
