@@ -84,9 +84,10 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 ### Publishing
 * [**Proj0400** Define the project publishability explicitly](rules/Proj0400.md)
 
-### Central Package Version Management
+### Central Package Management
 * [**Proj0800** Configure Central Package Management](rules/Proj0800.md)
 * [**Proj0801** Include 'Directory.Packages.props'](rules/Proj0801.md)
+* [**Proj0802** Enable Central Package Management centrally](rules/Proj0802.md)
 
 ### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
