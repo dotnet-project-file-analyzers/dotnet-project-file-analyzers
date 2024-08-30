@@ -6,7 +6,7 @@ public enum Category
     Clarity,
     CodeQuality,
     Configuration,
-    CPVM,
+    CPM,
     Formatting,
     Noise,
     Reliability,

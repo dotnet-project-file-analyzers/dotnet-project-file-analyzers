@@ -13,14 +13,14 @@ public class Reports
 public class Guards
 {
     [Test]
-    public void Projects_with_CPVM_file()
+    public void Projects_with_CPM_file()
         => new IncludeDirectoryPackagesProps()
-       .ForProject("UseCPVM.cs")
+       .ForProject("UseCPM.cs")
        .HasNoIssues();
 
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
-    public void Projects_explicitly_without_CPVM(string project)
+    public void Projects_explicitly_without_CPM(string project)
          => new IncludeDirectoryPackagesProps()
         .ForProject(project)
         .HasNoIssues();

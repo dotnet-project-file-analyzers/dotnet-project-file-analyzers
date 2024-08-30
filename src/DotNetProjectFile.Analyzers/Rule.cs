@@ -461,22 +461,22 @@ public static class Rule
 
     public static DiagnosticDescriptor ConfigureCentralPackageVersionManagement => New(
         id: 0800,
-        title: "Configure Central Package Version Management explicitly",
+        title: "Configure Central Package Management explicitly",
         message: "Define the <ManagePackageVersionsCentrally> node with the value 'true', or 'false'.",
         description:
             "In situations where you manage common dependencies for many " +
             "different projects, you can leverage Central Package Version " +
-            "Management (CPVM) features to do all of this from a single location.",
+            "Management (CPM) features to do all of this from a single location.",
         tags: ["configuration", "versioning"],
-        category: Category.CPVM);
+        category: Category.CPM);
 
     public static DiagnosticDescriptor IncludeDirectoryPackagesProps => New(
         id: 0801,
         title: "Include 'Directory.Packages.props'",
         message: "The file 'Directory.Packages.props' could not be located.",
-        description: "When CPVM is enabled 'Directory.Packages.props' should be resolvable.",
+        description: "When CPM is enabled 'Directory.Packages.props' should be resolvable.",
         tags: ["configuration", "versioning"],
-        category: Category.CPVM);
+        category: Category.CPM);
 
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
