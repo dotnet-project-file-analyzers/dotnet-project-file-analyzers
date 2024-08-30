@@ -7,7 +7,7 @@ public class Reports
         => new EnableCentralPackageManagementCentrally()
         .ForProject("EnableCPMLocally.cs")
         .HasIssue(new Issue("Proj0802", "Enable <ManagePackageVersionsCentrally> in 'Directory.Packages.props' or a shared props file.")
-        .WithSpan(05, 04, 05, 79));
+        .WithSpan(04, 04, 04, 73));
 }
 
 public class Guards
