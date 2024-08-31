@@ -88,6 +88,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0800** Configure Central Package Management](rules/Proj0800.md)
 * [**Proj0801** Include 'Directory.Packages.props'](rules/Proj0801.md)
 * [**Proj0802** Enable Central Package Management centrally](rules/Proj0802.md)
+* [**Proj0803** Use VersionOverride only with Central Package Management enabled](rules/Proj0803.md)
 
 ### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
