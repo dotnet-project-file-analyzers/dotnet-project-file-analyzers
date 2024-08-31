@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Build something to trigger the analyzers and prevent the output from showing up in your solution
+    directory. Other options might be better.
+    -->
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputPath>$([System.IO.Path]::GetTempPath())/.net/bin</OutputPath>
+    <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj</IntermediateOutputPath>
+    <!-- Rules we do not want to comply to here. -->
+    <NoWarn>
+      Proj0022;
+      Proj1002;
+      Proj1003
+    </NoWarn>
+    <IsPublishable>false</IsPublishable>
+    <IsPackable>false</IsPackable>
+    <OutputType>library</OutputType>
+  </PropertyGroup>
+
+  <!-- Ensure our analyzers are available -->
+  <ItemGroup>
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- We should start with an empty project -->
+  <ItemGroup>
+    <Compile Remove="**" />
+    <EmbeddedResource Remove="**" />
+    <None Remove="**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="*" />
+    <AdditionalFiles Include=".github/**" />
+    <AdditionalFiles Include="props/**" />
+  </ItemGroup>
+
+</Project>
