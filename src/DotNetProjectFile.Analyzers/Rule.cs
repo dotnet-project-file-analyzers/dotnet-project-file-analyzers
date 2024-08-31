@@ -496,6 +496,18 @@ public static class Rule
         tags: ["Maintainability"],
         category: Category.CPM);
 
+    public static DiagnosticDescriptor DefinePackageReferenceVersion => New(
+        id: 0804,
+        title: "Define version for PackageReference",
+        message: "Define version for '{0}' PackageReference.",
+        description:
+            "PackageReference nodes require a version number in order to " +
+            "properly resolve the package. This can be done by either using the " +
+            "Version attribute on the PackageReference node, or by using a matching " +
+            "PackageVersion node.",
+        tags: ["NuGet"],
+        category: Category.CPM);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",
