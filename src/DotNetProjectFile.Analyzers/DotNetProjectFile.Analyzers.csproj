@@ -32,8 +32,9 @@ ToBeReleased
 - Proj0801: Include CPM file. (NEW RULE)
 - Proj0802: Enable Central Package Management centrally. (NEW RULE)
 - Proj0803: Only use VersionOverride when CPM is enabled. (NEW RULE)
-= Proj1101: Report on &lt;PackageVersion&gt; too. (FN) 
-= Proj1101: Report on &lt;PackageReference VersionOverride&gt; too. (FN) 
+- Proj0805: Define version for PackageReference. (NEW RULE)
+- Proj1101: Report on &lt;PackageVersion&gt; too. (FN) 
+- Proj1101: Report on &lt;PackageReference VersionOverride&gt; too. (FN) 
 - Proj2100: Indent RESX. (NEW RULE)
 v1.3.1
 - Proj1101: Package references should have stable versions. (NEW RULE)
