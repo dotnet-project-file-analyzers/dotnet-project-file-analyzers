@@ -16,13 +16,13 @@ public sealed class DefinePackageReferenceVersion()
             .Where(r => r.IncludeOrUpdate is { Length: > 0 })
             .Select(r => r.IncludeOrUpdate)
             .ToImmutableHashSet();
+
         var references = context.Project
             .ImportsAndSelf()
             .SelectMany(p => p.ItemGroups)
             .SelectMany(g => g.PackageReferences)
             .Where(r => r.IncludeOrUpdate is { Length: > 0 })
-            .Where(r => r.VersionOrVersionOverride is not { Length: > 0 })
-            .ToImmutableArray();
+            .Where(r => r.VersionOrVersionOverride is not { Length: > 0 });
 
         foreach (var reference in references)
         {
