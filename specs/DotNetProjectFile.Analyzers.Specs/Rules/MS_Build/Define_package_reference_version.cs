@@ -7,7 +7,7 @@ public class Reports
        => new DefinePackageReferenceVersion()
        .ForProject("PackageReferenceWithoutVersion.cs")
        .HasIssue(
-           new Issue("Proj0804", "Define version for 'Warpstone' PackageReference."));
+           new Issue("Proj0805", "Define version for 'Warpstone' PackageReference."));
 }
 
 public class Guards

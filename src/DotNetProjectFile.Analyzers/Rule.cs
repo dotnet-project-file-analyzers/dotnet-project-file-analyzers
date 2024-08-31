@@ -497,7 +497,7 @@ public static class Rule
         category: Category.CPM);
 
     public static DiagnosticDescriptor DefinePackageReferenceVersion => New(
-        id: 0804,
+        id: 0805,
         title: "Define version for PackageReference",
         message: "Define version for '{0}' PackageReference.",
         description:
