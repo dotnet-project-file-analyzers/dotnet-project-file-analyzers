@@ -55,6 +55,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0800** Configure Central Package Management](https://dotnet-project-file-analyzers.github.io/rules/Proj0800.html)
 * [**Proj0801** Include 'Directory.Packages.props'](https://dotnet-project-file-analyzers.github.io/rules/Proj0801.html)
 * [**Proj0802** Enable Central Package Management centrally](https://dotnet-project-file-analyzers.github.io/rules/Proj0802.html)
+* [**Proj0803** Only use VersionOverride when CPM is enabled](https://dotnet-project-file-analyzers.github.io/rules/Proj0803.html)
 
 ### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1000.html)

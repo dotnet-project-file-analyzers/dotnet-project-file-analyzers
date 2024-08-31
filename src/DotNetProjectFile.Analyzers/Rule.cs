@@ -483,7 +483,17 @@ public static class Rule
         title: "Enable Central Package Management centrally",
         message: "Enable <ManagePackageVersionsCentrally> in 'Directory.Packages.props' or a shared props file.",
         description: "Enabling it per project would defy the purpose of CPM.",
-        tags: ["Maintanability"],
+        tags: ["Maintainability"],
+        category: Category.CPM);
+
+    public static DiagnosticDescriptor UseVersionOverrideOnlyWithCpm => New(
+        id: 0803,
+        title: "Use VersionOverride only with Central Package Management enabled",
+        message: "Use Version instead of VersionOverride when CPM is not enabled.",
+        description:
+            "When CPM is not enabled the use of <PackageReference VersionOveride /> " +
+            "`has no effect, and is most likely a mistake.",
+        tags: ["Maintainability"],
         category: Category.CPM);
 
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
