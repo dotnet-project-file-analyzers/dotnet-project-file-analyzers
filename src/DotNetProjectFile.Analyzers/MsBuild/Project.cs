@@ -77,6 +77,11 @@ public sealed class Project : Node
             yield return DirectoryBuildProps;
         }
 
+        if (DirectoryPackagesProps is { })
+        {
+            yield return DirectoryPackagesProps;
+        }
+
         foreach (var import in Imports)
         {
             if (import.Value is { } project)
@@ -94,6 +99,7 @@ public sealed class Project : Node
     public IEnumerable<Project> SelfAndImports()
     {
         yield return this;
+
         foreach (var import in Imports)
         {
             if (import.Value is { } project)
