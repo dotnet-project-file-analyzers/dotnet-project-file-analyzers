@@ -499,7 +499,7 @@ public static class Rule
     public static DiagnosticDescriptor UseVersionOnlyWithoutCpm => New(
         id: 0804,
         title: "Use Version only with Central Package Management not enabled",
-        message: "Use VersionOverride instead of Version when CPM is enabled.",
+        message: "Do not use Version when CPM is enabled.",
         description:
             "When CPM is enabled the use of <PackageReference Version /> " +
             "`has no effect, and is most likely a mistake.",
