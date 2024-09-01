@@ -518,6 +518,16 @@ public static class Rule
         tags: ["NuGet"],
         category: Category.CPM);
 
+    public static DiagnosticDescriptor VersionOverrideShouldChangeVersion => New(
+        id: 806,
+        title: "VersionOverride should change the version",
+        message: "Remove VersionOverride or change it to a version different than defined by the CPM.",
+        description:
+            "The use of VersionOverride on a <PackageReference> is only useful " +
+            "when it defines a different version then already defined by the CPM.",
+        tags: ["Bug"],
+        category: Category.CPM);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",
