@@ -89,6 +89,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0801** Include 'Directory.Packages.props'](rules/Proj0801.md)
 * [**Proj0802** Enable Central Package Management centrally](rules/Proj0802.md)
 * [**Proj0803** Use VersionOverride only with Central Package Management enabled](rules/Proj0803.md)
+* [**Proj0804** Use Version only with Central Package Management not enabled](rules/Proj0804.md)
 * [**Proj0805** Define version for PackageReference](rules/Proj0805.md)
 
 ### Analyzers
