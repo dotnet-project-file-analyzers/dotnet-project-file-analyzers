@@ -20,7 +20,7 @@ public class Guards
 
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
-    public void Projects_withtout_VersionOverride(string project)
+    public void Projects_without_VersionOverride(string project)
          => new UseVersionOverrideOnlyWithCpm()
         .ForProject(project)
         .HasNoIssues();

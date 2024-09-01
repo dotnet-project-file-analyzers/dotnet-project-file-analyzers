@@ -1,4 +1,4 @@
-﻿#pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
+#pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
 namespace DotNetProjectFile;
 
@@ -492,6 +492,16 @@ public static class Rule
         message: "Use Version instead of VersionOverride when CPM is not enabled.",
         description:
             "When CPM is not enabled the use of <PackageReference VersionOveride /> " +
+            "`has no effect, and is most likely a mistake.",
+        tags: ["Maintainability"],
+        category: Category.CPM);
+
+    public static DiagnosticDescriptor UseVersionOnlyWithoutCpm => New(
+        id: 0804,
+        title: "Use Version only with Central Package Management not enabled",
+        message: "Do not use Version when CPM is enabled.",
+        description:
+            "When CPM is enabled the use of <PackageReference Version /> " +
             "`has no effect, and is most likely a mistake.",
         tags: ["Maintainability"],
         category: Category.CPM);
