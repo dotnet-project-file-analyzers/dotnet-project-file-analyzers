@@ -34,6 +34,7 @@ ToBeReleased
 - Proj0803: Only use VersionOverride when CPM is enabled. (NEW RULE)
 - Proj0804: Only use Version when CPM is not enabled. (NEW RULE)
 - Proj0805: Define version for PackageReference. (NEW RULE)
+- Proj0806: VersionOverride should change the version (NEW RULE)
 - Proj1101: Report on &lt;PackageVersion&gt; too. (FN) 
 - Proj1101: Report on &lt;PackageReference VersionOverride&gt; too. (FN) 
 - Proj2100: Indent RESX. (NEW RULE)
