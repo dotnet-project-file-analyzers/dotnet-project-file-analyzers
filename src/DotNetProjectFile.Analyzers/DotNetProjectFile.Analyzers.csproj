@@ -128,7 +128,7 @@ v1.0.5
 v1.0.4
 - Proj1003: Use Sonar Analyzers. (NEW RULE)
 v1.0.3
-- Proj0007: <Import > is never an empty node. (FP)
+- Proj0007: <Import> is never an empty node. (FP)
 v1.0.2
 - Proj0006: Add additional files to improve static code analysis. (NEW RULE)
 - Proj0007: Remove empty nodes. (NEW RULE)
