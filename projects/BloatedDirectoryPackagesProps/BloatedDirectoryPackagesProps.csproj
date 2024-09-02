@@ -6,16 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="../common/Code.cs" />
+    <PackageReference Include="Qowaiv" VersionOverride="7.0.4" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageVersion Include="Qowaiv" Version="7.0.0" />
-  </ItemGroup>
-  
-  <ItemGroup>
-    <PackageReference Include="Qowaiv" />
-    <PackageReference Include="Warpstone" />
+    <Compile Include="../common/Code.cs" />
   </ItemGroup>
 
 </Project>

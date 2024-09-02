@@ -24,10 +24,10 @@
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
-    <Version>1.3.1</Version>
+    <Version>1.4.0</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
-ToBeReleased
+v1.4.0
 - Proj0800: Configure CPM. (NEW RULE)
 - Proj0801: Include CPM file. (NEW RULE)
 - Proj0802: Enable Central Package Management centrally. (NEW RULE)
@@ -35,6 +35,7 @@ ToBeReleased
 - Proj0804: Only use Version when CPM is not enabled. (NEW RULE)
 - Proj0805: Define version for PackageReference. (NEW RULE)
 - Proj0806: VersionOverride should change the version (NEW RULE)
+- Proj0807: Use only Directory.Packages.props for Central Package Management (NEW RULE)
 - Proj1101: Report on &lt;PackageVersion&gt; too. (FN) 
 - Proj1101: Report on &lt;PackageReference VersionOverride&gt; too. (FN) 
 - Proj2100: Indent RESX. (NEW RULE)
