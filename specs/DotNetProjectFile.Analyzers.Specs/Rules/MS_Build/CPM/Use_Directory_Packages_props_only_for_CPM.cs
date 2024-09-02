@@ -7,10 +7,10 @@ public class Reports
         => new UseDirectoryPackagesPropsOnlyForCPM()
         .ForProject("BloatedDirectoryPackagesProps.cs")
         .HasIssues(
-            new Issue("Proj0807", "As <TargetFramework> is not about Central Package Management it should not be in Directory.Packages.props." /*..*/).WithSpan(06, 04, 06, 53),
-            new Issue("Proj0807", "As <OutputType> is not about Central Package Management it should not be in Directory.Packages.props." /*.......*/).WithSpan(07, 04, 07, 36),
-            new Issue("Proj0807", "As <PackageReference> is not about Central Package Management it should not be in Directory.Packages.props." /*.*/).WithSpan(23, 04, 23, 64),
-            new Issue("Proj0807", "As <AdditionalFiles> is not about Central Package Management it should not be in Directory.Packages.props." /*..*/).WithSpan(28, 04, 28, 38));
+            new Issue("Proj0807", "As <TargetFramework> is not about Central Package Management it should not be in Directory.Packages.props." /*..*/).WithSpan(04, 04, 04, 53),
+            new Issue("Proj0807", "As <OutputType> is not about Central Package Management it should not be in Directory.Packages.props." /*.......*/).WithSpan(05, 04, 05, 36),
+            new Issue("Proj0807", "As <PackageReference> is not about Central Package Management it should not be in Directory.Packages.props." /*.*/).WithSpan(22, 04, 22, 64),
+            new Issue("Proj0807", "As <AdditionalFiles> is not about Central Package Management it should not be in Directory.Packages.props." /*..*/).WithSpan(27, 04, 27, 38));
 }
 
 public class Guards
