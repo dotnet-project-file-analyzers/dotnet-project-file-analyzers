@@ -27,6 +27,9 @@
     <Version>1.4.0</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
+      <![CDATA[
+ToBeReleased
+- Proj1701: Use <![CDATA[ for large texts. (NEW RULE)
 v1.4.0
 - Proj0800: Configure CPM. (NEW RULE)
 - Proj0801: Include CPM file. (NEW RULE)
@@ -36,8 +39,8 @@ v1.4.0
 - Proj0805: Define version for PackageReference. (NEW RULE)
 - Proj0806: VersionOverride should change the version (NEW RULE)
 - Proj0807: Use only Directory.Packages.props for Central Package Management (NEW RULE)
-- Proj1101: Report on &lt;PackageVersion&gt; too. (FN) 
-- Proj1101: Report on &lt;PackageReference VersionOverride&gt; too. (FN) 
+- Proj1101: Report on <PackageVersion> too. (FN) 
+- Proj1101: Report on <PackageReference VersionOverride> too. (FN) 
 - Proj2100: Indent RESX. (NEW RULE)
 v1.3.1
 - Proj1101: Package references should have stable versions. (NEW RULE)
@@ -63,14 +66,14 @@ v1.2.1
 v1.2.0
 - Proj0006: Directory.Build.Props is not required to be added as additional file. (FP)
 - Proj0020: Item group should only contain nodes of a single type. (NEW RULE)
-- Proj0600: Avoid &lt;GeneratePackageOnBuild&gt; if &lt;IsPackable&gt; is false. (NEW RULE)
+- Proj0600: Avoid <GeneratePackageOnBuild> if <IsPackable> is false. (NEW RULE)
 v1.1.0
 - Support of Directory.Build.props.
 v1.0.14
 - Proj0018: Fix false positive reports always triggering. (FP)
 - Proj0018: Fix typo in message.
 v1.0.13
-- Proj0004: Only report when &lt;NuGetAudit&gt; is explicitly disabled. (FP)
+- Proj0004: Only report when <NuGetAudit> is explicitly disabled. (FP)
 v1.0.12
 - Proj1200: Exclude private assets as project file dependency. (NEW RULE)
 - Proj0015, Proj0016: Order references case-insensitive. (FP &amp; FN)
@@ -81,7 +84,7 @@ v1.0.10
 - Proj0017: Can't create alias for static using directive. (NEW RULE)
 - Proj0018: Order using directives by type. (NEW RULE)
 - Proj0019: Order using directives alphabetically. (NEW RULE)
-- Proj0202: Both &lt;Description&gt; and &lt;PackageDescription&gt; are fine. (FP)
+- Proj0202: Both <Description> and <PackageDescription> are fine. (FP)
 - Improved message for Proj2002 to be more informative.
 - Depend on Microsoft.CodeAnalysis.Workspaces.Common version 4.0.1.
 v1.0.9
@@ -92,7 +95,7 @@ v1.0.8
 - Proj0015: Order package references alphabetically. (NEW RULE)
 - Proj0016: Order project references alphabetically. (NEW RULE)
 - Proj0400: Define the project publishability explicitly. (NEW RULE)
-- Support &lt;Choose&gt; nodes.
+- Support <Choose> nodes.
 v1.0.7
 - Proj0011: Define properties once. (NEW RULE)
 - Proj0012: Reassign properties with different value. (NEW RULE)
@@ -125,7 +128,7 @@ v1.0.5
 v1.0.4
 - Proj1003: Use Sonar Analyzers. (NEW RULE)
 v1.0.3
-- Proj0007: &lt;Import &gt; is never an empty node. (FP)
+- Proj0007: <Import > is never an empty node. (FP)
 v1.0.2
 - Proj0006: Add additional files to improve static code analysis. (NEW RULE)
 - Proj0007: Remove empty nodes. (NEW RULE)
@@ -141,6 +144,7 @@ v1.0.0
 - Proj0002: Upgrade legacy MS Build project file. (NEW RULE)
 - Proj0003: Define usings explicit. (NEW RULE)
 - Proj1001: Use analyzers for packages. (NEW RULE)
+]]>
     </PackageReleaseNotes>
     <PackageIcon>logo_128x128.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>

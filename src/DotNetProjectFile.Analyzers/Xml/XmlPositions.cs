@@ -7,6 +7,8 @@ public sealed record XmlPositions
 {
     public LinePositionSpan FullSpan => new(StartElement.Start, EndElement.End);
 
+    public LinePositionSpan InnerSpan => new(StartElement.End, EndElement.Start);
+
     public LinePositionSpan StartElement { get; init; }
 
     public LinePositionSpan EndElement { get; init; }

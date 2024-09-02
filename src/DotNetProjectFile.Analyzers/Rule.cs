@@ -591,22 +591,30 @@ public static class Rule
         category: Category.Reliability);
 
     public static DiagnosticDescriptor ExcludePrivateAssetDependencies => New(
-      id: 1200,
-      title: "Exclude private assets as project file dependency",
-      message: "Mark the package reference \"{0}\" as a private asset.",
-      description:
-          "Private assets (such as analyzers) will not result in being a " +
-          "project dependency after being compiled.",
-      tags: ["private", "asset", "dependencies", "dependency"],
-      category: Category.CodeQuality);
+        id: 1200,
+        title: "Exclude private assets as project file dependency",
+        message: "Mark the package reference \"{0}\" as a private asset.",
+        description:
+            "Private assets (such as analyzers) will not result in being a " +
+            "project dependency after being compiled.",
+        tags: ["private", "asset", "dependencies", "dependency"],
+        category: Category.CodeQuality);
 
     public static DiagnosticDescriptor IndentXml => New(
-      id: 1700,
-      title: "Indent XML files",
-      message: "The element <{0}> has not been properly indented.",
-      description: "To improve readability, XML elements should be properly indented.",
-      tags: ["XML", "indentation"],
-      category: Category.Formatting);
+        id: 1700,
+        title: "Indent XML files",
+        message: "The element <{0}> has not been properly indented.",
+        description: "To improve readability, XML elements should be properly indented.",
+        tags: ["XML", "indentation"],
+        category: Category.Formatting);
+
+    public static DiagnosticDescriptor UseCDATAForLargeTexts => New(
+        id: 1701,
+        title: "Use <![CDATA[ for large texts",
+        message: "Add <![CDATA[ and ]]> around this text.",
+        description: "To improve readability, large texts should be CDATA.",
+        tags: ["XML", "CDATA"],
+        category: Category.Formatting);
 
     public static DiagnosticDescriptor EmbedValidResourceFiles => New(
         id: 2000,
