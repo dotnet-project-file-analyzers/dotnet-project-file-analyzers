@@ -92,6 +92,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0804** Use Version only with Central Package Management not enabled](rules/Proj0804.md)
 * [**Proj0805** Define version for PackageReference](rules/Proj0805.md)
 * [**Proj0806** VersionOverride should change the version](rules/Proj0806.md)
+* [**Proj0807** Use Directory.Packages.props only for Central Package Management](rules/Proj0807.md)
 
 ### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
