@@ -61,6 +61,9 @@ To add a props file:
 </Project>
 ```
 
+## Community
+* [LinkedIn](https://www.linkedin.com/company/dotnet-project-file-analyzers)
+
 ## Reference an analyzer from a project
 For debugging/development purposes, it can be useful to reference the analyzer
 project directly. As mentioned [here](https://www.meziantou.net/referencing-an-analyzer-from-a-project.htm),
