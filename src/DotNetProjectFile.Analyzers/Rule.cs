@@ -528,6 +528,16 @@ public static class Rule
         tags: ["Bug"],
         category: Category.CPM);
 
+    public static DiagnosticDescriptor OnlyUseDirectoryPackagesPropsForCPM => New(
+        id: 807,
+        title: "Only use Directory.Packages.props for Central Package Management",
+        message: "As <{0}> is not about Central Package Management it should not be in Directory.Packages.props.",
+        description:
+            "The use of VersionOverride on a <PackageReference> is only useful " +
+            "when it defines a different version then already defined by the CPM.",
+        tags: ["Bug"],
+        category: Category.CPM);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",

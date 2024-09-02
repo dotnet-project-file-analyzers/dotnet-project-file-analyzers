@@ -4,6 +4,8 @@ public static class ProjectFileTypes
 {
     public static readonly IReadOnlyCollection<ProjectFileType> ProjectFile = [ProjectFileType.ProjectFile];
 
+    public static readonly IReadOnlyCollection<ProjectFileType> DirectoryPackages = [ProjectFileType.DirectoryPackages];
+
     public static readonly IReadOnlyCollection<ProjectFileType> ProjectFile_Props =
     [
         ProjectFileType.ProjectFile,

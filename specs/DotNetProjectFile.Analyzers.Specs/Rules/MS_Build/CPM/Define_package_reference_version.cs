@@ -3,7 +3,7 @@
 public class Reports
 {
     [Test]
-    public void on_no_output_type()
+    public void missing_versions()
        => new DefinePackageReferenceVersion()
        .ForProject("PackageReferenceWithoutVersion.cs")
        .HasIssue(
