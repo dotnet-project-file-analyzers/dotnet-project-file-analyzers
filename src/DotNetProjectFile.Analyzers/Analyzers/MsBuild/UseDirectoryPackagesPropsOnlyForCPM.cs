@@ -36,6 +36,7 @@ public sealed class UseDirectoryPackagesPropsOnlyForCPM()
 
         // Properties
         ManagePackageVersionsCentrally => true,
+        CentralPackageFloatingVersionsEnabled => true,
         CentralPackageTransitivePinningEnabled => true,
         CentralPackageVersionOverrideEnabled => true,
 
