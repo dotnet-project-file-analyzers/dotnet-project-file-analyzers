@@ -1,18 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="common.props" />
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Include="../common/Code.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageVersion Include="Qowaiv" Version="7.0.0" />
-  </ItemGroup>
-  
   <ItemGroup>
     <PackageReference Include="Qowaiv" />
     <PackageReference Include="Warpstone" />

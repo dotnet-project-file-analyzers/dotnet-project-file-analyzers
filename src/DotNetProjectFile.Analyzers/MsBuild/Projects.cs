@@ -25,12 +25,18 @@ public sealed class Projects(string language)
             if (entryPoint.DirectoryBuildProps is null
                 && DirectoryProps(compilation.Assembly, "Directory.Build.props") is { } build)
             {
-                entryPoint.DirectoryBuildProps = build;
+                foreach (var import in entryPoint.ImportsAndSelf().TakeWhile(t => t.FileType != ProjectFileType.DirectoryBuild))
+                {
+                    import.DirectoryBuildProps = build;
+                }
             }
             if (entryPoint.DirectoryPackagesProps is null
                 && DirectoryProps(compilation.Assembly, "Directory.Packages.props") is { } package)
             {
-                entryPoint.DirectoryPackagesProps = package;
+                foreach (var import in entryPoint.ImportsAndSelf().TakeWhile(t => t.FileType != ProjectFileType.DirectoryPackages))
+                {
+                    import.DirectoryBuildProps = package;
+                }
             }
             return entryPoint;
         }
