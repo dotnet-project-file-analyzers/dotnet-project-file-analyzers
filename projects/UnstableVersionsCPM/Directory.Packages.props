@@ -3,9 +3,11 @@
 
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageFloatingVersionsEnabled>true</CentralPackageFloatingVersionsEnabled>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageVersion Include="StyleCop.Analyzers" Version="*-*" />
     <PackageVersion Include="System.IO.Hashing" Version="9.0.0-preview.7.24405.7" />
   </ItemGroup>
   
