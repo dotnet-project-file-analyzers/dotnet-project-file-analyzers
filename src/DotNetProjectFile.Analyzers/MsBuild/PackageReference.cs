@@ -1,4 +1,6 @@
-﻿namespace DotNetProjectFile.MsBuild;
+﻿using DotNetProjectFile.NuGet;
+
+namespace DotNetProjectFile.MsBuild;
 
 public sealed class PackageReference(XElement element, Node parent, MsBuildProject project)
     : Node(element, parent, project)
@@ -16,4 +18,14 @@ public sealed class PackageReference(XElement element, Node parent, MsBuildProje
     public string VersionOrVersionOverride => Version ?? VersionOverride ?? string.Empty;
 
     public string? PrivateAssets => Attribute() ?? Child();
+
+    /// <summary>Resolves the version taking CPM into account.</summary>
+    public string? ResolveVersion()
+        => Project.ManagePackageVersionsCentrally() is true
+            ? VersionOverride ?? Project
+            .ImportsAndSelf()
+            .SelectMany(g => g.ItemGroups)
+            .SelectMany(v => v.PackageVersions)
+            .LastOrDefault(v => v.Include == IncludeOrUpdate)?.Version
+        : Version;
 }

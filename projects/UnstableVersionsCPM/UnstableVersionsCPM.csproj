@@ -6,11 +6,22 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.IO.Hashing" VersionOverride="9.0.0-preview.7.24405.7" />
+    <PackageReference Include="System.IO.Hashing" />
+    <PackageReference Update="System.IO.Hashing" VersionOverride="9.0.0-preview.7.24405.7" />
+    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
+  <ItemGroup Label="Analyzer">
+    <ProjectReference
+      Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
+      PrivateAssets="all"
+      ReferenceOutputAssembly="false"
+      OutputItemType="Analyzer"
+      SetTargetFramework="TargetFramework=netstandard2.0" />
   </ItemGroup>
 
 </Project>

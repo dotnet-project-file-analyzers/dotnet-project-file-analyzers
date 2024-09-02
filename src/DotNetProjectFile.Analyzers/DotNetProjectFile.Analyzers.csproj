@@ -29,6 +29,7 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased
+- Proj1101: Resolve version in project files only. (FP)
 - Proj1701: Use <![CDATA[ for large texts. (NEW RULE)
 v1.4.0
 - Proj0800: Configure CPM. (NEW RULE)

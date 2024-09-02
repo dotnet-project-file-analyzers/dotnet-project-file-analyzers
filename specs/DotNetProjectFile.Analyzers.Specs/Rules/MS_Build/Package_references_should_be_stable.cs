@@ -16,8 +16,8 @@ public class Reports
         => new PackageReferencesShouldBeStable()
         .ForProject("UnstableVersionsCPM.cs")
         .HasIssues(
-            new Issue("Proj1101", "Use a stable version of 'System.IO.Hashing', instead of '9.0.0-preview.7.24405.7'.").WithSpan(08, 04, 08, 84),
-            new Issue("Proj1101", "Use a stable version of 'System.IO.Hashing', instead of '9.0.0-preview.7.24405.7'.").WithSpan(08, 04, 08, 94));
+            new Issue("Proj1101", "Use a stable version of 'System.IO.Hashing', instead of '9.0.0-preview.7.24405.7'.").WithSpan(08, 04, 08, 52),
+            new Issue("Proj1101", "Use a stable version of 'System.IO.Hashing', instead of '9.0.0-preview.7.24405.7'.").WithSpan(09, 04, 09, 93));
 }
 
 public class Guards
