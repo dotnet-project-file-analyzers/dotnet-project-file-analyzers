@@ -24,11 +24,11 @@
     <RepositoryUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;csproj;vbproj;resx;MS Build;resources</PackageTags>
-    <Version>1.4.0</Version>
+    <Version>1.4.1</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
-ToBeReleased
+v1.4.1
 - Proj1101: Resolve version in project files only. (FP)
 - Proj1701: Use <![CDATA[ for large texts. (NEW RULE)
 - Proj1702: Omit XML declarations. (NEW RULE)
