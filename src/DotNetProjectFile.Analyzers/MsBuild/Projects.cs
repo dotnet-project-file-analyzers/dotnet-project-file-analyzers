@@ -35,7 +35,7 @@ public sealed class Projects(string language)
             {
                 foreach (var import in entryPoint.ImportsAndSelf().TakeWhile(t => t.FileType != ProjectFileType.DirectoryPackages))
                 {
-                    import.DirectoryBuildProps = package;
+                    import.DirectoryPackagesProps = package;
                 }
             }
             return entryPoint;
