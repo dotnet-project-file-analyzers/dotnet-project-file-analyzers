@@ -31,6 +31,7 @@
 ToBeReleased
 - Proj1101: Resolve version in project files only. (FP)
 - Proj1701: Use <![CDATA[ for large texts. (NEW RULE)
+- Bound Directory.Build.props and Directory.Packages.props to other props files. (BUG)
 v1.4.0
 - Proj0800: Configure CPM. (NEW RULE)
 - Proj0801: Include CPM file. (NEW RULE)
