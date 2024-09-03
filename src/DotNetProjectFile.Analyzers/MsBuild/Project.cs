@@ -5,7 +5,12 @@ namespace DotNetProjectFile.MsBuild;
 public sealed class Project : Node
 {
     private Project(IOFile path, SourceText text, Projects projects, AdditionalText? additionalText)
-        : base(XElement.Parse(text.ToString(), LoadOptions), null, null)
+        : this(path, text, XDocument.Parse(text.ToString(), LoadOptions), projects, additionalText)
+    {
+    }
+
+    private Project(IOFile path, SourceText text, XDocument document, Projects projects, AdditionalText? additionalText)
+        : base(document.Root, null, null)
     {
         Path = path;
         Text = text;
