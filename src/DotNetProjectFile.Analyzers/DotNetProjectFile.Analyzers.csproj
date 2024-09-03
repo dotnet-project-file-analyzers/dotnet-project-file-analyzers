@@ -28,6 +28,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+ToBeReleased
+- Proj1200: Microsoft.NET.Test.Sdk should be considered a private asset. (FN)
 v1.4.1
 - Proj1101: Resolve version in project files only. (FP)
 - Proj1701: Use <![CDATA[ for large texts. (NEW RULE)
