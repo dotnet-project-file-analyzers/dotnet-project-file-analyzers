@@ -70,6 +70,7 @@ The package contains analyzers that analyze .NET project files.
 ### Formatting
 * [**Proj1700** Indent XML](https://dotnet-project-file-analyzers.github.io/rules/Proj1700.html)
 * [**Proj1701** Use CDATA for large texts](https://dotnet-project-file-analyzers.github.io/rules/Proj1701.html)
+* [**Proj1702** Omit XML declarations](https://dotnet-project-file-analyzers.github.io/rules/Proj1702.html)
 
 ### Other
 * [**Proj1100** Avoid using Moq](https://dotnet-project-file-analyzers.github.io/rules/Proj1100.html)

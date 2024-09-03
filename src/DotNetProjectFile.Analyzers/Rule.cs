@@ -616,6 +616,14 @@ public static class Rule
         tags: ["XML", "CDATA"],
         category: Category.Formatting);
 
+    public static DiagnosticDescriptor OmitXmlDeclarations => New(
+        id: 1702,
+        title: "Omit XML declarations",
+        message: "Remove the XML declaration as it is redundant.",
+        description: "The XML declaration is redundant for MS Build project files.",
+        tags: ["XML", "declaration"],
+        category: Category.Formatting);
+
     public static DiagnosticDescriptor EmbedValidResourceFiles => New(
         id: 2000,
         title: "Embed valid resource files",
