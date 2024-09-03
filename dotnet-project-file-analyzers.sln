@@ -51,6 +51,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "design", "design", "{5BAB07
 		design\logo.psd = design\logo.psd
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetProjectFile.Analyzers.Sdk", "src\DotNetProjectFile.Analyzers.Sdk\DotNetProjectFile.Analyzers.Sdk.csproj", "{219698D8-CACB-4DF0-8602-DAE8DC5E2CFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -73,6 +75,10 @@ Global
 		{E19C2231-08B4-4806-950E-E713B8799B9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E19C2231-08B4-4806-950E-E713B8799B9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E19C2231-08B4-4806-950E-E713B8799B9C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{219698D8-CACB-4DF0-8602-DAE8DC5E2CFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{219698D8-CACB-4DF0-8602-DAE8DC5E2CFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{219698D8-CACB-4DF0-8602-DAE8DC5E2CFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{219698D8-CACB-4DF0-8602-DAE8DC5E2CFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

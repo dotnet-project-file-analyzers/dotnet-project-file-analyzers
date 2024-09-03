@@ -1,0 +1,15 @@
+﻿<Project>
+
+  <!-- We should start with an empty project -->
+  <ItemGroup>
+    <Compile Remove="**/*" />
+    <EmbeddedResource Remove="**/*" />
+    <None Remove="**/*" />
+  </ItemGroup>
+
+  <!-- Ensure our analyzers are available -->
+  <ItemGroup>
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>
