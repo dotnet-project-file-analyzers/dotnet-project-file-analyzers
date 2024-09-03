@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="common.props" />
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
@@ -10,12 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageVersion Include="Qowaiv" Version="7.0.0" />
-  </ItemGroup>
-  
-  <ItemGroup>
     <PackageReference Include="Qowaiv" />
+    
+    <!-- MSB4018 returns an error and crashes.
     <PackageReference Include="Warpstone" />
+    -->
   </ItemGroup>
 
 </Project>

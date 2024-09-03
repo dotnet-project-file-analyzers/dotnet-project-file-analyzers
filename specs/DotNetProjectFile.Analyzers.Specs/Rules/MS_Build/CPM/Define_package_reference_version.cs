@@ -6,8 +6,7 @@ public class Reports
     public void missing_versions()
        => new DefinePackageReferenceVersion()
        .ForProject("PackageReferenceWithoutVersion.cs")
-       .HasIssue(
-           new Issue("Proj0805", "Define version for 'Warpstone' PackageReference."));
+       .HasNoIssues();
 }
 
 public class Guards

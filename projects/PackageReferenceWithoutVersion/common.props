@@ -1,0 +1,7 @@
+<Project>
+
+  <ItemGroup>
+    <PackageReference Include="Qowaiv.Analyzers.CSharp" PrivateAssets="all" />
+  </ItemGroup>
+
+</Project>
