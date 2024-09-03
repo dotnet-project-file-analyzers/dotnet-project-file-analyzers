@@ -1,4 +1,6 @@
-﻿namespace Rules.All;
+﻿using System.IO;
+
+namespace Rules.All;
 
 public class Guards
 {

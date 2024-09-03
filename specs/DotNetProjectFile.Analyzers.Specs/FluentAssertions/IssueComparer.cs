@@ -2,7 +2,6 @@
 
 namespace FluentAssertions;
 
-
 internal sealed class IssueComparer : IEqualityComparer<Issue>
 {
     public bool Equals(Issue? x, Issue? y)
