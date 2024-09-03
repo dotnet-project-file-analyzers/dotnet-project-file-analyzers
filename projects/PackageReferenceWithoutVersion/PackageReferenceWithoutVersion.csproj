@@ -12,7 +12,10 @@
 
   <ItemGroup>
     <PackageReference Include="Qowaiv" />
+    
+    <!-- MSB4018 returns an error and crashes.
     <PackageReference Include="Warpstone" />
+    -->
   </ItemGroup>
 
 </Project>
