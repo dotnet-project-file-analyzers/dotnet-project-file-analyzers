@@ -41,6 +41,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
         // Private assets
         new Package("coverlet.collector", isPrivateAsset: true),
         new Package("coverlet.msbuild", isPrivateAsset: true),
+        new Package("Microsoft.NET.Test.Sdk", isPrivateAsset: true),
         new Package("NUnit3TestAdapter", isPrivateAsset: true),
         new Package("Polyfill", isPrivateAsset: true),
         new Package("PolySharp", isPrivateAsset: true),
