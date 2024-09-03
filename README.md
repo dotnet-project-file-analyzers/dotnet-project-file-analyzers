@@ -103,6 +103,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 ### Formatting
 * [**Proj1700** Indent XML](rules/Proj1700.md)
 * [**Proj1701** Use CDATA for large texts](rules/Proj1701.md)
+* [**Proj1702** Omit XML declarations](rules/Proj1702.md)
 
 ### Other
 * [**Proj1100** Avoid using Moq](rules/Proj1100.md)
