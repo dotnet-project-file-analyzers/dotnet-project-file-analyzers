@@ -10,7 +10,7 @@ public partial class Rules
 {
     [Test]
     public void have_unique_ids()
-        => AlleRules.Select(d => d.Id).Should().OnlyHaveUniqueItems();
+        => AlleRules.Should().OnlyHaveUniqueItems(d => d.Id);
 
     [TestCaseSource(nameof(AlleRules))]
     public async Task have_mark_down_documentation(Rule rule)
