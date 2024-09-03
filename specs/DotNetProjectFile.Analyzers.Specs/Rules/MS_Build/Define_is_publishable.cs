@@ -12,6 +12,12 @@ public class Reports
 
 public class Guards
 {
+    [Test]
+    public void test_project()
+        => new DefineIsPublishable()
+        .ForProject("TestProject.cs")
+        .HasNoIssues();
+
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     public void Projects_without_issues(string project)

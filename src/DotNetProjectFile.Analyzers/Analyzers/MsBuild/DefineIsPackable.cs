@@ -10,7 +10,8 @@ public sealed class DefineIsPackable() : MsBuildProjectFileAnalyzer(Rule.DefineI
         if (context.Project
             .ImportsAndSelf()
             .SelectMany(p => p.PropertyGroups)
-            .SelectMany(g => g.IsPackable).None())
+            .SelectMany(g => g.IsPackable).None()
+            && !context.Project.IsTestProject())
         {
             context.ReportDiagnostic(Descriptor, context.Project);
         }

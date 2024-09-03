@@ -29,6 +29,8 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased
+- Proj0200: Do not report on project with <IsTestProject> set to true. (FP)
+- Proj0400: Do not report on project with <IsTestProject> set to true. (FP)
 - Proj1200: Added 48 more compile-time dependencies to the private-asset list. (FN)
 v1.4.1
 - Proj1101: Resolve version in project files only. (FP)
