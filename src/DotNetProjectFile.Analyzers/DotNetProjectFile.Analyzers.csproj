@@ -29,6 +29,7 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased
+- Proj0014: Ignore <ProjectReference ReferenceOutputAssembly="false">. (FN)
 - Proj1200: Added 48 more compile-time dependencies to the private-asset list. (FN)
 v1.4.1
 - Proj1101: Resolve version in project files only. (FP)

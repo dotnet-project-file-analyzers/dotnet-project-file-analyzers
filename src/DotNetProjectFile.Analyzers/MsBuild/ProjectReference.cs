@@ -4,4 +4,6 @@ public sealed class ProjectReference(XElement element, Node parent, MsBuildProje
     : Node(element, parent, project)
 {
     public string? Include => Attribute();
+
+    public bool? ReferenceOutputAssembly => Convert<bool?>(Attribute());
 }

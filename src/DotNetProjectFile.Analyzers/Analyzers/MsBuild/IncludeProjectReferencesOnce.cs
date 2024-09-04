@@ -13,7 +13,7 @@ public sealed class IncludeProjectReferencesOnce() : MsBuildProjectFileAnalyzer(
             .ImportsAndSelf()
             .SelectMany(p => p.ItemGroups)
             .SelectMany(i => i.ProjectReferences)
-            .Where(r => r.Include is not null))
+            .Where(r => r.Include is not null && r.ReferenceOutputAssembly is not false))
         {
             var key = Reference.Create(reference);
 

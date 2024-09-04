@@ -12,6 +12,14 @@
     <ProjectReference Include="./../../projects/EmptyNodes/EmptyNodes.csproj" />
   </ItemGroup>
 
+  <ItemGroup Label="Analyzer">
+    <ProjectReference
+      Include="../EmptyNodes/EmptyNodes.csproj"
+      PrivateAssets="all"
+      ReferenceOutputAssembly="false"
+      OutputItemType="Analyzer" />
+  </ItemGroup>
+
   <ItemGroup>
     <Compile Include="../common/Code.cs" />
   </ItemGroup>
