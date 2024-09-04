@@ -453,7 +453,7 @@ public static class Rule
         message: "Set <IsPackable> to false.",
         description:
             "Test projects should only be responsible for running tests. Hence " +
-            "the should not be packable.",
+            "they should not be packable.",
         tags: ["Configuration"],
         category: Category.Bug);
 
