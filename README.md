@@ -5,6 +5,10 @@ containing [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/)
 (static code) [analyzers](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.diagnostics.diagnosticanalyzer)
 that report issues on .NET project files.
 
+The documentation reflects the current repository state of the features, not the
+released ones. Check the [Release Notes](https://www.nuget.org/packages/DotNetProjectFile.Analyzers#releasenotes-body-tab)
+to understand if the documented feature you want to use has been released.
+
 ## Installation
 [![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/)
 
@@ -83,6 +87,10 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 
 ### Publishing
 * [**Proj0400** Define the project publishability explicitly](rules/Proj0400.md)
+
+### Test projects
+* [**Proj0450** Test projects should not be packable](rules/Proj0450.md)
+* [**Proj0451** Test projects should not be publishable](rules/Proj0451.md)
 
 ### Central Package Management
 * [**Proj0800** Configure Central Package Management](rules/Proj0800.md)
