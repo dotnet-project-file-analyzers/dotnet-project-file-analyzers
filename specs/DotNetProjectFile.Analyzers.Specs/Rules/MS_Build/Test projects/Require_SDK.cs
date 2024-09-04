@@ -8,6 +8,13 @@ public class Reports
         .ForProject("TestProjectWithoutSdk.cs")
         .HasIssue(new Issue("Proj0452", @"Include <PackageReference Include=""Microsoft.NET.Test.Sdk"" PrivateAssets =""all"" />.")
         .WithSpan(00, 00, 11, 10));
+
+    [Test]
+    public void SDK_without_test_project()
+        => new TestProjectsRequireSdk()
+        .ForProject("TestSdkOnly.cs")
+        .HasIssue(new Issue("Proj0453", "Set <IsTestProject> to true.")
+        .WithSpan(00, 00, 14, 10));
 }
 
 public class Guards
