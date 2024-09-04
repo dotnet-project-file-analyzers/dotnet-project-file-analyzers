@@ -20,7 +20,7 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.Project.IsPackable()) return;
+        if (!context.Project.IsPackable() || context.Project.IsTestProject()) return;
 
         Analyze(context, Rule.DefineVersion, g => g.Version);
         Analyze(context, Rule.DefineDescription, g => Nodes.Concat(g.Description, g.PackageDescription));

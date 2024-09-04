@@ -16,6 +16,7 @@ public sealed class PropertyGroup : Node
 
         IsPackable = Children.Typed<IsPackable>();
         IsPublishable = Children.Typed<IsPublishable>();
+        IsTestProject = Children.Typed<IsTestProject>();
         Version = Children.Typed<Version>();
         Description = Children.Typed<Description>();
         Authors = Children.Typed<Authors>();
@@ -89,6 +90,8 @@ public sealed class PropertyGroup : Node
     public Nodes<PackageReadmeFile> PackageReadmeFile { get; }
 
     public Nodes<IsPublishable> IsPublishable { get; }
+
+    public Nodes<IsTestProject> IsTestProject { get; }
 
     public Nodes<GeneratePackageOnBuild> GeneratePackageOnBuild { get; }
 

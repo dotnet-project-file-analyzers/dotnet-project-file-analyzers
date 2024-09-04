@@ -8,6 +8,12 @@ public class Reports
        .ForProject("NoIsPackable.cs")
        .HasIssue(
            new Issue("Proj0200", "Define the <IsPackable> node explicitly."));
+
+    [Test]
+    public void test_project()
+        => new DefineIsPackable()
+        .ForProject("TestProject.cs")
+        .HasIssue(new Issue("Proj0200", "Define the <IsPackable> node explicitly."));
 }
 
 public class Guards

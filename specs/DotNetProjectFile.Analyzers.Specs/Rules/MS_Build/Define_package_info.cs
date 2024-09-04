@@ -108,6 +108,12 @@ public class Reports
 
 public class Guards
 {
+    [Test]
+    public void Test_project()
+        => new DefinePackageInfo()
+       .ForProject("TestProject.cs")
+       .HasNoIssues();
+
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     [TestCase("PackageDescription.cs")]
