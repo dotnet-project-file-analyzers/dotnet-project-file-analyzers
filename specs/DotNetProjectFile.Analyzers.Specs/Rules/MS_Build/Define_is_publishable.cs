@@ -6,18 +6,17 @@ public class Reports
     public void on_no_is_publishable()
        => new DefineIsPublishable()
        .ForProject("EmptyProject.cs")
-       .HasIssue(
-           new Issue("Proj0400", "Define the <IsPublishable> node explicitly."));
-}
+       .HasIssue(new Issue("Proj0400", "Define the <IsPublishable> node explicitly."));
 
-public class Guards
-{
     [Test]
     public void test_project()
         => new DefineIsPublishable()
         .ForProject("TestProject.cs")
-        .HasNoIssues();
+        .HasIssue(new Issue("Proj0400", "Define the <IsPublishable> node explicitly."));
+}
 
+public class Guards
+{
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     public void Projects_without_issues(string project)
