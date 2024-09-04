@@ -1,4 +1,5 @@
 ﻿using CodeAnalysis.TestTools.Contexts;
+using System.IO;
 
 namespace Microsoft.CodeAnalysis.Diagnostics;
 
