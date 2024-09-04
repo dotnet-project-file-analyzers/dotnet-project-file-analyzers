@@ -7,7 +7,8 @@ public sealed class DefineIsPublishable() : MsBuildProjectFileAnalyzer(Rule.Defi
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project
+        if (!context.Project.IsTestProject() &&
+            context.Project
             .ImportsAndSelf()
             .SelectMany(p => p.PropertyGroups)
             .SelectMany(g => g.IsPublishable).None())

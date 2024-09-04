@@ -447,6 +447,26 @@ public static class Rule
         tags: ["Configuration", "confusion"],
         category: Category.Clarity);
 
+    public static DiagnosticDescriptor TestProjectShouldNotBePackable => New(
+        id: 0450,
+        title: "Test projects should not be packable",
+        message: "Set <IsPackable> to false.",
+        description:
+            "Test projects should only be responsible for running tests. Hence " +
+            "they should not be packable.",
+        tags: ["Configuration"],
+        category: Category.Bug);
+
+    public static DiagnosticDescriptor TestProjectShouldNotBePublishable => New(
+        id: 0451,
+        title: "Test projects should not be publishable",
+        message: "Set <IsPublishable> to false.",
+        description:
+            "Test projects should only be responsible for running tests. Hence " +
+            "they should not be publishable.",
+        tags: ["Configuration"],
+        category: Category.Bug);
+
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
         id: 0600,
         title: "Avoid generating packages on build if not packable",
