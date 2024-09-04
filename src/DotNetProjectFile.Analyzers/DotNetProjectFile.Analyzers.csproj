@@ -6,7 +6,6 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <OutputType>Library</OutputType>
     <IsPackable>true</IsPackable>
-    <IsPublishable>false</IsPublishable>
     <RootNamespace>DotNetProjectFile</RootNamespace>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -30,6 +29,8 @@
       <![CDATA[
 ToBeReleased
 - Proj02??: Do not report on projects with <IsTestProject> set to true. (FP)
+- Proj0450: Test projects should not be packable. (NEW RULE)
+- Proj0451: Test projects should not be publishable. (NEW RULE)
 - Proj1200: Added 48 more compile-time dependencies to the private-asset list. (FN)
 v1.4.1
 - Proj1101: Resolve version in project files only. (FP)

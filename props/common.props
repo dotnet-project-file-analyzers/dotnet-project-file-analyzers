@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <NuGetAudit>true</NuGetAudit>
+    <IsPublishable>false</IsPublishable>
     <!-- Would interact with all current tests -->
     <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
   </PropertyGroup>
@@ -23,7 +24,7 @@
   
   <ItemGroup Label="Analyzers">
     <PackageReference Include="AsyncFixer" Version="*-*" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="*" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="*" PrivateAssets="all" />
     <PackageReference Include="SonarAnalyzer.CSharp" Version="*" PrivateAssets="all" />
   </ItemGroup>
   

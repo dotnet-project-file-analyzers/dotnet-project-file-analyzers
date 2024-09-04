@@ -51,6 +51,10 @@ The package contains analyzers that analyze .NET project files.
 ### Publishing
 * [**Proj0400** Define the project publishability explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0400.html)
 
+### Test projects
+* [**Proj0450** Test projects should not be packable](https://dotnet-project-file-analyzers.github.io/rules/Proj0450.html)
+* [**Proj0451** Test projects should not be publishable](https://dotnet-project-file-analyzers.github.io/rules/Proj0451.html)
+
 ### Central Package Management
 * [**Proj0800** Configure Central Package Management](https://dotnet-project-file-analyzers.github.io/rules/Proj0800.html)
 * [**Proj0801** Include 'Directory.Packages.props'](https://dotnet-project-file-analyzers.github.io/rules/Proj0801.html)
