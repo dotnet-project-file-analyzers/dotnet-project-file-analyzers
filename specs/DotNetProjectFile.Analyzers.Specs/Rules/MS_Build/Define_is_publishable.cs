@@ -14,7 +14,7 @@ public class Guards
     [Test]
     public void test_project()
         => new DefineIsPublishable()
-        .ForProject("ImplicitPackableTestProject.cs")
+        .ForProject("ImplicitPackablePublishableTestProject.cs")
         .HasNoIssues();
 
     [TestCase("CompliantCSharp.cs")]

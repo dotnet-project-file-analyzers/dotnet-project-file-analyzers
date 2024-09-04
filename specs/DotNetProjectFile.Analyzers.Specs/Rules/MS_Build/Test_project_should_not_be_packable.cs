@@ -5,14 +5,14 @@ public class Reports
     [Test]
     public void packable_test_project()
         => new TestProjectShouldNotBePackable()
-        .ForProject("PackableTestProject.cs")
+        .ForProject("PackablePublishableTestProject.cs")
         .HasIssue(new Issue("Proj0450", "Set <IsPackable> to false.")
         .WithSpan(05, 04, 05, 33));
 
     [Test]
     public void implicit_packable_test_project()
         => new TestProjectShouldNotBePackable()
-        .ForProject("ImplicitPackableTestProject.cs")
+        .ForProject("ImplicitPackablePublishableTestProject.cs")
         .HasIssue(new Issue("Proj0450", "Set <IsPackable> to false.")
         .WithSpan(00, 00, 15, 10));
 }
