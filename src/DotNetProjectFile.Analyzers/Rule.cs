@@ -467,6 +467,16 @@ public static class Rule
         tags: ["Configuration"],
         category: Category.Bug);
 
+    public static DiagnosticDescriptor TestProjectsRequireSdk => New(
+        id: 0452,
+        title: "Test projects require Microsoft.NET.Test.Sdk",
+        message: @"Include <PackageReference Include=""Microsoft.NET.Test.Sdk"" PrivateAssets =""all"" />.",
+        description:
+            "Test projects should only be responsible for running tests. Hence " +
+            "they should not be publishable.",
+        tags: ["Configuration"],
+        category: Category.Bug);
+
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
         id: 0600,
         title: "Avoid generating packages on build if not packable",
