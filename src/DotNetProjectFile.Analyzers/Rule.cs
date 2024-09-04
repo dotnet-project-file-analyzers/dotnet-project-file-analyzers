@@ -463,7 +463,7 @@ public static class Rule
         message: "Set <IsPublishable> to false.",
         description:
             "Test projects should only be responsible for running tests. Hence " +
-            "the should not be publishable.",
+            "they should not be publishable.",
         tags: ["Configuration"],
         category: Category.Bug);
 
