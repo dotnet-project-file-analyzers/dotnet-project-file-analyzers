@@ -91,6 +91,8 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 ### Test projects
 * [**Proj0450** Test projects should not be packable](rules/Proj0450.md)
 * [**Proj0451** Test projects should not be publishable](rules/Proj0451.md)
+* [**Proj0452** Test projects require Microsoft.NET.Test.Sdk](rules/Proj0452.md)
+* [**Proj0453** Using Microsoft.NET.Test.Sdk implies a test project](rules/Proj0453.md)
 
 ### Central Package Management
 * [**Proj0800** Configure Central Package Management](rules/Proj0800.md)
