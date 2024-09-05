@@ -2,6 +2,8 @@
 
 public sealed class Packages : IReadOnlyCollection<Package>
 {
+    public static readonly Package Microsoft_NET_Test_Sdk = new("Microsoft.NET.Test.Sdk", isPrivateAsset: true);
+
     public static readonly Packages All = new(
 
         // Generic analyzers
@@ -97,7 +99,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
         // Private assets
         new Package("coverlet.collector", isPrivateAsset: true),
         new Package("coverlet.msbuild", isPrivateAsset: true),
-        new Package("Microsoft.NET.Test.Sdk", isPrivateAsset: true),
+        Microsoft_NET_Test_Sdk,
         new Package("NUnit3TestAdapter", isPrivateAsset: true));
 
     private readonly Dictionary<string, Package> items;

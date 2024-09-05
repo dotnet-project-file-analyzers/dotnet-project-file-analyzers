@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Test_project_should_not_be_publishable;
+﻿namespace Rules.MS_Build.Test_projects.Should_not_be_publishable;
 
 public class Reports
 {

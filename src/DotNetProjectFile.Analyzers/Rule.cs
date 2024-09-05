@@ -454,7 +454,7 @@ public static class Rule
         description:
             "Test projects should only be responsible for running tests. Hence " +
             "they should not be packable.",
-        tags: ["Configuration"],
+        tags: ["Configuration", "Unit Testing"],
         category: Category.Bug);
 
     public static DiagnosticDescriptor TestProjectShouldNotBePublishable => New(
@@ -464,7 +464,23 @@ public static class Rule
         description:
             "Test projects should only be responsible for running tests. Hence " +
             "they should not be publishable.",
-        tags: ["Configuration"],
+        tags: ["Configuration", "Unit Testing"],
+        category: Category.Bug);
+
+    public static DiagnosticDescriptor TestProjectsRequireSdk => New(
+        id: 0452,
+        title: "Test projects require Microsoft.NET.Test.Sdk",
+        message: @"Include <PackageReference Include=""Microsoft.NET.Test.Sdk"" PrivateAssets =""all"" />.",
+        description: "Tests in a test projects do not run properly without the Microsoft.NET.Test.Sdk being included.",
+        tags: ["Unit Testing"],
+        category: Category.Bug);
+
+    public static DiagnosticDescriptor UsingMicrosoftNetTestSdkImpliesTestProject => New(
+        id: 0453,
+        title: "Using Microsoft.NET.Test.Sdk implies a test project",
+        message: @"Set <IsTestProject> to true.",
+        description: "Including the Microsoft.NET.Test.Sdk is only useful for test projects.",
+        tags: ["Unit Testing"],
         category: Category.Bug);
 
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(

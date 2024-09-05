@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Test_project_should_not_be_packable;
+﻿namespace Rules.MS_Build.Test_projects.Should_not_be_packable;
 
 public class Reports
 {

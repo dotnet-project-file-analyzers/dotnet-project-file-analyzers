@@ -48,12 +48,7 @@
 
   <ItemGroup Label="Analyzer">
     <!-- #pragma disable Proj0014 -->
-    <ProjectReference
-      Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
-      PrivateAssets="all"
-      ReferenceOutputAssembly="false"
-      OutputItemType="Analyzer"
-      SetTargetFramework="TargetFramework=netstandard2.0" />
+    <ProjectReference Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" SetTargetFramework="TargetFramework=netstandard2.0" />
   </ItemGroup>
 
   <ItemGroup Label="Test projects">
