@@ -216,6 +216,16 @@ public static class Rule
         tags: ["Configuration", "confusion"],
         category: Category.Clarity);
 
+    public static DiagnosticDescriptor MigrateFromRulesetToEditorConfigFile => New(
+        id: 0025,
+        title: "Migrate from ruleset file to .editorconfig file",
+        message: "Migrate ruleset '{0}' to an .editorconfig file.",
+        description:
+            "XML based ruleset files are defacto deprecated. Ruleset can be " +
+            "automatically converted using Microsoft.CodeAnalysis.RulesetToEditorconfigConverter.",
+        tags: ["Configuration", "readability"],
+        category: Category.Obsolete);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",

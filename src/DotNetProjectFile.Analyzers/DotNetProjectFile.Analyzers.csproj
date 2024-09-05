@@ -28,6 +28,7 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased
+- Proj0025: Migrate from ruleset file to .editorconfig file. (NEW RULE)
 - Proj02??: Do not report on projects with <IsTestProject> set to true. (FP)
 - Proj0450: Test projects should not be packable. (NEW RULE)
 - Proj0451: Test projects should not be publishable. (NEW RULE)
