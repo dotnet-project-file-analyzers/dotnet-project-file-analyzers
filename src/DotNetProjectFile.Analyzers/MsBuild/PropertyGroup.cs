@@ -5,6 +5,7 @@ public sealed class PropertyGroup : Node
     /// <summary>Initializes a new instance of the <see cref="PropertyGroup"/> class.</summary>
     public PropertyGroup(XElement element, Node parent, MsBuildProject project) : base(element, parent, project)
     {
+        CodeAnalysisRuleSet = Children.Typed<CodeAnalysisRuleSet>();
         TargetFramework = Children.Typed<TargetFramework>();
         TargetFrameworks = Children.Typed<TargetFrameworks>();
         ImplicitUsings = Children.Typed<ImplicitUsings>();
@@ -40,6 +41,8 @@ public sealed class PropertyGroup : Node
 
         ManagePackageVersionsCentrally = Children.Typed<ManagePackageVersionsCentrally>();
     }
+
+    public Nodes<CodeAnalysisRuleSet> CodeAnalysisRuleSet { get; }
 
     public Nodes<TargetFramework> TargetFramework { get; }
 
