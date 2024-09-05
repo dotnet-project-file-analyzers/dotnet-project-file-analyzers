@@ -6,9 +6,9 @@ public sealed class MigrateFromRulesetToEditorConfigFile()
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var rulset in context.Project.PropertyGroups.SelectMany(g => g.CodeAnalysisRuleSet))
+        foreach (var ruleset in context.Project.PropertyGroups.SelectMany(g => g.CodeAnalysisRuleSet))
         {
-            context.ReportDiagnostic(Descriptor, rulset, rulset.Value);
+            context.ReportDiagnostic(Descriptor, ruleset, ruleset.Value);
         }
     }
 }
