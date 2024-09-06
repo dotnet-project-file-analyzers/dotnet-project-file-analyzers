@@ -412,7 +412,7 @@ public static class Rule
     public static DiagnosticDescriptor ProvideCompliantPackageIcon => New(
         id: 0215,
         title: "Provide a compliant NuGet package icon",
-        message: "The package icon '{0}' is {1}.",
+        message: "The package icon '{0}' {1}.",
         description:
             "To ensure the creation of well-formed packages, use an image that is " +
             "128x128 and has a transparent background(PNG) for the best viewing results.",

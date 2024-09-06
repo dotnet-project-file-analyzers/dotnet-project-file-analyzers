@@ -10,11 +10,13 @@ public sealed record ImageInfo
 
     public int Height { get; init; }
 
+    public long Size { get; init; }
+
     public static ImageInfo ReadPng(Stream image)
     {
         using var reader = new BinaryReader(image);
 
-        if (!HasPngHeader()) return new();
+        if (!HasPngHeader()) return new() { Size = reader.BaseStream.Length };
 
         reader.BaseStream.Position = 16;
 
@@ -23,6 +25,7 @@ public sealed record ImageInfo
             Type = "PNG",
             Width = reader.ReadInt32BigEndian(),
             Height = reader.ReadInt32BigEndian(),
+            Size = reader.BaseStream.Length,
         };
 
         bool HasPngHeader()

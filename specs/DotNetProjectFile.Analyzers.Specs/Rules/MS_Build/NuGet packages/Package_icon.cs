@@ -6,8 +6,9 @@ public class Reports
     public void Bitmap_Image()
         => new ProvideCompliantPackageIcon()
         .ForProject("BmpIcon.cs")
-        .HasIssue(new Issue("Proj0215", "The package icon 'logo.bmp' is recommended to be a PNG.")
-        .WithSpan(07, 04, 07, 39));
+        .HasIssues(
+            new Issue("Proj0215", "The package icon 'big-icon.bmp' is recommended to be a PNG.").WithSpan(07, 04, 07, 43),
+            new Issue("Proj0215", "The package icon 'big-icon.bmp' must be less then 1MB."/*.*/).WithSpan(07, 04, 07, 43));
 
     [Test]
     public void Different_dimensions()

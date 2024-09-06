@@ -25,11 +25,15 @@ public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(R
 
             if (info.Type != "PNG")
             {
-                context.ReportDiagnostic(Descriptor, icon, icon.Value, "recommended to be a PNG");
+                context.ReportDiagnostic(Descriptor, icon, icon.Value, "is recommended to be a PNG");
             }
-            if (info.Height != 128 || info.Width != 128)
+            if ((info.Height != 128 || info.Width != 128) && (info.Height != default && info.Width != default))
             {
-                context.ReportDiagnostic(Descriptor, icon, icon.Value, $"recommended to be 128x128 not {info.Width}x{info.Height}");
+                context.ReportDiagnostic(Descriptor, icon, icon.Value, $"is recommended to be 128x128 not {info.Width}x{info.Height}");
+            }
+            if (info.Size > 1_000_000)
+            {
+                context.ReportDiagnostic(Descriptor, icon, icon.Value, $"must be less then 1MB");
             }
         }
     }
