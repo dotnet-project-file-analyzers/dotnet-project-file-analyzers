@@ -1,5 +1,8 @@
 #pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
+using static System.Net.Mime.MediaTypeNames;
+using System.Net.NetworkInformation;
+
 namespace DotNetProjectFile;
 
 public static class Rule
@@ -411,11 +414,9 @@ public static class Rule
         title: "Provide a compliant NuGet package icon",
         message: "The package icon '{0}' is {1}.",
         description:
-            "To ensure the creation of well-formed packages, " +
-            "explicitly define the <PackageId> node or " +
-            "disable package generation by defining the " +
-            "<IsPackable> node with value 'false'.",
-        tags: ["Configuration", "NuGet", "package"],
+            "To ensure the creation of well-formed packages] use an image that is " +
+            "128x128 and has a transparent background(PNG) for best viewing results.",
+        tags: ["Configuration", "NuGet", "package", "image", "PNG"],
         category: Category.Configuration);
 
     public static DiagnosticDescriptor EnablePackageValidation => New(
