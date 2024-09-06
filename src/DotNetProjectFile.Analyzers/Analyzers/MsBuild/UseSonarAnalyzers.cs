@@ -11,14 +11,11 @@ public sealed class UseSonarAnalyzers() : MsBuildProjectFileAnalyzer(Rule.UseSon
             && context.Project
                 .ImportsAndSelf()
                 .SelectMany(p => p.ItemGroups)
-                .SelectMany(i => i.PackageReferences).None(p => Includes(p, include)))
+                .SelectMany(i => i.PackageReferences).None(p => p.Include.IsMatch(include)))
         {
             context.ReportDiagnostic(Descriptor, context.Project, include);
         }
     }
-
-    private static bool Includes(PackageReference reference, string include)
-        => string.Equals(reference.Include, include, StringComparison.OrdinalIgnoreCase);
 
     private static string? Include(string language) => language switch
     {

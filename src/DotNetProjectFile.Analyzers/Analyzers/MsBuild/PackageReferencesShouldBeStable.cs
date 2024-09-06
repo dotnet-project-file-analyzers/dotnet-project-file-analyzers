@@ -16,5 +16,5 @@ public sealed class PackageReferencesShouldBeStable() : MsBuildProjectFileAnalyz
     private static bool IsUnstable(PackageReference package)
         => package.ResolveVersion() is { Length: > 0 } version
         && version.Contains('-')
-        && !"ALL".Equals(package.PrivateAssets, StringComparison.OrdinalIgnoreCase);
+        && !package.PrivateAssets.IsMatch("all");
 }

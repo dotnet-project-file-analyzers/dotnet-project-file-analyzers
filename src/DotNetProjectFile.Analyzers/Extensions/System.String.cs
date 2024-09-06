@@ -6,6 +6,6 @@ internal static class StringExtensions
         => str is { } && str.IndexOf(value, comparisonType) != -1;
 
     /// <summary>Matches both strings ignoring casting.</summary>
-    public static bool Matches(this string? str, string other)
+    public static bool IsMatch(this string? str, string? other)
         => string.Equals(str, other, StringComparison.OrdinalIgnoreCase);
 }

@@ -3,7 +3,7 @@
 public class Reports
 {
     [Test]
-    public void faultly_indented()
+    public void faulty_indented()
         => new Resx.IndentResx()
         .ForProject("FaultyIndenting.cs")
         .HasIssues(
