@@ -27,6 +27,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0023** Use forward slashes in paths](https://dotnet-project-file-analyzers.github.io/rules/Proj0023.html)
 * [**Proj0024** Order package versions alphabetically](https://dotnet-project-file-analyzers.github.io/rules/Proj0024.html)
 * [**Proj0025** Migrate from ruleset file to .editorconfig file](https://dotnet-project-file-analyzers.github.io/rules/Proj0025.html)
+* [**Proj0026** Remove IncludeAssets when redundant](https://dotnet-project-file-analyzers.github.io/rules/Proj0026.html)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)
