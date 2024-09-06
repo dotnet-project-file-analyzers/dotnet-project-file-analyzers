@@ -28,7 +28,7 @@ dotnet package add DotNetProjectFile.Analyzers
 ```
 
 ## Configuration
-How to change the configuration of the rules can be found [here](rules/configuration.md).
+How to change the configuration of the rules can be found [here](general/configuration.md).
 To configure (the severity) of the rules provided
 
 ## GitHub repository
