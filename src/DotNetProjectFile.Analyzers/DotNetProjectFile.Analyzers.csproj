@@ -19,7 +19,7 @@
   <PropertyGroup Label="Package settings">
     <RepositoryType>git</RepositoryType>
     <PackageId>DotNetProjectFile.Analyzers</PackageId>
-    <PackageProjectUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</PackageProjectUrl>
+    <PackageProjectUrl>https://dotnet-project-file-analyzers.github.io</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
