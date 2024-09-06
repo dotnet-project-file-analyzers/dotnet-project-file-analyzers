@@ -48,7 +48,7 @@ public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(R
         try
         {
             using var stream = file.OpenRead();
-            return ImageInfo.ReadPgn(stream);
+            return ImageInfo.ReadPng(stream);
         }
         catch
         {
