@@ -406,6 +406,18 @@ public static class Rule
         tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration);
 
+    public static DiagnosticDescriptor ProvideCompliantPackageIcon => New(
+        id: 0215,
+        title: "Provide a compliant NuGet package icon",
+        message: "The package icon '{0}' is {1}.",
+        description:
+            "To ensure the creation of well-formed packages, " +
+            "explicitly define the <PackageId> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: ["Configuration", "NuGet", "package"],
+        category: Category.Configuration);
+
     public static DiagnosticDescriptor EnablePackageValidation => New(
         id: 0240,
         title: "Enable package validation",

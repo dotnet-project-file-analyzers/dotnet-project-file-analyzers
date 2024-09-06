@@ -58,4 +58,8 @@
     <None Include="../../projects/*/*.props" Visible="true" Link="Projects/Props/%(Directory)/%(Filename)%(Extension)" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="IO\Images\" />
+  </ItemGroup>
+
 </Project>

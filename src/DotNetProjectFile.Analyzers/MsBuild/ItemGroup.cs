@@ -41,9 +41,9 @@ public sealed class ItemGroup : Node
     /// <summary>Gets the child project references.</summary>
     public Nodes<ProjectReference> ProjectReferences { get; }
 
-    /// <summary>Gets the child project references.</summary>
-    public Nodes<Using> Usings { get; }
-
     /// <summary>Gets the child folders.</summary>
     public Nodes<Folder> Folders { get; }
+
+    /// <summary>Gets the child project references.</summary>
+    public Nodes<Using> Usings { get; }
 }

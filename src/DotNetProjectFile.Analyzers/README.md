@@ -44,6 +44,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0212** Define the project icon file explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0212.html)
 * [**Proj0213** Define the project icon URL explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0213.html)
 * [**Proj0214** Define the NuGet project ID explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0214.html)
+* [**Proj0215** Provide a compliant NuGet package icon](https://dotnet-project-file-analyzers.github.io/rules/Proj0215.html)
 * [**Proj0240** Enable package validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0240.html)
 * [**Proj0241** Enable package baseline validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0241.html)
 * [**Proj0242** Generate NuGet packages conditionally](https://dotnet-project-file-analyzers.github.io/rules/Proj0242.html)

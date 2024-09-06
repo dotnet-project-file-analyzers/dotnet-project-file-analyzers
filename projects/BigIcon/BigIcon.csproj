@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Label="PackageInfo">
+    <PackageIcon>logo_400x400.png</PackageIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../../design/logo_400x400.png" Pack="true" PackagePath="/" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
+</Project>
