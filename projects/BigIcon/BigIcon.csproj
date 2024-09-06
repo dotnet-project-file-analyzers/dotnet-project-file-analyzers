@@ -6,6 +6,7 @@
 
   <PropertyGroup Label="PackageInfo">
     <PackageIcon>logo_400x400.png</PackageIcon>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
 
   <ItemGroup>

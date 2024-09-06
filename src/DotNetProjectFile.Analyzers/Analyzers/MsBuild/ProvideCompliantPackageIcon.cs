@@ -8,6 +8,8 @@ public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(R
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
+        if (!context.Project.IsPackable() || context.Project.IsTestProject()) return;
+
         foreach (var icon in context.Project
             .SelfAndImports()
             .SelectMany(p => p.PropertyGroups)
@@ -18,13 +20,14 @@ public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(R
 
             if (info is null)
             {
-                // unresolved
+                continue;
             }
-            else if (info.Type != "PNG")
+
+            if (info.Type != "PNG")
             {
                 context.ReportDiagnostic(Descriptor, icon, icon.Value, "recommended to be a PNG");
             }
-            else if (info.Height != 128 || info.Width != 128)
+            if (info.Height != 128 || info.Width != 128)
             {
                 context.ReportDiagnostic(Descriptor, icon, icon.Value, $"recommended to be 128x128 not {info.Width}x{info.Height}");
             }
