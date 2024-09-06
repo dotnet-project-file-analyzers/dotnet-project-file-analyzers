@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Define_is_packable;
+﻿namespace Rules.MS_Build.NuGet_packages.Define_is_packable;
 
 public class Reports
 {

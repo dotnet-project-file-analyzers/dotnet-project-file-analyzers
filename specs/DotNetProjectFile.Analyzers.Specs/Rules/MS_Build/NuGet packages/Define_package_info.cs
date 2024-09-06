@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Define_version;
+﻿namespace Rules.MS_Build.NuGet_packages;
 
 public class Reports
 {
