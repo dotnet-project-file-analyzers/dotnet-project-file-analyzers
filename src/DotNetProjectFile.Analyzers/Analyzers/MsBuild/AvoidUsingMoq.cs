@@ -30,8 +30,7 @@ public sealed class AvoidUsingMoq() : MsBuildProjectFileAnalyzer(Rule.AvoidUsing
         => IsMoq(assembly.Name)
         && assembly.Version >= new System.Version(4, 20);
 
-    private static bool IsMoq(string? name)
-        => string.Equals(name, "Moq", StringComparison.OrdinalIgnoreCase);
+    private static bool IsMoq(string? name) => name.IsMatch("Moq");
 
     private static bool IsSuspiciousVersion(string version)
         => version.Contains("*")

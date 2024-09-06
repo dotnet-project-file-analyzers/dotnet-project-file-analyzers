@@ -1,8 +1,5 @@
 #pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
-using static System.Net.Mime.MediaTypeNames;
-using System.Net.NetworkInformation;
-
 namespace DotNetProjectFile;
 
 public static class Rule

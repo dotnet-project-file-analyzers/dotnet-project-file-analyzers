@@ -112,16 +112,16 @@ public sealed class Projects(string language)
         && IsSupportedExtension(location.Extension);
 
     private bool IsSupportedExtension(string extension)
-        => string.Equals(extension, ".props", StringComparison.OrdinalIgnoreCase)
+        => extension.IsMatch(".props")
         || Language switch
         {
-            LanguageNames.CSharp => string.Equals(extension, ".csproj", StringComparison.OrdinalIgnoreCase),
-            LanguageNames.VisualBasic => string.Equals(extension, ".vbproj", StringComparison.OrdinalIgnoreCase),
+            LanguageNames.CSharp => extension.IsMatch(".csproj"),
+            LanguageNames.VisualBasic => extension.IsMatch(".vbproj"),
             _ => false,
         };
 
     private static bool HasName(IOFile file, string? name)
-        => string.Equals(file.NameWithoutExtension, name, StringComparison.OrdinalIgnoreCase);
+        => file.NameWithoutExtension.IsMatch(name);
 
     public static Projects Init(CompilationAnalysisContext context)
         => Cache.Get(context.Compilation, () => New(context));

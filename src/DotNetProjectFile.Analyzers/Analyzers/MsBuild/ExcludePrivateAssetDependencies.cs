@@ -16,6 +16,6 @@ public sealed class ExcludePrivateAssetDependencies() : MsBuildProjectFileAnalyz
     }
 
     private static bool ShoudBePrivateAssets(PackageReference reference)
-        => !string.Equals(reference.PrivateAssets, "all", StringComparison.OrdinalIgnoreCase)
+        => !reference.PrivateAssets.IsMatch("all")
         && NuGet.Packages.All.TryGet(reference.Include) is { IsPrivateAsset: true };
 }

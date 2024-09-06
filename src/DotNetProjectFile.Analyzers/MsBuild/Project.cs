@@ -1,4 +1,5 @@
 ﻿using Microsoft.CodeAnalysis.Text;
+using System;
 
 namespace DotNetProjectFile.MsBuild;
 
@@ -39,10 +40,10 @@ public sealed class Project : Node
 
     public ProjectFileType FileType => Path switch
     {
-        _ when Path.Extension.Equals(".csproj", StringComparison.OrdinalIgnoreCase)
-            || Path.Extension.Equals(".vbproj", StringComparison.OrdinalIgnoreCase) => ProjectFileType.ProjectFile,
-        _ when Path.Name.Equals("Directory.Build.props", StringComparison.OrdinalIgnoreCase) => ProjectFileType.DirectoryBuild,
-        _ when Path.Name.Equals("Directory.Packages.props", StringComparison.OrdinalIgnoreCase) => ProjectFileType.DirectoryPackages,
+        _ when Path.Extension.IsMatch(".csproj")
+            || Path.Extension.IsMatch(".vbproj") => ProjectFileType.ProjectFile,
+        _ when Path.Name.IsMatch("Directory.Build.props") => ProjectFileType.DirectoryBuild,
+        _ when Path.Name.IsMatch("Directory.Packages.props") => ProjectFileType.DirectoryPackages,
         _ => ProjectFileType.Props,
     };
 

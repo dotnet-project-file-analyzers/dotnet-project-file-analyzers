@@ -30,8 +30,7 @@ public sealed class Resources : IReadOnlyCollection<Resource>
     {
         var resources = new Resources();
 
-        foreach (var additional in additionalFiles
-            .Where(a => string.Equals(Path.GetExtension(a.Path), ".resx", StringComparison.OrdinalIgnoreCase)))
+        foreach (var additional in additionalFiles.Where(a => Path.GetExtension(a.Path).IsMatch(".resx")))
         {
             var resource = Resource.Load(additional, resources);
             resources.items[resource.Path] = resource;
