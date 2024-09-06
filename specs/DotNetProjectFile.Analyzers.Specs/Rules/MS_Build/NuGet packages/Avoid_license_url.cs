@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Avoid_license_url;
+﻿namespace Rules.MS_Build.NuGet_packages.Avoid_license_url;
 
 public class Reports
 {

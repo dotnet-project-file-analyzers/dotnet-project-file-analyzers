@@ -21,4 +21,6 @@ public abstract class BuildAction(XElement element, Node parent, MsBuildProject 
     public IReadOnlyList<string> Update
         => Attribute()?.Split(SemicolonSeparated, StringSplitOptions.RemoveEmptyEntries)
         ?? [];
+
+    public IEnumerable<string> IncludeAndUpdate => Include.Concat(Update);
 }

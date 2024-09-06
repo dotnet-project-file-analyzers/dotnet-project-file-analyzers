@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Label="PackageInfo">
+    <PackageIcon>big-icon.bmp</PackageIcon>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
+</Project>

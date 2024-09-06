@@ -65,6 +65,9 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
     /// <inheritdoc cref="FileInfo.OpenText()" />
     public TextReader OpenText() => File().OpenText();
 
+    /// <inheritdoc cref="FileInfo.OpenRead()" />
+    public FileStream OpenRead() => File().OpenRead();
+
     /// <inheritdoc />
     public int CompareTo(IOFile other) => string.Compare(ToString(), other.ToString(), true);
 

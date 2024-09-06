@@ -23,12 +23,13 @@
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.4.1</Version>
+    <Version>1.4.2</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
-ToBeReleased
+v1.4.2
 - Proj0025: Migrate from ruleset file to .editorconfig file. (NEW RULE)
+- Proj0215: Provide a compliant NuGet package icon. (NEW RULE)
 - Proj02??: Do not report on projects with <IsTestProject> set to true. (FP)
 - Proj0450: Test projects should not be packable. (NEW RULE)
 - Proj0451: Test projects should not be publishable. (NEW RULE)
