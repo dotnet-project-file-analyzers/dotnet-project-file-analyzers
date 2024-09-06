@@ -12,7 +12,7 @@ public partial class Node : XmlAnalysisNode
         Depth = element.Ancestors().Count();
     }
 
-    internal XElement Element { get; }
+    public XElement Element { get; }
 
     public Resource Resource { get; }
 

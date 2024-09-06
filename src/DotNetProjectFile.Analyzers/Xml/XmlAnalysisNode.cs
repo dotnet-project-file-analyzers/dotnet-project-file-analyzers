@@ -2,6 +2,8 @@
 
 public interface XmlAnalysisNode
 {
+    XElement Element { get; }
+
     XmlPositions Positions { get; }
 
     string LocalName { get; }

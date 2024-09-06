@@ -30,7 +30,7 @@ internal sealed class IdentationChecker<TContext>(char ch, int repeat, Diagnosti
 
         var element = start ? node.Positions.StartElement : node.Positions.EndElement;
 
-        if (!ProperlyIndented(element))
+        if (!ProperlyIndented(element) && !ClosingTagAfterTextWithSpacePreservation(node.Element))
         {
             var name = start ? node.LocalName : '/' + node.LocalName;
             context.ReportDiagnostic(Descriptor, element, name);
@@ -55,5 +55,10 @@ internal sealed class IdentationChecker<TContext>(char ch, int repeat, Diagnosti
                 return indent.All(ch => ch == Char);
             }
         }
+
+        bool ClosingTagAfterTextWithSpacePreservation(XElement element)
+            => !start
+            && element.Elements().None()
+            && element.PreservesSpace();
     }
 }
