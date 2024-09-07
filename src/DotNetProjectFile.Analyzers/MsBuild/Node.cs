@@ -23,9 +23,9 @@ public abstract class Node : XmlAnalysisNode
         Depth = AncestorsAndSelf().Count() - 1;
     }
 
-    internal readonly XElement Element;
-
     internal readonly Project Project;
+
+    public XElement Element { get; }
 
     public Node? Parent { get; }
 

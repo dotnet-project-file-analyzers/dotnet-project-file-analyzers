@@ -27,6 +27,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+ToBeReleased
+- Proj2100: Space preserved closing nodes should not be reported. (FP)
 v1.4.2
 - Proj0025: Migrate from ruleset file to .editorconfig file. (NEW RULE)
 - Proj0215: Provide a compliant NuGet package icon. (NEW RULE)
