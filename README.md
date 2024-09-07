@@ -64,6 +64,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0023** Use forward slashes in paths](rules/Proj0023.md)
 * [**Proj0024** Order package versions alphabetically](rules/Proj0024.md)
 * [**Proj0025** Migrate from ruleset file to .editorconfig file](rules/Proj0025.md)
+* [**Proj0026** Remove IncludeAssets when redundant](rules/Proj0026.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
