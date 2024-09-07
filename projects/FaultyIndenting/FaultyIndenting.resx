@@ -15,4 +15,9 @@
   <data name="Welcome" xml:space="preserve">
        <value>Hello, world!</value>
   </data>
+  <data name="Preserved" xml:space="preserve">
+    <value>Hello, world!
+
+We should preserve what we've got.</value>
+  </data>
 </root>
