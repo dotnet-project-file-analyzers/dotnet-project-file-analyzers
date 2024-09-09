@@ -1,8 +1,8 @@
 ﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class UpdateTargetFrameworksWithTargetFrameworks()
-    : MsBuildProjectFileAnalyzer(Rule.UpdateTargetFrameworksWithTargetFrameworks)
+public sealed class OverrideTargetFrameworksWithTargetFrameworks()
+    : MsBuildProjectFileAnalyzer(Rule.OverrideTargetFrameworksWithTargetFrameworks)
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {

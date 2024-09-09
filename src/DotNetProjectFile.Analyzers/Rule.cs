@@ -234,9 +234,9 @@ public static class Rule
         tags: ["redundant"],
         category: Category.Noise);
 
-    public static DiagnosticDescriptor UpdateTargetFrameworksWithTargetFrameworks => New(
+    public static DiagnosticDescriptor OverrideTargetFrameworksWithTargetFrameworks => New(
         id: 0027,
-        title: "Update <TargetFrameworks> with <TargetFrameworks>",
+        title: "Override <TargetFrameworks> with <TargetFrameworks>",
         message: "This <TargetFramework> will be ignored due to the earlier use of <TargetFrameworks>.",
         description:
             "The <TargetFrameworks> node precedes <TargetFramework>. Hence, " +

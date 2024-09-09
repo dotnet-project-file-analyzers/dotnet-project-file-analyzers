@@ -28,7 +28,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0024** Order package versions alphabetically](https://dotnet-project-file-analyzers.github.io/rules/Proj0024.html)
 * [**Proj0025** Migrate from ruleset file to .editorconfig file](https://dotnet-project-file-analyzers.github.io/rules/Proj0025.html)
 * [**Proj0026** Remove IncludeAssets when redundant](https://dotnet-project-file-analyzers.github.io/rules/Proj0026.html)
-* [**Proj0027** Update <TargetFrameworks> with <TargetFrameworks>](https://dotnet-project-file-analyzers.github.io/rules/Proj0027.html)
+* [**Proj0027** Override <TargetFrameworks> with <TargetFrameworks>](https://dotnet-project-file-analyzers.github.io/rules/Proj0027.html)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)
