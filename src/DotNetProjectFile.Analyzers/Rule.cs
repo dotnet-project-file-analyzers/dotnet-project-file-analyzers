@@ -234,6 +234,16 @@ public static class Rule
         tags: ["redundant"],
         category: Category.Noise);
 
+    public static DiagnosticDescriptor UpdateTargetFrameworksWithTargetFrameworks => New(
+        id: 0027,
+        title: "Update <TargetFrameworks> with <TargetFrameworks>",
+        message: "This <TargetFramework> will be ignored due to the earlier use of <TargetFrameworks>.",
+        description:
+            "The <TargetFrameworks> node precedes <TargetFramework>. Hence, " +
+            "once the first has been used, the use of the latter has no effect.",
+        tags: ["TFM"],
+        category: Category.Bug);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
