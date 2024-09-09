@@ -6,7 +6,7 @@ public abstract class MsBuildProjectFileAnalyzer(
     DiagnosticDescriptor primaryDiagnostic,
     params DiagnosticDescriptor[] supportedDiagnostics) : DiagnosticAnalyzer
 {
-    public sealed override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = new[] { primaryDiagnostic }.Concat(supportedDiagnostics).ToImmutableArray();
+    public sealed override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = [primaryDiagnostic, .. supportedDiagnostics];
 
     protected virtual IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.All;
 
