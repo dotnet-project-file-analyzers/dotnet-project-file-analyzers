@@ -226,6 +226,14 @@ public static class Rule
         tags: ["Configuration", "readability"],
         category: Category.Obsolete);
 
+    public static DiagnosticDescriptor RemoveIncludeAssetsWhenRedundant => New(
+        id: 0026,
+        title: "Remove IncludeAssets when redundant",
+        message: "Remove {0} as it is redundant when all assets are private.",
+        description: "When all assets are private, none of them will be included.",
+        tags: ["redundant"],
+        category: Category.Noise);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",

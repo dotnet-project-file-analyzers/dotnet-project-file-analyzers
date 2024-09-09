@@ -25,11 +25,13 @@
     <PackageProjectUrl>https://github.com/Corniel/dotnet-project-file-analyzers</PackageProjectUrl>
     <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
     <PackageReleaseNotes>
-      v1.0.0
-      - Proj0001: MS Build project file could not be located. (NEW RULE)
-      - Proj0002: Upgrade legacy MS Build project file. (NEW RULE)
-      - Proj0003: Define usings explicit. (NEW RULE)
-      - Proj1001: Use analyzers for packages. (NEW RULE)
+      <![CDATA[
+v1.0.0
+- Proj0001: MS Build project file could not be located. (NEW RULE)
+- Proj0002: Upgrade legacy MS Build project file. (NEW RULE)
+- Proj0003: Define usings explicit. (NEW RULE)
+- Proj1001: Use analyzers for packages. (NEW RULE)
+]]>
     </PackageReleaseNotes>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -38,7 +40,7 @@
   </PropertyGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.2.2" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.2.2" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>
