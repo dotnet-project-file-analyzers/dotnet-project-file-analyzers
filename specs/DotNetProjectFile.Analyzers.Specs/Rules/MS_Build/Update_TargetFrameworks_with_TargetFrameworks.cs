@@ -3,6 +3,7 @@
 public class Reports
 {
     [Test]
+    [Ignore("Buildalizer does not output any artifacts, hence nothing is analyzed.")]
     public void TFM_overriding_TFMs()
         => new UpdateTargetFrameworksWithTargetFrameworks()
         .ForProject("TfmsMixed.cs")
