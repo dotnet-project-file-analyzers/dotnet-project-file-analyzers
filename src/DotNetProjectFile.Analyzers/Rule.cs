@@ -244,6 +244,16 @@ public static class Rule
         tags: ["TFM"],
         category: Category.Bug);
 
+    public static DiagnosticDescriptor DefineConditionsOnLevel1 => New(
+        id: 0028,
+        title: "Define conditions on level 1",
+        message: "Move the condition to the parent <{0}>.",
+        description:
+            "Both to keep lines short, and to group configuration that is bound " +
+            "to the some constraints, it best to define condtions on level 1.",
+        tags: ["conditions"],
+        category: Category.Reliability);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
