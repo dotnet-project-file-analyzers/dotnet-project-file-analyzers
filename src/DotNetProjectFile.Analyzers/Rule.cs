@@ -664,7 +664,8 @@ public static class Rule
         message: "Do not use Moq.",
         description: "Moq has built in data harvesting that violates GDPR.",
         tags: ["GDPR", "privacy"],
-        category: Category.Security);
+        category: Category.Security,
+        isEnabled: false);
 
     public static DiagnosticDescriptor PackageReferencesShouldBeStable => New(
         id: 1101,
