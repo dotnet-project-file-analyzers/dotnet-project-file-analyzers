@@ -66,6 +66,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0025** Migrate from ruleset file to .editorconfig file](rules/Proj0025.md)
 * [**Proj0026** Remove IncludeAssets when redundant](rules/Proj0026.md)
 * [**Proj0027** Override &lt;TargetFrameworks&gt; with &lt;TargetFrameworks&gt;](rules/Proj0027.md)
+* [**Proj0028** Define conditions on level 1](rules/Proj0028.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
