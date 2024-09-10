@@ -7,7 +7,7 @@ public class Reports
         => new DefineConditionsOnLevel1()
         .ForProject("Conditional.cs")
         .HasIssue(new Issue("Proj0028", "Move the condition to the parent <PropertyGroup>.")
-        .WithSpan(12, 04, 12, 77));
+        .WithSpan(11, 04, 11, 76));
 }
 
 public class Guards
