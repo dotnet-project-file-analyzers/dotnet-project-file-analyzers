@@ -31,6 +31,7 @@ ToBeReleased
 - Proj0026: Remove IncludeAssets when redundant. (NEW RULE)
 - Proj0027: Override <TargetFrameworks> with <TargetFrameworks>. (NEW RULE)
 - Proj0028: Define conditions on level 1. (NEW RULE)
+- Proj1100: Disable rule by default. (FP)
 - Proj2100: Space preserved closing nodes should not be reported. (FP)
 v1.4.2
 - Proj0025: Migrate from ruleset file to .editorconfig file. (NEW RULE)
