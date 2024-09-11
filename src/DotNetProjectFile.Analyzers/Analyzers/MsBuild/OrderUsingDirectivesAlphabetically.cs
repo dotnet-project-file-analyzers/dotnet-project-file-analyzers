@@ -18,6 +18,6 @@ public sealed class OrderUsingDirectivesAlphabetically() : MsBuildProjectFileAna
     private void AnalyzeGroup(ProjectFileAnalysisContext context, IEnumerable<Using> group)
         => group.CheckAlphabeticalOrder(r => r.Include, (expected, found) =>
         {
-            context.ReportDiagnostic(Description, expected, expected.Type.GetPrettyName(), expected.Include, found.Include);
+            context.ReportDiagnostic(Descriptor, expected, expected.Type.GetPrettyName(), expected.Include, found.Include);
         });
 }

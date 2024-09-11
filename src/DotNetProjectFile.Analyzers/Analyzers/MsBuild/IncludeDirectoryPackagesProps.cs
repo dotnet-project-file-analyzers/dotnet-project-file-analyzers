@@ -10,7 +10,7 @@ public sealed class IncludeDirectoryPackagesProps() : MsBuildProjectFileAnalyzer
         if (context.Project.ManagePackageVersionsCentrally().GetValueOrDefault()
             && context.Project.DirectoryPackagesProps is null)
         {
-            context.ReportDiagnostic(Description, context.Project.Positions.StartElement);
+            context.ReportDiagnostic(Descriptor, context.Project.Positions.StartElement);
         }
     }
 }

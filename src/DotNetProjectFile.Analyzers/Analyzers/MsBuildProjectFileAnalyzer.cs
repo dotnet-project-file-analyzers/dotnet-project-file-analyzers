@@ -14,8 +14,8 @@ public abstract class MsBuildProjectFileAnalyzer(
 
     protected virtual IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.All;
 
-    /// <summary>Gets the primary (first) of the <see cref="SupportedDiagnostics"/>.</summary>
-    protected DiagnosticDescriptor Description => SupportedDiagnostics[0];
+    /// <summary>Gets the primary (first) descriptor of the <see cref="SupportedDiagnostics"/>.</summary>
+    protected DiagnosticDescriptor Descriptor => SupportedDiagnostics[0];
 
     /// <inheritdoc />
     public sealed override void Initialize(AnalysisContext context)

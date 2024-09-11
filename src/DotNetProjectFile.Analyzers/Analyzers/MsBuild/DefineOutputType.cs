@@ -12,7 +12,7 @@ public sealed class DefineOutputType() : MsBuildProjectFileAnalyzer(Rule.DefineO
             .SelectMany(p => p.PropertyGroups)
             .SelectMany(g => g.OutputType).None())
         {
-            context.ReportDiagnostic(Description, context.Project);
+            context.ReportDiagnostic(Descriptor, context.Project);
         }
     }
 }

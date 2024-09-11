@@ -24,7 +24,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
                 .OrderBy(asm => asm.Name.Length)
                 .FirstOrDefault() is { } reference)
             {
-                context.ReportDiagnostic(Description, context.Project, analyzer.Name, reference.Name);
+                context.ReportDiagnostic(Descriptor, context.Project, analyzer.Name, reference.Name);
             }
         }
     }

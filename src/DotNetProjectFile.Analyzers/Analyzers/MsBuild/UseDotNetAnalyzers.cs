@@ -9,7 +9,7 @@ public sealed class UseDotNetAnalyzers() : MsBuildProjectFileAnalyzer(Rule.UseDo
     {
         if (!context.Project.NETAnalyzersEnabled())
         {
-            context.ReportDiagnostic(Description, context.Project);
+            context.ReportDiagnostic(Descriptor, context.Project);
         }
     }
 }

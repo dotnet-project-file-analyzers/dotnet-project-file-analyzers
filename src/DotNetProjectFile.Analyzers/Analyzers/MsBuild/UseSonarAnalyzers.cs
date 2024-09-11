@@ -13,7 +13,7 @@ public sealed class UseSonarAnalyzers() : MsBuildProjectFileAnalyzer(Rule.UseSon
                 .SelectMany(p => p.ItemGroups)
                 .SelectMany(i => i.PackageReferences).None(p => p.Include.IsMatch(include)))
         {
-            context.ReportDiagnostic(Description, context.Project, include);
+            context.ReportDiagnostic(Descriptor, context.Project, include);
         }
     }
 

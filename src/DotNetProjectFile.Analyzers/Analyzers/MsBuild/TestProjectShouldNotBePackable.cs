@@ -12,7 +12,7 @@ public sealed class TestProjectShouldNotBePackable()
                 .OfType<XmlAnalysisNode>()
                 .LastOrDefault() ?? context.Project;
 
-            context.ReportDiagnostic(Description, node);
+            context.ReportDiagnostic(Descriptor, node);
         }
     }
 }

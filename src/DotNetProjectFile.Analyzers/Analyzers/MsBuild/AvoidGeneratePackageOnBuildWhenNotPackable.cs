@@ -17,7 +17,7 @@ public sealed class AvoidGeneratePackageOnBuildWhenNotPackable() : MsBuildProjec
             .SelectMany(p => p.PropertyGroups)
             .SelectMany(g => g.GeneratePackageOnBuild))
         {
-            context.ReportDiagnostic(Description, node);
+            context.ReportDiagnostic(Descriptor, node);
         }
     }
 

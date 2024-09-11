@@ -22,7 +22,7 @@ public class Project_relies_on
         {
             if (context.Project.DirectoryBuildProps is { } prop)
             {
-                context.ReportDiagnostic(Description, prop, prop.Path.Name);
+                context.ReportDiagnostic(Descriptor, prop, prop.Path.Name);
             }
         }
     }

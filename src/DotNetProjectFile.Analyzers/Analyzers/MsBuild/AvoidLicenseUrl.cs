@@ -7,7 +7,7 @@ public sealed class AvoidLicenseUrl() : MsBuildProjectFileAnalyzer(Rule.AvoidLic
     {
         foreach (var lincensUrl in context.Project.PropertyGroups.SelectMany(g => g.PackageLicenseUrl))
         {
-            context.ReportDiagnostic(Description, lincensUrl);
+            context.ReportDiagnostic(Descriptor, lincensUrl);
         }
     }
 }

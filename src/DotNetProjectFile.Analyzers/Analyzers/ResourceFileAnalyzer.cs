@@ -12,8 +12,8 @@ public abstract class ResourceFileAnalyzer(
     /// <inheritdoc />
     public sealed override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics { get; } = [primaryDiagnostic, .. supportedDiagnostics];
 
-    /// <summary>Gets the primary (first) of the <see cref="SupportedDiagnostics"/>.</summary>
-    public DiagnosticDescriptor Description => SupportedDiagnostics[0];
+    /// <summary>Gets the primary (first) descriptor of the <see cref="SupportedDiagnostics"/>.</summary>
+    public DiagnosticDescriptor Descriptor => SupportedDiagnostics[0];
 
     /// <inheritdoc />
     public sealed override void Initialize(AnalysisContext context)

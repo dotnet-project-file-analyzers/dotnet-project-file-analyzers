@@ -21,7 +21,7 @@ public sealed class DefinePackageReferenceVersion()
         {
             if (!versions.Contains(reference.IncludeOrUpdate))
             {
-                context.ReportDiagnostic(Description, reference, reference.IncludeOrUpdate);
+                context.ReportDiagnostic(Descriptor, reference, reference.IncludeOrUpdate);
             }
         }
     }

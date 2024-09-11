@@ -11,13 +11,13 @@ public sealed class AvoidUsingMoq() : MsBuildProjectFileAnalyzer(Rule.AvoidUsing
             .SelectMany(i => i.PackageReferences)
             .Where(IsMoq))
         {
-            context.ReportDiagnostic(Description, reference);
+            context.ReportDiagnostic(Descriptor, reference);
             reported = true;
         }
 
         if (!reported && context.Compilation.ReferencedAssemblyNames.Any(IsMoq))
         {
-            context.ReportDiagnostic(Description, context.Project);
+            context.ReportDiagnostic(Descriptor, context.Project);
         }
     }
 

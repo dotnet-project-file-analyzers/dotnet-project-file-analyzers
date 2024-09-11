@@ -11,7 +11,7 @@ public sealed class BuildActionsShouldHaveSingleTask() : MsBuildProjectFileAnaly
             .SelectMany(group => group.BuildActions)
             .Where(HasMutlpleTasks))
         {
-            context.ReportDiagnostic(Description, node, node.LocalName);
+            context.ReportDiagnostic(Descriptor, node, node.LocalName);
         }
     }
 

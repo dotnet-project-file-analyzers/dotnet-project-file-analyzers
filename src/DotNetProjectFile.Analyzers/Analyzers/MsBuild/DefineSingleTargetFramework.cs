@@ -11,7 +11,7 @@ public sealed class DefineSingleTargetFramework() : MsBuildProjectFileAnalyzer(R
             .SelectMany(p => p.TargetFrameworks)
             .Where(f => f.Value.Count <= 1))
         {
-            context.ReportDiagnostic(Description, frameworks);
+            context.ReportDiagnostic(Descriptor, frameworks);
         }
     }
 

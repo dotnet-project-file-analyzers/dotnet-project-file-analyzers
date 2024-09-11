@@ -9,7 +9,7 @@ public sealed class AddAdditionalFile() : MsBuildProjectFileAnalyzer(Rule.AddAdd
     {
         if (!context.Project.IsAdditional)
         {
-            context.ReportDiagnostic(Description, context.Project, context.Project.Path.Name);
+            context.ReportDiagnostic(Descriptor, context.Project, context.Project.Path.Name);
         }
     }
 }

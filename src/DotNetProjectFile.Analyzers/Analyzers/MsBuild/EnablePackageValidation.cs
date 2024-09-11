@@ -10,7 +10,7 @@ public sealed class EnablePackageValidation() : MsBuildProjectFileAnalyzer(Rule.
         var project = context.Project;
         if (project.IsPackable() && !project.IsDevelopmentDependency() && !project.PackageValidationEnabled())
         {
-            context.ReportDiagnostic(Description, context.Project);
+            context.ReportDiagnostic(Descriptor, context.Project);
         }
     }
 }

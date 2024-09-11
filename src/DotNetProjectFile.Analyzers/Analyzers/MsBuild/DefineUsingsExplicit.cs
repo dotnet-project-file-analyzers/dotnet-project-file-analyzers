@@ -9,7 +9,7 @@ public sealed class DefineUsingsExplicit() : MsBuildProjectFileAnalyzer(Rule.Def
             .SelectMany(g => g.ImplicitUsings)
             .Where(i => IsEnabled(i.Value)))
         {
-            context.ReportDiagnostic(Description, @implicit);
+            context.ReportDiagnostic(Descriptor, @implicit);
         }
     }
 

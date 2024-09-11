@@ -7,7 +7,7 @@ public sealed class RemoveFolderNodes() : MsBuildProjectFileAnalyzer(Rule.Remove
     {
         foreach (var folder in context.Project.ItemGroups.SelectMany(p => p.Folders))
         {
-            context.ReportDiagnostic(Description, folder, folder.Include?.TrimEnd('/', '\\'));
+            context.ReportDiagnostic(Descriptor, folder, folder.Include?.TrimEnd('/', '\\'));
         }
     }
 }

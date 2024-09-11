@@ -23,7 +23,7 @@ public sealed class RemoveEmptyNodes() : MsBuildProjectFileAnalyzer(Rule.RemoveE
 
         if (noChildren && IsEmpty(node.Element, level))
         {
-            context.ReportDiagnostic(Description, node, node.LocalName);
+            context.ReportDiagnostic(Descriptor, node, node.LocalName);
         }
     }
 

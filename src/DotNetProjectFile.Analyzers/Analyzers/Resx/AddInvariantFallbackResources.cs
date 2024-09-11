@@ -7,7 +7,7 @@ public sealed class AddInvariantFallbackResources() : ResourceFileAnalyzer(Rule.
     {
         if (!context.Resource.ForInvariantCulture && context.Resource.Parents.None(p => p.ForInvariantCulture))
         {
-            context.ReportDiagnostic(Description, context.Resource, context.Resource.Culture);
+            context.ReportDiagnostic(Descriptor, context.Resource, context.Resource.Culture);
         }
     }
 }

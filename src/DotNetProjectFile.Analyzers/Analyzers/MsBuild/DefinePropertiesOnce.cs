@@ -11,7 +11,7 @@ public sealed class DefinePropertiesOnce() : MsBuildProjectFileAnalyzer(Rule.Def
         {
             if (!props.Add(prop))
             {
-                context.ReportDiagnostic(Description, prop, prop.LocalName);
+                context.ReportDiagnostic(Descriptor, prop, prop.LocalName);
             }
         }
     }

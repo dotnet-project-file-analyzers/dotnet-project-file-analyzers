@@ -12,7 +12,7 @@ public sealed class UseVersionOnlyWithoutCpm()
                 .SelectMany(g => g.PackageReferences)
                 .Where(r => r.Version is { Length: > 0 }))
             {
-                context.ReportDiagnostic(Description, reference);
+                context.ReportDiagnostic(Descriptor, reference);
             }
         }
     }

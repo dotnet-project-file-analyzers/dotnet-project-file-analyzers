@@ -10,7 +10,7 @@ public sealed class UseForwardSlashesInPaths() : MsBuildProjectFileAnalyzer(Rule
             .SelectMany(AsProps)
             .Where(WithBackSlash))
         {
-            context.ReportDiagnostic(Description, prop.Node, prop.Node.LocalName, prop.Property);
+            context.ReportDiagnostic(Descriptor, prop.Node, prop.Node.LocalName, prop.Property);
         }
     }
 

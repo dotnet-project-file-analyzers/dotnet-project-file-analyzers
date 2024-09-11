@@ -9,7 +9,7 @@ public sealed class ConfigureCentralPackageVersionManagement() : MsBuildProjectF
     {
         if (context.Project.ManagePackageVersionsCentrally() is null)
         {
-            context.ReportDiagnostic(Description, context.Project.Positions.StartElement);
+            context.ReportDiagnostic(Descriptor, context.Project.Positions.StartElement);
         }
     }
 }

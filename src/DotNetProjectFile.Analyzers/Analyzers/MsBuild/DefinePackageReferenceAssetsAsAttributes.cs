@@ -9,7 +9,7 @@ public sealed class DefinePackageReferenceAssetsAsAttributes() : MsBuildProjectF
             .SelectMany(g => g.PackageReferences)
             .Where(HasAssetsElement))
         {
-            context.ReportDiagnostic(Description, reference, reference.Include);
+            context.ReportDiagnostic(Descriptor, reference, reference.Include);
         }
     }
 

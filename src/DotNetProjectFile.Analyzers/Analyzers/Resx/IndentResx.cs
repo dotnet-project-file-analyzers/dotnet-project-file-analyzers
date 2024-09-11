@@ -8,7 +8,7 @@ public sealed class IndentResx : ResourceFileAnalyzer
     public IndentResx() : this(' ', 2) { }
 
     public IndentResx(char ch, int repeat) : base(Rule.IndentResx)
-        => Checker = new(ch, repeat, Description);
+        => Checker = new(ch, repeat, Descriptor);
 
     protected override void Register(ResourceFileAnalysisContext context)
         => Checker.Walk(context.Resource, context.Resource.Text, context);
