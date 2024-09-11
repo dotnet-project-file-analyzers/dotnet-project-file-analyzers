@@ -1,6 +1,4 @@
-﻿#nullable enable
-
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Globalization;
 
 namespace DotNetProjectFile.Conversion;
