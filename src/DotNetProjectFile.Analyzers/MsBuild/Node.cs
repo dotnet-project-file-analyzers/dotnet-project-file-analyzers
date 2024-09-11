@@ -1,6 +1,5 @@
 ﻿using DotNetProjectFile.CodeAnalysis;
 using DotNetProjectFile.MsBuild.Conversion;
-using DotNetProjectFile.Xml;
 using System.Runtime.CompilerServices;
 using System.Xml;
 
