@@ -20,14 +20,6 @@ public readonly struct Nodes<TNode>(IEnumerable<XmlAnalysisNode> items) : IReadO
     /// <inheritdoc />
     public int Count => Items.OfType<TNode>().Count();
 
-    /// <summary>Returns a subset of the nodes of the specified type.</summary>
-    [Pure]
-    public Nodes<TOut> OfType<TOut>() where TOut : class, TNode => new(Items.OfType<TOut>());
-
-    [Pure]
-    public Nodes<TOut> NestedTyped<TOut>() where TOut : class, TNode, XmlAnalysisNode
-        => new(Items.SelectMany(n => n.DescendantsAndSelf()).OfType<TOut>());
-
     /// <inheritdoc />
     [Pure]
     public IEnumerator<TNode> GetEnumerator() => Items.OfType<TNode>().GetEnumerator();
