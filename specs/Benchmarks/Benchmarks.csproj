@@ -1,13 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <OutputType>exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\DotNetProjectFile.Analyzers\DotNetProjectFile.Analyzers.csproj" />
+    <ProjectReference Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,9 +16,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="nuget.config">
-      <CopyToOutputDirectory>always</CopyToOutputDirectory>
-    </None>
+    <None Update="nuget.config" CopyToOutputDirectory="always" />
+  </ItemGroup>
+
+  <ItemGroup Label="Analyzer">
+    <!-- #pragma disable Proj0014 -->
+    <ProjectReference
+      Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
+      PrivateAssets="all"
+      ReferenceOutputAssembly="false"
+      OutputItemType="Analyzer"
+      SetTargetFramework="TargetFramework=netstandard2.0" />
   </ItemGroup>
 
 </Project>

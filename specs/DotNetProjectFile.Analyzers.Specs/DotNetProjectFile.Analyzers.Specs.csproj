@@ -41,16 +41,6 @@
     <PackageReference Include="NUnit3TestAdapter" Version="*" PrivateAssets="all" />
   </ItemGroup>
 
-  <ItemGroup Label="Analyzers">
-    <PackageReference Include="FluentAssertions.Analyzers" Version="*" PrivateAssets="all" />
-    <PackageReference Include="NUnit.Analyzers" Version="*" PrivateAssets="all" />
-  </ItemGroup>
-
-  <ItemGroup Label="Analyzer">
-    <!-- #pragma disable Proj0014 -->
-    <ProjectReference Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" SetTargetFramework="TargetFramework=netstandard2.0" />
-  </ItemGroup>
-
   <ItemGroup Label="Test projects">
     <None Include="../../projects/*/*.csproj" Visible="true" Link="Projects/C#/%(Filename)%(Extension)" />
     <None Include="../../projects/*/*.vbproj" Visible="true" Link="Projects/VB/%(Filename)%(Extension)" />
@@ -58,8 +48,19 @@
     <None Include="../../projects/*/*.props" Visible="true" Link="Projects/Props/%(Directory)/%(Filename)%(Extension)" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="IO\Images\" />
+  <ItemGroup Label="Analyzers">
+    <PackageReference Include="FluentAssertions.Analyzers" Version="*" PrivateAssets="all" />
+    <PackageReference Include="NUnit.Analyzers" Version="*" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup Label="Analyzer">
+    <!-- #pragma disable Proj0014 -->
+    <ProjectReference
+      Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
+      PrivateAssets="all"
+      ReferenceOutputAssembly="false"
+      OutputItemType="Analyzer"
+      SetTargetFramework="TargetFramework=netstandard2.0" />
   </ItemGroup>
 
 </Project>
