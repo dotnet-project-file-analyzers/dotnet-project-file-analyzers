@@ -33,6 +33,7 @@ ToBeReleased
 - Proj0028: Define conditions on level 1. (NEW RULE)
 - Proj1100: Disable rule by default. (FP)
 - Proj2100: Space preserved closing nodes should not be reported. (FP)
+- Reading Nodes with 7% speed improvement.
 v1.4.2
 - Proj0025: Migrate from ruleset file to .editorconfig file. (NEW RULE)
 - Proj0215: Provide a compliant NuGet package icon. (NEW RULE)

@@ -1,5 +1,4 @@
 ﻿using Microsoft.CodeAnalysis.Text;
-using System;
 
 namespace DotNetProjectFile.MsBuild;
 
@@ -17,9 +16,6 @@ public sealed class Project : Node
         Text = text;
         Projects = projects;
         AdditionalText = additionalText;
-        Imports = Children.Typed<Import>();
-        PropertyGroups = Children.NestedTyped<PropertyGroup>();
-        ItemGroups = Children.NestedTyped<ItemGroup>();
         WarningPragmas = WarningPragmas.New(this);
     }
 
@@ -51,15 +47,15 @@ public sealed class Project : Node
 
     internal Projects Projects { get; }
 
-    public Nodes<Import> Imports { get; }
+    public Nodes<Import> Imports => new(Children);
 
-    public Nodes<PropertyGroup> PropertyGroups { get; }
+    public Nodes<PropertyGroup> PropertyGroups => new(DescendantsAndSelf());
 
-    public Nodes<ItemGroup> ItemGroups { get; }
+    public Nodes<ItemGroup> ItemGroups => new(DescendantsAndSelf());
 
     public WarningPragmas WarningPragmas { get; }
 
-    public TValue? Property<TValue, TNode>(Func<PropertyGroup, Nodes<TNode>> selector, TValue? @default = default)
+    public TValue? Property<TValue, TNode>(Func<PropertyGroup, IEnumerable<TNode>> selector, TValue? @default = default)
         where TNode : Node<TValue>
     {
         return SelfAndImports()
@@ -69,7 +65,7 @@ public sealed class Project : Node
                 ? property.Value
                 : @default;
 
-        static TNode? Property(MsBuildProject project, Func<PropertyGroup, Nodes<TNode>> selector)
+        static TNode? Property(MsBuildProject project, Func<PropertyGroup, IEnumerable<TNode>> selector)
             => project.PropertyGroups
                 .SelectMany(selector)
                 .FirstOrDefault();

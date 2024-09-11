@@ -1,5 +1,4 @@
-﻿using DotNetProjectFile.Xml;
-using Microsoft.CodeAnalysis.Text;
+﻿using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Analyzers.Helpers;
 

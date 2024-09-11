@@ -1,6 +1,4 @@
-﻿using DotNetProjectFile.NuGet;
-
-namespace DotNetProjectFile.MsBuild;
+﻿namespace DotNetProjectFile.MsBuild;
 
 public sealed class PackageReference(XElement element, Node parent, MsBuildProject project)
     : Node(element, parent, project)

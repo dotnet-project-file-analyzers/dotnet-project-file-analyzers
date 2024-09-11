@@ -21,8 +21,6 @@ public sealed class Resource : Node
         Text = sourceText;
         IsXml = isXml;
         Resources = resources;
-        Headers = Children<ResHeader>();
-        Data = Children<Data>();
 
         foreach (var data in Data.Where(d => d.Name is { Length: > 0 }))
         {
@@ -36,9 +34,9 @@ public sealed class Resource : Node
 
     public CultureInfo Culture => Path.Culture;
 
-    public Nodes<ResHeader> Headers { get; }
+    public Nodes<ResHeader> Headers => new(Children);
 
-    public Nodes<Data> Data { get; }
+    public Nodes<Data> Data => new(Children);
 
     public IReadOnlyCollection<Resource> Parents => parents ??= Resources.Parents(this);
 

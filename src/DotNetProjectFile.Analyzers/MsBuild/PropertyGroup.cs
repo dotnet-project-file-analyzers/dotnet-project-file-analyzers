@@ -1,106 +1,66 @@
 namespace DotNetProjectFile.MsBuild;
 
-public sealed class PropertyGroup : Node
+public sealed class PropertyGroup(XElement element, Node parent, MsBuildProject project) : Node(element, parent, project)
 {
-    /// <summary>Initializes a new instance of the <see cref="PropertyGroup"/> class.</summary>
-    public PropertyGroup(XElement element, Node parent, MsBuildProject project) : base(element, parent, project)
-    {
-        CodeAnalysisRuleSet = Children.Typed<CodeAnalysisRuleSet>();
-        TargetFramework = Children.Typed<TargetFramework>();
-        TargetFrameworks = Children.Typed<TargetFrameworks>();
-        ImplicitUsings = Children.Typed<ImplicitUsings>();
-        NuGetAudit = Children.Typed<NuGetAudit>();
-        EnableNETAnalyzers = Children.Typed<EnableNETAnalyzers>();
-        OutputType = Children.Typed<OutputType>();
+    public Nodes<CodeAnalysisRuleSet> CodeAnalysisRuleSet => new(Children);
 
-        DevelopmentDependency = Children.Typed<DevelopmentDependency>();
+    public Nodes<TargetFramework> TargetFramework => new(Children);
 
-        IsPackable = Children.Typed<IsPackable>();
-        IsPublishable = Children.Typed<IsPublishable>();
-        IsTestProject = Children.Typed<IsTestProject>();
-        Version = Children.Typed<Version>();
-        Description = Children.Typed<Description>();
-        Authors = Children.Typed<Authors>();
-        PackageTags = Children.Typed<PackageTags>();
-        RepositoryUrl = Children.Typed<RepositoryUrl>();
-        PackageProjectUrl = Children.Typed<PackageProjectUrl>();
-        Copyright = Children.Typed<Copyright>();
-        PackageDescription = Children.Typed<PackageDescription>();
-        PackageId = Children.Typed<PackageId>();
-        PackageLicenseExpression = Children.Typed<PackageLicenseExpression>();
-        PackageLicenseFile = Children.Typed<PackageLicenseFile>();
-        PackageLicenseUrl = Children.Typed<PackageLicenseUrl>();
-        PackageIcon = Children.Typed<PackageIcon>();
-        PackageIconUrl = Children.Typed<PackageIconUrl>();
-        PackageReleaseNotes = Children.Typed<PackageReleaseNotes>();
-        PackageReadmeFile = Children.Typed<PackageReadmeFile>();
-        GeneratePackageOnBuild = Children.Typed<GeneratePackageOnBuild>();
+    public Nodes<TargetFrameworks> TargetFrameworks => new(Children);
 
-        EnablePackageValidation = Children.Typed<EnablePackageValidation>();
-        PackageValidationBaselineVersion = Children.Typed<PackageValidationBaselineVersion>();
+    public Nodes<ImplicitUsings> ImplicitUsings => new(Children);
 
-        ManagePackageVersionsCentrally = Children.Typed<ManagePackageVersionsCentrally>();
-    }
+    public Nodes<NuGetAudit> NuGetAudit => new(Children);
 
-    public Nodes<CodeAnalysisRuleSet> CodeAnalysisRuleSet { get; }
+    public Nodes<EnableNETAnalyzers> EnableNETAnalyzers => new(Children);
 
-    public Nodes<TargetFramework> TargetFramework { get; }
+    public Nodes<OutputType> OutputType => new(Children);
 
-    public Nodes<TargetFrameworks> TargetFrameworks { get; }
+    public Nodes<DevelopmentDependency> DevelopmentDependency => new(Children);
 
-    public Nodes<ImplicitUsings> ImplicitUsings { get; }
+    public Nodes<IsPackable> IsPackable => new(Children);
 
-    public Nodes<NuGetAudit> NuGetAudit { get; }
+    public Nodes<Version> Version => new(Children);
 
-    public Nodes<EnableNETAnalyzers> EnableNETAnalyzers { get; }
+    public Nodes<Description> Description => new(Children);
 
-    public Nodes<OutputType> OutputType { get; }
+    public Nodes<Authors> Authors => new(Children);
 
-    public Nodes<DevelopmentDependency> DevelopmentDependency { get; }
+    public Nodes<PackageTags> PackageTags => new(Children);
 
-    public Nodes<IsPackable> IsPackable { get; }
+    public Nodes<RepositoryUrl> RepositoryUrl => new(Children);
 
-    public Nodes<Version> Version { get; }
+    public Nodes<PackageId> PackageId => new(Children);
 
-    public Nodes<Description> Description { get; }
+    public Nodes<PackageProjectUrl> PackageProjectUrl => new(Children);
 
-    public Nodes<Authors> Authors { get; }
+    public Nodes<Copyright> Copyright => new(Children);
 
-    public Nodes<PackageTags> PackageTags { get; }
+    public Nodes<PackageReleaseNotes> PackageReleaseNotes => new(Children);
 
-    public Nodes<RepositoryUrl> RepositoryUrl { get; }
+    public Nodes<PackageDescription> PackageDescription => new(Children);
 
-    public Nodes<PackageId> PackageId { get; }
+    public Nodes<PackageLicenseExpression> PackageLicenseExpression => new(Children);
 
-    public Nodes<PackageProjectUrl> PackageProjectUrl { get; }
+    public Nodes<PackageLicenseFile> PackageLicenseFile => new(Children);
 
-    public Nodes<Copyright> Copyright { get; }
+    public Nodes<PackageLicenseUrl> PackageLicenseUrl => new(Children);
 
-    public Nodes<PackageReleaseNotes> PackageReleaseNotes { get; }
+    public Nodes<PackageIcon> PackageIcon => new(Children);
 
-    public Nodes<PackageDescription> PackageDescription { get; }
+    public Nodes<PackageIconUrl> PackageIconUrl => new(Children);
 
-    public Nodes<PackageLicenseExpression> PackageLicenseExpression { get; }
+    public Nodes<PackageReadmeFile> PackageReadmeFile => new(Children);
 
-    public Nodes<PackageLicenseFile> PackageLicenseFile { get; }
+    public Nodes<IsPublishable> IsPublishable => new(Children);
 
-    public Nodes<PackageLicenseUrl> PackageLicenseUrl { get; }
+    public Nodes<IsTestProject> IsTestProject => new(Children);
 
-    public Nodes<PackageIcon> PackageIcon { get; }
+    public Nodes<GeneratePackageOnBuild> GeneratePackageOnBuild => new(Children);
 
-    public Nodes<PackageIconUrl> PackageIconUrl { get; }
+    public Nodes<EnablePackageValidation> EnablePackageValidation => new(Children);
 
-    public Nodes<PackageReadmeFile> PackageReadmeFile { get; }
+    public Nodes<PackageValidationBaselineVersion> PackageValidationBaselineVersion => new(Children);
 
-    public Nodes<IsPublishable> IsPublishable { get; }
-
-    public Nodes<IsTestProject> IsTestProject { get; }
-
-    public Nodes<GeneratePackageOnBuild> GeneratePackageOnBuild { get; }
-
-    public Nodes<EnablePackageValidation> EnablePackageValidation { get; }
-
-    public Nodes<PackageValidationBaselineVersion> PackageValidationBaselineVersion { get; }
-
-    public Nodes<ManagePackageVersionsCentrally> ManagePackageVersionsCentrally { get; }
+    public Nodes<ManagePackageVersionsCentrally> ManagePackageVersionsCentrally => new(Children);
 }
