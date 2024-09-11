@@ -6,5 +6,6 @@ public class Guard
     public void disabled_issues()
         => new RemoveFolderNodes()
         .ForProject("SuppressIssues.cs")
+        .Add(new IncludeProjectReferencesOnce())
         .HasIssue(new Issue("Proj0008", @"Remove folder node 'Third'.").WithSpan(20, 04, 20, 30));
 }

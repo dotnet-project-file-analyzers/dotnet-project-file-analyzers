@@ -54,7 +54,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Analyzer">
-    <!-- #pragma disable Proj0014 -->
+    <!-- #pragma warning disable Proj0014 -->
     <ProjectReference
       Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
       PrivateAssets="all"

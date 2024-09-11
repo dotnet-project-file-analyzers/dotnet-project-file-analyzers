@@ -603,7 +603,7 @@ public static class Rule
         category: Category.CPM);
 
     public static DiagnosticDescriptor VersionOverrideShouldChangeVersion => New(
-        id: 806,
+        id: 0806,
         title: "VersionOverride should change the version",
         message: "Remove VersionOverride or change it to a version different than defined by the CPM.",
         description:
@@ -613,7 +613,7 @@ public static class Rule
         category: Category.CPM);
 
     public static DiagnosticDescriptor OnlyUseDirectoryPackagesPropsForCPM => New(
-        id: 807,
+        id: 0807,
         title: "Only use Directory.Packages.props for Central Package Management",
         message: "As <{0}> is not about Central Package Management it should not be in Directory.Packages.props.",
         description:
