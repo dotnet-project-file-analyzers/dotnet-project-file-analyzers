@@ -18,7 +18,7 @@ public abstract class Node : XmlAnalysisNode
         Element = element;
         Parent = parent;
         Project = project ?? (this as Project) ?? throw new ArgumentNullException(nameof(project));
-        Children = new(element.Elements().Select(Create).OfType<Node>().ToArray());
+        Children = element.Elements().Select(Create).OfType<Node>().ToArray();
         Positions = XmlPositions.New(element);
         Depth = AncestorsAndSelf().Count() - 1;
     }
@@ -76,7 +76,7 @@ public abstract class Node : XmlAnalysisNode
     }
 
     /// <summary>Get all children.</summary>
-    public Nodes<Node> Children { get; }
+    public IReadOnlyList<Node> Children { get; }
 
     public IEnumerable<Node> DescendantsAndSelf()
     {

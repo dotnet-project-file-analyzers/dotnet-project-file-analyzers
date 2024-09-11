@@ -6,7 +6,7 @@ public sealed class Data : Node
         : base(element, resource)
     {
         Name = element.Attribute("name")?.Value;
-        Value = Children<Value>().FirstOrDefault();
+        Value = Children.OfType<Value>().FirstOrDefault();
     }
 
     public string? Name { get; }

@@ -12,38 +12,24 @@ namespace DotNetProjectFile.MsBuild;
 /// - PackageReference
 /// - ProjectReference
 /// - Reference.
-/// </remarks>
-public sealed class ItemGroup : Node
+public sealed class ItemGroup(XElement element, Node parent, MsBuildProject project)
+    : Node(element, parent, project)
 {
-    /// <summary>Initializes a new instance of the <see cref="ItemGroup"/> class.</summary>
-    /// <param name="element">
-    /// The corresponding <see cref="XElement"/>.
-    /// </param>
-    public ItemGroup(XElement element, Node parent, MsBuildProject project) : base(element, parent, project)
-    {
-        BuildActions = Children.Typed<BuildAction>();
-        PackageReferences = Children.Typed<PackageReference>();
-        PackageVersions = Children.Typed<PackageVersion>();
-        ProjectReferences = Children.Typed<ProjectReference>();
-        Folders = Children.Typed<Folder>();
-        Usings = Children.Typed<Using>();
-    }
-
     /// <summary>Gets the child build actions references.</summary>
-    public Nodes<BuildAction> BuildActions { get; }
+    public Nodes<BuildAction> BuildActions => new(Children);
 
     /// <summary>Gets the child package references.</summary>
-    public Nodes<PackageReference> PackageReferences { get; }
+    public Nodes<PackageReference> PackageReferences => new(Children);
 
     /// <summary>Gets the child package versions.</summary>
-    public Nodes<PackageVersion> PackageVersions { get; }
+    public Nodes<PackageVersion> PackageVersions => new(Children);
 
     /// <summary>Gets the child project references.</summary>
-    public Nodes<ProjectReference> ProjectReferences { get; }
+    public Nodes<ProjectReference> ProjectReferences => new(Children);
 
     /// <summary>Gets the child folders.</summary>
-    public Nodes<Folder> Folders { get; }
+    public Nodes<Folder> Folders => new(Children);
 
     /// <summary>Gets the child project references.</summary>
-    public Nodes<Using> Usings { get; }
+    public Nodes<Using> Usings => new(Children);
 }

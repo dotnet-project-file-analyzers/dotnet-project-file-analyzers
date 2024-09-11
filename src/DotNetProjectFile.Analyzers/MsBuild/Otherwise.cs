@@ -10,7 +10,7 @@ public sealed class Otherwise(XElement element, Node parent, MsBuildProject proj
 
     private string GetCondtion()
     {
-        var whens = string.Join(" And ", Parent!.Children.OfType<When>().Select(o => $"({o.Condition})"));
+        var whens = string.Join(" And ", Enumerable.OfType<When>(Parent!.Children).Select(o => $"({o.Condition})"));
         return $"!({whens})";
     }
 }
