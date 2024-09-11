@@ -21,13 +21,26 @@
     <Folder Include="Third" />
   </ItemGroup>
 
-
+  <ItemGroup>
+    <ProjectReference Include="../EmptyProject/EmptyProject.csproj" />
+  </ItemGroup>
+  
   <ItemGroup>
     <AdditionalFiles Include="*.csproj" Visible="false" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- #pragma warning disable Proj0014 -->
+    <ProjectReference
+      Include="../EmptyProject/EmptyProject.csproj"
+      PrivateAssets="all"
+      ReferenceOutputAssembly="false"
+      OutputItemType="Analyzer"
+      SetTargetFramework="TargetFramework=netstandard2.0"/>
   </ItemGroup>
 
 </Project>
