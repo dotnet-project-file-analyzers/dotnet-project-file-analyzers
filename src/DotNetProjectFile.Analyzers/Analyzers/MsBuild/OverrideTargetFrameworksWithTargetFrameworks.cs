@@ -10,7 +10,7 @@ public sealed class OverrideTargetFrameworksWithTargetFrameworks()
 
         foreach (var tfm in context.Project.PropertyGroups.SelectMany(g => g.TargetFramework))
         {
-            context.ReportDiagnostic(Descriptor, tfm);
+            context.ReportDiagnostic(Description, tfm);
         }
     }
 }

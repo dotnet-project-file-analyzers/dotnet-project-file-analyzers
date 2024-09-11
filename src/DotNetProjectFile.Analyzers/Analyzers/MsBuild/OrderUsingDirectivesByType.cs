@@ -26,7 +26,7 @@ public sealed class OrderUsingDirectivesByType() : MsBuildProjectFileAnalyzer(Ru
             var expectedFirst = expected.First();
             var foundType = found.Key.GetPrettyName();
             var foundFirst = found.First();
-            context.ReportDiagnostic(Descriptor, expectedFirst, expectedType, expectedFirst.Include, foundType, foundFirst.Include);
+            context.ReportDiagnostic(Description, expectedFirst, expectedType, expectedFirst.Include, foundType, foundFirst.Include);
         }
     }
 

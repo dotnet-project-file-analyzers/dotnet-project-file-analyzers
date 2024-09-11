@@ -17,7 +17,7 @@ public sealed class DefinePackageValidationBaselineVersion() : MsBuildProjectFil
             .SelectMany(p => p.PropertyGroups)
             .SelectMany(g => g.PackageValidationBaselineVersion).None())
         {
-            context.ReportDiagnostic(Descriptor, context.Project);
+            context.ReportDiagnostic(Description, context.Project);
         }
     }
 }

@@ -21,7 +21,11 @@
     <AdditionalFiles Include="../../props/common.props" Link="Properties/common.props" />
     <AdditionalFiles Include="*.csproj" Visible="false" />
   </ItemGroup>
-  
+
+  <ItemGroup Label="Analyzer configuration">
+    <GlobalAnalyzerConfigFiles Include="../../analyzers-config.ini" />
+  </ItemGroup>
+
   <ItemGroup Label="Analyzers">
     <PackageReference Include="AsyncFixer" Version="*-*" PrivateAssets="all" />
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="*" PrivateAssets="all" />

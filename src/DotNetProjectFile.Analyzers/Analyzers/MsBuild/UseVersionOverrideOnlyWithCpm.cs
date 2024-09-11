@@ -12,7 +12,7 @@ public sealed class UseVersionOverrideOnlyWithCpm()
                 .SelectMany(g => g.PackageReferences)
                 .Where(r => r.VersionOverride is { Length: > 0 }))
             {
-                context.ReportDiagnostic(Descriptor, reference);
+                context.ReportDiagnostic(Description, reference);
             }
         }
     }

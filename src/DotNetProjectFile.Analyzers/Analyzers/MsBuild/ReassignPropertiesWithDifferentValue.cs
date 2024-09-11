@@ -12,7 +12,7 @@ public sealed class ReassignPropertiesWithDifferentValue() : MsBuildProjectFileA
             if (EarlierAssignement(prop) is { } previous
                 && Equals(prop.Val, previous.Val))
             {
-                context.ReportDiagnostic(Descriptor, prop, prop.LocalName);
+                context.ReportDiagnostic(Description, prop, prop.LocalName);
             }
         }
     }

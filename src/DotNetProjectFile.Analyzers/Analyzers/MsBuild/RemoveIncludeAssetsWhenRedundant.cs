@@ -12,11 +12,11 @@ public sealed class RemoveIncludeAssetsWhenRedundant()
         {
             if (reference.Element.Attribute(IncludeAssets) is { Value.Length: > 0 })
             {
-                context.ReportDiagnostic(Descriptor, reference, IncludeAssets);
+                context.ReportDiagnostic(Description, reference, IncludeAssets);
             }
             else if (reference.Element.Element(IncludeAssets) is { Value.Length: > 0 })
             {
-                context.ReportDiagnostic(Descriptor, reference, $"<{IncludeAssets}>");
+                context.ReportDiagnostic(Description, reference, $"<{IncludeAssets}>");
             }
         }
     }

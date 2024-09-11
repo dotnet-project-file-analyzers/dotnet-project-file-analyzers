@@ -15,6 +15,6 @@ public sealed class OrderPackageReferencesAlphabetically() : MsBuildProjectFileA
     private void AnalyzeGroup(ProjectFileAnalysisContext context, Nodes<PackageReference> references)
         => references.CheckAlphabeticalOrder(r => r.IncludeOrUpdate, (expected, found) =>
         {
-            context.ReportDiagnostic(Descriptor, expected, expected.IncludeOrUpdate, found.IncludeOrUpdate);
+            context.ReportDiagnostic(Description, expected, expected.IncludeOrUpdate, found.IncludeOrUpdate);
         });
 }

@@ -12,6 +12,7 @@ namespace DotNetProjectFile.MsBuild;
 /// - PackageReference
 /// - ProjectReference
 /// - Reference.
+/// </remarks>
 public sealed class ItemGroup(XElement element, Node parent, MsBuildProject project)
     : Node(element, parent, project)
 {

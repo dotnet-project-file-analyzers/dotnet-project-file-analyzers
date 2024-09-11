@@ -10,7 +10,7 @@ public sealed class DefineConditionsOnLevel1() : MsBuildProjectFileAnalyzer(Rule
             .Where(IsConditionalOnLevel2OrHighger))
         {
             var parent = node.AncestorsAndSelf().Skip(1).First().LocalName;
-            context.ReportDiagnostic(Descriptor, node, parent);
+            context.ReportDiagnostic(Description, node, parent);
         }
     }
 

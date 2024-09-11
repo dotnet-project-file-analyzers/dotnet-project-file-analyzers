@@ -9,7 +9,7 @@ public sealed class RunNuGetSecurityAuditsAutomatically() : MsBuildProjectFileAn
     {
         if (context.Project.Property<bool?, NuGetAudit>(g => g.NuGetAudit, MsBuildDefaults.NuGetAudit) == false)
         {
-            context.ReportDiagnostic(Descriptor, context.Project);
+            context.ReportDiagnostic(Description, context.Project);
         }
     }
 }

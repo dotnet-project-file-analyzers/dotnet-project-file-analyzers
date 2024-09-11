@@ -7,7 +7,7 @@ public sealed class DefineData() : ResourceFileAnalyzer(Rule.DefineData)
     {
         if (context.Resource.Data.None())
         {
-            context.ReportDiagnostic(Descriptor, context.Resource);
+            context.ReportDiagnostic(Description, context.Resource);
         }
     }
 }

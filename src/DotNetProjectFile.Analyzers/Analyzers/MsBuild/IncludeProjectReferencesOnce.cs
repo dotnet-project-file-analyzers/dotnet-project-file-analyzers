@@ -19,7 +19,7 @@ public sealed class IncludeProjectReferencesOnce() : MsBuildProjectFileAnalyzer(
 
             if (lookup.TryGetValue(key, out var existing))
             {
-                context.ReportDiagnostic(Descriptor, reference, reference.Include);
+                context.ReportDiagnostic(Description, reference, reference.Include);
             }
             else
             {

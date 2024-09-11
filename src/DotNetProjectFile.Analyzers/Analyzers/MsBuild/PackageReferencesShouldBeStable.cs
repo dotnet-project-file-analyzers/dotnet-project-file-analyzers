@@ -9,7 +9,7 @@ public sealed class PackageReferencesShouldBeStable() : MsBuildProjectFileAnalyz
             .SelectMany(i => i.PackageReferences)
             .Where(IsUnstable))
         {
-            context.ReportDiagnostic(Descriptor, package, package.IncludeOrUpdate, package.ResolveVersion());
+            context.ReportDiagnostic(Description, package, package.IncludeOrUpdate, package.ResolveVersion());
         }
     }
 

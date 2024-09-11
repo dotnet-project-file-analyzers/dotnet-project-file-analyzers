@@ -22,21 +22,21 @@ public sealed class EmbedValidResourceFiles : ResourceFileAnalyzer
 
         if (!context.Resource.IsXml)
         {
-            context.ReportDiagnostic(Descriptor, resource, "contains no XML.");
+            context.ReportDiagnostic(Description, resource, "contains no XML.");
         }
         else
         {
             if (resource.Headers.None(h => Matches(h, "resmimetype", t => t == "text/microsoft-resx")))
             {
-                context.ReportDiagnostic(Descriptor, resource, @"misses <resheader name=""resmimetype""> with value ""text/microsoft-resx"".");
+                context.ReportDiagnostic(Description, resource, @"misses <resheader name=""resmimetype""> with value ""text/microsoft-resx"".");
             }
             if (resource.Headers.None(h => Matches(h, "reader", t => t.StartsWith("System.Resources.ResXResourceReader"))))
             {
-                context.ReportDiagnostic(Descriptor, resource, @"misses <resheader name=""reader""> with value ""System.Resources.ResXResourceReader"".");
+                context.ReportDiagnostic(Description, resource, @"misses <resheader name=""reader""> with value ""System.Resources.ResXResourceReader"".");
             }
             if (resource.Headers.None(h => Matches(h, "writer", t => t.StartsWith("System.Resources.ResXResourceWriter"))))
             {
-                context.ReportDiagnostic(Descriptor, resource, @"misses <resheader name=""writer""> with value ""System.Resources.ResXResourceWriter"".");
+                context.ReportDiagnostic(Description, resource, @"misses <resheader name=""writer""> with value ""System.Resources.ResXResourceWriter"".");
             }
         }
     }

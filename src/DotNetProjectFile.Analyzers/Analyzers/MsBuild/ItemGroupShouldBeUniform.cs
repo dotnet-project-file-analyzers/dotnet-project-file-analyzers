@@ -33,7 +33,7 @@ public sealed class ItemGroupShouldBeUniform() : MsBuildProjectFileAnalyzer(Rule
 
         if (group.Children.Any(n => !CombinationIsAllowed(type, n.GetType())))
         {
-            context.ReportDiagnostic(Descriptor, group);
+            context.ReportDiagnostic(Description, group);
         }
     }
 

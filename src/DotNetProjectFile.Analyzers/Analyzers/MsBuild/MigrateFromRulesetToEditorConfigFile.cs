@@ -8,7 +8,7 @@ public sealed class MigrateFromRulesetToEditorConfigFile()
     {
         foreach (var ruleset in context.Project.PropertyGroups.SelectMany(g => g.CodeAnalysisRuleSet))
         {
-            context.ReportDiagnostic(Descriptor, ruleset, ruleset.Value);
+            context.ReportDiagnostic(Description, ruleset, ruleset.Value);
         }
     }
 }

@@ -10,7 +10,7 @@ public sealed class AddInvariantFallbackValues() : ResourceFileAnalyzer(Rule.Add
         {
             foreach (var data in resource.Data.Where(d => !parent.Contains(d.Name)))
             {
-                context.ReportDiagnostic(Descriptor, data, data.Name);
+                context.ReportDiagnostic(Description, data, data.Name);
             }
         }
     }

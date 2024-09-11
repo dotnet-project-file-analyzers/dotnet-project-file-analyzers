@@ -11,7 +11,7 @@ public sealed class ExcludePrivateAssetDependencies() : MsBuildProjectFileAnalyz
             .SelectMany(p => p.PackageReferences)
             .Where(ShoudBePrivateAssets))
         {
-            context.ReportDiagnostic(Descriptor, reference, reference.Include);
+            context.ReportDiagnostic(Description, reference, reference.Include);
         }
     }
 

@@ -12,7 +12,7 @@ public sealed class EnableCentralPackageManagementCentrally()
             .SelectMany(g => g.ManagePackageVersionsCentrally)
             .Where(p => p.Value == true))
         {
-            context.ReportDiagnostic(Descriptor, enabled);
+            context.ReportDiagnostic(Description, enabled);
         }
     }
 }

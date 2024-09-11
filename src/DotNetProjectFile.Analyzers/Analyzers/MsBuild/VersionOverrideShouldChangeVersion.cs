@@ -17,7 +17,7 @@ public sealed class VersionOverrideShouldChangeVersion()
             if (CpmVersion(context, @override) is { } cpm
                 && cpm.Version == @override.VersionOverride)
             {
-                context.ReportDiagnostic(Descriptor, @override);
+                context.ReportDiagnostic(Description, @override);
             }
         }
     }

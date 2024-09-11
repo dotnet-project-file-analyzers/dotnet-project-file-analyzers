@@ -6,6 +6,6 @@ public sealed class SortDataAlphabetically() : ResourceFileAnalyzer(Rule.SortDat
     protected override void Register(ResourceFileAnalysisContext context)
         => context.Resource.Data.CheckAlphabeticalOrder(r => r.Name, (expected, found) =>
         {
-            context.ReportDiagnostic(Descriptor, expected, expected.Name, found.Name);
+            context.ReportDiagnostic(Description, expected, expected.Name, found.Name);
         });
 }

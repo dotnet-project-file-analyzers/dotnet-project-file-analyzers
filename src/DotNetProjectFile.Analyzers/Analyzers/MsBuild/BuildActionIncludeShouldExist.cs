@@ -19,7 +19,7 @@ public sealed class BuildActionIncludeShouldExist() : MsBuildProjectFileAnalyzer
         {
             foreach (var include in node.Include.Where(i => root.Files(i)?.Any() == false))
             {
-                context.ReportDiagnostic(Descriptor, node, include, node.LocalName, Ending(include));
+                context.ReportDiagnostic(Description, node, include, node.LocalName, Ending(include));
             }
         }
     }

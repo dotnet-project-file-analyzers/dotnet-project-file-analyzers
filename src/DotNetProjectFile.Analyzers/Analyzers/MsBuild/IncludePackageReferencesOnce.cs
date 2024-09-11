@@ -16,7 +16,7 @@ public sealed class IncludePackageReferencesOnce() : MsBuildProjectFileAnalyzer(
 
             if (lookup.TryGetValue(key, out var existing) && !IsOverride(existing, reference))
             {
-                context.ReportDiagnostic(Descriptor, reference, key.Name);
+                context.ReportDiagnostic(Description, reference, key.Name);
             }
             else
             {

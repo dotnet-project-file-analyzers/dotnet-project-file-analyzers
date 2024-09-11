@@ -27,11 +27,11 @@ public class Project_contains
         {
             foreach (var prop in context.Project.PropertyGroups.SelectMany(p => p.Children))
             {
-                context.ReportDiagnostic(Descriptor, prop, prop.LocalName);
+                context.ReportDiagnostic(Description, prop, prop.LocalName);
             }
             foreach (var prop in context.Project.ItemGroups.SelectMany(p => p.Children))
             {
-                context.ReportDiagnostic(Descriptor, prop, prop.LocalName);
+                context.ReportDiagnostic(Description, prop, prop.LocalName);
             }
         }
     }

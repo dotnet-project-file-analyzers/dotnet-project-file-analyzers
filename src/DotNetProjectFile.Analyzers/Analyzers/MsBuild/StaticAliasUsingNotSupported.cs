@@ -11,7 +11,7 @@ public sealed class StaticAliasUsingNotSupported() : MsBuildProjectFileAnalyzer(
             .SelectMany(g => g.Usings)
             .Where(u => u.Type == UsingType.StaticAlias))
         {
-            context.ReportDiagnostic(Descriptor, directive, directive.Include);
+            context.ReportDiagnostic(Description, directive, directive.Include);
         }
     }
 }

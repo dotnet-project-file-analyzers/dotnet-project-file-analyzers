@@ -14,7 +14,7 @@ public sealed class UseDirectoryPackagesPropsOnlyForCPM()
         {
             if (!IsCPM(node))
             {
-                context.ReportDiagnostic(Descriptor, node, node.LocalName);
+                context.ReportDiagnostic(Description, node, node.LocalName);
             }
 
             foreach (var child in node.Children)
