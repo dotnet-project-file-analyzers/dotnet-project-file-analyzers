@@ -5,9 +5,7 @@ public sealed class OrderUsingDirectivesAlphabetically() : MsBuildProjectFileAna
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var group in context.Project
-            .ImportsAndSelf()
-            .SelectMany(p => p.ItemGroups)
+        foreach (var group in context.Project.ItemGroups
             .Select(g => g.Usings)
             .SelectMany(g => g.GroupBy(u => u.Type)))
         {

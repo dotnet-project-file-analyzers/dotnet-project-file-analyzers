@@ -27,6 +27,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+ToBeReleased
+- Rules should only report on self, not on imports. (BUG)
 v1.4.3
 - Proj0026: Remove IncludeAssets when redundant. (NEW RULE)
 - Proj0027: Override <TargetFrameworks> with <TargetFrameworks>. (NEW RULE)
