@@ -4,23 +4,29 @@
 internal static class DotNetProjectFileAnalyzerProjectExtensions
 {
     public static bool IsPackable(this MsBuildProject project)
-        => project.Property(g => g.IsPackable, MsBuildDefaults.IsPackable).GetValueOrDefault();
+         => project.Property<IsPackable>()?.Value ?? MsBuildDefaults.IsPackable;
 
     public static bool IsPublishable(this MsBuildProject project)
-        => project.Property(g => g.IsPublishable, MsBuildDefaults.IsPublishable).GetValueOrDefault();
+        => project.Property<IsPublishable>()?.Value ?? MsBuildDefaults.IsPublishable;
 
     public static bool IsTestProject(this MsBuildProject project)
-        => project.Property(g => g.IsTestProject, MsBuildDefaults.IsTestProject).GetValueOrDefault();
+        => project.Property<IsTestProject>()?.Value ?? MsBuildDefaults.IsTestProject;
 
     public static bool NETAnalyzersEnabled(this MsBuildProject project)
-        => project.Property(g => g.EnableNETAnalyzers, MsBuildDefaults.EnableNETAnalyzers).GetValueOrDefault();
+        => project.Property<EnableNETAnalyzers>()?.Value ?? MsBuildDefaults.EnableNETAnalyzers;
+
+    public static bool? NuGetAuditEnabled(this MsBuildProject project)
+        => project.Property<NuGetAudit>()?.Value ?? MsBuildDefaults.NuGetAudit;
 
     public static bool PackageValidationEnabled(this MsBuildProject project)
-        => project.Property(g => g.EnablePackageValidation, MsBuildDefaults.EnablePackageValidation).GetValueOrDefault();
+        => project.Property<EnablePackageValidation>()?.Value ?? MsBuildDefaults.EnablePackageValidation;
 
     public static bool IsDevelopmentDependency(this MsBuildProject project)
-        => project.Property(g => g.DevelopmentDependency, MsBuildDefaults.DevelopmentDependency).GetValueOrDefault();
+        => project.Property<DevelopmentDependency>()?.Value ?? MsBuildDefaults.DevelopmentDependency;
 
     public static bool? ManagePackageVersionsCentrally(this MsBuildProject project)
-       => project.Property(g => g.ManagePackageVersionsCentrally, MsBuildDefaults.ManagePackageVersionsCentrally);
+       => project.Property<ManagePackageVersionsCentrally>()?.Value ?? MsBuildDefaults.ManagePackageVersionsCentrally;
+
+    private static TNode? Property<TNode>(this MsBuildProject project) where TNode : Node
+        => project.Walk().OfType<TNode>().LastOrDefault(n => n.Parent is PropertyGroup);
 }

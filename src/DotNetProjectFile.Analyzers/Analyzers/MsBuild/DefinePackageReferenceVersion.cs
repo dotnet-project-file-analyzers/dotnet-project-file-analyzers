@@ -27,9 +27,8 @@ public sealed class DefinePackageReferenceVersion()
     }
 
     private static ImmutableHashSet<string> PackageVersions(MsBuildProject project) => project
-        .ImportsAndSelf()
-        .SelectMany(p => p.ItemGroups)
-        .SelectMany(g => g.PackageVersions)
+        .Walk()
+        .OfType<PackageVersion>()
         .Where(r => r.Version is { Length: > 0 })
         .Where(r => r.IncludeOrUpdate is { Length: > 0 })
         .Select(r => r.IncludeOrUpdate)

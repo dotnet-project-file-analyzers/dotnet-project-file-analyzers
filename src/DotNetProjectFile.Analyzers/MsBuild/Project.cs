@@ -55,22 +55,6 @@ public sealed class Project : Node
 
     public WarningPragmas WarningPragmas { get; }
 
-    public TValue? Property<TValue, TNode>(Func<PropertyGroup, IEnumerable<TNode>> selector, TValue? @default = default)
-        where TNode : Node<TValue>
-    {
-        return SelfAndImports()
-            .Select(proj => Property(proj, selector))
-            .OfType<TNode>()
-            .FirstOrDefault() is { } property
-                ? property.Value
-                : @default;
-
-        static TNode? Property(MsBuildProject project, Func<PropertyGroup, IEnumerable<TNode>> selector)
-            => project.PropertyGroups
-                .SelectMany(selector)
-                .FirstOrDefault();
-    }
-
     /// <summary>Loops through all imports and self.</summary>
     public IEnumerable<Project> ImportsAndSelf()
     {
