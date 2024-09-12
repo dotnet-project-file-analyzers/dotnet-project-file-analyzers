@@ -2,10 +2,13 @@
 
 namespace DotNetProjectFile.MsBuild;
 
-public static class NodeExtensions
+public sealed partial class Project
 {
-    public static IEnumerable<Node> Walk(this Node node)
-        => Walk(node, new ProjectTrace(node.Project.Path));
+    /// <summary>Walks through all nodes.</summary>
+    public IEnumerable<Node> Walk()
+        => SelftAndDirectoryProps()
+        .Reverse()
+        .SelectMany(p => Walk(p, new(p.Path)));
 
     private static IEnumerable<Node> Walk(Node node, ProjectTrace trace)
     {

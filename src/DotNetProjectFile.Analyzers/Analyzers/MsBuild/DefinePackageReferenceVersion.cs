@@ -6,6 +6,8 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class DefinePackageReferenceVersion()
     : MsBuildProjectFileAnalyzer(Rule.DefinePackageReferenceVersion)
 {
+    protected override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var versions = context.Project.ManagePackageVersionsCentrally() is true

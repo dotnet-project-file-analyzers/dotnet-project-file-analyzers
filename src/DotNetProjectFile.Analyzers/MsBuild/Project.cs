@@ -2,7 +2,7 @@
 
 namespace DotNetProjectFile.MsBuild;
 
-public sealed class Project : Node
+public sealed partial class Project : Node
 {
     private Project(IOFile path, SourceText text, Projects projects, AdditionalText? additionalText)
         : this(path, text, XDocument.Parse(text.ToString(), LoadOptions), projects, additionalText)
@@ -105,6 +105,24 @@ public sealed class Project : Node
         if (DirectoryBuildProps is { })
         {
             yield return DirectoryBuildProps;
+        }
+    }
+
+    /// <summary>Gets self, Directory.Packages.props, and Directory.Build.props).</summary>
+    /// <remarks>
+    /// If the *.props are null, or higher in the type hierarchy they are skipped. 
+    /// <remarks>
+    private IEnumerable<Project> SelftAndDirectoryProps()
+    {
+        yield return this;
+
+        if (DirectoryPackagesProps is { } pack && FileType < ProjectFileType.DirectoryPackages)
+        {
+            yield return pack;
+        }
+        if (DirectoryBuildProps is { } build && FileType < ProjectFileType.DirectoryBuild)
+        {
+            yield return build;
         }
     }
 
