@@ -9,9 +9,7 @@ public sealed class TestProjectsRequireSdk() : MsBuildProjectFileAnalyzer(
     {
         var isTest = context.Project.IsTestProject();
         var hasSdk = context.Project
-            .SelfAndImports()
-            .SelectMany(p => p.ItemGroups)
-            .SelectMany(g => g.PackageReferences)
+            .Walk().OfType<PackageReference>()
             .Any(r => r.IncludeOrUpdate == NuGet.Packages.Microsoft_NET_Test_Sdk.Name);
 
         if (isTest && !hasSdk)

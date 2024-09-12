@@ -81,37 +81,10 @@ public sealed partial class Project : Node
         yield return this;
     }
 
-    /// <summary>Loops through all imports and self reversed.</summary>
-    public IEnumerable<Project> SelfAndImports()
-    {
-        yield return this;
-
-        foreach (var import in Imports)
-        {
-            if (import.Value is { } project)
-            {
-                foreach (var p in project.SelfAndImports())
-                {
-                    yield return p;
-                }
-            }
-        }
-
-        if (DirectoryPackagesProps is { })
-        {
-            yield return DirectoryPackagesProps;
-        }
-
-        if (DirectoryBuildProps is { })
-        {
-            yield return DirectoryBuildProps;
-        }
-    }
-
     /// <summary>Gets self, Directory.Packages.props, and Directory.Build.props).</summary>
     /// <remarks>
     /// If the *.props are null, or higher in the type hierarchy they are skipped. 
-    /// <remarks>
+    /// </remarks>
     private IEnumerable<Project> SelftAndDirectoryProps()
     {
         yield return this;

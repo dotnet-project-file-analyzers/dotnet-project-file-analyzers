@@ -1,4 +1,6 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+﻿using DotNetProjectFile.MsBuild;
+
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(Rule.ProvideCompliantPackageIcon)
@@ -41,9 +43,8 @@ public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(R
         var file = project.Path.Directory.File(iconValue);
 
         if (!file.Exists && project
-            .SelfAndImports()
-            .SelectMany(p => p.ItemGroups)
-            .SelectMany(g => g.BuildActions)
+        .Walk()
+            .OfType<BuildAction>()
             .SelectMany(a => a.IncludeAndUpdate)
             .FirstOrDefault(a => a.EndsWith(iconValue)) is { } action)
         {
