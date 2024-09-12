@@ -22,7 +22,7 @@ public static class IOPath
         {
             if (!string.Equals(self[i], other[i], caseSensitive ? StringComparison.Ordinal : StringComparison.OrdinalIgnoreCase))
             {
-                return true;
+                return false;
             }
         }
         return true;

@@ -28,7 +28,7 @@ public sealed partial class Project
     public bool? ManagePackageVersionsCentrally()
        => Property<ManagePackageVersionsCentrally>()?.Value ?? MsBuildDefaults.ManagePackageVersionsCentrally;
 
-    private TNode? Property<TNode>() where TNode : Node => this
+    public TNode? Property<TNode>() where TNode : Node => this
         .SelftAndDirectoryProps()
         .Select(p => Read<TNode>(p, new(p.Path)))
         .OfType<TNode>()

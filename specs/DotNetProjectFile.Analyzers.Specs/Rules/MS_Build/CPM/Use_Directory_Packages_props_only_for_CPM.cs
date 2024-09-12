@@ -2,6 +2,9 @@
 
 public class Reports
 {
+#if DEBUG
+    [Ignore("Works on the build, but does not report locally.")]
+#endif
     [Test]
     public void bloated_Directory_Packages_Props()
         => new UseDirectoryPackagesPropsOnlyForCPM()

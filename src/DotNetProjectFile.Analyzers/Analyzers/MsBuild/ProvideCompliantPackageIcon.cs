@@ -10,9 +10,8 @@ public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(R
         if (!context.Project.IsPackable() || context.Project.IsTestProject()) return;
 
         foreach (var icon in context.Project
-            .SelfAndImports()
-            .SelectMany(p => p.PropertyGroups)
-            .SelectMany(g => g.PackageIcon)
+            .Walk()
+            .OfType<PackageIcon>()
             .Where(i => i.Value is { Length: > 0 }))
         {
             var info = Resolve(icon.Value!, context.Project);
