@@ -5,8 +5,7 @@ public sealed class OrderPackageVersionsAlphabetically() : MsBuildProjectFileAna
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var references in context.Project.ItemGroups
-            .Select(g => g.PackageVersions))
+        foreach (var references in context.Project.ItemGroups.Select(g => g.PackageVersions))
         {
             AnalyzeGroup(context, references);
         }

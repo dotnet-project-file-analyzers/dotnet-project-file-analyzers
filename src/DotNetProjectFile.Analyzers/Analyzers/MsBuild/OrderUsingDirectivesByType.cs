@@ -5,10 +5,7 @@ public sealed class OrderUsingDirectivesByType() : MsBuildProjectFileAnalyzer(Ru
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var directives in context.Project
-            .ImportsAndSelf()
-            .SelectMany(p => p.ItemGroups)
-            .Select(g => g.Usings))
+        foreach (var directives in context.Project.ItemGroups.Select(g => g.Usings))
         {
             AnalyzeGroup(context, directives);
         }
