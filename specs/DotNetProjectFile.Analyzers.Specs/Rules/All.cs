@@ -17,18 +17,18 @@ public class Guards
                 "??????")
         };
 
-        foreach (var analyzer in all[1..])
+        foreach (var analyzer in all)
         {
             context = context.Add(analyzer);
         }
 
-        // Do not reference project to itself.
-        context.HasIssue(new Issue("Proj1000", "Use the .NET project file analyzers."));
+        context.HasNoIssues();
     }
 
     private static IEnumerable<DiagnosticAnalyzer> Analyzers
        => typeof(MsBuildProjectFileAnalyzer).Assembly
        .GetTypes()
        .Where(t => !t.IsAbstract && t.IsAssignableTo(typeof(DiagnosticAnalyzer)))
-       .Select(t => (DiagnosticAnalyzer)Activator.CreateInstance(t)!);
+       .Select(t => (DiagnosticAnalyzer)Activator.CreateInstance(t)!)
+       .Where(a => a.SupportedDiagnostics[0].IsEnabledByDefault);
 }

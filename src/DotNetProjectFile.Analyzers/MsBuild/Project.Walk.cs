@@ -10,6 +10,11 @@ public sealed partial class Project
         .Reverse()
         .SelectMany(p => Walk(p, new(p.Path)));
 
+    /// <summary>Walks through all nodes backwards.</summary>
+    public IEnumerable<Node> WalkBackward()
+        => SelftAndDirectoryProps()
+        .SelectMany(p => WalkBackward(p, new(p.Path)));
+
     private static IEnumerable<Node> Walk(Node node, ProjectTrace trace)
     {
         yield return node;
@@ -28,5 +33,30 @@ public sealed partial class Project
         {
             yield return child;
         }
+    }
+
+    private static IEnumerable<Node> WalkBackward(Node node, ProjectTrace trace)
+    {
+        for (var i = node.Children.Count - 1; i >= 0; i--)
+        {
+            var child = node.Children[i];
+
+            foreach (var ancestor in WalkBackward(child, trace))
+            {
+                yield return ancestor;
+            }
+        }
+
+        if (node is Import import
+            && import.Value is { } imported
+            && !trace.Contains(imported.Path))
+        {
+            foreach (var child in WalkBackward(imported, trace.Append(imported.Path)))
+            {
+                yield return child;
+            }
+        }
+
+        yield return node;
     }
 }

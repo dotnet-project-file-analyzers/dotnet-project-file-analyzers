@@ -5,7 +5,12 @@ namespace DotNetProjectFile.MsBuild;
 public sealed partial class Project
 {
     public bool IsPackable()
-         => Property<IsPackable>()?.Value ?? MsBuildDefaults.IsPackable;
+        => isPackable
+        ??= Property<IsPackable>()?.Value
+        ?? MsBuildDefaults.IsPackable;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private bool? isPackable;
 
     public bool IsPublishable()
         => Property<IsPublishable>()?.Value ?? MsBuildDefaults.IsPublishable;
@@ -26,7 +31,12 @@ public sealed partial class Project
         => Property<DevelopmentDependency>()?.Value ?? MsBuildDefaults.DevelopmentDependency;
 
     public bool? ManagePackageVersionsCentrally()
-       => Property<ManagePackageVersionsCentrally>()?.Value ?? MsBuildDefaults.ManagePackageVersionsCentrally;
+        => managePackageVersionsCentrally
+        ??= Property<ManagePackageVersionsCentrally>()?.Value
+        ?? MsBuildDefaults.ManagePackageVersionsCentrally;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private bool? managePackageVersionsCentrally;
 
     public TNode? Property<TNode>() where TNode : Node => this
         .SelftAndDirectoryProps()

@@ -56,30 +56,11 @@ public sealed partial class Project : Node
     public WarningPragmas WarningPragmas { get; }
 
     /// <summary>Loops through all imports and self.</summary>
-    public IEnumerable<Project> ImportsAndSelf()
-    {
-        if (DirectoryBuildProps is { })
-        {
-            yield return DirectoryBuildProps;
-        }
+    public IReadOnlyList<Project> ImportsAndSelf()
+        => importsAndSelf ??= Walk().OfType<Project>().Distinct().ToArray();
 
-        if (DirectoryPackagesProps is { })
-        {
-            yield return DirectoryPackagesProps;
-        }
-
-        foreach (var import in Imports)
-        {
-            if (import.Value is { } project)
-            {
-                foreach (var p in project.ImportsAndSelf())
-                {
-                    yield return p;
-                }
-            }
-        }
-        yield return this;
-    }
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private Project[]? importsAndSelf;
 
     /// <summary>Gets self, Directory.Packages.props, and Directory.Build.props).</summary>
     /// <remarks>
