@@ -64,9 +64,9 @@ public sealed partial class Project : Node
 
     /// <summary>Gets self, Directory.Packages.props, and Directory.Build.props).</summary>
     /// <remarks>
-    /// If the *.props are null, or higher in the type hierarchy they are skipped. 
+    /// If the *.props are null, or higher in the type hierarchy they are skipped.
     /// </remarks>
-    private IEnumerable<Project> SelftAndDirectoryProps()
+    private IEnumerable<Project> SelfAndDirectoryProps()
     {
         yield return this;
 

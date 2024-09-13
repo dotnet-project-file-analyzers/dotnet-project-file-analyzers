@@ -39,7 +39,7 @@ public sealed partial class Project
     private bool? managePackageVersionsCentrally;
 
     public TNode? Property<TNode>() where TNode : Node => this
-        .SelftAndDirectoryProps()
+        .SelfAndDirectoryProps()
         .Select(p => Read<TNode>(p, new(p.Path)))
         .OfType<TNode>()
         .FirstOrDefault();

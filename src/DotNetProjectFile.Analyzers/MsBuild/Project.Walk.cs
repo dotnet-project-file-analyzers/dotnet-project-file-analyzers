@@ -6,13 +6,13 @@ public sealed partial class Project
 {
     /// <summary>Walks through all nodes.</summary>
     public IEnumerable<Node> Walk()
-        => SelftAndDirectoryProps()
+        => SelfAndDirectoryProps()
         .Reverse()
         .SelectMany(p => Walk(p, new(p.Path)));
 
     /// <summary>Walks through all nodes backwards.</summary>
     public IEnumerable<Node> WalkBackward()
-        => SelftAndDirectoryProps()
+        => SelfAndDirectoryProps()
         .SelectMany(p => WalkBackward(p, new(p.Path)));
 
     private static IEnumerable<Node> Walk(Node node, ProjectTrace trace)
