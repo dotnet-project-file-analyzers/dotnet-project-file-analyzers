@@ -5,22 +5,22 @@ public sealed class IncludePackageReferencesOnce() : MsBuildProjectFileAnalyzer(
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var lookup = new Dictionary<Reference, PackageReference>();
+        var references = new Dictionary<Reference, PackageReference>();
 
         foreach (var reference in context.Project
-            .ImportsAndSelf()
-            .SelectMany(p => p.ItemGroups)
-            .SelectMany(i => i.PackageReferences))
+            .Walk()
+            .OfType<PackageReference>()
+            .Where(p => p.Include is { Length: > 0 }))
         {
-            var key = Reference.Create(reference);
+            var key = Reference.New(reference);
 
-            if (lookup.TryGetValue(key, out var existing) && !IsOverride(existing, reference))
+            if (references.TryGetValue(key, out var existing) && !IsOverride(existing, reference))
             {
                 context.ReportDiagnostic(Descriptor, reference, key.Name);
             }
             else
             {
-                lookup[key] = reference;
+                references[key] = reference;
             }
         }
     }
@@ -31,8 +31,6 @@ public sealed class IncludePackageReferencesOnce() : MsBuildProjectFileAnalyzer(
 
     private record struct Reference(string Name, string Condition)
     {
-        public static Reference Create(PackageReference reference) => new(
-            Name: reference.Include ?? reference.Update ?? string.Empty,
-            Condition: string.Join(" And ", reference.Conditions()));
+        public static Reference New(PackageReference r) => new(r.Include!, Conditions.ToString(r));
     }
 }

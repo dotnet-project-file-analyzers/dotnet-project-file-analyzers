@@ -7,23 +7,24 @@ public sealed class ReassignPropertiesWithDifferentValue() : MsBuildProjectFileA
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var properties = new Dictionary<Key, Node>();
+        var properties = new Dictionary<Prop, Node>();
 
         foreach (var prop in context.Project
             .Walk()
             .Where(n => n.Parent is PropertyGroup))
         {
-            if (properties.TryGetValue(Key.New(prop), out var previous)
-                && Equals(previous.Val, prop.Val))
+            var key = Prop.New(prop);
+
+            if (properties.TryGetValue(key, out var previous) && Equals(previous.Val, prop.Val))
             {
                 context.ReportDiagnostic(Descriptor, prop, prop.LocalName);
             }
-            properties[Key.New(prop)] = prop;
+            properties[key] = prop;
         }
     }
 
-    private readonly record struct Key(string LocalName, string Constraints)
+    private readonly record struct Prop(string Name, string Condition)
     {
-        public static Key New(Node n) => new(n.LocalName, string.Join(";", n.Conditions()));
+        public static Prop New(Node n) => new(n.LocalName,  Conditions.ToString(n));
     }
 }
