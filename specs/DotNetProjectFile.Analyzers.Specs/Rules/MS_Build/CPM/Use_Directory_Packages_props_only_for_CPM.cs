@@ -2,9 +2,7 @@
 
 public class Reports
 {
-#if DEBUG
-    [Ignore("Works on the build, but does not report locally.")]
-#endif
+    [Ignore("Does not work with Buildalizer at the moment.")]
     [Test]
     public void bloated_Directory_Packages_Props()
         => new UseDirectoryPackagesPropsOnlyForCPM()
