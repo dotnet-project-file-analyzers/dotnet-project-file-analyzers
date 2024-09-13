@@ -3,6 +3,6 @@ To monitor performance.
 
 ## Get Diagnostics
 |------------ |-------------:|
-| CompliantCS |  28,693.5 µs |
-| CompliantVB |     474.6 µs |
-| Project     | 318,345.9 µs |
+| CompliantCS |  28,173.8 µs |
+| CompliantVB |     440.6 µs |
+| Project     | 313,239.0 µs |

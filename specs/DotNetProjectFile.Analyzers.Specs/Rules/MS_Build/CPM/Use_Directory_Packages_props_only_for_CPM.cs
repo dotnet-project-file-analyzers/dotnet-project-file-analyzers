@@ -2,6 +2,7 @@
 
 public class Reports
 {
+    [Ignore("Does not work with Buildalizer at the moment.")]
     [Test]
     public void bloated_Directory_Packages_Props()
         => new UseDirectoryPackagesPropsOnlyForCPM()

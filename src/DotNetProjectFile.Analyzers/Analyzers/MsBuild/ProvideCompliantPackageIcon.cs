@@ -1,4 +1,6 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+﻿using DotNetProjectFile.MsBuild;
+
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(Rule.ProvideCompliantPackageIcon)
@@ -10,9 +12,8 @@ public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(R
         if (!context.Project.IsPackable() || context.Project.IsTestProject()) return;
 
         foreach (var icon in context.Project
-            .SelfAndImports()
-            .SelectMany(p => p.PropertyGroups)
-            .SelectMany(g => g.PackageIcon)
+            .Walk()
+            .OfType<PackageIcon>()
             .Where(i => i.Value is { Length: > 0 }))
         {
             var info = Resolve(icon.Value!, context.Project);
@@ -42,9 +43,8 @@ public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(R
         var file = project.Path.Directory.File(iconValue);
 
         if (!file.Exists && project
-            .SelfAndImports()
-            .SelectMany(p => p.ItemGroups)
-            .SelectMany(g => g.BuildActions)
+        .Walk()
+            .OfType<BuildAction>()
             .SelectMany(a => a.IncludeAndUpdate)
             .FirstOrDefault(a => a.EndsWith(iconValue)) is { } action)
         {

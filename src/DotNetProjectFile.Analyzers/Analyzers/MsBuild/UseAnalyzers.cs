@@ -7,12 +7,10 @@ public sealed class UseAnalyzers() : MsBuildProjectFileAnalyzer(Rule.UseDotNetPr
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var packageReferences = context.Project
-            .ImportsAndSelf()
-            .SelectMany(p => p.ItemGroups)
-            .SelectMany(group => group.PackageReferences);
-
-        if (packageReferences.None(r => r.Include.Contains("DotNetProjectFile.Analyzers", StringComparison.OrdinalIgnoreCase)))
+        if (context.Project
+            .Walk()
+            .OfType<PackageReference>()
+            .None(r => r.Include.Contains("DotNetProjectFile.Analyzers", StringComparison.OrdinalIgnoreCase)))
         {
             context.ReportDiagnostic(Descriptor, context.Project);
         }

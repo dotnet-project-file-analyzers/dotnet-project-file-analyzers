@@ -4,6 +4,6 @@ public enum ProjectFileType
 {
     ProjectFile,
     Props,
-    DirectoryBuild,
     DirectoryPackages,
+    DirectoryBuild,
 }

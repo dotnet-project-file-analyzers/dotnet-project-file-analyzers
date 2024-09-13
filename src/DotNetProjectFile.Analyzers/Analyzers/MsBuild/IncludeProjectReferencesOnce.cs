@@ -5,38 +5,33 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class IncludeProjectReferencesOnce() : MsBuildProjectFileAnalyzer(Rule.IncludeProjectReferencesOnce)
 {
+    protected override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var lookup = new Dictionary<Reference, ProjectReference>();
+        var references = new Dictionary<Reference, ProjectReference>();
 
         foreach (var reference in context.Project
-            .ImportsAndSelf()
-            .SelectMany(p => p.ItemGroups)
-            .SelectMany(i => i.ProjectReferences)
-            .Where(r => r.Include is not null))
+            .Walk()
+            .OfType<ProjectReference>()
+            .Where(r => r.Include is { Length: > 0 }))
         {
-            var key = Reference.Create(reference);
+            var key = Reference.New(reference);
 
-            if (lookup.TryGetValue(key, out var existing))
+            if (references.TryGetValue(key, out var existing))
             {
                 context.ReportDiagnostic(Descriptor, reference, reference.Include);
             }
             else
             {
-                lookup[key] = reference;
+                references[key] = reference;
             }
         }
     }
 
     private record struct Reference(IOFile File, string Condition)
     {
-        public static Reference Create(ProjectReference reference) => new(
-            File: GetName(reference),
-            Condition: string.Join(" And ", reference.Conditions()));
-
-        private static IOFile GetName(ProjectReference reference)
-            => reference.Include is null
-            ? IOFile.Empty
-            : reference.Project.Path.Directory.File(reference.Include);
+        public static Reference New(ProjectReference r)
+            => new(r.Project.Path.Directory.File(r.Include!), Conditions.ToString(r));
     }
 }

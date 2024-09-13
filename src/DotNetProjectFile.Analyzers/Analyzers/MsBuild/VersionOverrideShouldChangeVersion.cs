@@ -24,9 +24,8 @@ public sealed class VersionOverrideShouldChangeVersion()
 
     private static PackageVersion CpmVersion(ProjectFileAnalysisContext context, PackageReference @override)
         => context.Project
-            .ImportsAndSelf()
-            .SelectMany(p => p.ItemGroups)
-            .SelectMany(g => g.PackageVersions)
+            .WalkBackward()
+            .OfType<PackageVersion>()
             .Where(v => v.Include == @override.IncludeOrUpdate)
-            .LastOrDefault(v => v.Version is { Length: > 0 });
+            .FirstOrDefault(v => v.Version is { Length: > 0 });
 }

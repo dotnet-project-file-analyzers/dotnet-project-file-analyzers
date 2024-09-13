@@ -23,11 +23,11 @@
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.4.3</Version>
+    <Version>1.4.4</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
-ToBeReleased
+v1.4.4
 - Rules should only report on self, not on imports. (BUG)
 v1.4.3
 - Proj0026: Remove IncludeAssets when redundant. (NEW RULE)

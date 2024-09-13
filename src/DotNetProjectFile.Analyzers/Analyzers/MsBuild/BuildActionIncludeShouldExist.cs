@@ -7,15 +7,9 @@ public sealed class BuildActionIncludeShouldExist() : MsBuildProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var project in context.Project.SelfAndImports())
-        {
-            Report(project, context.Project.Path.Directory, context);
-        }
-    }
+        var root = context.Project.Path.Directory;
 
-    private void Report(MsBuildProject project, IODirectory root, ProjectFileAnalysisContext context)
-    {
-        foreach (var node in project.ItemGroups.SelectMany(group => group.BuildActions))
+        foreach (var node in context.Project.Walk().OfType<BuildAction>())
         {
             foreach (var include in node.Include.Where(i => root.Files(i)?.Any() == false))
             {

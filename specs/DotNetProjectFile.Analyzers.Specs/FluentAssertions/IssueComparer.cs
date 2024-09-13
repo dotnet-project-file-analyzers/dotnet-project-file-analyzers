@@ -15,9 +15,12 @@ internal sealed class IssueComparer : IEqualityComparer<Issue>
             return x.Id == y.Id
                 && y.Severity == y.Severity
                 && x.Message == y.Message
-                && (x.Span == default 
+                && (x.Span == default
                     || y.Span == default
-                    || x.Span == y.Span);
+                    || x.Span == y.Span)
+                 && (x.Path == default
+                    || y.Path == default
+                    || x.Path == y.Path);
         }
         else
         {

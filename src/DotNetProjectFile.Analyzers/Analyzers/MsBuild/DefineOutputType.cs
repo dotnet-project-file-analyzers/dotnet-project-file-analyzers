@@ -7,10 +7,7 @@ public sealed class DefineOutputType() : MsBuildProjectFileAnalyzer(Rule.DefineO
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project
-            .ImportsAndSelf()
-            .SelectMany(p => p.PropertyGroups)
-            .SelectMany(g => g.OutputType).None())
+        if (context.Project.Property<OutputType>() is null)
         {
             context.ReportDiagnostic(Descriptor, context.Project);
         }
