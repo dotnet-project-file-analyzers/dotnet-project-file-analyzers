@@ -1,4 +1,5 @@
 ﻿using Microsoft.CodeAnalysis.Text;
+using System.Runtime.CompilerServices;
 using System.Xml;
 
 namespace DotNetProjectFile.Xml;
@@ -20,6 +21,11 @@ public sealed record XmlPositions
         LinePosition? start = null;
         LinePosition? next = null;
         LinePosition? end = null;
+
+        if(element.Name.LocalName == "PackageReference")
+        {
+
+        }
 
         using var reader = element.CreateReader();
 
