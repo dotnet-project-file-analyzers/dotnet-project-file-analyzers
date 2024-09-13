@@ -56,6 +56,10 @@ public sealed partial class Project : Node
     public WarningPragmas WarningPragmas { get; }
 
     /// <summary>Loops through all imports and self.</summary>
+    /// <remarks>
+    /// Should only be used to register project files. In other cases
+    /// <see cref="Walk()" /> and <see cref="WalkBackward()"/> should be used.
+    /// </remarks>
     public IReadOnlyList<Project> ImportsAndSelf()
         => importsAndSelf ??= Walk().OfType<Project>().Distinct().ToArray();
 
