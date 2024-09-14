@@ -6,7 +6,6 @@ namespace Parsing_Grammar;
 
 public class Matches
 {
-    [Theory]
     [TestCase("a")]
     [TestCase("b")]
     [TestCase("c")]
@@ -151,7 +150,6 @@ public class Does_not_match
             .NotHaveTokenized();
     }
 
-    [Theory]
     [TestCase(0)]
     [TestCase(1)]
     [TestCase(5)]
