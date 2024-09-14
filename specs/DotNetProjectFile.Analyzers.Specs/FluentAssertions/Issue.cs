@@ -6,7 +6,8 @@ internal sealed record Issue(
     string Id,
     string Message, 
     LinePositionSpan Span,
-    DiagnosticSeverity Severity = DiagnosticSeverity.Warning)
+    DiagnosticSeverity Severity = DiagnosticSeverity.Warning,
+    string? Path = null)
 {
     public static readonly IssueComparer Comparer = new();
 
@@ -22,6 +23,8 @@ internal sealed record Issue(
             Span = new(new(lineStart, posStart), new(lineEnd, posEnd)),
         };
 
+    public Issue WithPath(string path) => this with { Path = path };
+
     public override string ToString()
     {
         var sb = new StringBuilder($"{Id} {Message}");
@@ -33,9 +36,17 @@ internal sealed record Issue(
         {
             sb.Append($" {Severity}");
         }
+        if (Path is { })
+        {
+            sb.Append($" {Path}");
+        }
         return sb.ToString();
     }
 
-    public static Issue FromDiagnostic(Diagnostic diagnostic)
-        => new(diagnostic.Id, diagnostic.GetMessage(), diagnostic.Location.GetLineSpan().Span, diagnostic.Severity);
+    public static Issue FromDiagnostic(Diagnostic diagnostic) => new(
+        diagnostic.Id, 
+        diagnostic.GetMessage(),
+        diagnostic.Location.GetLineSpan().Span,
+        diagnostic.Severity,
+        System.IO.Path.GetFileName(diagnostic.Location.GetLineSpan().Path));
 }

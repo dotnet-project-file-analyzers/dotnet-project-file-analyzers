@@ -21,9 +21,8 @@ public sealed class PackageReference(XElement element, Node parent, MsBuildProje
     public string? ResolveVersion()
         => Project.ManagePackageVersionsCentrally() is true
             ? VersionOverride ?? Project
-            .ImportsAndSelf()
-            .SelectMany(g => g.ItemGroups)
-            .SelectMany(v => v.PackageVersions)
-            .LastOrDefault(v => v.Include == IncludeOrUpdate)?.Version
+            .WalkBackward()
+            .OfType<PackageVersion>()
+            .FirstOrDefault(v => v.Include == IncludeOrUpdate)?.Version
         : Version;
 }

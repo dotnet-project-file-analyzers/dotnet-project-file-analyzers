@@ -7,15 +7,8 @@ public sealed class DefinePackageValidationBaselineVersion() : MsBuildProjectFil
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.Project.PackageValidationEnabled())
-        {
-            return;
-        }
-
-        if (context.Project
-            .ImportsAndSelf()
-            .SelectMany(p => p.PropertyGroups)
-            .SelectMany(g => g.PackageValidationBaselineVersion).None())
+        if (context.Project.PackageValidationEnabled() &&
+            context.Project.Property<PackageValidationBaselineVersion>() is null)
         {
             context.ReportDiagnostic(Descriptor, context.Project);
         }

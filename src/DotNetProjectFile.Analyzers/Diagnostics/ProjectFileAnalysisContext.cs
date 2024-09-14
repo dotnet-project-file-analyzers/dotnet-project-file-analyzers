@@ -32,15 +32,23 @@ public sealed class ProjectFileAnalysisContext(
     public CancellationToken CancellationToken { get; } = cancellationToken;
 
     /// <summary>Reports a diagnostic about the project file.</summary>
+    public void ReportDiagnostic(DiagnosticDescriptor descriptor, Node node, params object?[]? messageArgs)
+        => ReportDiagnostic(descriptor, node.Project, node.Positions.FullSpan, messageArgs);
+
+    /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, XmlAnalysisNode node, params object?[]? messageArgs)
         => ReportDiagnostic(descriptor, node.Positions.FullSpan, messageArgs);
 
     /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, LinePositionSpan span, params object?[]? messageArgs)
-    {
-        var warningPragmas = Project.WarningPragmas;
+        => ReportDiagnostic(descriptor, Project, span, messageArgs);
 
-        var location = Project.GetLocation(span);
+    /// <summary>Reports a diagnostic about the project file.</summary>
+    private void ReportDiagnostic(DiagnosticDescriptor descriptor, MsBuildProject project, LinePositionSpan span, params object?[]? messageArgs)
+    {
+        var warningPragmas = project.WarningPragmas;
+
+        var location = project.GetLocation(span);
 
         if (!warningPragmas.IsDisabled(descriptor.Id, location))
         {

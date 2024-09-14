@@ -2,6 +2,7 @@
 
 public class Reports
 {
+    /// <remarks>Should report but the build crashes.</remarks>
     [Test]
     public void missing_versions()
        => new DefinePackageReferenceVersion()

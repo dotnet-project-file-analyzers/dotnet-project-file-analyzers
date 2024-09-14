@@ -8,14 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Qowaiv" Version="5.0.0" />
-    <PackageReference Include="Qowaiv" Version="5.1.1" />
+    <PackageReference Include="Qowaiv" Version="5.0.1" />
+    <PackageReference Include="Qowaiv" Version="7.0.4" />
     <PackageReference Update="Qowaiv" Version="6.4.1" />
     <PackageReference Update="Qowaiv" Version="6.4.2" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <PackageReference Include="Qowaiv" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="../props/DoublePackageReferences.props" Link="Properties/DoublePackageReferences.props" />
+    <AdditionalFiles Include="*.csproj" Visible="false" />
   </ItemGroup>
 
 </Project>

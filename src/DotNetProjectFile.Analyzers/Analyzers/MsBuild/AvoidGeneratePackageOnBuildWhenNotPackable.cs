@@ -7,15 +7,9 @@ public sealed class AvoidGeneratePackageOnBuildWhenNotPackable() : MsBuildProjec
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (IsPotentiallyPackable(context))
-        {
-            return;
-        }
+        if (IsPotentiallyPackable(context)) return;
 
-        foreach (var node in context.Project
-            .ImportsAndSelf()
-            .SelectMany(p => p.PropertyGroups)
-            .SelectMany(g => g.GeneratePackageOnBuild))
+        foreach (var node in context.Project.Walk().OfType<GeneratePackageOnBuild>())
         {
             context.ReportDiagnostic(Descriptor, node);
         }
@@ -23,13 +17,12 @@ public sealed class AvoidGeneratePackageOnBuildWhenNotPackable() : MsBuildProjec
 
     private static bool IsPotentiallyPackable(ProjectFileAnalysisContext context)
     {
-        var nodes = context.Project
-            .ImportsAndSelf()
-            .SelectMany(p => p.PropertyGroups)
-            .SelectMany(g => g.IsPackable)
-            .ToArray();
-
-        return nodes.Length == 0
-            || Array.Exists(nodes, n => n.Value == true);
+        var none = true;
+        foreach (var isPackable in context.Project.WalkBackward().OfType<IsPackable>())
+        {
+            if (isPackable.Value is true) return true;
+            none = false;
+        }
+        return none;
     }
 }

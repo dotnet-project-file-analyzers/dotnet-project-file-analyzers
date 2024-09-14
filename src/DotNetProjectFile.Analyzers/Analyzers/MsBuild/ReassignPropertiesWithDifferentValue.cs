@@ -3,35 +3,28 @@
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ReassignPropertiesWithDifferentValue() : MsBuildProjectFileAnalyzer(Rule.ReassignPropertiesWithDifferentValue)
 {
+    protected override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.Imports.None()) return;
+        var properties = new Dictionary<Prop, Node>();
 
-        foreach (var prop in context.Project.PropertyGroups.SelectMany(p => p.Children))
+        foreach (var prop in context.Project
+            .Walk()
+            .Where(n => n.Parent is PropertyGroup))
         {
-            if (EarlierAssignement(prop) is { } previous
-                && Equals(prop.Val, previous.Val))
+            var key = Prop.New(prop);
+
+            if (properties.TryGetValue(key, out var previous) && Equals(previous.Val, prop.Val))
             {
                 context.ReportDiagnostic(Descriptor, prop, prop.LocalName);
             }
+            properties[key] = prop;
         }
     }
 
-    private static Node? EarlierAssignement(Node node)
+    private readonly record struct Prop(string Name, string Condition)
     {
-        foreach (var import in node.Project.SelfAndImports().Skip(1))
-        {
-            if (import.PropertyGroups
-                .SelectMany(p => p.Children)
-                .FirstOrDefault(n => Same(node, n)) is { } previous)
-            {
-                return previous;
-            }
-        }
-        return null;
+        public static Prop New(Node n) => new(n.LocalName,  Conditions.ToString(n));
     }
-
-    private static bool Same(Node l, Node r)
-        => l.LocalName == r.LocalName
-        && Enumerable.SequenceEqual(l.Conditions(), r.Conditions());
 }

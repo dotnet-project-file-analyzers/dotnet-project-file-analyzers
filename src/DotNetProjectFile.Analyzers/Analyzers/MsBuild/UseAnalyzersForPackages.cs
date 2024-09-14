@@ -8,9 +8,8 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var packageReferences = context.Project
-            .ImportsAndSelf()
-            .SelectMany(p => p.ItemGroups)
-            .SelectMany(group => group.PackageReferences)
+        .Walk()
+            .OfType<PackageReference>()
             .ToArray();
 
         var unusedAnalyzers = Analyzers.Where(analyzer

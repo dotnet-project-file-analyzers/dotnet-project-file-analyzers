@@ -628,7 +628,8 @@ public static class Rule
         message: "Use the .NET project file analyzers.",
         description: "To improve the code quality of .NET project files.",
         tags: ["roslyn", "analyzer", "cbproj", "vbproj"],
-        category: Category.CodeQuality);
+        category: Category.CodeQuality,
+        isEnabled: false);
 
     public static DiagnosticDescriptor UseAnalyzersForPackages => New(
         id: 1001,

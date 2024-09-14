@@ -1,4 +1,6 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+﻿using System.Collections.Immutable;
+
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
@@ -22,32 +24,30 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
     {
         if (!context.Project.IsPackable() || context.Project.IsTestProject()) return;
 
-        Analyze(context, Rule.DefineVersion, g => g.Version);
-        Analyze(context, Rule.DefineDescription, g => Nodes.Concat(g.Description, g.PackageDescription));
-        Analyze(context, Rule.DefineAuthors, g => g.Authors);
-        Analyze(context, Rule.DefineTags, g => g.PackageTags);
-        Analyze(context, Rule.DefineRepositoryUrl, g => g.RepositoryUrl);
-        Analyze(context, Rule.DefineUrl, g => g.PackageProjectUrl);
-        Analyze(context, Rule.DefineCopyright, g => g.Copyright);
-        Analyze(context, Rule.DefineReleaseNotes, g => g.PackageReleaseNotes);
-        Analyze(context, Rule.DefineReadmeFile, g => g.PackageReadmeFile);
-        Analyze(context, Rule.DefineIcon, g => g.PackageIcon);
-        Analyze(context, Rule.DefineIconUrl, g => g.PackageIconUrl);
-        Analyze(context, Rule.DefinePackageId, g => g.PackageId);
-        Analyze(context, Rule.DefineLicense, g => Nodes.Concat(g.PackageLicenseFile, g.PackageLicenseExpression));
+        var available = context.Project.Walk().Select(n => n.GetType()).ToImmutableHashSet();
+
+        Analyze(context, available, Rule.DefineVersion, typeof(DotNetProjectFile.MsBuild.Version));
+        Analyze(context, available, Rule.DefineDescription, typeof(Description), typeof(PackageDescription));
+        Analyze(context, available, Rule.DefineAuthors, typeof(Authors));
+        Analyze(context, available, Rule.DefineTags, typeof(PackageTags));
+        Analyze(context, available, Rule.DefineRepositoryUrl, typeof(RepositoryUrl));
+        Analyze(context, available, Rule.DefineUrl, typeof(PackageProjectUrl));
+        Analyze(context, available, Rule.DefineCopyright, typeof(Copyright));
+        Analyze(context, available, Rule.DefineReleaseNotes, typeof(PackageReleaseNotes));
+        Analyze(context, available, Rule.DefineReadmeFile, typeof(PackageReadmeFile));
+        Analyze(context, available, Rule.DefineIcon, typeof(PackageIcon));
+        Analyze(context, available, Rule.DefineIconUrl, typeof(PackageIconUrl));
+        Analyze(context, available, Rule.DefinePackageId, typeof(PackageId));
+        Analyze(context, available, Rule.DefineLicense, typeof(PackageLicenseFile), typeof(PackageLicenseExpression));
     }
 
-    private static IEnumerable<Node> GetNodes(ProjectFileAnalysisContext context, Func<PropertyGroup, IEnumerable<Node>> getNodes)
-        => context.Project
-            .ImportsAndSelf()
-            .SelectMany(p => p.PropertyGroups)
-            .SelectMany(g => getNodes(g));
-
-    private static void Analyze(ProjectFileAnalysisContext context, DiagnosticDescriptor descriptor, Func<PropertyGroup, IEnumerable<Node>> getNodes)
+    private static void Analyze(
+        ProjectFileAnalysisContext context,
+        ImmutableHashSet<Type> available,
+        DiagnosticDescriptor descriptor,
+        params Type[] required)
     {
-        var found = GetNodes(context, getNodes);
-
-        if (found.None())
+        if (!required.Exists(available.Contains))
         {
             context.ReportDiagnostic(descriptor, context.Project);
         }

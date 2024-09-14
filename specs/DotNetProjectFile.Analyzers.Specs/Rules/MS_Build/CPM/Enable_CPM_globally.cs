@@ -1,4 +1,4 @@
-﻿namespace MS_Build.Enable_CPM_globally;
+﻿namespace Rules.MS_Build.Enable_CPM_globally;
 
 public class Reports
 {

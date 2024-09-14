@@ -6,7 +6,7 @@ public sealed class OverrideTargetFrameworksWithTargetFrameworks()
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.SelfAndImports().SelectMany(p => p.PropertyGroups).SelectMany(g => g.TargetFrameworks).None()) return;
+        if (context.Project.Property<TargetFrameworks>() is null) return;
 
         foreach (var tfm in context.Project.PropertyGroups.SelectMany(g => g.TargetFramework))
         {

@@ -2,7 +2,7 @@
 
 namespace DotNetProjectFile.MsBuild;
 
-public sealed class Project : Node
+public sealed partial class Project : Node
 {
     private Project(IOFile path, SourceText text, Projects projects, AdditionalText? additionalText)
         : this(path, text, XDocument.Parse(text.ToString(), LoadOptions), projects, additionalText)
@@ -55,72 +55,32 @@ public sealed class Project : Node
 
     public WarningPragmas WarningPragmas { get; }
 
-    public TValue? Property<TValue, TNode>(Func<PropertyGroup, IEnumerable<TNode>> selector, TValue? @default = default)
-        where TNode : Node<TValue>
-    {
-        return SelfAndImports()
-            .Select(proj => Property(proj, selector))
-            .OfType<TNode>()
-            .FirstOrDefault() is { } property
-                ? property.Value
-                : @default;
-
-        static TNode? Property(MsBuildProject project, Func<PropertyGroup, IEnumerable<TNode>> selector)
-            => project.PropertyGroups
-                .SelectMany(selector)
-                .FirstOrDefault();
-    }
-
     /// <summary>Loops through all imports and self.</summary>
-    public IEnumerable<Project> ImportsAndSelf()
-    {
-        if (DirectoryBuildProps is { })
-        {
-            yield return DirectoryBuildProps;
-        }
+    /// <remarks>
+    /// Should only be used to register project files. In other cases
+    /// <see cref="Walk()" /> and <see cref="WalkBackward()"/> should be used.
+    /// </remarks>
+    public IReadOnlyList<Project> ImportsAndSelf()
+        => importsAndSelf ??= Walk().OfType<Project>().Distinct().ToArray();
 
-        if (DirectoryPackagesProps is { })
-        {
-            yield return DirectoryPackagesProps;
-        }
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private Project[]? importsAndSelf;
 
-        foreach (var import in Imports)
-        {
-            if (import.Value is { } project)
-            {
-                foreach (var p in project.ImportsAndSelf())
-                {
-                    yield return p;
-                }
-            }
-        }
-        yield return this;
-    }
-
-    /// <summary>Loops through all imports and self reversed.</summary>
-    public IEnumerable<Project> SelfAndImports()
+    /// <summary>Gets self, Directory.Packages.props, and Directory.Build.props).</summary>
+    /// <remarks>
+    /// If the *.props are null, or higher in the type hierarchy they are skipped.
+    /// </remarks>
+    private IEnumerable<Project> SelfAndDirectoryProps()
     {
         yield return this;
 
-        foreach (var import in Imports)
+        if (DirectoryPackagesProps is { } pack && FileType < ProjectFileType.DirectoryPackages)
         {
-            if (import.Value is { } project)
-            {
-                foreach (var p in project.SelfAndImports())
-                {
-                    yield return p;
-                }
-            }
+            yield return pack;
         }
-
-        if (DirectoryPackagesProps is { })
+        if (DirectoryBuildProps is { } build && FileType < ProjectFileType.DirectoryBuild)
         {
-            yield return DirectoryPackagesProps;
-        }
-
-        if (DirectoryBuildProps is { })
-        {
-            yield return DirectoryBuildProps;
+            yield return build;
         }
     }
 
