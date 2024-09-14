@@ -32,7 +32,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="*" />
+    <AdditionalFiles Include=".*" />
+    <AdditionalFiles Include="*.ini" />
+    <AdditionalFiles Include="*.md" />
     <AdditionalFiles Include=".github/**" />
     <AdditionalFiles Include="props/**" />
   </ItemGroup>
