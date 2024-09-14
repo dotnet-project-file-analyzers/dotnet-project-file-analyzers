@@ -1,5 +1,4 @@
 ﻿using Microsoft.CodeAnalysis.Text;
-using System.Runtime.CompilerServices;
 using System.Xml;
 
 namespace DotNetProjectFile.Xml;
