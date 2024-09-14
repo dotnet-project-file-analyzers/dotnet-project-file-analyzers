@@ -21,8 +21,7 @@ public sealed record ValueSyntax : IniSyntax
                 {
                     Value = new()
                     {
-                        LeadingTrivia = parser.Tokens[..^1],
-                        Tokens = parser.Tokens[^1..],
+                        Tokens = kvp.Tokens.AddRange(parser.Tokens),
                     },
                 }),
             }),

@@ -18,7 +18,7 @@ public sealed record KeyValuePairSyntax : IniSyntax
             {
                 KeyValuePairs = s.KeyValuePairs.WithLast(kvp => kvp with
                 {
-                    DescendantTrivia = parser.Tokens,
+                    Tokens = kvp.Tokens.AddRange(parser.Tokens),
                 }),
             }),
         };

@@ -10,11 +10,7 @@ public abstract record SyntaxNode
 
     public IReadOnlyList<SyntaxNode> ChildNodes() => children;
 
-    public ImmutableArray<SourceSpanToken> LeadingTrivia { get; init; } = [];
-
     public ImmutableArray<SourceSpanToken> Tokens { get; init; } = [];
-
-    public ImmutableArray<SourceSpanToken> DescendantTrivia { get; init; } = [];
 
     public SourceText SourceText => Tokens[0].SourceSpan.SourceText;
 

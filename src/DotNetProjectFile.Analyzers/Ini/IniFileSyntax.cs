@@ -35,7 +35,7 @@ public sealed record IniFileSyntax : IniSyntax
 
         return (ini with
         {
-            DescendantTrivia = parser.Tokens,
+            Tokens = ini.Tokens.AddRange(parser.Tokens),
         })
         .WithParents();
     }

@@ -20,7 +20,7 @@ public sealed record SectionSyntax : IniSyntax
         {
             Sections = ini.Sections.WithLast(s => s with
             {
-                DescendantTrivia = parser.Tokens,
+                Tokens = s.Tokens.AddRange(parser.Tokens),
             }),
         };
     }
