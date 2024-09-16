@@ -6,6 +6,6 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        BenchmarkRunner.Run<RunAll>();
+        BenchmarkRunner.Run<IniFile>();
     }
 }

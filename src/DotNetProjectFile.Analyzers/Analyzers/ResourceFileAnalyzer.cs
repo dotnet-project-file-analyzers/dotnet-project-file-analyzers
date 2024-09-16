@@ -1,6 +1,4 @@
-﻿using System.Collections.Immutable;
-
-namespace DotNetProjectFile.Analyzers;
+﻿namespace DotNetProjectFile.Analyzers;
 
 /// <summary>
 /// Base for <see cref="DiagnosticAnalyzer"/>s to analyze RESX resource files.

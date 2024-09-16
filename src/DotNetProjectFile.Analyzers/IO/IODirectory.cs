@@ -2,7 +2,6 @@
 #pragma warning disable S1210 // "Equals" and the comparison operators should be overridden when implementing "IComparable"
 
 using System.ComponentModel;
-using System.Diagnostics.Contracts;
 using System.IO;
 
 namespace DotNetProjectFile.IO;
