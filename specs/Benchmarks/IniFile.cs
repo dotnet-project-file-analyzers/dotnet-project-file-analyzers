@@ -3,13 +3,13 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace Benchmarks;
 
-public class INI
+public class IniFile
 {
     private static readonly string root = string.Join("/", Enumerable.Repeat("..", 7)) + "/Files/";
 
     private readonly List<SourceText> Texts = [];
     
-    public INI()
+    public IniFile()
     {
         string[] files = [ "ini-0027-lines.ini", "ini-0036-lines.ini", "ini-1220-lines.ini" ];
         foreach(var file in files)
