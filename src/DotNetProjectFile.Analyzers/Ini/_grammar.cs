@@ -20,7 +20,7 @@ internal sealed class IniGrammar : Grammar
         & eol)
         + HeaderSyntax.New;
 
-    public static readonly Grammar unparsable = header.Not & line(".*", UnparsableToken);
+    public static readonly Grammar unparsable = ~header & line(".*", UnparsableToken);
 
     public static readonly Grammar comment =
         ws
