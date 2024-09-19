@@ -13,6 +13,8 @@ public class Parses
         var syntax = IniFileSyntax.Parse(tree);
 
         syntax.Should().BeOfType<IniFileSyntax>();
+
+        syntax.Tokens.Should().NotContain(t => t.Kind == TokenKind.UnparsableToken);
     }
 
     [Test]
@@ -35,5 +37,7 @@ indenting = \t"
             ["some_key"] = "value",
             ["indenting"] = "\\t",
         });
+
+        syntax.Tokens.Should().Contain(t => t.Kind == TokenKind.UnparsableToken);
     }
 }
