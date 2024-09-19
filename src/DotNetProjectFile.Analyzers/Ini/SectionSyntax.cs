@@ -1,26 +1,31 @@
 ﻿using DotNetProjectFile.Parsing;
+using DotNetProjectFile.Syntax;
 
 namespace DotNetProjectFile.Ini;
 
+[DebuggerDisplay("{DebuggerDisplay}")]
 public sealed record SectionSyntax : IniSyntax
 {
-    public HeaderSyntax? Header { get; init; }
+    public HeaderSyntax? Header => Children.FirstOrDefault() as HeaderSyntax;
 
-    public ImmutableArray<KeyValuePairSyntax> KeyValuePairs { get; init; } = [];
+    public SyntaxNodeCollection<KeyValuePairSyntax> KeyValuePairs => new(this);
 
-    public IEnumerable<KeyValuePair<string, string>> Values() => KeyValuePairs
-        .Where(kvp => kvp.Key is { } && kvp.Value is { })
-        .Select(kvp => new KeyValuePair<string, string>(kvp.Key!.Text, kvp.Value!.Text));
+    public IEnumerable<KeyValuePair<string, string>> Kvps
+        => KeyValuePairs.Select(kvp => kvp.Kvp)
+        .OfType<KeyValuePair<string, string>>();
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    protected override string DebuggerDisplay => $"Syntax = Section, KVP's = {KeyValuePairs.Count}";
 
     public static IniSyntax New(Parser parser)
     {
-        var ini = parser.Syntax as IniFileSyntax ?? new IniFileSyntax { Sections = [new()] };
+        var ini = parser.Syntax as IniFileSyntax ?? new IniFileSyntax { Children = [new SectionSyntax()] };
 
         return ini with
         {
-            Sections = ini.Sections.WithLast(s => s with
+            Children = ini.Sections.WithLast(s => s with
             {
-                Tokens = s.Tokens.AddRange(parser.Tokens),
+                Span = s.Span + parser.Span,
             }),
         };
     }

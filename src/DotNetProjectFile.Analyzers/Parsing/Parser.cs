@@ -1,4 +1,5 @@
-﻿using DotNetProjectFile.Syntax;
+﻿using DotNetProjectFile.Collections;
+using DotNetProjectFile.Syntax;
 using Microsoft.CodeAnalysis.Text;
 using SyntaxNode = DotNetProjectFile.Syntax.SyntaxNode;
 
@@ -9,16 +10,19 @@ namespace DotNetProjectFile.Parsing;
 public readonly struct Parser
 {
     /// <summary>Initializes a new instance of the <see cref="Parser"/> struct.</summary>
-    private Parser(SourceSpan sourceSpan, ImmutableArray<SourceSpanToken> tokens, Matching state, SyntaxNode syntax)
+    private Parser(SourceSpan sourceSpan, ParseBuffer tokens, int cursor, Matching state, SyntaxNode syntax)
     {
         SourceSpan = sourceSpan;
         Tokens = tokens;
+        Cursor = cursor;
         State = state;
         Syntax = syntax;
     }
 
     /// <summary>The tokenized tokens so far.</summary>
-    public readonly ImmutableArray<SourceSpanToken> Tokens;
+    public readonly ParseBuffer Tokens;
+
+    public readonly int Cursor;
 
     /// <summary>The (remaining) source span to tokenize.</summary>
     public readonly SourceSpan SourceSpan;
@@ -29,12 +33,14 @@ public readonly struct Parser
     /// <summary>The syntax.</summary>
     public readonly SyntaxNode Syntax;
 
+    public SliceSpan Span => new(Cursor, Tokens.Count - Cursor);
+
     /// <summary>The result of <see cref="Matching.NoMatch"/>.</summary>
     /// <returns>
     /// A new parser with an updated state.
     /// </returns>
     [Pure]
-    public Parser NoMatch() => new(SourceSpan, Tokens, Matching.NoMatch, Syntax);
+    public Parser NoMatch() => new(SourceSpan, Tokens, Cursor, Matching.NoMatch, Syntax);
 
     /// <summary>Tries to apply a <see cref="SourceSpan.Match"/>.</summary>
     /// <param name="match">
@@ -55,7 +61,7 @@ public readonly struct Parser
     };
 
     [Pure]
-    public Parser WithSyntax(SyntaxNode syntax) => new(SourceSpan, Empty, State, syntax);
+    public Parser WithSyntax(SyntaxNode syntax) => new(SourceSpan, Tokens, Tokens.Count, State, syntax);
 
     /// <summary>Creates a new state.</summary>
     /// <param name="span">
@@ -72,7 +78,7 @@ public readonly struct Parser
     {
         var token = new SourceSpanToken(SourceSpan.Trim(span), kind);
         var trimmed = SourceSpan.TrimLeft(span.Length);
-        return new(trimmed, Tokens.Add(token), trimmed.IsEmpty ? Matching.EoF : Matching.Match, Syntax);
+        return new(trimmed, Tokens.Add(token), Cursor, trimmed.IsEmpty ? Matching.EoF : Matching.Match, Syntax);
     }
 
     /// <summary>Creates a new state.</summary>
@@ -84,9 +90,9 @@ public readonly struct Parser
     /// </returns>
     [Pure]
     public static Parser New(SourceSpan sourceSpan)
-        => new(sourceSpan, Empty, sourceSpan.Length == 0 ? Matching.EoF : Matching.Match, RootSyntax);
+        => new(sourceSpan, Empty, 0, sourceSpan.Length == 0 ? Matching.EoF : Matching.Match, RootSyntax);
 
-    private static readonly ImmutableArray<SourceSpanToken> Empty = [];
+    private static readonly ParseBuffer Empty = ParseBuffer.Empty;
 
     private static readonly RootSyntax RootSyntax = new();
 }

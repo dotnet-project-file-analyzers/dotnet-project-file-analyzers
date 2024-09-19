@@ -2,24 +2,31 @@
 
 namespace DotNetProjectFile.Ini;
 
+[DebuggerDisplay("{Key?.Text} = {Value?.Text}")]
 public sealed record KeyValuePairSyntax : IniSyntax
 {
-    public KeySyntax? Key { get; init; }
+    public KeySyntax? Key => Children.OfType<KeySyntax>().FirstOrDefault();
 
-    public ValueSyntax? Value { get; init; }
+    public ValueSyntax? Value => Children.OfType<ValueSyntax>().FirstOrDefault();
+
+    public KeyValuePair<string, string>? Kvp
+        => Key is { } key && Value is { } val
+        ? new(key.Text, val.Text)
+        : null;
 
     internal static IniSyntax New(Parser parser)
     {
-        var ini = parser.Syntax as IniFileSyntax ?? new IniFileSyntax { Sections = [new()] };
+        var root = IniFileSyntax.Root(parser);
 
-        return ini with
+        return root with
         {
-            Sections = ini.Sections.WithLast(s => s with
+            Children = root.Sections.WithLast(s => s with
             {
-                KeyValuePairs = s.KeyValuePairs.WithLast(kvp => kvp with
+                Children = s.KeyValuePairs.WithLast(kvp => kvp with
                 {
-                    Tokens = kvp.Tokens.AddRange(parser.Tokens),
+                    Span = kvp.Span + parser.Span,
                 }),
+                Span = s.Span + parser.Span,
             }),
         };
     }

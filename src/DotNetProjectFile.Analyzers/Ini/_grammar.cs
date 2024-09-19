@@ -7,19 +7,23 @@ internal sealed class IniGrammar : Grammar
 {
     public static readonly Grammar eol = eof | str("\r\n", EoLToken) | ch('\n', EoLToken);
 
-    public static readonly Grammar space = line(@"\s*", WhitespaceToken);
+    public static readonly Grammar ws = line(@"\s*", WhitespaceToken);
+
+    public static readonly Grammar ws_only = line(@"$\s*^", WhitespaceToken);
 
     public static readonly Grammar header =
-        (space
+        (ws
         & ch('[', HeaderStartToken)
         & line(@"[^]]+", HeaderToken)
         & ch(']', HeaderEndToken)
-        & space
+        & ws
         & eol)
         + HeaderSyntax.New;
 
+    public static readonly Grammar unparsable = header.Not & line(".*", UnparsableToken);
+
     public static readonly Grammar comment =
-        space
+        ws
         & (ch('#', CommentDelimiterToken) | ch(';', CommentDelimiterToken))
         & line(".*", CommentToken);
 
@@ -30,17 +34,22 @@ internal sealed class IniGrammar : Grammar
     public static readonly Grammar value = line(@"[^\s#;]+", ValueToken) + ValueSyntax.New;
 
     public static readonly Grammar kvp =
-        (space
+        (ws
         & key
-        & space
+        & ws
         & assign
-        & space
+        & ws
         & value
-        & space
+        & ws
         & comment.Option)
         + KeyValuePairSyntax.New;
 
-    public static readonly Grammar single_line = (kvp | comment | space) & eol;
+    public static readonly Grammar single_line =
+        (kvp
+        | comment
+        | ws_only
+        | unparsable)
+        & eol;
 
     public static readonly Grammar section = (header & single_line.Star) + SectionSyntax.New;
 
@@ -60,4 +69,5 @@ public static class TokenKind
     public static readonly string HeaderEndToken = nameof(HeaderEndToken);
     public static readonly string EqualsToken = nameof(EqualsToken);
     public static readonly string ColonToken = nameof(ColonToken);
+    public static readonly string UnparsableToken = nameof(UnparsableToken);
 }

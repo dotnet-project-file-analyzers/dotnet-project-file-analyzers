@@ -1,29 +1,26 @@
 ﻿using DotNetProjectFile.Parsing;
-using DotNetProjectFile.Syntax;
 
 namespace DotNetProjectFile.Ini;
 
+[DebuggerDisplay("{FullText}")]
 public sealed record ValueSyntax : IniSyntax
 {
-    public SourceSpanToken Token => Tokens[^1];
-
-    public string Text => Token.Text;
+    public string Text => Tokens.Single(t => t.Kind == TokenKind.ValueToken).Text;
 
     internal static IniSyntax New(Parser parser)
     {
-        var ini = parser.Syntax as IniFileSyntax ?? new IniFileSyntax { Sections = [new()] };
+        var root = IniFileSyntax.Root(parser);
 
-        return ini with
+        return root with
         {
-            Sections = ini.Sections.WithLast(s => s with
+            Children = root.Sections.WithLast(s => s with
             {
-                KeyValuePairs = s.KeyValuePairs.WithLast(kvp => kvp with
+                Children = s.KeyValuePairs.WithLast(kvp => kvp with
                 {
-                    Value = new()
-                    {
-                        Tokens = kvp.Tokens.AddRange(parser.Tokens),
-                    },
+                    Children = kvp.Children.Add(new ValueSyntax() { Span = parser.Span }),
+                    Span = kvp.Span + parser.Span,
                 }),
+                Span = s.Span + parser.Span,
             }),
         };
     }

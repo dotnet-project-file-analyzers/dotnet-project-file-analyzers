@@ -9,9 +9,8 @@ To monitor performance.
 
 
 # Parsing INI files
-
 |     File |        Mean |       per LoC |
 |---------:|------------:|--------------:|
-|   27 LoC |    47.07 us |   1.74 us/LoC |
-|   36 LoC |    53.48 us |   1.49 us/LoC |
-| 1220 LoC | 8,562.46 us |   7.02 us/LoC |
+|   27 LoC |    49.71 us |   1.84 us/LoC |
+|   36 LoC |    54.55 us |   1.52 us/LoC |
+| 1220 LoC | 7,819.40 us |   6.41 us/LoC |
