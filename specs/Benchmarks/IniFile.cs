@@ -1,5 +1,5 @@
 ﻿using DotNetProjectFile.Ini;
-using Microsoft.CodeAnalysis.Text;
+using SyntaxTree = DotNetProjectFile.Syntax.SyntaxTree;
 
 namespace Benchmarks;
 
@@ -7,7 +7,7 @@ public class IniFile
 {
     private static readonly string root = string.Join("/", Enumerable.Repeat("..", 7)) + "/Files/";
 
-    private readonly List<SourceText> Texts = [];
+    private readonly List<SyntaxTree> Trees = [];
     
     public IniFile()
     {
@@ -15,7 +15,7 @@ public class IniFile
         foreach(var file in files)
         {
             using var stream = new FileStream(root + file, FileMode.Open, FileAccess.Read);
-            Texts.Add(SourceText.From(stream));
+            Trees.Add(SyntaxTree.From(stream));
         }
     }
 
@@ -23,5 +23,5 @@ public class IniFile
     public int Index { get; set; }
 
     [Benchmark]
-    public IniFileSyntax Parse() => IniFileSyntax.Parse(Texts[Index]);
+    public IniFileSyntax Parse() => IniFileSyntax.Parse(Trees[Index]);
 }

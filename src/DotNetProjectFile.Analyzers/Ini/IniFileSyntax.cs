@@ -1,46 +1,27 @@
 ﻿using DotNetProjectFile.Parsing;
 using DotNetProjectFile.Syntax;
-using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Ini;
 
+[DebuggerDisplay("{DebuggerDisplay}")]
 public sealed record IniFileSyntax : IniSyntax
 {
-    public ImmutableArray<SectionSyntax> Sections { get; init; } = [];
-
-    private IniFileSyntax WithParents()
-    {
-        SetParent(new RootSyntax());
-
-        foreach (var section in Sections)
-        {
-            section.SetParent(this);
-
-            section.Header?.SetParent(section.Parent!);
-
-            foreach (var kvp in section.KeyValuePairs)
-            {
-                kvp.SetParent(section);
-                kvp.Key?.SetParent(kvp);
-                kvp.Value?.SetParent(section);
-            }
-        }
-
-        return this;
-    }
+    public SyntaxNodeCollection<SectionSyntax> Sections => new(this);
 
     internal static IniFileSyntax New(Parser parser)
-    {
-        var ini = parser.Syntax as IniFileSyntax ?? new IniFileSyntax();
-
-        return (ini with
+        => Root(parser, init: false) with
         {
-            Tokens = ini.Tokens.AddRange(parser.Tokens),
-        })
-        .WithParents();
-    }
+            Span = new(0, parser.Tokens.Count),
+        };
 
-    public static IniFileSyntax Parse(SourceText text)
-        => IniGrammar.file.Parse(text).Syntax
-        as IniFileSyntax ?? throw new FormatException();
+    internal static IniFileSyntax Root(Parser parser, bool init = true)
+        => parser.Syntax as IniFileSyntax
+        ?? (init
+            ? new() { Children = [new SectionSyntax()] }
+            : new());
+
+    public static IniFileSyntax Parse(Syntax.SyntaxTree tree)
+        => IniGrammar.file
+            .Parse(tree.SourceText)
+            .Resolve<IniFileSyntax>(tree);
 }

@@ -1,31 +1,54 @@
-﻿using Microsoft.CodeAnalysis.Text;
+﻿using DotNetProjectFile.Collections;
 
 namespace DotNetProjectFile.Syntax;
 
 public abstract record SyntaxNode
 {
+    public virtual SyntaxTree SyntaxTree => tree ??= ResolveTree();
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private SyntaxTree? tree;
+
+    private SyntaxTree ResolveTree()
+    {
+        var parent = Parent;
+        while (parent is { })
+        {
+            if (parent is RootSyntax t) return t.SyntaxTree;
+            parent = parent.Parent;
+        }
+        throw new InvalidOperationException("SyntaxTree could not be resolved.");
+    }
+
     public SyntaxNode? Parent { get; private set; }
 
-    private readonly List<SyntaxNode> children = [];
+    public ImmutableArray<SyntaxNode> Children { get; init; } = [];
 
-    public IReadOnlyList<SyntaxNode> ChildNodes() => children;
+    public IReadOnlyList<SourceSpanToken> Tokens => new Slice<SourceSpanToken>(Span, SyntaxTree.Tokens);
 
-    public ImmutableArray<SourceSpanToken> Tokens { get; init; } = [];
+    public SliceSpan Span { get; init; }
 
-    public SourceText SourceText => Tokens[0].SourceSpan.SourceText;
-
-    public override string ToString() => ToFullString();
-
-    public string ToFullString()
+    public string FullText
     {
-        var start = Tokens[0].Span.Start;
-        var end = Tokens[^1].Span.End;
-        return SourceText.ToString(new(start, end));
+        get
+        {
+            var start = Tokens[0].Span.Start;
+            var end = Tokens[^1].Span.End;
+            return SyntaxTree.SourceText.ToString(new(start, end));
+        }
     }
+
+    public override string ToString() => FullText;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    protected virtual string DebuggerDisplay => $"Syntax = {GetType().Name.Replace("Syntax", string.Empty)}, Tokens = {Span.Size}";
 
     internal void SetParent(SyntaxNode parent)
     {
         Parent = parent;
-        parent.children.Add(this);
+        foreach (var child in Children)
+        {
+            child.SetParent(this);
+        }
     }
 }
