@@ -22,16 +22,16 @@ public sealed partial class ProjectFiles
 
     public MsBuildProject? UpdateMsBuildProject(CompilationAnalysisContext context)
     {
-        var extenion = context.Compilation.Language switch
+        var extension = context.Compilation.Language switch
         {
             LanguageNames.CSharp => ".csproj",
             LanguageNames.VisualBasic => ".vbproj",
             _ => null,
         };
 
-        if (extenion is null || context.Compilation.AssemblyName is not { Length: > 0 } name) return null;
+        if (extension is null || context.Compilation.AssemblyName is not { Length: > 0 } name) return null;
 
-        var file = name + extenion;
+        var file = name + extension;
 
         return context.Compilation?.Assembly?.Locations
             .Select(l => IOFile.Parse(l.SourceTree?.FilePath))
