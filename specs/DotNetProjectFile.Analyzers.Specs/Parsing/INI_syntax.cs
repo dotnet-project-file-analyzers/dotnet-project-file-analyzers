@@ -9,7 +9,7 @@ public class Parses
     public void dot_editorconfig()
     {
         using var file = new FileStream("../../../../../.editorconfig", FileMode.Open, FileAccess.Read);
-        var tree = DotNetProjectFile.Syntax.SyntaxTree.From(file);
+        var tree = DotNetProjectFile.Syntax.SyntaxTree.Load(file);
         var syntax = IniFileSyntax.Parse(tree);
 
         syntax.Should().BeOfType<IniFileSyntax>();

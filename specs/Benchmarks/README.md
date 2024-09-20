@@ -2,11 +2,10 @@
 To monitor performance.
 
 ## Get Diagnostics
-|------------ |-------------:|
-| CompliantCS |  28,173.8 µs |
-| CompliantVB |     440.6 µs |
-| Project     | 313,239.0 µs |
-
+|------------ |-----------:|
+| CompliantCS |   7.807 ms |
+| CompliantVB |   7.737 ms |
+| Project     |  69.195 ms |
 
 # Parsing INI files
 |     File |        Mean |       per LoC |

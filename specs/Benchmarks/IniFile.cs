@@ -15,7 +15,7 @@ public class IniFile
         foreach(var file in files)
         {
             using var stream = new FileStream(root + file, FileMode.Open, FileAccess.Read);
-            Trees.Add(SyntaxTree.From(stream));
+            Trees.Add(SyntaxTree.Load(stream));
         }
     }
 

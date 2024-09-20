@@ -25,6 +25,6 @@ public sealed class Import(XElement element, Node parent, MsBuildProject project
     private MsBuildProject? GetValue()
     {
         var path = Project.Path.Directory.File(Attribute("Project") ?? string.Empty);
-        return Project.Projects.TryResolve(path);
+        return Project.ProjectFiles.MsBuildProject(path);
     }
 }

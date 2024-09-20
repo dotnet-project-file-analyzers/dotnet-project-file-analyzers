@@ -7,7 +7,7 @@ public sealed class AddAdditionalFile() : MsBuildProjectFileAnalyzer(Rule.AddAdd
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.Project.IsAdditional)
+        if (!context.Project.IsAdditional(context.Options.AdditionalFiles))
         {
             context.ReportDiagnostic(Descriptor, context.Project, context.Project.Path.Name);
         }

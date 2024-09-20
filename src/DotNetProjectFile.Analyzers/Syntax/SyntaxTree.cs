@@ -30,7 +30,14 @@ public sealed class SyntaxTree
         : $"Size = {SourceText.Length}, Tokens = {Tokens.Count}";
 
     [Pure]
-    public static SyntaxTree From(Stream stream) => new()
+    public static SyntaxTree From(AdditionalText text) => new()
+    {
+        Path = IOFile.Parse(text.Path),
+        SourceText = text.GetText()!,
+    };
+
+    [Pure]
+    public static SyntaxTree Load(Stream stream) => new()
     {
         Path = stream is FileStream file ? IOFile.Parse(file.Name) : default,
         SourceText = SourceText.From(stream),
