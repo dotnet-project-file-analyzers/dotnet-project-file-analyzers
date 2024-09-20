@@ -1,4 +1,5 @@
-﻿using Microsoft.CodeAnalysis.Text;
+﻿using DotNetProjectFile.CodeAnalysis;
+using Microsoft.CodeAnalysis.Text;
 using System.Globalization;
 using System.Xml;
 
@@ -14,13 +15,13 @@ public sealed class Resource : Node
         XElement element,
         SourceText sourceText,
         bool isXml,
-        Resources resources)
+        ProjectFiles resources)
         : base(element, null)
     {
         Path = path;
         Text = sourceText;
         IsXml = isXml;
-        Resources = resources;
+        ProjectFiles = resources;
 
         foreach (var data in Data.Where(d => d.Name is { Length: > 0 }))
         {
@@ -38,12 +39,13 @@ public sealed class Resource : Node
 
     public Nodes<Data> Data => new(Children);
 
-    public IReadOnlyCollection<Resource> Parents => parents ??= Resources.Parents(this);
+    public IEnumerable<Resource> Parents
+        => Culture.Ancestors()
+        .Select(Path.Satellite)
+        .Select(file => ProjectFiles.ResourceFile(file))
+        .OfType<Resource>();
 
-    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private IReadOnlyCollection<Resource>? parents;
-
-    private readonly Resources Resources;
+    private readonly ProjectFiles ProjectFiles;
 
     public bool IsXml { get; }
 
@@ -51,12 +53,21 @@ public sealed class Resource : Node
 
     public bool Contains(string? name) => name is { } && lookup.ContainsKey(name);
 
-    public static Resource Load(AdditionalText text, Resources resources)
+    public static Resource Load(AdditionalText text, ProjectFiles projectFiles)
     {
         var file = new ResourceFileInfo(text.Path);
         var sourceText = text.GetText()!;
         var isXml = TryElement(sourceText, out var element);
-        return new(file, element, sourceText, isXml, resources);
+        return new(file, element, sourceText, isXml, projectFiles);
+    }
+
+    public static Resource Load(IOFile file, ProjectFiles projectFiles)
+    {
+        var info = new ResourceFileInfo(file);
+        using var stream = file.OpenRead();
+        var sourceText = SourceText.From(stream);
+        var isXml = TryElement(sourceText, out var element);
+        return new(info, element, sourceText, isXml, projectFiles);
     }
 
     private static bool TryElement(SourceText sourceText, out XElement element)

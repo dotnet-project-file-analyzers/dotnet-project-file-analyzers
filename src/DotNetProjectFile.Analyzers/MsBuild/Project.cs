@@ -1,34 +1,40 @@
-﻿using Microsoft.CodeAnalysis.Text;
+﻿using DotNetProjectFile.CodeAnalysis;
+using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.MsBuild;
 
 public sealed partial class Project : Node
 {
-    private Project(IOFile path, SourceText text, Projects projects, AdditionalText? additionalText)
-        : this(path, text, XDocument.Parse(text.ToString(), LoadOptions), projects, additionalText)
+    private Project(IOFile path, SourceText text, ProjectFiles projectFiles, AdditionalText? additionalText)
+        : this(path, text, XDocument.Parse(text.ToString(), LoadOptions), projectFiles, additionalText)
     {
     }
 
-    private Project(IOFile path, SourceText text, XDocument document, Projects projects, AdditionalText? additionalText)
+    private Project(IOFile path, SourceText text, XDocument document, ProjectFiles projectFiles, AdditionalText? additionalText)
         : base(document.Root, null, null)
     {
         Path = path;
         Text = text;
-        Projects = projects;
+        ProjectFiles = projectFiles;
         AdditionalText = additionalText;
         WarningPragmas = WarningPragmas.New(this);
     }
 
-#pragma warning disable QW0011 // Define properties as immutables
-    // is initialized after creation (only). Hard to accomplish otherwise.
-    public MsBuildProject? DirectoryBuildProps { get; internal set; }
+    public MsBuildProject? DirectoryBuildProps => Path.Directory
+        .AncestorsAndSelf()
+        .Select(dir => ProjectFiles.MsBuildProject(dir.File("Directory.Build.props")))
+        .OfType<MsBuildProject>()
+        .FirstOrDefault();
 
-    public MsBuildProject? DirectoryPackagesProps { get; internal set; }
-#pragma warning restore QW0011 // Define properties as immutables
+    public MsBuildProject? DirectoryPackagesProps => Path.Directory
+        .AncestorsAndSelf()
+        .Select(dir => ProjectFiles.MsBuildProject(dir.File("Directory.Packages.props")))
+        .OfType<MsBuildProject>()
+        .FirstOrDefault();
 
     public AdditionalText? AdditionalText { get; }
 
-    public bool IsAdditional => AdditionalText is { };
+    public bool IsLegacy => Element.Name.NamespaceName is { Length: > 0 };
 
     public string? Sdk => Attribute();
 
@@ -45,7 +51,7 @@ public sealed partial class Project : Node
 
     public SourceText Text { get; }
 
-    internal Projects Projects { get; }
+    internal ProjectFiles ProjectFiles { get; }
 
     public Nodes<Import> Imports => new(Children);
 
@@ -54,6 +60,11 @@ public sealed partial class Project : Node
     public Nodes<ItemGroup> ItemGroups => new(DescendantsAndSelf());
 
     public WarningPragmas WarningPragmas { get; }
+
+    [Pure]
+    public bool IsAdditional(IEnumerable<AdditionalText> texts) => texts
+        .Select(f => IOFile.Parse(f.Path))
+        .Any(f => f.Equals(Path));
 
     /// <summary>Loops through all imports and self.</summary>
     /// <remarks>
@@ -84,21 +95,21 @@ public sealed partial class Project : Node
         }
     }
 
-    public static Project Load(IOFile file, Projects projects)
+    public static Project Load(IOFile file, ProjectFiles projects)
     {
         using var reader = file.OpenText();
         return new(
             path: file,
             text: SourceText.From(reader.ReadToEnd()),
-            projects: projects,
+            projectFiles: projects,
             additionalText: null);
     }
 
-    public static Project Load(AdditionalText text, Projects projects)
+    public static Project Load(AdditionalText text, ProjectFiles projects)
         => new(
             path: IOFile.Parse(text.Path),
             text: text.GetText()!,
-            projects: projects,
+            projectFiles: projects,
             additionalText: text);
 
     private static readonly LoadOptions LoadOptions = LoadOptions.PreserveWhitespace | LoadOptions.SetLineInfo;

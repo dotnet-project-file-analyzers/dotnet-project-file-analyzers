@@ -54,6 +54,17 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
         }
     }
 
+    public IEnumerable<IODirectory> AncestorsAndSelf()
+    {
+        var current = this;
+
+        while (current.HasValue)
+        {
+            yield return current;
+            current = current.Parent;
+        }
+    }
+
     /// <summary>Gets the name of the directory.</summary>
     public string Name
         => Parts.Length == 0

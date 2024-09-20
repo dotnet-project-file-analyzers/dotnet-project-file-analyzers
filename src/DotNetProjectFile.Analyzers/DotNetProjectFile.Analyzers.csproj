@@ -27,6 +27,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+ToBeReleased
+- Processing files with 7 times speed improvement.
 v1.4.4
 - Rules should only report on self, not on imports. (BUG)
 v1.4.3
