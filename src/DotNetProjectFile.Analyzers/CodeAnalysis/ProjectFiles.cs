@@ -12,13 +12,13 @@ public sealed partial class ProjectFiles
     private readonly FileCache<Resource> ResourceFiles = new();
 
     public IniFileSyntax? IniFile(IOFile file)
-        => IniFiles.TryGet(file, Create_IniFile);
+        => IniFiles.TryGetOrUpdate(file, Create_IniFile);
 
     public MsBuildProject? MsBuildProject(IOFile file)
-        => MsBuildProjects.TryGet(file, Create_MsBuildProject);
+        => MsBuildProjects.TryGetOrUpdate(file, Create_MsBuildProject);
 
     public Resource? ResourceFile(IOFile file)
-        => ResourceFiles.TryGet(file, Create_ResourceFile);
+        => ResourceFiles.TryGetOrUpdate(file, Create_ResourceFile);
 
     public MsBuildProject? UpdateMsBuildProject(CompilationAnalysisContext context)
     {
@@ -47,7 +47,7 @@ public sealed partial class ProjectFiles
     {
         var file = IOFile.Parse(context.AdditionalFile.Path);
         return Is.MsBuild(file)
-            ? MsBuildProjects.TryGet(file, _ => MsBuild.Project.Load(context.AdditionalFile, this))
+            ? MsBuildProjects.TryGetOrUpdate(file, _ => MsBuild.Project.Load(context.AdditionalFile, this))
             : null;
     }
 
@@ -55,7 +55,7 @@ public sealed partial class ProjectFiles
     {
         var file = IOFile.Parse(context.AdditionalFile.Path);
         return Is.Resource(file)
-            ? ResourceFiles.TryGet(file, _ => Resource.Load(context.AdditionalFile, this))
+            ? ResourceFiles.TryGetOrUpdate(file, _ => Resource.Load(context.AdditionalFile, this))
             : null;
     }
 

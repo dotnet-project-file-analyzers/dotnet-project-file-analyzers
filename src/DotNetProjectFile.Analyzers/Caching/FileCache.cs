@@ -14,11 +14,11 @@ public sealed class FileCache<T>() where T : class
     /// <inheritdoc cref="ICollection.Count" />
     public int Count => Lookup.Count;
 
-    /// <summary>Tries to get the file content for a specified file.</summary>
+    /// <summary>Tries to get the current file content for a specified file.</summary>
     /// <remarks>
-    /// Uses the cased version if possible.
+    /// Uses the cased version if possible, otherwise creates/updates the file.
     /// </remarks>
-    public T? TryGet(IOFile file, Func<IOFile, T> create)
+    public T? TryGetOrUpdate(IOFile file, Func<IOFile, T> create)
     {
         if (!file.HasValue || !file.Exists)
         {
