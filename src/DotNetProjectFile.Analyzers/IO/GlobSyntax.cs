@@ -14,7 +14,7 @@ internal sealed class GlobGrammar : Grm
     static readonly Grm literal /*.*/ = regex(@"[^\\!?*[\]{,}]+") /*..............*/ + GlobSyntax.Literal;
     static readonly Grm seq /*.....*/ = ch('[') & ch('!').Option & literal & ch(']') + GlobSyntax.Literal;
 
-    static readonly Grm or_part /*.*/ = Lazy(() => part);
+    static readonly Grm or_part /*.*/ = Lazy(() => part!);
 
     static readonly Grm or =
         ch('{') + GlobSyntax.StartOr
