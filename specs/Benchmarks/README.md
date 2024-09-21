@@ -13,3 +13,10 @@ To monitor performance.
 |   27 LoC |    49.71 us |   1.84 us/LoC |
 |   36 LoC |    54.55 us |   1.52 us/LoC |
 | 1220 LoC | 7,819.40 us |   6.41 us/LoC |
+
+# Parsing globs
+| Expression         | Mean     |
+|------------------- |---------:|
+| *.cs               | 1.794 us |
+| *{.vbpoj,*.csproj} | 1.391 us |
+| **/[ab].??proj     | 4.121 us |
