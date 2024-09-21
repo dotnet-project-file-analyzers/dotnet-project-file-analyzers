@@ -35,6 +35,18 @@ public readonly struct Parser
 
     public SliceSpan Span => new(Cursor, Tokens.Count - Cursor);
 
+    /// <summary>Gets the text currently active.</summary>
+    public string CurrentText
+    {
+        get
+        {
+            var start = Tokens[Cursor].Span.Start;
+            var end = Tokens[^1].Span.End;
+            var span = new TextSpan(start, end - start);
+            return Tokens[Cursor].SourceSpan.SourceText.ToString(span);
+        }
+    }
+
     /// <summary>The result of <see cref="Matching.NoMatch"/>.</summary>
     /// <returns>
     /// A new parser with an updated state.
