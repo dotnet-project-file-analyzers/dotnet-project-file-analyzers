@@ -6,11 +6,11 @@ public sealed class TestProjectShouldNotBePackable()
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.IsTestProject() && context.Project.IsPackable())
+        if (context.File.IsTestProject() && context.File.IsPackable())
         {
-            var node = context.Project.PropertyGroups.SelectMany(p => p.IsPackable)
+            var node = context.File.PropertyGroups.SelectMany(p => p.IsPackable)
                 .OfType<XmlAnalysisNode>()
-                .LastOrDefault() ?? context.Project;
+                .LastOrDefault() ?? context.File;
 
             context.ReportDiagnostic(Descriptor, node);
         }

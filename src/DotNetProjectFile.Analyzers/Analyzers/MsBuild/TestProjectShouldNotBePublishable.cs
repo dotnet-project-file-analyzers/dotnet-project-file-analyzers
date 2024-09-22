@@ -6,11 +6,11 @@ public sealed class TestProjectShouldNotBePublishable()
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.IsTestProject() && context.Project.IsPublishable())
+        if (context.File.IsTestProject() && context.File.IsPublishable())
         {
-            var node = context.Project.PropertyGroups.SelectMany(p => p.IsPublishable)
+            var node = context.File.PropertyGroups.SelectMany(p => p.IsPublishable)
                 .OfType<XmlAnalysisNode>()
-                .LastOrDefault() ?? context.Project;
+                .LastOrDefault() ?? context.File;
 
             context.ReportDiagnostic(Descriptor, node);
         }

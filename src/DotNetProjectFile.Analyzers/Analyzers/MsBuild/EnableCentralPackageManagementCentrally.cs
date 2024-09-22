@@ -8,7 +8,7 @@ public sealed class EnableCentralPackageManagementCentrally()
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var enabled in context.Project.PropertyGroups
+        foreach (var enabled in context.File.PropertyGroups
             .SelectMany(g => g.ManagePackageVersionsCentrally)
             .Where(p => p.Value == true))
         {

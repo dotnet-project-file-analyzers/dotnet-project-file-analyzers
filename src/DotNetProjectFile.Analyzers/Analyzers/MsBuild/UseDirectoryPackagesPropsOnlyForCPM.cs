@@ -8,7 +8,7 @@ public sealed class UseDirectoryPackagesPropsOnlyForCPM()
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        Walk(context.Project);
+        Walk(context.File);
 
         void Walk(Node node)
         {

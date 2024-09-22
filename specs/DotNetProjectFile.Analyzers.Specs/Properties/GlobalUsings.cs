@@ -12,3 +12,4 @@ global using System.Linq;
 global using System.Text;
 global using System.Threading.Tasks;
 global using Resx = DotNetProjectFile.Analyzers.Resx;
+global using ProjectFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.MsBuild.Project>;

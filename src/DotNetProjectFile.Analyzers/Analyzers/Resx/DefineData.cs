@@ -5,9 +5,9 @@ public sealed class DefineData() : ResourceFileAnalyzer(Rule.DefineData)
 {
     protected override void Register(ResourceFileAnalysisContext context)
     {
-        if (context.Resource.Data.None())
+        if (context.File.Data.None())
         {
-            context.ReportDiagnostic(Descriptor, context.Resource);
+            context.ReportDiagnostic(Descriptor, context.File);
         }
     }
 }

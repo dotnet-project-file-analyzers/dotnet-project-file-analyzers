@@ -8,11 +8,11 @@ public sealed class UseSonarAnalyzers() : MsBuildProjectFileAnalyzer(Rule.UseSon
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (Include(context.Compilation.Options.Language) is { } include
-            && context.Project
+            && context.File
                 .Walk()
                 .OfType<PackageReference>().None(p => p.Include.IsMatch(include)))
         {
-            context.ReportDiagnostic(Descriptor, context.Project, include);
+            context.ReportDiagnostic(Descriptor, context.File, include);
         }
     }
 

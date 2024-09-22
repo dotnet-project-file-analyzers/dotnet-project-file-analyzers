@@ -5,7 +5,7 @@ public sealed class RemoveEmptyNodes() : MsBuildProjectFileAnalyzer(Rule.RemoveE
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var node in context.Project.Children)
+        foreach (var node in context.File.Children)
         {
             Report(node, context, 1);
         }

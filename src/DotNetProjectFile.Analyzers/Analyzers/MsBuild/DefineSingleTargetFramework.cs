@@ -5,9 +5,9 @@ public sealed class DefineSingleTargetFramework() : MsBuildProjectFileAnalyzer(R
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (TargetFrameworksInInmport(context.Project)) return;
+        if (TargetFrameworksInInmport(context.File)) return;
 
-        foreach (var frameworks in context.Project.PropertyGroups
+        foreach (var frameworks in context.File.PropertyGroups
             .SelectMany(p => p.TargetFrameworks)
             .Where(f => f.Value.Count <= 1))
         {

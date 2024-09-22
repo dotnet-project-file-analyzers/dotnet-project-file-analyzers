@@ -9,7 +9,7 @@ public sealed class ReassignPropertiesWithDifferentValue() : MsBuildProjectFileA
     {
         var properties = new Dictionary<Prop, Node>();
 
-        foreach (var prop in context.Project
+        foreach (var prop in context.File
             .Walk()
             .Where(n => n.Parent is PropertyGroup))
         {

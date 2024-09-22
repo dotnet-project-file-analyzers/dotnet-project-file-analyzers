@@ -52,11 +52,6 @@ public abstract class Node : XmlAnalysisNode
 
     public int Length => ToString().Length;
 
-    public Location Location => location ??= Project.GetLocation(Positions.FullSpan);
-
-    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private Location? location;
-
     /// <summary>Represents the node as an <see cref="string"/>.</summary>
     /// <remarks>
     /// The <see cref="XNode.ToString()"/> of the underlying <see cref="XElement"/> is called.

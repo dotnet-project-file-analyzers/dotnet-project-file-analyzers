@@ -5,7 +5,7 @@ public sealed class StaticAliasUsingNotSupported() : MsBuildProjectFileAnalyzer(
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var directive in context.Project.ItemGroups
+        foreach (var directive in context.File.ItemGroups
             .SelectMany(g => g.Usings)
             .Where(u => u.Type == UsingType.StaticAlias))
         {
