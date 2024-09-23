@@ -765,14 +765,6 @@ public static class Rule
       tags: ["XML", "indentation"],
       category: Category.Formatting);
 
-    public static DiagnosticDescriptor GlobsMustBeWellFormed => New(
-        id: 2201,
-        title: "Globs must be well-formed",
-        message: "The glob [{0}] is malformed: {1}.",
-        description: "Sections in a .editorconfig file can not be processed with malformed globs.",
-        tags: [".editorconfig", "glob"],
-        category: Category.Bug);
-
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
     public static DiagnosticDescriptor New(
