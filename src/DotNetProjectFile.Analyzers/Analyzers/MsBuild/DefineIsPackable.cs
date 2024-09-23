@@ -7,10 +7,10 @@ public sealed class DefineIsPackable() : MsBuildProjectFileAnalyzer(Rule.DefineI
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.Project.IsTestProject() &&
-            context.Project.Property<IsPackable>() is null)
+        if (!context.File.IsTestProject() &&
+            context.File.Property<IsPackable>() is null)
         {
-            context.ReportDiagnostic(Descriptor, context.Project);
+            context.ReportDiagnostic(Descriptor, context.File);
         }
     }
 }

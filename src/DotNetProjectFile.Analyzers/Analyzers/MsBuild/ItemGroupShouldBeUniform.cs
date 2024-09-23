@@ -18,7 +18,7 @@ public sealed class ItemGroupShouldBeUniform() : MsBuildProjectFileAnalyzer(Rule
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var group in context.Project.ItemGroups)
+        foreach (var group in context.File.ItemGroups)
         {
             AnalyzeGroup(context, group);
         }

@@ -5,7 +5,7 @@ public sealed class DefineConditionsOnLevel1() : MsBuildProjectFileAnalyzer(Rule
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var node in context.Project
+        foreach (var node in context.File
             .DescendantsAndSelf()
             .Where(IsConditionalOnLevel2OrHighger))
         {

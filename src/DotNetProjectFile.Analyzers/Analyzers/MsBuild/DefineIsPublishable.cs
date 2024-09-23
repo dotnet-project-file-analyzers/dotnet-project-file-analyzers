@@ -7,10 +7,10 @@ public sealed class DefineIsPublishable() : MsBuildProjectFileAnalyzer(Rule.Defi
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.Project.IsTestProject() &&
-            context.Project.Property<IsPublishable>() is null)
+        if (!context.File.IsTestProject() &&
+            context.File.Property<IsPublishable>() is null)
         {
-            context.ReportDiagnostic(Descriptor, context.Project);
+            context.ReportDiagnostic(Descriptor, context.File);
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Xml;
 namespace DotNetProjectFile.Resx;
 
 [DebuggerDisplay("Culture = {Culture.Name}, Count = {Data.Count}")]
-public sealed class Resource : Node
+public sealed class Resource : Node, ProjectFile
 {
     private readonly Dictionary<string, Data> lookup = [];
 
@@ -29,9 +29,13 @@ public sealed class Resource : Node
         }
     }
 
+    IOFile ProjectFile.Path => Path;
+
     public ResourceFileInfo Path { get; }
 
     public SourceText Text { get; }
+
+    public WarningPragmas WarningPragmas { get; } = WarningPragmas.None;
 
     public CultureInfo Culture => Path.Culture;
 

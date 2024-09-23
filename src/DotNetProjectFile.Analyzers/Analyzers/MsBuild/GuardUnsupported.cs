@@ -22,7 +22,7 @@ public sealed class GuardUnsupported() : MsBuildProjectFileAnalyzer(
         }
         else if (project.IsLegacy)
         {
-            context.ReportDiagnostic(Diagnostic.Create(Rule.UpdateLegacyProjects, project.Location));
+            context.ReportDiagnostic(Diagnostic.Create(Rule.UpdateLegacyProjects, project.GetLocation(project.Positions.FullSpan)));
         }
     }
 

@@ -7,9 +7,9 @@ public sealed class OmitXmlDeclarations() : MsBuildProjectFileAnalyzer(Rule.Omit
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.Element.Document.Declaration is { })
+        if (context.File.Element.Document.Declaration is { })
         {
-            var span = new LinePositionSpan(default, context.Project.Positions.StartElement.Start);
+            var span = new LinePositionSpan(default, context.File.Positions.StartElement.Start);
             context.ReportDiagnostic(Descriptor, span);
         }
     }

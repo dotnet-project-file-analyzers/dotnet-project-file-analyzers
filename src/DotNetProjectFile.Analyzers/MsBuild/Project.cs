@@ -3,7 +3,7 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.MsBuild;
 
-public sealed partial class Project : Node
+public sealed partial class Project : Node, ProjectFile
 {
     private Project(IOFile path, SourceText text, ProjectFiles projectFiles, AdditionalText? additionalText)
         : this(path, text, XDocument.Parse(text.ToString(), LoadOptions), projectFiles, additionalText)

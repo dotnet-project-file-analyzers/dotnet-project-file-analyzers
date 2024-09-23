@@ -9,7 +9,7 @@ public sealed class AvoidGeneratePackageOnBuildWhenNotPackable() : MsBuildProjec
     {
         if (IsPotentiallyPackable(context)) return;
 
-        foreach (var node in context.Project.Walk().OfType<GeneratePackageOnBuild>())
+        foreach (var node in context.File.Walk().OfType<GeneratePackageOnBuild>())
         {
             context.ReportDiagnostic(Descriptor, node);
         }
@@ -18,7 +18,7 @@ public sealed class AvoidGeneratePackageOnBuildWhenNotPackable() : MsBuildProjec
     private static bool IsPotentiallyPackable(ProjectFileAnalysisContext context)
     {
         var none = true;
-        foreach (var isPackable in context.Project.WalkBackward().OfType<IsPackable>())
+        foreach (var isPackable in context.File.WalkBackward().OfType<IsPackable>())
         {
             if (isPackable.Value is true) return true;
             none = false;

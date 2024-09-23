@@ -3,7 +3,7 @@
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class IndentXml : MsBuildProjectFileAnalyzer
 {
-    private readonly IdentationChecker<ProjectFileAnalysisContext> Checker;
+    private readonly IdentationChecker<MsBuildProject> Checker;
 
     public IndentXml() : this(' ', 2) { }
 
@@ -11,5 +11,5 @@ public sealed class IndentXml : MsBuildProjectFileAnalyzer
         => Checker = new(ch, repeat, Descriptor);
 
     protected override void Register(ProjectFileAnalysisContext context)
-        => Checker.Walk(context.Project, context.Project.Text, context);
+        => Checker.Walk(context.File, context.File.Text, context);
 }

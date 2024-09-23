@@ -1,15 +1,16 @@
-﻿using Microsoft.CodeAnalysis.Text;
+﻿using DotNetProjectFile.CodeAnalysis;
+using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Analyzers.Helpers;
 
-internal sealed class IdentationChecker<TContext>(char ch, int repeat, DiagnosticDescriptor descriptor)
-    where TContext : DiagnosticReporter
+internal sealed class IdentationChecker<TFile>(char ch, int repeat, DiagnosticDescriptor descriptor)
+    where TFile : class, ProjectFile, XmlAnalysisNode
 {
     private readonly char Char = ch;
     private readonly int Repeat = repeat;
     private readonly DiagnosticDescriptor Descriptor = descriptor;
 
-    public void Walk(XmlAnalysisNode node, SourceText text, TContext context)
+    public void Walk(XmlAnalysisNode node, SourceText text, ProjectFileAnalysisContext<TFile> context)
     {
         Report(node, text, context, true);
         Report(node, text, context, false);
@@ -20,7 +21,7 @@ internal sealed class IdentationChecker<TContext>(char ch, int repeat, Diagnosti
         }
     }
 
-    private void Report(XmlAnalysisNode node, SourceText text, TContext context, bool start)
+    private void Report(XmlAnalysisNode node, SourceText text, ProjectFileAnalysisContext<TFile> context, bool start)
     {
         var checkSelfClosingEnd = !start && node.Positions.IsSelfClosing;
         var startAndEndOnSameLine = !start && node.Positions.StartElement.End.Line == node.Positions.EndElement.Start.Line;

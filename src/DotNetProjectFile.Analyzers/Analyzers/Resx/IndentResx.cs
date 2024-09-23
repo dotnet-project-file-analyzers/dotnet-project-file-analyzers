@@ -1,9 +1,11 @@
-﻿namespace DotNetProjectFile.Analyzers.Resx;
+﻿using DotNetProjectFile.Resx;
+
+namespace DotNetProjectFile.Analyzers.Resx;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class IndentResx : ResourceFileAnalyzer
 {
-    private readonly IdentationChecker<ResourceFileAnalysisContext> Checker;
+    private readonly IdentationChecker<Resource> Checker;
 
     public IndentResx() : this(' ', 2) { }
 
@@ -11,5 +13,5 @@ public sealed class IndentResx : ResourceFileAnalyzer
         => Checker = new(ch, repeat, Descriptor);
 
     protected override void Register(ResourceFileAnalysisContext context)
-        => Checker.Walk(context.Resource, context.Resource.Text, context);
+        => Checker.Walk(context.File, context.File.Text, context);
 }

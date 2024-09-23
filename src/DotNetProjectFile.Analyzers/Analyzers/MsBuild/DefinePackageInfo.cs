@@ -20,9 +20,9 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.Project.IsPackable() || context.Project.IsTestProject()) return;
+        if (!context.File.IsPackable() || context.File.IsTestProject()) return;
 
-        var available = context.Project.Walk().Select(n => n.GetType()).ToImmutableHashSet();
+        var available = context.File.Walk().Select(n => n.GetType()).ToImmutableHashSet();
 
         Analyze(context, available, Rule.DefineVersion, typeof(DotNetProjectFile.MsBuild.Version));
         Analyze(context, available, Rule.DefineDescription, typeof(Description), typeof(PackageDescription));
@@ -47,7 +47,7 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
     {
         if (!required.Exists(available.Contains))
         {
-            context.ReportDiagnostic(descriptor, context.Project);
+            context.ReportDiagnostic(descriptor, context.File);
         }
     }
 }

@@ -7,18 +7,18 @@ public sealed class TestProjectsRequireSdk() : MsBuildProjectFileAnalyzer(
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var isTest = context.Project.IsTestProject();
-        var hasSdk = context.Project
+        var isTest = context.File.IsTestProject();
+        var hasSdk = context.File
             .Walk().OfType<PackageReference>()
             .Any(r => r.IncludeOrUpdate == NuGet.Packages.Microsoft_NET_Test_Sdk.Name);
 
         if (isTest && !hasSdk)
         {
-            context.ReportDiagnostic(Rule.TestProjectsRequireSdk, context.Project);
+            context.ReportDiagnostic(Rule.TestProjectsRequireSdk, context.File);
         }
         else if (!isTest && hasSdk)
         {
-            context.ReportDiagnostic(Rule.UsingMicrosoftNetTestSdkImpliesTestProject, context.Project);
+            context.ReportDiagnostic(Rule.UsingMicrosoftNetTestSdkImpliesTestProject, context.File);
         }
     }
 }

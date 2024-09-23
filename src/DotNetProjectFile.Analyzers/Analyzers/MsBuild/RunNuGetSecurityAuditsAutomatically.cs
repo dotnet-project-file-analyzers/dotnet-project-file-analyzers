@@ -7,9 +7,9 @@ public sealed class RunNuGetSecurityAuditsAutomatically() : MsBuildProjectFileAn
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.NuGetAuditEnabled() is not true)
+        if (context.File.NuGetAuditEnabled() is not true)
         {
-            context.ReportDiagnostic(Descriptor, context.Project);
+            context.ReportDiagnostic(Descriptor, context.File);
         }
     }
 }

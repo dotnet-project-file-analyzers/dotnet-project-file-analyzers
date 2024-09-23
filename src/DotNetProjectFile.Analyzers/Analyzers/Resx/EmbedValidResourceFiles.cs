@@ -1,4 +1,5 @@
 ﻿using DotNetProjectFile.Resx;
+using System.Resources;
 
 namespace DotNetProjectFile.Analyzers.Resx;
 
@@ -9,9 +10,9 @@ public sealed class EmbedValidResourceFiles : ResourceFileAnalyzer
 
     protected override void Register(ResourceFileAnalysisContext context)
     {
-        var resource = context.Resource;
+        var resource = context.File;
 
-        if (!context.Resource.IsXml)
+        if (!resource.IsXml)
         {
             context.ReportDiagnostic(Descriptor, resource, "contains no XML.");
         }

@@ -5,7 +5,7 @@ public sealed class PackageReferencesShouldBeStable() : MsBuildProjectFileAnalyz
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var package in context.Project.ItemGroups
+        foreach (var package in context.File.ItemGroups
             .SelectMany(i => i.PackageReferences)
             .Where(IsUnstable))
         {

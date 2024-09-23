@@ -5,6 +5,8 @@
 [DebuggerDisplay("Count = {Count}")]
 public readonly struct WarningPragmas(IReadOnlyCollection<WarningPragma> warnings) : IReadOnlyCollection<WarningPragma>
 {
+    public static readonly WarningPragmas None = new([]);
+
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private readonly IReadOnlyCollection<WarningPragma> Warnings = warnings;
 

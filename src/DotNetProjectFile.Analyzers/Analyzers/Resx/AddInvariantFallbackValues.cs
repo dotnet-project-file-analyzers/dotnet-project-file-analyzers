@@ -5,7 +5,7 @@ public sealed class AddInvariantFallbackValues() : ResourceFileAnalyzer(Rule.Add
 {
     protected override void Register(ResourceFileAnalysisContext context)
     {
-        if (context.Resource is { ForInvariantCulture: false } resource
+        if (context.File is { ForInvariantCulture: false } resource
             && resource.Parents.FirstOrDefault(p => p.ForInvariantCulture) is { } parent)
         {
             foreach (var data in resource.Data.Where(d => !parent.Contains(d.Name)))

@@ -20,7 +20,7 @@ public class Project_relies_on
 
         protected override void Register(ProjectFileAnalysisContext context)
         {
-            if (context.Project.DirectoryBuildProps is { } prop)
+            if (context.File.DirectoryBuildProps is { } prop)
             {
                 context.ReportDiagnostic(Descriptor, prop, prop.Path.Name);
             }
