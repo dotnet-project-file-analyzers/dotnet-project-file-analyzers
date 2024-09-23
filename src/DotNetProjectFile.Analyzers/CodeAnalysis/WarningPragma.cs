@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Xml;
 
-namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.CodeAnalysis;
 
 /// <summary>Represents a #pragma warning (disable/restore) in a MS Build project file.</summary>
 public readonly struct WarningPragma(string diagnosticId, bool disable, Location location)

@@ -1,5 +1,6 @@
 global using DotNetProjectFile.Analyzers.Helpers;
 global using DotNetProjectFile.Caching;
+global using DotNetProjectFile.CodeAnalysis;
 global using DotNetProjectFile.Diagnostics;
 global using DotNetProjectFile.IO;
 global using DotNetProjectFile.MsBuild;
@@ -16,6 +17,7 @@ global using System.Diagnostics.Contracts;
 global using System.Linq;
 global using System.Threading;
 global using System.Xml.Linq;
+global using EditorConfigFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.EditorConfig.EditorConfigFile>;
 global using MsBuildProject = DotNetProjectFile.MsBuild.Project;
 global using ProjectFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.MsBuild.Project>;
 global using ResourceFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.Resx.Resource>;

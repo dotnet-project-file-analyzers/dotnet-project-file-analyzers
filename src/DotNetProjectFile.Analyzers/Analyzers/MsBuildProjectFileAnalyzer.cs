@@ -1,6 +1,4 @@
-﻿using DotNetProjectFile.Resx;
-
-namespace DotNetProjectFile.Analyzers;
+﻿namespace DotNetProjectFile.Analyzers;
 
 /// <summary>
 /// Base for <see cref="DiagnosticAnalyzer"/>s to analyze MS Build project files.
@@ -10,7 +8,6 @@ public abstract class MsBuildProjectFileAnalyzer(
     params DiagnosticDescriptor[] supportedDiagnostics)
     : ProjectFileAnalyzer<MsBuildProject>(primaryDiagnostic, supportedDiagnostics)
 {
-
     protected virtual IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.All;
 
     /// <summary>Registers the analyzer for all MS Build projects files.</summary>

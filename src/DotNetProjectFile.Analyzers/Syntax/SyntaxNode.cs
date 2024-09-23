@@ -1,4 +1,5 @@
 ﻿using DotNetProjectFile.Collections;
+using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Syntax;
 
@@ -27,6 +28,8 @@ public abstract record SyntaxNode
     public IReadOnlyList<SourceSpanToken> Tokens => new Slice<SourceSpanToken>(Span, SyntaxTree.Tokens);
 
     public SliceSpan Span { get; init; }
+
+    public LinePositionSpan LinePositionSpan => SyntaxTree.SourceText.Lines.GetLinePositionSpan(new(Span.Start, Span.End - Span.Start));
 
     public string FullText
     {

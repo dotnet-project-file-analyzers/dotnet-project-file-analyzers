@@ -43,6 +43,14 @@ public sealed partial class ProjectFiles
             .FirstOrDefault();
     }
 
+    public IniFileSyntax? UpdateIniFile(AdditionalFileAnalysisContext context)
+    {
+        var file = IOFile.Parse(context.AdditionalFile.Path);
+        return Is.Ini(file)
+            ? IniFiles.TryGetOrUpdate(file, _ => IniFileSyntax.Parse(Syntax.SyntaxTree.From(context.AdditionalFile)))
+            : null;
+    }
+
     public MsBuildProject? UpdateMsBuildProject(AdditionalFileAnalysisContext context)
     {
         var file = IOFile.Parse(context.AdditionalFile.Path);
@@ -71,8 +79,9 @@ public sealed partial class ProjectFiles
     private static class Is
     {
         public static bool Ini(IOFile file)
-              => file.Extension.IsMatch(".ini")
-              || file.Extension.IsMatch(".editorconfig");
+            => file.Extension.IsMatch(".ini")
+            || file.Extension.IsMatch(".editorconfig")
+            || file.Extension.IsMatch(".globalconfig");
 
         public static bool MsBuild(IOFile file)
             => file.Extension.IsMatch(".csproj")

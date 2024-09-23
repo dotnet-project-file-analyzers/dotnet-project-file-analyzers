@@ -1,6 +1,4 @@
-﻿using DotNetProjectFile.CodeAnalysis;
-
-namespace DotNetProjectFile.Analyzers.MsBuild;
+﻿namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class GuardUnsupported() : MsBuildProjectFileAnalyzer(
