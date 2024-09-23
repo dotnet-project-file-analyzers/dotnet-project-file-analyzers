@@ -1,25 +1,34 @@
-﻿namespace Benchmarks;
+﻿using System.Collections.Immutable;
+
+namespace Benchmarks;
 
 public class RunAll
 {
-    private ProjectAnalyzerVerifyContext? Context;
+    private ProjectAnalyzerVerifyContext? AnalyzersContext;
+    private ProjectAnalyzerVerifyContext? EmptyContext;
 
     [GlobalSetup]
     public void Setup()
     {
-        Context = Analyzers[0].ForProject(Files[File]);
-        foreach(var analyzer in Analyzers[1..])
+        EmptyContext = new NoAnalyzers().ForProject(Files[File]);
+        AnalyzersContext = EmptyContext;
+        
+        foreach (var analyzer in Analyzers)
         {
-            Context = Context.Add(analyzer);
+            AnalyzersContext = AnalyzersContext.Add(analyzer);
         }
     }
 
     [Params("Project", "CompliantCS", "CompliantVB")]
     public string File { get; set; } = string.Empty;
 
+    [Benchmark(Baseline = true)]
+    public Task<IReadOnlyCollection<Diagnostic>> no_analyzers()
+       => EmptyContext!.GetDiagnosticsAsync();
+
     [Benchmark]
-    public Task<IReadOnlyCollection<Diagnostic>> GetDiagnostics()
-        => Context!.GetDiagnosticsAsync();
+    public Task<IReadOnlyCollection<Diagnostic>> all_analyzers()
+        => AnalyzersContext!.GetDiagnosticsAsync();
 
     private static readonly DiagnosticAnalyzer[] Analyzers =
         typeof(MsBuildProjectFileAnalyzer).Assembly
@@ -34,4 +43,13 @@ public class RunAll
         ["CompliantCS"] = new FileInfo($"../../../../../../../../../projects/CompliantCSharp/CompliantCSharp.csproj"),
         ["CompliantVB"] = new FileInfo($"../../../../../../../../../projects/CompliantVB/CompliantVB.vbproj"),
     };
+
+    
+    [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
+    private sealed class NoAnalyzers : DiagnosticAnalyzer
+    {
+        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [];
+
+        public override void Initialize(AnalysisContext context) { }
+    }
 }

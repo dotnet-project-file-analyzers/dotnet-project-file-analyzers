@@ -2,10 +2,14 @@
 To monitor performance.
 
 ## Get Diagnostics
-|------------ |-----------:|
-| CompliantCS |   7.807 ms |
-| CompliantVB |   7.737 ms |
-| Project     |  69.195 ms |
+Comparison of the build times, with and without running the .NET project file
+analyzers.
+
+| Project        |     Build |    Build+ | Analysis |
+|----------------|----------:|----------:|---------:|
+| CompliantCS    |  0.267 ms |  7.859 ms | 7.592 ms |
+| CompliantVB    |  0.440 ms |  7.806 ms | 7.366 ms |
+| .NET analyzers | 73.621 ms | 73.621 ms | 0.586 ms |
 
 # Parsing INI files
 |     File |        Mean |       per LoC |
