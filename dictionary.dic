@@ -3,6 +3,7 @@ CPM
 fallback
 INI
 MOQ
+pragma
 pragmas
 README
 ruleset

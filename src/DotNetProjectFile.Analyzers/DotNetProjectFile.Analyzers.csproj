@@ -183,6 +183,7 @@ v1.0.0
 
   <ItemGroup Label="Roslyn dependencies">
     <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.10.0" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Extensions.FileSystemGlobbing" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">

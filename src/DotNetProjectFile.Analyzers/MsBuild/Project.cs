@@ -1,4 +1,5 @@
-﻿using DotNetProjectFile.CodeAnalysis;
+﻿using DotNetProjectFile.EditorConfig;
+using DotNetProjectFile.Ini;
 using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.MsBuild;
@@ -61,21 +62,20 @@ public sealed partial class Project : Node, ProjectFile
 
     public WarningPragmas WarningPragmas { get; }
 
-    [Pure]
-    public bool IsAdditional(IEnumerable<AdditionalText> texts) => texts
-        .Select(f => IOFile.Parse(f.Path))
-        .Any(f => f.Equals(Path));
+    public IEnumerable<EditorConfigFile> EditorConfigs()
+        => Path.Directory.AncestorsAndSelf()
+        .Select(dir => ProjectFiles.IniFile(dir.File(".editorconfig")))
+        .OfType<IniFileSyntax>()
+        .Select(ini => new EditorConfigFile(ini))
+        .TakeUntil(config => config.IsRoot);
 
     /// <summary>Loops through all imports and self.</summary>
     /// <remarks>
     /// Should only be used to register project files. In other cases
     /// <see cref="Walk()" /> and <see cref="WalkBackward()"/> should be used.
     /// </remarks>
-    public IReadOnlyList<Project> ImportsAndSelf()
-        => importsAndSelf ??= Walk().OfType<Project>().Distinct().ToArray();
-
-    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private Project[]? importsAndSelf;
+    public IEnumerable<Project> ImportsAndSelf()
+        => Walk().OfType<Project>().Distinct();
 
     /// <summary>Gets self, Directory.Packages.props, and Directory.Build.props).</summary>
     /// <remarks>

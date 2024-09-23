@@ -1,4 +1,4 @@
-using DotNetProjectFile.CodeAnalysis;
+using DotNetProjectFile.EditorConfig;
 
 namespace Microsoft.CodeAnalysis.Diagnostics;
 
@@ -28,6 +28,31 @@ internal static class AnalysisContextExtensions
             }
         });
     }
+
+    /// <summary>Registers an action on <see cref="ProjectFileAnalysisContext"/>.</summary>
+    public static void RegisterEditorConfigFileAction(this AnalysisContext context, Action<EditorConfigFileAnalysisContext> action)
+    {
+        context.RegisterAdditionalFileAction(c =>
+        {
+            if (ProjectFiles.Global.UpdateIniFile(c) is { } ini)
+            {
+                action.Invoke(new( new EditorConfigFile(ini), c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+            }
+        });
+
+        // Fallback for detecting files that not have been added as additional files.
+        context.RegisterCompilationAction(c =>
+        {
+            if (ProjectFiles.Global.UpdateMsBuildProject(c) is { } msbuild)
+            {
+                foreach (var config in msbuild.EditorConfigs().Where(x => !x.IsAdditional(c.Options.AdditionalFiles)))
+                {
+                    action.Invoke(new(config, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                }
+            }
+        });
+    }
+
 
     /// <summary>Registers an action on <see cref="ProjectFileAnalysisContext"/>.</summary>
     public static void RegisterResourceFileAction(this AnalysisContext context, Action<ResourceFileAnalysisContext> action)
