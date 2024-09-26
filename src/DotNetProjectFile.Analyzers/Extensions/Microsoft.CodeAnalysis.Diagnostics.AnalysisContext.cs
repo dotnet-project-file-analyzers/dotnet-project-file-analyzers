@@ -36,7 +36,7 @@ internal static class AnalysisContextExtensions
         {
             if (ProjectFiles.Global.UpdateIniFile(c) is { } ini)
             {
-                action.Invoke(new( new EditorConfigFile(ini), c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                action.Invoke(new(new EditorConfigFile(ini), c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
             }
         });
 
@@ -52,7 +52,6 @@ internal static class AnalysisContextExtensions
             }
         });
     }
-
 
     /// <summary>Registers an action on <see cref="ProjectFileAnalysisContext"/>.</summary>
     public static void RegisterResourceFileAction(this AnalysisContext context, Action<ResourceFileAnalysisContext> action)
