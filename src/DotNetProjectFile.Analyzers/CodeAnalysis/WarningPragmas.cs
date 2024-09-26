@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.CodeAnalysis;
+namespace DotNetProjectFile.CodeAnalysis;
 
 /// <summary>Represents a fixed set of #pragma warning's for a MS Build project file.</summary>
 [DebuggerTypeProxy(typeof(CollectionDebugView))]

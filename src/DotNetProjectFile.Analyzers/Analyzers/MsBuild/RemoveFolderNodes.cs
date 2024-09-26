@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class RemoveFolderNodes() : MsBuildProjectFileAnalyzer(Rule.RemoveFolderNodes)

@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.MsBuild;
 
 public sealed class Import(XElement element, Node parent, MsBuildProject project)
     : Node<MsBuildProject>(element, parent, project)

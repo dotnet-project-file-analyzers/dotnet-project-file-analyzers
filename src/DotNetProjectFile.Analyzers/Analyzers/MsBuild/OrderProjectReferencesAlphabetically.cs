@@ -1,4 +1,4 @@
-﻿using ProjectReference = DotNetProjectFile.MsBuild.ProjectReference;
+using ProjectReference = DotNetProjectFile.MsBuild.ProjectReference;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 

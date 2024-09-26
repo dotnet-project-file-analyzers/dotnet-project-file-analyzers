@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.Navigation;
+using DotNetProjectFile.Navigation;
 
 namespace DotNetProjectFile.MsBuild;
 

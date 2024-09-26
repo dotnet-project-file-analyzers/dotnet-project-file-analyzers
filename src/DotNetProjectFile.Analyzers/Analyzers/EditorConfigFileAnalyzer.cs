@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.EditorConfig;
+using DotNetProjectFile.EditorConfig;
 
 namespace DotNetProjectFile.Analyzers;
 

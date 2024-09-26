@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Use_VersionOverride_only_with_CPM;
+namespace Rules.MS_Build.Use_VersionOverride_only_with_CPM;
 
 public class Reports
 {

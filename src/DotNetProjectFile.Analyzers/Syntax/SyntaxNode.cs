@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.Collections;
+using DotNetProjectFile.Collections;
 using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Syntax;

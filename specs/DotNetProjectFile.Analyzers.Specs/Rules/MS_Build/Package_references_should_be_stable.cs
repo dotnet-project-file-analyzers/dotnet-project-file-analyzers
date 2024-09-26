@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Package_references_should_be_stable;
+namespace Rules.MS_Build.Package_references_should_be_stable;
 
 public class Reports
 {

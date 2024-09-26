@@ -1,4 +1,4 @@
-﻿namespace Rules.RESX.Define_data_in_resource;
+namespace Rules.RESX.Define_data_in_resource;
 
 public class Reports
 {

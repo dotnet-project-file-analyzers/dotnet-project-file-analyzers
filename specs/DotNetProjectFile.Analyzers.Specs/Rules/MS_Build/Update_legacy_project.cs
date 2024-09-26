@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Update_legacy_project;
+namespace Rules.MS_Build.Update_legacy_project;
 
 public class Has_no_issues
 {

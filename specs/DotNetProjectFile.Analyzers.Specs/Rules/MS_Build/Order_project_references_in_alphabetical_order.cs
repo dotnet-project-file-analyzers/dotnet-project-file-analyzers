@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Order_project_references_in_alphabetical_order;
+namespace Rules.MS_Build.Order_project_references_in_alphabetical_order;
 
 public class Reports
 {

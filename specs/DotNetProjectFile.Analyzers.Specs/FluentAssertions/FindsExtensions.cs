@@ -1,4 +1,4 @@
-﻿using CodeAnalysis.TestTools.Contexts;
+using CodeAnalysis.TestTools.Contexts;
 using FluentAssertions.Execution;
 
 namespace FluentAssertions;

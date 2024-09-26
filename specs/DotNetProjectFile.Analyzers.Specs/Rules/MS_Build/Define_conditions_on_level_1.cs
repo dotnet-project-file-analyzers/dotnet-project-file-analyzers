@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Define_conditions_on_level_1;
+namespace Rules.MS_Build.Define_conditions_on_level_1;
 
 public class Reports
 {

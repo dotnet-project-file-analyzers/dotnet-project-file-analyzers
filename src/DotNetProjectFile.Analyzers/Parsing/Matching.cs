@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Parsing;
+namespace DotNetProjectFile.Parsing;
 
 /// <summary>Matching results.</summary>
 public enum Matching

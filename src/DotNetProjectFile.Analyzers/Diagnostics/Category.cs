@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Diagnostics;
+namespace DotNetProjectFile.Diagnostics;
 
 public enum Category
 {

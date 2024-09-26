@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Indent_XML;
+namespace Rules.MS_Build.Indent_XML;
 
 public class Reports
 {

@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Build_actions_should_have_single_task;
+namespace Rules.MS_Build.Build_actions_should_have_single_task;
 
 public class Reports
 {

@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Collections;
+namespace DotNetProjectFile.Collections;
 
 [DebuggerTypeProxy(typeof(CollectionDebugView))]
 [DebuggerDisplay("Count = {Count}, Offset = {Offset}")]

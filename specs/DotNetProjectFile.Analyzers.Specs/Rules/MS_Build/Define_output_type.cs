@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Define_output_type;
+namespace Rules.MS_Build.Define_output_type;
 
 public class Reports
 {

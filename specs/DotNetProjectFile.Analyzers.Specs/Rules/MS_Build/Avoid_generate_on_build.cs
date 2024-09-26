@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Avoid_generate_on_build;
+namespace Rules.MS_Build.Avoid_generate_on_build;
 
 public class Reports
 {

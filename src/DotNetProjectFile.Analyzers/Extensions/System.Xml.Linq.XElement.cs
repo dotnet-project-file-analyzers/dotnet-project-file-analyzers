@@ -1,4 +1,4 @@
-﻿namespace System.Xml.Linq;
+namespace System.Xml.Linq;
 
 internal static class XElementExtensions
 {

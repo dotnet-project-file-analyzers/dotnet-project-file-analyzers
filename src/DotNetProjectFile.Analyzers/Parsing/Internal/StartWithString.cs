@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Parsing.Internal;
+namespace DotNetProjectFile.Parsing.Internal;
 
 internal sealed class StartWithString(string str, string? kind) : Grammar
 {

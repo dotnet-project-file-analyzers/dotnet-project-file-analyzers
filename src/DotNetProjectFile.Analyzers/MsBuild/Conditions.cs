@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.MsBuild;
 
 internal static class Conditions
 {

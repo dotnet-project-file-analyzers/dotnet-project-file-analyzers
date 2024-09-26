@@ -1,4 +1,4 @@
-﻿#pragma warning disable SA1300 // Element should begin with upper-case letter
+#pragma warning disable SA1300 // Element should begin with upper-case letter
 // Grammar is commonly defined with lowercase words.
 
 using DotNetProjectFile.Parsing.Internal;

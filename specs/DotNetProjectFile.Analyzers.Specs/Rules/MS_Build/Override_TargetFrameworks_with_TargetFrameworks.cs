@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Override_TargetFrameworks_with_TargetFrameworks;
+namespace Rules.MS_Build.Override_TargetFrameworks_with_TargetFrameworks;
 
 public class Reports
 {

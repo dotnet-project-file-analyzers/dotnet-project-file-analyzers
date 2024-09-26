@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.MsBuild;
 
 public sealed class TargetFrameworks(XElement element, Node parent, MsBuildProject project)
     : Node<IReadOnlyList<string>>(element, parent, project)

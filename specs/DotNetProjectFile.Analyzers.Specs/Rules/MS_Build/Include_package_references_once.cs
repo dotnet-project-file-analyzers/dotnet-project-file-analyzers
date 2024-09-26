@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Include_package_references_once;
+namespace Rules.MS_Build.Include_package_references_once;
 
 public class Reports
 {

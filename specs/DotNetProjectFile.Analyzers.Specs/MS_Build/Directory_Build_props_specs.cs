@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile;
+using DotNetProjectFile;
 using DotNetProjectFile.Diagnostics;
 
 namespace Rules.MS_Build.Directory_Build_props_specs;

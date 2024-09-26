@@ -1,3 +1,3 @@
-﻿namespace DotNetProjectFile.Ini;
+namespace DotNetProjectFile.Ini;
 
 public abstract record IniSyntax : Syntax.SyntaxNode { }

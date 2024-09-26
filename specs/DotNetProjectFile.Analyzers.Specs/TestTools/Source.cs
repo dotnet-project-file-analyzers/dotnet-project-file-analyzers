@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.Syntax;
+using DotNetProjectFile.Syntax;
 using Microsoft.CodeAnalysis.Text;
 
 namespace Specs.TestTools;

@@ -1,4 +1,4 @@
-﻿#pragma warning disable CA2231 // Overload operator equals on overriding value type Equals
+#pragma warning disable CA2231 // Overload operator equals on overriding value type Equals
 #pragma warning disable S1210 // "Equals" and the comparison operators should be overridden when implementing "IComparable"
 
 using System.ComponentModel;
@@ -61,7 +61,7 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
     /// <inheritdoc cref="FileInfo.Exists" />
     public bool Exists => File().Exists;
 
-    /// <inheritdoc cref="FileInfo.LastWriteTimeUtc" />
+    /// <inheritdoc cref="FileSystemInfo.LastWriteTimeUtc" />
     public DateTime LastWriteTimeUtc => File().LastWriteTimeUtc;
 
     /// <inheritdoc cref="FileInfo.OpenText()" />

@@ -1,4 +1,4 @@
-﻿namespace MS_Build.Use_Directory_Packages_props_only_for_CPM;
+namespace MS_Build.Use_Directory_Packages_props_only_for_CPM;
 
 public class Reports
 {

@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.VersionOverride_should_change_version;
+namespace Rules.MS_Build.VersionOverride_should_change_version;
 
 public class Reports
 {

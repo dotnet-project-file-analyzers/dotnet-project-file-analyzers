@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Exclude_private_asset_dependencies;
+namespace Rules.MS_Build.Exclude_private_asset_dependencies;
 
 public class Reports
 {

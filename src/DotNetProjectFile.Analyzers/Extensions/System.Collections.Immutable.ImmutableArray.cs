@@ -1,4 +1,4 @@
-﻿namespace System.Collections.Immutable;
+namespace System.Collections.Immutable;
 
 internal static class ImmutableArrayExtensions
 {

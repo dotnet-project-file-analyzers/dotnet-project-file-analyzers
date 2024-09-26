@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.Parsing;
+using DotNetProjectFile.Parsing;
 using static DotNetProjectFile.Ini.TokenKind;
 
 namespace DotNetProjectFile.Ini;

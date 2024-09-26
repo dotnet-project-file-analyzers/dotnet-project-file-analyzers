@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Include_Directory_Packages_props;
+namespace Rules.MS_Build.Include_Directory_Packages_props;
 
 public class Reports
 {

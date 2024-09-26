@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Add_additional_files;
+namespace Rules.MS_Build.Add_additional_files;
 
 public class Reports
 {

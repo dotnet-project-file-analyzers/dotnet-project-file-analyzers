@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.Parsing.Internal;
+using DotNetProjectFile.Parsing.Internal;
 using DotNetProjectFile.Syntax;
 using Microsoft.CodeAnalysis.Text;
 

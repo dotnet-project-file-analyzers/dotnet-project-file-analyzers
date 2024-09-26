@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.Ini;
+using DotNetProjectFile.Ini;
 using DotNetProjectFile.Resx;
 
 namespace DotNetProjectFile.CodeAnalysis;
