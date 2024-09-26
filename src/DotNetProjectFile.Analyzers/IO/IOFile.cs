@@ -61,7 +61,7 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
     /// <inheritdoc cref="FileInfo.Exists" />
     public bool Exists => File().Exists;
 
-    /// <inheritdoc cref="FileInfo.LastWriteTimeUtc" />
+    /// <inheritdoc cref="FileSystemInfo.LastWriteTimeUtc" />
     public DateTime LastWriteTimeUtc => File().LastWriteTimeUtc;
 
     /// <inheritdoc cref="FileInfo.OpenText()" />
