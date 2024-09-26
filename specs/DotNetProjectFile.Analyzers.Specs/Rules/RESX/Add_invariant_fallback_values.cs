@@ -1,4 +1,4 @@
-﻿namespace Rules.RESX.Add_invariant_fallback_values;
+namespace Rules.RESX.Add_invariant_fallback_values;
 
 public class Reports
 {

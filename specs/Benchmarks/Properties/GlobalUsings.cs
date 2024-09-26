@@ -1,4 +1,4 @@
-﻿global using BenchmarkDotNet.Attributes;
+global using BenchmarkDotNet.Attributes;
 global using CodeAnalysis.TestTools;
 global using CodeAnalysis.TestTools.Contexts;
 global using DotNetProjectFile.Analyzers;

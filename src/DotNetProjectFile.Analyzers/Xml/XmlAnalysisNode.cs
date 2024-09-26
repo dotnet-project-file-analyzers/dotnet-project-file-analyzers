@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Xml;
+namespace DotNetProjectFile.Xml;
 
 public interface XmlAnalysisNode
 {

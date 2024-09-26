@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.NuGet_packages.Define_package_info;
+namespace Rules.MS_Build.NuGet_packages.Define_package_info;
 
 public class Reports
 {

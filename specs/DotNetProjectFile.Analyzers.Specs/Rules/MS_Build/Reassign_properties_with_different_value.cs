@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Reassign_properties_with_different_value;
+namespace Rules.MS_Build.Reassign_properties_with_different_value;
 
 public class Reports
 {

@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.MsBuild;
 
 public sealed class OutputType(XElement element, Node parent, MsBuildProject project)
     : Node<OutputType.Kind?>(element, parent, project)

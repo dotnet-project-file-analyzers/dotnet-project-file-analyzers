@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.Resx;
+using DotNetProjectFile.Resx;
 using System.Resources;
 
 namespace DotNetProjectFile.Analyzers.Resx;

@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Xml;
+namespace DotNetProjectFile.Xml;
 
 internal static class Nodes
 {

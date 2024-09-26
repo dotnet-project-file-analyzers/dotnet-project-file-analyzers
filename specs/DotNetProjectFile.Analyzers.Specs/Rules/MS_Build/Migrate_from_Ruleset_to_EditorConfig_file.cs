@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Migrate_from_Ruleset_to_EditorConfig_file;
+namespace Rules.MS_Build.Migrate_from_Ruleset_to_EditorConfig_file;
 
 public class Reports
 {

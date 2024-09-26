@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Use_NET_analyzers;
+namespace Rules.MS_Build.Use_NET_analyzers;
 
 public class Reports
 {

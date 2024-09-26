@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.IO;
+namespace DotNetProjectFile.IO;
 
 public sealed class FilePathComparer : IComparer<string?>
 {

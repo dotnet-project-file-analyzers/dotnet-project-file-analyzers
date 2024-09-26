@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Define_package_reference_version;
+namespace Rules.MS_Build.Define_package_reference_version;
 
 public class Reports
 {

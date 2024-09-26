@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Collections;
+namespace DotNetProjectFile.Collections;
 
 public readonly record struct SliceSpan(int Start, int Size)
 {

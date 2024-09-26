@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Define_package_validation_baseline_version;
+namespace Rules.MS_Build.Define_package_validation_baseline_version;
 
 public class Reports
 {

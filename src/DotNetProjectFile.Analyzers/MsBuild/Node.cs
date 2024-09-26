@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.MsBuild.Conversion;
+using DotNetProjectFile.MsBuild.Conversion;
 using System.Runtime.CompilerServices;
 using System.Xml;
 

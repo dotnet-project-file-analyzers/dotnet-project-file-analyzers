@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Syntax;
+namespace DotNetProjectFile.Syntax;
 
 internal sealed record RootSyntax(SyntaxTree? tree = null) : SyntaxNode
 {

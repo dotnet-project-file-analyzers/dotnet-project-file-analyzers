@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Use_Sonar_analyzers;
+namespace Rules.MS_Build.Use_Sonar_analyzers;
 
 public class Reports
 {

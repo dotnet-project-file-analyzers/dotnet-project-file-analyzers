@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.Helpers;
+namespace DotNetProjectFile.Analyzers.Helpers;
 
 public static class CheckOrderExtensions
 {

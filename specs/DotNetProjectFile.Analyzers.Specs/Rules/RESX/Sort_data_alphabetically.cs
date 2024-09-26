@@ -1,4 +1,4 @@
-﻿namespace Rules.RESX.Sort_data_alphabetically;
+namespace Rules.RESX.Sort_data_alphabetically;
 
 public class Reports
 {

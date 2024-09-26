@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Parsing.Internal;
+namespace DotNetProjectFile.Parsing.Internal;
 
 internal sealed class Repeat(Grammar grammar, int min, int max) : Grammar
 {

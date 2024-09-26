@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile;
+using DotNetProjectFile;
 using DotNetProjectFile.Diagnostics;
 
 namespace Rules.MS_Build.Choose_specs;

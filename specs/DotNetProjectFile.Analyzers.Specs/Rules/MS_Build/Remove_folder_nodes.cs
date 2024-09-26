@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Remove_folder_nodes;
+namespace Rules.MS_Build.Remove_folder_nodes;
 
 public class Reports
 {

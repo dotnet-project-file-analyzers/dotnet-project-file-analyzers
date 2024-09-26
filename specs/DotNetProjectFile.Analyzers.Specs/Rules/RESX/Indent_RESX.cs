@@ -1,4 +1,4 @@
-﻿namespace Rules.RESX.Indent_RESX;
+namespace Rules.RESX.Indent_RESX;
 
 public class Reports
 {

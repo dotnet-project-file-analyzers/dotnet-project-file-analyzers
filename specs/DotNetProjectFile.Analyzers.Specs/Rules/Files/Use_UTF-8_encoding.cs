@@ -1,13 +1,15 @@
-namespace Rules.MS_Build.Define_output_type;
+using DotNetProjectFile.Analyzers.Files;
+
+namespace Rules.Files.Use_UTF8_encoding;
 
 public class Reports
 {
     [Test]
     public void on_no_output_type()
-       => new DefineOutputType()
-       .ForProject("NoOutputType.cs")
+       => new UseUTF8Encoding()
+       .ForProject("MultipleEncodings.cs")
        .HasIssue(
-           new Issue("Proj0010", "Define the <OutputType> node explicitly."));
+           new Issue("Proj0900", "This file's encoding is not UTF-8 without BOM."));
 }
 
 public class Guards
@@ -15,7 +17,7 @@ public class Guards
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     public void Projects_without_issues(string project)
-         => new DefineOutputType()
+         => new UseUTF8Encoding()
         .ForProject(project)
         .HasNoIssues();
 }

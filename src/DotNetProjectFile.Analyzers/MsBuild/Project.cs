@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.EditorConfig;
+using DotNetProjectFile.EditorConfig;
 using DotNetProjectFile.Ini;
 using Microsoft.CodeAnalysis.Text;
 

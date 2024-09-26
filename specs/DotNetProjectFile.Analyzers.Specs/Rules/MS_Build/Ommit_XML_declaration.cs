@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Omit_XML_declaration;
+namespace Rules.MS_Build.Omit_XML_declaration;
 
 public class Reports
 {

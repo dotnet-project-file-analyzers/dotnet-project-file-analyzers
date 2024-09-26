@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.Ini;
+using DotNetProjectFile.Ini;
 using System.IO;
 
 namespace Parsing.INI_syntax;

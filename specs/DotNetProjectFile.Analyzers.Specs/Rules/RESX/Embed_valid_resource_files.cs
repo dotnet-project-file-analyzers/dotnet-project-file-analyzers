@@ -1,4 +1,4 @@
-﻿namespace Rules.RESX.Embed_valid_resource_files;
+namespace Rules.RESX.Embed_valid_resource_files;
 
 public class Reports
 {

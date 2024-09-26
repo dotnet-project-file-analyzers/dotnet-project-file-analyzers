@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Generate_on_build_conditionally;
+namespace Rules.MS_Build.Generate_on_build_conditionally;
 
 public class Reports
 {

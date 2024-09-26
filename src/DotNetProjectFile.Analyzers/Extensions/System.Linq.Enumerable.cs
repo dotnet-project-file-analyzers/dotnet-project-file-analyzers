@@ -1,4 +1,4 @@
-﻿namespace System.Linq;
+namespace System.Linq;
 
 internal static class EnumerableExtensions
 {

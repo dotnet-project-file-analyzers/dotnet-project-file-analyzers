@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.NuGet_packages.Package_icon;
+namespace Rules.MS_Build.NuGet_packages.Package_icon;
 
 public class Reports
 {

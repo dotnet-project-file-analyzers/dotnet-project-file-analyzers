@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Syntax;
+namespace DotNetProjectFile.Syntax;
 
 [DebuggerTypeProxy(typeof(CollectionDebugView))]
 [DebuggerDisplay("Count = {Count}")]

@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Configure_CPM;
+namespace Rules.MS_Build.Configure_CPM;
 
 public class Reports
 {

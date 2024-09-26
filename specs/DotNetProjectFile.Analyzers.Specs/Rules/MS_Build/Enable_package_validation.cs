@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Enable_package_validation;
+namespace Rules.MS_Build.Enable_package_validation;
 
 public class Reports
 {

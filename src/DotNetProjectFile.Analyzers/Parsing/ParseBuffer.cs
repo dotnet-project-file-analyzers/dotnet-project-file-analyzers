@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.Syntax;
+using DotNetProjectFile.Syntax;
 using System.Runtime.CompilerServices;
 
 namespace DotNetProjectFile.Parsing;

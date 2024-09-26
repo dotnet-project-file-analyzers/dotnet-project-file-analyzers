@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.Ini;
+using DotNetProjectFile.Ini;
 using SyntaxTree = DotNetProjectFile.Syntax.SyntaxTree;
 
 namespace Benchmarks;

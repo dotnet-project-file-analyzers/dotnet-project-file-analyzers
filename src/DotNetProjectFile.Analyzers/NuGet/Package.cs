@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.NuGet;
+namespace DotNetProjectFile.NuGet;
 
 [Inheritable]
 public record Package

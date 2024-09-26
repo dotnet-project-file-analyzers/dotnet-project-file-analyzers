@@ -1,4 +1,4 @@
-﻿namespace Rules.Use_forward_slashes_in_paths;
+namespace Rules.Use_forward_slashes_in_paths;
 
 public class Reports
 {
