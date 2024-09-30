@@ -1,4 +1,4 @@
-﻿# Benchmarks
+# Benchmarks
 To monitor performance.
 
 ## Get Diagnostics
@@ -17,3 +17,20 @@ analyzers.
 |   27 LoC |    49.71 us |   1.84 us/LoC |
 |   36 LoC |    54.55 us |   1.52 us/LoC |
 | 1220 LoC | 7,819.40 us |   6.41 us/LoC |
+
+# Parsing Globs
+The purpose was never speed, 
+| Method               | Expression           | Mean      |
+|--------------------- |--------------------- |----------:|
+| DotNetProjectFile_IO | [Dd]ebug             |  81.95 ns |
+| GlobExpressions_Glob | [Dd]ebug             | 215.51 ns |
+| DotNet_Globbing      | [Dd]ebug             | 189.20 ns |
+| DotNetProjectFile_IO | *.{cs,vb,ts}         | 242.29 ns |
+| GlobExpressions_Glob | *.{cs,vb,ts}         | 311.40 ns |
+| DotNet_Globbing      | *.{cs,vb,ts}         | 236.58 ns |
+| DotNetProjectFile_IO | *multiple xml files* | 339.46 ns |
+| GlobExpressions_Glob | *multiple xml files* | 362.53 ns |
+| DotNet_Globbing      | *multiple xml files* | 385.11 ns |
+| DotNetProjectFile_IO | *.*                  |  69.31 ns |
+| GlobExpressions_Glob | *.*                  | 134.49 ns |
+| DotNet_Globbing      | *.*                  | 207.82 ns |
