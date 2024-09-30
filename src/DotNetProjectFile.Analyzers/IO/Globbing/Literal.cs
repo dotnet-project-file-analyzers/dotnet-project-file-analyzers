@@ -1,6 +1,6 @@
 namespace DotNetProjectFile.IO.Globbing;
 
-public class Literal(string text) : Segement
+internal class Literal(string text) : Segement
 {
     public string Text { get; } = text;
 

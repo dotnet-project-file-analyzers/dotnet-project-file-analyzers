@@ -1,6 +1,6 @@
 namespace DotNetProjectFile.IO.Globbing;
 
-public sealed class Sequence(string options) : Segement
+internal sealed class Sequence(string options) : Segement
 {
     public string Options { get; } = options;
 
