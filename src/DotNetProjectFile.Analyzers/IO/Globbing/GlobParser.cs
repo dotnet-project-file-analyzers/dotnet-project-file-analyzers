@@ -98,7 +98,6 @@ public static class GlobParser
                 }
 
                 // closing.
-
                 else if (sp.StartsWith('}') is { })
                 {
                     if (options.Count == 0)
