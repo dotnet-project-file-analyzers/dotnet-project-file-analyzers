@@ -1,5 +1,3 @@
-using static DotNetProjectFile.IO.Globbing.Segement;
-
 namespace DotNetProjectFile.IO.Globbing;
 
 public abstract class Segement
@@ -15,4 +13,7 @@ public abstract class Segement
 
     /// <summary>The maximum length the segment will match.</summary>
     public abstract int MaxLength { get; }
+
+    /// <summary>Indicates that the segment could be parsed.</summary>
+    public virtual bool IsParseble => true;
 }

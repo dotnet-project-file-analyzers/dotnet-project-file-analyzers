@@ -1,12 +1,17 @@
 namespace DotNetProjectFile.IO.Globbing;
 
-internal class Option(IReadOnlyList<Segement> values) : Segement
+internal class Option(IReadOnlyList<Segement> segments) : Segement
 {
-    public IReadOnlyList<Segement> Values { get; } = values;
+    public IReadOnlyList<Segement> Segments { get; } = segments;
 
-    public override int MinLength => Values.Min(s => s.MinLength);
+    /// <inheritdoc />
+    public override int MinLength => Segments.Min(s => s.MinLength);
 
-    public override int MaxLength => Values.Max(s => s.MaxLength);
+    /// <inheritdoc />
+    public override int MaxLength => Segments.Max(s => s.MaxLength);
 
-    public override string ToString() => $"{{{string.Join(",", Values)}}}";
+    /// <inheritdoc />
+    public override bool IsParseble => Segments.All(s => s.IsParseble);
+
+    public override string ToString() => $"{{{string.Join(",", Segments)}}}";
 }

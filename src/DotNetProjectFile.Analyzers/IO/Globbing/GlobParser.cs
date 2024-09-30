@@ -61,14 +61,14 @@ public static class GlobParser
         {
             span++;
 
-            if (span.Matches(c => c != ']') is { } match &&
+            if (span.Matches(c => c != ']' && c != '[') is { } match &&
                 span.TrimLeft(match.Length).StartsWith(']') is { })
             {
                 return match;
             }
             else
             {
-                throw new InvalidPattern("] Missing.");
+                return null;
             }
         }
         else

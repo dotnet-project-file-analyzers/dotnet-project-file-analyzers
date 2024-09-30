@@ -15,7 +15,23 @@ public class Parses
     public void globs(string str)
     {
         var glob = GlobParser.TryParse(str);
+        glob.IsParseble.Should().BeTrue();
+        glob.ToString().Should().Be(str);
+    }
+}
 
-        glob!.ToString().Should().Be(str);
+public class Can_not_parse
+{
+    [TestCase(",")]
+    [TestCase("[")]
+    [TestCase("{}")]
+    [TestCase("{}}")]
+    [TestCase("[[test]]")]
+    [TestCase("[]")]
+    [TestCase("*.{cs,{vb,vpproj}csproj}")]
+    public void globs(string str)
+    {
+        var glob = GlobParser.TryParse(str);
+        glob.IsParseble.Should().BeFalse();
     }
 }
