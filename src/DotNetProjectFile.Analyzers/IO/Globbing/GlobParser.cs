@@ -24,7 +24,7 @@ internal static class GlobParser
                 group.Add(wildcards.Length == 1 ? Segement.Wildcard : Segement.RecursiveWildcard);
                 span = span.TrimLeft(wildcards.Length);
             }
-            else if (span.First == '{' && span.Option(out var option) is { } sp)
+            else if (span.Option(out var option) is { } sp)
             {
                 group.Add(option!);
                 span = span.TrimLeft(sp.Length);
@@ -76,6 +76,13 @@ internal static class GlobParser
     private static TextSpan? Option(this SourceSpan span, out Option? option)
     {
         option = null;
+        return span.First == '{'
+            ? OptionBody(span, ref option)
+            : null;
+    }
+
+    private static TextSpan? OptionBody(this SourceSpan span, ref Option? option)
+    {
         var sp = span;
 
         sp++;
