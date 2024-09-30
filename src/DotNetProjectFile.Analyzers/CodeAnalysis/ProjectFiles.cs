@@ -1,3 +1,4 @@
+using DotNetProjectFile.Git;
 using DotNetProjectFile.Ini;
 using DotNetProjectFile.Resx;
 
@@ -7,9 +8,13 @@ public sealed partial class ProjectFiles
 {
     public static readonly ProjectFiles Global = new();
 
+    private readonly FileCache<GitIgnoreSyntax> GitIgnoredFiles = new();
     private readonly FileCache<IniFileSyntax> IniFiles = new();
     private readonly FileCache<MsBuildProject> MsBuildProjects = new();
     private readonly FileCache<Resource> ResourceFiles = new();
+
+    public GitIgnoreSyntax? GitIgnoreFile(IOFile file)
+        => GitIgnoredFiles.TryGetOrUpdate(file, Create_GitIgnoreFile);
 
     public IniFileSyntax? IniFile(IOFile file)
         => IniFiles.TryGetOrUpdate(file, Create_IniFile);
@@ -67,11 +72,14 @@ public sealed partial class ProjectFiles
             : null;
     }
 
-    private MsBuildProject Create_MsBuildProject(IOFile file)
-        => MsBuild.Project.Load(file, this);
+    private static GitIgnoreSyntax Create_GitIgnoreFile(IOFile file)
+        => GitIgnoreSyntax.Parse(Syntax.SyntaxTree.Load(file.OpenRead()));
 
     private static IniFileSyntax Create_IniFile(IOFile file)
         => IniFileSyntax.Parse(Syntax.SyntaxTree.Load(file.OpenRead()));
+
+    private MsBuildProject Create_MsBuildProject(IOFile file)
+       => MsBuild.Project.Load(file, this);
 
     private Resource Create_ResourceFile(IOFile file)
         => Resource.Load(file, this);

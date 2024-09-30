@@ -9,7 +9,7 @@ internal sealed class IniGrammar : Grammar
 
     public static readonly Grammar ws = match(c => c == ' ' || c == 't', WhitespaceToken).Option;
 
-    public static readonly Grammar ws_only = line(@"$\s*^", WhitespaceToken);
+    public static readonly Grammar ws_only = line(@"^\s*$", WhitespaceToken);
 
     public static readonly Grammar header =
         (ws
