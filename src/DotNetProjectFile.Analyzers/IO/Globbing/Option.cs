@@ -1,6 +1,6 @@
 namespace DotNetProjectFile.IO.Globbing;
 
-internal class Option(IReadOnlyList<Segement> segments) : Segement
+internal sealed class Option(IReadOnlyList<Segement> segments) : Segement
 {
     public IReadOnlyList<Segement> Segments { get; } = segments;
 
