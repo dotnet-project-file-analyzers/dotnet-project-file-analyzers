@@ -1,4 +1,4 @@
-using DotNetProjectFile.IO.Globbing;
+using DotNetProjectFile.IO;
 
 namespace Benchmarks;
 
@@ -8,8 +8,8 @@ public class Globs
     public string Expression { get; set; } = string.Empty;
 
     [Benchmark]
-    public Segement DotNetProjectFile_IO()
-        => GlobParser.TryParse(Expression);
+    public Glob? DotNetProjectFile_IO_Glob()
+        => Glob.TryParse(Expression);
 
     [Benchmark]
     public GlobExpressions.Glob GlobExpressions_Glob() => new(Expression, GlobExpressions.GlobOptions.Compiled);

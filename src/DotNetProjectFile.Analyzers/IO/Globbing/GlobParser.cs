@@ -3,16 +3,12 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.IO.Globbing;
 
-public static class GlobParser
+internal static class GlobParser
 {
-    public static Segement TryParse(string str)
-    {
-        var span = new SourceSpan(SourceText.From(str));
+    public static Segement? TryParse(string str)
+        => TryParse(new SourceSpan(SourceText.From(str)));
 
-        return TryParse(span);
-    }
-
-    private static Segement TryParse(SourceSpan span)
+    private static Segement? TryParse(SourceSpan span)
     {
         var group = new List<Segement>();
 
@@ -46,8 +42,8 @@ public static class GlobParser
             }
             else
             {
-                group.Add(new Unparsable(span.Text));
-                span = span.TrimLeft(span.Length);
+                // unparsable
+                return null;
             }
         }
         return group.Count == 1
@@ -118,10 +114,10 @@ public static class GlobParser
                     options.Add(nested!);
                     sp = sp.TrimLeft(nest.Length);
                 }
-                else if (sp.Matches(c => c != ',' && c != '}') is { } next)
+                else if (sp.Matches(c => c != ',' && c != '}') is { } next
+                    && TryParse(sp.Trim(next)) is { } sub)
                 {
-                    var sub = sp.Trim(next);
-                    options.Add(TryParse(sub));
+                    options.Add(sub);
                     sp = sp.TrimLeft(next.Length);
                 }
                 else

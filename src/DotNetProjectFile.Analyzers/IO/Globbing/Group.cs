@@ -10,8 +10,5 @@ internal sealed class Group(IReadOnlyList<Segement> segments) : Segement
     /// <inheritdoc />
     public override int MaxLength => Segments.Sum(s => s.MaxLength);
 
-    /// <inheritdoc />
-    public override bool IsParseble => Segments.All(s => s.IsParseble);
-
     public override string ToString() => string.Concat(Segments);
 }

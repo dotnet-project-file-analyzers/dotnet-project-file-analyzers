@@ -10,8 +10,5 @@ internal class Option(IReadOnlyList<Segement> segments) : Segement
     /// <inheritdoc />
     public override int MaxLength => Segments.Max(s => s.MaxLength);
 
-    /// <inheritdoc />
-    public override bool IsParseble => Segments.All(s => s.IsParseble);
-
     public override string ToString() => $"{{{string.Join(",", Segments)}}}";
 }
