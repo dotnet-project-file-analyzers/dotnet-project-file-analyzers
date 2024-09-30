@@ -91,8 +91,7 @@ internal static class GlobParser
 
         while (sp.Length != 0)
         {
-            var ch = sp.First;
-            if (ch == ',')
+            if (sp.First == ',')
             {
                 // unexpected comma.
                 if (options.Count == 0)
@@ -103,7 +102,7 @@ internal static class GlobParser
             }
 
             // closing.
-            else if (ch == '}')
+            else if (sp.First == '}')
             {
                 return OptionClosing(span, ref option, sp, options);
             }
@@ -114,7 +113,7 @@ internal static class GlobParser
                 return null;
             }
 
-            if (ch == '{' && sp.Option(out var nested) is { } nest)
+            if (sp.First == '{' && sp.Option(out var nested) is { } nest)
             {
                 options.Add(nested!);
                 sp = sp.TrimLeft(nest.Length);
