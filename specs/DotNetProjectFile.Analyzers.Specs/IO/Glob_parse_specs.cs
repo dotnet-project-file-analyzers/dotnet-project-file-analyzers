@@ -10,7 +10,9 @@ public class Parses
     [TestCase("*.*")]
     [TestCase("[Hh]ello.*")]
     [TestCase("[!H]ello.*")]
-    public void single(string str)
+    [TestCase("*.{cs,vb,csproj}")]
+    [TestCase("*.{cs,{vb,vpproj},csproj}")]
+    public void globs(string str)
     {
         var glob = GlobParser.TryParse(str);
 

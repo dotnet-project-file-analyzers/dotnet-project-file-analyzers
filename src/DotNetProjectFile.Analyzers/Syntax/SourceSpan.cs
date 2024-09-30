@@ -234,4 +234,6 @@ public readonly struct SourceSpan(SourceText sourceText, TextSpan textSpan) : IE
     /// Right operator.
     /// </param>
     public static bool operator !=(SourceSpan left, SourceSpan right) => !(left == right);
+
+    public static SourceSpan operator ++(SourceSpan span) => span.TrimLeft(1);
 }

@@ -1,12 +1,12 @@
 namespace DotNetProjectFile.IO.Globbing;
 
-public class Literal(string value) : Segement
+public class Literal(string text) : Segement
 {
-    public string Value { get; } = value;
+    public string Text { get; } = text;
 
-    public override int MinLength => Value.Length;
+    public override int MinLength => Text.Length;
 
-    public override int MaxLength => Value.Length;
+    public override int MaxLength => Text.Length;
 
-    public override string ToString() => Value;
+    public override string ToString() => Text;
 }
