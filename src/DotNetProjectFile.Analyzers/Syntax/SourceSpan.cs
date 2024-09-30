@@ -39,6 +39,9 @@ public readonly struct SourceSpan(SourceText sourceText, TextSpan textSpan) : IE
     /// <summary>The (selected) source text.</summary>
     public string Text => SourceText?.ToString(Span) ?? string.Empty;
 
+    /// <summary>The First char in the span.</summary>
+    public char First => SourceText?[Start] ?? default;
+
     /// <summary>The start position.</summary>
     public int Start => Span.Start;
 

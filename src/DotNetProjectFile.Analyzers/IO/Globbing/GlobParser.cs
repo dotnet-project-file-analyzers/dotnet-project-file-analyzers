@@ -14,17 +14,17 @@ internal static class GlobParser
 
         while (!span.IsEmpty)
         {
-            if (span.StartsWith('?') is { } any)
+            if (span.First == '?')
             {
                 group.Add(Segement.AnyChar);
-                span = span.TrimLeft(any.Length);
+                span++;
             }
             else if (span.Matches(c => c == '*') is { } wildcards)
             {
                 group.Add(wildcards.Length == 1 ? Segement.Wildcard : Segement.RecursiveWildcard);
                 span = span.TrimLeft(wildcards.Length);
             }
-            else if (span.Option(out var option) is { } sp)
+            else if (span.First == '{' && span.Option(out var option) is { } sp)
             {
                 group.Add(option!);
                 span = span.TrimLeft(sp.Length);
@@ -75,58 +75,68 @@ internal static class GlobParser
 
     private static TextSpan? Option(this SourceSpan span, out Option? option)
     {
-        var sp = span;
         option = null;
+        var sp = span;
 
-        if (sp.StartsWith('{') is { })
+        sp++;
+
+        var options = new List<Segement>();
+
+        while (sp.Length != 0)
         {
-            sp++;
-
-            var options = new List<Segement>();
-
-            while (sp.Length != 0)
+            var ch = sp.First;
+            if (ch == ',')
             {
-                if (sp.StartsWith(',') is { })
-                {
-                    // unexpected comma.
-                    if (options.Count == 0) { return null; }
-                    else { sp++; }
-                }
-
-                // closing.
-                else if (sp.StartsWith('}') is { })
-                {
-                    if (options.Count == 0)
-                    {
-                        return null;
-                    }
-                    option = new Option(options);
-                    return new(span.Start, sp.Start - span.Start + 1);
-                }
-                // comma is missing.
-                else if (options.Count != 0)
+                // unexpected comma.
+                if (options.Count == 0)
                 {
                     return null;
                 }
+                sp++;
+            }
 
-                if (sp.StartsWith('{') is { } && sp.Option(out var nested) is { } nest)
-                {
-                    options.Add(nested!);
-                    sp = sp.TrimLeft(nest.Length);
-                }
-                else if (sp.Matches(c => c != ',' && c != '}') is { } next
-                    && TryParse(sp.Trim(next)) is { } sub)
-                {
-                    options.Add(sub);
-                    sp = sp.TrimLeft(next.Length);
-                }
-                else
-                {
-                    return null;
-                }
+            // closing.
+            else if (ch == '}')
+            {
+                return OptionClosing(span, ref option, sp, options);
+            }
+
+            // comma is missing.
+            else if (options.Count != 0)
+            {
+                return null;
+            }
+
+            if (ch == '{' && sp.Option(out var nested) is { } nest)
+            {
+                options.Add(nested!);
+                sp = sp.TrimLeft(nest.Length);
+            }
+            else if (sp.Matches(c => c != ',' && c != '}') is { } next
+                && TryParse(sp.Trim(next)) is { } sub)
+            {
+                options.Add(sub);
+                sp = sp.TrimLeft(next.Length);
+            }
+            else
+            {
+                return null;
             }
         }
         return null;
+    }
+
+    private static TextSpan? OptionClosing(SourceSpan span, ref Option? option, SourceSpan sp, List<Segement> options)
+    {
+        if (options.Count != 0)
+        {
+            option = new Option(options);
+            return new(span.Start, sp.Start - span.Start + 1);
+        }
+        else
+        {
+            return null;
+        }
     }
 
     private static TextSpan? Literal(this SourceSpan span)

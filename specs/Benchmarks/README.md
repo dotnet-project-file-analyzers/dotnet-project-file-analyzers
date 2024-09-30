@@ -22,15 +22,15 @@ analyzers.
 The purpose was never speed, 
 | Method               | Expression           | Mean      |
 |--------------------- |--------------------- |----------:|
-| DotNetProjectFile_IO | [Dd]ebug             |  89.65 ns |
-| GlobExpressions_Glob | [Dd]ebug             | 212.86 ns |
-| DotNet_Globbing      | [Dd]ebug             | 180.70 ns |
-| DotNetProjectFile_IO | *.{cs,vb,ts}         | 251.92 ns |
-| GlobExpressions_Glob | *.{cs,vb,ts}         | 305.30 ns |
-| DotNet_Globbing      | *.{cs,vb,ts}         | 248.20 ns |
-| DotNetProjectFile_IO | *multiple xml files* | 338.47 ns |
-| GlobExpressions_Glob | *multiple xml files* | 370.06 ns |
-| DotNet_Globbing      | *multiple xml files* | 373.25 ns |
-| DotNetProjectFile_IO | *.*                  |  73.34 ns |
-| GlobExpressions_Glob | *.*                  | 130.10 ns |
-| DotNet_Globbing      | *.*                  | 209.99 ns |
+| DotNetProjectFile_IO | [Dd]ebug             |  81.95 ns |
+| GlobExpressions_Glob | [Dd]ebug             | 215.51 ns |
+| DotNet_Globbing      | [Dd]ebug             | 189.20 ns |
+| DotNetProjectFile_IO | *.{cs,vb,ts}         | 242.29 ns |
+| GlobExpressions_Glob | *.{cs,vb,ts}         | 311.40 ns |
+| DotNet_Globbing      | *.{cs,vb,ts}         | 236.58 ns |
+| DotNetProjectFile_IO | *multiple xml files* | 339.46 ns |
+| GlobExpressions_Glob | *multiple xml files* | 362.53 ns |
+| DotNet_Globbing      | *multiple xml files* | 385.11 ns |
+| DotNetProjectFile_IO | *.*                  |  69.31 ns |
+| GlobExpressions_Glob | *.*                  | 134.49 ns |
+| DotNet_Globbing      | *.*                  | 207.82 ns |
