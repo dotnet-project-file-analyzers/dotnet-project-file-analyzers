@@ -179,7 +179,8 @@ public readonly struct SourceSpan(SourceText sourceText, TextSpan textSpan) : IE
     [Pure]
     private TextSpan? Matches(Regex regex, TextSpan span)
     {
-        var match = regex.Match(SourceText.ToString(span));
+        var text = SourceText.ToString(span);
+        var match = regex.Match(text);
 
         if (match.Index != 0)
         {

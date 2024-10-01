@@ -18,7 +18,7 @@ analyzers.
 |   36 LoC |    44.52 us |   1,2 µs/LoC |
 | 1220 LoC | 4,828.15 us |   4,0 µs/LoC |
 
-# Parsing Globs
+## Parsing Globs
 The purpose was never speed, 
 | Method               | Expression           | Mean      |
 |--------------------- |--------------------- |----------:|
@@ -34,3 +34,9 @@ The purpose was never speed,
 | DotNetProjectFile_IO | *.*                  |  69.31 ns |
 | GlobExpressions_Glob | *.*                  | 134.49 ns |
 | DotNet_Globbing      | *.*                  | 207.82 ns |
+
+### Parsing .gitignore files
+|    File |      Mean |      Speed |
+|--------:|----------:|-----------:|
+|  50 LoC |  25.29 us | 506 ns/LoC |
+| 231 LoC | 107.77 us | 467 ns/LoC |
