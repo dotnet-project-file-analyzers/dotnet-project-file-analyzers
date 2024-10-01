@@ -12,11 +12,11 @@ analyzers.
 | .NET analyzers | 73.621 ms | 73.621 ms | 0.586 ms |
 
 # Parsing INI files
-|     File |        Mean |       per LoC |
-|---------:|------------:|--------------:|
-|   27 LoC |    49.71 us |   1.84 us/LoC |
-|   36 LoC |    54.55 us |   1.52 us/LoC |
-| 1220 LoC | 7,819.40 us |   6.41 us/LoC |
+|     File |        Mean |        Speed |
+|---------:|------------:|-------------:|
+|   27 LoC |    41.41 us |   1,5 µs/LoC |
+|   36 LoC |    44.52 us |   1,2 µs/LoC |
+| 1220 LoC | 4,828.15 us |   4,0 µs/LoC |
 
 # Parsing Globs
 The purpose was never speed, 
