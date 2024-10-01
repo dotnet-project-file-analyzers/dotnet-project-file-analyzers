@@ -23,11 +23,12 @@
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.4.4</Version>
+    <Version>1.4.5</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
-ToBeReleased
+v1.4.5
+- Proj3000: Only use UTF-8 without BOM. (NEW RULES)
 - Support rules for other project file types like .editoconfig files.
 - Processing files with 7 times speed improvement.
 v1.4.4

@@ -95,3 +95,6 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj2003** Add invariant fallback resources](https://dotnet-project-file-analyzers.github.io/rules/Proj2003.html)
 * [**Proj2004** Add invariant fallback values](https://dotnet-project-file-analyzers.github.io/rules/Proj2004.html)
 * [**Proj2100** Indent RESX](https://dotnet-project-file-analyzers.github.io/rules/Proj2100.html)
+
+## Generic
+* [**Proj3000** Only use UTF-8 without BOM](https://dotnet-project-file-analyzers.github.io/rules/Proj3000.html)
