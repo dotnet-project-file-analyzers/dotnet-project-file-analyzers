@@ -7,7 +7,7 @@ internal sealed class IniGrammar : Grammar
 {
     public static readonly Grammar eol = eof | str("\r\n", EoLToken) | ch('\n', EoLToken);
 
-    public static readonly Grammar ws = line(@"\s*", WhitespaceToken);
+    public static readonly Grammar ws = match(c => c == ' ' || c == 't', WhitespaceToken).Option;
 
     public static readonly Grammar ws_only = line(@"$\s*^", WhitespaceToken);
 
