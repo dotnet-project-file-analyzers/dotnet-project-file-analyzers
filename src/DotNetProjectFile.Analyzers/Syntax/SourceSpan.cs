@@ -77,20 +77,9 @@ public readonly struct SourceSpan(SourceText sourceText, TextSpan textSpan) : IE
     [Pure]
     public TextSpan Line()
     {
-        var len = -1;
-        var i = Span.Start;
-
-        while (++len < Span.Length)
-        {
-            if (SourceText[i++] == '\n')
-            {
-                return len != 0 && SourceText[i - 2] == '\r'
-                    ? new(Span.Start, len - 1)
-                    : new(Span.Start, len);
-            }
-        }
-
-        return Span;
+        var line = SourceText.Lines.GetLineFromPosition(Start);
+        var span = line.Span;
+        return new TextSpan(Start, span.Length - (Start - span.Start));
     }
 
     /// <summary>Matches the regular expression.</summary>
