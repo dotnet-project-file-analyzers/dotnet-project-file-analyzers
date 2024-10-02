@@ -9,8 +9,8 @@ public class Reports
        => new OnlyUseUTF8WithoutBom()
        .ForProject("MultipleEncodings.cs")
        .HasIssues(
-           new Issue("Proj3000", "This file's encoding using UTF-8 with BOM.").WithPath("utf8-bom.css"),
-           new Issue("Proj3000", "This file's encoding using UTF-8 with BOM.").WithPath("file.utf8-bom"));
+           new Issue("Proj3000", "This file is using UTF-8 encoding with BOM.").WithPath("utf8-bom.css"),
+           new Issue("Proj3000", "This file is using UTF-8 encoding with BOM.").WithPath("file.utf8-bom"));
 }
 
 public class Guards
