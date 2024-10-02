@@ -768,13 +768,12 @@ public static class Rule
     public static DiagnosticDescriptor OnlyUseUTF8WithoutBom => New(
         id: 3000,
         title: "Ony use UTF-8 encoding without BOM",
-        message: "This file's encoding is using UTF-8 with BOM.",
+        message: "This file is using UTF-8 encoding with BOM.",
         description:
             "The use of BOM for UTF-8 can cause systems to malfunction. This " +
             "includes multiple web based files such as Javascript and CSS.",
         tags: ["encoding", "UTF-8"],
         category: Category.Reliability);
-
 
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.

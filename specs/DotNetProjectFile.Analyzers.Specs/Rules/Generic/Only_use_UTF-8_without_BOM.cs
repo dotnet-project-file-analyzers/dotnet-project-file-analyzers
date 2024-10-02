@@ -1,4 +1,4 @@
-using DotNetProjectFile.Analyzers.Files;
+using DotNetProjectFile.Analyzers.Generic;
 
 namespace Rules.Generic.Only_use_UTF8_without_BOM;
 

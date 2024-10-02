@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis.Text;
 
-namespace DotNetProjectFile.Analyzers.Files;
+namespace DotNetProjectFile.Analyzers.Generic;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFile>(Rule.OnlyUseUTF8WithoutBom)
