@@ -53,6 +53,7 @@ public partial class Rules
     [TestCaseSource(nameof(Types))]
     public void defined_in_DotNetProjectFile_Analyzers_MsBuild_namespace(Type type)
         => type.Namespace.Should().BeOneOf(
+            "DotNetProjectFile.Analyzers.Generic",
             "DotNetProjectFile.Analyzers.MsBuild",
             "DotNetProjectFile.Analyzers.Resx");
 

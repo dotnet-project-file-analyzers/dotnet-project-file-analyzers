@@ -50,6 +50,10 @@ public class RunAll
     {
         public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [];
 
-        public override void Initialize(AnalysisContext context) { }
+        public override void Initialize(AnalysisContext context)
+        {
+            context.EnableConcurrentExecution();
+            context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.ReportDiagnostics);
+        }
     }
 }
