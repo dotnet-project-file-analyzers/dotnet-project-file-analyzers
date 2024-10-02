@@ -133,6 +133,9 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj2004** Add invariant fallback values](rules/Proj2004.md)
 * [**Proj2100** Indent RESX](rules/Proj2100.md)
 
+## Generic
+* [**Proj3000** Only use UTF-8 without BOM](rules/Proj3000.md)
+
 ## Additional files
 To fully benefit from these analyzers it is recommended to add the project file
 (and imported projects/props) as additional files.
