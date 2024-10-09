@@ -30,6 +30,8 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
 
     protected override void Register(ProjectFileAnalysisContext<ProjectTextFile> context)
     {
+        if (!context.File.Path.Exists) { return; }
+
         using var reader = context.File.Path.OpenRead();
 
         var bom = new byte[3];
