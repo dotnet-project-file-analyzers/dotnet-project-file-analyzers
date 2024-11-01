@@ -9,14 +9,20 @@ internal sealed class IdentationChecker<TFile>(char ch, int repeat, DiagnosticDe
     private readonly int Repeat = repeat;
     private readonly DiagnosticDescriptor Descriptor = descriptor;
 
-    public void Walk(XmlAnalysisNode node, SourceText text, ProjectFileAnalysisContext<TFile> context)
+    public void Walk(
+        XmlAnalysisNode node,
+        SourceText text,
+        ProjectFileAnalysisContext<TFile> context,
+        Predicate<XmlAnalysisNode> exclude)
     {
-        Report(node, text, context, true);
-        Report(node, text, context, false);
-
+        if (!exclude(node))
+        {
+            Report(node, text, context, true);
+            Report(node, text, context, false);
+        }
         foreach (var child in node.Children())
         {
-            Walk(child, text, context);
+            Walk(child, text, context, exclude);
         }
     }
 

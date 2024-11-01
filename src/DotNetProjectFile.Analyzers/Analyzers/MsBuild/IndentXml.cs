@@ -11,5 +11,5 @@ public sealed class IndentXml : MsBuildProjectFileAnalyzer
         => Checker = new(ch, repeat, Descriptor);
 
     protected override void Register(ProjectFileAnalysisContext context)
-        => Checker.Walk(context.File, context.File.Text, context);
+        => Checker.Walk(context.File, context.File.Text, context, _ => false);
 }
