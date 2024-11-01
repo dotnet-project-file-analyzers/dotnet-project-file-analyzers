@@ -757,6 +757,14 @@ public static class Rule
        tags: ["resx", "resources", "invariant", "localization"],
        category: Category.Bug);
 
+    public static DiagnosticDescriptor EscapeXmlNodesResourceValues => New(
+      id: 2005,
+      title: "Escape XML nodes of resource values",
+      message: "Escape the XML node in '{0}'.",
+      description: "To ensure correct handling, XML nodes within resource values should be escaped.",
+      tags: ["resx", "resources", "XML", "escaping"],
+      category: Category.Bug);
+
     public static DiagnosticDescriptor IndentResx => New(
       id: 2100,
       title: "Indent XML files",

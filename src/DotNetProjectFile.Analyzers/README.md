@@ -94,6 +94,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj2002** Sort resource file values alphabetically](https://dotnet-project-file-analyzers.github.io/rules/Proj2002.html)
 * [**Proj2003** Add invariant fallback resources](https://dotnet-project-file-analyzers.github.io/rules/Proj2003.html)
 * [**Proj2004** Add invariant fallback values](https://dotnet-project-file-analyzers.github.io/rules/Proj2004.html)
+* [**Proj2005** Escape XML nodes of resource values](https://dotnet-project-file-analyzers.github.io/rules/Proj2005.html)
 * [**Proj2100** Indent RESX](https://dotnet-project-file-analyzers.github.io/rules/Proj2100.html)
 
 ## Generic
