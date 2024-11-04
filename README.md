@@ -131,6 +131,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj2002** Sort resource file values alphabetically](rules/Proj2002.md)
 * [**Proj2003** Add invariant fallback resources](rules/Proj2003.md)
 * [**Proj2004** Add invariant fallback values](rules/Proj2004.md)
+* [**Proj2005** Escape XML nodes of resource values](rules/Proj2005.md)
 * [**Proj2100** Indent RESX](rules/Proj2100.md)
 
 ## Generic
