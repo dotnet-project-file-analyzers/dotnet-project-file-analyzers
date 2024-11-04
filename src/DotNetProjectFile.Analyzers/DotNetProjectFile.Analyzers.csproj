@@ -23,11 +23,12 @@
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.4.6</Version>
+    <Version>1.4.7</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
-ToBeReleased
+v1.4.7
+- Proj2005: Escape XML nodes of resource values. (NEW RULE)
 - Proj2100: Children of <value> should be excluded. (FP)
 v1.4.6
 - Proj3000: Don't crash on non-existing files. (BUG)

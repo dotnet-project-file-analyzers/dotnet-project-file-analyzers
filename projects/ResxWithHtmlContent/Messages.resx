@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+   <resheader name="reader">
+    <value>System.Resources.ResXResourceReader</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter</value>
+  </resheader>
+  <data name="Html" xml:space="preserve">
+    <value><b>King</b></value>
+  </data>
+  <data name="Escaped" xml:space="preserve">
+    <value>&lt;b&gt;King&lt;/b&gt;</value>
+  </data>
+  <data name="Cdata" xml:space="preserve">
+     <value><![CDATA[<b>King</b>]]></value>
+  </data>
+</root>
