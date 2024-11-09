@@ -15,7 +15,10 @@ public abstract record SyntaxNode
         var parent = Parent;
         while (parent is { })
         {
-            if (parent is RootSyntax t) return t.SyntaxTree;
+            if (parent is RootSyntax t)
+            {
+                return t.SyntaxTree;
+            }
             parent = parent.Parent;
         }
         throw new InvalidOperationException("SyntaxTree could not be resolved.");

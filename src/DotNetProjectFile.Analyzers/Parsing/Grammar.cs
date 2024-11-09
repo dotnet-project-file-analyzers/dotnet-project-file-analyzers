@@ -1,3 +1,6 @@
+#pragma warning disable S4050 // Operators should be overloaded consistently
+// Operators are used here for clean syntax.
+
 using DotNetProjectFile.Parsing.Internal;
 using DotNetProjectFile.Syntax;
 using Microsoft.CodeAnalysis.Text;
@@ -66,5 +69,6 @@ public partial class Grammar
     /// <summary>The left grammar must be followed by the right grammar.</summary>
     public static Grammar operator &(Grammar l, Grammar r) => new And(l, r);
 
+    /// <summary>On a matching grammar, an syntax node is added to the context.</summary>
     public static Grammar operator +(Grammar grammar, CreateSyntaxNode create) => new AddSyntaxNode(grammar, create);
 }

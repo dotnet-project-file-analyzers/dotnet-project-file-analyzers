@@ -9,9 +9,10 @@
     <RootNamespace>Specs</RootNamespace>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <OutputType>library</OutputType>
+    <NoWarn>RS1038;RS1041</NoWarn>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" $([MSBuild]::IsOsPlatform('Windows')) ">
+  <PropertyGroup Condition="$([MSBuild]::IsOsPlatform('Windows'))">
     <DefineConstants>Is_Windows</DefineConstants>
   </PropertyGroup>
 
