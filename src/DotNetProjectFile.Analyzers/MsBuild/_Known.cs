@@ -78,6 +78,8 @@ internal sealed class CompilerResponseFile(XElement element, Node? parent, MsBui
 /// <remarks>All</remarks>
 internal sealed class Configuration(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
 
+internal sealed class CopyLocalLockFileAssemblies(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>The path of csc.exe, the C# compiler.</summary>
 /// <remarks>C#</remarks>
 internal sealed class CscToolPath(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
@@ -287,18 +289,23 @@ internal sealed class OverwriteReadOnlyFiles(XElement element, Node? parent, MsB
 /// <summary>Specifies how to map physical paths to source path names output by the compiler. This property is equivalent to the /pathmap switch of the compilers.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class PathMap(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>The file name of the .pdb file that you're emitting. This property is equivalent to the /pdb switch of the csc.exe compiler.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class PdbFile(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>The operating system you're building for. Examples for .NET Framework builds are "Any CPU", "x86", and "x64".</summary>
 /// <remarks>All</remarks>
 internal sealed class Platform(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>The processor architecture that is used when assembly references are resolved. Valid values are "msil," "x86," "amd64," or "ia64."</summary>
 /// <remarks>.NET</remarks>
 internal sealed class ProcessorArchitecture(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>A boolean value that instructs the compiler to emit only a reference assembly rather than compiled code. Can't be used in conjunction with ProduceReferenceAssembly. This property corresponds to the /refonly switch of the vbc.exe and csc.exe compilers.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class ProduceOnlyReferenceAssembly(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>A boolean value that when set to true enables production of reference assemblies for the current assembly. Deterministic should be true when using this feature. This property corresponds to the /refout switch of the vbc.exe and csc.exe compilers.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class ProduceReferenceAssembly(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
@@ -316,6 +323,8 @@ internal sealed class RegisterForCOMInterop(XElement element, Node? parent, MsBu
 /// <summary>A boolean value that indicates whether to disable integer overflow error checks. The default value is false. This property is equivalent to the /removeintchecks switch of the vbc.exe compiler.</summary>
 /// <remarks>Visual Basic</remarks>
 internal sealed class RemoveIntegerChecks(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
+internal sealed class RepositoryType(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
 
 /// <summary>The root namespace to use when you name an embedded resource. This namespace is part of the embedded resource manifest name.</summary>
 /// <remarks>All</remarks>
@@ -417,6 +426,8 @@ internal sealed class StartupObject(XElement element, Node? parent, MsBuildProje
 /// <summary>Specifies the minimum version of the subsystem that the generated executable file can use. This property is equivalent to the /subsystemversion compiler switch. For information about the default value of this property, see /subsystemversion (Visual Basic) or /subsystemversion (C# compiler options).</summary>
 /// <remarks>.NET</remarks>
 internal sealed class SubsystemVersion(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
+internal sealed class SuppressDependenciesWhenPacking(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
 
 /// <summary>The version of the .NET Compact Framework that is required to run the application that you're building. Specifying this lets you reference certain framework assemblies that you may not be able to reference otherwise.</summary>
 /// <remarks>.NET</remarks>
