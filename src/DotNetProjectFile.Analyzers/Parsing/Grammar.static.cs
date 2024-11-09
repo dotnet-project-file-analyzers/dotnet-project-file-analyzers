@@ -1,5 +1,5 @@
-#pragma warning disable SA1300 // Element should begin with upper-case letter
-// Grammar is commonly defined with lowercase words.
+#pragma warning disable S4050 // Operators should be overloaded consistently
+// Operators are used here for clean syntax.
 
 using DotNetProjectFile.Parsing.Internal;
 using System.Text.RegularExpressions;
