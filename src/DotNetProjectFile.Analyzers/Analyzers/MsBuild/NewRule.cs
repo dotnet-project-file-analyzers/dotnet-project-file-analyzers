@@ -1,24 +1,23 @@
-
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class NewRule() : MsBuildProjectFileAnalyzer(Rule.DefineIsPublishable)
+public sealed class NewRule() : MsBuildProjectFileAnalyzer(Rule.NewRule)
 {
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+{
+    Walk(context.File, context);
+}
+
+private void Walk(Node node, ProjectFileAnalysisContext<MsBuildProject> context)
+{
+    if (node is Unknown)
     {
-        Walk(context.File, context);
+        context.ReportDiagnostic(Descriptor, node, node.LocalName);
     }
 
-    private void Walk(Node node, ProjectFileAnalysisContext<MsBuildProject> context)
+    foreach (var child in node.Children)
     {
-        if (node is Unknown)
-        {
-            context.ReportDiagnostic(Descriptor, node);
-        }
-
-        foreach (var child in node.Children)
-        {
-            Walk(child, context);
-        }
+        Walk(child, context);
     }
+}
 }

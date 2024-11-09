@@ -742,6 +742,14 @@ public static class Rule
         tags: ["XML", "declaration"],
         category: Category.Formatting);
 
+    public static DiagnosticDescriptor NewRule => New(
+        id: 1703,
+        title: "Use known nodes only",
+        message: "Node {0} is unknown.",
+        description: "?",
+        tags: [],
+        category: Category.Bug);
+
     public static DiagnosticDescriptor EmbedValidResourceFiles => New(
         id: 2000,
         title: "Embed valid resource files",
