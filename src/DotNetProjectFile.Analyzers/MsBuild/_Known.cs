@@ -2,16 +2,6 @@
 
 namespace DotNetProjectFile.MsBuild;
 
-internal sealed class EnforceExtendedAnalyzerRules(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
-
-internal sealed class GlobalAnalyzerConfigFiles(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
-
-internal sealed class LangVersion(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
-
-internal sealed class Nullable(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
-
-internal sealed class ProductName(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
-
 /// <summary>Specifies additional folders in which compilers should look for reference assemblies.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class AdditionalLibPaths(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
@@ -138,15 +128,20 @@ internal sealed class Deterministic(XElement element, Node? parent, MsBuildProje
 /// <summary>Specifies the path to the Directory.Build.props file; if defined, this property overrides the default search algorithm. See Customize your build.</summary>
 /// <remarks>All</remarks>
 internal sealed class DirectoryBuildPropsPath(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Specifies the path to the Directory.Build.targets file; if defined, this property overrides the default search algorithm. See Customize your build.</summary>
 /// <remarks>All</remarks>
 internal sealed class DirectoryBuildTargetsPath(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>A boolean value that applies to Visual Studio only. The Visual Studio build manager uses a process called FastUpToDateCheck to determine whether a project must be rebuilt to be up to date. This process is faster than using MSBuild to determine this. Setting the DisableFastUpToDateCheck property to true lets you bypass the Visual Studio build manager and force it to use MSBuild to determine whether the project is up to date.</summary>
 /// <remarks>All</remarks>
 internal sealed class DisableFastUpToDateCheck(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>The name of the file that is generated as the XML documentation file. This name includes only the file name and has no path information.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class DocumentationFile(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
+internal sealed class EnforceExtendedAnalyzerRules(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
 
 /// <summary>Specifies how the compiler task should report internal compiler errors. Valid values are "prompt," "send," or "none." This property is equivalent to the /errorreport compiler switch.</summary>
 /// <remarks>.NET</remarks>
@@ -179,6 +174,8 @@ internal sealed class GenerateFullPaths(XElement element, Node? parent, MsBuildP
 /// <remarks>.NET</remarks>
 internal sealed class GenerateSerializationAssemblies(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
 
+internal sealed class GlobalAnalyzerConfigFiles(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>A boolean value that indicates whether to import a Directory.Build.props file. See Customize your build.</summary>
 /// <remarks>All</remarks>
 internal sealed class ImportDirectoryBuildProps(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
@@ -198,6 +195,8 @@ internal sealed class KeyContainerName(XElement element, Node? parent, MsBuildPr
 /// <summary>The name of the strong-name key file.</summary>
 /// <remarks>All</remarks>
 internal sealed class KeyOriginatorFile(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
+internal sealed class LangVersion(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
 
 /// <summary>The name of the assembly that the compiled module is to be incorporated into. The property is equivalent to the /moduleassemblyname compiler switch.</summary>
 /// <remarks>.NET</remarks>
@@ -236,6 +235,7 @@ internal sealed class NoVBRuntimeReference(XElement element, Node? parent, MsBui
 internal sealed class NoWarn(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
 
 /// <summary>
+/// <![CDATA[
 /// A boolean value that indicates whether User Account Control (UAC) manifest information will be embedded in the application's executable. Applies only to Visual Studio projects targeting Windows Vista. In projects deployed using ClickOnce and Registration-Free COM, this element is ignored. False (the default value) specifies that User Account Control (UAC) manifest information be embedded in the application's executable. True specifies that UAC manifest information not be embedded.
 ///
 /// This property applies only to Visual Studio projects targeting Windows Vista. In projects deployed using ClickOnce and Registration-Free COM, this property is ignored.
@@ -245,9 +245,12 @@ internal sealed class NoWarn(XElement element, Node? parent, MsBuildProject? pro
 /// - For C# projects, set <ApplicationManifest> to False and <NoWin32Manifest> to True. (In C# projects, <ApplicationManifest> overrides <NoWin32Manifest>.)
 ///
 /// This property is equivalent to the /nowin32manifest compiler switch of vbc.exe.
+/// ]]>
 /// </summary>
 /// <remarks>.NET</remarks>
 internal sealed class NoWin32Manifest(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
+internal sealed class Nullable(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
 
 /// <summary>A boolean value that when set to true, enables compiler optimizations. This property is equivalent to the /optimize compiler switch.</summary>
 /// <remarks>.NET</remarks>
@@ -299,15 +302,21 @@ internal sealed class ProduceOnlyReferenceAssembly(XElement element, Node? paren
 /// <summary>A boolean value that when set to true enables production of reference assemblies for the current assembly. Deterministic should be true when using this feature. This property corresponds to the /refout switch of the vbc.exe and csc.exe compilers.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class ProduceReferenceAssembly(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
+internal sealed class ProductName(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Specifies the default architecture for which the managed DLL is registered. This property is useful because COM uses the Windows registry to store the registrations in architecture-specific hives. For example, on a Windows system, an AnyCPU managed assembly can have its types registered in the 64-bit hive and/or in the 32-bit (WoW) hive, and the build uses this property to determine which architecture-specific registry hive to use. Valid values include "x86," "x64," and "ARM64."</summary>
 /// <remarks>Windows only</remarks>
 internal sealed class RegisterAssemblyMSBuildArchitecture(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Indicates that your managed application will expose a COM object (a COM callable wrapper). See Build page - Output section. This setting affects only the machine on which the project is building. If you're deploying to other machines, call regasm.exe to register the assembly on the target machine.</summary>
 /// <remarks>Windows only</remarks>
 internal sealed class RegisterForCOMInterop(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>A boolean value that indicates whether to disable integer overflow error checks. The default value is false. This property is equivalent to the /removeintchecks switch of the vbc.exe compiler.</summary>
 /// <remarks>Visual Basic</remarks>
 internal sealed class RemoveIntegerChecks(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>The root namespace to use when you name an embedded resource. This namespace is part of the embedded resource manifest name.</summary>
 /// <remarks>All</remarks>
 internal sealed class RootNamespace(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
@@ -315,60 +324,79 @@ internal sealed class RootNamespace(XElement element, Node? parent, MsBuildProje
 /// <summary>The ID of the AL.exe hashing algorithm to use when satellite assemblies are created.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_AlgorithmId(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>The base address to use when culture-specific satellite assemblies are built by using the CreateSatelliteAssemblies target.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_BaseAddress(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>The company name to pass into AL.exe during satellite assembly generation.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_CompanyName(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>The configuration name to pass into AL.exe during satellite assembly generation.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_Configuration(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>The description text to pass into AL.exe during satellite assembly generation.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_Description(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Embeds the specified file in the satellite assembly that has the resource name "Security.Evidence."</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_EvidenceFile(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Specifies a string for the File Version field in the satellite assembly.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_FileVersion(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Specifies a value for the Flags field in the satellite assembly.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_Flags(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Causes the build task to use absolute paths for any files reported in an error message.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_GenerateFullPaths(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Links the specified resource files to a satellite assembly.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_LinkResource(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Specifies the fully-qualified name (that is, class.method) of the method to use as an entry point when a module is converted to an executable file during satellite assembly generation.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_MainEntryPoint(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Specifies a string for the Product field in the satellite assembly.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_ProductName(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Specifies a string for the ProductVersion field in the satellite assembly.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_ProductVersion(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Specifies the file format of the satellite assembly output file as "library," "exe," or "win." The default value is "library."</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_TargetType(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Specifies a string for the Title field in the satellite assembly.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_Title(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Specifies a string for the Trademark field in the satellite assembly.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_Trademark(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Specifies the version information for the satellite assembly.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_Version(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Inserts an .ico icon file in the satellite assembly.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_Win32Icon(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>Inserts a Win32 resource (.res file) into the satellite assembly.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class Satellite_Win32Resource(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
+
 /// <summary>An optional tool path that indicates where to obtain SGen.exe when the current version of SGen.exe is overridden.</summary>
 /// <remarks>.NET</remarks>
 internal sealed class SGenToolPath(XElement element, Node? parent, MsBuildProject? project) : Node<bool?>(element, parent, project) { }
