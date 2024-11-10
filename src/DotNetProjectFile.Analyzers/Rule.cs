@@ -444,6 +444,18 @@ public static class Rule
         tags: ["Configuration", "NuGet", "package", "image", "PNG"],
         category: Category.Configuration);
 
+    public static DiagnosticDescriptor DefineProductName => New(
+        id: 0216,
+        title: "Define the project name explicitly",
+        message: "Define the <ProductName> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages, " +
+            "explicitly define the <ProductName> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: ["Configuration", "NuGet", "package"],
+        category: Category.Configuration);
+
     public static DiagnosticDescriptor EnablePackageValidation => New(
         id: 0240,
         title: "Enable package validation",
