@@ -9,6 +9,7 @@
   <PropertyGroup Label="PackageInfo">
     <Version>1.0.0</Version>
     <Description>Awesome library</Description>
+    <ProductName>Awesome Library.NET</ProductName>
     <PackageId>DotNetProjectFile.Anayzers</PackageId>
     <Authors>Corniel Nobel; Wesley Baartman</Authors>
     <PackageTags>analyzer; coolthings</PackageTags>

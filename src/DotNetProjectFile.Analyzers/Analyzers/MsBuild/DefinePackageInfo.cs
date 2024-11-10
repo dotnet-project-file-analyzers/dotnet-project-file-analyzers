@@ -14,7 +14,8 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
     Rule.DefineLicense,
     Rule.DefineIcon,
     Rule.DefineIconUrl,
-    Rule.DefinePackageId)
+    Rule.DefinePackageId,
+    Rule.DefineProductName)
 {
     protected override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
@@ -37,6 +38,7 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
         Analyze(context, available, Rule.DefineIconUrl, typeof(PackageIconUrl));
         Analyze(context, available, Rule.DefinePackageId, typeof(PackageId));
         Analyze(context, available, Rule.DefineLicense, typeof(PackageLicenseFile), typeof(PackageLicenseExpression));
+        Analyze(context, available, Rule.DefineProductName, typeof(ProductName));
     }
 
     private static void Analyze(
