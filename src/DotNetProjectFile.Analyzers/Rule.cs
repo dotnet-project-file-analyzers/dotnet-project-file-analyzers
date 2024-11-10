@@ -745,7 +745,7 @@ public static class Rule
     public static DiagnosticDescriptor NewRule => New(
         id: 1703,
         title: "Use known nodes only",
-        message: "Node {0} is unknown.",
+        message: "Node {0} is unknown, {1} might be intended.",
         description: "?",
         tags: [],
         category: Category.Bug);

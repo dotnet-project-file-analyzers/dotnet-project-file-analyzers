@@ -1,4 +1,4 @@
-using Specs.TestTools;
+using DotNetProjectFile.Analyzers.TestTools;
 using static DotNetProjectFile.Parsing.Grammar;
 using Token = FluentAssertions.Token;
 

@@ -1,9 +1,9 @@
 using DotNetProjectFile.Syntax;
 using Microsoft.CodeAnalysis.Text;
 
-namespace Specs.TestTools;
+namespace DotNetProjectFile.Analyzers.TestTools;
 
-internal static class Source
+public static class Source
 {
     public static SourceText Text(this string str) => SourceText.From(str);
 

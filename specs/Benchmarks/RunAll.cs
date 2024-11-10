@@ -1,4 +1,4 @@
-using System.Collections.Immutable;
+using DotNetProjectFile.Analyzers.TestTools.Analyzers;
 
 namespace Benchmarks;
 
@@ -43,17 +43,4 @@ public class RunAll
         ["CompliantCS"] = new FileInfo($"../../../../../../../../../projects/CompliantCSharp/CompliantCSharp.csproj"),
         ["CompliantVB"] = new FileInfo($"../../../../../../../../../projects/CompliantVB/CompliantVB.vbproj"),
     };
-
-    
-    [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-    private sealed class NoAnalyzers : DiagnosticAnalyzer
-    {
-        public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [];
-
-        public override void Initialize(AnalysisContext context)
-        {
-            context.EnableConcurrentExecution();
-            context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.Analyze | GeneratedCodeAnalysisFlags.ReportDiagnostics);
-        }
-    }
 }

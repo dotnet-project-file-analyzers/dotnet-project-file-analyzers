@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 using CtorFunc = System.Func<System.Xml.Linq.XElement, DotNetProjectFile.MsBuild.Node, DotNetProjectFile.MsBuild.Project, DotNetProjectFile.MsBuild.Node>;
@@ -21,6 +22,8 @@ internal static class NodeFactory
             var n when map.TryGetValue(n, out var con) /*.*/ => con(element, parent, project),
             _ /*..........................................*/ => new Unknown(element, parent, project),
         };
+
+    public static IReadOnlyCollection<string> KnownNodes => ((Dictionary<string, CtorFunc>)map).Keys;
 
     private static Type[] GetCtorParameterTypes()
     {

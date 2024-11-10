@@ -1,23 +1,47 @@
+using DotNetProjectFile.Text;
+
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class NewRule() : MsBuildProjectFileAnalyzer(Rule.NewRule)
 {
-protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
-{
-    Walk(context.File, context);
-}
+    private readonly ImmutableArray<string> Knowns = [.. NodeFactory.KnownNodes.Select(x => x.ToUpperInvariant())];
 
-private void Walk(Node node, ProjectFileAnalysisContext<MsBuildProject> context)
-{
-    if (node is Unknown)
+    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {
-        context.ReportDiagnostic(Descriptor, node, node.LocalName);
+        Walk(context.File, context);
     }
 
-    foreach (var child in node.Children)
+    private void Walk(Node node, ProjectFileAnalysisContext<MsBuildProject> context)
     {
-        Walk(child, context);
+        if (node is Unknown && Suggestion(node) is { Length: > 0 } suggestion)
+        {
+            context.ReportDiagnostic(Descriptor, node, node.LocalName, suggestion);
+        }
+
+        foreach (var child in node.Children)
+        {
+            Walk(child, context);
+        }
     }
-}
+
+    private string? Suggestion(Node node)
+    {
+        var name = node.LocalName.ToUpperInvariant();
+        string? suggestion = null;
+        var best = name.Length / 2;
+
+        var word = new Levenshtein(name);
+
+        foreach (var known in Knowns)
+        {
+            var test = word.DistanceFrom(known);
+            if (test < best)
+            {
+                best = test;
+                suggestion = known;
+            }
+        }
+        return suggestion;
+    }
 }
