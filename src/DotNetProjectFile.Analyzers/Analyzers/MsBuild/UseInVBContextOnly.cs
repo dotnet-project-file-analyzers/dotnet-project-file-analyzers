@@ -2,7 +2,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseInVBContextOnly()
-    : MsBuildProjectFileAnalyzer(Rule.OverrideTargetFrameworksWithTargetFrameworks)
+    : MsBuildProjectFileAnalyzer(Rule.UseInVBContextOnly)
 {
     private static readonly Type[] VBOnly =
     [
@@ -10,7 +10,7 @@ public sealed class UseInVBContextOnly()
         typeof(NoVBRuntimeReference),
         typeof(OptionExplicit),
         typeof(OptionInfer),
-        typeof(OptionStrict,
+        typeof(OptionStrict),
         typeof(RemoveIntegerChecks),
         typeof(VbcToolPath),
         typeof(VbcVerbosity),
@@ -19,7 +19,19 @@ public sealed class UseInVBContextOnly()
     protected override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile_DirectoryBuild;
 
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
-        => Walk(context.File, context);
+    {
+        if (!InVBContext(context.File))
+        {
+            Walk(context.File, context);
+        }
+    }
+
+    private static bool InVBContext(MsBuildProject project) => project.FileType switch
+    {
+        ProjectFileType.ProjectFile => project.Path.Extension.IsMatch(".vbproj"),
+        ProjectFileType.DirectoryBuild => project.Path.Directory.Files("*.vbproj").Any(),
+        _ => false,
+    };
 
     private void Walk(Node node, ProjectFileAnalysisContext<MsBuildProject> context)
     {

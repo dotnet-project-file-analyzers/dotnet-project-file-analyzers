@@ -257,7 +257,7 @@ public static class Rule
     public static DiagnosticDescriptor UseInVBContextOnly => New(
         id: 0030,
         title: "Use VB.NET specific properties only in when applicable",
-        message: "The property {0} is only applicable when using VB.NET and can therefor be removed.",
+        message: "The property <{0}> is only applicable when using VB.NET and can therefor be removed.",
         description:
             "Properties only applicable to VB.NET are noise when none of " +
             "involved targets is a VB.NET target.",

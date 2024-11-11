@@ -6,4 +6,4 @@ namespace DotNetProjectFile.MsBuild;
 /// </summary>
 /// <remarks>Visual Basic only.</remarks>
 public sealed class OptionInfer(XElement element, Node parent, MsBuildProject project)
-    : Node<bool?>(element, parent, project) { }
+    : Node(element, parent, project) { }
