@@ -260,7 +260,7 @@ public static class Rule
         message: "The property <{0}> is only applicable when using VB.NET and can therefor be removed.",
         description:
             "Properties only applicable to VB.NET are noise when none of " +
-            "involved targets is a VB.NET target.",
+            "the involved targets is a VB.NET target.",
         tags: ["noise"],
         category: Category.Noise);
 
