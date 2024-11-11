@@ -6,8 +6,6 @@ public class Levenshtein_distance
 {
     private readonly string[] Words;
     private readonly string Word;
-    private readonly Fastenshtein.Levenshtein[] Cached_Fasten;
-    private readonly DotNetProjectFile.Text.Levenshtein[] Cached;
 
     public Levenshtein_distance()
     {
@@ -18,9 +16,6 @@ public class Levenshtein_distance
             .ToArray();
 
         Word = rnd.NextWord(16);
-
-        Cached_Fasten = Words.Select(w => new Fastenshtein.Levenshtein(w)).ToArray();
-        Cached = Words.Select(w => new DotNetProjectFile.Text.Levenshtein(w)).ToArray();
     }
 
     [Benchmark(Baseline = true)]
@@ -38,9 +33,11 @@ public class Levenshtein_distance
     public int Implementation()
     {
         var sum = 0;
-        foreach (var word in Cached)
+        var cached = new DotNetProjectFile.Text.Levenshtein(Word);
+
+        foreach (var word in Words)
         {
-            sum += word.DistanceFrom(Word);
+            sum += cached.DistanceFrom(word);
         }
         return sum;
 
@@ -72,9 +69,10 @@ public class Levenshtein_distance
     public int Fastenshtein_Cached()
     {
         var sum = 0;
-        foreach (var word in Cached_Fasten)
+        var cached = new Fastenshtein.Levenshtein(Word);
+        foreach (var word in Words)
         {
-            sum += word.DistanceFrom(Word);
+            sum += cached.DistanceFrom(word);
         }
         return sum;
     }

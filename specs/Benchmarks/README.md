@@ -11,7 +11,17 @@ analyzers.
 | CompliantVB    |  0.440 ms |  7.806 ms | 7.366 ms |
 | .NET analyzers | 73.621 ms | 73.621 ms | 0.586 ms |
 
-# Parsing INI files
+## Getting the Levenshtein distance
+| Method                      | Mean      | Ratio |
+|---------------------------- |----------:|------:|
+| Non optimized impl.         | 16.278 us |  1.00 |
+| Fastenshtein                |  3.560 us |  0.22 |
+| .NET Project File Analyzers |  3.863 us |  0.24 |
+| Optimized                   | 13.393 us |  0.82 |
+| Quickenshtein               | 12.270 us |  0.75 |
+| Ninja Nye                   | 13.384 us |  0.82 |
+
+## Parsing INI files
 |     File |        Mean |        Speed |
 |---------:|------------:|-------------:|
 |   27 LoC |    41.41 us |   1,5 µs/LoC |
