@@ -259,8 +259,8 @@ public static class Rule
         title: "Use C# specific properties only when applicable",
         message: "The property <{0}> is only applicable when using C# and can therefor be removed.",
         description:
-            "Properties only applicable to VB.NET are noise when none of " +
-            "the involved targets is a VB.NET target.",
+            "Properties only applicable to C# are noise when none of " +
+            "the involved targets is a C# target.",
         tags: ["noise"],
         category: Category.Noise);
 
