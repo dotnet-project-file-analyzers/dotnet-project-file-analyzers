@@ -32,6 +32,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0028** Define conditions on level 1](https://dotnet-project-file-analyzers.github.io/rules/Proj0028.html)
 * [**Proj0029** Use C# specific properties only when applicable](https://dotnet-project-file-analyzers.github.io/rules/Proj0029.html)
 * [**Proj0030** Use VB.NET specific properties only when applicable](https://dotnet-project-file-analyzers.github.io/rules/Proj0030.html)
+* [**Proj0031** Correct the spelling of the node name](https://dotnet-project-file-analyzers.github.io/rules/Proj0031.html)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)

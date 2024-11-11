@@ -274,6 +274,18 @@ public static class Rule
         tags: ["noise"],
         category: Category.Noise);
 
+    public static DiagnosticDescriptor CorrectSpellingOfNodes => New(
+    id: 0031,
+    title: "Correct the spelling of the node name",
+    message: "The node name {0} is misspelled, {1} might be intended.",
+    description:
+        "Spelling mistakes can lead to hard to solve bugs, as both properties " +
+        "as items are free format fields according to MS Build. By having a " +
+        "big set of known nodes to compare to, those kind of errors can be " +
+        "prevented.",
+    tags: ["spelling", "unknown"],
+    category: Category.Bug);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
@@ -741,14 +753,6 @@ public static class Rule
         description: "The XML declaration is redundant for MS Build project files.",
         tags: ["XML", "declaration"],
         category: Category.Formatting);
-
-    public static DiagnosticDescriptor CorrectSpellingOfNodes => New(
-        id: 1703,
-        title: "Use known nodes only",
-        message: "Node {0} is unknown, {1} might be intended.",
-        description: "?",
-        tags: [],
-        category: Category.Bug);
 
     public static DiagnosticDescriptor EmbedValidResourceFiles => New(
         id: 2000,

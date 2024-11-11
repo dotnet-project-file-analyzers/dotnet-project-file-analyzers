@@ -30,6 +30,7 @@
 ToBeReleased
 - Proj0029: Use C# specific properties only when applicable. (NEW RULE)
 - Proj0030: Use VB.NET specific properties only when applicable. (NEW RULE)
+- Proj0031: Correct the spelling of the node name. (NEW RULE)
 - Proj0216: Define the product name explictly. (NEW RULE)
 v1.4.7
 - Proj2005: Escape XML nodes of resource values. (NEW RULE)
