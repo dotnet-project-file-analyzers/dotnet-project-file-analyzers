@@ -6,7 +6,7 @@ namespace DotNetProjectFile.MsBuild;
 /// - Library: Creates a code library. (Default value.)
 /// - Exe:    Creates a console application.
 /// - Module: Creates a module.
-/// - Winexe: Creates a Windows-based program.
+/// - WinExe: Creates a Windows-based program.
 ///
 /// For C# and Visual Basic, this property is equivalent to the /target switch.
 /// Disable inferencing by setting DisableWinExeOutputInference to true.
