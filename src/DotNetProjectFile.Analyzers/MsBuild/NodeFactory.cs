@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Reflection;
 using CtorFunc = System.Func<System.Xml.Linq.XElement, DotNetProjectFile.MsBuild.Node, DotNetProjectFile.MsBuild.Project, DotNetProjectFile.MsBuild.Node>;
@@ -9,21 +8,28 @@ namespace DotNetProjectFile.MsBuild;
 /// Used for creating instances of the <see cref="Node"/> class
 /// based on given <see cref="XElement"/> instances.
 /// </summary>
-public static class NodeFactory
+public sealed class NodeFactory
 {
-    private static readonly Type[] ctorArgumentTypes = GetCtorParameterTypes();
-    private static readonly ParameterExpression[] ctorArgumentExpressions = ctorArgumentTypes.Select(x => Expression.Parameter(x)).ToArray();
-    private static readonly IReadOnlyDictionary<string, CtorFunc> map = BuildCtorMap();
+    internal NodeFactory()
+    {
+        CtorArgumentTypes = GetCtorParameterTypes();
+        CtorArgumentExpressions = CtorArgumentTypes.Select(x => Expression.Parameter(x)).ToArray();
+        Map = BuildCtorMap();
+    }
 
-    public static Node? Create(XElement element, Node parent, MsBuildProject project)
+    private readonly Type[] CtorArgumentTypes;
+    private readonly ParameterExpression[] CtorArgumentExpressions;
+    private readonly IReadOnlyDictionary<string, CtorFunc> Map;
+
+    public Node? Create(XElement element, Node parent, MsBuildProject project)
         => element.Name.LocalName switch
         {
             null /*.......................................*/ => null,
-            var n when map.TryGetValue(n, out var con) /*.*/ => con(element, parent, project),
+            var n when Map.TryGetValue(n, out var con) /*.*/ => con(element, parent, project),
             _ /*..........................................*/ => new Unknown(element, parent, project),
         };
 
-    public static IReadOnlyCollection<string> KnownNodes => ((Dictionary<string, CtorFunc>)map).Keys;
+    public IReadOnlyCollection<string> KnownNodes => ((Dictionary<string, CtorFunc>)Map).Keys;
 
     private static Type[] GetCtorParameterTypes()
     {
@@ -33,21 +39,21 @@ public static class NodeFactory
         return result;
     }
 
-    private static Dictionary<string, CtorFunc> BuildCtorMap()
+    private Dictionary<string, CtorFunc> BuildCtorMap()
         => typeof(Node).Assembly
         .GetTypes()
         .Select(GetValidNodeCtor)
         .OfType<ConstructorInfo>()
         .ToDictionary(ci => ci.DeclaringType.Name, GenerateCtor);
 
-    private static ConstructorInfo? GetValidNodeCtor(Type type)
+    private ConstructorInfo? GetValidNodeCtor(Type type)
         => type.IsAbstract || !typeof(Node).IsAssignableFrom(type)
             ? null
-            : type.GetConstructor(ctorArgumentTypes);
+            : type.GetConstructor(CtorArgumentTypes);
 
-    private static CtorFunc GenerateCtor(ConstructorInfo ci)
+    private CtorFunc GenerateCtor(ConstructorInfo ci)
     {
-        var args = ctorArgumentExpressions;
+        var args = CtorArgumentExpressions;
         var create = Expression.New(ci, args);
         var lambda = Expression.Lambda(create, args);
         return (CtorFunc)lambda.Compile();

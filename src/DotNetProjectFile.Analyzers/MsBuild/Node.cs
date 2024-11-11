@@ -7,6 +7,8 @@ namespace DotNetProjectFile.MsBuild;
 /// <summary>Represents node in a MS Build project file.</summary>
 public abstract class Node : XmlAnalysisNode
 {
+    public static readonly NodeFactory Factory = new();
+
     /// <summary>Semi-colon separator char(s).</summary>
     protected static readonly char[] SemicolonSeparated = [';'];
 
@@ -89,7 +91,7 @@ public abstract class Node : XmlAnalysisNode
     public string? Child([CallerMemberName] string? propertyName = null)
         => Element.Element(propertyName)?.Value;
 
-    internal Node? Create(XElement element) => NodeFactory.Create(element, this, Project);
+    internal Node? Create(XElement element) => Factory.Create(element, this, Project);
 
     protected T? Convert<T>(string? value, [CallerMemberName] string? propertyName = null)
         => Converters.TryConvert<T>(value, GetType(), propertyName!);

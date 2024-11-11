@@ -5,10 +5,10 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class CorrectSpellingOfNodes() : MsBuildProjectFileAnalyzer(Rule.CorrectSpellingOfNodes)
 {
-    private readonly ImmutableArray<string> Knowns =
+    private readonly ImmutableArray<Suggestion> Knowns =
     [
-        .. NodeFactory.KnownNodes.Select(x => x.ToUpperInvariant()),
-        .. Known.NodeNames.Select(x => x.ToUpperInvariant()),
+        .. Node.Factory.KnownNodes.Select(Suggestion.New),
+        .. Known.NodeNames.Select(Suggestion.New),
     ];
 
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
@@ -18,9 +18,7 @@ public sealed class CorrectSpellingOfNodes() : MsBuildProjectFileAnalyzer(Rule.C
 
     private void Walk(Node node, ProjectFileAnalysisContext<MsBuildProject> context)
     {
-        if (node is Unknown
-            && !Known.NodeNames.Contains(node.LocalName)
-            && Suggestion(node) is { Length: > 0 } suggestion)
+        if (node is Unknown && GetSuggestion(node.LocalName) is { Length: > 0 } suggestion)
         {
             context.ReportDiagnostic(Descriptor, node, node.LocalName, suggestion);
         }
@@ -31,23 +29,31 @@ public sealed class CorrectSpellingOfNodes() : MsBuildProjectFileAnalyzer(Rule.C
         }
     }
 
-    private string? Suggestion(Node node)
+    /// <summary>Gets a suggestion based on the provided name.</summary>
+    [Pure]
+    public string? GetSuggestion(string name, double factor = 0.34)
     {
-        var name = node.LocalName.ToUpperInvariant();
-        string? suggestion = null;
-        var best = name.Length / 2;
+        if (Known.NodeNames.Contains(name)) { return null; }
 
-        var word = new Levenshtein(name);
+        string? suggestion = null;
+        var best = (int)(name.Length * factor);
+
+        var word = new Levenshtein(name.ToUpperInvariant());
 
         foreach (var known in Knowns)
         {
-            var test = word.DistanceFrom(known);
+            var test = word.DistanceFrom(known.Upper);
             if (test < best)
             {
                 best = test;
-                suggestion = known;
+                suggestion = known.Name;
             }
         }
         return suggestion;
+    }
+
+    private readonly record struct Suggestion(string Name, string Upper)
+    {
+        public static Suggestion New(string name) => new(name, name.ToUpperInvariant());
     }
 }

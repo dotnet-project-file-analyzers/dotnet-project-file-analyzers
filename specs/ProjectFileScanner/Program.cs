@@ -23,11 +23,13 @@ public static class Program
             AddNodes(file, nodes);
         }
 
-        using var writer = new StreamWriter("C://TEMP/nodes.txt");
+        using var writer = new StreamWriter("./nodes.txt");
+        Console.WriteLine(((FileStream)writer.BaseStream).Name);
 
-        foreach (var kvp in nodes.OrderByDescending(kvp => kvp.Value))
+        foreach (var kvp in nodes.OrderBy(kvp => kvp.Key).Where(kvp => kvp.Value > 500))
         {
-            writer.WriteLine($"{kvp.Key,5} {kvp.Value}");
+            writer.WriteLine(kvp.Key);
+            //writer.WriteLine($"{kvp.Value,5}\t{kvp.Key}");
         }
     }
 
@@ -47,15 +49,18 @@ public static class Program
             foreach (var node in proj.Descendants())
             {
                 var path = string.Join('/', node.AncestorsAndSelf().Select(p => p.Name.LocalName).Reverse());
-
+                path = node.Name.LocalName;
                 nodes.TryAdd(path, 0);
                 nodes[path]++;
             }
         }
-        catch { }
+        catch 
+        {
+            // ignore exceptions, including but not limited to XML and security exceptions.
+        }
     }
 
     private static bool IsProjectFile(FileInfo info) => Extenions.Contains(info.Extension.ToUpperInvariant());
 
-        private static readonly string[] Extenions = [".CSPROJ", ".PROPS", ".VBPROJ"];
+        private static readonly string[] Extenions = [".CSPROJ", /*".PROPS",*/ ".VBPROJ"];
 }
