@@ -1,7 +1,11 @@
 namespace DotNetProjectFile.MsBuild;
 
+/// <summary>
+/// Helper containing all known nodes that are not linked to particular rules.
+/// </summary>
 public static class Known
 {
+    /// <summary>A list of known <see cref="Node"/>'s not having an own type.</summary>
     public static readonly HashSet<string> NodeNames =
     [
        "AdditionalLibPaths",
