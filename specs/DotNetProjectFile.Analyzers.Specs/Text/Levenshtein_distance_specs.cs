@@ -1,5 +1,4 @@
 using DotNetProjectFile.Text;
-using Reference = DotNetProjectFile.Analyzers.TestTools.References.Levenshtein;
 
 namespace Text.Levenshtein_distance_specs;
 
@@ -13,6 +12,6 @@ public class Gets
     public void distance_between(string word, string other)
     {
         var lev = new Levenshtein(word);
-        lev.DistanceFrom(other).Should().Be(Reference.Distance(word, other));
+        lev.DistanceFrom(other).Should().Be(Benchmarks.References.Levenshtein.Distance(word, other));
     }
 }

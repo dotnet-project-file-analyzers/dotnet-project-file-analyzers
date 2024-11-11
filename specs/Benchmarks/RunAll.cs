@@ -1,4 +1,4 @@
-using DotNetProjectFile.Analyzers.TestTools.Analyzers;
+using Benchmarks.Tools;
 
 namespace Benchmarks;
 

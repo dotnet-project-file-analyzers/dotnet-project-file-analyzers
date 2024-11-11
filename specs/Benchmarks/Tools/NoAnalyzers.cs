@@ -1,6 +1,6 @@
 using System.Collections.Immutable;
 
-namespace DotNetProjectFile.Analyzers.TestTools.Analyzers;
+namespace Benchmarks.Tools;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class NoAnalyzers : DiagnosticAnalyzer

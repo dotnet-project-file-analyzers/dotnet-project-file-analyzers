@@ -1,4 +1,4 @@
-using DotNetProjectFile.Analyzers.TestTools;
+using Benchmarks.Tools;
 
 namespace Benchmarks;
 
@@ -29,7 +29,7 @@ public class Levenshtein_distance
         var sum = 0;
         foreach (var word in Words)
         {
-            sum += DotNetProjectFile.Analyzers.TestTools.References.Levenshtein.Distance(Word, word);
+            sum += References.Levenshtein.Distance(Word, word);
         }
         return sum;
     }
@@ -52,7 +52,7 @@ public class Levenshtein_distance
         var sum = 0;
         foreach (var word in Words)
         {
-            sum += DotNetProjectFile.Analyzers.TestTools.References.Levenshtein.Optimized(Word, word);
+            sum += References.Levenshtein.Optimized(Word, word);
         }
         return sum;
     }

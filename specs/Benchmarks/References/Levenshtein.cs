@@ -1,4 +1,4 @@
-namespace DotNetProjectFile.Analyzers.TestTools.References
+namespace Benchmarks.References
 {
     public static class Levenshtein
     {

@@ -1,7 +1,7 @@
 using DotNetProjectFile.Syntax;
 using Microsoft.CodeAnalysis.Text;
 
-namespace DotNetProjectFile.Analyzers.TestTools;
+namespace Specs.Tools;
 
 public static class Source
 {

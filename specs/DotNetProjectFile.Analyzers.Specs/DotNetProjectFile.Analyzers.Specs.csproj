@@ -9,7 +9,7 @@
     <RootNamespace>Specs</RootNamespace>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <OutputType>library</OutputType>
-    <NoWarn>RS1038;RS1041</NoWarn>
+    <NoWarn>RS1035;RS1038;RS1041</NoWarn>
   </PropertyGroup>
 
   <PropertyGroup Condition="$([MSBuild]::IsOsPlatform('Windows'))">
@@ -18,7 +18,6 @@
 
   <ItemGroup Label="Project under test">
     <ProjectReference Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" />
-    <ProjectReference Include="../DotNetProjectFile.Analyzers.TestTools\DotNetProjectFile.Analyzers.TestTools.csproj" />
     <ProjectReference Include="../Benchmarks/Benchmarks.csproj" />
   </ItemGroup>
 

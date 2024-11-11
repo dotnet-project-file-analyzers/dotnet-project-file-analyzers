@@ -1,6 +1,4 @@
-using System;
-
-namespace DotNetProjectFile.Analyzers.TestTools;
+namespace Benchmarks.Tools;
 
 public static class Randomizer
 {
