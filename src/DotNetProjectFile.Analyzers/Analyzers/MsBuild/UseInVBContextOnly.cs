@@ -1,3 +1,5 @@
+using DotNetProjectFile.MsBuild.VisualBasic;
+
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]

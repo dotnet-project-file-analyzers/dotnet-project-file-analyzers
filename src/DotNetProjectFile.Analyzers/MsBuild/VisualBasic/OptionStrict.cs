@@ -1,4 +1,4 @@
-namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.MsBuild.VisualBasic;
 
 /// <summary>
 /// A boolean value that when set to true, causes the build task to enforce

@@ -1,4 +1,4 @@
-namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.MsBuild.VisualBasic;
 
 /// <summary>
 /// A boolean value that indicates whether to disable integer overflow error

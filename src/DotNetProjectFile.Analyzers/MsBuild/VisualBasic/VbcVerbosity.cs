@@ -1,4 +1,4 @@
-namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.MsBuild.VisualBasic;
 
 /// <summary>
 /// Specifies the verbosity of the Visual Basic compiler's output. Valid values

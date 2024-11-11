@@ -1,4 +1,4 @@
-namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.MsBuild.VisualBasic;
 
 /// <summary>
 /// Specifies the location of mscorlib.dll and microsoft.visualbasic.dll. This

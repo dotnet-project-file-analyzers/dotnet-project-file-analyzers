@@ -1,4 +1,4 @@
-namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.MsBuild.VisualBasic;
 
 /// <summary>
 /// An optional path that indicates another location for vbc.exe when the
