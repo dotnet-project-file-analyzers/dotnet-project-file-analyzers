@@ -3,8 +3,7 @@ using DotNetProjectFile.MsBuild.VisualBasic;
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class UseInVBContextOnly()
-    : MsBuildProjectFileAnalyzer(Rule.UseInVBContextOnly)
+public sealed class UseInVBContextOnly() : MsBuildProjectFileAnalyzer(Rule.UseInVBContextOnly)
 {
     private static readonly Type[] VBOnly =
     [

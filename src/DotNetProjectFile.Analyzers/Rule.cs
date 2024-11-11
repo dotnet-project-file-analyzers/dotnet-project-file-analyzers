@@ -254,6 +254,16 @@ public static class Rule
         tags: ["conditions"],
         category: Category.Reliability);
 
+    public static DiagnosticDescriptor UseInCSharpContextOnly => New(
+        id: 0029,
+        title: "Use C# specific properties only when applicable",
+        message: "The property <{0}> is only applicable when using C# and can therefor be removed.",
+        description:
+            "Properties only applicable to C# are noise when none of " +
+            "the involved targets is a C# target.",
+        tags: ["noise"],
+        category: Category.Noise);
+
     public static DiagnosticDescriptor UseInVBContextOnly => New(
         id: 0030,
         title: "Use VB.NET specific properties only when applicable",
@@ -263,7 +273,6 @@ public static class Rule
             "the involved targets is a VB.NET target.",
         tags: ["noise"],
         category: Category.Noise);
-
 
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,

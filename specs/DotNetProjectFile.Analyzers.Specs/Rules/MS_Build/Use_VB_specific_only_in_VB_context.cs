@@ -3,7 +3,7 @@ namespace Rules.Use_VB_specific_only_in_VB_context;
 public class Reports
 {
     [Test]
-    public void C_sharp_only_context()
+    public void CSharp_only_context()
         => new UseInVBContextOnly()
         .ForProject("VBOnlyPropertiesCSharp.cs")
         .HasIssues(
