@@ -12,7 +12,7 @@ public class NodeNames
 
 #if DEBUG
 #else
-    [Ignore("")]
+    [Ignore("Not in release mode.")]
 #endif
     [Test]
     public void Renders()
