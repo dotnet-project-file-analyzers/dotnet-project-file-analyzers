@@ -30,6 +30,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0026** Remove IncludeAssets when redundant](https://dotnet-project-file-analyzers.github.io/rules/Proj0026.html)
 * [**Proj0027** Override &lt;TargetFrameworks&gt; with &lt;TargetFrameworks&gt;](https://dotnet-project-file-analyzers.github.io/rules/Proj0027.html)
 * [**Proj0028** Define conditions on level 1](https://dotnet-project-file-analyzers.github.io/rules/Proj0028.html)
+* [**Proj0029** Use C# specific properties only when applicable](https://dotnet-project-file-analyzers.github.io/rules/Proj0029.html)
 * [**Proj0030** Use VB.NET specific properties only when applicable](https://dotnet-project-file-analyzers.github.io/rules/Proj0030.html)
 
 ### Packaging
