@@ -67,6 +67,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0026** Remove IncludeAssets when redundant](rules/Proj0026.md)
 * [**Proj0027** Override &lt;TargetFrameworks&gt; with &lt;TargetFrameworks&gt;](rules/Proj0027.md)
 * [**Proj0028** Define conditions on level 1](rules/Proj0028.md)
+* [**Proj0029** Use C# specific properties only when applicable](rules/Proj0029.md)
 * [**Proj0030** Use VB.NET specific properties only when applicable](rules/Proj0030.md)
 
 ### Packaging
@@ -170,3 +171,6 @@ To add a props file:
 
 ## Sonar integration
 By default, results by .NET project file analyzers are not added to Sonar's reporting. Read [here](general/sonar-integration.md) how to configure this correctly.
+
+## License
+.NET project file analyzers is licensed under [MIT](LICENSE.MD).
