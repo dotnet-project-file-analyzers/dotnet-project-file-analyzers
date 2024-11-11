@@ -23,7 +23,7 @@ public sealed class UseInCSharpContextOnly() : MsBuildProjectFileAnalyzer(Rule.U
     private static bool InCSharpContext(MsBuildProject project) => project.FileType switch
     {
         ProjectFileType.ProjectFile => project.Path.Extension.IsMatch(".csproj"),
-        ProjectFileType.DirectoryBuild => !project.Path.Directory.Files("*.vbproj").Any(),
+        ProjectFileType.DirectoryBuild => project.Path.Directory.Files("*.vbproj")!.None(),
         _ => false,
     };
 
