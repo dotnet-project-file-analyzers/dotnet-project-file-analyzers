@@ -7,8 +7,9 @@ namespace DotNetProjectFile.Text;
 /// See: https://en.wikipedia.org/wiki/Levenshtein_distance.
 /// </summary>
 /// <remarks>
-/// Copyright: Dan Hartley, https://github.com/DanHarltey/Fastenshtein.
+/// Copyright: Dan Hartley https://github.com/DanHarltey/Fastenshtein/blob/master/LICENSE.
 /// </remarks>
+[DebuggerDisplay("{Value}")]
 public readonly struct Levenshtein
 {
     private readonly string Value;
@@ -75,8 +76,4 @@ public readonly struct Levenshtein
         }
         return costs[^1];
     }
-
-    /// <inheritdoc />
-    [Pure]
-    public override string ToString() => Value ?? string.Empty;
 }
