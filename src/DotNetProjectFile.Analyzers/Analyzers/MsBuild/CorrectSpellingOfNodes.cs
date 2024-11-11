@@ -13,15 +13,19 @@ public sealed class CorrectSpellingOfNodes() : MsBuildProjectFileAnalyzer(Rule.C
         .. Known.NodeNames.Select(Suggestion.New),
     ];
 
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
-        var configured = GetConfigured(context.Options.AnalyzerConfigOptionsProvider.GlobalOptions);
+        var configured = GetConfigured(context);
         Walk(context.File, context, configured);
     }
 
-    private static HashSet<string> GetConfigured(AnalyzerConfigOptions options)
+    private static HashSet<string> GetConfigured(ProjectFileAnalysisContext context)
     {
         var configured = new HashSet<string>();
+
+        var options = context.File.AdditionalText is { } additional
+            ? context.Options.AnalyzerConfigOptionsProvider.GetOptions(additional)
+            : context.Options.AnalyzerConfigOptionsProvider.GlobalOptions;
 
         if (options.TryGetValue(ConfigKey, out var names))
         {
@@ -33,7 +37,7 @@ public sealed class CorrectSpellingOfNodes() : MsBuildProjectFileAnalyzer(Rule.C
         return configured;
     }
 
-    private void Walk(Node node, ProjectFileAnalysisContext<MsBuildProject> context, HashSet<string> configured)
+    private void Walk(Node node, ProjectFileAnalysisContext context, HashSet<string> configured)
     {
         if (node is Unknown && GetSuggestion(node.LocalName, configured) is { Length: > 0 } suggestion)
         {

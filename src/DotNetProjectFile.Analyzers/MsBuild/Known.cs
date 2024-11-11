@@ -8,7 +8,7 @@ public static class Known
     /// <summary>A list of known <see cref="Node"/>'s not having an own type.</summary>
     public static readonly HashSet<string> NodeNames =
     [
-       "AdditionalLibPaths",
+        "AdditionalLibPaths",
         "AddModules",
         "ALToolPath",
         "AppDesignerFolder",
@@ -27,6 +27,7 @@ public static class Known
         "CleanFile",
         "CodePage",
         "CompilerResponseFile",
+        "COMReference",
         "Configuration",
         "CopyLocalLockFileAssemblies",
         "CopyToOutputDirectory",
@@ -117,6 +118,7 @@ public static class Known
         "Satellite_Version",
         "Satellite_Win32Icon",
         "Satellite_Win32Resource",
+        "SDKReference",
         "SGenToolPath",
         "SGenUseProxyTypes",
         "SkipInvalidConfigurations",

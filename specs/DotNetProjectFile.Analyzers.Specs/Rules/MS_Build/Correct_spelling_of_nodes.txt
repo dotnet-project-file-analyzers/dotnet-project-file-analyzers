@@ -6,7 +6,6 @@ _IsiOSLikePlatform
 _SpecFlowPropsImported
 _SymbolPrefix
 _targetArchitecture
-_TargetFrameworkVersionWithoutV
 _targetOS
 AddAdditionalExplicitAssemblyReferences
 AdditionalFiles
@@ -15,7 +14,6 @@ AltJitArch
 Analyzer
 AppDesignerFolder
 AppendRuntimeIdentifierToOutputPath
-ApplicationDefinition
 ApplicationIcon
 ApplicationInsightsAnnotationResourceId
 ApplicationInsightsResourceId
@@ -55,7 +53,6 @@ CLRTestIsHosted
 CLRTestMSBuildArgs
 CLRTestPriorityToBuild
 CLRTestTargetUnsupported
-CMakeProjectReference
 Code
 CodeAnalysisDependentAssemblyPaths
 CodeAnalysisDictionary
@@ -133,13 +130,10 @@ EagerlyValidateTypeConstruction
 EmbeddedResource
 EmbedInteropTypes
 EnableAggressiveTrimming
-EnableAotAnalyzer
 EnableDefaultCompileItems
 EnableDefaultNoneItems
 EnableDefaultTypeScriptItems
 EnableNativeSanitizers
-EnableNETAnalyzers
-EnableTrimAnalyzer
 EnableTypeScriptNuGetTarget
 EnableUnmanagedDebugging
 EntityDeploy
@@ -159,22 +153,6 @@ FlavorProperties
 Folder
 ForceGeneration
 FromTarget
-Fsc_DotNET__FSharpCoreLibraryPacksFolder
-Fsc_DotNet_CompilerPath
-Fsc_DotNET_DotnetFscCompilerPath
-Fsc_DotNET_ToolExe
-Fsc_DotNET_ToolPath
-Fsc_NetFramework_AnyCpu_ToolExe
-Fsc_NetFramework_PlatformSpecific_ToolExe
-Fsc_NetFramework_ToolPath
-FSCorePackageVersion
-FscToolExe
-FscToolPath
-FSharp_Shim_Present
-FSharpCompilerPath
-FsiExec
-FsiToolExe
-FsiToolPath
 FullVersion
 FxOnly
 GenerateAssemblyInfo
@@ -231,7 +209,6 @@ Link
 MainVersion
 ManifestBuildBranch
 ManifestBuildNumber
-ManifestIntermediateOutputPath
 ManifestPublishUrl
 ManifestRepositoryName
 ManifestTeamProject
@@ -476,7 +453,6 @@ PublishUrl
 Reference
 ReferencePath
 ReflectionFree
-RegisterForComInterop
 RemoveIntegerChecks
 RequiredTargetFramework
 RequiresProcessIsolation
@@ -519,12 +495,6 @@ SolutionDir
 SonarQubeExclude
 SonarQubeTestProject
 SourceRoot
-SpecFlow_DebugMSBuildTask
-SpecFlow_DeleteCodeBehindFilesOnCleanRebuild
-SpecFlow_EnableDefaultCompileItems
-SpecFlow_EnableWarnForFeatureCodeBehindFilesWithoutCorrespondingFeatureFile
-SpecFlow_UseHostCompilerIfAvailable
-SpecFlowFeatureFiles
 SpecFlowObsoleteCodeBehindFiles
 SpecificVersion
 Src
@@ -580,7 +550,6 @@ TypeScriptSourceMap
 TypeScriptSourceRoot
 TypeScriptTarget
 TypeScriptToolsVersion
-UnitTestPlatformVersion
 UnloadabilityIncompatible
 UnofficialBuildRID
 UpdateEnabled
