@@ -272,7 +272,6 @@ NuGetTargetMoniker
 NuGetTargetMonikerShort
 NuGetToolVersion
 NugetVersion
-Nullable
 OfficialBuildRID
 OldToolsVersion
 Optimize

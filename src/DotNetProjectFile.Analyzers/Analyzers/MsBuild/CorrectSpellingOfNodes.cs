@@ -5,7 +5,9 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class CorrectSpellingOfNodes() : MsBuildProjectFileAnalyzer(Rule.CorrectSpellingOfNodes)
 {
-    private readonly ImmutableArray<Suggestion> Knowns =
+    private const string ConfigKey = "dotnet_diagnostic.Proj0031.KnownNodes";
+
+    private readonly HashSet<Suggestion> Knowns =
     [
         .. Node.Factory.KnownNodes.Select(Suggestion.New),
         .. Known.NodeNames.Select(Suggestion.New),
@@ -13,6 +15,13 @@ public sealed class CorrectSpellingOfNodes() : MsBuildProjectFileAnalyzer(Rule.C
 
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {
+        if (context.Options.AnalyzerConfigOptionsProvider.GlobalOptions.TryGetValue(ConfigKey, out var names))
+        {
+            foreach (var name in names.Split([';'], StringSplitOptions.RemoveEmptyEntries))
+            {
+                Knowns.Add(Suggestion.New(name.Trim()));
+            }
+        }
         Walk(context.File, context);
     }
 
