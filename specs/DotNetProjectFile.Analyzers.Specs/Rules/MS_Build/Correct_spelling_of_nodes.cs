@@ -11,7 +11,7 @@ public class Guards
 
     [TestCaseSource(nameof(KnownNodes))]
     public void Known_nodes(string name)
-        => Analyzer.GetSuggestion(name).Should().BeNull();
+        => Analyzer.GetSuggestion(name, []).Should().BeNull();
 
     private static IEnumerable<string> LoadKnownNodes()
     {

@@ -7,7 +7,7 @@ public sealed class CorrectSpellingOfNodes() : MsBuildProjectFileAnalyzer(Rule.C
 {
     private const string ConfigKey = "dotnet_diagnostic.Proj0031.KnownNodes";
 
-    private readonly HashSet<Suggestion> Knowns =
+    private readonly ImmutableArray<Suggestion> Knowns =
     [
         .. Node.Factory.KnownNodes.Select(Suggestion.New),
         .. Known.NodeNames.Select(Suggestion.New),
@@ -15,32 +15,40 @@ public sealed class CorrectSpellingOfNodes() : MsBuildProjectFileAnalyzer(Rule.C
 
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {
-        if (context.Options.AnalyzerConfigOptionsProvider.GlobalOptions.TryGetValue(ConfigKey, out var names))
+        var configured = GetConfigured(context.Options.AnalyzerConfigOptionsProvider.GlobalOptions);
+        Walk(context.File, context, configured);
+    }
+
+    private static HashSet<string> GetConfigured(AnalyzerConfigOptions options)
+    {
+        var configured = new HashSet<string>();
+
+        if (options.TryGetValue(ConfigKey, out var names))
         {
             foreach (var name in names.Split([';'], StringSplitOptions.RemoveEmptyEntries))
             {
-                Knowns.Add(Suggestion.New(name.Trim()));
+                configured.Add(name.Trim());
             }
         }
-        Walk(context.File, context);
+        return configured;
     }
 
-    private void Walk(Node node, ProjectFileAnalysisContext<MsBuildProject> context)
+    private void Walk(Node node, ProjectFileAnalysisContext<MsBuildProject> context, HashSet<string> configured)
     {
-        if (node is Unknown && GetSuggestion(node.LocalName) is { Length: > 0 } suggestion)
+        if (node is Unknown && GetSuggestion(node.LocalName, configured) is { Length: > 0 } suggestion)
         {
             context.ReportDiagnostic(Descriptor, node, node.LocalName, suggestion);
         }
 
         foreach (var child in node.Children)
         {
-            Walk(child, context);
+            Walk(child, context, configured);
         }
     }
 
     /// <summary>Gets a suggestion based on the provided name.</summary>
     [Pure]
-    public string? GetSuggestion(string name, double factor = 0.34)
+    public string? GetSuggestion(string name, HashSet<string> configured, double factor = 0.34)
     {
         if (Known.NodeNames.Contains(name)) { return null; }
 
@@ -49,7 +57,7 @@ public sealed class CorrectSpellingOfNodes() : MsBuildProjectFileAnalyzer(Rule.C
 
         var word = new Levenshtein(name.ToUpperInvariant());
 
-        foreach (var known in Knowns)
+        foreach (var known in configured.Select(Suggestion.New).Concat(Knowns))
         {
             var test = word.DistanceFrom(known.Upper);
             if (test < best)
