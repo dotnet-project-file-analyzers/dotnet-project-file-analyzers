@@ -12,6 +12,12 @@ public static class ProjectFileTypes
         ProjectFileType.Props
     ];
 
+    public static readonly IReadOnlyCollection<ProjectFileType> ProjectFile_DirectoryBuild =
+    [
+        ProjectFileType.ProjectFile,
+        ProjectFileType.DirectoryBuild
+    ];
+
     public static readonly IReadOnlyCollection<ProjectFileType> ProjectFile_DirectoryPackages =
     [
         ProjectFileType.ProjectFile,
