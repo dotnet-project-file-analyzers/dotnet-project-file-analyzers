@@ -9,7 +9,7 @@ namespace DotNetProjectFile.MsBuild;
 /// Used for creating instances of the <see cref="Node"/> class
 /// based on given <see cref="XElement"/> instances.
 /// </summary>
-internal static class NodeFactory
+public static class NodeFactory
 {
     private static readonly Type[] ctorArgumentTypes = GetCtorParameterTypes();
     private static readonly ParameterExpression[] ctorArgumentExpressions = ctorArgumentTypes.Select(x => Expression.Parameter(x)).ToArray();
