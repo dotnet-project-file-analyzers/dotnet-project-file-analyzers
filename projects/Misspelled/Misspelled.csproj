@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <NuGetAudit>true</NuGetAudit>
+    <EnableNetAnalyzers>true</EnableNetAnalyzers>
+    <IsPublishible>true</IsPublishible>
+  </PropertyGroup>
+
+  <ItemGroup Label="Analyzers">
+    <PackageReferences Include="DotNetProjectFile.Analyzers" Version="1.2.2" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMPILE Include="../common/Code.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFile Include="*.csproj" Visible="false" />
+    <AdditionalFiles Include="*.csproj" Visible="false" />
+  </ItemGroup>
+
+
+  <ItemGroup Label="Analyzer">
+    <ProjectReference Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" SetTargetFramework="TargetFramework=netstandard2.0" />
+  </ItemGroup>
+
+</Project>

@@ -40,7 +40,7 @@ internal sealed class TypeConverters
                 }
                 else if (!TypeStore.TryGetValue(property.PropertyType, out converter))
                 {
-                    var type = Nullable.GetUnderlyingType(property.PropertyType)
+                    var type = System.Nullable.GetUnderlyingType(property.PropertyType)
                         ?? property.PropertyType;
 
                     converter = TypeDescriptor.GetConverter(type);

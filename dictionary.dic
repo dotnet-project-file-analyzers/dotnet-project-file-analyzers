@@ -2,6 +2,7 @@ CDATA
 CPM
 fallback
 INI
+Levenshtein
 MOQ
 nullable
 pragma

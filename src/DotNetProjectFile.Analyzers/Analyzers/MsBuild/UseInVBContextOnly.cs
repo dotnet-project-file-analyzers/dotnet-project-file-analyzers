@@ -9,6 +9,7 @@ public sealed class UseInVBContextOnly() : MsBuildProjectFileAnalyzer(Rule.UseIn
     [
         typeof(FrameworkPathOverride),
         typeof(NoVBRuntimeReference),
+        typeof(OptionCompare),
         typeof(OptionExplicit),
         typeof(OptionInfer),
         typeof(OptionStrict),
