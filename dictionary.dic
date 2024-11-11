@@ -1,4 +1,4 @@
-﻿CDATA
+CDATA
 CPM
 fallback
 INI
@@ -10,3 +10,4 @@ ruleset
 RESX
 TFM
 usings
+VBC
