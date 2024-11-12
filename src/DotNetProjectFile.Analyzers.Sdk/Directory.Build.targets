@@ -1,2 +1,9 @@
-﻿<Project>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- If no target framework has been specified, go for .NET 8.0 -->
+  <PropertyGroup Condition="'$(TargetFrameworks)' == '' And '$(TargetFramework)' == ''">
+    <TargetFramework>net8.0</TargetFramework>
+    <NoWarn>$(NoWarn);Proj1003</NoWarn>
+  </PropertyGroup>
+
 </Project>

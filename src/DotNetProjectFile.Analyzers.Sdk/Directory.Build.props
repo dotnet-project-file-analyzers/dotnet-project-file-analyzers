@@ -1,15 +1,46 @@
-﻿<Project>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
+  <PropertyGroup>
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <NuGetAudit>true</NuGetAudit>
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+    <OutputType>library</OutputType>
+  </PropertyGroup>
+
+  <!-- The bin is just noise here, so move it a temp location -->
+  <PropertyGroup>
+    <OutputPath>$([System.IO.Path]::GetTempPath())/.net/bin</OutputPath>
+    <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj</IntermediateOutputPath>
+  </PropertyGroup>
+  
   <!-- We should start with an empty project -->
   <ItemGroup>
     <Compile Remove="**/*" />
+    <Content Remove="**/*" />
     <EmbeddedResource Remove="**/*" />
     <None Remove="**/*" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AdditionalFiles Include=".*config" />
+    <AdditionalFiles Include=".git*" />
+    <AdditionalFiles Include=".github/**" />
+    <AdditionalFiles Include="*.config" />
+    <AdditionalFiles Include="*.ini" />
+    <AdditionalFiles Include="*.md" />
+    <AdditionalFiles Include="*.txt" />
+    <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="**/TestResults/**" />
+  </ItemGroup>
+
   <!-- Ensure our analyzers are available -->
   <ItemGroup>
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" />
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.4.7" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>

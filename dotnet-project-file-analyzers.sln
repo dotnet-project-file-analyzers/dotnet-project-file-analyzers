@@ -6,52 +6,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetProjectFile.Analyzers
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetProjectFile.Analyzers.Specs", "specs\DotNetProjectFile.Analyzers.Specs\DotNetProjectFile.Analyzers.Specs.csproj", "{626C7F5F-15EA-42AA-B4F8-5BD2A86B8FE6}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{202A89DD-65C5-4D03-B196-C7FE6ADDFA4B}"
-	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		.gitattributes = .gitattributes
-		.gitignore = .gitignore
-		analyzers-config.ini = analyzers-config.ini
-		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
-		dictionary.dic = dictionary.dic
-		LICENSE.md = LICENSE.md
-		README.md = README.md
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Projects", "Projects", "{D43D7549-495B-4A32-A13C-9AF7B6EA893A}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "common", "common", "{67CD4711-6DEE-4426-ABD3-700C7D53EEA9}"
-	ProjectSection(SolutionItems) = preProject
-		projects\common\Code.cs = projects\common\Code.cs
-		projects\common\Code.vb = projects\common\Code.vb
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{DF7D0480-2743-4369-9855-07A8CBEDEDD7}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{FE3F69F9-CD8C-403D-9E7E-CC28E3DF2A28}"
-	ProjectSection(SolutionItems) = preProject
-		.github\workflows\build-test.yaml = .github\workflows\build-test.yaml
-	EndProjectSection
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", "props", "{B217F3D7-B8D9-4B44-8AEC-05B41098BD1F}"
-	ProjectSection(SolutionItems) = preProject
-		projects\props\common.props = projects\props\common.props
-		projects\props\common1.props = projects\props\common1.props
-		projects\props\common2.props = projects\props\common2.props
-		projects\props\DoublePackageReferences.props = projects\props\DoublePackageReferences.props
-		projects\props\simple.props = projects\props\simple.props
-	EndProjectSection
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Benchmarks", "specs\Benchmarks\Benchmarks.csproj", "{1BBC66D2-5E99-4557-ACF3-37EDA55A05EC}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = ".net", ".net.csproj", "{E19C2231-08B4-4806-950E-E713B8799B9C}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "design", "design", "{5BAB0746-527C-4B05-9160-E812FAB47CC1}"
-	ProjectSection(SolutionItems) = preProject
-		design\logo.psd = design\logo.psd
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotNetProjectFile.Analyzers.Sdk", "src\DotNetProjectFile.Analyzers.Sdk\DotNetProjectFile.Analyzers.Sdk.csproj", "{219698D8-CACB-4DF0-8602-DAE8DC5E2CFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetProjectFile.Analyzers.Sdk", "src\DotNetProjectFile.Analyzers.Sdk\DotNetProjectFile.Analyzers.Sdk.csproj", "{219698D8-CACB-4DF0-8602-DAE8DC5E2CFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,13 +41,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{67CD4711-6DEE-4426-ABD3-700C7D53EEA9} = {D43D7549-495B-4A32-A13C-9AF7B6EA893A}
-		{DF7D0480-2743-4369-9855-07A8CBEDEDD7} = {202A89DD-65C5-4D03-B196-C7FE6ADDFA4B}
-		{FE3F69F9-CD8C-403D-9E7E-CC28E3DF2A28} = {DF7D0480-2743-4369-9855-07A8CBEDEDD7}
-		{B217F3D7-B8D9-4B44-8AEC-05B41098BD1F} = {D43D7549-495B-4A32-A13C-9AF7B6EA893A}
-		{5BAB0746-527C-4B05-9160-E812FAB47CC1} = {202A89DD-65C5-4D03-B196-C7FE6ADDFA4B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3AD1EF71-7465-4ED1-81AD-504C430C8251}

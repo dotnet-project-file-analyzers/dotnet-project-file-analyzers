@@ -1,42 +1,17 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
-  <!--
-    Build something to trigger the analyzers and prevent the output from showing up in your solution
-    directory. Other options might be better.
-    -->
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <OutputPath>$([System.IO.Path]::GetTempPath())/.net/bin</OutputPath>
-    <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj</IntermediateOutputPath>
-    <!-- Rules we do not want to comply to here. -->
-    <NoWarn>
-      Proj0022;
-      Proj1002;
-      Proj1003
-    </NoWarn>
-    <IsPublishable>false</IsPublishable>
-    <IsPackable>false</IsPackable>
-    <OutputType>library</OutputType>
-  </PropertyGroup>
+  <Import Project="src/DotNetProjectFile.Analyzers.Sdk/Directory.Build.props" />
 
-  <!-- Ensure our analyzers are available -->
-  <ItemGroup>
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" />
+  <ItemGroup Label="Directories">
+    <None Include="design/**" />
+    <None Include="props/**" />
+    <None Include="projects/common/**" />
   </ItemGroup>
 
-  <!-- We should start with an empty project -->
-  <ItemGroup>
-    <Compile Remove="**" />
-    <EmbeddedResource Remove="**" />
-    <None Remove="**" />
+  <ItemGroup Label="Files">
+    <None Include="dictionary.dic" />
   </ItemGroup>
 
-  <ItemGroup>
-    <AdditionalFiles Include=".*" />
-    <AdditionalFiles Include="*.ini" />
-    <AdditionalFiles Include="*.md" />
-    <AdditionalFiles Include=".github/**" />
-    <AdditionalFiles Include="props/**" />
-  </ItemGroup>
-
+  <Import Project="src/DotNetProjectFile.Analyzers.Sdk/Directory.Build.targets" />
+  
 </Project>
