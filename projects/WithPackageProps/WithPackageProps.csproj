@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.props" />
+  
+  <PropertyGroup>
+    <TargetFrameWork>net8.0</TargetFrameWork>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
+  <ItemGroup Label="Analyzer">
+    <ProjectReference
+      Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
+      PrivateAssets="all"
+      ReferenceOutputAssembly="false"
+      OutputItemType="Analyzer"
+      SetTargetFramework="TargetFramework=netstandard2.0" />
+  </ItemGroup>
+  
+</Project>
