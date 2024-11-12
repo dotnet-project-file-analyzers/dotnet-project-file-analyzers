@@ -1,0 +1,8 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Automatically add the project file to the additional files -->
+  <ItemGroup>
+    <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
+  </ItemGroup>
+
+</Project>

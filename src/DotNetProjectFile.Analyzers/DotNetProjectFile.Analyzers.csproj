@@ -23,16 +23,17 @@
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.4.7</Version>
+    <Version>1.4.8</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
-ToBeReleased
+v1.4.8
 - Proj0029: Use C# specific properties only when applicable. (NEW RULE)
 - Proj0030: Use VB.NET specific properties only when applicable. (NEW RULE)
 - Proj0031: Adopt preferred casing of nodes. (NEW RULE)
 - Proj0216: Define the product name explictly. (NEW RULE)
 - Support Directory.Build.targets.
+- Automatically add the project file to the additional files.
 v1.4.7
 - Proj2005: Escape XML nodes of resource values. (NEW RULE)
 - Proj2100: Children of <value> should be excluded. (FP)
@@ -188,6 +189,7 @@ v1.0.0
   </PropertyGroup>
 
   <ItemGroup Label="Package files">
+    <None Include="DotNetProjectFile.Analyzers.props" Pack="true" PackagePath="/build/" />
     <None Update="tools/*.ps1" Pack="true" PackagePath="/" />
     <None Include="$(OutputPath)/DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
     <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
