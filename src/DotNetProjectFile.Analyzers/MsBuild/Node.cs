@@ -20,7 +20,7 @@ public abstract class Node : XmlAnalysisNode
         Project = project ?? (this as Project) ?? throw new ArgumentNullException(nameof(project));
         Children = element.Elements().Select(Create).ToArray();
         Positions = XmlPositions.New(element);
-        Depth = AncestorsAndSelf().Count() - 1;
+        Depth = element.Depth();
     }
 
     internal readonly Project Project;
