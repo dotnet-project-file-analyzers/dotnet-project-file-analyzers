@@ -8,43 +8,58 @@ namespace DotNetProjectFile.MsBuild;
 /// Used for creating instances of the <see cref="Node"/> class
 /// based on given <see cref="XElement"/> instances.
 /// </summary>
-internal static class NodeFactory
+internal sealed class NodeFactory
 {
-    private static readonly Type[] ctorArgumentTypes = GetCtorParameterTypes();
-    private static readonly ParameterExpression[] ctorArgumentExpressions = ctorArgumentTypes.Select(x => Expression.Parameter(x)).ToArray();
-    private static readonly IReadOnlyDictionary<string, CtorFunc> map = BuildCtorMap();
+    public NodeFactory()
+    {
+        CtorArgumentTypes = GetCtorParameterTypes();
+        CtorArgumentExpressions = CtorArgumentTypes.Select(x => Expression.Parameter(x)).ToArray();
+        CaseSensitive = BuildCtorMap();
+        CaseInsensitive = new Dictionary<string, CtorFunc>(CaseSensitive, StringComparer.OrdinalIgnoreCase);
+    }
 
-    public static Node? Create(XElement element, Node parent, MsBuildProject project)
-        => element.Name.LocalName switch
-        {
-            null /*.......................................*/ => null,
-            var n when map.TryGetValue(n, out var con) /*.*/ => con(element, parent, project),
-            _ /*..........................................*/ => new Unknown(element, parent, project),
-        };
+    private readonly Type[] CtorArgumentTypes;
+    private readonly ParameterExpression[] CtorArgumentExpressions;
+    private readonly Dictionary<string, CtorFunc> CaseSensitive;
+    private readonly Dictionary<string, CtorFunc> CaseInsensitive;
 
+    [Pure]
+    public Node Create(XElement element, Node parent, MsBuildProject project)
+        => Lookup(element).TryGetValue(element.Name.LocalName, out var con)
+        ? con(element, parent, project)
+        : new Unknown(element, parent, project);
+
+    [Pure]
+    private Dictionary<string, CtorFunc> Lookup(XElement element)
+        => element.Depth() >= 2
+        ? CaseInsensitive
+        : CaseSensitive;
+
+    [Pure]
     private static Type[] GetCtorParameterTypes()
     {
         var all = typeof(CtorFunc).GenericTypeArguments;
-        var result = new Type[all.Length - 1];
-        Array.Copy(all, result, result.Length);
-        return result;
+        return all.Take(all.Length - 1).ToArray();
     }
 
-    private static Dictionary<string, CtorFunc> BuildCtorMap()
+    [Pure]
+    private Dictionary<string, CtorFunc> BuildCtorMap()
         => typeof(Node).Assembly
         .GetTypes()
         .Select(GetValidNodeCtor)
         .OfType<ConstructorInfo>()
         .ToDictionary(ci => ci.DeclaringType.Name, GenerateCtor);
 
-    private static ConstructorInfo? GetValidNodeCtor(Type type)
+    [Pure]
+    private ConstructorInfo? GetValidNodeCtor(Type type)
         => type.IsAbstract || !typeof(Node).IsAssignableFrom(type)
             ? null
-            : type.GetConstructor(ctorArgumentTypes);
+            : type.GetConstructor(CtorArgumentTypes);
 
-    private static CtorFunc GenerateCtor(ConstructorInfo ci)
+    [Pure]
+    private CtorFunc GenerateCtor(ConstructorInfo ci)
     {
-        var args = ctorArgumentExpressions;
+        var args = CtorArgumentExpressions;
         var create = Expression.New(ci, args);
         var lambda = Expression.Lambda(create, args);
         return (CtorFunc)lambda.Compile();

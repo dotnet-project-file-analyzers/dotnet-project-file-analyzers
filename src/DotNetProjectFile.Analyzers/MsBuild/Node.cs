@@ -7,6 +7,8 @@ namespace DotNetProjectFile.MsBuild;
 /// <summary>Represents node in a MS Build project file.</summary>
 public abstract class Node : XmlAnalysisNode
 {
+    private static readonly NodeFactory Factory = new();
+
     /// <summary>Semi-colon separator char(s).</summary>
     protected static readonly char[] SemicolonSeparated = [';'];
 
@@ -16,9 +18,9 @@ public abstract class Node : XmlAnalysisNode
         Element = element;
         Parent = parent;
         Project = project ?? (this as Project) ?? throw new ArgumentNullException(nameof(project));
-        Children = element.Elements().Select(Create).OfType<Node>().ToArray();
+        Children = element.Elements().Select(Create).ToArray();
         Positions = XmlPositions.New(element);
-        Depth = AncestorsAndSelf().Count() - 1;
+        Depth = element.Depth();
     }
 
     internal readonly Project Project;
@@ -89,7 +91,7 @@ public abstract class Node : XmlAnalysisNode
     public string? Child([CallerMemberName] string? propertyName = null)
         => Element.Element(propertyName)?.Value;
 
-    internal Node? Create(XElement element) => NodeFactory.Create(element, this, Project);
+    internal Node Create(XElement element) => Factory.Create(element, this, Project);
 
     protected T? Convert<T>(string? value, [CallerMemberName] string? propertyName = null)
         => Converters.TryConvert<T>(value, GetType(), propertyName!);
