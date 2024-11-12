@@ -1,11 +1,11 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class DefinePackageReferenceAssetsAsAttributes() : MsBuildProjectFileAnalyzer(Rule.DefinePackageReferenceAssetsAsAttributes)
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var reference in context.Project.ItemGroups
+        foreach (var reference in context.File.ItemGroups
             .SelectMany(g => g.PackageReferences)
             .Where(HasAssetsElement))
         {

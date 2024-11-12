@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Build_action_include_should_exist;
+namespace Rules.MS_Build.Build_action_include_should_exist;
 
 public class Reports
 {

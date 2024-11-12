@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Test_projects.Require_SDK;
+namespace Rules.MS_Build.Test_projects.Require_SDK;
 
 public class Reports
 {

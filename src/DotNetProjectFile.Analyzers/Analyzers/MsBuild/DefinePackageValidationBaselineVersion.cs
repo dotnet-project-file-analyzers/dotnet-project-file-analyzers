@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class DefinePackageValidationBaselineVersion() : MsBuildProjectFileAnalyzer(Rule.DefinePackageValidationBaselineVersion)
@@ -7,10 +7,10 @@ public sealed class DefinePackageValidationBaselineVersion() : MsBuildProjectFil
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.PackageValidationEnabled() &&
-            context.Project.Property<PackageValidationBaselineVersion>() is null)
+        if (context.File.PackageValidationEnabled() &&
+            context.File.Property<PackageValidationBaselineVersion>() is null)
         {
-            context.ReportDiagnostic(Descriptor, context.Project);
+            context.ReportDiagnostic(Descriptor, context.File);
         }
     }
 }

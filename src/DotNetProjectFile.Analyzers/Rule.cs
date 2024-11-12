@@ -254,6 +254,36 @@ public static class Rule
         tags: ["conditions"],
         category: Category.Reliability);
 
+    public static DiagnosticDescriptor UseInCSharpContextOnly => New(
+        id: 0029,
+        title: "Use C# specific properties only when applicable",
+        message: "The property <{0}> is only applicable when using C# and can therefor be removed.",
+        description:
+            "Properties only applicable to C# are noise when none of " +
+            "the involved targets is a C# target.",
+        tags: ["noise"],
+        category: Category.Noise);
+
+    public static DiagnosticDescriptor UseInVBContextOnly => New(
+        id: 0030,
+        title: "Use VB.NET specific properties only when applicable",
+        message: "The property <{0}> is only applicable when using VB.NET and can therefor be removed.",
+        description:
+            "Properties only applicable to VB.NET are noise when none of " +
+            "the involved targets is a VB.NET target.",
+        tags: ["noise"],
+        category: Category.Noise);
+
+    public static DiagnosticDescriptor AdoptPreferredCasing => New(
+        id: 0031,
+        title: "Adopt preferred casing of nodes",
+        message: "The node <{0}> has a different casing than the preferred one <{1}>.",
+        description:
+            "MS Build is (mostly) case insensitive. To prevent issues, however, " +
+            "it is preferred to use the same casing consistently.",
+        tags: ["clarity", "casing"],
+        category: Category.Clarity);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
@@ -442,6 +472,18 @@ public static class Rule
             "To ensure the creation of well-formed packages, use an image that is " +
             "128x128 and has a transparent background(PNG) for the best viewing results.",
         tags: ["Configuration", "NuGet", "package", "image", "PNG"],
+        category: Category.Configuration);
+
+    public static DiagnosticDescriptor DefineProductName => New(
+        id: 0216,
+        title: "Define the project name explicitly",
+        message: "Define the <ProductName> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure the creation of well-formed packages, " +
+            "explicitly define the <ProductName> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration);
 
     public static DiagnosticDescriptor EnablePackageValidation => New(
@@ -757,6 +799,14 @@ public static class Rule
        tags: ["resx", "resources", "invariant", "localization"],
        category: Category.Bug);
 
+    public static DiagnosticDescriptor EscapeXmlNodesResourceValues => New(
+      id: 2005,
+      title: "Escape XML nodes of resource values",
+      message: "Escape the XML node in '{0}'.",
+      description: "To ensure correct handling, XML nodes within resource values should be escaped.",
+      tags: ["resx", "resources", "XML", "escaping"],
+      category: Category.Bug);
+
     public static DiagnosticDescriptor IndentResx => New(
       id: 2100,
       title: "Indent XML files",
@@ -764,6 +814,16 @@ public static class Rule
       description: "To improve readability, XML elements should be properly indented.",
       tags: ["XML", "indentation"],
       category: Category.Formatting);
+
+    public static DiagnosticDescriptor OnlyUseUTF8WithoutBom => New(
+        id: 3000,
+        title: "Ony use UTF-8 encoding without BOM",
+        message: "This file is using UTF-8 encoding with BOM.",
+        description:
+            "The use of BOM for UTF-8 can cause systems to malfunction. This " +
+            "includes multiple web based files such as Javascript and CSS.",
+        tags: ["encoding", "UTF-8"],
+        category: Category.Reliability);
 
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.

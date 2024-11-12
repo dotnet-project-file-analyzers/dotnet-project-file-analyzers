@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Item_group_should_only_contain_nodes_of_single_type;
+namespace Rules.MS_Build.Item_group_should_only_contain_nodes_of_single_type;
 
 public class Reports
 {

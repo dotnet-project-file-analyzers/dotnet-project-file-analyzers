@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class DefinePropertiesOnce() : MsBuildProjectFileAnalyzer(Rule.DefinePropertiesOnce)
@@ -7,7 +7,7 @@ public sealed class DefinePropertiesOnce() : MsBuildProjectFileAnalyzer(Rule.Def
     {
         var props = new HashSet<Node>(new PropertyComparer());
 
-        foreach (var prop in context.Project.PropertyGroups.SelectMany(g => g.Children))
+        foreach (var prop in context.File.PropertyGroups.SelectMany(g => g.Children))
         {
             if (!props.Add(prop))
             {

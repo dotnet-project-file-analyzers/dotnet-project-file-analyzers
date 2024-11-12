@@ -1,4 +1,4 @@
-﻿namespace NamespaceA
+namespace NamespaceA
 {
     internal enum Placeholder { }
 }

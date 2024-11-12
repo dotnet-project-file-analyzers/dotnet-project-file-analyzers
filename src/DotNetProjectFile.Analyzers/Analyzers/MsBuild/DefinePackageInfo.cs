@@ -1,5 +1,3 @@
-﻿using System.Collections.Immutable;
-
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
@@ -16,15 +14,16 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
     Rule.DefineLicense,
     Rule.DefineIcon,
     Rule.DefineIconUrl,
-    Rule.DefinePackageId)
+    Rule.DefinePackageId,
+    Rule.DefineProductName)
 {
     protected override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.Project.IsPackable() || context.Project.IsTestProject()) return;
+        if (!context.File.IsPackable() || context.File.IsTestProject()) return;
 
-        var available = context.Project.Walk().Select(n => n.GetType()).ToImmutableHashSet();
+        var available = context.File.Walk().Select(n => n.GetType()).ToImmutableHashSet();
 
         Analyze(context, available, Rule.DefineVersion, typeof(DotNetProjectFile.MsBuild.Version));
         Analyze(context, available, Rule.DefineDescription, typeof(Description), typeof(PackageDescription));
@@ -39,6 +38,7 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
         Analyze(context, available, Rule.DefineIconUrl, typeof(PackageIconUrl));
         Analyze(context, available, Rule.DefinePackageId, typeof(PackageId));
         Analyze(context, available, Rule.DefineLicense, typeof(PackageLicenseFile), typeof(PackageLicenseExpression));
+        Analyze(context, available, Rule.DefineProductName, typeof(ProductName));
     }
 
     private static void Analyze(
@@ -49,7 +49,7 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
     {
         if (!required.Exists(available.Contains))
         {
-            context.ReportDiagnostic(descriptor, context.Project);
+            context.ReportDiagnostic(descriptor, context.File);
         }
     }
 }

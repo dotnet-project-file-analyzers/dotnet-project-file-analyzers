@@ -1,11 +1,11 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class PackageReferencesShouldBeStable() : MsBuildProjectFileAnalyzer(Rule.PackageReferencesShouldBeStable)
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var package in context.Project.ItemGroups
+        foreach (var package in context.File.ItemGroups
             .SelectMany(i => i.PackageReferences)
             .Where(IsUnstable))
         {

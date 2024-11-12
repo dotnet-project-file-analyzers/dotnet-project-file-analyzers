@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.MsBuild;
 
 public sealed class Using(XElement element, Node parent, MsBuildProject project)
     : Node(element, parent, project)

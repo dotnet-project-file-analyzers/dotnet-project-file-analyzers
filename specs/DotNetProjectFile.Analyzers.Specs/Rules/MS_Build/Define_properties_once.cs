@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Define_properties_once;
+namespace Rules.MS_Build.Define_properties_once;
 
 public class Reports
 {

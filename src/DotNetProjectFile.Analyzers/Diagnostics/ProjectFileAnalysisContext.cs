@@ -1,21 +1,24 @@
-﻿using DotNetProjectFile.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Diagnostics;
 
-/// <summary>The context required to analyze a MS Build project file.</summary>
-public sealed class ProjectFileAnalysisContext(
-    MsBuildProject project,
+/// <summary>The context required to analyze a project file.</summary>
+/// <typeparam name="TFile">
+/// The type of file to analyze.
+/// </typeparam>
+public readonly struct ProjectFileAnalysisContext<TFile>(
+    TFile file,
     Compilation compilation,
     AnalyzerOptions options,
     CancellationToken cancellationToken,
-    Action<Diagnostic> report) : DiagnosticReporter
+    Action<Diagnostic> report)
+    where TFile : ProjectFile
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private readonly Action<Diagnostic> Report = report;
 
     /// <summary>Gets the project file.</summary>
-    public MsBuildProject Project { get; } = project;
+    public TFile File { get; } = file;
 
     /// <summary>Gets the compilation.</summary>
     public Compilation Compilation { get; } = compilation;
@@ -23,17 +26,12 @@ public sealed class ProjectFileAnalysisContext(
     /// <summary>Gets the analyzer options.</summary>
     public AnalyzerOptions Options { get; } = options;
 
-    /// <summary>Gets the applicable configuration options for the file.</summary>
-    public AnalyzerConfigOptions Config { get; } = project.AdditionalText is { } text
-        ? options.AnalyzerConfigOptionsProvider.GetOptions(text)
-        : MissingAnalyzerConfigOptions.Instance;
-
     /// <summary>Gets the cancellation token.</summary>
     public CancellationToken CancellationToken { get; } = cancellationToken;
 
     /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, Node node, params object?[]? messageArgs)
-        => ReportDiagnostic(descriptor, node.Project, node.Positions.FullSpan, messageArgs);
+        => ReportDiagnostic(descriptor, node.Positions.FullSpan, messageArgs);
 
     /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, XmlAnalysisNode node, params object?[]? messageArgs)
@@ -41,14 +39,12 @@ public sealed class ProjectFileAnalysisContext(
 
     /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, LinePositionSpan span, params object?[]? messageArgs)
-        => ReportDiagnostic(descriptor, Project, span, messageArgs);
+        => ReportDiagnostic(descriptor, File.GetLocation(span), messageArgs);
 
     /// <summary>Reports a diagnostic about the project file.</summary>
-    private void ReportDiagnostic(DiagnosticDescriptor descriptor, MsBuildProject project, LinePositionSpan span, params object?[]? messageArgs)
+    public void ReportDiagnostic(DiagnosticDescriptor descriptor, Location location, params object?[]? messageArgs)
     {
-        var warningPragmas = project.WarningPragmas;
-
-        var location = project.GetLocation(span);
+        var warningPragmas = File.WarningPragmas;
 
         if (!warningPragmas.IsDisabled(descriptor.Id, location))
         {

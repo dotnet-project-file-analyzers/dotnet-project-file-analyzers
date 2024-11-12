@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Project_file_could_not_be_located;
+namespace Rules.MS_Build.Project_file_could_not_be_located;
 
 public class Has_no_issues
 {

@@ -1,11 +1,11 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class DefineUsingsExplicit() : MsBuildProjectFileAnalyzer(Rule.DefineUsingsExplicit)
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var @implicit in context.Project.PropertyGroups
+        foreach (var @implicit in context.File.PropertyGroups
             .SelectMany(g => g.ImplicitUsings)
             .Where(i => IsEnabled(i.Value)))
         {

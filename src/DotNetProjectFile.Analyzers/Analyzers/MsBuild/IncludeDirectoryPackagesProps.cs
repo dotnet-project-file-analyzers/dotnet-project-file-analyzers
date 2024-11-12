@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class IncludeDirectoryPackagesProps() : MsBuildProjectFileAnalyzer(Rule.IncludeDirectoryPackagesProps)
@@ -7,10 +7,10 @@ public sealed class IncludeDirectoryPackagesProps() : MsBuildProjectFileAnalyzer
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.ManagePackageVersionsCentrally().GetValueOrDefault()
-            && context.Project.DirectoryPackagesProps is null)
+        if (context.File.ManagePackageVersionsCentrally().GetValueOrDefault()
+            && context.File.DirectoryPackagesProps is null)
         {
-            context.ReportDiagnostic(Descriptor, context.Project.Positions.StartElement);
+            context.ReportDiagnostic(Descriptor, context.File.Positions.StartElement);
         }
     }
 }

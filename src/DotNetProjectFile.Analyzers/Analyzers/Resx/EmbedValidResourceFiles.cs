@@ -1,4 +1,5 @@
-﻿using DotNetProjectFile.Resx;
+using DotNetProjectFile.Resx;
+using System.Resources;
 
 namespace DotNetProjectFile.Analyzers.Resx;
 
@@ -7,20 +8,11 @@ public sealed class EmbedValidResourceFiles : ResourceFileAnalyzer
 {
     public EmbedValidResourceFiles() : base(Rule.EmbedValidResourceFiles) { }
 
-    protected override void Register(AnalysisContext context)
-    => context.RegisterCompilationAction(c =>
-    {
-        foreach (var resource in Resources.Resolve(c.Compilation, c.Options.AdditionalFiles))
-        {
-            Register(new ResourceFileAnalysisContext(resource, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
-        }
-    });
-
     protected override void Register(ResourceFileAnalysisContext context)
     {
-        var resource = context.Resource;
+        var resource = context.File;
 
-        if (!context.Resource.IsXml)
+        if (!resource.IsXml)
         {
             context.ReportDiagnostic(Descriptor, resource, "contains no XML.");
         }

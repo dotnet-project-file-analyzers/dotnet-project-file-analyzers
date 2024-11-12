@@ -1,3 +1,5 @@
+using DotNetProjectFile.EditorConfig;
+
 namespace Microsoft.CodeAnalysis.Diagnostics;
 
 /// <summary>Extensions on <see cref="AnalysisContext"/>.</summary>
@@ -8,25 +10,44 @@ internal static class AnalysisContextExtensions
     {
         context.RegisterAdditionalFileAction(c =>
         {
-            if (Projects.Init(c).EntryPoint(c) is { } project
-                && string.IsNullOrEmpty(project.Element.Name.NamespaceName))
+            if (ProjectFiles.Global.UpdateMsBuildProject(c) is { IsLegacy: false } msbuild)
             {
-                foreach (var p in project.ImportsAndSelf())
-                {
-                    action.Invoke(new(p, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
-                }
+                action.Invoke(new(msbuild, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
             }
         });
 
         // Fallback for detecting files that not have been added as additional files.
         context.RegisterCompilationAction(c =>
         {
-            if (Projects.Init(c).EntryPoint(c) is { IsAdditional: false } project
-                && string.IsNullOrEmpty(project.Element.Name.NamespaceName))
+            if (ProjectFiles.Global.UpdateMsBuildProject(c) is { IsLegacy: false } entry)
             {
-                foreach (var p in project.ImportsAndSelf())
+                foreach (var msbuild in entry.ImportsAndSelf().Where(x => !x.IsAdditional(c.Options.AdditionalFiles)))
                 {
-                    action.Invoke(new(p, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    action.Invoke(new(msbuild, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                }
+            }
+        });
+    }
+
+    /// <summary>Registers an action on <see cref="ProjectFileAnalysisContext"/>.</summary>
+    public static void RegisterEditorConfigFileAction(this AnalysisContext context, Action<EditorConfigFileAnalysisContext> action)
+    {
+        context.RegisterAdditionalFileAction(c =>
+        {
+            if (ProjectFiles.Global.UpdateIniFile(c) is { } ini)
+            {
+                action.Invoke(new(new EditorConfigFile(ini), c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+            }
+        });
+
+        // Fallback for detecting files that not have been added as additional files.
+        context.RegisterCompilationAction(c =>
+        {
+            if (ProjectFiles.Global.UpdateMsBuildProject(c) is { } msbuild)
+            {
+                foreach (var config in msbuild.EditorConfigs().Where(x => !x.IsAdditional(c.Options.AdditionalFiles)))
+                {
+                    action.Invoke(new(config, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             }
         });
@@ -36,7 +57,7 @@ internal static class AnalysisContextExtensions
     public static void RegisterResourceFileAction(this AnalysisContext context, Action<ResourceFileAnalysisContext> action)
         => context.RegisterAdditionalFileAction(c =>
         {
-            foreach (var resource in DotNetProjectFile.Resx.Resources.Resolve(c.Compilation, c.Options.AdditionalFiles).Where(r => r.IsXml))
+            if (ProjectFiles.Global.UpdateResourceFile(c) is { IsXml: true } resource)
             {
                 action.Invoke(new(resource, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
             }

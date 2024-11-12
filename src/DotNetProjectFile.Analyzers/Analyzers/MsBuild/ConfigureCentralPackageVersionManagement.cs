@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ConfigureCentralPackageVersionManagement() : MsBuildProjectFileAnalyzer(Rule.ConfigureCentralPackageVersionManagement)
@@ -7,9 +7,9 @@ public sealed class ConfigureCentralPackageVersionManagement() : MsBuildProjectF
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.ManagePackageVersionsCentrally() is null)
+        if (context.File.ManagePackageVersionsCentrally() is null)
         {
-            context.ReportDiagnostic(Descriptor, context.Project.Positions.StartElement);
+            context.ReportDiagnostic(Descriptor, context.File.Positions.StartElement);
         }
     }
 }

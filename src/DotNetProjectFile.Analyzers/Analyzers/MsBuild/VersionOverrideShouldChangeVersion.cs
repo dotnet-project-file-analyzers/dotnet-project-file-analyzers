@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class VersionOverrideShouldChangeVersion()
@@ -8,9 +8,9 @@ public sealed class VersionOverrideShouldChangeVersion()
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.ManagePackageVersionsCentrally() is not true) return;
+        if (context.File.ManagePackageVersionsCentrally() is not true) return;
 
-        foreach (var @override in context.Project.ItemGroups
+        foreach (var @override in context.File.ItemGroups
             .SelectMany(g => g.PackageReferences)
             .Where(r => r.VersionOverride is { Length: > 0 }))
         {
@@ -23,7 +23,7 @@ public sealed class VersionOverrideShouldChangeVersion()
     }
 
     private static PackageVersion CpmVersion(ProjectFileAnalysisContext context, PackageReference @override)
-        => context.Project
+        => context.File
             .WalkBackward()
             .OfType<PackageVersion>()
             .Where(v => v.Include == @override.IncludeOrUpdate)

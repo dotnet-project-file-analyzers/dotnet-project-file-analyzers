@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.MsBuild;
+using DotNetProjectFile.CodeAnalysis;
 
 namespace MS_Build.Warning_pragma;
 

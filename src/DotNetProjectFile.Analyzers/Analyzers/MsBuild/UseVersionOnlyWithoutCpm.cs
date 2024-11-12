@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseVersionOnlyWithoutCpm()
@@ -6,9 +6,9 @@ public sealed class UseVersionOnlyWithoutCpm()
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Project.ManagePackageVersionsCentrally() is true)
+        if (context.File.ManagePackageVersionsCentrally() is true)
         {
-            foreach (var reference in context.Project.ItemGroups
+            foreach (var reference in context.File.ItemGroups
                 .SelectMany(g => g.PackageReferences)
                 .Where(r => r.Version is { Length: > 0 }))
             {

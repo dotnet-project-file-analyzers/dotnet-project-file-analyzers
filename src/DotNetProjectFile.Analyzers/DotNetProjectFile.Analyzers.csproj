@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -23,10 +23,25 @@
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.4.4</Version>
+    <Version>1.4.7</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+ToBeReleased
+- Proj0029: Use C# specific properties only when applicable. (NEW RULE)
+- Proj0030: Use VB.NET specific properties only when applicable. (NEW RULE)
+- Proj0031: Adopt preferred casing of nodes. (NEW RULE)
+- Proj0216: Define the product name explictly. (NEW RULE)
+- Support Directory.Build.targets.
+v1.4.7
+- Proj2005: Escape XML nodes of resource values. (NEW RULE)
+- Proj2100: Children of <value> should be excluded. (FP)
+v1.4.6
+- Proj3000: Don't crash on non-existing files. (BUG)
+v1.4.5
+- Proj3000: Only use UTF-8 without BOM. (NEW RULES)
+- Support rules for other project file types like .editoconfig files.
+- Processing files with 7 times speed improvement.
 v1.4.4
 - Rules should only report on self, not on imports. (BUG)
 v1.4.3
@@ -180,7 +195,7 @@ v1.0.0
   </ItemGroup>
 
   <ItemGroup Label="Roslyn dependencies">
-    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="4.10.0" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.10.0" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">

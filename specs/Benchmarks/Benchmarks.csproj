@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
   
@@ -6,6 +6,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <OutputType>exe</OutputType>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    <NoWarn>RS1038;RS1041</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,6 +17,8 @@
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.14.0" />
     <PackageReference Include="CodeAnalysis.TestTools" Version="3.0.1" />
+    <PackageReference Include="DotNet.Glob" Version="3.1.3" />
+    <PackageReference Include="Glob" Version="1.1.9" />
   </ItemGroup>
 
   <ItemGroup>
@@ -23,12 +27,7 @@
 
   <ItemGroup Label="Analyzer">
     <!-- #pragma warning disable Proj0014 -->
-    <ProjectReference
-      Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
-      PrivateAssets="all"
-      ReferenceOutputAssembly="false"
-      OutputItemType="Analyzer"
-      SetTargetFramework="TargetFramework=netstandard2.0" />
+    <ProjectReference Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" SetTargetFramework="TargetFramework=netstandard2.0" />
   </ItemGroup>
 
 </Project>

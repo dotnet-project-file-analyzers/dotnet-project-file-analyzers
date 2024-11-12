@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class AvoidUsingMoq() : MsBuildProjectFileAnalyzer(Rule.AvoidUsingMoq)
@@ -7,7 +7,7 @@ public sealed class AvoidUsingMoq() : MsBuildProjectFileAnalyzer(Rule.AvoidUsing
     {
         var reported = false;
 
-        foreach (var reference in context.Project.ItemGroups
+        foreach (var reference in context.File.ItemGroups
             .SelectMany(i => i.PackageReferences)
             .Where(IsMoq))
         {
@@ -17,7 +17,7 @@ public sealed class AvoidUsingMoq() : MsBuildProjectFileAnalyzer(Rule.AvoidUsing
 
         if (!reported && context.Compilation.ReferencedAssemblyNames.Any(IsMoq))
         {
-            context.ReportDiagnostic(Descriptor, context.Project);
+            context.ReportDiagnostic(Descriptor, context.File);
         }
     }
 

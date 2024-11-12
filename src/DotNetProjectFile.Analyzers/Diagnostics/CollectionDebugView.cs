@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Diagnostics;
+namespace DotNetProjectFile.Diagnostics;
 
 /// <summary>Allows the debugger to display collections.</summary>
 [ExcludeFromCodeCoverage]

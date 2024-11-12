@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Navigation;
+namespace DotNetProjectFile.Navigation;
 
 [DebuggerTypeProxy(typeof(CollectionDebugView))]
 [DebuggerDisplay("Length = {Length}")]

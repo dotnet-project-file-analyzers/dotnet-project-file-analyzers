@@ -1,5 +1,3 @@
-﻿using System.Collections.Immutable;
-
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
@@ -10,11 +8,11 @@ public sealed class DefinePackageReferenceVersion()
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var versions = context.Project.ManagePackageVersionsCentrally() is true
-            ? PackageVersions(context.Project)
+        var versions = context.File.ManagePackageVersionsCentrally() is true
+            ? PackageVersions(context.File)
             : [];
 
-        var references = context.Project.ItemGroups
+        var references = context.File.ItemGroups
             .SelectMany(g => g.PackageReferences)
             .Where(r => r.IncludeOrUpdate is { Length: > 0 })
             .Where(r => r.VersionOrVersionOverride is not { Length: > 0 });

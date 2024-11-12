@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Static_alias_using_not_supported;
+namespace Rules.MS_Build.Static_alias_using_not_supported;
 
 public class Reports
 {

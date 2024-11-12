@@ -8,6 +8,7 @@
 
   <PropertyGroup Label="PackageInfo">
     <Description>Awesome library</Description>
+    <ProductName>Awesome Library.NET</ProductName>
     <Authors>Corniel Nobel; Wesley Baartman</Authors>
     <PackageId>DotNetProjectFile.Anayzers</PackageId>
     <PackageTags>analyzer; coolthings</PackageTags>

@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <IsPackable>false</IsPackable>
+    <FrameworkPathOverride />
+    <NoVBRuntimeReference>true</NoVBRuntimeReference>
+    <OptionExplicit>On</OptionExplicit>
+    <OptionInfer>On</OptionInfer>
+    <OptionStrict>On</OptionStrict>
+    <RemoveIntegerChecks>true</RemoveIntegerChecks>
+    <VbcVerbosity>Verbose</VbcVerbosity>
+    <VbcToolPath />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="*.props" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,9 @@
+<Project>
+  
+  <PropertyGroup>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+</Project>

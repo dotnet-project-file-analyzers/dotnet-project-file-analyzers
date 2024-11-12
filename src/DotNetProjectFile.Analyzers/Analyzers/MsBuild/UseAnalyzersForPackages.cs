@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.UseAnalyzersForPackages)
@@ -7,7 +7,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var packageReferences = context.Project
+        var packageReferences = context.File
         .Walk()
             .OfType<PackageReference>()
             .ToArray();
@@ -23,7 +23,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
                 .OrderBy(asm => asm.Name.Length)
                 .FirstOrDefault() is { } reference)
             {
-                context.ReportDiagnostic(Descriptor, context.Project, analyzer.Name, reference.Name);
+                context.ReportDiagnostic(Descriptor, context.File, analyzer.Name, reference.Name);
             }
         }
     }

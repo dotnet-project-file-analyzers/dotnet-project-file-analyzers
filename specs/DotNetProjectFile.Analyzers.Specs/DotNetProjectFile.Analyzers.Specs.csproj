@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
   
@@ -9,9 +9,10 @@
     <RootNamespace>Specs</RootNamespace>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <OutputType>library</OutputType>
+    <NoWarn>RS1038;RS1041</NoWarn>
   </PropertyGroup>
 
-  <PropertyGroup Condition=" $([MSBuild]::IsOsPlatform('Windows')) ">
+  <PropertyGroup Condition="$([MSBuild]::IsOsPlatform('Windows'))">
     <DefineConstants>Is_Windows</DefineConstants>
   </PropertyGroup>
 
@@ -20,17 +21,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Build.Locator" Version="1.6.10" />
+    <PackageReference Include="Microsoft.Build.Locator" Version="1.7.8" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="4.10.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.10.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.10.0" />
   </ItemGroup>
 
   <ItemGroup Label="Test tools">
-    <PackageReference Include="CodeAnalysis.TestTools" Version="3.*" />
-    <PackageReference Include="FluentAssertions" Version="6.*" />
-    <PackageReference Include="NuGet.Common" Version="6.*" />
-    <PackageReference Include="NuGet.Frameworks" Version="6.*" />
-    <PackageReference Include="NuGet.Packaging" Version="6.*" />
+    <PackageReference Include="CodeAnalysis.TestTools" Version="3.0.1" />
+    <PackageReference Include="FluentAssertions" Version="6.12.1" />
+    <PackageReference Include="NuGet.Common" Version="6.10.1" />
+    <PackageReference Include="NuGet.Frameworks" Version="6.10.1" />
+    <PackageReference Include="NuGet.Packaging" Version="6.10.1" />
     <PackageReference Include="NUnit" Version="4.*" />
   </ItemGroup>
 
@@ -55,12 +57,8 @@
 
   <ItemGroup Label="Analyzer">
     <!-- #pragma warning disable Proj0014 -->
-    <ProjectReference
-      Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
-      PrivateAssets="all"
-      ReferenceOutputAssembly="false"
-      OutputItemType="Analyzer"
-      SetTargetFramework="TargetFramework=netstandard2.0" />
+    <ProjectReference Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" SetTargetFramework="TargetFramework=netstandard2.0" />
+    <ProjectReference Include="../Benchmarks/Benchmarks.csproj" />
   </ItemGroup>
 
 </Project>

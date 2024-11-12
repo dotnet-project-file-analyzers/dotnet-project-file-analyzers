@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ItemGroupShouldBeUniform() : MsBuildProjectFileAnalyzer(Rule.ItemGroupShouldBeUniform)
@@ -18,7 +18,7 @@ public sealed class ItemGroupShouldBeUniform() : MsBuildProjectFileAnalyzer(Rule
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var group in context.Project.ItemGroups)
+        foreach (var group in context.File.ItemGroups)
         {
             AnalyzeGroup(context, group);
         }

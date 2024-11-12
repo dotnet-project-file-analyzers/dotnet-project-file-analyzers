@@ -1,8 +1,7 @@
-﻿#pragma warning disable CA2231 // Overload operator equals on overriding value type Equals
+#pragma warning disable CA2231 // Overload operator equals on overriding value type Equals
 #pragma warning disable S1210 // "Equals" and the comparison operators should be overridden when implementing "IComparable"
 
 using System.ComponentModel;
-using System.Diagnostics.Contracts;
 using System.IO;
 
 namespace DotNetProjectFile.IO;
@@ -52,6 +51,17 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
         catch
         {
             return null;
+        }
+    }
+
+    public IEnumerable<IODirectory> AncestorsAndSelf()
+    {
+        var current = this;
+
+        while (current.HasValue)
+        {
+            yield return current;
+            current = current.Parent;
         }
     }
 
@@ -118,11 +128,11 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
             }
             else if (part == "**")
             {
-                enumerator = enumerator.SelectMany(d => d.EnumerateDirectories("*", SearchOption.AllDirectories));
+                enumerator = enumerator.Concat(enumerator.SelectMany(d => d.EnumerateDirectories("*", SearchOption.AllDirectories)));
             }
             else
             {
-                enumerator = enumerator.SelectMany(d => d.EnumerateDirectories(part, SearchOption.TopDirectoryOnly));
+                enumerator = enumerator.Concat(enumerator.SelectMany(d => d.EnumerateDirectories(part, SearchOption.TopDirectoryOnly)));
             }
         }
         return enumerator

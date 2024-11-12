@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Use_Version_only_without_CPM;
+namespace Rules.MS_Build.Use_Version_only_without_CPM;
 
 public class Reports
 {

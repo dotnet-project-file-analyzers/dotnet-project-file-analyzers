@@ -1,9 +1,9 @@
-﻿namespace Rules.MS_Build.NuGet_packages.Define_package_info;
+namespace Rules.MS_Build.NuGet_packages.Define_package_info;
 
-public class Reports
+public class Reports_on_missing
 {
     [Test]
-    public void on_none()
+    public void information_provided()
        => new DefinePackageInfo()
        .ForProject("NoPackageInfo.cs")
        .HasIssues(
@@ -19,91 +19,99 @@ public class Reports
            new Issue("Proj0210", "Define the <PackageLicenseExpression> or <PackageLicenseFile> node explicitly or define the <IsPackable> node with value 'false'."),
            new Issue("Proj0212", "Define the <PackageIcon> node explicitly or define the <IsPackable> node with value 'false'."),
            new Issue("Proj0213", "Define the <PackageIconUrl> node explicitly or define the <IsPackable> node with value 'false'."),
-           new Issue("Proj0214", "Define the <PackageId> node explicitly or define the <IsPackable> node with value 'false'."));
+           new Issue("Proj0214", "Define the <PackageId> node explicitly or define the <IsPackable> node with value 'false'."),
+           new Issue("Proj0216", "Define the <ProductName> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
-    public void on_no_version()
+    public void version()
        => new DefinePackageInfo()
        .ForProject("NoVersion.cs")
        .HasIssue(
            new Issue("Proj0201", "Define the <Version> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
-    public void on_no_description()
+    public void description()
        => new DefinePackageInfo()
        .ForProject("NoDescription.cs")
        .HasIssue(
            new Issue("Proj0202", "Define the <Description> or <PackageDescription> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
-    public void on_no_authors()
+    public void authors()
        => new DefinePackageInfo()
        .ForProject("NoAuthors.cs")
        .HasIssue(
            new Issue("Proj0203", "Define the <Authors> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
-    public void on_no_tags()
+    public void tags()
        => new DefinePackageInfo()
        .ForProject("NoTags.cs")
        .HasIssue(
            new Issue("Proj0204", "Define the <PackageTags> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
-    public void on_no_repository_url()
+    public void repository_url()
        => new DefinePackageInfo()
        .ForProject("NoRepositoryUrl.cs")
        .HasIssue(
            new Issue("Proj0205", "Define the <RepositoryUrl> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
-    public void on_no_url()
+    public void url()
        => new DefinePackageInfo()
        .ForProject("NoUrl.cs")
        .HasIssue(
            new Issue("Proj0206", "Define the <PackageProjectUrl> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
-    public void on_no_copyright()
+    public void copyright()
        => new DefinePackageInfo()
        .ForProject("NoCopyright.cs")
        .HasIssue(
            new Issue("Proj0207", "Define the <Copyright> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
-    public void on_no_release_notes()
+    public void release_notes()
        => new DefinePackageInfo()
        .ForProject("NoReleaseNotes.cs")
        .HasIssue(
            new Issue("Proj0208", "Define the <PackageReleaseNotes> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
-    public void on_no_readme()
+    public void readme()
        => new DefinePackageInfo()
        .ForProject("NoReadme.cs")
        .HasIssue(
            new Issue("Proj0209", "Define the <PackageReadmeFile> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
-    public void on_no_license()
+    public void license()
        => new DefinePackageInfo()
        .ForProject("NoLicense.cs")
        .HasIssue(
            new Issue("Proj0210", "Define the <PackageLicenseExpression> or <PackageLicenseFile> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
-    public void on_no_icon()
+    public void icon()
        => new DefinePackageInfo()
        .ForProject("NoIcon.cs")
        .HasIssue(
            new Issue("Proj0212", "Define the <PackageIcon> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
-    public void on_no_icon_url()
+    public void icon_url()
        => new DefinePackageInfo()
        .ForProject("NoIconUrl.cs")
        .HasIssue(
            new Issue("Proj0213", "Define the <PackageIconUrl> node explicitly or define the <IsPackable> node with value 'false'."));
+
+    [Test]
+    public void product_name()
+      => new DefinePackageInfo()
+      .ForProject("NoProductName.cs")
+      .HasIssue(
+          new Issue("Proj0216", "Define the <ProductName> node explicitly or define the <IsPackable> node with value 'false'."));
 }
 
 public class Guards

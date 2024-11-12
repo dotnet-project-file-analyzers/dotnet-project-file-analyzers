@@ -1,11 +1,11 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class OrderPackageVersionsAlphabetically() : MsBuildProjectFileAnalyzer(Rule.OrderPackageVersionsAlphabetically)
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var references in context.Project.ItemGroups.Select(g => g.PackageVersions))
+        foreach (var references in context.File.ItemGroups.Select(g => g.PackageVersions))
         {
             AnalyzeGroup(context, references);
         }

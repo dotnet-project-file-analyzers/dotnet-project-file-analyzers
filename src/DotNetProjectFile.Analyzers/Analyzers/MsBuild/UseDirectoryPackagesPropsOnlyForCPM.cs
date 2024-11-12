@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseDirectoryPackagesPropsOnlyForCPM()
@@ -8,7 +8,7 @@ public sealed class UseDirectoryPackagesPropsOnlyForCPM()
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        Walk(context.Project);
+        Walk(context.File);
 
         void Walk(Node node)
         {

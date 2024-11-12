@@ -30,6 +30,9 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0026** Remove IncludeAssets when redundant](https://dotnet-project-file-analyzers.github.io/rules/Proj0026.html)
 * [**Proj0027** Override &lt;TargetFrameworks&gt; with &lt;TargetFrameworks&gt;](https://dotnet-project-file-analyzers.github.io/rules/Proj0027.html)
 * [**Proj0028** Define conditions on level 1](https://dotnet-project-file-analyzers.github.io/rules/Proj0028.html)
+* [**Proj0029** Use C# specific properties only when applicable](https://dotnet-project-file-analyzers.github.io/rules/Proj0029.html)
+* [**Proj0030** Use VB.NET specific properties only when applicable](https://dotnet-project-file-analyzers.github.io/rules/Proj0030.html)
+* [**Proj0031** Adopt preferred casing of nodes](https://dotnet-project-file-analyzers.github.io/rules/Proj0031.html)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)
@@ -48,6 +51,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0213** Define the project icon URL explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0213.html)
 * [**Proj0214** Define the NuGet project ID explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0214.html)
 * [**Proj0215** Provide a compliant NuGet package icon](https://dotnet-project-file-analyzers.github.io/rules/Proj0215.html)
+* [**Proj0216** Define the product name ID explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0216.html)
 * [**Proj0240** Enable package validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0240.html)
 * [**Proj0241** Enable package baseline validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0241.html)
 * [**Proj0242** Generate NuGet packages conditionally](https://dotnet-project-file-analyzers.github.io/rules/Proj0242.html)
@@ -94,4 +98,8 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj2002** Sort resource file values alphabetically](https://dotnet-project-file-analyzers.github.io/rules/Proj2002.html)
 * [**Proj2003** Add invariant fallback resources](https://dotnet-project-file-analyzers.github.io/rules/Proj2003.html)
 * [**Proj2004** Add invariant fallback values](https://dotnet-project-file-analyzers.github.io/rules/Proj2004.html)
+* [**Proj2005** Escape XML nodes of resource values](https://dotnet-project-file-analyzers.github.io/rules/Proj2005.html)
 * [**Proj2100** Indent RESX](https://dotnet-project-file-analyzers.github.io/rules/Proj2100.html)
+
+## Generic
+* [**Proj3000** Only use UTF-8 without BOM](https://dotnet-project-file-analyzers.github.io/rules/Proj3000.html)

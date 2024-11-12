@@ -1,11 +1,11 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class DefineConditionsOnLevel1() : MsBuildProjectFileAnalyzer(Rule.DefineConditionsOnLevel1)
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var node in context.Project
+        foreach (var node in context.File
             .DescendantsAndSelf()
             .Where(IsConditionalOnLevel2OrHighger))
         {

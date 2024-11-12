@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile;
+using DotNetProjectFile;
 using DotNetProjectFile.Diagnostics;
 
 namespace Rules.MS_Build.Choose_specs;
@@ -25,11 +25,11 @@ public class Project_contains
 
         protected override void Register(ProjectFileAnalysisContext context)
         {
-            foreach (var prop in context.Project.PropertyGroups.SelectMany(p => p.Children))
+            foreach (var prop in context.File.PropertyGroups.SelectMany(p => p.Children))
             {
                 context.ReportDiagnostic(Descriptor, prop, prop.LocalName);
             }
-            foreach (var prop in context.Project.ItemGroups.SelectMany(p => p.Children))
+            foreach (var prop in context.File.ItemGroups.SelectMany(p => p.Children))
             {
                 context.ReportDiagnostic(Descriptor, prop, prop.LocalName);
             }

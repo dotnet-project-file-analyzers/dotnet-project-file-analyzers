@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Define_single_target_framework;
+namespace Rules.MS_Build.Define_single_target_framework;
 
 public class Reports
 {

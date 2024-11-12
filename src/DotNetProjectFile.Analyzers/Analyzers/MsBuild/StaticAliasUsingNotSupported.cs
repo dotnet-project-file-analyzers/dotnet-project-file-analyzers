@@ -1,11 +1,11 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class StaticAliasUsingNotSupported() : MsBuildProjectFileAnalyzer(Rule.StaticAliasUsingNotSupported)
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var directive in context.Project.ItemGroups
+        foreach (var directive in context.File.ItemGroups
             .SelectMany(g => g.Usings)
             .Where(u => u.Type == UsingType.StaticAlias))
         {

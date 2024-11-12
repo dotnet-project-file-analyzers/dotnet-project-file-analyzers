@@ -1,10 +1,15 @@
-﻿CDATA
+BOM
+CDATA
 CPM
 fallback
+INI
 MOQ
+nullable
+pragma
 pragmas
 README
 ruleset
 RESX
 TFM
 usings
+VBC

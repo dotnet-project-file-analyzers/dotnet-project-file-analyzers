@@ -1,4 +1,4 @@
-﻿using BenchmarkDotNet.Running;
+using BenchmarkDotNet.Running;
 
 namespace Benchmarks;
 
@@ -6,6 +6,6 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        BenchmarkRunner.Run<RunAll>();
+        BenchmarkRunner.Run<GitIgnoreFile>();
     }
 }

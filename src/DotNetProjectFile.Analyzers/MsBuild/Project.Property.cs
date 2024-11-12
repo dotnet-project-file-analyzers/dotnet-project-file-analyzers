@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.Navigation;
+using DotNetProjectFile.Navigation;
 
 namespace DotNetProjectFile.MsBuild;
 
@@ -45,7 +45,7 @@ public sealed partial class Project
         .FirstOrDefault();
 
     /// <remarks>
-    /// Walk in reversed order true the nodes.
+    /// Walk in reversed order trough the nodes.
     /// Skip ItemGroups as they can not contain properties.
     /// </remarks>
     private static TNode? Read<TNode>(Node node, ProjectTrace trace) where TNode : Node

@@ -1,5 +1,3 @@
-﻿using System.Diagnostics.Contracts;
-
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
@@ -7,7 +5,7 @@ public sealed class BuildActionsShouldHaveSingleTask() : MsBuildProjectFileAnaly
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var node in context.Project.ItemGroups
+        foreach (var node in context.File.ItemGroups
             .SelectMany(group => group.BuildActions)
             .Where(HasMutlpleTasks))
         {

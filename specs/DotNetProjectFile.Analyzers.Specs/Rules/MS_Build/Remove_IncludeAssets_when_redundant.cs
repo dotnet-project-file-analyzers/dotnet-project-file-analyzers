@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Remove_IncludeAssets_when_redundant;
+namespace Rules.MS_Build.Remove_IncludeAssets_when_redundant;
 
 public class Reports
 {

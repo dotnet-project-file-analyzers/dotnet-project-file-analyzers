@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.MsBuild;
 
 public static class ProjectFileTypes
 {
@@ -10,6 +10,12 @@ public static class ProjectFileTypes
     [
         ProjectFileType.ProjectFile,
         ProjectFileType.Props
+    ];
+
+    public static readonly IReadOnlyCollection<ProjectFileType> ProjectFile_DirectoryBuild =
+    [
+        ProjectFileType.ProjectFile,
+        ProjectFileType.DirectoryBuild
     ];
 
     public static readonly IReadOnlyCollection<ProjectFileType> ProjectFile_DirectoryPackages =

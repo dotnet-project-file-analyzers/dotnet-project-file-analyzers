@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Order_using_directives_in_alphabetical_order;
+namespace Rules.MS_Build.Order_using_directives_in_alphabetical_order;
 
 public class Reports
 {

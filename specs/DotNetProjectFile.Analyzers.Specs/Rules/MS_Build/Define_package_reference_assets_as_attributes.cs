@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Define_package_reference_assets_as_attributes;
+namespace Rules.MS_Build.Define_package_reference_assets_as_attributes;
 
 public class Reports
 {

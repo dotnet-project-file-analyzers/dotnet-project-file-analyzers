@@ -1,0 +1,30 @@
+using Microsoft.CodeAnalysis.Text;
+
+namespace DotNetProjectFile.Syntax;
+
+/// <summary>Represents a syntax token.</summary>
+[DebuggerDisplay("{DebuggerDisplay}")]
+public readonly struct SourceSpanToken(SourceSpan sourceSpan, string? kind = null)
+{
+    /// <summary>The (selected) source span.</summary>
+    public readonly SourceSpan SourceSpan = sourceSpan;
+
+    /// <summary>The token kind.</summary>
+    public readonly string? Kind = kind;
+
+    /// <summary>The span of the token.</summary>
+    public TextSpan Span => SourceSpan.Span;
+
+    /// <summary>The text of the token.</summary>
+    public string Text => SourceSpan.Text;
+
+    /// <inheritdoc />
+    [Pure]
+    public override string ToString() => Text;
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private string DebuggerDisplay
+        => Kind is { Length: > 0 }
+        ? $"{Span} {Text}, {Kind}"
+        : $"{Span} {Text}";
+}

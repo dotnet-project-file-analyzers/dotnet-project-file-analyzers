@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class DefineIsPackable() : MsBuildProjectFileAnalyzer(Rule.DefineIsPackable)
@@ -7,10 +7,10 @@ public sealed class DefineIsPackable() : MsBuildProjectFileAnalyzer(Rule.DefineI
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.Project.IsTestProject() &&
-            context.Project.Property<IsPackable>() is null)
+        if (!context.File.IsTestProject() &&
+            context.File.Property<IsPackable>() is null)
         {
-            context.ReportDiagnostic(Descriptor, context.Project);
+            context.ReportDiagnostic(Descriptor, context.File);
         }
     }
 }

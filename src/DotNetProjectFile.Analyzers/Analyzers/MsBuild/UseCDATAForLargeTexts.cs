@@ -1,11 +1,11 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseCDATAForLargeTexts() : MsBuildProjectFileAnalyzer(Rule.UseCDATAForLargeTexts)
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        Walk(context.Project);
+        Walk(context.File);
 
         void Walk(Node node)
         {

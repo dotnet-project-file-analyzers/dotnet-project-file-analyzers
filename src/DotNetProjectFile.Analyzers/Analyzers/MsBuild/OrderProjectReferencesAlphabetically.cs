@@ -1,4 +1,4 @@
-﻿using ProjectReference = DotNetProjectFile.MsBuild.ProjectReference;
+using ProjectReference = DotNetProjectFile.MsBuild.ProjectReference;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
@@ -7,7 +7,7 @@ public sealed class OrderProjectReferencesAlphabetically() : MsBuildProjectFileA
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var references in context.Project.ItemGroups.Select(g => g.ProjectReferences))
+        foreach (var references in context.File.ItemGroups.Select(g => g.ProjectReferences))
         {
             AnalyzeGroup(context, references);
         }

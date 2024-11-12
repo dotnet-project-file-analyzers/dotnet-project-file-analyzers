@@ -1,4 +1,4 @@
-﻿namespace Microsoft.CodeAnalysis.Text;
+namespace Microsoft.CodeAnalysis.Text;
 
 public static class TextSpanExtensions
 {

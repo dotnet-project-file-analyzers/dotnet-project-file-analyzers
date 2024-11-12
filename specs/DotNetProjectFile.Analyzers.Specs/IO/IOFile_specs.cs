@@ -1,4 +1,4 @@
-﻿using DotNetProjectFile.IO;
+using DotNetProjectFile.IO;
 
 namespace IO_specs;
 

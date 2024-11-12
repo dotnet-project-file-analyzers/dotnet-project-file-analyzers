@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Order_using_directives_by_type;
+namespace Rules.MS_Build.Order_using_directives_by_type;
 
 public class Reports
 {

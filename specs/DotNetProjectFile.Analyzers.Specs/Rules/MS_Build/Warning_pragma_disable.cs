@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Warning_pragma_disable;
+namespace Rules.MS_Build.Warning_pragma_disable;
 
 public class Guard
 {

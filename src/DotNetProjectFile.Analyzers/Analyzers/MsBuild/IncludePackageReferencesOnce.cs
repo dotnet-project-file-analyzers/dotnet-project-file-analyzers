@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class IncludePackageReferencesOnce() : MsBuildProjectFileAnalyzer(Rule.IncludePackageReferencesOnce)
@@ -7,7 +7,7 @@ public sealed class IncludePackageReferencesOnce() : MsBuildProjectFileAnalyzer(
     {
         var references = new Dictionary<Reference, PackageReference>();
 
-        foreach (var reference in context.Project
+        foreach (var reference in context.File
             .Walk()
             .OfType<PackageReference>()
             .Where(p => p.Include is { Length: > 0 }))

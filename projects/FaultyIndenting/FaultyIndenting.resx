@@ -20,4 +20,13 @@
 
 We should preserve what we've got.</value>
   </data>
+  <data name="Unescaped" xml:space="preserve">
+    <value>This can contain <b>test</b> nodes. </value>
+  </data>
+  <data name="CDATA" xml:space="preserve">
+    <value><![CDATA[
+This can contain <br /> nodes. 
+]]>
+    </value>
+  </data>
 </root>

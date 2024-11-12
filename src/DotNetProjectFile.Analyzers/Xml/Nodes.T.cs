@@ -1,5 +1,3 @@
-﻿using System.Diagnostics.Contracts;
-
 namespace DotNetProjectFile.Xml;
 
 /// <summary>A read-only list of nodes.</summary>

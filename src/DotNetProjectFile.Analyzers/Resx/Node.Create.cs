@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Resx;
+namespace DotNetProjectFile.Resx;
 
 public partial class Node
 {

@@ -1,4 +1,4 @@
-﻿namespace Rules.MS_Build.Define_is_publishable;
+namespace Rules.MS_Build.Define_is_publishable;
 
 public class Reports
 {

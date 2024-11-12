@@ -1,11 +1,11 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseForwardSlashesInPaths() : MsBuildProjectFileAnalyzer(Rule.UseForwardSlashesInPaths)
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var prop in context.Project
+        foreach (var prop in context.File
             .DescendantsAndSelf()
             .SelectMany(AsProps)
             .Where(WithBackSlash))

@@ -1,5 +1,3 @@
-﻿using DotNetProjectFile.MsBuild;
-
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
@@ -9,14 +7,14 @@ public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(R
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.Project.IsPackable() || context.Project.IsTestProject()) return;
+        if (!context.File.IsPackable() || context.File.IsTestProject()) return;
 
-        foreach (var icon in context.Project
+        foreach (var icon in context.File
             .Walk()
             .OfType<PackageIcon>()
             .Where(i => i.Value is { Length: > 0 }))
         {
-            var info = Resolve(icon.Value!, context.Project);
+            var info = Resolve(icon.Value!, context.File);
 
             if (info is null)
             {

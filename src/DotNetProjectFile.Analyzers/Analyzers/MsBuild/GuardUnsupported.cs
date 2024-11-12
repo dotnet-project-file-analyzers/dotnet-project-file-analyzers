@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Analyzers.MsBuild;
+namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class GuardUnsupported() : MsBuildProjectFileAnalyzer(
@@ -10,7 +10,7 @@ public sealed class GuardUnsupported() : MsBuildProjectFileAnalyzer(
 
     private static void Locate(CompilationAnalysisContext context)
     {
-        if (Projects.Init(context).EntryPoint(context) is not { } project)
+        if (ProjectFiles.Global.UpdateMsBuildProject(context) is not { } project)
         {
             context.ReportDiagnostic(
                 Diagnostic.Create(
@@ -18,9 +18,9 @@ public sealed class GuardUnsupported() : MsBuildProjectFileAnalyzer(
                     Location.None,
                     context.Compilation.SourceModule.ContainingAssembly.Name));
         }
-        else if (project.Element.Name.Namespace is { } ns && !string.IsNullOrEmpty(ns.NamespaceName))
+        else if (project.IsLegacy)
         {
-            context.ReportDiagnostic(Diagnostic.Create(Rule.UpdateLegacyProjects, project.Location));
+            context.ReportDiagnostic(Diagnostic.Create(Rule.UpdateLegacyProjects, project.GetLocation(project.Positions.FullSpan)));
         }
     }
 
