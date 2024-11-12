@@ -27,6 +27,12 @@ public sealed partial class Project : Node, ProjectFile
         .OfType<MsBuildProject>()
         .FirstOrDefault();
 
+    public MsBuildProject? DirectoryBuildTargets => Path.Directory
+       .AncestorsAndSelf()
+       .Select(dir => ProjectFiles.MsBuildProject(dir.File("Directory.Build.targets")))
+       .OfType<MsBuildProject>()
+       .FirstOrDefault();
+
     public MsBuildProject? DirectoryPackagesProps => Path.Directory
         .AncestorsAndSelf()
         .Select(dir => ProjectFiles.MsBuildProject(dir.File("Directory.Packages.props")))
@@ -45,7 +51,8 @@ public sealed partial class Project : Node, ProjectFile
     {
         _ when Path.Extension.IsMatch(".csproj")
             || Path.Extension.IsMatch(".vbproj") => ProjectFileType.ProjectFile,
-        _ when Path.Name.IsMatch("Directory.Build.props") => ProjectFileType.DirectoryBuild,
+        _ when Path.Name.IsMatch("Directory.Build.props")
+            || Path.Name.IsMatch("Directory.Build.targets") => ProjectFileType.DirectoryBuild,
         _ when Path.Name.IsMatch("Directory.Packages.props") => ProjectFileType.DirectoryPackages,
         _ => ProjectFileType.Props,
     };
@@ -77,21 +84,26 @@ public sealed partial class Project : Node, ProjectFile
     public IEnumerable<Project> ImportsAndSelf()
         => Walk().OfType<Project>().Distinct();
 
-    /// <summary>Gets self, Directory.Packages.props, and Directory.Build.props).</summary>
+    /// <summary>Gets Directory.Build.targets, self, Directory.Packages.props, and Directory.Build.props).</summary>
     /// <remarks>
     /// If the *.props are null, or higher in the type hierarchy they are skipped.
     /// </remarks>
     private IEnumerable<Project> SelfAndDirectoryProps()
     {
+        if (DirectoryBuildTargets is { } targets && FileType < ProjectFileType.DirectoryBuild)
+        {
+            yield return targets;
+        }
+
         yield return this;
 
         if (DirectoryPackagesProps is { } pack && FileType < ProjectFileType.DirectoryPackages)
         {
             yield return pack;
         }
-        if (DirectoryBuildProps is { } build && FileType < ProjectFileType.DirectoryBuild)
+        if (DirectoryBuildProps is { } props && FileType < ProjectFileType.DirectoryBuild)
         {
-            yield return build;
+            yield return props;
         }
     }
 

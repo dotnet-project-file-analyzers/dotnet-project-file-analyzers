@@ -6,11 +6,11 @@ namespace Rules.MS_Build.Directory_Build_props_specs;
 public class Project_relies_on
 {
     [Test]
-    public void Directory_Build_props()
-        => new NodeReporter()
+    public void Directory_Build_props_and_targets() => new NodeReporter()
         .ForProject("WithDirectoryBuildProps.cs")
-        .HasIssue(
-            new Issue("Proj9999", "Found Directory.Build.props."));
+        .HasIssues(
+            new Issue("Proj9999", "Found Directory.Build.props."),
+            new Issue("Proj9999", "Found Directory.Build.targets."));
     
     [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
     private sealed class NodeReporter : MsBuildProjectFileAnalyzer
@@ -23,6 +23,10 @@ public class Project_relies_on
             if (context.File.DirectoryBuildProps is { } prop)
             {
                 context.ReportDiagnostic(Descriptor, prop, prop.Path.Name);
+            }
+            if (context.File.DirectoryBuildTargets is { } target)
+            {
+                context.ReportDiagnostic(Descriptor, target, target.Path.Name);
             }
         }
     }
