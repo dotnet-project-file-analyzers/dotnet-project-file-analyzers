@@ -14,14 +14,14 @@ internal sealed class NodeFactory
     {
         CtorArgumentTypes = GetCtorParameterTypes();
         CtorArgumentExpressions = CtorArgumentTypes.Select(x => Expression.Parameter(x)).ToArray();
-        CaseSensitve = BuildCtorMap();
-        CaseInsensitve = new Dictionary<string, CtorFunc>(CaseSensitve, StringComparer.OrdinalIgnoreCase);
+        CaseSensitive = BuildCtorMap();
+        CaseInsensitive = new Dictionary<string, CtorFunc>(CaseSensitive, StringComparer.OrdinalIgnoreCase);
     }
 
     private readonly Type[] CtorArgumentTypes;
     private readonly ParameterExpression[] CtorArgumentExpressions;
-    private readonly Dictionary<string, CtorFunc> CaseSensitve;
-    private readonly Dictionary<string, CtorFunc> CaseInsensitve;
+    private readonly Dictionary<string, CtorFunc> CaseSensitive;
+    private readonly Dictionary<string, CtorFunc> CaseInsensitive;
 
     [Pure]
     public Node Create(XElement element, Node parent, MsBuildProject project)
@@ -32,8 +32,8 @@ internal sealed class NodeFactory
     [Pure]
     private Dictionary<string, CtorFunc> Lookup(XElement element)
         => element.Depth() >= 2
-        ? CaseInsensitve
-        : CaseSensitve;
+        ? CaseInsensitive
+        : CaseSensitive;
 
     [Pure]
     private static Type[] GetCtorParameterTypes()
