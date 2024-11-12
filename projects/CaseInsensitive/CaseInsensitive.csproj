@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="..\props\simple.props" />
+  <Import Project="../props/simple.props" />
   
   <PropertyGroup>
     <TARGETFRAMEWORK>net8.0</TARGETFRAMEWORK>
