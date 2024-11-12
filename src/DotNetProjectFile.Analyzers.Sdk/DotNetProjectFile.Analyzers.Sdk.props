@@ -1,6 +1,8 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <PropertyGroup>
+    <!-- The TargetFramework may be overridden, but has a fine default. -->
+    <TargetFramework>net8.0</TargetFramework>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <NuGetAudit>true</NuGetAudit>
     <IsPackable>false</IsPackable>
@@ -9,19 +11,17 @@
     <OutputType>library</OutputType>
   </PropertyGroup>
 
+  <!-- We do not want to enable default items here -->
+  <PropertyGroup>
+    <EnableDefaultItems>false</EnableDefaultItems>
+  </PropertyGroup>
+
+
   <!-- The bin is just noise here, so move it a temp location -->
   <PropertyGroup>
     <OutputPath>$([System.IO.Path]::GetTempPath())/.net/bin</OutputPath>
     <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj</IntermediateOutputPath>
   </PropertyGroup>
-  
-  <!-- We should start with an empty project -->
-  <ItemGroup>
-    <Compile Remove="**/*" />
-    <Content Remove="**/*" />
-    <EmbeddedResource Remove="**/*" />
-    <None Remove="**/*" />
-  </ItemGroup>
 
   <ItemGroup>
     <AdditionalFiles Include=".*config" />
@@ -32,6 +32,7 @@
     <AdditionalFiles Include="*.md" />
     <AdditionalFiles Include="*.txt" />
     <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
+    <AdditionalFiles Include="Build.*" />
   </ItemGroup>
 
   <ItemGroup>

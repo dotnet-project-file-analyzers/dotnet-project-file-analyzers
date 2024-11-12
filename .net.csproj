@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="src/DotNetProjectFile.Analyzers.Sdk/Directory.Build.props" />
+  <Import Project="src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.props" />
 
   <ItemGroup Label="Directories">
     <None Include="design/**" />
@@ -12,6 +12,6 @@
     <None Include="dictionary.dic" />
   </ItemGroup>
 
-  <Import Project="src/DotNetProjectFile.Analyzers.Sdk/Directory.Build.targets" />
+  <Import Project="src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.targets" />
   
 </Project>

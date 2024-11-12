@@ -1,15 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <OutputType>Library</OutputType>
     <IsPackable>true</IsPackable>
     <IsPublishable>false</IsPublishable>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
-    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
     <DevelopmentDependency>true</DevelopmentDependency>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -17,17 +18,18 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Package settings">
-    <RepositoryType>git</RepositoryType>
+    <!--<NuspecFile>DotNetProjectFile.Analyzers.Sdk.nuspec</NuspecFile>-->
     <PackageId>DotNetProjectFile.Analyzers.Sdk</PackageId>
+    <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
-    <Description>.NET project file analyzers</Description>
-    <PackageTags>Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.0.0</Version>
+    <Description>.NET project file analyzers SDK</Description>
+    <PackageTags>SDK;Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
+    <Version>1.4.7-rc0004</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
-v1.0.0
+v1.4.7
 - Support .net project to contain shared files that can be analyzed.
 ]]>
     </PackageReleaseNotes>
@@ -37,9 +39,9 @@ v1.0.0
   </PropertyGroup>
 
   <ItemGroup Label="Package files">
+    <None Include="DotNetProjectFile.Analyzers.Sdk.props" Pack="true" PackagePath="/build/" />
+    <None Include="DotNetProjectFile.Analyzers.Sdk.targets" Pack="true" PackagePath="/build/" />
     <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
-    <None Include="Directory.Build.props" Pack="true" PackagePath="/" />
-    <None Include="Directory.Build.targets" Pack="true" PackagePath="/" />
     <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
