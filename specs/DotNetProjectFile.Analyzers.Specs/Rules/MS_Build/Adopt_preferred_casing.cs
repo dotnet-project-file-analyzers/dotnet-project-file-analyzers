@@ -6,9 +6,9 @@ public class Reports
     public void on_alternative_casing() => new AdoptPreferredCasing()
         .ForProject("CaseInsensitive.cs")
         .HasIssues(
-            new Issue("Proj0031", "The node <TARGETFRAMEWORK> is has a different casing than the preferred one <TargetFramework>."/*...*/).WithSpan(05, 04, 05, 45),
-            new Issue("Proj0031", "The node <ComPile> is has a different casing than the preferred one <Compile>."/*...................*/).WithSpan(09, 04, 09, 43),
-            new Issue("Proj0031", "The node <packagereference> is has a different casing than the preferred one <PackageReference>."/*.*/).WithSpan(13, 04, 13, 57));
+            new Issue("Proj0031", "The node <TARGETFRAMEWORK> has a different casing than the preferred one <TargetFramework>."/*...*/).WithSpan(05, 04, 05, 45),
+            new Issue("Proj0031", "The node <ComPile> has a different casing than the preferred one <Compile>."/*...................*/).WithSpan(09, 04, 09, 43),
+            new Issue("Proj0031", "The node <packagereference> has a different casing than the preferred one <PackageReference>."/*.*/).WithSpan(13, 04, 13, 57));
 }
 
 public class Guards
