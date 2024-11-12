@@ -274,6 +274,16 @@ public static class Rule
         tags: ["noise"],
         category: Category.Noise);
 
+    public static DiagnosticDescriptor AdoptPreferredCasing => New(
+        id: 0031,
+        title: "Adopt preferred casing of nodes",
+        message: "The node <{0}> is has a different casing than the preferred one <{1}>.",
+        description:
+            "MS Build is (mostly) case insensitive. To prevent issues, however " +
+            "it is  preferred to use the same casing consistently.",
+        tags: ["clarity", "casing"],
+        category: Category.Clarity);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",

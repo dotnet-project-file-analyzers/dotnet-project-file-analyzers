@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\props\simple.props" />
+  
+  <PropertyGroup>
+    <TARGETFRAMEWORK>net8.0</TARGETFRAMEWORK>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ComPile Include="../common/Code.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <packagereference Include="Qowaiv" Version="7.1.3" />
+  </ItemGroup>
+  
+</Project>
