@@ -277,7 +277,7 @@ public static class Rule
     public static DiagnosticDescriptor AdoptPreferredCasing => New(
         id: 0031,
         title: "Adopt preferred casing of nodes",
-        message: "The node <{0}> is has a different casing than the preferred one <{1}>.",
+        message: "The node <{0}> has a different casing than the preferred one <{1}>.",
         description:
             "MS Build is (mostly) case insensitive. To prevent issues, however " +
             "it is  preferred to use the same casing consistently.",
