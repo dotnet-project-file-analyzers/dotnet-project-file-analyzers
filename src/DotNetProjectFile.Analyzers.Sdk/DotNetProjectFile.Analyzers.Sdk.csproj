@@ -25,11 +25,11 @@
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers SDK</Description>
     <PackageTags>SDK;Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.4.7-rc0005</Version>
+    <Version>1.5.0</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
-v1.4.7
+v1.5.0
 - Support .net project to contain shared files that can be analyzed.
 ]]>
     </PackageReleaseNotes>
