@@ -24,11 +24,20 @@ public static class ProjectFileTypes
         ProjectFileType.DirectoryPackages
     ];
 
+    public static readonly IReadOnlyCollection<ProjectFileType> AllExceptSDK =
+    [
+        ProjectFileType.ProjectFile,
+        ProjectFileType.Props,
+        ProjectFileType.DirectoryBuild,
+        ProjectFileType.DirectoryPackages,
+    ];
+
     public static readonly IReadOnlyCollection<ProjectFileType> All =
     [
         ProjectFileType.ProjectFile,
         ProjectFileType.Props,
         ProjectFileType.DirectoryBuild,
         ProjectFileType.DirectoryPackages,
+        ProjectFileType.SDK,
     ];
 }

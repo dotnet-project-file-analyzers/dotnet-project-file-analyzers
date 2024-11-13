@@ -8,7 +8,7 @@ public abstract class MsBuildProjectFileAnalyzer(
     params DiagnosticDescriptor[] supportedDiagnostics)
     : ProjectFileAnalyzer<MsBuildProject>(primaryDiagnostic, supportedDiagnostics)
 {
-    protected virtual IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.All;
+    public virtual IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.All;
 
     /// <summary>Registers the analyzer for all MS Build projects files.</summary>
     protected override void Register(AnalysisContext context)

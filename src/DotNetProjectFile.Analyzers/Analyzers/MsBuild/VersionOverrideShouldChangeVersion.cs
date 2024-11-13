@@ -4,7 +4,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class VersionOverrideShouldChangeVersion()
     : MsBuildProjectFileAnalyzer(Rule.VersionOverrideShouldChangeVersion)
 {
-    protected override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile_Props;
+    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile_Props;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {

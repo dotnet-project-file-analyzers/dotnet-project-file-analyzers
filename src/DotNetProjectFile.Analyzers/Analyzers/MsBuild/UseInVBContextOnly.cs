@@ -17,7 +17,7 @@ public sealed class UseInVBContextOnly() : MsBuildProjectFileAnalyzer(Rule.UseIn
         typeof(VbcVerbosity),
     ];
 
-    protected override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile_DirectoryBuild;
+    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile_DirectoryBuild;
 
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {

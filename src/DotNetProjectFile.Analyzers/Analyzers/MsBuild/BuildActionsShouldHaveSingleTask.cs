@@ -1,8 +1,11 @@
+
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class BuildActionsShouldHaveSingleTask() : MsBuildProjectFileAnalyzer(Rule.BuildActionsShouldHaveSingleTask)
 {
+    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.AllExceptSDK;
+
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var node in context.File.ItemGroups

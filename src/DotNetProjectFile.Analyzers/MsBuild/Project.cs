@@ -49,6 +49,7 @@ public sealed partial class Project : Node, ProjectFile
 
     public ProjectFileType FileType => Path switch
     {
+        _ when Path.Name.IsMatch(".net.csproj") => ProjectFileType.SDK,
         _ when Path.Extension.IsMatch(".csproj")
             || Path.Extension.IsMatch(".vbproj") => ProjectFileType.ProjectFile,
         _ when Path.Name.IsMatch("Directory.Build.props")
