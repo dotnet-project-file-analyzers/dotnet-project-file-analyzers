@@ -27,6 +27,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+ToBeReleased
+- Automatically add the project file to the additional files does not work.
 v1.4.8
 - Proj0029: Use C# specific properties only when applicable. (NEW RULE)
 - Proj0030: Use VB.NET specific properties only when applicable. (NEW RULE)
@@ -189,7 +191,6 @@ v1.0.0
   </PropertyGroup>
 
   <ItemGroup Label="Package files">
-    <None Include="DotNetProjectFile.Analyzers.props" Pack="true" PackagePath="/build/" />
     <None Update="tools/*.ps1" Pack="true" PackagePath="/" />
     <None Include="$(OutputPath)/DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
     <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
