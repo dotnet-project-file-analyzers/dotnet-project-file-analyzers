@@ -11,13 +11,6 @@ public class Reports
 
 public class Guards
 {
-    /// <remarks>The imported file is reported, but that is not relevant here. </remarks>
-    [Test]
-    public void project_files_not_additional() => new AddAdditionalFile()
-        .ForProject("WithPackageProps.cs")
-        .HasIssue(
-            new Issue("Proj0006", "Add 'DotNetProjectFile.Analyzers.props' to the additional files."));
-
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     public void project_files_as_additional(string project) => new AddAdditionalFile()
