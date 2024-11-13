@@ -39,7 +39,7 @@
 
   <!-- Ensure our analyzers are available -->
   <ItemGroup>
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.5.0" PrivateAssets="all" />
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.4.8" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>
