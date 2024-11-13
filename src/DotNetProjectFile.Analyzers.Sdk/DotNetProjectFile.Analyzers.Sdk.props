@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <!-- The TargetFramework may be overridden, but has a fine default. -->
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
     <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
