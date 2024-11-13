@@ -66,6 +66,9 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0452** Test projects require Microsoft.NET.Test.Sdk](https://dotnet-project-file-analyzers.github.io/rules/Proj0452.html)
 * [**Proj0453** Using Microsoft.NET.Test.Sdk implies a test project](https://dotnet-project-file-analyzers.github.io/rules/Proj0453.html)
 
+## .NET Project File Analyzers SDK
+* [**Proj0700** Proj0700: Avoid defining &lt;Compile&gt; items in SDK project](https://dotnet-project-file-analyzers.github.io/rules/Proj0700.html)
+
 ### Central Package Management
 * [**Proj0800** Configure Central Package Management](https://dotnet-project-file-analyzers.github.io/rules/Proj0800.html)
 * [**Proj0801** Include 'Directory.Packages.props'](https://dotnet-project-file-analyzers.github.io/rules/Proj0801.html)

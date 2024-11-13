@@ -9,8 +9,16 @@ internal static class DiagnosticAnalyzerExtensions
     public static ProjectAnalyzerVerifyContext ForProject(this DiagnosticAnalyzer analyzer, string fileName)
     {
         var name = Path.GetFileNameWithoutExtension(fileName);
-        var file = new FileInfo($"../../../../../projects/{name}/{fileName}proj");
-        return ForTestProject(analyzer, file);
+        var extension = Path.GetExtension(fileName);
+        if (extension == ".sdk")
+        {
+            return analyzer.ForSDkProject(name);
+        }
+        else
+        {
+            var file = new FileInfo($"../../../../../projects/{name}/{fileName}proj");
+            return ForTestProject(analyzer, file);
+        }
     }
 
     [Pure]

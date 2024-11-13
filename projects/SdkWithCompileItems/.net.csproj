@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.props" />
+
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
+  <Import Project="../../src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.targets" />
+  
+</Project>

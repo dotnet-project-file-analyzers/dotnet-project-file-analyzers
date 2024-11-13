@@ -28,6 +28,8 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased
+- Proj0700: Avoid defining <Compile> items in SDK project. (NEW RULE)
+- Support .net.csproj SDK projects.
 - Automatically add the project file to the additional files does not work.
 v1.4.8
 - Proj0029: Use C# specific properties only when applicable. (NEW RULE)
