@@ -14,6 +14,6 @@ jobs:
       with:
         dotnet-version: '8.0.x'
     - name: Build with dotnet
-      run: dotnet build --configuration Release
+      run: dotnet build dotnet-project-file-analyzers.sln --configuration Release
     - name: Run unit tests
-      run: dotnet test --no-build --configuration Release
+      run: dotnet test dotnet-project-file-analyzers.sln --no-build --configuration Release
