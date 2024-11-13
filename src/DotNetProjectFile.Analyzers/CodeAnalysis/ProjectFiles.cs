@@ -38,6 +38,14 @@ public sealed partial class ProjectFiles
 
         var file = name + extension;
 
+        // If it is amongst the additional files, do not look further.
+        if (context.Options.AdditionalFiles
+            .Select(a => IOFile.Parse(a.Path))
+            .FirstOrDefault(f => f.Name.IsMatch(file)) is { HasValue: true } additional)
+        {
+            return MsBuildProject(additional);
+        }
+
         return context.Compilation?.Assembly?.Locations
             .Select(l => IOFile.Parse(l.SourceTree?.FilePath))
             .Where(file => file.HasValue)
