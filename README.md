@@ -31,6 +31,10 @@ dotnet package add DotNetProjectFile.Analyzers
 How to change the configuration of the rules can be found [here](general/configuration.md).
 To configure (the severity) of the rules provided
 
+## Sdk
+.NET Project File Analyzers ships with its own SDK. This allows files shared by
+multiple projects to be analyzed. More info can be found [here](general/sdk.md).
+
 ## GitHub repository
 The source code can be found at GitHub: [github.com/dotnet-project-file-analyzers](https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers).
 
