@@ -10,6 +10,7 @@ public sealed class UseInCSharpContextOnly() : MsBuildProjectFileAnalyzer(Rule.U
         typeof(DotNetProjectFile.MsBuild.CSharp.Nullable),
     ];
 
+    /// <inheritdoc />
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile_DirectoryBuild;
 
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)

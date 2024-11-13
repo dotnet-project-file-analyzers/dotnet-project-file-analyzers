@@ -8,6 +8,12 @@ public abstract class MsBuildProjectFileAnalyzer(
     params DiagnosticDescriptor[] supportedDiagnostics)
     : ProjectFileAnalyzer<MsBuildProject>(primaryDiagnostic, supportedDiagnostics)
 {
+    /// <summary>
+    /// Defines to which <see cref="ProjectFileType"/>s the rule is applicable.
+    /// </summary>
+    /// <remarks>
+    /// Default is <see cref="ProjectFileTypes.All"/>.
+    /// </remarks>
     public virtual IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.All;
 
     /// <summary>Registers the analyzer for all MS Build projects files.</summary>
