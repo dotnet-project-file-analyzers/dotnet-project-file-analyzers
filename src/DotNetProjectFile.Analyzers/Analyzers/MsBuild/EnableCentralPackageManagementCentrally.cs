@@ -4,7 +4,8 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class EnableCentralPackageManagementCentrally()
     : MsBuildProjectFileAnalyzer(Rule.EnableCentralPackageManagementCentrally)
 {
-    protected override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    /// <inheritdoc />
+    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
