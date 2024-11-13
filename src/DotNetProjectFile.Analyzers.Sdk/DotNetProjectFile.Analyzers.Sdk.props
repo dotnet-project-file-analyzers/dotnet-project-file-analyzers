@@ -3,12 +3,9 @@
   <PropertyGroup>
     <!-- The TargetFramework may be overridden, but has a fine default. -->
     <TargetFramework>net8.0</TargetFramework>
-    <EnableNETAnalyzers>true</EnableNETAnalyzers>
-    <NuGetAudit>true</NuGetAudit>
     <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
     <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
-    <OutputType>library</OutputType>
   </PropertyGroup>
 
   <!-- We do not want to enable default items here -->
@@ -41,7 +38,7 @@
 
   <!-- Ensure our analyzers are available -->
   <ItemGroup>
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.4.7" PrivateAssets="all" />
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.4.8" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>
