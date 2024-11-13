@@ -12,4 +12,5 @@ public enum Category
     Reliability,
     Obsolete,
     Security,
+    SDK,
 }
