@@ -28,9 +28,10 @@
     <AdditionalFiles Include="*.config" />
     <AdditionalFiles Include="*.ini" />
     <AdditionalFiles Include="*.md" />
+    <AdditionalFiles Include="*.props" />
+    <AdditionalFiles Include="*.targets" />
     <AdditionalFiles Include="*.txt" />
     <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
-    <AdditionalFiles Include="Build.*" />
   </ItemGroup>
 
   <ItemGroup>

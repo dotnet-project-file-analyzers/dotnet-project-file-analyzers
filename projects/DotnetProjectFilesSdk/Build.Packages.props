@@ -1,0 +1,11 @@
+<Project>
+
+ <PropertyGroup>
+   <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+ </PropertyGroup>
+
+  <ItemGroup>
+    <PackageVersion Include="Qowaiv" Version="7.1.3" />
+  </ItemGroup>
+ 
+</Project>

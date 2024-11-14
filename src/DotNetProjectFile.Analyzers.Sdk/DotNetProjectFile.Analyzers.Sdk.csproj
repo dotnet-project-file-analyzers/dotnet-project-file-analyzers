@@ -18,7 +18,6 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Package settings">
-    <!--<NuspecFile>DotNetProjectFile.Analyzers.Sdk.nuspec</NuspecFile>-->
     <PackageId>DotNetProjectFile.Analyzers.Sdk</PackageId>
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</PackageProjectUrl>
