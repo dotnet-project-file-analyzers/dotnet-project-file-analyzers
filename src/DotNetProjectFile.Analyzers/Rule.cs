@@ -585,6 +585,16 @@ public static class Rule
         tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration);
 
+    public static DiagnosticDescriptor AvoidCompileItemInSdk => New(
+        id: 0700,
+        title: "Avoid defining <Compile> items in SDK project",
+        message: "The .net.csproj SDK project should not contain <Compile> items.",
+        description:
+            "The .net.csproj SDK project is a placeholder for non-compiling " +
+            "files. Compile items should be avoided.",
+        tags: ["SDK", "NuGet", "package"],
+        category: Category.SDK);
+
     public static DiagnosticDescriptor ConfigureCentralPackageVersionManagement => New(
         id: 0800,
         title: "Configure Central Package Management explicitly",

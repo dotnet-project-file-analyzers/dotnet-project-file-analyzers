@@ -6,4 +6,5 @@ public enum ProjectFileType
     Props,
     DirectoryPackages,
     DirectoryBuild,
+    SDK,
 }
