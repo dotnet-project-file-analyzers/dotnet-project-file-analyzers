@@ -6,6 +6,10 @@
     <Compile Include="../common/Code.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Update="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" />
+  </ItemGroup>
+
   <Import Project="../../src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.targets" />
   
 </Project>
