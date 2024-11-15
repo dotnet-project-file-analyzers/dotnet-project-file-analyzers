@@ -70,6 +70,22 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
     /// <inheritdoc cref="FileInfo.OpenRead()" />
     public FileStream OpenRead() => File().OpenRead();
 
+    /// <summary>Tries <see cref="OpenRead()"/>.</summary>
+    /// <remarks>
+    /// Returns <see cref="Stream.Null"/> if reading fails.
+    /// </remarks>
+    public Stream TryOpenRead()
+    {
+        try
+        {
+            return OpenRead();
+        }
+        catch
+        {
+            return Stream.Null;
+        }
+    }
+
     /// <inheritdoc />
     public int CompareTo(IOFile other) => string.Compare(ToString(), other.ToString(), true);
 
