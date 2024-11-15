@@ -32,7 +32,7 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
     {
         if (!context.File.Path.Exists) { return; }
 
-        using var reader = context.File.Path.OpenRead();
+        using var reader = context.File.Path.TryOpenRead();
 
         var bom = new byte[3];
 
