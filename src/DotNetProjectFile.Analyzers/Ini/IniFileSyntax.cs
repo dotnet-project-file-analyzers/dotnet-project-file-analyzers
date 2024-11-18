@@ -8,6 +8,12 @@ public sealed record IniFileSyntax : IniSyntax
 {
     public SyntaxNodeCollection<SectionSyntax> Sections => new(this);
 
+    public override IEnumerable<Diagnostic> GetDiagnostics() =>
+    [
+        // TODO add unparsed
+        .. Children.SelectMany(c => c.GetDiagnostics()),
+    ];
+
     internal static IniFileSyntax New(Parser parser)
         => Root(parser, init: false) with
         {

@@ -11,12 +11,14 @@ public sealed record SectionSyntax : IniSyntax
     public SyntaxNodeCollection<KeyValuePairSyntax> KeyValuePairs => new(this);
 
     public IEnumerable<KeyValuePair<string, string>> Kvps => KeyValuePairs
-        .Where(kvp => kvp.HasAssign)
+        .Where(kvp => kvp.GetDiagnostics().None())
         .Select(kvp => kvp.Kvp)
         .OfType<KeyValuePair<string, string>>();
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     protected override string DebuggerDisplay => $"Syntax = Section, KVP's = {KeyValuePairs.Count}";
+
+    public override IEnumerable<Diagnostic> GetDiagnostics() => Children.SelectMany(c => c.GetDiagnostics());
 
     public static IniSyntax New(Parser parser)
     {

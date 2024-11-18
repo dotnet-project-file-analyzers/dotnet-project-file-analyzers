@@ -67,7 +67,7 @@ internal sealed class IniGrammar : Grammar
     /// <summary>INI tokens.</summary>
     private sealed class INI : Grammar
     {
-        public static readonly Grammar key = line(@"[^\s:=]+", KeyToken) + KeySyntax.New;
+        public static readonly Grammar key = line(@"[^\s:=#;]+", KeyToken) + KeySyntax.New;
 
         public static readonly Grammar assign = ch('=', EqualsToken) | ch(':', ColonToken);
 
@@ -92,7 +92,7 @@ internal sealed class IniGrammar : Grammar
            & ws
            & INI.assign.Star
            & ws
-           & INI.value.Option
+           & INI.value.Star
            & ws
            & comment.Option)
            + KeyValuePairSyntax.New;

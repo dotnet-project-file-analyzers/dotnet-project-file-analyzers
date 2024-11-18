@@ -2,7 +2,7 @@ using DotNetProjectFile.Parsing;
 
 namespace DotNetProjectFile.Ini;
 
-[DebuggerDisplay("{Key?.Text} = {Value?.Text}")]
+[DebuggerDisplay("FullText}")]
 public sealed record KeyValuePairSyntax : IniSyntax
 {
     public KeySyntax? Key => Children.OfType<KeySyntax>().FirstOrDefault();
@@ -14,7 +14,48 @@ public sealed record KeyValuePairSyntax : IniSyntax
         ? new(key.Text, val.Text)
         : null;
 
-    public bool HasAssign => Tokens.Any(t => t.Kind == TokenKind.EqualsToken || t.Kind == TokenKind.ColonToken);
+    public override IEnumerable<Diagnostic> GetDiagnostics()
+    {
+        var key = 0;
+        var sig = 0;
+        var val = 0;
+
+        foreach (var token in Tokens)
+        {
+            switch (token.Kind)
+            {
+                case TokenKind.ValueToken:
+                    if (++val > 1)
+                    {
+                        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), "= or : is expected.")];
+                    }
+                    break;
+
+                //case TokenKind.HeaderTextToken: sig++; break;
+
+                //case TokenKind.HeaderStartToken:
+                //    if (++key > 1)
+                //    {
+                //        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), "[ is unexpected.")];
+                //    }
+                //    break;
+
+                //case TokenKind.HeaderEndToken:
+                //    if (++val > 1)
+                //    {
+                //        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), "] is unexpected.")];
+                //    }
+                //    if (sig == 0)
+                //    {
+                //        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), "] is expected.")];
+                //    }
+                //    break;
+            }
+        }
+        return val == 0
+            ? [Diagnostic.Create(Rule.Ini.InvalidHeader, SyntaxTree.GetLocation(Tokens[^1].LinePositionSpan), "] is expected.")]
+            : [];
+    }
 
     internal static IniSyntax New(Parser parser)
     {
