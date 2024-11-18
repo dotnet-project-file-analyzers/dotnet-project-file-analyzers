@@ -1,5 +1,6 @@
 using Microsoft.CodeAnalysis.Text;
 using System.Text.RegularExpressions;
+using static DotNetProjectFile.Syntax.SourceSpan;
 
 namespace DotNetProjectFile.Syntax;
 
@@ -79,7 +80,8 @@ public readonly struct SourceSpan(SourceText sourceText, TextSpan textSpan) : IE
     {
         var line = SourceText.Lines.GetLineFromPosition(Start);
         var span = line.Span;
-        return new TextSpan(Start, span.Length - (Start - span.Start));
+        var text = new TextSpan(Start, span.Length - (Start - span.Start));
+        return text;
     }
 
     /// <summary>Matches the regular expression.</summary>
@@ -101,9 +103,15 @@ public readonly struct SourceSpan(SourceText sourceText, TextSpan textSpan) : IE
     /// </returns>
     [Pure]
     public TextSpan? StartsWith(char ch)
-        => !Span.IsEmpty && SourceText[Span.Start] == ch
-        ? new(Span.Start, 1)
-        : null;
+    {
+        var result = !Span.IsEmpty && SourceText[Span.Start] == ch
+            ? new TextSpan(Span.Start, 1)
+            : NoMatch;
+
+        SourceSpanLogger.Log(SourceText, Span, result, () => $"StartsWith('{ch}')");
+
+        return result;
+    }
 
     /// <summary>Indicates that the text span starts with the specified string.</summary>
     /// <param name="str">
@@ -123,14 +131,17 @@ public readonly struct SourceSpan(SourceText sourceText, TextSpan textSpan) : IE
             {
                 if (SourceText[pos++] != str[i])
                 {
+                    SourceSpanLogger.Log(SourceText, Span, NoMatch, () => $"StartsWith(\"{str}\")");
                     return NoMatch;
                 }
             }
-
-            return new(Span.Start, str.Length);
+            var result = new TextSpan(Span.Start, str.Length);
+            SourceSpanLogger.Log(SourceText, Span, result, () => $"StartsWith(\"{str}\")");
+            return result;
         }
         else
         {
+            SourceSpanLogger.Log(SourceText, Span, NoMatch, () => $"StartsWith(\"{str}\")");
             return NoMatch;
         }
     }
@@ -147,6 +158,7 @@ public readonly struct SourceSpan(SourceText sourceText, TextSpan textSpan) : IE
     {
         if (IsEmpty)
         {
+            SourceSpanLogger.Log(SourceText, Span, NoMatch, match);
             return NoMatch;
         }
 
@@ -157,11 +169,17 @@ public readonly struct SourceSpan(SourceText sourceText, TextSpan textSpan) : IE
         {
             if (!match(SourceText[i++]))
             {
-                return len == 0
-                    ? null
+                var result = (len == 0)
+                    ? NoMatch
                     : new(Span.Start, len);
+
+                SourceSpanLogger.Log(SourceText, Span, result, match);
+
+                return result;
             }
         }
+
+        SourceSpanLogger.Log(SourceText, Span, Span, match);
 
         return Span;
     }
@@ -187,9 +205,13 @@ public readonly struct SourceSpan(SourceText sourceText, TextSpan textSpan) : IE
             throw new InvalidPattern($"Pattern '{regex}' did match from the start.");
         }
 
-        return match.Success
+        var result = match.Success
             ? new(Span.Start, match.Length)
             : NoMatch;
+
+        SourceSpanLogger.Log(SourceText, span, result, () => $"Regex({regex})");
+
+        return result;
     }
 
     /// <inheritdoc />

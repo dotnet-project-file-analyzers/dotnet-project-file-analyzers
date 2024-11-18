@@ -7,6 +7,18 @@ namespace Parsing.INI_syntax;
 public class Parses
 {
     [Test]
+    public void header_with_one_kvp()
+    {
+        var syntax = Parse.Syntax(@"
+[MyHeader]
+mykey = myvalue");
+
+        syntax.Sections.Should().HaveCount(1);
+        syntax.Sections[0].Header.Should().BeEquivalentTo(new { Text = "MyHeader" });
+        syntax.Sections[0].Kvps.Should().BeEquivalentTo([new { Key = "mykey", Value = "myvalue" }]);
+    }
+
+    [Test]
     public void dot_editorconfig()
     {
         using var file = new FileStream("../../../../../.editorconfig", FileMode.Open, FileAccess.Read);
@@ -86,7 +98,7 @@ public class Parses_with_errors
         [Test]
         public void no_text()
         {
-            var syntax = Parse.Syntax(@"key1 == value");
+            var syntax = Parse.Syntax("key1 == value\n");
 
             syntax.Sections[0].KeyValuePairs[0].GetDiagnostics().Should().HaveIssue(
                 Issue.ERR("Proj4001", "] is expected.").WithSpan(0, 1, 0, 2));

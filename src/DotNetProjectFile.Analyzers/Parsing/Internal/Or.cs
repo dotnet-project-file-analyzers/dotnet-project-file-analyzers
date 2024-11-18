@@ -1,20 +1,34 @@
 namespace DotNetProjectFile.Parsing.Internal;
 
-internal sealed class Or(Grammar left, Grammar right) : Grammar
+internal sealed class Or : Grammar
 {
-    private readonly Grammar Left = left;
-    private readonly Grammar Right = right;
+    private readonly ImmutableArray<Grammar> Options;
 
-    /// <inheritdoc />
-    [Pure]
-    public override Parser Match(Parser parser) => parser switch
+    public Or(Grammar left, Grammar right)
     {
-        _ when Left.Match(parser) is { State: not Matching.NoMatch } next => next,
-        _ when Right.Match(parser) is { State: not Matching.NoMatch } next => next,
-        _ => Parser.NoMatch,
-    };
+
+        Options =
+        [
+            ..left is Or l ? l.Options : [left],
+            ..right is Or r ? r.Options : [right],
+        ];
+    }
 
     /// <inheritdoc />
     [Pure]
-    public override string ToString() => $"( {Left} | {Right} )";
+    public override Parser Match(Parser parser)
+    {
+        foreach (var grammar in Options)
+        {
+            if (grammar.Match(parser) is { State: not Matching.NoMatch } next)
+            {
+                return next;
+            }
+        }
+        return Parser.NoMatch;
+    }
+
+    /// <inheritdoc />
+    [Pure]
+    public override string ToString() => $"( {string.Join(" | ", Options)} )";
 }
