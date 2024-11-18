@@ -11,11 +11,11 @@ public class Parses
     {
         var syntax = Parse.Syntax(@"
 [MyHeader]
-mykey = myvalue");
+mykey = 3.14");
 
         syntax.Sections.Should().HaveCount(1);
         syntax.Sections[0].Header.Should().BeEquivalentTo(new { Text = "MyHeader" });
-        syntax.Sections[0].Kvps.Should().BeEquivalentTo([new { Key = "mykey", Value = "myvalue" }]);
+        syntax.Sections[0].Kvps.Should().BeEquivalentTo([new { Key = "mykey", Value = "3.14" }]);
     }
 
     [Test]
@@ -96,12 +96,39 @@ public class Parses_with_errors
     public class Key_value_pair
     {
         [Test]
-        public void no_text()
+        public void no_key()
         {
-            var syntax = Parse.Syntax("key1 == value\n");
+            var syntax = Parse.Syntax("= value \n");
 
             syntax.Sections[0].KeyValuePairs[0].GetDiagnostics().Should().HaveIssue(
-                Issue.ERR("Proj4001", "] is expected.").WithSpan(0, 1, 0, 2));
+                Issue.ERR("Proj4002", "= is unexpected.").WithSpan(0, 0, 0, 1));
+        }
+
+        [Test]
+        public void no_value()
+        {
+            var syntax = Parse.Syntax("key1 = \n");
+
+            syntax.Sections[0].KeyValuePairs[0].GetDiagnostics().Should().HaveIssue(
+                Issue.ERR("Proj4002", "Value is missing.").WithSpan(0, 6, 0, 7));
+        }
+
+        [Test]
+        public void no_assign()
+        {
+            var syntax = Parse.Syntax("key1 value1\n");
+
+            syntax.Sections[0].KeyValuePairs[0].GetDiagnostics().Should().HaveIssue(
+                Issue.ERR("Proj4002", "= or : is expected.").WithSpan(0, 5, 0, 11));
+        }
+
+        [Test]
+        public void  multipe_assign()
+        {
+            var syntax = Parse.Syntax("key1 = : value1\n");
+
+            syntax.Sections[0].KeyValuePairs[0].GetDiagnostics().Should().HaveIssue(
+                Issue.ERR("Proj4002", ": is unexpected.").WithSpan(0, 7, 0, 8));
         }
     }
 }

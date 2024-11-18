@@ -2,7 +2,7 @@ using DotNetProjectFile.Parsing;
 
 namespace DotNetProjectFile.Ini;
 
-[DebuggerDisplay("FullText}")]
+[DebuggerDisplay("{FullText}")]
 public sealed record KeyValuePairSyntax : IniSyntax
 {
     public KeySyntax? Key => Children.OfType<KeySyntax>().FirstOrDefault();
@@ -24,36 +24,26 @@ public sealed record KeyValuePairSyntax : IniSyntax
         {
             switch (token.Kind)
             {
+                case TokenKind.KeyToken: key++; break;
+
+                case TokenKind.EqualsToken:
+                case TokenKind.ColonToken:
+                    if (key == 0 || ++sig > 1)
+                    {
+                        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), $"{token.Text} is unexpected.")];
+                    }
+                    break;
+
                 case TokenKind.ValueToken:
-                    if (++val > 1)
+                    if (sig == 0 || ++val > 1)
                     {
                         return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), "= or : is expected.")];
                     }
                     break;
-
-                //case TokenKind.HeaderTextToken: sig++; break;
-
-                //case TokenKind.HeaderStartToken:
-                //    if (++key > 1)
-                //    {
-                //        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), "[ is unexpected.")];
-                //    }
-                //    break;
-
-                //case TokenKind.HeaderEndToken:
-                //    if (++val > 1)
-                //    {
-                //        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), "] is unexpected.")];
-                //    }
-                //    if (sig == 0)
-                //    {
-                //        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), "] is expected.")];
-                //    }
-                //    break;
             }
         }
         return val == 0
-            ? [Diagnostic.Create(Rule.Ini.InvalidHeader, SyntaxTree.GetLocation(Tokens[^1].LinePositionSpan), "] is expected.")]
+            ? [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(Tokens[^1].LinePositionSpan), "Value is missing.")]
             : [];
     }
 
@@ -70,6 +60,22 @@ public sealed record KeyValuePairSyntax : IniSyntax
                     Span = kvp.Span + parser.Span,
                 }),
                 Span = s.Span + parser.Span,
+            }),
+        };
+    }
+
+    internal static IniSyntax Invalid(Parser parser)
+    {
+        var root = IniFileSyntax.Root(parser);
+
+        return root with
+        {
+            Children = root.Sections.WithLast(s => s with
+            {
+                Children = s.KeyValuePairs.Add(new KeyValuePairSyntax()
+                {
+                    Span = parser.Span,
+                }),
             }),
         };
     }

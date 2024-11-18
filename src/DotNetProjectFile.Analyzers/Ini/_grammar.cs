@@ -3,6 +3,12 @@ using static DotNetProjectFile.Ini.TokenKind;
 
 namespace DotNetProjectFile.Ini;
 
+/// <summary>
+/// Represents the grammer for an INI file.
+/// </summary>
+/// <remarks>
+/// Unparsable is separated from the happy flow for performance reasons.
+/// </remarks>
 internal sealed class IniGrammar : Grammar
 {
     public static readonly Grammar eol = eof | str("\r\n", EoLToken) | ch('\n', EoLToken);
@@ -11,14 +17,17 @@ internal sealed class IniGrammar : Grammar
 
     public static readonly Grammar ws_only = line(@"^\s*$", WhitespaceToken);
 
+    public static readonly Grammar garbage = line(".*", UnparsableToken);
+
     public static readonly Grammar comment =
         ws
         & (ch('#', CommentDelimiterToken) | ch(';', CommentDelimiterToken))
         & line(".*", CommentToken);
 
+    public static readonly Grammar header_start = ws & Header.start;
+
     public static readonly Grammar header =
-        (ws
-        & Header.start
+        (header_start
         & Header.text
         & Header.end
         & ws
@@ -28,31 +37,25 @@ internal sealed class IniGrammar : Grammar
 
     public static readonly Grammar kvp =
         (ws
-        & INI.key
+        & INI.key + KeySyntax.New
         & ws
         & INI.assign
         & ws
-        & INI.value
+        & INI.value + ValueSyntax.New
         & ws
         & comment.Option)
         + KeyValuePairSyntax.New;
 
-    /// <remarks>
-    /// Unparsable is separated from the happy-fow for performance reasons. 
-    /// </remarks>
-    public static readonly Grammar unparsable =
-        Invalid.header
-        | Invalid.kvp
-        | line(".*", UnparsableToken);
-
     public static readonly Grammar single_line =
-        (kvp
+        ~header_start
+        & (ws_only
+        | kvp
         | comment
-        | ws_only
-        | unparsable)
+        | Invalid.kvp
+        | garbage)
         & eol;
 
-    public static readonly Grammar section = (header & single_line.Star) + SectionSyntax.New;
+    public static readonly Grammar section = ((header | Invalid.header) & single_line.Star) + SectionSyntax.New;
 
     public static readonly Grammar file = (single_line.Star & section.Star) + IniFileSyntax.New;
 
@@ -67,11 +70,9 @@ internal sealed class IniGrammar : Grammar
     /// <summary>INI tokens.</summary>
     private sealed class INI : Grammar
     {
-        public static readonly Grammar key = line(@"[^\s:=#;]+", KeyToken) + KeySyntax.New;
-
+        public static readonly Grammar key = line(@"[^\s:=#;[\]]+", KeyToken);
         public static readonly Grammar assign = ch('=', EqualsToken) | ch(':', ColonToken);
-
-        public static readonly Grammar value = line(@"[^\s#;]+", ValueToken) + ValueSyntax.New;
+        public static readonly Grammar value = line(@"[^=:^\s#;][^\s#;]*", ValueToken);
     }
 
     private sealed class Invalid : Grammar
@@ -88,14 +89,13 @@ internal sealed class IniGrammar : Grammar
 
         public static readonly Grammar kvp =
            (ws
-           & INI.key.Star
+           & INI.key.Option
            & ws
-           & INI.assign.Star
-           & ws
+           & (INI.assign & ws).Star
            & INI.value.Star
            & ws
            & comment.Option)
-           + KeyValuePairSyntax.New;
+           + KeyValuePairSyntax.Invalid;
     }
 
     private static bool IsWhitespace(char ch) => ch == ' ' || ch == '\t';

@@ -17,15 +17,24 @@ internal static class SourceSpanLogger
     [Conditional("DEBUG")]
     internal static void Log(SourceText source, TextSpan text, TextSpan? result, Func<string> action)
     {
+        if (result is { })
+        {
+            Console.Write($"[OK] ");
+        }
+        else
+        {
+            Console.Write("[NO] ");
+        }
+
         Console.Write($"{WS(action()),-20}: '{WS(source.ToString(text))}' => ");
 
         if (result is { } res)
         {
-            Console.WriteLine($"OK: '{WS(source.ToString(res))}'");
+            Console.WriteLine(WS(source.ToString(res)));
         }
         else
         {
-            Console.WriteLine("NO");
+            Console.WriteLine("...");
         }
 
         static string WS(string str) => str.Replace("\r", "\\r").Replace("\n", "\\n").Replace("\t", "\\t");
