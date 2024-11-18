@@ -22,18 +22,18 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Build.Locator" Version="1.7.8" />
-    <PackageReference Include="Microsoft.CodeAnalysis" Version="4.10.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.10.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.10.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="4.11.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.11.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.11.0" />
   </ItemGroup>
 
   <ItemGroup Label="Test tools">
     <PackageReference Include="CodeAnalysis.TestTools" Version="3.0.1" />
     <PackageReference Include="FluentAssertions" Version="6.12.2" />
-    <PackageReference Include="NuGet.Common" Version="6.10.1" />
-    <PackageReference Include="NuGet.Frameworks" Version="6.10.1" />
-    <PackageReference Include="NuGet.Packaging" Version="6.10.1" />
-    <PackageReference Include="NUnit" Version="4.*" />
+    <PackageReference Include="NuGet.Common" Version="6.12.1" />
+    <PackageReference Include="NuGet.Frameworks" Version="6.12.1" />
+    <PackageReference Include="NuGet.Packaging" Version="6.12.1" />
+    <PackageReference Include="NUnit" Version="4.2.2" />
   </ItemGroup>
 
   <ItemGroup Label="Build tools">
@@ -53,6 +53,7 @@
   <ItemGroup Label="Analyzers">
     <PackageReference Include="FluentAssertions.Analyzers" Version="*" PrivateAssets="all" />
     <PackageReference Include="NUnit.Analyzers" Version="*" PrivateAssets="all" />
+    <PackageReference Include="System.Formats.Asn1" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzer">
