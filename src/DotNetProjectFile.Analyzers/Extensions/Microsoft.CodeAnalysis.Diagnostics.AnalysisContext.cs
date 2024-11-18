@@ -1,4 +1,4 @@
-using DotNetProjectFile.EditorConfig;
+using DotNetProjectFile.Ini;
 
 namespace Microsoft.CodeAnalysis.Diagnostics;
 
@@ -30,13 +30,13 @@ internal static class AnalysisContextExtensions
     }
 
     /// <summary>Registers an action on <see cref="ProjectFileAnalysisContext"/>.</summary>
-    public static void RegisterEditorConfigFileAction(this AnalysisContext context, Action<EditorConfigFileAnalysisContext> action)
+    public static void RegisterEditorConfigFileAction(this AnalysisContext context, Action<IniFileAnalysisContext> action)
     {
         context.RegisterAdditionalFileAction(c =>
         {
             if (ProjectFiles.Global.UpdateIniFile(c) is { } ini)
             {
-                action.Invoke(new(new EditorConfigFile(ini), c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                action.Invoke(new(ini, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
             }
         });
 

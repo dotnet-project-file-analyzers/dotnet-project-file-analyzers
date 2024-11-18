@@ -34,16 +34,11 @@ public abstract record SyntaxNode
 
     public LinePositionSpan LinePositionSpan => SyntaxTree.SourceText.Lines.GetLinePositionSpan(new(Span.Start, Span.End - Span.Start));
 
-    public string FullText
-    {
-        get
-        {
-            var start = Tokens[0].Span.Start;
-            var end = Tokens[^1].Span.End;
-            return SyntaxTree.SourceText.ToString(new(start, end));
-        }
-    }
+    /// <summary>Gets the full text of the node.</summary>
+    public string FullText => string.Concat(Tokens.Select(t => t.Text));
 
+    /// <inheritdoc />
+    [Pure]
     public override string ToString() => FullText;
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]

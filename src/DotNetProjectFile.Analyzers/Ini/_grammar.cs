@@ -14,7 +14,7 @@ internal sealed class IniGrammar : Grammar
     public static readonly Grammar header =
         (ws
         & ch('[', HeaderStartToken)
-        & line(@"[^]]+", HeaderToken)
+        & line(@"[^]]+", HeaderTextToken)
         & ch(']', HeaderEndToken)
         & ws
         & eol)
@@ -64,7 +64,7 @@ public static class TokenKind
     public static readonly string CommentDelimiterToken = nameof(CommentDelimiterToken);
     public static readonly string CommentToken = nameof(CommentToken);
     public static readonly string EoLToken = nameof(EoLToken);
-    public static readonly string HeaderToken = nameof(HeaderToken);
+    public static readonly string HeaderTextToken = nameof(HeaderTextToken);
     public static readonly string HeaderStartToken = nameof(HeaderStartToken);
     public static readonly string HeaderEndToken = nameof(HeaderEndToken);
     public static readonly string EqualsToken = nameof(EqualsToken);

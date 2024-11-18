@@ -14,6 +14,8 @@ public sealed record KeyValuePairSyntax : IniSyntax
         ? new(key.Text, val.Text)
         : null;
 
+    public bool HasAssign => Tokens.Any(t => t.Kind == TokenKind.EqualsToken || t.Kind == TokenKind.ColonToken);
+
     internal static IniSyntax New(Parser parser)
     {
         var root = IniFileSyntax.Root(parser);

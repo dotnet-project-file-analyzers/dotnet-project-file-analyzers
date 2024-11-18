@@ -10,8 +10,9 @@ public sealed record SectionSyntax : IniSyntax
 
     public SyntaxNodeCollection<KeyValuePairSyntax> KeyValuePairs => new(this);
 
-    public IEnumerable<KeyValuePair<string, string>> Kvps
-        => KeyValuePairs.Select(kvp => kvp.Kvp)
+    public IEnumerable<KeyValuePair<string, string>> Kvps => KeyValuePairs
+        .Where(kvp => kvp.HasAssign)
+        .Select(kvp => kvp.Kvp)
         .OfType<KeyValuePair<string, string>>();
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]

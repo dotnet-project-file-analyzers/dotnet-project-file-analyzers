@@ -1,11 +1,12 @@
 using DotNetProjectFile.Parsing;
+using System.Reflection.PortableExecutable;
 
 namespace DotNetProjectFile.Ini;
 
 [DebuggerDisplay("{FullText}")]
 public sealed record HeaderSyntax : IniSyntax
 {
-    public string Text => Tokens.Single(t => t.Kind == TokenKind.HeaderToken).Text;
+    public string Text => Tokens.SingleOrDefault(t => t.Kind == TokenKind.HeaderTextToken).Text;
 
     internal static IniSyntax New(Parser parser)
     {
