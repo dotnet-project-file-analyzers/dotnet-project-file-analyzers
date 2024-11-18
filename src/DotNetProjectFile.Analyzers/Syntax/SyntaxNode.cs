@@ -37,6 +37,10 @@ public abstract record SyntaxNode
     /// <summary>Gets the full text of the node.</summary>
     public string FullText => string.Concat(Tokens.Select(t => t.Text));
 
+    /// <summary>Gets the diagnostics for the node.</summary>
+    [Pure]
+    public virtual IEnumerable<Diagnostic> GetDiagnostics() => [];
+
     /// <inheritdoc />
     [Pure]
     public override string ToString() => FullText;

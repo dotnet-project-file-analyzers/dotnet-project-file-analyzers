@@ -43,6 +43,10 @@ internal sealed record Issue(
         return sb.ToString();
     }
 
+    public static Issue WRN(string id, string message) => new(id, message, DiagnosticSeverity.Warning);
+
+    public static Issue ERR(string id, string message) => new(id, message, DiagnosticSeverity.Error);
+
     public static Issue FromDiagnostic(Diagnostic diagnostic) => new(
         diagnostic.Id, 
         diagnostic.GetMessage(),
