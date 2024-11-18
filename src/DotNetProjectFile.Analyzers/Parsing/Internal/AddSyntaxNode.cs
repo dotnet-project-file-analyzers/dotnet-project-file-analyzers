@@ -12,5 +12,5 @@ internal sealed class AddSyntaxNode(Grammar grammar, CreateSyntaxNode create) : 
     public override Parser Match(Parser parser)
         => Inner.Match(parser) is { State: not Matching.NoMatch } match
         ? match.WithSyntax(Create(match))
-        : parser.NoMatch();
+        : Parser.NoMatch;
 }

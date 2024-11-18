@@ -30,7 +30,7 @@ internal sealed class Repeat(Grammar grammar, int min, int max) : Grammar
 
         return next.State switch
         {
-            _ when !inRange => parser.NoMatch(),
+            _ when !inRange => Parser.NoMatch,
             Matching.NoMatch => prev,
             _ => next,
         };

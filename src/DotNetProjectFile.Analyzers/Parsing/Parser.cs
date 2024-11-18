@@ -35,13 +35,6 @@ public readonly struct Parser
 
     public SliceSpan Span => new(Cursor, Tokens.Count - Cursor);
 
-    /// <summary>The result of <see cref="Matching.NoMatch"/>.</summary>
-    /// <returns>
-    /// A new parser with an updated state.
-    /// </returns>
-    [Pure]
-    public Parser NoMatch() => new(SourceSpan, Tokens, Cursor, Matching.NoMatch, Syntax);
-
     /// <summary>Tries to apply a <see cref="SourceSpan.Match"/>.</summary>
     /// <param name="match">
     /// The match to apply.
@@ -55,7 +48,7 @@ public readonly struct Parser
     [Pure]
     public Parser Match(SourceSpan.Match match, string? kind = null) => match(SourceSpan) switch
     {
-        null => NoMatch(),
+        null => NoMatch,
         var span when span.Value.Length == 0 => this,
         var span => New(span.Value, kind),
     };
@@ -93,6 +86,9 @@ public readonly struct Parser
         => new(sourceSpan, Empty, 0, sourceSpan.Length == 0 ? Matching.EoF : Matching.Match, RootSyntax);
 
     private static readonly ParseBuffer Empty = ParseBuffer.Empty;
+
+    /// <summary>The result of <see cref="Matching.NoMatch"/>.</summary>
+    public static readonly Parser NoMatch = new(default, Empty, 0, Matching.NoMatch, null!);
 
     private static readonly RootSyntax RootSyntax = new();
 }

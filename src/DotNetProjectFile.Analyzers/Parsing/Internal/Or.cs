@@ -11,7 +11,7 @@ internal sealed class Or(Grammar left, Grammar right) : Grammar
     {
         _ when Left.Match(parser) is { State: not Matching.NoMatch } next => next,
         _ when Right.Match(parser) is { State: not Matching.NoMatch } next => next,
-        _ => parser.NoMatch(),
+        _ => Parser.NoMatch,
     };
 
     /// <inheritdoc />

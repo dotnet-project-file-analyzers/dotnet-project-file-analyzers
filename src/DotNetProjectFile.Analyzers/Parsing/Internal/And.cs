@@ -11,7 +11,7 @@ internal sealed class And(Grammar left, Grammar right) : Grammar
         => Left.Match(parser) is { State: not Matching.NoMatch } first
         && Right.Match(first) is { State: not Matching.NoMatch } second
         ? second
-        : parser.NoMatch();
+        : Parser.NoMatch;
 
     /// <inheritdoc />
     [Pure]
