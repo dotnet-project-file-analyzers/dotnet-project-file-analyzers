@@ -29,6 +29,9 @@
       <![CDATA[
 ToBeReleased:
 - Proj3000: Inaccessible files should not lead to a crash. (BUG)
+- Proj4000: Invalid INI file. (NEW RULE)
+- Proj4001: Invalid INI header. (NEW RULE)
+- Proj4002: Invalid INI key-value pair. (NEW RULE)
 V1.5.0
 - Proj0700: Avoid defining <Compile> items in SDK project. (NEW RULE)
 - Support .net.csproj SDK projects.

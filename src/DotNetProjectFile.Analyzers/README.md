@@ -106,3 +106,8 @@ The package contains analyzers that analyze .NET project files.
 
 ## Generic
 * [**Proj3000** Only use UTF-8 without BOM](https://dotnet-project-file-analyzers.github.io/rules/Proj3000.html)
+
+## INI
+* [**Proj4000** Invalid INI file](https://dotnet-project-file-analyzers.github.io/rules/Proj4000.html)
+* [**Proj4001** Invalid INI header](https://dotnet-project-file-analyzers.github.io/rules/Proj4001.html)
+* [**Proj4002** Invalid INI key-value pair](https://dotnet-project-file-analyzers.github.io/rules/Proj4002.html)

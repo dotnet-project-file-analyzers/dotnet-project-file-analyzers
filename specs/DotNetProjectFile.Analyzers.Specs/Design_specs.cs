@@ -74,9 +74,12 @@ public partial class Rules
         .GetTypes()
         .Where(t => !t.IsAbstract && t.IsAssignableTo(typeof(DiagnosticAnalyzer)));
 
-    private static IEnumerable<Rule> AlleRules
-        => typeof(DotNetProjectFile.Rule)
-        .GetProperties(BindingFlags.Public | BindingFlags.Static)
+    private static IEnumerable<Rule> AlleRules => GetRules(
+        typeof(DotNetProjectFile.Rule),
+        typeof(DotNetProjectFile.Rule.Ini));
+
+    private static IEnumerable<Rule> GetRules(params IEnumerable<Type> types) => types
+        .SelectMany(t => t.GetProperties(BindingFlags.Public | BindingFlags.Static))
         .Where(f => f.PropertyType == typeof(DiagnosticDescriptor))
         .Select(f => (DiagnosticDescriptor)f.GetValue(null)!)
         .Select(d => new Rule(d));
