@@ -17,7 +17,7 @@ internal sealed class IniGrammar : Grammar
 
     public static readonly Grammar ws_only = line(@"^\s*$", WhitespaceToken);
 
-    public static readonly Grammar garbage = line(".*", UnparsableToken);
+    public static readonly Grammar garbage = line(".+", UnparsableToken);
 
     public static readonly Grammar comment =
         ws
@@ -46,13 +46,15 @@ internal sealed class IniGrammar : Grammar
         & comment.Option)
         + KeyValuePairSyntax.New;
 
-    public static readonly Grammar single_line =
-        ~header_start
-        & (ws_only
+    public static readonly Grammar kvp_line =
+        ws_only
         | kvp
         | comment
-        | Invalid.kvp
-        | garbage)
+        | Invalid.kvp;
+
+    public static readonly Grammar single_line =
+        ~header_start
+        & (kvp_line | garbage)
         & eol;
 
     public static readonly Grammar section = ((header | Invalid.header) & single_line.Star) + SectionSyntax.New;
@@ -78,8 +80,8 @@ internal sealed class IniGrammar : Grammar
     private sealed class Invalid : Grammar
     {
         public static readonly Grammar header =
-           (ws
-           & Header.start.Plus
+           (header_start
+           & Header.start.Star
            & Header.text.Option
            & Header.end.Star
            & ws
@@ -89,8 +91,7 @@ internal sealed class IniGrammar : Grammar
 
         public static readonly Grammar kvp =
            (ws
-           & INI.key.Option
-           & ws
+           & (INI.key & ws).Star
            & (INI.assign & ws).Star
            & INI.value.Star
            & ws

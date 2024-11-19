@@ -24,7 +24,12 @@ public sealed record KeyValuePairSyntax : IniSyntax
         {
             switch (token.Kind)
             {
-                case TokenKind.KeyToken: key++; break;
+                case TokenKind.KeyToken:
+                    if (++key > 1)
+                    {
+                        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), "= or : is expected.")];
+                    }
+                    break;
 
                 case TokenKind.EqualsToken:
                 case TokenKind.ColonToken:

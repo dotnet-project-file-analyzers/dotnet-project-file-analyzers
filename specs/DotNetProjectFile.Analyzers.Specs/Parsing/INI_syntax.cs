@@ -7,6 +7,15 @@ namespace Parsing.INI_syntax;
 public class Parses
 {
     [Test]
+    public void header_with_space()
+    {
+        var syntax = Parse.Syntax("[My Header]");
+
+        syntax.Sections.Should().HaveCount(1);
+        syntax.Sections[0].Header.Should().BeEquivalentTo(new { Text = "My Header" });
+    }
+
+    [Test]
     public void header_with_one_kvp()
     {
         var syntax = Parse.Syntax(@"
@@ -100,7 +109,7 @@ public class Parses_with_errors
         {
             var syntax = Parse.Syntax("= value \n");
 
-            syntax.Sections[0].KeyValuePairs[0].GetDiagnostics().Should().HaveIssue(
+            syntax.GetDiagnostics().Should().HaveIssue(
                 Issue.ERR("Proj4002", "= is unexpected.").WithSpan(0, 0, 0, 1));
         }
 
@@ -109,7 +118,7 @@ public class Parses_with_errors
         {
             var syntax = Parse.Syntax("key1 = \n");
 
-            syntax.Sections[0].KeyValuePairs[0].GetDiagnostics().Should().HaveIssue(
+            syntax.GetDiagnostics().Should().HaveIssue(
                 Issue.ERR("Proj4002", "Value is missing.").WithSpan(0, 6, 0, 7));
         }
 
@@ -118,7 +127,7 @@ public class Parses_with_errors
         {
             var syntax = Parse.Syntax("key1 value1\n");
 
-            syntax.Sections[0].KeyValuePairs[0].GetDiagnostics().Should().HaveIssue(
+            syntax.GetDiagnostics().Should().HaveIssue(
                 Issue.ERR("Proj4002", "= or : is expected.").WithSpan(0, 5, 0, 11));
         }
 
@@ -127,8 +136,17 @@ public class Parses_with_errors
         {
             var syntax = Parse.Syntax("key1 = : value1\n");
 
-            syntax.Sections[0].KeyValuePairs[0].GetDiagnostics().Should().HaveIssue(
+            syntax.GetDiagnostics().Should().HaveIssue(
                 Issue.ERR("Proj4002", ": is unexpected.").WithSpan(0, 7, 0, 8));
+        }
+
+        [Test]
+        public void Rubbish()
+        {
+            var syntax = Parse.Syntax("KeyWith Comment = #Comment");
+
+            syntax.GetDiagnostics().Should().HaveIssue(
+                Issue.ERR("Proj4002", "= or : is expected.").WithSpan(0, 8, 0, 15));
         }
     }
 

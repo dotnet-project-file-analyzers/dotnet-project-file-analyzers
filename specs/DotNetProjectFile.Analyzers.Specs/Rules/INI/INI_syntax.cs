@@ -8,13 +8,12 @@ public class Reports
     public void errors() => new IniSyntaxAnalyzer()
         .ForProject("IniSyntaxErrors.cs")
         .HasIssues(
-            //new Issue("Proj4000", "Key value pair expected.").WithSpan(02, 00, 02, 10),
-            //new Issue("Proj4000", "Key value pair expected.").WithSpan(03, 00, 03, 27),
-            //new Issue("Proj4000", "Key value pair expected.").WithSpan(04, 00, 04, 17),
-            //new Issue("Proj4000", "Key value pair expected.").WithSpan(10, 00, 10, 26),
-            new Issue("Proj4001", "[ is unexpected." /*.*/).WithSpan(15, 01, 15, 02),
-            new Issue("Proj4002", "] is unexpected." /*.*/).WithSpan(12, 01, 12, 02),
-            new Issue("Proj4003", "] is missing." /*....*/).WithSpan(02, 10, 03, 00));
+            new Issue("Proj4001", "] is expected." /*..,,,.*/).WithSpan(02, 10, 03, 00),
+            new Issue("Proj4002", "= or : is expected." /*.*/).WithSpan(03, 22, 03, 27),
+            new Issue("Proj4002", "Value is missing." /*...*/).WithSpan(04, 16, 04, 17),
+            new Issue("Proj4002", "= or : is expected." /*.*/).WithSpan(10, 08, 10, 15),
+            new Issue("Proj4001", "] is expected." /*......*/).WithSpan(12, 01, 12, 02),
+            new Issue("Proj4001", "[ is unexpected." /*....*/).WithSpan(15, 01, 15, 02));
 }
 
 public class Guards
