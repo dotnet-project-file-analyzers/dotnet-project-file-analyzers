@@ -10,7 +10,10 @@ public sealed record IniFileSyntax : IniSyntax
 
     public override IEnumerable<Diagnostic> GetDiagnostics() =>
     [
-        // TODO add unparsed
+        .. Tokens
+            .Where(t => t.Kind == TokenKind.UnparsableToken)
+            .Select(t => Diagnostic.Create(Rule.Ini.Invalid, SyntaxTree.GetLocation(t.LinePositionSpan))),
+
         .. Children.SelectMany(c => c.GetDiagnostics()),
     ];
 

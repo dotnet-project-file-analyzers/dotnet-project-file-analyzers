@@ -40,7 +40,7 @@ indenting = \t
 []"
         );
 
-        var kvps = syntax.Sections.First().Kvps.ToArray();
+        var kvps = syntax.Sections[0].Kvps.ToArray();
 
         kvps.Should().BeEquivalentTo(new Dictionary<string, string>()
         {
@@ -129,6 +129,22 @@ public class Parses_with_errors
 
             syntax.Sections[0].KeyValuePairs[0].GetDiagnostics().Should().HaveIssue(
                 Issue.ERR("Proj4002", ": is unexpected.").WithSpan(0, 7, 0, 8));
+        }
+    }
+
+    public class Non_INI
+    {
+        [Test]
+        public void XML()
+        {
+            var syntax = Parse.Syntax(@"
+<Project>
+  <PropertyGroup>
+    <TargetFramework>9.0</TargetFramework>
+  </PropertyGroup>
+</Project>");
+
+            syntax.GetDiagnostics().Should().HaveCount(5);
         }
     }
 }
