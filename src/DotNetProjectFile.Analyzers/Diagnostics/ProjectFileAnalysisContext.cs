@@ -43,12 +43,16 @@ public readonly struct ProjectFileAnalysisContext<TFile>(
 
     /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, Location location, params object?[]? messageArgs)
+        => ReportDiagnostic(Diagnostic.Create(descriptor, location, messageArgs));
+
+    /// <summary>Reports a diagnostic about the project file.</summary>
+    public void ReportDiagnostic(Diagnostic diagnostic)
     {
         var warningPragmas = File.WarningPragmas;
 
-        if (!warningPragmas.IsDisabled(descriptor.Id, location))
+        if (!warningPragmas.IsDisabled(diagnostic.Descriptor.Id, diagnostic.Location))
         {
-            Report(Diagnostic.Create(descriptor, location, messageArgs));
+            Report(diagnostic);
         }
     }
 }
