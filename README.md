@@ -148,6 +148,11 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 ## Generic
 * [**Proj3000** Only use UTF-8 without BOM](rules/Proj3000.md)
 
+## INI
+* [**Proj4000** Invalid INI file](rules/Proj4000.md)
+* [**Proj4001** Invalid INI header](rules/Proj4001.md)
+* [**Proj4002** Invalid INI key-value pair](rules/Proj4002.md)
+
 ## Additional files
 To fully benefit from these analyzers it is recommended to add the project file
 (and imported projects/props) as additional files.
@@ -167,7 +172,6 @@ To add a project file:
 To add a props file:
 
 ``` XML
-<?xml version="1.0" encoding="utf-8"?>
 <Project>
 
   <ItemGroup>
