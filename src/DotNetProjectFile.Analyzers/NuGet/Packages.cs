@@ -83,6 +83,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new SourceGenerator("OneOf.SourceGenerator"),
         new SourceGenerator("Polyfill"),
         new SourceGenerator("PolySharp"),
+        new SourceGenerator("Qowaiv.Diagnostics.Contracts"),
         new SourceGenerator("PropertyChanged.SourceGenerator"),
         new SourceGenerator("ReactiveMarbles.ObservableEvents.SourceGenerator"),
         new SourceGenerator("Realm.SourceGenerator"),
@@ -99,6 +100,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
         // Private assets
         new Package("coverlet.collector", isPrivateAsset: true),
         new Package("coverlet.msbuild", isPrivateAsset: true),
+        new Package("DotNetProjectFile.Analyzers.Sdk", isPrivateAsset: true),
         Microsoft_NET_Test_Sdk,
         new Package("NUnit3TestAdapter", isPrivateAsset: true));
 
