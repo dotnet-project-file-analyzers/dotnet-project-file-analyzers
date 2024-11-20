@@ -14,6 +14,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new Analyzer("DotNetAnalyzers.BannedApiAnalyzer"),
         new Analyzer("DotNetAnalyzers.DocumentationAnalyzers"),
         new Analyzer("DotNetAnalyzers.DocumentationAnalyzers.Unstable"),
+        new Analyzer("Gu.Analyzers"),
         new Analyzer("DotNetProjectFile.Analyzers"),
         new Analyzer("IDisposableAnalyzers"),
         new Analyzer("Lombiq.Analyzers"),
@@ -101,6 +102,15 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new Package("coverlet.collector", isPrivateAsset: true),
         new Package("coverlet.msbuild", isPrivateAsset: true),
         new Package("DotNetProjectFile.Analyzers.Sdk", isPrivateAsset: true),
+        new Package("JetBrains.Annotations", isPrivateAsset: true),
+        new Package("JetBrains.ExternalAnnotations", isPrivateAsset: true),
+        new Package("Microsoft.SourceLink.Gitea", isPrivateAsset: true),
+        new Package("Microsoft.SourceLink.GitLab", isPrivateAsset: true),
+        new Package("Microsoft.SourceLink.GitHub", isPrivateAsset: true),
+        new Package("Microsoft.SourceLink.GitWeb", isPrivateAsset: true),
+        new Package("Microsoft.SourceLink.AzureRepos.Git", isPrivateAsset: true),
+        new Package("Microsoft.SourceLink.Bitbucket.Git", isPrivateAsset: true),
+        new Package("Microsoft.SourceLink.AzureDevOpsServer.Git", isPrivateAsset: true),
         Microsoft_NET_Test_Sdk,
         new Package("NUnit3TestAdapter", isPrivateAsset: true));
 
