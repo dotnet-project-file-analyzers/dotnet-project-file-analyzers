@@ -10,6 +10,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new Analyzer("AspNetCoreAnalyzers"),
         new Analyzer("AsyncFixer"),
         new Analyzer("AsyncUsageAnalyzers"),
+        new Analyzer("CSharpGuidelinesAnalyzer"),
         new Analyzer("ConfigureAwaitChecker.Analyzer"),
         new Analyzer("DotNetAnalyzers.BannedApiAnalyzer"),
         new Analyzer("DotNetAnalyzers.DocumentationAnalyzers"),
@@ -102,8 +103,10 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new Package("coverlet.collector", isPrivateAsset: true),
         new Package("coverlet.msbuild", isPrivateAsset: true),
         new Package("DotNetProjectFile.Analyzers.Sdk", isPrivateAsset: true),
+        new Package("Grpc.Tools", isPrivateAsset: true),
         new Package("JetBrains.Annotations", isPrivateAsset: true),
         new Package("JetBrains.ExternalAnnotations", isPrivateAsset: true),
+        new Package("Microsoft.DotNet.ApiCompat", isPrivateAsset: true),
         new Package("Microsoft.SourceLink.Gitea", isPrivateAsset: true),
         new Package("Microsoft.SourceLink.GitLab", isPrivateAsset: true),
         new Package("Microsoft.SourceLink.GitHub", isPrivateAsset: true),
@@ -112,7 +115,10 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new Package("Microsoft.SourceLink.Bitbucket.Git", isPrivateAsset: true),
         new Package("Microsoft.SourceLink.AzureDevOpsServer.Git", isPrivateAsset: true),
         Microsoft_NET_Test_Sdk,
-        new Package("NUnit3TestAdapter", isPrivateAsset: true));
+        new Package("MinVer", isPrivateAsset: true),
+        new Package("NUnit3TestAdapter", isPrivateAsset: true),
+        new Package("Nullable", isPrivateAsset: true),
+        new Package("xunit.runner.visualstudio", isPrivateAsset: true));
 
     private readonly Dictionary<string, Package> items;
 
