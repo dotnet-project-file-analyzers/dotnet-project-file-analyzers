@@ -58,6 +58,8 @@ public sealed class PropertyGroup(XElement element, Node parent, MsBuildProject 
 
     public Nodes<GeneratePackageOnBuild> GeneratePackageOnBuild => new(Children);
 
+    public Nodes<GenerateSBOM> GenerateSBOM => new(Children);
+
     public Nodes<EnablePackageValidation> EnablePackageValidation => new(Children);
 
     public Nodes<PackageValidationBaselineVersion> PackageValidationBaselineVersion => new(Children);

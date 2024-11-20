@@ -9,6 +9,7 @@
     <IsPublishable>false</IsPublishable>
     <DevelopmentDependency>true</DevelopmentDependency>
     <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+    <GenerateSBOM>true</GenerateSBOM>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">

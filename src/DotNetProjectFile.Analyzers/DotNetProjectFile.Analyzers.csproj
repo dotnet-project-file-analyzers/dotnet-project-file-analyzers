@@ -10,6 +10,7 @@
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <DevelopmentDependency>true</DevelopmentDependency>
+    <GenerateSBOM>true</GenerateSBOM>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -28,6 +29,7 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
+- Proj0243: Generate SBOM. (NEW RULE)
 - Proj1200: Add packages that should be included as private assets. (FN)
 - Proj3000: Inaccessible files should not lead to a crash. (BUG)
 V1.5.0

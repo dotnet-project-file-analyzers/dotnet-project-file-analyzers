@@ -527,6 +527,19 @@ public static class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+
+    public static DiagnosticDescriptor GenerateSbom => New(
+       id: 0243,
+       title: "Generate software bill of materials",
+       message: "Enable SBOM generation with <GenerateSBOM> is 'true' define the <IsPackable> node with value 'false'.",
+       description:
+           "To be compliant with USA legislation, a software bill of materials " +
+           "should be included with a shipped package.",
+       tags: ["compliance", "package", "legislation"],
+       category: Category.CodeQuality,
+       severity: DiagnosticSeverity.Warning,
+       isEnabled: true);
+
     public static DiagnosticDescriptor DefineIsPublishable => New(
         id: 0400,
         title: "Define the project publishability explicitly",
