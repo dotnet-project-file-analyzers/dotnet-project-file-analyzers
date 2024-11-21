@@ -17,6 +17,11 @@ public sealed class SyntaxTree
 
     public SourceSpan SourceSpan => new(SourceText, new(0, SourceText.Length));
 
+    /// <summary>Gets the location of the line span.</summary>
+    [Pure]
+    public Location GetLocation(LinePositionSpan lineSpan)
+        => Location.Create(Path.ToString(), SourceText.TextSpan(lineSpan), lineSpan);
+
     public SyntaxTree With(IReadOnlyList<SourceSpanToken> tokens) => new()
     {
         Path = Path,

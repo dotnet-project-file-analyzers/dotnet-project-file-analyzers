@@ -1,19 +1,34 @@
 namespace DotNetProjectFile.Parsing.Internal;
 
-internal sealed class And(Grammar left, Grammar right) : Grammar
+internal sealed class And : Grammar
 {
-    private readonly Grammar Left = left;
-    private readonly Grammar Right = right;
+    private readonly ImmutableArray<Grammar> Sequence;
+
+    public And(Grammar left, Grammar right) => Sequence =
+    [
+        ..left is And l ? l.Sequence : [left],
+        ..right is And r ? r.Sequence : [right],
+    ];
 
     /// <inheritdoc />
     [Pure]
     public override Parser Match(Parser parser)
-        => Left.Match(parser) is { State: not Matching.NoMatch } first
-        && Right.Match(first) is { State: not Matching.NoMatch } second
-        ? second
-        : parser.NoMatch();
+    {
+        var next = parser;
+
+        foreach (var grammar in Sequence)
+        {
+            next = grammar.Match(next);
+
+            if (next.State == Matching.NoMatch)
+            {
+                return Parser.NoMatch;
+            }
+        }
+        return next;
+    }
 
     /// <inheritdoc />
     [Pure]
-    public override string ToString() => $"({Left} & {Right})";
+    public override string ToString() => $"( {string.Join(" & ", Sequence)} )";
 }

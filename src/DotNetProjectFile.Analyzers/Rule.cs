@@ -2,7 +2,7 @@
 
 namespace DotNetProjectFile;
 
-public static class Rule
+public static partial class Rule
 {
     public static DiagnosticDescriptor ProjectFileCouldNotBeLocated => New(
         id: 0001,
@@ -866,7 +866,7 @@ public static class Rule
             messageFormat: message,
             customTags: tags,
             category: category.ToString(),
-            defaultSeverity: severity,
+            defaultSeverity: category == Category.SyntaxError ? DiagnosticSeverity.Error : severity,
             isEnabledByDefault: isEnabled,
             description: description,
             helpLinkUri: $"https://dotnet-project-file-analyzers.github.io/rules/Proj{id:0000}.html");

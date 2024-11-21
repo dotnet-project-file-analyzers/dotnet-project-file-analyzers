@@ -14,9 +14,9 @@ analyzers.
 # Parsing INI files
 |     File |        Mean |        Speed |
 |---------:|------------:|-------------:|
-|   27 LoC |    41.41 us |   1,5 µs/LoC |
-|   36 LoC |    44.52 us |   1,2 µs/LoC |
-| 1220 LoC | 4,828.15 us |   4,0 µs/LoC |
+|   27 LoC |    35.71 us |   1,3 µs/LoC |
+|   36 LoC |    36.30 us |   1,0 µs/LoC |
+| 1220 LoC | 5,692.83 us |   4,7 µs/LoC |
 
 ## Parsing Globs
 The purpose was never speed, 

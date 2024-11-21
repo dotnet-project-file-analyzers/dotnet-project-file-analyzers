@@ -55,6 +55,7 @@ public partial class Rules
     [TestCaseSource(nameof(Types))]
     public void defined_in_DotNetProjectFile_Analyzers_MsBuild_namespace(Type type)
         => type.Namespace.Should().BeOneOf(
+            "DotNetProjectFile.Analyzers.Ini",
             "DotNetProjectFile.Analyzers.Generic",
             "DotNetProjectFile.Analyzers.MsBuild",
             "DotNetProjectFile.Analyzers.Resx");
@@ -73,9 +74,12 @@ public partial class Rules
         .GetTypes()
         .Where(t => !t.IsAbstract && t.IsAssignableTo(typeof(DiagnosticAnalyzer)));
 
-    private static IEnumerable<Rule> AlleRules
-        => typeof(DotNetProjectFile.Rule)
-        .GetProperties(BindingFlags.Public | BindingFlags.Static)
+    private static IEnumerable<Rule> AlleRules => GetRules(
+        typeof(DotNetProjectFile.Rule),
+        typeof(DotNetProjectFile.Rule.Ini));
+
+    private static IEnumerable<Rule> GetRules(params IEnumerable<Type> types) => types
+        .SelectMany(t => t.GetProperties(BindingFlags.Public | BindingFlags.Static))
         .Where(f => f.PropertyType == typeof(DiagnosticDescriptor))
         .Select(f => (DiagnosticDescriptor)f.GetValue(null)!)
         .Select(d => new Rule(d));

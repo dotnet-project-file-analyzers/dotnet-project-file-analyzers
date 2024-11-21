@@ -19,7 +19,12 @@ public partial class Grammar
     /// <summary>Parse the source text.</summary>
     [Pure]
     public Parser Parse(SourceText sourceText)
-        => Match(Parser.New(new(sourceText)));
+    {
+        var parser = Match(Parser.New(new(sourceText)));
+        return parser.State == Matching.EoF
+            ? parser
+            : Parser.NoMatch;
+    }
 
     /// <summary>Matches the grammar on the current state of the parser.</summary>
     /// <param name="parser">

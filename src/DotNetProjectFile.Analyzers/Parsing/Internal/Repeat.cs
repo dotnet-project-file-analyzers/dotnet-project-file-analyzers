@@ -15,9 +15,10 @@ internal sealed class Repeat(Grammar grammar, int min, int max) : Grammar
         var i = 0;
         var prev = parser;
         var next = parser;
+        var max = Maximum == 0 ? 1 : Maximum;
 
         while (next.State == Matching.Match
-            && i <= Maximum)
+            && i < max)
         {
             prev = next;
             next = Grammar.Match(prev);
@@ -30,7 +31,7 @@ internal sealed class Repeat(Grammar grammar, int min, int max) : Grammar
 
         return next.State switch
         {
-            _ when !inRange => parser.NoMatch(),
+            _ when !inRange => Parser.NoMatch,
             Matching.NoMatch => prev,
             _ => next,
         };

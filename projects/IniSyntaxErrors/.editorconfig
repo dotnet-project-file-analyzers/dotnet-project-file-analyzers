@@ -1,0 +1,16 @@
+root = true
+
+[No Header
+KeyWithoutAssignement Value
+KeyWithoutValue =
+Key1 = Value
+
+# Section
+[*]
+Key2 = value # With comment
+KeyWith Comment = #Comment
+
+[]
+key = value
+
+[[Header]

@@ -7,7 +7,7 @@ internal sealed class EndOfFile : Grammar
     public override Parser Match(Parser parser)
         => parser.State == Matching.EoF
         ? parser
-        : parser.NoMatch();
+        : Parser.NoMatch;
 
     /// <inheritdoc />
     [Pure]

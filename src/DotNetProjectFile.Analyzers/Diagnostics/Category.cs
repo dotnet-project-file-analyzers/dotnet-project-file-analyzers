@@ -13,4 +13,5 @@ public enum Category
     Obsolete,
     Security,
     SDK,
+    SyntaxError,
 }
