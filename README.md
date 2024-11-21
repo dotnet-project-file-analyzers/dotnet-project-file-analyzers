@@ -153,6 +153,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj4000** Invalid INI file](rules/Proj4000.md)
 * [**Proj4001** Invalid INI header](rules/Proj4001.md)
 * [**Proj4002** Invalid INI key-value pair](rules/Proj4002.md)
+* [**Proj4010** Sections should contain at least one key-value pair](rules/Proj4010.md)
 
 ## Additional files
 To fully benefit from these analyzers it is recommended to add the project file
