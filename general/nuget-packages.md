@@ -27,7 +27,7 @@ packages.
 | [Proj0215](../rules/Proj0215.md) | Do use an image that is 128x128 and has a transparent background (PNG) for the best viewing results.
 |                                  | Consider setting up Source Link to automatically add source control metadata to your NuGet package and make your library easier to debug.
 |                                  | Do choose an open source license to make your package open source.
-
+} [Proj0243](../rules/Proj0243.md) | Generate a software bill of materials to be compliant with USA legislations.
 
 ## Further reading
 * https://learn.microsoft.com/nuget/reference/msbuild-targets
