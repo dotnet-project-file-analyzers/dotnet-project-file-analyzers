@@ -4,15 +4,11 @@ internal sealed class Or : Grammar
 {
     private readonly ImmutableArray<Grammar> Options;
 
-    public Or(Grammar left, Grammar right)
-    {
-
-        Options =
-        [
-            ..left is Or l ? l.Options : [left],
-            ..right is Or r ? r.Options : [right],
-        ];
-    }
+    public Or(Grammar left, Grammar right) => Options =
+    [
+        ..left is Or l ? l.Options : [left],
+        ..right is Or r ? r.Options : [right],
+    ];
 
     /// <inheritdoc />
     [Pure]

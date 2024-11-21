@@ -4,15 +4,11 @@ internal sealed class And : Grammar
 {
     private readonly ImmutableArray<Grammar> Sequence;
 
-    public And(Grammar left, Grammar right)
-    {
-
-        Sequence =
-        [
-            ..left is And l ? l.Sequence : [left],
-            ..right is And r ? r.Sequence : [right],
-        ];
-    }
+    public And(Grammar left, Grammar right) => Sequence =
+    [
+        ..left is And l ? l.Sequence : [left],
+        ..right is And r ? r.Sequence : [right],
+    ];
 
     /// <inheritdoc />
     [Pure]
