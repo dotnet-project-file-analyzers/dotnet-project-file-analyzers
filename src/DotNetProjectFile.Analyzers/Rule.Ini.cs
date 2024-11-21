@@ -1,3 +1,5 @@
+#pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
+
 namespace DotNetProjectFile;
 
 public static partial class Rule
@@ -27,5 +29,15 @@ public static partial class Rule
            description: "A INI key-value pair should have the format <Key> ( : | = ) <Value>.",
            tags: ["INI", "syntax error"],
            category: Category.SyntaxError);
+
+        public static DiagnosticDescriptor EmptySection => New(
+            id: 4010,
+            title: "Sections should contain at least key-value pair",
+            message: "Section [{0}] is empty.",
+            description:
+                "A Section in INI file groups key-value pairs. Having an empty " +
+                "section has no added value.",
+            tags: ["INI", "noise"],
+            category: Category.Noise);
     }
 }

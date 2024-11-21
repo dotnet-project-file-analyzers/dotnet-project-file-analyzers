@@ -32,7 +32,7 @@ public abstract record SyntaxNode
 
     public SliceSpan Span { get; init; }
 
-    public LinePositionSpan LinePositionSpan => SyntaxTree.SourceText.Lines.GetLinePositionSpan(new(Span.Start, Span.End - Span.Start));
+    public LinePositionSpan LinePositionSpan => SyntaxTree.SourceText.Lines.GetLinePositionSpan(new(Tokens[0].Span.Start, Tokens[^1].Span.End - Tokens[0].Span.Start));
 
     /// <summary>Gets the full text of the node.</summary>
     public string FullText => string.Concat(Tokens.Select(t => t.Text));
