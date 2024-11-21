@@ -32,7 +32,7 @@ public static partial class Rule
 
         public static DiagnosticDescriptor EmptySection => New(
             id: 4010,
-            title: "Sections should contain a key-value pair",
+            title: "Sections should contain at least key-value pair",
             message: "Section [{0}] is empty.",
             description:
                 "A Section in INI file groups key-value pairs. Having an empty " +
