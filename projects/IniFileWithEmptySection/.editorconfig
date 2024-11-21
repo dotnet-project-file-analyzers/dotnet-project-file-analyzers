@@ -1,0 +1,13 @@
+root = true
+
+[*]
+end_of_line = crlf
+
+# Code files
+[*.{cs,json,cshtml,ts}]
+indent_style = space
+
+[empty.*]
+# Roslyn Analyzers
+[*.cs]
+vsspell_section_id = main
