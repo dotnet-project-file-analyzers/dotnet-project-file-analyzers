@@ -10,6 +10,7 @@
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <DevelopmentDependency>true</DevelopmentDependency>
+    <GenerateSBOM>true</GenerateSBOM>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
@@ -28,6 +29,8 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
+- Proj0243: Generate software bill of materials. (NEW RULE)
+- Proj1200: Add packages that should be included as private assets. (FN)
 - Proj3000: Inaccessible files should not lead to a crash. (BUG)
 - Proj4000: Invalid INI file. (NEW RULE)
 - Proj4001: Invalid INI header. (NEW RULE)
@@ -202,6 +205,10 @@ v1.0.0
     <None Include="$(OutputPath)/DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
     <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
     <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup Label="Props and targets">
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="3.0.0" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup Label="Roslyn dependencies">

@@ -55,6 +55,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0240** Enable package validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0240.html)
 * [**Proj0241** Enable package baseline validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0241.html)
 * [**Proj0242** Generate NuGet packages conditionally](https://dotnet-project-file-analyzers.github.io/rules/Proj0242.html)
+* [**Proj0243** Generate software bill of materials](https://dotnet-project-file-analyzers.github.io/rules/Proj0243.html)
 * [**Proj0600** Avoid generating packages on build if not packable](https://dotnet-project-file-analyzers.github.io/rules/Proj0600.html)
 
 ### Publishing

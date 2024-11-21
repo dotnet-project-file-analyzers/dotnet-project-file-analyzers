@@ -2,7 +2,8 @@ namespace DotNetProjectFile.NuGet;
 
 public sealed class Packages : IReadOnlyCollection<Package>
 {
-    public static readonly Package Microsoft_NET_Test_Sdk = new("Microsoft.NET.Test.Sdk", isPrivateAsset: true);
+    public static readonly BuildExtension Microsoft_NET_Test_Sdk = new("Microsoft.NET.Test.Sdk");
+    public static readonly BuildExtension Microsoft_Sbom_Targets = new("Microsoft.Sbom.Targets");
 
     public static readonly Packages All = new(
 
@@ -10,10 +11,12 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new Analyzer("AspNetCoreAnalyzers"),
         new Analyzer("AsyncFixer"),
         new Analyzer("AsyncUsageAnalyzers"),
+        new Analyzer("CSharpGuidelinesAnalyzer"),
         new Analyzer("ConfigureAwaitChecker.Analyzer"),
         new Analyzer("DotNetAnalyzers.BannedApiAnalyzer"),
         new Analyzer("DotNetAnalyzers.DocumentationAnalyzers"),
         new Analyzer("DotNetAnalyzers.DocumentationAnalyzers.Unstable"),
+        new Analyzer("Gu.Analyzers"),
         new Analyzer("DotNetProjectFile.Analyzers"),
         new Analyzer("IDisposableAnalyzers"),
         new Analyzer("Lombiq.Analyzers"),
@@ -83,6 +86,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new SourceGenerator("OneOf.SourceGenerator"),
         new SourceGenerator("Polyfill"),
         new SourceGenerator("PolySharp"),
+        new SourceGenerator("Qowaiv.Diagnostics.Contracts"),
         new SourceGenerator("PropertyChanged.SourceGenerator"),
         new SourceGenerator("ReactiveMarbles.ObservableEvents.SourceGenerator"),
         new SourceGenerator("Realm.SourceGenerator"),
@@ -96,11 +100,27 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new SourceGenerator("UnitGenerator"),
         new SourceGenerator("Vogen"),
 
-        // Private assets
-        new Package("coverlet.collector", isPrivateAsset: true),
-        new Package("coverlet.msbuild", isPrivateAsset: true),
+        // Build extensions
+        new BuildExtension("coverlet.collector"),
+        new BuildExtension("coverlet.msbuild"),
+        new BuildExtension("DotNetProjectFile.Analyzers.Sdk"),
+        new BuildExtension("Grpc.Tools"),
+        new BuildExtension("JetBrains.Annotations"),
+        new BuildExtension("JetBrains.ExternalAnnotations"),
+        new BuildExtension("Microsoft.DotNet.ApiCompat"),
         Microsoft_NET_Test_Sdk,
-        new Package("NUnit3TestAdapter", isPrivateAsset: true));
+        Microsoft_Sbom_Targets,
+        new BuildExtension("Microsoft.SourceLink.Gitea"),
+        new BuildExtension("Microsoft.SourceLink.GitLab"),
+        new BuildExtension("Microsoft.SourceLink.GitHub"),
+        new BuildExtension("Microsoft.SourceLink.GitWeb"),
+        new BuildExtension("Microsoft.SourceLink.AzureRepos.Git"),
+        new BuildExtension("Microsoft.SourceLink.Bitbucket.Git"),
+        new BuildExtension("Microsoft.SourceLink.AzureDevOpsServer.Git"),
+        new BuildExtension("MinVer"),
+        new BuildExtension("NUnit3TestAdapter"),
+        new BuildExtension("Nullable"),
+        new BuildExtension("xunit.runner.visualstudio"));
 
     private readonly Dictionary<string, Package> items;
 
