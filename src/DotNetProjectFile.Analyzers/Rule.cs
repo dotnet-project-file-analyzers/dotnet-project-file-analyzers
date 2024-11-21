@@ -489,7 +489,7 @@ public static class Rule
     public static DiagnosticDescriptor EnablePackageValidation => New(
         id: 0240,
         title: "Enable package validation",
-        message: "Define the <EnablePackageValidation> node with value 'true', define the <IsPackable> node with value 'false' or define the <DevelopmentDependency> node with value 'false'.",
+        message: "Define the <EnablePackageValidation> node with value 'true' or define the <IsPackable> node with value 'false' or define the <DevelopmentDependency> node with value 'false'.",
         description:
             "To ensure the (backwards) compatibility " +
             "of the API surface of your package, it is adviced " +
@@ -531,7 +531,7 @@ public static class Rule
     public static DiagnosticDescriptor GenerateSbom => New(
        id: 0243,
        title: "Generate software bill of materials",
-       message: "Enable SBOM generation with <GenerateSBOM> is 'true' define the <IsPackable> node with value 'false'.",
+       message: "{0} or define the <IsPackable> node with value 'false'.",
        description:
            "To be compliant with USA legislation, a software bill of materials " +
            "should be included with a shipped package.",
