@@ -31,7 +31,7 @@
     <AdditionalFiles Include="*.props" />
     <AdditionalFiles Include="*.targets" />
     <AdditionalFiles Include="*.txt" />
-    <AdditionalFiles Include="**.yaml" />
+    <AdditionalFiles Include="*.yaml" />
     <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
   </ItemGroup>
 
