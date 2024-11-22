@@ -157,6 +157,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 
 ## .editorconfig
 * [**Proj4050** Header must be a GLOB](rules/Proj4050.md)
+* [**Proj4051** Use equals sign for key-value assignments](rules/Proj4051.md)
 
 ## Additional files
 To fully benefit from these analyzers it is recommended to add the project file
