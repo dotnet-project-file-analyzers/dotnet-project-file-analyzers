@@ -33,7 +33,7 @@ public sealed record HeaderSyntax : IniSyntax
                     }
                     if (text == 0)
                     {
-                        return [Diagnostic.Create(Rule.Ini.InvalidHeader, SyntaxTree.GetLocation(token.LinePositionSpan), "] is expected.")];
+                        return [Diagnostic.Create(Rule.Ini.InvalidHeader, SyntaxTree.GetLocation(token.LinePositionSpan), "] is unexpected.")];
                     }
                     break;
             }
