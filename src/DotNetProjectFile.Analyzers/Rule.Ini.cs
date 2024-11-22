@@ -55,7 +55,7 @@ public static partial class Rule
             id: 4051,
             title: "Use equals sign for key-value assignments",
             message: "Use = instead.",
-            description: ".editorconfig files define = not : as the assignment.",
+            description: "In .editorconfig files instead of : use = as assignment sign.",
             tags: ["INI", ".editorconfig"],
             category: Category.Clarity);
     }
