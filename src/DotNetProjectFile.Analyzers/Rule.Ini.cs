@@ -50,5 +50,13 @@ public static partial class Rule
                 "to. Therefor, they must be valid GLOBs.",
             tags: [".editorconfig", "GLOB"],
             category: Category.SyntaxError);
+
+        public static DiagnosticDescriptor UseEqualsAssign => New(
+            id: 4051,
+            title: "Use equals sign for key-value assignments",
+            message: "Use = instead.",
+            description: ".editorconfig files define = not : as the assignment.",
+            tags: ["INI", ".editorconfig"],
+            category: Category.Clarity);
     }
 }

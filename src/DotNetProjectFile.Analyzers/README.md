@@ -116,3 +116,4 @@ The package contains analyzers that analyze .NET project files.
 
 ## .editorconfig
 * [**Proj4050** Header must be a GLOB](https://dotnet-project-file-analyzers.github.io/rules/Proj4050.html)
+* [**Proj4051** Use equals sign for key-value assignments](https://dotnet-project-file-analyzers.github.io/rules/Proj4051.html)

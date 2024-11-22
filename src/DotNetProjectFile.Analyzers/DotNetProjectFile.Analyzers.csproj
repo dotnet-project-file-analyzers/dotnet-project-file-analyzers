@@ -37,6 +37,7 @@ v1.5.1
 - Proj4002: Invalid INI key-value pair. (NEW RULE)
 - Proj4010: Sections should contain at least one key-value pair. (NEW RULE)
 - Proj4050: Header must be a GLOB. (NEW RULE)
+- Proj4051: Use equals sign for key-value assignments. (NEW RULE)
 v1.5.0
 - Proj0700: Avoid defining <Compile> items in SDK project. (NEW RULE)
 - Support .net.csproj SDK projects.
