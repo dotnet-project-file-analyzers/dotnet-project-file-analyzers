@@ -47,7 +47,7 @@ public static partial class Rule
             description:
                 ".editorconfig files work on the premise that header texts are " +
                 "GLOB's matching files the key-value pairs of the section apply " +
-                "to. Therefor, they must be a valid GLOB.",
+                "to. Therefor, they must be valid GLOBs.",
             tags: [".editorconfig", "GLOB"],
             category: Category.SyntaxError);
     }
