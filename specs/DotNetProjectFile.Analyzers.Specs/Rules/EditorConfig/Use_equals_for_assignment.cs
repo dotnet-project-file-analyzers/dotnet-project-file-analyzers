@@ -5,7 +5,7 @@ namespace Rules.EditorConfig.Use_equals_for_assignment;
 public class Reports
 {
     [Test]
-    public void invalid_GLOBs() => new UseEqualsAssign()
+    public void colon_signs() => new UseEqualsAssign()
         .ForProject("InvalidEditorConfigHeaders.cs")
         .HasIssues(
             Issue.WRN("Proj4051", "Use = instead.").WithSpan(13, 12, 13, 13),
