@@ -146,5 +146,5 @@ internal static class GlobParser
     }
 
     private static TextSpan? Literal(this SourceSpan span)
-        => span.Matches(c => c != '?' && c != '*' && c != '[' && c != '{' && c != ',');
+        => span.Matches(c => c != '?' && c != '*' && c != '[' && c != '{' && c != '}' && c != ',');
 }

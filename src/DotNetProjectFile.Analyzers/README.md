@@ -113,3 +113,6 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj4001** Invalid INI header](https://dotnet-project-file-analyzers.github.io/rules/Proj4001.html)
 * [**Proj4002** Invalid INI key-value pair](https://dotnet-project-file-analyzers.github.io/rules/Proj4002.html)
 * [**Proj4010** Sections should contain at least key-value pair](https://dotnet-project-file-analyzers.github.io/rules/Proj4010.html)
+
+## .editorconfig
+* [**Proj4050** Header must be a GLOB](https://dotnet-project-file-analyzers.github.io/rules/Proj4050.html)

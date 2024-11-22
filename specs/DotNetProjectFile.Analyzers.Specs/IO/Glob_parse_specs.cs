@@ -27,6 +27,7 @@ public class Can_not_parse
     [TestCase("[[test]]")]
     [TestCase("[]")]
     [TestCase("*.{cs,{vb,vpproj}csproj}")]
+    [TestCase("{cs,vb}}")]
     public void globs(string str)
         => Glob.TryParse(str).Should().BeNull();
 }

@@ -39,5 +39,16 @@ public static partial class Rule
                 "section has no added value.",
             tags: ["INI", "noise"],
             category: Category.Noise);
+
+        public static DiagnosticDescriptor HeaderMustBeGlob => New(
+            id: 4050,
+            title: "Header must be a GLOB",
+            message: "Header [{0}] is not a valid GLOB.",
+            description:
+                ".editorconfig files work on the premise that header texts are " +
+                "GLOB's matching files the key-value pairs of the section apply " +
+                "to. Therefor, they must be a valid GLOB.",
+            tags: [".editorconfig", "GLOB"],
+            category: Category.SyntaxError);
     }
 }
