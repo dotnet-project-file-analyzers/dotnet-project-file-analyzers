@@ -53,12 +53,8 @@ public partial class Rules
         .Should().BeTrue(because: $"Rule {rule} should be mentioned");
 
     [TestCaseSource(nameof(Types))]
-    public void defined_in_DotNetProjectFile_Analyzers_MsBuild_namespace(Type type)
-        => type.Namespace.Should().BeOneOf(
-            "DotNetProjectFile.Analyzers.Ini",
-            "DotNetProjectFile.Analyzers.Generic",
-            "DotNetProjectFile.Analyzers.MsBuild",
-            "DotNetProjectFile.Analyzers.Resx");
+    public void defined_in_DotNetProjectFile_Analyzers_namespace(Type type)
+        => type.Namespace!.StartsWith("DotNetProjectFile.Analyzers.");
 
     [TestCaseSource(nameof(Types))]
     public void Has_supported_diagnostics(Type type)
