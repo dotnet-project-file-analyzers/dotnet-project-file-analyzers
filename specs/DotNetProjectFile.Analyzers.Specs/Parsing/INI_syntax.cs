@@ -71,7 +71,7 @@ public class Parses_with_errors
             var syntax = Parse.Syntax("[]");
 
             syntax.Sections[0].Header!.GetDiagnostics().Should().HaveIssue(
-                Issue.ERR("Proj4001", "] is expected.").WithSpan(0, 1, 0, 2));
+                Issue.ERR("Proj4001", "] is unexpected.").WithSpan(0, 1, 0, 2));
         }
 
         [Test]

@@ -32,7 +32,7 @@ public static partial class Rule
 
         public static DiagnosticDescriptor EmptySection => New(
             id: 4010,
-            title: "Sections should contain at least key-value pair",
+            title: "Sections should contain at least one key-value pair",
             message: "Section [{0}] is empty.",
             description:
                 "A Section in INI file groups key-value pairs. Having an empty " +
@@ -47,7 +47,7 @@ public static partial class Rule
             description:
                 ".editorconfig files work on the premise that header texts are " +
                 "GLOB's matching files the key-value pairs of the section apply " +
-                "to. Therefor, they must be a valid GLOB.",
+                "to. Therefor, they must be valid GLOBs.",
             tags: [".editorconfig", "GLOB"],
             category: Category.SyntaxError);
     }
