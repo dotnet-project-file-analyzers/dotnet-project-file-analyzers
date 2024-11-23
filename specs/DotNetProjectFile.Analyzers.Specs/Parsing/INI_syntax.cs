@@ -1,5 +1,6 @@
 using DotNetProjectFile.Ini;
 using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 using SyntaxTree = DotNetProjectFile.Syntax.SyntaxTree;
 
 namespace Parsing.INI_syntax;
@@ -150,6 +151,16 @@ public class Parses_with_errors
         }
     }
 
+    public class File_with_issue
+    {
+        [Test]
+        public void issue_251()
+        {
+            var syntax = Parse.Syntax(new FileInfo("../../../Parsing/Examples/bug_00251.ini"));
+            syntax.GetDiagnostics().Should().HaveCount(1);
+        }
+    }
+
     public class Non_INI
     {
         [Test]
@@ -169,6 +180,17 @@ public class Parses_with_errors
 
 file static class Parse
 {
+    public static IniFileSyntax Syntax(FileInfo file)
+    {
+        using var stream = file.OpenRead();
+
+        var tree = SyntaxTree.Load(stream);
+        var synstax = IniFileSyntax.Parse(tree);
+        synstax.Should().NotBeNull();
+        return synstax!;
+
+    }
+
     public static IniFileSyntax Syntax(string text)
     {
         var tree = SyntaxTree.Parse(text);
