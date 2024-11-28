@@ -1,8 +1,7 @@
 using Microsoft.CodeAnalysis.Text;
 using System.Text.RegularExpressions;
-using static DotNetProjectFile.Syntax.SourceSpan;
 
-namespace DotNetProjectFile.Syntax;
+namespace Grammr.Text;
 
 /// <summary>Represents a span of a source text.</summary>
 /// <param name="sourceText">
