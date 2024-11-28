@@ -30,7 +30,16 @@ public sealed record IniFileSyntax : IniSyntax
             : new());
 
     public static IniFileSyntax Parse(Syntax.SyntaxTree tree)
-        => IniGrammar.file
-            .Parse(tree.SourceText)
-            .Resolve<IniFileSyntax>(tree);
+    {
+        try
+        {
+            return IniGrammar.file
+                .Parse(tree.SourceText)
+                .Resolve<IniFileSyntax>(tree);
+        }
+        catch (Unparsable)
+        {
+            return Unparsable.Syntax(new IniFileSyntax(), tree);
+        }
+    }
 }

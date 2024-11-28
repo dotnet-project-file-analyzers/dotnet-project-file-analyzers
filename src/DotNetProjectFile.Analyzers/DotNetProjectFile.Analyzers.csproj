@@ -24,10 +24,12 @@
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.5.1</Version>
+    <Version>1.5.2</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+v1.5.2
+- Proj4000: Defensive on unparsable INI files. (BUG)
 v1.5.1
 - Proj0243: Generate software bill of materials. (NEW RULE)
 - Proj1200: Add packages that should be included as private assets. (FN)

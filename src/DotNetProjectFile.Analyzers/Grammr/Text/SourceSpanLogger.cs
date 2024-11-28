@@ -1,7 +1,6 @@
 using Microsoft.CodeAnalysis.Text;
-using System.Net.NetworkInformation;
 
-namespace DotNetProjectFile.Syntax;
+namespace Grammr.Text;
 
 #pragma warning disable RS1035 // Do not use APIs banned for analyzers
 internal static class SourceSpanLogger

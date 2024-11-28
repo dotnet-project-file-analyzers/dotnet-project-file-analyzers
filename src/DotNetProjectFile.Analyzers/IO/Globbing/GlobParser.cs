@@ -1,4 +1,4 @@
-using DotNetProjectFile.Syntax;
+using Grammr.Text;
 using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.IO.Globbing;

@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis.Text;
 
-namespace DotNetProjectFile.Syntax;
+namespace Grammr.Text;
 
 /// <summary>Represents a syntax token.</summary>
 [DebuggerDisplay("{DebuggerDisplay}")]

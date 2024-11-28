@@ -1,4 +1,4 @@
-namespace DotNetProjectFile.Syntax;
+namespace Grammr.Text;
 
 /// <summary>The exception that is thrown when invalid patterns are specified.</summary>
 public class InvalidPattern : FormatException

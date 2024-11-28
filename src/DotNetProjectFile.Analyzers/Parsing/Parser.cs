@@ -1,5 +1,6 @@
 using DotNetProjectFile.Collections;
 using DotNetProjectFile.Syntax;
+using Grammr.Text;
 using Microsoft.CodeAnalysis.Text;
 using SyntaxNode = DotNetProjectFile.Syntax.SyntaxNode;
 
