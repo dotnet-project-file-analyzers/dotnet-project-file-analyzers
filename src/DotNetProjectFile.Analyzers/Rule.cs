@@ -284,6 +284,16 @@ public static partial class Rule
         tags: ["clarity", "casing"],
         category: Category.Clarity);
 
+    public static DiagnosticDescriptor MigrateAwayFromBinaryFormatter => New(
+        id: 0032,
+        title: "Migrate away from BinaryFormatter",
+        message: "Migrate away from BinaryFormatter and disable <{0}>.",
+        description:
+            "Microsoft strongly recommends that you investigate options to stop " +
+            "using BinaryFormatter due to the associated security risks.",
+        tags: ["Bug", "Security", "Vulnerability"],
+        category: Category.Security);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
