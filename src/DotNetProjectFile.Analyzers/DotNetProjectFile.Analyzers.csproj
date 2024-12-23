@@ -24,10 +24,12 @@
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.5.2</Version>
+    <Version>1.5.3</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+v1.5.3
+- Disable INI based rules by default. (BUG)
 v1.5.2
 - Proj4000: Defensive on unparsable INI files. (BUG)
 v1.5.1
