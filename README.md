@@ -28,8 +28,7 @@ dotnet package add DotNetProjectFile.Analyzers
 ```
 
 ## Configuration
-How to change the configuration of the rules can be found [here](general/configuration.md).
-To configure (the severity) of the rules provided
+How to configure (the severity of) rules is described [here](general/configuration.md).
 
 ## Sdk
 .NET Project File Analyzers ships with its own SDK. This allows files shared by

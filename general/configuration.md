@@ -8,15 +8,28 @@ Most (but not all) C# and VB.NET rules can be configured in the `.editorconfig`
 file. Unfortunately, changing the severity (and other configuration) of rules
 in the `.editorconfig` is [**NOT** supported by MS Build](https://github.com/dotnet/roslyn/issues/37876).
 
+## Global analyzer config
+It is also possible to configure rules using a [Global AnalyzerConfig](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuration-files#global-analyzerconfig)
+`.globalconfig` file located in the same directory as the project file or in
+one of its (grand)parent directories. The following `.globalconfig` file will
+disable rule `Proj0010` and raise `Proj0011` to error level:
+
+``` INI
+is_global = true
+
+dotnet_diagnostic.Proj0010.severity = none  # Define the <OutputType> node explicitly.
+dotnet_diagnostic.Proj0011.severity = error # Property <{0}> has been already defined.
+```
+
 ## Analyzer INI file
-Fortunately, it is possible to define project specific preferences just as you
-would have done in an `.editorconfig` file, using `<EditorConfigFiles>`:
+It is also possible to define project specific preferences as you would have done in
+an `.globalconfig` file, using `<GlobalAnalyzerConfigFiles>`:
 
 ``` XML
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <EditorConfigFiles Include="../../analyzers-config.ini" />
+    <GlobalAnalyzerConfigFiles Include="../../analyzers-config.ini" />
   </ItemGroup>
 </Project>
 ```
@@ -29,19 +42,6 @@ is_global = false
 
 dotnet_diagnostic.Proj0002.severity = error # Upgrade legacy MS Build project files
 dotnet_diagnostic.Proj0010.severity = none  # Define OutputType explicitly
-```
-
-## Global analyzer config
-It is also possible to configure rules using a [Global AnalyzerConfig](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuration-files#global-analyzerconfig)
-`.globalconfig` file located in the same directory as the project file or in
-one of its (grand)parent directories. The following `.globalconfig` file will
-disable rule `Proj0010` and raise `Proj0011` to error level:
-
-``` INI
-is_global = true
-
-dotnet_diagnostic.Proj0010.severity = none  # Define the <OutputType> node explicitly.
-dotnet_diagnostic.Proj0011.severity = error # Property <{0}> has been already defined.
 ```
 
 ## Disable rules using <NoWarn>
