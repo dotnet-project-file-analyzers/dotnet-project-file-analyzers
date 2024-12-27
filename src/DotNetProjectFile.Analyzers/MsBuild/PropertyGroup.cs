@@ -62,6 +62,8 @@ public sealed class PropertyGroup(XElement element, Node parent, MsBuildProject 
 
     public Nodes<EnablePackageValidation> EnablePackageValidation => new(Children);
 
+    public Nodes<EnableUnsafeBinaryFormatterSerialization> EnableUnsafeBinaryFormatterSerialization => new(Children);
+
     public Nodes<PackageValidationBaselineVersion> PackageValidationBaselineVersion => new(Children);
 
     public Nodes<ManagePackageVersionsCentrally> ManagePackageVersionsCentrally => new(Children);
