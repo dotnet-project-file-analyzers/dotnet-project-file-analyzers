@@ -287,7 +287,7 @@ public static partial class Rule
     public static DiagnosticDescriptor MigrateAwayFromBinaryFormatter => New(
         id: 0032,
         title: "Migrate away from BinaryFormatter",
-        message: "Migrate away from BinaryFormatter and disable <{0}>.",
+        message: "Migrate away from BinaryFormatter and do not enable <{0}>.",
         description:
             "Microsoft strongly recommends that you investigate options to stop " +
             "using BinaryFormatter due to the associated security risks.",

@@ -5,7 +5,7 @@ public class Reports
     [Test]
     public void when_BinaryFormatter_is_enabled() => new MigrateAwayFromBinaryFormatter()
         .ForProject("BinaryFormattingEnabled.cs")
-        .HasIssue(Issue.WRN("Proj0032", "Migrate away from BinaryFormatter and disable <EnableUnsafeBinaryFormatterSerialization>.")
+        .HasIssue(Issue.WRN("Proj0032", "Migrate away from BinaryFormatter and do not enable <EnableUnsafeBinaryFormatterSerialization>.")
             .WithSpan(04, 04, 04, 93));
 }
 
