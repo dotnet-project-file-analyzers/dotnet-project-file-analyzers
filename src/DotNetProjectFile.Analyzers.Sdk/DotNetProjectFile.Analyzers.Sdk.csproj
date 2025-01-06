@@ -28,6 +28,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+ToBeReleased:
+- Use .NET 8.0 target framework by default. 
 v1.5.3
 - Disable INI based rules by default. (BUG)
 v1.5.2
