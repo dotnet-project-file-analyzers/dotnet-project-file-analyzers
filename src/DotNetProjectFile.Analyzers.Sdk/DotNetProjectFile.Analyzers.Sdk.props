@@ -39,8 +39,14 @@
     <None Include="**/TestResults/**" />
   </ItemGroup>
 
+
   <!-- Ensure our analyzers are available -->
   <ItemGroup>
+    <!--
+      Remove first to ensure we do not get a NU1504. This can happen because
+      Directory.Packages.props has been used.
+    -->
+    <PackageReference Remove="DotNetProjectFile.Analyzers" />
     <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.5.3" PrivateAssets="all" />
   </ItemGroup>
 
