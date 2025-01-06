@@ -28,6 +28,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+ToBeReleased
+- Prevent NU1504 from being raised when Directory.Packages.props is used. (BUG)
 v1.5.3
 - Disable INI based rules by default. (BUG)
 v1.5.2
