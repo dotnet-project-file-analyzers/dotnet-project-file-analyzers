@@ -10,7 +10,7 @@ public sealed class OverrideTargetFrameworksWithTargetFrameworks()
             SelectMany(g => g.TargetFramework)
             .Where(tfm => context.File.PropertyGroups
                 .SelectMany(g => g.TargetFrameworks)
-                .Any(tmfs => tmfs.Condition is null || tmfs.Condition == tfm.Condition)))
+                .Any(tfms => tfms.Condition is null || tfms.Condition == tfm.Condition)))
         {
             context.ReportDiagnostic(Descriptor, tfm);
         }
