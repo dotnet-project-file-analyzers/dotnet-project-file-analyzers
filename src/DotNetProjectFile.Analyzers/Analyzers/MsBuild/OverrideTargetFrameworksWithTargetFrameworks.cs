@@ -6,9 +6,9 @@ public sealed class OverrideTargetFrameworksWithTargetFrameworks()
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.File.Property<TargetFrameworks>() is null) return;
-
-        foreach (var tfm in context.File.PropertyGroups.SelectMany(g => g.TargetFramework))
+        foreach (var tfm in context.File.PropertyGroups.
+            SelectMany(g => g.TargetFramework)
+            .Where(tfm => context.File.PropertyGroups.SelectMany(g => g.TargetFrameworks).Any(x => x.Condition is null || x.Condition == tfm.Condition)))
         {
             context.ReportDiagnostic(Descriptor, tfm);
         }

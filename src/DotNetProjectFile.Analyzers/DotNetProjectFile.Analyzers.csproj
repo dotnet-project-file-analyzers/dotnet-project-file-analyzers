@@ -29,6 +29,7 @@
     <PackageReleaseNotes>
       <![CDATA[
 To be released:
+- Proj0009: Take conditionals into account. (FP)
 - Proj0032: Migarate away from BinaryFormatter. (NEW RULE)
 v1.5.3
 - Disable INI based rules by default. (BUG)
