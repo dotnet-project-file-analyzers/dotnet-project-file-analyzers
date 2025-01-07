@@ -10,10 +10,10 @@ public sealed class IndentResx : ResourceFileAnalyzer
     public IndentResx() : this(' ', 2) { }
 
     public IndentResx(char ch, int repeat) : base(Rule.IndentResx)
-        => Checker = new(ch, repeat, Descriptor);
+        => Checker = new(ch, repeat, Descriptor, Exclude);
 
     protected override void Register(ResourceFileAnalysisContext context)
-        => Checker.Walk(context.File, context.File.Text, context, Exclude);
+        => Checker.Walk(context.File, context.File.Text, context);
 
     /// <remarks>
     /// Excludes children of value.
