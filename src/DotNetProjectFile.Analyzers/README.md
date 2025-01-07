@@ -34,7 +34,6 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0030** Use VB.NET specific properties only when applicable](https://dotnet-project-file-analyzers.github.io/rules/Proj0030.html)
 * [**Proj0031** Adopt preferred casing of nodes](https://dotnet-project-file-analyzers.github.io/rules/Proj0031.html)
 * [**Proj0032** Migrate away from BinaryFormatter](https://dotnet-project-file-analyzers.github.io/rules/Proj0032.html)
-* [**Proj0033** Track uses of ""TODO"" tags](https://dotnet-project-file-analyzers.github.io/rules/Proj0033.html)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)
@@ -109,6 +108,7 @@ The package contains analyzers that analyze .NET project files.
 
 ## Generic
 * [**Proj3000** Only use UTF-8 without BOM](https://dotnet-project-file-analyzers.github.io/rules/Proj3000.html)
+* [**Proj3001** Track uses of ""TODO"" tags](https://dotnet-project-file-analyzers.github.io/rules/Proj3001.html)
 
 ## INI
 * [**Proj4000** Invalid INI file](https://dotnet-project-file-analyzers.github.io/rules/Proj4000.html)

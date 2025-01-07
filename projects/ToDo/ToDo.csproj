@@ -18,4 +18,8 @@
     <Compile Include="../common/Code.cs" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <AdditionalFileItemNames>$(AdditionalFileItemNames);EmbeddedResource</AdditionalFileItemNames>
+  </PropertyGroup>
+
 </Project>
