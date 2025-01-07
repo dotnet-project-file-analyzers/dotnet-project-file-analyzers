@@ -5,16 +5,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <OutputType>Library</OutputType>
-    <IsPackable>true</IsPackable>
     <IsPublishable>false</IsPublishable>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
     <DevelopmentDependency>true</DevelopmentDependency>
-    <GenerateSBOM>true</GenerateSBOM>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateSBOM>true</GenerateSBOM>
   </PropertyGroup>
 
   <PropertyGroup Label="Package settings">
@@ -24,20 +24,20 @@
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers SDK</Description>
     <PackageTags>SDK;Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.5.3</Version>
+    <Version>1.5.4</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
-ToBeReleased
+v1.5.4
 - Prevent NU1504 from being raised when Directory.Packages.props is used. (BUG)
 v1.5.3
 - Disable INI based rules by default. (BUG)
 v1.5.2
 - Proj4000: Defensive on unparsable INI files. (BUG)
 v1.5.1
-- Updated .net project analyzers.
+- Updated .NET project analyzers.
 v1.5.0
-- Support .net project to contain shared files that can be analyzed.
+- Support .NET project to contain shared files that can be analyzed.
 ]]>
     </PackageReleaseNotes>
     <PackageIcon>logo_128x128.png</PackageIcon>
