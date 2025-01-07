@@ -74,7 +74,6 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0030** Use VB.NET specific properties only when applicable](rules/Proj0030.md)
 * [**Proj0031** Adopt preferred casing of nodes](rules/Proj0031.md)
 * [**Proj0032** Migrate away from BinaryFormatter](rules/Proj0032.md)
-* [**Proj0033** Track uses of ""TODO"" tags](rules/Proj0033.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
@@ -149,6 +148,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 
 ## Generic
 * [**Proj3000** Only use UTF-8 without BOM](rules/Proj3000.md)
+* [**Proj3001** Track uses of "TODO" tags](rules/Proj3001.md)
 
 ## INI
 * [**Proj4000** Invalid INI file](rules/Proj4000.md)
