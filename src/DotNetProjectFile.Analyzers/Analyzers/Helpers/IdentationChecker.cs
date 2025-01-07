@@ -2,27 +2,31 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Analyzers.Helpers;
 
-internal sealed class IdentationChecker<TFile>(char ch, int repeat, DiagnosticDescriptor descriptor)
+internal sealed class IdentationChecker<TFile>(
+    char ch,
+    int repeat,
+    DiagnosticDescriptor descriptor,
+    Predicate<XmlAnalysisNode>? exclude = null)
     where TFile : class, ProjectFile, XmlAnalysisNode
 {
     private readonly char Char = ch;
     private readonly int Repeat = repeat;
     private readonly DiagnosticDescriptor Descriptor = descriptor;
+    private readonly Predicate<XmlAnalysisNode> Exclude = exclude ?? (_ => false);
 
     public void Walk(
         XmlAnalysisNode node,
         SourceText text,
-        ProjectFileAnalysisContext<TFile> context,
-        Predicate<XmlAnalysisNode> exclude)
+        ProjectFileAnalysisContext<TFile> context)
     {
-        if (!exclude(node))
+        if (!Exclude(node))
         {
             Report(node, text, context, true);
             Report(node, text, context, false);
         }
         foreach (var child in node.Children())
         {
-            Walk(child, text, context, exclude);
+            Walk(child, text, context);
         }
     }
 

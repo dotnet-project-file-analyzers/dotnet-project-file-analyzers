@@ -548,7 +548,6 @@ public static partial class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
-
     public static DiagnosticDescriptor GenerateSbom => New(
        id: 0243,
        title: "Generate software bill of materials",
