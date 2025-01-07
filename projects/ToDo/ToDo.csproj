@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+  
+  <!-- TODO: remove this comment. -->
+
+  <PropertyGroup Label="Fixme: this is an nasty hack.">
+    <ToDo>Custom props are okay.</ToDo>
+  </PropertyGroup>
+  
+  <!--
+    FIX ME, as this will not work.
+  -->
+
+  <ItemGroup Label="to-do: what todo with this include?">
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
+</Project>

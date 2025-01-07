@@ -5,6 +5,7 @@ public enum Category
     Bug,
     Clarity,
     CodeQuality,
+    CodeSmell,
     Configuration,
     CPM,
     Formatting,

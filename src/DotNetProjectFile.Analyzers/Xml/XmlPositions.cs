@@ -60,4 +60,45 @@ public sealed record XmlPositions
             EndElement = new(end.GetValueOrDefault(), final),
         };
     }
+
+    public static XmlPositions New(XComment comment)
+    {
+        LinePosition start = comment.LinePosition();
+        LinePosition end = default;
+        using var reader = comment.Parent.CreateReader();
+
+        var info = (IXmlLineInfo)reader;
+
+        reader.MoveToContent();
+
+        do
+        {
+            if (reader.NodeType != XmlNodeType.Comment)
+            {
+                var test = info.LinePosition();
+                if (test > start)
+                {
+                    if (reader.NodeType == XmlNodeType.EndElement)
+                    {
+                        test = test.Expand(-1);
+                    }
+                    end = test;
+                }
+            }
+        }
+        while (reader.Read() && end == default);
+
+        if (end == default)
+        {
+            end = start.Expand(comment.Value.Length + 3);
+        }
+
+        return new()
+        {
+            // Length of '<!--' is 4 and should be subtracted.
+            StartElement = new(start.Expand(-4), start),
+            // Length of '-->' is 3 and should be subtracted.
+            EndElement = new(end.Expand(-3), end),
+        };
+    }
 }
