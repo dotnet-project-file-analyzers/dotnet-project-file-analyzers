@@ -31,7 +31,7 @@
 To be released:
 - Proj0009: Take conditionals into account. (FP)
 - Proj0032: Migarate away from BinaryFormatter. (NEW RULE)
-- Proj3001: Track uses of ""TODO"" tags (MS BUILD and RESX). (NEW RULE)
+- Proj3001: Track uses of "TODO" tags (MS BUILD and RESX). (NEW RULE)
 v1.5.3
 - Disable INI based rules by default. (BUG)
 v1.5.2
