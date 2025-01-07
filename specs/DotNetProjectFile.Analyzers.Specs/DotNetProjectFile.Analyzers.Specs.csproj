@@ -5,7 +5,6 @@
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <IsTestProject>true</IsTestProject>
-    <IsPackable>false</IsPackable>
     <RootNamespace>Specs</RootNamespace>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <OutputType>library</OutputType>

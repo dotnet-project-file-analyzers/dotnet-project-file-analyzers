@@ -5,6 +5,7 @@
     <Nullable>enable</Nullable>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <NuGetAudit>true</NuGetAudit>
+    <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
     <!-- Would interact with all current tests -->
     <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>

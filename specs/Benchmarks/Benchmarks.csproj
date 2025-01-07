@@ -4,7 +4,6 @@
   
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
-    <IsPackable>false</IsPackable>
     <OutputType>exe</OutputType>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <NoWarn>RS1038;RS1041</NoWarn>

@@ -47,7 +47,7 @@
       Directory.Packages.props has been used.
     -->
     <PackageReference Remove="DotNetProjectFile.Analyzers" />
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.5.3" PrivateAssets="all" />
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.5.4" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>
