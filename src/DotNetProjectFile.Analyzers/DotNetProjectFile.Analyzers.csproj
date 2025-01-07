@@ -30,6 +30,7 @@
       <![CDATA[
 To be released:
 - Proj0032: Migarate away from BinaryFormatter. (NEW RULE)
+- Proj0033: Track uses of ""TODO"" tags. (NEW RULE)
 v1.5.3
 - Disable INI based rules by default. (BUG)
 v1.5.2
