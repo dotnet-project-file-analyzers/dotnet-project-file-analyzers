@@ -294,17 +294,6 @@ public static partial class Rule
         tags: ["Bug", "Security", "Vulnerability"],
         category: Category.Security);
 
-    public static DiagnosticDescriptor TrackToDoTags => New(
-        id: 0033,
-        title: @"Track uses of ""TODO"" tags",
-        message: @"Complete the task associated to this ""{0}"" comment.",
-        description:
-            "Developers often use TODO tags to mark areas in the code where " +
-            "additional work or improvements are needed but are not implemented " +
-            "immediately.",
-        tags: ["Code smell"],
-        category: Category.CodeSmell);
-
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
@@ -867,6 +856,17 @@ public static partial class Rule
             "includes multiple web based files such as Javascript and CSS.",
         tags: ["encoding", "UTF-8"],
         category: Category.Reliability);
+
+    public static DiagnosticDescriptor TrackToDoTags => New(
+        id: 3001,
+        title: @"Track uses of ""TODO"" tags",
+        message: @"Complete the task associated to this ""{0}"" comment.",
+        description:
+            "Developers often use TODO tags to mark areas in the code where " +
+            "additional work or improvements are needed but are not implemented " +
+            "immediately.",
+        tags: ["Code smell"],
+        category: Category.CodeSmell);
 
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
