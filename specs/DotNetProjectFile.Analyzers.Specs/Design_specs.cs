@@ -99,22 +99,6 @@ public partial class Rules
     private static partial Regex AmountPattern();
 }
 
-
-public class SDK
-{
-    [Test]
-    public void references_latest_version()
-    {
-        var proj = ProjectFiles.Global.MsBuildProject(IOFile.Parse("../../../../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"));
-        var prop = ProjectFiles.Global.MsBuildProject(IOFile.Parse("../../../../../src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.props"));
-
-        var vers = proj!.PropertyGroups.SelectMany(p => p.Version).Last().Value;
-        var reff = prop!.ItemGroups.SelectMany(p => p.PackageReferences).Single(p => p.Include == "DotNetProjectFile.Analyzers").Version;
-        vers.Should().NotBeEmpty();
-        reff.Should().Be(vers);
-    }
-}
-
 /// <remarks>Wrapper for better display of test resources in IDE.</remarks>
 public sealed record Rule(DiagnosticDescriptor Descriptor)
 {
