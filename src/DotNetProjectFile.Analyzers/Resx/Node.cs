@@ -1,3 +1,4 @@
+
 namespace DotNetProjectFile.Resx;
 
 public partial class Node : XmlAnalysisNode
@@ -22,6 +23,8 @@ public partial class Node : XmlAnalysisNode
     public string LocalName => Element.Name.LocalName;
 
     public IReadOnlyList<Node> Children { get; }
+
+    ProjectFile XmlAnalysisNode.Project => Resource;
 
     IEnumerable<XmlAnalysisNode> XmlAnalysisNode.Children() => Children;
 }

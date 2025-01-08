@@ -1,11 +1,13 @@
 namespace DotNetProjectFile.Xml;
 
-public sealed class XmlComment(XComment comment) : XmlAnalysisNode
+public sealed class XmlComment(XComment comment, ProjectFile project) : XmlAnalysisNode
 {
     /// <inheritdoc />
     public XElement Element { get; } = comment.Parent;
 
     public XComment Comment { get; } = comment;
+
+    public ProjectFile Project { get; } = project;
 
     /// <inheritdoc />
     public XmlPositions Positions { get; } = XmlPositions.New(comment);

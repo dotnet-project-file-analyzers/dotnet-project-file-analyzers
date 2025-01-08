@@ -11,7 +11,7 @@ public sealed class UseEqualsAssign() : IniFileAnalyzer(Rule.Ini.UseEqualsAssign
 
         foreach (var colon in context.File.Syntax.Tokens.Where(t => t.Kind == TokenKind.ColonToken))
         {
-            context.ReportDiagnostic(Descriptor, colon.LinePositionSpan);
+            context.ReportDiagnostic(Descriptor, context.File, colon.LinePositionSpan);
         }
     }
 }

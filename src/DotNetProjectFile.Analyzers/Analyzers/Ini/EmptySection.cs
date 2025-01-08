@@ -9,7 +9,7 @@ public sealed class EmptySection() : IniFileAnalyzer(Rule.Ini.EmptySection)
             .Where(s => s.KeyValuePairs.None())
             .Select(s => s.Header!))
         {
-            context.ReportDiagnostic(Descriptor, header.LinePositionSpan, header.Text);
+            context.ReportDiagnostic(Descriptor, context.File, header.LinePositionSpan, header.Text);
         }
     }
 }

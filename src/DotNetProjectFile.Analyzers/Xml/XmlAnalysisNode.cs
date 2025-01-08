@@ -10,5 +10,7 @@ public interface XmlAnalysisNode
 
     int Depth { get; }
 
+    ProjectFile Project { get; }
+
     IEnumerable<XmlAnalysisNode> Children();
 }

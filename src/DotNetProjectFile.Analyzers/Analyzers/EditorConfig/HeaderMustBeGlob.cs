@@ -15,7 +15,7 @@ public sealed class HeaderMustBeGlob() : IniFileAnalyzer(Rule.Ini.HeaderMustBeGl
             .Where(h => h.Text is { Length: > 0 } && Glob.TryParse(h.Text) is null))
         {
             var span = header.Tokens.First(t => t.Kind == TokenKind.HeaderTextToken);
-            context.ReportDiagnostic(Descriptor, span.LinePositionSpan, header.Text);
+            context.ReportDiagnostic(Descriptor, context.File, span.LinePositionSpan, header.Text);
         }
     }
 }
