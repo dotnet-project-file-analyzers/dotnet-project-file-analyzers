@@ -30,16 +30,12 @@ public readonly struct ProjectFileAnalysisContext<TFile>(
     public CancellationToken CancellationToken { get; } = cancellationToken;
 
     /// <summary>Reports a diagnostic about the project file.</summary>
-    public void ReportDiagnostic(DiagnosticDescriptor descriptor, Node node, params object?[]? messageArgs)
-        => ReportDiagnostic(descriptor, node.Positions.FullSpan, messageArgs);
-
-    /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, XmlAnalysisNode node, params object?[]? messageArgs)
-        => ReportDiagnostic(descriptor, node.Positions.FullSpan, messageArgs);
+        => ReportDiagnostic(descriptor, node.Project, node.Positions.FullSpan, messageArgs);
 
     /// <summary>Reports a diagnostic about the project file.</summary>
-    public void ReportDiagnostic(DiagnosticDescriptor descriptor, LinePositionSpan span, params object?[]? messageArgs)
-        => ReportDiagnostic(descriptor, File.GetLocation(span), messageArgs);
+    public void ReportDiagnostic(DiagnosticDescriptor descriptor, ProjectFile file, LinePositionSpan span, params object?[]? messageArgs)
+        => ReportDiagnostic(descriptor, file.GetLocation(span), messageArgs);
 
     /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, Location location, params object?[]? messageArgs)

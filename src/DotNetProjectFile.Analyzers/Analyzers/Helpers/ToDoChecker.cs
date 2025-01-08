@@ -20,11 +20,11 @@ internal sealed class ToDoChecker<TFile>(
         foreach (var comment in node.Element
             .DescendantNodes()
             .OfType<XComment>()
-            .Select(x => new XmlComment(x)))
+            .Select(x => new XmlComment(x, context.File)))
         {
             if (ToDoChecker.IsIssue(comment.Text) is { } issue)
             {
-                context.ReportDiagnostic(Descriptor, comment.Positions.InnerSpan, issue);
+                context.ReportDiagnostic(Descriptor, comment.Project, comment.Positions.InnerSpan, issue);
             }
         }
 
@@ -38,7 +38,7 @@ internal sealed class ToDoChecker<TFile>(
     {
         if (GetText(node) is { Length: >= 4 } txt && ToDoChecker.IsIssue(txt) is { } issue)
         {
-            context.ReportDiagnostic(Descriptor, node.Positions.InnerSpan, issue);
+            context.ReportDiagnostic(Descriptor, node.Project, node.Positions.InnerSpan, issue);
         }
 
         foreach (var child in node.Children())

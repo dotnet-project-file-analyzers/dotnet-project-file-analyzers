@@ -23,7 +23,9 @@ public abstract class Node : XmlAnalysisNode
         Depth = element.Depth();
     }
 
-    internal readonly Project Project;
+    public Project Project { get; }
+
+    ProjectFile XmlAnalysisNode.Project => Project;
 
     public XElement Element { get; }
 

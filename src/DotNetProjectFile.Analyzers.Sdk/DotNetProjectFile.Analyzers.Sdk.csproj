@@ -24,11 +24,11 @@
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers SDK</Description>
     <PackageTags>SDK;Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.5.4</Version>
+    <Version>1.5.5</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
-ToBeReleased
+v1.5.5
 - No longer automatically include DotNetProjectFile.Analyzers
 v1.5.4
 - Prevent NU1504 from being raised when Directory.Packages.props is used. (BUG)
