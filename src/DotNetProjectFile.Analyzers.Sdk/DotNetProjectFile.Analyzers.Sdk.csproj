@@ -28,6 +28,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+ToBeReleased
+- Do not longer automatically include DotNetProjectFile.Analyzers
 v1.5.4
 - Prevent NU1504 from being raised when Directory.Packages.props is used. (BUG)
 v1.5.3

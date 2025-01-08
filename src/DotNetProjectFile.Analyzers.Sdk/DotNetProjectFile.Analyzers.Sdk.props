@@ -2,11 +2,10 @@
 
   <PropertyGroup>
     <!-- The TargetFramework may be overridden, but has a fine default. -->
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <LangVersion>latest</LangVersion>
     <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
-    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
   </PropertyGroup>
 
   <!-- We do not want to enable default items here -->
@@ -37,17 +36,6 @@
 
   <ItemGroup>
     <None Include="**/TestResults/**" />
-  </ItemGroup>
-
-
-  <!-- Ensure our analyzers are available -->
-  <ItemGroup>
-    <!--
-      Remove first to ensure we do not get a NU1504. This can happen because
-      Directory.Packages.props has been used.
-    -->
-    <PackageReference Remove="DotNetProjectFile.Analyzers" />
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.5.4" PrivateAssets="all" />
   </ItemGroup>
 
 </Project>
