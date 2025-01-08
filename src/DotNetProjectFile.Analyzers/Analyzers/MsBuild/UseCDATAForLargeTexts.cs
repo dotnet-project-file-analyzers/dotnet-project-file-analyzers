@@ -1,8 +1,10 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.UseCDATAForLargeTexts"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseCDATAForLargeTexts() : MsBuildProjectFileAnalyzer(Rule.UseCDATAForLargeTexts)
 {
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         Walk(context.File);
@@ -11,7 +13,7 @@ public sealed class UseCDATAForLargeTexts() : MsBuildProjectFileAnalyzer(Rule.Us
         {
             if (node is PackageReleaseNotes && !node.Element.ContainsCDATA())
             {
-                context.ReportDiagnostic(Descriptor, context.File, node.Locations.InnerSpan);
+                context.ReportDiagnostic(Descriptor, node.Locations.InnerSpan);
             }
 
             foreach (var child in node.Children)
