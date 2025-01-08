@@ -35,7 +35,7 @@ public readonly struct ProjectFileAnalysisContext<TFile>(
 
     /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, ProjectFile file, LinePositionSpan span, params object?[]? messageArgs)
-        => ReportDiagnostic(descriptor, File.GetLocation(span), messageArgs);
+        => ReportDiagnostic(descriptor, file.GetLocation(span), messageArgs);
 
     /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, Location location, params object?[]? messageArgs)
