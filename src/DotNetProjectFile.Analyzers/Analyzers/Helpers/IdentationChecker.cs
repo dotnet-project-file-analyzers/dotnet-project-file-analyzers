@@ -32,17 +32,19 @@ internal sealed class IdentationChecker<TFile>(
 
     private void Report(XmlAnalysisNode node, SourceText text, ProjectFileAnalysisContext<TFile> context, bool start)
     {
-        var checkSelfClosingEnd = !start && node.Positions.IsSelfClosing;
-        var startAndEndOnSameLine = !start && node.Positions.StartElement.End.Line == node.Positions.EndElement.Start.Line;
+        var positions = node.Locations.Positions;
+
+        var checkSelfClosingEnd = !start && positions.IsSelfClosing;
+        var startAndEndOnSameLine = !start && positions.StartElement.End.Line == positions.EndElement.Start.Line;
 
         if (checkSelfClosingEnd || startAndEndOnSameLine) { return; }
 
-        var element = start ? node.Positions.StartElement : node.Positions.EndElement;
+        var element = start ? positions.StartElement : positions.EndElement;
 
         if (!ProperlyIndented(element) && !ClosingTagAfterTextWithSpacePreservation(node.Element))
         {
             var name = start ? node.LocalName : '/' + node.LocalName;
-            context.ReportDiagnostic(Descriptor, node.Project, element, name);
+            context.ReportDiagnostic(Descriptor, start ? node.Locations.StartElement : node.Locations.EndElement, name);
         }
 
         bool ProperlyIndented(LinePositionSpan element)

@@ -28,9 +28,11 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+ToBeReleased:
+- Introduction of XmlLocations to create Location based on XmlPositions.
 v1.5.5
-- Fix some warnings being reported in the wrong files.
-- Fix crashes related to errors being reported in the wrong files.
+- Fix some warnings being reported in the wrong files. (BUG)
+- Fix crashes related to errors being reported in the wrong files. (BUG)
 v1.5.4
 - Proj0009: Take conditionals into account. (FP)
 - Proj0032: Migarate away from BinaryFormatter. (NEW RULE)

@@ -11,7 +11,7 @@ public sealed class UseCDATAForLargeTexts() : MsBuildProjectFileAnalyzer(Rule.Us
         {
             if (node is PackageReleaseNotes && !node.Element.ContainsCDATA())
             {
-                context.ReportDiagnostic(Descriptor, context.File, node.Positions.InnerSpan);
+                context.ReportDiagnostic(Descriptor, context.File, node.Locations.InnerSpan);
             }
 
             foreach (var child in node.Children)
