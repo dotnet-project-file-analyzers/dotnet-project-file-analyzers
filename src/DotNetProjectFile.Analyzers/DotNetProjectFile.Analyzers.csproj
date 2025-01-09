@@ -29,6 +29,7 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
+- Added AppendOnlyCollection to improve performance of parsing.
 - Introduction of XmlLocations to create Location based on XmlPositions.
 v1.5.5
 - Fix some warnings being reported in the wrong files. (BUG)
