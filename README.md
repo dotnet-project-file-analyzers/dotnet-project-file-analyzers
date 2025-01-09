@@ -11,10 +11,12 @@ that report issues on .NET project files.
 The full documentation can be found here: [dotnet-project-file-analyzers.github.io](https://dotnet-project-file-analyzers.github.io/)
 
 ## Installation
-| Package                                                                                  | NuGet                                                                                                                                                                                                                                                |
-|:----------------------------------------------------------------------------------------:|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-|[DotNetProjectFile.Analyzers](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/)| [![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/) |
+| Packages                                                                                         | NuGet                                                                                                                                                                                                                                                                    |
+|--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|[DotNetProjectFile.Analyzers](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/)        | [![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/)                     |
+|[DotNetProjectFile.Analyzers.Sdk](https://www.nuget.org/packages/DotNetProjectFile.Analyzers.Sdk/)| [![DotNetProjectFile.Analyzers.Sdk](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers.Sdk)![DotNetProjectFile.Analyzers.Sdk](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers.Sdk)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers.Sdk/) |
 
+### Analyzers
 To use the analyzers, you must include the analyzer NuGet package in your project file:
 ``` XML
 <Project Sdk="Microsoft.NET.Sdk">
@@ -31,6 +33,8 @@ or via PowerShell:
 ``` PS
 Install-Package DotNetProjectFile.Analyzers
 ```
+### SDK
+To use the SDK, follow the instructions [here](https://dotnet-project-file-analyzers.github.io/general/sdk.html).
 
 ## Additional files
 To fully benefit from these analyzers it is recommended to add the project file
