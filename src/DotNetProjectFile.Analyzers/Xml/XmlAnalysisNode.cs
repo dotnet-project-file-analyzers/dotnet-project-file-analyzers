@@ -4,13 +4,11 @@ public interface XmlAnalysisNode
 {
     XElement Element { get; }
 
-    XmlPositions Positions { get; }
+    XmlLocations Locations { get; }
 
     string LocalName { get; }
 
     int Depth { get; }
-
-    ProjectFile Project { get; }
 
     IEnumerable<XmlAnalysisNode> Children();
 }

@@ -10,7 +10,7 @@ public sealed class XmlComment(XComment comment, ProjectFile project) : XmlAnaly
     public ProjectFile Project { get; } = project;
 
     /// <inheritdoc />
-    public XmlPositions Positions { get; } = XmlPositions.New(comment);
+    public XmlLocations Locations { get; } = XmlPositions.New(comment).Locations(project);
 
     /// <inheritdoc cref="XComment.Value" />
     public string Text => Comment.Value;

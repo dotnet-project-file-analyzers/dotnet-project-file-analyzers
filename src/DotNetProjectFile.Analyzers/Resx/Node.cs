@@ -7,7 +7,7 @@ public partial class Node : XmlAnalysisNode
     {
         Element = element;
         Resource = resource ?? (this as Resource) ?? throw new ArgumentNullException(nameof(resource));
-        Positions = XmlPositions.New(element);
+        Locations = XmlPositions.New(element).Locations(Resource);
         Depth = element.Ancestors().Count();
         Children = Element.Elements().Select(Create).OfType<Node>().ToArray();
     }
@@ -18,13 +18,11 @@ public partial class Node : XmlAnalysisNode
 
     public int Depth { get; }
 
-    public XmlPositions Positions { get; }
+    public XmlLocations Locations { get; }
 
     public string LocalName => Element.Name.LocalName;
 
     public IReadOnlyList<Node> Children { get; }
-
-    ProjectFile XmlAnalysisNode.Project => Resource;
 
     IEnumerable<XmlAnalysisNode> XmlAnalysisNode.Children() => Children;
 }

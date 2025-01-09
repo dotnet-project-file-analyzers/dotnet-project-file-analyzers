@@ -15,6 +15,9 @@ public sealed record XmlPositions
 
     public bool IsSelfClosing => StartElement == EndElement;
 
+    [Pure]
+    public XmlLocations Locations(ProjectFile file) => new() { File = file, Positions = this };
+
     public static XmlPositions New(XElement element)
     {
         LinePosition? start = null;

@@ -19,13 +19,11 @@ public abstract class Node : XmlAnalysisNode
         Parent = parent;
         Project = project ?? (this as Project) ?? throw new ArgumentNullException(nameof(project));
         Children = element.Elements().Select(Create).ToArray();
-        Positions = XmlPositions.New(element);
+        Locations = XmlPositions.New(element).Locations(Project);
         Depth = element.Depth();
     }
 
     public Project Project { get; }
-
-    ProjectFile XmlAnalysisNode.Project => Project;
 
     public XElement Element { get; }
 
@@ -33,7 +31,7 @@ public abstract class Node : XmlAnalysisNode
 
     public int Depth { get; }
 
-    public XmlPositions Positions { get; }
+    public XmlLocations Locations { get; }
 
     public virtual object? Val => Element.Value;
 
