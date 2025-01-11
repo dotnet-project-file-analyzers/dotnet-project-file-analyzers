@@ -16,7 +16,7 @@ public sealed class SyntaxTree
 
     public IReadOnlyList<SourceSpanToken> Tokens { get; init; } = [];
 
-    public SourceSpan SourceSpan => new(SourceText, new(0, SourceText.Length));
+    public SourceSpan SourceSpan => Source.From(SourceText);
 
     /// <summary>Gets the location of the line span.</summary>
     [Pure]

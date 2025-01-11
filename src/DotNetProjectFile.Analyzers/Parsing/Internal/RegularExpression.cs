@@ -16,8 +16,8 @@ internal sealed class RegularExpression(Regex pattern, string? kind, bool line)
     [Pure]
     public override Parser Match(Parser parser)
         => Line
-        ? parser.Match(s => s.Line(Pattern), Kind)
-        : parser.Match(s => s.Regex(Pattern), Kind);
+        ? parser.Match(s => s.Line().Match(Pattern), Kind)
+        : parser.Match(s => s.Match(Pattern), Kind);
 
     /// <inheritdoc />
     [Pure]

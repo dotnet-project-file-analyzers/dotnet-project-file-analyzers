@@ -3,6 +3,7 @@
 
 using DotNetProjectFile.Parsing.Internal;
 using DotNetProjectFile.Syntax;
+using Grammr.Text;
 using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Parsing;
@@ -18,9 +19,9 @@ public partial class Grammar
 
     /// <summary>Parse the source text.</summary>
     [Pure]
-    public Parser Parse(SourceText sourceText)
+    public Parser Parse(Source source)
     {
-        var parser = Match(Parser.New(new(sourceText)));
+        var parser = Match(Parser.New(source));
         return parser.State == Matching.EoF
             ? parser
             : Parser.NoMatch;

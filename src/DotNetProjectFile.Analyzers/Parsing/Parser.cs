@@ -36,7 +36,7 @@ public readonly struct Parser
 
     public SliceSpan Span => new(Cursor, Tokens.Count - Cursor);
 
-    /// <summary>Tries to apply a <see cref="SourceSpan.Match"/>.</summary>
+    /// <summary>Tries to apply a <see cref="Source.Match"/>.</summary>
     /// <param name="match">
     /// The match to apply.
     /// </param>
@@ -47,7 +47,7 @@ public readonly struct Parser
     /// A new parser with an updated state.
     /// </returns>
     [Pure]
-    public Parser Match(SourceSpan.Match match, string? kind = null) => match(SourceSpan) switch
+    public Parser Match(Source.Match match, string? kind = null) => match(SourceSpan) switch
     {
         null => NoMatch,
         var span when span.Value.Length == 0 => this,
@@ -71,7 +71,7 @@ public readonly struct Parser
     private Parser New(TextSpan span, string? kind = null)
     {
         var token = new SourceSpanToken(SourceSpan.Trim(span), kind);
-        var trimmed = SourceSpan.TrimLeft(span.Length);
+        var trimmed = SourceSpan.Skip(span.Length);
         return new(trimmed, Tokens.Add(token), Cursor, trimmed.IsEmpty ? Matching.EoF : Matching.Match, Syntax);
     }
 
