@@ -7,9 +7,9 @@ public sealed class Using(XElement element, Node parent, MsBuildProject project)
 
     public string? Alias => Attribute();
 
-    public bool? Static => Convert<bool>(Attribute());
+    public bool? Static => Convert<bool?>(Attribute());
 
-    public UsingType Type => (Static, Alias) switch
+    public UsingType Type => (Static ?? false, Alias) switch
     {
         (false, null) => UsingType.Default,
         (false, _) => UsingType.Alias,
