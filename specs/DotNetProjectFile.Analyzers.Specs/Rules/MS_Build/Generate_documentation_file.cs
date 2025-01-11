@@ -20,6 +20,12 @@ public class Reports
         .ForProject("GenerateDocumentationFileDisabledWithFile.cs")
         .HasIssue(new Issue("Proj0244", "Define the <GenerateDocumentationFile> node with value 'true' or define the <DocumentationFile> node with a valid file path or define the <IsPackable> node with value 'false'.")
         .WithSpan(05, 04, 05, 64));
+
+    [Test]
+    public void on_missing_property_with_empty_file_path() => new EnableGenerateDocumentationFile()
+    .ForProject("GenerateDocumentationFileMissingWithEmptyFile.cs")
+    .HasIssue(new Issue("Proj0244", "Define the <GenerateDocumentationFile> node with value 'true' or define the <DocumentationFile> node with a valid file path or define the <IsPackable> node with value 'false'.")
+    .WithSpan(05, 04, 05, 43));
 }
 
 public class Guards
