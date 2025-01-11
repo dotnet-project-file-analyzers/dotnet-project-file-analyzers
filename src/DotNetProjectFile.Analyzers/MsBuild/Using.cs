@@ -14,8 +14,6 @@ public sealed class Using(XElement element, Node parent, MsBuildProject project)
         (false, null) => UsingType.Default,
         (false, _) => UsingType.Alias,
         (true, null) => UsingType.Static,
-        (true, _) => UsingType.StaticAlias,
-
-        _ => throw new NotImplementedException(), // Should never occur, all cases are covered.
+        /* (true, _)*/ _ => UsingType.StaticAlias,
     };
 }
