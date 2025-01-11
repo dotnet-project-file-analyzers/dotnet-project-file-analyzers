@@ -29,6 +29,7 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
+- Proj1300: Project reference includes should exist. (NEW RULE)
 - Added AppendOnlyCollection to improve performance of parsing.
 - Introduction of XmlLocations to create Location based on XmlPositions.
 v1.5.5
