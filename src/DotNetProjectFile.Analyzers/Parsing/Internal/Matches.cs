@@ -8,7 +8,7 @@ internal sealed class Matches(Predicate<char> predicate, string? kind = null) : 
     /// <inheritdoc />
     [Pure]
     public override Parser Match(Parser parser)
-        => parser.Match(s => s.Matches(Predicate), Kind);
+        => parser.Match(s => s.Predicate(Predicate), Kind);
 
     /// <inheritdoc />
     [Pure]

@@ -1,4 +1,4 @@
-using Specs.TestTools;
+using Grammr.Text;
 using static DotNetProjectFile.Parsing.Grammar;
 using Token = FluentAssertions.Token;
 
@@ -12,7 +12,7 @@ public class Matches
     public void Or(string s)
     {
         var grammar = ch('a') | ch('b') | ch('c');
-        grammar.Parse(Source.Text(s))
+        grammar.Parse(Source.From(s))
             .Should()
             .HaveTokenized(Token.New(0, s));
     }
@@ -21,7 +21,7 @@ public class Matches
     public void Not()
     {
         var grammar = ~ch('a') & str("bb");
-        grammar.Parse(Source.Text("bb"))
+        grammar.Parse(Source.From("bb"))
             .Should()
             .HaveTokenized(Token.New(0, "bb"));
     }
@@ -30,7 +30,7 @@ public class Matches
     public void Option_none()
     {
         var grammar = ch('a').Option & str("bc");
-        grammar.Parse(Source.Text("bc"))
+        grammar.Parse(Source.From("bc"))
             .Should()
             .HaveTokenized(
                 Token.New(0, "bc"));
@@ -40,7 +40,7 @@ public class Matches
     public void Option_once()
     {
         var grammar = ch('a').Option & str("bc");
-        grammar.Parse(Source.Text("abc"))
+        grammar.Parse(Source.From("abc"))
             .Should()
             .HaveTokenized(
                 Token.New(0, "a"),
@@ -51,7 +51,7 @@ public class Matches
     public void Predicate()
     {
         var grammar = match(char.IsDigit) & str("bc");
-        grammar.Parse(Source.Text("0123456789bc"))
+        grammar.Parse(Source.From("0123456789bc"))
             .Should()
             .HaveTokenized(
                 Token.New(0, "0123456789"),
@@ -62,7 +62,7 @@ public class Matches
     public void Repeat()
     {
         var grammar = ch('a').Plus & str("bc");
-        grammar.Parse(Source.Text("aaaabc"))
+        grammar.Parse(Source.From("aaaabc"))
             .Should()
             .HaveTokenized(
                 Token.New(0, "a"),
@@ -76,7 +76,7 @@ public class Matches
     public void Repeat_on_zero_match()
     {
         var grammar = ch('a') & regex(".*").Option.Plus;
-        grammar.Parse(Source.Text("a"))
+        grammar.Parse(Source.From("a"))
             .Should()
             .HaveTokenized(Token.New(0, "a"));
     }
@@ -85,7 +85,7 @@ public class Matches
     public void Repeat_till_end()
     {
         var grammar = ch('a').Star;
-        grammar.Parse(Source.Text("aaaa"))
+        grammar.Parse(Source.From("aaaa"))
             .Should()
             .HaveTokenized(
                 Token.New(0, "a"),
@@ -98,7 +98,7 @@ public class Matches
     public void Start_with_char()
     {
         var grammar = ch('a');
-        grammar.Parse(Source.Text("a"))
+        grammar.Parse(Source.From("a"))
             .Should()
             .HaveTokenized(Token.New(0, "a"));
     }
@@ -107,7 +107,7 @@ public class Matches
     public void Start_with_string()
     {
         var grammar = str("abc");
-        grammar.Parse(Source.Text("abc"))
+        grammar.Parse(Source.From("abc"))
             .Should()
             .HaveTokenized(Token.New(0, "abc"));
     }
@@ -116,7 +116,7 @@ public class Matches
     public void End_of_File()
     {
         var grammar = ch('a') & eof;
-        grammar.Parse(Source.Text("a"))
+        grammar.Parse(Source.From("a"))
             .Should()
             .HaveTokenized(Token.New(0, "a"));
     }
@@ -128,7 +128,7 @@ public class Does_not_match
     public void Or()
     {
         var grammar = ch('a') | ch('b') | ch('c');
-        grammar.Parse(Source.Text("d"))
+        grammar.Parse(Source.From("d"))
             .Should().NotHaveTokenized();
     }
 
@@ -136,7 +136,7 @@ public class Does_not_match
     public void Not()
     {
         var grammar = ~ch('a') & str("aa");
-        grammar.Parse(Source.Text("aa"))
+        grammar.Parse(Source.From("aa"))
             .Should()
             .NotHaveTokenized();
     }
@@ -145,7 +145,7 @@ public class Does_not_match
     public void Predicate()
     {
         var grammar = match(char.IsDigit);
-        grammar.Parse(Source.Text("a12"))
+        grammar.Parse(Source.From("a12"))
             .Should()
             .NotHaveTokenized();
     }
@@ -157,7 +157,7 @@ public class Does_not_match
     public void Repeat(int count)
     {
         var grammar = ch('a').Repeat(2, 4);
-        grammar.Parse(Source.Text(new string('a', count)))
+        grammar.Parse(Source.From(new string('a', count)))
             .Should().NotHaveTokenized();
     }
 
@@ -165,7 +165,7 @@ public class Does_not_match
     public void Start_with_char()
     {
         var grammar = ch('a');
-        grammar.Parse(Source.Text("b"))
+        grammar.Parse(Source.From("b"))
             .Should()
             .NotHaveTokenized();
     }
@@ -177,7 +177,7 @@ public class Does_not_match
     public void Start_with_string(string s)
     {
         var grammar = str("abc");
-        grammar.Parse(Source.Text(s))
+        grammar.Parse(Source.From(s))
             .Should()
             .NotHaveTokenized();
     }
@@ -186,7 +186,7 @@ public class Does_not_match
     public void End_of_File()
     {
         var grammar = ch('a') & eof & ch('a');
-        grammar.Parse(Source.Text("aa"))
+        grammar.Parse(Source.From("aa"))
             .Should()
             .NotHaveTokenized();
     }
