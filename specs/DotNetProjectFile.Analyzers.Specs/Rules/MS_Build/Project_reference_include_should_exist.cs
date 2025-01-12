@@ -6,7 +6,7 @@ public class Reports
     public void empty_includes()
         => new ProjectReferenceIncludeShouldExist()
         .ForProject("ProjectReferenceMissingInclude.cs")
-        .HasIssue(new Issue("Proj1300", "The Include './foo.csproj' of <ProjectReference> does not exist.").WithSpan(08, 04, 08, 47));
+        .HasIssue(new Issue("Proj0033", "The Include './foo.csproj' of <ProjectReference> does not exist.").WithSpan(08, 04, 08, 47));
 }
 
 public class Guards
