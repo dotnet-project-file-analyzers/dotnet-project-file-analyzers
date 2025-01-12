@@ -14,7 +14,7 @@ public sealed class ProjectReferenceIncludeShouldExist() : MsBuildProjectFileAna
         {
             var include = node.Include ?? string.Empty;
 
-            if (include is not { Length: > 0 } || root.Files(include)?.Any() == false)
+            if (include is not { Length: > 0 } || root.Files(include)?.Any() is false)
             {
                 context.ReportDiagnostic(Descriptor, node, include, node.LocalName);
             }
