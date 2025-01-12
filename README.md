@@ -97,6 +97,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0241** Enable package baseline validation](rules/Proj0241.md)
 * [**Proj0242** Generate NuGet packages conditionally](rules/Proj0242.md)
 * [**Proj0243** Generate software bill of materials](rules/Proj0243.md)
+* [**Proj0244** Generate documentation file](rules/Proj0244.md)
 * [**Proj0600** Avoid generating packages on build if not packable](rules/Proj0600.md)
 
 ### Publishing
