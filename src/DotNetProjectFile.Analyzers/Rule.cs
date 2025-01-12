@@ -549,6 +549,18 @@ public static partial class Rule
        severity: DiagnosticSeverity.Warning,
        isEnabled: true);
 
+    public static DiagnosticDescriptor GenerateDocumentationFile => New(
+       id: 0244,
+       title: "Generate documentation file",
+       message: "Define the <GenerateDocumentationFile> node with value 'true' or define the <DocumentationFile> node with a valid file path or define the <IsPackable> node with value 'false'.",
+       description:
+           "In order for code documentation to be visible for package consumers " +
+           "it is important that the documentation is generated.",
+       tags: ["Configuration", "package"],
+       category: Category.Clarity,
+       severity: DiagnosticSeverity.Warning,
+       isEnabled: true);
+
     public static DiagnosticDescriptor DefineIsPublishable => New(
         id: 0400,
         title: "Define the project publishability explicitly",
