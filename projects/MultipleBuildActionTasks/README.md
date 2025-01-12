@@ -1,1 +1,1 @@
-﻿# Read me!
+# Read me!

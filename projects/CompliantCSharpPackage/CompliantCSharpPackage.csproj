@@ -10,6 +10,7 @@
     <DevelopmentDependency>true</DevelopmentDependency>
     <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
     <GenerateSBOM>true</GenerateSBOM>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
