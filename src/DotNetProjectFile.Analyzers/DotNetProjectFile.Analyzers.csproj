@@ -29,6 +29,7 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
+- Proj0033: Project reference includes should exist. (NEW RULE)
 - Proj0244: Generate documentation file. (NEW RULE)
 - Added AppendOnlyCollection to improve performance of parsing.
 - Introduction of XmlLocations to create Location based on XmlPositions.

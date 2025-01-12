@@ -294,6 +294,15 @@ public static partial class Rule
         tags: ["Bug", "Security", "Vulnerability"],
         category: Category.Security);
 
+    public static DiagnosticDescriptor ProjectReferenceIncludeShouldExist => New(
+        id: 0033,
+        title: "Project reference includes should exist",
+        message: "The Include '{0}' of <{1}> does not exist.",
+        description:
+            "Project reference include statements that do not include any file, are most likely bugs.",
+        tags: ["dependencies", "dependency"],
+        category: Category.Bug);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
