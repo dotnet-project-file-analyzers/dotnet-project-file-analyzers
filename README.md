@@ -63,7 +63,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0019** Order using directives alphabetically](rules/Proj0019.md)
 * [**Proj0020** Item group should only contain nodes of a single type](rules/Proj0020.md)
 * [**Proj0021** Build actions should have a single task](rules/Proj0021.md)
-* [**Proj0022** Build actions should have a single task](rules/Proj0022.md)
+* [**Proj0022** Build action includes should exist](rules/Proj0022.md)
 * [**Proj0023** Use forward slashes in paths](rules/Proj0023.md)
 * [**Proj0024** Order package versions alphabetically](rules/Proj0024.md)
 * [**Proj0025** Migrate from ruleset file to .editorconfig file](rules/Proj0025.md)
@@ -74,6 +74,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0030** Use VB.NET specific properties only when applicable](rules/Proj0030.md)
 * [**Proj0031** Adopt preferred casing of nodes](rules/Proj0031.md)
 * [**Proj0032** Migrate away from BinaryFormatter](rules/Proj0032.md)
+* [**Proj0033** Project reference includes should exist](rules/Proj0033.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
