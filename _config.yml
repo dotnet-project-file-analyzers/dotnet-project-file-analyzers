@@ -1,6 +1,8 @@
 title: .NET project file analyzers
 description: Contains roslyn static code analyzers to analyze .NET project files. 
 url: https://dotnet-project-file-analyzers.github.io/
+logo: "/design/logo_128x128.png"
+favicon_ico: "/design/logo.ico"
 
 remote_theme: just-the-docs/just-the-docs@v0.10.1
 plugins:
@@ -25,3 +27,8 @@ kramdown:
 compress_html:
   ignore:
     envs: all
+
+search_enabled: true
+search:
+  heading_level: 6
+  button: true
