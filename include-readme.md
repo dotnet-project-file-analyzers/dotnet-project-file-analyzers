@@ -3,4 +3,5 @@ title: Home
 nav_order: 0
 ---
 
-{% include_relative README.md | markdownify %}
+{% capture readme %}{% include_relative README.md %}{% endcapture %}
+{{ readme | markdownify }}
