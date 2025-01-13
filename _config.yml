@@ -12,6 +12,12 @@ plugins:
 - jekyll-github-metadata
 - jekyll-include-cache
 - jekyll-sitemap
+- jekyll-readme-index
+
+readme_index:
+  enabled:          true
+  remove_originals: false
+  with_frontmatter: false
 
 markdown: kramdown
 highlighter: rouge
