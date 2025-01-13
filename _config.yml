@@ -5,3 +5,12 @@ url: https://dotnet-project-file-analyzers.github.io/
 remote_theme: just-the-docs/just-the-docs@v0.10.1
 plugins:
 - jekyll-remote-theme
+- jekyll-default-layout
+- jekyll-seo-tag
+- jekyll-github-metadata
+- jekyll-include-cache
+- jekyll-sitemap
+
+compress_html:
+  ignore:
+    envs: all
