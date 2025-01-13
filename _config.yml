@@ -12,7 +12,6 @@ plugins:
 - jekyll-github-metadata
 - jekyll-include-cache
 - jekyll-sitemap
-- jekyll_github_sample
 
 markdown: kramdown
 highlighter: rouge
