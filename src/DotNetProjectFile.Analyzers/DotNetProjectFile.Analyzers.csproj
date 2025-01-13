@@ -33,7 +33,7 @@ ToBeReleased:
 - Proj0244: Generate documentation file. (NEW RULE)
 - Added AppendOnlyCollection to improve performance of parsing.
 - Introduction of XmlLocations to create Location based on XmlPositions.
-_ Change <Using>'s determination of Type. (BUG)
+- Change <Using>'s determination of Type. (BUG)
 v1.5.5
 - Fix some warnings being reported in the wrong files. (BUG)
 - Fix crashes related to errors being reported in the wrong files. (BUG)
