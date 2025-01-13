@@ -11,6 +11,8 @@ plugins:
 - jekyll-include-cache
 - jekyll-sitemap
 
+markdown: GFM
+
 kramdown:
   syntax_highlighter_opts:
     block:
