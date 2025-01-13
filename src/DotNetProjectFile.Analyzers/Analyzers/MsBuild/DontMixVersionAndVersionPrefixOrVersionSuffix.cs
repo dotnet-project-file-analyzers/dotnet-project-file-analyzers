@@ -16,9 +16,9 @@ public sealed class DontMixVersionAndVersionPrefixOrVersionSuffix() : MsBuildPro
         var prefix = context.File.Property<VersionPrefix>();
         var suffix = context.File.Property<VersionSuffix>();
 
-        if (GetErrorArgument(prefix, suffix) is { } arg)
+        if (GetErrorArgument(prefix, suffix) is { } error)
         {
-            context.ReportDiagnostic(Descriptor, version, arg);
+            context.ReportDiagnostic(Descriptor, version, error);
         }
     }
 

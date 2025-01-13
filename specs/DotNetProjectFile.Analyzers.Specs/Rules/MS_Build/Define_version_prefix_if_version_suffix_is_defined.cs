@@ -7,7 +7,7 @@ public class Reports
        => new DefineVersionPrefixIfVersionSuffixIsDefined()
         .ForProject("VersionSuffixWithoutPrefix.cs")
         .HasIssue(
-           new Issue("Proj0246", "Define the <VersionPrefix> node or remove the <VersionSuffix> node.")
+           Issue.WRN("Proj0246", "Define the <VersionPrefix> node or remove the <VersionSuffix> node.")
            .WithSpan(09, 04, 09, 45));
 }
 
