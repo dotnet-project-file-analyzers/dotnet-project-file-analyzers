@@ -7,7 +7,7 @@ public class Reports_on_missing
        => new DefinePackageInfo()
        .ForProject("NoPackageInfo.cs")
        .HasIssues(
-           new Issue("Proj0201", "Define the <Version> node explicitly or define the <IsPackable> node with value 'false'."),
+           new Issue("Proj0201", "Define the <Version> or <VersionPrefix> node explicitly or define the <IsPackable> node with value 'false'."),
            new Issue("Proj0202", "Define the <Description> or <PackageDescription> node explicitly or define the <IsPackable> node with value 'false'."),
            new Issue("Proj0203", "Define the <Authors> node explicitly or define the <IsPackable> node with value 'false'."),
            new Issue("Proj0204", "Define the <PackageTags> node explicitly or define the <IsPackable> node with value 'false'."),
@@ -27,7 +27,7 @@ public class Reports_on_missing
        => new DefinePackageInfo()
        .ForProject("NoVersion.cs")
        .HasIssue(
-           new Issue("Proj0201", "Define the <Version> node explicitly or define the <IsPackable> node with value 'false'."));
+           new Issue("Proj0201", "Define the <Version> or <VersionPrefix> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
     public void description()
@@ -126,6 +126,9 @@ public class Guards
     [TestCase("CompliantCSharpPackage.cs")]
     [TestCase("PackageDescription.cs")]
     [TestCase("WithLicenseFile.cs")]
+    [TestCase("VersionPrefix.cs")]
+    [TestCase("VersionPrefixAndSuffix.cs")]
+    [TestCase("VersionPrefixAndSuffixAndVersion.cs")]
     public void Projects_without_issues(string project)
          => new DefinePackageInfo()
         .ForProject(project)
