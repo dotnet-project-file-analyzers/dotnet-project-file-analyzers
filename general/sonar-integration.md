@@ -26,7 +26,7 @@ SonarCloud will recognise it's warnings and pick them up, same as any warnings i
 code.
 
 For Example:
-``` XML
+``` xml
   <ItemGroup>
     <Content Include="*.??proj" CopyToOutputDirectory="Never"/>
     <Content Include="../../props/common.props" CopyToOutputDirectory="Never" Link="Properties/common.props"/>

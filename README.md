@@ -13,7 +13,7 @@ to understand if the documented feature you want to use has been released.
 [![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/)
 
 To use the analyzers, you must include the analyzer package in your project file:
-``` XML
+``` xml
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
@@ -170,7 +170,7 @@ To fully benefit from these analyzers it is recommended to add the project file
 
 To add a project file:
 
-``` XML
+``` xml
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
@@ -182,7 +182,7 @@ To add a project file:
 
 To add a props file:
 
-``` XML
+``` xml
 <Project>
 
   <ItemGroup>

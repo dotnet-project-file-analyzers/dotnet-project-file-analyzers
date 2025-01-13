@@ -9,7 +9,7 @@ So how does it work? At the root level of your solution (most likely the
 directory conting the [Git](https://en.wikipedia.org/wiki/Git) repo), you
  create a C# Project file with the name `.net.csproj`.
 
-``` XML
+``` xml
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
@@ -33,7 +33,7 @@ analyzed by the appropriate .NET Project File Analyzers.
 
 Those analyzers can be included with:
 
-``` XML
+``` xml
 <ItemGroup>
   <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" />
 </ItemGroup>
