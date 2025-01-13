@@ -70,7 +70,7 @@ public sealed class ResultQueue : IReadOnlyCollection<Result>
     public ResultQueue Clear()
     {
         Queue.Clear();
-        Failure = Result.NoMatch(TokenStream.None, null);
+        Failure = Result.NoMatch(TokenStream.None, null!);
         return this;
     }
 
