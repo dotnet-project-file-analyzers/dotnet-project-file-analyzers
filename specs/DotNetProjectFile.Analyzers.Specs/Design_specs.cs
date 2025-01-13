@@ -18,12 +18,11 @@ public partial class Rules
     public async Task have_mark_down_documentation(Rule rule)
     {
         using var client = new HttpClient();
-        
-        var response = await client.GetAsync(rule.HelpLinkUri.Replace(".html", ".md"));
-        response.Should().HaveStatusCode(HttpStatusCode.OK);
+        var response = await client.GetAsync(rule.HelpLinkUri);
+        response.Should().HaveStatusCode(HttpStatusCode.OK, rule.HelpLinkUri);
 
         var content = await response.Content.ReadAsStringAsync();
-        content.Should().StartWith($"# {rule.Id}: ");
+        content.Should().Contain($">{rule.Id}: ");
     }
 
     [Test]
