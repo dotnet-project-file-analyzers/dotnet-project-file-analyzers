@@ -112,7 +112,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0452** Test projects require Microsoft.NET.Test.Sdk](rules/Proj0452.md)
 * [**Proj0453** Using Microsoft.NET.Test.Sdk implies a test project](rules/Proj0453.md)
 
-## .NET Project File Analyzers SDK
+### .NET Project File Analyzers SDK
 * [**Proj0700** Avoid defining &lt;Compile&gt; items in SDK project](rules/Proj0700.md)
 
 ### Central Package Management

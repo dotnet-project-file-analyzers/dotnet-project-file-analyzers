@@ -1,3 +1,7 @@
+---
+nav_order: 2
+---
+
 # .NET Project File Analyzers SDK
 .NET Project File Analyzers ships with its own SDK. This allows files shared by
 multiple projects to be analyzed. It applies a *trick* also used by the

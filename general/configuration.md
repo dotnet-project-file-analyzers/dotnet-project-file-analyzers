@@ -1,3 +1,7 @@
+---
+nav_order: 1
+---
+
 # Configuration of .NET project file analyzers
 Although all **.NET project file analyzers** should work like a charm,
 there might be reasons to do some adjustments: disabling a specific rule or

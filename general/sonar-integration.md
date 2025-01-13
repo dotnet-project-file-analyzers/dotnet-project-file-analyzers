@@ -1,3 +1,7 @@
+---
+nav_order: 5
+---
+
 # Sonarcloud
 *Currently, this readme is confirmed to work for SonarCloud. The steps in this guide
 might also be relevant for other [SonarSource](https://www.sonarsource.com) products,
