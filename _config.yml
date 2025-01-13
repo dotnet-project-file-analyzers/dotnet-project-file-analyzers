@@ -12,12 +12,7 @@ plugins:
 - jekyll-github-metadata
 - jekyll-include-cache
 - jekyll-sitemap
-- jekyll-readme-index
-
-readme_index:
-  enabled:          true
-  remove_originals: false
-  with_frontmatter: false
+- jekyll_github_sample
 
 markdown: kramdown
 highlighter: rouge
