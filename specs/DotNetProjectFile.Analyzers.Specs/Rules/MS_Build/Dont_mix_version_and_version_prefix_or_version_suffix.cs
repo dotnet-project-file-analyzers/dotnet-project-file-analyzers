@@ -33,7 +33,7 @@ public class Guards
     [TestCase("CompliantCSharpPackage.cs")]
     [TestCase("VersionPrefix.cs")]
     [TestCase("VersionPrefixAndSuffix.cs")]
-    [TestCase("VersionSuffixWithoutPrefix.cs")]
+    [TestCase("VersionSuffix.cs")]
     public void Projects_without_issues(string project)
          => new DontMixVersionAndVersionPrefixOrVersionSuffix()
         .ForProject(project)
