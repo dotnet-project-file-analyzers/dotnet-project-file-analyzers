@@ -32,3 +32,9 @@ search_enabled: true
 search:
   heading_level: 6
   button: true
+
+gh_edit_link: true
+gh_edit_link_text: "Edit this page on GitHub."
+gh_edit_repository: "https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers.github.io"
+gh_edit_branch: "main"
+gh_edit_view_mode: "edit"
