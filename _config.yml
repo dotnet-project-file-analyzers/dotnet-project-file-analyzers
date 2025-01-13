@@ -33,6 +33,10 @@ search:
   heading_level: 6
   button: true
 
+aux_links:
+  ".NET project file analyzers on GitHub":
+    - "https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers"
+
 gh_edit_link: true
 gh_edit_link_text: "Edit this page on GitHub."
 gh_edit_repository: "https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers.github.io"
