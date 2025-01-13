@@ -2,7 +2,7 @@ title: .NET project file analyzers
 description: Contains roslyn static code analyzers to analyze .NET project files. 
 url: https://dotnet-project-file-analyzers.github.io/
 
-#remote_theme: just-the-docs/just-the-docs@v0.10.1
+remote_theme: just-the-docs/just-the-docs@v0.10.1
 plugins:
 - jekyll-remote-theme
 - jekyll-default-layout
@@ -11,7 +11,11 @@ plugins:
 - jekyll-include-cache
 - jekyll-sitemap
 
-markdown: GFM
+markdown: kramdown
+highlighter: rouge
+kramdown:
+    input: GFM
+    syntax_highlighter: rouge
 
 kramdown:
   syntax_highlighter_opts:
