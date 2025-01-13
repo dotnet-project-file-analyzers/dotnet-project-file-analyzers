@@ -316,10 +316,10 @@ public static partial class Rule
     public static DiagnosticDescriptor DefineVersion => New(
         id: 0201,
         title: "Define the project version explicitly",
-        message: "Define the <Version> node explicitly or define the <IsPackable> node with value 'false'.",
+        message: "Define the <Version> or <VersionPrefix> node explicitly or define the <IsPackable> node with value 'false'.",
         description:
             "To ensure the creation of well-formed packages, " +
-            "explicitly define the <Version> node or " +
+            "explicitly define the <Version> or <VersionPrefix> node or " +
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
@@ -567,6 +567,34 @@ public static partial class Rule
            "it is important that the documentation is generated.",
        tags: ["Configuration", "package"],
        category: Category.Clarity,
+       severity: DiagnosticSeverity.Warning,
+       isEnabled: true);
+
+    public static DiagnosticDescriptor DontMixVersionAndVersionPrefixOrVersionSuffix => New(
+       id: 0245,
+       title: "Don't mix Version and VersionPrefix/VersionSuffix",
+       message: "Remove the <Version> node or remove the {0}.",
+       description:
+            "Version node overrides VersionPrefix and VersionSuffix nodes " +
+            ", therefore you should either remove the Version node " +
+            "(if you want to use the VersionPrefix and VersionSuffix nodes) or " +
+            "you should remove the VersionPrefix and VersionSuffix nodes " +
+            "(if you want to use Version node).",
+       tags: ["Configuration", "NuGet", "package"],
+       category: Category.Configuration,
+       severity: DiagnosticSeverity.Warning,
+       isEnabled: true);
+
+    public static DiagnosticDescriptor DefineVersionPrefixIfVersionSuffixIsDefined => New(
+       id: 0246,
+       title: "Define VersionPrefix if VersionSuffix is defined",
+       message: "Define the <VersionPrefix> node or remove the <VersionSuffix> node.",
+       description:
+            "VersionSuffix indicates the desire to use the VersionPrefix and VersionSuffix system " +
+            ", but when only defining the VersionSuffix node, the default value of VersionPrefix (1.0.0) " +
+            "is used, which is most likely an error.",
+       tags: ["Configuration", "NuGet", "package"],
+       category: Category.Configuration,
        severity: DiagnosticSeverity.Warning,
        isEnabled: true);
 

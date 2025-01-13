@@ -26,7 +26,7 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
 
         var available = context.File.Walk().Select(n => n.GetType()).ToImmutableHashSet();
 
-        Analyze(context, available, Rule.DefineVersion, typeof(DotNetProjectFile.MsBuild.Version));
+        Analyze(context, available, Rule.DefineVersion, typeof(DotNetProjectFile.MsBuild.Version), typeof(VersionPrefix));
         Analyze(context, available, Rule.DefineDescription, typeof(Description), typeof(PackageDescription));
         Analyze(context, available, Rule.DefineAuthors, typeof(Authors));
         Analyze(context, available, Rule.DefineTags, typeof(PackageTags));

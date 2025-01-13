@@ -30,7 +30,10 @@
       <![CDATA[
 ToBeReleased:
 - Proj0033: Project reference includes should exist. (NEW RULE)
+- Proj0201: VersionPrefix is now allowed as alternative to Version. (FP)
 - Proj0244: Generate documentation file. (NEW RULE)
+- Proj0245: Don't mix Version and VersionPrefix/VersionSuffix. (NEW RULE)
+- Proj0246: Define VersionPrefix if VersionSuffix is defined. (NEW RULE)
 - Added AppendOnlyCollection to improve performance of parsing.
 - Introduction of XmlLocations to create Location based on XmlPositions.
 - Change <Using>'s determination of Type. (BUG)

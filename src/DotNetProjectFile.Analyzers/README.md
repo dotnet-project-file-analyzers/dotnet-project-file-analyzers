@@ -59,6 +59,8 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0242** Generate NuGet packages conditionally](https://dotnet-project-file-analyzers.github.io/rules/Proj0242.html)
 * [**Proj0243** Generate software bill of materials](https://dotnet-project-file-analyzers.github.io/rules/Proj0243.html)
 * [**Proj0244** Generate documentation file](https://dotnet-project-file-analyzers.github.io/rules/Proj0244.html)
+* [**Proj0245** Don’t mix Version and VersionPrefix/VersionSuffix](https://dotnet-project-file-analyzers.github.io/rules/Proj0245.html)
+* [**Proj0246** Define VersionPrefix if VersionSuffix is defined](https://dotnet-project-file-analyzers.github.io/rules/Proj0246.html)
 * [**Proj0600** Avoid generating packages on build if not packable](https://dotnet-project-file-analyzers.github.io/rules/Proj0600.html)
 
 ### Publishing
