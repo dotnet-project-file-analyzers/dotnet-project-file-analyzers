@@ -11,6 +11,11 @@ plugins:
 - jekyll-include-cache
 - jekyll-sitemap
 
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
 compress_html:
   ignore:
     envs: all
