@@ -26,12 +26,22 @@ public sealed class PackageReference(XElement element, Node parent, MsBuildProje
                 return (this, VersionOverride);
             }
 
+            var versionOverrideNode = Project
+                .WalkBackward()
+                .OfType<PackageReference>()
+                .FirstOrDefault(p => p.IncludeOrUpdate == IncludeOrUpdate);
+
+            if (versionOverrideNode?.VersionOverride is { Length: > 0 } versionOverride)
+            {
+                return (versionOverrideNode, versionOverride);
+            }
+
             var versionNode = Project
                 .WalkBackward()
                 .OfType<PackageVersion>()
                 .FirstOrDefault(v => v.Include == IncludeOrUpdate);
 
-            if (versionNode is { } && versionNode.Version is { Length: > 0 } version)
+            if (versionNode?.Version is { Length: > 0 } version)
             {
                 return (versionNode, version);
             }
