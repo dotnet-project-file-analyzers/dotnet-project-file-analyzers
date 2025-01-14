@@ -5,16 +5,21 @@ public sealed class PackageReferencesShouldBeStable() : MsBuildProjectFileAnalyz
 {
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var package in context.File.ItemGroups
-            .SelectMany(i => i.PackageReferences)
-            .Where(IsUnstable))
+        foreach (var package in context.File.ItemGroups.SelectMany(i => i.PackageReferences))
         {
-            context.ReportDiagnostic(Descriptor, package, package.IncludeOrUpdate, package.ResolveVersion());
+            if (package.ResolveVersionVerbose() is not { } resolved)
+            {
+                continue;
+            }
+
+            if (IsUnstable(package, resolved.Version))
+            {
+                context.ReportDiagnostic(Descriptor, resolved.Node, package.IncludeOrUpdate, resolved.Version);
+            }
         }
     }
 
-    private static bool IsUnstable(PackageReference package)
-        => package.ResolveVersion() is { Length: > 0 } version
-        && version.Contains('-')
+    private static bool IsUnstable(PackageReference package, string version)
+        => version.Contains('-')
         && !package.PrivateAssets.IsMatch("all");
 }
