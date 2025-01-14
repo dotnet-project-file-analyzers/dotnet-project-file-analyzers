@@ -27,29 +27,62 @@
 <a class="site-button" id="theme-toggle" style="cursor: pointer;"></a>
 
 <script>
+    const light = 'light';
+    const dark = 'dark';
+    const system = 'system';
     const storageKey = 'dpfa-docs-theme';
 
+    const isThemePreferred = function(theme) {
+        const state = window.matchMedia(`(prefers-color-scheme: ${theme})`);
+
+        if (!state) {
+            return false;
+        }
+
+        return !!state.matches;
+    }
+
+    const getDefaultTheme = function() {
+        if (isThemePreferred(dark)) {
+            return dark;
+        }
+
+        return light;
+    }
+
+    const resolveTheme = function(theme) {
+        if (theme === system) {
+            return getDefaultTheme();
+        }
+
+        return theme;
+    }
+
     const button = document.getElementById('theme-toggle');
-    const loadedTheme = localStorage.getItem(storageKey) || 'light';
+    const loadedTheme = localStorage.getItem(storageKey) || system;
 
     const setTheme = function(theme) {
         localStorage.setItem(storageKey, theme);
 
-        if (theme === 'light') {
+        const realTheme = resolveTheme(theme);
+
+        if (realTheme === light) {
             button.innerHTML = `<svg width='18px' height='18px'><use href="#svg-moon"></use></svg>`;
         } else {
             button.innerHTML = `<svg width='18px' height='18px'><use href="#svg-sun"></use></svg>`;
         }
 
-        jtd.setTheme(theme);
+        jtd.setTheme(realTheme);
     }
 
     const toggleTheme = function() {
         const theme = localStorage.getItem(storageKey);
-        if (theme === 'light') {
-            setTheme('dark');
+        const realTheme = resolveTheme(theme);
+
+        if (realTheme === light) {
+            setTheme(dark);
         } else {
-            setTheme('light');
+            setTheme(light);
         }
     }
 
