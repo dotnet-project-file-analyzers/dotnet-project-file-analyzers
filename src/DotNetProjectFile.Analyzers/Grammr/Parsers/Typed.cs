@@ -12,7 +12,7 @@ public sealed class Typed : Parser
 
         if (!Transformers.TryGetValue(type, out var transformer))
         {
-            var ctor = type.GetConstructor([typeof(Grammr.Syntax.TreeNode)]);
+            var ctor = type.GetConstructor([typeof(Grammr.Syntax.Node)]);
 
             transformer = (node) => node is null ? null : (Syntax.Node?)ctor.Invoke([node]);
             Transformers[type] = transformer;
@@ -22,11 +22,11 @@ public sealed class Typed : Parser
 
     private readonly Parser Parsers;
     private readonly Type Type;
-    private readonly Func<Syntax.TreeNode?, Syntax.Node?> Transformer;
+    private readonly Func<Syntax.Node?, Syntax.Node?> Transformer;
 
     /// <inheritdoc />
     public override ResultQueue Parse(TokenStream stream, ResultQueue queue)
         => Parsers.Parse(stream, queue).Transform(Transformer);
 
-    private static readonly Dictionary<Type, Func<Syntax.TreeNode?, Syntax.Node?>> Transformers = [];
+    private static readonly Dictionary<Type, Func<Syntax.Node?, Syntax.Node?>> Transformers = [];
 }

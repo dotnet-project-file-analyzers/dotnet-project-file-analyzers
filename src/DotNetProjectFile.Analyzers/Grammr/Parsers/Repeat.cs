@@ -22,7 +22,7 @@ public sealed class Repeat(Parser parser, int minOccurs, int maxOccurs) : Parser
         var temp = new ResultQueue();
         var currs = new List<Result>() { Result.Match(stream) };
         var nexts = new List<Result>();
-        var nodes = AppendOnlyList<Syntax.TreeNode>.Empty;
+        var nodes = AppendOnlyList<Syntax.Node>.Empty;
         var occurs = 0;
 
         while (occurs < MaxOccurs && currs.Any())
@@ -65,7 +65,7 @@ public sealed class Repeat(Parser parser, int minOccurs, int maxOccurs) : Parser
             var temp = new ResultQueue();
             var currs = new List<Result>() { Result.Match(stream) };
             var nexts = new List<Result>();
-            var nodes = AppendOnlyList<Syntax.TreeNode>.Empty;
+            var nodes = AppendOnlyList<Syntax.Node>.Empty;
             var occurs = 0;
 
             while (occurs < repeat.MaxOccurs && currs.Any())

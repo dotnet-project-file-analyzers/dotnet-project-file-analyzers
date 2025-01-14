@@ -5,7 +5,7 @@ namespace Grammr;
 public readonly struct Result : IEquatable<Result>, IComparable<Result>
 {
     private Result(
-        Syntax.TreeNode? node,
+        Syntax.Node? node,
         TokenStream stream,
         bool success,
         string? message)
@@ -16,7 +16,7 @@ public readonly struct Result : IEquatable<Result>, IComparable<Result>
         Message = message;
     }
 
-    public Syntax.TreeNode? Node { get; }
+    public Syntax.Node? Node { get; }
 
     public TokenStream Stream { get; }
 
@@ -55,11 +55,11 @@ public readonly struct Result : IEquatable<Result>, IComparable<Result>
     public int CompareTo(Result other) => other.Stream.Length.CompareTo(Stream.Length);
 
     [Pure]
-    public static Result Successful(Syntax.TreeNode? node, TokenStream stream)
+    public static Result Successful(Syntax.Node? node, TokenStream stream)
         => new(node, stream, true, null);
 
     [Pure]
-    public static Result Match(TokenStream stream, Syntax.TreeNode? node = null)
+    public static Result Match(TokenStream stream, Syntax.Node? node = null)
       => new(node, stream, true, null);
 
     [Pure]

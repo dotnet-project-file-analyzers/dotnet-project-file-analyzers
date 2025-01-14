@@ -40,7 +40,7 @@ public sealed class ResultQueue : IReadOnlyCollection<Result>
         return this;
     }
 
-    public ResultQueue Match(TokenStream stream, Syntax.TreeNode? node)
+    public ResultQueue Match(TokenStream stream, Syntax.Node? node)
     {
         var result = Result.Successful(node, stream);
 
@@ -74,7 +74,7 @@ public sealed class ResultQueue : IReadOnlyCollection<Result>
         return this;
     }
 
-    internal ResultQueue Transform(Func<Syntax.TreeNode?, Syntax.Node?> transform)
+    internal ResultQueue Transform(Func<Syntax.Node?, Syntax.Node?> transform)
     {
         for (var i = 0; i < Count; i++)
         {

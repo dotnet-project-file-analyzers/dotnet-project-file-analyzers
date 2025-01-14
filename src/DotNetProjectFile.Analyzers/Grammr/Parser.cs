@@ -39,10 +39,10 @@ public abstract class Parser
     /// <summary>This grammar may match multiple times, but at least once.</summary>
     public Repeat Plus => new(this, 1, int.MaxValue);
 
-    protected static Syntax.TreeNode? Select(AppendOnlyList<Syntax.TreeNode> nodes) => nodes.Count switch
+    protected static Syntax.Node? Select(AppendOnlyList<Syntax.Node> nodes) => nodes.Count switch
     {
         0 => null,
         1 => nodes[0],
-        _ => new Syntax.Node(nodes),
+        _ => Syntax.Node.New(nodes),
     };
 }

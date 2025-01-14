@@ -3,10 +3,10 @@ namespace Grammr.Syntax;
 [DebuggerTypeProxy(typeof(CollectionDebugView))]
 [DebuggerDisplay("Count = {Count}")]
 public readonly struct Nodes<TSyntax>(Node parent)
-    : IReadOnlyList<TSyntax> where TSyntax : TreeNode
+    : IReadOnlyList<TSyntax> where TSyntax : Node
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private readonly IReadOnlyList<TreeNode> Children = parent.Children;
+    private readonly IReadOnlyList<Node> Children = parent.Children;
 
     /// <inheritdoc />
     public TSyntax this[int index] => Children.OfType<TSyntax>().Skip(index).First();

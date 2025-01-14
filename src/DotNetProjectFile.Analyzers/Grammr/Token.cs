@@ -27,7 +27,7 @@ public abstract class Token : Parser
             {
                 var add = stream.Add(match, Kind);
                 var span = new SourceSpanToken(add[stream.Count].SourceSpan, Kind);
-                var node = new Syntax.Token(span);
+                var node = Syntax.Node.Token(span);
                 return queue.Match(add, node);
             }
             else
@@ -59,7 +59,7 @@ public abstract class Token : Parser
             {
                 var add = stream.Add(match, token.Kind);
                 var span = new SourceSpanToken(add[stream.Count].SourceSpan, token.Kind);
-                var node = new Syntax.Token(span);
+                var node = Syntax.Node.Token(span);
                 return queue.Match(add, node);
             }
             else

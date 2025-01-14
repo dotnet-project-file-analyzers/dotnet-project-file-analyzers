@@ -16,7 +16,7 @@ internal sealed class Sequence(ImmutableArray<Parser> sequances) : Parser
         var currs = new List<Result>();
         var nexts = new List<Result>() { Result.Match(stream) };
 
-        var nodes = AppendOnlyList<Syntax.TreeNode>.Empty;
+        var nodes = AppendOnlyList<Syntax.Node>.Empty;
 
         foreach (var sequance in Sequances)
         {
