@@ -6,7 +6,7 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        BenchmarkRunner.Run<IniFile>();
+        BenchmarkRunner.Run<GrammrParsing>();
     }
 
     public static void All()
@@ -14,6 +14,7 @@ public static class Program
         BenchmarkRunner.Run<IniFile>();
         BenchmarkRunner.Run<GitIgnoreFile>();
         BenchmarkRunner.Run<Globs>();
+        BenchmarkRunner.Run<GrammrParsing>();
         BenchmarkRunner.Run<RunAll>();
     }
 }
