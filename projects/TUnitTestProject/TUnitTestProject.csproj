@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <IsTestProject>true</IsTestProject>
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+  </PropertyGroup>
+
+  <ItemGroup Label="Build tools">
+    <PackageReference Include="TUnit" Version="0.6.100" PrivateAssets="all" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
+</Project>

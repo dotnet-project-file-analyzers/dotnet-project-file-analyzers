@@ -4,6 +4,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
 {
     public static readonly BuildExtension Microsoft_NET_Test_Sdk = new("Microsoft.NET.Test.Sdk");
     public static readonly BuildExtension Microsoft_Sbom_Targets = new("Microsoft.Sbom.Targets");
+    public static readonly BuildExtension TUnit = new("TUnit");
 
     public static readonly Packages All = new(
 
@@ -74,8 +75,6 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new Analyzer("NUnit.Analyzers", "NUnit"),
         new Analyzer("RuntimeContracts.Analyzer", "RuntimeContracts"),
         new Analyzer("SerilogAnalyzer", "Serilog"),
-        new Analyzer("TUnit.Analyzers", "TUnit"),
-        new Analyzer("TUnit.Assertions.Analyzers", "TUnit.Assertions"),
         new Analyzer("xunit.analyzers", "xunit"),
         new Analyzer("ZeroFormatter.Analyzer", "ZeroFormatter"),
 
@@ -120,6 +119,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new BuildExtension("MinVer"),
         new BuildExtension("NUnit3TestAdapter"),
         new BuildExtension("Nullable"),
+        TUnit,
         new BuildExtension("xunit.runner.visualstudio"));
 
     private readonly Dictionary<string, Package> items;

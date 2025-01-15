@@ -11,12 +11,17 @@ public sealed class TestProjectsRequireSdk() : MsBuildProjectFileAnalyzer(
         var hasSdk = context.File
             .Walk().OfType<PackageReference>()
             .Any(r => r.Include == NuGet.Packages.Microsoft_NET_Test_Sdk.Name);
+        var hasTUnit = context.File
+            .Walk().OfType<PackageReference>()
+            .Any(r => r.Include == NuGet.Packages.TUnit.Name);
 
-        if (isTest && !hasSdk)
+        var hasSdkOrTUnit = hasSdk || hasTUnit;
+
+        if (isTest && !hasSdkOrTUnit)
         {
             context.ReportDiagnostic(Rule.TestProjectsRequireSdk, context.File);
         }
-        else if (!isTest && hasSdk)
+        else if (!isTest && hasSdkOrTUnit)
         {
             context.ReportDiagnostic(Rule.UsingMicrosoftNetTestSdkImpliesTestProject, context.File);
         }

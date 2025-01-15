@@ -19,14 +19,10 @@ public class Reports
 
 public class Guards
 {
-    [Test]
-    public void non_publishable_test_project()
-        => new TestProjectsRequireSdk()
-        .ForProject("TestProject.cs")
-        .HasNoIssues();
-
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
+    [TestCase("TestProject.cs")]
+    [TestCase("TUnitTestProject.cs")]
     public void non_test_project(string project)
          => new TestProjectsRequireSdk()
         .ForProject(project)
