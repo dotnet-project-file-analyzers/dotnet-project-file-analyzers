@@ -15,7 +15,17 @@ public class Guards
             IgnoredDiagnostics = DiagnosticIds.Empty.AddRange(
                 "CS8019", // Unnecessary using directive.
                 "CS8933", // The using directive appeared previously as global using
-                "??????")
+                
+                // Introduced by ANTLR4 code base
+                "CS3021",
+                "CS8600",
+                "CS8601",
+                "CS8602",
+                "CS8603",
+                "CS8604",
+                "CS8618",
+                "CS8619",
+                "CS8625")
         };
 
         // Add the remaining analyzers.
