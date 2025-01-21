@@ -250,4 +250,8 @@ v1.0.0
     <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Antlr4\Runtime\" />
+  </ItemGroup>
+
 </Project>
