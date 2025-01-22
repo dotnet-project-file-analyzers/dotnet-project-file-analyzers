@@ -1,9 +1,20 @@
 ﻿
+
 namespace DotNetProjectFile.Ini;
 
 public sealed class IniFileVisitor : IniBaseVisitor<IniSyntax>
 {
-    public override IniSyntax VisitSection([NotNull] IniParser.SectionContext context)
+    public override IniSyntax VisitFile([NotNull] IniParser.FileContext context)
+    {
+        var sections = context.children
+            .Select(Visit)
+            .OfType<SectionSyntax>()
+            .ToArray();
+
+		return new IniFileSyntax(sections, context);
+	}
+
+	public override IniSyntax VisitSection([NotNull] IniParser.SectionContext context)
     {
 
         var kvps = new List<KeyValuePairSyntax>();

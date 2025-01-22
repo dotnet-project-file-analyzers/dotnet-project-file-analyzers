@@ -21,4 +21,11 @@ public class Parses
 
         var result = visitor.Visit(parser.file());
     }
+
+    [Test]
+    public void key_value_pair()
+    {
+        var source = SourceText.From("root=true\n");
+        var file = IniFile.Parse(source);
+    }
 }
