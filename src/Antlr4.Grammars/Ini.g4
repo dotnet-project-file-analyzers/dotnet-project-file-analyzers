@@ -1,57 +1,26 @@
 grammar Ini;
 
-file : (section)+ EOF;
-
-section
-    : ( line (END)+ )+
-    ;
+file    : section+ EOF;
+section : ( line END+ )+;
 
 line
-	: ws key ws ASSIGN ws value ws (comment)?  #KeyValuePair
-    | ws comment                               #LineComment
-    | SPACE                                    #EmptyLine
+	: key ASSIGN value (comment)?  #KeyValuePair
+    | comment                      #LineComment
+    | SPACE                        #EmptyLine
 	;
 
-comment
-    : COMMENT_START ~END*
-    ;
+comment   : COMMENT_START ~END*;
+header    : LBRACK HEADER RBRACK;
+key       : (~SPACE)+;
+value     : (~SPACE)+;
 
-ws
-    :
-    | (SPACE)?
-    ;
-
-SPACE
-    : ( ' ' | '\t' )+
-    ;
-
-key :
-    | (~SPACE)+
-    ;
-
-value
-    :
-    | (~SPACE)+
-    ;
-    
-ASSIGN
-    : '='
-    | ':'
-    ;
-
-COMMENT_START
-	: '#'
-    | ';'
-    ;
-
-OPEN_ACOLADE
-    : '{$'
-    ;
-
-CLOSE_ACOLADE
-    : '$}'
-    ;
-
-END
-    : '\r'? '\n'
-    ;
+TEXT          : ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' | '/' | '\\' | ':' | '*' | '.' | ',' | '@' | ' ')+;
+SPACE         : ( ' ' | '\t' )+;
+HEADER        : (~']')+;
+ASSIGN        : '=' | ':';
+COMMENT_START : '#' | ';' ;
+LBRACK	      : '[';
+RBRACK	      : ']';
+OPEN_ACOLADE  : '{$';
+CLOSE_ACOLADE : '$}';
+END           : '\r\n' | '\n';

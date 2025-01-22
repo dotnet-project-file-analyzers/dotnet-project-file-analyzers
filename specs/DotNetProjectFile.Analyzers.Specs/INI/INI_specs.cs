@@ -25,7 +25,8 @@ public class Parses
     [Test]
     public void key_value_pair()
     {
-        var source = SourceText.From("root=true\n");
+        var source = SourceText.From(@"root=true
+");
         var file = IniFile.Parse(source);
     }
 }

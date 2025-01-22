@@ -1,4 +1,5 @@
-﻿using Antlr4.Runtime;
+using Antlr4.Runtime;
+using Antlr4.Runtime.Tree;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,4 +14,6 @@ public class IniSyntax(ParserRuleContext context)
 	public string Text => Context.GetText();
 
 	private string Name => GetType().Name;
+
+    public IReadOnlyList<IParseTree> Tokens => Context.children.ToArray();
 }
