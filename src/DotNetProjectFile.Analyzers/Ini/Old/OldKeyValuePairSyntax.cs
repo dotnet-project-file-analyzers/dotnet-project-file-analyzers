@@ -3,11 +3,11 @@ using DotNetProjectFile.Parsing;
 namespace DotNetProjectFile.Ini;
 
 [DebuggerDisplay("{FullText}")]
-public sealed record KeyValuePairSyntax : IniSyntax
+public sealed record OldKeyValuePairSyntax : OldIniSyntax
 {
-    public KeySyntax? Key => Children.OfType<KeySyntax>().FirstOrDefault();
+    public OldKeySyntax? Key => Children.OfType<OldKeySyntax>().FirstOrDefault();
 
-    public ValueSyntax? Value => Children.OfType<ValueSyntax>().FirstOrDefault();
+    public OldValueSyntax? Value => Children.OfType<OldValueSyntax>().FirstOrDefault();
 
     public KeyValuePair<string, string>? Kvp
         => Key is { } key && Value is { } val
@@ -52,9 +52,9 @@ public sealed record KeyValuePairSyntax : IniSyntax
             : [];
     }
 
-    internal static IniSyntax New(Parser parser)
+    internal static OldIniSyntax New(Parser parser)
     {
-        var root = IniFileSyntax.Root(parser);
+        var root = OldIniFileSyntax.Root(parser);
 
         return root with
         {
@@ -69,15 +69,15 @@ public sealed record KeyValuePairSyntax : IniSyntax
         };
     }
 
-    internal static IniSyntax Invalid(Parser parser)
+    internal static OldIniSyntax Invalid(Parser parser)
     {
-        var root = IniFileSyntax.Root(parser);
+        var root = OldIniFileSyntax.Root(parser);
 
         return root with
         {
             Children = root.Sections.WithLast(s => s with
             {
-                Children = s.KeyValuePairs.Add(new KeyValuePairSyntax()
+                Children = s.KeyValuePairs.Add(new OldKeyValuePairSyntax()
                 {
                     Span = parser.Span,
                 }),

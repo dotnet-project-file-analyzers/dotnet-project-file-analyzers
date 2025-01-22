@@ -4,11 +4,11 @@ using DotNetProjectFile.Syntax;
 namespace DotNetProjectFile.Ini;
 
 [DebuggerDisplay("{DebuggerDisplay}")]
-public sealed record SectionSyntax : IniSyntax
+public sealed record OldSectionSyntax : OldIniSyntax
 {
-    public HeaderSyntax? Header => Children.FirstOrDefault() as HeaderSyntax;
+    public OldHeaderSyntax? Header => Children.FirstOrDefault() as OldHeaderSyntax;
 
-    public SyntaxNodeCollection<KeyValuePairSyntax> KeyValuePairs => new(this);
+    public SyntaxNodeCollection<OldKeyValuePairSyntax> KeyValuePairs => new(this);
 
     public IEnumerable<KeyValuePair<string, string>> Kvps => KeyValuePairs
         .Where(kvp => kvp.GetDiagnostics().None())
@@ -20,9 +20,9 @@ public sealed record SectionSyntax : IniSyntax
 
     public override IEnumerable<Diagnostic> GetDiagnostics() => Children.SelectMany(c => c.GetDiagnostics());
 
-    public static IniSyntax New(Parser parser)
+    public static OldIniSyntax New(Parser parser)
     {
-        var ini = parser.Syntax as IniFileSyntax ?? new IniFileSyntax { Children = [new SectionSyntax()] };
+        var ini = parser.Syntax as OldIniFileSyntax ?? new OldIniFileSyntax { Children = [new OldSectionSyntax()] };
 
         return ini with
         {

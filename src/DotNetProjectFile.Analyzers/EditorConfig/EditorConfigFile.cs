@@ -3,10 +3,10 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.EditorConfig;
 
-public sealed class EditorConfigFile(IniFileSyntax syntax) : ProjectFile
+public sealed class EditorConfigFile(OldIniFileSyntax syntax) : ProjectFile
 {
     /// <summary>INI syntax.</summary>
-    public IniFileSyntax Syntax { get; } = syntax;
+    public OldIniFileSyntax Syntax { get; } = syntax;
 
     /// <inheritdoc />
     public IOFile Path => Syntax.SyntaxTree.Path;

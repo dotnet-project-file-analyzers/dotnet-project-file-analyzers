@@ -33,18 +33,18 @@ internal sealed class IniGrammar : Grammar
         & ws
         & comment.Option
         & eol)
-        + HeaderSyntax.New;
+        + OldHeaderSyntax.New;
 
     public static readonly Grammar kvp =
         (ws
-        & INI.key + KeySyntax.New
+        & INI.key + OldKeySyntax.New
         & ws
         & INI.assign
         & ws
-        & INI.value + ValueSyntax.New
+        & INI.value + OldValueSyntax.New
         & ws
         & comment.Option)
-        + KeyValuePairSyntax.New;
+        + OldKeyValuePairSyntax.New;
 
     public static readonly Grammar kvp_line =
         ws_only
@@ -57,9 +57,9 @@ internal sealed class IniGrammar : Grammar
         & (kvp_line | garbage)
         & eol;
 
-    public static readonly Grammar section = ((header | Invalid.header) & single_line.Star) + SectionSyntax.New;
+    public static readonly Grammar section = ((header | Invalid.header) & single_line.Star) + OldSectionSyntax.New;
 
-    public static readonly Grammar file = (single_line.Star & section.Star) + IniFileSyntax.New;
+    public static readonly Grammar file = (single_line.Star & section.Star) + OldIniFileSyntax.New;
 
     /// <summary>Header tokens.</summary>
     private sealed class Header : Grammar
@@ -87,7 +87,7 @@ internal sealed class IniGrammar : Grammar
            & ws
            & comment.Option
            & eol)
-           + HeaderSyntax.New;
+           + OldHeaderSyntax.New;
 
         public static readonly Grammar kvp =
            (ws
@@ -96,7 +96,7 @@ internal sealed class IniGrammar : Grammar
            & INI.value.Star
            & ws
            & comment.Option)
-           + KeyValuePairSyntax.Invalid;
+           + OldKeyValuePairSyntax.Invalid;
     }
 
     private static bool IsWhitespace(char ch) => ch == ' ' || ch == '\t';

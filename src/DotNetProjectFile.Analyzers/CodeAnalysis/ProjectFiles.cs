@@ -9,14 +9,14 @@ public sealed partial class ProjectFiles
     public static readonly ProjectFiles Global = new();
 
     private readonly FileCache<GitIgnoreSyntax> GitIgnoredFiles = new();
-    private readonly FileCache<IniFile> IniFiles = new();
+    private readonly FileCache<OldIniFile> IniFiles = new();
     private readonly FileCache<MsBuildProject> MsBuildProjects = new();
     private readonly FileCache<Resource> ResourceFiles = new();
 
     public GitIgnoreSyntax? GitIgnoreFile(IOFile file)
         => GitIgnoredFiles.TryGetOrUpdate(file, Create_GitIgnoreFile);
 
-    public IniFile? IniFile(IOFile file)
+    public OldIniFile? IniFile(IOFile file)
         => IniFiles.TryGetOrUpdate(file, Create_IniFile);
 
     public MsBuildProject? MsBuildProject(IOFile file)
@@ -56,11 +56,11 @@ public sealed partial class ProjectFiles
             .FirstOrDefault();
     }
 
-    public IniFile? UpdateIniFile(AdditionalFileAnalysisContext context)
+    public OldIniFile? UpdateIniFile(AdditionalFileAnalysisContext context)
     {
         var file = IOFile.Parse(context.AdditionalFile.Path);
         return Is.Ini(file)
-            ? IniFiles.TryGetOrUpdate(file, _ => new IniFile(IniFileSyntax.Parse(Syntax.SyntaxTree.From(context.AdditionalFile))))
+            ? IniFiles.TryGetOrUpdate(file, _ => new OldIniFile(OldIniFileSyntax.Parse(Syntax.SyntaxTree.From(context.AdditionalFile))))
             : null;
     }
 
@@ -83,8 +83,8 @@ public sealed partial class ProjectFiles
     private static GitIgnoreSyntax Create_GitIgnoreFile(IOFile file)
         => GitIgnoreSyntax.Parse(Syntax.SyntaxTree.Load(file.OpenRead()));
 
-    private static IniFile Create_IniFile(IOFile file)
-        => new(IniFileSyntax.Parse(Syntax.SyntaxTree.Load(file.OpenRead())));
+    private static OldIniFile Create_IniFile(IOFile file)
+        => new(OldIniFileSyntax.Parse(Syntax.SyntaxTree.Load(file.OpenRead())));
 
     private MsBuildProject Create_MsBuildProject(IOFile file)
        => MsBuild.Project.Load(file, this);

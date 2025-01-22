@@ -33,9 +33,9 @@ mykey = 3.14");
     {
         using var file = new FileStream("../../../../../.editorconfig", FileMode.Open, FileAccess.Read);
         var tree = SyntaxTree.Load(file);
-        var syntax = IniFileSyntax.Parse(tree);
+        var syntax = OldIniFileSyntax.Parse(tree);
 
-        syntax.Should().BeOfType<IniFileSyntax>();
+        syntax.Should().BeOfType<OldIniFileSyntax>();
 
         syntax.Tokens.Should().NotContain(t => t.Kind == TokenKind.UnparsableToken);
     }
@@ -180,21 +180,21 @@ public class Parses_with_errors
 
 file static class Parse
 {
-    public static IniFileSyntax Syntax(FileInfo file)
+    public static OldIniFileSyntax Syntax(FileInfo file)
     {
         using var stream = file.OpenRead();
 
         var tree = SyntaxTree.Load(stream);
-        var synstax = IniFileSyntax.Parse(tree);
+        var synstax = OldIniFileSyntax.Parse(tree);
         synstax.Should().NotBeNull();
         return synstax!;
 
     }
 
-    public static IniFileSyntax Syntax(string text)
+    public static OldIniFileSyntax Syntax(string text)
     {
         var tree = SyntaxTree.Parse(text);
-        var synstax = IniFileSyntax.Parse(tree);
+        var synstax = OldIniFileSyntax.Parse(tree);
         synstax.Should().NotBeNull();
         return synstax!;
     }

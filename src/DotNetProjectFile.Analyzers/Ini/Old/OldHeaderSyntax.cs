@@ -3,7 +3,7 @@ using DotNetProjectFile.Parsing;
 namespace DotNetProjectFile.Ini;
 
 [DebuggerDisplay("{FullText}")]
-public sealed record HeaderSyntax : IniSyntax
+public sealed record OldHeaderSyntax : OldIniSyntax
 {
     public string Text => Tokens.SingleOrDefault(t => t.Kind == TokenKind.HeaderTextToken).Text;
 
@@ -43,15 +43,15 @@ public sealed record HeaderSyntax : IniSyntax
             : [];
     }
 
-    internal static IniSyntax New(Parser parser)
+    internal static OldIniSyntax New(Parser parser)
     {
-        var ini = IniFileSyntax.Root(parser, init: false);
+        var ini = OldIniFileSyntax.Root(parser, init: false);
 
         return ini with
         {
-            Children = ini.Children.Add(new SectionSyntax()
+            Children = ini.Children.Add(new OldSectionSyntax()
             {
-                Children = [new HeaderSyntax { Span = parser.Span }],
+                Children = [new OldHeaderSyntax { Span = parser.Span }],
                 Span = parser.Span,
             }),
         };

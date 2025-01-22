@@ -11,7 +11,7 @@ public sealed class HeaderMustBeGlob() : IniFileAnalyzer(Rule.Ini.HeaderMustBeGl
 
         foreach (var header in context.File.Syntax.Sections
             .Select(s => s.Header)
-            .OfType<HeaderSyntax>()
+            .OfType<OldHeaderSyntax>()
             .Where(h => h.Text is { Length: > 0 } && Glob.TryParse(h.Text) is null))
         {
             var span = header.Tokens.First(t => t.Kind == TokenKind.HeaderTextToken);

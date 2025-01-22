@@ -69,11 +69,11 @@ public sealed partial class Project : Node, ProjectFile
 
     public WarningPragmas WarningPragmas { get; }
 
-    public IEnumerable<IniFile> EditorConfigs()
+    public IEnumerable<OldIniFile> EditorConfigs()
         => Path.Directory.AncestorsAndSelf()
         .Select(dir => ProjectFiles.IniFile(dir.File(".editorconfig")))
-        .OfType<IniFileSyntax>()
-        .Select(ini => new IniFile(ini))
+        .OfType<OldIniFileSyntax>()
+        .Select(ini => new OldIniFile(ini))
         .TakeUntil(config => config.IsRoot);
 
     /// <summary>Loops through all imports and self.</summary>

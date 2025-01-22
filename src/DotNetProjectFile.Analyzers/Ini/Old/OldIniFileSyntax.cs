@@ -4,9 +4,9 @@ using DotNetProjectFile.Syntax;
 namespace DotNetProjectFile.Ini;
 
 [DebuggerDisplay("{DebuggerDisplay}")]
-public sealed record IniFileSyntax : IniSyntax
+public sealed record OldIniFileSyntax : OldIniSyntax
 {
-    public SyntaxNodeCollection<SectionSyntax> Sections => new(this);
+    public SyntaxNodeCollection<OldSectionSyntax> Sections => new(this);
 
     public override IEnumerable<Diagnostic> GetDiagnostics() =>
     [
@@ -17,29 +17,29 @@ public sealed record IniFileSyntax : IniSyntax
         .. Children.SelectMany(c => c.GetDiagnostics()),
     ];
 
-    internal static IniFileSyntax New(Parser parser)
+    internal static OldIniFileSyntax New(Parser parser)
         => Root(parser, init: false) with
         {
             Span = new(0, parser.Tokens.Count),
         };
 
-    internal static IniFileSyntax Root(Parser parser, bool init = true)
-        => parser.Syntax as IniFileSyntax
+    internal static OldIniFileSyntax Root(Parser parser, bool init = true)
+        => parser.Syntax as OldIniFileSyntax
         ?? (init
-            ? new() { Children = [new SectionSyntax()] }
+            ? new() { Children = [new OldSectionSyntax()] }
             : new());
 
-    public static IniFileSyntax Parse(Syntax.SyntaxTree tree)
+    public static OldIniFileSyntax Parse(Syntax.SyntaxTree tree)
     {
         try
         {
             return IniGrammar.file
                 .Parse(tree.SourceText)
-                .Resolve<IniFileSyntax>(tree);
+                .Resolve<OldIniFileSyntax>(tree);
         }
         catch (Unparsable)
         {
-            return Unparsable.Syntax(new IniFileSyntax(), tree);
+            return Unparsable.Syntax(new OldIniFileSyntax(), tree);
         }
     }
 }

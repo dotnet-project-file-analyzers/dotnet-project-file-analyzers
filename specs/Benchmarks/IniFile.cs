@@ -23,5 +23,5 @@ public class IniFile
     public int Index { get; set; }
 
     [Benchmark]
-    public IniFileSyntax Parse() => IniFileSyntax.Parse(Trees[Index]);
+    public OldIniFileSyntax Parse() => OldIniFileSyntax.Parse(Trees[Index]);
 }

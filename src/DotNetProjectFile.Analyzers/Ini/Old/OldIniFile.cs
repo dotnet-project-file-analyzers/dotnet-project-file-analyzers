@@ -2,10 +2,10 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Ini;
 
-public sealed class IniFile(IniFileSyntax syntax) : ProjectFile
+public sealed class OldIniFile(OldIniFileSyntax syntax) : ProjectFile
 {
     /// <summary>INI syntax.</summary>
-    public IniFileSyntax Syntax { get; } = syntax;
+    public OldIniFileSyntax Syntax { get; } = syntax;
 
     /// <inheritdoc />
     public IOFile Path => Syntax.SyntaxTree.Path;

@@ -3,13 +3,13 @@ using DotNetProjectFile.Parsing;
 namespace DotNetProjectFile.Ini;
 
 [DebuggerDisplay("{FullText}")]
-public sealed record KeySyntax : IniSyntax
+public sealed record OldKeySyntax : OldIniSyntax
 {
     public string Text => Tokens.Single(t => t.Kind == TokenKind.KeyToken).Text;
 
-    internal static IniSyntax New(Parser parser)
+    internal static OldIniSyntax New(Parser parser)
     {
-        var root = IniFileSyntax.Root(parser);
+        var root = OldIniFileSyntax.Root(parser);
 
         return root with
         {
@@ -17,7 +17,7 @@ public sealed record KeySyntax : IniSyntax
             {
                 Children = s.KeyValuePairs.Add(new()
                 {
-                    Children = [new KeySyntax() { Span = parser.Span }],
+                    Children = [new OldKeySyntax() { Span = parser.Span }],
                     Span = parser.Span,
                 }),
                 Span = s.Span + parser.Span,
