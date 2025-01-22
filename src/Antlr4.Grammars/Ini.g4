@@ -26,12 +26,12 @@ SPACE
     ;
 
 key :
-    | (~ASSIGN)+
+    | (~SPACE)+
     ;
 
 value
     :
-    |  (~COMMENT_START)+
+    | (~SPACE)+
     ;
     
 ASSIGN
