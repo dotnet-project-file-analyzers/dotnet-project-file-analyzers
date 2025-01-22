@@ -24,8 +24,39 @@
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
     <PackageTags>Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.5.5</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>logo_128x128.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup Label="Package files">
+    <None Update="tools/*.ps1" Pack="true" PackagePath="/" />
+    <None Include="$(OutputPath)/DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
+    <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup Label="Props and targets">
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="3.0.1" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup Label="Roslyn dependencies">
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.10.0" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <ItemGroup Label="Analyzers">
+    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" PrivateAssets="all" />
+    <PackageReference Include="StyleCop.Analyzers" Version="*-*" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" />
+  </ItemGroup>
+
+  <PropertyGroup Label="Version and release notes">
+    <Version>1.5.5</Version>
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
@@ -220,34 +251,6 @@ v1.0.0
 - Proj1001: Use analyzers for packages. (NEW RULE)
 ]]>
     </PackageReleaseNotes>
-    <PackageIcon>logo_128x128.png</PackageIcon>
-    <PackageIconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
-    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-
-  <ItemGroup Label="Package files">
-    <None Update="tools/*.ps1" Pack="true" PackagePath="/" />
-    <None Include="$(OutputPath)/DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
-    <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
-    <None Include="README.md" Pack="true" PackagePath="" />
-  </ItemGroup>
-
-  <ItemGroup Label="Props and targets">
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="3.0.1" PrivateAssets="all" />
-  </ItemGroup>
-
-  <ItemGroup Label="Roslyn dependencies">
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.10.0" ExcludeAssets="runtime" />
-  </ItemGroup>
-
-  <ItemGroup Label="Analyzers">
-    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" PrivateAssets="all" />
-    <PackageReference Include="StyleCop.Analyzers" Version="*-*" PrivateAssets="all" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" />
-  </ItemGroup>
 
 </Project>
