@@ -13,7 +13,7 @@ public sealed class IniFile
 		var lexer = new IniLexer(stream);
 		var tokens = new CommonTokenStream(lexer);
 		var parser = new IniParser(tokens);
-
+        
 		var visitor = new IniFileVisitor(new(tokens, parser.Vocabulary));
 
 		var syntax = (IniFileSyntax)visitor.Visit(parser.file());
