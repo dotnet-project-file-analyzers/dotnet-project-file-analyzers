@@ -45,6 +45,27 @@ public class Parses
     }
 
     [Test]
+    public void empty_lines()
+    {
+        var source = SourceText.From($"root=true\n\r\n     \nvalue=okay");
+        var file = IniFile.Parse(source).Sytnax;
+
+        file.Tokens.Should().BeEquivalentTo(
+        [
+            new{ Text = "root", Kind = KEY },
+            new{ Text = "=", Kind = ASSIGN },
+            new{ Text = "true", Kind = VALUE },
+            new{ Text = "\n", Kind = CRLF },
+            new{ Text = "\r\n", Kind = CRLF },
+            new{ Text = "     ", Kind = WS },
+            new{ Text = "\n", Kind = CRLF },
+            new{ Text = "value", Kind = KEY },
+            new{ Text = "=", Kind = ASSIGN },
+            new{ Text = "okay", Kind = VALUE },
+        ]);
+    }
+
+    [Test]
     public void key_value_pair_with_spaces()
     {
         var source = SourceText.From("\troot  = true\r\n");
