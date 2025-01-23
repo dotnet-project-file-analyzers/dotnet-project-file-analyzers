@@ -1,10 +1,7 @@
-﻿using Antlr4.Runtime;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using Antlr4;
 
 namespace DotNetProjectFile.Ini;
 
-public sealed class KeySyntax(IniParser.KeyContext context) : IniSyntax(context)
-{
-}
+//public sealed class KeySyntax(IniParser.KeyContext context, AbstractSyntaxTree tree) : IniSyntax(context, tree)
+//{
+//}

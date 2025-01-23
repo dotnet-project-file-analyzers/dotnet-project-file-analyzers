@@ -1,5 +1,7 @@
-﻿namespace DotNetProjectFile.Ini;
+using Antlr4;
 
-public sealed class ValueSyntax(IniParser.ValueContext context) : IniSyntax(context)
-{
-}
+namespace DotNetProjectFile.Ini;
+
+//public sealed class ValueSyntax(IniParser.ValueContext context, AbstractSyntaxTree tree) : IniSyntax(context, tree)
+//{
+//}

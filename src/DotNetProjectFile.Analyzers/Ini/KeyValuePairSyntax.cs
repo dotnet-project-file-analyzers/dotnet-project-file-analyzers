@@ -1,12 +1,15 @@
-﻿namespace DotNetProjectFile.Ini;
+using Antlr4;
 
-public sealed class KeyValuePairSyntax(
-	KeySyntax key,
-	ValueSyntax value,
-	IniParser.KeyValuePairContext context) : IniSyntax(context)
-{
-	public KeySyntax Key { get; } = key;
-	public ValueSyntax Value { get; } = value;
+namespace DotNetProjectFile.Ini;
 
-	public KeyValuePair<string, string> Pair => new KeyValuePair<string, string>(Key.Text, Value.Text);
-}
+//public sealed class KeyValuePairSyntax(
+//	KeySyntax key,
+//	ValueSyntax value,
+//	IniParser.KeyValuePairContext context,
+//    AbstractSyntaxTree tree) : IniSyntax(context, tree)
+//{
+//	public KeySyntax Key { get; } = key;
+//	public ValueSyntax Value { get; } = value;
+
+//	public KeyValuePair<string, string> Pair => new KeyValuePair<string, string>(Key.Text, Value.Text);
+//}

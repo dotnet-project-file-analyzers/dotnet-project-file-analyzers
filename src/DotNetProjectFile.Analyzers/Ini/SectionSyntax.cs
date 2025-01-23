@@ -1,5 +1,11 @@
-﻿namespace DotNetProjectFile.Ini;
+using Antlr4;
 
-public sealed class SectionSyntax(IniParser.SectionContext context) : IniSyntax(context)
+namespace DotNetProjectFile.Ini;
+
+public sealed class SectionSyntax(
+    //IReadOnlyList<KeyValuePairSyntax> pairs,
+    IniParser.FileContext context,
+    AbstractSyntaxTree tree) : IniSyntax(context, tree)
 {
+    //public IReadOnlyList<KeyValuePairSyntax> Pairs { get; } = pairs;
 }
