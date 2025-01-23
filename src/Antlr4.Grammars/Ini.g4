@@ -1,26 +1,22 @@
 grammar Ini;
 
-file    : line ( nl+ line )+ EOF ;
+// Rules
+file    : line ( NL+ line )+ EOF ;
 
-line    : ws key ws ASSIGN ws value ws #KeyValuePair
-        | ws  #EmpyLine
+line    : WS key WS ASSIGN WS value WS COMMENT?     #KeyValuePair
+        | WS COMMENT                                #LineComment
+        | WS                                        #EmpyLine
         ;
 
 key     : KEY;
 value   : VALUE;
 
-nl      : CRFL;
-ws      : ( SPACE | TAB )*;
 
+// Lexer
 TEXT        : ([A-Za-z0-9] | '/' | '\\' | '*' | '.' | ',' | '@' | '-' | '_')+;
-ASSIGN      : COLON | EQUAL;
+ASSIGN      : '=' | ':';
 
-WS          : ( SPACE | TAB )+;
-CRLF        : '\r'? '\n';
-
-fragment COLON      : ':';
-fragment EQUAL      : '=';
-fragment SPACE      : ' ';
-fragment TAB        : '\t';
-fragment HASH       : '#';
-fragment SCOLON     : ';';
+// Trivia
+COMMENT : ( '#' | ';' ) ~[\r\n]*;
+NL      : '\r'? '\n';
+WS      : ( ' ' | '\t' )*;
