@@ -3,9 +3,9 @@ grammar Ini;
 // Rules
 file    : line ( NL+ line )+ EOF ;
 
-line    : WS key WS ASSIGN WS value WS COMMENT?     #KeyValuePair
-        | WS COMMENT                                #LineComment
-        | WS                                        #EmpyLine
+line    : WS? key WS? ASSIGN WS? value WS? COMMENT?     #KeyValuePair
+        | WS? COMMENT                                   #LineComment
+        | WS                                            #EmpyLine
         ;
 
 key     : KEY;
@@ -19,4 +19,4 @@ ASSIGN      : '=' | ':';
 // Trivia
 COMMENT : ( '#' | ';' ) ~[\r\n]*;
 NL      : '\r'? '\n';
-WS      : ( ' ' | '\t' )*;
+WS      : ( ' ' | '\t' )+;
