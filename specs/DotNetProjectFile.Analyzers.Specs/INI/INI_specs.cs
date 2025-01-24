@@ -6,6 +6,7 @@ namespace Grammars.INI_specs;
 public class Parses
 {
     private const string ASSIGN = nameof(ASSIGN);
+    private const string HEADER = "TEXT";
     private const string KEY = "TEXT";
     private const string VALUE = "TEXT";
     private const string WS = nameof(WS);
@@ -21,9 +22,9 @@ public class Parses
 
         file.Tokens.Should().BeEquivalentTo(
         [
-            new{ Text = "root", Kind = KEY },
-            new{ Text = assign, Kind = ASSIGN },
-            new{ Text = "true", Kind = VALUE },
+            new { Text = "root", Kind = KEY },
+            new { Text = assign, Kind = ASSIGN },
+            new { Text = "true", Kind = VALUE },
         ]);
     }
 
@@ -35,13 +36,13 @@ public class Parses
 
         file.Tokens.Should().BeEquivalentTo(
         [
-            new{ Text = "root", Kind = KEY },
-            new{ Text = "=", Kind = ASSIGN },
-            new{ Text = "true", Kind = VALUE },
-            new{ Text = "\n", Kind = NL },
-            new{ Text = "value", Kind = KEY },
-            new{ Text = "=", Kind = ASSIGN },
-            new{ Text = "okay", Kind = VALUE },
+            new { Text = "root", Kind = KEY },
+            new { Text = "=", Kind = ASSIGN },
+            new { Text = "true", Kind = VALUE },
+            new { Text = "\n", Kind = NL },
+            new { Text = "value", Kind = KEY },
+            new { Text = "=", Kind = ASSIGN },
+            new { Text = "okay", Kind = VALUE },
         ]);
     }
 
@@ -53,16 +54,16 @@ public class Parses
 
         file.Tokens.Should().BeEquivalentTo(
         [
-            new{ Text = "root", Kind = KEY },
-            new{ Text = "=", Kind = ASSIGN },
-            new{ Text = "true", Kind = VALUE },
-            new{ Text = "\n", Kind = NL },
-            new{ Text = "\r\n", Kind = NL },
-            new{ Text = "     ", Kind = WS },
-            new{ Text = "\n", Kind = NL },
-            new{ Text = "value", Kind = KEY },
-            new{ Text = "=", Kind = ASSIGN },
-            new{ Text = "okay", Kind = VALUE },
+            new { Text = "root", Kind = KEY },
+            new { Text = "=", Kind = ASSIGN },
+            new { Text = "true", Kind = VALUE },
+            new { Text = "\n", Kind = NL },
+            new { Text = "\r\n", Kind = NL },
+            new { Text = "     ", Kind = WS },
+            new { Text = "\n", Kind = NL },
+            new { Text = "value", Kind = KEY },
+            new { Text = "=", Kind = ASSIGN },
+            new { Text = "okay", Kind = VALUE },
         ]);
     }
 
@@ -74,13 +75,58 @@ public class Parses
 
         file.Tokens.Should().BeEquivalentTo(
         [
-            new{ Text = "\t", Kind = WS },
-            new{ Text = "root", Kind = KEY },
-            new{ Text = "  ", Kind = WS },
-            new{ Text = "=", Kind = ASSIGN },
-            new{ Text = " ", Kind = WS },
-            new{ Text = "true", Kind = VALUE },
-            new{ Text = "\r\n", Kind = NL },
+            new { Text = "root", Kind = KEY },
+            new { Text = "  ", Kind = WS },
+            new { Text = "=", Kind = ASSIGN },
+            new { Text = " ", Kind = WS },
+            new { Text = "true", Kind = VALUE },
+            new { Text = "\r\n", Kind = NL },
+        ]);
+    }
+
+    [Test]
+    public void header_with_key_value_pair()
+    {
+        var source = SourceText.From("[*.cs]\nroot=true");
+        var file = IniFile.Parse(source).Sytnax;
+
+        file.Tokens.Should().BeEquivalentTo(
+        [
+            new { Text = "[", Kind = "'['" },
+            new { Text = "*.cs", Kind = HEADER },
+            new { Text = "]", Kind = "']'" },
+
+            new { Text = "\n", Kind = NL },
+
+            new { Text = "root", Kind = KEY },
+            new { Text = "=", Kind = ASSIGN },
+            new { Text = "true", Kind = VALUE },
+        ]);
+    }
+
+    [Test]
+    public void key_value_pair_followed_by_header()
+    {
+        var source = SourceText.From("first=1\n[*.cs]\nroot=true");
+        var file = IniFile.Parse(source).Sytnax;
+
+        file.Tokens.Should().BeEquivalentTo(
+        [
+            new { Text = "first", Kind = KEY },
+            new { Text = "=", Kind = ASSIGN },
+            new { Text = "1", Kind = VALUE },
+
+            new { Text = "\n", Kind = NL },
+
+            new { Text = "[", Kind = "'['" },
+            new { Text = "*.cs", Kind = HEADER },
+            new { Text = "]", Kind = "']'" },
+
+            new { Text = "\n", Kind = NL },
+
+            new { Text = "root", Kind = KEY },
+            new { Text = "=", Kind = ASSIGN },
+            new { Text = "true", Kind = VALUE },
         ]);
     }
 
@@ -94,14 +140,14 @@ public class Parses
 
         file.Tokens.Should().BeEquivalentTo(
         [
-            new{ Text = "dotnet_diagnostic.Proj1000.severity", Kind = KEY },
-            new{ Text = " ", Kind = WS },
-            new{ Text = "=", Kind = ASSIGN },
-            new{ Text = " ", Kind = WS },
-            new{ Text = "error", Kind = VALUE },
-            new{ Text = " ", Kind = WS },
-            new{ Text = $"{ch} Use the .NET project file analyzers.", Kind = COMMENT },
-            new{ Text = "\r\n", Kind = NL },
+            new { Text = "dotnet_diagnostic.Proj1000.severity", Kind = KEY },
+            new { Text = " ", Kind = WS },
+            new { Text = "=", Kind = ASSIGN },
+            new { Text = " ", Kind = WS },
+            new { Text = "error", Kind = VALUE },
+            new { Text = " ", Kind = WS },
+            new { Text = $"{ch} Use the .NET project file analyzers.", Kind = COMMENT },
+            new { Text = "\r\n", Kind = NL },
         ]);
     }
 
@@ -115,12 +161,12 @@ dotnet_diagnostic.Proj1000.severity=error");
 
         file.Tokens.Should().BeEquivalentTo(
         [
-            new{ Text = "\r\n", Kind = NL },
-            new{ Text = "# Use the .NET project file analyzers.", Kind = COMMENT },
-            new{ Text = "\r\n", Kind = NL },
-            new{ Text = "dotnet_diagnostic.Proj1000.severity", Kind = KEY },
-            new{ Text = "=", Kind = ASSIGN },
-            new{ Text = "error", Kind = VALUE },
+            new { Text = "\r\n", Kind = NL },
+            new { Text = "# Use the .NET project file analyzers.", Kind = COMMENT },
+            new { Text = "\r\n", Kind = NL },
+            new { Text = "dotnet_diagnostic.Proj1000.severity", Kind = KEY },
+            new { Text = "=", Kind = ASSIGN },
+            new { Text = "error", Kind = VALUE },
         ]);
     }
 }

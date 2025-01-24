@@ -1,22 +1,24 @@
 grammar Ini;
 
 // Rules
-file    : line ( NL+ line )+ EOF ;
+file        : line ( NL+ line )+ EOF ;
 
-line    : WS? key WS? ASSIGN WS? value WS? COMMENT?     #KeyValuePair
-        | WS? COMMENT                                   #LineComment
-        | WS                                            #EmpyLine
-        ;
+line        : key ASSIGN value      #KeyValuePair
+            | header_full           #SectionHeader
+            ;
 
-key     : KEY;
-value   : VALUE;
-
+key         : TEXT;
+value       : TEXT;
+header_full : HEADER_L header_text HEADER_R;
+header_text : ~']'+;
 
 // Lexer
 TEXT        : ([A-Za-z0-9] | '/' | '\\' | '*' | '.' | ',' | '@' | '-' | '_')+;
 ASSIGN      : '=' | ':';
+HEADER_L    : '[';
+HEADER_R    : ']';
 
 // Trivia
-COMMENT : ( '#' | ';' ) ~[\r\n]*;
 NL      : '\r'? '\n';
-WS      : ( ' ' | '\t' )+;
+COMMENT : ( '#' | ';' ) ~[\r\n]* -> channel(HIDDEN);
+WS      : ( ' ' | '\t' )+        -> channel(HIDDEN);
