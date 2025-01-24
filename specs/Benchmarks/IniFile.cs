@@ -24,4 +24,6 @@ public class IniFile
 
     [Benchmark]
     public OldIniFileSyntax Parse() => OldIniFileSyntax.Parse(Trees[Index]);
+
+
 }

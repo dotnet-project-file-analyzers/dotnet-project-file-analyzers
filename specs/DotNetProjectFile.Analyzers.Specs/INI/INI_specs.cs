@@ -18,7 +18,7 @@ public class Parses
     public void key_value_pair(string assign)
     {
         var source = SourceText.From($"root{assign}true");
-        var file = IniFile.Parse(source).Sytnax;
+        var file = IniFileSyntax.Parse(source);
 
         file.Tokens.Should().BeEquivalentTo(
         [
@@ -32,7 +32,7 @@ public class Parses
     public void key_value_pairs()
     {
         var source = SourceText.From($"root=true\nvalue=okay");
-        var file = IniFile.Parse(source).Sytnax;
+        var file = IniFileSyntax.Parse(source);
 
         file.Tokens.Should().BeEquivalentTo(
         [
@@ -50,7 +50,7 @@ public class Parses
     public void empty_lines()
     {
         var source = SourceText.From($"root=true\n\r\n     \nvalue=okay");
-        var file = IniFile.Parse(source).Sytnax;
+        var file = IniFileSyntax.Parse(source);
 
         file.Tokens.Should().BeEquivalentTo(
         [
@@ -71,7 +71,7 @@ public class Parses
     public void key_value_pair_with_spaces()
     {
         var source = SourceText.From("\troot  = true\r\n");
-        var file = IniFile.Parse(source).Sytnax;
+        var file = IniFileSyntax.Parse(source);
 
         file.Tokens.Should().BeEquivalentTo(
         [
@@ -88,7 +88,7 @@ public class Parses
     public void header_with_key_value_pair()
     {
         var source = SourceText.From("[*.cs]\nroot=true");
-        var file = IniFile.Parse(source).Sytnax;
+        var file = IniFileSyntax.Parse(source);
 
         file.Tokens.Should().BeEquivalentTo(
         [
@@ -108,7 +108,7 @@ public class Parses
     public void key_value_pair_followed_by_header()
     {
         var source = SourceText.From("first=1\n[*.cs]\nroot=true");
-        var file = IniFile.Parse(source).Sytnax;
+        var file = IniFileSyntax.Parse(source);
 
         file.Tokens.Should().BeEquivalentTo(
         [
@@ -136,7 +136,7 @@ public class Parses
     {
         var source = SourceText.From(
             $"dotnet_diagnostic.Proj1000.severity = error {ch} Use the .NET project file analyzers.\r\n");
-        var file = IniFile.Parse(source).Sytnax;
+        var file = IniFileSyntax.Parse(source);
 
         file.Tokens.Should().BeEquivalentTo(
         [
@@ -157,7 +157,7 @@ public class Parses
         var source = SourceText.From(@"
 # Use the .NET project file analyzers.
 dotnet_diagnostic.Proj1000.severity=error");
-        var file = IniFile.Parse(source).Sytnax;
+        var file = IniFileSyntax.Parse(source);
 
         file.Tokens.Should().BeEquivalentTo(
         [

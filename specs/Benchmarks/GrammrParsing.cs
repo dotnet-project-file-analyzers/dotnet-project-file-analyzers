@@ -24,10 +24,10 @@ public class GrammrParsing
     public int Index { get; set; }
 
     [Benchmark]
-    public Grammr.Syntax.Node Grammr_Parse() => IniGrammar.file.Parse(TokenStream.From(Sources[Index])).Root;
+    public Grammr.Syntax.Node HomeGrown() => IniGrammar.file.Parse(TokenStream.From(Sources[Index])).Root;
 
     [Benchmark]
-    public DotNetProjectFile.Ini.IniFile ANTLR_Parse() => DotNetProjectFile.Ini.IniFile.Parse(Sources[Index]);
+    public DotNetProjectFile.Ini.IniFileSyntax ANTLR4() => DotNetProjectFile.Ini.IniFileSyntax.Parse(Sources[Index]);
 }
 
 file sealed class IniGrammar : Grammar

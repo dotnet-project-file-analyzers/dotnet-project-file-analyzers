@@ -3,24 +3,28 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Ini;
 
-public sealed class IniFile
+public sealed class IniFile : ProjectFile
 {
 	public required IniFileSyntax Sytnax { get; init; }
 
-	public static IniFile Parse(SourceText source)
-	{
-		var stream = new AntlrInputStream(source.ToString());
-		var lexer = new IniLexer(stream);
-		var tokens = new CommonTokenStream(lexer);
-		var parser = new IniParser(tokens);
-        
-		var visitor = new IniFileVisitor(new(tokens, parser.Vocabulary));
+    /// <inheritdoc />
+    public IOFile Path { get; init; }
 
-		var syntax = (IniFileSyntax)visitor.Visit(parser.file());
+    /// <inheritdoc />
+    public required SourceText Text { get; init; }
+
+    /// <inheritdoc />
+    public WarningPragmas WarningPragmas => WarningPragmas.None;
+
+    public static IniFile Load(IOFile path)
+	{
+        using var stream = path.OpenRead();
+        var source = SourceText.From(stream);
 
 		return new()
 		{
-			Sytnax = syntax 
+			Sytnax = IniFileSyntax.Parse(source),
+            Text = source,
 		};
 	}
 }
