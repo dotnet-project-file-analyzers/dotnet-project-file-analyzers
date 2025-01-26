@@ -1,16 +1,18 @@
 using CodeAnalysis.TestTools.Contexts;
 using Specs.TestTools;
 using System.Collections.Concurrent;
+using System.Diagnostics.CodeAnalysis;
 using System.IO;
 using System.Security.Cryptography;
-using System.Threading;
 
 namespace Microsoft.CodeAnalysis.Diagnostics;
 
 internal static class DiagnosticAnalyzerExtensions
 {
     [Pure]
-    public static ProjectAnalyzerVerifyContext ForInlineCsproj(this DiagnosticAnalyzer analyzer, string content)
+    public static ProjectAnalyzerVerifyContext ForInlineCsproj(
+        this DiagnosticAnalyzer analyzer,
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
     {
         content = content.Trim();
 #pragma warning disable RS1035 // FP: Not an analyzer.
