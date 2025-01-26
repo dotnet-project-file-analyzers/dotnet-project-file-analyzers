@@ -598,6 +598,83 @@ public static partial class Rule
         severity: DiagnosticSeverity.Warning,
         isEnabled: true);
 
+    public static DiagnosticDescriptor EnableStrictModeForPackageBaselineValidation => New(
+        id: 0247,
+        title: "Enable strict mode for package baseline validation",
+        message: "Define the <EnableStrictModeForBaselineValidation> node with value 'true' or remove the <PackageValidationBaselineVersion> node or remove the <EnablePackageValidation> node with value 'true'.",
+        description:
+            "When ensuring backwards compatibility of the API surface " +
+            "of your package, it is adviced to do this in strict mode. " +
+            "This helps preventing any unintentional API changes.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor EnableStrictModeForPackageRuntimeCompatibilityValidation => New(
+        id: 0248,
+        title: "Enable strict mode for package runtime compatibility validation",
+        message: "Define the <EnableStrictModeForCompatibleTfms> node with value 'true' or remove the <EnableStrictModeForCompatibleTfms> node with value 'false' or remove the <EnablePackageValidation> node with value 'true'.",
+        description:
+            "When building your package for multiple runtimes it " +
+            "is adviced to enable the strict mode of the runtime " +
+            "compatibility validation.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor EnableStrictModeForPackageFrameworkCompatibilityValidation => New(
+        id: 0249,
+        title: "Enable strict mode for package framework compatibility validation",
+        message: "Define the <EnableStrictModeForCompatibleFrameworksInPackage> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'.",
+        description:
+            "When building your package for multiple runtimes it " +
+            "is adviced to enable the strict mode of the framework " +
+            "compatibility validation.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+    isEnabled: true);
+
+    public static DiagnosticDescriptor GenerateApiCompatibilitySuppressionFile => New(
+        id: 0250,
+        title: "Generate API compatibility suppression file",
+        message: "Define the <ApiCompatGenerateSuppressionFile> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'.",
+        description:
+            "This suppression file can be created manually, or automatically generated " +
+            "by enabling the `GenerateCompatibilitySuppressionFile` property.It is adviced " +
+            "to enable this property in the project file to ensure that file is kept " +
+            "up-to-date automatically.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor EnableApiCompatibilityAttributeChecks => New(
+        id: 0251,
+        title: "Enable API compatibility attribute checks",
+        message: "Define the <ApiCompatEnableRuleAttributesMustMatch> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'.",
+        description:
+            "When package validation is enabled, it is adviced to opt-in " +
+            "to the strict attribute compatibility checks.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor EnableApiCompatibilityParameterNameChecks => New(
+        id: 0252,
+        title: "Enable API compatibility parameter name checks",
+        message: "Define the <ApiCompatEnableRuleCannotChangeParameterName> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'.",
+        description:
+            "When package validation is enabled, it is adviced to opt-in " +
+            "to the strict parameter name compatibility checks.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
     public static DiagnosticDescriptor DefineIsPublishable => New(
         id: 0400,
         title: "Define the project publishability explicitly",
