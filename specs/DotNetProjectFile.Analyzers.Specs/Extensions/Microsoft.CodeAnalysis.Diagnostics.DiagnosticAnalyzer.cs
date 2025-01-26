@@ -1,6 +1,9 @@
 using CodeAnalysis.TestTools.Contexts;
+using Specs.TestTools;
+using System.Collections.Concurrent;
 using System.IO;
 using System.Security.Cryptography;
+using System.Threading;
 
 namespace Microsoft.CodeAnalysis.Diagnostics;
 
@@ -69,7 +72,8 @@ internal static class DiagnosticAnalyzerExtensions
     [Pure]
     private static ProjectAnalyzerVerifyContext ForTestProject(this DiagnosticAnalyzer analyzer, FileInfo file)
     {
-        var context = analyzer.ForProject(file);
+        var project = CachedProjectLoader.Load(file);
+        var context = new ProjectAnalyzerVerifyContext(project).Add(analyzer);
 
         return context with
         {
