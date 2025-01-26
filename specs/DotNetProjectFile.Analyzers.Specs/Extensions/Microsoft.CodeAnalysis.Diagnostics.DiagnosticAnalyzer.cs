@@ -1,4 +1,5 @@
 using CodeAnalysis.TestTools.Contexts;
+using Specs.TestTools;
 using System.Collections.Concurrent;
 using System.IO;
 using System.Threading;
@@ -30,34 +31,10 @@ internal static class DiagnosticAnalyzerExtensions
         return ForTestProject(analyzer, file);
     }
 
-    private static readonly ConcurrentDictionary<string, Project> projectCache = new();
-    private static readonly Lock projectCacheLock = new();
-
-    private static Project LoadProject(FileInfo file)
-    {
-        var key = file.FullName;
-
-        if (projectCache.TryGetValue(key, out var project))
-        {
-            return project;
-        }
-
-        lock (projectCacheLock)
-        {
-            if (!projectCache.TryGetValue(key, out project))
-            {
-                project = ProjectLoader.Load(file);
-                projectCache[key] = project;
-            }
-        }
-
-        return project;
-    }
-
     [Pure]
     private static ProjectAnalyzerVerifyContext ForTestProject(this DiagnosticAnalyzer analyzer, FileInfo file)
     {
-        var project = LoadProject(file);
+        var project = CachedProjectLoader.Load(file);
         var context = new ProjectAnalyzerVerifyContext(project).Add(analyzer);
 
         return context with
