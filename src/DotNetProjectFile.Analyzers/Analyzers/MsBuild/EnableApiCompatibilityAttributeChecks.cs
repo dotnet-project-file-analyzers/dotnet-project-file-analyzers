@@ -14,13 +14,13 @@ public sealed class EnableApiCompatibilityAttributeChecks()
             return;
         }
 
-        if (context.File.Property<ApiCompatEnableRuleAttributesMustMatch>() is { } node && node.Value is not true)
-        {
-            context.ReportDiagnostic(Descriptor, node);
-        }
-        else
+        if (context.File.Property<ApiCompatEnableRuleAttributesMustMatch>() is not { } node)
         {
             context.ReportDiagnostic(Descriptor, context.File);
+        }
+        else if (node.Value is not true)
+        {
+            context.ReportDiagnostic(Descriptor, node);
         }
     }
 }

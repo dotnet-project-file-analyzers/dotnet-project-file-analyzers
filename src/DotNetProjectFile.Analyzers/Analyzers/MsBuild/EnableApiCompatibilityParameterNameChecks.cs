@@ -14,13 +14,13 @@ public sealed class EnableApiCompatibilityParameterNameChecks()
             return;
         }
 
-        if (context.File.Property<ApiCompatEnableRuleCannotChangeParameterName>() is { } node && node.Value is not true)
-        {
-            context.ReportDiagnostic(Descriptor, node);
-        }
-        else
+        if (context.File.Property<ApiCompatEnableRuleCannotChangeParameterName>() is not { } node)
         {
             context.ReportDiagnostic(Descriptor, context.File);
+        }
+        else if (node.Value is not true)
+        {
+            context.ReportDiagnostic(Descriptor, node);
         }
     }
 }

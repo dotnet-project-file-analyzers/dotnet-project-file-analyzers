@@ -15,13 +15,13 @@ public sealed class EnableStrictModeForPackageBaselineValidation()
             return;
         }
 
-        if (context.File.Property<EnableStrictModeForBaselineValidation>() is { } node && node.Value is not true)
-        {
-            context.ReportDiagnostic(Descriptor, node);
-        }
-        else
+        if (context.File.Property<EnableStrictModeForBaselineValidation>() is not { } node)
         {
             context.ReportDiagnostic(Descriptor, context.File);
+        }
+        else if (node.Value is not true)
+        {
+            context.ReportDiagnostic(Descriptor, node);
         }
     }
 }

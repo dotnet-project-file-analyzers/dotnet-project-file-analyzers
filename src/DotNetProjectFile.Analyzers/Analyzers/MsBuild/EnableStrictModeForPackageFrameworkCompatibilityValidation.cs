@@ -14,13 +14,13 @@ public sealed class EnableStrictModeForPackageFrameworkCompatibilityValidation()
             return;
         }
 
-        if (context.File.Property<EnableStrictModeForCompatibleFrameworksInPackage>() is { } node && node.Value is not true)
-        {
-            context.ReportDiagnostic(Descriptor, node);
-        }
-        else
+        if (context.File.Property<EnableStrictModeForCompatibleFrameworksInPackage>() is not { } node)
         {
             context.ReportDiagnostic(Descriptor, context.File);
+        }
+        else if (node.Value is not true)
+        {
+            context.ReportDiagnostic(Descriptor, node);
         }
     }
 }
