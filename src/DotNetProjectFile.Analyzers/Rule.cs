@@ -547,56 +547,56 @@ public static partial class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor GenerateSbom => New(
-       id: 0243,
-       title: "Generate software bill of materials",
-       message: "{0} or define the <IsPackable> node with value 'false'.",
-       description:
+        id: 0243,
+        title: "Generate software bill of materials",
+        message: "{0} or define the <IsPackable> node with value 'false'.",
+        description:
            "To be compliant with USA legislation, a software bill of materials " +
            "should be included with a shipped package.",
-       tags: ["compliance", "package", "legislation"],
-       category: Category.CodeQuality,
-       severity: DiagnosticSeverity.Warning,
-       isEnabled: true);
+        tags: ["compliance", "package", "legislation"],
+        category: Category.CodeQuality,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
 
     public static DiagnosticDescriptor GenerateDocumentationFile => New(
-       id: 0244,
-       title: "Generate documentation file",
-       message: "Define the <GenerateDocumentationFile> node with value 'true' or define the <DocumentationFile> node with a valid file path or define the <IsPackable> node with value 'false'.",
-       description:
+        id: 0244,
+        title: "Generate documentation file",
+        message: "Define the <GenerateDocumentationFile> node with value 'true' or define the <DocumentationFile> node with a valid file path or define the <IsPackable> node with value 'false'.",
+        description:
            "In order for code documentation to be visible for package consumers " +
            "it is important that the documentation is generated.",
-       tags: ["Configuration", "package"],
-       category: Category.Clarity,
-       severity: DiagnosticSeverity.Warning,
-       isEnabled: true);
+        tags: ["Configuration", "package"],
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
 
     public static DiagnosticDescriptor DontMixVersionAndVersionPrefixOrVersionSuffix => New(
-       id: 0245,
-       title: "Don't mix Version and VersionPrefix/VersionSuffix",
-       message: "Remove the <Version> node or remove the {0}.",
-       description:
+        id: 0245,
+        title: "Don't mix Version and VersionPrefix/VersionSuffix",
+        message: "Remove the <Version> node or remove the {0}.",
+        description:
             "Version node overrides VersionPrefix and VersionSuffix nodes " +
             ", therefore you should either remove the Version node " +
             "(if you want to use the VersionPrefix and VersionSuffix nodes) or " +
             "you should remove the VersionPrefix and VersionSuffix nodes " +
             "(if you want to use Version node).",
-       tags: ["Configuration", "NuGet", "package"],
-       category: Category.Configuration,
-       severity: DiagnosticSeverity.Warning,
-       isEnabled: true);
+        tags: ["Configuration", "NuGet", "package"],
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
 
     public static DiagnosticDescriptor DefineVersionPrefixIfVersionSuffixIsDefined => New(
-       id: 0246,
-       title: "Define VersionPrefix if VersionSuffix is defined",
-       message: "Define the <VersionPrefix> node or remove the <VersionSuffix> node.",
-       description:
+        id: 0246,
+        title: "Define VersionPrefix if VersionSuffix is defined",
+        message: "Define the <VersionPrefix> node or remove the <VersionSuffix> node.",
+        description:
             "VersionSuffix indicates the desire to use the VersionPrefix and VersionSuffix system " +
             ", but when only defining the VersionSuffix node, the default value of VersionPrefix (1.0.0) " +
             "is used, which is most likely an error.",
-       tags: ["Configuration", "NuGet", "package"],
-       category: Category.Configuration,
-       severity: DiagnosticSeverity.Warning,
-       isEnabled: true);
+        tags: ["Configuration", "NuGet", "package"],
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
 
     public static DiagnosticDescriptor DefineIsPublishable => New(
         id: 0400,
