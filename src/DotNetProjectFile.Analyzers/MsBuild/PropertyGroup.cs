@@ -67,4 +67,16 @@ public sealed class PropertyGroup(XElement element, Node parent, MsBuildProject 
     public Nodes<PackageValidationBaselineVersion> PackageValidationBaselineVersion => new(Children);
 
     public Nodes<ManagePackageVersionsCentrally> ManagePackageVersionsCentrally => new(Children);
+
+    public Nodes<EnableStrictModeForBaselineValidation> EnableStrictModeForBaselineValidation => new(Children);
+
+    public Nodes<EnableStrictModeForCompatibleFrameworksInPackage> EnableStrictModeForCompatibleFrameworksInPackage => new(Children);
+
+    public Nodes<EnableStrictModeForCompatibleTfms> EnableStrictModeForCompatibleTfms => new(Children);
+
+    public Nodes<ApiCompatEnableRuleAttributesMustMatch> ApiCompatEnableRuleAttributesMustMatch => new(Children);
+
+    public Nodes<ApiCompatEnableRuleCannotChangeParameterName> ApiCompatEnableRuleCannotChangeParameterName => new(Children);
+
+    public Nodes<ApiCompatGenerateSuppressionFile> ApiCompatGenerateSuppressionFile => new(Children);
 }
