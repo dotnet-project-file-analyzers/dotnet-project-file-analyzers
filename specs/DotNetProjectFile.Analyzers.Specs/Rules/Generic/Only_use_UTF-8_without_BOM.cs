@@ -22,6 +22,7 @@ public class Reports
 public class Does_not_crash
 {
     [Test]
+    [NonParallelizable] // Required due to file lock
     public void scanning_locked_files()
     {
         using var _ = new FileInfo("../../../../../projects/MultipleEncodings/utf8-bom.css").Lock();
