@@ -61,6 +61,12 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0244** Generate documentation file](https://dotnet-project-file-analyzers.github.io/rules/Proj0244.html)
 * [**Proj0245** Don’t mix Version and VersionPrefix/VersionSuffix](https://dotnet-project-file-analyzers.github.io/rules/Proj0245.html)
 * [**Proj0246** Define VersionPrefix if VersionSuffix is defined](https://dotnet-project-file-analyzers.github.io/rules/Proj0246.html)
+* [**Proj0247** Enable strict mode for package baseline validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0247.html)
+* [**Proj0248** Enable strict mode for package runtime compatibility validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0248.html)
+* [**Proj0249** Enable strict mode for package framework compatibility validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0249.html)
+* [**Proj0250** Generate API compatibility suppression file](https://dotnet-project-file-analyzers.github.io/rules/Proj0250.html)
+* [**Proj0251** Enable API compatibility attribute checks](https://dotnet-project-file-analyzers.github.io/rules/Proj0251.html)
+* [**Proj0252** Enable API compatibility parameter name checks](https://dotnet-project-file-analyzers.github.io/rules/Proj0252.html)
 * [**Proj0600** Avoid generating packages on build if not packable](https://dotnet-project-file-analyzers.github.io/rules/Proj0600.html)
 
 ### Publishing
