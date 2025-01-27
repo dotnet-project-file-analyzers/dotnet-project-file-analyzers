@@ -511,7 +511,7 @@ public static partial class Rule
         message: "Define the <EnablePackageValidation> node with value 'true' or define the <IsPackable> node with value 'false' or define the <DevelopmentDependency> node with value 'false'.",
         description:
             "To ensure the (backwards) compatibility " +
-            "of the API surface of your package, it is adviced " +
+            "of the API surface of your package, it is advised " +
             "to enable package validation by defining the " +
             "<EnablePackageValidation> node with value 'true'.",
         tags: ["Configuration", "package", "compatibility"],
@@ -525,7 +525,7 @@ public static partial class Rule
         message: "Define the <PackageValidationBaselineVersion> node with a previously released stable version.",
         description:
             "To ensure the backwards compatibility " +
-            "of the API surface of your package, it is adviced " +
+            "of the API surface of your package, it is advised " +
             "to enable package baseline validation by defining the " +
             "<PackageValidationBaselineVersion> node with the version " +
             "of the previous stable release.",
@@ -604,7 +604,7 @@ public static partial class Rule
         message: "Define the <EnableStrictModeForBaselineValidation> node with value 'true' or remove the <PackageValidationBaselineVersion> node or remove the <EnablePackageValidation> node with value 'true'.",
         description:
             "When ensuring backwards compatibility of the API surface " +
-            "of your package, it is adviced to do this in strict mode. " +
+            "of your package, it is advised to do this in strict mode. " +
             "This helps preventing any unintentional API changes.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Reliability,
@@ -617,7 +617,7 @@ public static partial class Rule
         message: "Define the <EnableStrictModeForCompatibleTfms> node with value 'true' or remove the <EnableStrictModeForCompatibleTfms> node with value 'false' or remove the <EnablePackageValidation> node with value 'true'.",
         description:
             "When building your package for multiple runtimes it " +
-            "is adviced to enable the strict mode of the runtime " +
+            "is advised to enable the strict mode of the runtime " +
             "compatibility validation.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Reliability,
@@ -630,7 +630,7 @@ public static partial class Rule
         message: "Define the <EnableStrictModeForCompatibleFrameworksInPackage> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'.",
         description:
             "When building your package for multiple runtimes it " +
-            "is adviced to enable the strict mode of the framework " +
+            "is advised to enable the strict mode of the framework " +
             "compatibility validation.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Reliability,
@@ -643,7 +643,7 @@ public static partial class Rule
         message: "Define the <ApiCompatGenerateSuppressionFile> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'.",
         description:
             "This suppression file can be created manually, or automatically generated " +
-            "by enabling the `GenerateCompatibilitySuppressionFile` property.It is adviced " +
+            "by enabling the `GenerateCompatibilitySuppressionFile` property.It is advised " +
             "to enable this property in the project file to ensure that file is kept " +
             "up-to-date automatically.",
         tags: ["Configuration", "package", "compatibility"],
@@ -656,7 +656,7 @@ public static partial class Rule
         title: "Enable API compatibility attribute checks",
         message: "Define the <ApiCompatEnableRuleAttributesMustMatch> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'.",
         description:
-            "When package validation is enabled, it is adviced to opt-in " +
+            "When package validation is enabled, it is advised to opt-in " +
             "to the strict attribute compatibility checks.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Reliability,
@@ -668,7 +668,7 @@ public static partial class Rule
         title: "Enable API compatibility parameter name checks",
         message: "Define the <ApiCompatEnableRuleCannotChangeParameterName> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'.",
         description:
-            "When package validation is enabled, it is adviced to opt-in " +
+            "When package validation is enabled, it is advised to opt-in " +
             "to the strict parameter name compatibility checks.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Reliability,
