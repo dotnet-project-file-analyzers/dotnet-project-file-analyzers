@@ -101,6 +101,12 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0244** Generate documentation file](rules/Proj0244.md)
 * [**Proj0245** Don't mix Version and VersionPrefix/VersionSuffix](rules/Proj0245.md)
 * [**Proj0246** Define VersionPrefix if VersionSuffix is defined](rules/Proj0246.md)
+* [**Proj0247** Enable strict mode for package baseline validation](rules/Proj0247.md)
+* [**Proj0248** Enable strict mode for package runtime compatibility validation](rules/Proj0248.md)
+* [**Proj0249** Enable strict mode for package framework compatibility validation](rules/Proj0249.md)
+* [**Proj0250** Generate API compatibility suppression file](rules/Proj0250.md)
+* [**Proj0251** Enable API compatibility attribute checks](rules/Proj0251.md)
+* [**Proj0252** Enable API compatibility parameter name checks](rules/Proj0252.md)
 * [**Proj0600** Avoid generating packages on build if not packable](rules/Proj0600.md)
 
 ### Publishing
