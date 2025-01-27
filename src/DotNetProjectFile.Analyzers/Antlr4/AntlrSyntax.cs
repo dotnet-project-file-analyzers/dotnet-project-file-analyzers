@@ -14,7 +14,7 @@ public class AntlrSyntax(ParserRuleContext context, AbstractSyntaxTree tree)
     public string Text => Context.GetText();
 
     /// <summary>Gets the stream tokens.</summary>
-    public IReadOnlyCollection<StreamToken> Tokens => SyntaxTree.Tokens(Context.SourceInterval);
+    public IReadOnlyList<StreamToken> Tokens => SyntaxTree.Tokens(Context.SourceInterval);
 
     private string Name => GetType().Name;
 }

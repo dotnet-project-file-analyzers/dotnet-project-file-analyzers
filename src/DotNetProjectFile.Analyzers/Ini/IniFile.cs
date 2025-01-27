@@ -5,7 +5,7 @@ namespace DotNetProjectFile.Ini;
 
 public sealed class IniFile : ProjectFile
 {
-	public required IniFileSyntax Sytnax { get; init; }
+	public required IniFileSyntax Syntax { get; init; }
 
     /// <inheritdoc />
     public IOFile Path { get; init; }
@@ -16,14 +16,14 @@ public sealed class IniFile : ProjectFile
     /// <inheritdoc />
     public WarningPragmas WarningPragmas => WarningPragmas.None;
 
-    public static IniFile Load(IOFile path)
+    public static IniFile Load(IOFile file)
 	{
-        using var stream = path.OpenRead();
+        using var stream = file.OpenRead();
         var source = SourceText.From(stream);
 
 		return new()
 		{
-			Sytnax = IniFileSyntax.Parse(source),
+			Syntax = IniFileSyntax.Parse(source),
             Text = source,
 		};
 	}
