@@ -511,7 +511,7 @@ public static partial class Rule
         message: "Define the <EnablePackageValidation> node with value 'true' or define the <IsPackable> node with value 'false' or define the <DevelopmentDependency> node with value 'false'.",
         description:
             "To ensure the (backwards) compatibility " +
-            "of the API surface of your package, it is adviced " +
+            "of the API surface of your package, it is advised " +
             "to enable package validation by defining the " +
             "<EnablePackageValidation> node with value 'true'.",
         tags: ["Configuration", "package", "compatibility"],
@@ -525,7 +525,7 @@ public static partial class Rule
         message: "Define the <PackageValidationBaselineVersion> node with a previously released stable version.",
         description:
             "To ensure the backwards compatibility " +
-            "of the API surface of your package, it is adviced " +
+            "of the API surface of your package, it is advised " +
             "to enable package baseline validation by defining the " +
             "<PackageValidationBaselineVersion> node with the version " +
             "of the previous stable release.",
@@ -547,56 +547,133 @@ public static partial class Rule
         isEnabled: true);
 
     public static DiagnosticDescriptor GenerateSbom => New(
-       id: 0243,
-       title: "Generate software bill of materials",
-       message: "{0} or define the <IsPackable> node with value 'false'.",
-       description:
+        id: 0243,
+        title: "Generate software bill of materials",
+        message: "{0} or define the <IsPackable> node with value 'false'.",
+        description:
            "To be compliant with USA legislation, a software bill of materials " +
            "should be included with a shipped package.",
-       tags: ["compliance", "package", "legislation"],
-       category: Category.CodeQuality,
-       severity: DiagnosticSeverity.Warning,
-       isEnabled: true);
+        tags: ["compliance", "package", "legislation"],
+        category: Category.CodeQuality,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
 
     public static DiagnosticDescriptor GenerateDocumentationFile => New(
-       id: 0244,
-       title: "Generate documentation file",
-       message: "Define the <GenerateDocumentationFile> node with value 'true' or define the <DocumentationFile> node with a valid file path or define the <IsPackable> node with value 'false'.",
-       description:
+        id: 0244,
+        title: "Generate documentation file",
+        message: "Define the <GenerateDocumentationFile> node with value 'true' or define the <DocumentationFile> node with a valid file path or define the <IsPackable> node with value 'false'.",
+        description:
            "In order for code documentation to be visible for package consumers " +
            "it is important that the documentation is generated.",
-       tags: ["Configuration", "package"],
-       category: Category.Clarity,
-       severity: DiagnosticSeverity.Warning,
-       isEnabled: true);
+        tags: ["Configuration", "package"],
+        category: Category.Clarity,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
 
     public static DiagnosticDescriptor DontMixVersionAndVersionPrefixOrVersionSuffix => New(
-       id: 0245,
-       title: "Don't mix Version and VersionPrefix/VersionSuffix",
-       message: "Remove the <Version> node or remove the {0}.",
-       description:
+        id: 0245,
+        title: "Don't mix Version and VersionPrefix/VersionSuffix",
+        message: "Remove the <Version> node or remove the {0}.",
+        description:
             "Version node overrides VersionPrefix and VersionSuffix nodes " +
             ", therefore you should either remove the Version node " +
             "(if you want to use the VersionPrefix and VersionSuffix nodes) or " +
             "you should remove the VersionPrefix and VersionSuffix nodes " +
             "(if you want to use Version node).",
-       tags: ["Configuration", "NuGet", "package"],
-       category: Category.Configuration,
-       severity: DiagnosticSeverity.Warning,
-       isEnabled: true);
+        tags: ["Configuration", "NuGet", "package"],
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
 
     public static DiagnosticDescriptor DefineVersionPrefixIfVersionSuffixIsDefined => New(
-       id: 0246,
-       title: "Define VersionPrefix if VersionSuffix is defined",
-       message: "Define the <VersionPrefix> node or remove the <VersionSuffix> node.",
-       description:
+        id: 0246,
+        title: "Define VersionPrefix if VersionSuffix is defined",
+        message: "Define the <VersionPrefix> node or remove the <VersionSuffix> node.",
+        description:
             "VersionSuffix indicates the desire to use the VersionPrefix and VersionSuffix system " +
             ", but when only defining the VersionSuffix node, the default value of VersionPrefix (1.0.0) " +
             "is used, which is most likely an error.",
-       tags: ["Configuration", "NuGet", "package"],
-       category: Category.Configuration,
-       severity: DiagnosticSeverity.Warning,
-       isEnabled: true);
+        tags: ["Configuration", "NuGet", "package"],
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor EnableStrictModeForPackageBaselineValidation => New(
+        id: 0247,
+        title: "Enable strict mode for package baseline validation",
+        message: "Define the <EnableStrictModeForBaselineValidation> node with value 'true' or remove the <PackageValidationBaselineVersion> node or remove the <EnablePackageValidation> node with value 'true'.",
+        description:
+            "When ensuring backwards compatibility of the API surface " +
+            "of your package, it is advised to do this in strict mode. " +
+            "This helps preventing any unintentional API changes.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor EnableStrictModeForPackageRuntimeCompatibilityValidation => New(
+        id: 0248,
+        title: "Enable strict mode for package runtime compatibility validation",
+        message: "Define the <EnableStrictModeForCompatibleTfms> node with value 'true' or remove the <EnableStrictModeForCompatibleTfms> node with value 'false' or remove the <EnablePackageValidation> node with value 'true'.",
+        description:
+            "When building your package for multiple runtimes it " +
+            "is advised to enable the strict mode of the runtime " +
+            "compatibility validation.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor EnableStrictModeForPackageFrameworkCompatibilityValidation => New(
+        id: 0249,
+        title: "Enable strict mode for package framework compatibility validation",
+        message: "Define the <EnableStrictModeForCompatibleFrameworksInPackage> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'.",
+        description:
+            "When building your package for multiple runtimes it " +
+            "is advised to enable the strict mode of the framework " +
+            "compatibility validation.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+    isEnabled: true);
+
+    public static DiagnosticDescriptor GenerateApiCompatibilitySuppressionFile => New(
+        id: 0250,
+        title: "Generate API compatibility suppression file",
+        message: "Define the <ApiCompatGenerateSuppressionFile> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'.",
+        description:
+            "This suppression file can be created manually, or automatically generated " +
+            "by enabling the `GenerateCompatibilitySuppressionFile` property.It is advised " +
+            "to enable this property in the project file to ensure that file is kept " +
+            "up-to-date automatically.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor EnableApiCompatibilityAttributeChecks => New(
+        id: 0251,
+        title: "Enable API compatibility attribute checks",
+        message: "Define the <ApiCompatEnableRuleAttributesMustMatch> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'.",
+        description:
+            "When package validation is enabled, it is advised to opt-in " +
+            "to the strict attribute compatibility checks.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
+
+    public static DiagnosticDescriptor EnableApiCompatibilityParameterNameChecks => New(
+        id: 0252,
+        title: "Enable API compatibility parameter name checks",
+        message: "Define the <ApiCompatEnableRuleCannotChangeParameterName> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'.",
+        description:
+            "When package validation is enabled, it is advised to opt-in " +
+            "to the strict parameter name compatibility checks.",
+        tags: ["Configuration", "package", "compatibility"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: true);
 
     public static DiagnosticDescriptor DefineIsPublishable => New(
         id: 0400,
