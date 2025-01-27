@@ -21,7 +21,7 @@ public sealed class IniFileVisitor(AbstractSyntaxTree tree) : IniBaseVisitor<Ini
             }
             else if (child is HeaderSyntax next)
             {
-                if (pairs.Any())
+                if (pairs.Any() || header is { })
                 {
                     sections.Add(new(header, pairs.ToArray()));
                     pairs.Clear();

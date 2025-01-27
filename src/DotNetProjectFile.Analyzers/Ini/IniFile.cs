@@ -8,7 +8,7 @@ public sealed class IniFile : ProjectFile
 	public required IniFileSyntax Syntax { get; init; }
 
     /// <inheritdoc />
-    public IOFile Path { get; init; }
+    public required IOFile Path { get; init; }
 
     /// <inheritdoc />
     public required SourceText Text { get; init; }
@@ -16,15 +16,20 @@ public sealed class IniFile : ProjectFile
     /// <inheritdoc />
     public WarningPragmas WarningPragmas => WarningPragmas.None;
 
-    public static IniFile Load(IOFile file)
+    public static IniFile Load(IOFile path)
 	{
-        using var stream = file.OpenRead();
+        using var stream = path.OpenRead();
         var source = SourceText.From(stream);
 
-		return new()
+		var file = new IniFile()
 		{
+            Path = path,
 			Syntax = IniFileSyntax.Parse(source),
             Text = source,
 		};
+
+        file.Syntax.SyntaxTree.SetPath(path);
+
+        return file;
 	}
 }

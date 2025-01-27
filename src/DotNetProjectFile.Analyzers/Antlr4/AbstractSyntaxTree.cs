@@ -1,18 +1,61 @@
 using Antlr4.Runtime;
 using Antlr4.Runtime.Misc;
+using Grammr;
+using Microsoft.CodeAnalysis.Text;
+using System;
 
 namespace Antlr4;
 
-public class AbstractSyntaxTree(ITokenStream stream, IVocabulary vocabulary)
+public class AbstractSyntaxTree(SourceText sourceText, ITokenStream stream, IVocabulary vocabulary)
 {
+    public IOFile Path => path;
+
     private readonly ITokenStream Stream = stream;
 
-    public IVocabulary Vocabulary { get; } = vocabulary;
+    private readonly SourceText SourceText = sourceText;
+
+    private readonly IVocabulary Vocabulary = vocabulary;
+
+    /// <summary>Gets the location of the token.</summary>
+    [Pure]
+    public Location GetLocation(StreamToken token)
+        => Location.Create(Path.ToString(), token.TextSpan, token.LineSpan);
+
+    /// <summary>Gets the location of the syntax.</summary>
+    [Pure]
+    public Location GetLocation(AntlrSyntax syntax)
+        => Location.Create(Path.ToString(), syntax.TextSpan, syntax.LineSpan);
 
     public IReadOnlyList<StreamToken> Tokens(Interval interval)
-        => Enumerable.Range(interval.a, interval.Length)
-        .Select(i => Stream.Get(i))
-        .Select(t => new StreamToken(t.Text, Vocabulary.GetDisplayName(t.Type)))
-        .ToArray();
+    {
+        if (tokens is null || tokens.Count != Stream.Size)
+        {
+            tokens = Enumerable.Range(0, Stream.Size)
+                .Select(i => Stream.Get(i))
+                .Select(t => new StreamToken(t, LineSpan(t), Vocabulary.GetDisplayName(t.Type), this))
+                .ToArray();
+        }
 
+        return tokens.Slice(interval);
+    }
+
+    internal LinePositionSpan LineSpan(IToken token) 
+        => token.Type == -1 // EOF
+        ? SourceText.Lines.GetLinePositionSpan(new(token.StartIndex, 0))
+        : SourceText.Lines.GetLinePositionSpan(new(token.StartIndex, token.StopIndex - token.StartIndex));
+
+    internal LinePositionSpan LineSpan(TextSpan span)
+        => SourceText.Lines.GetLinePositionSpan(span);
+
+    internal void SetPath(IOFile path)
+        => this.path = this.path.Equals(default)
+        ? path
+        : throw new InvalidOperationException("Path already set.");
+
+    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
+    private IOFile path;
+
+    private IReadOnlyList<StreamToken>? tokens;
+
+    
 }
