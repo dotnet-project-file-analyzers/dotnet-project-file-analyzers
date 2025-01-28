@@ -1,0 +1,26 @@
+name: Reviewdog Misspell
+on: [pull_request]
+jobs:
+  misspell:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: reviewdog/action-misspell@v1.26.1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          level: error
+          locale: "US"
+          pattern: |
+            *.md
+            *.MD
+            *.txt
+            *.TXT
+          filter_mode: nofilter
+          fail_level: none
+          fail_on_error: false

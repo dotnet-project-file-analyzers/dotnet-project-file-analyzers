@@ -26,7 +26,7 @@ developers.
 ## Sonarcloud integration
 There is currently no *'elegant'* solution to have the warnings show up on SonarCloud,
 however, there is a workaround. By adding the `.??proj` and `.props` files as content,
-SonarCloud will recognise it's warnings and pick them up, same as any warnings in the
+SonarCloud will recognize its warnings and pick them up, same as any warnings in the
 code.
 
 For Example:
