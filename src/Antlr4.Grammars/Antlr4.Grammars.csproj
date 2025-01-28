@@ -18,4 +18,8 @@
     </Antlr4>
   </ItemGroup>
 
+  <Target Name="PostBuildScript" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <Exec Command="find *" />
+  </Target>
+
 </Project>
