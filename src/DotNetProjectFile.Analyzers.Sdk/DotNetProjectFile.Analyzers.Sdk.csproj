@@ -24,12 +24,15 @@
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers SDK</Description>
     <PackageTags>SDK;Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.5.5</Version>
+    <Version>1.5.6</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+v1.5.6
+- Disable signing for .net.csproj file.
+- Include *.yml files too.
 v1.5.5
-- No longer automatically include DotNetProjectFile.Analyzers
+- No longer automatically include DotNetProjectFile.Analyzers.
 v1.5.4
 - Prevent NU1504 from being raised when Directory.Packages.props is used. (BUG)
 v1.5.3

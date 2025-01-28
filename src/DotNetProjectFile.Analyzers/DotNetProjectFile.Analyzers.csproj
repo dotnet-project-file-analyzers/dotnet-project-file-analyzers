@@ -59,7 +59,7 @@
     <Version>1.5.5</Version>
     <PackageReleaseNotes>
       <![CDATA[
-ToBeReleased:
+v1.5.6
 - Proj0033: Project reference includes should exist. (NEW RULE)
 - Proj0201: VersionPrefix is now allowed as alternative to Version. (FP)
 - Proj0244: Generate documentation file. (NEW RULE)
