@@ -17,9 +17,14 @@ public sealed class IniFileSyntax(
         var lexer = new IniLexer(stream);
         var tokens = new CommonTokenStream(lexer);
         var parser = new IniParser(tokens);
-        parser.ErrorHandler = new RoslynErrorHandler();
+        var listner = new RoslynErrorListner();
 
-        var visitor = new IniFileVisitor(new(source, tokens, parser.Vocabulary));
+        lexer.RemoveErrorListeners();
+        parser.RemoveErrorListeners();
+
+        parser.AddErrorListener(listner);
+
+        var visitor = new IniFileVisitor(new(source, tokens, parser.Vocabulary, listner.Errors));
 
         return (IniFileSyntax)visitor.Visit(parser.file());
     }

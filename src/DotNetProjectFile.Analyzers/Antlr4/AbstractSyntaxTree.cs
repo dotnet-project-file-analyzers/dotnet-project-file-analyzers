@@ -6,7 +6,7 @@ using System;
 
 namespace Antlr4;
 
-public class AbstractSyntaxTree(SourceText sourceText, ITokenStream stream, IVocabulary vocabulary)
+public class AbstractSyntaxTree(SourceText sourceText, ITokenStream stream, IVocabulary vocabulary, IReadOnlyList<AntlrSyntaxError> errors)
 {
     public IOFile Path => path;
 
@@ -15,6 +15,8 @@ public class AbstractSyntaxTree(SourceText sourceText, ITokenStream stream, IVoc
     private readonly SourceText SourceText = sourceText;
 
     private readonly IVocabulary Vocabulary = vocabulary;
+
+    public IReadOnlyList<AntlrSyntaxError> Errors { get; } = errors;
 
     /// <summary>Gets the location of the token.</summary>
     [Pure]
@@ -25,6 +27,11 @@ public class AbstractSyntaxTree(SourceText sourceText, ITokenStream stream, IVoc
     [Pure]
     public Location GetLocation(AntlrSyntax syntax)
         => Location.Create(Path.ToString(), syntax.TextSpan, syntax.LineSpan);
+
+    /// <summary>Gets the location of the syntax.</summary>
+    [Pure]
+    public Location GetLocation(AntlrSyntaxError error)
+        => Location.Create(Path.ToString(), error.TextSpan, LineSpan(error.TextSpan));
 
     public IReadOnlyList<StreamToken> Tokens(Interval interval)
     {
