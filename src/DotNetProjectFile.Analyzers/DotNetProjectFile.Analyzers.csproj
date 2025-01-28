@@ -41,6 +41,10 @@
   <ItemGroup Label="Generated code files">
     <Compile Include="../Antlr4.Grammars/**/Ini*.cs" Link="Ini/Generated/%(FileName).cs" />
   </ItemGroup>
+  
+  <Target Name="PostBuildScript" AfterTargets="Build" Condition="'$(Configuration)' == 'Release'">
+    <Exec Command="find *" />
+  </Target>
 
   <ItemGroup Label="Props and targets">
     <PackageReference Include="Microsoft.Sbom.Targets" Version="3.0.1" PrivateAssets="all" />
