@@ -1,3 +1,5 @@
+#pragma warning disable RS1035
+
 using DotNetProjectFile.Ini;
 using Microsoft.CodeAnalysis.Text;
 
@@ -161,9 +163,9 @@ dotnet_diagnostic.Proj1000.severity=error");
 
         file.Tokens.Should().BeEquivalentTo(
         [
-            new { Text = "\r\n", Kind = NL },
+            new { Text = Environment.NewLine, Kind = NL },
             new { Text = "# Use the .NET project file analyzers.", Kind = COMMENT },
-            new { Text = "\r\n", Kind = NL },
+            new { Text = Environment.NewLine, Kind = NL },
             new { Text = "dotnet_diagnostic.Proj1000.severity", Kind = KEY },
             new { Text = "=", Kind = ASSIGN },
             new { Text = "error", Kind = VALUE },
