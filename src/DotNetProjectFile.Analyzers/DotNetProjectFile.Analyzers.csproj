@@ -39,10 +39,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Generated code files">
-    <Compile Include="../Antlr4.Grammars/obj/$(Configuration)/net9.0/IniBaseVisitor.cs" Link="Ini/Generated/IniBaseVisitor.cs" />
-    <Compile Include="../Antlr4.Grammars/obj/$(Configuration)/net9.0/IniLexer.cs" Link="Ini/Generated/IniLexer.cs" />
-    <Compile Include="../Antlr4.Grammars/obj/$(Configuration)/net9.0/IniParser.cs" Link="Ini/Generated/IniParser.cs" />
-    <Compile Include="../Antlr4.Grammars/obj/$(Configuration)/net9.0/IniVisitor.cs" Link="Ini/Generated/IniVisitor.cs" />
+    <Compile Include="../Antlr4.Grammars/obj/*/*/Ini*.cs" Link="Ini/Generated/%(Filename)%(Extension)" />
   </ItemGroup>
 
   <ItemGroup Label="Props and targets">
