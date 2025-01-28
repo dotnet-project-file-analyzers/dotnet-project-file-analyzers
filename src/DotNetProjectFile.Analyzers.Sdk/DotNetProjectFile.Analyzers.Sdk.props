@@ -8,12 +8,12 @@
     <IsPublishable>false</IsPublishable>
   </PropertyGroup>
 
-  <!-- We do not want to enable default items here -->
+  <!-- We do not want to enable default items here. -->
   <PropertyGroup>
     <EnableDefaultItems>false</EnableDefaultItems>
   </PropertyGroup>
 
-  <!-- The bin is just noise here, so move it a temp location -->
+  <!-- The bin is just noise here, so move it a temp location. -->
   <PropertyGroup>
     <OutputPath>$([System.IO.Path]::GetTempPath())/.net/bin</OutputPath>
     <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj</IntermediateOutputPath>
@@ -31,6 +31,7 @@
     <AdditionalFiles Include="*.targets" />
     <AdditionalFiles Include="*.txt" />
     <AdditionalFiles Include="*.yaml" />
+    <AdditionalFiles Include="*.yml" />
     <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
   </ItemGroup>
 
