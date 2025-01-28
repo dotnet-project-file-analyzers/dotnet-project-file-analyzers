@@ -3,6 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetProjectFile.Analyzers", "src\DotNetProjectFile.Analyzers\DotNetProjectFile.Analyzers.csproj", "{EB081E61-BCAB-40B8-9358-A5914F223F37}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0A582778-2B93-4187-A111-1CAB491380AC} = {0A582778-2B93-4187-A111-1CAB491380AC}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotNetProjectFile.Analyzers.Specs", "specs\DotNetProjectFile.Analyzers.Specs\DotNetProjectFile.Analyzers.Specs.csproj", "{626C7F5F-15EA-42AA-B4F8-5BD2A86B8FE6}"
 EndProject
