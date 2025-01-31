@@ -47,7 +47,6 @@ public class Guards
 </Project>")
     .HasNoIssues();
 
-
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     public void Projects_with_analyzers(string project) => new UseCoverletCollectorOrMsBuild()
