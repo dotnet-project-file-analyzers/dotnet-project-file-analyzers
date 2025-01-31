@@ -3,7 +3,7 @@ namespace Rules.MS_Build.Use_coverlet_collector_or_msbuild;
 public class Reports
 {
     [Test]
-    public void empty_nodes() => new UseCoverletCollectorOrMsBuild()
+    public void on_both_packages_included() => new UseCoverletCollectorOrMsBuild()
         .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
   <PropertyGroup>
