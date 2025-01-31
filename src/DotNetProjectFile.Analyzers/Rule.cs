@@ -876,6 +876,14 @@ public static partial class Rule
         tags: ["NuGet", "Versioning"],
         category: Category.Reliability);
 
+    public static DiagnosticDescriptor UseCoverletCollectorOrMsBuild => New(
+        id: 1102,
+        title: "Use Coverlet Collector or MSBuild",
+        message: "Choose either coverlet.collector or coverlet.msbuild.",
+        description: "",
+        tags: ["coverlet", "code", "coverage"],
+        category: Category.Bug);
+
     public static DiagnosticDescriptor ExcludePrivateAssetDependencies => New(
         id: 1200,
         title: "Exclude private assets as project file dependency",
