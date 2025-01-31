@@ -882,7 +882,7 @@ public static partial class Rule
         message: "Choose either coverlet.collector or coverlet.msbuild.",
         description:
             "The packages coverlet.collector and coverlet.msbuild have the " +
-            "same purpose but should not be used together. ",
+            "same purpose but should not be used together.",
         tags: ["coverlet", "code", "coverage"],
         category: Category.Bug);
 
