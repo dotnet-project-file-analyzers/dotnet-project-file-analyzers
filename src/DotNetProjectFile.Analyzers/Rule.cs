@@ -880,7 +880,9 @@ public static partial class Rule
         id: 1102,
         title: "Use Coverlet Collector or MSBuild",
         message: "Choose either coverlet.collector or coverlet.msbuild.",
-        description: "",
+        description:
+            "The packages coverlet.collector and coverlet.msbuild have the " +
+            "same purpose but should not be used together. ",
         tags: ["coverlet", "code", "coverage"],
         category: Category.Bug);
 
