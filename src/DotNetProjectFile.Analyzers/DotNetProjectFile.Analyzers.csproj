@@ -60,6 +60,7 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
+- Proj0006: Report on RESX files that are not added as additional files. (FN)
 - Proj1102: Use Coverlet Collector or MSBuild. (NEW RULE)
 - Proj2???: Report on RESX files that are not added as additional files. (FN)
 v1.5.6
