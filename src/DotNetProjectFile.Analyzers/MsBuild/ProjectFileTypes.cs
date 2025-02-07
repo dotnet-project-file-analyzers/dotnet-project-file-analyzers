@@ -26,6 +26,14 @@ public static class ProjectFileTypes
         ProjectFileType.DirectoryPackages
     ];
 
+    public static readonly IReadOnlyCollection<ProjectFileType> AllExceptDirectoryPackages =
+    [
+        ProjectFileType.ProjectFile,
+        ProjectFileType.Props,
+        ProjectFileType.DirectoryBuild,
+        ProjectFileType.SDK,
+    ];
+
     public static readonly IReadOnlyCollection<ProjectFileType> AllExceptSDK =
     [
         ProjectFileType.ProjectFile,
