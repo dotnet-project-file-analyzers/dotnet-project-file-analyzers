@@ -3,7 +3,7 @@
   <resheader name="resmimetype">
     <value>text/microsoft-resx</value>
   </resheader>
-   <resheader name="reader">
+  <resheader name="reader">
     <value>System.Resources.ResXResourceReader</value>
   </resheader>
   <resheader name="writer">

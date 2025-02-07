@@ -80,6 +80,11 @@ public sealed partial class ProjectFiles
             : null;
     }
 
+    public Resource? UpdateResourceFile(IOFile file)
+         => Is.Resource(file)
+            ? ResourceFiles.TryGetOrUpdate(file, _ => Resource.Load(file, this))
+            : null;
+
     private static GitIgnoreSyntax Create_GitIgnoreFile(IOFile file)
         => GitIgnoreSyntax.Parse(Syntax.SyntaxTree.Load(file.OpenRead()));
 
