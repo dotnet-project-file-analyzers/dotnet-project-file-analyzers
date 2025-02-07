@@ -38,7 +38,7 @@ To use the SDK, follow the instructions [here](https://dotnet-project-file-analy
 
 ## Additional files
 To fully benefit from these analyzers it is recommended to add the project file
-(and imported projects/props) as additional files.
+(and RESX, and imported projects/props) as additional files.
 
 To add a project file:
 
@@ -47,6 +47,7 @@ To add a project file:
 
   <ItemGroup>
     <AdditionalFiles Include="*.??proj" Visible="false" />
+	<AdditionalFiles Include="*.resx" />
   </ItemGroup>
 
 </Project>
@@ -55,11 +56,11 @@ To add a project file:
 To add a props file:
 
 ``` XML
-<?xml version="1.0" encoding="utf-8"?>
 <Project>
 
   <ItemGroup>
     <AdditionalFiles Include="../props/{file_name}" Link="Properties/{file_name}" />
+	<AdditionalFiles Include="*.resx" />
   </ItemGroup>
 
 </Project>

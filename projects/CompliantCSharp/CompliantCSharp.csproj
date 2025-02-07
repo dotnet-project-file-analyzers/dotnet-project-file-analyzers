@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <AdditionalFiles Include="*.csproj" Visible="false" />
+    <AdditionalFiles Include="*.resx" />
   </ItemGroup>
 
   <!-- #pragma warning disable Proj0008 -->
