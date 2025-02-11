@@ -1,5 +1,7 @@
 #pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
+using System.IO;
+
 namespace DotNetProjectFile;
 
 public static partial class Rule
@@ -821,6 +823,29 @@ public static partial class Rule
             "when it defines a different version then already defined by the CPM.",
         tags: ["Bug"],
         category: Category.CPM);
+
+    public static DiagnosticDescriptor DefineGlobalPackageReferenceInDirectoryPackagesOnly => New(
+        id: 0808,
+        title: "Define global package reference only in Directory.Packages.props",
+        message: "The <GlobalPackageReference> should be defined in the Directory.Packages.props.",
+        description:
+            "The use of <GlobalPackageReference> is only useful " +
+            "when defined in Directory.Packages.props.",
+        tags: ["Bug"],
+        category: Category.CPM);
+
+    public static DiagnosticDescriptor GlobalPackageReferencesAreMeantForPrivateAssetsOnly => New(
+        id: 0809,
+        title: "Global package references are meant for private assets only",
+        message: "The global package reference '{0}' is not supposed to be a private asset.",
+        description:
+            "When using <GlobalPackageReference>, the reference is included as " +
+            "private asset. Packages not meant as private asset should not be " +
+            "included via a global package reference.",
+        tags: ["Bug", "private", "assets"],
+        category: Category.CPM);
+
+    
 
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
