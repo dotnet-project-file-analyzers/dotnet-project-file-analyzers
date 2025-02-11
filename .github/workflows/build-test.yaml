@@ -47,22 +47,16 @@ jobs:
           dotnet-version: "9.0.x"
       - name: Download artifacts
         uses: actions/download-artifact@v4
-      # - name: Push NuGet package
-      #   shell: bash +e {0} # prevents console from exit on error
-      #   working-directory: ./artifacts
-      #   env:
-      #     NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
-      #     SOURCE: https://api.nuget.org/v3/index.json
-      #   run: |
-      #     dotnet nuget push "${{ env.PackageId }}*.nupkg" --api-key ${{ env.NUGET_API_KEY }} --source ${{ env.SOURCE }}
-      #     echo "PackagePushed=$?" >> $GITHUB_ENV
-      #     dotnet nuget push "*.nupkg" --api-key ${{ env.NUGET_API_KEY }} --source ${{ env.SOURCE }} --skip-duplicate
       - name: Push NuGet package
         shell: bash +e {0} # prevents console from exit on error
         working-directory: ./artifacts
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+          SOURCE: https://api.nuget.org/v3/index.json
         run: |
-          ls -lrt
-          echo "PackagePushed=0" >> $GITHUB_ENV
+          dotnet nuget push "${{ env.PackageId }}*.nupkg" --api-key ${{ env.NUGET_API_KEY }} --source ${{ env.SOURCE }}
+          echo "PackagePushed=$?" >> $GITHUB_ENV
+          dotnet nuget push "*.nupkg" --api-key ${{ env.NUGET_API_KEY }} --source ${{ env.SOURCE }} --skip-duplicate
       - name: Get version number # Note this requires the package filename to be of the form [PackageId].[Version].nupkg
         working-directory: ./artifacts
         run: echo "Version=$(ls -1 | (sed -En 's/${{ env.PackageId }}\.([0-9]+\.[0-9]+\.[0-9]+)\.nupkg/\1/p'))" >> $GITHUB_ENV
