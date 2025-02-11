@@ -4,16 +4,56 @@ on: [push]
 
 jobs:
   build:
- 
     runs-on: ubuntu-latest
- 
     steps:
-    - uses: actions/checkout@v1
-    - name: Setup .NET 9.0
-      uses: actions/setup-dotnet@v1
-      with:
-        dotnet-version: '9.0.x'
-    - name: Build with dotnet
-      run: dotnet build dotnet-project-file-analyzers.sln --configuration Release
-    - name: Run unit tests
-      run: dotnet test dotnet-project-file-analyzers.sln --no-build --configuration Release
+      - uses: actions/checkout@v1
+      - name: Setup .NET 9.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "9.0.x"
+      - name: Build with dotnet
+        run: dotnet build dotnet-project-file-analyzers.sln --configuration Release
+      - name: Run unit tests
+        run: dotnet test dotnet-project-file-analyzers.sln --no-build --configuration Release
+      - name: Publish artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifacts
+          path: ./src/Tools/bin/Release/*.nupkg
+          if-no-files-found: ignore
+
+  push:
+    name: Push and Tag
+    runs-on: ubuntu-latest
+    if: true || github.ref == 'refs/heads/main' # TODO: remove true
+    needs: build
+    env:
+      PackageId: DotNetProjectFile.Analyzers # The package version will be extracted from the package filename as [PackageId].[Version].nupkg
+      PackagePushed: 1 # Will only tag branch on successfull package push with exit code 0
+      Version: ""
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET 9.0
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "9.0.x"
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+      - name: Push NuGet package
+        shell: bash +e {0} # prevents console from exit on error
+        working-directory: ./artifacts
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+          SOURCE: https://api.nuget.org/v3/index.json
+        run: |
+          dotnet nuget push "*.nupkg" --api-key ${{ env.NUGET_API_KEY }} --source ${{ env.SOURCE }}
+          echo "PackagePushed=$?" >> $GITHUB_ENV
+      - name: Get version number # Note this requires the package filename to be of the form [PackageId].[Version].nupkg
+        working-directory: ./artifacts
+        run: echo "Version=$(ls -1 | (sed -En 's/${{ env.PackageId }}\.([0-9]+\.[0-9]+\.[0-9]+)\.nupkg/\1/p'))" >> $GITHUB_ENV
+      - name: Tag version
+        if: env.Version != ''
+        run: |
+          git tag v${{ env.Version }}
+          git push origin v${{ env.Version }}
+
