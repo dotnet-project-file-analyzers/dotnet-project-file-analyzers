@@ -54,7 +54,8 @@ jobs:
           NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
           SOURCE: https://api.nuget.org/v3/index.json
         run: |
-          dotnet nuget push "${{ env.PackageId }}*.nupkg" --api-key ${{ env.NUGET_API_KEY }} --source ${{ env.SOURCE }}
+          packageName=$(ls -1 | (sed -En 's/(${{ env.PackageId }}\.[0-9]+\.[0-9]+\.[0-9]+\.nupkg)/\1/p'))
+          dotnet nuget push $packageName --api-key ${{ env.NUGET_API_KEY }} --source ${{ env.SOURCE }}
           echo "PackagePushed=$?" >> $GITHUB_ENV
           dotnet nuget push "*.nupkg" --api-key ${{ env.NUGET_API_KEY }} --source ${{ env.SOURCE }} --skip-duplicate
       - name: Get version number # Note this requires the package filename to be of the form [PackageId].[Version].nupkg
