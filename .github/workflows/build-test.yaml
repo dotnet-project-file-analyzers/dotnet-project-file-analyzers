@@ -20,7 +20,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: artifacts
-          path: ./src/DotNetProjectFile.Analyzer/bin/Release/*.nupkg
+          path: ./src/DotNetProjectFile.Analyzers/bin/Release/*.nupkg
           if-no-files-found: ignore
 
   push:
