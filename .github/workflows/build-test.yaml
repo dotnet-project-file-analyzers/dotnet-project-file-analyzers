@@ -20,7 +20,9 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: artifacts
-          path: ./src/DotNetProjectFile.Analyzers/bin/Release/*.nupkg
+          path: |
+            ./src/DotNetProjectFile.Analyzers/bin/Release/*.nupkg
+            ./src/DotNetProjectFile.Analyzers.Sdk/bin/Release/*.nupkg
           if-no-files-found: ignore
 
   push:
@@ -28,6 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     if: true || github.ref == 'refs/heads/main' # TODO: remove true
     needs: build
+    permissions:
+      contents: write
     env:
       PackageId: DotNetProjectFile.Analyzers # The package version will be extracted from the package filename as [PackageId].[Version].nupkg
       PackagePushed: 1 # Will only tag branch on successfull package push with exit code 0
@@ -47,7 +51,7 @@ jobs:
       #     NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
       #     SOURCE: https://api.nuget.org/v3/index.json
       #   run: |
-      #     dotnet nuget push "${{ env.PackageId }}.nupkg" --api-key ${{ env.NUGET_API_KEY }} --source ${{ env.SOURCE }}
+      #     dotnet nuget push "${{ env.PackageId }}*.nupkg" --api-key ${{ env.NUGET_API_KEY }} --source ${{ env.SOURCE }}
       #     echo "PackagePushed=$?" >> $GITHUB_ENV
       #     dotnet nuget push "*.nupkg" --api-key ${{ env.NUGET_API_KEY }} --source ${{ env.SOURCE }} --skip-duplicate
       - name: Push NuGet package
