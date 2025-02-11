@@ -31,7 +31,7 @@ jobs:
   push:
     name: Push and Tag
     runs-on: ubuntu-latest
-    if: true || github.ref == 'refs/heads/main' # TODO: remove true
+    if: github.ref == 'refs/heads/main'
     needs: build
     permissions:
       contents: write
