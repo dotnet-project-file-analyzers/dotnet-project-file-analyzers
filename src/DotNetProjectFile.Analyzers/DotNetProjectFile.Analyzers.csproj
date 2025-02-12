@@ -59,6 +59,8 @@
     <Version>1.5.7</Version>
     <PackageReleaseNotes>
       <![CDATA[
+ToBeReleased:
+- Proj1001: Take <GlobalPackageReference>'s also into account. (FP)
 v1.5.7
 - Proj0006: Report on RESX files that are not added as additional files. (FN)
 - Proj1102: Use Coverlet Collector or MSBuild. (NEW RULE)
