@@ -14,6 +14,8 @@ public sealed record Analyzer : Package
 
     public bool IsMatch(PackageReference reference) => reference.Include.IsMatch(Name);
 
+    public bool IsMatch(GlobalPackageReference reference) => reference.Include.IsMatch(Name);
+
     public bool IsMatch(AssemblyIdentity assembly)
         => assembly.Name.StartsWith(Match, StringComparison.OrdinalIgnoreCase)
         && (assembly.Name.Length == Match.Length

@@ -8,14 +8,13 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var packageReferences = context.File
-        .Walk()
-            .OfType<PackageReference>()
-            .ToArray();
+        var packageReferences = context.File.Walk().OfType<PackageReference>();
+        var globalReferences = context.File.Walk().OfType<GlobalPackageReference>();
 
         var unusedAnalyzers = Analyzers.Where(analyzer
             => analyzer.IsApplicable(context.Compilation.Options.Language)
-            && packageReferences.None(analyzer.IsMatch));
+            && packageReferences.None(analyzer.IsMatch)
+            && globalReferences.None(analyzer.IsMatch));
 
         foreach (var analyzer in unusedAnalyzers)
         {

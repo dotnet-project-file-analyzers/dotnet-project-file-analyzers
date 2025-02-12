@@ -6,8 +6,7 @@ namespace Rules.MS_Build.Use_analyzers_for_packages;
 public class Reports
 {
     [Test]
-    public void missing_analyzers()
-        => new UseAnalyzersForPackages()
+    public void missing_analyzers() => new UseAnalyzersForPackages()
         .ForProject("PackagesWithoutAnalyzers.cs")
         .HasIssues(
             new("Proj1001", "Use Ardalis.ApiEndpoints.CodeAnalyzers to analyze Ardalis.ApiEndpoints."),
@@ -41,8 +40,28 @@ public class Guards
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     [TestCase("PackagesWithAnalyzers.cs")]
-    public void Projects_without_issues(string project)
-         => new UseAnalyzersForPackages()
+    public void Projects_without_issues(string project) => new UseAnalyzersForPackages()
         .ForProject(project)
         .HasNoIssues();
+
+    [Test]
+    public void references_defined_globally() => new UseAnalyzersForPackages()
+        .ForInlineCsproj(@"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <GlobalPackageReference Include=""NUnit.Analyzers"" Version=""*"" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include=""NUnit"" Version=""4.3.2"" />
+  </ItemGroup>
+
+</Project>")
+        .HasNoIssues();
+
 }
