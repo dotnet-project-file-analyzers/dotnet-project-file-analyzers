@@ -56,10 +56,10 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.5.7</Version>
+    <Version>1.5.8</Version>
     <PackageReleaseNotes>
       <![CDATA[
-ToBeReleased:
+v1.5.8
 - Proj1001: Take <GlobalPackageReference>'s also into account. (FP)
 v1.5.7
 - Proj0006: Report on RESX files that are not added as additional files. (FN)
