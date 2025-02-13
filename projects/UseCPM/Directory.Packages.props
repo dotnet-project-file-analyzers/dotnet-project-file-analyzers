@@ -6,7 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageVersion Include="Qowaiv" Version="7.0.0" />
+    <PackageVersion Include="Qowaiv" Version="7.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <GlobalPackageReference Include="DotNetProjectFile.Analyzers" Version="1.5.8" />
   </ItemGroup>
   
   <ItemGroup>

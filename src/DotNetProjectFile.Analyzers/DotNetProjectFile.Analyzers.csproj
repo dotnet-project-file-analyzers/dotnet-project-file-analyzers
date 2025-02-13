@@ -59,6 +59,9 @@
     <Version>1.5.8</Version>
     <PackageReleaseNotes>
       <![CDATA[
+ToBeReleased:
+- Proj0808: Define global package reference only in Directory.Packages.props. (NEW RULE)
+- Proj0809: Global package references are meant for private assets only. (NEW RULE)
 v1.5.8
 - Proj1001: Take <GlobalPackageReference>'s also into account. (FP)
 v1.5.7
