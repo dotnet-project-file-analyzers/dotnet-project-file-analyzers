@@ -130,6 +130,8 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0805** Define version for PackageReference](rules/Proj0805.md)
 * [**Proj0806** VersionOverride should change the version](rules/Proj0806.md)
 * [**Proj0807** Use Directory.Packages.props only for Central Package Management](rules/Proj0807.md)
+* [**Proj0808** Define global package reference only in Directory.Packages.props](rules/Proj0808.md)
+* [**Proj0809** Global package references are meant for private assets only](rules/Proj0809.md)
 
 ### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
