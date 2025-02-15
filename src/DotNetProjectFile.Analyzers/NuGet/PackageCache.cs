@@ -17,7 +17,13 @@ public static class PackageCache
         => path.Value;
 
     private static string GetPathInternal()
-        => Environment.ExpandEnvironmentVariables(GetRawPath());
+    {
+        var raw = GetRawPath();
+        var envExpanded = Environment.ExpandEnvironmentVariables(raw);
+        var tildeExpanded = envExpanded.Replace("~", Environment.GetFolderPath(Environment.SpecialFolder.UserProfile).TrimEnd('/'));
+        var full = Path.GetFullPath(tildeExpanded);
+        return full;
+    }
 
     private static string GetRawPath()
     {
