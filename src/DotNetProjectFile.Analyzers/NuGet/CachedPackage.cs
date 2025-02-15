@@ -9,4 +9,6 @@ public sealed record CachedPackage
     public required bool HasAnalyzerDll { get; init; }
 
     public required bool HasRuntimeDll { get; init; }
+
+    public required LicenseExpression License { get; init; }
 }
