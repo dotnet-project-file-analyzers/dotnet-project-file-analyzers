@@ -1,3 +1,5 @@
+using DotNetProjectFile.NuGet;
+
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
@@ -17,6 +19,22 @@ public sealed class ExcludePrivateAssetDependencies() : MsBuildProjectFileAnalyz
     }
 
     private static bool ShoudBePrivateAssets(PackageReference reference)
-        => !reference.PrivateAssets.IsMatch("all")
-        && NuGet.Packages.All.TryGet(reference.Include) is { IsPrivateAsset: true };
+    {
+        if (reference.PrivateAssets.IsMatch("all"))
+        {
+            return false;
+        }
+
+        if (NuGet.Packages.All.TryGet(reference.Include) is { } pkg)
+        {
+            return pkg.IsPrivateAsset;
+        }
+
+        if (PackageCache.GetPackage(reference.IncludeOrUpdate, reference.ResolveVersion()) is { } cpkg)
+        {
+            return !cpkg.HasRuntimeDll;
+        }
+
+        return false;
+    }
 }
