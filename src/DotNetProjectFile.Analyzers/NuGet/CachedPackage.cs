@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.NuGet;
+namespace DotNetProjectFile.NuGet;
 
 public sealed record CachedPackage
 {
