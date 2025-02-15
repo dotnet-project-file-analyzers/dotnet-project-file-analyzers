@@ -1,4 +1,5 @@
 using DotNetProjectFile.MsBuild;
+using DotNetProjectFile.NuGet.Packaging;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -97,13 +98,16 @@ public static class PackageCache
             return null;
         }
 
+        var nuspec = GetNuSpec(dir, name);
+
         return new()
         {
             Name = name,
             Version = foundVersion,
             HasAnalyzerDll = HasDllFiles("analyzers"),
             HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes"),
-            License = GetLicense(dir, name),
+            NuSpecFile = nuspec,
+            License = Licenses.Parse(nuspec?.Metadata?.License),
         };
 
         bool HasDllFiles(string subDir)
@@ -118,30 +122,24 @@ public static class PackageCache
         }
     }
 
-    private static LicenseExpression GetLicense(string path, string packageName)
+    private static NuSpecFile? GetNuSpec(string path, string packageName)
     {
         var nuspecFile = Path.Combine(path, $"{packageName}.nuspec");
 
         if (!File.Exists(nuspecFile))
         {
-            return Licenses.Unknown;
+            return null;
         }
 
         try
         {
-            var doc = XDocument.Load(nuspecFile);
-
-            var metadata = doc.Root.Elements().FirstOrDefault(n => n.Name?.LocalName == "metadata");
-            var z = doc.Root.Element("metadata");
-            var licenseExpressionNode = metadata?.Element("license");
-            var licenseExpressionNode2 = metadata?.Elements("license").ToArray();
-            var licenseExpressionNode3 = metadata?.Elements().FirstOrDefault(n => n.Name?.LocalName == "license");
-
-            throw new Exception();
+            using var file = File.OpenRead(nuspecFile);
+            var nuspec = NuSpecFile.Load(file);
+            return nuspec;
         }
         catch
         {
-            return Licenses.Unknown;
+            return null;
         }
     }
 
