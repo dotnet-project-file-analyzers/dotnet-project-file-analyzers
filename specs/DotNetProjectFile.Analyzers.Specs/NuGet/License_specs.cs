@@ -43,6 +43,12 @@ public class Is
                 copyLeft.CompatibleWith(other).Should().BeFalse();
             }
         }
+
+        [TestCaseSource(typeof(Is), nameof(CopyLeft))]
+        public void Copy_left_with_unknown(LicenseExpression copyLeft)
+        {
+            copyLeft.CompatibleWith(Licenses.Unknown).Should().BeFalse();
+        }
     }
 
     [TestCase("GPL-3.0", "GPL-3.0-only", true)]

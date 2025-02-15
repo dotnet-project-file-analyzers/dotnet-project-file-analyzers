@@ -126,7 +126,6 @@ public sealed record CopyLeftLicense(string Identifier, ImmutableArray<string> C
             // NB: the inversion of the `and` and `or` are intentional.
             AndLicenseExpression e => CompatibleWith(e.Left) || CompatibleWith(e.Right),
             OrLicenseExpression e => CompatibleWith(e.Left) && CompatibleWith(e.Right),
-            UnknownLicense => true, // Assume true if information is missing.
             _ => false, // All other cases.
         };
     }
