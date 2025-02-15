@@ -723,6 +723,14 @@ public static partial class Rule
         tags: ["Unit Testing"],
         category: Category.Bug);
 
+    public static DiagnosticDescriptor RelyOnCompliantLicensesOnly => New(
+        id: 0500,
+        title: "Rely on compliant licenses only",
+        message: @"{0} has {1} license.",
+        description: "Including the Microsoft.NET.Test.Sdk is only useful for test projects.",
+        tags: ["License"],
+        category: Category.Legal);
+
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
         id: 0600,
         title: "Avoid generating packages on build if not packable",

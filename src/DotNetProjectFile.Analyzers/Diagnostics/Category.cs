@@ -9,6 +9,7 @@ public enum Category
     Configuration,
     CPM,
     Formatting,
+    Legal,
     Noise,
     Reliability,
     Obsolete,
