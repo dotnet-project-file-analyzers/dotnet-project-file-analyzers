@@ -80,6 +80,12 @@ public abstract record LicenseExpression(bool Deprecated)
     public abstract bool CompatibleWith(LicenseExpression other);
 }
 
+public static class LicenseExpressionExtensions
+{
+    public static bool CompatibleWith(this LicenseExpression license, string other)
+        => license.CompatibleWith(Licenses.Parse(other));
+}
+
 public sealed record UnknownLicense : LicenseExpression
 {
     public static readonly UnknownLicense Instance = new();
