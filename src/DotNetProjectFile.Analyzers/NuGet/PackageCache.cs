@@ -39,8 +39,13 @@ public static class PackageCache
         }
     }
 
-    public static CachedPackage? GetPackage(string name, string? version)
+    public static CachedPackage? GetPackage(string? name, string? version)
     {
+        if (name is not { Length: > 0 })
+        {
+            return null;
+        }
+
         // Directories have lower case names.
         name = name.ToLowerInvariant();
         version = version?.ToLowerInvariant();

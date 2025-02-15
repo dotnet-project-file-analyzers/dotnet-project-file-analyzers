@@ -35,6 +35,7 @@ public sealed class ExcludePrivateAssetDependencies() : MsBuildProjectFileAnalyz
             return !cpkg.HasRuntimeDll;
         }
 
+        // No info.
         return false;
     }
 }

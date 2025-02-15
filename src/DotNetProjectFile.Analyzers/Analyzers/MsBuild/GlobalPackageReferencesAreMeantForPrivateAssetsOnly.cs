@@ -19,6 +19,18 @@ public sealed class GlobalPackageReferencesAreMeantForPrivateAssetsOnly()
     }
 
     private bool NoPrivateAsset(GlobalPackageReference reference)
-        => Packages.All.TryGet(reference.Include) is { } package
-        && !package.IsPrivateAsset;
+    {
+        if (Packages.All.TryGet(reference.Include) is { } pkg)
+        {
+            return !pkg.IsPrivateAsset;
+        }
+
+        if (PackageCache.GetPackage(reference.Include, reference.Version) is { } cpkg)
+        {
+            return cpkg.HasRuntimeDll;
+        }
+
+        // No info.
+        return false;
+    }
 }
