@@ -44,4 +44,20 @@ public class Is
             }
         }
     }
+
+    [TestCase("GPL-3.0", "GPL-3.0-only", true)]
+    [TestCase("GPL-3.0+", "GPL-3.0-only", true)]
+    [TestCase("GPL-3.0-only", "GPL-3.0", true)]
+    [TestCase("GPL-3.0-only", "GPL-3.0+", false)]
+    [TestCase("GPL-1.0+", "GPL-3.0+", true)]
+    [TestCase("GPL-2.0+", "GPL-3.0+", true)]
+    [TestCase("GPL-3.0+", "GPL-3.0+", true)]
+    [TestCase("GPL-3.0+", "GPL-1.0+", false)]
+    public void Compatiblity(string dependency, string target, bool expectedCompatibility)
+    {
+        var dep = Licenses.Parse(dependency);
+        var tar = Licenses.Parse(target);
+
+        dep.CompatibleWith(tar).Should().Be(expectedCompatibility);
+    }
 }
