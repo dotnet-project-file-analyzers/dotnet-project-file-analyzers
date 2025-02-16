@@ -1,4 +1,5 @@
 using DotNetProjectFile.MsBuild;
+using DotNetProjectFile.NuGet.Packaging;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -101,6 +102,7 @@ public static class PackageCache
             Version = versionDir.Name,
             HasAnalyzerDll = HasDllFiles("analyzers"),
             HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes"),
+            NuSpecFile = TryLoadNuSpecFile(versionDir),
         };
 
         bool HasDllFiles(string subDir)
@@ -173,5 +175,19 @@ public static class PackageCache
         {
             return null;
         }
+    }
+
+    private static NuSpecFile? TryLoadNuSpecFile(IODirectory directory)
+    {
+        if(directory.Files("*.nuspec")?.FirstOrDefault() is { HasValue: true} nuspec)
+        {
+            try
+            {
+                using var stream = nuspec.OpenRead();
+                return NuSpecFile.Load(stream);
+            }
+            catch { }
+        }
+        return null;
     }
 }

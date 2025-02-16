@@ -3,7 +3,7 @@ using System.Xml.Serialization;
 
 namespace DotNetProjectFile.NuGet.Packaging;
 
-[XmlRoot(ElementName = "package", Namespace = "http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd")]
+[XmlRoot(ElementName = "package")]
 public sealed record NuSpecFile
 {
     [XmlElement("metadata")]
@@ -11,7 +11,14 @@ public sealed record NuSpecFile
 
     [Pure]
     public static NuSpecFile Load(Stream stream)
-        => (NuSpecFile)Serializer.Deserialize(stream);
+        => (NuSpecFile)Serializer.Deserialize(new NamespaceIgnorantReader(stream));
 
     private static readonly XmlSerializer Serializer = new(typeof(NuSpecFile));
+
+    private sealed class NamespaceIgnorantReader : System.Xml.XmlTextReader
+    {
+        public NamespaceIgnorantReader(Stream stream) : base(stream) { }
+
+        public override string NamespaceURI => string.Empty;
+    }
 }
