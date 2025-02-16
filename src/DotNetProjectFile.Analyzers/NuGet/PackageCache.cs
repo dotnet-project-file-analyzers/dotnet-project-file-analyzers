@@ -11,10 +11,10 @@ namespace DotNetProjectFile.NuGet;
 public static class PackageCache
 {
     private static readonly ConcurrentDictionary<(string Name, string? Version), CachedPackage?> cache = new();
-    private static readonly Lazy<string> path = new(GetPathInternal);
+    private static readonly Lazy<IODirectory> cacheDir = new(() => IODirectory.Parse(GetPathInternal()));
 
-    public static string GetPath()
-        => path.Value;
+    public static IODirectory GetDirectory()
+        => cacheDir.Value;
 
     private static string GetPathInternal()
     {
@@ -82,17 +82,15 @@ public static class PackageCache
 
     private static CachedPackage? GetPackageInternal(string name, string? version)
     {
-        var cacheDir = GetPath();
-        var packageDir = Path.Combine(cacheDir, name);
+        var cacheDir = GetDirectory();
+        var packageDir = cacheDir.SubDirectory(name);
 
-        if (!Directory.Exists(packageDir))
+        if (!packageDir.Exists)
         {
             return null;
         }
 
-        var (dir, foundVersion) = GetVersionDirectory(packageDir, version);
-
-        if (dir is null || foundVersion is null)
+        if (GetVersionDirectory(packageDir, version) is not { } versionDir)
         {
             return null;
         }
@@ -100,55 +98,57 @@ public static class PackageCache
         return new()
         {
             Name = name,
-            Version = foundVersion,
+            Version = versionDir.Name,
             HasAnalyzerDll = HasDllFiles("analyzers"),
             HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes"),
         };
 
         bool HasDllFiles(string subDir)
         {
-            var path = Path.Combine(dir, subDir);
-            if (!Directory.Exists(path))
+            var dir = versionDir.SubDirectory(subDir);
+            if (!dir.Exists)
             {
                 return false;
             }
 
-            return Directory.GetFiles(Path.Combine(dir, subDir), "*.dll", SearchOption.AllDirectories).Length > 0;
+            return dir.Files("./**/*.dll").Any();
         }
     }
 
-    private static (string? Directory, string? Version) GetVersionDirectory(string packageDir, string? versionLabel)
+    private static IODirectory? GetVersionDirectory(IODirectory packageDir, string? versionLabel)
     {
         // TODO: resolve version to a suitable fixed version when floating version is provided. Issue #320
 
         if (versionLabel is { })
         {
-            var exactVersionDir = Path.Combine(packageDir, versionLabel);
-            if (Directory.Exists(exactVersionDir))
+            var exactVersionDir = packageDir.SubDirectory(versionLabel);
+            if (exactVersionDir.Exists)
             {
-                return (exactVersionDir, versionLabel);
+                return exactVersionDir;
             }
         }
 
         var version = versionLabel is null ? null : TryParseVersion(versionLabel);
 
-        string? foundVersion;
+        IODirectory? foundVersion;
         if (version is null)
         {
             // Default to highest found package version if the input version was gibberish.
-            foundVersion = Directory.GetFiles(packageDir).OrderBy(TryParseVersion).LastOrDefault();
+            foundVersion = packageDir.SubDirectories()
+                .OrderBy(d => TryParseVersion(d.Name))
+                .LastOrDefault();
         }
         else
         {
-            var pairs = Directory.GetFiles(packageDir)
-                .Select(str => (str, TryParseVersion(str)))
+            var pairs = packageDir.SubDirectories()
+                .Select(d => (d, TryParseVersion(d.Name)))
                 .ToArray();
 
             // Pick nearest version that is higher than the current version if available.
             foundVersion = pairs
                 .Where(pair => pair.Item2 > version)
                 .OrderBy(pair => pair.Item2)
-                .FirstOrDefault().str;
+                .FirstOrDefault().d;
 
             if (foundVersion is null)
             {
@@ -156,18 +156,11 @@ public static class PackageCache
                 foundVersion = pairs
                     .Where(pair => pair.Item2 < version)
                     .OrderBy(pair => pair.Item2)
-                    .LastOrDefault().str;
+                    .LastOrDefault().d;
             }
         }
 
-        if (foundVersion is null)
-        {
-            return (null, null);
-        }
-        else
-        {
-            return (Path.Combine(packageDir, foundVersion), foundVersion);
-        }
+        return foundVersion;
     }
 
     private static System.Version? TryParseVersion(string version)
