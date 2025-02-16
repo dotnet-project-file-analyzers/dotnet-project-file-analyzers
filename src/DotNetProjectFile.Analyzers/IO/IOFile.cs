@@ -32,7 +32,7 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
 #pragma warning restore S2365 // Properties should not make collection or array copies
 
     /// <summary>Creates a <see cref="FileInfo"/> based on the path.</summary>
-    private FileInfo File() => new(ToString());
+    public FileInfo Info => new(ToString());
 
     /// <summary>Creates a new path.</summary>
     public IOFile Combine(params string[] paths)
@@ -59,16 +59,25 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
         : Path.GetFileNameWithoutExtension(Parts[^1]);
 
     /// <inheritdoc cref="FileInfo.Exists" />
-    public bool Exists => File().Exists;
+    public bool Exists => Info.Exists;
+
+    /// <inheritdoc cref="FileSystemInfo.LastWriteTime" />
+    public DateTime LastWriteTime => Info.LastWriteTime;
 
     /// <inheritdoc cref="FileSystemInfo.LastWriteTimeUtc" />
-    public DateTime LastWriteTimeUtc => File().LastWriteTimeUtc;
+    public DateTime LastWriteTimeUtc => Info.LastWriteTimeUtc;
+
+    /// <inheritdoc cref="FileSystemInfo.LastAccessTime" />
+    public DateTime LastAccessTime => Info.LastAccessTime;
+
+    /// <inheritdoc cref="FileSystemInfo.LastAccessTimeUtc" />
+    public DateTime LastAccessTimeUtc => Info.LastAccessTimeUtc;
 
     /// <inheritdoc cref="FileInfo.OpenText()" />
-    public TextReader OpenText() => File().OpenText();
+    public TextReader OpenText() => Info.OpenText();
 
     /// <inheritdoc cref="FileInfo.OpenRead()" />
-    public FileStream OpenRead() => File().OpenRead();
+    public FileStream OpenRead() => Info.OpenRead();
 
     /// <summary>Tries <see cref="OpenRead()"/>.</summary>
     /// <remarks>

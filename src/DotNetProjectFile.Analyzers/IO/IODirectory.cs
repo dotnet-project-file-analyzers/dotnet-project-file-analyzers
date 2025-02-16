@@ -23,6 +23,24 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
 
     public bool HasValue => Parts.Length != 0;
 
+    /// <summary>Creates a <see cref="DirectoryInfo"/> based on the path.</summary>
+    public DirectoryInfo Info => new(ToString());
+
+    /// <inheritdoc cref="DirectoryInfo.Exists" />
+    public bool Exists => Info.Exists;
+
+    /// <inheritdoc cref="FileSystemInfo.LastWriteTime" />
+    public DateTime LastWriteTime => Info.LastWriteTime;
+
+    /// <inheritdoc cref="FileSystemInfo.LastWriteTimeUtc" />
+    public DateTime LastWriteTimeUtc => Info.LastWriteTimeUtc;
+
+    /// <inheritdoc cref="FileSystemInfo.LastAccessTime" />
+    public DateTime LastAccessTime => Info.LastAccessTime;
+
+    /// <inheritdoc cref="FileSystemInfo.LastAccessTimeUtc" />
+    public DateTime LastAccessTimeUtc => Info.LastAccessTimeUtc;
+
     public IODirectory Parent
 #pragma warning disable S2365 // Properties should not make collection or array copies
         => HasValue
@@ -36,17 +54,29 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
             ? new(IOPath.Split(paths))
             : new(IOPath.Split(_parts.Concat(paths)));
 
+    public IEnumerable<IODirectory>? SubDirectories(string path = ".")
+    {
+        try
+        {
+            return IterateDirectories(path)?.Select(f => IODirectory.Parse(f.FullName));
+        }
+        catch
+        {
+            return null;
+        }
+    }
+
     /// <summary>Creates a new file.</summary>
     public IOFile File(params string[] paths)
         => Parts.Length == 0
             ? new(IOPath.Split(paths))
             : new(IOPath.Split(_parts.Concat(paths)));
 
-    public IEnumerable<IOFile>? Files(string path)
+    public IEnumerable<IOFile>? Files(string path = ".")
     {
         try
         {
-            return Iterate(new(ToString()), path)?.Select(f => IOFile.Parse(f.FullName));
+            return IterateFiles(path)?.Select(f => IOFile.Parse(f.FullName));
         }
         catch
         {
@@ -101,12 +131,21 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
         : Empty;
 
     [Pure]
-    private static IEnumerable<FileInfo>? Iterate(DirectoryInfo directory, string path)
+    private IEnumerable<FileInfo>? IterateFiles(string path)
+        => Iterate(path, static (d, l) => d.EnumerateFiles(l));
+
+
+    [Pure]
+    private IEnumerable<DirectoryInfo>? IterateDirectories(string path)
+        => Iterate(path, static (d, l) => d.EnumerateDirectories(l));
+
+    [Pure]
+    private IEnumerable<T>? Iterate<T>(string path, Func<DirectoryInfo, string, IEnumerable<T>> enumerate)
     {
         // We do not support variables yet.
         if (path.Contains("$(")) return null;
 
-        IEnumerable<DirectoryInfo> enumerator = new RootDirectory(directory);
+        IEnumerable<DirectoryInfo> enumerator = new RootDirectory(Info);
         var parts = path.Split('/', '\\');
 
         foreach (var part in parts.Take(parts.Length - 1))
@@ -135,8 +174,11 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
                 enumerator = enumerator.Concat(enumerator.SelectMany(d => d.EnumerateDirectories(part, SearchOption.TopDirectoryOnly)));
             }
         }
+
+        var last = parts[^1];
+
         return enumerator
-            .SelectMany(d => d.EnumerateFiles(parts[^1]));
+            .SelectMany(d => enumerate(d, last));
     }
 
     private sealed class RootDirectory(DirectoryInfo root) : IEnumerable<DirectoryInfo>

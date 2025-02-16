@@ -14,6 +14,10 @@ public static class IOPath
     /// <summary>Returns true if the file system is case sensitive.</summary>
     public static readonly bool IsCaseSensitive = InitCaseSensitivity();
 
+    private static readonly char[] Separators = ['/', '\\'];
+    private static readonly char[] StartTrimCharacters = [' ', '\t', '\n', '\r'];
+    private static readonly char[] EndTrimCharacters = [..StartTrimCharacters, ..Separators];
+
     internal static bool Equals(string[] self, string[] other, bool caseSensitive)
     {
         if (self.Length != other.Length) { return false; }
@@ -51,7 +55,12 @@ public static class IOPath
     {
         var splitted = new List<string>();
 
-        var many = parts.SelectMany(p => p.Split(Separators)).ToArray();
+        var many = parts
+            .SelectMany(p => p
+                .TrimStart(StartTrimCharacters)
+                .TrimEnd(EndTrimCharacters)
+                .Split(Separators))
+            .ToArray();
 
         var current = many.FirstOrDefault() == ".";
 
@@ -77,8 +86,6 @@ public static class IOPath
         }
         return [.. splitted];
     }
-
-    private static readonly char[] Separators = ['/', '\\'];
 
     private static bool InitCaseSensitivity()
     {
