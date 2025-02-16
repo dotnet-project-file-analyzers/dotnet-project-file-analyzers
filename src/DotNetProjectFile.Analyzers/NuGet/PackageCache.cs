@@ -117,23 +117,23 @@ public static class PackageCache
         }
     }
 
-    private static (string? Directory, string? Version) GetVersionDirectory(string packageDir, string? version)
+    private static (string? Directory, string? Version) GetVersionDirectory(string packageDir, string? versionLabel)
     {
         // TODO: resolve version to a suitable fixed version when floating version is provided. Issue #320
 
-        if (version is { })
+        if (versionLabel is { })
         {
-            var exactVersionDir = Path.Combine(packageDir, version);
+            var exactVersionDir = Path.Combine(packageDir, versionLabel);
             if (Directory.Exists(exactVersionDir))
             {
-                return (exactVersionDir, version);
+                return (exactVersionDir, versionLabel);
             }
         }
 
-        var vVersion = version is null ? null : TryParseVersion(version);
+        var version = versionLabel is null ? null : TryParseVersion(versionLabel);
 
         string? foundVersion;
-        if (vVersion is null)
+        if (version is null)
         {
             // Default to highest found package version if the input version was gibberish.
             foundVersion = Directory.GetFiles(packageDir).OrderBy(TryParseVersion).LastOrDefault();
@@ -146,7 +146,7 @@ public static class PackageCache
 
             // Pick nearest version that is higher than the current version if available.
             foundVersion = pairs
-                .Where(pair => pair.Item2 > vVersion)
+                .Where(pair => pair.Item2 > version)
                 .OrderBy(pair => pair.Item2)
                 .FirstOrDefault().str;
 
@@ -154,7 +154,7 @@ public static class PackageCache
             {
                 // Pick nearest version that is lower than the current version if available.
                 foundVersion = pairs
-                    .Where(pair => pair.Item2 < vVersion)
+                    .Where(pair => pair.Item2 < version)
                     .OrderBy(pair => pair.Item2)
                     .LastOrDefault().str;
             }
