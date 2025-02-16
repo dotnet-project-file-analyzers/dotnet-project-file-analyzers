@@ -32,8 +32,8 @@ public static class PackageCache
             return fromEnv;
         }
 
-        // TODO: handle `globalPackagesFolder` given by `nuget.config`
-        // TODO: handle `repositoryPath` given by `packages.config`
+        // TODO: handle `globalPackagesFolder` given by `nuget.config`. Issue #319
+        // TODO: handle `repositoryPath` given by `packages.config`. Issue #318
 
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
@@ -119,7 +119,7 @@ public static class PackageCache
 
     private static (string? Directory, string? Version) GetVersionDirectory(string packageDir, string? version)
     {
-        // TODO: resolve version to a suitable fixed version when floating version is provided.
+        // TODO: resolve version to a suitable fixed version when floating version is provided. Issue #320
 
         if (version is { })
         {
