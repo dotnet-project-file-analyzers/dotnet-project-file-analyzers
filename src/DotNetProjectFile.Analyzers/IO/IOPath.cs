@@ -15,7 +15,8 @@ public static class IOPath
     public static readonly bool IsCaseSensitive = InitCaseSensitivity();
 
     private static readonly char[] Separators = ['/', '\\'];
-    private static readonly char[] TrimCharacters = [' ', '\t', '\n', '\r', ..Separators];
+    private static readonly char[] StartTrimCharacters = [' ', '\t', '\n', '\r'];
+    private static readonly char[] EndTrimCharacters = [..StartTrimCharacters, ..Separators];
 
     internal static bool Equals(string[] self, string[] other, bool caseSensitive)
     {
@@ -54,7 +55,12 @@ public static class IOPath
     {
         var splitted = new List<string>();
 
-        var many = parts.SelectMany(p => p.Trim(TrimCharacters).Split(Separators)).ToArray();
+        var many = parts
+            .SelectMany(p => p
+                .TrimStart(StartTrimCharacters)
+                .TrimEnd(EndTrimCharacters)
+                .Split(Separators))
+            .ToArray();
 
         var current = many.FirstOrDefault() == ".";
 
