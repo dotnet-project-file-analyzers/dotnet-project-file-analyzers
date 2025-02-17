@@ -92,6 +92,11 @@ public static class PackageCache
             return null;
         }
 
+        var nuspec = TryLoadNuSpecFile(versionDir, new(name, versionDir.Name));
+        var license = nuspec?.Metadata?.License is { Type: "expression" } licenseNode
+            ? Licenses.Parse(licenseNode.Value)
+            : Licenses.Unknown;
+
         return new()
         {
             Name = name,
@@ -99,6 +104,7 @@ public static class PackageCache
             HasAnalyzerDll = HasDllFiles("analyzers"),
             HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes"),
             NuSpecFile = TryLoadNuSpecFile(versionDir, new(name, versionDir.Name)),
+            License = license,
         };
 
         bool HasDllFiles(string subDir)
@@ -198,3 +204,4 @@ public static class PackageCache
         }
     }
 }
+
