@@ -3,6 +3,10 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseForwardSlashesInPaths() : MsBuildProjectFileAnalyzer(Rule.UseForwardSlashesInPaths)
 {
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var prop in context.File

@@ -42,6 +42,9 @@ public sealed partial class Project : Node, ProjectFile
 
     public bool IsLegacy => Element.Name.NamespaceName is { Length: > 0 };
 
+    /// <summary>Returns true if any import is failing.</summary>
+    public bool HasFailingImport => Imports.Any(i => i.Value is not { HasFailingImport: false });
+
     public string? Sdk => Attribute();
 
     public IOFile Path { get; }

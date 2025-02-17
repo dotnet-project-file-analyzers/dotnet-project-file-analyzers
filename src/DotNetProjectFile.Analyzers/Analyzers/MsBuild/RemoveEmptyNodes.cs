@@ -3,6 +3,10 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class RemoveEmptyNodes() : MsBuildProjectFileAnalyzer(Rule.RemoveEmptyNodes)
 {
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var node in context.File.Children)

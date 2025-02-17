@@ -3,6 +3,10 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class DefineUsingsExplicit() : MsBuildProjectFileAnalyzer(Rule.DefineUsingsExplicit)
 {
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var @implicit in context.File.PropertyGroups
