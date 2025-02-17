@@ -3,6 +3,9 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class AvoidUsingMoq() : MsBuildProjectFileAnalyzer(Rule.AvoidUsingMoq)
 {
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var reported = false;

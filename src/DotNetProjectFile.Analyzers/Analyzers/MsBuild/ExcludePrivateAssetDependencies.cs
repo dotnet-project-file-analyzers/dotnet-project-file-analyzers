@@ -8,6 +8,10 @@ public sealed class ExcludePrivateAssetDependencies() : MsBuildProjectFileAnalyz
     /// <inheritdoc />
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var reference in context.File.ItemGroups

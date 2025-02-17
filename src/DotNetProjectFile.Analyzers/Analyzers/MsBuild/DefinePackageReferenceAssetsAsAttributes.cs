@@ -3,6 +3,10 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class DefinePackageReferenceAssetsAsAttributes() : MsBuildProjectFileAnalyzer(Rule.DefinePackageReferenceAssetsAsAttributes)
 {
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var reference in context.File.ItemGroups

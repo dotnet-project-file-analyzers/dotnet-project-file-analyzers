@@ -5,6 +5,10 @@ public sealed class GuardUnsupported() : MsBuildProjectFileAnalyzer(
     Rule.ProjectFileCouldNotBeLocated,
     Rule.UpdateLegacyProjects)
 {
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
+    /// <inheritdoc />
     protected override void Register(AnalysisContext context)
         => context.RegisterCompilationAction(Locate);
 

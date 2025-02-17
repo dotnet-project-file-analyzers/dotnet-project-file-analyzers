@@ -7,6 +7,9 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class GlobalPackageReferencesAreMeantForPrivateAssetsOnly()
     : MsBuildProjectFileAnalyzer(Rule.GlobalPackageReferencesAreMeantForPrivateAssetsOnly)
 {
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
     /// <inheritdoc/>
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {

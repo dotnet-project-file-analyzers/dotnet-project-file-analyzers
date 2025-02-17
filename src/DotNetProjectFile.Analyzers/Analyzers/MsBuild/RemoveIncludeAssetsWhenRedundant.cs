@@ -4,6 +4,10 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class RemoveIncludeAssetsWhenRedundant()
     : MsBuildProjectFileAnalyzer(Rule.RemoveIncludeAssetsWhenRedundant)
 {
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var reference in context.File.ItemGroups

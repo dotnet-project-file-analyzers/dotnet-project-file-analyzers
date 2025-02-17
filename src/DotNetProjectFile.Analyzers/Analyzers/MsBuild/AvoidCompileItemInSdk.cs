@@ -6,6 +6,10 @@ public sealed class AvoidCompileItemInSdk() : MsBuildProjectFileAnalyzer(Rule.Av
     /// <inheritdoc />
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.SDK;
 
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {
         foreach (var compile in context.File.ItemGroups
