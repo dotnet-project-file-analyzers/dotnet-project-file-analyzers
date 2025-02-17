@@ -308,7 +308,7 @@ public static partial class Rule
     public static DiagnosticDescriptor UnresolvableImport => New(
         id: 0034,
         title: "Import statement could not be resolved",
-        message: "The <Import> '{0}' could not be resolved.",
+        message: "The <Import> '{0}' could not be resolved by the analyzer.",
         description: "The .NET project file analyzer can (unfortunatly) not resolve all import statements.",
         tags: ["limitation"],
         category: Category.Bug);

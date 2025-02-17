@@ -7,7 +7,7 @@ public class Reports
     [Test]
     public void empty_includes() => new UnresolvableImport()
     .ForProject("UnresolvableImport.cs")
-        .HasIssue(Issue.WRN("Proj0034", "The <Import> '$(MSBuildThisFileDirectory)common.props' could not be resolved.").WithSpan(02, 02, 02, 62));
+        .HasIssue(Issue.WRN("Proj0034", "The <Import> '$(MSBuildThisFileDirectory)common.props' could not be resolved by the analyzer.").WithSpan(02, 02, 02, 62));
 }
 
 public class Guards
