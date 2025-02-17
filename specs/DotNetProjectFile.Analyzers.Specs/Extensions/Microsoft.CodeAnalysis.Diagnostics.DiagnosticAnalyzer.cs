@@ -75,6 +75,12 @@ internal static class DiagnosticAnalyzerExtensions
     private static ProjectAnalyzerVerifyContext ForTestProject(this DiagnosticAnalyzer analyzer, FileInfo file)
     {
         var project = CachedProjectLoader.Load(file);
+
+        if (project.MetadataReferences.Count == 0)
+        {
+            throw new InvalidOperationException("Project could not be compiled.");
+        }
+
         var context = new ProjectAnalyzerVerifyContext(project).Add(analyzer);
 
         return context with

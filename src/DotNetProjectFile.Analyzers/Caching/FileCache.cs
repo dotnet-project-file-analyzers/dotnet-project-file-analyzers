@@ -36,5 +36,5 @@ public sealed class FileCache<T>() where T : class
         }
     }
 
-    private readonly record struct Entry(DateTime Version, T Value);
+    private readonly record struct Entry(DateTime? Version, T Value);
 }

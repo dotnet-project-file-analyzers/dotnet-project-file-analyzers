@@ -109,7 +109,7 @@ public sealed partial class Project : Node, ProjectFile
 
     public static Project Load(IOFile file, ProjectFiles projects)
     {
-        using var reader = file.OpenText();
+        using var reader = file.TryOpenText();
         return new(
             path: file,
             text: SourceText.From(reader.ReadToEnd()),

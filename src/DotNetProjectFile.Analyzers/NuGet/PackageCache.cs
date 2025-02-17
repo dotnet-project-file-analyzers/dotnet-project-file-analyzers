@@ -1,21 +1,17 @@
-using DotNetProjectFile.MsBuild;
 using DotNetProjectFile.NuGet.Packaging;
-using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace DotNetProjectFile.NuGet;
 
 public static class PackageCache
 {
-    private static readonly ConcurrentDictionary<(string Name, string? Version), CachedPackage?> cache = new();
-    private static readonly Lazy<string> path = new(GetPathInternal);
+    private static readonly ConcurrentDictionary<PackageInfo, CachedPackage?> cache = new();
+    private static readonly Lazy<IODirectory> cacheDir = new(() => IODirectory.Parse(GetPathInternal()));
 
-    public static string GetPath()
-        => path.Value;
+    public static IODirectory GetDirectory()
+        => cacheDir.Value;
 
     private static string GetPathInternal()
     {
@@ -33,8 +29,8 @@ public static class PackageCache
             return fromEnv;
         }
 
-        // TODO: handle `globalPackagesFolder` given by `nuget.config`
-        // TODO: handle `repositoryPath` given by `packages.config`
+        // TODO: handle `globalPackagesFolder` given by `nuget.config`. Issue #319
+        // TODO: handle `repositoryPath` given by `packages.config`. Issue #318
 
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
@@ -57,7 +53,7 @@ public static class PackageCache
         name = name.ToLowerInvariant();
         version = version?.ToLowerInvariant();
 
-        var key = (name, version);
+        var key = new PackageInfo(name, version);
         if (cache.TryGetValue(key, out var result))
         {
             return result;
@@ -70,10 +66,10 @@ public static class PackageCache
                 result = GetPackageInternal(name, version);
 
                 cache[key] = result;
-                
+
                 if (result is { } && version != result.Version)
                 {
-                    cache[(name, result.Version)] = result;
+                    cache[new(name, result.Version)] = result;
                 }
             }
         }
@@ -83,117 +79,86 @@ public static class PackageCache
 
     private static CachedPackage? GetPackageInternal(string name, string? version)
     {
-        var cacheDir = GetPath();
-        var packageDir = Path.Combine(cacheDir, name);
+        var cacheDir = GetDirectory();
+        var packageDir = cacheDir.SubDirectory(name);
 
-        if (!Directory.Exists(packageDir))
+        if (!packageDir.Exists)
         {
             return null;
         }
 
-        var (dir, foundVersion) = GetVersionDirectory(packageDir, version);
-
-        if (dir is null || foundVersion is null)
+        if (GetVersionDirectory(packageDir, version) is not { } versionDir)
         {
             return null;
         }
-
-        var nuspec = GetNuSpec(dir, name);
 
         return new()
         {
             Name = name,
-            Version = foundVersion,
+            Version = versionDir.Name,
             HasAnalyzerDll = HasDllFiles("analyzers"),
             HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes"),
-            NuSpecFile = nuspec,
-            License = Licenses.Parse(nuspec?.Metadata?.License),
+            NuSpecFile = TryLoadNuSpecFile(versionDir, new(name, versionDir.Name)),
         };
 
         bool HasDllFiles(string subDir)
         {
-            var path = Path.Combine(dir, subDir);
-            if (!Directory.Exists(path))
+            var dir = versionDir.SubDirectory(subDir);
+            if (!dir.Exists)
             {
                 return false;
             }
 
-            return Directory.GetFiles(Path.Combine(dir, subDir), "*.dll", SearchOption.AllDirectories).Length > 0;
+            return dir.Files("./**/*.dll").Any();
         }
     }
 
-    private static NuSpecFile? GetNuSpec(string path, string packageName)
+    private static IODirectory? GetVersionDirectory(IODirectory packageDir, string? versionLabel)
     {
-        var nuspecFile = Path.Combine(path, $"{packageName}.nuspec");
+        // TODO: resolve version to a suitable fixed version when floating version is provided. Issue #320
 
-        if (!File.Exists(nuspecFile))
+        if (versionLabel is { })
         {
-            return null;
-        }
-
-        try
-        {
-            using var file = File.OpenRead(nuspecFile);
-            var nuspec = NuSpecFile.Load(file);
-            return nuspec;
-        }
-        catch
-        {
-            return null;
-        }
-    }
-
-    private static (string? Directory, string? Version) GetVersionDirectory(string packageDir, string? version)
-    {
-        // TODO: resolve version to a suitable fixed version when floating version is provided.
-
-        if (version is { })
-        {
-            var exactVersionDir = Path.Combine(packageDir, version);
-            if (Directory.Exists(exactVersionDir))
+            var exactVersionDir = packageDir.SubDirectory(versionLabel);
+            if (exactVersionDir.Exists)
             {
-                return (exactVersionDir, version);
+                return exactVersionDir;
             }
         }
 
-        var vVersion = version is null ? null : TryParseVersion(version);
+        var version = versionLabel is null ? null : TryParseVersion(versionLabel);
 
-        string? foundVersion;
-        if (vVersion is null)
+        IODirectory? foundVersion;
+        if (version is null)
         {
             // Default to highest found package version if the input version was gibberish.
-            foundVersion = Directory.GetFiles(packageDir).OrderBy(TryParseVersion).LastOrDefault();
+            foundVersion = packageDir.SubDirectories()
+                .OrderBy(d => TryParseVersion(d.Name))
+                .LastOrDefault();
         }
         else
         {
-            var pairs = Directory.GetFiles(packageDir)
-                .Select(str => (str, TryParseVersion(str)))
+            var pairs = packageDir.SubDirectories()
+                .Select(d => (d, TryParseVersion(d.Name)))
                 .ToArray();
 
             // Pick nearest version that is higher than the current version if available.
             foundVersion = pairs
-                .Where(pair => pair.Item2 > vVersion)
+                .Where(pair => pair.Item2 > version)
                 .OrderBy(pair => pair.Item2)
-                .FirstOrDefault().str;
+                .FirstOrDefault().d;
 
             if (foundVersion is null)
             {
                 // Pick nearest version that is lower than the current version if available.
                 foundVersion = pairs
-                    .Where(pair => pair.Item2 < vVersion)
+                    .Where(pair => pair.Item2 < version)
                     .OrderBy(pair => pair.Item2)
-                    .LastOrDefault().str;
+                    .LastOrDefault().d;
             }
         }
 
-        if (foundVersion is null)
-        {
-            return (null, null);
-        }
-        else
-        {
-            return (Path.Combine(packageDir, foundVersion), foundVersion);
-        }
+        return foundVersion;
     }
 
     private static System.Version? TryParseVersion(string version)
@@ -205,6 +170,31 @@ public static class PackageCache
         catch
         {
             return null;
+        }
+    }
+
+    private static NuSpecFile? TryLoadNuSpecFile(IODirectory directory, PackageInfo info)
+    {
+        if (NuspecFiles(directory, info).FirstOrNone(f => f.Exists) is { } file)
+        {
+            try
+            {
+                using var stream = file.OpenRead();
+                return NuSpecFile.Load(stream);
+            }
+            catch { }
+        }
+        return null;
+    }
+
+    private static IEnumerable<IOFile> NuspecFiles(IODirectory directory, PackageInfo info)
+    {
+        yield return directory.File($"{info.Name}.{info.Version}.nuspec".ToLowerInvariant());
+        yield return directory.File($"{info.Name}.nuspec".ToLowerInvariant());
+
+        foreach (var file in directory.Files("*.nuspec") ?? [])
+        {
+            yield return file;
         }
     }
 }
