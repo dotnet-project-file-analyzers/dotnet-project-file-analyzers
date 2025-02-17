@@ -63,6 +63,7 @@ ToBeReleased:
 - Proj0808: Define global package reference only in Directory.Packages.props. (NEW RULE)
 - Proj0809: Global package references are meant for private assets only. (NEW RULE)
 - Proj1200: Now able to heuristically determine if dependency should be a private asset. (FN)
+- Fix AD0001 when provided paths are not validly formatted. (BUG)
 v1.5.8
 - Proj1001: Take <GlobalPackageReference>'s also into account. (FP)
 v1.5.7
