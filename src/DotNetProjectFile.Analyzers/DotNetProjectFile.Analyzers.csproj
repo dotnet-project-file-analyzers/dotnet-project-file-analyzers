@@ -60,7 +60,7 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
-- Proj0034: Import statement could not be resolved. (NEW RULE)
+- Proj0034: Import statement could not be resolved by the analyzer. (NEW RULE)
 - Proj0808: Define global package reference only in Directory.Packages.props. (NEW RULE)
 - Proj0809: Global package references are meant for private assets only. (NEW RULE)
 - Proj1200: Now able to heuristically determine if dependency should be a private asset. (FN)
