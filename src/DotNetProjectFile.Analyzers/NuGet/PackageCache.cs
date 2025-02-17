@@ -1,16 +1,13 @@
-using DotNetProjectFile.MsBuild;
-using System;
+using DotNetProjectFile.NuGet.Packaging;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Text;
 
 namespace DotNetProjectFile.NuGet;
 
 public static class PackageCache
 {
-    private static readonly ConcurrentDictionary<(string Name, string? Version), CachedPackage?> cache = new();
+    private static readonly ConcurrentDictionary<PackageInfo, CachedPackage?> cache = new();
     private static readonly Lazy<IODirectory> cacheDir = new(() => IODirectory.Parse(GetPathInternal()));
 
     public static IODirectory GetDirectory()
@@ -56,7 +53,7 @@ public static class PackageCache
         name = name.ToLowerInvariant();
         version = version?.ToLowerInvariant();
 
-        var key = (name, version);
+        var key = new PackageInfo(name, version);
         if (cache.TryGetValue(key, out var result))
         {
             return result;
@@ -69,10 +66,10 @@ public static class PackageCache
                 result = GetPackageInternal(name, version);
 
                 cache[key] = result;
-                
+
                 if (result is { } && version != result.Version)
                 {
-                    cache[(name, result.Version)] = result;
+                    cache[new(name, result.Version)] = result;
                 }
             }
         }
@@ -95,12 +92,16 @@ public static class PackageCache
             return null;
         }
 
+        var nuspec = TryLoadNuSpecFile(versionDir, new(name, versionDir.Name));
+
         return new()
         {
             Name = name,
             Version = versionDir.Name,
             HasAnalyzerDll = HasDllFiles("analyzers"),
             HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes"),
+            License = nuspec?.Metadata.License?.Value,
+            IsDevelopmentDependency = nuspec?.Metadata.DevelopmentDependency,
         };
 
         bool HasDllFiles(string subDir)
@@ -174,4 +175,30 @@ public static class PackageCache
             return null;
         }
     }
+
+    private static NuSpecFile? TryLoadNuSpecFile(IODirectory directory, PackageInfo info)
+    {
+        if (NuspecFiles(directory, info).FirstOrNone(f => f.Exists) is { } file)
+        {
+            try
+            {
+                using var stream = file.OpenRead();
+                return NuSpecFile.Load(stream);
+            }
+            catch { }
+        }
+        return null;
+    }
+
+    private static IEnumerable<IOFile> NuspecFiles(IODirectory directory, PackageInfo info)
+    {
+        yield return directory.File($"{info.Name}.{info.Version}.nuspec".ToLowerInvariant());
+        yield return directory.File($"{info.Name}.nuspec".ToLowerInvariant());
+
+        foreach (var file in directory.Files("*.nuspec") ?? [])
+        {
+            yield return file;
+        }
+    }
 }
+

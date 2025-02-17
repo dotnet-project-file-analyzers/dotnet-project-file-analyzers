@@ -24,4 +24,18 @@ internal static class EnumerableExtensions
             yield return element;
         }
     }
+
+    /// <summary>Returns the first matching element, or null if no match was found.</summary>
+    [Pure]
+    public static T? FirstOrNone<T>(this IEnumerable<T> enumerable, Predicate<T> predicate) where T : struct
+    {
+        foreach (var element in enumerable)
+        {
+            if (predicate(element))
+            {
+                return element;
+            }
+        }
+        return null;
+    }
 }
