@@ -24,22 +24,35 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
     public bool HasValue => Parts.Length != 0;
 
     /// <summary>Creates a <see cref="DirectoryInfo"/> based on the path.</summary>
-    public DirectoryInfo Info => new(ToString());
+    public DirectoryInfo? Info
+    {
+        get
+        {
+            try
+            {
+                return new(ToString());
+            }
+            catch
+            {
+                return null;
+            }
+        }
+    }
 
     /// <inheritdoc cref="DirectoryInfo.Exists" />
-    public bool Exists => Info.Exists;
+    public bool Exists => Info?.Exists ?? false;
 
     /// <inheritdoc cref="FileSystemInfo.LastWriteTime" />
-    public DateTime LastWriteTime => Info.LastWriteTime;
+    public DateTime LastWriteTime => Info?.LastWriteTime ?? throw new DirectoryNotFoundException();
 
     /// <inheritdoc cref="FileSystemInfo.LastWriteTimeUtc" />
-    public DateTime LastWriteTimeUtc => Info.LastWriteTimeUtc;
+    public DateTime LastWriteTimeUtc => Info?.LastWriteTimeUtc ?? throw new DirectoryNotFoundException();
 
     /// <inheritdoc cref="FileSystemInfo.LastAccessTime" />
-    public DateTime LastAccessTime => Info.LastAccessTime;
+    public DateTime LastAccessTime => Info?.LastAccessTime ?? throw new DirectoryNotFoundException();
 
     /// <inheritdoc cref="FileSystemInfo.LastAccessTimeUtc" />
-    public DateTime LastAccessTimeUtc => Info.LastAccessTimeUtc;
+    public DateTime LastAccessTimeUtc => Info?.LastAccessTimeUtc ?? throw new DirectoryNotFoundException();
 
     public IODirectory Parent
 #pragma warning disable S2365 // Properties should not make collection or array copies
@@ -143,7 +156,7 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
     private IEnumerable<T>? Iterate<T>(string path, Func<DirectoryInfo, string, IEnumerable<T>> enumerate)
     {
         // We do not support variables yet.
-        if (path.Contains("$(")) return null;
+        if (path.Contains("$(") || Info is null) return null;
 
         IEnumerable<DirectoryInfo> enumerator = new RootDirectory(Info);
         var parts = path.Split('/', '\\');

@@ -32,7 +32,20 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
 #pragma warning restore S2365 // Properties should not make collection or array copies
 
     /// <summary>Creates a <see cref="FileInfo"/> based on the path.</summary>
-    public FileInfo Info => new(ToString());
+    public FileInfo? Info
+    {
+        get
+        {
+            try
+            {
+                return new(ToString());
+            }
+            catch
+            {
+                return null;
+            }
+        }
+    }
 
     /// <summary>Creates a new path.</summary>
     public IOFile Combine(params string[] paths)
@@ -59,25 +72,41 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
         : Path.GetFileNameWithoutExtension(Parts[^1]);
 
     /// <inheritdoc cref="FileInfo.Exists" />
-    public bool Exists => Info.Exists;
+    public bool Exists => Info?.Exists ?? false;
 
     /// <inheritdoc cref="FileSystemInfo.LastWriteTime" />
-    public DateTime LastWriteTime => Info.LastWriteTime;
+    public DateTime LastWriteTime => Info?.LastWriteTime ?? throw new FileNotFoundException();
 
     /// <inheritdoc cref="FileSystemInfo.LastWriteTimeUtc" />
-    public DateTime LastWriteTimeUtc => Info.LastWriteTimeUtc;
+    public DateTime LastWriteTimeUtc => Info?.LastWriteTimeUtc ?? throw new FileNotFoundException();
 
     /// <inheritdoc cref="FileSystemInfo.LastAccessTime" />
-    public DateTime LastAccessTime => Info.LastAccessTime;
+    public DateTime LastAccessTime => Info?.LastAccessTime ?? throw new FileNotFoundException();
 
     /// <inheritdoc cref="FileSystemInfo.LastAccessTimeUtc" />
-    public DateTime LastAccessTimeUtc => Info.LastAccessTimeUtc;
+    public DateTime LastAccessTimeUtc => Info?.LastAccessTimeUtc ?? throw new FileNotFoundException();
 
     /// <inheritdoc cref="FileInfo.OpenText()" />
-    public TextReader OpenText() => Info.OpenText();
+    public TextReader OpenText() => Info?.OpenText() ?? throw new FileNotFoundException();
+
+    /// <summary>Tries <see cref="OpenText()"/>.</summary>
+    /// <remarks>
+    /// Returns a reader over <see cref="Stream.Null"/> if reading fails.
+    /// </remarks>
+    public TextReader TryOpenText()
+    {
+        try
+        {
+            return OpenText();
+        }
+        catch
+        {
+            return new StreamReader(Stream.Null);
+        }
+    }
 
     /// <inheritdoc cref="FileInfo.OpenRead()" />
-    public FileStream OpenRead() => Info.OpenRead();
+    public FileStream OpenRead() => Info?.OpenRead() ?? throw new FileNotFoundException();
 
     /// <summary>Tries <see cref="OpenRead()"/>.</summary>
     /// <remarks>
