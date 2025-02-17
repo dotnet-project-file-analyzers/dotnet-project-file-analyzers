@@ -12,5 +12,7 @@ public sealed record CachedPackage
 
     public required bool HasRuntimeDll { get; init; }
 
-    public required NuSpecFile? NuSpecFile { get; init; }
+    public bool? IsDevelopmentDependency { get; init; }
+    
+    public string? License { get; init; }
 }

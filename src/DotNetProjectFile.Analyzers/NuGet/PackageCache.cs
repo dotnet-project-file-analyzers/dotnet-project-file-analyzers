@@ -92,13 +92,16 @@ public static class PackageCache
             return null;
         }
 
+        var nuspec = TryLoadNuSpecFile(versionDir, new(name, versionDir.Name));
+
         return new()
         {
             Name = name,
             Version = versionDir.Name,
             HasAnalyzerDll = HasDllFiles("analyzers"),
             HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes"),
-            NuSpecFile = TryLoadNuSpecFile(versionDir, new(name, versionDir.Name)),
+            License = nuspec?.Metadata.License?.Value,
+            IsDevelopmentDependency = nuspec?.Metadata.DevelopmentDependency,
         };
 
         bool HasDllFiles(string subDir)
