@@ -25,7 +25,7 @@ public sealed class GlobalPackageReferencesAreMeantForPrivateAssetsOnly()
     {
         if (PackageCache.GetPackage(reference.Include, reference.Version) is { } package)
         {
-            return package.HasRuntimeDll || package.IsDevelopmentDependency is true;
+            return package.HasRuntimeDll && package.IsDevelopmentDependency is not true;
         }
 
         // No info.
