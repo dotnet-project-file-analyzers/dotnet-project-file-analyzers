@@ -75,6 +75,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0031** Adopt preferred casing of nodes](rules/Proj0031.md)
 * [**Proj0032** Migrate away from BinaryFormatter](rules/Proj0032.md)
 * [**Proj0033** Project reference includes should exist](rules/Proj0033.md)
+* [**Proj0034** Import statement could not be resolved](rules/Proj0034.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
