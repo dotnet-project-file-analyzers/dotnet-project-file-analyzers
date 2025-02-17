@@ -27,16 +27,10 @@ public sealed partial class ProjectFiles
 
     public MsBuildProject? UpdateMsBuildProject(CompilationAnalysisContext context)
     {
-        var extension = context.Compilation.Language switch
+        if (GetBuildProjectFile(context) is not { Length: > 0 } file)
         {
-            LanguageNames.CSharp => ".csproj",
-            LanguageNames.VisualBasic => ".vbproj",
-            _ => null,
-        };
-
-        if (extension is null || context.Compilation.AssemblyName is not { Length: > 0 } name) return null;
-
-        var file = name + extension;
+            return null;
+        }
 
         // If it is amongst the additional files, do not look further.
         if (context.Options.AdditionalFiles
@@ -54,6 +48,25 @@ public sealed partial class ProjectFiles
             .Select(dir => MsBuildProject(dir.File(file)))
             .OfType<MsBuildProject>()
             .FirstOrDefault();
+
+        static string? GetBuildProjectFile(CompilationAnalysisContext context)
+        {
+            if (context.Options.GetMsBuildProperty("MSBuildProjectFile") is { Length: > 0 } file)
+            {
+                return file;
+            }
+
+            var extension = context.Compilation.Language switch
+            {
+                LanguageNames.CSharp => ".csproj",
+                LanguageNames.VisualBasic => ".vbproj",
+                _ => null,
+            };
+
+            return extension is null || context.Compilation.AssemblyName is not { Length: > 0 } name
+                ? null
+                : name + extension;
+        }
     }
 
     public IniFile? UpdateIniFile(AdditionalFileAnalysisContext context)
