@@ -2,6 +2,7 @@ using DotNetProjectFile.NuGet;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.ExcludePrivateAssetDependencies"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ExcludePrivateAssetDependencies() : MsBuildProjectFileAnalyzer(Rule.ExcludePrivateAssetDependencies)
 {
@@ -29,14 +30,9 @@ public sealed class ExcludePrivateAssetDependencies() : MsBuildProjectFileAnalyz
             return false;
         }
 
-        if (NuGet.Packages.All.TryGet(reference.Include) is { } pkg)
+        if (PackageCache.GetPackage(reference.IncludeOrUpdate, reference.ResolveVersion()) is { } package)
         {
-            return pkg.IsPrivateAsset;
-        }
-
-        if (PackageCache.GetPackage(reference.IncludeOrUpdate, reference.ResolveVersion()) is { } cpkg)
-        {
-            return !cpkg.HasRuntimeDll;
+            return !package.HasRuntimeDll || package.IsDevelopmentDependency is true;
         }
 
         // No info.
