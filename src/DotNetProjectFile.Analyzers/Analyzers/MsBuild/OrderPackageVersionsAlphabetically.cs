@@ -3,6 +3,10 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class OrderPackageVersionsAlphabetically() : MsBuildProjectFileAnalyzer(Rule.OrderPackageVersionsAlphabetically)
 {
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+    
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var references in context.File.ItemGroups.Select(g => g.PackageVersions))

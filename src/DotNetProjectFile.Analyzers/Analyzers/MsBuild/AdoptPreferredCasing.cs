@@ -3,6 +3,9 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class AdoptPreferredCasing() : MsBuildProjectFileAnalyzer(Rule.AdoptPreferredCasing)
 {
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
     protected override void Register(ProjectFileAnalysisContext context) => Walk(context.File, context);
 
     private void Walk(Node node, ProjectFileAnalysisContext context)

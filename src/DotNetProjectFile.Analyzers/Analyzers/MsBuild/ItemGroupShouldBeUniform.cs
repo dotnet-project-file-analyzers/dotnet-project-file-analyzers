@@ -16,6 +16,10 @@ public sealed class ItemGroupShouldBeUniform() : MsBuildProjectFileAnalyzer(Rule
     private static readonly IReadOnlyDictionary<Type, IReadOnlyCollection<Type>> Allowed
         = GenerateAllowList();
 
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var group in context.File.ItemGroups)

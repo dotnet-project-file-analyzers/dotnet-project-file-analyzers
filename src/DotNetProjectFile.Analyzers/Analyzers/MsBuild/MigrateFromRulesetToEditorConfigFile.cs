@@ -4,6 +4,10 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class MigrateFromRulesetToEditorConfigFile()
     : MsBuildProjectFileAnalyzer(Rule.MigrateFromRulesetToEditorConfigFile)
 {
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var ruleset in context.File.PropertyGroups.SelectMany(g => g.CodeAnalysisRuleSet))
