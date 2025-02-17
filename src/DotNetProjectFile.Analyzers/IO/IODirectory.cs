@@ -43,16 +43,33 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
     public bool Exists => Info?.Exists ?? false;
 
     /// <inheritdoc cref="FileSystemInfo.LastWriteTime" />
-    public DateTime LastWriteTime => Info?.LastWriteTime ?? throw new DirectoryNotFoundException();
+    public DateTime? LastWriteTime => Get<DateTime?>(static info => info.LastWriteTime);
 
     /// <inheritdoc cref="FileSystemInfo.LastWriteTimeUtc" />
-    public DateTime LastWriteTimeUtc => Info?.LastWriteTimeUtc ?? throw new DirectoryNotFoundException();
+    public DateTime? LastWriteTimeUtc => Get<DateTime?>(static info => info.LastWriteTimeUtc);
 
     /// <inheritdoc cref="FileSystemInfo.LastAccessTime" />
-    public DateTime LastAccessTime => Info?.LastAccessTime ?? throw new DirectoryNotFoundException();
+    public DateTime? LastAccessTime => Get<DateTime?>(static info => info.LastAccessTime);
 
     /// <inheritdoc cref="FileSystemInfo.LastAccessTimeUtc" />
-    public DateTime LastAccessTimeUtc => Info?.LastAccessTimeUtc ?? throw new DirectoryNotFoundException();
+    public DateTime? LastAccessTimeUtc => Get<DateTime?>(static info => info.LastAccessTimeUtc);
+
+    private T? Get<T>(Func<DirectoryInfo, T> getter)
+    {
+        if (Info is null)
+        {
+            return default;
+        }
+
+        try
+        {
+            return getter(Info);
+        }
+        catch
+        {
+            return default;
+        }
+    }
 
     public IODirectory Parent
 #pragma warning disable S2365 // Properties should not make collection or array copies

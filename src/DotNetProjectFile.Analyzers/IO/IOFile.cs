@@ -75,16 +75,33 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
     public bool Exists => Info?.Exists ?? false;
 
     /// <inheritdoc cref="FileSystemInfo.LastWriteTime" />
-    public DateTime LastWriteTime => Info?.LastWriteTime ?? throw new FileNotFoundException();
+    public DateTime? LastWriteTime => Get<DateTime?>(static info => info.LastWriteTime);
 
     /// <inheritdoc cref="FileSystemInfo.LastWriteTimeUtc" />
-    public DateTime LastWriteTimeUtc => Info?.LastWriteTimeUtc ?? throw new FileNotFoundException();
+    public DateTime? LastWriteTimeUtc => Get<DateTime?>(static info => info.LastWriteTimeUtc);
 
     /// <inheritdoc cref="FileSystemInfo.LastAccessTime" />
-    public DateTime LastAccessTime => Info?.LastAccessTime ?? throw new FileNotFoundException();
+    public DateTime? LastAccessTime => Get<DateTime?>(static info => info.LastAccessTime);
 
     /// <inheritdoc cref="FileSystemInfo.LastAccessTimeUtc" />
-    public DateTime LastAccessTimeUtc => Info?.LastAccessTimeUtc ?? throw new FileNotFoundException();
+    public DateTime? LastAccessTimeUtc => Get<DateTime?>(static info => info.LastAccessTimeUtc);
+
+    private T? Get<T>(Func<FileInfo, T> getter)
+    {
+        if (Info is null)
+        {
+            return default;
+        }
+
+        try
+        {
+            return getter(Info);
+        }
+        catch
+        {
+            return default;
+        }
+    }
 
     /// <inheritdoc cref="FileInfo.OpenText()" />
     public TextReader OpenText() => Info?.OpenText() ?? throw new FileNotFoundException();
