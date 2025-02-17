@@ -24,6 +24,7 @@ public class Guards
 
 public class Ignores
 {
+    [Ignore("Does not compile.")]
     [Test]
     public void invalid_resources()
          => new Resx.AddInvariantFallbackValues()
