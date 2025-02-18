@@ -37,6 +37,12 @@ public static class Licenses
         new PermissiveLicense("MPL-2.0"),
         new PermissiveLicense("MPL-2.0-no-copyleft-exception"),
 
+        // LGPL is technically copy-left, but only when linking statically. Since C# code is usually linked dynamically, we allow it for now.
+        new PermissiveLicense("LGPL-2.0-only", deprecated: ["LGPL-2.0"]),
+        new PermissiveLicense("LGPL-2.0-or-later", deprecated: ["LGPL-2.0+"]),
+        new PermissiveLicense("LGPL-3.0-only", deprecated: ["LGPL-3.0"]),
+        new PermissiveLicense("LGPL-3.0-or-later", deprecated: ["LGPL-3.0+"]),
+
         new CopyLeftLicense("GPL-1.0-only", deprecated: ["GPL-1.0"]),
         new CopyLeftLicense("GPL-2.0-only", deprecated: ["GPL-2.0"]),
         new CopyLeftLicense("GPL-3.0-only", deprecated: ["GPL-3.0"], compatibilities: ["AGPL-3.0-only"]), // AGPL3 allowed due to clause 13 in GPL3
@@ -74,7 +80,7 @@ public static class Licenses
 
     private static readonly FrozenDictionary<string, LicenseExpression> AdditionalLicenseUrls
         = AdditionalLicenseUrlsRaw
-        .ToFrozenDictionary(x => SimplifyUrl(x.Key), x => FromExpression(x.Value));
+        .ToFrozenDictionary(x => SimplifyUrl(x.Key), x => FromExpression(x.Value), StringComparer.OrdinalIgnoreCase);
 
     private static FrozenDictionary<string, LicenseExpression> CreateLookup()
     {
@@ -93,7 +99,7 @@ public static class Licenses
             }
         }
 
-        return result.ToFrozenDictionary();
+        return result.ToFrozenDictionary(StringComparer.OrdinalIgnoreCase);
     }
 
     public static LicenseExpression FromExpression(string? licenseExpression)
