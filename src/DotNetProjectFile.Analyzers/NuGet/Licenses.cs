@@ -76,6 +76,18 @@ public static class Licenses
             return Unknown;
         }
     }
+
+    public static LicenseExpression FromUrl(string? licenseUrl)
+    {
+        // TODO
+        return Unknown;
+    }
+
+    public static LicenseExpression FromFile(string? licenseUrl)
+    {
+        // TODO: fuzzy match the file content to known license texts
+        return Unknown;
+    }
 }
 
 public abstract record LicenseExpression(bool Deprecated)

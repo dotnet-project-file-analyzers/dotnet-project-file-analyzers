@@ -95,6 +95,8 @@ public static class PackageCache
         var nuspec = TryLoadNuSpecFile(versionDir, new(name, versionDir.Name));
 
         var licenseNode = nuspec?.Metadata?.License;
+        var licenseUrl = nuspec?.Metadata?.LicenseUrl;
+
         var licenseExpression = licenseNode is { Type: "expression" }
             ? licenseNode.Value
             : null;
@@ -103,6 +105,16 @@ public static class PackageCache
             : null;
 
         var license = Licenses.FromExpression(licenseExpression);
+
+        if (license == Licenses.Unknown)
+        {
+            license = Licenses.FromUrl(licenseUrl);
+        }
+
+        if (license == Licenses.Unknown)
+        {
+            license = Licenses.FromFile(licenseFile);
+        }
 
         return new()
         {
