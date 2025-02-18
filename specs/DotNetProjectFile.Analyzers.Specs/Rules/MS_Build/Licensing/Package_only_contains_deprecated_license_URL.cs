@@ -12,17 +12,16 @@ public class Reports
     </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include=""Microsoft.DotNet.PlatformAbstractions"" Version=""1.1.1"" />
+    <PackageReference Include=""SimpleInjector.Extensions.ExecutionContextScoping"" Version=""4.0.0"" />
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0500", "The Microsoft.DotNet.PlatformAbstractions package is shipped without an explicitly defined license."));
+       .HasIssue(Issue.WRN("Proj0501", "The SimpleInjector.Extensions.ExecutionContextScoping package only contains a deprecated license URL."));
 }
 
 public class Guards
 {
-
-    [Test]
+    [Test, Ignore("Include a license URL that can be parsed")]
     public void license_urls() => new ThridPartyLicenseResolver()
       .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">

@@ -744,7 +744,7 @@ public static partial class Rule
     public static DiagnosticDescriptor PackageOnlyContainsDeprecatedLicenseUrl => New(
        id: 0501,
        title: "Package only contains a deprecated license URL",
-       message: "The {0} package only only contains a deprecated license URL",
+       message: "The {0} package only contains a deprecated license URL.",
        description:
            "To prevent legal issues do not rely on thrid-party references that do not " +
            "come with an ferifiable deprecated license URL.",
