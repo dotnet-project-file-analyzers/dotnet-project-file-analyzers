@@ -2,6 +2,7 @@ using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace DotNetProjectFile.Licensing;
 
@@ -52,6 +53,8 @@ public static class Licenses
 
     private static readonly FrozenDictionary<string, LicenseExpression> Lookup = CreateLookup();
 
+    private static readonly Regex GenericLicenseUrlRegex = new(@"(https?:\/\/)?(www.)?((opensource.org\/licenses)|(licenses.nuget.org))\/(?<exp>[a-zA-Z0-9-.]+)\/?", RegexOptions.Compiled | RegexOptions.ExplicitCapture);
+
     private static FrozenDictionary<string, LicenseExpression> CreateLookup()
     {
         var result = new Dictionary<string, LicenseExpression>();
@@ -93,7 +96,18 @@ public static class Licenses
 
     public static LicenseExpression FromUrl(string? licenseUrl)
     {
-        // TODO
+        if (licenseUrl is not { Length: > 0 })
+        {
+            return Unknown;
+        }
+
+        if (GenericLicenseUrlRegex.Match(licenseUrl) is { Success: true } match)
+        {
+            var expression = match.Groups["exp"].Value;
+            return FromExpression(expression);
+        }
+
+        // TODO see-also entries from https://github.com/spdx/license-list-data/blob/main/json/licenses.json
         return Unknown;
     }
 
