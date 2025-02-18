@@ -97,7 +97,7 @@ public static class Licenses
         return Unknown;
     }
 
-    public static LicenseExpression FromFile(string? licenseUrl)
+    public static LicenseExpression FromFile(string? licenseFile)
     {
         // TODO: fuzzy match the file content to known license texts
         return Unknown;
