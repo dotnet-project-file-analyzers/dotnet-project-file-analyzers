@@ -16,7 +16,7 @@ public sealed class GenerateSbom() : MsBuildProjectFileAnalyzer(Rule.GenerateSbo
         var property = context.File.Property<GenerateSBOM>();
         var registered = context.File
            .Walk().OfType<PackageReference>()
-           .Any(r => r.Include == NuGet.Packages.Microsoft_Sbom_Targets.Name);
+           .Any(NuGet.Packages.Microsoft_Sbom_Targets.IsMatch);
 
         if (property is { })
         {
