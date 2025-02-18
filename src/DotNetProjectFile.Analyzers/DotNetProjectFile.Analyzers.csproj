@@ -59,6 +59,8 @@
     <Version>1.5.9</Version>
     <PackageReleaseNotes>
       <![CDATA[
+ToBeReleased:
+- Proj0500: Only include packages with an explicitly defined license. (NEW RULE)
 v1.5.9
 - Proj0034: Import statement could not be resolved by the analyzer. (NEW RULE)
 - Proj0808: Define global package reference only in Directory.Packages.props. (NEW RULE)
