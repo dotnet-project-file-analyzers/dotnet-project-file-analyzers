@@ -1,3 +1,4 @@
+using DotNetProjectFile.Licensing;
 using DotNetProjectFile.NuGet.Packaging;
 using System.Collections.Concurrent;
 using System.IO;
@@ -94,15 +95,39 @@ public static class PackageCache
 
         var nuspec = TryLoadNuSpecFile(versionDir, new(name, versionDir.Name));
 
+        var licenseNode = nuspec?.Metadata?.License;
+        var licenseUrl = nuspec?.Metadata?.LicenseUrl;
+
+        var licenseExpression = licenseNode is { Type: "expression" }
+            ? licenseNode.Value
+            : null;
+        var licenseFile = licenseNode is { Type: "file" }
+            ? licenseNode.Value
+            : null;
+
+        var license = Licenses.FromExpression(licenseExpression);
+
+        if (license == Licenses.Unknown)
+        {
+            license = Licenses.FromUrl(licenseUrl);
+        }
+
+        if (license == Licenses.Unknown)
+        {
+            license = Licenses.FromFile(licenseFile);
+        }
+
         return new()
         {
             Name = name,
             Version = versionDir.Name,
             HasAnalyzerDll = HasDllFiles("analyzers"),
             HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes"),
-            License = nuspec?.Metadata.License?.Value,
-            LicenseUrl = nuspec?.Metadata.LicenseUrl,
             IsDevelopmentDependency = nuspec?.Metadata.DevelopmentDependency,
+            LicenseExpression = licenseExpression,
+            LicenseFile = licenseFile,
+            LicenseUrl = nuspec?.Metadata.LicenseUrl,
+            License = license,
         };
 
         bool HasDllFiles(string subDir)
