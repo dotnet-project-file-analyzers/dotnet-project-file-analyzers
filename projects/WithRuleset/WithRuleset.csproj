@@ -7,7 +7,6 @@
   
   <ItemGroup>
     <Compile Include="../common/Code.cs" />
-    <PackageReference Include="Microsoft.DotNet.PlatformAbstractions" Version="1.1.1" />
   </ItemGroup>
 
 </Project>
