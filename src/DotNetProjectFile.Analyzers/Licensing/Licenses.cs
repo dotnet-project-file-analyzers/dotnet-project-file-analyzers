@@ -37,7 +37,7 @@ public static class Licenses
 
         new CopyLeftLicense("GPL-1.0-only", deprecated: ["GPL-1.0"]),
         new CopyLeftLicense("GPL-2.0-only", deprecated: ["GPL-2.0"]),
-        new CopyLeftLicense("GPL-3.0-only", deprecated: ["GPL-3.0"], compatibilities: ["AGPL-3.0"]), // AGPL3 allowed due to clause 13 in GPL3
+        new CopyLeftLicense("GPL-3.0-only", deprecated: ["GPL-3.0"], compatibilities: ["AGPL-3.0-only"]), // AGPL3 allowed due to clause 13 in GPL3
 
         new CopyLeftLicense("GPL-1.0-or-later", deprecated: ["GPL-1.0+"], compatibilities: ["GPL-1.0-only", "GPL-2.0-only", "GPL-3.0-only", "GPL-2.0-or-later", "GPL-3.0-or-later"]),
         new CopyLeftLicense("GPL-2.0-or-later", deprecated: ["GPL-2.0+"], compatibilities: ["GPL-2.0-only", "GPL-3.0-only", "GPL-3.0-or-later"]),
