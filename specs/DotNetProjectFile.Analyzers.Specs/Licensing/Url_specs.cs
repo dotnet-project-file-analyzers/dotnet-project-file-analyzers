@@ -31,6 +31,9 @@ public class From_url
     [TestCase("http://www.licenses.nuget.org/MIT/", "MIT")]
     [TestCase("www.licenses.nuget.org/MIT", "MIT")]
     [TestCase("www.licenses.nuget.org/MIT/", "MIT")]
+    [TestCase("https://spdx.org/licenses/BSD-3-Clause.html", "BSD-3-Clause")]
+    [TestCase("http://spdx.org/licenses/BSD-3-Clause.html/", "BSD-3-Clause")]
+    [TestCase("www.spdx.org/licenses/BSD-3-Clause.html", "BSD-3-Clause")]
     public void Results_in(string? url, string? expected)
     {
         expected ??= Licenses.Unknown.Expression;

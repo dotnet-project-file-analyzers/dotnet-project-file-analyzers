@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -53,7 +54,17 @@ public static class Licenses
 
     private static readonly FrozenDictionary<string, LicenseExpression> Lookup = CreateLookup();
 
-    private static readonly Regex GenericLicenseUrlRegex = new(@"(https?:\/\/)?(www.)?((opensource.org\/licenses)|(licenses.nuget.org))\/(?<exp>[a-zA-Z0-9-.]+)\/?", RegexOptions.Compiled | RegexOptions.ExplicitCapture);
+    private static readonly ImmutableArray<string> GenericLicenseUrlDomains =
+    [
+        "opensource.org/licenses",
+        "licenses.nuget.org",
+        "spdx.org/licenses",
+    ];
+
+    private static readonly string GenericLicenseUrlDomainPattern
+        = string.Join("|", GenericLicenseUrlDomains.Select(d => $"({Regex.Escape(d)})"));
+
+    private static readonly Regex GenericLicenseUrlRegex = new(@$"(https?:\/\/)?(www\.)?({GenericLicenseUrlDomainPattern})\/(?<exp>[a-zA-Z0-9-.]+)(\.html)?\/?", RegexOptions.Compiled | RegexOptions.ExplicitCapture);
 
     private static FrozenDictionary<string, LicenseExpression> CreateLookup()
     {
