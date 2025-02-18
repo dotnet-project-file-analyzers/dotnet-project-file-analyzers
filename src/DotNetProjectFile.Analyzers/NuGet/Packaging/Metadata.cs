@@ -13,6 +13,9 @@ public sealed record Metadata
     [XmlElement("license")]
     public MetadataLicense? License { get; init; }
 
+    [XmlElement("licenseUrl")]
+    public string? LicenseUrl { get; init; }
+
     [XmlElement("developmentDependency")]
     public bool? DevelopmentDependency { get; init; }
 }

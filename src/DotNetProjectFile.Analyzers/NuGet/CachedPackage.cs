@@ -15,4 +15,6 @@ public sealed record CachedPackage
     public bool? IsDevelopmentDependency { get; init; }
     
     public string? License { get; init; }
+
+    public string? LicenseUrl { get; init; }
 }

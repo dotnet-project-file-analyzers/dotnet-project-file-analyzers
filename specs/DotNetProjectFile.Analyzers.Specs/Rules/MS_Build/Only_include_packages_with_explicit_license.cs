@@ -1,3 +1,5 @@
+using FluentAssertions;
+
 namespace Rules.MS_Build.Only_include_packages_with_explicit_license;
 
 public class Reports
@@ -12,15 +14,32 @@ public class Reports
     </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include=""Qowaiv"" Version=""1.0.0.139"" />
+    <PackageReference Include=""Microsoft.DotNet.PlatformAbstractions"" Version=""1.1.1"" />
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0500", "The Qowaiv package is shipped without an explicitly defined license."));
+       .HasIssue(Issue.WRN("Proj0500", "The Microsoft.DotNet.PlatformAbstractions package is shipped without an explicitly defined license."));
 }
 
 public class Guards
 {
+
+    [Test]
+    public void license_urls() => new OnlyIncludePackagesWithExplicitLicense()
+      .ForInlineCsproj(@"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+    <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include=""MSTest.TestAdapter"" Version=""1.3.2"" />
+  </ItemGroup>
+
+</Project>")
+      .HasNoIssues();
+
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     public void Projects_without_issues(string project) => new OnlyIncludePackagesWithExplicitLicense()
