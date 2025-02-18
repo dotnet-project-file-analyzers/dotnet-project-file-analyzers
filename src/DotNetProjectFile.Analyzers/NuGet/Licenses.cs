@@ -35,28 +35,42 @@ public static class Licenses
         new PermissiveLicense("MPL-2.0"),
         new PermissiveLicense("MPL-2.0-no-copyleft-exception"),
 
-        new CopyLeftLicense("GPL-1.0-only", ["GPL-1.0"]),
-        new CopyLeftLicense("GPL-1.0", ["GPL-1.0-only"], Deprecated: true),
-        new CopyLeftLicense("GPL-2.0-only", ["GPL-2.0"]),
-        new CopyLeftLicense("GPL-2.0", ["GPL-2.0-only"], Deprecated: true),
-        new CopyLeftLicense("GPL-3.0-only", ["GPL-3.0"]),
-        new CopyLeftLicense("GPL-3.0", ["GPL-3.0-only"], Deprecated: true),
+        new CopyLeftLicense("GPL-1.0-only", deprecated: ["GPL-1.0"]),
+        new CopyLeftLicense("GPL-2.0-only", deprecated: ["GPL-2.0"]),
+        new CopyLeftLicense("GPL-3.0-only", deprecated: ["GPL-3.0"]),
 
-        new CopyLeftLicense("GPL-1.0-or-later", ["GPL-1.0", "GPL-1.0-only", "GPL-1.0+", "GPL-2.0", "GPL-2.0-only", "GPL-2.0+", "GPL-2.0-or-later", "GPL-3.0", "GPL-3.0-only", "GPL-3.0+", "GPL-3.0-or-later"]),
-        new CopyLeftLicense("GPL-1.0+", ["GPL-1.0", "GPL-1.0-only", "GPL-1.0-or-later", "GPL-2.0", "GPL-2.0-only", "GPL-2.0+", "GPL-2.0-or-later", "GPL-3.0", "GPL-3.0-only", "GPL-3.0+", "GPL-3.0-or-later"], Deprecated: true),
-        new CopyLeftLicense("GPL-2.0-or-later", ["GPL-2.0", "GPL-2.0-only", "GPL-2.0+", "GPL-3.0", "GPL-3.0-only", "GPL-3.0+", "GPL-3.0-or-later"]),
-        new CopyLeftLicense("GPL-2.0+", ["GPL-2.0", "GPL-2.0-only", "GPL-2.0-or-later", "GPL-3.0", "GPL-3.0-only", "GPL-3.0+", "GPL-3.0-or-later"], Deprecated: true),
-        new CopyLeftLicense("GPL-3.0-or-later", ["GPL-3.0", "GPL-3.0-only", "GPL-3.0+"]),
-        new CopyLeftLicense("GPL-3.0+", ["GPL-3.0", "GPL-3.0-only", "GPL-3.0-or-later"], Deprecated: true),
+        new CopyLeftLicense("GPL-1.0-or-later", deprecated: ["GPL-1.0+"], compatibilities: ["GPL-1.0-only", "GPL-2.0-only", "GPL-3.0-only", "GPL-2.0-or-later", "GPL-3.0-or-later"]),
+        new CopyLeftLicense("GPL-2.0-or-later", deprecated: ["GPL-2.0+"], compatibilities: ["GPL-2.0-only", "GPL-3.0-only", "GPL-3.0-or-later"]),
+        new CopyLeftLicense("GPL-3.0-or-later", deprecated: ["GPL-3.0+"], compatibilities: ["GPL-3.0-only"]),
 
-        new CopyLeftLicense("AGPL-1.0-or-later", ["AGPL-1.0", "AGPL-1.0-only", "AGPL-1.0+", "AGPL-3.0", "AGPL-3.0-only", "AGPL-3.0+", "AGPL-3.0-or-later"]),
-        new CopyLeftLicense("AGPL-1.0+", ["AGPL-1.0", "AGPL-1.0-only", "AGPL-1.0-or-later", "AGPL-3.0", "AGPL-3.0-only", "AGPL-3.0+", "AGPL-3.0-or-later"], Deprecated: true),
-        new CopyLeftLicense("AGPL-3.0-or-later", ["AGPL-3.0", "AGPL-3.0-only", "AGPL-3.0+"]),
-        new CopyLeftLicense("AGPL-3.0+", ["AGPL-3.0", "AGPL-3.0-only", "AGPL-3.0-or-later"], Deprecated: true),
+        new CopyLeftLicense("AGPL-1.0-only", deprecated: ["AGPL-1.0"]),
+        new CopyLeftLicense("AGPL-3.0-only", deprecated: ["AGPL-3.0"]),
+
+        new CopyLeftLicense("AGPL-1.0-or-later", deprecated: ["AGPL-1.0+"], compatibilities: ["AGPL-1.0-only", "AGPL-3.0-only", "AGPL-3.0-or-later"]),
+        new CopyLeftLicense("AGPL-3.0-or-later", deprecated: ["AGPL-3.0+"], compatibilities: ["AGPL-3.0-only"]),
     ];
 
-    private static readonly FrozenDictionary<string, LicenseExpression> Lookup
-        = All.ToFrozenDictionary(x => x.Expression, x => x);
+    private static readonly FrozenDictionary<string, LicenseExpression> Lookup = CreateLookup();
+
+    private static FrozenDictionary<string, LicenseExpression> CreateLookup()
+    {
+        var result = new Dictionary<string, LicenseExpression>();
+
+        foreach (var license in All)
+        {
+            result[license.Expression] = license;
+
+            if (license is SingleLicense s)
+            {
+                foreach (var d in s.Deprecated)
+                {
+                    result[d] = license;
+                }
+            }
+        }
+
+        return result.ToFrozenDictionary();
+    }
 
     public static LicenseExpression FromExpression(string? licenseExpression)
     {
@@ -90,7 +104,7 @@ public static class Licenses
     }
 }
 
-public abstract record LicenseExpression(bool Deprecated)
+public abstract record LicenseExpression()
 {
     public abstract string Expression { get; }
 
@@ -111,7 +125,6 @@ public sealed record UnknownLicense : LicenseExpression
     public static readonly UnknownLicense Instance = new();
 
     private UnknownLicense()
-        : base(false)
     {
     }
 
@@ -121,19 +134,36 @@ public sealed record UnknownLicense : LicenseExpression
         => true;
 }
 
-public abstract record SingleLicense(string Identifier, bool Deprecated) : LicenseExpression(Deprecated)
+public abstract record SingleLicense(string Identifier, ImmutableArray<string> Deprecated) : LicenseExpression()
 {
     public override string Expression => Identifier;
 }
 
-public sealed record PermissiveLicense(string Identifier, bool Deprecated = false) : SingleLicense(Identifier, Deprecated)
+public sealed record PermissiveLicense : SingleLicense
 {
+    public PermissiveLicense(string identifier, ImmutableArray<string>? deprecated = null)
+        : base(identifier, deprecated ?? [])
+    {
+
+    }
+
     public override bool CompatibleWith(LicenseExpression other)
         => true;
 }
 
-public sealed record CopyLeftLicense(string Identifier, ImmutableArray<string> Compatibilities, bool Deprecated = false) : SingleLicense(Identifier, Deprecated)
+public sealed record CopyLeftLicense : SingleLicense
 {
+    public CopyLeftLicense(
+        string identifier,
+        ImmutableArray<string>? deprecated = null,
+        ImmutableArray<string>? compatibilities = null)
+        : base(identifier, deprecated ?? [])
+    {
+        Compatibilities = compatibilities ?? [];
+    }
+
+    public ImmutableArray<string> Compatibilities { get; }
+
     public override bool CompatibleWith(LicenseExpression other)
     {
         if (other.Expression == Expression || Compatibilities.Contains(other.Expression))
@@ -151,7 +181,7 @@ public sealed record CopyLeftLicense(string Identifier, ImmutableArray<string> C
     }
 }
 
-public sealed record AndLicenseExpression(LicenseExpression Left, LicenseExpression Right) : LicenseExpression(Left.Deprecated || Right.Deprecated)
+public sealed record AndLicenseExpression(LicenseExpression Left, LicenseExpression Right) : LicenseExpression()
 {
     public override string Expression => $"({Left} AND {Right})";
 
@@ -159,7 +189,7 @@ public sealed record AndLicenseExpression(LicenseExpression Left, LicenseExpress
         => Left.CompatibleWith(other) && Right.CompatibleWith(other);
 }
 
-public sealed record OrLicenseExpression(LicenseExpression Left, LicenseExpression Right) : LicenseExpression(Left.Deprecated || Right.Deprecated)
+public sealed record OrLicenseExpression(LicenseExpression Left, LicenseExpression Right) : LicenseExpression()
 {
     public override string Expression => $"({Left} OR {Right})";
 
