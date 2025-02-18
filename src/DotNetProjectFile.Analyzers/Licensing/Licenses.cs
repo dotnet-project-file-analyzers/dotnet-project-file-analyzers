@@ -56,15 +56,25 @@ public static class Licenses
 
     private static readonly ImmutableArray<string> GenericLicenseUrlDomains =
     [
-        "opensource.org/licenses",
-        "licenses.nuget.org",
-        "spdx.org/licenses",
+        "opensource.org/licenses/",
+        "licenses.nuget.org/",
+        "spdx.org/licenses/",
     ];
 
-    private static readonly string GenericLicenseUrlDomainPattern
-        = string.Join("|", GenericLicenseUrlDomains.Select(d => $"({Regex.Escape(d)})"));
+    private static readonly Dictionary<string, string> AdditionalLicenseUrlsRaw = new()
+    {
+        ["https://ianhammondcooper.mit-license.org/"] = "MIT",
+        ["https://microsoft.mit-license.org/"] = "MIT",
+        ["https://www.gnu.org/licenses/lgpl.html"] = "LGPL-3.0-only",
+        ["https://www.gnu.org/licenses/agpl.html"] = "AGPL-3.0-only",
+        ["https://www.gnu.org/licenses/gpl.html"] = "GPL-3.0-only",
+        ["https://www.gnu.org/licenses/fdl.html"] = "GFDL-1.3-only",
+        ["https://www.opensource.org/licenses/bsd-license.php"] = "BSD-2-Clause",
+    };
 
-    private static readonly Regex GenericLicenseUrlRegex = new(@$"(https?:\/\/)?(www\.)?({GenericLicenseUrlDomainPattern})\/(?<exp>[a-zA-Z0-9-.]+)(\.html)?\/?", RegexOptions.Compiled | RegexOptions.ExplicitCapture);
+    private static readonly FrozenDictionary<string, LicenseExpression> AdditionalLicenseUrls
+        = AdditionalLicenseUrlsRaw
+        .ToFrozenDictionary(x => SimplifyUrl(x.Key), x => FromExpression(x.Value));
 
     private static FrozenDictionary<string, LicenseExpression> CreateLookup()
     {
@@ -112,14 +122,43 @@ public static class Licenses
             return Unknown;
         }
 
-        if (GenericLicenseUrlRegex.Match(licenseUrl) is { Success: true } match)
+        var simplified = SimplifyUrl(licenseUrl);
+
+        if (AdditionalLicenseUrls.TryGetValue(simplified, out var result))
         {
-            var expression = match.Groups["exp"].Value;
-            return FromExpression(expression);
+            return result;
+        }
+
+        foreach (var url in GenericLicenseUrlDomains)
+        {
+            var tail = simplified.TrimStart(url);
+            if (tail != simplified)
+            {
+                return FromExpression(tail);
+            }
         }
 
         // TODO see-also entries from https://github.com/spdx/license-list-data/blob/main/json/licenses.json
         return Unknown;
+    }
+
+    [return: NotNullIfNotNull(nameof(url))]
+    private static string? SimplifyUrl(string? url)
+    {
+        if (url is null)
+        {
+            return null;
+        }
+
+        return url
+            .TrimStart("https://")
+            .TrimStart("http://")
+            .TrimStart("www.")
+            .TrimEnd('/')
+            .TrimEnd(".php")
+            .TrimEnd(".html")
+            .TrimEnd(".en")
+            .TrimEnd("-license");
     }
 
     public static LicenseExpression FromFile(string? licenseUrl)
