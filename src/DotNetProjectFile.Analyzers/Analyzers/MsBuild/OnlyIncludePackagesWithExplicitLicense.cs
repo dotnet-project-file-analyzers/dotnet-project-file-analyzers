@@ -22,6 +22,7 @@ public sealed class OnlyIncludePackagesWithExplicitLicense() : MsBuildProjectFil
 
     private static bool WithoutExplicitLicense(PackageReferenceBase reference)
         => NuGet.PackageCache.GetPackage(reference.IncludeOrUpdate, reference.Version) is { } package
-        && package.License is not { Length: > 0 }
+        && package.LicenseExpression is not { Length: > 0 }
+        && package.LicenseFile is not { Length: > 0 }
         && package.LicenseUrl is not { Length: > 0 };
 }

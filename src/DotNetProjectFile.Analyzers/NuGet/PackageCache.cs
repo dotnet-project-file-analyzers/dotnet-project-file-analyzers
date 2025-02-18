@@ -93,9 +93,16 @@ public static class PackageCache
         }
 
         var nuspec = TryLoadNuSpecFile(versionDir, new(name, versionDir.Name));
-        var license = nuspec?.Metadata?.License is { Type: "expression" } licenseNode
-            ? Licenses.Parse(licenseNode.Value)
-            : Licenses.Unknown;
+
+        var licenseNode = nuspec?.Metadata?.License;
+        var licenseExpression = licenseNode is { Type: "expression" }
+            ? licenseNode.Value
+            : null;
+        var licenseFile = licenseNode is { Type: "file" }
+            ? licenseNode.Value
+            : null;
+
+        var license = Licenses.FromExpression(licenseExpression);
 
         return new()
         {
@@ -103,9 +110,11 @@ public static class PackageCache
             Version = versionDir.Name,
             HasAnalyzerDll = HasDllFiles("analyzers"),
             HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes"),
-            License = license,
-            LicenseUrl = nuspec?.Metadata.LicenseUrl,
             IsDevelopmentDependency = nuspec?.Metadata.DevelopmentDependency,
+            LicenseExpression = licenseExpression,
+            LicenseFile = licenseFile,
+            LicenseUrl = nuspec?.Metadata.LicenseUrl,
+            License = license,
         };
 
         bool HasDllFiles(string subDir)

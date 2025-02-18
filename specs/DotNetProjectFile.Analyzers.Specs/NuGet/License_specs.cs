@@ -61,8 +61,8 @@ public class Is
     [TestCase("GPL-3.0+", "GPL-1.0+", false)]
     public void Compatiblity(string dependency, string target, bool expectedCompatibility)
     {
-        var dep = Licenses.Parse(dependency);
-        var tar = Licenses.Parse(target);
+        var dep = Licenses.FromExpression(dependency);
+        var tar = Licenses.FromExpression(target);
 
         dep.CompatibleWith(tar).Should().Be(expectedCompatibility);
     }

@@ -58,16 +58,16 @@ public static class Licenses
     private static readonly FrozenDictionary<string, LicenseExpression> Lookup
         = All.ToFrozenDictionary(x => x.Expression, x => x);
 
-    public static LicenseExpression Parse(string? input)
+    public static LicenseExpression FromExpression(string? licenseExpression)
     {
-        if (input is not { Length: > 0 })
+        if (licenseExpression is not { Length: > 0 })
         {
             return Unknown;
         }
 
         // TODO: handle complex expressions: https://spdx.github.io/spdx-spec/v2-draft/using-SPDX-short-identifiers-in-source-files/#e4-representing-multiple-licenses
         
-        if (Lookup.TryGetValue(input, out var result))
+        if (Lookup.TryGetValue(licenseExpression, out var result))
         {
             return result;
         }
@@ -91,7 +91,7 @@ public abstract record LicenseExpression(bool Deprecated)
 public static class LicenseExpressionExtensions
 {
     public static bool CompatibleWith(this LicenseExpression license, string other)
-        => license.CompatibleWith(Licenses.Parse(other));
+        => license.CompatibleWith(Licenses.FromExpression(other));
 }
 
 public sealed record UnknownLicense : LicenseExpression
