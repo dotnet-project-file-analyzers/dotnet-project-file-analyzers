@@ -6,6 +6,7 @@ public class From_url
 {
     [TestCase(null, null)]
     [TestCase("", null)]
+    [TestCase("www.github.com/", null)]
     [TestCase("https://opensource.org/licenses/Apache-2.0", "Apache-2.0")]
     [TestCase("https://opensource.org/licenses/Apache-2.0/", "Apache-2.0")]
     [TestCase("http://opensource.org/licenses/Apache-2.0", "Apache-2.0")]
