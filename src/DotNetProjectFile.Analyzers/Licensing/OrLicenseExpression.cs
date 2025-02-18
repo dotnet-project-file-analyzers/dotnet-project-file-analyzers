@@ -1,4 +1,4 @@
-﻿namespace DotNetProjectFile.Licensing;
+namespace DotNetProjectFile.Licensing;
 
 public sealed record OrLicenseExpression(LicenseExpression Left, LicenseExpression Right) : LicenseExpression()
 {
