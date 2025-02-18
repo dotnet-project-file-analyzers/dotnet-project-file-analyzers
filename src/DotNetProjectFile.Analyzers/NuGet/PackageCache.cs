@@ -1,3 +1,4 @@
+using DotNetProjectFile.Licensing;
 using DotNetProjectFile.NuGet.Packaging;
 using System.Collections.Concurrent;
 using System.IO;

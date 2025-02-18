@@ -3,7 +3,7 @@ using System.Collections.Frozen;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DotNetProjectFile.NuGet;
+namespace DotNetProjectFile.Licensing;
 
 // Based on https://spdx.org/licenses/
 
@@ -80,7 +80,7 @@ public static class Licenses
         }
 
         // TODO: handle complex expressions: https://spdx.github.io/spdx-spec/v2-draft/using-SPDX-short-identifiers-in-source-files/#e4-representing-multiple-licenses
-        
+
         if (Lookup.TryGetValue(licenseExpression, out var result))
         {
             return result;
@@ -102,97 +102,4 @@ public static class Licenses
         // TODO: fuzzy match the file content to known license texts
         return Unknown;
     }
-}
-
-public abstract record LicenseExpression()
-{
-    public abstract string Expression { get; }
-
-    public abstract bool CompatibleWith(LicenseExpression other);
-
-    public sealed override string ToString()
-        => Expression;
-}
-
-public static class LicenseExpressionExtensions
-{
-    public static bool CompatibleWith(this LicenseExpression license, string other)
-        => license.CompatibleWith(Licenses.FromExpression(other));
-}
-
-public sealed record UnknownLicense : LicenseExpression
-{
-    public static readonly UnknownLicense Instance = new();
-
-    private UnknownLicense()
-    {
-    }
-
-    public override string Expression => string.Empty;
-
-    public override bool CompatibleWith(LicenseExpression other)
-        => true;
-}
-
-public abstract record SingleLicense(string Identifier, ImmutableArray<string> Deprecated) : LicenseExpression()
-{
-    public override string Expression => Identifier;
-}
-
-public sealed record PermissiveLicense : SingleLicense
-{
-    public PermissiveLicense(string identifier, ImmutableArray<string>? deprecated = null)
-        : base(identifier, deprecated ?? [])
-    {
-
-    }
-
-    public override bool CompatibleWith(LicenseExpression other)
-        => true;
-}
-
-public sealed record CopyLeftLicense : SingleLicense
-{
-    public CopyLeftLicense(
-        string identifier,
-        ImmutableArray<string>? deprecated = null,
-        ImmutableArray<string>? compatibilities = null)
-        : base(identifier, deprecated ?? [])
-    {
-        Compatibilities = compatibilities ?? [];
-    }
-
-    public ImmutableArray<string> Compatibilities { get; }
-
-    public override bool CompatibleWith(LicenseExpression other)
-    {
-        if (other.Expression == Expression || Compatibilities.Contains(other.Expression))
-        {
-            return true;
-        }
-
-        return other switch
-        {
-            // NB: the inversion of the `and` and `or` are intentional.
-            AndLicenseExpression e => CompatibleWith(e.Left) || CompatibleWith(e.Right),
-            OrLicenseExpression e => CompatibleWith(e.Left) && CompatibleWith(e.Right),
-            _ => false, // All other cases.
-        };
-    }
-}
-
-public sealed record AndLicenseExpression(LicenseExpression Left, LicenseExpression Right) : LicenseExpression()
-{
-    public override string Expression => $"({Left} AND {Right})";
-
-    public override bool CompatibleWith(LicenseExpression other)
-        => Left.CompatibleWith(other) && Right.CompatibleWith(other);
-}
-
-public sealed record OrLicenseExpression(LicenseExpression Left, LicenseExpression Right) : LicenseExpression()
-{
-    public override string Expression => $"({Left} OR {Right})";
-
-    public override bool CompatibleWith(LicenseExpression other)
-        => Left.CompatibleWith(other) || Right.CompatibleWith(other);
 }

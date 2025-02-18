@@ -1,7 +1,7 @@
-using DotNetProjectFile.NuGet;
+using DotNetProjectFile.Licensing;
 using System.Collections.Immutable;
 
-namespace NuGet_License_specs;
+namespace Licensing.License_specs;
 
 public class Is
 {
