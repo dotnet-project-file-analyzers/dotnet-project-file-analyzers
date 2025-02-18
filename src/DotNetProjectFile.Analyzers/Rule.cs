@@ -736,8 +736,18 @@ public static partial class Rule
        title: "Only include packages with an explicitly defined license",
        message: "The {0} package is shipped without an explicitly defined license.",
        description:
-           "To prevent legal issues do not rely on 3rd party references that do not " +
+           "To prevent legal issues do not rely on third-party references that do not " +
            "come with an explicitly defined license.",
+       tags: ["license"],
+       category: Category.Legal);
+
+    public static DiagnosticDescriptor PackageOnlyContainsDeprecatedLicenseUrl => New(
+       id: 0501,
+       title: "Package only contains a deprecated license URL",
+       message: "The {0} package only only contains a deprecated license URL",
+       description:
+           "To prevent legal issues do not rely on thrid-party references that do not " +
+           "come with an ferifiable deprecated license URL.",
        tags: ["license"],
        category: Category.Legal);
 
