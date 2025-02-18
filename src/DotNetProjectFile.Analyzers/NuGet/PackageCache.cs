@@ -104,17 +104,7 @@ public static class PackageCache
             ? licenseNode.Value
             : null;
 
-        var license = Licenses.FromExpression(licenseExpression);
-
-        if (license == Licenses.Unknown)
-        {
-            license = Licenses.FromUrl(licenseUrl);
-        }
-
-        if (license == Licenses.Unknown)
-        {
-            license = Licenses.FromFile(licenseFile);
-        }
+        var license = GetLicense();
 
         return new()
         {
@@ -138,6 +128,26 @@ public static class PackageCache
             }
 
             return dir.Files("./**/*.dll").Any();
+        }
+
+        LicenseExpression GetLicense()
+        {
+            if (licenseExpression is { Length: > 0 })
+            {
+                return Licenses.FromExpression(licenseExpression);
+            }
+
+            if (licenseFile is { Length: > 0 })
+            {
+                return Licenses.FromFile(licenseFile);
+            }
+
+            if (licenseUrl is { Length: > 0 })
+            {
+                return Licenses.FromUrl(licenseUrl);
+            }
+
+            return Licenses.Unknown;
         }
     }
 
