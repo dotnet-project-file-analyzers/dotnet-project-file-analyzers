@@ -1,0 +1,21 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- Non-compiling files to analyze. -->
+  <ItemGroup>
+    <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
+    <AdditionalFiles Include="*.props" />
+    <AdditionalFiles Include="*.targets" />
+    <AdditionalFiles Include="*.resx" />
+  </ItemGroup>
+
+  <!-- Common variable that should be resolvable. -->
+  <ItemGroup>
+    <CompilerVisibleProperty Include="Configuration" />
+    <CompilerVisibleProperty Include="LangVersion" />
+    <CompilerVisibleProperty Include="MSBuildProjectFile" />
+    <CompilerVisibleProperty Include="MSBuildThisFileDirectory" />
+    <CompilerVisibleProperty Include="Platform" />
+    <CompilerVisibleProperty Include="SolutionDir" />
+  </ItemGroup>
+
+</Project>

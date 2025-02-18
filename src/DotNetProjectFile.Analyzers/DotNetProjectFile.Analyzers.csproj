@@ -56,14 +56,18 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.5.8</Version>
+    <Version>1.5.9</Version>
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
+- Proj0500: Only include packages with an explicitly defined license. (NEW RULE)
+v1.5.9
+- Proj0034: Import statement could not be resolved by the analyzer. (NEW RULE)
 - Proj0808: Define global package reference only in Directory.Packages.props. (NEW RULE)
 - Proj0809: Global package references are meant for private assets only. (NEW RULE)
 - Proj1200: Now able to heuristically determine if dependency should be a private asset. (FN)
 - Fix AD0001 when provided paths are not validly formatted. (BUG)
+- Disable rules that can not be excecuted correctly on a failing import. (FP)
 v1.5.8
 - Proj1001: Take <GlobalPackageReference>'s also into account. (FP)
 v1.5.7

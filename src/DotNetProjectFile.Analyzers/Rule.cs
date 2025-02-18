@@ -305,6 +305,14 @@ public static partial class Rule
         tags: ["dependencies", "dependency"],
         category: Category.Bug);
 
+    public static DiagnosticDescriptor UnresolvableImport => New(
+        id: 0034,
+        title: "Import statement could not be resolved",
+        message: "The <Import> '{0}' could not be resolved by the analyzer.",
+        description: "The .NET project file analyzer can (unfortunatly) not resolve all import statements.",
+        tags: ["limitation"],
+        category: Category.Bug);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
@@ -722,6 +730,16 @@ public static partial class Rule
         description: "Including the Microsoft.NET.Test.Sdk is only useful for test projects.",
         tags: ["Unit Testing"],
         category: Category.Bug);
+
+    public static DiagnosticDescriptor OnlyIncludePackagesWithExplicitLicense => New(
+       id: 0500,
+       title: "Only include packages with an explicitly defined license",
+       message: "The {0} package is shipped without an explicitly defined license.",
+       description:
+           "To prevent legal issues do not rely on 3rd party references that do not " +
+           "come with an explicitly defined license.",
+       tags: ["license"],
+       category: Category.Legal);
 
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
         id: 0600,

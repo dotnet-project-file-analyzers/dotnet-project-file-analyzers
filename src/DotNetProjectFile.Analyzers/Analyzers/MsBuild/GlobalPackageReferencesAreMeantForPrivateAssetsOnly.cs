@@ -7,6 +7,9 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class GlobalPackageReferencesAreMeantForPrivateAssetsOnly()
     : MsBuildProjectFileAnalyzer(Rule.GlobalPackageReferencesAreMeantForPrivateAssetsOnly)
 {
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
     /// <inheritdoc/>
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {
@@ -20,14 +23,9 @@ public sealed class GlobalPackageReferencesAreMeantForPrivateAssetsOnly()
 
     private bool NoPrivateAsset(GlobalPackageReference reference)
     {
-        if (Packages.All.TryGet(reference.Include) is { } pkg)
+        if (PackageCache.GetPackage(reference.Include, reference.Version) is { } package)
         {
-            return !pkg.IsPrivateAsset;
-        }
-
-        if (PackageCache.GetPackage(reference.Include, reference.Version) is { } cpkg)
-        {
-            return cpkg.HasRuntimeDll;
+            return package.HasRuntimeDll && package.IsDevelopmentDependency is not true;
         }
 
         // No info.

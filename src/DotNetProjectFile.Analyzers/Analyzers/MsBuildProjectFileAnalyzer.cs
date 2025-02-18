@@ -16,11 +16,14 @@ public abstract class MsBuildProjectFileAnalyzer(
     /// </remarks>
     public virtual IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.All;
 
+    /// <summary>Indicates that the rule will not be executed once an import could not be resolved (default is true).</summary>
+    public virtual bool DisableOnFailingImport => true;
+
     /// <summary>Registers the analyzer for all MS Build projects files.</summary>
     protected override void Register(AnalysisContext context)
         => context.RegisterProjectFileAction(c =>
         {
-            if (ApplicableTo.Contains(c.File.FileType))
+            if (ApplicableTo.Contains(c.File.FileType) && !(c.File.HasFailingImport && DisableOnFailingImport))
             {
                 Register(c);
             }

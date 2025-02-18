@@ -6,8 +6,10 @@ public sealed class TestProjectsRequireSdk() : MsBuildProjectFileAnalyzer(
     Rule.TestProjectsRequireSdk,
     Rule.UsingMicrosoftNetTestSdkImpliesTestProject)
 {
+    /// <inheritdoc />
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var isTest = context.File.IsTestProject();

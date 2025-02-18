@@ -4,6 +4,10 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class GeneratePackageOnBuildConditionally()
     : MsBuildProjectFileAnalyzer(Rule.GeneratePackageOnBuildConditionally)
 {
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var generate in context.File.PropertyGroups.SelectMany(p => p.GeneratePackageOnBuild)

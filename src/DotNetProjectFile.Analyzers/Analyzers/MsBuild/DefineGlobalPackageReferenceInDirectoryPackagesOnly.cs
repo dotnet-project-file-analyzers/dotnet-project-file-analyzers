@@ -7,6 +7,9 @@ public sealed class DefineGlobalPackageReferenceInDirectoryPackagesOnly()
 {
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.AllExceptDirectoryPackages;
 
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
     /// <inheritdoc/>
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {

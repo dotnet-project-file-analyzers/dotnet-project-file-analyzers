@@ -1,17 +1,9 @@
 namespace DotNetProjectFile.MsBuild;
 
 public sealed class PackageReference(XElement element, Node parent, MsBuildProject project)
-    : Node(element, parent, project)
+    : PackageReferenceBase(element, parent, project)
 {
-    public string? Include => Attribute();
-
-    public string? Update => Attribute();
-
-    public string? Version => Attribute();
-
     public string? VersionOverride => Attribute();
-
-    public string IncludeOrUpdate => Include ?? Update ?? string.Empty;
 
     public string VersionOrVersionOverride => Version ?? VersionOverride ?? string.Empty;
 

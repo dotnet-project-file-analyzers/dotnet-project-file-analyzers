@@ -6,6 +6,10 @@ public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(R
     /// <inheritdoc />
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
+
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (!context.File.IsPackable() || context.File.IsTestProject()) return;

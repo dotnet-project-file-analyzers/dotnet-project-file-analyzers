@@ -103,8 +103,9 @@ public static class PackageCache
             Version = versionDir.Name,
             HasAnalyzerDll = HasDllFiles("analyzers"),
             HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes"),
-            NuSpecFile = TryLoadNuSpecFile(versionDir, new(name, versionDir.Name)),
             License = license,
+            LicenseUrl = nuspec?.Metadata.LicenseUrl,
+            IsDevelopmentDependency = nuspec?.Metadata.DevelopmentDependency,
         };
 
         bool HasDllFiles(string subDir)

@@ -4,7 +4,11 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class BuildActionsShouldHaveSingleTask() : MsBuildProjectFileAnalyzer(Rule.BuildActionsShouldHaveSingleTask)
 {
+    /// <inheritdoc />
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.AllExceptSDK;
+
+    /// <inheritdoc />
+    public override bool DisableOnFailingImport => false;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {

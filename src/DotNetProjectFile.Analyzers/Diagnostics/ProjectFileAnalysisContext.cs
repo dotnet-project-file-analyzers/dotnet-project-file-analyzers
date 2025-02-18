@@ -26,6 +26,10 @@ public readonly struct ProjectFileAnalysisContext<TFile>(
     /// <summary>Gets the analyzer options.</summary>
     public AnalyzerOptions Options { get; } = options;
 
+    /// <summary>Gets the MS Build property.</summary>
+    [Pure]
+    public string? GetMsBuildProperty(string propertyName) => Options.GetMsBuildProperty(propertyName);
+
     /// <summary>Gets the cancellation token.</summary>
     public CancellationToken CancellationToken { get; } = cancellationToken;
 

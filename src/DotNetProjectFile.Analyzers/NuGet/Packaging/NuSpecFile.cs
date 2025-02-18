@@ -1,4 +1,5 @@
 using System.IO;
+using System.Xml;
 using System.Xml.Serialization;
 
 namespace DotNetProjectFile.NuGet.Packaging;
@@ -15,7 +16,7 @@ public sealed record NuSpecFile
 
     private static readonly XmlSerializer Serializer = new(typeof(NuSpecFile));
 
-    private sealed class NamespaceIgnorantReader : System.Xml.XmlTextReader
+    private sealed class NamespaceIgnorantReader : XmlTextReader
     {
         public NamespaceIgnorantReader(Stream stream) : base(stream) { }
 
