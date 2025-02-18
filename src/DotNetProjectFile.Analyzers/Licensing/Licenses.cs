@@ -82,6 +82,15 @@ public static class Licenses
         = AdditionalLicenseUrlsRaw
         .ToFrozenDictionary(x => SimplifyUrl(x.Key), x => FromExpression(x.Value), StringComparer.OrdinalIgnoreCase);
 
+    private static readonly FrozenDictionary<string, LicenseExpression> SpdxLicenseUrls
+        = All
+        .OfType<SingleLicense>()
+        .SelectMany(license => (license.SpdxInfo?.SeeAlso ?? []).Select(url => (SimplifyUrl(url), license)))
+        .Where(x => x.Item1 is { Length: > 0 })
+        .GroupBy(x => x.Item1)
+        .Select(x => x.MinBy(static x => x.license.Expression.Length))
+        .ToFrozenDictionary(x => x.Item1, x => x.license as LicenseExpression, StringComparer.OrdinalIgnoreCase);
+
     private static FrozenDictionary<string, LicenseExpression> CreateLookup()
     {
         var result = new Dictionary<string, LicenseExpression>();
@@ -131,6 +140,11 @@ public static class Licenses
         var simplified = SimplifyUrl(licenseUrl);
 
         if (AdditionalLicenseUrls.TryGetValue(simplified, out var result))
+        {
+            return result;
+        }
+
+        if (SpdxLicenseUrls.TryGetValue(simplified, out result))
         {
             return result;
         }
