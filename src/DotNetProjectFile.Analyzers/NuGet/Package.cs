@@ -15,4 +15,6 @@ public record Package
     public bool IsPrivateAsset { get; }
 
     public string? Language { get; }
+
+    public bool IsMatch(PackageReferenceBase reference) => reference.Include.IsMatch(Name);
 }
