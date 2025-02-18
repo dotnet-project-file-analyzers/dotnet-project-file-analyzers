@@ -37,6 +37,7 @@ public class Loads
                 Id = "DotNetProjectFile.Analyzers",
                 Version = "1.2.2",
                 License = new() { Type = "file", Value = "license.txt" },
+                LicenseUrl = "https://licenses.nuget.org/MIT",
                 DevelopmentDependency = true,
             }
         });
@@ -88,8 +89,8 @@ public class Loads
                 Id = "NuGet.Configuration",
                 Version = "6.13.1",
                 License = new() { Type = "expression", Value = "Apache-2.0" },
+                LicenseUrl = "https://licenses.nuget.org/Apache-2.0",
             }
         });
-
     }
 }
