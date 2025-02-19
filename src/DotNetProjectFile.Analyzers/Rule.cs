@@ -756,7 +756,7 @@ public static partial class Rule
         title: "Package contains an incompatible license",
         message: "The {0} package is distributed with the incompatible {1} license.",
         description:
-            "To prevent legal issues do not rely on thrid-party references that have " +
+            "To prevent legal issues do not rely on third-party references that have " +
             "an incompatable license.",
         tags: ["license"],
         category: Category.Legal,
