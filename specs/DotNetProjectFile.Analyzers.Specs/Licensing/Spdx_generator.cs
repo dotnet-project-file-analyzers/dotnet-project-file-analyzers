@@ -96,14 +96,44 @@ public class Generator
 
         async Task<string?> GetLicenseText(string id)
         {
+            var dir = Path.Combine(GetCurrentDirectoryPath(), "Generated");
+            Directory.CreateDirectory(dir);
+
+            var fileName = Path.Combine(dir, $"{id}.txt");
+
             try
             {
+                if (File.Exists(fileName))
+                {
+                    var fromFile = await File.ReadAllTextAsync(fileName);
+                    if (string.IsNullOrWhiteSpace(fromFile))
+                    {
+                        return null;
+                    }
+                }
+
                 using var detailsResponse = await client.GetAsync($"{SpdxUrl}{id}.json");
                 var details = await detailsResponse.Content.ReadFromJsonAsync<LicenseDetails>();
-                return details?.LicenseText;
+                var text = details?.LicenseText;
+
+                await File.WriteAllTextAsync(fileName, text ?? string.Empty);
+
+                return text;
             }
             catch
             {
+                if (!File.Exists(fileName))
+                {
+                    try
+                    {
+                        await File.WriteAllTextAsync(fileName, "");
+                    }
+                    catch
+                    {
+                        // Do nothing.
+                    }
+                }
+
                 return null;
             }
         }
