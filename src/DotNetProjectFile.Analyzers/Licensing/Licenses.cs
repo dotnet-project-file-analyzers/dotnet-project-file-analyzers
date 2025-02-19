@@ -73,6 +73,7 @@ public static class Licenses
         ["https://microsoft.mit-license.org/"] = "MIT",
         ["http://go.microsoft.com/fwlink/?LinkId=329770"] = "MIT",
         ["https://github.com/dotnet/corefx/blob/master/LICENSE.TXT"] = "MIT",
+        ["https://github.com/dotnet/coreclr/blob/master/LICENSE.TXT"] = "MIT",
         ["https://raw.githubusercontent.com/aspnet/AspNetCore/2.0.0/LICENSE.txt"] = "Apache-2.0",
         ["https://raw.githubusercontent.com/aspnet/Home/2.0.0/LICENSE.txt"] = "Apache-2.0",
         ["https://www.gnu.org/licenses/lgpl.html"] = "LGPL-3.0-only",
