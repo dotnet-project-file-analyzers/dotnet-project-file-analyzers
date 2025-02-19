@@ -14,9 +14,8 @@ public class Generator
     private static readonly string SpdxUrl = "https://spdx.org/licenses/";
     private static readonly string SpdxLicensesUrl = $"{SpdxUrl}licenses.json";
 
-#if DEBUG // To avoid running in CI pipeline.
+    [Category("Generators")]
     [Test]
-#endif
     public async Task Generate()
     {
         using var client = new HttpClient();
