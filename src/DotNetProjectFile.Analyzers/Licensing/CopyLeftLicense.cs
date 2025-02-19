@@ -4,9 +4,10 @@ public sealed record CopyLeftLicense : SingleLicense
 {
     public CopyLeftLicense(
         string identifier,
+        string? baseLicense = null,
         ImmutableArray<string>? deprecated = null,
         ImmutableArray<string>? compatibilities = null)
-        : base(identifier, deprecated ?? [])
+        : base(identifier, baseLicense, deprecated ?? [])
     {
         Compatibilities = compatibilities ?? [];
     }

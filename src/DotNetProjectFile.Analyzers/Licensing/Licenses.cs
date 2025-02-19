@@ -35,27 +35,27 @@ public static class Licenses
         new PermissiveLicense("MPL-1.0"),
         new PermissiveLicense("MPL-1.1"),
         new PermissiveLicense("MPL-2.0"),
-        new PermissiveLicense("MPL-2.0-no-copyleft-exception"),
+        new PermissiveLicense("MPL-2.0-no-copyleft-exception", baseLicense: "MPL-2.0"),
 
         // LGPL is technically copy-left, but only when linking statically. Since C# code is usually linked dynamically, we allow it for now.
         new PermissiveLicense("LGPL-2.0-only", deprecated: ["LGPL-2.0"]),
-        new PermissiveLicense("LGPL-2.0-or-later", deprecated: ["LGPL-2.0+"]),
+        new PermissiveLicense("LGPL-2.0-or-later", deprecated: ["LGPL-2.0+"], baseLicense: "LGPL-2.0-only"),
         new PermissiveLicense("LGPL-3.0-only", deprecated: ["LGPL-3.0"]),
-        new PermissiveLicense("LGPL-3.0-or-later", deprecated: ["LGPL-3.0+"]),
+        new PermissiveLicense("LGPL-3.0-or-later", deprecated: ["LGPL-3.0+"], baseLicense: "LGPL-3.0-only"),
 
         new CopyLeftLicense("GPL-1.0-only", deprecated: ["GPL-1.0"]),
         new CopyLeftLicense("GPL-2.0-only", deprecated: ["GPL-2.0"]),
         new CopyLeftLicense("GPL-3.0-only", deprecated: ["GPL-3.0"], compatibilities: ["AGPL-3.0-only"]), // AGPL3 allowed due to clause 13 in GPL3
 
-        new CopyLeftLicense("GPL-1.0-or-later", deprecated: ["GPL-1.0+"], compatibilities: ["GPL-1.0-only", "GPL-2.0-only", "GPL-3.0-only", "GPL-2.0-or-later", "GPL-3.0-or-later"]),
-        new CopyLeftLicense("GPL-2.0-or-later", deprecated: ["GPL-2.0+"], compatibilities: ["GPL-2.0-only", "GPL-3.0-only", "GPL-3.0-or-later"]),
-        new CopyLeftLicense("GPL-3.0-or-later", deprecated: ["GPL-3.0+"], compatibilities: ["GPL-3.0-only"]),
+        new CopyLeftLicense("GPL-1.0-or-later", deprecated: ["GPL-1.0+"], compatibilities: ["GPL-1.0-only", "GPL-2.0-only", "GPL-3.0-only", "GPL-2.0-or-later", "GPL-3.0-or-later"], baseLicense: "GPL-1.0-only"),
+        new CopyLeftLicense("GPL-2.0-or-later", deprecated: ["GPL-2.0+"], compatibilities: ["GPL-2.0-only", "GPL-3.0-only", "GPL-3.0-or-later"], baseLicense: "GPL-2.0-only"),
+        new CopyLeftLicense("GPL-3.0-or-later", deprecated: ["GPL-3.0+"], compatibilities: ["GPL-3.0-only"], baseLicense: "GPL-3.0-only"),
 
         new CopyLeftLicense("AGPL-1.0-only", deprecated: ["AGPL-1.0"]),
         new CopyLeftLicense("AGPL-3.0-only", deprecated: ["AGPL-3.0"]),
 
-        new CopyLeftLicense("AGPL-1.0-or-later", deprecated: ["AGPL-1.0+"], compatibilities: ["AGPL-1.0-only", "AGPL-3.0-only", "AGPL-3.0-or-later"]),
-        new CopyLeftLicense("AGPL-3.0-or-later", deprecated: ["AGPL-3.0+"], compatibilities: ["AGPL-3.0-only"]),
+        new CopyLeftLicense("AGPL-1.0-or-later", deprecated: ["AGPL-1.0+"], compatibilities: ["AGPL-1.0-only", "AGPL-3.0-only", "AGPL-3.0-or-later"], baseLicense: "AGPL-1.0-only"),
+        new CopyLeftLicense("AGPL-3.0-or-later", deprecated: ["AGPL-3.0+"], compatibilities: ["AGPL-3.0-only"], baseLicense: "AGPL-3.0-only"),
     ];
 
     private static readonly FrozenDictionary<string, LicenseExpression> Lookup = CreateLookup();
@@ -71,6 +71,11 @@ public static class Licenses
     {
         ["https://ianhammondcooper.mit-license.org/"] = "MIT",
         ["https://microsoft.mit-license.org/"] = "MIT",
+        ["http://go.microsoft.com/fwlink/?LinkId=329770"] = "MIT",
+        ["https://github.com/dotnet/corefx/blob/master/LICENSE.TXT"] = "MIT",
+        ["https://github.com/dotnet/coreclr/blob/master/LICENSE.TXT"] = "MIT",
+        ["https://raw.githubusercontent.com/aspnet/AspNetCore/2.0.0/LICENSE.txt"] = "Apache-2.0",
+        ["https://raw.githubusercontent.com/aspnet/Home/2.0.0/LICENSE.txt"] = "Apache-2.0",
         ["https://www.gnu.org/licenses/lgpl.html"] = "LGPL-3.0-only",
         ["https://www.gnu.org/licenses/agpl.html"] = "AGPL-3.0-only",
         ["https://www.gnu.org/licenses/gpl.html"] = "GPL-3.0-only",
@@ -81,6 +86,15 @@ public static class Licenses
     private static readonly FrozenDictionary<string, LicenseExpression> AdditionalLicenseUrls
         = AdditionalLicenseUrlsRaw
         .ToFrozenDictionary(x => SimplifyUrl(x.Key), x => FromExpression(x.Value), StringComparer.OrdinalIgnoreCase);
+
+    private static readonly FrozenDictionary<string, LicenseExpression> SpdxLicenseUrls
+        = All
+        .OfType<SingleLicense>()
+        .SelectMany(license => (license.SpdxInfo?.SeeAlso ?? []).Select(url => (SimplifyUrl(url), license)))
+        .Where(x => x.Item1 is { Length: > 0 })
+        .GroupBy(x => x.Item1)
+        .Select(x => x.MinBy(static x => x.license.Expression.Length))
+        .ToFrozenDictionary(x => x.Item1, x => x.license as LicenseExpression, StringComparer.OrdinalIgnoreCase);
 
     private static FrozenDictionary<string, LicenseExpression> CreateLookup()
     {
@@ -135,6 +149,11 @@ public static class Licenses
             return result;
         }
 
+        if (SpdxLicenseUrls.TryGetValue(simplified, out result))
+        {
+            return result;
+        }
+
         foreach (var url in GenericLicenseUrlDomains)
         {
             var tail = simplified.TrimStart(url);
@@ -167,7 +186,7 @@ public static class Licenses
             .TrimEnd("-license");
     }
 
-    public static LicenseExpression FromFile(string? licenseUrl)
+    public static LicenseExpression FromFile(string? licenseFile)
     {
         // TODO: fuzzy match the file content to known license texts
         return Unknown;

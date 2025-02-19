@@ -19,6 +19,14 @@ public class Is_defined
         .Distinct()
         .ToImmutableArray();
 
+    private static readonly ImmutableArray<string> BaseExpressions
+        = Licenses.All
+        .OfType<SingleLicense>()
+        .Select(l => l.BaseLicense)
+        .OfType<string>()
+        .Distinct()
+        .ToImmutableArray();
+
     [TestCaseSource(nameof(DeprecatedExpressions))]
     public void Deprecated(string expressionName)
     {
@@ -27,6 +35,12 @@ public class Is_defined
 
     [TestCaseSource(nameof(CompatibleExpressions))]
     public void Compatibilities(string expressionName)
+    {
+        Licenses.FromExpression(expressionName).Should().NotBe(Licenses.Unknown);
+    }
+
+    [TestCaseSource(nameof(BaseExpressions))]
+    public void BaseLicenses(string expressionName)
     {
         Licenses.FromExpression(expressionName).Should().NotBe(Licenses.Unknown);
     }
