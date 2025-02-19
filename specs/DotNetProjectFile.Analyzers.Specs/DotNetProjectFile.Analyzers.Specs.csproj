@@ -61,7 +61,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Licensing\Generated\" />
+    <Folder Include="Licensing\LicenseTexts\" />
   </ItemGroup>
 
 </Project>

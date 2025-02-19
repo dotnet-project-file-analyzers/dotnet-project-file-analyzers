@@ -66,7 +66,7 @@ public class Generator
 
         async Task<string?> GetLicenseText(string id)
         {
-            var dir = Path.Combine(GetCurrentDirectoryPath(), "Generated");
+            var dir = Path.Combine(GetCurrentDirectoryPath(), "LicenseTexts");
             Directory.CreateDirectory(dir);
 
             var fileName = Path.Combine(dir, $"{id}.txt");
