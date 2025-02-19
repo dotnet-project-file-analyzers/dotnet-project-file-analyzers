@@ -44,7 +44,7 @@ public class Generator
                 Fsf = license.IsFsfLibre,
                 Osi = license.IsOsiApproved,
                 SeeAlso = license.SeeAlso?.OfType<string>().ToImmutableArray() ?? [],
-                LicenseText = await GetLicenseText(license.LicenseId!),
+                LicenseText = (await GetLicenseText(license.LicenseId!))?.Trim(),
             };
             infos.Add(info);
         }
