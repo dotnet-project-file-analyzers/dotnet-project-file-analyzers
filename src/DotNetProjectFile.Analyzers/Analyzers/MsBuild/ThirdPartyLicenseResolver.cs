@@ -15,10 +15,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var allowed = (context.GetMsBuildProperty("AllowedLicenses") ?? string.Empty)
-            .Split([',', ';'], StringSplitOptions.RemoveEmptyEntries)
-            .Select(l => Licenses.FromExpression(l.Trim()))
-            .ToArray();
+        var allowed = AllowedLicenses(context);
 
         foreach (var reference in context.File.ItemGroups.SelectMany(g => g.Children)
             .OfType<PackageReferenceBase>()
@@ -28,7 +25,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
         }
     }
 
-    private static void Report(PackageReferenceBase reference, LicenseExpression[] allowed, ProjectFileAnalysisContext context)
+    private static void Report(PackageReferenceBase reference, ImmutableArray<LicenseExpression> allowed, ProjectFileAnalysisContext context)
     {
         if (reference.GetLicensedPackage() is not { } package)
         {
@@ -47,6 +44,12 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
             context.ReportDiagnostic(Rule.PackageContainsIncompatibleLicense, reference, reference.IncludeOrUpdate, expression);
         }
     }
+
+    private static ImmutableArray<LicenseExpression> AllowedLicenses(ProjectFileAnalysisContext context)
+        => context.GetMsBuildProperty("AllowedLicenses") is { } custom
+        ? [..custom.Split([',', ';'], StringSplitOptions.RemoveEmptyEntries)
+            .Select(l => Licenses.FromExpression(l.Trim()))]
+        : Licenses.Permissive;
 }
 
 file static class Extensions

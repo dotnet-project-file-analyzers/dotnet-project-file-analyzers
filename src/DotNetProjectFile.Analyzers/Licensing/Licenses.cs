@@ -58,6 +58,9 @@ public static class Licenses
         new CopyLeftLicense("AGPL-3.0-or-later", deprecated: ["AGPL-3.0+"], compatibilities: ["AGPL-3.0-only"], baseLicense: "AGPL-3.0-only"),
     ];
 
+    /// <summary>All permissive licenses.</summary>
+    public static readonly ImmutableArray<LicenseExpression> Permissive = [.. All.OfType<PermissiveLicense>()];
+
     private static readonly FrozenDictionary<string, LicenseExpression> Lookup = CreateLookup();
 
     private static readonly ImmutableArray<string> GenericLicenseUrlDomains =
