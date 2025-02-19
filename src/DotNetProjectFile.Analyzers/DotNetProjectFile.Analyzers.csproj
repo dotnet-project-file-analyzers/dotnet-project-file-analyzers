@@ -64,6 +64,7 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
+- Proj0217: Define requiring license acceptance explicitly. (NEW RULE)
 - Proj0500: Only include packages with an explicitly defined license. (NEW RULE)
 - Proj0501: Package only contains a deprecated license URL. (NEW RULE)
 v1.5.9
