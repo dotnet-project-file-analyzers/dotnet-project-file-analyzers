@@ -3,7 +3,7 @@ namespace Rules.MS_Build.Licensing.Only_include_packages_with_explicit_license;
 public class Reports
 {
     [Test]
-    public void on_packages_without_license_specified_in_nuspec() => new ThridPartyLicenseResolver()
+    public void on_packages_without_license_specified_in_nuspec() => new ThirdPartyLicenseResolver()
        .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
 
@@ -22,7 +22,7 @@ public class Reports
 public class Guards
 {
     [Test]
-    public void license_urls() => new ThridPartyLicenseResolver()
+    public void license_urls() => new ThirdPartyLicenseResolver()
       .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
 
@@ -39,7 +39,7 @@ public class Guards
 
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
-    public void Projects_without_issues(string project) => new ThridPartyLicenseResolver()
+    public void Projects_without_issues(string project) => new ThirdPartyLicenseResolver()
         .ForProject(project)
         .HasNoIssues();
 }

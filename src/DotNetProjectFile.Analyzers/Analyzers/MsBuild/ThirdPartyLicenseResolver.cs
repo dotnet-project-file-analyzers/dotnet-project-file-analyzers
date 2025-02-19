@@ -5,7 +5,7 @@ using DotNetProjectFile.NuGet;
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class ThridPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
+public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     Rule.OnlyIncludePackagesWithExplicitLicense,
     Rule.PackageOnlyContainsDeprecatedLicenseUrl)
 {

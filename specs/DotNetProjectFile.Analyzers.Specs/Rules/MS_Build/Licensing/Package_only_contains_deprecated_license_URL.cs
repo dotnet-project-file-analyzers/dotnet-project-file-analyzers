@@ -3,7 +3,7 @@ namespace Rules.MS_Build.Licensing.Package_only_contains_deprecated_license_URL;
 public class Reports
 {
     [Test]
-    public void on_packages_without_deprecated_nuspec() => new ThridPartyLicenseResolver()
+    public void on_packages_without_deprecated_nuspec() => new ThirdPartyLicenseResolver()
        .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
 
@@ -22,7 +22,7 @@ public class Reports
 public class Guards
 {
     [Test, Ignore("Include a license URL that can be parsed")]
-    public void license_urls() => new ThridPartyLicenseResolver()
+    public void license_urls() => new ThirdPartyLicenseResolver()
       .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
 
@@ -39,7 +39,7 @@ public class Guards
 
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
-    public void Projects_without_issues(string project) => new ThridPartyLicenseResolver()
+    public void Projects_without_issues(string project) => new ThirdPartyLicenseResolver()
         .ForProject(project)
         .HasNoIssues();
 }
