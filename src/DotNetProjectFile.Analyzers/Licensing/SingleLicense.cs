@@ -2,9 +2,10 @@ namespace DotNetProjectFile.Licensing;
 
 public abstract record SingleLicense : LicenseExpression
 {
-    public SingleLicense(string identifier, ImmutableArray<string> deprecated)
+    public SingleLicense(string identifier, string? baseLicense, ImmutableArray<string> deprecated)
     {
         Expression = identifier;
+        BaseLicense = baseLicense;
         Deprecated = deprecated;
         SpdxInfo = Spdx.TryGetLicense(identifier);
     }
@@ -12,6 +13,8 @@ public abstract record SingleLicense : LicenseExpression
     public override string Expression { get; }
 
     public ImmutableArray<string> Deprecated { get; }
+
+    public string? BaseLicense { get; }
 
     public SpdxLicenseInfo? SpdxInfo { get; }
 }

@@ -1,5 +1,6 @@
 #pragma warning disable RS1035 // FP
 
+using DotNetProjectFile.Licensing;
 using System.IO;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -24,7 +25,10 @@ public class Generator
 
         var list = await response.Content.ReadFromJsonAsync<LicenseList>();
         var licenses = list?.Licenses?.OfType<License>() ?? [];
-        var valid = licenses.Where(l => l.LicenseId is { Length: > 0 });
+        var valid = licenses
+            .Where(l => l.LicenseId is { Length: > 0 })
+            .Where(l => !l.IsDeprecatedLicenseId)
+            .Where(l => Licenses.FromExpression(l.LicenseId) != Licenses.Unknown);
 
         var curDir = GetCurrentDirectoryPath();
         var outputDir = Path.Combine(curDir, "../../../src/DotNetProjectFile.Analyzers/Licensing/Generated");
