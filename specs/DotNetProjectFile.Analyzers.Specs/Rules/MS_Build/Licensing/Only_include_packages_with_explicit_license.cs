@@ -31,7 +31,7 @@ public class Guards
     </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include=""MSTest.TestAdapter"" Version=""1.3.2"" />
+    <PackageReference Include=""Microsoft.Azure.AppConfiguration.AspNetCore"" Version=""8.0.0"" />
   </ItemGroup>
 
 </Project>")
