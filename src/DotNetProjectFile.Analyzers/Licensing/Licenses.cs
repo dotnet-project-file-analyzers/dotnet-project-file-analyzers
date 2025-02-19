@@ -71,6 +71,7 @@ public static class Licenses
     {
         ["https://ianhammondcooper.mit-license.org/"] = "MIT",
         ["https://microsoft.mit-license.org/"] = "MIT",
+        ["http://go.microsoft.com/fwlink/?LinkId=329770"] = "MIT",
         ["https://www.gnu.org/licenses/lgpl.html"] = "LGPL-3.0-only",
         ["https://www.gnu.org/licenses/agpl.html"] = "AGPL-3.0-only",
         ["https://www.gnu.org/licenses/gpl.html"] = "GPL-3.0-only",

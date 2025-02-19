@@ -44,6 +44,7 @@ public class From_url
     [TestCase("https://www.opensource.org/licenses/mit-license.php", "MIT")]
     [TestCase("https://www.eclipse.org/org/documents/edl-v10.php", "BSD-3-Clause")]
     [TestCase("https://svnweb.freebsd.org/base/head/include/ifaddrs.h?revision=326823", "BSD-1-Clause")]
+    [TestCase("http://go.microsoft.com/fwlink/?LinkId=329770", "MIT")]
     public void Results_in(string? url, string? expected)
     {
         expected ??= Licenses.Unknown.Expression;
