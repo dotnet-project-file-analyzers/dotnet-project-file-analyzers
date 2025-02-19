@@ -6,8 +6,6 @@ using System.IO;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Runtime.CompilerServices;
-using System.Text.Encodings.Web;
-using System.Web;
 
 namespace Licensing.Spdx;
 
@@ -34,6 +32,7 @@ public class Generator
         var curDir = GetCurrentDirectoryPath();
         var outputDir = Path.Combine(curDir, "../../../src/DotNetProjectFile.Analyzers/Licensing/Generated");
         Directory.CreateDirectory(outputDir);
+        var outputFile = Path.Combine(outputDir, "spdx_info.bin");
 
         var infos = new List<SpdxLicenseInfo>();
         foreach (var license in valid)
@@ -50,7 +49,20 @@ public class Generator
             infos.Add(info);
         }
 
-        Assert.Fail();
+        // Encode and compress spdx data.
+        using var compressed = new MemoryStream();
+        SpdxLicenseInfo.WriteAllToCompressed(infos, compressed);
+
+        // Validate we can read the stream back.
+        compressed.Position = 0;
+        var readBack = SpdxLicenseInfo.ReadAllFromCompressed(compressed);
+        readBack.Should().BeEquivalentTo(infos);
+
+        // Save compressed data.
+        compressed.Position = 0;
+        using var fs = File.Create(outputFile);
+        await compressed.CopyToAsync(fs);
+        await fs.FlushAsync();
 
         async Task<string?> GetLicenseText(string id)
         {
