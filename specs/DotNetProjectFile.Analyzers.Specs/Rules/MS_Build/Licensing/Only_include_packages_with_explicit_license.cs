@@ -1,11 +1,9 @@
-using FluentAssertions;
-
-namespace Rules.MS_Build.Only_include_packages_with_explicit_license;
+namespace Rules.MS_Build.Licensing.Only_include_packages_with_explicit_license;
 
 public class Reports
 {
     [Test]
-    public void on_packages_without_license_specified_in_nuspec() => new OnlyIncludePackagesWithExplicitLicense()
+    public void on_packages_without_license_specified_in_nuspec() => new ThirdPartyLicenseResolver()
        .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
 
@@ -23,9 +21,8 @@ public class Reports
 
 public class Guards
 {
-
     [Test]
-    public void license_urls() => new OnlyIncludePackagesWithExplicitLicense()
+    public void license_urls() => new ThirdPartyLicenseResolver()
       .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
 
@@ -34,7 +31,7 @@ public class Guards
     </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include=""MSTest.TestAdapter"" Version=""1.3.2"" />
+    <PackageReference Include=""Microsoft.Azure.AppConfiguration.AspNetCore"" Version=""8.0.0"" />
   </ItemGroup>
 
 </Project>")
@@ -42,7 +39,7 @@ public class Guards
 
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
-    public void Projects_without_issues(string project) => new OnlyIncludePackagesWithExplicitLicense()
+    public void Projects_without_issues(string project) => new ThirdPartyLicenseResolver()
         .ForProject(project)
         .HasNoIssues();
 }
