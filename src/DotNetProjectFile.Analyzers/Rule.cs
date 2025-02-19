@@ -764,10 +764,10 @@ public static partial class Rule
         tags: ["license"],
         category: Category.Legal);
 
-    public static DiagnosticDescriptor PackageContainsIncompatibleLicense => New(
+    public static DiagnosticDescriptor PackageIncompatibleWithProjectLicense => New(
         id: 0502,
-        title: "Package contains an incompatible license",
-        message: "The {0} package is distributed with the incompatible {1} license.",
+        title: "Only include packages compliant with project",
+        message: "The {0} package is distributed as {1}, which is imcompatable with the {2} license of the project.",
         description:
             "To prevent legal issues do not rely on third-party references that have " +
             "an incompatable license.",

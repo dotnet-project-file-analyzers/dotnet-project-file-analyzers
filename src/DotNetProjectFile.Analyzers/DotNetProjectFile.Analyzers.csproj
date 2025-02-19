@@ -68,7 +68,7 @@ ToBeReleased:
 - Proj0217: Define requiring license acceptance explicitly. (NEW RULE)
 - Proj0500: Only include packages with an explicitly defined license. (NEW RULE)
 - Proj0501: Package only contains a deprecated license URL. (NEW RULE)
-- Proj0502: Only include packages with a compliant license. (NEW RULE)
+- Proj0502: Only include packages compliant with project. (NEW RULE)
 v1.5.9
 - Proj0034: Import statement could not be resolved by the analyzer. (NEW RULE)
 - Proj0808: Define global package reference only in Directory.Packages.props. (NEW RULE)

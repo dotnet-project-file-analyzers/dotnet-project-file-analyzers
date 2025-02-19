@@ -10,11 +10,11 @@
 
   <!-- Common variable that should be resolvable. -->
   <ItemGroup>
-    <CompilerVisibleProperty Include="AllowedLicenses" />
     <CompilerVisibleProperty Include="Configuration" />
     <CompilerVisibleProperty Include="LangVersion" />
     <CompilerVisibleProperty Include="MSBuildProjectFile" />
     <CompilerVisibleProperty Include="MSBuildThisFileDirectory" />
+    <CompilerVisibleProperty Include="PackageLicenseExpression" />
     <CompilerVisibleProperty Include="Platform" />
     <CompilerVisibleProperty Include="SolutionDir" />
   </ItemGroup>

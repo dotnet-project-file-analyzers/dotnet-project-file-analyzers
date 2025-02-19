@@ -7,7 +7,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     Rule.OnlyIncludePackagesWithExplicitLicense,
     Rule.PackageOnlyContainsDeprecatedLicenseUrl,
-    Rule.PackageContainsIncompatibleLicense)
+    Rule.PackageIncompatibleWithProjectLicense)
 {
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
@@ -15,17 +15,17 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var allowed = AllowedLicenses(context);
+        var projectLicense = Licenses.FromExpression(context.GetMsBuildProperty("PackageLicenseExpression"));
 
         foreach (var reference in context.File.ItemGroups.SelectMany(g => g.Children)
             .OfType<PackageReferenceBase>()
             .Where(r => r.Version is { Length: > 0 }))
         {
-            Report(reference, allowed, context);
+            Report(reference, projectLicense, context);
         }
     }
 
-    private static void Report(PackageReferenceBase reference, ImmutableArray<LicenseExpression> allowed, ProjectFileAnalysisContext context)
+    private static void Report(PackageReferenceBase reference, LicenseExpression projectLicense, ProjectFileAnalysisContext context)
     {
         if (reference.GetLicensedPackage() is not { } package)
         {
@@ -33,23 +33,17 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
             return;
         }
 
-        var expression = package.LicenseExpression();
+        var packageLicense = package.LicenseExpression();
 
-        if (package.UrlOnly() && expression.IsUnknown)
+        if (package.UrlOnly() && packageLicense.IsUnknown)
         {
             context.ReportDiagnostic(Rule.PackageOnlyContainsDeprecatedLicenseUrl, reference, reference.IncludeOrUpdate);
         }
-        else if (expression.IsKnown && !allowed.Contains(expression))
+        else if (projectLicense.IsKnown && !packageLicense.CompatibleWith(projectLicense))
         {
-            context.ReportDiagnostic(Rule.PackageContainsIncompatibleLicense, reference, reference.IncludeOrUpdate, expression);
+            context.ReportDiagnostic(Rule.PackageIncompatibleWithProjectLicense, reference, reference.IncludeOrUpdate, packageLicense, projectLicense);
         }
     }
-
-    private static ImmutableArray<LicenseExpression> AllowedLicenses(ProjectFileAnalysisContext context)
-        => context.GetMsBuildProperty("AllowedLicenses") is { } custom
-        ? [..custom.Split([',', ';'], StringSplitOptions.RemoveEmptyEntries)
-            .Select(l => Licenses.FromExpression(l.Trim()))]
-        : Licenses.Permissive;
 }
 
 file static class Extensions
