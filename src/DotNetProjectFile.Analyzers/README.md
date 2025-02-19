@@ -77,6 +77,7 @@ The package contains analyzers that analyze .NET project files.
 ### Licensing
 * [**Proj0500** Only include packages with an explicitly defined license](https://dotnet-project-file-analyzers.github.io/rules/Proj0500.html)
 * [**Proj0501** Package only contains a deprecated license URL](https://dotnet-project-file-analyzers.github.io/rules/Proj0501.html)
+* [**Proj0502** Only include packages compliant with project](https://dotnet-project-file-analyzers.github.io/rules/Proj0502.html)
 
 ### Test projects
 * [**Proj0450** Test projects should not be packable](https://dotnet-project-file-analyzers.github.io/rules/Proj0450.html)

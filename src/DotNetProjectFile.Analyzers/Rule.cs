@@ -745,24 +745,35 @@ public static partial class Rule
         category: Category.Bug);
 
     public static DiagnosticDescriptor OnlyIncludePackagesWithExplicitLicense => New(
-       id: 0500,
-       title: "Only include packages with an explicitly defined license",
-       message: "The {0} package is shipped without an explicitly defined license.",
-       description:
-           "To prevent legal issues do not rely on third-party references that do not " +
-           "come with an explicitly defined license.",
-       tags: ["license"],
-       category: Category.Legal);
+        id: 0500,
+        title: "Only include packages with an explicitly defined license",
+        message: "The {0} package is shipped without an explicitly defined license.",
+        description:
+            "To prevent legal issues do not rely on third-party references that do not " +
+            "come with an explicitly defined license.",
+        tags: ["license"],
+        category: Category.Legal);
 
     public static DiagnosticDescriptor PackageOnlyContainsDeprecatedLicenseUrl => New(
-       id: 0501,
-       title: "Package only contains a deprecated license URL",
-       message: "The {0} package only contains a deprecated license URL.",
-       description:
-           "To prevent legal issues do not rely on thrid-party references that do not " +
-           "come with an ferifiable deprecated license URL.",
-       tags: ["license"],
-       category: Category.Legal);
+        id: 0501,
+        title: "Package only contains a deprecated license URL",
+        message: "The {0} package only contains a deprecated license URL.",
+        description:
+            "To prevent legal issues do not rely on thrid-party references that do not " +
+            "come with an ferifiable deprecated license URL.",
+        tags: ["license"],
+        category: Category.Legal);
+
+    public static DiagnosticDescriptor PackageIncompatibleWithProjectLicense => New(
+        id: 0502,
+        title: "Only include packages compliant with project",
+        message: "The {0} package is distributed as {1}, which is imcompatable with the {2} license of the project.",
+        description:
+            "To prevent legal issues do not rely on third-party references that have " +
+            "an incompatable license.",
+        tags: ["license"],
+        category: Category.Legal,
+        severity: DiagnosticSeverity.Error);
 
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
         id: 0600,

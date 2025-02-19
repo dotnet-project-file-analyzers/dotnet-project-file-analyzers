@@ -1,4 +1,3 @@
-
 using DotNetProjectFile.Licensing;
 using DotNetProjectFile.NuGet;
 
@@ -7,32 +6,56 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     Rule.OnlyIncludePackagesWithExplicitLicense,
-    Rule.PackageOnlyContainsDeprecatedLicenseUrl)
+    Rule.PackageOnlyContainsDeprecatedLicenseUrl,
+    Rule.PackageIncompatibleWithProjectLicense)
 {
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
+        var projectLicense = Licenses.FromExpression(context.GetMsBuildProperty("PackageLicenseExpression"));
+
         foreach (var reference in context.File.ItemGroups.SelectMany(g => g.Children)
             .OfType<PackageReferenceBase>()
             .Where(r => r.Version is { Length: > 0 }))
         {
-            if (reference.GetLicensedPackage() is not { } package)
-            {
-                context.ReportDiagnostic(Rule.OnlyIncludePackagesWithExplicitLicense, reference, reference.IncludeOrUpdate);
-            }
-            else if (package.UrlOnly() && Licenses.FromUrl(package.LicenseUrl) == Licenses.Unknown)
-            {
-                context.ReportDiagnostic(Rule.PackageOnlyContainsDeprecatedLicenseUrl, reference, reference.IncludeOrUpdate);
-            }
+            Report(reference, projectLicense, context);
+        }
+    }
+
+    private static void Report(PackageReferenceBase reference, LicenseExpression projectLicense, ProjectFileAnalysisContext context)
+    {
+        if (reference.GetLicensedPackage() is not { } package)
+        {
+            context.ReportDiagnostic(Rule.OnlyIncludePackagesWithExplicitLicense, reference, reference.IncludeOrUpdate);
+            return;
+        }
+
+        var packageLicense = package.LicenseExpression();
+
+        if (package.UrlOnly() && packageLicense.IsUnknown)
+        {
+            context.ReportDiagnostic(Rule.PackageOnlyContainsDeprecatedLicenseUrl, reference, reference.IncludeOrUpdate);
+        }
+        else if (!packageLicense.CompatibleWith(projectLicense))
+        {
+            context.ReportDiagnostic(Rule.PackageIncompatibleWithProjectLicense, reference, reference.IncludeOrUpdate, packageLicense, projectLicense);
         }
     }
 }
 
 file static class Extensions
 {
+    public static LicenseExpression LicenseExpression(this CachedPackage package)
+    {
+        var expression = Licenses.FromExpression(package.LicenseExpression);
+        if (expression.IsUnknown) expression = Licenses.FromFile(package.LicenseFile);
+        if (expression.IsUnknown) expression = Licenses.FromUrl(package.LicenseUrl);
+        return expression;
+    }
+
     public static CachedPackage? GetLicensedPackage(this PackageReferenceBase reference)
        => NuGet.PackageCache.GetPackage(reference.IncludeOrUpdate, reference.Version) is { } package
        && (package.LicenseExpression is { Length: > 0 }
