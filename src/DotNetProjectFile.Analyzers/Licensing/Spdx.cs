@@ -9,12 +9,7 @@ namespace DotNetProjectFile.Licensing;
 public static partial class Spdx
 {
     public static readonly ImmutableArray<SpdxLicenseInfo> Licenses
-        = typeof(Spdx)
-        .GetRuntimeFields()
-        .Where(f => f.FieldType == typeof(SpdxLicenseInfo))
-        .Select(f => f.GetValue(null))
-        .OfType<SpdxLicenseInfo>()
-        .ToImmutableArray();
+        = ReadFromResources();
 
     private static readonly FrozenDictionary<string, SpdxLicenseInfo> Lookup
         = Licenses.ToFrozenDictionary(x => x.Id, x => x);
@@ -29,5 +24,12 @@ public static partial class Spdx
         return Lookup.TryGetValue(id, out var license)
             ? license
             : null;
+    }
+
+    private static ImmutableArray<SpdxLicenseInfo> ReadFromResources()
+    {
+        var asm = typeof(Spdx).Assembly;
+        using var resource = asm.GetManifestResourceStream("DotNetProjectFile.Licensing.Generated.spdx_info.bin");
+        return SpdxLicenseInfo.ReadAllFromCompressed(resource).ToImmutableArray();
     }
 }

@@ -38,6 +38,10 @@
     <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
+  <ItemGroup Label="Resource files">
+    <EmbeddedResource Include="Licensing/Generated/spdx_info.bin" />
+  </ItemGroup>
+
   <ItemGroup Label="Props and targets">
     <PackageReference Include="Microsoft.Sbom.Targets" Version="3.0.1" PrivateAssets="all" />
   </ItemGroup>
