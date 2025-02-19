@@ -29,6 +29,7 @@
     <PackageIconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
     <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
   <ItemGroup Label="Package files">
@@ -64,6 +65,7 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
+- Proj0217: Define requiring license acceptance explicitly. (NEW RULE)
 - Proj0500: Only include packages with an explicitly defined license. (NEW RULE)
 - Proj0501: Package only contains a deprecated license URL. (NEW RULE)
 v1.5.9

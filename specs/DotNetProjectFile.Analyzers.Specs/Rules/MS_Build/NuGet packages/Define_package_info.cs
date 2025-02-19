@@ -20,7 +20,8 @@ public class Reports_on_missing
            new Issue("Proj0212", "Define the <PackageIcon> node explicitly or define the <IsPackable> node with value 'false'."),
            new Issue("Proj0213", "Define the <PackageIconUrl> node explicitly or define the <IsPackable> node with value 'false'."),
            new Issue("Proj0214", "Define the <PackageId> node explicitly or define the <IsPackable> node with value 'false'."),
-           new Issue("Proj0216", "Define the <ProductName> node explicitly or define the <IsPackable> node with value 'false'."));
+           new Issue("Proj0216", "Define the <ProductName> node explicitly or define the <IsPackable> node with value 'false'."),
+           new Issue("Proj0217", "Define the <PackageRequireLicenseAcceptance> node explicitly or define the <IsPackable> node with value 'false'."));
 
     [Test]
     public void version()
@@ -112,6 +113,12 @@ public class Reports_on_missing
       .ForProject("NoProductName.cs")
       .HasIssue(
           new Issue("Proj0216", "Define the <ProductName> node explicitly or define the <IsPackable> node with value 'false'."));
+
+    [Test]
+    public void missing_require_package_license_acceptance()
+      => new DefinePackageInfo()
+        .ForProject(@"NoPackageRequireLicenseAcceptance.cs")
+        .HasIssue(Issue.WRN("Proj0217", "Define the <PackageRequireLicenseAcceptance> node explicitly or define the <IsPackable> node with value 'false'."));
 }
 
 public class Guards
@@ -129,6 +136,7 @@ public class Guards
     [TestCase("VersionPrefix.cs")]
     [TestCase("VersionPrefixAndSuffix.cs")]
     [TestCase("VersionPrefixAndSuffixAndVersion.cs")]
+    [TestCase("PackageRequireLicenseAcceptanceDisabled.cs")]
     public void Projects_without_issues(string project)
          => new DefinePackageInfo()
         .ForProject(project)

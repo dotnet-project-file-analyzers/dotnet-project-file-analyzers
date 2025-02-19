@@ -515,6 +515,19 @@ public static partial class Rule
         tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration);
 
+    public static DiagnosticDescriptor DefinePackageRequireLicenseAcceptance => New(
+        id: 0217,
+        title: "Define requiring license acceptance explicitly",
+        message: "Define the <PackageRequireLicenseAcceptance> node explicitly or define the <IsPackable> node with value 'false'.",
+        description:
+            "To ensure consumers of your packages are prompted or intentionally " +
+            "not prompted to agree with the terms of your license, " +
+            "explicitly define the <PackageRequireLicenseAcceptance> node or " +
+            "disable package generation by defining the " +
+            "<IsPackable> node with value 'false'.",
+        tags: ["Configuration", "NuGet", "package", "license"],
+        category: Category.Configuration);
+
     public static DiagnosticDescriptor EnablePackageValidation => New(
         id: 0240,
         title: "Enable package validation",
