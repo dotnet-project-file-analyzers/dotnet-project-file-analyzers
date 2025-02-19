@@ -55,10 +55,6 @@
     <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Licensing\Generated\" />
-  </ItemGroup>
-
   <PropertyGroup Label="Version and release notes">
     <Version>1.5.9</Version>
     <PackageReleaseNotes>
