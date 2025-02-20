@@ -29,5 +29,10 @@ public class Can_be_determined
         var missing = all
             .Where(x => x.License.IsUnknown)
             .ToArray();
+
+        var missingWithLicense
+            = missing
+            .Where(x => x.LicenseFile is { Length: > 0 })
+            .ToArray();
     }
 }

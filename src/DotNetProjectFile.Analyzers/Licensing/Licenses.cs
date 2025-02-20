@@ -221,36 +221,24 @@ public static class Licenses
         var contentRaw = file.ReadAllText();
         var content = PrepareLicenseText(contentRaw);
 
+        // Matching logic is loosely based on the logic used by Licensee: https://github.com/licensee/licensee
+        // Licensee is the library used by GitHub for determining the license.
+
         foreach (var pair in LicenseTextLookup)
         {
             var modelContent = PrepareLicenseText(pair.Key);
 
-            // No scientific basis for this metric.
-            var allowedDistance = Math.Min(
-                Math.Round(modelContent.Length * 0.05),
-                200);
+            var allowedLengthDifference = Math.Round(modelContent.Length * 0.05);
 
             var lengthDiff = Math.Abs(content.Length - modelContent.Length);
-            if (lengthDiff > allowedDistance)
+            if (lengthDiff > allowedLengthDifference)
             {
                 continue;
             }
 
-            var dist = modelContent.DamerauLevenshteinDistanceTo(content);
-            var similarityTrue2 = modelContent.DiceSorensenCoefficient(content, true, 2);
-            var similarityFalse2 = modelContent.DiceSorensenCoefficient(content, false, 2);
-            var similarityTrue3 = modelContent.DiceSorensenCoefficient(content, true, 3);
-            var similarityFalse3 = modelContent.DiceSorensenCoefficient(content, false, 3);
+            var similarity = modelContent.DiceSorensenCoefficient(content, q: 2, filterDuplicates: false);
 
-            var lw = dist <= allowedDistance;
-            var dcs = similarityTrue2 >= 0.95f;
-
-            if (lw != dcs)
-            {
-
-            }
-
-            if (dist <= allowedDistance)
+            if (similarity >= 0.95f)
             {
                 return pair.Value;
             }
