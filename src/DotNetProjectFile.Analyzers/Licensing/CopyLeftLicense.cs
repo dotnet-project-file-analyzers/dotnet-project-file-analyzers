@@ -6,8 +6,13 @@ public sealed record CopyLeftLicense : SingleLicense
         string identifier,
         string? baseLicense = null,
         ImmutableArray<string>? deprecated = null,
-        ImmutableArray<string>? compatibilities = null)
-        : base(identifier, baseLicense, deprecated ?? [])
+        ImmutableArray<string>? compatibilities = null,
+        bool spdxCompliant = true)
+        : base(
+            identifier: identifier,
+            baseLicense: baseLicense,
+            deprecated: deprecated ?? [],
+            spdxCompliant: spdxCompliant)
     {
         Compatibilities = compatibilities ?? [];
     }

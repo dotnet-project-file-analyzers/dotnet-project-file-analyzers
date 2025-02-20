@@ -28,6 +28,9 @@ public static class Licenses
         new PermissiveLicense("BSD-4-Clause"),
         new PermissiveLicense("Unlicense"),
         new PermissiveLicense("MS-PL"),
+        new PermissiveLicense("MS-LPL"),
+        new PermissiveLicense("PostgreSQL"),
+        new PermissiveLicense("WTFPL"),
 
         // MPL is technically copy-left, but only on a source-file level, so can be statically and dynamically linked.
         new PermissiveLicense("MPL-1.0"),
@@ -40,6 +43,10 @@ public static class Licenses
         new PermissiveLicense("LGPL-2.0-or-later", deprecated: ["LGPL-2.0+"], baseLicense: "LGPL-2.0-only"),
         new PermissiveLicense("LGPL-3.0-only", deprecated: ["LGPL-3.0"]),
         new PermissiveLicense("LGPL-3.0-or-later", deprecated: ["LGPL-3.0+"], baseLicense: "LGPL-3.0-only"),
+
+        // EPL is similar situation as LGPL
+        new PermissiveLicense("EPL-1.0"),
+        new PermissiveLicense("EPL-2.0"),
 
         new CopyLeftLicense("GPL-1.0-only", deprecated: ["GPL-1.0"]),
         new CopyLeftLicense("GPL-2.0-only", deprecated: ["GPL-2.0"]),
@@ -54,6 +61,9 @@ public static class Licenses
 
         new CopyLeftLicense("AGPL-1.0-or-later", deprecated: ["AGPL-1.0+"], compatibilities: ["AGPL-1.0-only", "AGPL-3.0-only", "AGPL-3.0-or-later"], baseLicense: "AGPL-1.0-only"),
         new CopyLeftLicense("AGPL-3.0-or-later", deprecated: ["AGPL-3.0+"], compatibilities: ["AGPL-3.0-only"], baseLicense: "AGPL-3.0-only"),
+
+        // Well-known propietary licenses
+        new PropietaryLicense("NET_Library_EULA_ENU", compatibleWith: _ => true), // All older versions of .NET Distributable libraries, prior to switching to MIT or Apache 2.0.
     ];
 
     /// <summary>All permissive licenses.</summary>
@@ -84,6 +94,8 @@ public static class Licenses
         ["http://go.microsoft.com/fwlink/?LinkId=329770"] = "MIT",
         ["https://github.com/dotnet/corefx/blob/master/LICENSE.TXT"] = "MIT",
         ["https://github.com/dotnet/coreclr/blob/master/LICENSE.TXT"] = "MIT",
+        ["https://github.com/dotnet/roslyn/blob/master/License.txt"] = "MIT",
+        ["https://github.com/dotnet/core-setup/blob/master/LICENSE.TXT"] = "MIT",
         ["https://raw.githubusercontent.com/aspnet/AspNetCore/2.0.0/LICENSE.txt"] = "Apache-2.0",
         ["https://raw.githubusercontent.com/aspnet/Home/2.0.0/LICENSE.txt"] = "Apache-2.0",
         ["https://www.gnu.org/licenses/lgpl.html"] = "LGPL-3.0-only",
@@ -192,6 +204,7 @@ public static class Licenses
             .TrimEnd('/')
             .TrimEnd(".php")
             .TrimEnd(".html")
+            .TrimEnd(".htm")
             .TrimEnd(".en")
             .TrimEnd("-license");
     }

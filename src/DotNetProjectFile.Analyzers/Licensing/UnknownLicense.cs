@@ -8,7 +8,9 @@ public sealed record UnknownLicense : LicenseExpression
 
     public override bool IsKnown => false;
 
-    public override string Expression => string.Empty;
+    public override string Expression => "NOASSERTION";
+
+    public override bool SpdxCompliant => false;
 
     public override bool CompatibleWith(LicenseExpression other) => true;
 }

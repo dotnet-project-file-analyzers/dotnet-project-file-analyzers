@@ -60,8 +60,4 @@
     <ProjectReference Include="../Benchmarks/Benchmarks.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Licensing\LicenseTexts\" />
-  </ItemGroup>
-
 </Project>

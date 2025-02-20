@@ -1,6 +1,8 @@
 #pragma warning disable RS1035 // FP
 
 using DotNetProjectFile.Licensing;
+using DotNetProjectFile.NuGet.Packaging;
+using DotNetProjectFile.NuGet;
 using System.Collections.Immutable;
 using System.IO;
 using System.Net.Http;
@@ -23,7 +25,9 @@ public class Generator
         response.IsSuccessStatusCode.Should().BeTrue();
 
         var list = await response.Content.ReadFromJsonAsync<LicenseList>();
-        var licenses = list?.Licenses?.OfType<License>() ?? [];
+        var requestedLicenses = list?.Licenses?.OfType<License>() ?? [];
+        var manualLicenses = GetAdditionalLicenses();
+        var licenses = requestedLicenses.Concat(manualLicenses);
         var valid = licenses
             .Where(l => l.LicenseId is { Length: > 0 })
             .Where(l => !l.IsDeprecatedLicenseId)
@@ -66,37 +70,53 @@ public class Generator
 
         async Task<string?> GetLicenseText(string id)
         {
-            var dir = Path.Combine(GetCurrentDirectoryPath(), "LicenseTexts");
-            Directory.CreateDirectory(dir);
+            var dirManual = Path.Combine(GetCurrentDirectoryPath(), "LicenseTexts/Manual");
+            var dirGenerated = Path.Combine(GetCurrentDirectoryPath(), "LicenseTexts/Generated");
+            Directory.CreateDirectory(dirManual);
+            Directory.CreateDirectory(dirGenerated);
 
-            var fileName = Path.Combine(dir, $"{id}.txt");
+            var manualFileName = Path.Combine(dirManual, $"{id}.txt");
+            var generatedFileName = Path.Combine(dirGenerated, $"{id}.txt");
 
             try
             {
-                if (File.Exists(fileName))
+                if (File.Exists(manualFileName))
                 {
-                    var fromFile = await File.ReadAllTextAsync(fileName);
+                    var fromFile = await File.ReadAllTextAsync(manualFileName);
                     if (string.IsNullOrWhiteSpace(fromFile))
                     {
                         return null;
                     }
+
+                    return fromFile;
+                }
+
+                if (File.Exists(generatedFileName))
+                {
+                    var fromFile = await File.ReadAllTextAsync(generatedFileName);
+                    if (string.IsNullOrWhiteSpace(fromFile))
+                    {
+                        return null;
+                    }
+
+                    return fromFile;
                 }
 
                 using var detailsResponse = await client.GetAsync($"{SpdxUrl}{id}.json");
                 var details = await detailsResponse.Content.ReadFromJsonAsync<LicenseDetails>();
                 var text = details?.LicenseText;
 
-                await File.WriteAllTextAsync(fileName, text ?? string.Empty);
+                await File.WriteAllTextAsync(generatedFileName, text ?? string.Empty);
 
                 return text;
             }
             catch
             {
-                if (!File.Exists(fileName))
+                if (!File.Exists(generatedFileName))
                 {
                     try
                     {
-                        await File.WriteAllTextAsync(fileName, "");
+                        await File.WriteAllTextAsync(generatedFileName, "");
                     }
                     catch
                     {
@@ -116,6 +136,23 @@ public class Generator
             }
 
             return Directory.GetCurrentDirectory();
+        }
+
+        IEnumerable<License> GetAdditionalLicenses()
+        {
+            yield return new License
+            {
+                LicenseId = "NET_Library_EULA_ENU",
+                Name = ".NET Library License Terms",
+                SeeAlso =
+                [
+                    "https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm",
+                    "https://dotnet.microsoft.com/en-us/dotnet_library_license.htm",
+                    "https://go.microsoft.com/fwlink/?LinkId=529443",
+                    "https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm",
+                    "https://go.microsoft.com/fwlink/?LinkID=320539",
+                ],
+            };
         }
     }
 
