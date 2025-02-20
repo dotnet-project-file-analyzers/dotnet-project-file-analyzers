@@ -1,3 +1,5 @@
+#pragma warning disable RS1035 // Do not use APIs banned for analyzers
+
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -30,7 +32,9 @@ public partial class Rules
         var amount = int.Parse(match.Groups["amount"].Value);
 
         var all = AlleRules.Count();
-
+#if DEBUG
+        Console.WriteLine($"Contains {all} rules.");
+#endif
         (amount / 10).Should().Be(all / 10, because: $"Mentioned {amount}+ should be approximately {all}.");
     }
 
