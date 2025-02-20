@@ -49,16 +49,7 @@ public sealed partial class Project : Node, ProjectFile
 
     public IOFile Path { get; }
 
-    public ProjectFileType FileType => Path switch
-    {
-        _ when Path.Name.IsMatch(".net.csproj") => ProjectFileType.SDK,
-        _ when Path.Extension.IsMatch(".csproj")
-            || Path.Extension.IsMatch(".vbproj") => ProjectFileType.ProjectFile,
-        _ when Path.Name.IsMatch("Directory.Build.props")
-            || Path.Name.IsMatch("Directory.Build.targets") => ProjectFileType.DirectoryBuild,
-        _ when Path.Name.IsMatch("Directory.Packages.props") => ProjectFileType.DirectoryPackages,
-        _ => ProjectFileType.Props,
-    };
+    public ProjectFileType FileType => Path.GetProjectFileType();
 
     public SourceText Text { get; }
 

@@ -906,7 +906,15 @@ public static partial class Rule
         tags: ["Bug", "private", "assets"],
         category: Category.CPM);
 
-    
+    public static DiagnosticDescriptor RemoveUnusedPackageVersions => New(
+        id: 0810,
+        title: "Remove unused package versions",
+        message: "Remove unused <PackageVersion> '{0}'",
+        description:
+            "Keeping a package version for a package that is not used is " +
+            "adding noise to the Directory.Packages.props file.",
+        tags: ["noise", "SDK"],
+        category: Category.CPM);
 
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,

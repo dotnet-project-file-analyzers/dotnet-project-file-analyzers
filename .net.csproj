@@ -4,7 +4,6 @@
 
   <ItemGroup Label="Directories">
     <None Include="design/**" />
-    <None Include="props/**" />
     <None Include="projects/common/**" />
   </ItemGroup>
 

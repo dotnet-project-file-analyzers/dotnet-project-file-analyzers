@@ -28,6 +28,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+ToBeReleased:
+- Automatically include props/*.props adn props/*.targets.
 v1.5.7
 - Disable signing for .net.csproj file.
 - Include *.yml files too.

@@ -1,3 +1,5 @@
+#pragma warning disable RS1035 // Do not use APIs banned for analyzers
+
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -10,9 +12,9 @@ public partial class Rules
 {
     [Test]
     public void have_unique_ids()
-        => AlleRules.Should().OnlyHaveUniqueItems(d => d.Id);
+        => AllRules.Should().OnlyHaveUniqueItems(d => d.Id);
 
-    [TestCaseSource(nameof(AlleRules))]
+    [TestCaseSource(nameof(AllRules))]
     public async Task have_mark_down_documentation(Rule rule)
     {
         using var client = new HttpClient();
@@ -29,12 +31,14 @@ public partial class Rules
         var match = AmountPattern().Match(Root_Readme_Text);
         var amount = int.Parse(match.Groups["amount"].Value);
 
-        var all = AlleRules.Count();
-
+        var all = AllRules.Count();
+#if DEBUG
+        Console.WriteLine($"Contains {all} rules.");
+#endif
         (amount / 10).Should().Be(all / 10, because: $"Mentioned {amount}+ should be approximately {all}.");
     }
 
-    [TestCaseSource(nameof(AlleRules))]
+    [TestCaseSource(nameof(AllRules))]
     public async Task are_mentioned_in_Web_README(Rule rule)
     {
         Web_Index_Context ??= await GetWebIndexContext();
@@ -43,7 +47,7 @@ public partial class Rules
             .Should().BeTrue(because: $"Rule {rule.Id} should be mentioned");
     }
 
-    [TestCaseSource(nameof(AlleRules))]
+    [TestCaseSource(nameof(AllRules))]
     public void are_mentioned_in_README_package(Rule rule)
         => Package_Readme_Text
         .Contains($"]({rule.HelpLinkUri})")
@@ -67,7 +71,7 @@ public partial class Rules
         .GetTypes()
         .Where(t => !t.IsAbstract && t.IsAssignableTo(typeof(DiagnosticAnalyzer)));
 
-    private static IEnumerable<Rule> AlleRules => GetRules(
+    private static IEnumerable<Rule> AllRules => GetRules(
         typeof(DotNetProjectFile.Rule),
         typeof(DotNetProjectFile.Rule.Ini));
 

@@ -3,9 +3,7 @@
   <!-- Non-compiling files to analyze. -->
   <ItemGroup>
     <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
-    <AdditionalFiles Include="*.props" />
-    <AdditionalFiles Include="*.targets" />
-    <AdditionalFiles Include="*.resx" />
+    <AdditionalFiles Include="**/*.resx" />
   </ItemGroup>
 
   <!-- Common variable that should be resolvable. -->
