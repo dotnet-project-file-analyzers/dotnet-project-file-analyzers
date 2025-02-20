@@ -6,7 +6,7 @@ public class Reports
     public void project_with_VersionOverride_without_CPM()
         => new VersionOverrideShouldChangeVersion()
         .ForProject("VersionUpdateNotDifferent.cs")
-        .HasIssue(new Issue("Proj0806", "Remove VersionOverride or change it to a version different than defined by the CPM.")
+        .HasIssue(Issue.WRN("Proj0806", "Remove VersionOverride or change it to a version different than defined by the CPM.")
         .WithSpan(08, 04, 08, 65));
 }
 

@@ -7,10 +7,10 @@ public class Reports
         => new DefinePropertiesOnce()
         .ForProject("PropertiesTwice.cs")
         .HasIssues(
-            new Issue("Proj0011", "Property <ImplicitUsings> has been already defined.").WithSpan(/*...*/ 05, 04, 05, 44),
-            new Issue("Proj0011", "Property <TargetFrameworks> has been already defined.").WithSpan(/*.*/ 12, 04, 12, 54),
-            new Issue("Proj0011", "Property <Nullable> has been already defined.").WithSpan(/*.........*/ 13, 04, 13, 36),
-            new Issue("Proj0011", "Property <ProductName> has been already defined.").WithSpan(/*......*/ 22, 04, 22, 66));
+            Issue.WRN("Proj0011", "Property <ImplicitUsings> has been already defined.").WithSpan(/*...*/ 05, 04, 05, 44),
+            Issue.WRN("Proj0011", "Property <TargetFrameworks> has been already defined.").WithSpan(/*.*/ 12, 04, 12, 54),
+            Issue.WRN("Proj0011", "Property <Nullable> has been already defined.").WithSpan(/*.........*/ 13, 04, 13, 36),
+            Issue.WRN("Proj0011", "Property <ProductName> has been already defined.").WithSpan(/*......*/ 22, 04, 22, 66));
 }
 
 public class Guards

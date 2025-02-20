@@ -7,7 +7,7 @@ public class Reports
        => new DefineIsPackable()
        .ForProject("NoIsPackable.cs")
        .HasIssue(
-           new Issue("Proj0200", "Define the <IsPackable> node explicitly."));
+           Issue.WRN("Proj0200", "Define the <IsPackable> node explicitly."));
 }
 
 public class Guards

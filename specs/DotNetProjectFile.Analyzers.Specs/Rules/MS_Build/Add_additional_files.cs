@@ -6,7 +6,7 @@ public class Reports
     public void project_files_not_additional() => new AddAdditionalFile()
         .ForProject("EmptyProject.cs")
         .HasIssue(
-            new Issue("Proj0006", "Add 'EmptyProject.csproj' to the additional files."));
+            Issue.WRN("Proj0006", "Add 'EmptyProject.csproj' to the additional files."));
 }
 
 public class Guards

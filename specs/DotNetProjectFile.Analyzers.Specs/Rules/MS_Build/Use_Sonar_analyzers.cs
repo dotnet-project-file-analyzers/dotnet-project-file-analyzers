@@ -7,14 +7,14 @@ public class Reports
         => new UseSonarAnalyzers()
         .ForProject("EmptyProject.cs")
         .HasIssue(
-            new Issue("Proj1003", "Add SonarAnalyzer.CSharp."));
+            Issue.WRN("Proj1003", "Add SonarAnalyzer.CSharp."));
 
     [Test]
     public void missing_analyzer_for_Visual_Basic()
         => new UseSonarAnalyzers()
         .ForProject("EmptyProjectVB.vb")
         .HasIssue(
-            new Issue("Proj1003", "Add SonarAnalyzer.VisualBasic."));
+            Issue.WRN("Proj1003", "Add SonarAnalyzer.VisualBasic."));
 }
 
 

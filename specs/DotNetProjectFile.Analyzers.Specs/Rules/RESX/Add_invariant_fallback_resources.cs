@@ -7,7 +7,7 @@ public class Reports
         => new Resx.AddInvariantFallbackResources()
         .ForProject("ResxNoInvariant.cs")
         .HasIssue(
-            new Issue("Proj2003", "Add invariant fallback resource."));
+            Issue.WRN("Proj2003", "Add invariant fallback resource."));
 }
 
 public class Guards

@@ -7,7 +7,7 @@ public class Reports
         => new Resx.DefineData()
         .ForProject("ResxNoData.cs")
         .HasIssue(
-            new Issue("Proj2001", "Resource does not contain any data."));
+            Issue.WRN("Proj2001", "Resource does not contain any data."));
 }
 
 public class Guards
