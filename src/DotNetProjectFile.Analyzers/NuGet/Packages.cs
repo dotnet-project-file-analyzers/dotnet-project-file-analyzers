@@ -7,6 +7,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
     public static readonly BuildExtension Microsoft_NET_Test_Sdk = new("Microsoft.NET.Test.Sdk");
     public static readonly BuildExtension Microsoft_Sbom_Targets = new("Microsoft.Sbom.Targets");
     public static readonly BuildExtension TUnit = new("TUnit");
+    public static readonly BuildExtension TUnit_Engine = new("TUnit.Engine");
 
     public static readonly Packages All = new(
 

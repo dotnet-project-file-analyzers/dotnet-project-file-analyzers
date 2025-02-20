@@ -1,4 +1,6 @@
 
+using DotNetProjectFile.NuGet;
+
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
@@ -15,10 +17,10 @@ public sealed class TestProjectsRequireSdk() : MsBuildProjectFileAnalyzer(
         var isTest = context.File.IsTestProject();
         var hasSdk = context.File
             .Walk().OfType<PackageReference>()
-            .Any(r => r.Include == NuGet.Packages.Microsoft_NET_Test_Sdk.Name);
+            .Any(NuGet.Packages.Microsoft_NET_Test_Sdk.IsMatch);
         var hasTUnit = context.File
             .Walk().OfType<PackageReference>()
-            .Any(r => r.Include == NuGet.Packages.TUnit.Name);
+            .Any(r => Packages.TUnit.IsMatch(r) || Packages.TUnit_Engine.IsMatch(r));
 
         var hasSdkOrTUnit = hasSdk || hasTUnit;
 
