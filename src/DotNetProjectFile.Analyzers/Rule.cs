@@ -315,7 +315,10 @@ public static partial class Rule
         id: 0035,
         title: "Remove deprecated RestoreProjectStyle property",
         message: "Remove the <RestoreProjectStyle> property",
-        description: "TODO",
+        description:
+            "The <RestoreProjectStyle> was once introduced to mitigate third-party " +
+            "references using a packages.config file. This practice has been " +
+            "depericated for a very long time now.",
         tags: ["legacy", "conversion", "packages.config"],
         category: Category.Noise);
 
