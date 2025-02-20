@@ -17,4 +17,6 @@ public abstract record SingleLicense : LicenseExpression
     public string? BaseLicense { get; }
 
     public SpdxLicenseInfo? SpdxInfo { get; }
+
+    public override bool SpdxCompliant => SpdxInfo is { };
 }

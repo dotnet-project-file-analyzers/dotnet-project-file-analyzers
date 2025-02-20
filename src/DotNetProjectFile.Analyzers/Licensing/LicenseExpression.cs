@@ -8,6 +8,8 @@ public abstract record LicenseExpression()
 
     public abstract string Expression { get; }
 
+    public abstract bool SpdxCompliant { get; }
+
     public abstract bool CompatibleWith(LicenseExpression other);
 
     public sealed override string ToString()

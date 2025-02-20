@@ -4,6 +4,8 @@ public sealed record AndLicenseExpression(LicenseExpression Left, LicenseExpress
 {
     public override string Expression => $"({Left} AND {Right})";
 
+    public override bool SpdxCompliant => Left.SpdxCompliant && Right.SpdxCompliant;
+
     public override bool CompatibleWith(LicenseExpression other)
         => Left.CompatibleWith(other) && Right.CompatibleWith(other);
 }
