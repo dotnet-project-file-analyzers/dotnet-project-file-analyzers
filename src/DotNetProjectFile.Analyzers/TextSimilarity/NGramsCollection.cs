@@ -66,4 +66,8 @@ public static class NGramsCollectionExtensions
     /// <inheritdoc cref="DotNetProjectFile.TextSimilarity.DiceSorensenCoefficient.Compute(NGramsCollection, NGramsCollection)" />
     public static float DiceSorensenCoefficient(this NGramsCollection ngrams1, NGramsCollection ngrams2)
         => DotNetProjectFile.TextSimilarity.DiceSorensenCoefficient.Compute(ngrams1, ngrams2);
+
+    /// <inheritdoc cref="DotNetProjectFile.TextSimilarity.DiceSorensenCoefficient.AtLeast(NGramsCollection, NGramsCollection, float)" />
+    public static bool DiceSorensenCoefficientAtLeast(this NGramsCollection ngrams1, NGramsCollection ngrams2, float requiredSimilarity)
+        => DotNetProjectFile.TextSimilarity.DiceSorensenCoefficient.AtLeast(ngrams1, ngrams2, requiredSimilarity);
 }

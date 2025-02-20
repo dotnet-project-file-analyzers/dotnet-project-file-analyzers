@@ -233,9 +233,7 @@ public static class Licenses
         {
             var modelNgrams = pair.Key;
 
-            var similarity = modelNgrams.DiceSorensenCoefficient(contentNgrams);
-
-            if (similarity >= 0.95f)
+            if (contentNgrams.DiceSorensenCoefficientAtLeast(modelNgrams, 0.95f))
             {
                 return pair.Value;
             }
