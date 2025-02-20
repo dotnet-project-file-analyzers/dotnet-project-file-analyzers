@@ -909,7 +909,7 @@ public static partial class Rule
     public static DiagnosticDescriptor RemoveUnusedPackageVersions => New(
         id: 0810,
         title: "Remove unused package versions",
-        message: "Remove unused package version {0}",
+        message: "Remove unused <PackageVersion> '{0}'",
         description:
             "Keeping a package version for a package that is not used is " +
             "adding noise to the Directory.Packages.props file.",

@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetProjectFile.Analyzers.Sdk" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- To simplify test setup, normally this should be done by the package props -->
+  <ItemGroup>
+    <AdditionalFiles Include="*.csproj" />
+  </ItemGroup>
+
+</Project>

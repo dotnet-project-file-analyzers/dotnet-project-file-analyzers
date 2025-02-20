@@ -16,7 +16,7 @@ public sealed class RemoveUnusedPackageVersions() : MsBuildProjectFileAnalyzer(R
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (context.File.DirectoryPackagesProps is not { } packages ||
-            context.File.ManagePackageVersionsCentrally() is not true) { return; }
+            packages.ManagePackageVersionsCentrally() is not true) { return; }
 
         var usages = PackageUsages(context);
 
@@ -37,7 +37,7 @@ public sealed class RemoveUnusedPackageVersions() : MsBuildProjectFileAnalyzer(R
             if (ProjectFiles.Global.MsBuildProject(text) is { } project)
             {
                 foreach (var reference in project.ItemGroups
-                    .SelectMany(i => i.ProjectReferences)
+                    .SelectMany(i => i.PackageReferences)
                     .Where(r => r.Include is { Length: > 0 })
                     .Select(r => r.Include))
                 {
