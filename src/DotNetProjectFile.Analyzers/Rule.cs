@@ -311,6 +311,14 @@ public static partial class Rule
         tags: ["limitation"],
         category: Category.Bug);
 
+    public static DiagnosticDescriptor RemoveDeprecatedRestoreProjectStyle => New(
+        id: 0035,
+        title: "Remove deprecated RestoreProjectStyle property",
+        message: "Remove the <RestoreProjectStyle> property",
+        description: "TODO",
+        tags: ["legacy", "conversion", "packages.config"],
+        category: Category.Noise);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
