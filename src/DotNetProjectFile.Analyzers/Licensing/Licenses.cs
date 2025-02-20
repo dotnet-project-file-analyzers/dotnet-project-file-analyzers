@@ -67,7 +67,7 @@ public static class Licenses
         = All
         .OfType<SingleLicense>()
         .Where(x => x.BaseLicense is null && x.SpdxInfo?.LicenseText is { Length: > 0 })
-        .ToFrozenDictionary(x => x.SpdxInfo!.LicenseText!, x => x);
+        .ToFrozenDictionary(x => PrepareLicenseText(x.SpdxInfo!.LicenseText!), x => x);
 
     private static readonly ImmutableArray<string> GenericLicenseUrlDomains =
     [
@@ -226,7 +226,7 @@ public static class Licenses
 
         foreach (var pair in LicenseTextLookup)
         {
-            var modelContent = PrepareLicenseText(pair.Key);
+            var modelContent = pair.Key;
 
             var allowedLengthDifference = Math.Round(modelContent.Length * 0.05);
 
