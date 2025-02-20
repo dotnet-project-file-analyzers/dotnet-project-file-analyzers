@@ -36,7 +36,8 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0032** Migrate away from BinaryFormatter](https://dotnet-project-file-analyzers.github.io/rules/Proj0032.html)
 * [**Proj0033** Project reference includes should exist](https://dotnet-project-file-analyzers.github.io/rules/Proj0033.html)
 * [**Proj0034** Import statement could not be resolved](https://dotnet-project-file-analyzers.github.io/rules/Proj0034.html)
-
+* [**Proj0035** Remove deprecated RestoreProjectStyle property](https://dotnet-project-file-analyzers.github.io/rules/Proj0035.html)
+ 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)
 * [**Proj0201** Define the project version explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0201.html)

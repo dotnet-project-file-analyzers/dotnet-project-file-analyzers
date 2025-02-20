@@ -311,6 +311,17 @@ public static partial class Rule
         tags: ["limitation"],
         category: Category.Bug);
 
+    public static DiagnosticDescriptor RemoveDeprecatedRestoreProjectStyle => New(
+        id: 0035,
+        title: "Remove deprecated RestoreProjectStyle property",
+        message: "Remove the <RestoreProjectStyle> property",
+        description:
+            "The <RestoreProjectStyle> was once introduced to mitigate third-party " +
+            "references using a packages.config file. This practice has been " +
+            "deprecated for a very long time now.",
+        tags: ["legacy", "conversion", "packages.config"],
+        category: Category.Noise);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
