@@ -4,7 +4,6 @@
 using DotNetProjectFile.Parsing.Internal;
 using DotNetProjectFile.Syntax;
 using Grammr.Text;
-using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Parsing;
 

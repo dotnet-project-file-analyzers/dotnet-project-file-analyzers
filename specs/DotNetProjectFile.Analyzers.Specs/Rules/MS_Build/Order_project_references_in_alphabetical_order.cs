@@ -7,7 +7,7 @@ public class Reports
        => new OrderProjectReferencesAlphabetically()
        .ForProject("NonAlphabeticalProjectReferences.cs")
        .HasIssue(
-           new Issue("Proj0016", @"Project '../EmptyNodes/EmptyNodes.csproj' is not ordered alphabetically and should appear before '../FolderNodes/FolderNodes.csproj'.").WithSpan(8, 04, 8, 66));
+           Issue.WRN("Proj0016", @"Project '../EmptyNodes/EmptyNodes.csproj' is not ordered alphabetically and should appear before '../FolderNodes/FolderNodes.csproj'.").WithSpan(8, 04, 8, 66));
 }
 
 public class Guards

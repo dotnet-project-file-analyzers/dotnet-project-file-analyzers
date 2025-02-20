@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace DotNetProjectFile.MsBuild;
 
 public abstract class PackageReferenceBase(XElement element, Node parent, MsBuildProject project)

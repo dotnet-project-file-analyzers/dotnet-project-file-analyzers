@@ -7,7 +7,7 @@ public class Reports
         => new DefineUsingsExplicit()
         .ForProject("ImplicitUsings.cs")
         .HasIssue(
-            new Issue("Proj0003", "Define usings explicit.").WithSpan(4, 4, 4, 43));
+            Issue.WRN("Proj0003", "Define usings explicit.").WithSpan(4, 4, 4, 43));
 }
 
 public class Guards

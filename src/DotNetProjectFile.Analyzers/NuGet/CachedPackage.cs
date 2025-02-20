@@ -1,5 +1,4 @@
 using DotNetProjectFile.Licensing;
-using DotNetProjectFile.NuGet.Packaging;
 
 namespace DotNetProjectFile.NuGet;
 

@@ -7,14 +7,14 @@ public class Reports
        => new EnablePackageValidation()
        .ForProject("EmptyProject.cs")
        .HasIssue(
-           new Issue("Proj0240", "Define the <EnablePackageValidation> node with value 'true' or define the <IsPackable> node with value 'false' or define the <DevelopmentDependency> node with value 'false'."));
+           Issue.WRN("Proj0240", "Define the <EnablePackageValidation> node with value 'true' or define the <IsPackable> node with value 'false' or define the <DevelopmentDependency> node with value 'false'."));
 
     [Test]
     public void on_disabled()
        => new EnablePackageValidation()
        .ForProject("PackageValidationDisabled.cs")
        .HasIssue(
-           new Issue("Proj0240", "Define the <EnablePackageValidation> node with value 'true' or define the <IsPackable> node with value 'false' or define the <DevelopmentDependency> node with value 'false'."));
+           Issue.WRN("Proj0240", "Define the <EnablePackageValidation> node with value 'true' or define the <IsPackable> node with value 'false' or define the <DevelopmentDependency> node with value 'false'."));
 }
 
 public class Guards

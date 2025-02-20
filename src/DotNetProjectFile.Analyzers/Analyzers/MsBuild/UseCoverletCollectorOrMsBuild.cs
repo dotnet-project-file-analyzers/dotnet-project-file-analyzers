@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Text;
-
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 /// <summary>Implements  <see cref="Rule.UseCoverletCollectorOrMsBuild"/>.</summary>

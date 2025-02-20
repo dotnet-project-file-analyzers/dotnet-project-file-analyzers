@@ -9,8 +9,8 @@ public class Project_relies_on
     public void Directory_Build_props_and_targets() => new NodeReporter()
         .ForProject("WithDirectoryBuildProps.cs")
         .HasIssues(
-            new Issue("Proj9999", "Found Directory.Build.props."),
-            new Issue("Proj9999", "Found Directory.Build.targets."));
+            Issue.WRN("Proj9999", "Found Directory.Build.props."),
+            Issue.WRN("Proj9999", "Found Directory.Build.targets."));
     
     [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
     private sealed class NodeReporter : MsBuildProjectFileAnalyzer

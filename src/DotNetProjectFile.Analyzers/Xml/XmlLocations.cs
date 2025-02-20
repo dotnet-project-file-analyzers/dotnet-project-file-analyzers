@@ -1,5 +1,3 @@
-using Microsoft.CodeAnalysis.Text;
-
 namespace DotNetProjectFile.Xml;
 
 public sealed record XmlLocations

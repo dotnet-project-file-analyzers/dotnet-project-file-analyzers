@@ -7,7 +7,7 @@ public class Reports
        => new IncludeProjectReferencesOnce()
        .ForProject("DoubleProjectReferences.cs")
        .HasIssues(
-            new Issue("Proj0014", @"Project './../../projects/EmptyNodes/EmptyNodes.csproj' is already referenced.").WithSpan(11, 04, 11, 80));
+            Issue.WRN("Proj0014", @"Project './../../projects/EmptyNodes/EmptyNodes.csproj' is already referenced.").WithSpan(11, 04, 11, 80));
 }
 
 public class Guards
