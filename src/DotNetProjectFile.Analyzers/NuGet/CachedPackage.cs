@@ -9,6 +9,8 @@ public sealed record CachedPackage
 
     public required string Version { get; init; }
 
+    public required IODirectory Directory { get; init; }
+
     public required bool HasAnalyzerDll { get; init; }
 
     public required bool HasRuntimeDll { get; init; }
@@ -21,5 +23,5 @@ public sealed record CachedPackage
     
     public required string? LicenseUrl { get; init; }
 
-    public required LicenseExpression? License { get; init; }
+    public required LicenseExpression License { get; init; }
 }

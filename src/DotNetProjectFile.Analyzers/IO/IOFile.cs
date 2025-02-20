@@ -122,6 +122,26 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
         }
     }
 
+    /// <summary>
+    /// Reads all characters from the file.
+    /// </summary>
+    /// <returns>The file content.</returns>
+    public string ReadAllText()
+    {
+        using var reader = OpenText();
+        return reader.ReadToEnd();
+    }
+
+    /// <summary>
+    /// Reads all characters from the file.
+    /// </summary>
+    /// <returns>The file content.</returns>
+    public string TryReadAllText()
+    {
+        using var reader = TryOpenText();
+        return reader.ReadToEnd();
+    }
+
     /// <inheritdoc cref="FileInfo.OpenRead()" />
     public FileStream OpenRead() => Info?.OpenRead() ?? throw new FileNotFoundException();
 

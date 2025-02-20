@@ -112,15 +112,16 @@ public static class PackageCache
             license = Licenses.FromUrl(licenseUrl);
         }
 
-        if (license == Licenses.Unknown)
+        if (license == Licenses.Unknown && licenseFile is { Length: > 0 })
         {
-            license = Licenses.FromFile(licenseFile);
+            license = Licenses.FromFile(versionDir.File(licenseFile));
         }
 
         return new()
         {
             Name = name,
             Version = versionDir.Name,
+            Directory = versionDir,
             HasAnalyzerDll = HasDllFiles("analyzers"),
             HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes"),
             IsDevelopmentDependency = nuspec?.Metadata.DevelopmentDependency,

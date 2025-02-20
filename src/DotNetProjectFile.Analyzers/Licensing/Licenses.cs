@@ -63,6 +63,12 @@ public static class Licenses
 
     private static readonly FrozenDictionary<string, LicenseExpression> Lookup = CreateLookup();
 
+    private static readonly FrozenDictionary<string, SingleLicense> LicenseTextLookup
+        = All
+        .OfType<SingleLicense>()
+        .Where(x => x.BaseLicense is null && x.SpdxInfo?.LicenseText is { Length: > 0 })
+        .ToFrozenDictionary(x => x.SpdxInfo!.LicenseText!, x => x);
+
     private static readonly ImmutableArray<string> GenericLicenseUrlDomains =
     [
         "opensource.org/licenses/",
@@ -189,9 +195,38 @@ public static class Licenses
             .TrimEnd("-license");
     }
 
-    public static LicenseExpression FromFile(string? licenseFile)
+    public static LicenseExpression FromFile(IOFile? licenseFile)
     {
-        // TODO: fuzzy match the file content to known license texts
+        if (licenseFile is not { Exists: true } file)
+        {
+            return Unknown;
+        }
+
+        var content = Regex.Replace(file.TryReadAllText(), @"\s+", string.Empty);
+
+        foreach (var pair in LicenseTextLookup)
+        {
+            var modelContent = Regex.Replace(pair.Key, @"\s+", string.Empty);
+
+            // No scientific basis for this metric.
+            var allowedDistance = Math.Min(
+                Math.Round(modelContent.Length * 0.05),
+                200);
+
+            var lengthDiff = Math.Abs(content.Length - modelContent.Length);
+            if (lengthDiff > allowedDistance)
+            {
+                continue;
+            }
+
+            var dist = modelContent.DamerauLevenshteinDistanceTo(content);
+
+            if (dist <= allowedDistance)
+            {
+                return pair.Value;
+            }
+        }
+
         return Unknown;
     }
 }
