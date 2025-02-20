@@ -19,6 +19,14 @@
     <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj</IntermediateOutputPath>
   </PropertyGroup>
 
+  <ItemGroup Label="Add without showing">
+    <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
+    <AdditionalFiles Include="**/*.csproj" Visible="false" />
+    <AdditionalFiles Include="**/*.props" Visible="false" />
+    <AdditionalFiles Include="**/*.targets" Visible="false" />
+    <AdditionalFiles Include="**/*.vbproj" Visible="false" />
+  </ItemGroup>
+
   <ItemGroup>
     <AdditionalFiles Include=".*config" />
     <AdditionalFiles Include=".git*" />
@@ -32,7 +40,8 @@
     <AdditionalFiles Include="*.txt" />
     <AdditionalFiles Include="*.yaml" />
     <AdditionalFiles Include="*.yml" />
-    <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
+    <AdditionalFiles Include="props/*.props" />
+    <AdditionalFiles Include="props/*.targets" />
   </ItemGroup>
 
   <ItemGroup>
