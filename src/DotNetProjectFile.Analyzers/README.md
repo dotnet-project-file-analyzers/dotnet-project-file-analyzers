@@ -100,6 +100,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0807** Use Directory.Packages.props only for Central Package Management](https://dotnet-project-file-analyzers.github.io/rules/Proj0807.html)
 * [**Proj0808** Define global package reference only in Directory.Packages.props](https://dotnet-project-file-analyzers.github.io/rules/Proj0808.html)
 * [**Proj0809** Global package references are meant for private assets only](https://dotnet-project-file-analyzers.github.io/rules/Proj0809.html)
+* [**Proj0810** Remove unused package versions](https://dotnet-project-file-analyzers.github.io/rules/Proj0810.html)
 
 ### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1000.html)

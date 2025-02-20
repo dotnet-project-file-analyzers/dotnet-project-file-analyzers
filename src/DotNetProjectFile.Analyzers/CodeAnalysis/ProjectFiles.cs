@@ -22,6 +22,14 @@ public sealed partial class ProjectFiles
     public MsBuildProject? MsBuildProject(IOFile file)
         => MsBuildProjects.TryGetOrUpdate(file, Create_MsBuildProject);
 
+    public MsBuildProject? MsBuildProject(AdditionalText text)
+    {
+        var path = IOFile.Parse(text.Path);
+        if (path.GetProjectFileType() is ProjectFileType.None) return null;
+
+        return MsBuildProjects.TryGetOrUpdate(path, _ => Project.Load(text, Global));
+    }
+
     public Resource? ResourceFile(IOFile file)
         => ResourceFiles.TryGetOrUpdate(file, Create_ResourceFile);
 
