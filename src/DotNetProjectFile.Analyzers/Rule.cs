@@ -318,7 +318,7 @@ public static partial class Rule
         description:
             "The <RestoreProjectStyle> was once introduced to mitigate third-party " +
             "references using a packages.config file. This practice has been " +
-            "depericated for a very long time now.",
+            "deprecated for a very long time now.",
         tags: ["legacy", "conversion", "packages.config"],
         category: Category.Noise);
 
