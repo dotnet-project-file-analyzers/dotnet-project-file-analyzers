@@ -1,4 +1,4 @@
-namespace Rules.MS_Build.Remove_deprecated_estoreProjectStyle;
+namespace Rules.MS_Build.Remove_deprecated_RestoreProjectStyle;
 
 public class Reports
 {
