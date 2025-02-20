@@ -147,6 +147,8 @@ public class Generator
                     "https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm",
                     "https://dotnet.microsoft.com/en-us/dotnet_library_license.htm",
                     "https://go.microsoft.com/fwlink/?LinkId=529443",
+                    "https://www.microsoft.com/web/webpi/eula/net_library_eula_enu.htm",
+                    "https://go.microsoft.com/fwlink/?LinkID=320539",
                 ],
             };
         }

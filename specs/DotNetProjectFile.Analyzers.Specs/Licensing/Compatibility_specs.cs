@@ -1,4 +1,6 @@
 using DotNetProjectFile.Licensing;
+using DotNetProjectFile.NuGet;
+using DotNetProjectFile.NuGet.Packaging;
 using System.Collections.Immutable;
 
 namespace Licensing.Compatibility_specs;
@@ -78,5 +80,29 @@ public class Is
         var tar = Licenses.FromExpression(target);
 
         dep.CompatibleWith(tar).Should().Be(expectedCompatibility);
+    }
+
+    [Test]
+    public void Foo()
+    {
+        var all = PackageCache.GetDirectory().Files("/**/*.nuspec")
+            .Select(static x =>
+            {
+                using var stream = x.TryOpenRead();
+                try
+                {
+                    return NuSpecFile.Load(stream);
+                }
+                catch
+                {
+                    return null;
+                }
+            })
+            .OfType<NuSpecFile>()
+            .Select(x => PackageCache.GetPackage(x.Metadata!.Id, x.Metadata!.Version))
+            .OfType<CachedPackage>()
+            .ToArray();
+
+        var unknown = all.Where(x => x.License.IsUnknown).ToArray();
     }
 }
