@@ -56,7 +56,7 @@ public static class Licenses
         new CopyLeftLicense("AGPL-3.0-or-later", deprecated: ["AGPL-3.0+"], compatibilities: ["AGPL-3.0-only"], baseLicense: "AGPL-3.0-only"),
 
         // Well-known propietary licenses
-        new PropietaryLicense("NET_Library_EULA"),
+        new PropietaryLicense("NET_Library_EULA", compatibleWith: _ => true), // All older versions of .NET Distributable libraries, prior to switching to MIT or Apache 2.0.
     ];
 
     /// <summary>All permissive licenses.</summary>

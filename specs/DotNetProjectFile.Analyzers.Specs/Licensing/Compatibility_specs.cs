@@ -8,6 +8,7 @@ public class Is
     private static readonly ImmutableArray<LicenseExpression> All = Licenses.All;
     private static readonly ImmutableArray<PermissiveLicense> Permissive = All.OfType<PermissiveLicense>().ToImmutableArray();
     private static readonly ImmutableArray<CopyLeftLicense> CopyLeft = All.OfType<CopyLeftLicense>().ToImmutableArray();
+    private static readonly ImmutableArray<PropietaryLicense> Propietary = All.OfType<PropietaryLicense>().ToImmutableArray();
 
     public sealed class Compatible
     {
@@ -24,9 +25,9 @@ public class Is
         }
 
         [TestCaseSource(typeof(Is), nameof(Permissive))]
-        public void Permissive_with_copy_left(LicenseExpression permissive)
+        public void Permissive_with_all(LicenseExpression permissive)
         {
-            foreach (var other in CopyLeft)
+            foreach (var other in All)
             {
                 permissive.CompatibleWith(other).Should().BeTrue();
             }
@@ -39,6 +40,15 @@ public class Is
         public void Copy_left_with_permissive(LicenseExpression copyLeft)
         {
             foreach (var other in Permissive)
+            {
+                copyLeft.CompatibleWith(other).Should().BeFalse();
+            }
+        }
+
+        [TestCaseSource(typeof(Is), nameof(CopyLeft))]
+        public void Copy_left_with_propietary(LicenseExpression copyLeft)
+        {
+            foreach (var other in Propietary)
             {
                 copyLeft.CompatibleWith(other).Should().BeFalse();
             }
@@ -61,6 +71,7 @@ public class Is
     [TestCase("GPL-3.0+", "GPL-1.0+", false)]
     [TestCase("GPL-3.0", "AGPL-3.0", true)] // GPL3 clause 13
     [TestCase("AGPL-3.0", "GPL-3.0", false)]
+    [TestCase("NET_Library_EULA", "MIT", true)]
     public void Compatiblity(string dependency, string target, bool expectedCompatibility)
     {
         var dep = Licenses.FromExpression(dependency);
