@@ -33,7 +33,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
             return;
         }
 
-        var packageLicense = package.LicenseExpression();
+        var packageLicense = package.License;
 
         if (package.UrlOnly() && packageLicense.IsUnknown)
         {
@@ -48,14 +48,6 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
 
 file static class Extensions
 {
-    public static LicenseExpression LicenseExpression(this CachedPackage package)
-    {
-        var expression = Licenses.FromExpression(package.LicenseExpression);
-        if (expression.IsUnknown) expression = Licenses.FromFile(package.LicenseFile);
-        if (expression.IsUnknown) expression = Licenses.FromUrl(package.LicenseUrl);
-        return expression;
-    }
-
     public static CachedPackage? GetLicensedPackage(this PackageReferenceBase reference)
        => NuGet.PackageCache.GetPackage(reference.IncludeOrUpdate, reference.Version) is { } package
        && (package.LicenseExpression is { Length: > 0 }

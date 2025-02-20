@@ -1,3 +1,5 @@
+using DotNetProjectFile.Text;
+
 namespace System;
 
 internal static class StringExtensions
@@ -42,4 +44,8 @@ internal static class StringExtensions
 
         return result;
     }
+
+    /// <inheritdoc cref="NGramsCollection.Create(string?, int)" />
+    public static NGramsCollection GetNGrams(this string? str, int n)
+        => NGramsCollection.Create(str, n);
 }
