@@ -1,5 +1,3 @@
-using System.Resources;
-
 namespace Rules.RESX.Escape_XML_nodes_resource_values;
 
 public class Reports
