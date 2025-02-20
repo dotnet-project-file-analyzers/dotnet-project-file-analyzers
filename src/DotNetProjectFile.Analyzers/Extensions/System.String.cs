@@ -1,4 +1,4 @@
-using static System.Net.WebRequestMethods;
+using DotNetProjectFile.TextSimilarity;
 
 namespace System;
 
@@ -45,80 +45,7 @@ internal static class StringExtensions
         return result;
     }
 
-    /// <summary>
-    /// Computes the Dice-Sørensen coefficient between two strings <paramref name="a"/>
-    /// and <paramref name="b"/>. Using the given <paramref name="q"/>-grams.
-    /// </summary>
-    /// <param name="a">The first string.</param>
-    /// <param name="b">The second string.</param>
-    /// <param name="q">The q-gram size.</param>
-    /// <param name="filterDuplicates">Indicates whether or not duplicate q-grams should be ignored.</param>
-    /// <returns>
-    /// A similarity coefficient in the range
-    /// [<see langword="0"/>, <see langword="1"/>].
-    /// </returns>
-    /// <seealso href="https://en.wikipedia.org/wiki/Dice-S%C3%B8rensen_coefficient"/>
-    public static float DiceSorensenCoefficient(this string? a, string? b, int q, bool filterDuplicates)
-    {
-        var j = JaccardIndex(a, b, q, filterDuplicates);
-        var s = (2 * j) / (1 + j);
-        return s;
-    }
-
-    /// <summary>
-    /// Computes the Jaccard index between two strings <paramref name="a"/>
-    /// and <paramref name="b"/>. Using the given <paramref name="q"/>-grams.
-    /// </summary>
-    /// <param name="a">The first string.</param>
-    /// <param name="b">The second string.</param>
-    /// <param name="q">The q-gram size.</param>
-    /// <param name="filterDuplicates">Indicates whether or not duplicate q-grams should be ignored.</param>
-    /// <returns>The found Jaccard index.</returns>
-    /// <seealso href="https://en.wikipedia.org/wiki/Jaccard_index"/>
-    public static float JaccardIndex(this string? a, string? b, int q, bool filterDuplicates)
-    {
-        a ??= string.Empty;
-        b ??= string.Empty;
-
-        var (aGrams, aCount) = GetQGrams(a, q, filterDuplicates);
-        var (bGrams, bCount) = GetQGrams(b, q, filterDuplicates);
-
-        var intersection = 0;
-
-        foreach (var pair in aGrams)
-        {
-            if (bGrams.TryGetValue(pair.Key, out var countInB))
-            {
-                var countInA = pair.Value;
-
-                var countInBoth = Math.Min(countInA, countInB);
-                intersection += countInBoth;
-            }
-        }
-
-        var union = aCount + bCount - intersection;
-        var index = (float)intersection / union;
-        return index;
-    }
-
-    private static (Dictionary<string, int> Lookup, int Count) GetQGrams(string value, int q, bool filterDuplicates)
-    {
-        var result = new Dictionary<string, int>();
-        var size = 0;
-
-        for (var i = q; i < value.Length; i++)
-        {
-            var qgram = value.Substring(i - q, q);
-
-            if (!result.TryGetValue(qgram, out var count))
-            {
-                count = 0;
-            }
-
-            result[qgram] = filterDuplicates ? 1 : count + 1;
-            size++;
-        }
-
-        return (result, size);
-    }
+    /// <inheritdoc cref="NGramsCollection.Create(string?, int)" />
+    public static NGramsCollection GetNGrams(this string? str, int n)
+        => NGramsCollection.Create(str, n);
 }

@@ -1,3 +1,4 @@
+using DotNetProjectFile.TextSimilarity;
 using System;
 using System.Collections.Frozen;
 using System.Collections.Generic;
@@ -63,11 +64,14 @@ public static class Licenses
 
     private static readonly FrozenDictionary<string, LicenseExpression> Lookup = CreateLookup();
 
-    private static readonly FrozenDictionary<string, SingleLicense> LicenseTextLookup
+    private static readonly int LicenseTextLookupNGramSize = 2;
+    private static readonly FrozenDictionary<NGramsCollection, SingleLicense> LicenseTextLookup
         = All
         .OfType<SingleLicense>()
         .Where(x => x.BaseLicense is null && x.SpdxInfo?.LicenseText is { Length: > 0 })
-        .ToFrozenDictionary(x => PrepareLicenseText(x.SpdxInfo!.LicenseText!), x => x);
+        .ToFrozenDictionary(
+            x => PrepareLicenseText(x.SpdxInfo!.LicenseText!).GetNGrams(LicenseTextLookupNGramSize),
+            x => x);
 
     private static readonly ImmutableArray<string> GenericLicenseUrlDomains =
     [
@@ -220,23 +224,16 @@ public static class Licenses
 
         var contentRaw = file.ReadAllText();
         var content = PrepareLicenseText(contentRaw);
+        var contentNgrams = content.GetNGrams(LicenseTextLookupNGramSize);
 
         // Matching logic is loosely based on the logic used by Licensee: https://github.com/licensee/licensee
         // Licensee is the library used by GitHub for determining the license.
 
         foreach (var pair in LicenseTextLookup)
         {
-            var modelContent = pair.Key;
+            var modelNgrams = pair.Key;
 
-            var allowedLengthDifference = Math.Round(modelContent.Length * 0.05);
-
-            var lengthDiff = Math.Abs(content.Length - modelContent.Length);
-            if (lengthDiff > allowedLengthDifference)
-            {
-                continue;
-            }
-
-            var similarity = modelContent.DiceSorensenCoefficient(content, q: 2, filterDuplicates: false);
+            var similarity = modelNgrams.DiceSorensenCoefficient(contentNgrams);
 
             if (similarity >= 0.95f)
             {
