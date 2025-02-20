@@ -73,7 +73,7 @@ public class Is
     [TestCase("GPL-3.0+", "GPL-1.0+", false)]
     [TestCase("GPL-3.0", "AGPL-3.0", true)] // GPL3 clause 13
     [TestCase("AGPL-3.0", "GPL-3.0", false)]
-    [TestCase("NET_Library_EULA", "MIT", true)]
+    [TestCase("NET_Library_EULA_ENU", "MIT", true)]
     public void Compatiblity(string dependency, string target, bool expectedCompatibility)
     {
         var dep = Licenses.FromExpression(dependency);

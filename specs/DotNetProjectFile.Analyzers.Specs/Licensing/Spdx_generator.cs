@@ -1,6 +1,8 @@
 #pragma warning disable RS1035 // FP
 
 using DotNetProjectFile.Licensing;
+using DotNetProjectFile.NuGet.Packaging;
+using DotNetProjectFile.NuGet;
 using System.Collections.Immutable;
 using System.IO;
 using System.Net.Http;
@@ -140,7 +142,7 @@ public class Generator
         {
             yield return new License
             {
-                LicenseId = "NET_Library_EULA",
+                LicenseId = "NET_Library_EULA_ENU",
                 Name = ".NET Library License Terms",
                 SeeAlso =
                 [
