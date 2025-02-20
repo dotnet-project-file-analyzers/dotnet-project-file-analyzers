@@ -13,7 +13,6 @@ public sealed record PermissiveLicense : SingleLicense
             deprecated: deprecated ?? [],
             spdxCompliant: spdxCompliant)
     {
-
     }
 
     public override bool CompatibleWith(LicenseExpression other)
