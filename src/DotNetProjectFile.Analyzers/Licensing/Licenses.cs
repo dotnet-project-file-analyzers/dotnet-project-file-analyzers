@@ -1,4 +1,7 @@
+using DotNetProjectFile.Text;
+using System;
 using System.Collections.Frozen;
+using System.Text;
 
 namespace DotNetProjectFile.Licensing;
 
@@ -57,6 +60,15 @@ public static class Licenses
     public static readonly ImmutableArray<LicenseExpression> Permissive = [.. All.OfType<PermissiveLicense>()];
 
     private static readonly FrozenDictionary<string, LicenseExpression> Lookup = CreateLookup();
+
+    private static readonly int LicenseTextLookupNGramSize = 2;
+    private static readonly FrozenDictionary<NGramsCollection, SingleLicense> LicenseTextLookup
+        = All
+        .OfType<SingleLicense>()
+        .Where(x => x.BaseLicense is null && x.SpdxInfo?.LicenseText is { Length: > 0 })
+        .ToFrozenDictionary(
+            x => PrepareLicenseText(x.SpdxInfo!.LicenseText!).GetNGrams(LicenseTextLookupNGramSize),
+            x => x);
 
     private static readonly ImmutableArray<string> GenericLicenseUrlDomains =
     [
@@ -184,9 +196,46 @@ public static class Licenses
             .TrimEnd("-license");
     }
 
-    public static LicenseExpression FromFile(string? licenseFile)
+    private static string PrepareLicenseText(string text)
     {
-        // TODO: fuzzy match the file content to known license texts
+        var sb = new StringBuilder();
+
+        foreach (var c in text)
+        {
+            if (char.IsLetter(c))
+            {
+                var lc = char.ToLowerInvariant(c);
+                sb.Append(lc);
+            }
+        }
+
+        return sb.ToString();
+    }
+
+    public static LicenseExpression FromFile(IOFile? licenseFile)
+    {
+        if (licenseFile is not { Exists: true } file)
+        {
+            return Unknown;
+        }
+
+        var contentRaw = file.ReadAllText();
+        var content = PrepareLicenseText(contentRaw);
+        var contentNgrams = content.GetNGrams(LicenseTextLookupNGramSize);
+
+        // Matching logic is loosely based on the logic used by Licensee: https://github.com/licensee/licensee
+        // Licensee is the library used by GitHub for determining the license.
+
+        foreach (var pair in LicenseTextLookup)
+        {
+            var modelNgrams = pair.Key;
+
+            if (contentNgrams.DiceSorensenCoefficientAtLeast(modelNgrams, 0.95f))
+            {
+                return pair.Value;
+            }
+        }
+
         return Unknown;
     }
 }
