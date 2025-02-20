@@ -56,11 +56,11 @@ public static class ProjectFileTypes
         _ when file.Name.IsMatch(".net.csproj") => ProjectFileType.SDK,
         _ when file.Extension.IsMatch(".csproj")
             || file.Extension.IsMatch(".vbproj") => ProjectFileType.ProjectFile,
-        _ when file.Extension.IsMatch(".props")
-            || file.Extension.IsMatch(".targets") => ProjectFileType.Props,
         _ when file.Name.IsMatch("Directory.Build.props")
             || file.Name.IsMatch("Directory.Build.targets") => ProjectFileType.DirectoryBuild,
         _ when file.Name.IsMatch("Directory.Packages.props") => ProjectFileType.DirectoryPackages,
+        _ when file.Extension.IsMatch(".props")
+            || file.Extension.IsMatch(".targets") => ProjectFileType.Props,
         _ => ProjectFileType.None,
     };
 }
