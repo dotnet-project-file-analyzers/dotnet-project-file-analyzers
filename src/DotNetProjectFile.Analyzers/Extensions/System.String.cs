@@ -89,4 +89,58 @@ internal static class StringExtensions
 
         return d[a.Length, b.Length];
     }
+
+    public static float DiceSorensenCoefficient(this string? a, string? b, bool respectDuplicates = true, int q = 2)
+    {
+        var j = JaccardIndex(a, b, respectDuplicates, q);
+        var s = (2 * j) / (1 + j);
+        return s;
+    }
+
+    public static float JaccardIndex(this string? a, string? b, bool respectDuplicates = true, int q = 2)
+    {
+        a ??= string.Empty;
+        b ??= string.Empty;
+
+        var (aGrams, aCount) = GetQGrams(a, respectDuplicates, q);
+        var (bGrams, bCount) = GetQGrams(b, respectDuplicates, q);
+
+        var intersection = 0;
+
+        foreach (var pair in aGrams)
+        {
+            if (bGrams.TryGetValue(pair.Key, out var countInB))
+            {
+                var countInA = pair.Value;
+
+                var countInBoth = Math.Min(countInA, countInB);
+                intersection += countInBoth;
+            }
+        }
+
+        var union = aCount + bCount - intersection;
+        var index = (float)intersection / union;
+        return index;
+    }
+
+    private static (Dictionary<string, int> Lookup, int Count) GetQGrams(string value, bool respectDuplicates, int q)
+    {
+        var result = new Dictionary<string, int>();
+        var size = 0;
+
+        for (var i = q; i < value.Length; i++)
+        {
+            var qgram = value.Substring(i - q, q);
+
+            if (!result.TryGetValue(qgram, out var count))
+            {
+                count = 0;
+            }
+
+            result[qgram] = respectDuplicates ? count + 1 : 1;
+            size++;
+        }
+
+        return (result, size);
+    }
 }

@@ -195,6 +195,22 @@ public static class Licenses
             .TrimEnd("-license");
     }
 
+    private static string PrepareLicenseText(string text)
+    {
+        var sb = new StringBuilder();
+
+        foreach (var c in text)
+        {
+            if (char.IsLetter(c))
+            {
+                var lc = char.ToLowerInvariant(c);
+                sb.Append(lc);
+            }
+        }
+
+        return sb.ToString();
+    }
+
     public static LicenseExpression FromFile(IOFile? licenseFile)
     {
         if (licenseFile is not { Exists: true } file)
@@ -202,11 +218,12 @@ public static class Licenses
             return Unknown;
         }
 
-        var content = Regex.Replace(file.TryReadAllText(), @"\s+", string.Empty);
+        var contentRaw = file.ReadAllText();
+        var content = PrepareLicenseText(contentRaw);
 
         foreach (var pair in LicenseTextLookup)
         {
-            var modelContent = Regex.Replace(pair.Key, @"\s+", string.Empty);
+            var modelContent = PrepareLicenseText(pair.Key);
 
             // No scientific basis for this metric.
             var allowedDistance = Math.Min(
@@ -220,6 +237,18 @@ public static class Licenses
             }
 
             var dist = modelContent.DamerauLevenshteinDistanceTo(content);
+            var similarityTrue2 = modelContent.DiceSorensenCoefficient(content, true, 2);
+            var similarityFalse2 = modelContent.DiceSorensenCoefficient(content, false, 2);
+            var similarityTrue3 = modelContent.DiceSorensenCoefficient(content, true, 3);
+            var similarityFalse3 = modelContent.DiceSorensenCoefficient(content, false, 3);
+
+            var lw = dist <= allowedDistance;
+            var dcs = similarityTrue2 >= 0.95f;
+
+            if (lw != dcs)
+            {
+
+            }
 
             if (dist <= allowedDistance)
             {
