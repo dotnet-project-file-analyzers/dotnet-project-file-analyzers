@@ -961,6 +961,26 @@ public static partial class Rule
         tags: ["coverlet", "code", "coverage"],
         category: Category.Bug);
 
+    public static DiagnosticDescriptor TUnitTestProjectMustBeExe => New(
+        id: 1103,
+        title: "TUnit test projects must be executable",
+        message: "Set <OutputType> to exe to run the TUnit tests",
+        description:
+            "TUnit builds upon the Microsoft.Testing.Platform which requires " +
+            "the project to be an executable.",
+        tags: ["TUnit", "unit", "test"],
+        category: Category.Bug);
+
+    public static DiagnosticDescriptor TUnitTestProjectShouldNotIncludeSdk => New(
+        id: 1104,
+        title: "TUnit conflicts with Microsoft.NET.Test.Sdk",
+        message: "Remove either TUnit or Microsoft.NET.Test.Sdk as they can not be combined",
+        description:
+            "The use of the Microsoft.NET.Test.Sdk interferes with the working " +
+            "of TUnit, therefor they can not be combined.",
+        tags: ["TUnit", "unit", "test"],
+        category: Category.Bug);
+
     public static DiagnosticDescriptor ExcludePrivateAssetDependencies => New(
         id: 1200,
         title: "Exclude private assets as project file dependency",
