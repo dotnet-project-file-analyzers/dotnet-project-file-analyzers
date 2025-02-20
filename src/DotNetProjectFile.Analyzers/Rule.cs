@@ -1,7 +1,5 @@
 #pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
-using System.IO;
-
 namespace DotNetProjectFile;
 
 public static partial class Rule

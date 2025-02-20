@@ -132,15 +132,8 @@ public static class PackageCache
         };
 
         bool HasDllFiles(string subDir)
-        {
-            var dir = versionDir.SubDirectory(subDir);
-            if (!dir.Exists)
-            {
-                return false;
-            }
-
-            return dir.Files("./**/*.dll").Any();
-        }
+            => versionDir.SubDirectory(subDir) is { Exists: true } dir
+            && dir.Files("./**/*.dll").Any();
     }
 
     private static IODirectory? GetVersionDirectory(IODirectory packageDir, string? versionLabel)

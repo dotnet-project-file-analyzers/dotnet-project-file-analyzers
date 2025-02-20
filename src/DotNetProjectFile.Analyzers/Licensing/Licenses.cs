@@ -1,10 +1,7 @@
 using DotNetProjectFile.TextSimilarity;
 using System;
 using System.Collections.Frozen;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 
 namespace DotNetProjectFile.Licensing;
 

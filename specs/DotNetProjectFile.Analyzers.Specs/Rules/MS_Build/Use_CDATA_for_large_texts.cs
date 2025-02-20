@@ -5,7 +5,7 @@ public class Reports
     [Test]
     public void missing_CDATA() => new UseCDATAForLargeTexts()
         .ForProject("MissingCDATA.cs")
-        .HasIssue(new Issue("Proj1701", "Add <![CDATA[ and ]]> around this text.")
+        .HasIssue(Issue.WRN("Proj1701", "Add <![CDATA[ and ]]> around this text.")
         .WithSpan(17, 24, 23, 04));
 }
 

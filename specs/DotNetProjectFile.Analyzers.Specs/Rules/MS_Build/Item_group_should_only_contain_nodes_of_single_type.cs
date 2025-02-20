@@ -7,7 +7,7 @@ public class Reports
        => new ItemGroupShouldBeUniform()
        .ForProject("MixedItemGroup.cs")
        .HasIssue(
-           new Issue("Proj0020", @"<ItemGroup> should only contain nodes of a single type.").WithSpan(6, 2, 9, 14));
+           Issue.WRN("Proj0020", @"<ItemGroup> should only contain nodes of a single type.").WithSpan(6, 2, 9, 14));
 }
 
 public class Guards

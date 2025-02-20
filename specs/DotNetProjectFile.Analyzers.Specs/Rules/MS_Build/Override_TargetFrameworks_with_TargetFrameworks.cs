@@ -6,7 +6,7 @@ public class Reports
     [Ignore("Buildalizer does not output any artifacts, hence nothing is analyzed.")]
     public void TFM_overriding_TFMs() => new OverrideTargetFrameworksWithTargetFrameworks()
         .ForProject("TfmsMixed.cs")
-        .HasIssue(new Issue("Proj0027", "This <TargetFramework> will be ignored due to the earlier use of <TargetFrameworks>.")
+        .HasIssue(Issue.WRN("Proj0027", "This <TargetFramework> will be ignored due to the earlier use of <TargetFrameworks>.")
         .WithSpan(06, 04, 06, 46));
 }
 

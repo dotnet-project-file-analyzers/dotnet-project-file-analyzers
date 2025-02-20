@@ -7,9 +7,9 @@ public class Reports
         => new BuildActionsShouldHaveSingleTask()
         .ForProject("MultipleBuildActionTasks.cs")
         .HasIssues(
-            new Issue("Proj0021", "The <Content> defines multiple tasks." /*...*/).WithSpan(12, 04, 12, 52),
-            new Issue("Proj0021", "The <None> defines multiple tasks." /*......*/).WithSpan(16, 04, 16, 50),
-            new Issue("Proj0021", "The <AdditionalFiles> defines multiple tasks.").WithSpan(20, 04, 20, 67)
+            Issue.WRN("Proj0021", "The <Content> defines multiple tasks." /*...*/).WithSpan(12, 04, 12, 52),
+            Issue.WRN("Proj0021", "The <None> defines multiple tasks." /*......*/).WithSpan(16, 04, 16, 50),
+            Issue.WRN("Proj0021", "The <AdditionalFiles> defines multiple tasks.").WithSpan(20, 04, 20, 67)
         );
 }
 

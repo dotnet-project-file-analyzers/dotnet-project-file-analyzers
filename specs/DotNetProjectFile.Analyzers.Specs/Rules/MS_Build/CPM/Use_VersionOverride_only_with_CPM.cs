@@ -6,7 +6,7 @@ public class Reports
     public void project_with_VersionOverride_without_CPM()
         => new UseVersionOverrideOnlyWithCpm()
         .ForProject("MisuseVersionOverride.cs")
-        .HasIssue(new Issue("Proj0803", "Use Version instead of VersionOverride when CPM is not enabled.")
+        .HasIssue(Issue.WRN("Proj0803", "Use Version instead of VersionOverride when CPM is not enabled.")
         .WithSpan(07, 04, 07, 81));
 }
 

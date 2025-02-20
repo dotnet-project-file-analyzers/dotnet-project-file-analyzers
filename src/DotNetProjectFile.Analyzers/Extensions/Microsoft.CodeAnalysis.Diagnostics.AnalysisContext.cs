@@ -1,5 +1,3 @@
-using DotNetProjectFile.Ini;
-
 namespace Microsoft.CodeAnalysis.Diagnostics;
 
 /// <summary>Extensions on <see cref="AnalysisContext"/>.</summary>

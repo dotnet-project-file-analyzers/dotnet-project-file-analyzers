@@ -7,7 +7,7 @@ public class Reports
        => new AvoidLicenseUrl()
        .ForProject("WithLicenseUrl.cs")
        .HasIssue(
-            new Issue("Proj0211", "Replace deprecated <PackageLicenseUrl> with <PackageLicenseExpression> or <PackageLicenseFile> node.")
+            Issue.WRN("Proj0211", "Replace deprecated <PackageLicenseUrl> with <PackageLicenseExpression> or <PackageLicenseFile> node.")
                 .WithSpan(30, 4, 30, 101));
 }
 

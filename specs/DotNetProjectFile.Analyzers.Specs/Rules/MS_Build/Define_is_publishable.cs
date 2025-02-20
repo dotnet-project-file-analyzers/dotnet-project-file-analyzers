@@ -6,7 +6,7 @@ public class Reports
     public void on_no_is_publishable()
        => new DefineIsPublishable()
        .ForProject("EmptyProject.cs")
-       .HasIssue(new Issue("Proj0400", "Define the <IsPublishable> node explicitly."));
+       .HasIssue(Issue.WRN("Proj0400", "Define the <IsPublishable> node explicitly."));
 }
 
 public class Guards
