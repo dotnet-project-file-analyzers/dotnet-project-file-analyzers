@@ -140,6 +140,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0807** Use Directory.Packages.props only for Central Package Management](rules/Proj0807.md)
 * [**Proj0808** Define global package reference only in Directory.Packages.props](rules/Proj0808.md)
 * [**Proj0809** Global package references are meant for private assets only](rules/Proj0809.md)
+* [**Proj0810** Remove unused package versions](rules/Proj0810.md)
 
 ### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
