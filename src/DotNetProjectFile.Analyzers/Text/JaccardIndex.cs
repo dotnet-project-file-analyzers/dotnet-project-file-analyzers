@@ -1,4 +1,4 @@
-namespace DotNetProjectFile.TextSimilarity;
+namespace DotNetProjectFile.Text;
 
 public static class JaccardIndex
 {

@@ -1,6 +1,6 @@
 using System.Collections.Frozen;
 
-namespace DotNetProjectFile.TextSimilarity;
+namespace DotNetProjectFile.Text;
 
 public sealed class NGramsCollection
 {
@@ -59,15 +59,15 @@ public sealed class NGramsCollection
 
 public static class NGramsCollectionExtensions
 {
-    /// <inheritdoc cref="DotNetProjectFile.TextSimilarity.JaccardIndex.Compute(NGramsCollection, NGramsCollection)" />
+    /// <inheritdoc cref="JaccardIndex.Compute(NGramsCollection, NGramsCollection)" />
     public static float JaccardIndex(this NGramsCollection ngrams1, NGramsCollection ngrams2)
-        => DotNetProjectFile.TextSimilarity.JaccardIndex.Compute(ngrams1, ngrams2);
+        => Text.JaccardIndex.Compute(ngrams1, ngrams2);
 
-    /// <inheritdoc cref="DotNetProjectFile.TextSimilarity.DiceSorensenCoefficient.Compute(NGramsCollection, NGramsCollection)" />
+    /// <inheritdoc cref="DiceSorensenCoefficient.Compute(NGramsCollection, NGramsCollection)" />
     public static float DiceSorensenCoefficient(this NGramsCollection ngrams1, NGramsCollection ngrams2)
-        => DotNetProjectFile.TextSimilarity.DiceSorensenCoefficient.Compute(ngrams1, ngrams2);
+        => Text.DiceSorensenCoefficient.Compute(ngrams1, ngrams2);
 
-    /// <inheritdoc cref="DotNetProjectFile.TextSimilarity.DiceSorensenCoefficient.AtLeast(NGramsCollection, NGramsCollection, float)" />
+    /// <inheritdoc cref="DiceSorensenCoefficient.AtLeast(NGramsCollection, NGramsCollection, float)" />
     public static bool DiceSorensenCoefficientAtLeast(this NGramsCollection ngrams1, NGramsCollection ngrams2, float requiredSimilarity)
-        => DotNetProjectFile.TextSimilarity.DiceSorensenCoefficient.AtLeast(ngrams1, ngrams2, requiredSimilarity);
+        => Text.DiceSorensenCoefficient.AtLeast(ngrams1, ngrams2, requiredSimilarity);
 }

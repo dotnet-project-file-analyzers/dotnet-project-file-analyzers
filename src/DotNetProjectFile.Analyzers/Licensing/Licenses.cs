@@ -1,4 +1,4 @@
-using DotNetProjectFile.TextSimilarity;
+using DotNetProjectFile.Text;
 using System;
 using System.Collections.Frozen;
 using System.Text;

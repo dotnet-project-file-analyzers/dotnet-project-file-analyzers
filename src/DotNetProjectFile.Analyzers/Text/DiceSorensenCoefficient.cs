@@ -1,4 +1,4 @@
-namespace DotNetProjectFile.TextSimilarity;
+namespace DotNetProjectFile.Text;
 
 public static class DiceSorensenCoefficient
 {
@@ -15,7 +15,7 @@ public static class DiceSorensenCoefficient
     public static float Compute(NGramsCollection ngrams1, NGramsCollection ngrams2)
     {
         var j = JaccardIndex.Compute(ngrams1, ngrams2);
-        var s = (2 * j) / (1 + j);
+        var s = 2 * j / (1 + j);
         return s;
     }
 

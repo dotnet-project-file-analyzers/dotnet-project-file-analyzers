@@ -1,4 +1,4 @@
-using DotNetProjectFile.TextSimilarity;
+using DotNetProjectFile.Text;
 
 namespace System;
 
