@@ -105,11 +105,6 @@ public static class PackageCache
             ? licenseNode.Value
             : null;
 
-        if (name.Contains("codecoverage"))
-        {
-
-        }
-
         var license = Licenses.FromExpression(licenseExpression);
 
         if (license == Licenses.Unknown)
