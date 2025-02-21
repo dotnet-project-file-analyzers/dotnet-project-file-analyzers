@@ -35,7 +35,7 @@ public class Generator
         var outputFile = Path.Combine(outputDir, "spdx_info.bin");
 
         var infos = new List<SpdxLicenseInfo>();
-        foreach (var license in valid)
+        foreach (var license in valid.OrderBy(x => x.LicenseId))
         {
             var info = new SpdxLicenseInfo()
             {
@@ -44,7 +44,7 @@ public class Generator
                 Fsf = license.IsFsfLibre,
                 Osi = license.IsOsiApproved,
                 SeeAlso = license.SeeAlso?.OfType<string>().ToImmutableArray() ?? [],
-                LicenseText = (await GetLicenseText(license.LicenseId!))?.Trim(),
+                LicenseText = (await GetLicenseText(license.LicenseId!))?.Trim().Replace("\r\n", "\n"),
             };
             infos.Add(info);
         }
