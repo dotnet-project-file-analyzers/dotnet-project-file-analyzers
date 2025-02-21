@@ -1,4 +1,8 @@
+using DotNetProjectFile.IO;
 using DotNetProjectFile.Licensing;
+using DotNetProjectFile.NuGet.Packaging;
+using DotNetProjectFile.NuGet;
+using System.Collections.Frozen;
 using System.Collections.Immutable;
 using System.IO;
 using System.Net.Http;
@@ -23,6 +27,7 @@ public class Generator
         var list = await response.Content.ReadFromJsonAsync<LicenseList>();
         var requestedLicenses = list?.Licenses?.OfType<License>() ?? [];
         var manualLicenses = GetAdditionalLicenses();
+        var manualLicenseIds = manualLicenses.Select(x => x.LicenseId).ToFrozenSet();
         var licenses = requestedLicenses.Concat(manualLicenses);
         var valid = licenses
             .Where(l => l.LicenseId is { Length: > 0 })
@@ -44,7 +49,7 @@ public class Generator
                 Fsf = license.IsFsfLibre,
                 Osi = license.IsOsiApproved,
                 SeeAlso = license.SeeAlso?.OfType<string>().ToImmutableArray() ?? [],
-                LicenseText = (await GetLicenseText(license.LicenseId!))?.Trim().Replace("\r\n", "\n"),
+                LicenseTexts = await GetLicenseTexts(license.LicenseId!),
             };
             infos.Add(info);
         }
@@ -64,64 +69,54 @@ public class Generator
         await compressed.CopyToAsync(fs);
         await fs.FlushAsync();
 
-        async Task<string?> GetLicenseText(string id)
+        async Task<ImmutableArray<string>> GetLicenseTexts(string id)
         {
-            var dirManual = Path.Combine(GetCurrentDirectoryPath(), "LicenseTexts/Manual");
-            var dirGenerated = Path.Combine(GetCurrentDirectoryPath(), "LicenseTexts/Generated");
-            Directory.CreateDirectory(dirManual);
-            Directory.CreateDirectory(dirGenerated);
+            var texts = new List<string?>();
 
-            var manualFileName = Path.Combine(dirManual, $"{id}.txt");
-            var generatedFileName = Path.Combine(dirGenerated, $"{id}.txt");
+            var dir = GetCurrentDirectory();
+            var dirManual = dir.SubDirectory("LicenseTexts/Manual");
+            var dirGenerated = dir.SubDirectory("LicenseTexts/Generated");
+            dirManual.Create();
+            dirGenerated.Create();
 
-            try
+
+            if (!manualLicenseIds.Contains(id))
             {
-                if (File.Exists(manualFileName))
+                var generatedFile = dirGenerated.File($"{id}.txt");
+
+                if (generatedFile.Exists)
                 {
-                    var fromFile = await File.ReadAllTextAsync(manualFileName);
-                    if (string.IsNullOrWhiteSpace(fromFile))
-                    {
-                        return null;
-                    }
-
-                    return fromFile;
+                    texts.Add(generatedFile.TryReadAllText());
                 }
-
-                if (File.Exists(generatedFileName))
+                else
                 {
-                    var fromFile = await File.ReadAllTextAsync(generatedFileName);
-                    if (string.IsNullOrWhiteSpace(fromFile))
-                    {
-                        return null;
-                    }
+                    using var detailsResponse = await client.GetAsync($"{SpdxUrl}{id}.json");
+                    var details = await detailsResponse.Content.ReadFromJsonAsync<LicenseDetails>();
+                    var text = details?.LicenseText;
 
-                    return fromFile;
+                    await generatedFile.WriteAllTextAsync(text);
+                    texts.Add(text);
                 }
-
-                using var detailsResponse = await client.GetAsync($"{SpdxUrl}{id}.json");
-                var details = await detailsResponse.Content.ReadFromJsonAsync<LicenseDetails>();
-                var text = details?.LicenseText;
-
-                await File.WriteAllTextAsync(generatedFileName, text ?? string.Empty);
-
-                return text;
             }
-            catch
+
+            texts.Add(dirManual.File($"{id}.txt").TryReadAllText());
+
+            var manualSubDir = dirManual.SubDirectory(id);
+            var manualFiles = (manualSubDir.Exists
+                ? manualSubDir.Files("*.txt") ?? []
+                : [])
+                .OrderBy(x => x.ToString());
+
+            foreach (var manualFile in manualFiles)
             {
-                if (!File.Exists(generatedFileName))
-                {
-                    try
-                    {
-                        await File.WriteAllTextAsync(generatedFileName, "");
-                    }
-                    catch
-                    {
-                        // Do nothing.
-                    }
-                }
-
-                return null;
+                texts.Add(manualFile.TryReadAllText());
             }
+
+            return texts
+                .OfType<string>()
+                .Select(str => str.Trim().Replace("\r\n", "\n"))
+                .Where(str => str.Length > 0)
+                .ToImmutableArray();
         }
 
         string GetCurrentDirectoryPath([CallerFilePath] string? path = null)
@@ -133,6 +128,9 @@ public class Generator
 
             return Directory.GetCurrentDirectory();
         }
+
+        IODirectory GetCurrentDirectory([CallerFilePath] string? path = null)
+            => IODirectory.Parse(GetCurrentDirectoryPath(path));
 
         IEnumerable<License> GetAdditionalLicenses()
         {
