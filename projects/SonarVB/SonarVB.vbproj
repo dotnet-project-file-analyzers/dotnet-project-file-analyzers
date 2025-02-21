@@ -2,18 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <OutputType>Library</OutputType>
-    <OptionStrict>On</OptionStrict>
   </PropertyGroup>
 
-
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="SonarAnalyzer.VisualBasic" Version="*" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="*.vbproj" Visible="false" />
+    <PackageReference Include="SonarAnalyzer.VisualBasic" Version="10.6.0.109712" PrivateAssets="all" />
   </ItemGroup>
 
   <ItemGroup>

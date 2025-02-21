@@ -71,6 +71,7 @@ ToBeReleased:
 - Proj0501: Package only contains a deprecated license URL. (NEW RULE)
 - Proj0502: Only include packages compliant with project. (NEW RULE)
 - Proj0810: Remove unused package versions. (NEW RULE)
+- Proj1003: Take <GlobalPackageReference>'s also into account. (FP)
 - Proj1103: TUnit test projects must be executable. (NEW RULE)
 - Proj1104: TUnit conflicts with Microsoft.NET.Test.Sdk. (NEW RULE)
 v1.5.9
