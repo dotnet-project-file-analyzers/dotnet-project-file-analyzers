@@ -103,9 +103,7 @@ public class Explore
 
         foreach (var url in urls)
         {
-#pragma warning disable RS1035 // Do not use APIs banned for analyzers
             Console.WriteLine($"{url.Metadata.Id} v{url.Metadata.Version}: {url.Metadata.License}");
-#pragma warning restore RS1035 // Do not use APIs banned for analyzers
         }
     }
 }

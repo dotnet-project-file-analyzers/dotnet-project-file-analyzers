@@ -1,8 +1,4 @@
-#pragma warning disable RS1035 // FP
-
 using DotNetProjectFile.Licensing;
-using DotNetProjectFile.NuGet.Packaging;
-using DotNetProjectFile.NuGet;
 using System.Collections.Immutable;
 using System.IO;
 using System.Net.Http;
