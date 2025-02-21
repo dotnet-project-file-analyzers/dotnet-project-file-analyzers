@@ -97,6 +97,7 @@ public static class Licenses
         ["https://github.com/dotnet/coreclr/blob/master/LICENSE.TXT"] = "MIT",
         ["https://github.com/dotnet/roslyn/blob/master/License.txt"] = "MIT",
         ["https://github.com/dotnet/core-setup/blob/master/LICENSE.TXT"] = "MIT",
+        ["https://github.com/Microsoft/visualfsharp/blob/master/License.txt"] = "MIT",
         ["https://raw.githubusercontent.com/aspnet/AspNetCore/2.0.0/LICENSE.txt"] = "Apache-2.0",
         ["https://raw.githubusercontent.com/aspnet/Home/2.0.0/LICENSE.txt"] = "Apache-2.0",
         ["https://www.gnu.org/licenses/lgpl.html"] = "LGPL-3.0-only",
