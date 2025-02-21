@@ -14,7 +14,6 @@ internal static class DiagnosticAnalyzerExtensions
         [StringSyntax(StringSyntaxAttribute.Xml)] string content)
     {
         content = content.Trim();
-#pragma warning disable RS1035 // FP: Not an analyzer.
         var tempDir = Path.Combine(Path.GetTempPath(), "dotnet-project-file-analyzer/tests");
         var hash = GetHash(content);
         var dir = Path.Combine(tempDir, hash);

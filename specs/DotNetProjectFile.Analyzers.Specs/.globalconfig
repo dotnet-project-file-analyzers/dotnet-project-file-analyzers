@@ -1,0 +1,3 @@
+root = false
+
+dotnet_diagnostic.RS1035.severity = none    # We're not dealing with analyzers here

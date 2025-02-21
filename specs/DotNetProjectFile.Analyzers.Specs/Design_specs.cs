@@ -1,5 +1,3 @@
-#pragma warning disable RS1035 // Do not use APIs banned for analyzers
-
 using System.IO;
 using System.Net;
 using System.Net.Http;
