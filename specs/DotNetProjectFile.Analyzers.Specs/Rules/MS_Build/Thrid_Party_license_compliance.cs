@@ -69,7 +69,7 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0504", "FluentAssertions package is distributed with a custom license, which has not been registrated."));
+       .HasIssue(Issue.WRN("Proj0504", "FluentAssertions package is distributed under a custom license, which has not been explicitly accepted."));
 }
 
 public class Guards
