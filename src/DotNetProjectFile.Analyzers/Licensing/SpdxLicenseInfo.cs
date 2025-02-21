@@ -63,8 +63,8 @@ public sealed record SpdxLicenseInfo
             Name = name,
             Osi = osi,
             Fsf = fsf,
-            SeeAlso = seeAlso.ToImmutableArray(),
-            LicenseTexts = licenseTexts.ToImmutableArray(),
+            SeeAlso = [.. seeAlso],
+            LicenseTexts = [.. licenseTexts],
         };
     }
 
