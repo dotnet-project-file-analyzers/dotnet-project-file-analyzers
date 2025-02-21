@@ -1,5 +1,6 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.UseSonarAnalyzers"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseSonarAnalyzers() : MsBuildProjectFileAnalyzer(Rule.UseSonarAnalyzers)
 {
@@ -8,10 +9,12 @@ public sealed class UseSonarAnalyzers() : MsBuildProjectFileAnalyzer(Rule.UseSon
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (Include(context.Compilation.Options.Language) is { } include
-            && context.File
-                .Walk()
-                .OfType<PackageReference>().None(p => p.Include.IsMatch(include)))
+        if (Include(context.Compilation.Options.Language) is not { } include) { return; }
+            
+        if (context.File
+            .Walk()
+            .OfType<PackageReferenceBase>()
+            .None(p => p is not PackageVersion && p.Include.IsMatch(include)))
         {
             context.ReportDiagnostic(Descriptor, context.File, include);
         }
