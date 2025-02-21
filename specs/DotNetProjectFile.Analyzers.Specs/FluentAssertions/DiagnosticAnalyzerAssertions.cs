@@ -1,9 +1,10 @@
+using FluentAssertions.Execution;
 using FluentAssertions.Primitives;
 
 namespace FluentAssertions;
 
 internal sealed class DiagnosticAnalyzerAssertions(DiagnosticAnalyzer value)
-    : ObjectAssertions<DiagnosticAnalyzer, DiagnosticAnalyzerAssertions>(value)
+    : ObjectAssertions<DiagnosticAnalyzer, DiagnosticAnalyzerAssertions>(value, AssertionChain.GetOrCreate())
 {
     public AndConstraint<DiagnosticAnalyzerAssertions> HaveId(string diagnosticId)
     {

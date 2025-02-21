@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AwesomeAssertions" Version="8.0.1" />
     <PackageReference Include="Microsoft.Build.Locator" Version="1.7.8" />
     <PackageReference Include="Microsoft.CodeAnalysis" Version="4.11.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.11.0" />
@@ -28,7 +29,6 @@
 
   <ItemGroup Label="Test tools">
     <PackageReference Include="CodeAnalysis.TestTools" Version="3.0.1" />
-    <PackageReference Include="FluentAssertions" Version="7.0.0" />
     <PackageReference Include="NuGet.Common" Version="6.12.1" />
     <PackageReference Include="NuGet.Frameworks" Version="6.12.1" />
     <PackageReference Include="NuGet.Packaging" Version="6.12.1" />
@@ -49,7 +49,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="FluentAssertions.Analyzers" Version="*" PrivateAssets="all" />
+    <PackageReference Include="AwesomeAssertions.Analyzers" Version="0.34.1" PrivateAssets="all" />
     <PackageReference Include="NUnit.Analyzers" Version="*" PrivateAssets="all" />
     <PackageReference Include="System.Formats.Asn1" Version="9.0.0" />
   </ItemGroup>

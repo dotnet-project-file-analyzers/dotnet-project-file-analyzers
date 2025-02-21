@@ -17,7 +17,7 @@ public partial class Rules
     {
         using var client = new HttpClient();
         var response = await client.GetAsync(rule.HelpLinkUri);
-        response.Should().HaveStatusCode(HttpStatusCode.OK, rule.HelpLinkUri);
+        response.StatusCode.Should().Be(HttpStatusCode.OK, rule.HelpLinkUri);
 
         var content = await response.Content.ReadAsStringAsync();
         content.Should().Contain($">{rule.Id}: ");
