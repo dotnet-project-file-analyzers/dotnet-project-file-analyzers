@@ -31,6 +31,7 @@ public static class Licenses
         new PermissiveLicense("MS-LPL"),
         new PermissiveLicense("PostgreSQL"),
         new PermissiveLicense("WTFPL"),
+        new PermissiveLicense(""),
 
         // MPL is technically copy-left, but only on a source-file level, so can be statically and dynamically linked.
         new PermissiveLicense("MPL-1.0"),
@@ -41,8 +42,30 @@ public static class Licenses
         // LGPL is technically copy-left, but only when linking statically. Since C# code is usually linked dynamically, we allow it for now.
         new PermissiveLicense("LGPL-2.0-only", deprecated: ["LGPL-2.0"]),
         new PermissiveLicense("LGPL-2.0-or-later", deprecated: ["LGPL-2.0+"], baseLicense: "LGPL-2.0-only"),
+        new PermissiveLicense("LGPL-2.1-only", deprecated: ["LGPL-2.1"]),
+        new PermissiveLicense("LGPL-2.1-or-later", deprecated: ["LGPL-2.1+"], baseLicense: "LGPL-2.1-only"),
         new PermissiveLicense("LGPL-3.0-only", deprecated: ["LGPL-3.0"]),
         new PermissiveLicense("LGPL-3.0-or-later", deprecated: ["LGPL-3.0+"], baseLicense: "LGPL-3.0-only"),
+
+        new PermissiveLicense("OLDAP-1.1"),
+        new PermissiveLicense("OLDAP-1.2"),
+        new PermissiveLicense("OLDAP-1.3"),
+        new PermissiveLicense("OLDAP-1.4"),
+        new PermissiveLicense("OLDAP-2.0"),
+        new PermissiveLicense("OLDAP-2.0.1"),
+        new PermissiveLicense("OLDAP-2.1"),
+        new PermissiveLicense("OLDAP-2.2"),
+        new PermissiveLicense("OLDAP-2.2.1"),
+        new PermissiveLicense("OLDAP-2.2.2"),
+        new PermissiveLicense("OLDAP-2.3"),
+        new PermissiveLicense("OLDAP-2.4"),
+        new PermissiveLicense("OLDAP-2.5"),
+        new PermissiveLicense("OLDAP-2.6"),
+        new PermissiveLicense("OLDAP-2.7"),
+        new PermissiveLicense("OLDAP-2.8"),
+
+        new PermissiveLicense("Zlib"),
+        new PermissiveLicense("zlib-acknowledgement", baseLicense: "Zlib"),
 
         // EPL is similar situation as LGPL
         new PermissiveLicense("EPL-1.0"),

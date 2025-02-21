@@ -150,34 +150,6 @@ public class Generator
         }
     }
 
-    [Test]
-    public void Foo()
-    {
-        var all = PackageCache.GetDirectory().Files("/**/*.nuspec")
-            .Select(static x =>
-            {
-                using var stream = x.TryOpenRead();
-                try
-                {
-                    return NuSpecFile.Load(stream);
-                }
-                catch
-                {
-                    return null;
-                }
-            })
-            .OfType<NuSpecFile>()
-            .Select(x => PackageCache.GetPackage(x.Metadata!.Id, x.Metadata!.Version))
-            .OfType<CachedPackage>()
-            .OrderBy(p => p.Name)
-            .ThenBy(p => p.Version)
-            .ToArray();
-
-        var unknown = all.Where(x => x.License.IsUnknown).ToArray();
-        var unknownWithExpression = unknown.Where(x => x.LicenseExpression is { Length: > 0 }).ToArray();
-        var unknownWithFile = unknown.Where(x => x.LicenseFile is { Length: > 0 }).ToArray();
-    }
-
     public sealed record LicenseList
     {
         public string? LicenseListVersion { get; init; }
