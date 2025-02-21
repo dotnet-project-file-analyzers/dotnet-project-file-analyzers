@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="AwesomeAssertions" Version="8.0.1" />
     <PackageReference Include="Microsoft.Build.Locator" Version="1.7.8" />
     <PackageReference Include="Microsoft.CodeAnalysis" Version="4.11.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.11.0" />
@@ -28,6 +27,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Test tools">
+    <PackageReference Include="AwesomeAssertions" Version="8.0.1" />
     <PackageReference Include="CodeAnalysis.TestTools" Version="3.0.1" />
     <PackageReference Include="NuGet.Common" Version="6.12.1" />
     <PackageReference Include="NuGet.Frameworks" Version="6.12.1" />
