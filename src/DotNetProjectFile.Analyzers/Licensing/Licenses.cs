@@ -75,10 +75,11 @@ public static class Licenses
     private static readonly FrozenDictionary<NGramsCollection, SingleLicense> LicenseTextLookup
         = All
         .OfType<SingleLicense>()
-        .Where(x => x.BaseLicense is null && x.SpdxInfo?.LicenseText is { Length: > 0 })
+        .Where(license => license.BaseLicense is null)
+        .SelectMany(license => (license.SpdxInfo?.LicenseTexts ?? []).Select(text => (Text: text, License: license)))
         .ToFrozenDictionary(
-            x => PrepareLicenseText(x.SpdxInfo!.LicenseText!).GetNGrams(LicenseTextLookupNGramSize),
-            x => x);
+            pair => PrepareLicenseText(pair.Text).GetNGrams(LicenseTextLookupNGramSize),
+            pair => pair.License);
 
     private static readonly ImmutableArray<string> GenericLicenseUrlDomains =
     [

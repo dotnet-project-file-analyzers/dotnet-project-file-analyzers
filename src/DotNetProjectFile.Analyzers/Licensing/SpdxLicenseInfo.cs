@@ -16,7 +16,7 @@ public sealed record SpdxLicenseInfo
 
     public required ImmutableArray<string> SeeAlso { get; init; }
 
-    public required string? LicenseText { get; init; }
+    public required ImmutableArray<string> LicenseTexts { get; init; }
 
     public void WriteTo(BinaryWriter writer)
     {
@@ -31,14 +31,10 @@ public sealed record SpdxLicenseInfo
             writer.Write(SeeAlso[i]);
         }
 
-        if (LicenseText is { })
+        writer.Write(LicenseTexts.Length);
+        for (var i = 0; i < LicenseTexts.Length; i++)
         {
-            writer.Write(true);
-            writer.Write(LicenseText);
-        }
-        else
-        {
-            writer.Write(false);
+            writer.Write(LicenseTexts[i]);
         }
     }
 
@@ -55,9 +51,11 @@ public sealed record SpdxLicenseInfo
             seeAlso[i] = reader.ReadString();
         }
 
-        var licenseText = reader.ReadBoolean()
-            ? reader.ReadString()
-            : null;
+        var licenseTexts = new string[reader.ReadInt32()];
+        for (var i = 0; i < licenseTexts.Length; i++)
+        {
+            licenseTexts[i] = reader.ReadString();
+        }
 
         return new()
         {
@@ -66,7 +64,7 @@ public sealed record SpdxLicenseInfo
             Osi = osi,
             Fsf = fsf,
             SeeAlso = seeAlso.ToImmutableArray(),
-            LicenseText = licenseText,
+            LicenseTexts = licenseTexts.ToImmutableArray(),
         };
     }
 

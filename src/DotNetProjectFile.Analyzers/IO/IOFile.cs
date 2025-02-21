@@ -3,6 +3,7 @@
 
 using System.ComponentModel;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace DotNetProjectFile.IO;
 
@@ -159,6 +160,26 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
         {
             return Stream.Null;
         }
+    }
+
+    /// <inheritdoc cref="FileInfo.OpenWrite" />
+    public FileStream OpenWrite()
+        => Info?.OpenWrite() ?? throw new FileNotFoundException();
+
+    /// <inheritdoc cref="File.WriteAllText(string, string)" />
+    public async Task WriteAllTextAsync(string? content)
+    {
+        using var fs = OpenWrite();
+        using var writer = new StreamWriter(fs);
+        await writer.WriteAsync(content ?? string.Empty);
+    }
+
+    /// <inheritdoc cref="File.WriteAllText(string, string)" />
+    public void WriteAllText(string? content)
+    {
+        using var fs = OpenWrite();
+        using var writer = new StreamWriter(fs);
+        writer.Write(content ?? string.Empty);
     }
 
     /// <inheritdoc />

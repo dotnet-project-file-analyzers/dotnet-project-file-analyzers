@@ -125,6 +125,9 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
         }
     }
 
+    public void Create()
+        => Info?.Create();
+
     /// <summary>Gets the name of the directory.</summary>
     public string Name
         => Parts.Length == 0
