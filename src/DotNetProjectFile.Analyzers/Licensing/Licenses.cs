@@ -47,6 +47,11 @@ public static class Licenses
         new PermissiveLicense("LGPL-3.0-only", deprecated: ["LGPL-3.0"]),
         new PermissiveLicense("LGPL-3.0-or-later", deprecated: ["LGPL-3.0+"], baseLicense: "LGPL-3.0-only"),
 
+        // EUPL is statically linked copy-left, with even more exceptions than LGPL.
+        new PermissiveLicense("EUPL-1.0"),
+        new PermissiveLicense("EUPL-1.1"),
+        new PermissiveLicense("EUPL-1.2"),
+
         new PermissiveLicense("OLDAP-1.1"),
         new PermissiveLicense("OLDAP-1.2"),
         new PermissiveLicense("OLDAP-1.3"),
