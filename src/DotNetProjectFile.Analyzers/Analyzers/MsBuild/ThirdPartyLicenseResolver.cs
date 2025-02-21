@@ -39,7 +39,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
         {
             context.ReportDiagnostic(Rule.PackageOnlyContainsDeprecatedLicenseUrl, reference, reference.IncludeOrUpdate);
         }
-        else if (!packageLicense.CompatibleWith(projectLicense))
+        else if (!packageLicense.CompatibleWith(projectLicense) && packageLicense is not CustomLicense)
         {
             context.ReportDiagnostic(Rule.PackageIncompatibleWithProjectLicense, reference, reference.IncludeOrUpdate, packageLicense, projectLicense);
         }
