@@ -54,6 +54,7 @@ public class Reports
 </Project>")
        .HasIssue(Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI package is distributed as GPL-3.0-only, which is imcompatable with the MIT license of the project."));
 
+    [Ignore("Rule 0504 has not been implemented yet")]
     [Test]
     public void on_package_with_custom_license() => new ThirdPartyLicenseResolver()
        .ForInlineCsproj(@"
@@ -68,7 +69,7 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI package is distributed as GPL-3.0-only, which is imcompatable with the MIT license of the project."));
+       .HasIssue(Issue.WRN("Proj0504", "FluentAssertions package is distributed with a custom license, which has not been registrated."));
 }
 
 public class Guards
