@@ -53,6 +53,22 @@ public class Reports
 
 </Project>")
        .HasIssue(Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI package is distributed as GPL-3.0-only, which is imcompatable with the MIT license of the project."));
+
+    [Test]
+    public void on_package_with_custom_license() => new ThirdPartyLicenseResolver()
+       .ForInlineCsproj(@"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include=""FluentAssertions"" Version=""8.0.0"" />
+  </ItemGroup>
+
+</Project>")
+       .HasIssue(Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI package is distributed as GPL-3.0-only, which is imcompatable with the MIT license of the project."));
 }
 
 public class Guards

@@ -249,6 +249,6 @@ public static class Licenses
             }
         }
 
-        return Unknown;
+        return CustomLicense.Create(content);
     }
 }
