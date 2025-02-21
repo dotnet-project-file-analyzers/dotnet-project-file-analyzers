@@ -1,10 +1,11 @@
 using FluentAssertions.Collections;
 using FluentAssertions.Execution;
 
+
 namespace FluentAssertions;
 
 internal sealed class DiagnosticsAssertions(IEnumerable<Diagnostic> actualValue)
-    : GenericCollectionAssertions<Diagnostic>(actualValue)
+    : GenericCollectionAssertions<Diagnostic>(actualValue, AssertionChain.GetOrCreate())
 {
     public AndConstraint<DiagnosticsAssertions> HaveNoIssues() => HaveIssues();
 
@@ -41,7 +42,7 @@ internal sealed class DiagnosticsAssertions(IEnumerable<Diagnostic> actualValue)
                 sb.AppendLine($"[ ] {i}");
             }
 
-            Execute.Assertion.FailWith(sb.ToString().Replace("{","{{").Replace("}", "}}"));
+            CurrentAssertionChain.FailWith(sb.ToString().Replace("{","{{").Replace("}", "}}"));
         }
 
         return new(this);
