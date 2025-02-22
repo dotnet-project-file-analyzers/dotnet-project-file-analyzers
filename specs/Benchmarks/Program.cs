@@ -6,7 +6,7 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        BenchmarkRunner.Run<GrammrParsing>();
+        BenchmarkRunner.Run<Licening.PrepareText>();
     }
 
     public static void All()

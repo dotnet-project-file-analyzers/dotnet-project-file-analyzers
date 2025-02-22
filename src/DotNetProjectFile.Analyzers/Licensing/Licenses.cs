@@ -1,5 +1,6 @@
 using DotNetProjectFile.Text;
 using System.Collections.Frozen;
+using System.Text;
 
 namespace DotNetProjectFile.Licensing;
 
@@ -204,7 +205,7 @@ public static class Licenses
             _ => Unknown,
         };
 
-        LicenseExpression? TryGenericLicenseUrlDomains(string url) 
+        LicenseExpression? TryGenericLicenseUrlDomains(string url)
             => GenericLicenseUrlDomains
             .Select(url.TrimStart)
             .Where(trimmed => trimmed != url)
@@ -224,8 +225,18 @@ public static class Licenses
         .TrimEnd(".en")
         .TrimEnd("-license");
 
-    private static string PrepareLicenseText(string text) 
-        => string.Concat(text.Where(char.IsLetter).Select(char.ToLowerInvariant));
+    private static string PrepareLicenseText(string text)
+    {
+        var sb = new StringBuilder(text.Length);
+        foreach (var c in text)
+        {
+            if (char.IsLetter(c))
+            {
+                sb.Append(char.ToLowerInvariant(c));
+            }
+        }
+        return sb.ToString();
+    }
 
     public static LicenseExpression FromFile(IOFile? licenseFile)
     {
