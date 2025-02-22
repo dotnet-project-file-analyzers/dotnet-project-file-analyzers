@@ -1,5 +1,7 @@
 using DotNetProjectFile.NuGet.Packaging;
 using Specs.TestTools;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace NuGet.Nuspec_file_specs;
 
@@ -67,10 +69,6 @@ public class Loads
       <group targetFramework="".NETFramework4.7.2"">
         <dependency id=""NuGet.Common"" version=""6.13.1"" exclude=""Build,Analyzers"" />
       </group>
-      <group targetFramework="".NETStandard2.0"">
-        <dependency id=""NuGet.Common"" version=""6.13.1"" exclude=""Build,Analyzers"" />
-        <dependency id=""System.Security.Cryptography.ProtectedData"" version=""4.4.0"" exclude=""Build,Analyzers"" />
-      </group>
     </dependencies>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName=""System.Security"" targetFramework="".NETFramework4.7.2"" />
@@ -82,7 +80,8 @@ public class Loads
 
         var specs = NuSpecFile.Load(stream);
 
-        specs.Should().Be(new NuSpecFile
+      
+        specs.Should().BeEquivalentTo(new NuSpecFile
         {
             Metadata = new()
             {
@@ -90,7 +89,15 @@ public class Loads
                 Version = "6.13.1",
                 License = new() { Type = "expression", Value = "Apache-2.0" },
                 LicenseUrl = "https://licenses.nuget.org/Apache-2.0",
-            }
+                Depedencies =
+                [
+                    new()
+                    {
+                        TargetFramework = ".NETFramework4.7.2",
+                        Dependencies = [new() { Id = "NuGet.Common", Version ="6.13.1", Exclude = "Build,Analyzers" } ]
+                    }
+                ],
+            },
         });
     }
 }
