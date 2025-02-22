@@ -9,7 +9,6 @@ public sealed record NuSpecFile
 {
     [XmlElement("metadata")]
     public Metadata Metadata { get; init; } = new();
-      
     [Pure]
     public static NuSpecFile Load(Stream stream)
         => (NuSpecFile)Serializer.Deserialize(new NamespaceIgnorantReader(stream));
