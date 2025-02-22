@@ -1118,6 +1118,16 @@ public static partial class Rule
         tags: ["Code smell"],
         category: Category.CodeSmell);
 
+    public static DiagnosticDescriptor RemoveCommentedOutCode => New(
+        id: 3002,
+        title: "Remove commented-out code",
+        message: "Remove the commented-out code",
+        description:
+            "Commented-out code adds noise to a file and makes it harder to " +
+            "follow the code that should be executed.",
+        tags: ["XML", "comment", "code"],
+        category: Category.Noise);
+
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
     public static DiagnosticDescriptor New(
