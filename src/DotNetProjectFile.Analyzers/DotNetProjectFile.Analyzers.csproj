@@ -74,6 +74,7 @@ ToBeReleased:
 - Proj1003: Take <GlobalPackageReference>'s also into account. (FP)
 - Proj1103: TUnit test projects must be executable. (NEW RULE)
 - Proj1104: TUnit conflicts with Microsoft.NET.Test.Sdk. (NEW RULE)
+- Proj3002: Remove commented-out code. (NEW RULE)
 v1.5.9
 - Proj0034: Import statement could not be resolved by the analyzer. (NEW RULE)
 - Proj0808: Define global package reference only in Directory.Packages.props. (NEW RULE)
