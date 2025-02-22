@@ -40,3 +40,11 @@ The purpose was never speed,
 |--------:|----------:|-----------:|
 |  50 LoC |  25.29 us | 506 ns/LoC |
 | 231 LoC | 107.77 us | 467 ns/LoC |
+
+### Licensing
+| PrepareText            | Mean     |
+|----------------------- |---------:|
+| new StringBuilder()    | 1.495 us |
+| new StringBuilder(len) | 1.364 us |
+| string.Concat()        | 6.749 us |
+| new char[len]          | 5.881 us |
