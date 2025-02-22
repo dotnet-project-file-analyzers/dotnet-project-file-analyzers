@@ -61,10 +61,10 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.5.9</Version>
+    <Version>1.5.10</Version>
     <PackageReleaseNotes>
       <![CDATA[
-ToBeReleased:
+v1.5.10
 - Proj0035: Remove deprecated RestoreProjectStyle property. (NEW RULE)
 - Proj0217: Define requiring license acceptance explicitly. (NEW RULE)
 - Proj0500: Only include packages with an explicitly defined license. (NEW RULE)

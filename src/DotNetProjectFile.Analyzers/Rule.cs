@@ -782,7 +782,8 @@ public static partial class Rule
             "an incompatable license.",
         tags: ["license"],
         category: Category.Legal,
-        severity: DiagnosticSeverity.Error);
+        severity: DiagnosticSeverity.Error,
+        isEnabled: false);
 
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
         id: 0600,
