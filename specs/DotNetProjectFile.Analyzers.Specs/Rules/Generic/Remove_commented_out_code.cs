@@ -33,6 +33,32 @@ public class Reports
 
 public class Guards
 {
+    [Test]
+    public void regular_comment() => new RemoveCommentedOutCode()
+      .ForInlineCsproj(@"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+  <PropertyGroup>
+    <!-- Only .NET 8.0 will work -->    
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>")
+      .HasNoIssues();
+
+    [Test]
+    public void TODO_comment() => new RemoveCommentedOutCode()
+      .ForInlineCsproj(@"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+  <PropertyGroup>
+    <!-- TODO add .NET 9.0 too -->    
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>")
+      .HasNoIssues();
+
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     public void Projects_without_issues_for_MS_Build(string project) => new RemoveCommentedOutCode()
