@@ -36,6 +36,7 @@ public class From_url
     [TestCase("www.spdx.org/licenses/BSD-3-Clause.html", "BSD-3-Clause")]
     [TestCase("https://ianhammondcooper.mit-license.org/", "MIT")]
     [TestCase("https://microsoft.mit-license.org/", "MIT")]
+    [TestCase("https://dotnet-project-file-analyzers.mit-license.org/", "MIT")]
     [TestCase("https://www.apache.org/licenses/LICENSE-2.0", "Apache-2.0")]
     [TestCase("https://www.gnu.org/licenses/lgpl.html", "LGPL-3.0-only")]
     [TestCase("https://www.gnu.org/licenses/agpl.html", "AGPL-3.0-only")]

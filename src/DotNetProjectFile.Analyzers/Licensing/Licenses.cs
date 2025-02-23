@@ -1,5 +1,4 @@
 using DotNetProjectFile.Text;
-using System;
 using System.Collections.Frozen;
 using System.Text;
 
@@ -9,15 +8,18 @@ namespace DotNetProjectFile.Licensing;
 
 public static class Licenses
 {
+    /// <summary>An unknown (unresolvable) license.</summary>
     public static readonly LicenseExpression Unknown = UnknownLicense.Instance;
+
+    /// <summary>The permissive MIT license.</summary>
+    public static readonly PermissiveLicense MIT = new("MIT");
 
     // Note that this list is not and will never be legal advice.
     public static readonly ImmutableArray<LicenseExpression> All =
     [
         // TODO: the remainder of the recognized list.
-
         Unknown,
-        new PermissiveLicense("MIT"),
+        MIT,
         new PermissiveLicense("Apache-1.0"),
         new PermissiveLicense("Apache-1.1"),
         new PermissiveLicense("Apache-2.0"),
@@ -118,8 +120,6 @@ public static class Licenses
 
     private static readonly Dictionary<string, string> AdditionalLicenseUrlsRaw = new()
     {
-        ["https://ianhammondcooper.mit-license.org/"] = "MIT",
-        ["https://microsoft.mit-license.org/"] = "MIT",
         ["http://go.microsoft.com/fwlink/?LinkId=329770"] = "MIT",
         ["https://github.com/dotnet/corefx/blob/master/LICENSE.TXT"] = "MIT",
         ["https://github.com/dotnet/coreclr/blob/master/LICENSE.TXT"] = "MIT",
@@ -187,71 +187,54 @@ public static class Licenses
         }
     }
 
+    /// <summary>Tries to resolve a license from the license URL.</summary>
+    /// <remarks>
+    /// TODO see-also entries from https://github.com/spdx/license-list-data/blob/main/json/licenses.json
+    /// </remarks>
     public static LicenseExpression FromUrl(string? licenseUrl)
     {
-        if (licenseUrl is not { Length: > 0 })
+        var url = SimplifyUrl(licenseUrl);
+
+        return url switch
         {
-            return Unknown;
-        }
+            null or "" => Unknown,
+            _ when AdditionalLicenseUrls.TryGetValue(url, out var additional) => additional,
+            _ when SpdxLicenseUrls.TryGetValue(url, out var spdx) => spdx,
+            _ when url.EndsWith(".mit-license.org") => MIT,
+            _ when TryGenericLicenseUrlDomains(url) is { } generic => generic,
+            _ => Unknown,
+        };
 
-        var simplified = SimplifyUrl(licenseUrl);
-
-        if (AdditionalLicenseUrls.TryGetValue(simplified, out var result))
-        {
-            return result;
-        }
-
-        if (SpdxLicenseUrls.TryGetValue(simplified, out result))
-        {
-            return result;
-        }
-
-        foreach (var url in GenericLicenseUrlDomains)
-        {
-            var tail = simplified.TrimStart(url);
-            if (tail != simplified)
-            {
-                return FromExpression(tail);
-            }
-        }
-
-        // TODO see-also entries from https://github.com/spdx/license-list-data/blob/main/json/licenses.json
-        return Unknown;
+        LicenseExpression? TryGenericLicenseUrlDomains(string url)
+            => GenericLicenseUrlDomains
+            .Select(url.TrimStart)
+            .Where(trimmed => trimmed != url)
+            .Select(FromExpression)
+            .FirstOrDefault();
     }
 
     [return: NotNullIfNotNull(nameof(url))]
-    private static string? SimplifyUrl(string? url)
-    {
-        if (url is null)
-        {
-            return null;
-        }
-
-        return url
-            .TrimStart("https://")
-            .TrimStart("http://")
-            .TrimStart("www.")
-            .TrimEnd('/')
-            .TrimEnd(".php")
-            .TrimEnd(".html")
-            .TrimEnd(".htm")
-            .TrimEnd(".en")
-            .TrimEnd("-license");
-    }
+    private static string? SimplifyUrl(string? url) => url?
+        .TrimStart("https://")
+        .TrimStart("http://")
+        .TrimStart("www.")
+        .TrimEnd('/')
+        .TrimEnd(".php")
+        .TrimEnd(".html")
+        .TrimEnd(".htm")
+        .TrimEnd(".en")
+        .TrimEnd("-license");
 
     private static string PrepareLicenseText(string text)
     {
-        var sb = new StringBuilder();
-
+        var sb = new StringBuilder(text.Length);
         foreach (var c in text)
         {
             if (char.IsLetter(c))
             {
-                var lc = char.ToLowerInvariant(c);
-                sb.Append(lc);
+                sb.Append(char.ToLowerInvariant(c));
             }
         }
-
         return sb.ToString();
     }
 
