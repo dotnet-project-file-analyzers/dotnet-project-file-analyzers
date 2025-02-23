@@ -133,6 +133,7 @@ The package contains analyzers that analyze .NET project files.
 ## Generic
 * [**Proj3000** Only use UTF-8 without BOM](https://dotnet-project-file-analyzers.github.io/rules/Proj3000.html)
 * [**Proj3001** Track uses of "TODO" tags](https://dotnet-project-file-analyzers.github.io/rules/Proj3001.html)
+* [**Proj3002** Remove commented-out code](https://dotnet-project-file-analyzers.github.io/rules/Proj3002.html)
 
 ## INI
 * [**Proj4000** Invalid INI file](https://dotnet-project-file-analyzers.github.io/rules/Proj4000.html)
