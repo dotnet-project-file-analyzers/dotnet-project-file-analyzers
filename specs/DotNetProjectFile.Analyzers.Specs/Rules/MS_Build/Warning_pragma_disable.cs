@@ -7,5 +7,5 @@ public class Guard
         => new RemoveFolderNodes()
         .ForProject("SuppressIssues.cs")
         .Add(new IncludeProjectReferencesOnce())
-        .HasIssue(Issue.WRN("Proj0008", @"Remove folder node 'Third'.").WithSpan(20, 04, 20, 30));
+        .HasIssue(Issue.WRN("Proj0008", @"Remove folder node 'Third'").WithSpan(20, 04, 20, 30));
 }

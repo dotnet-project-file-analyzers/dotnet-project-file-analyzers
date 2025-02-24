@@ -7,7 +7,7 @@ public class Reports
        => new DefinePackageValidationBaselineVersion()
        .ForProject("NoBaselineVersion.cs")
        .HasIssue(
-           Issue.WRN("Proj0241", "Define the <PackageValidationBaselineVersion> node with a previously released stable version."));
+           Issue.WRN("Proj0241", "Define the <PackageValidationBaselineVersion> node with a previously released stable version"));
 }
 
 public class Guards

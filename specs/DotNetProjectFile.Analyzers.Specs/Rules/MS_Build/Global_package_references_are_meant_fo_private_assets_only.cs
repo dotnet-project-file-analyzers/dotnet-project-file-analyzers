@@ -7,7 +7,7 @@ public class Reports
         => new GlobalPackageReferencesAreMeantForPrivateAssetsOnly()
         .ForProject("GlobalPackageReferenceRuntimeDependency.cs")
         .HasIssues(
-            Issue.WRN("Proj0809", @"The global package reference 'Qowaiv' is not supposed to be a private asset.")
+            Issue.WRN("Proj0809", @"The global package reference 'Qowaiv' is not supposed to be a private asset")
                 .WithSpan(07, 04, 07, 63)
                 .WithPath("Directory.Packages.props"));
 }

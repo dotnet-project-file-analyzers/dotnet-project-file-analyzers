@@ -27,7 +27,7 @@ public sealed record KeyValuePairSyntax : IniSyntax
                 case TokenKind.KeyToken:
                     if (++key > 1)
                     {
-                        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), "= or : is expected.")];
+                        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), "= or : is expected")];
                     }
                     break;
 
@@ -35,20 +35,20 @@ public sealed record KeyValuePairSyntax : IniSyntax
                 case TokenKind.ColonToken:
                     if (key == 0 || ++sig > 1)
                     {
-                        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), $"{token.Text} is unexpected.")];
+                        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), $"{token.Text} is unexpected")];
                     }
                     break;
 
                 case TokenKind.ValueToken:
                     if (sig == 0 || ++val > 1)
                     {
-                        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), "= or : is expected.")];
+                        return [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(token.LinePositionSpan), "= or : is expected")];
                     }
                     break;
             }
         }
         return val == 0
-            ? [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(Tokens[^1].LinePositionSpan), "Value is missing.")]
+            ? [Diagnostic.Create(Rule.Ini.InvalidKeyValuePair, SyntaxTree.GetLocation(Tokens[^1].LinePositionSpan), "Value is missing")]
             : [];
     }
 

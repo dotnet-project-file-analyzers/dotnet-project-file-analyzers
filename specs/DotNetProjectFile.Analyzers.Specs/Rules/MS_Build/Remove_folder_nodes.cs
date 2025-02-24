@@ -7,8 +7,8 @@ public class Reports
         => new RemoveFolderNodes()
         .ForProject("FolderNodes.cs")
         .HasIssues(
-            Issue.WRN("Proj0008", "Remove folder node 'SomeFolder'." /*..*/).WithSpan(08, 4, 08, 36),
-            Issue.WRN("Proj0008", "Remove folder node 'OtherFolder'." /*.*/).WithSpan(12, 4, 12, 37));
+            Issue.WRN("Proj0008", "Remove folder node 'SomeFolder'" /*..*/).WithSpan(08, 4, 08, 36),
+            Issue.WRN("Proj0008", "Remove folder node 'OtherFolder'" /*.*/).WithSpan(12, 4, 12, 37));
 }
 
 public class Guards

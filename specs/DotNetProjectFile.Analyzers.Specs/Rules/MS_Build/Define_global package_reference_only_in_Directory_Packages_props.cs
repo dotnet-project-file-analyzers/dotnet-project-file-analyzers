@@ -17,7 +17,7 @@ public class Reports
 
 </Project>")
         .HasIssue(
-            Issue.WRN("Proj0808", "The <GlobalPackageReference> should be defined in the Directory.Packages.props.").WithSpan(07, 04, 07, 84));
+            Issue.WRN("Proj0808", "The <GlobalPackageReference> should be defined in the Directory.Packages.props").WithSpan(07, 04, 07, 84));
 }
 
 public class Guards

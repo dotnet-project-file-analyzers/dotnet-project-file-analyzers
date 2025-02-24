@@ -22,24 +22,24 @@ public sealed record HeaderSyntax : IniSyntax
                 case TokenKind.HeaderStartToken:
                     if (++start > 1)
                     {
-                        return [Diagnostic.Create(Rule.Ini.InvalidHeader, SyntaxTree.GetLocation(token.LinePositionSpan), "[ is unexpected.")];
+                        return [Diagnostic.Create(Rule.Ini.InvalidHeader, SyntaxTree.GetLocation(token.LinePositionSpan), "[ is unexpected")];
                     }
                     break;
 
                 case TokenKind.HeaderEndToken:
                     if (++end > 1)
                     {
-                        return [Diagnostic.Create(Rule.Ini.InvalidHeader, SyntaxTree.GetLocation(token.LinePositionSpan), "] is unexpected.")];
+                        return [Diagnostic.Create(Rule.Ini.InvalidHeader, SyntaxTree.GetLocation(token.LinePositionSpan), "] is unexpected")];
                     }
                     if (text == 0)
                     {
-                        return [Diagnostic.Create(Rule.Ini.InvalidHeader, SyntaxTree.GetLocation(token.LinePositionSpan), "] is unexpected.")];
+                        return [Diagnostic.Create(Rule.Ini.InvalidHeader, SyntaxTree.GetLocation(token.LinePositionSpan), "] is unexpected")];
                     }
                     break;
             }
         }
         return end == 0
-            ? [Diagnostic.Create(Rule.Ini.InvalidHeader, SyntaxTree.GetLocation(Tokens[^1].LinePositionSpan), "] is expected.")]
+            ? [Diagnostic.Create(Rule.Ini.InvalidHeader, SyntaxTree.GetLocation(Tokens[^1].LinePositionSpan), "] is expected")]
             : [];
     }
 

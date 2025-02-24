@@ -6,7 +6,7 @@ public class Reports
     public void on_Moq_dependency()
        => new AvoidUsingMoq()
        .ForProject("UsesMoq.cs")
-       .HasIssue(Issue.WRN("Proj1100", "Do not use Moq.").WithSpan(9, 04, 9, 55));
+       .HasIssue(Issue.WRN("Proj1100", "Do not use Moq").WithSpan(9, 04, 9, 55));
 }
 
 public class Guards

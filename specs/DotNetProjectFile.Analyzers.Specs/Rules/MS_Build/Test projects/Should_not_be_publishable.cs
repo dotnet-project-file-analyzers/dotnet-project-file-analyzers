@@ -6,14 +6,14 @@ public class Reports
     public void publishable_test_project()
         => new TestProjectShouldNotBePublishable()
         .ForProject("PackablePublishableTestProject.cs")
-        .HasIssue(Issue.WRN("Proj0451", "Set <IsPublishable> to false.")
+        .HasIssue(Issue.WRN("Proj0451", "Set <IsPublishable> to false")
         .WithSpan(06, 04, 06, 39));
 
     [Test]
     public void implicit_publishable_test_project()
         => new TestProjectShouldNotBePublishable()
         .ForProject("ImplicitPackablePublishableTestProject.cs")
-        .HasIssue(Issue.WRN("Proj0451", "Set <IsPublishable> to false.")
+        .HasIssue(Issue.WRN("Proj0451", "Set <IsPublishable> to false")
         .WithSpan(00, 00, 15, 10));
 }
 

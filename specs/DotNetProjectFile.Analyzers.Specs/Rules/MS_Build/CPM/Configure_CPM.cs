@@ -5,7 +5,7 @@ public class Reports
     [Test]
     public void project_without_CPM() => new ConfigureCentralPackageVersionManagement()
         .ForProject("NoCPM.cs")
-        .HasIssue(Issue.WRN("Proj0800", "Define the <ManagePackageVersionsCentrally> node with the value 'true', or 'false'.")
+        .HasIssue(Issue.WRN("Proj0800", "Define the <ManagePackageVersionsCentrally> node with the value 'true', or 'false'")
         .WithSpan(00, 00, 00, 32));
 }
 

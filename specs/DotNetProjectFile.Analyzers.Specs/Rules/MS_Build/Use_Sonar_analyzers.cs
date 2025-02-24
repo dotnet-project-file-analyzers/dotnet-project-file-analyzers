@@ -7,12 +7,12 @@ public class Reports
     [Test]
     public void missing_analyzer_for_CSharp() => new UseSonarAnalyzers()
         .ForProject("EmptyProject.cs")
-        .HasIssue(Issue.WRN("Proj1003", "Add SonarAnalyzer.CSharp."));
+        .HasIssue(Issue.WRN("Proj1003", "Add SonarAnalyzer.CSharp"));
 
     [Test]
     public void missing_analyzer_for_Visual_Basic() => new UseSonarAnalyzers()
         .ForProject("EmptyProjectVB.vb")
-        .HasIssue(Issue.WRN("Proj1003", "Add SonarAnalyzer.VisualBasic."));
+        .HasIssue(Issue.WRN("Proj1003", "Add SonarAnalyzer.VisualBasic"));
 
     [Test]
     public void only_added_as_project_version() => new UseSonarAnalyzers().ForInlineCsproj(@"
@@ -27,7 +27,7 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-        .HasIssue(Issue.WRN("Proj1003", "Add SonarAnalyzer.CSharp."));
+        .HasIssue(Issue.WRN("Proj1003", "Add SonarAnalyzer.CSharp"));
 }
 
 public class Guards

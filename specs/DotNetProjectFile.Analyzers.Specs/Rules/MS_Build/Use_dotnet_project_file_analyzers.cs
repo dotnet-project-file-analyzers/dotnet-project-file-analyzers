@@ -6,8 +6,7 @@ public class Reports
     public void missing_analyzers()
         => new UseAnalyzers()
         .ForProject("EmptyProject.cs")
-        .HasIssue(
-            Issue.WRN("Proj1000", "Use the .NET project file analyzers."));
+        .HasIssue(Issue.WRN("Proj1000", "Use the .NET project file analyzers"));
 }
 
 public class Guards

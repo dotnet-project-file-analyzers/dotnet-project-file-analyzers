@@ -7,7 +7,7 @@ public class Reports
        => new GeneratePackageOnBuildConditionally()
        .ForProject("GeneratePackageOnBuildUnconditionally.cs")
        .HasIssue(
-           Issue.WRN("Proj0242", "Add a condition to <GeneratePackageOnBuild>.").WithSpan(4, 4, 4, 57));
+           Issue.WRN("Proj0242", "Add a condition to <GeneratePackageOnBuild>").WithSpan(4, 4, 4, 57));
 }
 
 public class Guards

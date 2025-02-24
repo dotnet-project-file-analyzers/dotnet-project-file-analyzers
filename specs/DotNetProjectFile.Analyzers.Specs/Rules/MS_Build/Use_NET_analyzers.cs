@@ -8,7 +8,7 @@ public class Reports
        => new UseDotNetAnalyzers()
        .ForProject(project)
        .HasIssue(
-            Issue.WRN("Proj1002", "Use Microsoft's .NET analyzers by setting <EnableNETAnalyzers> to true."));
+            Issue.WRN("Proj1002", "Use Microsoft's .NET analyzers by setting <EnableNETAnalyzers> to true"));
 }
 
 public class Guards

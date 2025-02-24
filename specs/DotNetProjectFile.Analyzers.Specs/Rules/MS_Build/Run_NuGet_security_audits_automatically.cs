@@ -6,8 +6,7 @@ public class Reports
     public void on_disabled_NuGet_audit()
        => new RunNuGetSecurityAuditsAutomatically()
        .ForProject("DisabledNugetAudit.cs")
-       .HasIssue(
-           Issue.WRN("Proj0004", "Run NuGet security audits automatically."));
+       .HasIssue(Issue.WRN("Proj0004", "Run NuGet security audits automatically"));
 }
 
 public class Guards
