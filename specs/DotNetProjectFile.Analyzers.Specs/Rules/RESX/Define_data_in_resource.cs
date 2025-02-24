@@ -6,8 +6,7 @@ public class Reports
     public void unsorted_data()
         => new Resx.DefineData()
         .ForProject("ResxNoData.cs")
-        .HasIssue(
-            Issue.WRN("Proj2001", "Resource does not contain any data."));
+        .HasIssue(Issue.WRN("Proj2001", "Resource does not contain any data"));
 }
 
 public class Guards

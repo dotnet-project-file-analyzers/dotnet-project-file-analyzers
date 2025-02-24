@@ -16,7 +16,7 @@ public class Reports
 
             </Project>
         ")
-        .HasIssues(Issue.WRN("Proj0247", "Define the <EnableStrictModeForBaselineValidation> node with value 'true' or remove the <PackageValidationBaselineVersion> node or remove the <EnablePackageValidation> node with value 'true'.").WithSpan(00, 00, 09, 22));
+        .HasIssues(Issue.WRN("Proj0247", "Define the <EnableStrictModeForBaselineValidation> node with value 'true' or remove the <PackageValidationBaselineVersion> node or remove the <EnablePackageValidation> node with value 'true'").WithSpan(00, 00, 09, 22));
 
     [Test]
     public void on_disabled_property() => new EnableStrictModeForPackageBaselineValidation()
@@ -33,7 +33,7 @@ public class Reports
 
             </Project>
         ")
-        .HasIssues(Issue.WRN("Proj0247", "Define the <EnableStrictModeForBaselineValidation> node with value 'true' or remove the <PackageValidationBaselineVersion> node or remove the <EnablePackageValidation> node with value 'true'.").WithSpan(07, 16, 07, 100));
+        .HasIssues(Issue.WRN("Proj0247", "Define the <EnableStrictModeForBaselineValidation> node with value 'true' or remove the <PackageValidationBaselineVersion> node or remove the <EnablePackageValidation> node with value 'true'").WithSpan(07, 16, 07, 100));
 }
 
 public class Guards

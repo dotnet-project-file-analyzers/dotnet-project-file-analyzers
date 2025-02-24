@@ -7,7 +7,7 @@ public class Reports
        => new OrderPackageReferencesAlphabetically()
        .ForProject("NonAlphabeticalPackageReferences.cs")
        .HasIssue(
-           Issue.WRN("Proj0015", "Package 'Qowaiv.Analyzers.CSharp' is not ordered alphabetically and should appear before 'StyleCop.Analyzers'.").WithSpan(9, 04, 9, 74));
+           Issue.WRN("Proj0015", "Package 'Qowaiv.Analyzers.CSharp' is not ordered alphabetically and should appear before 'StyleCop.Analyzers'").WithSpan(9, 04, 9, 74));
 }
 
 public class Guards

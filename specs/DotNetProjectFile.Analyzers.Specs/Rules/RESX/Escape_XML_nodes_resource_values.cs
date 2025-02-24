@@ -5,7 +5,7 @@ public class Reports
     [Test]
     public void on_value_with_HTML() => new Resx.EscapeXmlNodesResourceValues()
         .ForProject("ResxWithHtmlContent.cs")
-        .HasIssue(Issue.WRN("Proj2005", "Escape the XML node in 'Html'.").WithSpan(12, 04, 12, 30));
+        .HasIssue(Issue.WRN("Proj2005", "Escape the XML node in 'Html'").WithSpan(12, 04, 12, 30));
 }
 
 public class Guards

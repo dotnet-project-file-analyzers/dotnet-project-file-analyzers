@@ -15,7 +15,7 @@ public class Reports
 
             </Project>
         ")
-        .HasIssues(Issue.WRN("Proj0248", "Define the <EnableStrictModeForCompatibleTfms> node with value 'true' or remove the <EnableStrictModeForCompatibleTfms> node with value 'false' or remove the <EnablePackageValidation> node with value 'true'.").WithSpan(05, 16, 05, 92));
+        .HasIssues(Issue.WRN("Proj0248", "Define the <EnableStrictModeForCompatibleTfms> node with value 'true' or remove the <EnableStrictModeForCompatibleTfms> node with value 'false' or remove the <EnablePackageValidation> node with value 'true'").WithSpan(05, 16, 05, 92));
 }
 
 public class Guards

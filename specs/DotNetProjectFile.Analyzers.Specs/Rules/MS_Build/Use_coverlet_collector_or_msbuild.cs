@@ -15,7 +15,7 @@ public class Reports
   </ItemGroup>
 </Project>")
         .HasIssue(
-           Issue.WRN("Proj1102", "Choose either coverlet.collector or coverlet.msbuild.")
+           Issue.WRN("Proj1102", "Choose either coverlet.collector or coverlet.msbuild")
             .WithSpan(5, 04, 5, 89));
 }
 

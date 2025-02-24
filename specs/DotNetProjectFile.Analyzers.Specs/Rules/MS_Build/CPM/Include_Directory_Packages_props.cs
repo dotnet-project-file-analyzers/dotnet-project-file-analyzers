@@ -5,7 +5,7 @@ public class Reports
     [Test]
     public void project_without_file() => new IncludeDirectoryPackagesProps()
         .ForProject("NoDirectoryPackagesProps.cs")
-        .HasIssue(Issue.WRN("Proj0801", "The file 'Directory.Packages.props' could not be located.")
+        .HasIssue(Issue.WRN("Proj0801", "The file 'Directory.Packages.props' could not be located")
         .WithSpan(00, 00, 00, 32));
 }
 

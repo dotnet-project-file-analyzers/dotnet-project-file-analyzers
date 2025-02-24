@@ -7,7 +7,7 @@ public class Reports
        => new DefineOutputType()
        .ForProject("NoOutputType.cs")
        .HasIssue(
-           Issue.WRN("Proj0010", "Define the <OutputType> node explicitly."));
+           Issue.WRN("Proj0010", "Define the <OutputType> node explicitly"));
 }
 
 public class Guards

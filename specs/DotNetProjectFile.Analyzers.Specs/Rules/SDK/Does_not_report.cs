@@ -12,8 +12,8 @@ public class On
     public void Project_not_available_as_additional() => new AddAdditionalFile()
         .ForSDkProject("DotnetProjectFilesSdk")
         .HasIssues(
-            Issue.WRN("Proj0006", "Add 'DotNetProjectFile.Analyzers.Sdk.props' to the additional files."),
-            Issue.WRN("Proj0006", "Add 'DotNetProjectFile.Analyzers.Sdk.targets' to the additional files."));
+            Issue.WRN("Proj0006", "Add 'DotNetProjectFile.Analyzers.Sdk.props' to the additional files"),
+            Issue.WRN("Proj0006", "Add 'DotNetProjectFile.Analyzers.Sdk.targets' to the additional files"));
 
     [Test]
     public void Unresolved_Project() => new GuardUnsupported()

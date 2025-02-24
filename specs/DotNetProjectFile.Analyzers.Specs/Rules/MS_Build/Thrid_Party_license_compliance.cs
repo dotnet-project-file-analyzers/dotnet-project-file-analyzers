@@ -19,7 +19,7 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0500", "The Microsoft.DotNet.PlatformAbstractions package is shipped without an explicitly defined license."));
+       .HasIssue(Issue.WRN("Proj0500", "The Microsoft.DotNet.PlatformAbstractions package is shipped without an explicitly defined license"));
 
     [Test]
     public void on_packages_with_deprecated_URL_in_nuspec() => new ThirdPartyLicenseResolver()
@@ -35,9 +35,9 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0501", "The SimpleInjector.Extensions.ExecutionContextScoping package only contains a deprecated license URL."));
+       .HasIssue(Issue.WRN("Proj0501", "The SimpleInjector.Extensions.ExecutionContextScoping package only contains a deprecated license URL"));
 
-    [Test, Ignore("PackageLicenseExpression is not resolvable due to a test issue.")]
+    [Test, Ignore("PackageLicenseExpression is not resolvable due to a test issue")]
     public void on_package_with_license_incompatable_to_project() => new ThirdPartyLicenseResolver()
        .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
@@ -52,7 +52,7 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI package is distributed as GPL-3.0-only, which is imcompatable with the MIT license of the project."));
+       .HasIssue(Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI package is distributed as GPL-3.0-only, which is imcompatable with the MIT license of the project"));
 
     [Ignore("Rule 0504 has not been implemented yet")]
     [Test]
@@ -69,7 +69,7 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0504", "FluentAssertions package is distributed under a custom license, which has not been explicitly accepted."));
+       .HasIssue(Issue.WRN("Proj0504", "FluentAssertions package is distributed under a custom license, which has not been explicitly accepted"));
 }
 
 public class Guards

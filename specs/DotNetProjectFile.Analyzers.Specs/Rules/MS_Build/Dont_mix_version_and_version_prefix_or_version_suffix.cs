@@ -7,7 +7,7 @@ public class Reports
        => new DontMixVersionAndVersionPrefixOrVersionSuffix()
         .ForProject("VersionPrefixAndVersion.cs")
         .HasIssue(
-           Issue.WRN("Proj0245", "Remove the <Version> node or remove the <VersionPrefix> node.")
+           Issue.WRN("Proj0245", "Remove the <Version> node or remove the <VersionPrefix> node")
            .WithSpan(09, 04, 09, 28));
 
     [Test]
@@ -15,7 +15,7 @@ public class Reports
        => new DontMixVersionAndVersionPrefixOrVersionSuffix()
         .ForProject("VersionSuffixAndVersion.cs")
         .HasIssue(
-           Issue.WRN("Proj0245", "Remove the <Version> node or remove the <VersionSuffix> node.")
+           Issue.WRN("Proj0245", "Remove the <Version> node or remove the <VersionSuffix> node")
            .WithSpan(09, 04, 09, 28));
 
     [Test]
@@ -23,7 +23,7 @@ public class Reports
        => new DontMixVersionAndVersionPrefixOrVersionSuffix()
         .ForProject("VersionPrefixAndSuffixAndVersion.cs")
         .HasIssue(
-           Issue.WRN("Proj0245", "Remove the <Version> node or remove the <VersionPrefix> and <VersionSuffix> nodes.")
+           Issue.WRN("Proj0245", "Remove the <Version> node or remove the <VersionPrefix> and <VersionSuffix> nodes")
            .WithSpan(09, 04, 09, 28));
 }
 

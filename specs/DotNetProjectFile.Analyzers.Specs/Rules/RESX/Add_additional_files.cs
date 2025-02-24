@@ -5,8 +5,8 @@ public class Reports
     [Test]
     public void project_files_not_additional() => new Resx.AddAdditionalFile()
         .ForProject("ResxUnsorted.cs")
-        .HasIssue(
-            Issue.WRN("Proj0006", "Add 'Resources.resx' to the additional files.").WithPath("Resources.resx"));
+        .HasIssue(Issue.WRN("Proj0006", "Add 'Resources.resx' to the additional files")
+        .WithPath("Resources.resx"));
 }
 
 public class Guards

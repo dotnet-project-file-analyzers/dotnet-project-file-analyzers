@@ -7,9 +7,9 @@ public class Reports
        => new IncludePackageReferencesOnce()
        .ForProject("DoublePackageReferences.cs")
        .HasIssues(
-            Issue.WRN("Proj0013", "Package 'Qowaiv' is already referenced.").WithSpan(04, 04, 04, 57).WithPath("DoublePackageReferences.props"),
-            Issue.WRN("Proj0013", "Package 'Qowaiv' is already referenced.").WithSpan(10, 04, 10, 57).WithPath("DoublePackageReferences.csproj"),
-            Issue.WRN("Proj0013", "Package 'Qowaiv' is already referenced.").WithSpan(11, 04, 11, 57).WithPath("DoublePackageReferences.csproj"));
+            Issue.WRN("Proj0013", "Package 'Qowaiv' is already referenced").WithSpan(04, 04, 04, 57).WithPath("DoublePackageReferences.props"),
+            Issue.WRN("Proj0013", "Package 'Qowaiv' is already referenced").WithSpan(10, 04, 10, 57).WithPath("DoublePackageReferences.csproj"),
+            Issue.WRN("Proj0013", "Package 'Qowaiv' is already referenced").WithSpan(11, 04, 11, 57).WithPath("DoublePackageReferences.csproj"));
 }
 
 public class Guards

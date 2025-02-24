@@ -8,7 +8,7 @@ public class Reports
        .ForProject("IncorrectlyOrderedUsingDirectives.cs")
        .HasIssues(
            Issue.ERR("CS8085", @"A 'using static' directive cannot be used to declare an alias" /*............................................................*/).WithSpan(05, 20, 05, 23),
-           Issue.WRN("Proj0018", @"Using Static directive for 'NamespaceB.Placeholder' should appear before Using Alias directive for 'NamespaceA.Placeholder'.").WithSpan(10, 04, 10, 60));
+           Issue.WRN("Proj0018", @"Using Static directive for 'NamespaceB.Placeholder' should appear before Using Alias directive for 'NamespaceA.Placeholder'").WithSpan(10, 04, 10, 60));
 }
 
 public class Guards

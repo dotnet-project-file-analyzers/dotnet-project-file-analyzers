@@ -6,7 +6,7 @@ public class Reports
     public void enabling_locally()
         => new EnableCentralPackageManagementCentrally()
         .ForProject("EnableCPMLocally.cs")
-        .HasIssue(Issue.WRN("Proj0802", "Enable <ManagePackageVersionsCentrally> in 'Directory.Packages.props' or a shared props file.")
+        .HasIssue(Issue.WRN("Proj0802", "Enable <ManagePackageVersionsCentrally> in 'Directory.Packages.props' or a shared props file")
         .WithSpan(04, 04, 04, 73));
 }
 
