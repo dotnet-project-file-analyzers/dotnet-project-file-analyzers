@@ -1,14 +1,13 @@
 using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.CodeFixes;
-using System.Text;
+using Microsoft.CodeAnalysis.Text;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace DotNetProjectFile.CodeFixes;
 
 public sealed class RemoveBomHeader : CodeFixProvider
 {
-    private static readonly Encoding UTF8_no_BOM = new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
-
     public sealed override ImmutableArray<string> FixableDiagnosticIds => [Rule.OnlyUseUTF8WithoutBom.Id];
 
     public override Task RegisterCodeFixesAsync(CodeFixContext context)
@@ -26,9 +25,12 @@ public sealed class RemoveBomHeader : CodeFixProvider
 
     private static async Task<Document> UpdateDocument(Document document, CancellationToken token)
     {
-        var text = await document.GetTextAsync(token)!;
-
-        return document.WithText(text);
+        using var file = IOFile.Parse(document.FilePath).OpenRead();
+        var stream = new MemoryStream();
+        file.Read(new byte[3], 0, 3);
+        await file.CopyToAsync(stream);
+        stream.Position = 0;
+        return document.WithText(SourceText.From(stream));
     }
 
     public sealed override FixAllProvider? GetFixAllProvider() => null;
