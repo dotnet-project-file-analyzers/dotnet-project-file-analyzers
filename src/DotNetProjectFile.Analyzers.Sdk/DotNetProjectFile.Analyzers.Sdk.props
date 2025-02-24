@@ -27,6 +27,11 @@
     <AdditionalFiles Include="**/*.vbproj" Visible="false" />
   </ItemGroup>
 
+  <ItemGroup Label="Exclude generated stuff">
+    <AdditionalFiles Remove="**/bin/**" />
+    <AdditionalFiles Remove="**/obj/**" />
+  </ItemGroup>
+
   <ItemGroup>
     <AdditionalFiles Include=".*config" />
     <AdditionalFiles Include=".git*" />

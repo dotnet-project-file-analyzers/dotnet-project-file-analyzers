@@ -24,10 +24,12 @@
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers SDK</Description>
     <PackageTags>SDK;Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
-    <Version>1.5.10</Version>
+    <Version>1.5.10.1</Version>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>
       <![CDATA[
+v1.5.10.1
+- Exclude generated stuff in /bin/ and /object/. (FP)
 v1.5.10
 - Automatically include props/*.props adn props/*.targets.
 v1.5.7
