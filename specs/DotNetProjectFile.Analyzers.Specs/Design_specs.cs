@@ -23,6 +23,21 @@ public partial class Rules
         content.Should().Contain($">{rule.Id}: ");
     }
 
+    /// <summary>
+    /// The diagnostic message should not contain any line return character nor any leading or trailing whitespaces and should either be a single sentence without a trailing period or a multi-sentences with a trailing period
+    /// </summary>
+    /// <remarks>
+    /// See: https://github.com/dotnet/roslyn-analyzers/blob/main/src/Microsoft.CodeAnalysis.Analyzers/Microsoft.CodeAnalysis.Analyzers.md#rs1032-define-diagnostic-message-correctly
+    /// </remarks>
+    [TestCaseSource(nameof(AllRules))]
+    public void has_message_compliant_with_RS1032(Rule rule)
+    {
+        var title = rule.Message.ToString().Trim();
+
+        title.Should().NotContain("\n", "Line return characters are not allowed.")
+            .And.NotEndWith(".", "Be a single line not adding with a trailing dot.");
+    }
+
     [Test]
     public void Root_Readme_mentions_right_number_of_rules()
     {
@@ -102,6 +117,10 @@ public partial class Rules
 public sealed record Rule(DiagnosticDescriptor Descriptor)
 {
     public string Id => Descriptor.Id;
+
+    public LocalizableString Title => Descriptor.Title;
+
+    public LocalizableString Message => Descriptor.MessageFormat;
 
     public string HelpLinkUri => Descriptor.HelpLinkUri;
 
