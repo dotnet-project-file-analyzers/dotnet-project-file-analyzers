@@ -58,7 +58,8 @@ public static partial class Rule
             "By adding additional non-compiling files, those files become " +
             "available in the analyzer context too.",
         tags: ["code analysis"],
-        category: Category.CodeQuality);
+        category: Category.CodeQuality,
+        isEnabled: false);
 
     public static DiagnosticDescriptor RemoveEmptyNodes => New(
         id: 0007,

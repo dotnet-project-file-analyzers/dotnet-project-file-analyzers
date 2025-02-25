@@ -61,9 +61,11 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.5.10</Version>
+    <Version>1.5.10.1</Version>
     <PackageReleaseNotes>
       <![CDATA[
+v1.5.10.1
+- Proj0006: Disable as the files to analyze are added by default sincse 1.5.10. (NEW RULE)
 v1.5.10
 - Proj0035: Remove deprecated RestoreProjectStyle property. (NEW RULE)
 - Proj0217: Define requiring license acceptance explicitly. (NEW RULE)
