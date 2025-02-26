@@ -9,8 +9,18 @@ The documentation reflects the current repository state of the features, not the
 released ones. Check the [Release Notes](https://www.nuget.org/packages/DotNetProjectFile.Analyzers#releasenotes-body-tab)
 to understand if the documented feature you want to use has been released.
 
+## Purpose
+We consider all files in a project - so not only those who are compiled - part
+of the codebase. We strongly believe that all files should be easy to read,
+maintain, or to adjust. Our analyzers help with that. They spot noise, bugs,
+inconsistencies, incorrect formatting, and misusage.
+
+All rules come with a clear explanation on why the spotted issue is a bad
+practice, and how the code should be adjusted. We hope, that as a result,
+developers using our analyzers also learn a thing while working with them.
+
 ## Installation
-[![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/)
+[![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers)
 
 To use the analyzers, you must include the analyzer package in your project file:
 ``` xml
@@ -184,34 +194,6 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 ## .editorconfig
 * [**Proj4050** Header must be a GLOB](rules/Proj4050.md)
 * [**Proj4051** Use equals sign for key-value assignments](rules/Proj4051.md)
-
-## Additional files
-To fully benefit from these analyzers it is recommended to add the project file
-(and imported projects/props) as additional files.
-
-To add a project file:
-
-``` xml
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <AdditionalFiles Include="*.??proj" Visible="false" />
-  </ItemGroup>
-
-</Project>
-```
-
-To add a props file:
-
-``` xml
-<Project>
-
-  <ItemGroup>
-    <AdditionalFiles Include="../props/{file_name}" Link="Properties/{file_name}" />
-  </ItemGroup>
-
-</Project>
-```
 
 ## Sonar integration
 By default, results by .NET project file analyzers are not added to Sonar's reporting. Read [here](general/sonar-integration.md) how to configure this correctly.
