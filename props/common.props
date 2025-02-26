@@ -32,5 +32,9 @@
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="*" PrivateAssets="all" />
     <PackageReference Include="SonarAnalyzer.CSharp" Version="*" PrivateAssets="all" />
   </ItemGroup>
-  
+
+  <ItemGroup Label="Custom licenses">
+    <ThirdPartyLicense Include="SonarAnalyzer.CSharp" Hash="/O+g/mx18wSWq5KpOpWd2bB9Nkg" />
+  </ItemGroup>
+
 </Project>

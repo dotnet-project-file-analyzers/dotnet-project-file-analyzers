@@ -37,7 +37,7 @@ public class Reports
 </Project>")
        .HasIssue(Issue.WRN("Proj0501", "The SimpleInjector.Extensions.ExecutionContextScoping package only contains a deprecated license URL"));
 
-    [Test, Ignore("PackageLicenseExpression is not resolvable due to a test issue")]
+    [Test]
     public void on_package_with_license_incompatable_to_project() => new ThirdPartyLicenseResolver()
        .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
@@ -52,11 +52,11 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI package is distributed as GPL-3.0-only, which is imcompatable with the MIT license of the project"));
+        .HasIssue(Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI package is distributed as GPL-3.0-only, which is imcompatable with the NOASSERTION license of the project")
+        .WithSpan(08, 04, 08, 75));
 
-    [Ignore("Rule 0504 has not been implemented yet")]
     [Test]
-    public void on_package_with_custom_license() => new ThirdPartyLicenseResolver()
+    public void on_package_with_unknown_custom_license() => new ThirdPartyLicenseResolver()
        .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
 
@@ -65,11 +65,33 @@ public class Reports
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include=""FluentAssertions"" Version=""8.0.0"" />
+    <PackageReference Include=""SonarAnalyzer.CSharp"" Version=""10.6.0.109712"" />
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0504", "FluentAssertions package is distributed under a custom license, which has not been explicitly accepted"));
+        .HasIssue(Issue.WRN("Proj0503", @"Add <ThirdPartyLicense Include=""SonarAnalyzer.CSharp"" Hash=""SonarAnalyzer.CSharp"" /> to accept the license")
+        .WithSpan(07, 04, 07, 79));
+
+    [Test]
+    public void on_package_with_changed_custom_license() => new ThirdPartyLicenseResolver()
+       .ForInlineCsproj(@"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include=""SonarAnalyzer.CSharp"" Version=""10.6.0.109712"" />
+  </ItemGroup>
+
+  <ItemGroup Label=""Custom licenses"">
+    <ThirdPartyLicense Include=""SonarAnalyzer.CSharp"" Hash=""ZOAgZmx18wSWq5KpOpWd2bB9123"" />
+  </ItemGroup>
+
+</Project>")
+       .HasIssue(Issue.WRN("Proj0504", "The license for SonarAnalyzer.CSharp has changed as its hash now is /O+g/mx18wSWq5KpOpWd2bB9Nkg")
+        .WithSpan(11, 04, 11, 91));
 }
 
 public class Guards
@@ -85,6 +107,26 @@ public class Guards
 
   <ItemGroup>
     <PackageReference Include=""Microsoft.Azure.AppConfiguration.AspNetCore"" Version=""8.0.0"" />
+  </ItemGroup>
+
+</Project>")
+      .HasNoIssues();
+
+    [Test]
+    public void registered_custom_licenses() => new ThirdPartyLicenseResolver()
+      .ForInlineCsproj(@"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+    <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include=""SonarAnalyzer.CSharp"" Version=""10.6.0.109712"" />
+  </ItemGroup>
+
+  <ItemGroup Label=""Custom licenses"">
+    <ThirdPartyLicense Include=""SonarAnalyzer.CSharp"" Hash=""/O+g/mx18wSWq5KpOpWd2bB9Nkg"" />
   </ItemGroup>
 
 </Project>")

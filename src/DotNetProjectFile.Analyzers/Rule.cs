@@ -783,8 +783,29 @@ public static partial class Rule
             "an incompatable license.",
         tags: ["license"],
         category: Category.Legal,
-        severity: DiagnosticSeverity.Error,
-        isEnabled: false);
+        severity: DiagnosticSeverity.Warning);
+
+    public static DiagnosticDescriptor CustomPackageLicenseUnknown => New(
+        id: 0503,
+        title: "Custom package license is unknown",
+        message: @"Add <ThirdPartyLicense Include=""{0}"" Hash=""{0}"" /> to accept the license",
+        description:
+            "To prevent legal issues do not rely on third-party references that have " +
+            "an incompatable license.",
+        tags: ["license"],
+        category: Category.Legal,
+        severity: DiagnosticSeverity.Warning);
+
+    public static DiagnosticDescriptor CustomPackageLicenseHasChanged => New(
+     id: 0504,
+     title: "Custom package license has changed",
+     message: "The license for {0} has changed as its hash now is {1}",
+     description:
+         "To prevent legal issues do not rely on third-party references that which " +
+         "license has been changed without checking the changes.",
+     tags: ["license"],
+     category: Category.Legal,
+     severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
         id: 0600,
