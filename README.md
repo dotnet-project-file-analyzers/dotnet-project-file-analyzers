@@ -87,6 +87,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0033** Project reference includes should exist](rules/Proj0033.md)
 * [**Proj0034** Import statement could not be resolved by the analyzer](rules/Proj0034.md)
 * [**Proj0035** Remove deprecated RestoreProjectStyle property](rules/Proj0035.md)
+* [**Proj0036** Remove None when redundant](rules/Proj0036.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
