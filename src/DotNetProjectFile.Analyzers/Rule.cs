@@ -323,6 +323,18 @@ public static partial class Rule
         tags: ["legacy", "conversion", "packages.config"],
         category: Category.Noise);
 
+    public static DiagnosticDescriptor NoneItemWithRemoveIsRedudent => New(
+        id: 0036,
+        title: "Remove deprecated RestoreProjectStyle property",
+        message: @"Remove the <None> item, or use <None Update=""{0}"" Visible=""false""/> instead",
+        description:
+            "The <RestoreProjectStyle> was once introduced to mitigate third-party " +
+            "references using a packages.config file. This practice has been " +
+            "deprecated for a very long time now.",
+        tags: ["legacy", "conversion", "packages.config"],
+        category: Category.Noise);
+
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
