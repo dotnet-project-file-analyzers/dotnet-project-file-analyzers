@@ -1,8 +1,8 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <summary>Implements <see cref="Rule.NoneItemWithRemoveIsRedudent"/>.</summary>
+/// <summary>Implements <see cref="Rule.RemoveNoneWhenRedundant"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class NoneItemWithRemoveIsRedudent() : MsBuildProjectFileAnalyzer(Rule.NoneItemWithRemoveIsRedudent)
+public sealed class RemoveNoneWhenRedundant() : MsBuildProjectFileAnalyzer(Rule.RemoveNoneWhenRedundant)
 {
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
