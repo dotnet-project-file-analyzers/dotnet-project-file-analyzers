@@ -779,8 +779,8 @@ public static partial class Rule
         title: "Only include packages compliant with project",
         message: "The {0} package is distributed as {1}, which is imcompatable with the {2} license of the project",
         description:
-            "To prevent legal issues do not rely on third-party references that have " +
-            "an incompatable license.",
+            "To prevent legal issues do not rely on third-party references with " +
+            "custom defined license that has not been reviewed.",
         tags: ["license"],
         category: Category.Legal,
         severity: DiagnosticSeverity.Warning);
@@ -790,8 +790,8 @@ public static partial class Rule
         title: "Package license is unknown",
         message: @"Add <ThirdPartyLicense Include=""{0}"" Hash=""{0}"" /> to accept the license",
         description:
-            "To prevent legal issues do not rely on third-party references that have " +
-            "an incompatable license.",
+            "To prevent legal issues do not rely on third-party references with " +
+            "custom defined license that has not been reviewed.",
         tags: ["license"],
         category: Category.Legal,
         severity: DiagnosticSeverity.Warning);
