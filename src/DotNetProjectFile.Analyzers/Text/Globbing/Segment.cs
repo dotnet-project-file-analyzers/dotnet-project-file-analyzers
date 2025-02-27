@@ -16,4 +16,8 @@ internal abstract class Segment
 
     /// <inheritdoc />
     public bool HasFixedLength => MinLength == MaxLength;
+
+    /// <inheritdoc cref="Glob.IsMatch(string, StringComparison)" />
+    [Pure]
+    public abstract bool IsMatch(ReadOnlySpan<char> value, StringComparison comparison);
 }

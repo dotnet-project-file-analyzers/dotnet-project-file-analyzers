@@ -14,7 +14,11 @@ public readonly struct Glob
 
     /// <summary>Returns true if the segment matches the value.</summary>
     [Pure]
-    public bool IsMatch(string value) => false;
+    public bool IsMatch(string value) => IsMatch(value, StringComparison.Ordinal);
+
+    /// <inheritdoc cref="IsMatch(string)" />
+    [Pure]
+    public bool IsMatch(string value, StringComparison comparison) => Segment.IsMatch(value.AsSpan(), comparison);
 
     public static Glob? TryParse(string? expression)
         => expression is { Length: > 0 }

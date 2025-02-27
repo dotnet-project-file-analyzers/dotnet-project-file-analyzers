@@ -1,3 +1,4 @@
+
 namespace DotNetProjectFile.Text.Globbing;
 
 internal sealed class Option(IReadOnlyList<Segment> segments) : Segment
@@ -9,6 +10,17 @@ internal sealed class Option(IReadOnlyList<Segment> segments) : Segment
 
     /// <inheritdoc />
     public override int MaxLength => Segments.Max(s => s.MaxLength);
+
+    /// <inheritdoc />
+    [Pure]
+    public override bool IsMatch(ReadOnlySpan<char> value, StringComparison comparison)
+    {
+        foreach (var segment in Segments)
+        {
+            if (segment.IsMatch(value, comparison)) return true;
+        }
+        return false;
+    }
 
     /// <inheritdoc />
     public override string ToString() => $"{{{string.Join(",", Segments)}}}";

@@ -4,10 +4,31 @@ namespace Text.Glob_specs;
 
 public class Matches
 {
-    [TestCase("HelloWorld", "HelloWorld")]
-    [TestCase("Hello*", "HelloWorld")]
+    [TestCase("?", "X")]
+    [TestCase("*", "Hello")]
+    [TestCase("**", "docs/test.md")]
+    [TestCase("Hello", "Hello")]
+    [TestCase("[He]", "H")]
+    [TestCase("[He]", "e")]
+    [TestCase("{cs,vbproj,csproj}", "cs")]
+    [TestCase("{cs,vbproj,csproj}", "vbproj")]
+    [TestCase("{cs,vbproj,csproj}", "csproj")]
     public void globs(Glob glob, string value)
         => glob.IsMatch(value).Should().BeTrue();
+}
+
+public class Does_not_matches
+{
+    [TestCase("?", "12")]
+    [TestCase("*", "docs/test.md")]
+    [TestCase("Hello", "hello")]
+    [TestCase("Hello", "Hello girl")]
+    [TestCase("[He]", "h")]
+    [TestCase("[He]", "E")]
+    [TestCase("[He]", "z")]
+    [TestCase("{cs,vbproj,csproj}", "md")]
+    public void globs(Glob glob, string value)
+        => glob.IsMatch(value).Should().BeFalse();
 }
 
 public class Parses
