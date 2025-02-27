@@ -1,27 +1,27 @@
 using Grammr.Text;
 using Microsoft.CodeAnalysis.Text;
 
-namespace DotNetProjectFile.IO.Globbing;
+namespace DotNetProjectFile.Text.Globbing;
 
 internal static class GlobParser
 {
-    public static Segement? TryParse(string str)
+    public static Segment? TryParse(string str)
         => TryParse(Source.From(str));
 
-    private static Segement? TryParse(SourceSpan span)
+    private static Segment? TryParse(SourceSpan span)
     {
-        var group = new List<Segement>();
+        var group = new List<Segment>();
 
         while (!span.IsEmpty)
         {
             if (span.First == '?')
             {
-                group.Add(Segement.AnyChar);
+                group.Add(Segment.AnyChar);
                 span++;
             }
             else if (span.Predicate(c => c == '*') is { } wildcards)
             {
-                group.Add(wildcards.Length == 1 ? Segement.Wildcard : Segement.RecursiveWildcard);
+                group.Add(wildcards.Length == 1 ? Segment.Wildcard : Segment.RecursiveWildcard);
                 span = span.Skip(wildcards.Length);
             }
             else if (span.Option(out var option) is { } sp)
@@ -48,7 +48,7 @@ internal static class GlobParser
         }
         return group.Count == 1
             ? group[0]
-            : Segement.Group(group);
+            : Segment.Group(group);
     }
 
     private static TextSpan? Sequence(this SourceSpan span)
@@ -87,7 +87,7 @@ internal static class GlobParser
 
         sp++;
 
-        var options = new List<Segement>();
+        var options = new List<Segment>();
 
         while (sp.Length != 0)
         {
@@ -132,7 +132,7 @@ internal static class GlobParser
         return null;
     }
 
-    private static TextSpan? OptionClosing(SourceSpan span, ref Option? option, SourceSpan sp, List<Segement> options)
+    private static TextSpan? OptionClosing(SourceSpan span, ref Option? option, SourceSpan sp, List<Segment> options)
     {
         if (options.Count != 0)
         {
@@ -146,5 +146,5 @@ internal static class GlobParser
     }
 
     private static TextSpan? Literal(this SourceSpan span)
-        => span.Predicate(c => c != '?' && c != '*' && c != '[' && c != '{' && c != '}' && c != ',');
+        => span.Predicate(c => !(c is '?' or '*' or '[' or '{' or '}' or ','));
 }
