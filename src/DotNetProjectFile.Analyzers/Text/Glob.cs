@@ -1,7 +1,9 @@
-using DotNetProjectFile.IO.Globbing;
+using DotNetProjectFile.Text.Globbing;
+using System.ComponentModel;
 
-namespace DotNetProjectFile.IO;
+namespace DotNetProjectFile.Text;
 
+[TypeConverter(typeof(Conversion.GlobTypeConverter))]
 public readonly struct Glob
 {
     private readonly Segement Segment;

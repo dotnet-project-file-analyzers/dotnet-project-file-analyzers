@@ -1,7 +1,7 @@
 using Grammr.Text;
 using Microsoft.CodeAnalysis.Text;
 
-namespace DotNetProjectFile.IO.Globbing;
+namespace DotNetProjectFile.Text.Globbing;
 
 internal static class GlobParser
 {

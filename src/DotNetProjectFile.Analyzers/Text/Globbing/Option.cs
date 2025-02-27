@@ -1,4 +1,4 @@
-namespace DotNetProjectFile.IO.Globbing;
+namespace DotNetProjectFile.Text.Globbing;
 
 internal sealed class Option(IReadOnlyList<Segement> segments) : Segement
 {

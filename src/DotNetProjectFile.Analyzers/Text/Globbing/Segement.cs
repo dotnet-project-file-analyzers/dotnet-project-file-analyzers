@@ -1,4 +1,4 @@
-namespace DotNetProjectFile.IO.Globbing;
+namespace DotNetProjectFile.Text.Globbing;
 
 internal abstract class Segement
 {

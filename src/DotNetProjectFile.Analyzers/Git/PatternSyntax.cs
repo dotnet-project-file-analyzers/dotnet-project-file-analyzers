@@ -1,4 +1,5 @@
 using DotNetProjectFile.Parsing;
+using DotNetProjectFile.Text;
 
 namespace DotNetProjectFile.Git;
 
