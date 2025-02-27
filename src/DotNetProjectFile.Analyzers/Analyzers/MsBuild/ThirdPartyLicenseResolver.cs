@@ -19,7 +19,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     {
         var projectLicense = Licenses.FromExpression(context.GetMsBuildProperty("PackageLicenseExpression"));
 
-        var licenses = context.File.Walk()
+        var licenses = context.File.WalkBackward()
             .OfType<ThirdPartyLicense>()
             .Where(p => p.Include is { Length: > 0 })
             .ToArray();
@@ -48,7 +48,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
         }
         else if (packageLicense is CustomLicense customLicense)
         {
-            if (licenses.FirstOrDefault(l => l.Include == reference.Include) is not { } license)
+            if (licenses.FirstOrDefault(l => l.IsMatch(reference)) is not { } license)
             {
                 context.ReportDiagnostic(Rule.CustomPackageLicenseUnknown, reference, reference.Include, customLicense.Hash);
             }

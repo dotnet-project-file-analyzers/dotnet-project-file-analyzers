@@ -126,7 +126,7 @@ public class Guards
   </ItemGroup>
 
   <ItemGroup Label=""Custom licenses"">
-    <ThirdPartyLicense Include=""SonarAnalyzer.CSharp"" Hash=""/O+g/mx18wSWq5KpOpWd2bB9Nkg"" />
+    <ThirdPartyLicense Include=""SonarAnalyzer.*"" Hash=""/O+g/mx18wSWq5KpOpWd2bB9Nkg"" />
   </ItemGroup>
 
 </Project>")
