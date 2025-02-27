@@ -136,6 +136,8 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0500** Only include packages with an explicitly defined license](rules/Proj0500.md)
 * [**Proj0501** Package only contains a deprecated license URL](rules/Proj0501.md)
 * [**Proj0502** Only include packages compliant with project license](rules/Proj0502.md)
+* [**Proj0503** Package license is unknown](rules/Proj0503.md)
+* [**Proj0504** Package license has changed](rules/Proj0504.md)
 
 ### .NET Project File Analyzers SDK
 * [**Proj0700** Avoid defining &lt;Compile&gt; items in SDK project](rules/Proj0700.md)
