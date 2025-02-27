@@ -323,6 +323,15 @@ public static partial class Rule
         tags: ["legacy", "conversion", "packages.config"],
         category: Category.Noise);
 
+    public static DiagnosticDescriptor RemoveNoneWhenRedundant => New(
+        id: 0036,
+        title: "Remove None when redundant",
+        message: "Remove <None> as it is redundant",
+        description: "Removing a <None> node has no effect on the build process, and is considered redudant.",
+        tags: ["redundant"],
+        category: Category.Noise);
+
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
