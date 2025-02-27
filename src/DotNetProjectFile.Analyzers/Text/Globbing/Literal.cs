@@ -1,6 +1,3 @@
-
-
-
 namespace DotNetProjectFile.Text.Globbing;
 
 internal sealed class Literal(string text) : Segment

@@ -1,4 +1,3 @@
-
 using DotNetProjectFile.Collections;
 
 namespace DotNetProjectFile.Text.Globbing;

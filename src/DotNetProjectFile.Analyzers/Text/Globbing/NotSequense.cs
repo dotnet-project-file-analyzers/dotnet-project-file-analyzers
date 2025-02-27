@@ -1,5 +1,3 @@
-
-
 namespace DotNetProjectFile.Text.Globbing;
 
 internal sealed class NotSequence(string options) : Sequence(options)

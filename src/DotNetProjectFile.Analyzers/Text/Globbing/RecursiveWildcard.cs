@@ -1,6 +1,3 @@
-
-
-
 namespace DotNetProjectFile.Text.Globbing;
 
 internal sealed class RecursiveWildcard : Segment
