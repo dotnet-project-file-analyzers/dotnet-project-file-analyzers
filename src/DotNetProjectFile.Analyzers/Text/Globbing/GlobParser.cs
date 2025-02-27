@@ -146,5 +146,5 @@ internal static class GlobParser
     }
 
     private static TextSpan? Literal(this SourceSpan span)
-        => span.Predicate(c => c != '?' && c != '*' && c != '[' && c != '{' && c != '}' && c != ',');
+        => span.Predicate(c => !(c is '?' or '*' or '[' or '{' or '}' or ','));
 }

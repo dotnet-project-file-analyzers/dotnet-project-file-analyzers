@@ -2,21 +2,13 @@
 
 namespace DotNetProjectFile.Text.Globbing;
 
-internal sealed class NotSequence(string options) : Segment
+internal sealed class NotSequence(string options) : Sequence(options)
 {
     /// <inheritdoc />
-    public string Options { get; } = options;
-
-    /// <inheritdoc />
-    public override int MinLength => 0;
-
-    /// <inheritdoc />
-    public override int MaxLength => 0;
-
+    [Pure]
     public override bool IsMatch(ReadOnlySpan<char> value, StringComparison comparison)
-    {
-        return false;
-    }
+        => value.Length == 1
+        && !base.IsMatch(value, comparison);
 
     /// <inheritdoc />
     public override string ToString() => $"[!{Options}]";

@@ -10,9 +10,16 @@ public class Matches
     [TestCase("Hello", "Hello")]
     [TestCase("[He]", "H")]
     [TestCase("[He]", "e")]
+    [TestCase("[!He]", "E")]
+    [TestCase("[!He]", "x")]
     [TestCase("{cs,vbproj,csproj}", "cs")]
     [TestCase("{cs,vbproj,csproj}", "vbproj")]
     [TestCase("{cs,vbproj,csproj}", "csproj")]
+    [TestCase("he?o", "helo")]
+    [TestCase("he?o", "hero")]
+    [TestCase("he*o", "hello")]
+    [TestCase("he*o*ld", "helloWorld")]
+    [TestCase("file.{cs,vbproj,csproj}.next", "file.csproj.next")]
     public void globs(Glob glob, string value)
         => glob.IsMatch(value).Should().BeTrue();
 }
@@ -26,7 +33,12 @@ public class Does_not_matches
     [TestCase("[He]", "h")]
     [TestCase("[He]", "E")]
     [TestCase("[He]", "z")]
+    [TestCase("[!He]", "H")]
+    [TestCase("[!He]", "e")]
     [TestCase("{cs,vbproj,csproj}", "md")]
+    [TestCase("he*o*ld", "hellxWxrld")]
+    [TestCase("he?o", "sho")]
+    [TestCase("he?o", "to long")]
     public void globs(Glob glob, string value)
         => glob.IsMatch(value).Should().BeFalse();
 }
