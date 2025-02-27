@@ -6,15 +6,17 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        BenchmarkRunner.Run<Licening.PrepareText>();
+        BenchmarkRunner.Run<Globs.Matching>();
     }
 
     public static void All()
     {
         BenchmarkRunner.Run<IniFile>();
         BenchmarkRunner.Run<GitIgnoreFile>();
-        BenchmarkRunner.Run<Globs>();
+        BenchmarkRunner.Run<Globs.Matching>();
+        BenchmarkRunner.Run<Globs.Parsing>();
         BenchmarkRunner.Run<GrammrParsing>();
+        BenchmarkRunner.Run<Licening.PrepareText>();
         BenchmarkRunner.Run<RunAll>();
     }
 }
