@@ -1,6 +1,14 @@
-using DotNetProjectFile.IO;
+using DotNetProjectFile.Text;
 
-namespace IO.Glob_specs;
+namespace Text.Glob_specs;
+
+public class Matches
+{
+    [TestCase("HelloWorld", "HelloWorld")]
+    [TestCase("Hello*", "HelloWorld")]
+    public void globs(Glob glob, string value)
+        => glob.IsMatch(value).Should().BeTrue();
+}
 
 public class Parses
 {
