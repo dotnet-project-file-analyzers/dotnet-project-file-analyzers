@@ -827,7 +827,7 @@ public static partial class Rule
         category: Category.Legal,
         severity: DiagnosticSeverity.Error);
 
-    public static DiagnosticDescriptor ThridPartyLicenseRequiresHash => New(
+    public static DiagnosticDescriptor ThirdPartyLicenseRequiresHash => New(
         id: 0506,
         title: "Third-party license registry requires hash",
         message: "Hash {0}",
