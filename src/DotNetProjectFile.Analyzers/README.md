@@ -76,16 +76,18 @@ The package contains analyzers that analyze .NET project files.
 ### Publishing
 * [**Proj0400** Define the project publishability explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0400.html)
 
-### Licensing
-* [**Proj0500** Only include packages with an explicitly defined license](https://dotnet-project-file-analyzers.github.io/rules/Proj0500.html)
-* [**Proj0501** Package only contains a deprecated license URL](https://dotnet-project-file-analyzers.github.io/rules/Proj0501.html)
-* [**Proj0502** Only include packages compliant with project](https://dotnet-project-file-analyzers.github.io/rules/Proj0502.html)
-
 ### Test projects
 * [**Proj0450** Test projects should not be packable](https://dotnet-project-file-analyzers.github.io/rules/Proj0450.html)
 * [**Proj0451** Test projects should not be publishable](https://dotnet-project-file-analyzers.github.io/rules/Proj0451.html)
 * [**Proj0452** Test projects require Microsoft.NET.Test.Sdk](https://dotnet-project-file-analyzers.github.io/rules/Proj0452.html)
 * [**Proj0453** Using Microsoft.NET.Test.Sdk implies a test project](https://dotnet-project-file-analyzers.github.io/rules/Proj0453.html)
+
+### Licensing
+* [**Proj0500** Only include packages with an explicitly defined license](https://dotnet-project-file-analyzers.github.io/rules/Proj0500.html)
+* [**Proj0501** Package only contains a deprecated license URL](https://dotnet-project-file-analyzers.github.io/rules/Proj0501.html)
+* [**Proj0502** Only include packages compliant with project](https://dotnet-project-file-analyzers.github.io/rules/Proj0502.html)
+* [**Proj0503** Package license is unknown](https://dotnet-project-file-analyzers.github.io/rules/Proj0503.html)
+* [**Proj0504** Package license has changed](https://dotnet-project-file-analyzers.github.io/rules/Proj0504.html)
 
 ## .NET Project File Analyzers SDK
 * [**Proj0700** Avoid defining &lt;Compile&gt; items in SDK project](https://dotnet-project-file-analyzers.github.io/rules/Proj0700.html)

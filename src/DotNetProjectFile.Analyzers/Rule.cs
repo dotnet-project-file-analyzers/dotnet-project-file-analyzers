@@ -788,12 +788,33 @@ public static partial class Rule
         title: "Only include packages compliant with project",
         message: "The {0} package is distributed as {1}, which is imcompatable with the {2} license of the project",
         description:
-            "To prevent legal issues do not rely on third-party references that have " +
-            "an incompatable license.",
+            "To prevent legal issues do not rely on third-party references with " +
+            "custom defined license that have not been manually reviewed.",
         tags: ["license"],
         category: Category.Legal,
-        severity: DiagnosticSeverity.Error,
-        isEnabled: false);
+        severity: DiagnosticSeverity.Warning);
+
+    public static DiagnosticDescriptor CustomPackageLicenseUnknown => New(
+        id: 0503,
+        title: "Package license is unknown",
+        message: @"Add <ThirdPartyLicense Include=""{0}"" Hash=""{0}"" /> to accept the license",
+        description:
+            "To prevent legal issues do not rely on third-party references with " +
+            "custom defined license that have not been manually reviewed.",
+        tags: ["license"],
+        category: Category.Legal,
+        severity: DiagnosticSeverity.Warning);
+
+    public static DiagnosticDescriptor CustomPackageLicenseHasChanged => New(
+     id: 0504,
+     title: "Package license has changed",
+     message: "The license for {0} has changed as its hash is now {1}",
+     description:
+         "To prevent legal issues do not rely on third-party references where the " +
+         "license has been changed without checking the changes.",
+     tags: ["license"],
+     category: Category.Legal,
+     severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
         id: 0600,
