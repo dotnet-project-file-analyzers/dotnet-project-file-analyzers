@@ -4,7 +4,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 
 /// <summary>Validates the <see cref="ThirdPartyLicense"/> node.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class ThirdPartyLicensenCompliance() : MsBuildProjectFileAnalyzer(
+public sealed class ThirdPartyLicenseCompliance() : MsBuildProjectFileAnalyzer(
     Rule.ThridPartyLicenseRequiresInclude,
     Rule.ThridPartyLicenseRequiresHash,
     Rule.ThridPartyLicenseIsUnconditional)
