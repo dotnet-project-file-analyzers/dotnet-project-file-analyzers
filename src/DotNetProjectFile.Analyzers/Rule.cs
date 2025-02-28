@@ -818,7 +818,7 @@ public static partial class Rule
 
     public static DiagnosticDescriptor ThirdPartyLicenseRequiresInclude => New(
         id: 0505,
-        title: "Third-party license requires registry include",
+        title: "Third-party license registry requires include",
         message: "Include {0}",
         description:
             "To prevent legal issues do not rely on third-party references where the " +
@@ -840,7 +840,7 @@ public static partial class Rule
 
     public static DiagnosticDescriptor ThirdPartyLicenseIsUnconditional => New(
         id: 0507,
-        title: "Third-party license registry requires must be unconditional",
+        title: "Third-party license registry must be unconditional",
         message: "The <ThirdPartyLicense> can not be conditional",
         description:
             "To prevent legal issues do not rely on third-party references where the " +

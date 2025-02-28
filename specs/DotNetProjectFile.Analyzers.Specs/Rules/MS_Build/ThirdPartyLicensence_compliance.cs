@@ -12,7 +12,7 @@ public class Reports
   </PropertyGroup>
 
   <ItemGroup>
-    <ThirdPartyLicense Update=""Qowaiv"" Hash=""QED9yngU7o-Fy128_FSy0w"" />
+    <ThirdPartyLicense Update=""Qowaiv"" Hash=""QED9yngU7o+Fy128_FSy0w"" />
   </ItemGroup>
 
 </Project>")
@@ -29,7 +29,7 @@ public class Reports
   </PropertyGroup>
 
   <ItemGroup>
-    <ThirdPartyLicense Include=""Qowaiv["" Hash=""QED9yngU7o-Fy128_FSy0w"" />
+    <ThirdPartyLicense Include=""Qowaiv["" Hash=""QED9yngU7o+Fy128_FSy0w"" />
   </ItemGroup>
 
 </Project>")
@@ -82,7 +82,7 @@ public class Reports
   </PropertyGroup>
 
   <ItemGroup Condition=""$(TargetFramework) == 'net8.0'"">
-    <ThirdPartyLicense Include=""Qowaiv"" Hash=""QED9yngU7o-Fy128_FSy0w"" />
+    <ThirdPartyLicense Include=""Qowaiv"" Hash=""QED9yngU7o+Fy128_FSy0w"" />
   </ItemGroup>
 
 </Project>")
@@ -101,7 +101,7 @@ public class Reports
   </PropertyGroup>
 
   <ItemGroup>
-    <ThirdPartyLicense Include=""Qowaiv"" Hash=""QED9yngU7o-Fy128_FSy0w"" />
+    <ThirdPartyLicense Include=""Qowaiv"" Hash=""QED9yngU7o+Fy128_FSy0w"" />
   </ItemGroup>
 
 </Project>")
