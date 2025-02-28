@@ -810,7 +810,7 @@ public static partial class Rule
      title: "Package license has changed",
      message: "The license for {0} has changed as its hash is now {1}",
      description:
-         "To prevent legal issues do not rely on third-party references that which " +
+         "To prevent legal issues do not rely on third-party references where the " +
          "license has been changed without checking the changes.",
      tags: ["license"],
      category: Category.Legal,
