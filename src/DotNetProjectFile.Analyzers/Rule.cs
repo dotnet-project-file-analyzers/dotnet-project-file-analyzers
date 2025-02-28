@@ -800,7 +800,7 @@ public static partial class Rule
         message: @"Add <ThirdPartyLicense Include=""{0}"" Hash=""{0}"" /> to accept the license",
         description:
             "To prevent legal issues do not rely on third-party references with " +
-            "custom defined license that has not been reviewed.",
+            "custom defined license that have not been manually reviewed.",
         tags: ["license"],
         category: Category.Legal,
         severity: DiagnosticSeverity.Warning);
