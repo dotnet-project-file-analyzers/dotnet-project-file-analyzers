@@ -2,8 +2,6 @@ using DotNetProjectFile.Diagnostics;
 using DotNetProjectFile.Licensing;
 using DotNetProjectFile.MsBuild;
 using DotNetProjectFile.NuGet;
-using DotNetProjectFile.NuGet.Packaging;
-using NUnit.Framework.Internal;
 
 namespace Licensing.File_specs;
 
@@ -52,5 +50,17 @@ public class Can_be_determined
                 }
             }
         }
+    }
+}
+
+public class Can_not_be_determined
+{
+    [TestCase("MIT", "6oH4uPyx6N+SGpjv3f37ng")]
+    [TestCase("Apache-2.0", "wnT4A3LZDAEpNzcPDh8VCA")]
+    public void Custom_license_snapshots(string baseLicense, string expectedHash)
+    {
+        var baseText = (Licenses.FromExpression(baseLicense) as SingleLicense)?.SpdxInfo?.LicenseTexts.FirstOrDefault() ?? string.Empty;
+        var resolved = CustomLicense.Create(baseText);
+        resolved.Hash.Should().Be(expectedHash);
     }
 }

@@ -48,3 +48,16 @@ The purpose was never speed,
 | new StringBuilder(len) | 1.364 us |
 | string.Concat()        | 6.749 us |
 | new char[len]          | 5.881 us |
+
+| Method                       | N | Mean       | Error    | StdDev   | Gen0   | Allocated |
+|----------------------------- |-- |-----------:|---------:|---------:|-------:|----------:|
+| SHA1_Static                  | 1 | 2,152.2 ns | 15.57 ns | 13.01 ns | 0.3090 |   1.27 KB |
+| SHA1_Object                  | 1 | 1,996.1 ns | 14.38 ns | 13.45 ns | 0.3204 |   1.31 KB |
+| SHA1_Managed                 | 1 | 1,996.4 ns | 13.02 ns | 11.54 ns | 0.3204 |   1.31 KB |
+| SHA1_Incremental             | 1 | 1,956.1 ns |  9.35 ns |  8.74 ns | 0.3090 |   1.27 KB |
+| SHA256_Static                | 1 | 1,055.4 ns | 19.98 ns | 23.00 ns | 0.3185 |    1.3 KB |
+| SHA256_Object                | 1 |   926.7 ns | 18.56 ns | 19.06 ns | 0.3319 |   1.36 KB |
+| SHA256_Managed               | 1 |   929.9 ns | 18.31 ns | 17.98 ns | 0.3319 |   1.36 KB |
+| SHA256_Incremental           | 1 |   868.8 ns |  7.77 ns |  6.88 ns | 0.3185 |    1.3 KB |
+| SHA256_Incremental_Truncated | 1 |   874.0 ns | 16.87 ns | 15.78 ns | 0.3185 |    1.3 KB |
+| SHA512_Incremental_Truncated | 1 | 1,140.4 ns | 15.56 ns | 12.99 ns | 0.3262 |   1.34 KB |
