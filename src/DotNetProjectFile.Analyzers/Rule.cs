@@ -806,15 +806,48 @@ public static partial class Rule
         severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor CustomPackageLicenseHasChanged => New(
-     id: 0504,
-     title: "Package license has changed",
-     message: "The license for {0} has changed as its hash is now {1}",
-     description:
-         "To prevent legal issues do not rely on third-party references where the " +
-         "license has been changed without checking the changes.",
-     tags: ["license"],
-     category: Category.Legal,
-     severity: DiagnosticSeverity.Warning);
+        id: 0504,
+        title: "Package license has changed",
+        message: "The license for {0} has changed as its hash is now {1}",
+        description:
+            "To prevent legal issues do not rely on third-party references where the " +
+            "license has been changed without checking the changes.",
+        tags: ["license"],
+        category: Category.Legal,
+        severity: DiagnosticSeverity.Warning);
+
+    public static DiagnosticDescriptor ThirdPartyLicenseRequiresInclude => New(
+        id: 0505,
+        title: "Third-party license registry requires include",
+        message: "Include {0}",
+        description:
+            "To prevent legal issues do not rely on third-party references where the " +
+            "license has been changed without checking the changes.",
+        tags: ["license"],
+        category: Category.Legal,
+        severity: DiagnosticSeverity.Error);
+
+    public static DiagnosticDescriptor ThirdPartyLicenseRequiresHash => New(
+        id: 0506,
+        title: "Third-party license registry requires hash",
+        message: "Hash {0}",
+        description:
+            "To prevent legal issues do not rely on third-party references where the " +
+            "license has been changed without checking the changes.",
+        tags: ["license"],
+        category: Category.Legal,
+        severity: DiagnosticSeverity.Error);
+
+    public static DiagnosticDescriptor ThirdPartyLicenseIsUnconditional => New(
+        id: 0507,
+        title: "Third-party license registry must be unconditional",
+        message: "The <ThirdPartyLicense> can not be conditional",
+        description:
+            "To prevent legal issues do not rely on third-party references where the " +
+            "license has been changed without checking the changes.",
+        tags: ["license"],
+        category: Category.Legal,
+        severity: DiagnosticSeverity.Error);
 
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
         id: 0600,

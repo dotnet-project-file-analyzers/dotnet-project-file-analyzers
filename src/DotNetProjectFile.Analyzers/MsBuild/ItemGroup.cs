@@ -31,6 +31,9 @@ public sealed class ItemGroup(XElement element, Node parent, MsBuildProject proj
     /// <summary>Gets the child project references.</summary>
     public Nodes<ProjectReference> ProjectReferences => new(Children);
 
+    /// <summary>Gets the child project third-party licenses.</summary>
+    public Nodes<ThirdPartyLicense> ThirdPartyLicenses => new(Children);
+
     /// <summary>Gets the child folders.</summary>
     public Nodes<Folder> Folders => new(Children);
 
