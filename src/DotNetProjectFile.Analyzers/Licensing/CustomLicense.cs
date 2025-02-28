@@ -24,6 +24,6 @@ public sealed record CustomLicense(string Hash) : LicenseExpression
         var hash = sha256.GetHashAndReset();
         var truncated = hash.AsSpan(0, 16).ToArray();
 
-        return new(Convert.ToBase64String(truncated).TrimEnd('='));
+        return new(Convert.ToBase64String(truncated).Replace('/', '_').TrimEnd('='));
     }
 }
