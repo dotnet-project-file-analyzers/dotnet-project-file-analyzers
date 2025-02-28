@@ -73,7 +73,7 @@ public class Reports
        .WithSpan(07, 04, 07, 51 + hash.Length));
 
     [Test]
-    public void condtional() => new ThirdPartyLicenseCompliance()
+    public void conditional() => new ThirdPartyLicenseCompliance()
        .ForInlineCsproj(@$"
 <Project Sdk=""Microsoft.NET.Sdk"">
 
