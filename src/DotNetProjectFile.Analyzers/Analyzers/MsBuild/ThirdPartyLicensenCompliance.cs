@@ -19,7 +19,6 @@ public sealed class ThirdPartyLicensenCompliance() : MsBuildProjectFileAnalyzer(
             .ItemGroups.SelectMany(g => g.ThirdPartyLicenses)
             .Where(n => n.Project == context.File.Project))
         {
-            
             if (license.Include is not { Length: > 0})
             {
                 context.ReportDiagnostic(Rule.ThridPartyLicenseRequiresInclude, license, "has not been specified");
@@ -53,5 +52,5 @@ public sealed class ThirdPartyLicensenCompliance() : MsBuildProjectFileAnalyzer(
         => (c >= 'A' && c <= 'Z')
         || (c >= 'a' && c <= 'z')
         || (c >= '0' && c <= '9')
-        || c is '-' or '_';
+        || c is '+' or '_';
 }
