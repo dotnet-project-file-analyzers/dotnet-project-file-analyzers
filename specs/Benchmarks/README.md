@@ -60,4 +60,4 @@ The purpose was never speed,
 | SHA256_Managed               | 1 |   929.9 ns | 18.31 ns | 17.98 ns | 0.3319 |   1.36 KB |
 | SHA256_Incremental           | 1 |   868.8 ns |  7.77 ns |  6.88 ns | 0.3185 |    1.3 KB |
 | SHA256_Incremental_Truncated | 1 |   874.0 ns | 16.87 ns | 15.78 ns | 0.3185 |    1.3 KB |
-| SHA512_Incremental_Truncated | 1 | 1,140.4 ns | 15.56 ns | 12.99 ns | 0.3262 |   1.34 KB
+| SHA512_Incremental_Truncated | 1 | 1,140.4 ns | 15.56 ns | 12.99 ns | 0.3262 |   1.34 KB |
