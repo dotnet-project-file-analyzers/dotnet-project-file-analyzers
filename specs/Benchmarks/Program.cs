@@ -6,7 +6,7 @@ public static class Program
 {
     public static void Main(string[] args)
     {
-        BenchmarkRunner.Run<Globs.Matching>();
+        BenchmarkRunner.Run<Licensing.Hashing>();
     }
 
     public static void All()
@@ -16,7 +16,8 @@ public static class Program
         BenchmarkRunner.Run<Globs.Matching>();
         BenchmarkRunner.Run<Globs.Parsing>();
         BenchmarkRunner.Run<GrammrParsing>();
-        BenchmarkRunner.Run<Licening.PrepareText>();
+        BenchmarkRunner.Run<Licensing.PrepareText>();
+        BenchmarkRunner.Run<Licensing.Hashing>();
         BenchmarkRunner.Run<RunAll>();
     }
 }
