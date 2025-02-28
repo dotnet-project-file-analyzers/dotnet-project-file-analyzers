@@ -5,9 +5,9 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 /// <summary>Validates the <see cref="ThirdPartyLicense"/> node.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ThirdPartyLicenseCompliance() : MsBuildProjectFileAnalyzer(
-    Rule.ThridPartyLicenseRequiresInclude,
-    Rule.ThridPartyLicenseRequiresHash,
-    Rule.ThridPartyLicenseIsUnconditional)
+    Rule.ThirdPartyLicenseRequiresInclude,
+    Rule.ThirdPartyLicenseRequiresHash,
+    Rule.ThirdPartyLicenseIsUnconditional)
 {
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
@@ -21,25 +21,25 @@ public sealed class ThirdPartyLicenseCompliance() : MsBuildProjectFileAnalyzer(
         {
             if (license.Include is not { Length: > 0})
             {
-                context.ReportDiagnostic(Rule.ThridPartyLicenseRequiresInclude, license, "has not been specified");
+                context.ReportDiagnostic(Rule.ThirdPartyLicenseRequiresInclude, license, "has not been specified");
             }
             else if(Glob.TryParse(license.Include) is null)
             {
-                context.ReportDiagnostic(Rule.ThridPartyLicenseRequiresInclude, license, "is not valid GLOB pattern");
+                context.ReportDiagnostic(Rule.ThirdPartyLicenseRequiresInclude, license, "is not valid GLOB pattern");
             }
 
             if(license.Hash is null)
             {
-                context.ReportDiagnostic(Rule.ThridPartyLicenseRequiresHash, license, "has not been specified");
+                context.ReportDiagnostic(Rule.ThirdPartyLicenseRequiresHash, license, "has not been specified");
             }
             else if(!IsBase64Hash(license.Hash))
             {
-                context.ReportDiagnostic(Rule.ThridPartyLicenseRequiresHash, license, "is not valid");
+                context.ReportDiagnostic(Rule.ThirdPartyLicenseRequiresHash, license, "is not valid");
             }
             
             if (license.Conditions().Any())
             {
-                context.ReportDiagnostic(Rule.ThridPartyLicenseIsUnconditional, license);
+                context.ReportDiagnostic(Rule.ThirdPartyLicenseIsUnconditional, license);
             }
         }
     }
