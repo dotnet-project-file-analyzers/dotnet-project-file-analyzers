@@ -816,7 +816,7 @@ public static partial class Rule
         category: Category.Legal,
         severity: DiagnosticSeverity.Warning);
 
-    public static DiagnosticDescriptor ThridPartyLicenseRequiresInclude => New(
+    public static DiagnosticDescriptor ThirdPartyLicenseRequiresInclude => New(
         id: 0505,
         title: "Third-party license requires registry include",
         message: "Include {0}",
