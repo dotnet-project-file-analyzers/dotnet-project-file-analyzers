@@ -92,7 +92,7 @@ public class Reports
     public class Guards
     {
         [Test]
-        public void unconditonal_fully_specified_node() => new ThirdPartyLicenseCompliance()
+        public void unconditional_fully_specified_node() => new ThirdPartyLicenseCompliance()
             .ForInlineCsproj(@$"
 <Project Sdk=""Microsoft.NET.Sdk"">
 
