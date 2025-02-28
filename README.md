@@ -138,6 +138,9 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0502** Only include packages compliant with project license](rules/Proj0502.md)
 * [**Proj0503** Package license is unknown](rules/Proj0503.md)
 * [**Proj0504** Package license has changed](rules/Proj0504.md)
+* [**Proj0505** Third-party license registry requires include](rules/Proj0505.md)
+* [**Proj0506** Third-party license registry requires hash](rules/Proj0506.md)
+* [**Proj0507** Third-party license registry must be unconditional](rules/Proj0507.md)
 
 ### .NET Project File Analyzers SDK
 * [**Proj0700** Avoid defining &lt;Compile&gt; items in SDK project](rules/Proj0700.md)
