@@ -808,7 +808,7 @@ public static partial class Rule
     public static DiagnosticDescriptor CustomPackageLicenseHasChanged => New(
      id: 0504,
      title: "Package license has changed",
-     message: "The license for {0} has changed as its hash now is {1}",
+     message: "The license for {0} has changed as its hash is now {1}",
      description:
          "To prevent legal issues do not rely on third-party references that which " +
          "license has been changed without checking the changes.",
