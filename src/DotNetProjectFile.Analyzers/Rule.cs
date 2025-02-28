@@ -838,7 +838,7 @@ public static partial class Rule
         category: Category.Legal,
         severity: DiagnosticSeverity.Error);
 
-    public static DiagnosticDescriptor ThridPartyLicenseIsUnconditional => New(
+    public static DiagnosticDescriptor ThirdPartyLicenseIsUnconditional => New(
         id: 0507,
         title: "Third-party license registry requires must be unconditional",
         message: "The <ThirdPartyLicense> can not be conditional",
