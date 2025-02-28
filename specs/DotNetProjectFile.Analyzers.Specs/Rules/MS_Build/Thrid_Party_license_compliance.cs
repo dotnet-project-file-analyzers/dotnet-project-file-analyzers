@@ -74,7 +74,7 @@ public class Reports
 
     [Test]
     public void on_package_with_changed_custom_license() => new ThirdPartyLicenseResolver()
-       .ForInlineCsproj(@"
+        .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
 
   <PropertyGroup>
@@ -90,7 +90,7 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0504", "The license for SonarAnalyzer.CSharp has changed as its hash now is /O+g/mx18wSWq5KpOpWd2bB9Nkg")
+        .HasIssue(Issue.WRN("Proj0504", "The license for SonarAnalyzer.CSharp has changed as its hash is now /O+g/mx18wSWq5KpOpWd2bB9Nkg")
         .WithSpan(11, 04, 11, 91));
 }
 
