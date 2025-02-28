@@ -86,12 +86,12 @@ public class Reports
   </ItemGroup>
 
   <ItemGroup Label=""Custom licenses"">
-    <ThirdPartyLicense Include=""SonarAnalyzer.CSharp"" Hash=""ZOAgZmx18wSWq5KpOpWd2bB9123"" />
+    <ThirdPartyLicense Include=""SonarAnalyzer.CSharp"" Hash=""TESLAngU7omFyJOMSFSy0w"" />
   </ItemGroup>
 
 </Project>")
-        .HasIssue(Issue.WRN("Proj0504", "The license for SonarAnalyzer.CSharp has changed as its hash is now /O+g/mx18wSWq5KpOpWd2bB9Nkg")
-        .WithSpan(11, 04, 11, 91));
+        .HasIssue(Issue.WRN("Proj0504", "The license for SonarAnalyzer.CSharp has changed as its hash is now IBM9yngU7omFyJOMSFSy0w")
+        .WithSpan(11, 04, 11, 86));
 }
 
 public class Guards
@@ -126,7 +126,7 @@ public class Guards
   </ItemGroup>
 
   <ItemGroup Label=""Custom licenses"">
-    <ThirdPartyLicense Include=""SonarAnalyzer.*"" Hash=""/O+g/mx18wSWq5KpOpWd2bB9Nkg"" />
+    <ThirdPartyLicense Include=""SonarAnalyzer.*"" Hash=""IBM9yngU7omFyJOMSFSy0w"" />
   </ItemGroup>
 
 </Project>")
