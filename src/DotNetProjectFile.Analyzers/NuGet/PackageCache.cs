@@ -8,7 +8,7 @@ namespace DotNetProjectFile.NuGet;
 
 public static class PackageCache
 {
-    private static readonly ConcurrentDictionary<PackageInfo, CachedPackage?> cache = new();
+    private static readonly ConcurrentDictionary<PackageVersionInfo, CachedPackage?> cache = new();
     private static readonly Lazy<IODirectory> cacheDir = new(() => IODirectory.Parse(GetPathInternal()));
 
     public static IODirectory GetDirectory()
@@ -54,7 +54,7 @@ public static class PackageCache
         name = name.ToLowerInvariant();
         version = version?.ToLowerInvariant();
 
-        var key = new PackageInfo(name, version);
+        var key = new PackageVersionInfo(name, version);
         if (cache.TryGetValue(key, out var result))
         {
             return result;
@@ -196,7 +196,7 @@ public static class PackageCache
         }
     }
 
-    private static NuSpecFile? TryLoadNuSpecFile(IODirectory directory, PackageInfo info)
+    private static NuSpecFile? TryLoadNuSpecFile(IODirectory directory, PackageVersionInfo info)
     {
         if (NuspecFiles(directory, info).FirstOrNone(f => f.Exists) is { } file)
         {
@@ -210,7 +210,7 @@ public static class PackageCache
         return null;
     }
 
-    private static IEnumerable<IOFile> NuspecFiles(IODirectory directory, PackageInfo info)
+    private static IEnumerable<IOFile> NuspecFiles(IODirectory directory, PackageVersionInfo info)
     {
         yield return directory.File($"{info.Name}.{info.Version}.nuspec".ToLowerInvariant());
         yield return directory.File($"{info.Name}.nuspec".ToLowerInvariant());
