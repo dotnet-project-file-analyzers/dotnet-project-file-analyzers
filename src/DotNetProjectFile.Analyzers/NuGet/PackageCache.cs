@@ -124,7 +124,7 @@ public static class PackageCache
             Directory = versionDir,
             HasAnalyzerDll = HasDllFiles("analyzers"),
             HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes"),
-            HasDependencies = nuspec?.Metadata?.Depedencies?.SelectMany(d => d.Dependencies ?? [])?.Any() ?? false,
+            HasDependencies = nuspec?.Metadata?.Depedencies?.SelectMany(d => d.Dependencies ?? [])?.Any() is true,
             IsDevelopmentDependency = nuspec?.Metadata?.DevelopmentDependency,
             LicenseExpression = licenseExpression,
             LicenseFile = licenseFile,
