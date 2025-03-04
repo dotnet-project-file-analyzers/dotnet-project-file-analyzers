@@ -9,6 +9,7 @@ public class Reports
     public void missing_analyzers() => new UseAnalyzersForPackages()
         .ForProject("PackagesWithoutAnalyzers.cs")
         .HasIssues(
+            // Direct.
             new("Proj1001", "Use Ardalis.ApiEndpoints.CodeAnalyzers to analyze Ardalis.ApiEndpoints"),
             new("Proj1001", "Use FakeItEasy.Analyzer.CSharp to analyze FakeItEasy"),
             new("Proj1001", "Use FluentAssertions.Analyzers to analyze FluentAssertions"),
@@ -30,7 +31,12 @@ public class Reports
             new("Proj1001", "Use RuntimeContracts.Analyzer to analyze RuntimeContracts"),
             new("Proj1001", "Use SerilogAnalyzer to analyze Serilog"),
             new("Proj1001", "Use xunit.analyzers to analyze xunit"),
-            new("Proj1001", "Use ZeroFormatter.Analyzer to analyze ZeroFormatter"));
+            new("Proj1001", "Use ZeroFormatter.Analyzer to analyze ZeroFormatter"),
+            
+            // Transitive.
+            new("Proj1001", "Use SerilogAnalyzer to analyze Libplanet"),
+            new("Proj1001", "Use MessagePackAnalyzer to analyze Microsoft.ServiceHub.Framework"),
+            new("Proj1001", "Use MessagePackAnalyzer to analyze StreamJsonRpc"));
 }
 
 #if RELEASE

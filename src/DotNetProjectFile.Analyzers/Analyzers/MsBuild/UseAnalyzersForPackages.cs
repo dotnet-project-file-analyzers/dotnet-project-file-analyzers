@@ -15,16 +15,23 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
             .OfType<PackageReferenceBase>()
             .Where(p => p is not PackageVersion && !string.IsNullOrWhiteSpace(p.IncludeOrUpdate));
 
+        var directlyReferenced = packageReferences.Select(r => r.IncludeOrUpdate).ToImmutableHashSet();
+
         var analyzers = GetAnalyzers(context.Compilation.Language);
 
         foreach (var reference in packageReferences)
         {
-            var requiredAnalyzers = analyzers.Where(analyzer => analyzer.IsAnalyzerFor(reference));
-            var missingAnalyzers = requiredAnalyzers.Where(analyzer => packageReferences.None(analyzer.IsMatch));
+            var tree = reference.ResolveCachedPackageDependencyTree();
 
-            foreach (var analyzer in missingAnalyzers)
+            foreach (var pkg in tree)
             {
-                context.ReportDiagnostic(Descriptor, reference, analyzer.Name, reference.IncludeOrUpdate);
+                var requiredAnalyzers = analyzers.Where(analyzer => analyzer.IsAnalyzerFor(pkg));
+                var missingAnalyzers = requiredAnalyzers.Where(analyzer => packageReferences.None(analyzer.IsMatch));
+
+                foreach (var analyzer in missingAnalyzers)
+                {
+                    context.ReportDiagnostic(Descriptor, reference, analyzer.Name, reference.IncludeOrUpdate);
+                }
             }
         }
     }

@@ -56,4 +56,40 @@ public abstract class PackageReferenceBase(XElement element, Node parent, MsBuil
 
     public CachedPackage? ResolveCachedPackage()
         => PackageCache.GetPackage(IncludeOrUpdate, ResolveVersion());
+
+    public HashSet<CachedPackage> ResolveCachedPackageDependencyTree()
+    {
+        var result = new HashSet<CachedPackage>();
+        var queue = new Queue<CachedPackage>();
+
+        bool Enqueue(CachedPackage? pkg)
+        {
+            if (pkg is { } && result.Add(pkg))
+            {
+                queue.Enqueue(pkg);
+                return true;
+            }
+
+            return false;
+        }
+
+        if (!Enqueue(ResolveCachedPackage()))
+        {
+            return result;
+        }
+
+        while (queue.Count > 0)
+        {
+            var cur = queue.Dequeue();
+
+            var deps = cur.NuSpec?.Metadata?.Depedencies?.SelectMany(g => g.Dependencies ?? []) ?? [];
+
+            foreach (var dep in deps)
+            {
+                Enqueue(PackageCache.GetPackage(dep.Id, dep.Version));
+            }
+        }
+
+        return result;
+    }
 }

@@ -15,6 +15,9 @@ public sealed record Analyzer : Package
     public bool IsAnalyzerFor(AssemblyIdentity assembly)
         => IsAnalyzerFor(assembly.Name);
 
+    public bool IsAnalyzerFor(CachedPackage pkg)
+        => IsAnalyzerFor(pkg.Name);
+
     public bool IsAnalyzerFor(PackageReferenceBase reference)
         => IsAnalyzerFor(reference.IncludeOrUpdate);
 
