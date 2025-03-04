@@ -71,6 +71,7 @@ ToBeReleased:
 - Proj0505: Third-party license registry requires include. (NEW RULE)
 - Proj0506: Third-party license registry requires hash. (NEW RULE)
 - Proj0507: Third-party license registry must be unconditional. (NEW RULE)
+- Proj1701: Do not report on short (less then 3 lines) release notes. (FP)
 v1.5.10.1
 - Proj0006: Disable as the files to analyze are added by default sincse 1.5.10. (UPDATE)
 v1.5.10

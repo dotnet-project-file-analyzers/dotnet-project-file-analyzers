@@ -14,7 +14,9 @@ public sealed class UseCDATAForLargeTexts() : MsBuildProjectFileAnalyzer(Rule.Us
 
         void Walk(Node node)
         {
-            if (node is PackageReleaseNotes && !node.Element.ContainsCDATA())
+            if (node is PackageReleaseNotes &&
+                LineCount(node) > 3 &&
+                !node.Element.ContainsCDATA())
             {
                 context.ReportDiagnostic(Descriptor, node.Locations.InnerSpan);
             }
@@ -25,4 +27,10 @@ public sealed class UseCDATAForLargeTexts() : MsBuildProjectFileAnalyzer(Rule.Us
             }
         }
     }
+
+    [Pure]
+    private static int LineCount(Node node)
+        => 1
+        + node.Locations.Positions.FullSpan.End.Line
+        - node.Locations.Positions.FullSpan.Start.Line;
 }
