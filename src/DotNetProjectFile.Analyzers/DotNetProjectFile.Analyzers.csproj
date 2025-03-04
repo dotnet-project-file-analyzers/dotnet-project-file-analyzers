@@ -65,6 +65,7 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
+- Report issues on root node only on start element.
 - Proj0036: Remove None when redundant. (NEW RULE)
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 - Proj0214: Severity to INFO as it is considered too opinionated. (UPDATE)
