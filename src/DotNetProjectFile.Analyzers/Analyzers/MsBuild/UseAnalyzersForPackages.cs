@@ -74,7 +74,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
         public bool IsApplicable(string compilationLanguage)
             => Language is null || Language == compilationLanguage;
 
-        public bool IsAnalyzerFor(CachedPackage pkg)
+        public bool IsAnalyzerFor(Package pkg)
             => IsAnalyzerFor(pkg.Name);
         
         public bool IsAnalyzerFor(string name)

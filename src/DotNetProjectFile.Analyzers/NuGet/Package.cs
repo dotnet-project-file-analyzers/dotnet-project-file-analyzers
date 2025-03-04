@@ -3,7 +3,8 @@ using DotNetProjectFile.NuGet.Packaging;
 
 namespace DotNetProjectFile.NuGet;
 
-public sealed record CachedPackage
+/// <summary>Contains information about a NuGet package.</summary>
+public sealed record Package
 {
     public required string Name { get; init; }
 
