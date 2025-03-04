@@ -3,7 +3,7 @@ namespace DotNetProjectFile.NuGet;
 /// <summary>Represents the package name and (optional) version.</summary>
 public readonly struct PackageVersionInfo : IEquatable<PackageVersionInfo>
 {
-    public PackageVersionInfo(string name, string? version)
+    public PackageVersionInfo(string name, string? version = null)
     {
         Name = name;
         Version = version;
@@ -14,6 +14,10 @@ public readonly struct PackageVersionInfo : IEquatable<PackageVersionInfo>
 
     /// <summary>The version of the package.</summary>
     public readonly string? Version;
+
+    /// <summary>Checks if the include or update matches the name of this package.</summary>
+    [Pure]
+    public bool IsMatch(PackageReferenceBase reference) => reference.IncludeOrUpdate.IsMatch(Name);
 
     /// <inheritdoc />
     [Pure]
