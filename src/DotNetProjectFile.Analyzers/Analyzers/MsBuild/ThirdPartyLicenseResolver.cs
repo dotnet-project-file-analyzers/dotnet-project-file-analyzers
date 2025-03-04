@@ -55,7 +55,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     {
         if (dependency.Info.GetLicensedPackage() is not { } package)
         {
-            context.ReportDiagnostic(Rule.OnlyIncludePackagesWithExplicitLicense, dependency.Node, dependency.Info.Name);
+            context.ReportDiagnostic(Rule.OnlyIncludePackagesWithExplicitLicense, dependency.Node, dependency.Info.Name, dependency.Format);
             return null;
         }
 
@@ -63,7 +63,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
 
         if (package.UrlOnly() && packageLicense.IsUnknown)
         {
-            context.ReportDiagnostic(Rule.PackageOnlyContainsDeprecatedLicenseUrl, dependency.Node, dependency.Info.Name);
+            context.ReportDiagnostic(Rule.PackageOnlyContainsDeprecatedLicenseUrl, dependency.Node, dependency.Info.Name, dependency.Format);
         }
         else if (packageLicense is CustomLicense customLicense)
         {
@@ -78,13 +78,18 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
         }
         else if (!packageLicense.CompatibleWith(projectLicense))
         {
-            context.ReportDiagnostic(Rule.PackageIncompatibleWithProjectLicense, dependency.Node, dependency.Info.Name, packageLicense, projectLicense);
+            context.ReportDiagnostic(Rule.PackageIncompatibleWithProjectLicense, dependency.Node, dependency.Format, dependency.Info.Name, packageLicense, projectLicense);
         }
 
         return package;
     }
 
-    private readonly record struct Dependency(PackageReferenceBase Node, PackageVersionInfo Info);
+    private readonly record struct Dependency(PackageReferenceBase Node, PackageVersionInfo Info)
+    {
+        public bool IsTransitive => !Node.Info.Name.IsMatch(Info.Name);
+
+        public string Format => IsTransitive ? "transitive " : string.Empty;
+    }
 }
 
 file static class Extensions

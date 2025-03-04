@@ -151,7 +151,7 @@ public partial class Rules
         {
             var id = rule.Id;
             var severity = GetIniSeverity(rule.Descriptor.DefaultSeverity);
-            var title = rule.Descriptor.MessageFormat.ToString(CultureInfo.InvariantCulture);
+            var title = rule.Descriptor.Title.ToString(CultureInfo.InvariantCulture);
 
             sb
                 .Append("dotnet_diagnostic.")
@@ -168,10 +168,10 @@ public partial class Rules
     private static string GetIniSeverity(DiagnosticSeverity severity)
         => severity switch
         {
-            DiagnosticSeverity.Hidden /**/ => "none      ",
-            DiagnosticSeverity.Info /****/ => "suggestion",
-            DiagnosticSeverity.Error /***/ => "error     ",
-            _ /**************************/ => "warning   ",
+            DiagnosticSeverity.Hidden /*.*/ => "none      ",
+            DiagnosticSeverity.Info /*...*/ => "suggestion",
+            DiagnosticSeverity.Error /*..*/ => "error     ",
+            _ /*.........................*/ => "warning   ",
         };
 }
 
