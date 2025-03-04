@@ -23,7 +23,7 @@
     <PackageProjectUrl>https://dotnet-project-file-analyzers.github.io</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
-    <PackageTags>Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
+    <PackageTags>Code Analysis;Project files;project file;dotnet;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>logo_128x128.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
