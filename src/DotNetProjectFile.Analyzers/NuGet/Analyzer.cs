@@ -12,8 +12,14 @@ public sealed record Analyzer : Package
     public bool IsApplicable(string compilationLanguage)
         => Language is null || Language == compilationLanguage;
 
-    public bool IsMatch(AssemblyIdentity assembly)
-        => assembly.Name.StartsWith(Match, StringComparison.OrdinalIgnoreCase)
-        && (assembly.Name.Length == Match.Length
-            || assembly.Name[Match.Length] == '.');
+    public bool IsAnalyzerFor(AssemblyIdentity assembly)
+        => IsAnalyzerFor(assembly.Name);
+
+    public bool IsAnalyzerFor(PackageReferenceBase reference)
+        => IsAnalyzerFor(reference.IncludeOrUpdate);
+
+    public bool IsAnalyzerFor(string name)
+        => name.StartsWith(Match, StringComparison.OrdinalIgnoreCase)
+        && (name.Length == Match.Length
+            || name[Match.Length] == '.');
 }
