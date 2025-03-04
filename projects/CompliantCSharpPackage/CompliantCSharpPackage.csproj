@@ -42,7 +42,7 @@ v1.0.0
     <PackageIconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
-  
+
   <ItemGroup Label="Analyzers">
     <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.5.10.1" PrivateAssets="all" ExcludeAssets="compile" />
   </ItemGroup>
@@ -50,6 +50,12 @@ v1.0.0
   <ItemGroup Label="Build extensions">
     <PackageReference Include="Microsoft.Sbom.Targets" Version="*" PrivateAssets="all" />
   </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="*.csproj" Visible="false" />
+    <AdditionalFiles Include="*.resx" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <Using Include="System" />
