@@ -44,11 +44,11 @@ v1.0.0
   </PropertyGroup>
   
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.2.2" PrivateAssets="all" />
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.2.2" PrivateAssets="all" ExcludeAssets="compile" />
   </ItemGroup>
 
   <ItemGroup Label="Build extensions">
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="*" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="*" PrivateAssets="all" ExcludeAssets="compile" />
   </ItemGroup>
 
   <ItemGroup>

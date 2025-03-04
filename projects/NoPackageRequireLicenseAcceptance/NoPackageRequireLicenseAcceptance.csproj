@@ -47,7 +47,7 @@ v1.0.0
   </ItemGroup>
 
   <ItemGroup Label="Build extensions">
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="*" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="*" PrivateAssets="all" ExcludeAssets="compile" />
   </ItemGroup>
 
   <ItemGroup>

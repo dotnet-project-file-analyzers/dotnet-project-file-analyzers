@@ -28,9 +28,9 @@
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="AsyncFixer" Version="*-*" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="*" PrivateAssets="all" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="*" PrivateAssets="all" />
+    <PackageReference Include="AsyncFixer" Version="*-*" PrivateAssets="all" ExcludeAssets="compile" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="compile" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="*" PrivateAssets="all" ExcludeAssets="compile" />
   </ItemGroup>
 
   <ItemGroup Label="Custom licenses">

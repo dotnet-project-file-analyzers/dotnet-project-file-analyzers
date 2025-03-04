@@ -331,6 +331,16 @@ public static partial class Rule
         tags: ["redundant"],
         category: Category.Noise);
 
+    public static DiagnosticDescriptor ExcludeAssets => New(
+        id: 0037,
+        title: "Exclude assets should contain compile when all are private",
+        message: "ExcludeAssets should contain compile when PrivateAssets=\"all\"",
+        description:
+            "When a package reference with private assets should at least mark " +
+            "compile as excluded. By doing so, it prevent unintended references " +
+            "to its code that would lead to runtime issues.",
+        tags: ["bug"],
+        category: Category.Bug);
 
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,

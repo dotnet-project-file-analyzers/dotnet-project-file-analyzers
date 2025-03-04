@@ -8,7 +8,7 @@ public class Reports
        .ForProject("IncludeAssets.cs")
        .HasIssues(
            Issue.WRN("Proj0026", "Remove <IncludeAssets> as it is redundant when all assets are private" /*.*/).WithSpan(20, 04, 23, 23),
-           Issue.WRN("Proj0026", "Remove IncludeAssets as it is redundant when all assets are private" /*...*/).WithSpan(24, 04, 24, 163));
+           Issue.WRN("Proj0026", "Remove IncludeAssets as it is redundant when all assets are private" /*...*/).WithSpan(24, 04, 24, 187));
 }
 
 public class Guards

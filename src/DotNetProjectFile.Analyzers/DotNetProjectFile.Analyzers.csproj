@@ -44,7 +44,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Props and targets">
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="3.0.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="3.0.1" PrivateAssets="all" ExcludeAssets="compile" />
   </ItemGroup>
 
   <ItemGroup Label="Roslyn dependencies">
@@ -52,12 +52,12 @@
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" PrivateAssets="all" />
-    <PackageReference Include="StyleCop.Analyzers" Version="*-*" PrivateAssets="all" />
+    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" PrivateAssets="all" ExcludeAssets="compile" />
+    <PackageReference Include="StyleCop.Analyzers" Version="*-*" PrivateAssets="all" ExcludeAssets="compile" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" />
+    <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" ExcludeAssets="compile" />
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">

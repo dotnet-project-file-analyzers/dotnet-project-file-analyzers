@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotNetProjectFile.Analyzers.Sdk" PrivateAssets="all" />
+    <PackageReference Include="DotNetProjectFile.Analyzers.Sdk" PrivateAssets="all" ExcludeAssets="compile" />
   </ItemGroup>
 
   <!-- To simplify test setup, normally this should be done by the package props -->
