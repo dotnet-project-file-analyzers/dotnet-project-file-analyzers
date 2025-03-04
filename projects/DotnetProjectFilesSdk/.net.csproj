@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Update="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="compile" />
+    <PackageReference Update="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <Import Project="../../src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.targets" />

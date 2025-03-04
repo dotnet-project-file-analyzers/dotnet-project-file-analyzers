@@ -11,7 +11,7 @@
   </PropertyGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.2.2" PrivateAssets="all" ExcludeAssets="compile" />
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.2.2" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup>

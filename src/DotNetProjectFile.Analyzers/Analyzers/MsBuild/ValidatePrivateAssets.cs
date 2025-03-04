@@ -3,7 +3,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ValidatePrivateAssets() : MsBuildProjectFileAnalyzer(
     Rule.RemoveIncludeAssetsWhenRedundant,
-    Rule.ExcludeCompileWhenAllAssetsArePrivate)
+    Rule.ExcludeRuntimeWhenAllAssetsArePrivate)
 {
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
@@ -24,9 +24,9 @@ public sealed class ValidatePrivateAssets() : MsBuildProjectFileAnalyzer(
                 context.ReportDiagnostic(Rule.RemoveIncludeAssetsWhenRedundant, reference, $"<{IncludeAssets}>");
             }
 
-            if (reference.Element.Attribute(ExcludeAssets)?.Value.Contains("compile") is not true)
+            if (reference.Element.Attribute(ExcludeAssets)?.Value.Contains("runtime") is not true)
             {
-                context.ReportDiagnostic(Rule.ExcludeCompileWhenAllAssetsArePrivate, reference);
+                context.ReportDiagnostic(Rule.ExcludeRuntimeWhenAllAssetsArePrivate, reference);
             }
         }
     }

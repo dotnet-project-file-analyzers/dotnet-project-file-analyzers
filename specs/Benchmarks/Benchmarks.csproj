@@ -32,7 +32,7 @@
     <ProjectReference
       Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
       PrivateAssets="all"
-      ExcludeAssets="compile"
+      ExcludeAssets="runtime"
       ReferenceOutputAssembly="false"
       OutputItemType="Analyzer"
       SetTargetFramework="TargetFramework=netstandard2.0" />

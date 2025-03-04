@@ -49,9 +49,9 @@
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="AwesomeAssertions.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="compile" />
-    <PackageReference Include="NUnit.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="compile" />
-    <PackageReference Include="System.Formats.Asn1" Version="9.0.0" ExcludeAssets="compile" />
+    <PackageReference Include="AwesomeAssertions.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="NUnit.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="System.Formats.Asn1" Version="9.0.0" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzer">
@@ -59,7 +59,7 @@
     <ProjectReference
       Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
       PrivateAssets="all"
-      ExcludeAssets="compile"
+      ExcludeAssets="runtime"
       ReferenceOutputAssembly="false"
       OutputItemType="Analyzer"
       SetTargetFramework="TargetFramework=netstandard2.0" />

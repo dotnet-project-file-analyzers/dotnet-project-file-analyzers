@@ -6,9 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup Label="Compliant">
-    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="All" ExcludeAssets="compile" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="All" ExcludeAssets="runtime" />
     <PackageReference Include="Qowaiv" Version="7.0.4" IncludeAssets="compile" />
-    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="2.0.1" ExcludeAssets="compile">
+    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="2.0.1" ExcludeAssets="runtime">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="coverlet.msbuild" Version="6.0.2">
@@ -18,11 +18,11 @@
   </ItemGroup>
 
   <ItemGroup Label="Non-compliant">
-    <PackageReference Include="coverlet.collector" Version="6.0.2" ExcludeAssets="compile">
+    <PackageReference Include="coverlet.collector" Version="6.0.2" ExcludeAssets="runtime">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime;build</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="NUnit.Analyzers" Version="4.3.0" PrivateAssets="All" IncludeAssets="runtime;build;native; contentfiles;analyzers;buildtransitive" ExcludeAssets="compile" />
+    <PackageReference Include="NUnit.Analyzers" Version="4.3.0" PrivateAssets="All" IncludeAssets="runtime;build;native; contentfiles;analyzers;buildtransitive" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup>

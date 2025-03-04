@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup Label="Build tools">
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" PrivateAssets="all" ExcludeAssets="compile" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.11.0" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
   
   <ItemGroup>
