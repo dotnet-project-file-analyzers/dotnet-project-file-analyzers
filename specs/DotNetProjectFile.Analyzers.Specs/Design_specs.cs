@@ -150,7 +150,7 @@ public partial class Rules
         {
             var id = rule.Id;
             var severity = GetIniSeverity(rule.Descriptor.DefaultSeverity);
-            var message = rule.Descriptor.MessageFormat.ToString(CultureInfo.InvariantCulture);
+            var title = rule.Descriptor.MessageFormat.ToString(CultureInfo.InvariantCulture);
 
             sb
                 .Append("dotnet_diagnostic.")
@@ -158,7 +158,7 @@ public partial class Rules
                 .Append(".severity = ")
                 .Append(severity)
                 .Append(" # ")
-                .AppendLine(message);
+                .AppendLine(title);
         }
 
         return sb.ToString();
