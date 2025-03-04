@@ -510,7 +510,8 @@ public static partial class Rule
             "disable package generation by defining the " +
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
-        category: Category.Configuration);
+        category: Category.Configuration,
+        isEnabled: false);
 
     public static DiagnosticDescriptor ProvideCompliantPackageIcon => New(
         id: 0215,
