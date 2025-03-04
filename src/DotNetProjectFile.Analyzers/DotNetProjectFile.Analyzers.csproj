@@ -73,7 +73,7 @@ ToBeReleased:
 - Proj0506: Third-party license registry requires hash. (NEW RULE)
 - Proj0507: Third-party license registry must be unconditional. (NEW RULE)
 - Proj1001: Suggested analyzers now based on package references rather than assembly names. (FP)
-- Proj1001: Now suggest to use AwesomeAssertions.Analyzers for AwesomeAssertions.
+- Proj1001: Now suggest to use AwesomeAssertions.Analyzers for AwesomeAssertions. (FN)
 - Proj1200: Fix compilation packages (that only hold a collective set of dependencies) incorrectly marked as development-dependencies. (FP)
 - Proj1701: Do not report on short (less then 3 lines) release notes. (FP)
 v1.5.10.1
