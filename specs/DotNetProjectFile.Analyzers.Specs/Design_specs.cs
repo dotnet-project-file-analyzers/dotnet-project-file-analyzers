@@ -1,8 +1,12 @@
+using System.Globalization;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Text.RegularExpressions;
+using VerifyNUnit;
+using VerifyTests;
 
 namespace Design_specs;
 
@@ -111,6 +115,64 @@ public partial class Rules
 
     [GeneratedRegex(@"Contains (?<amount>[0-9]+0)\+ \[Roslyn\]")]
     private static partial Regex AmountPattern();
+
+    [Test]
+    public async Task Globalconfig()
+    {
+        var config = GetGlobalconfigContent();
+
+        var settings = new VerifySettings();
+        settings.UseDirectory(GetOutputPath());
+        settings.UseFileName("globalconfig");
+        settings.AutoVerify(fileName => !File.Exists(fileName));
+        VerifierSettings.UseUtf8NoBom();
+
+        await Verifier.Verify(config, settings);
+    }
+
+    private static string GetOutputPath([CallerFilePath] string? path = null)
+    {
+        var curDir = path is null
+            ? Directory.GetCurrentDirectory()
+            : Path.GetDirectoryName(path) ?? Directory.GetCurrentDirectory();
+
+        var outputDir = Path.Combine(curDir, "../../");
+        Directory.CreateDirectory(outputDir);
+        return outputDir;
+    }
+
+    private static string GetGlobalconfigContent()
+    {
+        var sb = new StringBuilder();
+
+        var rules = AllRules.OrderBy(x => x.Id).ToArray();
+
+        foreach (var rule in rules)
+        {
+            var id = rule.Id;
+            var severity = GetIniSeverity(rule.Descriptor.DefaultSeverity);
+            var title = rule.Descriptor.MessageFormat.ToString(CultureInfo.InvariantCulture);
+
+            sb
+                .Append("dotnet_diagnostic.")
+                .Append(id)
+                .Append(".severity = ")
+                .Append(severity)
+                .Append(" # ")
+                .AppendLine(title);
+        }
+
+        return sb.ToString();
+    }
+
+    private static string GetIniSeverity(DiagnosticSeverity severity)
+        => severity switch
+        {
+            DiagnosticSeverity.Hidden /**/ => "none      ",
+            DiagnosticSeverity.Info /****/ => "suggestion",
+            DiagnosticSeverity.Error /***/ => "error     ",
+            _ /**************************/ => "warning   ",
+        };
 }
 
 /// <remarks>Wrapper for better display of test resources in IDE.</remarks>

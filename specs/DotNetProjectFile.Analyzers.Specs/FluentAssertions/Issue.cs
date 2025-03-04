@@ -47,6 +47,8 @@ internal sealed record Issue(
 
     public static Issue ERR(string id, string message) => new(id, message, DiagnosticSeverity.Error);
 
+    public static Issue NONE(string id, string message) => new(id, message, DiagnosticSeverity.Hidden);
+
     public static Issue FromDiagnostic(Diagnostic diagnostic) => new(
         diagnostic.Id, 
         diagnostic.GetMessage(),

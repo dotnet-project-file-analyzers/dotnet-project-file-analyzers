@@ -25,7 +25,10 @@ public class Guards
                 "CS8604",
                 "CS8618",
                 "CS8619",
-                "CS8625")
+                "CS8625",
+
+                // Default disabled
+                "Proj1000")
         };
 
         // Add the remaining analyzers.

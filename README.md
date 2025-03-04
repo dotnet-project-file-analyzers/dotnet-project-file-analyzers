@@ -33,6 +33,12 @@ or via PowerShell:
 ``` PS
 Install-Package DotNetProjectFile.Analyzers
 ```
+
+### Configuration
+The analyzer rules can be configured using the `.globalconfig` file or by using `<GlobalAnalyzerConfigFiles>`.
+Instructions can be found [here](https://dotnet-project-file-analyzers.github.io/general/configuration.html).
+An example configuration with the default severities of the main branch of the analyzer can be found [here](globalconfig.verified.txt).
+
 ### SDK
 To use the SDK, follow the instructions [here](https://dotnet-project-file-analyzers.github.io/general/sdk.html).
 
