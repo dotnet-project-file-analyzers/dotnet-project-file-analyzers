@@ -1,3 +1,5 @@
+using DotNetProjectFile.NuGet;
+
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
@@ -8,23 +10,36 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var packageReferences = context.File.Walk().OfType<PackageReferenceBase>().Where(p => p is not PackageVersion);
+        var packageReferences = context.File
+            .Walk()
+            .OfType<PackageReferenceBase>()
+            .Where(p => p is not PackageVersion && !string.IsNullOrWhiteSpace(p.IncludeOrUpdate));
 
-        var unusedAnalyzers = Analyzers.Where(analyzer
-            => analyzer.IsApplicable(context.Compilation.Options.Language)
-            && packageReferences.None(analyzer.IsMatch));
+        var directlyReferenced = packageReferences.Select(r => r.IncludeOrUpdate).ToImmutableHashSet();
 
-        foreach (var analyzer in unusedAnalyzers)
+        var analyzers = GetAnalyzers(context.Compilation.Language);
+
+        foreach (var reference in packageReferences)
         {
-            if (context.Compilation.ReferencedAssemblyNames
-                .Where(analyzer.IsMatch)
-                .OrderBy(asm => asm.Name.Length)
-                .FirstOrDefault() is { } reference)
+            var tree = reference.ResolveCachedPackageDependencyTree();
+
+            foreach (var pkg in tree)
             {
-                context.ReportDiagnostic(Descriptor, context.File, analyzer.Name, reference.Name);
+                var requiredAnalyzers = analyzers.Where(analyzer => analyzer.IsAnalyzerFor(pkg));
+                var missingAnalyzers = requiredAnalyzers.Where(analyzer => packageReferences.None(analyzer.IsMatch));
+
+                foreach (var analyzer in missingAnalyzers)
+                {
+                    context.ReportDiagnostic(Descriptor, reference, analyzer.Name, reference.IncludeOrUpdate);
+                }
             }
         }
     }
+
+    private static NuGet.Analyzer[] GetAnalyzers(string language)
+        => Analyzers
+        .Where(analyzer => analyzer.IsApplicable(language))
+        .ToArray();
 
     private static readonly NuGet.Analyzer[] Analyzers = NuGet.Packages.All
         .OfType<NuGet.Analyzer>()

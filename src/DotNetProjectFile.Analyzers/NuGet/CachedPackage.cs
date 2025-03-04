@@ -1,4 +1,5 @@
 using DotNetProjectFile.Licensing;
+using DotNetProjectFile.NuGet.Packaging;
 
 namespace DotNetProjectFile.NuGet;
 
@@ -25,4 +26,6 @@ public sealed record CachedPackage
     public required string? LicenseUrl { get; init; }
 
     public required LicenseExpression License { get; init; }
+
+    public required NuSpecFile? NuSpec { get; init; }
 }

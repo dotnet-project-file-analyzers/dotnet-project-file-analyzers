@@ -57,6 +57,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new Analyzer("WpfAnalyzers"),
 
         // Specific analyzers
+        new Analyzer("AwesomeAssertions.Analyzers", "AwesomeAssertions"),
         new Analyzer("Ardalis.ApiEndpoints.CodeAnalyzers", "Ardalis.ApiEndpoints"),
         new Analyzer("FakeItEasy.Analyzer.CSharp", "FakeItEasy", LanguageNames.CSharp),
         new Analyzer("FakeItEasy.Analyzer.VisualBasic", "FakeItEasy", LanguageNames.VisualBasic),
@@ -66,7 +67,7 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new Analyzer("MassTransit.Analyzers", "MassTransit"),
         new Analyzer("MessagePackAnalyzer", "MessagePack"),
         new Analyzer("MessagePipe.Analyzer", "MessagePipe"),
-        new Analyzer("Microsoft.AspNetCore.Components.Analyzers", "Microsoft.AspNetCore"),
+        new Analyzer("Microsoft.AspNetCore.Components.Analyzers", "Microsoft.AspNetCore.Components"),
         new Analyzer("Microsoft.Azure.Functions.Analyzers", "Microsoft.Azure.Functions"),
         new Analyzer("Microsoft.CodeAnalysis.Analyzers", "Microsoft.CodeAnalysis"),
         new Analyzer("Microsoft.EntityFrameworkCore.Analyzers", "Microsoft.EntityFrameworkCore"),
