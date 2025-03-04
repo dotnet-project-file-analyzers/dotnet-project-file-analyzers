@@ -214,8 +214,12 @@ public static class PackageCache
 
     private static IEnumerable<IOFile> NuspecFiles(IODirectory directory, PackageVersionInfo info)
     {
-        yield return directory.File($"{info.Name}.{info.Version}.nuspec".ToLowerInvariant());
-        yield return directory.File($"{info.Name}.nuspec".ToLowerInvariant());
+        if (info is { Version.Length: > 0 })
+        {
+            yield return directory.File($"{info.Name.ToLowerInvariant()}.{info.Version.ToLowerInvariant()}.nuspec".ToLowerInvariant());
+        }
+
+        yield return directory.File($"{info.Name.ToLowerInvariant()}.nuspec".ToLowerInvariant());
 
         foreach (var file in directory.Files("*.nuspec") ?? [])
         {

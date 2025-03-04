@@ -54,7 +54,7 @@ public abstract class PackageReferenceBase(XElement element, Node parent, MsBuil
     public string? ResolveVersion()
         => ResolveVersionVerbose()?.Version;
 
-    public Package? ResolveCachedPackage()
+    public Package? ResolvePackage()
         => PackageCache.GetPackage(IncludeOrUpdate, ResolveVersion());
 
     public HashSet<Package> ResolveCachedPackageDependencyTree()
@@ -73,7 +73,7 @@ public abstract class PackageReferenceBase(XElement element, Node parent, MsBuil
             return false;
         }
 
-        if (!Enqueue(ResolveCachedPackage()))
+        if (!Enqueue(ResolvePackage()))
         {
             return result;
         }

@@ -67,7 +67,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
 file static class Extensions
 {
     public static Package? GetLicensedPackage(this PackageReferenceBase reference)
-       => reference.ResolveCachedPackage() is { } package
+       => reference.ResolvePackage() is { } package
        && (package.LicenseExpression is { Length: > 0 }
        || package.LicenseFile is { Length: > 0 }
        || package.LicenseUrl is { Length: > 0 })
