@@ -1203,17 +1203,34 @@ public static partial class Rule
         string description,
         string[] tags,
         Category category,
-        DiagnosticSeverity severity = DiagnosticSeverity.Warning,
+        DiagnosticSeverity? severity = null,
         bool isEnabled = true)
 #pragma warning restore S107 // Methods should not have too many parameters
-        => new(
+    {
+        DiagnosticSeverity defaultSeverity;
+
+        if (!isEnabled)
+        {
+            defaultSeverity = DiagnosticSeverity.Hidden;
+        }
+        else if (severity.HasValue)
+        {
+            defaultSeverity = severity.Value;
+        }
+        else
+        {
+            defaultSeverity = category == Category.SyntaxError ? DiagnosticSeverity.Error : DiagnosticSeverity.Warning;
+        }
+
+        return new(
             id: $"Proj{id:0000}",
             title: title,
             messageFormat: message,
             customTags: tags,
             category: category.ToString(),
-            defaultSeverity: category == Category.SyntaxError ? DiagnosticSeverity.Error : severity,
-            isEnabledByDefault: isEnabled,
+            defaultSeverity: defaultSeverity,
+            isEnabledByDefault: true,
             description: description,
             helpLinkUri: $"https://dotnet-project-file-analyzers.github.io/rules/Proj{id:0000}.html");
+    }
 }
