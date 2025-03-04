@@ -76,10 +76,10 @@ public sealed class Packages : IReadOnlyCollection<Package>
         new Analyzer("Moq.Analyzers", "Moq"),
         new Analyzer("NSubstitute.Analyzers.CSharp", "NSubstitute", LanguageNames.CSharp),
         new Analyzer("NSubstitute.Analyzers.VisualBasic", "NSubstitute", LanguageNames.VisualBasic),
-        new Analyzer("NUnit.Analyzers", "NUnit"),
+        new Analyzer("NUnit.Analyzers", "nunit.framework"),
         new Analyzer("RuntimeContracts.Analyzer", "RuntimeContracts"),
         new Analyzer("SerilogAnalyzer", "Serilog"),
-        new Analyzer("xunit.analyzers", "xunit"),
+        new Analyzer("xunit.analyzers", "xunit.core"),
         new Analyzer("ZeroFormatter.Analyzer", "ZeroFormatter"),
 
         // Source generators
