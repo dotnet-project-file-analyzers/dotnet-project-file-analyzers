@@ -331,9 +331,9 @@ public static partial class Rule
         tags: ["redundant"],
         category: Category.Noise);
 
-    public static DiagnosticDescriptor ExcludeAssets => New(
+    public static DiagnosticDescriptor ExcludeCompileWhenAllAssetsArePrivate => New(
         id: 0037,
-        title: "Exclude assets should contain compile when all are private",
+        title: "Exclude compile when all assets are private",
         message: "ExcludeAssets should contain compile when PrivateAssets=\"all\"",
         description:
             "When a package reference with private assets should at least mark " +

@@ -1,9 +1,9 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class RemoveIncludeAssetsWhenRedundant() : MsBuildProjectFileAnalyzer(
+public sealed class ValidatePrivateAssets() : MsBuildProjectFileAnalyzer(
     Rule.RemoveIncludeAssetsWhenRedundant,
-    Rule.ExcludeAssets)
+    Rule.ExcludeCompileWhenAllAssetsArePrivate)
 {
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
@@ -26,7 +26,7 @@ public sealed class RemoveIncludeAssetsWhenRedundant() : MsBuildProjectFileAnaly
 
             if (reference.Element.Attribute(ExcludeAssets)?.Value.Contains("compile") is not true)
             {
-                context.ReportDiagnostic(Rule.ExcludeAssets, reference);
+                context.ReportDiagnostic(Rule.ExcludeCompileWhenAllAssetsArePrivate, reference);
             }
         }
     }
