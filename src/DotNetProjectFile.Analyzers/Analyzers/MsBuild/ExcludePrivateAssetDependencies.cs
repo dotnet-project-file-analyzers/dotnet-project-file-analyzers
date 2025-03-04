@@ -30,7 +30,7 @@ public sealed class ExcludePrivateAssetDependencies() : MsBuildProjectFileAnalyz
             return false;
         }
 
-        if (PackageCache.GetPackage(reference.IncludeOrUpdate, reference.ResolveVersion()) is { } package)
+        if (reference.ResolveCachedPackage() is { } package)
         {
             if (package.IsDevelopmentDependency is true)
             {
