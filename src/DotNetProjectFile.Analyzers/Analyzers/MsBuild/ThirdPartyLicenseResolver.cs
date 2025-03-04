@@ -78,7 +78,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
         }
         else if (!packageLicense.CompatibleWith(projectLicense))
         {
-            context.ReportDiagnostic(Rule.PackageIncompatibleWithProjectLicense, dependency.Node, dependency.Format, dependency.Info.Name, packageLicense, projectLicense);
+            context.ReportDiagnostic(Rule.PackageIncompatibleWithProjectLicense, dependency.Node, dependency.Info.Name, dependency.Format, packageLicense, projectLicense);
         }
 
         return package;
