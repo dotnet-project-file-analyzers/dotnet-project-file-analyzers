@@ -125,6 +125,7 @@ public partial class Rules
         settings.UseDirectory(GetOutputPath());
         settings.UseFileName("globalconfig");
         settings.AutoVerify(fileName => !File.Exists(fileName));
+        VerifierSettings.UseUtf8NoBom();
 
         await Verifier.Verify(config, settings);
     }
