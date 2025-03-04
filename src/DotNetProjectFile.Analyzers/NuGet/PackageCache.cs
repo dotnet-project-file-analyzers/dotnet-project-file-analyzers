@@ -43,30 +43,28 @@ public static class PackageCache
         }
     }
 
-    public static Package? GetPackage(string? name, string? version)
+    public static Package? GetPackage(string? name, string? version) => GetPackage(new(name!, version));
+
+    public static Package? GetPackage(PackageVersionInfo info)
     {
-        if (name is not { Length: > 0 })
-        {
-            return null;
-        }
+        if (info is not { Name.Length: > 0 }) return null;
 
         // Directories have lower case names.
-        name = name.ToLowerInvariant();
-        version = version?.ToLowerInvariant();
+        var name = info.Name.ToLowerInvariant();
+        var version = info.Version?.ToLowerInvariant();
 
-        var key = new PackageVersionInfo(name, version);
-        if (cache.TryGetValue(key, out var result))
+        if (cache.TryGetValue(info, out var result))
         {
             return result;
         }
 
         lock (cache)
         {
-            if (!cache.TryGetValue(key, out result))
+            if (!cache.TryGetValue(info, out result))
             {
                 result = GetPackageInternal(name, version);
 
-                cache[key] = result;
+                cache[info] = result;
 
                 if (result is { } && version != result.Version)
                 {

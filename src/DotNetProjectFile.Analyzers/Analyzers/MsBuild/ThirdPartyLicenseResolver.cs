@@ -24,50 +24,73 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
             .Where(p => p.Include is { Length: > 0 })
             .ToArray();
 
+        var queue = new Queue<Dependency>();
+        var done = new HashSet<PackageVersionInfo>();
+
         foreach (var reference in context.File.ItemGroups.SelectMany(g => g.Children)
             .OfType<PackageReferenceBase>()
-            .Where(r => r.Version is { Length: > 0 }))
+            .Where(r => r is { Info.Version.Length: > 0 } && done.Add(r.Info)))
         {
-            Report(reference, projectLicense, licenses, context);
+            queue.Enqueue(new(reference, reference.Info));
+        }
+
+        while (queue.Any())
+        {
+            var dependency = queue.Dequeue();
+
+            if (Report(dependency, projectLicense, licenses, context) is { } package)
+            {
+                foreach (var transitive in package.TransativeDepedencies())
+                {
+                    if (done.Add(transitive))
+                    {
+                        queue.Enqueue(new(dependency.Node, transitive));
+                    }
+                }
+            }
         }
     }
 
-    private static void Report(PackageReferenceBase reference, LicenseExpression projectLicense, IReadOnlyCollection<ThirdPartyLicense> licenses, ProjectFileAnalysisContext context)
+    private static Package? Report(Dependency dependency, LicenseExpression projectLicense, IReadOnlyCollection<ThirdPartyLicense> licenses, ProjectFileAnalysisContext context)
     {
-        if (reference.GetLicensedPackage() is not { } package)
+        if (dependency.Info.GetLicensedPackage() is not { } package)
         {
-            context.ReportDiagnostic(Rule.OnlyIncludePackagesWithExplicitLicense, reference, reference.IncludeOrUpdate);
-            return;
+            context.ReportDiagnostic(Rule.OnlyIncludePackagesWithExplicitLicense, dependency.Node, dependency.Info.Name);
+            return null;
         }
 
         var packageLicense = package.License;
 
         if (package.UrlOnly() && packageLicense.IsUnknown)
         {
-            context.ReportDiagnostic(Rule.PackageOnlyContainsDeprecatedLicenseUrl, reference, reference.IncludeOrUpdate);
+            context.ReportDiagnostic(Rule.PackageOnlyContainsDeprecatedLicenseUrl, dependency.Node, dependency.Info.Name);
         }
         else if (packageLicense is CustomLicense customLicense)
         {
-            if (licenses.FirstOrDefault(l => l.IsMatch(reference)) is not { } license)
+            if (licenses.FirstOrDefault(l => l.IsMatch(dependency.Node)) is not { } license)
             {
-                context.ReportDiagnostic(Rule.CustomPackageLicenseUnknown, reference, reference.Include, customLicense.Hash);
+                context.ReportDiagnostic(Rule.CustomPackageLicenseUnknown, dependency.Node, dependency.Info.Name, customLicense.Hash);
             }
             else if (license.Hash != customLicense.Hash)
             {
-                context.ReportDiagnostic(Rule.CustomPackageLicenseHasChanged, license, reference.Include, customLicense.Hash);
+                context.ReportDiagnostic(Rule.CustomPackageLicenseHasChanged, license, dependency.Info.Name, customLicense.Hash);
             }
         }
         else if (!packageLicense.CompatibleWith(projectLicense))
         {
-            context.ReportDiagnostic(Rule.PackageIncompatibleWithProjectLicense, reference, reference.IncludeOrUpdate, packageLicense, projectLicense);
+            context.ReportDiagnostic(Rule.PackageIncompatibleWithProjectLicense, dependency.Node, dependency.Info.Name, packageLicense, projectLicense);
         }
+
+        return package;
     }
+
+    private readonly record struct Dependency(PackageReferenceBase Node, PackageVersionInfo Info);
 }
 
 file static class Extensions
 {
-    public static Package? GetLicensedPackage(this PackageReferenceBase reference)
-       => reference.ResolvePackage() is { } package
+    public static Package? GetLicensedPackage(this PackageVersionInfo info)
+       => PackageCache.GetPackage(info) is { } package
        && (package.LicenseExpression is { Length: > 0 }
        || package.LicenseFile is { Length: > 0 }
        || package.LicenseUrl is { Length: > 0 })
@@ -77,4 +100,10 @@ file static class Extensions
     public static bool UrlOnly(this Package package)
         => package.LicenseExpression is not { Length: > 0 }
         && package.LicenseFile is not { Length: > 0 };
+
+    public static IEnumerable<PackageVersionInfo> TransativeDepedencies(this Package package)
+        => package.NuSpec?.Metadata?.Depedencies?
+            .SelectMany(d => d.Dependencies ?? [])
+            .Select(d => d.Info)
+        ?? [];
 }
