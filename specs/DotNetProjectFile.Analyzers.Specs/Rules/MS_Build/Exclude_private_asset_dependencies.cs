@@ -15,17 +15,33 @@ public class Guards
     [Test]
     public void previously_reported_NuGet_Protocol() => new ExcludePrivateAssetDependencies()
         .ForInlineCsproj(@"
-<Project Sdk=""Microsoft.NET.Sdk"">
+            <Project Sdk=""Microsoft.NET.Sdk"">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
+              <PropertyGroup>
+                <TargetFramework>net8.0</TargetFramework>
+              </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include=""NuGet.Protocol"" Version=""6.13.1"" />
-  </ItemGroup>
+              <ItemGroup>
+                <PackageReference Include=""NuGet.Protocol"" Version=""6.13.1"" />
+              </ItemGroup>
 
-</Project>")
+            </Project>")
+        .HasNoIssues();
+
+    [Test]
+    public void previously_reported_MemoryPack() => new ExcludePrivateAssetDependencies()
+        .ForInlineCsproj(@"
+            <Project Sdk=""Microsoft.NET.Sdk"">
+
+              <PropertyGroup>
+                <TargetFramework>net8.0</TargetFramework>
+              </PropertyGroup>
+
+              <ItemGroup>
+                <PackageReference Include=""MemoryPack"" Version=""1.21.4"" />
+              </ItemGroup>
+
+            </Project>")
         .HasNoIssues();
 
     [TestCase("CompliantCSharp.cs")]

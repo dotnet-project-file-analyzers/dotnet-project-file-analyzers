@@ -14,6 +14,8 @@ public sealed record CachedPackage
 
     public required bool HasRuntimeDll { get; init; }
 
+    public required bool HasDependencies { get; init; }
+
     public required bool? IsDevelopmentDependency { get; init; }
 
     public required string? LicenseExpression { get; init; }

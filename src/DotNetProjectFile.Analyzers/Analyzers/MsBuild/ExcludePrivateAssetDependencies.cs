@@ -32,7 +32,31 @@ public sealed class ExcludePrivateAssetDependencies() : MsBuildProjectFileAnalyz
 
         if (PackageCache.GetPackage(reference.IncludeOrUpdate, reference.ResolveVersion()) is { } package)
         {
-            return !package.HasRuntimeDll || package.IsDevelopmentDependency is true;
+            if (package.IsDevelopmentDependency is true)
+            {
+                // If explicitly marked as dev-dependency.
+                return true;
+            }
+            else if (package.HasRuntimeDll)
+            {
+                // If not marked, and has runtime dll's.
+                return false;
+            }
+            else if (package.HasAnalyzerDll)
+            {
+                // If not marked, and only has analyzer dll's.
+                return true;
+            }
+            else if (package.HasDependencies)
+            {
+                // If not marked, no dll's, but has dependencies.
+                return false;
+            }
+            else
+            {
+                // If no dependencies, no dependencies, then it should not have a runtime impact.
+                return true;
+            }
         }
 
         // No info.
