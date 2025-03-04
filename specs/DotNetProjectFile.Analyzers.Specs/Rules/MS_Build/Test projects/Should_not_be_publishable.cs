@@ -14,7 +14,7 @@ public class Reports
         => new TestProjectShouldNotBePublishable()
         .ForProject("ImplicitPackablePublishableTestProject.cs")
         .HasIssue(Issue.WRN("Proj0451", "Set <IsPublishable> to false")
-        .WithSpan(00, 00, 15, 10));
+        .WithSpan(00, 00, 00, 32));
 }
 
 public class Guards

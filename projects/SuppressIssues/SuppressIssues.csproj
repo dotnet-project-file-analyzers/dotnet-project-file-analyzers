@@ -38,6 +38,7 @@
     <ProjectReference
       Include="../EmptyProject/EmptyProject.csproj"
       PrivateAssets="all"
+      ExcludeAssets="runtime"
       ReferenceOutputAssembly="false"
       OutputItemType="Analyzer"
       SetTargetFramework="TargetFramework=netstandard2.0"/>

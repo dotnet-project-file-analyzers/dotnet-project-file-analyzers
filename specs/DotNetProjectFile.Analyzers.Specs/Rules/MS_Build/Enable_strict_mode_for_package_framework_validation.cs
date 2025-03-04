@@ -14,7 +14,8 @@ public class Reports
 
             </Project>
         ")
-        .HasIssues(Issue.WRN("Proj0249", "Define the <EnableStrictModeForCompatibleFrameworksInPackage> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'").WithSpan(00, 00, 07, 22));
+        .HasIssues(Issue.WRN("Proj0249", "Define the <EnableStrictModeForCompatibleFrameworksInPackage> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'")
+        .WithSpan(00, 00, 00, 32));
 
     [Test]
     public void on_disabled_property() => new EnableStrictModeForPackageFrameworkCompatibilityValidation()
@@ -29,7 +30,8 @@ public class Reports
 
             </Project>
         ")
-        .HasIssues(Issue.WRN("Proj0249", "Define the <EnableStrictModeForCompatibleFrameworksInPackage> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'").WithSpan(05, 16, 05, 122));
+        .HasIssues(Issue.WRN("Proj0249", "Define the <EnableStrictModeForCompatibleFrameworksInPackage> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'")
+        .WithSpan(05, 16, 05, 122));
 }
 
 public class Guards

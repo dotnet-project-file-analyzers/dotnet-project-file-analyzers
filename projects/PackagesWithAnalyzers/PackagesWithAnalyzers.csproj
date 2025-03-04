@@ -34,26 +34,26 @@
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="Ardalis.ApiEndpoints.CodeAnalyzers" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="FakeItEasy.Analyzer.CSharp" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="Lucene.Net.Analysis.Common" Version="4.8.0-beta00016" PrivateAssets="all" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="Libplanet.Analyzers" Version="2.5.0" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="MassTransit.Analyzers" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="MessagePackAnalyzer" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="MessagePipe.Analyzer" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="Microsoft.AspNetCore.Components.Analyzers" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="Microsoft.Azure.Functions.Analyzers" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="Microsoft.ServiceHub.Analyzers" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="MongoDB.Analyzer" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="Moq.Analyzers" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="NSubstitute.Analyzers.CSharp" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="NUnit.Analyzers" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="RuntimeContracts.Analyzer" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="SerilogAnalyzer" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="xunit.analyzers" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
-    <PackageReference Include="ZeroFormatter.Analyzer" Version="*" PrivateAssets="All" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+    <PackageReference Include="Ardalis.ApiEndpoints.CodeAnalyzers" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="FakeItEasy.Analyzer.CSharp" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Lucene.Net.Analysis.Common" Version="4.8.0-beta00016" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="Libplanet.Analyzers" Version="2.5.0" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="MassTransit.Analyzers" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="MessagePackAnalyzer" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="MessagePipe.Analyzer" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.Analyzers" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Azure.Functions.Analyzers" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Analyzers" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.ServiceHub.Analyzers" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="MongoDB.Analyzer" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="Moq.Analyzers" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="NSubstitute.Analyzers.CSharp" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="NUnit.Analyzers" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="RuntimeContracts.Analyzer" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="SerilogAnalyzer" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="xunit.analyzers" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
+    <PackageReference Include="ZeroFormatter.Analyzer" Version="*" PrivateAssets="All" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup>

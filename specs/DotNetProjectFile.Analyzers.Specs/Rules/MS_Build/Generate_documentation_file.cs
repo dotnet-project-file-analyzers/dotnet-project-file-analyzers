@@ -6,7 +6,7 @@ public class Reports
     public void on_missing_property() => new EnableGenerateDocumentationFile()
         .ForProject("GenerateDocumentationFileMissing.cs")
         .HasIssue(Issue.WRN("Proj0244", "Define the <GenerateDocumentationFile> node with value 'true' or define the <DocumentationFile> node with a valid file path or define the <IsPackable> node with value 'false'")
-        .WithSpan(00, 00, 07, 10));
+        .WithSpan(00, 00, 00, 32));
 
 
     [Test]

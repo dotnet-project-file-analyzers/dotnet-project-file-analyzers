@@ -19,7 +19,7 @@
   </ItemGroup>
   
   <ItemGroup>
-    <PackageReference Include="PolySharp" PrivateAssets="all" />
+    <PackageReference Include="PolySharp" PrivateAssets="all" ExcludeAssets="compile" />
   </ItemGroup>
   
   <ItemGroup>

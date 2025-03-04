@@ -8,7 +8,7 @@
   <ItemGroup>
     <PackageReference Include="System.IO.Hashing" />
     <PackageReference Update="System.IO.Hashing" VersionOverride="9.0.0-rc.2.24473.5" />
-    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="all" />
+    <PackageReference Include="StyleCop.Analyzers" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Include="Warpstone" />
     <PackageReference Include="System.Text.Json" VersionOverride="9.0.0" />
   </ItemGroup>
@@ -21,6 +21,7 @@
     <ProjectReference
       Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
       PrivateAssets="all"
+      ExcludeAssets="runtime"
       ReferenceOutputAssembly="false"
       OutputItemType="Analyzer"
       SetTargetFramework="TargetFramework=netstandard2.0" />

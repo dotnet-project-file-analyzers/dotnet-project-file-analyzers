@@ -44,7 +44,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Props and targets">
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="3.0.1" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="3.0.1" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Roslyn dependencies">
@@ -52,12 +52,12 @@
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" PrivateAssets="all" />
-    <PackageReference Include="StyleCop.Analyzers" Version="*-*" PrivateAssets="all" />
+    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="StyleCop.Analyzers" Version="*-*" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" />
+    <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
@@ -65,7 +65,9 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
+- Report issues on root node only on start element.
 - Proj0036: Remove None when redundant. (NEW RULE)
+- Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 - Proj0214: Severity to INFO as it is considered too opinionated. (UPDATE)
 - Proj0503: Package license is unknown. (NEW RULE)
 - Proj0504: Package license has changed. (NEW RULE)
