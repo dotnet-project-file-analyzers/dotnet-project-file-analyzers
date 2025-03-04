@@ -42,9 +42,9 @@ v1.0.0
     <PackageIconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
-  
+
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.2.2" PrivateAssets="all" />
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.5.10.1" PrivateAssets="all" ExcludeAssets="compile" />
   </ItemGroup>
 
   <ItemGroup Label="Build extensions">
@@ -56,10 +56,11 @@ v1.0.0
     <AdditionalFiles Include="*.resx" />
   </ItemGroup>
 
+
   <ItemGroup>
-    <Using Include="System"/>
-    <Using Include="System.Collections"/>
-    <Using Include="System.Collections.Generic"/>
+    <Using Include="System" />
+    <Using Include="System.Collections" />
+    <Using Include="System.Collections.Generic" />
   </ItemGroup>
 
   <ItemGroup>

@@ -66,6 +66,7 @@
       <![CDATA[
 ToBeReleased:
 - Proj0036: Remove None when redundant. (NEW RULE)
+- Proj0214: Severity to INFO as it is considered too opinionated. (UPDATE)
 - Proj0503: Package license is unknown. (NEW RULE)
 - Proj0504: Package license has changed. (NEW RULE)
 - Proj0505: Third-party license registry requires include. (NEW RULE)
