@@ -37,7 +37,7 @@ public class Reports
 
 </Project>")
         .HasIssue(Issue.WRN("Proj1103", "Set <OutputType> to exe to run the TUnit tests")
-        .WithSpan(00, 00, 11, 10));
+        .WithSpan(00, 00, 00, 32));
 
     [Test]
     public void on_projects_with_test_SDK() => new TUnitUsage()

@@ -35,7 +35,11 @@ public readonly struct ProjectFileAnalysisContext<TFile>(
 
     /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, XmlAnalysisNode node, params object?[]? messageArgs)
-        => ReportDiagnostic(descriptor, node.Locations.FullSpan, messageArgs);
+        => ReportDiagnostic(
+            descriptor,
+            node.Element.Parent is null ? node.Locations.StartElement : node.Locations.FullSpan,
+            messageArgs);
+
 
     /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, ProjectFile file, LinePositionSpan span, params object?[]? messageArgs)

@@ -14,7 +14,8 @@ public class Reports
 
             </Project>
         ")
-        .HasIssues(Issue.WRN("Proj0252", "Define the <ApiCompatEnableRuleCannotChangeParameterName> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'").WithSpan(00, 00, 07, 22));
+        .HasIssues(Issue.WRN("Proj0252", "Define the <ApiCompatEnableRuleCannotChangeParameterName> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'")
+        .WithSpan(00, 00, 00, 32));
 
     [Test]
     public void on_disabled_property() => new EnableApiCompatibilityParameterNameChecks()
