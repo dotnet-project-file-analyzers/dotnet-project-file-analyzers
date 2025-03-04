@@ -511,7 +511,7 @@ public static partial class Rule
             "<IsPackable> node with value 'false'.",
         tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
-        isEnabled: false);
+        severity: DiagnosticSeverity.Info);
 
     public static DiagnosticDescriptor ProvideCompliantPackageIcon => New(
         id: 0215,
