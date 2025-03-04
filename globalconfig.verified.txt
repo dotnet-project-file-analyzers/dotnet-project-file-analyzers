@@ -1,4 +1,4 @@
-﻿dotnet_diagnostic.Proj0001.severity = warning    # The project file '{0}' could not be located
+dotnet_diagnostic.Proj0001.severity = warning    # The project file '{0}' could not be located
 dotnet_diagnostic.Proj0002.severity = warning    # Upgrade legacy MS Build project file
 dotnet_diagnostic.Proj0003.severity = warning    # Define usings explicit
 dotnet_diagnostic.Proj0004.severity = warning    # Run NuGet security audits automatically
