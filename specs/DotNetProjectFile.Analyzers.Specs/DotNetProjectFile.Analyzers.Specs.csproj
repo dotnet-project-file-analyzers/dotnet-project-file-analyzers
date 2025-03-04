@@ -49,14 +49,20 @@
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="AwesomeAssertions.Analyzers" Version="*" PrivateAssets="all" />
-    <PackageReference Include="NUnit.Analyzers" Version="*" PrivateAssets="all" />
-    <PackageReference Include="System.Formats.Asn1" Version="9.0.0" />
+    <PackageReference Include="AwesomeAssertions.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="NUnit.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="System.Formats.Asn1" Version="9.0.0" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzer">
     <!-- #pragma warning disable Proj0014 -->
-    <ProjectReference Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" PrivateAssets="all" ReferenceOutputAssembly="false" OutputItemType="Analyzer" SetTargetFramework="TargetFramework=netstandard2.0" />
+    <ProjectReference
+      Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
+      PrivateAssets="all"
+      ExcludeAssets="runtime"
+      ReferenceOutputAssembly="false"
+      OutputItemType="Analyzer"
+      SetTargetFramework="TargetFramework=netstandard2.0" />
     <ProjectReference Include="../Benchmarks/Benchmarks.csproj" />
   </ItemGroup>
 
