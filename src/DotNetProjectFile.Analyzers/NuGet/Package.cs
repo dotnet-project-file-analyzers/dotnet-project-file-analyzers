@@ -1,20 +1,32 @@
+using DotNetProjectFile.Licensing;
+using DotNetProjectFile.NuGet.Packaging;
+
 namespace DotNetProjectFile.NuGet;
 
-[Inheritable]
-public record Package
+/// <summary>Contains information about a NuGet package.</summary>
+public sealed record Package
 {
-    public Package(string name, string? language = null, bool isPrivateAsset = false)
-    {
-        Name = name;
-        IsPrivateAsset = isPrivateAsset;
-        Language = language;
-    }
+    public required string Name { get; init; }
 
-    public string Name { get; }
+    public required string Version { get; init; }
 
-    public bool IsPrivateAsset { get; }
+    public required IODirectory Directory { get; init; }
 
-    public string? Language { get; }
+    public required bool HasAnalyzerDll { get; init; }
 
-    public bool IsMatch(PackageReferenceBase reference) => reference.Include.IsMatch(Name);
+    public required bool HasRuntimeDll { get; init; }
+
+    public required bool HasDependencies { get; init; }
+
+    public required bool? IsDevelopmentDependency { get; init; }
+
+    public required string? LicenseExpression { get; init; }
+
+    public required string? LicenseFile { get; init; }
+    
+    public required string? LicenseUrl { get; init; }
+
+    public required LicenseExpression License { get; init; }
+
+    public required NuSpecFile? NuSpec { get; init; }
 }

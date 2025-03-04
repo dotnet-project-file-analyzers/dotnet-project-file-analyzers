@@ -54,15 +54,15 @@ public abstract class PackageReferenceBase(XElement element, Node parent, MsBuil
     public string? ResolveVersion()
         => ResolveVersionVerbose()?.Version;
 
-    public CachedPackage? ResolveCachedPackage()
+    public Package? ResolvePackage()
         => PackageCache.GetPackage(IncludeOrUpdate, ResolveVersion());
 
-    public HashSet<CachedPackage> ResolveCachedPackageDependencyTree()
+    public HashSet<Package> ResolveCachedPackageDependencyTree()
     {
-        var result = new HashSet<CachedPackage>();
-        var queue = new Queue<CachedPackage>();
+        var result = new HashSet<Package>();
+        var queue = new Queue<Package>();
 
-        bool Enqueue(CachedPackage? pkg)
+        bool Enqueue(Package? pkg)
         {
             if (pkg is { } && result.Add(pkg))
             {
@@ -73,7 +73,7 @@ public abstract class PackageReferenceBase(XElement element, Node parent, MsBuil
             return false;
         }
 
-        if (!Enqueue(ResolveCachedPackage()))
+        if (!Enqueue(ResolvePackage()))
         {
             return result;
         }
