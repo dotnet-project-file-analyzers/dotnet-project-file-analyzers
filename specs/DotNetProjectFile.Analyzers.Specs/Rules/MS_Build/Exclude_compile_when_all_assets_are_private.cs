@@ -17,7 +17,7 @@ public class Reports
 
 </Project>")
         .HasIssue(
-           Issue.WRN("Proj0037", @"ExcludeAssets should contain compile when PrivateAssets=""all""")
+           Issue.WRN("Proj0037", @"ExcludeAssets should contain runtime when PrivateAssets=""all""")
            .WithSpan(07, 04, 07, 98));
 }
 
