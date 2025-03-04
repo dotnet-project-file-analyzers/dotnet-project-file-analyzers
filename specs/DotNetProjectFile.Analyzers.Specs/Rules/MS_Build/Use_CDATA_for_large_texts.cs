@@ -1,3 +1,5 @@
+using DotNetProjectFile.Licensing;
+
 namespace Rules.MS_Build.Use_CDATA_for_large_texts;
 
 public class Reports
@@ -15,6 +17,22 @@ public class Guards
     public void missing_CDATA() => new UseCDATAForLargeTexts()
         .ForProject("PackageDescription.cs")
         .HasNoIssues();
+
+    
+    [Test]
+    public void Short_release_notes() => new UseCDATAForLargeTexts()
+        .ForInlineCsproj(@$"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <PackageReleaseNotes>Handled by GitHub Releases</PackageReleaseNotes>
+  </PropertyGroup>
+
+</Project>
+        ")
+        .HasNoIssues();
+
 
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
