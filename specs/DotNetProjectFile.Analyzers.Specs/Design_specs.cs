@@ -165,14 +165,13 @@ public partial class Rules
         return sb.ToString();
     }
 
-    private static string GetIniSeverity(DiagnosticSeverity severity)
-        => severity switch
-        {
-            DiagnosticSeverity.Hidden /*.*/ => "none      ",
-            DiagnosticSeverity.Info /*...*/ => "suggestion",
-            DiagnosticSeverity.Error /*..*/ => "error     ",
-            _ /*.........................*/ => "warning   ",
-        };
+    private static string GetIniSeverity(DiagnosticSeverity severity) => severity switch
+    {
+        DiagnosticSeverity.Hidden /*.*/ => "none      ",
+        DiagnosticSeverity.Info /*...*/ => "suggestion",
+        DiagnosticSeverity.Error /*..*/ => "error     ",
+        _ /*.........................*/ => "warning   ",
+    };
 }
 
 /// <remarks>Wrapper for better display of test resources in IDE.</remarks>
