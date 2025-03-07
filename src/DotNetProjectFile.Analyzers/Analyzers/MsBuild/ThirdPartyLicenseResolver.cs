@@ -68,6 +68,8 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
 
         if (package.UrlOnly() && packageLicense.IsUnknown)
         {
+            Console.WriteLine($"FAILED TO RESOLVE URL = {package.NuSpec?.Metadata.LicenseUrl}");
+
             context.ReportDiagnostic(
                 Rule.PackageOnlyContainsDeprecatedLicenseUrl,
                 dependency.Node,
