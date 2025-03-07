@@ -58,7 +58,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
             return null;
         }
 
-        if (package.LicenseExpression is not { Length: > 0 }&&
+        if (package.LicenseExpression is not { Length: > 0 } &&
             package.LicenseFile is not { Length: > 0 } &&
             package.LicenseUrl is not { Length: > 0 })
         {
@@ -79,7 +79,8 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
                 dependency.Node,
                 dependency.Info.Name,
                 dependency.Info.Version,
-                dependency.Format);
+                dependency.Format,
+                package.LicenseUrl);
         }
         else if (package.License is CustomLicense customLicense)
         {
