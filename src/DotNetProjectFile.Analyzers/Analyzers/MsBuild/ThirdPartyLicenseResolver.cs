@@ -55,7 +55,12 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     {
         if (dependency.Info.GetLicensedPackage() is not { } package)
         {
-            context.ReportDiagnostic(Rule.OnlyIncludePackagesWithExplicitLicense, dependency.Node, dependency.Info.Name, dependency.Format);
+            context.ReportDiagnostic(
+                Rule.OnlyIncludePackagesWithExplicitLicense,
+                dependency.Node,
+                dependency.Info.Name,
+                dependency.Info.Version,
+                dependency.Format);
             return null;
         }
 
@@ -63,22 +68,42 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
 
         if (package.UrlOnly() && packageLicense.IsUnknown)
         {
-            context.ReportDiagnostic(Rule.PackageOnlyContainsDeprecatedLicenseUrl, dependency.Node, dependency.Info.Name, dependency.Format);
+            context.ReportDiagnostic(
+                Rule.PackageOnlyContainsDeprecatedLicenseUrl,
+                dependency.Node,
+                dependency.Info.Name,
+                dependency.Info.Version,
+                dependency.Format);
         }
         else if (packageLicense is CustomLicense customLicense)
         {
             if (licenses.FirstOrDefault(l => l.IsMatch(dependency.Node)) is not { } license)
             {
-                context.ReportDiagnostic(Rule.CustomPackageLicenseUnknown, dependency.Node, dependency.Info.Name, customLicense.Hash);
+                context.ReportDiagnostic(
+                    Rule.CustomPackageLicenseUnknown,
+                    dependency.Node,
+                    dependency.Info.Name,
+                    customLicense.Hash);
             }
             else if (license.Hash != customLicense.Hash)
             {
-                context.ReportDiagnostic(Rule.CustomPackageLicenseHasChanged, license, dependency.Info.Name, customLicense.Hash);
+                context.ReportDiagnostic(
+                    Rule.CustomPackageLicenseHasChanged,
+                    license,
+                    dependency.Info.Name,
+                    customLicense.Hash);
             }
         }
         else if (!packageLicense.CompatibleWith(projectLicense))
         {
-            context.ReportDiagnostic(Rule.PackageIncompatibleWithProjectLicense, dependency.Node, dependency.Info.Name, dependency.Format, packageLicense, projectLicense);
+            context.ReportDiagnostic(
+                Rule.PackageIncompatibleWithProjectLicense,
+                dependency.Node,
+                dependency.Info.Name,
+                dependency.Info.Version,
+                dependency.Format,
+                packageLicense,
+                projectLicense);
         }
 
         return package;

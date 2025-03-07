@@ -19,7 +19,7 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0500", "The Microsoft.DotNet.PlatformAbstractions package is shipped without an explicitly defined license"));
+       .HasIssue(Issue.WRN("Proj0500", "The Microsoft.DotNet.PlatformAbstractions (1.1.1) package is shipped without an explicitly defined license"));
 
     [Test]
     public void on_packages_with_deprecated_URL_in_nuspec() => new ThirdPartyLicenseResolver()
@@ -35,7 +35,7 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0501", "The SimpleInjector.Extensions.ExecutionContextScoping package only contains a deprecated license URL"));
+       .HasIssue(Issue.WRN("Proj0501", "The SimpleInjector.Extensions.ExecutionContextScoping (4.0.0) package only contains a deprecated license URL"));
 
     [Test]
     public void on_package_with_license_incompatable_to_project() => new ThirdPartyLicenseResolver()
@@ -52,7 +52,7 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-        .HasIssue(Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI package is distributed as GPL-3.0-only, which is imcompatable with the NOASSERTION license of the project")
+        .HasIssue(Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI (1.4.4.533) package is distributed as GPL-3.0-only, which is imcompatable with the NOASSERTION license of the project")
         .WithSpan(08, 04, 08, 75));
 
     [Test]
@@ -69,7 +69,7 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-        .HasIssue(Issue.WRN("Proj0503", @"Add <ThirdPartyLicense Include=""SonarAnalyzer.CSharp"" Hash=""SonarAnalyzer.CSharp"" /> to accept the license")
+        .HasIssue(Issue.WRN("Proj0503", @"Add <ThirdPartyLicense Include=""SonarAnalyzer.CSharp"" Hash=""IBM9yngU7omFyJOMSFSy0w"" /> to accept the license")
         .WithSpan(07, 04, 07, 79));
 
     [Test]
