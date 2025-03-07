@@ -53,7 +53,14 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
 
     private static Package? Report(Dependency dependency, LicenseExpression projectLicense, IReadOnlyCollection<ThirdPartyLicense> licenses, ProjectFileAnalysisContext context)
     {
-        if (dependency.Info.GetLicensedPackage() is not { } package)
+        if (PackageCache.GetPackage(dependency.Info) is not { } package)
+        {
+            return null;
+        }
+
+        if (package.LicenseExpression is not { Length: > 0 }&&
+            package.LicenseFile is not { Length: > 0 } &&
+            package.LicenseUrl is not { Length: > 0 })
         {
             context.ReportDiagnostic(
                 Rule.OnlyIncludePackagesWithExplicitLicense,
@@ -61,15 +68,12 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
                 dependency.Info.Name,
                 dependency.Info.Version,
                 dependency.Format);
+
             return null;
         }
 
-        var packageLicense = package.License;
-
-        if (package.UrlOnly() && packageLicense.IsUnknown)
+        if (package.UrlOnly() && package.License.IsUnknown)
         {
-            Console.WriteLine($"FAILED TO RESOLVE URL = {package.NuSpec?.Metadata.LicenseUrl}");
-
             context.ReportDiagnostic(
                 Rule.PackageOnlyContainsDeprecatedLicenseUrl,
                 dependency.Node,
@@ -77,7 +81,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
                 dependency.Info.Version,
                 dependency.Format);
         }
-        else if (packageLicense is CustomLicense customLicense)
+        else if (package.License is CustomLicense customLicense)
         {
             if (licenses.FirstOrDefault(l => l.IsMatch(dependency.Node)) is not { } license)
             {
@@ -96,7 +100,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
                     customLicense.Hash);
             }
         }
-        else if (!packageLicense.CompatibleWith(projectLicense))
+        else if (!package.License.CompatibleWith(projectLicense))
         {
             context.ReportDiagnostic(
                 Rule.PackageIncompatibleWithProjectLicense,
@@ -104,7 +108,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
                 dependency.Info.Name,
                 dependency.Info.Version,
                 dependency.Format,
-                packageLicense,
+                package.License,
                 projectLicense);
         }
 
@@ -121,14 +125,6 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
 
 file static class Extensions
 {
-    public static Package? GetLicensedPackage(this PackageVersionInfo info)
-       => PackageCache.GetPackage(info) is { } package
-       && (package.LicenseExpression is { Length: > 0 }
-       || package.LicenseFile is { Length: > 0 }
-       || package.LicenseUrl is { Length: > 0 })
-       ? package
-       : null;
-
     public static bool UrlOnly(this Package package)
         => package.LicenseExpression is not { Length: > 0 }
         && package.LicenseFile is not { Length: > 0 };
