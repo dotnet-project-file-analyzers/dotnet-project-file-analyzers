@@ -7,7 +7,7 @@ public sealed class DefinePropertiesOnce() : MsBuildProjectFileAnalyzer(Rule.Def
     {
         var props = new HashSet<Node>(new PropertyComparer());
 
-        foreach (var prop in context.File.PropertyGroups.SelectMany(g => g.Children))
+        foreach (var prop in context.File.PropertyGroups.Children<Node>())
         {
             if (!props.Add(prop))
             {

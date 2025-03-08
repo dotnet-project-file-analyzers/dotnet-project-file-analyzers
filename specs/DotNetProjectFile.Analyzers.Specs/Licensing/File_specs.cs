@@ -39,9 +39,9 @@ public class Can_be_determined
         protected override void Register(ProjectFileAnalysisContext<DotNetProjectFile.MsBuild.Project> context)
         {
             var references = context.File.ItemGroups
-                .SelectMany(g => g.Children)
-                .OfType<PackageReferenceBase>()
+                .Children<PackageReferenceBase>()
                 .ToArray();
+
             foreach (var reference in references)
             {
                 if (PackageCache.GetPackage(reference.IncludeOrUpdate, reference.Version) is { } pkg)

@@ -2,13 +2,16 @@ namespace System.Linq;
 
 internal static class EnumerableExtensions
 {
+    [Pure]
     public static bool None<T>(this IEnumerable<T> enumerable)
         => !enumerable.Any();
 
+    [Pure]
     public static bool None<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
         => !enumerable.Any(predicate);
 
     /// <summary>Takes all elements until (and including the first matching element).</summary>
+    [Pure]
     public static IEnumerable<T> TakeUntil<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
     {
         var match = false;

@@ -27,9 +27,8 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
         var queue = new Queue<Dependency>();
         var done = new HashSet<PackageVersionInfo>();
 
-        foreach (var reference in context.File.ItemGroups.SelectMany(g => g.Children)
-            .OfType<PackageReferenceBase>()
-            .Where(r => r is { Info.Version.Length: > 0 } && done.Add(r.Info)))
+        foreach (var reference in context.File.ItemGroups
+            .Children<PackageReferenceBase>(r => r is { Info.Version.Length: > 0 } && done.Add(r.Info)))
         {
             queue.Enqueue(new(reference, reference.Info));
         }

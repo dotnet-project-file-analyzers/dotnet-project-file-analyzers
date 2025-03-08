@@ -35,6 +35,7 @@ dotnet_diagnostic.Proj0034.severity = warning    # Import statement could not be
 dotnet_diagnostic.Proj0035.severity = warning    # Remove deprecated RestoreProjectStyle property
 dotnet_diagnostic.Proj0036.severity = warning    # Remove None when redundant
 dotnet_diagnostic.Proj0037.severity = warning    # Exclude runtime when all assets are private
+dotnet_diagnostic.Proj0038.severity = warning    # Fully specify NoWarn rule IDs
 dotnet_diagnostic.Proj0200.severity = warning    # Define the project packability explicitly
 dotnet_diagnostic.Proj0201.severity = warning    # Define the project version explicitly
 dotnet_diagnostic.Proj0202.severity = warning    # Define the project description explicitly

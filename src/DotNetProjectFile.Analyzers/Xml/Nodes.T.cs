@@ -1,3 +1,6 @@
+using Grammr;
+using Grammr.Syntax;
+
 namespace DotNetProjectFile.Xml;
 
 /// <summary>A read-only list of nodes.</summary>
@@ -17,6 +20,28 @@ public readonly struct Nodes<TNode>(IEnumerable<XmlAnalysisNode> items) : IReadO
 
     /// <inheritdoc />
     public int Count => Items.OfType<TNode>().Count();
+
+    /// <summary>Gets the children of all nodes.</summary>
+    [Pure]
+    public Nodes<TChild> Children<TChild>(Predicate<TChild> predicate) where TChild : class, XmlAnalysisNode
+        => new(Children<TChild>().Items.Where(child => predicate((TChild)child)));
+
+    /// <summary>Gets all the children of all nodes.</summary>
+    [Pure]
+    public Nodes<TChild> Children<TChild>() where TChild : class, XmlAnalysisNode
+        => new(Items
+            .OfType<TNode>()
+            .SelectMany(item => item.Children().OfType<TChild>()));
+
+    [Obsolete("Use Children<T>() instead.", true)]
+    [DoesNotReturn]
+    public IEnumerable<TResult> SelectMany<TResult>(Func<TNode, IEnumerable<TResult>> selector)
+        => throw new NotSupportedException();
+
+    [Obsolete("Use Children<T>(predicate) instead.", true)]
+    [DoesNotReturn]
+    public IEnumerable<TResult> Where<TResult>(Predicate<bool> predicate)
+        => throw new NotSupportedException();
 
     /// <inheritdoc />
     [Pure]
