@@ -342,10 +342,10 @@ public static partial class Rule
         tags: ["bug"],
         category: Category.Bug);
 
-    public static DiagnosticDescriptor SpecifyNoWarnRuleIdsFully => New(
+    public static DiagnosticDescriptor FullySpecifyNoWarnRuleIds => New(
         id: 0038,
-        title: "Specify NoWarn rule IDs fully",
-        message: "Specify rule ID '{0}' fully by adding its prefix",
+        title: "Fully specify NoWarn rule IDs",
+        message: "Fully specify rule ID '{0}' by adding its prefix",
         description:
             "Disabling a rule by only its numeric part is harder to understand " +
             "and can lead to unintentionally excluding mulitiple rules at once.",

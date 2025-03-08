@@ -1,8 +1,8 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <summary>Implements <see cref="Rule.SpecifyNoWarnRuleIdsFully"/>.</summary>
+/// <summary>Implements <see cref="Rule.FullySpecifyNoWarnRuleIds"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class SpecifyNoWarnRuleIdsFully() : MsBuildProjectFileAnalyzer(Rule.SpecifyNoWarnRuleIdsFully)
+public sealed class FullySpecifyNoWarnRuleIds() : MsBuildProjectFileAnalyzer(Rule.FullySpecifyNoWarnRuleIds)
 {
     /// <inheritdoc />
     public override bool DisableOnFailingImport => true;
