@@ -342,6 +342,16 @@ public static partial class Rule
         tags: ["bug"],
         category: Category.Bug);
 
+    public static DiagnosticDescriptor SpecifyNoWarnRuleIdsFully => New(
+        id: 0038,
+        title: "Specify NoWarn rule IDs fully",
+        message: "Specify rule ID '{0}' fully by adding its prefix",
+        description:
+            "Disabling a rule by only its numeric part is harder to understand " +
+            "and can lead to unintentionally excluding mulitiple rules at once.",
+        tags: ["ruleID"],
+        category: Category.Clarity);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
