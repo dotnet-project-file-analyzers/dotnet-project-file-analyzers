@@ -13,10 +13,7 @@ public sealed class DefinePackageReferenceVersion()
             ? PackageVersions(context.File)
             : [];
 
-        var references = context.File.ItemGroups
-            .Children<PackageReference>(WithoutVersion)
-            
-        foreach (var reference in references)
+        foreach (var reference in context.File.ItemGroups.Children<PackageReference>(WithoutVersion))
         {
             if (!versions.Contains(reference.IncludeOrUpdate))
             {
