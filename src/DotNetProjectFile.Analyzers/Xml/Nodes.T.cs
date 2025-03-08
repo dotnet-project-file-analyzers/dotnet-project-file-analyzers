@@ -24,15 +24,14 @@ public readonly struct Nodes<TNode>(IEnumerable<XmlAnalysisNode> items) : IReadO
     /// <summary>Gets the children of all nodes.</summary>
     [Pure]
     public Nodes<TChild> Children<TChild>(Predicate<TChild> predicate) where TChild : class, XmlAnalysisNode
-        => new(Items
-            .SelectMany(item => item.Children())
-            .OfType<TChild>()
-            .Where(child => predicate(child)));
+        => new(Children<TChild>().Items.Where(child => predicate((TChild)child)));
 
     /// <summary>Gets all the children of all nodes.</summary>
     [Pure]
     public Nodes<TChild> Children<TChild>() where TChild : class, XmlAnalysisNode
-        => new(Items.SelectMany(item => item.Children()).OfType<TChild>());
+        => new(Items
+            .OfType<TNode>()
+            .SelectMany(item => item.Children().OfType<TChild>()));
 
     [Obsolete("Use Children<T>() instead.", true)]
     [DoesNotReturn]

@@ -5,6 +5,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class DefineGlobalPackageReferenceInDirectoryPackagesOnly()
     : MsBuildProjectFileAnalyzer(Rule.DefineGlobalPackageReferenceInDirectoryPackagesOnly)
 {
+    /// <inheritdoc />
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.AllExceptDirectoryPackages;
 
     /// <inheritdoc />
@@ -13,7 +14,7 @@ public sealed class DefineGlobalPackageReferenceInDirectoryPackagesOnly()
     /// <inheritdoc/>
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {
-        foreach (var reference in context.File.ItemGroups.OfType<GlobalPackageReference>())
+        foreach (var reference in context.File.ItemGroups.Children<GlobalPackageReference>())
         {
             context.ReportDiagnostic(Descriptor, reference);
         }
