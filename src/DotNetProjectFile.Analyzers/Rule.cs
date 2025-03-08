@@ -342,6 +342,18 @@ public static partial class Rule
         tags: ["bug"],
         category: Category.Bug);
 
+    public static DiagnosticDescriptor SpecifyNoWarnRuleIdsFully => New(
+        id: 0038,
+        title: "Specify NoWarn rule IDs fully",
+        message: "Specify rule ID '{0}' fully by adding its prefix",
+        description:
+            "MS Build allows to only specify the integer part of a rule ID. " +
+            "Not only can this lead to excluding multiple rules at once that " +
+            "have the same integer part, is also makes is really hard to " +
+            "understand what rule as been excluded.",
+        tags: ["ruleID"],
+        category: Category.Clarity);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
