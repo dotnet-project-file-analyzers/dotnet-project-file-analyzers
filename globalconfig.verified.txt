@@ -35,6 +35,7 @@ dotnet_diagnostic.Proj0034.severity = warning    # The <Import> '{0}' could not 
 dotnet_diagnostic.Proj0035.severity = warning    # Remove the <RestoreProjectStyle> property
 dotnet_diagnostic.Proj0036.severity = warning    # Remove <None> as it is redundant
 dotnet_diagnostic.Proj0037.severity = warning    # ExcludeAssets should contain runtime when PrivateAssets="all"
+dotnet_diagnostic.Proj0038.severity = warning    # Fully specify rule ID '{0}' by adding its prefix
 dotnet_diagnostic.Proj0200.severity = warning    # Define the <IsPackable> node explicitly
 dotnet_diagnostic.Proj0201.severity = warning    # Define the <Version> or <VersionPrefix> node explicitly or define the <IsPackable> node with value 'false'
 dotnet_diagnostic.Proj0202.severity = warning    # Define the <Description> or <PackageDescription> node explicitly or define the <IsPackable> node with value 'false'
