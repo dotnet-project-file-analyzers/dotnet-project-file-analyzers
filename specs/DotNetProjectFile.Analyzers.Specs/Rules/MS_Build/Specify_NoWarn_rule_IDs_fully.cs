@@ -9,12 +9,12 @@ public class Reports
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    <NoWarn>$(NoWarn);1700;NuGet1700;42</NoWarn>
+    <NoWarn>$(NoWarn);1825;NuGet1700;42</NoWarn>
   </PropertyGroup>
 
 </Project>")
         .HasIssues(
-            Issue.WRN("Proj0038", "Specify rule ID '1700' fully by adding its prefix").WithSpan(04, 04, 04, 48),
+            Issue.WRN("Proj0038", "Specify rule ID '1825' fully by adding its prefix").WithSpan(04, 04, 04, 48),
             Issue.WRN("Proj0038", "Specify rule ID '42' fully by adding its prefix").WithSpan(04, 04, 04, 48));
 }
 
