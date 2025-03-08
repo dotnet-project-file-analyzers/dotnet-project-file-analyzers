@@ -1,5 +1,6 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.OrderPackageReferencesAlphabetically"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class OrderPackageReferencesAlphabetically() : MsBuildProjectFileAnalyzer(Rule.OrderPackageReferencesAlphabetically)
 {

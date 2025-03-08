@@ -15,9 +15,8 @@ public sealed class ThirdPartyLicenseCompliance() : MsBuildProjectFileAnalyzer(
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {
-        foreach(var license in context.File.Project
-            .ItemGroups.SelectMany(g => g.ThirdPartyLicenses)
-            .Where(n => n.Project == context.File.Project))
+        foreach(var license in context.File.Project.ItemGroups
+            .Children<ThirdPartyLicense>(n => n.Project == context.File.Project))
         {
             if (license.Include is not { Length: > 0})
             {

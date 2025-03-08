@@ -11,9 +11,7 @@ public sealed class RemoveNoneWhenRedundant() : MsBuildProjectFileAnalyzer(Rule.
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach(var none in context.File.ItemGroups
-            .SelectMany(g => g.BuildActions)
-            .OfType<None>()
-            .Where(n => n.Remove.Any()))
+            .Children<None>(n => n.Remove.Any()))
         {
             context.ReportDiagnostic(Descriptor, none, string.Concat(';', none.Remove));
         }

@@ -10,10 +10,13 @@ public sealed class GeneratePackageOnBuildConditionally()
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var generate in context.File.PropertyGroups.SelectMany(p => p.GeneratePackageOnBuild)
-            .Where(g => g.AncestorsAndSelf().All(n => n.Condition is not { Length: > 0 })))
+        foreach (var generate in context.File.PropertyGroups
+           .Children<GeneratePackageOnBuild>(Unconditional))
         {
             context.ReportDiagnostic(Descriptor, generate);
         }
     }
+
+    private static bool Unconditional(GeneratePackageOnBuild generate)
+        => generate.AncestorsAndSelf().All(n => n.Condition is not { Length: > 0 });
 }

@@ -10,8 +10,7 @@ public sealed class MigrateAwayFromBinaryFormatter() : MsBuildProjectFileAnalyze
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {
         foreach(var node in context.File.PropertyGroups
-            .SelectMany(g => g.EnableUnsafeBinaryFormatterSerialization)
-            .Where(p => p.Value is true))
+            .Children<EnableUnsafeBinaryFormatterSerialization>(p => p.Val is true))
         {
             context.ReportDiagnostic(Descriptor, node, node.LocalName);
         }

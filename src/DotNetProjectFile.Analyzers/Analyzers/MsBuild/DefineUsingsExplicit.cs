@@ -10,8 +10,7 @@ public sealed class DefineUsingsExplicit() : MsBuildProjectFileAnalyzer(Rule.Def
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var @implicit in context.File.PropertyGroups
-            .SelectMany(g => g.ImplicitUsings)
-            .Where(i => IsEnabled(i.Value)))
+            .Children<ImplicitUsings>(i => IsEnabled(i.Value)))
         {
             context.ReportDiagnostic(Descriptor, @implicit);
         }

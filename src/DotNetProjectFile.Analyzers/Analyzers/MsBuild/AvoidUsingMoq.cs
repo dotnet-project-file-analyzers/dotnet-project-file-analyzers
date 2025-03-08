@@ -11,8 +11,7 @@ public sealed class AvoidUsingMoq() : MsBuildProjectFileAnalyzer(Rule.AvoidUsing
         var reported = false;
 
         foreach (var reference in context.File.ItemGroups
-            .SelectMany(i => i.PackageReferences)
-            .Where(IsMoq))
+            .Children<PackageReference>(IsMoq))
         {
             context.ReportDiagnostic(Descriptor, reference);
             reported = true;

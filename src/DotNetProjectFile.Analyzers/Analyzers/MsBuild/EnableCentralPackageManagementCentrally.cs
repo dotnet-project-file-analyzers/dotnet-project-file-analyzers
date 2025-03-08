@@ -10,8 +10,7 @@ public sealed class EnableCentralPackageManagementCentrally()
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var enabled in context.File.PropertyGroups
-            .SelectMany(g => g.ManagePackageVersionsCentrally)
-            .Where(p => p.Value == true))
+            .Children<ManagePackageVersionsCentrally>(p => p.Value is true))
         {
             context.ReportDiagnostic(Descriptor, enabled);
         }

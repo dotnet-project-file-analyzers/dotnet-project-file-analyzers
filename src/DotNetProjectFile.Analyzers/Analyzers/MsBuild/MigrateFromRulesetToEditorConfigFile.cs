@@ -10,7 +10,7 @@ public sealed class MigrateFromRulesetToEditorConfigFile()
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var ruleset in context.File.PropertyGroups.SelectMany(g => g.CodeAnalysisRuleSet))
+        foreach (var ruleset in context.File.PropertyGroups.Children<CodeAnalysisRuleSet>())
         {
             context.ReportDiagnostic(Descriptor, ruleset, ruleset.Value);
         }

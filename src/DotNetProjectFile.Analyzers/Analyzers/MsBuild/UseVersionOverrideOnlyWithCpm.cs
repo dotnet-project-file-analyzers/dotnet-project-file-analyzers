@@ -9,8 +9,7 @@ public sealed class UseVersionOverrideOnlyWithCpm()
         if (context.File.ManagePackageVersionsCentrally() is not true)
         {
             foreach (var reference in context.File.ItemGroups
-                .SelectMany(g => g.PackageReferences)
-                .Where(r => r.VersionOverride is { Length: > 0 }))
+                .Children<PackageReference>(r => r.VersionOverride is { Length: > 0 }))
             {
                 context.ReportDiagnostic(Descriptor, reference);
             }

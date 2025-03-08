@@ -8,7 +8,7 @@ public sealed class TestProjectShouldNotBePackable()
     {
         if (context.File.IsTestProject() && context.File.IsPackable())
         {
-            var node = context.File.PropertyGroups.SelectMany(p => p.IsPackable)
+            var node = context.File.PropertyGroups.Children<IsPackable>()
                 .OfType<XmlAnalysisNode>()
                 .LastOrDefault() ?? context.File;
 

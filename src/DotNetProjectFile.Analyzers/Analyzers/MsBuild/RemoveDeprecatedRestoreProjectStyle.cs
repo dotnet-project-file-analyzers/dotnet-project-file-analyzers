@@ -10,7 +10,7 @@ public sealed class RemoveDeprecatedRestoreProjectStyle() : MsBuildProjectFileAn
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {
-        foreach (var prop in context.File.PropertyGroups.SelectMany(c => c.Children).OfType<RestoreProjectStyle>())
+        foreach (var prop in context.File.PropertyGroups.Children<RestoreProjectStyle>())
         {
             context.ReportDiagnostic(Descriptor, prop);
         }
