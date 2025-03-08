@@ -89,6 +89,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0035** Remove deprecated RestoreProjectStyle property](rules/Proj0035.md)
 * [**Proj0036** Remove None when redundant](rules/Proj0036.md)
 * [**Proj0037** Exclude runtime when all assets are private](rules/Proj0037.md)
+* [**Proj0038** Fully specify NoWarn rule IDs](rules/Proj0038.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
