@@ -24,7 +24,6 @@
     <PackageReference Include="Microsoft.CodeAnalysis" Version="4.11.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.11.0" />
     <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.11.0" />
-    <PackageReference Include="System.Formats.Asn1" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup Label="Test tools">
@@ -42,6 +41,7 @@
     <PackageReference Include="coverlet.collector" Version="*" PrivateAssets="all" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" PrivateAssets="all" />
     <PackageReference Include="NUnit3TestAdapter" Version="*" PrivateAssets="all" />
+    <PackageReference Include="System.Formats.Asn1" Version="9.0.0" ExcludeAssets="compile" />
   </ItemGroup>
 
   <ItemGroup Label="Test projects">
@@ -54,7 +54,6 @@
   <ItemGroup Label="Analyzers">
     <PackageReference Include="AwesomeAssertions.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="compile" />
     <PackageReference Include="NUnit.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="compile" />
-    <PackageReference Include="System.Formats.Asn1" Version="9.0.0" ExcludeAssets="compile" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzer">

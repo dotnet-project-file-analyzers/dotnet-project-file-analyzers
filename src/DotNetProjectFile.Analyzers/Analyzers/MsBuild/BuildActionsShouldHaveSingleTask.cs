@@ -13,8 +13,7 @@ public sealed class BuildActionsShouldHaveSingleTask() : MsBuildProjectFileAnaly
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var node in context.File.ItemGroups
-            .SelectMany(group => group.BuildActions)
-            .Where(HasMutlpleTasks))
+            .Children<BuildAction>(HasMutlpleTasks))
         {
             context.ReportDiagnostic(Descriptor, node, node.LocalName);
         }

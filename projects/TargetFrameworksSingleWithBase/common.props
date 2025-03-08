@@ -3,9 +3,9 @@
   <PropertyGroup>
     <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
   </PropertyGroup>
-  
+
   <ItemGroup>
     <AdditionalFiles Include="common.props" Link="common.props" />
   </ItemGroup>
-  
+
 </Project>

@@ -9,8 +9,7 @@ public sealed class UseVersionOnlyWithoutCpm()
         if (context.File.ManagePackageVersionsCentrally() is true)
         {
             foreach (var reference in context.File.ItemGroups
-                .SelectMany(g => g.PackageReferences)
-                .Where(r => r.Version is { Length: > 0 }))
+                .Children<PackageReference>(r => r.Version is { Length: > 0 }))
             {
                 context.ReportDiagnostic(Descriptor, reference);
             }

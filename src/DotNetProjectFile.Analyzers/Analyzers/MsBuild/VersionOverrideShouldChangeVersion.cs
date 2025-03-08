@@ -12,8 +12,7 @@ public sealed class VersionOverrideShouldChangeVersion()
         if (context.File.ManagePackageVersionsCentrally() is not true) return;
 
         foreach (var @override in context.File.ItemGroups
-            .SelectMany(g => g.PackageReferences)
-            .Where(r => r.VersionOverride is { Length: > 0 }))
+            .Children<PackageReference>(r => r.VersionOverride is { Length: > 0 }))
         {
             if (CpmVersion(context, @override) is { } cpm
                 && cpm.Version == @override.VersionOverride)

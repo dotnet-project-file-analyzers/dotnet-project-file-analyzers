@@ -7,9 +7,9 @@ public class Reports
         .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
 
-    <PropertyGroup>
+  <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
-    </PropertyGroup>
+  </PropertyGroup>
 
   <ItemGroup>
     <GlobalPackageReference Include=""DotNetProjectFile.Analyzers"" Version=""1.5.8"" />

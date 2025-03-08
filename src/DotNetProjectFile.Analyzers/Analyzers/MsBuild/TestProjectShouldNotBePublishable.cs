@@ -8,7 +8,7 @@ public sealed class TestProjectShouldNotBePublishable()
     {
         if (context.File.IsTestProject() && context.File.IsPublishable())
         {
-            var node = context.File.PropertyGroups.SelectMany(p => p.IsPublishable)
+            var node = context.File.PropertyGroups.Children<IsPublishable>()
                 .OfType<XmlAnalysisNode>()
                 .LastOrDefault() ?? context.File;
 

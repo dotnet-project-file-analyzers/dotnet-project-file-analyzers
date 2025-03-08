@@ -13,9 +13,7 @@ public sealed class AvoidCompileItemInSdk() : MsBuildProjectFileAnalyzer(Rule.Av
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {
         foreach (var compile in context.File.ItemGroups
-            .SelectMany(i => i.BuildActions)
-            .OfType<Compile>()
-            .Where(c => c.IncludeAndUpdate.Any()))
+            .Children<Compile>(c => c.IncludeAndUpdate.Any()))
         {
             context.ReportDiagnostic(Descriptor, compile);
         }

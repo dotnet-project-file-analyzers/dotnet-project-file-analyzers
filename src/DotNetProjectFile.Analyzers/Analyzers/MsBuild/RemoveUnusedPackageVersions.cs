@@ -21,8 +21,7 @@ public sealed class RemoveUnusedPackageVersions() : MsBuildProjectFileAnalyzer(R
         var usages = PackageUsages(context);
 
         foreach (var version in packages.ItemGroups
-            .SelectMany(i => i.PackageVersions)
-            .Where(i => i.Include is { Length: > 0 } && !usages.Contains(i.Include)))
+            .Children<PackageVersion>(i => i.Include is { Length: > 0 } && !usages.Contains(i.Include)))
         {
             context.ReportDiagnostic(Descriptor, version, version.Include);
         }
@@ -37,8 +36,7 @@ public sealed class RemoveUnusedPackageVersions() : MsBuildProjectFileAnalyzer(R
             if (ProjectFiles.Global.MsBuildProject(text) is { } project)
             {
                 foreach (var reference in project.ItemGroups
-                    .SelectMany(i => i.PackageReferences)
-                    .Where(r => r.Include is { Length: > 0 })
+                    .Children<PackageReference>(i => i.Include is { Length: > 0 })
                     .Select(r => r.Include))
                 {
                     usages.Add(reference!);
