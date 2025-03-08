@@ -14,10 +14,8 @@ public sealed class DefinePackageReferenceVersion()
             : [];
 
         var references = context.File.ItemGroups
-            .SelectMany(g => g.PackageReferences)
-            .Where(r => r.IncludeOrUpdate is { Length: > 0 })
-            .Where(r => r.VersionOrVersionOverride is not { Length: > 0 });
-
+            .Children<PackageReference>(WithoutVersion)
+            
         foreach (var reference in references)
         {
             if (!versions.Contains(reference.IncludeOrUpdate))
@@ -26,6 +24,10 @@ public sealed class DefinePackageReferenceVersion()
             }
         }
     }
+
+    private static bool WithoutVersion(PackageReference r)
+        => r.IncludeOrUpdate is { Length: > 0 }
+        && r.VersionOrVersionOverride is not { Length: > 0 };
 
     private static ImmutableHashSet<string> PackageVersions(MsBuildProject project) => project
         .Walk()

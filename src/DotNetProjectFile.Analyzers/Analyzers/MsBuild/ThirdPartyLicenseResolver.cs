@@ -24,9 +24,8 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
             .Where(p => p.Include is { Length: > 0 })
             .ToArray();
 
-        foreach (var reference in context.File.ItemGroups.SelectMany(g => g.Children)
-            .OfType<PackageReferenceBase>()
-            .Where(r => r.Version is { Length: > 0 }))
+        foreach (var reference in context.File.ItemGroups
+            .Children<PackageReferenceBase>(r => r.Version is { Length: > 0 }))
         {
             Report(reference, projectLicense, licenses, context);
         }

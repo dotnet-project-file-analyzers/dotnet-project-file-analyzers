@@ -13,7 +13,7 @@ public sealed class DefineGlobalPackageReferenceInDirectoryPackagesOnly()
     /// <inheritdoc/>
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {
-        foreach (var reference in context.File.ItemGroups.SelectMany(g => g.GlobalPackageReferences))
+        foreach (var reference in context.File.ItemGroups.OfType<GlobalPackageReference>())
         {
             context.ReportDiagnostic(Descriptor, reference);
         }

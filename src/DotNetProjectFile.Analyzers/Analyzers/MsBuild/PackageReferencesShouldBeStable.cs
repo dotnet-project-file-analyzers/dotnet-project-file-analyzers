@@ -9,7 +9,7 @@ public sealed class PackageReferencesShouldBeStable() : MsBuildProjectFileAnalyz
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var package in context.File.ItemGroups.SelectMany(i => i.PackageReferences))
+        foreach (var package in context.File.ItemGroups.Children<PackageReference>())
         {
             if (package.ResolveVersionVerbose() is not { } resolved)
             {
