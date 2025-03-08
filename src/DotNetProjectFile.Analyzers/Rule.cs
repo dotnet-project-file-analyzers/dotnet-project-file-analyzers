@@ -347,10 +347,8 @@ public static partial class Rule
         title: "Specify NoWarn rule IDs fully",
         message: "Specify rule ID '{0}' fully by adding its prefix",
         description:
-            "MS Build allows to only specify the integer part of a rule ID. " +
-            "Not only can this lead to excluding multiple rules at once that " +
-            "have the same integer part, is also makes is really hard to " +
-            "understand what rule as been excluded.",
+            "Disabling a rule by only its numeric part is harder to understand " +
+            "and can lead to excluding mulitiple rules at once.",
         tags: ["ruleID"],
         category: Category.Clarity);
 
