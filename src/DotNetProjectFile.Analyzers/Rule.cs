@@ -348,7 +348,7 @@ public static partial class Rule
         message: "Specify rule ID '{0}' fully by adding its prefix",
         description:
             "Disabling a rule by only its numeric part is harder to understand " +
-            "and can lead to excluding mulitiple rules at once.",
+            "and can lead to unintentionally excluding mulitiple rules at once.",
         tags: ["ruleID"],
         category: Category.Clarity);
 
