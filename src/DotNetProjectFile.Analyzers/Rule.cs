@@ -340,7 +340,8 @@ public static partial class Rule
             "runtime as excluded. By doing so, it prevent unintended references " +
             "to its code that would lead to runtime issues.",
         tags: ["bug"],
-        category: Category.Bug);
+        category: Category.Bug,
+        isEnabled: false);
 
     public static DiagnosticDescriptor FullySpecifyNoWarnRuleIds => New(
         id: 0038,
@@ -579,8 +580,7 @@ public static partial class Rule
             "<EnablePackageValidation> node with value 'true'.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Reliability,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor DefinePackageValidationBaselineVersion => New(
         id: 0241,
@@ -594,8 +594,7 @@ public static partial class Rule
             "of the previous stable release.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Reliability,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor GeneratePackageOnBuildConditionally => New(
         id: 0242,
@@ -606,8 +605,7 @@ public static partial class Rule
             "(or other) mode, a conditional statement should be defined.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Bug,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor GenerateSbom => New(
         id: 0243,
@@ -618,8 +616,7 @@ public static partial class Rule
            "should be included with a shipped package.",
         tags: ["compliance", "package", "legislation"],
         category: Category.CodeQuality,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor GenerateDocumentationFile => New(
         id: 0244,
@@ -630,8 +627,7 @@ public static partial class Rule
            "it is important that the documentation is generated.",
         tags: ["Configuration", "package"],
         category: Category.Clarity,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor DontMixVersionAndVersionPrefixOrVersionSuffix => New(
         id: 0245,
@@ -645,8 +641,7 @@ public static partial class Rule
             "(if you want to use Version node).",
         tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor DefineVersionPrefixIfVersionSuffixIsDefined => New(
         id: 0246,
@@ -658,8 +653,7 @@ public static partial class Rule
             "is used, which is most likely an error.",
         tags: ["Configuration", "NuGet", "package"],
         category: Category.Configuration,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor EnableStrictModeForPackageBaselineValidation => New(
         id: 0247,
@@ -671,8 +665,7 @@ public static partial class Rule
             "This helps preventing any unintentional API changes.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Reliability,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor EnableStrictModeForPackageRuntimeCompatibilityValidation => New(
         id: 0248,
@@ -684,8 +677,7 @@ public static partial class Rule
             "compatibility validation.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Reliability,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor EnableStrictModeForPackageFrameworkCompatibilityValidation => New(
         id: 0249,
@@ -697,8 +689,7 @@ public static partial class Rule
             "compatibility validation.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Reliability,
-        severity: DiagnosticSeverity.Warning,
-    isEnabled: true);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor GenerateApiCompatibilitySuppressionFile => New(
         id: 0250,
@@ -711,8 +702,7 @@ public static partial class Rule
             "up-to-date automatically.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Reliability,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor EnableApiCompatibilityAttributeChecks => New(
         id: 0251,
@@ -723,8 +713,7 @@ public static partial class Rule
             "to the strict attribute compatibility checks.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Reliability,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor EnableApiCompatibilityParameterNameChecks => New(
         id: 0252,
@@ -735,8 +724,7 @@ public static partial class Rule
             "to the strict parameter name compatibility checks.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Reliability,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: true);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor DefineIsPublishable => New(
         id: 0400,
@@ -813,7 +801,8 @@ public static partial class Rule
             "custom defined license that have not been manually reviewed.",
         tags: ["license"],
         category: Category.Legal,
-        severity: DiagnosticSeverity.Warning);
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: false);
 
     public static DiagnosticDescriptor CustomPackageLicenseUnknown => New(
         id: 0503,
@@ -824,7 +813,8 @@ public static partial class Rule
             "custom defined license that have not been manually reviewed.",
         tags: ["license"],
         category: Category.Legal,
-        severity: DiagnosticSeverity.Warning);
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: false);
 
     public static DiagnosticDescriptor CustomPackageLicenseHasChanged => New(
         id: 0504,
@@ -835,7 +825,8 @@ public static partial class Rule
             "license has been changed without checking the changes.",
         tags: ["license"],
         category: Category.Legal,
-        severity: DiagnosticSeverity.Warning);
+        severity: DiagnosticSeverity.Warning,
+        isEnabled: false);
 
     public static DiagnosticDescriptor ThirdPartyLicenseRequiresInclude => New(
         id: 0505,

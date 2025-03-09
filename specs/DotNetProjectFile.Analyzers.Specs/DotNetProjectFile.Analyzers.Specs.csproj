@@ -38,10 +38,9 @@
   </ItemGroup>
 
   <ItemGroup Label="Build tools">
-    <PackageReference Include="coverlet.collector" Version="*" PrivateAssets="all" />
+    <PackageReference Include="coverlet.collector" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" PrivateAssets="all" />
-    <PackageReference Include="NUnit3TestAdapter" Version="*" PrivateAssets="all" />
-    <PackageReference Include="System.Formats.Asn1" Version="9.0.0" ExcludeAssets="compile" />
+    <PackageReference Include="NUnit3TestAdapter" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Test projects">
@@ -52,8 +51,8 @@
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="AwesomeAssertions.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="compile" />
-    <PackageReference Include="NUnit.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="compile" />
+    <PackageReference Include="AwesomeAssertions.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="NUnit.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzer">
