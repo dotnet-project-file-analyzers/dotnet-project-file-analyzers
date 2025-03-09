@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -61,18 +61,19 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.5.10.1</Version>
+    <Version>1.5.11</Version>
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
+- Proj0503: Package license is unknown. (NEW RULE)
+- Proj0504: Package license has changed. (NEW RULE)
+v1.5.11
 - Report issues on root node only on start element.
 - Proj0026: Stop reporting on conditonal properties. (FP)
 - Proj0036: Remove None when redundant. (NEW RULE)
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 - Proj0038: Fully specify NoWarn rule IDs. (NEW RULE)
 - Proj0214: Severity to INFO as it is considered too opinionated. (UPDATE)
-- Proj0503: Package license is unknown. (NEW RULE)
-- Proj0504: Package license has changed. (NEW RULE)
 - Proj0505: Third-party license registry requires include. (NEW RULE)
 - Proj0506: Third-party license registry requires hash. (NEW RULE)
 - Proj0507: Third-party license registry must be unconditional. (NEW RULE)
