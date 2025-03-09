@@ -340,7 +340,8 @@ public static partial class Rule
             "runtime as excluded. By doing so, it prevent unintended references " +
             "to its code that would lead to runtime issues.",
         tags: ["bug"],
-        category: Category.Bug);
+        category: Category.Bug,
+        isEnabled: false);
 
     public static DiagnosticDescriptor FullySpecifyNoWarnRuleIds => New(
         id: 0038,

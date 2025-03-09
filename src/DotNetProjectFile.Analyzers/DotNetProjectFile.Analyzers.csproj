@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -44,7 +44,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Props and targets">
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="3.0.1" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="3.1.0" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Roslyn dependencies">
@@ -65,13 +65,13 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
+- Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 - Proj0503: Package license is unknown. (NEW RULE)
 - Proj0504: Package license has changed. (NEW RULE)
 v1.5.11
 - Report issues on root node only on start element.
 - Proj0026: Stop reporting on conditonal properties. (FP)
 - Proj0036: Remove None when redundant. (NEW RULE)
-- Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 - Proj0038: Fully specify NoWarn rule IDs. (NEW RULE)
 - Proj0214: Severity to INFO as it is considered too opinionated. (UPDATE)
 - Proj0505: Third-party license registry requires include. (NEW RULE)

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
   
@@ -39,9 +39,8 @@
 
   <ItemGroup Label="Build tools">
     <PackageReference Include="coverlet.collector" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="*" PrivateAssets="all" />
     <PackageReference Include="NUnit3TestAdapter" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
-    <PackageReference Include="System.Formats.Asn1" Version="9.0.0" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Test projects">
