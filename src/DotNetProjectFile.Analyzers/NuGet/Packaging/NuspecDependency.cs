@@ -12,4 +12,6 @@ public sealed record NuspecDependency
 
     [XmlAttribute("exclude")]
     public string? Exclude { get; init; }
+
+    public PackageVersionInfo Info => new(Id!, Version);
 }
