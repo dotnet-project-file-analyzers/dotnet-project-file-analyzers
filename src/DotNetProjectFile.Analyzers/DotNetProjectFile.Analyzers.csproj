@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -66,6 +66,7 @@
       <![CDATA[
 ToBeReleased:
 - Report issues on root node only on start element.
+- Proj0026: Stop reporting on conditonal properties. (FP)
 - Proj0036: Remove None when redundant. (NEW RULE)
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 - Proj0038: Fully specify NoWarn rule IDs. (NEW RULE)

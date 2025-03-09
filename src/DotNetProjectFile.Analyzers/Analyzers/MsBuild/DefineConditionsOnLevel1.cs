@@ -22,5 +22,6 @@ public sealed class DefineConditionsOnLevel1() : MsBuildProjectFileAnalyzer(Rule
         => node.Depth >= 2
         && node is not When
         && node is not Otherwise
+        && node.Parent is not PropertyGroup
         && node.Condition is { Length: > 0 };
 }
