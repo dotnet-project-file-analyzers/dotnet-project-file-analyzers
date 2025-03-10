@@ -12,7 +12,7 @@ public sealed class DefinePackageReferenceAssetsAsAttributes() : MsBuildProjectF
         foreach (var reference in context.File.ItemGroups
             .Children<PackageReference>(HasAssetsElement))
         {
-            context.ReportDiagnostic(Descriptor, reference, reference.Include);
+            context.ReportDiagnostic(Descriptor, reference, reference.IncludeOrUpdate);
         }
     }
 

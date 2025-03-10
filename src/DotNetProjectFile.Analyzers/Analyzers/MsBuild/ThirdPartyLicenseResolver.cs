@@ -49,11 +49,11 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
         {
             if (licenses.FirstOrDefault(l => l.IsMatch(reference)) is not { } license)
             {
-                context.ReportDiagnostic(Rule.CustomPackageLicenseUnknown, reference, reference.Include, customLicense.Hash);
+                context.ReportDiagnostic(Rule.CustomPackageLicenseUnknown, reference, reference.IncludeOrUpdate, customLicense.Hash);
             }
             else if (license.Hash != customLicense.Hash)
             {
-                context.ReportDiagnostic(Rule.CustomPackageLicenseHasChanged, license, reference.Include, customLicense.Hash);
+                context.ReportDiagnostic(Rule.CustomPackageLicenseHasChanged, license, reference.IncludeOrUpdate, customLicense.Hash);
             }
         }
         else if (!packageLicense.CompatibleWith(projectLicense))
