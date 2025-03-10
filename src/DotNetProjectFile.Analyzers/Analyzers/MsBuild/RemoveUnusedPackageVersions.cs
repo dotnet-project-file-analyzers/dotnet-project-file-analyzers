@@ -23,7 +23,7 @@ public sealed class RemoveUnusedPackageVersions() : MsBuildProjectFileAnalyzer(R
         foreach (var version in packages.ItemGroups
             .Children<PackageVersion>(i => i.Include is { Length: > 0 } && !usages.Contains(i.Include)))
         {
-            context.ReportDiagnostic(Descriptor, version, version.Include);
+            context.ReportDiagnostic(Descriptor, version, version.IncludeOrUpdate);
         }
     }
 

@@ -65,9 +65,14 @@
     <PackageReleaseNotes>
       <![CDATA[
 ToBeReleased:
+- Proj0005: Fixed missing package name when reference was using Update instead of Include. (BUG)
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+- Proj0502: Fixed missing package name when reference was using Update instead of Include. (BUG)
+- Proj0809: Fixed missing package name when reference was using Update instead of Include. (BUG)
+- Proj0810: Fixed missing package name when reference was using Update instead of Include. (BUG)
 - Proj0503: Package license is unknown. (NEW RULE)
 - Proj0504: Package license has changed. (NEW RULE)
+- Proj1200: Fixed missing package name when reference was using Update instead of Include. (BUG)
 v1.5.11
 - Report issues on root node only on start element.
 - Proj0026: Stop reporting on conditonal properties. (FP)

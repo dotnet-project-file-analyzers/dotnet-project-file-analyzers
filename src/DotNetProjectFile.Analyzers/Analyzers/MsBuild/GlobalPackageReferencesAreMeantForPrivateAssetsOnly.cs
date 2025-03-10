@@ -16,7 +16,7 @@ public sealed class GlobalPackageReferencesAreMeantForPrivateAssetsOnly()
         foreach (var reference in context.File.ItemGroups
             .Children<GlobalPackageReference>(NoPrivateAsset))
         {
-            context.ReportDiagnostic(Descriptor, reference, reference.Include);
+            context.ReportDiagnostic(Descriptor, reference, reference.IncludeOrUpdate);
         }
     }
 
