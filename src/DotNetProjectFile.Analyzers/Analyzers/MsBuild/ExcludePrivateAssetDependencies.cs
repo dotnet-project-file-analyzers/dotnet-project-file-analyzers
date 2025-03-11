@@ -18,7 +18,7 @@ public sealed class ExcludePrivateAssetDependencies() : MsBuildProjectFileAnalyz
         foreach (var reference in context.File.ItemGroups
             .Children<PackageReference>(ShoudBePrivateAssets))
         {
-            context.ReportDiagnostic(Descriptor, reference, reference.Include);
+            context.ReportDiagnostic(Descriptor, reference, reference.IncludeOrUpdate);
         }
     }
 
