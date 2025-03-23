@@ -11,7 +11,7 @@ indent_style = space
 indent_size = 4
 
 # Project files
-[*.{csproj,props,targets,config,nuspec}]
+[*.{csproj,slnx,props,targets,config,nuspec}]
 indent_style = space
 indent_size = 2
 
