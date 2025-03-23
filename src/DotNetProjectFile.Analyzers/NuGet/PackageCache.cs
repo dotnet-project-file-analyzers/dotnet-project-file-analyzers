@@ -1,3 +1,5 @@
+#pragma warning disable RS1035 // Do not use APIs banned for analyzers
+// Environment is required to run this logic
 using DotNetProjectFile.Licensing;
 using DotNetProjectFile.NuGet.Packaging;
 using System.Collections.Concurrent;
