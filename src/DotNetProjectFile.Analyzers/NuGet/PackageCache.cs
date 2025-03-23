@@ -209,7 +209,10 @@ public static class PackageCache
                 using var stream = file.OpenRead();
                 return NuSpecFile.Load(stream);
             }
-            catch { }
+            catch
+            {
+                // We're not sure that loading will succeed.
+            }
         }
         return null;
     }
@@ -229,4 +232,3 @@ public static class PackageCache
         }
     }
 }
-

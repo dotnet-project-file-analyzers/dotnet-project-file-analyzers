@@ -36,7 +36,7 @@ public class Loads
 
         config.Should().BeEquivalentTo(new NuGetConfigFile
         {
-            Configs = 
+            Configs =
             [
                 new()
                 {

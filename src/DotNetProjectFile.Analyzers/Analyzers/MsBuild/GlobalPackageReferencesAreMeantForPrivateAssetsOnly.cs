@@ -20,7 +20,7 @@ public sealed class GlobalPackageReferencesAreMeantForPrivateAssetsOnly()
         }
     }
 
-    private bool NoPrivateAsset(GlobalPackageReference reference)
+    private static bool NoPrivateAsset(GlobalPackageReference reference)
         => reference.ResolvePackage() is { } package
         && package.HasRuntimeDll
         && package.IsDevelopmentDependency is not true;

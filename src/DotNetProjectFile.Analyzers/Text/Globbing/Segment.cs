@@ -14,7 +14,6 @@ internal abstract class Segment
     /// <summary>The maximum length the segment will match.</summary>
     public abstract int MaxLength { get; }
 
-    /// <inheritdoc />
     public bool HasFixedLength => MinLength == MaxLength;
 
     /// <inheritdoc cref="Glob.IsMatch(string, StringComparison)" />

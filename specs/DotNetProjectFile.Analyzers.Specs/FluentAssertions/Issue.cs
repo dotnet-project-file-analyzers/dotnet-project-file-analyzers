@@ -4,7 +4,7 @@ namespace FluentAssertions;
 
 internal sealed record Issue(
     string Id,
-    string Message, 
+    string Message,
     LinePositionSpan Span,
     DiagnosticSeverity Severity = DiagnosticSeverity.Warning,
     string? Path = null)
@@ -50,7 +50,7 @@ internal sealed record Issue(
     public static Issue NONE(string id, string message) => new(id, message, DiagnosticSeverity.Hidden);
 
     public static Issue FromDiagnostic(Diagnostic diagnostic) => new(
-        diagnostic.Id, 
+        diagnostic.Id,
         diagnostic.GetMessage(),
         diagnostic.Location.GetLineSpan().Span,
         diagnostic.Severity,

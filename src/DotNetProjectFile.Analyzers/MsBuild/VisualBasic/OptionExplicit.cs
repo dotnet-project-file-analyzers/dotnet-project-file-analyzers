@@ -7,4 +7,5 @@ namespace DotNetProjectFile.MsBuild.VisualBasic;
 /// </summary>
 /// <remarks>Visual Basic only.</remarks>
 public sealed class OptionExplicit(XElement element, Node parent, MsBuildProject project)
-    : Node(element, parent, project) { }
+    : Node(element, parent, project)
+{ }

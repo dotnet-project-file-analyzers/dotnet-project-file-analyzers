@@ -12,7 +12,7 @@ public class RunAll
     {
         EmptyContext = new NoAnalyzers().ForProject(Files[File]);
         AnalyzersContext = EmptyContext;
-        
+
         foreach (var analyzer in Analyzers)
         {
             AnalyzersContext = AnalyzersContext.Add(analyzer);
@@ -44,7 +44,7 @@ public class RunAll
         ["CompliantVB"] = new FileInfo($"../../../../../../../../../projects/CompliantVB/CompliantVB.vbproj"),
     };
 
-    
+
     [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
     private sealed class NoAnalyzers : DiagnosticAnalyzer
     {

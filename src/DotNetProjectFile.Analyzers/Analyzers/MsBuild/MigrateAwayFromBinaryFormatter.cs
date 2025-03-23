@@ -9,7 +9,7 @@ public sealed class MigrateAwayFromBinaryFormatter() : MsBuildProjectFileAnalyze
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {
-        foreach(var node in context.File.PropertyGroups
+        foreach (var node in context.File.PropertyGroups
             .Children<EnableUnsafeBinaryFormatterSerialization>(p => p.Val is true))
         {
             context.ReportDiagnostic(Descriptor, node, node.LocalName);

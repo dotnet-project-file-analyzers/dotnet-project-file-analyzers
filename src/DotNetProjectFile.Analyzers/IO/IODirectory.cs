@@ -167,7 +167,6 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
     private IEnumerable<FileInfo>? IterateFiles(string path)
         => Iterate(path, static (d, l) => d.EnumerateFiles(l));
 
-
     [Pure]
     private IEnumerable<DirectoryInfo>? IterateDirectories(string path)
         => Iterate(path, static (d, l) => d.EnumerateDirectories(l));

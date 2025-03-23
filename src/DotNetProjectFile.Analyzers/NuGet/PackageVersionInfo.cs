@@ -31,7 +31,7 @@ public readonly struct PackageVersionInfo : IEquatable<PackageVersionInfo>
 
     /// <inheritdoc />
     [Pure]
-    public override bool Equals(object? obj)=> obj is PackageVersionInfo other && Equals(other);
+    public override bool Equals(object? obj) => obj is PackageVersionInfo other && Equals(other);
 
     /// <inheritdoc />
     [Pure]
@@ -42,7 +42,7 @@ public readonly struct PackageVersionInfo : IEquatable<PackageVersionInfo>
     /// <inheritdoc />
     [Pure]
     public override string ToString() => Version is null ? Name : $"{Name} ({Version})";
-    
+
     public static bool operator ==(PackageVersionInfo left, PackageVersionInfo right) => left.Equals(right);
 
     public static bool operator !=(PackageVersionInfo left, PackageVersionInfo right) => !(left == right);

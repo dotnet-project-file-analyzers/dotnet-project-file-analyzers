@@ -17,11 +17,11 @@ public class Project_contains
             Issue.WRN("Proj9999", "Found NuGetAudit")/*..*/.WithSpan(18, 8, 18, 38),
             Issue.WRN("Proj9999", "Found Folder")/*......*/.WithSpan(13, 8, 13, 34),
             Issue.WRN("Proj9999", "Found Folder")/*......*/.WithSpan(21, 8, 21, 39));
-    
+
     [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
     private sealed class NodeReporter : MsBuildProjectFileAnalyzer
     {
-        public NodeReporter() 
+        public NodeReporter()
             : base(Rule.New(9999, "", "Found {0}", "", [], Category.Reliability)) { }
 
         protected override void Register(ProjectFileAnalysisContext context)
@@ -30,7 +30,7 @@ public class Project_contains
             {
                 context.ReportDiagnostic(Descriptor, prop, prop.LocalName);
             }
-            foreach (var prop in context.File.ItemGroups.Children<Node>())  
+            foreach (var prop in context.File.ItemGroups.Children<Node>())
             {
                 context.ReportDiagnostic(Descriptor, prop, prop.LocalName);
             }
