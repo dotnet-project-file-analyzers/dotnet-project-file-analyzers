@@ -3,7 +3,7 @@ namespace Rules.MS_Build.Treat_warnings_as_warnings;
 public class Reports
 {
     [Test]
-    public void when_property_is_defined() => new TreatWarningsAsWarnings()
+    public void when_treat_all_warnings_is_enabled() => new TreatWarningsAsWarnings()
        .ForInlineCsproj(@"<Project Sdk=""Microsoft.NET.Sdk"">
 
   <PropertyGroup>
