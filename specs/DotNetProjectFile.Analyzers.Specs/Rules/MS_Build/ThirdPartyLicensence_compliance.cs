@@ -1,4 +1,4 @@
-namespace Specs.Rules.MS_Build.ThirdPartyLicensence_compliance;
+namespace Rules.MS_Build.ThirdPartyLicensence_compliance;
 
 public class Reports
 {

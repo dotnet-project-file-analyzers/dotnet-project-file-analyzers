@@ -40,6 +40,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0036** Remove None when redundant](https://dotnet-project-file-analyzers.github.io/rules/Proj0036.html)
 * [**Proj0037** Exclude runtime when all assets are private](https://dotnet-project-file-analyzers.github.io/rules/Proj0037.html)
 * [**Proj0038** Fully specify NoWarn rule IDs](https://dotnet-project-file-analyzers.github.io/rules/Proj0038.html)
+* [**Proj0039** Treat all warnings as errors is considered a bad practice](https://dotnet-project-file-analyzers.github.io/rules/Proj0039.html)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)
