@@ -63,7 +63,9 @@ v1.5.0
   </ItemGroup>
 
   <ItemGroup Label="Props and targets">
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="3.0.1" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="3.1.0" PrivateAssets="all" ExcludeAssets="runtime">
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
 
 </Project>

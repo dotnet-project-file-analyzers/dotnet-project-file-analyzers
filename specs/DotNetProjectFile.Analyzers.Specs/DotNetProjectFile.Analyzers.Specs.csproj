@@ -27,14 +27,14 @@
   </ItemGroup>
 
   <ItemGroup Label="Test tools">
-    <PackageReference Include="AwesomeAssertions" Version="8.0.1" />
+    <PackageReference Include="AwesomeAssertions" Version="8.0.2" />
     <PackageReference Include="CodeAnalysis.TestTools" Version="3.0.1" />
-    <PackageReference Include="NuGet.Common" Version="6.12.1" />
-    <PackageReference Include="NuGet.Frameworks" Version="6.12.1" />
-    <PackageReference Include="NuGet.Packaging" Version="6.12.1" />
+    <PackageReference Include="NuGet.Common" Version="6.13.2" />
+    <PackageReference Include="NuGet.Frameworks" Version="6.13.2" />
+    <PackageReference Include="NuGet.Packaging" Version="6.13.2" />
     <PackageReference Include="NUnit" Version="4.3.2" />
-    <PackageReference Include="Verify" Version="28.13.0" />
-    <PackageReference Include="Verify.NUnit" Version="28.13.0" />
+    <PackageReference Include="Verify" Version="28.16.0" />
+    <PackageReference Include="Verify.NUnit" Version="28.16.0" />
   </ItemGroup>
 
   <ItemGroup Label="Build tools">
