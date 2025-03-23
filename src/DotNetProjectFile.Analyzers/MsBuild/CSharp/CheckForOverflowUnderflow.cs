@@ -6,4 +6,5 @@ namespace DotNetProjectFile.MsBuild.CSharp;
 /// </summary>
 /// <remarks>C# only.</remarks>
 public sealed class CheckForOverflowUnderflow(XElement element, Node parent, MsBuildProject project)
-    : Node<bool?>(element, parent, project) { }
+    : Node<bool?>(element, parent, project)
+{ }

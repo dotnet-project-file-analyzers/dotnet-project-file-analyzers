@@ -17,7 +17,6 @@ public sealed record MetadataLicense : IXmlSerializable
     {
         Type = reader.GetAttribute("type");
         Value = reader.ReadElementString();
-
     }
 
     public void WriteXml(XmlWriter writer)

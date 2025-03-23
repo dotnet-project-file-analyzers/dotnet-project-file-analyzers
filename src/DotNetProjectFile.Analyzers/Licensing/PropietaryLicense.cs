@@ -1,6 +1,6 @@
 namespace DotNetProjectFile.Licensing;
 
-public sealed record PropietaryLicense: SingleLicense
+public sealed record PropietaryLicense : SingleLicense
 {
     public PropietaryLicense(
         string identifier,

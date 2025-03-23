@@ -5,7 +5,7 @@ public sealed class AvoidLicenseUrl() : MsBuildProjectFileAnalyzer(Rule.AvoidLic
 {
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
-    
+
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {

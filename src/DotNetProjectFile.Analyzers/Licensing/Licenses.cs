@@ -33,7 +33,7 @@ public static class Licenses
         new PermissiveLicense("MS-LPL"),
         new PermissiveLicense("PostgreSQL"),
         new PermissiveLicense("WTFPL"),
-        new PermissiveLicense(""),
+        new PermissiveLicense(string.Empty),
 
         // MPL is technically copy-left, but only on a source-file level, so can be statically and dynamically linked.
         new PermissiveLicense("MPL-1.0"),
@@ -189,7 +189,7 @@ public static class Licenses
 
     /// <summary>Tries to resolve a license from the license URL.</summary>
     /// <remarks>
-    /// TODO see-also entries from https://github.com/spdx/license-list-data/blob/main/json/licenses.json
+    /// TODO see-also entries from https://github.com/spdx/license-list-data/blob/main/json/licenses.json.
     /// </remarks>
     public static LicenseExpression FromUrl(string? licenseUrl)
     {
@@ -228,12 +228,9 @@ public static class Licenses
     private static string PrepareLicenseText(string text)
     {
         var sb = new StringBuilder(text.Length);
-        foreach (var c in text)
+        foreach (var c in text.Where(char.IsLetter))
         {
-            if (char.IsLetter(c))
-            {
-                sb.Append(char.ToLowerInvariant(c));
-            }
+            sb.Append(char.ToLowerInvariant(c));
         }
         return sb.ToString();
     }

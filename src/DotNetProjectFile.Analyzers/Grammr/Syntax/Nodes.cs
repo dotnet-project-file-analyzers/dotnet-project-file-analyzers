@@ -22,4 +22,3 @@ public readonly struct Nodes<TSyntax>(Node parent)
     [Pure]
     IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 }
-

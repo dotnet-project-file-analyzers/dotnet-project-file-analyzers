@@ -132,7 +132,7 @@ public class Parses_with_errors
         }
 
         [Test]
-        public void  multipe_assign()
+        public void multipe_assign()
         {
             var syntax = Parse.Syntax("key1 = : value1\n");
 

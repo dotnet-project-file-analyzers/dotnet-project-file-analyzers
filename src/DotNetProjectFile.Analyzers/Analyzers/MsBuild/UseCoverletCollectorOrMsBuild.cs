@@ -19,7 +19,7 @@ public sealed class UseCoverletCollectorOrMsBuild()
             .Walk()
             .OfType<PackageReference>()
             .LastOrDefault(r => r.Include == NuGet.Packages.coverlet_msbuild.Name);
-        
+
         if (collector is { } && msBuild is { })
         {
             if (collector.Project == context.File)

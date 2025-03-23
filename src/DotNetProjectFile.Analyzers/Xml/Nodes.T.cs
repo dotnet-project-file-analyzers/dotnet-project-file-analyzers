@@ -33,6 +33,8 @@ public readonly struct Nodes<TNode>(IEnumerable<XmlAnalysisNode> items) : IReadO
             .OfType<TNode>()
             .SelectMany(item => item.Children().OfType<TChild>()));
 
+#pragma warning disable S1133 // Deprecated code should be removed
+    // Prevents the use of LINQ when there are better alternatives.
     [Obsolete("Use Children<T>() instead.", true)]
     [DoesNotReturn]
     public IEnumerable<TResult> SelectMany<TResult>(Func<TNode, IEnumerable<TResult>> selector)
@@ -42,6 +44,7 @@ public readonly struct Nodes<TNode>(IEnumerable<XmlAnalysisNode> items) : IReadO
     [DoesNotReturn]
     public IEnumerable<TResult> Where<TResult>(Predicate<bool> predicate)
         => throw new NotSupportedException();
+#pragma warning restore S1133 // Deprecated code should be removed
 
     /// <inheritdoc />
     [Pure]

@@ -6,11 +6,11 @@ internal sealed class IssueComparer : IEqualityComparer<Issue>
 {
     public bool Equals(Issue? x, Issue? y)
     {
-        if(x is null)
+        if (x is null)
         {
             return y is null;
         }
-        else if(y is not null)
+        else if (y is not null)
         {
             return x.Id == y.Id
                 && y.Severity == y.Severity

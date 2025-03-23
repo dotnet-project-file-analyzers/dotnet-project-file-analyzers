@@ -40,7 +40,6 @@ public readonly struct ProjectFileAnalysisContext<TFile>(
             node.Element.Parent is null ? node.Locations.StartElement : node.Locations.FullSpan,
             messageArgs);
 
-
     /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, ProjectFile file, LinePositionSpan span, params object?[]? messageArgs)
         => ReportDiagnostic(descriptor, file.GetLocation(span), messageArgs);

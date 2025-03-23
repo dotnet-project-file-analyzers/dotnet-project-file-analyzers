@@ -66,8 +66,7 @@ public sealed partial class Project : Node, ProjectFile
     public IEnumerable<IniFile> EditorConfigs()
         => Path.Directory.AncestorsAndSelf()
         .Select(dir => ProjectFiles.IniFile(dir.File(".editorconfig")))
-        .OfType<IniFileSyntax>()
-        .Select(ini => new IniFile(ini))
+        .OfType<IniFile>()
         .TakeUntil(config => config.IsRoot);
 
     /// <summary>Loops through all imports and self.</summary>

@@ -4,7 +4,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class TrackToDoTags() : MsBuildProjectFileAnalyzer(Rule.TrackToDoTags)
 {
     private readonly ToDoChecker<MsBuildProject> Checker = new(Rule.TrackToDoTags, GetText);
-  
+
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
 

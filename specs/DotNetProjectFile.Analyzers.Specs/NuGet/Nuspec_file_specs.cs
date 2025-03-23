@@ -80,7 +80,7 @@ public class Loads
 
         var specs = NuSpecFile.Load(stream);
 
-      
+
         specs.Should().BeEquivalentTo(new NuSpecFile
         {
             Metadata = new()

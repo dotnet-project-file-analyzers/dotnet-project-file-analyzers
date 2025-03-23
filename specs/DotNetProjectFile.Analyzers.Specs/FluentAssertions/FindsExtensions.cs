@@ -9,7 +9,7 @@ internal static class FindsExtensions
 
     public static void HasIssue(this ProjectAnalyzerVerifyContext context, Issue issue)
         => context.HasIssues(issue);
-    
+
     public static void HasIssues(this ProjectAnalyzerVerifyContext context, params Issue[] issues)
     {
         var diagnosics = Run.Sync(context.GetDiagnosticsAsync)

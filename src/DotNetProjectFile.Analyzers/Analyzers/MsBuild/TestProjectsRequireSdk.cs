@@ -1,4 +1,3 @@
-
 using DotNetProjectFile.NuGet;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;

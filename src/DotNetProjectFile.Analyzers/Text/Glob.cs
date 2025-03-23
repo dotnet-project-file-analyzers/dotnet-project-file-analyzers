@@ -25,6 +25,4 @@ public readonly struct Glob
         && GlobParser.TryParse(expression) is { } segment
             ? new Glob(segment)
             : null;
-
-    
 }

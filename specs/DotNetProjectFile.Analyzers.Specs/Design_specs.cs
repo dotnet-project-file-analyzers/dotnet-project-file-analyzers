@@ -107,7 +107,7 @@ public partial class Rules
 
     private static async Task<string> GetWebIndexContext()
     {
-        using var client = new HttpClient(); 
+        using var client = new HttpClient();
         var response = await client.GetAsync("https://dotnet-project-file-analyzers.github.io/");
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadAsStringAsync();

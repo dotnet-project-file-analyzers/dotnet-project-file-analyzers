@@ -38,7 +38,6 @@ public sealed class EnableGenerateDocumentationFile() : MsBuildProjectFileAnalyz
             else
             {
                 // <DocumentationFile>../../..<DocumentationFile/>
-                return;
             }
         }
     }

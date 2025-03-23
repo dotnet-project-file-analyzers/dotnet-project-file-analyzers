@@ -18,7 +18,7 @@ public sealed class DefineSingleTargetFramework() : MsBuildProjectFileAnalyzer(R
 
     private static bool NotMultiple(TargetFrameworks tfm)
         => tfm.Value.Count <= 1;
-        
+
     /// <remarks>
     /// If any import defines <see cref="TargetFrameworks"/> its values can not
     /// be overridden with <see cref="TargetFramework"/>.

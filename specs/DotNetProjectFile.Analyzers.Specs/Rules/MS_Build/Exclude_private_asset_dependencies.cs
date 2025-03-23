@@ -3,7 +3,7 @@ namespace Rules.MS_Build.Exclude_private_asset_dependencies;
 public class Reports
 {
     [Test]
-    public void private_assets_not_being_private()=> new ExcludePrivateAssetDependencies()
+    public void private_assets_not_being_private() => new ExcludePrivateAssetDependencies()
         .ForProject("PrivateAssets.cs")
         .HasIssues(
             Issue.WRN("Proj1200", @"Mark the package reference ""coverlet.collector"" as a private asset" /*.*/).WithSpan(16, 04, 16, 069),

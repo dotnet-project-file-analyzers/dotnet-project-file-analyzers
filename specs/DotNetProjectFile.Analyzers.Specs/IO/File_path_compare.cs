@@ -12,7 +12,7 @@ public class Compares
 
     [Test]
     public void sub_strings_before()
-        => new[] 
+        => new[]
         {
             "substring",
             "sub",

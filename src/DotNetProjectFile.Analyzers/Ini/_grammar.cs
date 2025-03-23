@@ -64,9 +64,9 @@ internal sealed class IniGrammar : Grammar
     /// <summary>Header tokens.</summary>
     private sealed class Header : Grammar
     {
-        public static Grammar start = ch('[', HeaderStartToken);
-        public static Grammar text = line(@"[^[\]]+", HeaderTextToken);
-        public static Grammar end = ch(']', HeaderEndToken);
+        public static readonly Grammar start = ch('[', HeaderStartToken);
+        public static readonly Grammar text = line(@"[^[\]]+", HeaderTextToken);
+        public static readonly Grammar end = ch(']', HeaderEndToken);
     }
 
     /// <summary>INI tokens.</summary>

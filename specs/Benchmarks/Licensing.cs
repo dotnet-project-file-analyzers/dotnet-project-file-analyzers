@@ -1,6 +1,3 @@
-using DotNetProjectFile.MsBuild;
-using System.Runtime.InteropServices;
-using System.Runtime.Intrinsics.Arm;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -34,12 +31,9 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
         public string StringBuilder()
         {
             var sb = new StringBuilder();
-            foreach (var ch in Text)
+            foreach (var ch in Text.Where(char.IsLetter))
             {
-                if (char.IsLetter(ch))
-                {
-                    sb.Append(char.ToLowerInvariant(ch));
-                }
+                sb.Append(char.ToLowerInvariant(ch));
             }
             return sb.ToString();
         }
@@ -48,12 +42,9 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
         public string StringBuilder_Length()
         {
             var sb = new StringBuilder(Text.Length);
-            foreach (var ch in Text)
+            foreach (var ch in Text.Where(char.IsLetter))
             {
-                if (char.IsLetter(ch))
-                {
-                    sb.Append(char.ToLowerInvariant(ch));
-                }
+                sb.Append(char.ToLowerInvariant(ch));
             }
             return sb.ToString();
         }
@@ -67,7 +58,7 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
         {
             var buffer = new char[Text.Length];
             var length = 0;
-            foreach(var ch in Text.Where(char.IsLetter).Select(char.ToLowerInvariant))
+            foreach (var ch in Text.Where(char.IsLetter).Select(char.ToLowerInvariant))
             {
                 buffer[length++] = ch;
             }
@@ -78,6 +69,7 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
     [MemoryDiagnoser(true)]
     public class Hashing
     {
+#pragma warning disable SYSLIB0021 // Type or member is obsolete: we use it to benchmark it
         private static readonly SHA1 sha1 = SHA1.Create();
         private static readonly SHA1 sha1_managed = SHA1Managed.Create();
         private static readonly IncrementalHash sha1_incremental = IncrementalHash.CreateHash(HashAlgorithmName.SHA1);
@@ -85,9 +77,10 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
         private static readonly SHA256 sha256_managed = SHA256Managed.Create();
         private static readonly IncrementalHash sha256_incremental = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
         private static readonly IncrementalHash sha512_incremental = IncrementalHash.CreateHash(HashAlgorithmName.SHA512);
+#pragma warning restore SYSLIB0021 // Type or member is obsolete
 
         [Params(1)]
-        public int N;
+        public int N { get; set; }
 
         [Benchmark]
         public string[] SHA1_Static()

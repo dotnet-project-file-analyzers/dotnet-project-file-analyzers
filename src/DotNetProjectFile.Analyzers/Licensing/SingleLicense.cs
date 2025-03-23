@@ -2,7 +2,7 @@ namespace DotNetProjectFile.Licensing;
 
 public abstract record SingleLicense : LicenseExpression
 {
-    public SingleLicense(string identifier, string? baseLicense, ImmutableArray<string> deprecated, bool spdxCompliant)
+    protected SingleLicense(string identifier, string? baseLicense, ImmutableArray<string> deprecated, bool spdxCompliant)
     {
         Expression = identifier;
         BaseLicense = baseLicense;

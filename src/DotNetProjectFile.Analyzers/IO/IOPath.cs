@@ -16,7 +16,7 @@ public static class IOPath
 
     private static readonly char[] Separators = ['/', '\\'];
     private static readonly char[] StartTrimCharacters = [' ', '\t', '\n', '\r'];
-    private static readonly char[] EndTrimCharacters = [..StartTrimCharacters, ..Separators];
+    private static readonly char[] EndTrimCharacters = [.. StartTrimCharacters, .. Separators];
 
     internal static bool Equals(string[] self, string[] other, bool caseSensitive)
     {
