@@ -76,6 +76,7 @@ v1.6.0
 - Proj0502: Fixed missing package name when reference was using Update instead of Include. (BUG)
 - Proj0809: Fixed missing package name when reference was using Update instead of Include. (BUG)
 - Proj0810: Fixed missing package name when reference was using Update instead of Include. (BUG)
+- Proj0244: Exclude development dependencies. (FP)
 - Proj0503: Package license is unknown. (NEW RULE)
 - Proj0504: Package license has changed. (NEW RULE)
 - Proj1200: Fixed missing package name when reference was using Update instead of Include. (BUG)

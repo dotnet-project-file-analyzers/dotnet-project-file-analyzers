@@ -8,7 +8,6 @@ public class Reports
         .HasIssue(Issue.WRN("Proj0244", "Define the <GenerateDocumentationFile> node with value 'true' or define the <DocumentationFile> node with a valid file path or define the <IsPackable> node with value 'false'")
         .WithSpan(00, 00, 00, 32));
 
-
     [Test]
     public void on_disabled_property() => new EnableGenerateDocumentationFile()
         .ForProject("GenerateDocumentationFileDisabledWithoutFile.cs")
@@ -23,13 +22,26 @@ public class Reports
 
     [Test]
     public void on_missing_property_with_empty_file_path() => new EnableGenerateDocumentationFile()
-    .ForProject("GenerateDocumentationFileMissingWithEmptyFile.cs")
-    .HasIssue(Issue.WRN("Proj0244", "Define the <GenerateDocumentationFile> node with value 'true' or define the <DocumentationFile> node with a valid file path or define the <IsPackable> node with value 'false'")
-    .WithSpan(05, 04, 05, 43));
+        .ForProject("GenerateDocumentationFileMissingWithEmptyFile.cs")
+        .HasIssue(Issue.WRN("Proj0244", "Define the <GenerateDocumentationFile> node with value 'true' or define the <DocumentationFile> node with a valid file path or define the <IsPackable> node with value 'false'")
+        .WithSpan(05, 04, 05, 43));
 }
 
 public class Guards
 {
+    [Test]
+    public void developement_dependencies() => new EnableGenerateDocumentationFile()
+        .ForInlineCsproj(@"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <IsPackable>true</IsPackable>
+  </PropertyGroup>
+
+</Project>").HasNoIssues();
+
     [TestCase("TestProject.cs")]
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
