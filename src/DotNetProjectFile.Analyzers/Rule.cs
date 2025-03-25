@@ -1231,11 +1231,7 @@ public static partial class Rule
     {
         DiagnosticSeverity defaultSeverity;
 
-        if (!isEnabled)
-        {
-            defaultSeverity = DiagnosticSeverity.Hidden;
-        }
-        else if (severity.HasValue)
+        if (severity.HasValue)
         {
             defaultSeverity = severity.Value;
         }
@@ -1251,7 +1247,7 @@ public static partial class Rule
             customTags: tags,
             category: category.ToString(),
             defaultSeverity: defaultSeverity,
-            isEnabledByDefault: true,
+            isEnabledByDefault: isEnabled,
             description: description,
             helpLinkUri: $"https://dotnet-project-file-analyzers.github.io/rules/Proj{id:0000}.html");
     }

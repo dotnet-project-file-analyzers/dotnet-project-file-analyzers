@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -71,19 +71,20 @@
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.6.0
-- Proj0005: Fixed missing package name when reference was using Update instead of Include. (BUG)
-- Proj0039: Treat all warnings as errors is considered a bad practice. (NEW RULE)
 - Proj0502: Fixed missing package name when reference was using Update instead of Include. (BUG)
-- Proj0809: Fixed missing package name when reference was using Update instead of Include. (BUG)
-- Proj0810: Fixed missing package name when reference was using Update instead of Include. (BUG)
-- Proj0244: Exclude development dependencies. (FP)
 - Proj0503: Package license is unknown. (NEW RULE)
 - Proj0504: Package license has changed. (NEW RULE)
-- Proj1200: Fixed missing package name when reference was using Update instead of Include. (BUG)
       ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.5.12
+- Proj0005: Fixed missing package name when reference was using Update instead of Include. (BUG)
+- Proj0039: Treat all warnings as errors is considered a bad practice. (NEW RULE)
+- Proj0244: Exclude development dependencies. (FP)
+- Proj0809: Fixed missing package name when reference was using Update instead of Include. (BUG)
+- Proj0810: Fixed missing package name when reference was using Update instead of Include. (BUG)
+- Proj1200: Fixed missing package name when reference was using Update instead of Include. (BUG)
 v1.5.11
 - Report issues on root node only on start element.
 - Proj0026: Stop reporting on conditonal properties. (FP)
