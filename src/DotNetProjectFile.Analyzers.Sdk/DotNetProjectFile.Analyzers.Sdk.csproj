@@ -14,7 +14,7 @@
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <!--<GenerateSBOM>true</GenerateSBOM>-->
+    <GenerateSBOM>true</GenerateSBOM>
   </PropertyGroup>
 
   <PropertyGroup Label="Package settings">
