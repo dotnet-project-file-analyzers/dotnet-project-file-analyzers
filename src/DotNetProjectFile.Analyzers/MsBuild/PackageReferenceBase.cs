@@ -13,6 +13,8 @@ public abstract class PackageReferenceBase(XElement element, Node parent, MsBuil
 
     public string IncludeOrUpdate => Include ?? Update ?? string.Empty;
 
+    public virtual PackageVersionInfo Info => new(IncludeOrUpdate, Version);
+
     public (Node Node, string Version)? ResolveVersionVerbose()
     {
         if (Project.ManagePackageVersionsCentrally() is true)
