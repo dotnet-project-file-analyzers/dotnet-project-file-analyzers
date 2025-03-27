@@ -5,7 +5,7 @@ namespace Rules.All;
 
 public class Guards
 {
-    [Test, Ignore("We want the build to succeeed, and disabled BOM for that")]
+    [Test]
     public void DotNetProjectFile_Analyzers_project()
     {
         var all = AvailableAnalyzers.All.ToArray();
