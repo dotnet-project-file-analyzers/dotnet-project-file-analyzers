@@ -107,7 +107,7 @@ public partial class Rules
 
     private static async Task<string> GetWebIndexContext()
     {
-        using var client = new HttpClient(); 
+        using var client = new HttpClient();
         var response = await client.GetAsync("https://dotnet-project-file-analyzers.github.io/");
         response.EnsureSuccessStatusCode();
         return await response.Content.ReadAsStringAsync();
@@ -150,7 +150,10 @@ public partial class Rules
         foreach (var rule in rules)
         {
             var id = rule.Id;
-            var severity = GetIniSeverity(rule.Descriptor.DefaultSeverity);
+            var severity = rule.Descriptor.IsEnabledByDefault
+                ? GetIniSeverity(rule.Descriptor.DefaultSeverity)
+                : GetIniSeverity(DiagnosticSeverity.Hidden);
+
             var title = rule.Descriptor.Title.ToString(CultureInfo.InvariantCulture);
 
             sb

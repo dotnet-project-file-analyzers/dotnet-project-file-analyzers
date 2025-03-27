@@ -73,6 +73,4 @@ public abstract class Node
         /// <inheritdoc />
         public override IReadOnlyList<Node> Unwrap() => Children;
     }
-
-
 }

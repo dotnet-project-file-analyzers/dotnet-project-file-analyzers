@@ -6,4 +6,5 @@ namespace DotNetProjectFile.MsBuild.VisualBasic;
 /// </summary>
 /// <remarks>Visual Basic only.</remarks>
 public sealed class NoVBRuntimeReference(XElement element, Node parent, MsBuildProject project)
-    : Node<bool?>(element, parent, project) { }
+    : Node<bool?>(element, parent, project)
+{ }

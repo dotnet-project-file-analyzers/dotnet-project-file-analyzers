@@ -19,6 +19,6 @@ public sealed class FullySpecifyNoWarnRuleIds() : MsBuildProjectFileAnalyzer(Rul
         }
     }
 
-    private bool NotFullySpecified(string ruleId)
+    private static bool NotFullySpecified(string ruleId)
         => int.TryParse(ruleId, out _);
 }

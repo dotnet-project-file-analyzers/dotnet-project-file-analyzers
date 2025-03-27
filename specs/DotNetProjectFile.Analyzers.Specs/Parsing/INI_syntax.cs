@@ -71,7 +71,7 @@ public class Parses_with_errors
             var syntax = Parse.Syntax("[]");
 
             syntax.Sections[0].Header!.GetDiagnostics().Should().HaveIssue(
-                Issue.NONE("Proj4001", "] is unexpected").WithSpan(0, 1, 0, 2));
+                Issue.ERR("Proj4001", "] is unexpected").WithSpan(0, 1, 0, 2));
         }
 
         [Test]
@@ -80,7 +80,7 @@ public class Parses_with_errors
             var syntax = Parse.Syntax("[[header]");
 
             syntax.Sections[0].Header!.GetDiagnostics().Should().HaveIssue(
-                Issue.NONE("Proj4001", "[ is unexpected").WithSpan(0, 1, 0, 2));
+                Issue.ERR("Proj4001", "[ is unexpected").WithSpan(0, 1, 0, 2));
         }
 
         [Test]
@@ -89,7 +89,7 @@ public class Parses_with_errors
             var syntax = Parse.Syntax("[header\n");
 
             syntax.Sections[0].Header!.GetDiagnostics().Should().HaveIssue(
-                Issue.NONE("Proj4001", "] is expected").WithSpan(0, 7, 1, 0));
+                Issue.ERR("Proj4001", "] is expected").WithSpan(0, 7, 1, 0));
         }
 
         [Test]
@@ -98,7 +98,7 @@ public class Parses_with_errors
             var syntax = Parse.Syntax("[header]]");
 
             syntax.Sections[0].Header!.GetDiagnostics().Should().HaveIssue(
-                Issue.NONE("Proj4001", "] is unexpected").WithSpan(0, 8, 0, 9));
+                Issue.ERR("Proj4001", "] is unexpected").WithSpan(0, 8, 0, 9));
         }
     }
 
@@ -110,7 +110,7 @@ public class Parses_with_errors
             var syntax = Parse.Syntax("= value \n");
 
             syntax.GetDiagnostics().Should().HaveIssue(
-                Issue.NONE("Proj4002", "= is unexpected").WithSpan(0, 0, 0, 1));
+                Issue.ERR("Proj4002", "= is unexpected").WithSpan(0, 0, 0, 1));
         }
 
         [Test]
@@ -119,7 +119,7 @@ public class Parses_with_errors
             var syntax = Parse.Syntax("key1 = \n");
 
             syntax.GetDiagnostics().Should().HaveIssue(
-                Issue.NONE("Proj4002", "Value is missing").WithSpan(0, 6, 0, 7));
+                Issue.ERR("Proj4002", "Value is missing").WithSpan(0, 6, 0, 7));
         }
 
         [Test]
@@ -128,16 +128,16 @@ public class Parses_with_errors
             var syntax = Parse.Syntax("key1 value1\n");
 
             syntax.GetDiagnostics().Should().HaveIssue(
-                Issue.NONE("Proj4002", "= or : is expected").WithSpan(0, 5, 0, 11));
+                Issue.ERR("Proj4002", "= or : is expected").WithSpan(0, 5, 0, 11));
         }
 
         [Test]
-        public void  multipe_assign()
+        public void multipe_assign()
         {
             var syntax = Parse.Syntax("key1 = : value1\n");
 
             syntax.GetDiagnostics().Should().HaveIssue(
-                Issue.NONE("Proj4002", ": is unexpected").WithSpan(0, 7, 0, 8));
+                Issue.ERR("Proj4002", ": is unexpected").WithSpan(0, 7, 0, 8));
         }
 
         [Test]
@@ -146,7 +146,7 @@ public class Parses_with_errors
             var syntax = Parse.Syntax("KeyWith Comment = #Comment");
 
             syntax.GetDiagnostics().Should().HaveIssue(
-                Issue.NONE("Proj4002", "= or : is expected").WithSpan(0, 8, 0, 15));
+                Issue.ERR("Proj4002", "= or : is expected").WithSpan(0, 8, 0, 15));
         }
     }
 

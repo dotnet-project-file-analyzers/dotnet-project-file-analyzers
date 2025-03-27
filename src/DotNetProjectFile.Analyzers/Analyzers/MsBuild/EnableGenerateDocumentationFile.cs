@@ -8,7 +8,9 @@ public sealed class EnableGenerateDocumentationFile() : MsBuildProjectFileAnalyz
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.File.IsPackable() || context.File.IsTestProject()) return;
+        if (!context.File.IsPackable() 
+            || context.File.IsTestProject()
+            || context.File.IsDevelopmentDependency()) return;
 
         var generateDocumentationFile = context.File.Property<GenerateDocumentationFile>();
         var documentationFile = context.File.Property<DocumentationFile>();
@@ -38,7 +40,6 @@ public sealed class EnableGenerateDocumentationFile() : MsBuildProjectFileAnalyz
             else
             {
                 // <DocumentationFile>../../..<DocumentationFile/>
-                return;
             }
         }
     }

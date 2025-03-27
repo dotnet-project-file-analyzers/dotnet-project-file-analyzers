@@ -1,4 +1,3 @@
-
 namespace DotNetProjectFile.Resx;
 
 public partial class Node : XmlAnalysisNode

@@ -353,6 +353,17 @@ public static partial class Rule
         tags: ["ruleID"],
         category: Category.Clarity);
 
+    public static DiagnosticDescriptor TreatWarningsAsWarnings => New(
+        id: 0039,
+        title: "Treat all warnings as errors is considered a bad practice",
+        message: "Treat all warnings as errors is considered a bad practice",
+        description:
+            "How tempting this may feel to treat all warnings as erors, there " +
+            "are objections to consider. Because such a policy might be " +
+            "counterproductive.",
+        tags: ["error", "warning", "TreatWarningsAsErrors"],
+        category: Category.CodeQuality);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
@@ -1220,11 +1231,7 @@ public static partial class Rule
     {
         DiagnosticSeverity defaultSeverity;
 
-        if (!isEnabled)
-        {
-            defaultSeverity = DiagnosticSeverity.Hidden;
-        }
-        else if (severity.HasValue)
+        if (severity.HasValue)
         {
             defaultSeverity = severity.Value;
         }
@@ -1240,7 +1247,7 @@ public static partial class Rule
             customTags: tags,
             category: category.ToString(),
             defaultSeverity: defaultSeverity,
-            isEnabledByDefault: true,
+            isEnabledByDefault: isEnabled,
             description: description,
             helpLinkUri: $"https://dotnet-project-file-analyzers.github.io/rules/Proj{id:0000}.html");
     }

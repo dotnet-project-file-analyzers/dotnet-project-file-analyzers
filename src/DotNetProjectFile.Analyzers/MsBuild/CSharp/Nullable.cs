@@ -5,4 +5,5 @@ namespace DotNetProjectFile.MsBuild.CSharp;
 /// </summary>
 /// <remarks>C# only.</remarks>
 public sealed class Nullable(XElement element, Node parent, MsBuildProject project)
-    : Node(element, parent, project) { }
+    : Node(element, parent, project)
+{ }

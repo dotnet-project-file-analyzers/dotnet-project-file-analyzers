@@ -9,11 +9,11 @@ public class GrammrParsing
     private static readonly string root = string.Join("/", Enumerable.Repeat("..", 7)) + "/Files/";
 
     private readonly List<SourceText> Sources = [];
-    
+
     public GrammrParsing()
     {
-        string[] files = [ "ini-0027-lines.ini", "ini-0036-lines.ini", "ini-1220-lines.ini" ];
-        foreach(var file in files)
+        string[] files = ["ini-0027-lines.ini", "ini-0036-lines.ini", "ini-1220-lines.ini"];
+        foreach (var file in files)
         {
             using var stream = new FileStream(root + file, FileMode.Open, FileAccess.Read);
             Sources.Add(SourceText.From(stream));
@@ -56,7 +56,7 @@ file sealed class IniGrammar : Grammar
 
     public static readonly Parser comment_line = ws & Comment & end;
 
-    public static readonly Parser kvp_line = 
+    public static readonly Parser kvp_line =
         ws
         & Key
         & ws

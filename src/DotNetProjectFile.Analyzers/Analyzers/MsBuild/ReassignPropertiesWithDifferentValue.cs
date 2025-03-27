@@ -26,6 +26,6 @@ public sealed class ReassignPropertiesWithDifferentValue() : MsBuildProjectFileA
 
     private readonly record struct Prop(string Name, string Condition)
     {
-        public static Prop New(Node n) => new(n.LocalName,  Conditions.ToString(n));
+        public static Prop New(Node n) => new(n.LocalName, Conditions.ToString(n));
     }
 }

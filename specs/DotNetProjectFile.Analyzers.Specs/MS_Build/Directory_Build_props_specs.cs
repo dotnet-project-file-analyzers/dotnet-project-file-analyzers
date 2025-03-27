@@ -11,11 +11,11 @@ public class Project_relies_on
         .HasIssues(
             Issue.WRN("Proj9999", "Found Directory.Build.props."),
             Issue.WRN("Proj9999", "Found Directory.Build.targets."));
-    
+
     [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
     private sealed class NodeReporter : MsBuildProjectFileAnalyzer
     {
-        public NodeReporter() 
+        public NodeReporter()
             : base(Rule.New(9999, "", "Found {0}.", "", [], Category.Reliability)) { }
 
         protected override void Register(ProjectFileAnalysisContext context)

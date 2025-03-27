@@ -18,7 +18,7 @@ public class Guards
         .ForProject("PackageDescription.cs")
         .HasNoIssues();
 
-    
+
     [Test]
     public void Short_release_notes() => new UseCDATAForLargeTexts()
         .ForInlineCsproj(@$"

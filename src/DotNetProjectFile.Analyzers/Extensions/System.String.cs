@@ -19,7 +19,7 @@ internal static class StringExtensions
         }
 
         var result = str;
-        
+
         while (result.StartsWith(other))
         {
             result = result.Substring(other.Length);

@@ -26,7 +26,7 @@ public sealed class TUnitUsage() : MsBuildProjectFileAnalyzer(
         }
     }
 
-    private static bool IsTUnit(PackageReference reference) 
+    private static bool IsTUnit(PackageReference reference)
         => Packages.TUnit.IsMatch(reference)
         || Packages.TUnit_Engine.IsMatch(reference);
 

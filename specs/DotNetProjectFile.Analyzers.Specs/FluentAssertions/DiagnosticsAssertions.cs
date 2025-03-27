@@ -42,7 +42,7 @@ internal sealed class DiagnosticsAssertions(IEnumerable<Diagnostic> actualValue)
                 sb.AppendLine($"[ ] {i}");
             }
 
-            CurrentAssertionChain.FailWith(sb.ToString().Replace("{","{{").Replace("}", "}}"));
+            CurrentAssertionChain.FailWith(sb.ToString().Replace("{", "{{").Replace("}", "}}"));
         }
 
         return new(this);

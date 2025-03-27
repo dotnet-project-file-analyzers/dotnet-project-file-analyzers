@@ -23,7 +23,7 @@ public sealed record Package
     public required string? LicenseExpression { get; init; }
 
     public required string? LicenseFile { get; init; }
-    
+
     public required string? LicenseUrl { get; init; }
 
     public required LicenseExpression License { get; init; }

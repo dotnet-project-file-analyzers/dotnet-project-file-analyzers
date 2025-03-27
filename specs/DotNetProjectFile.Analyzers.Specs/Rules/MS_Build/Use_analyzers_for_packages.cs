@@ -32,7 +32,7 @@ public class Reports
             new("Proj1001", "Use SerilogAnalyzer to analyze Serilog"),
             new("Proj1001", "Use xunit.analyzers to analyze xunit"),
             new("Proj1001", "Use ZeroFormatter.Analyzer to analyze ZeroFormatter"),
-            
+
             // Transitive.
             new("Proj1001", "Use SerilogAnalyzer to analyze Libplanet"),
             new("Proj1001", "Use MessagePackAnalyzer to analyze Microsoft.ServiceHub.Framework"),

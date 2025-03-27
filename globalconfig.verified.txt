@@ -36,6 +36,7 @@ dotnet_diagnostic.Proj0035.severity = warning    # Remove deprecated RestoreProj
 dotnet_diagnostic.Proj0036.severity = warning    # Remove None when redundant
 dotnet_diagnostic.Proj0037.severity = none       # Exclude runtime when all assets are private
 dotnet_diagnostic.Proj0038.severity = warning    # Fully specify NoWarn rule IDs
+dotnet_diagnostic.Proj0039.severity = warning    # Treat all warnings as errors is considered a bad practice
 dotnet_diagnostic.Proj0200.severity = warning    # Define the project packability explicitly
 dotnet_diagnostic.Proj0201.severity = warning    # Define the project version explicitly
 dotnet_diagnostic.Proj0202.severity = warning    # Define the project description explicitly

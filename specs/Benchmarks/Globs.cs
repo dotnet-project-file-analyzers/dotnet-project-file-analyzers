@@ -13,7 +13,7 @@ public class Globs
             "C://code/project/DotNetProjectFile.Analyzers.csproj",
             "project/DotNetProjectFile.Analyzers.xml",
             "no-match")]
-        public string Paths{ get; set; } = string.Empty;
+        public string Paths { get; set; } = string.Empty;
 
         [Benchmark]
         public bool DotNetProjectFile_IO_Glob()

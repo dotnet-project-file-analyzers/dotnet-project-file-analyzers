@@ -19,7 +19,7 @@ public abstract class PackageReferenceBase(XElement element, Node parent, MsBuil
     {
         if (Project.ManagePackageVersionsCentrally() is true)
         {
-            if (this is PackageReference { VersionOverride: { Length: > 0 } selfVersionOverride})
+            if (this is PackageReference { VersionOverride: { Length: > 0 } selfVersionOverride })
             {
                 return (this, selfVersionOverride);
             }

@@ -28,14 +28,14 @@ internal sealed class Group(IReadOnlyList<Segment> segments) : Segment
         while (segments.Count > 1)
         {
             var segment = segments[0];
-            
-            if (segment is { HasFixedLength : true })
+
+            if (segment is { HasFixedLength: true })
             {
                 if (!segment.IsMatch(buffer[..segment.MinLength], comparison)) return false;
                 segments = segments.Skip(1);
                 buffer = buffer[segment.MinLength..];
             }
-            
+
             // If the last is fixed, we do that one first.
             else if (segments[^1] is { HasFixedLength: true } last)
             {
@@ -68,16 +68,16 @@ internal sealed class Group(IReadOnlyList<Segment> segments) : Segment
     /// <inheritdoc />
     public override string ToString() => string.Concat(Segments);
 
-    private static (int, int) Lengths(IEnumerable<Segment> segments)
+    private static (int Min, int Max) Lengths(IEnumerable<Segment> segments)
         => (segments.Sum(s => s.MinLength), Max(segments));
 
     private static int Max(IEnumerable<Segment> segments)
     {
         var sum = 0;
-        foreach(var segment in segments)
+        foreach (var maxLength in segments.Select(s => s.MaxLength))
         {
-            if (segment.MaxLength == int.MaxValue) return int.MaxValue;
-            sum += segment.MaxLength;
+            if (maxLength == int.MaxValue) return int.MaxValue;
+            sum += maxLength;
         }
         return sum;
     }

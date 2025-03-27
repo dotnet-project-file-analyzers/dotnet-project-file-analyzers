@@ -76,7 +76,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
 
         public bool IsAnalyzerFor(Package pkg)
             => IsAnalyzerFor(pkg.Name);
-        
+
         public bool IsAnalyzerFor(string name)
             => name.StartsWith(Match, StringComparison.OrdinalIgnoreCase)
             && (name.Length == Match.Length

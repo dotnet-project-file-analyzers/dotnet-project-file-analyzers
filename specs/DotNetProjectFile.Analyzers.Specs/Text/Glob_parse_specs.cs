@@ -53,7 +53,7 @@ public class Parses
     [TestCase("[!H]ello.*")]
     [TestCase("*.{cs,vb,csproj}")]
     [TestCase("*.{cs,{vb,vpproj},csproj}")]
-    public void globs(string str) 
+    public void globs(string str)
         => Glob.TryParse(str)
             .Should().NotBeNull()
             .And.Subject.ToString().Should().Be(str);

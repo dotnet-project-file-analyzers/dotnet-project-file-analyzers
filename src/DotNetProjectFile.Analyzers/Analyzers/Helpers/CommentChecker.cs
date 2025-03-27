@@ -5,7 +5,7 @@ namespace DotNetProjectFile.Analyzers.Helpers;
 
 internal sealed class CommentChecker<TFile>(
     DiagnosticDescriptor descriptor,
-     Func<string, string?> isIssue)
+    Func<string, string?> isIssue)
 
     where TFile : class, ProjectFile, XmlAnalysisNode
 {
@@ -32,7 +32,7 @@ internal sealed class CommentChecker<TFile>(
 
 public static class CommentChecker
 {
-    public static string? ContainsXml(string comment) 
+    public static string? ContainsXml(string comment)
         => Tag.IsMatch(comment)
         || Tag.IsMatch($"<{comment.Trim()}>")
         ? comment

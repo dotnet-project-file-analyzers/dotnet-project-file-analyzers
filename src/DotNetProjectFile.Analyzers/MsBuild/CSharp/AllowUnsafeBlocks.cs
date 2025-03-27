@@ -7,4 +7,5 @@ namespace DotNetProjectFile.MsBuild.CSharp;
 /// </summary>
 /// <remarks>C# only.</remarks>
 public sealed class AllowUnsafeBlocks(XElement element, Node parent, MsBuildProject project)
-    : Node<bool?>(element, parent, project) { }
+    : Node<bool?>(element, parent, project)
+{ }
