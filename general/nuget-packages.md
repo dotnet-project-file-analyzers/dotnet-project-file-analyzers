@@ -35,4 +35,4 @@ packages.
 | [Proj0244](../rules/Proj0244.md) | Include source code documentation for public API.
 
 ## Further reading
-* https://learn.microsoft.com/nuget/reference/msbuild-targets
+* [learn.microsoft.com/nuget/reference/msbuild-targets](https://learn.microsoft.com/nuget/reference/msbuild-targets)
