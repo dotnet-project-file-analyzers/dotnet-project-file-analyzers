@@ -5,6 +5,8 @@
     <Nullable>enable</Nullable>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
     <NuGetAudit>true</NuGetAudit>
+    <NuGetAuditMode>all</NuGetAuditMode>
+    <NuGetAuditLevel>low</NuGetAuditLevel>
     <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
     <!-- Would interact with all current tests -->
