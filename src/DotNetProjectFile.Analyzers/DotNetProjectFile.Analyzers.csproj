@@ -80,7 +80,7 @@ v1.5.13
 - Proj0401: Only publish executables. (NEW RULE)
 v.1.5.13
 - Proj0040: Run NuGet security audits on all. (NEW RULE)
-- Proj0041: NuGet security audits should report on moderate issues. (NEW RULE)
+- Proj0041: NuGet security audits should report on moderate issues at minimum. (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
