@@ -3,7 +3,7 @@ namespace Rules.MS_Build.Run_NuGet_security_audits_on_all;
 public class Reports
 {
     [Test]
-    public void on_unspecfied_NuGet_audit_mode()
+    public void on_unspecified_NuGet_audit_mode()
        => new RunNuGetSecurityAuditsOnAll()
        .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
