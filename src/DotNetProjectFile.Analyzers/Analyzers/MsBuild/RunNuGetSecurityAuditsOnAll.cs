@@ -10,9 +10,9 @@ public sealed class RunNuGetSecurityAuditsOnAll() : MsBuildProjectFileAnalyzer(R
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {
-        var property = context.File.Property<NugetAuditMode>();
+        var property = context.File.Property<NuGetAuditMode>();
 
-        if (property?.Value is not NugetAuditMode.Kind.All)
+        if (property?.Value is not NuGetAuditMode.Kind.All)
         {
             context.ReportDiagnostic(Descriptor, property as XmlAnalysisNode ?? context.File.Project);
         }
