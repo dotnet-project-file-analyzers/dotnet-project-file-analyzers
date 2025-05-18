@@ -378,7 +378,7 @@ public static partial class Rule
         title: "NuGet security audits should report on moderate issues",
         message: "Set <NugetAuditLevel> to low or moderate",
         description:
-            "Security audit issues with serverity moderate, high and cirital " +
+            "Security audit issues with severity moderate, high and critical " +
             "should not be ignored.",
         tags: ["security", "NuGet", "vulnerability"],
         category: Category.Security);
