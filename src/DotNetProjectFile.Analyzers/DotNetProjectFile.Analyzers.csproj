@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -78,6 +78,9 @@ v1.5.13
 - Proj0022: Include <EditorConfig> and <GlobalAnalyzerConfigFiles> as build actions. (FN)
 - Proj0025: Change advise to the use of .globalconfig. (DOCUMENTATION)
 - Proj0401: Only publish executables. (NEW RULE)
+v.1.5.13
+- Proj0040: Run NuGet security audits on all. (NEW RULE)
+- Proj0041: NuGet security audits should report on moderate issues. (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
