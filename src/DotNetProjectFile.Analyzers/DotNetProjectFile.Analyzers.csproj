@@ -33,7 +33,7 @@
   </PropertyGroup>
 
   <ItemGroup Label="Not Used yet, so exclude">
-    <Compile Remove ="Antlr4/**/*.cs" />
+    <Compile Remove="Antlr4/**/*.cs" />
   </ItemGroup>
 
   <ItemGroup Label="Package files">
@@ -48,11 +48,11 @@
   </ItemGroup>
 
   <ItemGroup Label="Props and targets">
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="3.1.0" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="4.0.3" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Roslyn dependencies">
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.10.0" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.11.0" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
