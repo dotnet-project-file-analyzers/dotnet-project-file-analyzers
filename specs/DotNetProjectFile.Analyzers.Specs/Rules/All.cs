@@ -28,6 +28,7 @@ public class Guards
                 "CS8625",
 
                 // Default disabled
+                "Proj0037",
                 "Proj1000")
         };
 
