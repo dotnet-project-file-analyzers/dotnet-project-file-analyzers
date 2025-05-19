@@ -1,9 +1,0 @@
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-
-  <PropertyGroup>
-    <NoWarn>$(NoWarn);Proj1003</NoWarn>
-    <!-- There should never be a need to sign the .net.csproj output. -->
-    <SignAssembly>false</SignAssembly>
-  </PropertyGroup>
-
-</Project>
