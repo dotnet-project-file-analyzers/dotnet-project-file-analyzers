@@ -8,7 +8,7 @@ public sealed class EnableGenerateDocumentationFile() : MsBuildProjectFileAnalyz
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.File.IsPackable() 
+        if (!context.File.IsPackable()
             || context.File.IsTestProject()
             || context.File.IsDevelopmentDependency()) return;
 
