@@ -21,12 +21,12 @@ jobs:
 #         mkdir nuget_packges
 #         cp ./src/DotNetProjectFile.Analyzers/bin/Release/*.nupkg ./nuget_packges/
 #         cp ./src/DotNetProjectFile.Analyzers.Sdk/bin/Release/*.nupkg ./nuget_packges/
-      - name: Publish artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: artifacts
-          path: nuget_packges
-          if-no-files-found: ignore
+#     - name: Publish artifacts
+#       uses: actions/upload-artifact@v4
+#       with:
+#         name: artifacts
+#         path: nuget_packges
+#         if-no-files-found: ignore
 
   push:
     name: Push and Tag
