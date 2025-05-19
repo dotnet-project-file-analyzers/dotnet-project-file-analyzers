@@ -16,17 +16,17 @@ jobs:
         run: dotnet build dotnet-project-file-analyzers.slnx --configuration Release
       - name: Run unit tests
         run: dotnet test dotnet-project-file-analyzers.slnx --no-build --configuration Release --filter TestCategory!=Generators
-#      - name: Copy .nupkg files to nuget_packges folder
-#       run: |
-#         mkdir nuget_packges
-#         cp ./src/DotNetProjectFile.Analyzers/bin/Release/*.nupkg ./nuget_packges/
-#         cp ./src/DotNetProjectFile.Analyzers.Sdk/bin/Release/*.nupkg ./nuget_packges/
-#     - name: Publish artifacts
-#       uses: actions/upload-artifact@v4
-#       with:
-#         name: artifacts
-#         path: nuget_packges
-#         if-no-files-found: ignore
+      - name: Copy .nupkg files to nuget_packges folder
+        run: |
+          mkdir nuget_packges
+          cp ./src/DotNetProjectFile.Analyzers/bin/Release/*.nupkg ./nuget_packges/
+          cp ./src/DotNetProjectFile.Analyzers.Sdk/bin/Release/*.nupkg ./nuget_packges/
+      - name: Publish artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: artifacts
+          path: nuget_packges
+          if-no-files-found: ignore
 
   push:
     name: Push and Tag
@@ -67,4 +67,3 @@ jobs:
         run: |
           git tag v${{ env.Version }}
           git push origin v${{ env.Version }}
-
