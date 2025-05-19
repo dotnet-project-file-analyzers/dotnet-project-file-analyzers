@@ -26,7 +26,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0022** Build action includes should exist](https://dotnet-project-file-analyzers.github.io/rules/Proj0022.html)
 * [**Proj0023** Use forward slashes in paths](https://dotnet-project-file-analyzers.github.io/rules/Proj0023.html)
 * [**Proj0024** Order package versions alphabetically](https://dotnet-project-file-analyzers.github.io/rules/Proj0024.html)
-* [**Proj0025** Migrate from ruleset file to .editorconfig file](https://dotnet-project-file-analyzers.github.io/rules/Proj0025.html)
+* [**Proj0025** Migrate from ruleset file to .globalconfig file](https://dotnet-project-file-analyzers.github.io/rules/Proj0025.html)
 * [**Proj0026** Remove IncludeAssets when redundant](https://dotnet-project-file-analyzers.github.io/rules/Proj0026.html)
 * [**Proj0027** Override &lt;TargetFrameworks&gt; with &lt;TargetFrameworks&gt;](https://dotnet-project-file-analyzers.github.io/rules/Proj0027.html)
 * [**Proj0028** Define conditions on level 1](https://dotnet-project-file-analyzers.github.io/rules/Proj0028.html)
