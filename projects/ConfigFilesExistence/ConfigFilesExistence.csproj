@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup Label="Existing">
+    <EditorConfgFiles Include="editor-config.ini" />
+    <GlobalAnalyzerConfigFiles Include="analyzers-config.ini" />
+  </ItemGroup>
+
+  <ItemGroup Label="None-existing">
+    <EditorConfgFiles Include="missing.editor" />
+    <GlobalAnalyzerConfigFiles Include="missing.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
+</Project>
