@@ -76,7 +76,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0022** Build action includes should exist](rules/Proj0022.md)
 * [**Proj0023** Use forward slashes in paths](rules/Proj0023.md)
 * [**Proj0024** Order package versions alphabetically](rules/Proj0024.md)
-* [**Proj0025** Migrate from ruleset file to .editorconfig file](rules/Proj0025.md)
+* [**Proj0025** Migrate from ruleset file to .globalconfig file](rules/Proj0025.md)
 * [**Proj0026** Remove IncludeAssets when redundant](rules/Proj0026.md)
 * [**Proj0027** Override &lt;TargetFrameworks&gt; with &lt;TargetFrameworks&gt;](rules/Proj0027.md)
 * [**Proj0028** Define conditions on level 1](rules/Proj0028.md)
