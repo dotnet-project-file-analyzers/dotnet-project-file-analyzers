@@ -219,8 +219,8 @@ public static partial class Rule
 
     public static DiagnosticDescriptor MigrateFromRulesetToEditorConfigFile => New(
         id: 0025,
-        title: "Migrate from ruleset file to .editorconfig file",
-        message: "Migrate ruleset '{0}' to an .editorconfig file",
+        title: "Migrate from ruleset file to .globalconfig file",
+        message: "Migrate ruleset '{0}' to an .globalconfig file",
         description:
             "XML based ruleset files are defacto deprecated. Ruleset can be " +
             "automatically converted using Microsoft.CodeAnalysis.RulesetToEditorconfigConverter.",
