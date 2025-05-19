@@ -6,7 +6,7 @@ public class Reports
     public void private_assets_not_being_private()
          => new MigrateFromRulesetToEditorConfigFile()
          .ForProject("WithRuleset.cs")
-         .HasIssue(Issue.WRN("Proj0025", @"Migrate ruleset 'MyPreferences.ruleset' to an .globalconfig file")
+         .HasIssue(Issue.WRN("Proj0025", @"Migrate ruleset 'MyPreferences.ruleset' to a .globalconfig file")
          .WithSpan(04, 04, 04, 68));
 }
 
