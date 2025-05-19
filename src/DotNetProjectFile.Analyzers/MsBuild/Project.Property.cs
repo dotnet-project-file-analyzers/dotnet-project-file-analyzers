@@ -38,6 +38,14 @@ public sealed partial class Project
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private bool? managePackageVersionsCentrally;
 
+    public OutputType.Kind GetOutputType()
+        => Property<OutputType>()?.Value
+        ?? Sdk switch
+        {
+            "Microsoft.NET.Sdk.Web" => OutputType.Kind.Exe,
+            _ => OutputType.Kind.Library,
+        };
+
     public TNode? Property<TNode>() where TNode : Node => this
         .SelfAndDirectoryProps()
         .Select(p => Read<TNode>(p, new(p.Path)))
