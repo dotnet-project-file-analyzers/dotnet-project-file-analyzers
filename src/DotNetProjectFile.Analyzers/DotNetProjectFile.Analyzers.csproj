@@ -9,12 +9,17 @@
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <DevelopmentDependency>true</DevelopmentDependency>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <GenerateSBOM>true</GenerateSBOM>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(ContinuousIntegrationBuild)' == 'true'">
+    <RestoreLockedMode>true</RestoreLockedMode>
   </PropertyGroup>
 
   <PropertyGroup Label="Package settings">
@@ -48,6 +53,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Props and targets">
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.25" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.Sbom.Targets" Version="4.0.3" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
