@@ -11,6 +11,9 @@ internal static class CachedProjectLoader
 
     private sealed class Entry(FileInfo file)
     {
+        // Used for exponential back-off when IO exceptions occur due to conflicts in file access.
+        private readonly Random rnd = new(file.GetHashCode());
+        
         private readonly Lock locker = new();
         private Project? value;
 
@@ -27,10 +30,38 @@ internal static class CachedProjectLoader
                 {
                     if (value is not { })
                     {
-                        value = ProjectLoader.Load(file);
+                        value = TryLoad();
                     }
 
                     return value;
+                }
+            }
+        }
+
+        private Project TryLoad()
+        {
+            var waited = 0;
+
+            // Retry a few times (with random back-off) to read the file.
+            // Very rarely this fails due to conflicts. Most of the time,
+            // it will succeed on first try.
+
+            while (true)
+            {
+                try
+                {
+                    return ProjectLoader.Load(file);
+                }
+                catch (IOException)
+                {
+                    if (waited >= 10_000)
+                    {
+                        throw;
+                    }
+
+                    var wait = rnd.Next(1, 201);
+                    waited += wait;
+                    Thread.Sleep(wait);
                 }
             }
         }

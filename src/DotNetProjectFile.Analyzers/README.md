@@ -43,6 +43,9 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0039** Treat all warnings as errors is considered a bad practice](https://dotnet-project-file-analyzers.github.io/rules/Proj0039.html)
 * [**Proj0040** Run NuGet security audits on transitive dependencies too](https://dotnet-project-file-analyzers.github.io/rules/Proj0040.html)
 * [**Proj0041** NuGet security audits should report on moderate issues at minimum](https://dotnet-project-file-analyzers.github.io/rules/Proj0041.html)
+* [**Proj0042** Enable &lt;ContinuousIntegrationBuild&gt; when running in CI pipeline](https://dotnet-project-file-analyzers.github.io/rules/Proj0042.html)
+* [**Proj0043** Use lock files](https://dotnet-project-file-analyzers.github.io/rules/Proj0043.html)
+* [**Proj0044** Enable &lt;RestoreLockedMode&gt; when &lt;ContinuousIntegrationBuild&gt; is enabled](https://dotnet-project-file-analyzers.github.io/rules/Proj0044.html)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)
