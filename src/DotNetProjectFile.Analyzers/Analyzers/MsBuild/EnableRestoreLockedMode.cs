@@ -35,7 +35,7 @@ public sealed class EnableRestoreLockedMode() : MsBuildProjectFileAnalyzer(Rule.
                     return;
                 }
 
-                cur = node.Parent == cur ? null : node.Parent;
+                cur = cur.Parent;
             }
 
             context.ReportDiagnostic(Descriptor, node);

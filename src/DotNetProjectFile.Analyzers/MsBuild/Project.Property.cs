@@ -49,10 +49,13 @@ public sealed partial class Project
             _ => OutputType.Kind.Library,
         };
 
-    public TNode? Property<TNode>() where TNode : Node => this
+    public IEnumerable<TNode> Properties<TNode>() where TNode : Node => this
         .SelfAndDirectoryProps()
         .Select(p => Read<TNode>(p, new(p.Path)))
-        .OfType<TNode>()
+        .OfType<TNode>();
+
+    public TNode? Property<TNode>() where TNode : Node => this
+        .Properties<TNode>()
         .FirstOrDefault();
 
     /// <remarks>
