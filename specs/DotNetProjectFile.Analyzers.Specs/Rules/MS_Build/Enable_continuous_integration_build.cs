@@ -14,7 +14,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(0, 0, 0, 32)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
 
     [Test]
     public void on_false() => BuildAgent.Local.Run(analyzer => analyzer
@@ -26,7 +26,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 60)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
 
     [Test]
     public void on_unconditially_true() => BuildAgent.Local.Run(analyzer => analyzer
@@ -38,7 +38,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 59)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
 
     [TestCase(BuildAgent.AzurePipelines)]
     [TestCase(BuildAgent.GitHubActions)]
@@ -58,7 +58,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 59)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.GitHubActions)]
@@ -78,7 +78,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 59)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -98,7 +98,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 59)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -118,7 +118,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 59)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -138,7 +138,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 59)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -158,7 +158,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 59)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -178,7 +178,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 59)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -198,7 +198,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 59)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -218,7 +218,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 59)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -238,7 +238,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 59)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
 }
 
 [NonParallelizable]
