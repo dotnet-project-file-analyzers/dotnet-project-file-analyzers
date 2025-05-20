@@ -364,6 +364,26 @@ public static partial class Rule
         tags: ["error", "warning", "TreatWarningsAsErrors"],
         category: Category.CodeQuality);
 
+    public static DiagnosticDescriptor RunNuGetSecurityAuditsOnAll => New(
+        id: 0040,
+        title: "Run NuGet security audits on transitive dependencies too",
+        message: "Set <NugetAuditMode> to all",
+        description:
+            "By default (until .NET 10) nuget audits are not run on transitive dependencies.",
+        tags: ["security", "NuGet", "vulnerability"],
+        category: Category.Security);
+
+    public static DiagnosticDescriptor NuGetSecurityAuditShouldReportModerateAndUp => New(
+        id: 0041,
+        title: "NuGet security audits should report on moderate issues at minimum",
+        message: "Set <NugetAuditLevel> to low or moderate",
+        description:
+            "Security audit issues with severity moderate, high and critical " +
+            "should not be ignored.",
+        tags: ["security", "NuGet", "vulnerability"],
+        category: Category.Security);
+
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
