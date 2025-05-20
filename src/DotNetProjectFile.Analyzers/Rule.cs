@@ -383,8 +383,19 @@ public static partial class Rule
         tags: ["security", "NuGet", "vulnerability"],
         category: Category.Security);
 
-    public static DiagnosticDescriptor UseLockFiles => New(
+    public static DiagnosticDescriptor EnableContinuousIntegrationBuild => New(
         id: 0042,
+        title: "Enable <ContinuousIntegrationBuild> when running in CI pipeline",
+        message: "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline",
+        description:
+            "Setting ContinuousIntegrationBuild to true ensures (file) paths are normalized " +
+            "and futhermore can help other external tools with detecting whether or not a build " +
+            "is being performed in a continuous integration (CI) pipeline, such as for Proj0044.",
+        tags: ["security", "NuGet", "vulnerability"],
+        category: Category.Security);
+
+    public static DiagnosticDescriptor UseLockFiles => New(
+        id: 0043,
         title: "Use lock files",
         message: "Define the <RestorePackagesWithLockFile> node with value 'true'",
         description:
@@ -400,9 +411,9 @@ public static partial class Rule
         category: Category.Security);
 
     public static DiagnosticDescriptor EnableRestoreLockedMode => New(
-        id: 0043,
+        id: 0044,
         title: "Enable <RestoreLockedMode> when <ContinuousIntegrationBuild> is enabled",
-        message: "Enable <RestoreLockedMode> when <ContinuousIntegrationBuild> is enabled",
+        message: "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled",
         description:
             "In order to ensure dotnet restore is not allowed to implicitly upgrade " +
             "package versions that are specified in the lock file. It is necessary to enable \"locked mode\". " +
@@ -410,17 +421,6 @@ public static partial class Rule
             "if the ContinuousIntegrationBuild is set to true. " +
             "This is under the assumption that there is a dynamic way in place that ensures " +
             "ContinuousIntegrationBuild is set to true in CI pipelines.",
-        tags: ["security", "NuGet", "vulnerability"],
-        category: Category.Security);
-
-    public static DiagnosticDescriptor EnableContinuousIntegrationBuild => New(
-        id: 0044,
-        title: "Enable <ContinuousIntegrationBuild> when running in CI pipeline",
-        message: "Enable <ContinuousIntegrationBuild> when running in CI pipeline",
-        description:
-            "Setting ContinuousIntegrationBuild to true ensures (file) paths are normalized " +
-            "and futhermore can help other external tools with detecting whether or not a build " +
-            "is being performed in a continuous integration (CI) pipeline, such as for Proj0043.",
         tags: ["security", "NuGet", "vulnerability"],
         category: Category.Security);
 
