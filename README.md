@@ -128,6 +128,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 
 ### Publishing
 * [**Proj0400** Define the project publishability explicitly](rules/Proj0400.md)
+* [**Proj0401** Only publish executables](rules/Proj0401.md)
 
 ### Test projects
 * [**Proj0450** Test projects should not be packable](rules/Proj0450.md)
