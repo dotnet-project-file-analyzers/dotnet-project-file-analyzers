@@ -30,6 +30,15 @@ public sealed partial class Project
     public bool IsDevelopmentDependency()
         => Property<DevelopmentDependency>()?.Value ?? MsBuildDefaults.DevelopmentDependency;
 
+    public bool PackagesRestoredWithLockFile()
+        => Property<RestorePackagesWithLockFile>()?.Value ?? MsBuildDefaults.RestorePackagesWithLockFile;
+
+    public bool PackagesRestoredInLockedMode()
+        => Property<RestoreLockedMode>()?.Value ?? MsBuildDefaults.RestoreLockedMode;
+
+    public bool ContinuousIntegrationBuild()
+        => Property<ContinuousIntegrationBuild>()?.Value ?? MsBuildDefaults.ContinuousIntegrationBuild;
+
     public bool? ManagePackageVersionsCentrally()
         => managePackageVersionsCentrally
         ??= Property<ManagePackageVersionsCentrally>()?.Value

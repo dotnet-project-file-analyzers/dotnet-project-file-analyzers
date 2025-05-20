@@ -10,4 +10,7 @@ public static class MsBuildDefaults
     public static readonly bool IsTestProject = false;
     public static readonly bool? ManagePackageVersionsCentrally = null;
     public static readonly bool? NuGetAudit = true;
+    public static readonly bool RestorePackagesWithLockFile = false;
+    public static readonly bool RestoreLockedMode = false;
+    public static readonly bool ContinuousIntegrationBuild = false;
 }
