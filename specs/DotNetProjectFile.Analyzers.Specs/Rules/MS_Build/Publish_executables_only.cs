@@ -30,11 +30,11 @@ public class Reports
 </Project>")
     .HasIssue(
         Issue.WRN("Proj0401", "Only executables should be publishable").WithSpan(04, 04, 04, 39));
-
 }
 
 public class Guards
 {
+    [TestCase("PublishableWebApp.cs")]
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     public void Projects_without_issues(string project) => new PublishExeOnly()
