@@ -72,7 +72,6 @@ public sealed class EnableContinuousIntegrationBuild() : MsBuildProjectFileAnaly
 
     private static bool IsValidDefinition(ContinuousIntegrationBuild prop, BuildAgent agent)
     {
-
         var cur = (Node)prop;
         while (cur is not null)
         {
