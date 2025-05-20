@@ -93,6 +93,9 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0039** Treat all warnings as errors is considered a bad practice](rules/Proj0039.md)
 * [**Proj0040** Run NuGet security audits on transitive dependencies too](rules/Proj0040.md)
 * [**Proj0041** NuGet security audits should report on moderate issues at minimum](rules/Proj0041.md)
+* [**Proj0042** Enable &lt;ContinuousIntegrationBuild&gt; when running in CI pipeline](rules/Proj0042.md)
+* [**Proj0043** Use lock files](rules/Proj0043.md)
+* [**Proj0044** Enable &lt;RestoreLockedMode&gt; when &lt;ContinuousIntegrationBuild&gt; is enabled](rules/Proj0044.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
