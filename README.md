@@ -91,6 +91,8 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0037** Exclude runtime when all assets are private](rules/Proj0037.md)
 * [**Proj0038** Fully specify NoWarn rule IDs](rules/Proj0038.md)
 * [**Proj0039** Treat all warnings as errors is considered a bad practice](rules/Proj0039.md)
+* [**Proj0040** Run NuGet security audits on transitive dependencies too](rules/Proj0040.md)
+* [**Proj0041** NuGet security audits should report on moderate issues at minimum](rules/Proj0041.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
