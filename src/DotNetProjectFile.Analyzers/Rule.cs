@@ -747,6 +747,16 @@ public static partial class Rule
         tags: ["Configuration", "confusion"],
         category: Category.Clarity);
 
+    public static DiagnosticDescriptor PublishExeOnly => New(
+        id: 0401,
+        title: "Only publish executables",
+        message: "Only executables should be publishable",
+        description:
+            "Runing dotnet publish on projects other then executables will not " +
+            "publish anything and is considered a mistake.",
+        tags: ["IsPublishable", "library"],
+        category: Category.Bug);
+
     public static DiagnosticDescriptor TestProjectShouldNotBePackable => New(
         id: 0450,
         title: "Test projects should not be packable",

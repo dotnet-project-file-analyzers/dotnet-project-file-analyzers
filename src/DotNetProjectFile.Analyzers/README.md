@@ -78,6 +78,7 @@ The package contains analyzers that analyze .NET project files.
 
 ### Publishing
 * [**Proj0400** Define the project publishability explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0400.html)
+* [**Proj0401** Only publish executables](https://dotnet-project-file-analyzers.github.io/rules/Proj0401.html)
 
 ### Test projects
 * [**Proj0450** Test projects should not be packable](https://dotnet-project-file-analyzers.github.io/rules/Proj0450.html)
