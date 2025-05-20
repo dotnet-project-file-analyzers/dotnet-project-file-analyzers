@@ -366,7 +366,7 @@ public static partial class Rule
 
     public static DiagnosticDescriptor RunNuGetSecurityAuditsOnAll => New(
         id: 0040,
-        title: "Run NuGet security audits on all",
+        title: "Run NuGet security audits on transitive depedencies too",
         message: "Set <NugetAuditMode> to all",
         description:
             "By default (until .NET 10) nuget audits are not run on transitive dependencies.",

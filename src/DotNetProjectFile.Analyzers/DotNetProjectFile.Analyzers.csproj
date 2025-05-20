@@ -77,7 +77,7 @@ v1.6.0
 v1.5.13
 - Proj0022: Include <EditorConfig> and <GlobalAnalyzerConfigFiles> as build actions. (FN)
 - Proj0025: Change advise to the use of .globalconfig. (DOCUMENTATION)
-- Proj0040: Run NuGet security audits on all. (NEW RULE)
+- Proj0040: Run NuGet security audits on transitive depedencies too. (NEW RULE)
 - Proj0041: NuGet security audits should report on moderate issues at minimum. (NEW RULE)
 - Proj0401: Only publish executables. (NEW RULE)
 ]]>
