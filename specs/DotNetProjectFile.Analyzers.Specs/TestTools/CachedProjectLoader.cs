@@ -11,6 +11,7 @@ internal static class CachedProjectLoader
 
     private sealed class Entry(FileInfo file)
     {
+        private readonly Random rnd = new(file.GetHashCode());
         private readonly Lock locker = new();
         private Project? value;
 
@@ -27,10 +28,33 @@ internal static class CachedProjectLoader
                 {
                     if (value is not { })
                     {
-                        value = ProjectLoader.Load(file);
+                        value = Load();
                     }
 
                     return value;
+                }
+            }
+        }
+
+        private Project Load()
+        {
+            var wait = 1;
+
+            while (true)
+            {
+                try
+                {
+                    return ProjectLoader.Load(file);
+                }
+                catch (IOException)
+                {
+                    if (wait >= 10_000)
+                    {
+                        throw;
+                    }
+
+                    wait += rnd.Next(200);
+                    Thread.Sleep(wait);
                 }
             }
         }

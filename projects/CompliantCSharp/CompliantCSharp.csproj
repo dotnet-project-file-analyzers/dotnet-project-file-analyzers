@@ -20,6 +20,10 @@
     <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.2.2" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
+  <ItemGroup Label="Build Tools">
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.25" PrivateAssets="all" ExcludeAssets="runtime" />
+  </ItemGroup>
+
   <ItemGroup>
     <AdditionalFiles Include="*.csproj" Visible="false" />
     <AdditionalFiles Include="*.resx" />
