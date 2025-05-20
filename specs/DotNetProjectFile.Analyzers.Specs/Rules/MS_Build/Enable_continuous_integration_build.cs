@@ -2,6 +2,7 @@ using DotNetProjectFile.BuildAgents;
 
 namespace Rules.MS_Build.Enable_continuous_integration_build;
 
+[NonParallelizable]
 public class Reports
 {
     [Test]
@@ -240,6 +241,7 @@ public class Reports
             Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 59)));
 }
 
+[NonParallelizable]
 public class Guards
 {
     [TestCase("CompliantCSharp.cs")]
