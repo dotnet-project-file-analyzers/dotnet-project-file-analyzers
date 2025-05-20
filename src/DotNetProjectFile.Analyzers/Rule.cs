@@ -366,7 +366,7 @@ public static partial class Rule
 
     public static DiagnosticDescriptor RunNuGetSecurityAuditsOnAll => New(
         id: 0040,
-        title: "Run NuGet security audits on transitive depedencies too",
+        title: "Run NuGet security audits on transitive dependencies too",
         message: "Set <NugetAuditMode> to all",
         description:
             "By default (until .NET 10) nuget audits are not run on transitive dependencies.",
@@ -375,7 +375,7 @@ public static partial class Rule
 
     public static DiagnosticDescriptor NuGetSecurityAuditShouldReportModerateAndUp => New(
         id: 0041,
-        title: "NuGet security audits should report on moderate issues",
+        title: "NuGet security audits should report on moderate issues at minimum",
         message: "Set <NugetAuditLevel> to low or moderate",
         description:
             "Security audit issues with severity moderate, high and critical " +
