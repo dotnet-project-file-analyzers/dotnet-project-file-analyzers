@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net8.0": {
+      "DotNetProjectFile.Analyzers": {
+        "type": "Direct",
+        "requested": "[1.2.2, )",
+        "resolved": "1.2.2",
+        "contentHash": "nibkccSVGPl5BiKrev2JjbzH6HqOsRFxKops4Z8k9BzngV+mEtjAPKaX/otFSKTVkFdrLnfhZgW3imip8UBJVw=="
+      }
+    }
+  }
+}
