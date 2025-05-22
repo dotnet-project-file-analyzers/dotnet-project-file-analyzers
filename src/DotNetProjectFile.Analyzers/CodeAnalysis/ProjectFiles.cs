@@ -1,6 +1,7 @@
 using DotNetProjectFile.Git;
 using DotNetProjectFile.Ini;
 using DotNetProjectFile.Resx;
+using DotNetProjectFile.Slnx;
 
 namespace DotNetProjectFile.CodeAnalysis;
 
@@ -12,6 +13,7 @@ public sealed partial class ProjectFiles
     private readonly FileCache<IniFile> IniFiles = new();
     private readonly FileCache<MsBuildProject> MsBuildProjects = new();
     private readonly FileCache<Resource> ResourceFiles = new();
+    private readonly FileCache<Solution> SolutionFIles = new();
 
     public GitIgnoreSyntax? GitIgnoreFile(IOFile file)
         => GitIgnoredFiles.TryGetOrUpdate(file, Create_GitIgnoreFile);
@@ -27,11 +29,22 @@ public sealed partial class ProjectFiles
         var path = IOFile.Parse(text.Path);
         if (path.GetProjectFileType() is ProjectFileType.None) return null;
 
-        return MsBuildProjects.TryGetOrUpdate(path, _ => Project.Load(text, Global));
+        return MsBuildProjects.TryGetOrUpdate(path, _ => MsBuild.Project.Load(text, Global));
     }
 
     public Resource? ResourceFile(IOFile file)
         => ResourceFiles.TryGetOrUpdate(file, Create_ResourceFile);
+
+    public Solution? SolutionFile(AdditionalText text)
+    {
+        var path = IOFile.Parse(text.Path);
+        return SolutionFIles.TryGetOrUpdate(path, Create_SolutionFile);
+    }
+
+    private Solution Create_SolutionFile(IOFile file)
+    {
+        throw new NotImplementedException();
+    }
 
     public MsBuildProject? UpdateMsBuildProject(CompilationAnalysisContext context)
     {
