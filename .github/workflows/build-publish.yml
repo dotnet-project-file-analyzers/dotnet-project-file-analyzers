@@ -82,7 +82,7 @@ jobs:
           release_name: ${{ github.ref }}
           body: ${{ steps.create-release-notes.outputs.release-notes }}
           draft: false
-          prerelease: contains(github.ref, '-') 
+          prerelease: ${{ contains(github.ref, '-') }}
 
       - name: DotNet NuGet Push  
         run: dotnet nuget push "*.nupkg" --source ${{ env.NUGET_FEED}} --api-key ${{ env.NUGET_KEY }} --skip-duplicate --no-symbols    
