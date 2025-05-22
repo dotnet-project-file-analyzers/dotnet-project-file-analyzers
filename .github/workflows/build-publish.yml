@@ -85,4 +85,4 @@ jobs:
           prerelease: false 
 
       - name: DotNet NuGet Push  
-        run: dotnet nuget push "packages/*.nupkg" --source ${{ env.NUGET_FEED}} --api-key ${{ env.NUGET_KEY }} --skip-duplicate --no-symbols    
+        run: dotnet nuget push "*.nupkg" --source ${{ env.NUGET_FEED}} --api-key ${{ env.NUGET_KEY }} --skip-duplicate --no-symbols    
