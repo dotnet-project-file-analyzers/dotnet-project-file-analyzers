@@ -27,7 +27,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.0.203'
+          dotnet-version: '9.0.300'
 
       - name: Build
         run: > 
@@ -39,7 +39,7 @@ jobs:
             dotnet test dotnet-project-file-analyzers.slnx
                 -c Release
                 --no-build
-                --configuration Release --filter TestCategory!=Generators
+                --filter TestCategory!=Generators
 
       - name: DotNet Pack
         if: startsWith(github.ref, 'refs/tags/')
@@ -49,7 +49,7 @@ jobs:
           echo Version: $VERSION
           VERSION="${VERSION//v}"
           echo Clean Version: $VERSION
-          dotnet pack -v normal --no-restore -p:PackageVersion=$VERSION --configuration Release --output packages
+          dotnet pack dotnet-project-file-analyzers.slnx -v normal --no-restore -p:PackageVersion=$VERSION -c Release --output packages
    
       - name: Upload Artifact
         if: startsWith(github.ref, 'refs/tags/')
