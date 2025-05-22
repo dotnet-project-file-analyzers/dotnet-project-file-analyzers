@@ -24,6 +24,7 @@
     <AdditionalFiles Include="**/*.csproj" Visible="false" />
     <AdditionalFiles Include="**/*.props" Visible="false" />
     <AdditionalFiles Include="**/*.targets" Visible="false" />
+    <AdditionalFiles Include="**/*.slnx" Visible="false" />
     <AdditionalFiles Include="**/*.vbproj" Visible="false" />
   </ItemGroup>
 
