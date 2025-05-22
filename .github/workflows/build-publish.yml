@@ -31,12 +31,12 @@ jobs:
 
       - name: Build
         run: > 
-            dotnet build 
+            dotnet build dotnet-project-file-analyzers.slnx
                 -c Release
 
       - name: Test
         run: > 
-            dotnet test 
+            dotnet test dotnet-project-file-analyzers.slnx
                 -c Release
                 --no-build
                 --configuration Release --filter TestCategory!=Generators
