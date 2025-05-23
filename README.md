@@ -1,8 +1,8 @@
 ![.NET project file analyzers logo](design/logo_128x128.png)
 # .NET project file analyzers
 is a [NuGet](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/) package
-containing [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/)
-(static code) [analyzers](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.diagnostics.diagnosticanalyzer)
+containing [Roslyn](https://docs.microsoft.com/dotnet/csharp/roslyn-sdk/)
+(static code) [analyzers](https://docs.microsoft.com/dotnet/api/microsoft.codeanalysis.diagnostics.diagnosticanalyzer)
 that report issues on .NET project files.
 
 The documentation reflects the current repository state of the features, not the

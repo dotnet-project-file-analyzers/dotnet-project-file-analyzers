@@ -13,7 +13,7 @@ file. Unfortunately, changing the severity (and other configuration) of rules
 in the `.editorconfig` is [**NOT** supported by MS Build](https://github.com/dotnet/roslyn/issues/37876).
 
 ## Global analyzer config
-It is also possible to configure rules using a [Global AnalyzerConfig](https://learn.microsoft.com/en-us/dotnet/fundamentals/code-analysis/configuration-files#global-analyzerconfig)
+It is also possible to configure rules using a [Global AnalyzerConfig](https://learn.microsoft.com/dotnet/fundamentals/code-analysis/configuration-files#global-analyzerconfig)
 `.globalconfig` file located in the same directory as the project file or in
 one of its (grand)parent directories. The following `.globalconfig` file will
 disable rule `Proj0010` and raise `Proj0011` to error level:
