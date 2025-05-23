@@ -882,8 +882,7 @@ public static partial class Rule
             "custom defined license that have not been manually reviewed.",
         tags: ["license"],
         category: Category.Legal,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: false);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor CustomPackageLicenseUnknown => New(
         id: 0503,
@@ -894,8 +893,7 @@ public static partial class Rule
             "custom defined license that have not been manually reviewed.",
         tags: ["license"],
         category: Category.Legal,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: false);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor CustomPackageLicenseHasChanged => New(
         id: 0504,
