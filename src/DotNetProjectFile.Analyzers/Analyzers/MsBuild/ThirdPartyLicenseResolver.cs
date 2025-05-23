@@ -3,6 +3,7 @@ using DotNetProjectFile.NuGet;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Resolves thrid party licenses and validates them.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     Rule.OnlyIncludePackagesWithExplicitLicense,
@@ -39,12 +40,9 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
 
             if (Report(dependency, projectLicense, licenses, context) is { } package)
             {
-                foreach (var transitive in package.TransativeDepedencies())
+                foreach (var transitive in package.TransativeDepedencies().Where(done.Add))
                 {
-                    if (done.Add(transitive))
-                    {
-                        queue.Enqueue(new(dependency.Node, transitive));
-                    }
+                    queue.Enqueue(new(dependency.Node, transitive));
                 }
             }
         }
@@ -66,7 +64,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
                 dependency.Node,
                 dependency.Info.Name,
                 dependency.Info.Version,
-                dependency.Format);
+                $"{package} {dependency.Format}");
 
             return null;
         }
@@ -78,7 +76,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
                 dependency.Node,
                 dependency.Info.Name,
                 dependency.Info.Version,
-                dependency.Format,
+                $"{package} {dependency.Format}",
                 package.LicenseUrl);
         }
         else if (package.License is CustomLicense customLicense)
