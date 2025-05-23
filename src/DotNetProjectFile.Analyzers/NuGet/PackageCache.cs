@@ -4,6 +4,7 @@ using DotNetProjectFile.Licensing;
 using DotNetProjectFile.NuGet.Packaging;
 using System.Collections.Concurrent;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace DotNetProjectFile.NuGet;
@@ -54,6 +55,11 @@ public static class PackageCache
         // Directories have lower case names.
         var name = info.Name.ToLowerInvariant();
         var version = info.Version?.ToLowerInvariant();
+
+        if(name == "system.diagnostics.tools")
+        {
+
+        }
 
         if (cache.TryGetValue(info, out var result))
         {
@@ -153,38 +159,38 @@ public static class PackageCache
 
         var version = versionLabel is null ? null : TryParseVersion(versionLabel);
 
-        IODirectory? foundVersion;
+        IODirectory? foundVersion = null;
         if (version is null)
         {
             // Default to highest found package version if the input version was gibberish.
             foundVersion = packageDir.SubDirectories()
-                .OrderBy(d => TryParseVersion(d.Name))
-                .LastOrDefault();
+                .OrderByDescending(d => TryParseVersion(d.Name))
+                .FirstOrNone();
         }
         else
         {
             var pairs = packageDir.SubDirectories()
-                .Select(d => (d, TryParseVersion(d.Name)))
+                .Select(d => new VersionLocation(d, TryParseVersion(d.Name)))
+                .Where(vl => vl.Version is { })
                 .ToArray();
 
             // Pick nearest version that is higher than the current version if available.
             foundVersion = pairs
-                .Where(pair => pair.Item2 > version)
-                .OrderBy(pair => pair.Item2)
-                .FirstOrDefault().d;
+                .OrderBy(vl => vl.Version)
+                .FirstOrNone(vl => vl.Version > version)?
+                .Directory;
 
-            if (foundVersion is null)
-            {
-                // Pick nearest version that is lower than the current version if available.
-                foundVersion = pairs
-                    .Where(pair => pair.Item2 < version)
-                    .OrderBy(pair => pair.Item2)
-                    .LastOrDefault().d;
-            }
+            // Pick nearest version that is lower than the current version if available.
+            foundVersion ??= pairs
+                .OrderByDescending(pair => pair.Version)
+                .FirstOrNone(pair => pair.Version < version)?
+                .Directory;
         }
 
         return foundVersion;
     }
+
+    private readonly record struct VersionLocation(IODirectory Directory, System.Version? Version);
 
     private static System.Version? TryParseVersion(string version)
     {
