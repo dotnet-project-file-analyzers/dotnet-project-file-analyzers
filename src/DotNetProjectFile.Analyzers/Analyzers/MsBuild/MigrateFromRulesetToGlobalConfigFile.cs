@@ -1,8 +1,9 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.MigrateFromRulesetToGlobalConfigFile"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class MigrateFromRulesetToEditorConfigFile()
-    : MsBuildProjectFileAnalyzer(Rule.MigrateFromRulesetToEditorConfigFile)
+public sealed class MigrateFromRulesetToGlobalConfigFile()
+    : MsBuildProjectFileAnalyzer(Rule.MigrateFromRulesetToGlobalConfigFile)
 {
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;

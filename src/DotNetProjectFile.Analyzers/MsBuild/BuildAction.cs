@@ -1,7 +1,14 @@
 namespace DotNetProjectFile.MsBuild;
 
 /// <summary>
-/// Build action node (&lt;Compile&gt;,&lt;Content&gt;, &lt;None&gt;, &lt;AdditionalFiles&gt;, &lt;EmbeddedResource&gt;).
+/// Build action node:
+/// * <see cref="AdditionalFiles"/>
+/// * <see cref="Compile"/>
+/// * <see cref="Content"/>
+/// * <see cref="EditorConfgFiles"/>
+/// * <see cref="EmbeddedResource"/>
+/// * <see cref="GlobalAnalyzerConfigFiles"/>
+/// * <see cref="None"/>.
 /// </summary>
 public abstract class BuildAction(XElement element, Node parent, MsBuildProject project)
     : Node<string>(element, parent, project)

@@ -26,7 +26,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0022** Build action includes should exist](https://dotnet-project-file-analyzers.github.io/rules/Proj0022.html)
 * [**Proj0023** Use forward slashes in paths](https://dotnet-project-file-analyzers.github.io/rules/Proj0023.html)
 * [**Proj0024** Order package versions alphabetically](https://dotnet-project-file-analyzers.github.io/rules/Proj0024.html)
-* [**Proj0025** Migrate from ruleset file to .editorconfig file](https://dotnet-project-file-analyzers.github.io/rules/Proj0025.html)
+* [**Proj0025** Migrate from ruleset file to .globalconfig file](https://dotnet-project-file-analyzers.github.io/rules/Proj0025.html)
 * [**Proj0026** Remove IncludeAssets when redundant](https://dotnet-project-file-analyzers.github.io/rules/Proj0026.html)
 * [**Proj0027** Override &lt;TargetFrameworks&gt; with &lt;TargetFrameworks&gt;](https://dotnet-project-file-analyzers.github.io/rules/Proj0027.html)
 * [**Proj0028** Define conditions on level 1](https://dotnet-project-file-analyzers.github.io/rules/Proj0028.html)
@@ -41,6 +41,11 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0037** Exclude runtime when all assets are private](https://dotnet-project-file-analyzers.github.io/rules/Proj0037.html)
 * [**Proj0038** Fully specify NoWarn rule IDs](https://dotnet-project-file-analyzers.github.io/rules/Proj0038.html)
 * [**Proj0039** Treat all warnings as errors is considered a bad practice](https://dotnet-project-file-analyzers.github.io/rules/Proj0039.html)
+* [**Proj0040** Run NuGet security audits on transitive dependencies too](https://dotnet-project-file-analyzers.github.io/rules/Proj0040.html)
+* [**Proj0041** NuGet security audits should report on moderate issues at minimum](https://dotnet-project-file-analyzers.github.io/rules/Proj0041.html)
+* [**Proj0042** Enable &lt;ContinuousIntegrationBuild&gt; when running in CI pipeline](https://dotnet-project-file-analyzers.github.io/rules/Proj0042.html)
+* [**Proj0043** Use lock files](https://dotnet-project-file-analyzers.github.io/rules/Proj0043.html)
+* [**Proj0044** Enable &lt;RestoreLockedMode&gt; when &lt;ContinuousIntegrationBuild&gt; is enabled](https://dotnet-project-file-analyzers.github.io/rules/Proj0044.html)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)
@@ -78,6 +83,7 @@ The package contains analyzers that analyze .NET project files.
 
 ### Publishing
 * [**Proj0400** Define the project publishability explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0400.html)
+* [**Proj0401** Only publish executables](https://dotnet-project-file-analyzers.github.io/rules/Proj0401.html)
 
 ### Test projects
 * [**Proj0450** Test projects should not be packable](https://dotnet-project-file-analyzers.github.io/rules/Proj0450.html)

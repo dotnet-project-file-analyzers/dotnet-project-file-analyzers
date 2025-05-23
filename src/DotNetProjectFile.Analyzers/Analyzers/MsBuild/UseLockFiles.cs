@@ -1,17 +1,21 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <summary>Implements <see cref="Rule.DefineOutputType"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class DefineOutputType() : MsBuildProjectFileAnalyzer(Rule.DefineOutputType)
+public sealed class UseLockFiles() : MsBuildProjectFileAnalyzer(Rule.UseLockFiles)
 {
     /// <inheritdoc />
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.File.Property<OutputType>() is null)
+        var project = context.File;
+        if (project.Property<RestorePackagesWithLockFile>() is not { } node)
         {
             context.ReportDiagnostic(Descriptor, context.File);
+        }
+        else if (node.Value != true)
+        {
+            context.ReportDiagnostic(Descriptor, node);
         }
     }
 }

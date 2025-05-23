@@ -9,12 +9,17 @@
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <DevelopmentDependency>true</DevelopmentDependency>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)'=='Release'">
     <IsPackable>true</IsPackable>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <GenerateSBOM>true</GenerateSBOM>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(ContinuousIntegrationBuild)' == 'true'">
+    <RestoreLockedMode>true</RestoreLockedMode>
   </PropertyGroup>
 
   <PropertyGroup Label="Package settings">
@@ -33,7 +38,7 @@
   </PropertyGroup>
 
   <ItemGroup Label="Not Used yet, so exclude">
-    <Compile Remove ="Antlr4/**/*.cs" />
+    <Compile Remove="Antlr4/**/*.cs" />
   </ItemGroup>
 
   <ItemGroup Label="Package files">
@@ -48,16 +53,17 @@
   </ItemGroup>
 
   <ItemGroup Label="Props and targets">
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="3.1.0" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.25" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="4.0.3" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Roslyn dependencies">
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.10.0" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.11.0" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
     <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
-    <PackageReference Include="StyleCop.Analyzers" Version="*-*" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup>
@@ -65,7 +71,7 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.5.12</Version>
+    <Version>1.5.13</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
@@ -74,10 +80,19 @@ v1.6.0
 - Proj0502: Fixed missing package name when reference was using Update instead of Include. (BUG)
 - Proj0503: Package license is unknown. (NEW RULE)
 - Proj0504: Package license has changed. (NEW RULE)
-      ]]>
+]]>
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.5.13
+- Proj0022: Include <EditorConfig> and <GlobalAnalyzerConfigFiles> as build actions. (FN)
+- Proj0025: Change advise to the use of .globalconfig. (DOCUMENTATION)
+- Proj0040: Run NuGet security audits on transitive dependencies too. (NEW RULE)
+- Proj0041: NuGet security audits should report on moderate issues at minimum. (NEW RULE)
+- Proj0042: Enable <ContinuousIntegrationBuild> when running in CI pipeline. (NEW RULE)
+- Proj0043: Use lock files. (NEW RULE)
+- Proj0044: Enable <RestoreLockedMode> when <ContinuousIntegrationBuild> is enabled. (NEW RULE)
+- Proj0401: Only publish executables. (NEW RULE)
 v1.5.12
 - Proj0005: Fixed missing package name when reference was using Update instead of Include. (BUG)
 - Proj0039: Treat all warnings as errors is considered a bad practice. (NEW RULE)
