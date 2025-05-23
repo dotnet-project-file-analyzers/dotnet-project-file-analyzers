@@ -50,6 +50,7 @@ public class From_url
     [TestCase("https://github.com/dotnet/coreclr/blob/master/LICENSE.TXT", "MIT")]
     [TestCase("https://raw.githubusercontent.com/aspnet/AspNetCore/2.0.0/LICENSE.txt", "Apache-2.0")]
     [TestCase("https://raw.githubusercontent.com/aspnet/Home/2.0.0/LICENSE.txt", "Apache-2.0")]
+    [TestCase("https://github.com/dotnet/standard/blob/master/LICENSE.TXT", "MIT")]
     public void Results_in(string? url, string? expected)
     {
         expected ??= Licenses.Unknown.Expression;
