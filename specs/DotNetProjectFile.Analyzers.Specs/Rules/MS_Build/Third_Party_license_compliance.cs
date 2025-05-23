@@ -35,7 +35,9 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0501", "The SimpleInjector.Extensions.ExecutionContextScoping (4.0.0) package only contains a deprecated 'https://simpleinjector.org/license' license URL"));
+       .HasIssues(
+            Issue.WRN("Proj0501", "The SimpleInjector ([4.0.0,5.0)) transitive package only contains a deprecated 'https://simpleinjector.org/license' license URL"),
+            Issue.WRN("Proj0501", "The SimpleInjector.Extensions.ExecutionContextScoping (4.0.0) package only contains a deprecated 'https://simpleinjector.org/license' license URL"));
 
     [Test]
     public void on_package_with_license_incompatable_to_project() => new ThirdPartyLicenseResolver()
