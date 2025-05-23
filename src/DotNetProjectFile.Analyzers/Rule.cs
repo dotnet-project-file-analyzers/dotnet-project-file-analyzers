@@ -904,8 +904,7 @@ public static partial class Rule
             "license has been changed without checking the changes.",
         tags: ["license"],
         category: Category.Legal,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: false);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor ThirdPartyLicenseRequiresInclude => New(
         id: 0505,

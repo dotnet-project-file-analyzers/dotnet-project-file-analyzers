@@ -18,6 +18,11 @@
     <GenerateSBOM>true</GenerateSBOM>
   </PropertyGroup>
 
+  <!-- We want to document the code but we do not need to ship it. -->
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(ContinuousIntegrationBuild)' == 'true'">
     <RestoreLockedMode>true</RestoreLockedMode>
   </PropertyGroup>
@@ -33,7 +38,6 @@
     <PackageIcon>logo_128x128.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
     <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
