@@ -3,6 +3,7 @@ using DotNetProjectFile.NuGet;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Resolves third party licenses and validates them.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     Rule.OnlyIncludePackagesWithExplicitLicense,
@@ -24,56 +25,111 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
             .Where(p => p.Include is { Length: > 0 })
             .ToArray();
 
+        var queue = new Queue<Dependency>();
+        var done = new HashSet<PackageVersionInfo>();
+
         foreach (var reference in context.File.ItemGroups
-            .Children<PackageReferenceBase>(r => r.Version is { Length: > 0 }))
+            .Children<PackageReferenceBase>(r => r is { Info.Version.Length: > 0 } && done.Add(r.Info)))
         {
-            Report(reference, projectLicense, licenses, context);
+            queue.Enqueue(new(reference, reference.Info));
+        }
+
+        while (queue.Any())
+        {
+            var dependency = queue.Dequeue();
+
+            if (Report(dependency, projectLicense, licenses, context) is { } package)
+            {
+                foreach (var transitive in package.TransativeDepedencies().Where(done.Add))
+                {
+                    queue.Enqueue(new(dependency.Node, transitive));
+                }
+            }
         }
     }
 
-    private static void Report(PackageReferenceBase reference, LicenseExpression projectLicense, IReadOnlyCollection<ThirdPartyLicense> licenses, ProjectFileAnalysisContext context)
+    private static Package? Report(Dependency dependency, LicenseExpression projectLicense, IReadOnlyCollection<ThirdPartyLicense> licenses, ProjectFileAnalysisContext context)
     {
-        if (reference.GetLicensedPackage() is not { } package)
+        if (PackageCache.GetPackage(dependency.Info) is not { } package)
         {
-            context.ReportDiagnostic(Rule.OnlyIncludePackagesWithExplicitLicense, reference, reference.IncludeOrUpdate);
-            return;
+            return null;
         }
 
-        var packageLicense = package.License;
+        if (package.LicenseExpression is not { Length: > 0 } &&
+            package.LicenseFile is not { Length: > 0 } &&
+            package.LicenseUrl is not { Length: > 0 })
+        {
+            context.ReportDiagnostic(
+                Rule.OnlyIncludePackagesWithExplicitLicense,
+                dependency.Node,
+                dependency.Info.Name,
+                dependency.Info.Version,
+                dependency.Format);
 
-        if (package.UrlOnly() && packageLicense.IsUnknown)
-        {
-            context.ReportDiagnostic(Rule.PackageOnlyContainsDeprecatedLicenseUrl, reference, reference.IncludeOrUpdate);
+            return null;
         }
-        else if (packageLicense is CustomLicense customLicense)
+
+        if (package.UrlOnly() && package.License.IsUnknown)
         {
-            if (licenses.FirstOrDefault(l => l.IsMatch(reference)) is not { } license)
+            context.ReportDiagnostic(
+                Rule.PackageOnlyContainsDeprecatedLicenseUrl,
+                dependency.Node,
+                dependency.Info.Name,
+                dependency.Info.Version,
+                dependency.Format,
+                package.LicenseUrl);
+        }
+        else if (package.License is CustomLicense customLicense)
+        {
+            if (licenses.FirstOrDefault(l => l.IsMatch(dependency.Node)) is not { } license)
             {
-                context.ReportDiagnostic(Rule.CustomPackageLicenseUnknown, reference, reference.IncludeOrUpdate, customLicense.Hash);
+                context.ReportDiagnostic(
+                    Rule.CustomPackageLicenseUnknown,
+                    dependency.Node,
+                    dependency.Info.Name,
+                    customLicense.Hash);
             }
             else if (license.Hash != customLicense.Hash)
             {
-                context.ReportDiagnostic(Rule.CustomPackageLicenseHasChanged, license, reference.IncludeOrUpdate, customLicense.Hash);
+                context.ReportDiagnostic(
+                    Rule.CustomPackageLicenseHasChanged,
+                    license,
+                    dependency.Info.Name,
+                    customLicense.Hash);
             }
         }
-        else if (!packageLicense.CompatibleWith(projectLicense))
+        else if (!package.License.CompatibleWith(projectLicense))
         {
-            context.ReportDiagnostic(Rule.PackageIncompatibleWithProjectLicense, reference, reference.IncludeOrUpdate, packageLicense, projectLicense);
+            context.ReportDiagnostic(
+                Rule.PackageIncompatibleWithProjectLicense,
+                dependency.Node,
+                dependency.Info.Name,
+                dependency.Info.Version,
+                dependency.Format,
+                package.License,
+                projectLicense);
         }
+
+        return package;
+    }
+
+    private readonly record struct Dependency(PackageReferenceBase Node, PackageVersionInfo Info)
+    {
+        public bool IsTransitive => !Node.Info.Name.IsMatch(Info.Name);
+
+        public string Format => IsTransitive ? "transitive " : string.Empty;
     }
 }
 
 file static class Extensions
 {
-    public static Package? GetLicensedPackage(this PackageReferenceBase reference)
-       => reference.ResolvePackage() is { } package
-       && (package.LicenseExpression is { Length: > 0 }
-       || package.LicenseFile is { Length: > 0 }
-       || package.LicenseUrl is { Length: > 0 })
-       ? package
-       : null;
-
     public static bool UrlOnly(this Package package)
         => package.LicenseExpression is not { Length: > 0 }
         && package.LicenseFile is not { Length: > 0 };
+
+    public static IEnumerable<PackageVersionInfo> TransativeDepedencies(this Package package)
+        => package.NuSpec?.Metadata?.Depedencies?
+            .SelectMany(d => d.Dependencies ?? [])
+            .Select(d => d.Info)
+        ?? [];
 }

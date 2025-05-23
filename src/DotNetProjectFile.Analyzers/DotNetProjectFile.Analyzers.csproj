@@ -18,6 +18,11 @@
     <GenerateSBOM>true</GenerateSBOM>
   </PropertyGroup>
 
+  <!-- We want to document the code but we do not need to ship it. -->
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
   <PropertyGroup Condition="'$(ContinuousIntegrationBuild)' == 'true'">
     <RestoreLockedMode>true</RestoreLockedMode>
   </PropertyGroup>
@@ -33,7 +38,6 @@
     <PackageIcon>logo_128x128.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
     <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
@@ -80,6 +84,9 @@ v1.6.0
 - Proj0502: Fixed missing package name when reference was using Update instead of Include. (BUG)
 - Proj0503: Package license is unknown. (NEW RULE)
 - Proj0504: Package license has changed. (NEW RULE)
+- Proj0505: Third-party license registry requires include. (NEW RULE)
+- Proj0506: Third-party license registry requires hash. (NEW RULE)
+- Proj0507: Third-party license registry must be unconditional. (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
@@ -106,9 +113,6 @@ v1.5.11
 - Proj0036: Remove None when redundant. (NEW RULE)
 - Proj0038: Fully specify NoWarn rule IDs. (NEW RULE)
 - Proj0214: Severity to INFO as it is considered too opinionated. (UPDATE)
-- Proj0505: Third-party license registry requires include. (NEW RULE)
-- Proj0506: Third-party license registry requires hash. (NEW RULE)
-- Proj0507: Third-party license registry must be unconditional. (NEW RULE)
 - Proj1001: Suggested analyzers now based on package references rather than assembly names. (FP)
 - Proj1001: Now suggest to use AwesomeAssertions.Analyzers for AwesomeAssertions. (FN)
 - Proj1200: Fix compilation packages (that only hold a collective set of dependencies) incorrectly marked as development-dependencies. (FP)

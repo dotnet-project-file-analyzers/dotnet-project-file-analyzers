@@ -1,7 +1,7 @@
 using DotNetProjectFile.NuGet;
 using DotNetProjectFile.NuGet.Packaging;
 
-namespace Rules.MS_Build.Thrid_Party_license_compliance;
+namespace Rules.MS_Build.Third_Party_license_compliance;
 
 public class Reports
 {
@@ -19,7 +19,7 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0500", "The Microsoft.DotNet.PlatformAbstractions package is shipped without an explicitly defined license"));
+       .HasIssue(Issue.WRN("Proj0500", "The Microsoft.DotNet.PlatformAbstractions (1.1.1) package is shipped without an explicitly defined license"));
 
     [Test]
     public void on_packages_with_deprecated_URL_in_nuspec() => new ThirdPartyLicenseResolver()
@@ -35,7 +35,9 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0501", "The SimpleInjector.Extensions.ExecutionContextScoping package only contains a deprecated license URL"));
+       .HasIssues(
+            Issue.WRN("Proj0501", "The SimpleInjector ([4.0.0,5.0)) transitive package only contains a deprecated 'https://simpleinjector.org/license' license URL"),
+            Issue.WRN("Proj0501", "The SimpleInjector.Extensions.ExecutionContextScoping (4.0.0) package only contains a deprecated 'https://simpleinjector.org/license' license URL"));
 
     [Test]
     public void on_package_with_license_incompatable_to_project() => new ThirdPartyLicenseResolver()
@@ -52,7 +54,7 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-        .HasIssue(Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI package is distributed as GPL-3.0-only, which is imcompatable with the NOASSERTION license of the project")
+        .HasIssue(Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI (1.4.4.533) package is distributed as GPL-3.0-only, which is imcompatable with the NOASSERTION license of the project")
         .WithSpan(08, 04, 08, 75));
 
     [Test]
@@ -69,7 +71,7 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-        .HasIssue(Issue.WRN("Proj0503", @"Add <ThirdPartyLicense Include=""SonarAnalyzer.CSharp"" Hash=""SonarAnalyzer.CSharp"" /> to accept the license")
+        .HasIssue(Issue.WRN("Proj0503", @"Add <ThirdPartyLicense Include=""SonarAnalyzer.CSharp"" Hash=""IBM9yngU7omFyJOMSFSy0w"" /> to accept the license")
         .WithSpan(07, 04, 07, 79));
 
     [Test]
@@ -92,6 +94,94 @@ public class Reports
 </Project>")
         .HasIssue(Issue.WRN("Proj0504", "The license for SonarAnalyzer.CSharp has changed as its hash is now IBM9yngU7omFyJOMSFSy0w")
         .WithSpan(11, 04, 11, 86));
+
+    [Test]
+    public void missing_include() => new ThirdPartyLicenseCompliance()
+     .ForInlineCsproj(@$"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ThirdPartyLicense Update=""Qowaiv"" Hash=""QED9yngU7o+Fy128_FSy0w"" />
+  </ItemGroup>
+
+</Project>")
+     .HasIssue(Issue.WRN("Proj0505", "Include has not been specified")
+     .WithSpan(07, 04, 07, 71));
+
+    [Test]
+    public void invalid_glob() => new ThirdPartyLicenseCompliance()
+       .ForInlineCsproj(@$"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ThirdPartyLicense Include=""Qowaiv["" Hash=""QED9yngU7o+Fy128_FSy0w"" />
+  </ItemGroup>
+
+</Project>")
+       .HasIssue(Issue.WRN("Proj0505", "Include is not valid GLOB pattern")
+       .WithSpan(07, 04, 07, 73));
+
+    [Test]
+    public void missing_hash() => new ThirdPartyLicenseCompliance()
+       .ForInlineCsproj(@$"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ThirdPartyLicense Include=""Qowaiv"" />
+  </ItemGroup>
+
+</Project>")
+       .HasIssue(Issue.WRN("Proj0506", "Hash has not been specified")
+       .WithSpan(07, 04, 07, 42));
+
+    [TestCase("QED9yngU7o-Fy128_FSy0")] //   Too short
+    [TestCase("QED9yngU7o-Fy128_FSy023")] // Too long
+    [TestCase("QED9yngU7o%4Fy128FSy02")] //  Invalid character
+    public void invalid_hash(string hash) => new ThirdPartyLicenseCompliance()
+       .ForInlineCsproj(@$"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ThirdPartyLicense Include=""Qowaiv"" Hash=""${hash}"" />
+  </ItemGroup>
+
+</Project>")
+       .HasIssue(Issue.WRN("Proj0506", "Hash is not valid")
+       .WithSpan(07, 04, 07, 51 + hash.Length));
+
+    [Test]
+    public void conditional() => new ThirdPartyLicenseCompliance()
+       .ForInlineCsproj(@$"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup Condition=""$(TargetFramework) == 'net8.0'"">
+    <ThirdPartyLicense Include=""Qowaiv"" Hash=""QED9yngU7o+Fy128_FSy0w"" />
+  </ItemGroup>
+
+</Project>")
+       .HasIssue(Issue.WRN("Proj0507", "The <ThirdPartyLicense> can not be conditional")
+       .WithSpan(07, 04, 07, 72));
+
 }
 
 public class Guards
@@ -131,6 +221,23 @@ public class Guards
 
 </Project>")
       .HasNoIssues();
+
+    [Test]
+    public void unconditional_fully_specified_node() => new ThirdPartyLicenseCompliance()
+        .ForInlineCsproj(@$"
+<Project Sdk=""Microsoft.NET.Sdk"">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ThirdPartyLicense Include=""Qowaiv"" Hash=""QED9yngU7o+Fy128_FSy0w"" />
+  </ItemGroup>
+
+</Project>")
+        .HasNoIssues();
+
 
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
