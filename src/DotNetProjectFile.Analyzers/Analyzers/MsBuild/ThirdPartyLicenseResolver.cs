@@ -3,7 +3,7 @@ using DotNetProjectFile.NuGet;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <summary>Resolves thrid party licenses and validates them.</summary>
+/// <summary>Resolves third party licenses and validates them.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     Rule.OnlyIncludePackagesWithExplicitLicense,

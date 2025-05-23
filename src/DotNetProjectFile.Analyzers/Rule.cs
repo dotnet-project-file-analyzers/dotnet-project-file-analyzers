@@ -868,7 +868,7 @@ public static partial class Rule
         title: "Package only contains a deprecated license URL",
         message: "The {0} ({1}) {2}package only contains a deprecated '{3}' license URL",
         description:
-            "To prevent legal issues do not rely on thrid-party references that do not " +
+            "To prevent legal issues do not rely on third-party references that do not " +
             "come with an ferifiable deprecated license URL.",
         tags: ["license"],
         category: Category.Legal);
