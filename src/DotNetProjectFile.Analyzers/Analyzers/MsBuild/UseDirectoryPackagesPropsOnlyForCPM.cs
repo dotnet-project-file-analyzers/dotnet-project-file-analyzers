@@ -33,6 +33,7 @@ public sealed class UseDirectoryPackagesPropsOnlyForCPM()
         ItemGroup => true,
         PackageVersion => true,
         GlobalPackageReference => true,
+        ThirdPartyLicense => true,
 
         // Properties
         ManagePackageVersionsCentrally => true,
