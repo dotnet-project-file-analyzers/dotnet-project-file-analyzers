@@ -26,7 +26,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(3, 16, 3, 78)));
 
     [Test]
     public void on_unconditially_true() => BuildAgent.Local.Run(analyzer => analyzer
@@ -38,7 +38,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(3, 16, 3, 77)));
 
     [TestCase(BuildAgent.AzurePipelines)]
     [TestCase(BuildAgent.GitHubActions)]
@@ -58,7 +58,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(3, 16, 3, 107)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.GitHubActions)]
@@ -78,7 +78,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(3, 16, 3, 113)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -98,7 +98,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(3, 16, 3, 119)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -118,7 +118,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(3, 16, 3, 113)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -138,7 +138,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(3, 16, 3, 111)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -158,7 +158,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(3, 16, 3, 113)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -178,7 +178,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(3, 16, 3, 119)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -198,7 +198,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(3, 16, 3, 109)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -218,7 +218,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(3, 16, 3, 117)));
 
     [TestCase(BuildAgent.AnyCI)]
     [TestCase(BuildAgent.AzurePipelines)]
@@ -238,7 +238,7 @@ public class Reports
               </PropertyGroup>
             </Project>")
         .HasIssue(
-            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(0, 0, 0, 32)));
+            Issue.WRN("Proj0042", "Define the <ContinuousIntegrationBuild> node with value 'true' when running in CI pipeline").WithSpan(3, 16, 3, 117)));
 }
 
 [NonParallelizable]

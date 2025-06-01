@@ -2,6 +2,7 @@ using DotNetProjectFile.BuildAgents;
 
 namespace Rules.MS_Build.Enable_restore_locked_mode;
 
+[NonParallelizable]
 public class Reports
 {
     [Test]
@@ -161,7 +162,6 @@ public class Reports
     [TestCase(BuildAgent.JetBrainsSpace, "CODEBUILD_BUILD_ID", false)]
     [TestCase(BuildAgent.JetBrainsSpace, "BUILD_ID", false)]
     [TestCase(BuildAgent.JetBrainsSpace, "TEAMCITY_VERSION", false)]
-    [NonParallelizable]
     public void on_conditionally_agent_environment_variable_level_1_true(BuildAgent agent, string variable, bool expectTrue) => agent.Run(analyzer => analyzer
         .ForInlineCsproj(@$"
             <Project Sdk=""Microsoft.NET.Sdk"">
@@ -267,7 +267,6 @@ public class Reports
     [TestCase(BuildAgent.JetBrainsSpace, "CODEBUILD_BUILD_ID", false)]
     [TestCase(BuildAgent.JetBrainsSpace, "BUILD_ID", false)]
     [TestCase(BuildAgent.JetBrainsSpace, "TEAMCITY_VERSION", false)]
-    [NonParallelizable]
     public void on_conditionally_agent_environment_variable_level_2_true(BuildAgent agent, string variable, bool expectTrue) => agent.Run(analyzer => analyzer
         .ForInlineCsproj(@$"
             <Project Sdk=""Microsoft.NET.Sdk"">
@@ -281,6 +280,7 @@ public class Reports
             Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled")));
 }
 
+[NonParallelizable]
 public class Guards
 {
     [TestCase("CompliantCSharp.cs")]
@@ -357,7 +357,6 @@ public class Guards
     [TestCase(BuildAgent.Local, "BUILD_ID", false)]
     [TestCase(BuildAgent.Local, "TEAMCITY_VERSION", false)]
     [TestCase(BuildAgent.Local, "JB_SPACE_API_URL", false)]
-    [NonParallelizable]
     public void on_conditionally_agent_environment_variable_level_1_true(BuildAgent agent, string variable, bool expectTrue) => agent.Run(analyzer => analyzer
         .ForInlineCsproj(@$"
             <Project Sdk=""Microsoft.NET.Sdk"">
@@ -392,7 +391,6 @@ public class Guards
     [TestCase(BuildAgent.Local, "BUILD_ID", false)]
     [TestCase(BuildAgent.Local, "TEAMCITY_VERSION", false)]
     [TestCase(BuildAgent.Local, "JB_SPACE_API_URL", false)]
-    [NonParallelizable]
     public void on_conditionally_agent_environment_variable_level_2_true(BuildAgent agent, string variable, bool expectTrue) => agent.Run(analyzer => analyzer
         .ForInlineCsproj(@$"
             <Project Sdk=""Microsoft.NET.Sdk"">
