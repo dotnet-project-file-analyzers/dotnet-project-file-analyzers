@@ -939,6 +939,14 @@ public static partial class Rule
         category: Category.Legal,
         severity: DiagnosticSeverity.Error);
 
+    public static DiagnosticDescriptor OrderThirdPartyLicensesAlphabetically => New(
+        id: 0508,
+        title: "Order third-party licenses alphabetically",
+        message: "Third-party license '{0}' is not ordered alphabetically and should appear before '{1}'",
+        description: "Not ordering third-party licenses alphabetically is considered noise.",
+        tags: ["Configuration", "confusion", "license"],
+        category: Category.Clarity);
+
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
         id: 0600,
         title: "Avoid generating packages on build if not packable",
