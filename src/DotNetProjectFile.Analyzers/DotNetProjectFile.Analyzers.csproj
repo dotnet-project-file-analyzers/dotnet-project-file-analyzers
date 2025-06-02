@@ -81,8 +81,8 @@
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.6.1
-- Proj0508: Order third-party licenses alphabetically. (NEW RULE)
 - Proj0044: Allow build agent specific conditions for setting RestorePackagesWithLockFile. (FP)
+- Proj0508: Order third-party licenses alphabetically. (NEW RULE)
 - Proj0807: <TrirdPartyLicense> is allowed in Directory.Packages.props. (FP)
 ]]>
     </ToBeReleased>
