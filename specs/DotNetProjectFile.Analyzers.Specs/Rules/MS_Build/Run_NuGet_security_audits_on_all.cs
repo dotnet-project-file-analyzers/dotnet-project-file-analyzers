@@ -13,7 +13,7 @@ public class Reports
   </PropertyGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0040", "Set <NugetAuditMode> to all").WithSpan(00, 00, 00, 32));
+       .HasIssue(Issue.WRN("Proj0040", "Set <NuGetAuditMode> to all").WithSpan(00, 00, 00, 32));
 
     [Test]
     public void on_NuGet_audit_direct_mode()
@@ -27,7 +27,7 @@ public class Reports
   </PropertyGroup>
 
 </Project>")
-       .HasIssue(Issue.WRN("Proj0040", "Set <NugetAuditMode> to all").WithSpan(04, 04, 04, 43));
+       .HasIssue(Issue.WRN("Proj0040", "Set <NuGetAuditMode> to all").WithSpan(04, 04, 04, 43));
 }
 
 public class Guards
