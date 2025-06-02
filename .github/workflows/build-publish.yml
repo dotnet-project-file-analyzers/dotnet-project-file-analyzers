@@ -43,7 +43,7 @@ jobs:
           echo Version: $VERSION
           VERSION="${VERSION//v}"
           echo Clean Version: $VERSION
-          dotnet pack dotnet-project-file-analyzers.slnx -v normal --no-build --no-restore -p:PackageVersion=$VERSION -c Release --output packages
+          dotnet pack dotnet-project-file-analyzers.slnx -v normal --no-build --no-restore -p:Version=$VERSION -c Release --output packages
    
       - name: Upload Artifact
         if: startsWith(github.ref, 'refs/tags/')
