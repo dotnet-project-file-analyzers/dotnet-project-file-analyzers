@@ -13,6 +13,9 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     Rule.CustomPackageLicenseHasChanged)
 {
     /// <inheritdoc />
+    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+
+    /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc />
