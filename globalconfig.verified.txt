@@ -87,6 +87,7 @@ dotnet_diagnostic.Proj0504.severity = warning    # Package license has changed
 dotnet_diagnostic.Proj0505.severity = error      # Third-party license registry requires include
 dotnet_diagnostic.Proj0506.severity = error      # Third-party license registry requires hash
 dotnet_diagnostic.Proj0507.severity = error      # Third-party license registry must be unconditional
+dotnet_diagnostic.Proj0508.severity = warning    # Order third-party licenses alphabetically
 dotnet_diagnostic.Proj0600.severity = warning    # Avoid generating packages on build if not packable
 dotnet_diagnostic.Proj0700.severity = warning    # Avoid defining <Compile> items in SDK project
 dotnet_diagnostic.Proj0800.severity = warning    # Configure Central Package Management explicitly
