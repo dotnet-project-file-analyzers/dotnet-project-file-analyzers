@@ -57,4 +57,47 @@ public static class BuildAgentExtensions
 
         return true;
     }
+
+    public static ImmutableArray<BuildAgent> GetActive()
+    {
+        var reallyActive = EnumCache.GetValues<BuildAgent>()
+            .Where(x => x != BuildAgent.Local && x.IsActive())
+            .ToImmutableArray();
+
+        if (reallyActive.Length > 0)
+        {
+            return reallyActive;
+        }
+
+        return EnumCache.GetValues<BuildAgent>()
+            .Where(x => x != BuildAgent.Local)
+            .ToImmutableArray();
+    }
+
+    public static ImmutableArray<string> GetActiveAllowedConditions()
+    {
+        var active = GetActive();
+
+        IEnumerable<string> Inner()
+        {
+            foreach (var agent in active)
+            {
+                var (trueValues, nonEmptyValues) = agent.GetRequirements();
+
+                foreach (var value in trueValues)
+                {
+                    yield return $"'$({value})'=='true'";
+                    yield return $"'true'=='$({value})'";
+                }
+
+                foreach (var value in nonEmptyValues)
+                {
+                    yield return $"'$({value})'!=''";
+                    yield return $"''!='$({value})'";
+                }
+            }
+        }
+
+        return Inner().ToImmutableArray();
+    }
 }
