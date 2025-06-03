@@ -10,7 +10,7 @@ public abstract class SolutionFileAnalyzer(
     params DiagnosticDescriptor[] supportedDiagnostics)
     : ProjectFileAnalyzer<Solution>(primaryDiagnostic, supportedDiagnostics)
 {
-    /// <summary>Registers the analyzer for all RESX resource files.</summary>
+    /// <summary>Registers the analyzer for all SLNX solution files.</summary>
     protected override void Register(AnalysisContext context)
         => context.RegisterSolutionFileAction(Register);
 }
