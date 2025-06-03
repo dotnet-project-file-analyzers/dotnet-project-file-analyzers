@@ -79,7 +79,7 @@ internal static class AnalysisContextExtensions
         });
     }
 
-    /// <summary>Registers an action on <see cref="ProjectFileAnalysisContext"/>.</summary>
+    /// <summary>Registers an action on <see cref="SolutionFileAnalysisContext"/>.</summary>
     public static void RegisterSolutionFileAction(this AnalysisContext context, Action<SolutionFileAnalysisContext> action)
     {
         context.RegisterAdditionalFileAction(c =>
