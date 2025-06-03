@@ -18,8 +18,8 @@ public readonly struct WarningPragmas(IReadOnlyCollection<WarningPragma> warning
         => w.DiagnosticId == diagnosticId
         && w.Location.SourceSpan.Start < location.SourceSpan.Start).IsDisabled;
 
-    public static WarningPragmas New(MsBuildProject project)
-    => new([.. project.Element
+    public static WarningPragmas New<TProjectFile>(TProjectFile project) where TProjectFile : ProjectFile, XmlAnalysisNode
+        => new([.. project.Element
             .DescendantNodes()
             .OfType<XComment>()
             .Select(c => WarningPragma.New(c, project))

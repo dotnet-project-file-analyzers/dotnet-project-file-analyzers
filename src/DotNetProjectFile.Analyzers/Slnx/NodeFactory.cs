@@ -1,8 +1,8 @@
 using System.Linq.Expressions;
 using System.Reflection;
-using CtorFunc = System.Func<System.Xml.Linq.XElement, DotNetProjectFile.MsBuild.Node, DotNetProjectFile.MsBuild.Project, DotNetProjectFile.MsBuild.Node>;
+using CtorFunc = System.Func<System.Xml.Linq.XElement, DotNetProjectFile.Slnx.Node, DotNetProjectFile.Slnx.Solution, DotNetProjectFile.Slnx.Node>;
 
-namespace DotNetProjectFile.MsBuild;
+namespace DotNetProjectFile.Slnx;
 
 /// <summary>
 /// Used for creating instances of the <see cref="Node"/> class
@@ -24,7 +24,7 @@ internal sealed class NodeFactory
     private readonly Dictionary<string, CtorFunc> CaseInsensitive;
 
     [Pure]
-    public Node Create(XElement element, Node parent, MsBuildProject project)
+    public Node Create(XElement element, Node parent, Solution project)
         => Lookup(element).TryGetValue(element.Name.LocalName, out var con)
         ? con(element, parent, project)
         : new Unknown(element, parent, project);
