@@ -23,7 +23,7 @@ public readonly struct WarningPragma(string diagnosticId, bool disable, Location
         : $"#pragma warning restore {DiagnosticId}@{Location.GetLineSpan().StartLinePosition}";
 
     /// <summary>Creates a new #pragma warning from an <see cref="XComment"/>.</summary>
-    public static WarningPragma? New(XComment comment, MsBuildProject project)
+    public static WarningPragma? New(XComment comment, ProjectFile project)
     {
         var pos = comment.LinePosition();
         var next = comment.NextNode?.LinePosition() ?? pos.Expand(comment.Value.Length);
