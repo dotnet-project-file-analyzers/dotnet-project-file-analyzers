@@ -1,7 +1,7 @@
 using DotNetProjectFile.Parsing;
 using Microsoft.CodeAnalysis.Text;
 
-namespace FluentAssertions;
+namespace AwesomeAssertions;
 
 internal sealed class ParserAssertions(Parser subject)
 {

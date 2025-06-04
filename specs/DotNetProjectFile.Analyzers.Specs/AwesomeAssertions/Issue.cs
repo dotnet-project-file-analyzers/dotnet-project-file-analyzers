@@ -1,6 +1,6 @@
 using Microsoft.CodeAnalysis.Text;
 
-namespace FluentAssertions;
+namespace AwesomeAssertions;
 
 internal sealed record Issue(
     string Id,

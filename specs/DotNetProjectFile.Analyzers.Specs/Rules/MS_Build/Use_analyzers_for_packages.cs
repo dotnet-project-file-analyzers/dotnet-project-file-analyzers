@@ -12,7 +12,7 @@ public class Reports
             // Direct.
             new("Proj1001", "Use Ardalis.ApiEndpoints.CodeAnalyzers to analyze Ardalis.ApiEndpoints"),
             new("Proj1001", "Use FakeItEasy.Analyzer.CSharp to analyze FakeItEasy"),
-            new("Proj1001", "Use FluentAssertions.Analyzers to analyze FluentAssertions"),
+            new("Proj1001", "Use AwesomeAssertions.Analyzers to analyze AwesomeAssertions"),
             new("Proj1001", "Use AwesomeAssertions.Analyzers to analyze AwesomeAssertions"),
             new("Proj1001", "Use Libplanet.Analyzers to analyze Libplanet"),
             new("Proj1001", "Use Lucene.Net.Analysis.Common to analyze Lucene.Net"),
