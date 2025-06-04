@@ -1,6 +1,6 @@
 using Grammr.Text;
 using static DotNetProjectFile.Parsing.Grammar;
-using Token = FluentAssertions.Token;
+using Token = AwesomeAssertions.Token;
 
 namespace Parsing_Grammar;
 

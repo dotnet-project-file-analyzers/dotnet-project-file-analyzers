@@ -1,7 +1,7 @@
-using FluentAssertions.Execution;
-using FluentAssertions.Primitives;
+using AwesomeAssertions.Execution;
+using AwesomeAssertions.Primitives;
 
-namespace FluentAssertions;
+namespace AwesomeAssertions;
 
 internal sealed class DiagnosticAnalyzerAssertions(DiagnosticAnalyzer value)
     : ObjectAssertions<DiagnosticAnalyzer, DiagnosticAnalyzerAssertions>(value, AssertionChain.GetOrCreate())

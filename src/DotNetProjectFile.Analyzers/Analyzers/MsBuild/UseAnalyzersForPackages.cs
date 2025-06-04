@@ -47,7 +47,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
         new Analyzer("Ardalis.ApiEndpoints.CodeAnalyzers", "Ardalis.ApiEndpoints"),
         new Analyzer("FakeItEasy.Analyzer.CSharp", "FakeItEasy", LanguageNames.CSharp),
         new Analyzer("FakeItEasy.Analyzer.VisualBasic", "FakeItEasy", LanguageNames.VisualBasic),
-        new Analyzer("FluentAssertions.Analyzers", "FluentAssertions"),
+        new Analyzer("AwesomeAssertions.Analyzers", "AwesomeAssertions"),
         new Analyzer("Libplanet.Analyzers", "Libplanet"),
         new Analyzer("Lucene.Net.Analysis.Common", "Lucene.Net"),
         new Analyzer("MassTransit.Analyzers", "MassTransit"),
