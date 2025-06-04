@@ -85,6 +85,7 @@ v1.6.1
 - Proj0040: Fix capitalization of <NuGetAuditMode> in message. (BUG)
 - Proj0044: Allow build agent specific conditions for setting RestorePackagesWithLockFile. (FP)
 - Proj050*: Only report on project files, not props. (FP)
+- Proj0504: Verify third-party licenses on package info, not an the package reference node. (FP)
 - Proj0508: Order third-party licenses alphabetically. (NEW RULE)
 - Proj0807: <TrirdPartyLicense> is allowed in Directory.Packages.props. (FP)
 ]]>

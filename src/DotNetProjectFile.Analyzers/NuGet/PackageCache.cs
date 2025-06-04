@@ -56,11 +56,6 @@ public static class PackageCache
         var name = info.Name.ToLowerInvariant();
         var version = info.Version?.ToLowerInvariant();
 
-        if(name == "system.diagnostics.tools")
-        {
-
-        }
-
         if (cache.TryGetValue(info, out var result))
         {
             return result;

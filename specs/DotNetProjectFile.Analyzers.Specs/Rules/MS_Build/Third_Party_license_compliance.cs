@@ -186,7 +186,7 @@ public class Reports
 
 public class Guards
 {
-    [Test]
+     [Test]
     public void license_urls() => new ThirdPartyLicenseResolver()
       .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
@@ -237,7 +237,6 @@ public class Guards
 
 </Project>")
         .HasNoIssues();
-
 
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
