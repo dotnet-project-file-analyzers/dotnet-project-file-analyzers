@@ -84,7 +84,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
         }
         else if (package.License is CustomLicense customLicense)
         {
-            if (licenses.FirstOrDefault(l => l.IsMatch(dependency.Node)) is not { } license)
+            if (licenses.FirstOrDefault(l => l.IsMatch(dependency.Info)) is not { } license)
             {
                 context.ReportDiagnostic(
                     Rule.CustomPackageLicenseUnknown,
