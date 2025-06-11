@@ -76,6 +76,12 @@
         "resolved": "1.2.0.556",
         "contentHash": "zvn9Mqs/ox/83cpYPignI8hJEM2A93s2HkHs8HYMOAQW0PkampyoErAiIyKxgTLqbbad29HX/shv/6LGSjPJNQ=="
       },
+      "Warpstone.Sources": {
+        "type": "Direct",
+        "requested": "[3.0.0-preview03, )",
+        "resolved": "3.0.0-preview03",
+        "contentHash": "eUMmqXhEa2DzFmMMk/xQmjXkhVierH93VZxu0lIqV1HNnXZrLpmuVof3LxS5rmOTzFbQMB81EaMSvKo8lV/54A=="
+      },
       "Microsoft.NETCore.Platforms": {
         "type": "Transitive",
         "resolved": "1.1.0",

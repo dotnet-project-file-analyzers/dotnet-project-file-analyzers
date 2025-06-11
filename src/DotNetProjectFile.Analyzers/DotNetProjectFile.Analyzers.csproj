@@ -73,6 +73,7 @@
 
   <ItemGroup>
     <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="Warpstone.Sources" Version="3.0.0-preview03" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
