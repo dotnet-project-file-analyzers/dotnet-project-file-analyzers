@@ -1,9 +1,8 @@
-using DotNetProjectFile.Ini.Legacy;
 using Microsoft.CodeAnalysis.Text;
 
-namespace DotNetProjectFile.EditorConfig;
+namespace DotNetProjectFile.Ini.Legacy;
 
-public sealed class EditorConfigFile(IniFileSyntax syntax) : ProjectFile
+public sealed class IniFile(IniFileSyntax syntax) : ProjectFile
 {
     /// <summary>INI syntax.</summary>
     public IniFileSyntax Syntax { get; } = syntax;

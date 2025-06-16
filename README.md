@@ -72,11 +72,6 @@ To add a props file:
 </Project>
 ```
 
-## ANTLR
-For parsing non-XML based syntaxes we depend on [ANTLR](https://www.antlr.org)
-by Terence Parr. We included the sources of [Antlr4.Runtime](https://github.com/antlr/antlr4)
-to prevent dependency issues when executing the analyzers.
-
 ## Community
 * [LinkedIn](https://www.linkedin.com/company/dotnet-project-file-analyzers)
 

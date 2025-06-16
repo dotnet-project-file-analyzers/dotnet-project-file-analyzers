@@ -1,4 +1,4 @@
-using DotNetProjectFile.Ini;
+using DotNetProjectFile.Ini.Legacy;
 
 namespace DotNetProjectFile.Analyzers.EditorConfig;
 

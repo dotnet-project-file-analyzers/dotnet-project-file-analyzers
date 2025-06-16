@@ -1,10 +1,26 @@
 using DotNetProjectFile.Ini;
+using DotNetProjectFile.Ini.Legacy;
 using System.IO;
 using SyntaxTree = DotNetProjectFile.Syntax.SyntaxTree;
 
 namespace Parsing.INI_syntax;
 
 public class Parses
+{
+    [Test]
+    public void editorconfig()
+    {
+        using var file = new FileStream("../../../../../.editorconfig", FileMode.Open, FileAccess.Read);
+        using var reader = new StreamReader(file);
+        var content = reader.ReadToEnd();
+
+        content = @"";
+
+        var syntax = IniParser.Parse(content);
+    }
+}
+
+public class Parses_Legacy
 {
     [Test]
     public void header_with_space()

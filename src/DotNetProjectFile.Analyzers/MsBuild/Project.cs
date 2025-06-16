@@ -1,4 +1,4 @@
-using DotNetProjectFile.Ini;
+using DotNetProjectFile.Ini.Legacy;
 using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.MsBuild;

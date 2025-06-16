@@ -1,5 +1,5 @@
 using DotNetProjectFile.Collections;
-using DotNetProjectFile.Ini;
+using DotNetProjectFile.Ini.Legacy;
 
 namespace DotNetProjectFile.Syntax;
 

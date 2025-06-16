@@ -1,5 +1,5 @@
 using DotNetProjectFile.Git;
-using DotNetProjectFile.Ini;
+using DotNetProjectFile.Ini.Legacy;
 using DotNetProjectFile.Resx;
 using DotNetProjectFile.Slnx;
 
