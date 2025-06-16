@@ -81,6 +81,8 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+v1.6.2
+- Proj0240: Fix message incorrectly suggesting to disable DevelopmentDependency, rather than to enable it. (BUG)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
