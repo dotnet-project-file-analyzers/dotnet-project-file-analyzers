@@ -19,7 +19,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
 
         foreach (var reference in packageReferences)
         {
-            var tree = reference.ResolveCachedPackageDependencyTree();
+            var tree = GetAllReferencedPackages(reference);
 
             foreach (var pkg in tree)
             {
@@ -31,6 +31,20 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
                     context.ReportDiagnostic(Descriptor, reference, analyzer.Name, reference.IncludeOrUpdate);
                 }
             }
+        }
+    }
+
+    private static IEnumerable<Package> GetAllReferencedPackages(PackageReferenceBase reference)
+    {
+        var rootPackage = reference.ResolvePackage();
+
+        if (rootPackage?.IsAnalyzerOnly == true)
+        {
+            return [rootPackage];
+        }
+        else
+        {
+            return reference.ResolveCachedPackageDependencyTree();
         }
     }
 
