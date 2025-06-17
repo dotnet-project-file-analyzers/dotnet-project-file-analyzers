@@ -1,0 +1,6 @@
+version: 2
+updates:
+  - package-ecosystem: "nuget"
+    directory: "/" # Checks the entire repository
+    schedule:
+      interval: "weekly"

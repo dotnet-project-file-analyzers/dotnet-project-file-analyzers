@@ -29,4 +29,6 @@ public sealed record Package
     public required LicenseExpression License { get; init; }
 
     public required NuSpecFile? NuSpec { get; init; }
+
+    public bool IsAnalyzerOnly => HasAnalyzerDll && !HasRuntimeDll;
 }

@@ -1,6 +1,7 @@
 using DotNetProjectFile.Git;
 using DotNetProjectFile.Ini;
 using DotNetProjectFile.Resx;
+using DotNetProjectFile.Slnx;
 
 namespace DotNetProjectFile.CodeAnalysis;
 
@@ -12,6 +13,7 @@ public sealed partial class ProjectFiles
     private readonly FileCache<IniFile> IniFiles = new();
     private readonly FileCache<MsBuildProject> MsBuildProjects = new();
     private readonly FileCache<Resource> ResourceFiles = new();
+    private readonly FileCache<Solution> SolutionFiles = new();
 
     public GitIgnoreSyntax? GitIgnoreFile(IOFile file)
         => GitIgnoredFiles.TryGetOrUpdate(file, Create_GitIgnoreFile);
@@ -27,11 +29,20 @@ public sealed partial class ProjectFiles
         var path = IOFile.Parse(text.Path);
         if (path.GetProjectFileType() is ProjectFileType.None) return null;
 
-        return MsBuildProjects.TryGetOrUpdate(path, _ => Project.Load(text, Global));
+        return MsBuildProjects.TryGetOrUpdate(path, _ => MsBuild.Project.Load(text, Global));
     }
 
     public Resource? ResourceFile(IOFile file)
         => ResourceFiles.TryGetOrUpdate(file, Create_ResourceFile);
+
+    public Solution? SolutionFile(AdditionalText text)
+    {
+        var path = IOFile.Parse(text.Path);
+        return SolutionFiles.TryGetOrUpdate(path, _ => Solution.Load(text, Global));
+    }
+
+    public Solution? SolutionFile(IOFile file)
+        => SolutionFiles.TryGetOrUpdate(file, _ => Solution.Load(file, Global));
 
     public MsBuildProject? UpdateMsBuildProject(CompilationAnalysisContext context)
     {
@@ -101,6 +112,14 @@ public sealed partial class ProjectFiles
             : null;
     }
 
+    public Solution? UpdateSolutionFile(AdditionalFileAnalysisContext context)
+    {
+        var file = IOFile.Parse(context.AdditionalFile.Path);
+        return Is.Solution(file)
+            ? SolutionFiles.TryGetOrUpdate(file, _ => Solution.Load(context.AdditionalFile, this))
+            : null;
+    }
+
     public Resource? UpdateResourceFile(IOFile file)
          => Is.Resource(file)
             ? ResourceFiles.TryGetOrUpdate(file, _ => Resource.Load(file, this))
@@ -131,5 +150,7 @@ public sealed partial class ProjectFiles
             || file.Extension.IsMatch(".vbproj");
 
         public static bool Resource(IOFile file) => file.Extension.IsMatch(".resx");
+
+        public static bool Solution(IOFile file) => file.Extension.IsMatch(".slnx");
     }
 }

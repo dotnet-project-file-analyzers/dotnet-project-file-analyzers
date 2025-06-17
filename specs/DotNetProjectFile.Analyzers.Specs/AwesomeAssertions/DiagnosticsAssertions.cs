@@ -1,8 +1,8 @@
-using FluentAssertions.Collections;
-using FluentAssertions.Execution;
+using AwesomeAssertions.Collections;
+using AwesomeAssertions.Execution;
 
 
-namespace FluentAssertions;
+namespace AwesomeAssertions;
 
 internal sealed class DiagnosticsAssertions(IEnumerable<Diagnostic> actualValue)
     : GenericCollectionAssertions<Diagnostic>(actualValue, AssertionChain.GetOrCreate())

@@ -15,13 +15,11 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
             .OfType<PackageReferenceBase>()
             .Where(p => p is not PackageVersion && !string.IsNullOrWhiteSpace(p.IncludeOrUpdate));
 
-        var directlyReferenced = packageReferences.Select(r => r.IncludeOrUpdate).ToImmutableHashSet();
-
         var analyzers = GetAnalyzers(context.Compilation.Language);
 
         foreach (var reference in packageReferences)
         {
-            var tree = reference.ResolveCachedPackageDependencyTree();
+            var tree = GetAllReferencedPackages(reference);
 
             foreach (var pkg in tree)
             {
@@ -36,6 +34,20 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
         }
     }
 
+    private static IEnumerable<Package> GetAllReferencedPackages(PackageReferenceBase reference)
+    {
+        var rootPackage = reference.ResolvePackage();
+
+        if (rootPackage?.IsAnalyzerOnly == true)
+        {
+            return [rootPackage];
+        }
+        else
+        {
+            return reference.ResolveCachedPackageDependencyTree();
+        }
+    }
+
     private static Analyzer[] GetAnalyzers(string language)
         => Analyzers
         .Where(analyzer => analyzer.IsApplicable(language))
@@ -47,7 +59,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
         new Analyzer("Ardalis.ApiEndpoints.CodeAnalyzers", "Ardalis.ApiEndpoints"),
         new Analyzer("FakeItEasy.Analyzer.CSharp", "FakeItEasy", LanguageNames.CSharp),
         new Analyzer("FakeItEasy.Analyzer.VisualBasic", "FakeItEasy", LanguageNames.VisualBasic),
-        new Analyzer("FluentAssertions.Analyzers", "FluentAssertions"),
+        new Analyzer("AwesomeAssertions.Analyzers", "AwesomeAssertions"),
         new Analyzer("Libplanet.Analyzers", "Libplanet"),
         new Analyzer("Lucene.Net.Analysis.Common", "Lucene.Net"),
         new Analyzer("MassTransit.Analyzers", "MassTransit"),
@@ -55,7 +67,6 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
         new Analyzer("MessagePipe.Analyzer", "MessagePipe"),
         new Analyzer("Microsoft.AspNetCore.Components.Analyzers", "Microsoft.AspNetCore.Components"),
         new Analyzer("Microsoft.Azure.Functions.Analyzers", "Microsoft.Azure.Functions"),
-        new Analyzer("Microsoft.CodeAnalysis.Analyzers", "Microsoft.CodeAnalysis"),
         new Analyzer("Microsoft.EntityFrameworkCore.Analyzers", "Microsoft.EntityFrameworkCore"),
         new Analyzer("Microsoft.ServiceHub.Analyzers", "Microsoft.ServiceHub"),
         new Analyzer("MongoDB.Analyzer", "MongoDB"),
@@ -75,7 +86,14 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
             => Language is null || Language == compilationLanguage;
 
         public bool IsAnalyzerFor(Package pkg)
-            => IsAnalyzerFor(pkg.Name);
+        {
+            if (pkg.IsAnalyzerOnly)
+            {
+                return false;
+            }
+
+            return IsAnalyzerFor(pkg.Name);
+        }
 
         public bool IsAnalyzerFor(string name)
             => name.StartsWith(Match, StringComparison.OrdinalIgnoreCase)

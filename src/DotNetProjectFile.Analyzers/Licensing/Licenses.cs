@@ -121,6 +121,7 @@ public static class Licenses
     private static readonly Dictionary<string, string> AdditionalLicenseUrlsRaw = new()
     {
         ["http://go.microsoft.com/fwlink/?LinkId=329770"] = "MIT",
+        ["https://github.com/dotnet/standard/blob/master/LICENSE.TXT"] = "MIT",
         ["https://github.com/dotnet/corefx/blob/master/LICENSE.TXT"] = "MIT",
         ["https://github.com/dotnet/coreclr/blob/master/LICENSE.TXT"] = "MIT",
         ["https://github.com/dotnet/roslyn/blob/master/License.txt"] = "MIT",

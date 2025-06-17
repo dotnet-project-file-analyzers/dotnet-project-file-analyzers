@@ -78,4 +78,16 @@ internal static class AnalysisContextExtensions
             }
         });
     }
+
+    /// <summary>Registers an action on <see cref="SolutionFileAnalysisContext"/>.</summary>
+    public static void RegisterSolutionFileAction(this AnalysisContext context, Action<SolutionFileAnalysisContext> action)
+    {
+        context.RegisterAdditionalFileAction(c =>
+        {
+            if (ProjectFiles.Global.UpdateSolutionFile(c) is { } solution)
+            {
+                action.Invoke(new(solution, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+            }
+        });
+    }
 }
