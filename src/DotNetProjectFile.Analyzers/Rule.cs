@@ -640,6 +640,16 @@ public static partial class Rule
         tags: ["Configuration", "NuGet", "package", "license"],
         category: Category.Configuration);
 
+    public static DiagnosticDescriptor SymbolPackageFormatSNupkgRequiresDebugTypePortable => New(
+        id: 0218,
+        title: "Symbol package format snupkg requires debug type portable",
+        message: "The <SymbolPackageFormat> 'snupkg' requires <DebugType> to have the value 'portable'",
+        description:
+            "To ensure that symbol packages are created in the correct format, " +
+            "the DebugType should be set to 'portable'.",
+        tags: ["Configuration", "NuGet", "package", "symbols"],
+        category: Category.Configuration);
+
     public static DiagnosticDescriptor EnablePackageValidation => New(
         id: 0240,
         title: "Enable package validation",
