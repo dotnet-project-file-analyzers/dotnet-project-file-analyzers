@@ -30,5 +30,5 @@ public sealed record Package
 
     public required NuSpecFile? NuSpec { get; init; }
 
-    public bool IsAnalyzerOnly => HasRuntimeDll && !HasRuntimeDll;
+    public bool IsAnalyzerOnly => HasAnalyzerDll && !HasRuntimeDll;
 }
