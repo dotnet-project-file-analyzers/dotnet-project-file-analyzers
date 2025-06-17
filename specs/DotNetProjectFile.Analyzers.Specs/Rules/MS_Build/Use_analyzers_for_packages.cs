@@ -21,7 +21,6 @@ public class Reports
             new("Proj1001", "Use MessagePipe.Analyzer to analyze MessagePipe"),
             new("Proj1001", "Use Microsoft.AspNetCore.Components.Analyzers to analyze Microsoft.AspNetCore.Components"),
             new("Proj1001", "Use Microsoft.Azure.Functions.Analyzers to analyze Microsoft.Azure.Functions.Extensions"),
-            new("Proj1001", "Use Microsoft.CodeAnalysis.Analyzers to analyze Microsoft.CodeAnalysis"),
             new("Proj1001", "Use Microsoft.EntityFrameworkCore.Analyzers to analyze Microsoft.EntityFrameworkCore"),
             new("Proj1001", "Use Microsoft.ServiceHub.Analyzers to analyze Microsoft.ServiceHub.Framework"),
             new("Proj1001", "Use MongoDB.Analyzer to analyze MongoDB.Bson"),
