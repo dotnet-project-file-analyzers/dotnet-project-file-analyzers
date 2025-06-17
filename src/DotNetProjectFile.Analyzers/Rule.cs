@@ -367,7 +367,7 @@ public static partial class Rule
     public static DiagnosticDescriptor RunNuGetSecurityAuditsOnAll => New(
         id: 0040,
         title: "Run NuGet security audits on transitive dependencies too",
-        message: "Set <NugetAuditMode> to all",
+        message: "Set <NuGetAuditMode> to all",
         description:
             "By default (until .NET 10) nuget audits are not run on transitive dependencies.",
         tags: ["security", "NuGet", "vulnerability"],
@@ -643,7 +643,7 @@ public static partial class Rule
     public static DiagnosticDescriptor EnablePackageValidation => New(
         id: 0240,
         title: "Enable package validation",
-        message: "Define the <EnablePackageValidation> node with value 'true' or define the <IsPackable> node with value 'false' or define the <DevelopmentDependency> node with value 'false'",
+        message: "Define the <EnablePackageValidation> node with value 'true' or define the <IsPackable> node with value 'false' or define the <DevelopmentDependency> node with value 'true'",
         description:
             "To ensure the (backwards) compatibility " +
             "of the API surface of your package, it is advised " +
@@ -856,7 +856,7 @@ public static partial class Rule
     public static DiagnosticDescriptor OnlyIncludePackagesWithExplicitLicense => New(
         id: 0500,
         title: "Only include packages with an explicitly defined license",
-        message: "The {0} package is shipped without an explicitly defined license",
+        message: "The {0} ({1}) {2}package is shipped without an explicitly defined license",
         description:
             "To prevent legal issues do not rely on third-party references that do not " +
             "come with an explicitly defined license.",
@@ -866,9 +866,9 @@ public static partial class Rule
     public static DiagnosticDescriptor PackageOnlyContainsDeprecatedLicenseUrl => New(
         id: 0501,
         title: "Package only contains a deprecated license URL",
-        message: "The {0} package only contains a deprecated license URL",
+        message: "The {0} ({1}) {2}package only contains a deprecated '{3}' license URL",
         description:
-            "To prevent legal issues do not rely on thrid-party references that do not " +
+            "To prevent legal issues do not rely on third-party references that do not " +
             "come with an ferifiable deprecated license URL.",
         tags: ["license"],
         category: Category.Legal);
@@ -876,26 +876,24 @@ public static partial class Rule
     public static DiagnosticDescriptor PackageIncompatibleWithProjectLicense => New(
         id: 0502,
         title: "Only include packages compliant with project",
-        message: "The {0} package is distributed as {1}, which is imcompatable with the {2} license of the project",
+        message: "The {0} ({1}) {2}package is distributed as {3}, which is imcompatable with the {4} license of the project",
         description:
             "To prevent legal issues do not rely on third-party references with " +
             "custom defined license that have not been manually reviewed.",
         tags: ["license"],
         category: Category.Legal,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: false);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor CustomPackageLicenseUnknown => New(
         id: 0503,
         title: "Package license is unknown",
-        message: @"Add <ThirdPartyLicense Include=""{0}"" Hash=""{0}"" /> to accept the license",
+        message: @"Add <ThirdPartyLicense Include=""{0}"" Hash=""{1}"" /> to accept the license",
         description:
             "To prevent legal issues do not rely on third-party references with " +
             "custom defined license that have not been manually reviewed.",
         tags: ["license"],
         category: Category.Legal,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: false);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor CustomPackageLicenseHasChanged => New(
         id: 0504,
@@ -906,8 +904,7 @@ public static partial class Rule
             "license has been changed without checking the changes.",
         tags: ["license"],
         category: Category.Legal,
-        severity: DiagnosticSeverity.Warning,
-        isEnabled: false);
+        severity: DiagnosticSeverity.Warning);
 
     public static DiagnosticDescriptor ThirdPartyLicenseRequiresInclude => New(
         id: 0505,
@@ -941,6 +938,14 @@ public static partial class Rule
         tags: ["license"],
         category: Category.Legal,
         severity: DiagnosticSeverity.Error);
+
+    public static DiagnosticDescriptor OrderThirdPartyLicensesAlphabetically => New(
+        id: 0508,
+        title: "Order third-party licenses alphabetically",
+        message: "Third-party license '{0}' is not ordered alphabetically and should appear before '{1}'",
+        description: "Not ordering third-party licenses alphabetically is considered noise.",
+        tags: ["Configuration", "confusion", "license"],
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
         id: 0600,

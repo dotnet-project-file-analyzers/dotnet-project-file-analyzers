@@ -100,6 +100,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0505** Third-party license registry requires include](https://dotnet-project-file-analyzers.github.io/rules/Proj0505.html)
 * [**Proj0506** Third-party license registry requires hash](https://dotnet-project-file-analyzers.github.io/rules/Proj0506.html)
 * [**Proj0507** Third-party license registry must be unconditional](https://dotnet-project-file-analyzers.github.io/rules/Proj0507.html)
+* [**Proj0508** Order third-party licenses alphabetically](https://dotnet-project-file-analyzers.github.io/rules/Proj0508.html)
 
 ## .NET Project File Analyzers SDK
 * [**Proj0700** Avoid defining &lt;Compile&gt; items in SDK project](https://dotnet-project-file-analyzers.github.io/rules/Proj0700.html)

@@ -1,6 +1,6 @@
 using System.Diagnostics.CodeAnalysis;
 
-namespace FluentAssertions;
+namespace AwesomeAssertions;
 
 internal sealed class IssueComparer : IEqualityComparer<Issue>
 {

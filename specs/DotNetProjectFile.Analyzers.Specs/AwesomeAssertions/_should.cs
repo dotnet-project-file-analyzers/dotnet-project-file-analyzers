@@ -1,8 +1,8 @@
 using DotNetProjectFile.Parsing;
 
-namespace FluentAssertions;
+namespace AwesomeAssertions;
 
-internal static class DotNetProjectFIleFLuentAssertionsExtensions
+internal static class DotNetProjectFIleAwesomeAssertionsExtensions
 {
     [Pure]
     public static ParserAssertions Should(this Parser parser) => new(parser);

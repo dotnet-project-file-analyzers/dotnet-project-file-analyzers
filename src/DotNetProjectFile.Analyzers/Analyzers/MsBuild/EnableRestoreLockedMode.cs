@@ -1,4 +1,4 @@
-using System.Text.RegularExpressions;
+using DotNetProjectFile.BuildAgents;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
@@ -15,42 +15,27 @@ public sealed class EnableRestoreLockedMode() : MsBuildProjectFileAnalyzer(Rule.
         {
             return;
         }
-        else if (project.Property<RestoreLockedMode>() is not { } node)
+
+        var nodes = context.File.Properties<RestoreLockedMode>().ToImmutableArray();
+
+        if (nodes.Length <= 0)
         {
             context.ReportDiagnostic(Descriptor, context.File);
-            return;
         }
-        else if (node.Value != true)
+        else if (nodes.None(node => node.HasAnyCondition(GetAllowedConditions()) && node.Value == true))
         {
-            context.ReportDiagnostic(Descriptor, node);
-            return;
-        }
-        else
-        {
-            var cur = (Node)node;
-            while (cur is not null)
-            {
-                if (IsValidCondition(cur.Condition))
-                {
-                    return;
-                }
-
-                cur = cur.Parent;
-            }
-
-            context.ReportDiagnostic(Descriptor, node);
+            context.ReportDiagnostic(Descriptor, nodes[0]);
         }
     }
 
-    private static bool IsValidCondition(string? cond)
+    private static IEnumerable<string> GetAllowedConditions()
     {
-        if (cond is null)
-        {
-            return false;
-        }
+        yield return "'$(ContinuousIntegrationBuild)'=='true'";
+        yield return "'true'=='$(ContinuousIntegrationBuild)'";
 
-        var normalized = Regex.Replace(cond, @"\s+", string.Empty);
-        return normalized == "'$(ContinuousIntegrationBuild)'=='true'"
-            || normalized == "'true'=='$(ContinuousIntegrationBuild)'";
+        foreach (var condition in BuildAgentExtensions.GetActiveAllowedConditions())
+        {
+            yield return condition;
+        }
     }
 }

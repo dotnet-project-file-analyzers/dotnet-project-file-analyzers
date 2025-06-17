@@ -1,10 +1,11 @@
 global using CodeAnalysis.TestTools;
 global using DotNetProjectFile.Analyzers;
 global using DotNetProjectFile.Analyzers.MsBuild;
-global using FluentAssertions;
+global using AwesomeAssertions;
 global using Microsoft.CodeAnalysis;
 global using Microsoft.CodeAnalysis.Diagnostics;
 global using NUnit.Framework;
+global using Specs.TestTools;
 global using System;
 global using System.Collections.Generic;
 global using System.Diagnostics.Contracts;

@@ -1,6 +1,6 @@
 using CodeAnalysis.TestTools.Contexts;
 
-namespace FluentAssertions;
+namespace AwesomeAssertions;
 
 internal static class FindsExtensions
 {

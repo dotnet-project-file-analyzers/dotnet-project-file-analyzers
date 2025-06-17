@@ -1,3 +1,4 @@
+using DotNetProjectFile.NuGet;
 using DotNetProjectFile.Text;
 
 namespace DotNetProjectFile.MsBuild;
@@ -11,14 +12,12 @@ public sealed class ThirdPartyLicense(XElement element, Node parent, MsBuildProj
 
     public string? Hash => Attribute();
 
-    public bool IsMatch(PackageReferenceBase refererence)
+    public bool IsMatch(PackageVersionInfo info)
         => Glob.TryParse(Include) is { } glob
-        && glob.IsMatch(refererence.Include!)
-        && VersionMatch(refererence);
+        && glob.IsMatch(info.Name)
+        && VersionMatch(info);
 
-    private bool VersionMatch(PackageReferenceBase refererence)
+    private bool VersionMatch(PackageVersionInfo info)
         => Version is null
-        || (refererence.Version == Version
-        || (refererence is PackageReference { VersionOverride.Length: > 0 } package
-        && package.VersionOverride == Version));
+        || info.Version == Version;
 }

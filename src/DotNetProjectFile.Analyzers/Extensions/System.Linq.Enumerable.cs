@@ -42,6 +42,16 @@ internal static class EnumerableExtensions
         return null;
     }
 
+    /// <summary>Returns the first matching element, or null if no match was found.</summary>
+    [Pure]
+    public static T? FirstOrNone<T>(this IEnumerable<T> enumerable) where T : struct
+    {
+        using var enumerator = enumerable.GetEnumerator();
+        return enumerator.MoveNext()
+            ? enumerator.Current
+            : null;
+    }
+
     [Pure]
     public static T MaxBy<T, TComparable>(this IEnumerable<T> enumerable, Func<T, TComparable> getValue)
         where TComparable : IComparable<TComparable>

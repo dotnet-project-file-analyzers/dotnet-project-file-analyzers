@@ -1,13 +1,10 @@
 using DotNetProjectFile.BuildAgents;
-using System.Text.RegularExpressions;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class EnableContinuousIntegrationBuild() : MsBuildProjectFileAnalyzer(Rule.EnableContinuousIntegrationBuild)
 {
-    private static readonly ImmutableArray<BuildAgent> BuildAgentValues = GetBuildAgentValues();
-
     /// <inheritdoc />
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
@@ -21,99 +18,15 @@ public sealed class EnableContinuousIntegrationBuild() : MsBuildProjectFileAnaly
             return;
         }
 
-        var active = GetPossibleBuildAgents();
-        var handled = GetDefinitions(context.File);
+        var nodes = context.File.Properties<ContinuousIntegrationBuild>().ToImmutableArray();
 
-        if (active.Count == 0)
-        {
-            if (handled.Count == 0)
-            {
-                context.ReportDiagnostic(Descriptor, context.File);
-            }
-
-            // Locally trust that the handled agent is the one actually being used.
-            return;
-        }
-
-        if (active.None(handled.Contains))
+        if (nodes.Length <= 0)
         {
             context.ReportDiagnostic(Descriptor, context.File);
         }
+        else if (nodes.None(node => node.HasAnyCondition(BuildAgentExtensions.GetActiveAllowedConditions()) && node.Value == true))
+        {
+            context.ReportDiagnostic(Descriptor, nodes[0]);
+        }
     }
-
-    private static ImmutableArray<BuildAgent> GetBuildAgentValues()
-    {
-        var values = Enum.GetValues(typeof(BuildAgent));
-        var result = new BuildAgent[values.Length - 1];
-        var index = 0;
-
-        for (var i = 0; i < values.Length; i++)
-        {
-            var value = (BuildAgent)values.GetValue(i);
-            if (value != BuildAgent.Local)
-            {
-                result[index++] = value;
-            }
-        }
-
-        return result.ToImmutableArray();
-    }
-
-    private static HashSet<BuildAgent> GetPossibleBuildAgents()
-        => [.. BuildAgentValues.Where(a => a.IsActive())];
-
-    private static HashSet<BuildAgent> GetDefinitions(Project project)
-        => [.. BuildAgentValues.Where(a => HasDefinition(project, a))];
-
-    private static bool HasDefinition(Project project, BuildAgent agent)
-        => project
-            .Properties<ContinuousIntegrationBuild>()
-            .Any(prop => IsValidDefinition(prop, agent));
-
-    private static bool IsValidDefinition(ContinuousIntegrationBuild prop, BuildAgent agent)
-    {
-        var cur = (Node)prop;
-        while (cur is not null)
-        {
-            if (IsValidCondition(cur.Condition, agent))
-            {
-                return true;
-            }
-
-            cur = cur.Parent;
-        }
-
-        return false;
-    }
-
-    private static bool IsValidCondition(string? cond, BuildAgent agent)
-    {
-        if (cond is null)
-        {
-            return false;
-        }
-
-        var normalized = Regex.Replace(cond, @"\s+", string.Empty);
-        var (trueVars, nonEmptyVars) = agent.GetRequirements();
-
-        if (trueVars.Any(v => !IsValidTruthCondition(normalized, v)))
-        {
-            return false;
-        }
-
-        if (nonEmptyVars.Any(v => !IsValidNonEmptyCondition(normalized, v)))
-        {
-            return false;
-        }
-
-        return true;
-    }
-
-    private static bool IsValidTruthCondition(string cond, string envVariable)
-        => cond == $"'$({envVariable})'=='true'"
-        || cond == $"'true'=='$({envVariable})'";
-
-    private static bool IsValidNonEmptyCondition(string cond, string envVariable)
-        => cond == $"'$({envVariable})'!=''"
-        || cond == $"''!='$({envVariable})'";
 }
