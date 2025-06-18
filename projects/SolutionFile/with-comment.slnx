@@ -1,0 +1,5 @@
+<Solution>
+  <!-- .NET SDK only -->
+  <Project Path=".net.csproj" />
+  <!-- Project Path="src/SolutionFile.csproj" /-->
+</Solution>
