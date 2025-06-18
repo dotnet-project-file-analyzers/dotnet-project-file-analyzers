@@ -76,20 +76,24 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.6.1</Version>
+    <Version>1.7.0</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v1.6.2
-- Proj0218: Symbol package format snupkg requires debug type portable. (NEW RULE)
-- Proj0240: Fix message incorrectly suggesting to disable DevelopmentDependency, rather than to enable it. (BUG)
-- Proj1001: No longer suggests to use 'Microsoft.CodeAnalysis.Analyzers' for anything in 'Microsoft.CodeAnalysis' namespace, since it's only supposed to be used for analyzing analyzers. (FP)
-- Proj1001: No longer suggests to include analyzers for analyzing other analyzers. (FP)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.7.0
+- Proj0218: Symbol package format snupkg requires debug type portable. (NEW RULE)
+- Proj0240: Fix message incorrectly suggesting to disable DevelopmentDependency, rather than to enable it. (BUG)
+- Proj1001: No longer suggests to use 'Microsoft.CodeAnalysis.Analyzers' for anything in 'Microsoft.CodeAnalysis' namespace, since it's only supposed to be used for analyzing analyzers. (FP)
+- Proj1001: No longer suggests to include analyzers for analyzing other analyzers. (FP)
+- Proj1700: Indent XML for SLNX files. (FN)
+- Proj1702: Omit XML declaration for SLNX fles. (FN)
+- Proj3001: Track uses of "TODO" tags for SLNX files. (FN)
+- Proj3002: Remove commented-out code for SLNX files. (FN)
 v1.6.1
 - Proj0040: Fix capitalization of <NuGetAuditMode> in message. (BUG)
 - Proj0044: Allow build agent specific conditions for setting RestorePackagesWithLockFile. (FP)

@@ -1,0 +1,6 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".net.csproj" />
+  </Folder>
+<Project Path="src/SolutionFile.csproj" />
+</Solution>
