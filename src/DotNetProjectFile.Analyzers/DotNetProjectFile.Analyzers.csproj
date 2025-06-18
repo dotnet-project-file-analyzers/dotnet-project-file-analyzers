@@ -81,6 +81,8 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+v1.7.1
+- Proj0045: Name convention based MSBuild files should have correct casing. (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
