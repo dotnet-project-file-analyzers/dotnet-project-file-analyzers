@@ -3,7 +3,7 @@ namespace Rules.MS_Build.Convention_based_MsBuild_files_names_should_have_correc
 public class Reports
 {
     [Test]
-    public void Faulty_indented() => new CoventionBasedMsBuildFilesNamesShouldHaveCorectCasing()
+    public void Faulty_casing() => new ConventionBasedMsBuildFilesNamesShouldHaveCorrectCasing()
         .ForSDkProject("MSBuildFileNameConvention")
         .HasIssues(
             Issue.WRN("Proj0045", "The file .editorconFIG should be named .editorconfig").WithPath(".editorconFIG"),
