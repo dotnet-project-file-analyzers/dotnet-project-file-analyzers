@@ -84,7 +84,7 @@ public abstract class PackageReferenceBase(XElement element, Node parent, MsBuil
         {
             var cur = queue.Dequeue();
 
-            var deps = cur.NuSpec?.Metadata?.Depedencies?.SelectMany(g => g.Dependencies ?? []) ?? [];
+            var deps = cur.NuSpec?.Metadata?.Dependencies?.SelectMany(g => g.Dependencies ?? []) ?? [];
 
             foreach (var dep in deps)
             {

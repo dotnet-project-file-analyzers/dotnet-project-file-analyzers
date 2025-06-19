@@ -43,7 +43,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
 
             if (Report(dependency, projectLicense, licenses, context) is { } package)
             {
-                foreach (var transitive in package.TransativeDepedencies().Where(done.Add))
+                foreach (var transitive in package.TransitiveDependencies().Where(done.Add))
                 {
                     queue.Enqueue(new(dependency.Node, transitive));
                 }
@@ -67,7 +67,8 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
                 dependency.Node,
                 dependency.Info.Name,
                 dependency.Info.Version,
-                dependency.Format);
+                dependency.Format,
+                dependency.Parent);
 
             return null;
         }
@@ -80,7 +81,8 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
                 dependency.Info.Name,
                 dependency.Info.Version,
                 dependency.Format,
-                package.LicenseUrl);
+                package.LicenseUrl,
+                dependency.Parent);
         }
         else if (package.License is CustomLicense customLicense)
         {
@@ -110,7 +112,8 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
                 dependency.Info.Version,
                 dependency.Format,
                 package.License,
-                projectLicense);
+                projectLicense,
+                dependency.Parent);
         }
 
         return package;
@@ -121,6 +124,8 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
         public bool IsTransitive => !Node.Info.Name.IsMatch(Info.Name);
 
         public string Format => IsTransitive ? "transitive " : string.Empty;
+
+        public string Parent => IsTransitive ? $" in {Node.Info.Name}" : string.Empty;
     }
 }
 
@@ -130,8 +135,8 @@ file static class Extensions
         => package.LicenseExpression is not { Length: > 0 }
         && package.LicenseFile is not { Length: > 0 };
 
-    public static IEnumerable<PackageVersionInfo> TransativeDepedencies(this Package package)
-        => package.NuSpec?.Metadata?.Depedencies?
+    public static IEnumerable<PackageVersionInfo> TransitiveDependencies(this Package package)
+        => package.NuSpec?.Metadata?.Dependencies?
             .SelectMany(d => d.Dependencies ?? [])
             .Select(d => d.Info)
         ?? [];

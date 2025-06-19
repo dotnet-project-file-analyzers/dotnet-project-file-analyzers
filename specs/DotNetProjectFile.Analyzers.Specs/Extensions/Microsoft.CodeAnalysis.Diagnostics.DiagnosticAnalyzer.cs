@@ -66,7 +66,12 @@ internal static class DiagnosticAnalyzerExtensions
     [Pure]
     public static ProjectAnalyzerVerifyContext ForSDkProject(this DiagnosticAnalyzer analyzer, string name)
     {
-        var file = new FileInfo($"../../../../../projects/{name}/.net.csproj");
+        var directory = new DirectoryInfo($"../../../../../projects/{name}");
+
+        var file = directory
+            .EnumerateFiles()
+            .First(f => ".net.csproj".Equals(f.Name, StringComparison.OrdinalIgnoreCase));
+
         return ForTestProject(analyzer, file);
     }
 
