@@ -234,6 +234,7 @@ launchSettings.json
 *.received.json
 *.received.cs
 
+# Exclude Auto Generated Docfx Files
 _site/
-
 docs/api/
+docs/toc.yml

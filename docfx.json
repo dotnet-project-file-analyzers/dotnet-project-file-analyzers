@@ -13,7 +13,7 @@
     ],
     "resource": [
       {
-        "files": [ "design/**" ]
+        "files": [ "design/**", "*.txt", "**/assets/**" ]
       }
     ],
     "output": "_site",

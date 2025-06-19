@@ -1,0 +1,13 @@
+# This is an automatically generated file
+- name: Proj2001 Define data in a resource file
+  href: Proj2001.md
+- name: Proj2002 Sort resource file values alphabetically
+  href: Proj2002.md
+- name: Proj2003 Add invariant fallback resources
+  href: Proj2003.md
+- name: Proj2004 Add invariant fallback value
+  href: Proj2004.md
+- name: Proj2005 Escape XML nodes of resource values
+  href: Proj2005.md
+- name: Proj2100 Indent RESX
+  href: Proj2100.md

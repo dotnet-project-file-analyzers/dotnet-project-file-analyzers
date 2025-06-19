@@ -29,6 +29,8 @@ jobs:
 
       - run: dotnet tool restore
 
+      - run: dotnet DocFxTocGenerator -d .\docs\ --folderRef IndexReadme -s --indexing NoDefaultMulti
+
       - run: dotnet docfx
 
       - uses: actions/upload-pages-artifact@v3

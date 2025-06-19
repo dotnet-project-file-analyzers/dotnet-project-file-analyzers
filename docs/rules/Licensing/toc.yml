@@ -1,0 +1,15 @@
+# This is an automatically generated file
+- name: Proj0501 Package only contains a deprecated license URL
+  href: Proj0501.md
+- name: Proj0502 Only include packages compliant with project license
+  href: Proj0502.md
+- name: Proj0503 Package license is unknown
+  href: Proj0503.md
+- name: Proj0504 Package license has changed
+  href: Proj0504.md
+- name: Proj0505 Third party license registry requires include
+  href: Proj0505.md
+- name: Proj0506 Third party license registry requires hash
+  href: Proj0506.md
+- name: Proj0507 Third party license registry must be unconditional
+  href: Proj0507.md
