@@ -32,12 +32,14 @@ public class Reports
 
   <ItemGroup>
     <PackageReference Include=""SimpleInjector.Extensions.ExecutionContextScoping"" Version=""4.0.0"" />
+    <PackageReference Include=""Testcontainers"" Version=""3.10.0"" />
   </ItemGroup>
 
 </Project>")
        .HasIssues(
-            Issue.WRN("Proj0501", "The SimpleInjector ([4.0.0,5.0)) transitive package only contains a deprecated 'https://simpleinjector.org/license' license URL"),
-            Issue.WRN("Proj0501", "The SimpleInjector.Extensions.ExecutionContextScoping (4.0.0) package only contains a deprecated 'https://simpleinjector.org/license' license URL"));
+            Issue.WRN("Proj0501", "The SimpleInjector ([4.0.0,5.0)) transitive package in SimpleInjector.Extensions.ExecutionContextScoping only contains a deprecated 'https://simpleinjector.org/license' license URL"),
+            Issue.WRN("Proj0501", "The SimpleInjector.Extensions.ExecutionContextScoping (4.0.0) package only contains a deprecated 'https://simpleinjector.org/license' license URL"),
+            Issue.WRN("Proj0501", "The SshNet.Security.Cryptography ([1.3.0]) transitive package in Testcontainers only contains a deprecated 'https://github.com/sshnet/Cryptography/blob/master/LICENSE' license URL"));
 
     [Test]
     public void on_package_with_license_incompatable_to_project() => new ThirdPartyLicenseResolver()
@@ -205,8 +207,8 @@ public class Guards
 
 </Project>")
     .HasIssues(
-        Issue.WRN("Proj0500", "The SharpCompress (0.30.1) transitive package is shipped without an explicitly defined license"),
-        Issue.WRN("Proj0501", "The AWSSDK.SecurityToken (3.7.100.14) transitive package only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"));
+        Issue.WRN("Proj0500", "The SharpCompress (0.30.1) transitive package in MongoDB.Driver.Core is shipped without an explicitly defined license"),
+        Issue.WRN("Proj0501", "The AWSSDK.SecurityToken (3.7.100.14) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"));
 
     [Test]
     public void license_urls() => new ThirdPartyLicenseResolver()

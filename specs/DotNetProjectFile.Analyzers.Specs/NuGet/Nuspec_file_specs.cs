@@ -89,7 +89,7 @@ public class Loads
                 Version = "6.13.1",
                 License = new() { Type = "expression", Value = "Apache-2.0" },
                 LicenseUrl = "https://licenses.nuget.org/Apache-2.0",
-                Depedencies =
+                Dependencies =
                 [
                     new()
                     {
