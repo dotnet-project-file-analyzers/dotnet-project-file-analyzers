@@ -4,7 +4,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 
 /// <summary>Implements <see cref="Rule.CoventionBasedMsBuildFilesNamesShouldHaveCorectCasing"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class CoventionBasedMsBuildFilesNamesShouldHaveCorectCasing()
+public sealed class ConventionBasedMsBuildFilesNamesShouldHaveCorrectCasing()
     : MsBuildProjectFileAnalyzer(Rule.CoventionBasedMsBuildFilesNamesShouldHaveCorectCasing)
 {
     /// <inheritdoc />
