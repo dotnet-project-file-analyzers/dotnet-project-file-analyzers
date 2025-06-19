@@ -23,9 +23,21 @@ public abstract class MsBuildProjectFileAnalyzer(
     protected override void Register(AnalysisContext context)
         => context.RegisterProjectFileAction(c =>
         {
-            if (ApplicableTo.Contains(c.File.FileType) && !(c.File.HasFailingImport && DisableOnFailingImport))
+            if (ApplicableTo.Contains(c.File.FileType)
+                && !(c.File.HasFailingImport && DisableOnFailingImport)
+                && !IsProjectFileWithinSdk(c))
             {
                 Register(c);
             }
         });
+
+    /// <remarks>
+    /// We do not want to analyze the project files witin the context of the SDK
+    /// as that is that would lead pt projects being analyzed multiple times and
+    /// potentially even to projects being analyzed that are not part of the
+    /// solution.
+    /// </remarks>
+    private static bool IsProjectFileWithinSdk(ProjectFileAnalysisContext context)
+        => context.File.FileType == ProjectFileType.ProjectFile
+        && context.Compilation.AssemblyName == ".net";
 }

@@ -83,6 +83,8 @@ ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.7.1
 - Proj0045: Convention-based MSBuild file names should use correct casing. (NEW RULE)
+- Proj0045: Name convention based MSBuild files should have correct casing. (NEW RULE)
+- Analysis on project files (.csproj, .vbproj) are not longer executed for the SDK. (Perfromance)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
