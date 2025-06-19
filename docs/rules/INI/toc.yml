@@ -1,7 +1,0 @@
-# This is an automatically generated file
-- name: Proj4001 Invalid INI Header
-  href: Proj4001.md
-- name: Proj4002 Invalid INI key value pair
-  href: Proj4002.md
-- name: Proj4010 Sections should contain at least one key value pair
-  href: Proj4010.md
