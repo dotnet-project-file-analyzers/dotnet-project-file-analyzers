@@ -88,7 +88,7 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
     {
         try
         {
-            return IterateDirectories(path)?.Select(f => IODirectory.Parse(f.FullName));
+            return IterateDirectories(path)?.Select(f => Parse(f.FullName));
         }
         catch
         {

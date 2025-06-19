@@ -424,6 +424,17 @@ public static partial class Rule
         tags: ["security", "NuGet", "vulnerability"],
         category: Category.Security);
 
+    public static DiagnosticDescriptor ConventionBasedMsBuildFilesNamesShouldHaveCorectCasing => New(
+        id: 0045,
+        title: "Convention-based MSBuild file names should use correct casing",
+        message: "The file {0} should be named {1}",
+        description:
+            "Some MSBuild files have a certain role during the build based on " +
+            "a naming convention. Although MSBuild is mostly case-insensitive, " +
+            "having different casing might cause issues.",
+        tags: ["casing", "convention"],
+        category: Category.Bug);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
