@@ -21,5 +21,5 @@ public sealed record Metadata
 
     [XmlArray("dependencies")]
     [XmlArrayItem("group")]
-    public NuspecDepedencies[] Depedencies { get; init; } = [];
+    public NuspecDependencies[] Dependencies { get; init; } = [];
 }
