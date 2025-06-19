@@ -144,15 +144,15 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0453** Using Microsoft.NET.Test.Sdk implies a test project](rules/MSBuild/Test%20Projects/Proj0453.md)
 
 ### Licensing
-* [**Proj0500** Only include packages with an explicitly defined license](rules/MSBuild/Licensing/Proj0500.md)
-* [**Proj0501** Package only contains a deprecated license URL](rules/MSBuild/Licensing/Proj0501.md)
-* [**Proj0502** Only include packages compliant with project license](rules/MSBuild/Licensing/Proj0502.md)
-* [**Proj0503** Package license is unknown](rules/MSBuild/Licensing/Proj0503.md)
-* [**Proj0504** Package license has changed](rules/MSBuild/Licensing/Proj0504.md)
-* [**Proj0505** Third-party license registry requires include](rules/MSBuild/Licensing/Proj0505.md)
-* [**Proj0506** Third-party license registry requires hash](rules/MSBuild/Licensing/Proj0506.md)
-* [**Proj0507** Third-party license registry must be unconditional](rules/MSBuild/Licensing/Proj0507.md)
-* [**Proj0508** Order third-party licenses alphabetically](rules/MSBuild/Licensing/Proj0508.md)
+* [**Proj0500** Only include packages with an explicitly defined license](rules/Licensing/Proj0500.md)
+* [**Proj0501** Package only contains a deprecated license URL](rules/Licensing/Proj0501.md)
+* [**Proj0502** Only include packages compliant with project license](rules/Licensing/Proj0502.md)
+* [**Proj0503** Package license is unknown](rules/Licensing/Proj0503.md)
+* [**Proj0504** Package license has changed](rules/Licensing/Proj0504.md)
+* [**Proj0505** Third-party license registry requires include](rules/Licensing/Proj0505.md)
+* [**Proj0506** Third-party license registry requires hash](rules/Licensing/Proj0506.md)
+* [**Proj0507** Third-party license registry must be unconditional](rules/Licensing/Proj0507.md)
+* [**Proj0508** Order third-party licenses alphabetically](rules/Licensing/Proj0508.md)
 
 ### .NET Project File Analyzers SDK
 * [**Proj0700** Avoid defining &lt;Compile&gt; items in SDK project](rules/MSBuild/SDK/Proj0700.md)
@@ -182,12 +182,12 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj1702** Omit XML declarations](rules/Formatting/Proj1702.md)
 
 ### Other
-* [**Proj1100** Avoid using Moq](rules/Other/Proj1100.md)
-* [**Proj1101** Package references should have stable versions](rules/Other/Proj1101.md)
-* [**Proj1102** Use Coverlet Collector or MSBuild](rules/Other/Proj1102.md)
-* [**Proj1103** TUnit test projects must be executable](rules/Other/Proj1103.md)
-* [**Proj1104** TUnit conflicts with Microsoft.NET.Test.Sdk](rules/Other/Proj1104.md)
-* [**Proj1200** Exclude private assets as project file dependency](rules/Other/Proj1200.md)
+* [**Proj1100** Avoid using Moq](rules/MSBuild/Other/Proj1100.md)
+* [**Proj1101** Package references should have stable versions](rules/MSBuild/Other/Proj1101.md)
+* [**Proj1102** Use Coverlet Collector or MSBuild](rules/MSBuild/Other/Proj1102.md)
+* [**Proj1103** TUnit test projects must be executable](rules/MSBuild/Other/Proj1103.md)
+* [**Proj1104** TUnit conflicts with Microsoft.NET.Test.Sdk](rules/MSBuild/Other/Proj1104.md)
+* [**Proj1200** Exclude private assets as project file dependency](rules/MSBuild/Other/Proj1200.md)
 
 ## Resource file rules/Resources
 * [**Proj2000** Embed valid resource files](rules/Resources/Proj2000.md)

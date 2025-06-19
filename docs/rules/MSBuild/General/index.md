@@ -45,5 +45,6 @@
 * [Proj0043 Use lock files](Proj0043.md)
 * [Proj0044 Enable &lt;RestoreLockedMode&gt; when &lt;ContinuousIntegrationBuild&gt; is enabled](Proj0044.md)
 * [Proj0045 Convention based MSBuild file names should use correct casing](Proj0045.md)
-* [Proj0508 Order third party licenses alphabetically](Proj0508.md)
+* [Proj0508 Order third party licenses alphabetically](../../Licensing/Proj0508.md)
+
 
