@@ -1,4 +1,4 @@
-namespace Rules.MS_Build.Covention_based_MsBuild_files_names_should_have_corect_casing;
+namespace Rules.MS_Build.Convention_based_MsBuild_files_names_should_have_correct_casing;
 
 public class Reports
 {
