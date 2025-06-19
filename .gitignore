@@ -233,3 +233,7 @@ launchSettings.json
 *.received.txt
 *.received.json
 *.received.cs
+
+_site/
+
+docs/api/

@@ -1,0 +1,47 @@
+{
+  "build": {
+    "content": [
+      {
+        "files": [ "docs/api/**.yml" ]
+      },
+      {
+        "files": [ "docs/**.md", "docs/**/toc.yml", "toc.yml", "*.md" ]
+      },
+      {
+        "files": [ "src/**/*.md" ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [ "design/**" ]
+      }
+    ],
+    "output": "_site",
+    "globalMetadata": {
+      "_appLogoPath": "./design/logo_32x32.png",
+      "_appFaviconPath": "./design/logo_32x32.png"
+    },
+    "fileMetadataFiles": [],
+    "template": [ "default", "modern" ],
+    "postProcessors": [],
+    "disableGitFeatures": false
+  },
+  "metadata": [
+    {
+      "src": [
+        {
+          "files": [ "src/**/*.csproj" ]
+        }
+      ],
+      "dest": "docs/api",
+      "includePrivateMembers": false,
+      "disableGitFeatures": false,
+      "disableDefaultFilter": false,
+      "noRestore": false,
+      "namespaceLayout": "flattened",
+      "memberLayout": "samePage",
+      "EnumSortOrder": "alphabetic",
+      "allowCompilationErrors": false
+    }
+  ]
+}
