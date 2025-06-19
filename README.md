@@ -96,6 +96,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0042** Enable &lt;ContinuousIntegrationBuild&gt; when running in CI pipeline](rules/Proj0042.md)
 * [**Proj0043** Use lock files](rules/Proj0043.md)
 * [**Proj0044** Enable &lt;RestoreLockedMode&gt; when &lt;ContinuousIntegrationBuild&gt; is enabled](rules/Proj0044.md)
+* [**Proj0045** Convention-based MSBuild file names should use correct casing](rules/Proj0045.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
