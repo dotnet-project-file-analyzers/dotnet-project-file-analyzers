@@ -424,9 +424,9 @@ public static partial class Rule
         tags: ["security", "NuGet", "vulnerability"],
         category: Category.Security);
 
-    public static DiagnosticDescriptor NameCoventionBasedMsBuildFilesShouldHaveCorectCasing => New(
+    public static DiagnosticDescriptor CoventionBasedMsBuildFilesNamesShouldHaveCorectCasing => New(
         id: 0045,
-        title: "Name convention based MSBuild files should have correct casing",
+        title: "Convention-based MSBuild file names should use correct casing",
         message: "The file {0} should be named {1}",
         description:
             "Some MSBuild files have a certain role during the build based on " +

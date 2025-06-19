@@ -2,10 +2,10 @@ using System.Collections.Frozen;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <summary>Implements <see cref="Rule.NameCoventionBasedMsBuildFilesShouldHaveCorectCasing"/>.</summary>
+/// <summary>Implements <see cref="Rule.CoventionBasedMsBuildFilesNamesShouldHaveCorectCasing"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class NameCoventionBasedMsBuildFilesShouldHaveCorectCasing()
-    : MsBuildProjectFileAnalyzer(Rule.NameCoventionBasedMsBuildFilesShouldHaveCorectCasing)
+public sealed class CoventionBasedMsBuildFilesNamesShouldHaveCorectCasing()
+    : MsBuildProjectFileAnalyzer(Rule.CoventionBasedMsBuildFilesNamesShouldHaveCorectCasing)
 {
     /// <inheritdoc />
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.SDK;
