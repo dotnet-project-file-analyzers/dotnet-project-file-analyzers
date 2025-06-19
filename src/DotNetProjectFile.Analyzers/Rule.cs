@@ -430,7 +430,7 @@ public static partial class Rule
         message: "The file {0} should be named {1}",
         description:
             "Some MSBuild files have a certain role during the build based on " +
-            "a name convention. Although MSBuild is mostely case-insensitve this " +
+            "a name convention. Although MSBuild is mostly case-insensitive, " +
             "having different casing might cause issues.",
         tags: ["casing", "convention"],
         category: Category.Bug);
