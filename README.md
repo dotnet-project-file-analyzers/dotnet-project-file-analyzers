@@ -77,6 +77,19 @@ For parsing non-XML based syntaxes we depend on [ANTLR](https://www.antlr.org)
 by Terence Parr. We included the sources of [Antlr4.Runtime](https://github.com/antlr/antlr4)
 to prevent dependency issues when executing the analyzers.
 
+## Running the Documentation Locally
+
+To view the documentation on your local machine, execute the following commands in your terminal:
+
+```
+dotnet tool restore
+dotnet DocFxTocGenerator -d .\docs\ --folderRef IndexReadme -s
+dotnet docfx
+dotnet docfx serve _site -p 8181
+```
+
+Once the server is running, open your browser and navigate to [http://localhost:8181](http://localhost:8181) to view the documentation.
+
 ## Community
 * [LinkedIn](https://www.linkedin.com/company/dotnet-project-file-analyzers)
 
