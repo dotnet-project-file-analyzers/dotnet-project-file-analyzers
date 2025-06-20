@@ -1,0 +1,21 @@
+name: Reviewdog LanguageTool
+on: [pull_request]
+jobs:
+  languagetool:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      checks: write
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: reviewdog/action-languagetool@v1.20.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-review
+          level: error
+          language: 'en-US'
+          patterns: '**/*.md **/*.MD **/*.txt **/*.TXT'
+          disabled_categories: ''
+          disabled_rules: 'MORFOLOGIK_RULE_EN_US,EN_UNPAIRED_QUOTES,SENTENCE_WHITESPACE,WHITESPACE_RULE,ARROWS,FILE_EXTENSIONS_CASE'

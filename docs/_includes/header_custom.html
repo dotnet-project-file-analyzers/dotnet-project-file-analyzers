@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="svg-sun" viewBox="0 0 24 24">
+        <title>Light mode</title>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather-sun">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+    </symbol>
+    <symbol id="svg-moon" viewBox="0 0 24 24">
+        <title>Dark mode</title>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icon-tabler-moon">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+            <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+        </svg>
+    </symbol>
+</svg>
+
+<a class="site-button" id="theme-toggle" style="cursor: pointer;"></a>
+
+<script>
+    const light = 'light';
+    const dark = 'dark';
+    const system = 'system';
+    const storageKey = 'dpfa-docs-theme';
+
+    const isThemePreferred = function(theme) {
+        const state = window.matchMedia(`(prefers-color-scheme: ${theme})`);
+
+        if (!state) {
+            return false;
+        }
+
+        return !!state.matches;
+    }
+
+    const getDefaultTheme = function() {
+        if (isThemePreferred(dark)) {
+            return dark;
+        }
+
+        return light;
+    }
+
+    const resolveTheme = function(theme) {
+        if (theme === system) {
+            return getDefaultTheme();
+        }
+
+        return theme;
+    }
+
+    const button = document.getElementById('theme-toggle');
+    const loadedTheme = localStorage.getItem(storageKey) || system;
+
+    const setTheme = function(theme) {
+        localStorage.setItem(storageKey, theme);
+
+        const realTheme = resolveTheme(theme);
+
+        if (realTheme === light) {
+            button.innerHTML = `<svg width='18px' height='18px'><use href="#svg-moon"></use></svg>`;
+        } else {
+            button.innerHTML = `<svg width='18px' height='18px'><use href="#svg-sun"></use></svg>`;
+        }
+
+        jtd.setTheme(realTheme);
+    }
+
+    const toggleTheme = function() {
+        const theme = localStorage.getItem(storageKey);
+        const realTheme = resolveTheme(theme);
+
+        if (realTheme === light) {
+            setTheme(dark);
+        } else {
+            setTheme(light);
+        }
+    }
+
+    button.addEventListener('click', toggleTheme);
+    setTheme(loadedTheme);
+</script>
