@@ -17,14 +17,13 @@ public partial class Rules
         => AllRules.Should().OnlyHaveUniqueItems(d => d.Id);
 
     [TestCaseSource(nameof(AllRules))]
-    public async Task have_mark_down_documentation(Rule rule)
+    public void have_mark_down_documentation(Rule rule)
     {
-        using var client = new HttpClient();
-        var response = await client.GetAsync(rule.HelpLinkUri);
-        response.StatusCode.Should().Be(HttpStatusCode.OK, rule.HelpLinkUri);
+        var file = new FileInfo(Path.Combine(Docs_Readme.Directory!.FullName, "rules", rule.Id + ".md"));
+        file.Exists.Should().BeTrue();
 
-        var content = await response.Content.ReadAsStringAsync();
-        content.Should().Contain($">{rule.Id}: ");
+        var text = file.OpenText().ReadToEnd();
+        text.Should().Contain($"# {rule.Id}: ");
     }
 
     /// <summary>
@@ -56,11 +55,10 @@ public partial class Rules
     }
 
     [TestCaseSource(nameof(AllRules))]
-    public async Task are_mentioned_in_Web_README(Rule rule)
+    public void are_mentioned_in_docs_README(Rule rule)
     {
-        Web_Index_Context ??= await GetWebIndexContext();
-        Web_Index_Context
-            .Contains(@$"""/rules/{rule.Id}.html""")
+        Docs_Readme_Text
+            .Contains($"(rules/{rule.Id}.md)")
             .Should().BeTrue(because: $"Rule {rule.Id} should be mentioned");
     }
 
@@ -98,21 +96,14 @@ public partial class Rules
         .Select(f => (DiagnosticDescriptor)f.GetValue(null)!)
         .Select(d => new Rule(d));
 
-    private static readonly FileInfo Root_Readme = new("../../../../../README.md");
+    private static readonly FileInfo Docs_Readme = new("../../../../../docs/README.md");
     private static readonly FileInfo Package_Readme = new("../../../../../src/DotNetProjectFile.Analyzers/README.md");
+    private static readonly FileInfo Root_Readme = new("../../../../../README.md");
 
-    private readonly string Root_Readme_Text = Root_Readme.OpenText().ReadToEnd();
+    private readonly string Docs_Readme_Text = Docs_Readme.OpenText().ReadToEnd();
     private readonly string Package_Readme_Text = Package_Readme.OpenText().ReadToEnd();
-    private string? Web_Index_Context;
-
-    private static async Task<string> GetWebIndexContext()
-    {
-        using var client = new HttpClient();
-        var response = await client.GetAsync("https://dotnet-project-file-analyzers.github.io/");
-        response.EnsureSuccessStatusCode();
-        return await response.Content.ReadAsStringAsync();
-    }
-
+    private readonly string Root_Readme_Text = Root_Readme.OpenText().ReadToEnd();
+    
     [GeneratedRegex(@"Contains (?<amount>[0-9]+0)\+ \[Roslyn\]")]
     private static partial Regex AmountPattern();
 

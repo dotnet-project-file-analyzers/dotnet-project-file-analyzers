@@ -8,7 +8,7 @@ Contains 130+ [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk
 that report issues on .NET project files.
 
 ## Documentation
-The full documentation can be found here: [dotnet-project-file-analyzers.github.io](https://dotnet-project-file-analyzers.github.io/)
+The full documentation can be found [here](docs/README.md).
 
 ## Installation
 | Packages                                                                                         | NuGet                                                                                                                                                                                                                                                                    |
