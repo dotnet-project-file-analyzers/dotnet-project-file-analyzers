@@ -18,7 +18,7 @@ create a C# Project file with the name `.net.csproj`.
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net9.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,6 +27,8 @@ create a C# Project file with the name `.net.csproj`.
   
 </Project>
 ```
+*Download this example [`.net.csproj`](.net.csproj)*
+
 
 Most files in the directory of this SDK project will be included automatically.
 This includes configuration, text, and markdown files. It will not contain any
