@@ -1,3 +1,5 @@
+using DotNetProjectFile.IO;
+using System.Collections.Frozen;
 using System.Globalization;
 using System.IO;
 using System.Net;
@@ -81,12 +83,12 @@ public partial class Rules
         => type.GetCustomAttribute<DiagnosticAnalyzerAttribute>()!
         .Languages.Should().BeEquivalentTo("C#", "Visual Basic");
 
-    private static IEnumerable<Type> Types
-        => typeof(MsBuildProjectFileAnalyzer).Assembly
+    private static readonly IEnumerable<Type> Types
+        = typeof(MsBuildProjectFileAnalyzer).Assembly
         .GetTypes()
         .Where(t => !t.IsAbstract && t.IsAssignableTo(typeof(DiagnosticAnalyzer)));
 
-    private static IEnumerable<Rule> AllRules => GetRules(
+    private static readonly IEnumerable<Rule> AllRules = GetRules(
         typeof(DotNetProjectFile.Rule),
         typeof(DotNetProjectFile.Rule.Ini));
 
@@ -181,3 +183,146 @@ public sealed record Rule(DiagnosticDescriptor Descriptor)
 
     public override string ToString() => Descriptor.Id;
 }
+
+public partial class Documents
+{
+    private static readonly FrozenSet<string> ExcludedFiles =
+    [
+        "README.md",
+    ];
+
+    private static IEnumerable<IOFile> Files
+        => IODirectory.Parse("../../../../../docs/")
+        .Files("**/*")!
+        .Where(static file =>
+        {
+            var name = file.ToString();
+
+            var index = name.Replace('\\', '/').IndexOf("/docs/");
+            var shortName = name.Substring(index + 6);
+            return !ExcludedFiles.Contains(shortName);
+        });
+
+    private static IEnumerable<IOFile> RuleFiles
+        => IODirectory.Parse("../../../../../docs/rules/")
+        .Files("*.md")!;
+
+    private static IEnumerable<IOFile> NavigationFiles
+    => IODirectory.Parse("../../../../../docs/navigation/")
+    .Files("*.md")!;
+
+    private static IEnumerable<IOFile> MarkdownFiles
+        => Files
+        .Where(static file => file.Extension.ToLowerInvariant() == ".md");
+
+    [TestCaseSource(nameof(MarkdownFiles))]
+    public void Have_permalink(IOFile file)
+    {
+        TryGetPermalink(file).Should().NotBeNullOrWhiteSpace();
+    }
+
+    [TestCaseSource(nameof(MarkdownFiles))]
+    public void Have_unique_permalink(IOFile file)
+    {
+        if (TryGetPermalink(file) is not { } permalink)
+        {
+            return;
+        }
+
+        var others = MarkdownFiles
+            .Except([file])
+            .Select(static f => TryGetPermalink(f))
+            .OfType<string>()
+            .Where(static str => !string.IsNullOrWhiteSpace(str))
+            .ToHashSet();
+
+        others.Should().NotContain(permalink);
+    }
+
+    [TestCaseSource(nameof(RuleFiles))]
+    public void Correct_permalink_for_rules(IOFile file)
+    {
+        TryGetPermalink(file).Should().Be($"/rules/{file.NameWithoutExtension}");
+    }
+
+    [TestCaseSource(nameof(RuleFiles))]
+    public void Correct_ancestor_for_rules(IOFile file)
+    {
+        TryGetAncestor(file).Should().BeOneOf("MSBuild", "Rules");
+    }
+
+    [TestCaseSource(nameof(RuleFiles))]
+    public void Correct_parent_for_rules(IOFile file)
+    {
+        var allowed = NavigationFiles.Select(static f => TryGetTitle(f) ?? f.NameWithoutExtension).ToHashSet();
+
+        TryGetParent(file).Should().BeOneOf(allowed);
+    }
+
+    private static Dictionary<string, string> ParseHeader(string content)
+    {
+        var result = new Dictionary<string, string>();
+        var start = content.IndexOf("---");
+
+        if (start == -1)
+        {
+            return result;
+        }
+
+        var postStart = start + 3;
+
+        var end = content.LastIndexOf("---");
+
+        if (end <= postStart)
+        {
+            return result;
+        }
+
+        var headerLength = end - postStart;
+        var headerContent = content.Substring(postStart, headerLength);
+
+        var lines = headerContent.Split('\n');
+
+        foreach (var line in lines)
+        {
+            var parts = line.Split(':');
+            if (parts.Length == 2)
+            {
+                var key = parts[0].Trim();
+                var value = parts[1].Trim();
+                result[key] = value;
+            }
+        }
+
+        return result;
+    }
+
+    private static Dictionary<string, string> ParseHeader(in IOFile file)
+        => ParseHeader(file.ReadAllText());
+
+    private static string? TryGet(in IOFile file, string key)
+    {
+        var header = ParseHeader(file);
+        if (header.TryGetValue(key, out var result))
+        {
+            return result;
+        }
+        else
+        {
+            return null;
+        }
+    }
+
+    private static string? TryGetPermalink(in IOFile file)
+        => TryGet(file, "permalink");
+
+    private static string? TryGetAncestor(in IOFile file)
+        => TryGet(file, "ancestor");
+
+    private static string? TryGetTitle(in IOFile file)
+        => TryGet(file, "title");
+
+    private static string? TryGetParent(in IOFile file)
+        => TryGet(file, "parent");
+}
+
