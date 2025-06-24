@@ -18,26 +18,6 @@ public class Reports
 </Project>")
         .HasIssue(
             Issue.WRN("Proj0046", "Update statement does not change anything").WithSpan(7, 04, 7, 54));
-
-    [Test]
-    public void on_update_with_PrivateAssets_and_IncludeAssets_only() => new UpdateShouldChangeState()
-        .ForInlineCsproj(@"
-<Project Sdk=""Microsoft.NET.Sdk"">
-
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Update=""SonarAnalyzer.CSharp"">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-</Project>")
-        .HasIssue(
-            Issue.WRN("Proj0046", "Update statement does not change anything").WithSpan(07, 04, 10, 23));
 }
 public class Guards
 {

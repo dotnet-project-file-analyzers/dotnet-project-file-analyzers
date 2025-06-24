@@ -23,12 +23,6 @@ public sealed class UpdateShouldChangeState() : MsBuildProjectFileAnalyzer(Rule.
     /// </summary>
     private static bool WithoutChanges(Node action)
         => action.Attribute("Update") is { }
-        && action.Element.Attributes().Count() == 1
-        && action.Element.Elements().None(Include);
-
-    /// <summary>
-    /// Private assets and include assets are not considered changes.
-    /// </summary>
-    private static bool Include(XElement element)
-        => element.Name.LocalName is not "PrivateAssets" and not "IncludeAssets";
+        && action.Element.Attributes().Skip(1).None()
+        && action.Element.Elements().None();
 }
