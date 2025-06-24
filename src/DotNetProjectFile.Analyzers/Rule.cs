@@ -435,6 +435,16 @@ public static partial class Rule
         tags: ["casing", "convention"],
         category: Category.Bug);
 
+    public static DiagnosticDescriptor UpdateShouldChangeState => New(
+        id: 0046,
+        title: "Update statements should change state",
+        message: "Update statement does not change anything",
+        description:
+            "MSBuild items can be updated. Such an update should also change " +
+            "it state via an attribute or child element.",
+        tags: ["Update", "Buid"],
+        category: Category.Clarity);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",

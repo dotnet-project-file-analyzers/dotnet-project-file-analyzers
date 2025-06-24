@@ -47,6 +47,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0043** Use lock files](https://dotnet-project-file-analyzers.github.io/rules/Proj0043.html)
 * [**Proj0044** Enable &lt;RestoreLockedMode&gt; when &lt;ContinuousIntegrationBuild&gt; is enabled](https://dotnet-project-file-analyzers.github.io/rules/Proj0044.html)
 * [**Proj0045** Convention-based MSBuild file names should use correct casing](https://dotnet-project-file-analyzers.github.io/rules/Proj0045.html)
+* [**Proj0046** Update statements should change state](https://dotnet-project-file-analyzers.github.io/rules/Proj0046.html)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)
