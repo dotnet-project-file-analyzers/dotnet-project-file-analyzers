@@ -1,3 +1,4 @@
+using DotNetProjectFile.IO;
 using System.Globalization;
 using System.IO;
 using System.Net;
@@ -81,12 +82,12 @@ public partial class Rules
         => type.GetCustomAttribute<DiagnosticAnalyzerAttribute>()!
         .Languages.Should().BeEquivalentTo("C#", "Visual Basic");
 
-    private static IEnumerable<Type> Types
-        => typeof(MsBuildProjectFileAnalyzer).Assembly
+    private static readonly IEnumerable<Type> Types
+        = typeof(MsBuildProjectFileAnalyzer).Assembly
         .GetTypes()
         .Where(t => !t.IsAbstract && t.IsAssignableTo(typeof(DiagnosticAnalyzer)));
 
-    private static IEnumerable<Rule> AllRules => GetRules(
+    private static readonly IEnumerable<Rule> AllRules = GetRules(
         typeof(DotNetProjectFile.Rule),
         typeof(DotNetProjectFile.Rule.Ini));
 
@@ -181,3 +182,95 @@ public sealed record Rule(DiagnosticDescriptor Descriptor)
 
     public override string ToString() => Descriptor.Id;
 }
+
+public partial class Documents
+{
+    private static readonly IEnumerable<IOFile> Files
+        = IODirectory.Parse("../../../../../docs/")
+        .Files("**/*")!
+        .ToArray();
+
+    private static readonly IEnumerable<IOFile> MarkdownFiles
+        = Files
+        .Where(static file => file.Extension.ToLowerInvariant() == ".md")
+        .ToArray();
+
+    [TestCaseSource(nameof(MarkdownFiles))]
+    public void Have_permalink(IOFile file)
+    {
+        TryGetPermalink(file).Should().NotBeNullOrWhiteSpace();
+    }
+
+    [TestCaseSource(nameof(MarkdownFiles))]
+    public void Have_unique_permalink(IOFile file)
+    {
+        if (TryGetPermalink(file) is not { } permalink)
+        {
+            return;
+        }
+
+        var others = MarkdownFiles
+            .Except([file])
+            .Select(static f => TryGetPermalink(f))
+            .OfType<string>()
+            .Where(static str => !string.IsNullOrWhiteSpace(str))
+            .ToHashSet();
+
+        others.Should().NotContain(permalink);
+    }
+
+    private static Dictionary<string, string> ParseHeader(string content)
+    {
+        var result = new Dictionary<string, string>();
+        var start = content.IndexOf("---");
+
+        if (start == -1)
+        {
+            return result;
+        }
+
+        var postStart = start + 3;
+
+        var end = content.LastIndexOf("---");
+
+        if (end <= postStart)
+        {
+            return result;
+        }
+
+        var headerLength = end - postStart;
+        var headerContent = content.Substring(postStart, headerLength);
+
+        var lines = headerContent.Split('\n');
+
+        foreach (var line in lines)
+        {
+            var parts = line.Split(':');
+            if (parts.Length == 2)
+            {
+                var key = parts[0].Trim();
+                var value = parts[1].Trim();
+                result[key] = value;
+            }
+        }
+
+        return result;
+    }
+
+    private static Dictionary<string, string> ParseHeader(in IOFile file)
+        => ParseHeader(file.ReadAllText());
+
+    private static string? TryGetPermalink(in IOFile file)
+    {
+        var header = ParseHeader(file);
+        if (header.TryGetValue("permalink", out var result))
+        {
+            return result;
+        }
+        else
+        {
+            return null;
+        }
+    }
+}
+
