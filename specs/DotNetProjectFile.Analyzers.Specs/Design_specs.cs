@@ -203,6 +203,14 @@ public partial class Documents
             return !ExcludedFiles.Contains(shortName);
         });
 
+    private static IEnumerable<IOFile> RuleFiles
+        => IODirectory.Parse("../../../../../docs/rules/")
+        .Files("*.md")!;
+
+    private static IEnumerable<IOFile> NavigationFiles
+    => IODirectory.Parse("../../../../../docs/navigation/")
+    .Files("*.md")!;
+
     private static IEnumerable<IOFile> MarkdownFiles
         => Files
         .Where(static file => file.Extension.ToLowerInvariant() == ".md");
@@ -229,6 +237,26 @@ public partial class Documents
             .ToHashSet();
 
         others.Should().NotContain(permalink);
+    }
+
+    [TestCaseSource(nameof(RuleFiles))]
+    public void Correct_permalink_for_rules(IOFile file)
+    {
+        TryGetPermalink(file).Should().Be($"/rules/{file.NameWithoutExtension}");
+    }
+
+    [TestCaseSource(nameof(RuleFiles))]
+    public void Correct_ancestor_for_rules(IOFile file)
+    {
+        TryGetAncestor(file).Should().BeOneOf("MSBuild", "Rules");
+    }
+
+    [TestCaseSource(nameof(RuleFiles))]
+    public void Correct_parent_for_rules(IOFile file)
+    {
+        var allowed = NavigationFiles.Select(static f => TryGetTitle(f) ?? f.NameWithoutExtension).ToHashSet();
+
+        TryGetParent(file).Should().BeOneOf(allowed);
     }
 
     private static Dictionary<string, string> ParseHeader(string content)
@@ -272,10 +300,10 @@ public partial class Documents
     private static Dictionary<string, string> ParseHeader(in IOFile file)
         => ParseHeader(file.ReadAllText());
 
-    private static string? TryGetPermalink(in IOFile file)
+    private static string? TryGet(in IOFile file, string key)
     {
         var header = ParseHeader(file);
-        if (header.TryGetValue("permalink", out var result))
+        if (header.TryGetValue(key, out var result))
         {
             return result;
         }
@@ -284,5 +312,17 @@ public partial class Documents
             return null;
         }
     }
+
+    private static string? TryGetPermalink(in IOFile file)
+        => TryGet(file, "permalink");
+
+    private static string? TryGetAncestor(in IOFile file)
+        => TryGet(file, "ancestor");
+
+    private static string? TryGetTitle(in IOFile file)
+        => TryGet(file, "title");
+
+    private static string? TryGetParent(in IOFile file)
+        => TryGet(file, "parent");
 }
 
