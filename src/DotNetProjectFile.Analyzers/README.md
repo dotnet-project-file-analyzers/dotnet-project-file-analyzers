@@ -1,4 +1,4 @@
-# [.NET project file analyzers](https://github.com/Corniel/dotnet-project-file-analyzers/)
+# [.NET project file analyzers](https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers/)
 The package contains analyzers that analyze .NET project files.
 
 ## MS Build project file rules

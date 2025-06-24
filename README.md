@@ -36,11 +36,11 @@ Install-Package DotNetProjectFile.Analyzers
 
 ### Configuration
 The analyzer rules can be configured using the `.globalconfig` file or by using `<GlobalAnalyzerConfigFiles>`.
-Instructions can be found [here](https://dotnet-project-file-analyzers.github.io/general/configuration.html).
+Instructions can be found [here](https://dotnet-project-file-analyzers.github.io/configuration).
 An example configuration with the default severities of the main branch of the analyzer can be found [here](globalconfig.verified.txt).
 
 ### SDK
-To use the SDK, follow the instructions [here](https://dotnet-project-file-analyzers.github.io/general/sdk.html).
+To use the SDK, follow the instructions [here](https://dotnet-project-file-analyzers.github.io/sdk).
 
 ## Additional files
 To fully benefit from these analyzers it is recommended to add the project file
