@@ -1,4 +1,5 @@
 using DotNetProjectFile.IO;
+using System.Collections.Frozen;
 using System.Globalization;
 using System.IO;
 using System.Net;
@@ -185,15 +186,26 @@ public sealed record Rule(DiagnosticDescriptor Descriptor)
 
 public partial class Documents
 {
-    private static readonly IEnumerable<IOFile> Files
-        = IODirectory.Parse("../../../../../docs/")
-        .Files("**/*")!
-        .ToArray();
+    private static readonly FrozenSet<string> ExcludedFiles =
+    [
+        "README.md",
+    ];
 
-    private static readonly IEnumerable<IOFile> MarkdownFiles
-        = Files
-        .Where(static file => file.Extension.ToLowerInvariant() == ".md")
-        .ToArray();
+    private static IEnumerable<IOFile> Files
+        => IODirectory.Parse("../../../../../docs/")
+        .Files("**/*")!
+        .Where(static file =>
+        {
+            var name = file.ToString();
+
+            var index = name.Replace('\\', '/').IndexOf("/docs/");
+            var shortName = name.Substring(index + 6);
+            return !ExcludedFiles.Contains(shortName);
+        });
+
+    private static IEnumerable<IOFile> MarkdownFiles
+        => Files
+        .Where(static file => file.Extension.ToLowerInvariant() == ".md");
 
     [TestCaseSource(nameof(MarkdownFiles))]
     public void Have_permalink(IOFile file)

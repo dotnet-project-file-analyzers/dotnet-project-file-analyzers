@@ -1,4 +1,5 @@
 ---
+permalink: /nuget-packages
 nav_order: 4
 ---
 

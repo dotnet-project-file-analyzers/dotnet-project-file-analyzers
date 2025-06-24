@@ -1,4 +1,5 @@
 ---
+permalink: /sdk
 nav_order: 2
 ---
 

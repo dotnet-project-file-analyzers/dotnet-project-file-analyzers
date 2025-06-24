@@ -1,4 +1,5 @@
 ---
+permalink: /sonar-integration
 nav_order: 5
 ---
 

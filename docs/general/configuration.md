@@ -1,4 +1,5 @@
 ---
+permalink: /configuration
 nav_order: 1
 ---
 
