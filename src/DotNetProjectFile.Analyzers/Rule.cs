@@ -441,7 +441,7 @@ public static partial class Rule
         message: "Update statement does not change anything",
         description:
             "MSBuild items can be updated. Such an update should also change " +
-            "it state via an attribute or child element.",
+            "its state via an attribute or child element.",
         tags: ["Update", "Buid"],
         category: Category.Clarity);
 
