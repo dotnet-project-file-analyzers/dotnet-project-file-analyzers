@@ -442,7 +442,7 @@ public static partial class Rule
         description:
             "MSBuild items can be updated. Such an update should also change " +
             "its state via an attribute or child element.",
-        tags: ["Update", "Buid"],
+        tags: ["Update", "Build"],
         category: Category.Clarity);
 
     public static DiagnosticDescriptor DefineIsPackable => New(
