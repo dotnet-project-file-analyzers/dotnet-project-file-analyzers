@@ -41,10 +41,6 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
-  <ItemGroup Label="Not Used yet, so exclude">
-    <Compile Remove="Antlr4/**/*.cs" />
-  </ItemGroup>
-
   <ItemGroup Label="Package files">
     <None Update="tools/*.ps1" Pack="true" PackagePath="/" />
     <None Include="$(OutputPath)/DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
