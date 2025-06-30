@@ -63,7 +63,7 @@
 
   <ItemGroup Label="Roslyn dependencies">
     <!-- As long as .NET 8.0 is supported we try to ensure that this ships with a version of Roslyn that matches the 8.0 SDK. -->
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="[4.11.0]" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.11.0" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
