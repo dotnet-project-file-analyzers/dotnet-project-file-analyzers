@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -40,10 +40,6 @@
     <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
-
-  <ItemGroup Label="Not Used yet, so exclude">
-    <Compile Remove="Antlr4/**/*.cs" />
-  </ItemGroup>
 
   <ItemGroup Label="Package files">
     <None Update="tools/*.ps1" Pack="true" PackagePath="/" />
