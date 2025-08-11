@@ -54,16 +54,15 @@
 
   <ItemGroup Label="Props and targets">
     <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.25" PrivateAssets="all" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="4.0.3" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.0" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Roslyn dependencies">
-    <!-- As long as .NET 8.0 is supported we try to ensure that this ships with a version of Roslyn that matches the 8.0 SDK. -->
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.11.0" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="[4.10.0,)" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="2.0.5" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
