@@ -978,6 +978,17 @@ public static partial class Rule
         tags: ["Configuration", "confusion", "license"],
         category: Category.Clarity);
 
+    public static DiagnosticDescriptor PackageCacheCouldNotBeResolved => New(
+        id: 0509,
+        title: "NuGet package cache could not be resolved",
+        message: "The NuGet package cache ({0}) could not be resolved",
+        description:
+            "The rules that check for licenses need (read) access to the package " +
+            "cache. If that location could not be resolved, none of those rules " +
+            "work properly.",
+        tags: ["Configuration", "NuGet", "license"],
+        category: Category.Configuration);
+
     public static DiagnosticDescriptor AvoidGeneratePackageOnBuildWhenNotPackable => New(
         id: 0600,
         title: "Avoid generating packages on build if not packable",

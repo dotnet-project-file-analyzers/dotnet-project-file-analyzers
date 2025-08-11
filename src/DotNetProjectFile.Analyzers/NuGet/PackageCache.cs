@@ -4,7 +4,6 @@ using DotNetProjectFile.Licensing;
 using DotNetProjectFile.NuGet.Packaging;
 using System.Collections.Concurrent;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace DotNetProjectFile.NuGet;
@@ -12,10 +11,10 @@ namespace DotNetProjectFile.NuGet;
 public static class PackageCache
 {
     private static readonly ConcurrentDictionary<PackageVersionInfo, Package?> cache = new();
-    private static readonly Lazy<IODirectory> cacheDir = new(() => IODirectory.Parse(GetPathInternal()));
+    private static readonly Lazy<IODirectory> CacheDir = new(() => IODirectory.Parse(GetPathInternal()));
 
     public static IODirectory GetDirectory()
-        => cacheDir.Value;
+        => CacheDir.Value;
 
     private static string GetPathInternal()
     {

@@ -79,6 +79,7 @@ ToBeDecided:
 v1.7.1
 - Proj0045: Convention-based MSBuild file names should use correct casing. (NEW RULE)
 - Proj0046: Update statements should change state. (NEW RULE)
+- Proj0509: NuGet package cache could not be resolved. (NEW RULE)
 - Analysis on project files (.csproj, .vbproj) are not longer executed for the SDK. (Performance)
 - Add parent package to message for issues with transitive licenses.
 ]]>
