@@ -985,7 +985,7 @@ public static partial class Rule
         description:
             "The rules that check for licenses need (read) access to the package " +
             "cache. If that location could not be resolved, none of those rules " +
-            "works properly.",
+            "work properly.",
         tags: ["Configuration", "NuGet", "license"],
         category: Category.Configuration);
 
