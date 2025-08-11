@@ -10,7 +10,8 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     Rule.PackageOnlyContainsDeprecatedLicenseUrl,
     Rule.PackageIncompatibleWithProjectLicense,
     Rule.CustomPackageLicenseUnknown,
-    Rule.CustomPackageLicenseHasChanged)
+    Rule.CustomPackageLicenseHasChanged,
+    Rule.PackageCacheCouldNotBeResolved)
 {
     /// <inheritdoc />
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
@@ -21,6 +22,12 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
+        if (PackageCache.GetDirectory().SubDirectories()?.None() is not false)
+        {
+            context.ReportDiagnostic(Rule.PackageCacheCouldNotBeResolved, context.File, PackageCache.GetDirectory());
+            return;
+        }
+
         var projectLicense = Licenses.FromExpression(context.GetMsBuildProperty("PackageLicenseExpression"));
 
         var licenses = context.File.WalkBackward()
