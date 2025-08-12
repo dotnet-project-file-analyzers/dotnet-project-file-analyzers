@@ -2,6 +2,7 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Analyzers.Generic;
 
+/// <summary>Implements <see cref="Rule.OnlyUseUTF8WithoutBom"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFile>(Rule.OnlyUseUTF8WithoutBom)
 {
@@ -12,8 +13,7 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
             if (ProjectFiles.Global.UpdateMsBuildProject(c) is { } msbuild)
             {
                 foreach (var file in msbuild.Path.Directory.Files("**/*")?
-                    .Where(f => !f.ToString("/").Contains("/bin/"))
-                    .Where(f => !f.ToString("/").Contains("/obj/"))
+                    .Where(Include)
                     .Select(f => new ProjectTextFile(f))
                     .Where(f => !f.IsAdditional(c.Options.AdditionalFiles)) ?? [])
                 {
@@ -38,11 +38,20 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
 
         _ = reader.Read(bom, 0, 3);
 
-        if (bom[0] == 0xEF && bom[1] == 0xBB && bom[2] == 0xBF)
+        if (bom[0] is 0xEF && bom[1] is 0xBB && bom[2] is 0xBF)
         {
             var span = new TextSpan(0, 1);
             var line = new LinePositionSpan(new(0, 0), new(0, 1));
             context.ReportDiagnostic(Descriptor, Location.Create(context.File.Path.ToString(), span, line));
         }
+    }
+
+    private static bool Include(IOFile file)
+    {
+        var path = file.ToString("/");
+
+        return !path.Contains("/bin/")
+            && !path.Contains("/obj/")
+            && !file.Name.IsMatch("packages.lock.json");
     }
 }
