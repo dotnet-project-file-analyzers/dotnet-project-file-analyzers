@@ -43,13 +43,13 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.7.0</Version>
+    <Version>1.7.1</Version>
     <PackageReleaseNotes>
       <![CDATA[
 v1.5.10.1
 - Exclude generated stuff in /bin/ and /object/. (FP)
 v1.5.10
-- Automatically include props/*.props adn props/*.targets.
+- Automatically include props/*.props and props/*.targets.
 v1.5.7
 - Disable signing for .net.csproj file.
 - Include *.yml files too.

@@ -71,11 +71,15 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.7.0</Version>
+    <Version>1.7.1</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+]]>
+    </ToBeReleased>
+    <PackageReleaseNotes>
+      <![CDATA[
 v1.7.1
 - Proj0045: Convention-based MSBuild file names should use correct casing. (NEW RULE)
 - Proj0046: Update statements should change state. (NEW RULE)
@@ -83,10 +87,6 @@ v1.7.1
 - Proj3000: Ignore package.lock.json files. (FP)
 - Analysis on project files (.csproj, .vbproj) are not longer executed for the SDK. (Performance)
 - Add parent package to message for issues with transitive licenses.
-]]>
-    </ToBeReleased>
-    <PackageReleaseNotes>
-      <![CDATA[
 v1.7.0
 - Proj0218: Symbol package format snupkg requires debug type portable. (NEW RULE)
 - Proj0240: Fix message incorrectly suggesting to disable DevelopmentDependency, rather than to enable it. (BUG)
