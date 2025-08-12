@@ -52,6 +52,6 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
 
         return !path.Contains("/bin/")
             && !path.Contains("/obj/")
-            && !file.Name.IsMatch("packages.lock.json");
+            && !file.Name.IsMatch("CompatibilitySuppressions.xml");
     }
 }
