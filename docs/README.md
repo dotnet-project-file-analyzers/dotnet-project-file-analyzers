@@ -98,6 +98,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0044** Enable &lt;RestoreLockedMode&gt; when &lt;ContinuousIntegrationBuild&gt; is enabled](rules/Proj0044.md)
 * [**Proj0045** Convention-based MSBuild file names should use correct casing](rules/Proj0045.md)
 * [**Proj0046** Update statements should change state](rules/Proj0046.md)
+* [**Proj0047** Label item groups that disable compliation items](rules/Proj0047.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
