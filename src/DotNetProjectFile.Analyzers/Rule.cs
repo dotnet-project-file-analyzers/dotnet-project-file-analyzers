@@ -450,8 +450,8 @@ public static partial class Rule
         title: "Label item groups that remove compliation items",
         message: "Add a label to this group as it removes items from compilation",
         description:
-            "To ensure compilation item removal is intentional, <ItemGroup>'s containing <Remove> nodes should be labeled."
-            "<ItemGroup>'s should be labeled.",
+            "To ensure compilation item removal is intentional, <ItemGroup>'s " +
+            "containing <Remove> nodes should be labeled.",
         tags: ["Compile", "Build"],
         category: Category.Clarity);
 
