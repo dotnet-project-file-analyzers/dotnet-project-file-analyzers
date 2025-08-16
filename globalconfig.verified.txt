@@ -44,6 +44,7 @@ dotnet_diagnostic.Proj0043.severity = warning    # Use lock files
 dotnet_diagnostic.Proj0044.severity = warning    # Enable <RestoreLockedMode> when <ContinuousIntegrationBuild> is enabled
 dotnet_diagnostic.Proj0045.severity = warning    # Convention-based MSBuild file names should use correct casing
 dotnet_diagnostic.Proj0046.severity = warning    # Update statements should change state
+dotnet_diagnostic.Proj0047.severity = warning    # Label item groups that remove compliation items
 dotnet_diagnostic.Proj0200.severity = warning    # Define the project packability explicitly
 dotnet_diagnostic.Proj0201.severity = warning    # Define the project version explicitly
 dotnet_diagnostic.Proj0202.severity = warning    # Define the project description explicitly
