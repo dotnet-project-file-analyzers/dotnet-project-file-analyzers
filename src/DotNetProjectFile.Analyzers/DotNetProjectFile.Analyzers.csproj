@@ -76,6 +76,8 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+v.1.7.2
+- Proj0047: Label item groups that disable compilation items. (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>

@@ -445,6 +445,16 @@ public static partial class Rule
         tags: ["Update", "Build"],
         category: Category.Clarity);
 
+    public static DiagnosticDescriptor LabelItemGroupsThatRemoveCompilationItems => New(
+        id: 0047,
+        title: "Label item groups that remove compliation items",
+        message: "Add a label to this group as it removes items from compilation",
+        description:
+            "To prevent unintentionally removal of compilation items, containing " +
+            "<ItemGroup>'s should be labeled.",
+        tags: ["Compile", "Build"],
+        category: Category.Clarity);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",

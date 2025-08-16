@@ -18,7 +18,7 @@ public abstract class Node : XmlAnalysisNode
         Element = element;
         Parent = parent;
         Project = project ?? (this as Project) ?? throw new ArgumentNullException(nameof(project));
-        Children = element.Elements().Select(Create).ToArray();
+        Children = [.. element.Elements().Select(Create)];
         Locations = XmlPositions.New(element).Locations(Project);
         Depth = element.Depth();
     }
