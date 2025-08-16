@@ -64,6 +64,7 @@ dotnet_diagnostic.Proj0215.severity = warning    # Provide a compliant NuGet pac
 dotnet_diagnostic.Proj0216.severity = warning    # Define the project name explicitly
 dotnet_diagnostic.Proj0217.severity = warning    # Define requiring license acceptance explicitly
 dotnet_diagnostic.Proj0218.severity = warning    # Symbol package format snupkg requires debug type portable
+dotnet_diagnostic.Proj0219.severity = warning    # Packable projects should be libraries
 dotnet_diagnostic.Proj0240.severity = warning    # Enable package validation
 dotnet_diagnostic.Proj0241.severity = warning    # Enable package baseline validation
 dotnet_diagnostic.Proj0242.severity = warning    # Generate NuGet packages conditionally
