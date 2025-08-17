@@ -89,13 +89,16 @@ public partial class Rules
         .Where(t => !t.IsAbstract && t.IsAssignableTo(typeof(DiagnosticAnalyzer)));
 
     private static readonly IEnumerable<Rule> AllRules = GetRules(
+    [
         typeof(DotNetProjectFile.Rule),
-        typeof(DotNetProjectFile.Rule.Ini));
+        .. typeof(DotNetProjectFile.Rule).GetNestedTypes(),
+    ]);
 
-    private static IEnumerable<Rule> GetRules(params IEnumerable<Type> types) => types
+    private static IEnumerable<Rule> GetRules(IEnumerable<Type> types) => types
         .SelectMany(t => t.GetProperties(BindingFlags.Public | BindingFlags.Static))
         .Where(f => f.PropertyType == typeof(DiagnosticDescriptor))
-        .Select(f => (DiagnosticDescriptor)f.GetValue(null)!)
+        .Select(f => f.GetValue(null))
+        .OfType<DiagnosticDescriptor>()
         .Select(d => new Rule(d));
 
     private static readonly FileInfo Docs_Readme = new("../../../../../docs/README.md");
