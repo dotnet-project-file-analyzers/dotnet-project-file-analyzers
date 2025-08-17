@@ -217,6 +217,9 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj4050** Header must be a GLOB](rules/Proj4050.md)
 * [**Proj4051** Use equals sign for key-value assignments](rules/Proj4051.md)
 
+## SLNX
+* [**Proj5005** Omit Project ID's](rules/Proj5005.md)
+
 ## Sonar integration
 By default, results by .NET project file analyzers are not added to Sonar's reporting. Read [here](general/sonar-integration.md) how to configure this correctly.
 
