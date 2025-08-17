@@ -27,6 +27,8 @@ public sealed class Solution : Node, ProjectFile
 
     public WarningPragmas WarningPragmas { get; }
 
+    public IEnumerable<Project> Projects => Children.OfType<Project>();
+
     internal ProjectFiles ProjectFiles { get; }
 
     public static Solution Load(IOFile file, ProjectFiles projects)
