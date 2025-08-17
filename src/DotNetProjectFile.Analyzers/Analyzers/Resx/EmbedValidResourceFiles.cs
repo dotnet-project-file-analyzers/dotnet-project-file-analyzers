@@ -2,11 +2,11 @@ using DotNetProjectFile.Resx;
 
 namespace DotNetProjectFile.Analyzers.Resx;
 
+/// <summary>Imlements <see cref="Rule.RESX.EmbedValidResourceFiles"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class EmbedValidResourceFiles : ResourceFileAnalyzer
+public sealed class EmbedValidResourceFiles() : ResourceFileAnalyzer(Rule.RESX.EmbedValidResourceFiles)
 {
-    public EmbedValidResourceFiles() : base(Rule.EmbedValidResourceFiles) { }
-
+    /// <inheritdoc />
     protected override void Register(ResourceFileAnalysisContext context)
     {
         var resource = context.File;

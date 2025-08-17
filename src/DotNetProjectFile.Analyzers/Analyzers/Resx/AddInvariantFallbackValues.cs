@@ -1,8 +1,10 @@
 namespace DotNetProjectFile.Analyzers.Resx;
 
+/// <summary>Implements <see cref="Rule.RESX.AddInvariantFallbackValues"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class AddInvariantFallbackValues() : ResourceFileAnalyzer(Rule.AddInvariantFallbackValues)
+public sealed class AddInvariantFallbackValues() : ResourceFileAnalyzer(Rule.RESX.AddInvariantFallbackValues)
 {
+    /// <inheritdoc />
     protected override void Register(ResourceFileAnalysisContext context)
     {
         if (context.File is { ForInvariantCulture: false } resource
