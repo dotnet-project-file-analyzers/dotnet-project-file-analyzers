@@ -684,7 +684,7 @@ public static partial class Rule
     public static DiagnosticDescriptor PackablesShouldBeLibraries => New(
         id: 0219,
         title: "Packable projects should be libraries",
-        message: "The <IsPackable> node is set to 'true' but the <OutputType> is not 'library'",
+        message: "The <IsPackable> node is set to 'true' but the <OutputType> is not 'Library'",
         description: "Packing projects other than libraries is most likely a misstake.",
         tags: ["NuGet", "package"],
         category: Category.Bug);
