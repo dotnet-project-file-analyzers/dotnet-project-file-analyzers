@@ -17,7 +17,7 @@ public class Reports
 """)
         .HasIssues(
             Issue.ERR("CS5001", "Program does not contain a static 'Main' method suitable for an entry point"),
-            Issue.WRN("Proj0219", "The <IsPackable> node is set to 'true' but the <OutputType> is not 'library'").WithSpan(0, 0, 0, 32));
+            Issue.WRN("Proj0219", "The <IsPackable> node is set to 'true' but the <OutputType> is not 'Library'").WithSpan(0, 0, 0, 32));
 }
 
 public class Guards
