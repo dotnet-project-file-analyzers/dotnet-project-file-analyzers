@@ -685,7 +685,7 @@ public static partial class Rule
         id: 0219,
         title: "Packable projects should be libraries",
         message: "The <IsPackable> node is set to 'true' but the <OutputType> is not 'Library'",
-        description: "Packing projects other than libraries is most likely a misstake.",
+        description: "Packing projects other than libraries is most likely a mistake.",
         tags: ["NuGet", "package"],
         category: Category.Bug);
 
