@@ -8,7 +8,7 @@ public static partial class Rule
             id: 5005,
             title: "Omit Project ID's",
             message: "Remove the Project ID",
-            description: "ID's are left-overs from the SLN format, and can safely be ommitted.",
+            description: "ID's are left-overs from the SLN format, and can safely be omitted.",
             tags: ["SLNX", "ID"],
             category: Category.Noise);
     }
