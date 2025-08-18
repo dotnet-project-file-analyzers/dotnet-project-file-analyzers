@@ -5,7 +5,7 @@ public class Reports
     [Test]
     public void on_XML_commented_out_in_MS_Build() => new RemoveCommentedOutCode()
        .ForInlineCsproj("""
-<Project Sdk="Microsoft.NET.Sdk=">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
