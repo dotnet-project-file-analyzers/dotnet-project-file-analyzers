@@ -136,3 +136,4 @@ dotnet_diagnostic.Proj4002.severity = none       # Invalid INI key-value pair
 dotnet_diagnostic.Proj4010.severity = none       # Sections should contain at least one key-value pair
 dotnet_diagnostic.Proj4050.severity = none       # Header must be a GLOB
 dotnet_diagnostic.Proj4051.severity = none       # Use equals sign for key-value assignments
+dotnet_diagnostic.Proj5005.severity = warning    # Omit Project ID's
