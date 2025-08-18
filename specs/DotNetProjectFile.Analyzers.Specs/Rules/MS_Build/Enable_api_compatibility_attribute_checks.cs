@@ -30,7 +30,8 @@ public class Reports
 
 </Project>
 """)
-        .HasIssues(Issue.WRN("Proj0251", "Define the <ApiCompatEnableRuleAttributesMustMatch> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'").WithSpan(05, 16, 05, 102));
+        .HasIssues(Issue.WRN("Proj0251", "Define the <ApiCompatEnableRuleAttributesMustMatch> node with value 'true' or remove the <EnablePackageValidation> node with value 'true'")
+        .WithSpan(05, 04, 05, 90));
 }
 
 public class Guards
