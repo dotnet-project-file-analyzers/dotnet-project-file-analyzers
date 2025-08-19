@@ -12,7 +12,7 @@ public sealed class PublishExeOnly() : MsBuildProjectFileAnalyzer(Rule.PublishEx
     {
         var project = context.File.Project;
 
-        if (project.GetOutputType() is not OutputType.Kind.Exe and not OutputType.Kind.WinExe
+        if (!project.GetOutputType().IsExe()
             && project.Property<IsPublishable>() is { } node
             && node.Value is true)
         {
