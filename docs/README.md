@@ -180,6 +180,9 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj1002** Use Microsoft's analyzers](rules/Proj1002.md)
 * [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)
 
+### Design
+* [**Proj1300** Project references should be compliant](rules/Proj1300.md)
+
 ### Formatting
 * [**Proj1700** Indent XML](rules/Proj1700.md)
 * [**Proj1701** Use CDATA for large texts](rules/Proj1701.md)

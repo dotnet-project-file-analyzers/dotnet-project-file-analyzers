@@ -1233,6 +1233,14 @@ public static partial class Rule
         tags: ["private", "asset", "dependencies", "dependency"],
         category: Category.CodeQuality);
 
+    public static DiagnosticDescriptor ProjectReferencesShouldBeCompliant => New(
+        id: 1300,
+        title: "Project references should be compliant",
+        message: "{0}",
+        description: "?",
+        tags: ["project", "reference", "design"],
+        category: Category.Design);
+
     public static DiagnosticDescriptor IndentXml => New(
         id: 1700,
         title: "Indent XML files",
