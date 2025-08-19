@@ -20,12 +20,12 @@
   </PropertyGroup>
 
   <ItemGroup Label="Add without showing">
-    <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
-    <AdditionalFiles Include="**/*.csproj" Visible="false" />
-    <AdditionalFiles Include="**/*.props" Visible="false" />
-    <AdditionalFiles Include="**/*.targets" Visible="false" />
-    <AdditionalFiles Include="**/*.slnx" Visible="false" />
-    <AdditionalFiles Include="**/*.vbproj" Visible="false" />
+    <AdditionalFiles Visible="false" Include="$(MSBuildProjectFile)" />
+    <AdditionalFiles Visible="false" Include="**/*.csproj" />
+    <AdditionalFiles Visible="false" Include="**/*.props" />
+    <AdditionalFiles Visible="false" Include="**/*.targets" />
+    <AdditionalFiles Visible="false" Include="**/*.slnx" />
+    <AdditionalFiles Visible="false" Include="**/*.vbproj" />
   </ItemGroup>
 
   <ItemGroup Label="Exclude generated stuff">
