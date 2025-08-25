@@ -13,6 +13,24 @@ public class Reports
 public class Guards
 {
     [Test]
+    public void native_asssets() => new ExcludePrivateAssetDependencies()
+        .ForInlineCsproj("""
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="3.116.1" />
+  </ItemGroup>
+
+</Project>
+""").
+        HasNoIssues();
+
+
+    [Test]
     public void previously_reported_NuGet_Protocol() => new ExcludePrivateAssetDependencies()
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">

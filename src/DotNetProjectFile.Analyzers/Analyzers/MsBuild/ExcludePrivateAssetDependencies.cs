@@ -1,5 +1,3 @@
-using DotNetProjectFile.NuGet;
-
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 /// <summary>Implements <see cref="Rule.ExcludePrivateAssetDependencies"/>.</summary>
