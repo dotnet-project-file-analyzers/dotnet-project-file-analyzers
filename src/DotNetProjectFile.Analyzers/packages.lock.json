@@ -39,9 +39,9 @@
       },
       "Microsoft.Sbom.Targets": {
         "type": "Direct",
-        "requested": "[4.1.0, )",
-        "resolved": "4.1.0",
-        "contentHash": "GidfeSVHFtNwZSbD2wmwWiUiGkVdND8QR1z21WpFa+/47Mi3YiDkAzsWF02wXrMx2Xd8j3QSfKOUY1JtnF+7uw=="
+        "requested": "[4.1.1, )",
+        "resolved": "4.1.1",
+        "contentHash": "364Y+Cd9bZHA5ZWJrTpCqDjSg+2H2Qxtj0jUvvd9iMB6w3KrMaUJlFK3/hr13a+oIRZSw1q5BCXX4E54f9UhKQ=="
       },
       "NETStandard.Library": {
         "type": "Direct",
