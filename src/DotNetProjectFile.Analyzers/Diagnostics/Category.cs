@@ -8,6 +8,7 @@ public enum Category
     CodeSmell,
     Configuration,
     CPM,
+    Design,
     Formatting,
     Legal,
     Noise,
