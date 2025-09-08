@@ -9,5 +9,7 @@ public sealed class OutputType(XElement element, Node parent, MsBuildProject pro
         Exe,
         Module,
         WinExe,
+        WinMdObj,
+        AppContainerExe,
     }
 }

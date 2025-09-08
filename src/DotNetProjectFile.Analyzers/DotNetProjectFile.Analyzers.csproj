@@ -79,6 +79,7 @@ ToBeDecided:
 v.1.7.2
 - Proj0047: Label item groups that disable compilation items. (NEW RULE)
 - Proj0219: Packable projects should be libraries. (NEW RULE)
+- Proj1300: Project references should be compliant. (NEW RULE)
 - Proj5005: Omit Project ID's. (NEW RULE)
 ]]>
     </ToBeReleased>
