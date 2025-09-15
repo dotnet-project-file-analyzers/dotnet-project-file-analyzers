@@ -181,6 +181,11 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj1002** Use Microsoft's analyzers](rules/Proj1002.md)
 * [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)
 
+### Design
+* [**Proj1300** Avoid project references to executables](rules/Proj1300.md)
+* [**Proj1301** Project references of packable targets should be packable](rules/Proj1301.md)
+* [**Proj1302** Avoid project references to test projects](rules/Proj1302.md)
+
 ### Formatting
 * [**Proj1700** Indent XML](rules/Proj1700.md)
 * [**Proj1701** Use CDATA for large texts](rules/Proj1701.md)

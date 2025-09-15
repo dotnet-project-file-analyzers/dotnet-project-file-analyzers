@@ -1244,6 +1244,30 @@ public static partial class Rule
         tags: ["private", "asset", "dependencies", "dependency"],
         category: Category.CodeQuality);
 
+    public static DiagnosticDescriptor AvoidExecutableDependencies => New(
+        id: 1300,
+        title: "Avoid project references to executables",
+        message: "Remove the project reference to executable {0}",
+        description: "Executables should not be referenced by other projects",
+        tags: ["project", "reference", "design"],
+        category: Category.Design);
+
+    public static DiagnosticDescriptor DependentProjectsShouldBePackable => New(
+        id: 1301,
+        title: "Project references to packable targets should be packable",
+        message: "Project reference {0} is not packable",
+        description: "Packable projects should only reference packable projects",
+        tags: ["project", "reference", "design"],
+        category: Category.Design);
+
+    public static DiagnosticDescriptor AvoidTestProjectDependencies => New(
+        id: 1302,
+        title: "Avoid project references to test projects",
+        message: "Remove the project reference to test project {0}",
+        description: "Test projects should not be referenced by other projects",
+        tags: ["project", "reference", "design"],
+        category: Category.Design);
+
     public static DiagnosticDescriptor IndentXml => New(
         id: 1700,
         title: "Indent XML files",
