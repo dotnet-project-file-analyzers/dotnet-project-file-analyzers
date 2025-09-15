@@ -4,7 +4,7 @@ public class Reports
 {
     [Test]
     public void Faulty_casing() => new ConventionBasedMsBuildFilesNamesShouldHaveCorrectCasing()
-        .ForSDkProject("MSBuildFileNameConvention")
+        .ForSdkProject("MSBuildFileNameConvention")
         .HasIssues(
             Issue.WRN("Proj0045", "The file .editorconFIG should be named .editorconfig"/*............................*/).WithPath(".editorconFIG"),
             Issue.WRN("Proj0045", "The file .Globalconfig should be named .globalconfig"/*............................*/).WithPath(".Globalconfig"),
