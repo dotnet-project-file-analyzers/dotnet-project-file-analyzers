@@ -1251,7 +1251,7 @@ public static partial class Rule
 
     public static DiagnosticDescriptor AvoidTestProjectDependencies => New(
         id: 1302,
-        title: "Avoid project references to test project",
+        title: "Avoid project references to test projects",
         message: "Remove the project reference to test project {0}",
         description: "Test projects should not be referenced by other projects",
         tags: ["project", "reference", "design"],
