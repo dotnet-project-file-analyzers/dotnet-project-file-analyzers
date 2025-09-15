@@ -461,8 +461,8 @@ public static partial class Rule
         message: "Define <LangVersion> with an explicit version number",
         description:
             "To ensure the language version used by the compiler " +
-            "is not unintentionally changed, it is adviced to explicitly " +
-            "define the `<LangVersion>` node with an explicit version number.",
+            "is not unintentionally changed, it is adviced to define " +
+            "the `<LangVersion>` node with an explicit version number.",
         tags: ["Compile", "Build"],
         category: Category.Reliability);
 
