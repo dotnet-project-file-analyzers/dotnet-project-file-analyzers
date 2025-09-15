@@ -1236,7 +1236,7 @@ public static partial class Rule
     public static DiagnosticDescriptor AvoidExecutableDependencies => New(
         id: 1300,
         title: "Avoid project references to executables",
-        message: "Remove the project reference to excutable {0}",
+        message: "Remove the project reference to executable {0}",
         description: "Executables should not be referenced by other projects",
         tags: ["project", "reference", "design"],
         category: Category.Design);
