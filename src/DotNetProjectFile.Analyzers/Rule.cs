@@ -1241,7 +1241,7 @@ public static partial class Rule
         tags: ["project", "reference", "design"],
         category: Category.Design);
 
-    public static DiagnosticDescriptor DependendProjectsShouldBePackableTo => New(
+    public static DiagnosticDescriptor DependentProjectsShouldBePackableToo => New(
         id: 1301,
         title: "Project references to packable targets should be packable",
         message: "Project reference {0} is not packable",
