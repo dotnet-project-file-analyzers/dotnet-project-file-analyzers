@@ -6,46 +6,55 @@ using System.Security.Cryptography;
 
 namespace Microsoft.CodeAnalysis.Diagnostics;
 
-internal static class DiagnosticAnalyzerExtensions
+internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
 {
+    [Pure]
+    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineProject(
+        this DiagnosticAnalyzer analyzer,
+        string fileName,
+        string content)
+        => new(analyzer, fileName, content);
+
+    [Pure]
+    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject(
+        this DiagnosticAnalyzer analyzer,
+        string content)
+        => analyzer.ForInlineProject(".net.csproj", content);
+
+    [Pure]
+    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject(
+        this DiagnosticAnalyzer analyzer)
+        => analyzer.ForInlineSdkProject("""
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="*.slnx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetProjectFile.Analyzers.Sdk" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+</Project>
+""");
+
+    [Pure]
+    public static ProjectAnalyzerVerifyContext ForInlineSlnx(
+        this DiagnosticAnalyzer analyzer,
+        string content)
+        => analyzer.ForInlineSdkProject()
+        .WithFile("inline.slnx", content)
+        .Build();
+
     [Pure]
     public static ProjectAnalyzerVerifyContext ForInlineCsproj(
         this DiagnosticAnalyzer analyzer,
         [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-    {
-        content = content.Trim();
-        var tempDir = Path.Combine(Path.GetTempPath(), "dotnet-project-file-analyzer/tests");
-        var hash = GetHash(content);
-        var dir = Path.Combine(tempDir, hash);
-        Directory.CreateDirectory(dir);
-        var fileName = Path.Combine(dir, $"{hash}.csproj");
-        var file = new FileInfo(fileName);
-
-        if (File.Exists(fileName))
-        {
-            var fileContent = File.ReadAllText(fileName);
-            var fileHash = GetHash(fileContent);
-
-            if (hash == fileHash)
-            {
-                return ForTestProject(analyzer, file);
-            }
-        }
-
-        File.WriteAllText(fileName, content);
-        return ForTestProject(analyzer, file);
-
-#pragma warning restore RS1035
-    }
-
-    private static string GetHash(string content)
-    {
-        var input = Encoding.UTF8.GetBytes(content);
-        using var md5 = MD5.Create();
-        var output = md5.ComputeHash(input);
-        var str = Convert.ToHexString(output);
-        return str;
-    }
+        => analyzer.ForInlineProject("inline.csproj", content).Build();
 
     [Pure]
     public static ProjectAnalyzerVerifyContext ForProject(this DiagnosticAnalyzer analyzer, string fileName)
@@ -54,7 +63,7 @@ internal static class DiagnosticAnalyzerExtensions
         var extension = Path.GetExtension(fileName);
         if (extension == ".sdk")
         {
-            return analyzer.ForSDkProject(name);
+            return analyzer.ForSdkProject(name);
         }
         else
         {
@@ -64,7 +73,7 @@ internal static class DiagnosticAnalyzerExtensions
     }
 
     [Pure]
-    public static ProjectAnalyzerVerifyContext ForSDkProject(this DiagnosticAnalyzer analyzer, string name)
+    public static ProjectAnalyzerVerifyContext ForSdkProject(this DiagnosticAnalyzer analyzer, string name)
     {
         var directory = new DirectoryInfo($"../../../../../projects/{name}");
 
@@ -76,7 +85,7 @@ internal static class DiagnosticAnalyzerExtensions
     }
 
     [Pure]
-    private static ProjectAnalyzerVerifyContext ForTestProject(this DiagnosticAnalyzer analyzer, FileInfo file)
+    public static ProjectAnalyzerVerifyContext ForTestProject(this DiagnosticAnalyzer analyzer, FileInfo file)
     {
         var project = CachedProjectLoader.Load(file);
 
