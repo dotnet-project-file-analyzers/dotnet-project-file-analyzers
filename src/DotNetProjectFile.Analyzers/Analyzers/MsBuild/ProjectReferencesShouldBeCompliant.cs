@@ -4,7 +4,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ProjectReferencesShouldBeCompliant() : MsBuildProjectFileAnalyzer(
     Rule.AvoidExecutableDependencies,
-    Rule.DependendProjectsShouldBePackableTo,
+    Rule.DependendProjectsShouldBePackable,
     Rule.AvoidTestProjectDependencies)
 {
     /// <inheritdoc />
@@ -26,7 +26,7 @@ public sealed class ProjectReferencesShouldBeCompliant() : MsBuildProjectFileAna
                 var rule = info.ConflictsWith(other) switch
                 {
                     ProjectReferenceConflict.IsExe => Rule.AvoidExecutableDependencies,
-                    ProjectReferenceConflict.IsNotPackable => Rule.DependendProjectsShouldBePackableTo,
+                    ProjectReferenceConflict.IsNotPackable => Rule.DependendProjectsShouldBePackable,
                     ProjectReferenceConflict.IsTestProject => Rule.AvoidTestProjectDependencies,
                     _ => null,
                 };
