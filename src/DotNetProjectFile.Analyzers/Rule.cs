@@ -455,6 +455,17 @@ public static partial class Rule
         tags: ["Compile", "Build"],
         category: Category.Clarity);
 
+    public static DiagnosticDescriptor LanguageVersionShouldBeExplicitVersionNumber => New(
+        id: 0048,
+        title: "Language version should be set to an explicit version number",
+        message: "Define <LangVersion> with an explicit version number",
+        description:
+            "To ensure the language version used by the compiler " +
+            "is not unintentionally changed, it is adviced to define " +
+            "the `<LangVersion>` node with an explicit version number.",
+        tags: ["Compile", "Build"],
+        category: Category.Reliability);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
