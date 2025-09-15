@@ -1237,7 +1237,7 @@ public static partial class Rule
         id: 1300,
         title: "Avoid project references to executables",
         message: "Remove the project reference to excutable {0}",
-        description: "Excecutables should not be referenced by other projects",
+        description: "Executables should not be referenced by other projects",
         tags: ["project", "reference", "design"],
         category: Category.Design);
 
