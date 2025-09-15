@@ -4,6 +4,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>13</LangVersion>
     <OutputType>Library</OutputType>
     <RootNamespace>DotNetProjectFile</RootNamespace>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
@@ -78,6 +79,7 @@ ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v.1.7.2
 - Proj0047: Label item groups that disable compilation items. (NEW RULE)
+- Proj0048: Language version should be set to an explicit version number. (NEW RULE)
 - Proj0219: Packable projects should be libraries. (NEW RULE)
 - Proj5005: Omit Project ID's. (NEW RULE)
 ]]>
