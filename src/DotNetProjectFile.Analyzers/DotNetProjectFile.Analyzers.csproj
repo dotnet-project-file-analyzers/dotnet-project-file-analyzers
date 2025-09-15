@@ -83,7 +83,7 @@ v.1.7.2
 - Proj0219: Packable projects should be libraries. (NEW RULE)
 - Proj1300: Avoid project references to executables. (NEW RULE)
 - Proj1301: Project references of packable targets should be packable. (NEW RULE)
-- Proj1302: Avoid project references to test project. (NEW RULE)
+- Proj1302: Avoid project references to test projects. (NEW RULE)
 - Proj5005: Omit Project ID's. (NEW RULE)
 ]]>
     </ToBeReleased>
