@@ -139,7 +139,7 @@ The package contains analyzers that analyze .NET project files.
 ### Design
 * [**Proj1300** Avoid project references to executables](https://dotnet-project-file-analyzers.github.io/rules/Proj1300.html)
 * [**Proj1301** Project references of packable targets should be packable](https://dotnet-project-file-analyzers.github.io/rules/Proj1301.html)
-* [**Proj1302** Avoid project references to test project](https://dotnet-project-file-analyzers.github.io/rules/Proj1302.html)
+* [**Proj1302** Avoid project references to test projects](https://dotnet-project-file-analyzers.github.io/rules/Proj1302.html)
 
 ### Other
 * [**Proj1100** Avoid using Moq](https://dotnet-project-file-analyzers.github.io/rules/Proj1100.html)
