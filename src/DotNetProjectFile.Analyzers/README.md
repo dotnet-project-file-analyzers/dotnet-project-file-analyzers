@@ -136,7 +136,9 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj1702** Omit XML declarations](https://dotnet-project-file-analyzers.github.io/rules/Proj1702.html)
 
 ### Design
-* [**Proj1300** Project references should be compliant](https://dotnet-project-file-analyzers.github.io/rules/Proj1300.html)
+* [**Proj1300** Avoid project references to executables](https://dotnet-project-file-analyzers.github.io/rules/Proj1300.html)
+* [**Proj1301** Project references of packable targets should be packable](https://dotnet-project-file-analyzers.github.io/rules/Proj1301.html)
+* [**Proj1302** Avoid project references to test project](https://dotnet-project-file-analyzers.github.io/rules/Proj1302.html)
 
 ### Other
 * [**Proj1100** Avoid using Moq](https://dotnet-project-file-analyzers.github.io/rules/Proj1100.html)

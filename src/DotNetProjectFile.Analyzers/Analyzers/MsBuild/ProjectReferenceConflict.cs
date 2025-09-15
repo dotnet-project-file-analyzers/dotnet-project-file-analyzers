@@ -2,8 +2,8 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 
 public enum ProjectReferenceConflict
 {
-    None,
-    IsTestProject,
-    IsNotPackable,
+    None = 0,
     IsExe,
+    IsNotPackable,
+    IsTestProject,
 }

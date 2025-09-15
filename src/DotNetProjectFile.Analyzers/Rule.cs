@@ -1233,11 +1233,27 @@ public static partial class Rule
         tags: ["private", "asset", "dependencies", "dependency"],
         category: Category.CodeQuality);
 
-    public static DiagnosticDescriptor ProjectReferencesShouldBeCompliant => New(
+    public static DiagnosticDescriptor AvoidExecutableDependencies => New(
         id: 1300,
-        title: "Project references should be compliant",
-        message: "{0}",
-        description: "?",
+        title: "Avoid project references to executables",
+        message: "Remove the project reference to excutable {0}",
+        description: "Excecutables should not be referenced by other projects",
+        tags: ["project", "reference", "design"],
+        category: Category.Design);
+
+    public static DiagnosticDescriptor DependendProjectsShouldBePackableTo => New(
+        id: 1301,
+        title: "Project references to packable targets should be packable",
+        message: "Project reference {0} is not packable",
+        description: "Packable projects should only reference packable projects",
+        tags: ["project", "reference", "design"],
+        category: Category.Design);
+
+    public static DiagnosticDescriptor AvoidTestProjectDependencies => New(
+        id: 1302,
+        title: "Avoid project references to test project",
+        message: "Remove the project reference to test project {0}",
+        description: "Test projects should not be referenced by other projects",
         tags: ["project", "reference", "design"],
         category: Category.Design);
 

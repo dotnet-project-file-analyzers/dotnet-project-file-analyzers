@@ -1,12 +1,12 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <<summary>Implements <see cref="Rule.ProjectReferencesShouldBeCompliant"/>.</summary>>
+/// <summary>Guards project reference compliance.</summary>>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class ProjectReferencesShouldBeCompliant() : MsBuildProjectFileAnalyzer(Rule.ProjectReferencesShouldBeCompliant)
+public sealed class ProjectReferencesShouldBeCompliant() : MsBuildProjectFileAnalyzer(
+    Rule.AvoidExecutableDependencies,
+    Rule.DependendProjectsShouldBePackableTo,
+    Rule.AvoidTestProjectDependencies)
 {
-    /// <inheritdoc />
-    public override bool DisableOnFailingImport => false;
-
     /// <inheritdoc />
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
@@ -23,24 +23,22 @@ public sealed class ProjectReferencesShouldBeCompliant() : MsBuildProjectFileAna
             if (context.File.ProjectFiles.MsBuildProject(root.File(reference.Include!)) is { } project)
             {
                 var other = ProjectReferenceInfo.Create(project);
-                var conflict = info.ConflictsWith(other);
-                if (Message(conflict) is { } message)
+                var rule = info.ConflictsWith(other) switch
+                {
+                    ProjectReferenceConflict.IsExe => Rule.AvoidExecutableDependencies,
+                    ProjectReferenceConflict.IsNotPackable => Rule.DependendProjectsShouldBePackableTo,
+                    ProjectReferenceConflict.IsTestProject => Rule.AvoidTestProjectDependencies,
+                    _ => null,
+                };
+
+                if (rule is { })
                 {
                     context.ReportDiagnostic(
                         Descriptor,
                         reference,
-                        reference.Include,
-                        message);
+                        reference.Include);
                 }
             }
         }
     }
-
-    public static string? Message(ProjectReferenceConflict conflict) => conflict switch
-    {
-        ProjectReferenceConflict.IsExe => "Do not depent on executables",
-        ProjectReferenceConflict.IsTestProject => "Do not depent on test projects",
-        ProjectReferenceConflict.IsNotPackable => "Remove the dependency or make it packable",
-        _ => null,
-    };
 }
