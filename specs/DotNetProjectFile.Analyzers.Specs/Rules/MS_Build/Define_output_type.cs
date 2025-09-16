@@ -14,8 +14,7 @@ public class Reports
     [TestCase(ProjectLanguage.CSharp)]
     [TestCase(ProjectLanguage.FSharp)]
     [TestCase(ProjectLanguage.VisualBasic)]
-    [TestCase(ProjectLanguage.VisualCobol)]
-    public void on_no_output_type_for_sdk_projects(ProjectLanguage language)
+    public void on_no_output_type_for_various_languages(ProjectLanguage language)
         => new DefineOutputType()
         .ForInlineProject(language, """
             <Project Sdk="Microsoft.NET.Sdk">

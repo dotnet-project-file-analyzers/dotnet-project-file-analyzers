@@ -8,17 +8,16 @@ namespace DotNetProjectFile.Analyzers;
 /// </summary>
 public abstract class MsBuildProjectFileAnalyzer : ProjectFileAnalyzer<MsBuildProject>
 {
-    private readonly FrozenSet<string> supportedNonRoslynLanguages;
+    private readonly FrozenSet<ProjectLanguage> supportedSdkLanguage;
 
     protected MsBuildProjectFileAnalyzer(
         DiagnosticDescriptor primaryDiagnostic,
         params DiagnosticDescriptor[] supportedDiagnostics)
         : base(primaryDiagnostic, supportedDiagnostics)
     {
-        supportedNonRoslynLanguages = GetType()
-            .GetCustomAttributes<DiagnosticAnalyzerAttribute>()
+        supportedSdkLanguage = GetType()
+            .GetCustomAttributes<SdkAnalyzerAttribute>()
             .SelectMany(static attr => attr.Languages)
-            .Where(static lang => lang is not LanguageNames.CSharp and not LanguageNames.VisualBasic)
             .ToFrozenSet();
     }
 
@@ -39,16 +38,15 @@ public abstract class MsBuildProjectFileAnalyzer : ProjectFileAnalyzer<MsBuildPr
         {
             if (ApplicableTo.Contains(c.File.FileType)
                 && !(c.File.HasFailingImport && DisableOnFailingImport)
-                && (!IsProjectFileWithinSdk(c) || IsSupportedNonRoslynProject(c)))
+                && (!IsProjectFileWithinSdk(c) || IsSupportedSdkProject(c)))
             {
                 Register(c);
             }
         });
 
-    private bool IsSupportedNonRoslynProject(in ProjectFileAnalysisContext project)
+    private bool IsSupportedSdkProject(in ProjectFileAnalysisContext project)
         => project.File.FileType is ProjectFileType.ProjectFile
-        && project.File.LanguageName is { Length: > 0 } language
-        && supportedNonRoslynLanguages.Contains(language);
+        && supportedSdkLanguage.Contains(project.File.Language);
 
     /// <remarks>
     /// We do not want to analyze the project files witin the context of the SDK

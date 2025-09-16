@@ -2,6 +2,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 
 /// <summary>Implements <see cref="Rule.DefineOutputType"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
+[SdkAnalyzer(ProjectLanguage.FSharp)]
 public sealed class DefineOutputType() : MsBuildProjectFileAnalyzer(Rule.DefineOutputType)
 {
     /// <inheritdoc />
