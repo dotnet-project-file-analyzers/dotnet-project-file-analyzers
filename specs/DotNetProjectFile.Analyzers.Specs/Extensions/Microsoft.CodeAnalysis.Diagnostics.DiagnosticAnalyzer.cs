@@ -37,6 +37,8 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
     <AdditionalFiles Include="**/*.vbproj" />
     <AdditionalFiles Include="**/*.fsproj" />
     <AdditionalFiles Include="**/*.cblproj" />
+    <AdditionalFiles Include="**/*.props" />
+    <AdditionalFiles Include="**/*.targets" />
   </ItemGroup>
 
   <ItemGroup>
@@ -74,6 +76,15 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
         => analyzer
         .ForInlineSdkProject()
         .WithFile("inline/inline.fsproj", content)
+        .Build();
+
+    [Pure]
+    public static ProjectAnalyzerVerifyContext ForInlineCblproj(
+        this DiagnosticAnalyzer analyzer,
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+        => analyzer
+        .ForInlineSdkProject()
+        .WithFile("inline/inline.cblproj", content)
         .Build();
 
     [Pure]

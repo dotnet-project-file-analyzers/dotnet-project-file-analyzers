@@ -80,6 +80,7 @@ public sealed partial class ProjectFiles
                 LanguageNames.CSharp => ".csproj",
                 LanguageNames.VisualBasic => ".vbproj",
                 LanguageNames.FSharp => ".fsproj",
+                LanguageNames.VisualCobol => ".cblproj",
                 _ => null,
             };
 

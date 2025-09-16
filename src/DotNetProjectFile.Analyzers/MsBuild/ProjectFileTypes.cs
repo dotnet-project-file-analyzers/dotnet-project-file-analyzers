@@ -71,7 +71,7 @@ public static class ProjectFileTypes
         ".csproj" => LanguageNames.CSharp,
         ".vbproj" => LanguageNames.VisualBasic,
         ".fsproj" => LanguageNames.FSharp,
-        ".cblproj" => "Visual Cobol",
+        ".cblproj" => LanguageNames.VisualCobol,
         _ => null,
     };
 }
