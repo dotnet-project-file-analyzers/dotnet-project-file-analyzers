@@ -18,6 +18,8 @@ public sealed partial class Project : Node, ProjectFile
         ProjectFiles = projectFiles;
         AdditionalText = additionalText;
         WarningPragmas = WarningPragmas.New(this);
+        FileType = path.GetProjectFileType();
+        Language = path.GetProjectLanguageName();
     }
 
     public MsBuildProject? DirectoryBuildProps => Path.Directory
@@ -49,7 +51,9 @@ public sealed partial class Project : Node, ProjectFile
 
     public IOFile Path { get; }
 
-    public ProjectFileType FileType => Path.GetProjectFileType();
+    public ProjectFileType FileType { get; }
+
+    public string? Language { get; }
 
     public SourceText Text { get; }
 

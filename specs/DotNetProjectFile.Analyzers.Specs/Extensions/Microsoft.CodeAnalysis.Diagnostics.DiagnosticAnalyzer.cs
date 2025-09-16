@@ -18,7 +18,7 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
     [Pure]
     public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject(
         this DiagnosticAnalyzer analyzer,
-        string content)
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
         => analyzer.ForInlineProject(".net.csproj", content);
 
     [Pure]
@@ -32,7 +32,11 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
   </PropertyGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include="*.slnx" />
+    <AdditionalFiles Include="**/*.slnx" />
+    <AdditionalFiles Include="**/*.csproj" />
+    <AdditionalFiles Include="**/*.vbproj" />
+    <AdditionalFiles Include="**/*.fsproj" />
+    <AdditionalFiles Include="**/*.cblproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -45,8 +49,9 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
     [Pure]
     public static ProjectAnalyzerVerifyContext ForInlineSlnx(
         this DiagnosticAnalyzer analyzer,
-        string content)
-        => analyzer.ForInlineSdkProject()
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+        => analyzer
+        .ForInlineSdkProject()
         .WithFile("inline.slnx", content)
         .Build();
 
@@ -55,6 +60,21 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
         this DiagnosticAnalyzer analyzer,
         [StringSyntax(StringSyntaxAttribute.Xml)] string content)
         => analyzer.ForInlineProject("inline.csproj", content).Build();
+
+    [Pure]
+    public static ProjectAnalyzerVerifyContext ForInlineVbproj(
+        this DiagnosticAnalyzer analyzer,
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+        => analyzer.ForInlineProject("inline.vbproj", content).Build();
+
+    [Pure]
+    public static ProjectAnalyzerVerifyContext ForInlineFsproj(
+        this DiagnosticAnalyzer analyzer,
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+        => analyzer
+        .ForInlineSdkProject()
+        .WithFile("inline/inline.fsproj", content)
+        .Build();
 
     [Pure]
     public static ProjectAnalyzerVerifyContext ForProject(this DiagnosticAnalyzer analyzer, string fileName)

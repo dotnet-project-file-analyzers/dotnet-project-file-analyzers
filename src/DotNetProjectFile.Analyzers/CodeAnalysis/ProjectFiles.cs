@@ -79,6 +79,7 @@ public sealed partial class ProjectFiles
             {
                 LanguageNames.CSharp => ".csproj",
                 LanguageNames.VisualBasic => ".vbproj",
+                LanguageNames.FSharp => ".fsproj",
                 _ => null,
             };
 
@@ -147,7 +148,9 @@ public sealed partial class ProjectFiles
         public static bool MsBuild(IOFile file)
             => file.Extension.IsMatch(".csproj")
             || file.Extension.IsMatch(".props")
-            || file.Extension.IsMatch(".vbproj");
+            || file.Extension.IsMatch(".vbproj")
+            || file.Extension.IsMatch(".fsproj")
+            || file.Extension.IsMatch(".cblproj");
 
         public static bool Resource(IOFile file) => file.Extension.IsMatch(".resx");
 

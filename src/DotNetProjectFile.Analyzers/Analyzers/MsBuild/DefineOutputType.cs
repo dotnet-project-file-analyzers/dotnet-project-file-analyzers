@@ -1,7 +1,7 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 /// <summary>Implements <see cref="Rule.DefineOutputType"/>.</summary>
-[DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
+[DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic, LanguageNames.FSharp)]
 public sealed class DefineOutputType() : MsBuildProjectFileAnalyzer(Rule.DefineOutputType)
 {
     /// <inheritdoc />

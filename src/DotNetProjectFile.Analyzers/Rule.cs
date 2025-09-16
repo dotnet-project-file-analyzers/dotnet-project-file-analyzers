@@ -1155,7 +1155,7 @@ public static partial class Rule
         title: "Use the .NET project file analyzers",
         message: "Use the .NET project file analyzers",
         description: "To improve the code quality of .NET project files.",
-        tags: ["roslyn", "analyzer", "cbproj", "vbproj"],
+        tags: ["roslyn", "analyzer", "csproj", "vbproj", "fsproj"],
         category: Category.CodeQuality,
         isEnabled: false);
 

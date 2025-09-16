@@ -1,13 +1,27 @@
+using System.Collections.Frozen;
+using System.Reflection;
+
 namespace DotNetProjectFile.Analyzers;
 
 /// <summary>
 /// Base for <see cref="DiagnosticAnalyzer"/>s to analyze MS Build project files.
 /// </summary>
-public abstract class MsBuildProjectFileAnalyzer(
-    DiagnosticDescriptor primaryDiagnostic,
-    params DiagnosticDescriptor[] supportedDiagnostics)
-    : ProjectFileAnalyzer<MsBuildProject>(primaryDiagnostic, supportedDiagnostics)
+public abstract class MsBuildProjectFileAnalyzer : ProjectFileAnalyzer<MsBuildProject>
 {
+    private readonly FrozenSet<string> supportedNonRoslynLanguages;
+
+    protected MsBuildProjectFileAnalyzer(
+        DiagnosticDescriptor primaryDiagnostic,
+        params DiagnosticDescriptor[] supportedDiagnostics)
+        : base(primaryDiagnostic, supportedDiagnostics)
+    {
+        supportedNonRoslynLanguages = GetType()
+            .GetCustomAttributes<DiagnosticAnalyzerAttribute>()
+            .SelectMany(static attr => attr.Languages)
+            .Where(static lang => lang is not LanguageNames.CSharp and not LanguageNames.VisualBasic)
+            .ToFrozenSet();
+    }
+
     /// <summary>
     /// Defines to which <see cref="ProjectFileType"/>s the rule is applicable.
     /// </summary>
@@ -25,11 +39,16 @@ public abstract class MsBuildProjectFileAnalyzer(
         {
             if (ApplicableTo.Contains(c.File.FileType)
                 && !(c.File.HasFailingImport && DisableOnFailingImport)
-                && !IsProjectFileWithinSdk(c))
+                && (!IsProjectFileWithinSdk(c) || IsSupportedNonRoslynProject(c)))
             {
                 Register(c);
             }
         });
+
+    private bool IsSupportedNonRoslynProject(in ProjectFileAnalysisContext project)
+        => project.File.FileType is ProjectFileType.ProjectFile
+        && project.File.Language is { Length: > 0 } language
+        && supportedNonRoslynLanguages.Contains(language);
 
     /// <remarks>
     /// We do not want to analyze the project files witin the context of the SDK
@@ -37,7 +56,7 @@ public abstract class MsBuildProjectFileAnalyzer(
     /// potentially even to projects being analyzed that are not part of the
     /// solution.
     /// </remarks>
-    private static bool IsProjectFileWithinSdk(ProjectFileAnalysisContext context)
+    private static bool IsProjectFileWithinSdk(in ProjectFileAnalysisContext context)
         => context.File.FileType == ProjectFileType.ProjectFile
         && context.Compilation.AssemblyName == ".net";
 }

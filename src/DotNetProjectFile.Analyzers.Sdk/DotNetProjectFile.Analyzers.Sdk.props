@@ -26,6 +26,8 @@
     <AdditionalFiles Visible="false" Include="**/*.targets" />
     <AdditionalFiles Visible="false" Include="**/*.slnx" />
     <AdditionalFiles Visible="false" Include="**/*.vbproj" />
+    <AdditionalFiles Visible="false" Include="**/*.fsproj" />
+    <AdditionalFiles Visible="false" Include="**/*.cblproj" />
   </ItemGroup>
 
   <ItemGroup Label="Exclude generated stuff">

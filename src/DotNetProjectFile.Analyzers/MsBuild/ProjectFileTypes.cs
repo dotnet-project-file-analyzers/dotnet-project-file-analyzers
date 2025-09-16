@@ -55,12 +55,23 @@ public static class ProjectFileTypes
     {
         _ when file.Name.IsMatch(".net.csproj") => ProjectFileType.SDK,
         _ when file.Extension.IsMatch(".csproj")
-            || file.Extension.IsMatch(".vbproj") => ProjectFileType.ProjectFile,
+            || file.Extension.IsMatch(".vbproj")
+            || file.Extension.IsMatch(".fsproj")
+            || file.Extension.IsMatch(".cblproj") => ProjectFileType.ProjectFile,
         _ when file.Name.IsMatch("Directory.Build.props")
             || file.Name.IsMatch("Directory.Build.targets") => ProjectFileType.DirectoryBuild,
         _ when file.Name.IsMatch("Directory.Packages.props") => ProjectFileType.DirectoryPackages,
         _ when file.Extension.IsMatch(".props")
             || file.Extension.IsMatch(".targets") => ProjectFileType.Props,
         _ => ProjectFileType.None,
+    };
+
+    public static string? GetProjectLanguageName(this IOFile file) => file.Extension switch
+    {
+        ".csproj" => LanguageNames.CSharp,
+        ".vbproj" => LanguageNames.VisualBasic,
+        ".fsproj" => LanguageNames.FSharp,
+        ".cblproj" => "Visual Cobol",
+        _ => null,
     };
 }
