@@ -15,7 +15,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
             .OfType<PackageReferenceBase>()
             .Where(p => p is not PackageVersion && !string.IsNullOrWhiteSpace(p.IncludeOrUpdate));
 
-        var analyzers = GetAnalyzers(context.Compilation.Language);
+        var analyzers = GetAnalyzers(context.File.LanguageName ?? context.Compilation.Language);
 
         foreach (var reference in packageReferences)
         {
