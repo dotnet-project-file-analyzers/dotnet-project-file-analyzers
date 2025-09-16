@@ -33,7 +33,7 @@ public abstract class MsBuildProjectFileAnalyzer(
 
     /// <remarks>
     /// We do not want to analyze the project files witin the context of the SDK
-    /// as that is that would lead pt projects being analyzed multiple times and
+    /// as that is that would lead to projects being analyzed multiple times and
     /// potentially even to projects being analyzed that are not part of the
     /// solution.
     /// </remarks>
