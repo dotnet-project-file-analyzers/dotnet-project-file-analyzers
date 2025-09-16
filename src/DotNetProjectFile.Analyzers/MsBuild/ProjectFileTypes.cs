@@ -66,12 +66,6 @@ public static class ProjectFileTypes
         _ => ProjectFileType.None,
     };
 
-    public static string? GetProjectLanguageName(this IOFile file) => file.Extension switch
-    {
-        ".csproj" => LanguageNames.CSharp,
-        ".vbproj" => LanguageNames.VisualBasic,
-        ".fsproj" => LanguageNames.FSharp,
-        ".cblproj" => LanguageNames.VisualCobol,
-        _ => null,
-    };
+    public static ProjectLanguage GetProjectLanguage(this IOFile file)
+        => Languages.Parse(file.Extension);
 }

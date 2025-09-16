@@ -75,14 +75,8 @@ public sealed partial class ProjectFiles
                 return file;
             }
 
-            var extension = context.Compilation.Language switch
-            {
-                LanguageNames.CSharp => ".csproj",
-                LanguageNames.VisualBasic => ".vbproj",
-                LanguageNames.FSharp => ".fsproj",
-                LanguageNames.VisualCobol => ".cblproj",
-                _ => null,
-            };
+            var language = Languages.Parse(context.Compilation.Language);
+            var extension = language.GetExtension();
 
             return extension is null || context.Compilation.AssemblyName is not { Length: > 0 } name
                 ? null

@@ -1,3 +1,5 @@
+using DotNetProjectFile;
+
 namespace Rules.MS_Build.Define_output_type;
 
 public class Reports
@@ -9,10 +11,13 @@ public class Reports
        .HasIssue(
            Issue.WRN("Proj0010", "Define the <OutputType> node explicitly"));
 
-    [Test]
-    public void on_no_output_type_for_fsharp()
+    [TestCase(ProjectLanguage.CSharp)]
+    [TestCase(ProjectLanguage.FSharp)]
+    [TestCase(ProjectLanguage.VisualBasic)]
+    [TestCase(ProjectLanguage.VisualCobol)]
+    public void on_no_output_type_for_sdk_projects(ProjectLanguage language)
         => new DefineOutputType()
-        .ForInlineFsproj("""
+        .ForInlineProject(language, """
             <Project Sdk="Microsoft.NET.Sdk">
               <PropertyGroup>
                 <TargetFramework>net9.0</TargetFramework>
@@ -21,8 +26,7 @@ public class Reports
             """)
         .HasIssue(
            Issue.WRN("Proj0010", "Define the <OutputType> node explicitly")
-            .WithSpan(0, 0, 0, 32)
-            .WithPath("inline.fsproj"));
+            .WithSpan(0, 0, 0, 32));
 }
 
 public class Guards

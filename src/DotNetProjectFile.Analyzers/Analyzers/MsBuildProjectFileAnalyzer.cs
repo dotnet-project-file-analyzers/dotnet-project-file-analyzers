@@ -47,7 +47,7 @@ public abstract class MsBuildProjectFileAnalyzer : ProjectFileAnalyzer<MsBuildPr
 
     private bool IsSupportedNonRoslynProject(in ProjectFileAnalysisContext project)
         => project.File.FileType is ProjectFileType.ProjectFile
-        && project.File.Language is { Length: > 0 } language
+        && project.File.LanguageName is { Length: > 0 } language
         && supportedNonRoslynLanguages.Contains(language);
 
     /// <remarks>
