@@ -141,4 +141,5 @@ dotnet_diagnostic.Proj4010.severity = none       # Sections should contain at le
 dotnet_diagnostic.Proj4050.severity = none       # Header must be a GLOB
 dotnet_diagnostic.Proj4051.severity = none       # Use equals sign for key-value assignments
 dotnet_diagnostic.Proj5000.severity = warning    # Use SLNX solution files
+dotnet_diagnostic.Proj5001.severity = warning    # Remove SLN solution files
 dotnet_diagnostic.Proj5005.severity = warning    # Omit Project ID's

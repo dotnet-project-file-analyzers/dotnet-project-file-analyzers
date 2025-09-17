@@ -1,6 +1,7 @@
 #pragma warning disable CA2231 // Overload operator equals on overriding value type Equals
 #pragma warning disable S1210 // "Equals" and the comparison operators should be overridden when implementing "IComparable"
 
+using Microsoft.CodeAnalysis.Text;
 using System.ComponentModel;
 using System.IO;
 using System.Threading.Tasks;
@@ -23,6 +24,15 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
     internal IOFile(string[] paths) => _parts = paths;
 
     public bool HasValue => Parts.Length != 0;
+
+    /// <summary>Represents the file path as a <see cref="Location"/>.</summary>
+    [Pure]
+    public Location AsLocation()
+    {
+        var span = new TextSpan(0, 1);
+        var line = new LinePositionSpan(new(0, 0), new(0, 1));
+        return Location.Create(ToString(), span, line);
+    }
 
     /// <inheritdoc cref="FileInfo.Directory" />
     public IODirectory Directory

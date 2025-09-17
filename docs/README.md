@@ -225,6 +225,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 
 ## SLNX
 * [**Proj5000** Use SLNX solution files](rules/Proj5000.md)
+* [**Proj5001** Remove SLN solution files](rules/Proj5001.md)
 * [**Proj5005** Omit Project ID's](rules/Proj5005.md)
 
 ## Sonar integration

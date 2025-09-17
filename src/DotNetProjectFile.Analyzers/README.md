@@ -174,5 +174,6 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj4051** Use equals sign for key-value assignments](https://dotnet-project-file-analyzers.github.io/rules/Proj4051.html)
 
 ## SLNX
-* [**Proj5005** Omit Project ID's](https://dotnet-project-file-analyzers.github.io/rules/Proj5005.html)
 * [**Proj5000** Use SLNX solution files](https://dotnet-project-file-analyzers.github.io/rules/Proj5000.html)
+* [**Proj5001** Remove SLN solution files](https://dotnet-project-file-analyzers.github.io/rules/Proj5001.html)
+* [**Proj5005** Omit Project ID's](https://dotnet-project-file-analyzers.github.io/rules/Proj5005.html)

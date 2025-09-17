@@ -16,6 +16,17 @@ public static partial class Rule
             tags: ["SLNX"],
             category: Category.Obsolete);
 
+        public static DiagnosticDescriptor RemoveSlnFiles => New(
+            id: 5001,
+            title: "Remove SLN solution files",
+            message: "Remove {0}",
+            description:
+                "SLNX solution files are preferred over SLN files, for being less" +
+                "verbose and easier to read. As a result, the old SLN files should " +
+                "be removed.",
+            tags: ["SLNX"],
+            category: Category.Noise);
+
         public static DiagnosticDescriptor OmitProjectIds => New(
             id: 5005,
             title: "Omit Project ID's",
