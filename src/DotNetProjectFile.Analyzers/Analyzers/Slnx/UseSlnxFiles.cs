@@ -1,8 +1,8 @@
 namespace DotNetProjectFile.Analyzers.Slnx;
 
-/// <summary>Implements <see cref="Rule.SLNX.UseSlnxFiles"/>.</summary>
+/// <summary>Handles the use of SLNX files.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class UseSlnxFiles() : MsBuildProjectFileAnalyzer(Rule.SLNX.UseSlnxFiles)
+public sealed class UseSlnxFiles() : MsBuildProjectFileAnalyzer(Rule.SLNX.UseSlnxFiles, Rule.SLNX.RemoveSlnFiles)
 {
     /// <inheritdoc />
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.SDK;
@@ -15,7 +15,14 @@ public sealed class UseSlnxFiles() : MsBuildProjectFileAnalyzer(Rule.SLNX.UseSln
     {
         if (context.Options.AdditionalFiles.None(f => IOFile.Parse(f.Path).Extension.IsMatch(".slnx")))
         {
-            context.ReportDiagnostic(Descriptor, context.File);
+            context.ReportDiagnostic(Rule.SLNX.UseSlnxFiles, context.File);
+        }
+        else
+        {
+            foreach (var sln in context.File.Path.Directory.Files("**/*.sln") ?? [])
+            {
+                context.ReportDiagnostic(Rule.SLNX.RemoveSlnFiles, sln.AsLocation(), sln);
+            }
         }
     }
 }
