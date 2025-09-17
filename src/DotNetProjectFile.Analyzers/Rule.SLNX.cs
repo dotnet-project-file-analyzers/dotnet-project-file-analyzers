@@ -12,7 +12,7 @@ public static partial class Rule
             message: "Use a SLNX solution file instead",
             description:
                 "SLNX solution files are preferred over SLN files, for being less" +
-                "verboze and easier to read.",
+                "verbose and easier to read.",
             tags: ["SLNX"],
             category: Category.Obsolete);
 
