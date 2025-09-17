@@ -21,7 +21,7 @@ public sealed class UseSlnxFiles() : MsBuildProjectFileAnalyzer(Rule.SLNX.UseSln
         {
             foreach (var sln in context.File.Path.Directory.Files("**/*.sln") ?? [])
             {
-                context.ReportDiagnostic(Rule.SLNX.RemoveSlnFiles, sln.AsLocation(), sln);
+                context.ReportDiagnostic(Rule.SLNX.RemoveSlnFiles, sln.AsLocation(), sln.Name);
             }
         }
     }
