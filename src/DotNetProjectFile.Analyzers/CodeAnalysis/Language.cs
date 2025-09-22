@@ -24,12 +24,6 @@ public readonly struct Language : IEquatable<Language>
     /// <summary>F#.</summary>
     public static readonly Language FSharp = new(nameof(FSharp));
 
-    /// <summary>All Roslyn based languages.</summary>
-    public static IReadOnlyCollection<Language> RoslynBased { get; } = [CSharp, FSharp];
-
-    /// <summary>All languages.</summary>
-    public static IReadOnlyCollection<Language> All { get; } = [CSharp, FSharp, VisualBasic];
-
     /// <summary>Gets the MSBuild project file extenion for the language.</summary>
     public string? ProjectFile => Id switch
     {

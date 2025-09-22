@@ -20,9 +20,9 @@ public abstract class MsBuildProjectFileAnalyzer(
     /// Defines to which <see cref="Language"/>s the rule is applicable.
     /// </summary>
     /// <remarks>
-    /// Default is <see cref="Language.All"/>.
+    /// Default is <see cref="Languages.All"/>.
     /// </remarks>
-    public virtual ImmutableArray<Language> ApplicableLanguages { get; } = [..Language.All];
+    public virtual ImmutableArray<Language> ApplicableLanguages { get; } = Languages.All;
 
     /// <summary>Indicates that the rule will not be executed once an import could not be resolved (default is true).</summary>
     public virtual bool DisableOnFailingImport => true;

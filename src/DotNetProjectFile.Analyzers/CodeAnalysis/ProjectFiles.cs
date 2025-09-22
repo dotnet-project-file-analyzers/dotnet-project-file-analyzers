@@ -140,7 +140,7 @@ public sealed partial class ProjectFiles
             || file.Extension.IsMatch(".globalconfig");
 
         public static bool MsBuild(IOFile file)
-            => Language.All.Any(lang => file.Extension.IsMatch(lang.ProjectFile))
+            => Languages.All.Any(lang => file.Extension.IsMatch(lang.ProjectFile))
             || file.Extension.IsMatch(".props");
 
         public static bool Resource(IOFile file) => file.Extension.IsMatch(".resx");

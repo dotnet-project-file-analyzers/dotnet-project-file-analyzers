@@ -21,7 +21,7 @@ public sealed class UseInVBContextOnly() : MsBuildProjectFileAnalyzer(Rule.UseIn
     public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
-    public override ImmutableArray<Language> ApplicableLanguages { get; } = [.. Language.All.Except([Language.VisualBasic])];
+    public override ImmutableArray<Language> ApplicableLanguages { get; } = Languages.All.Remove(Language.VisualBasic);
 
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context) => Walk(context.File, context);
 
