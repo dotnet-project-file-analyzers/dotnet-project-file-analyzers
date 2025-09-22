@@ -20,6 +20,9 @@ public readonly struct ProjectFileAnalysisContext<TFile>(
     /// <summary>Gets the project file.</summary>
     public TFile File { get; } = file;
 
+    /// <summary>Gets the compilation language.</summary>
+    public Language CompilationLanguage => Language.Parse(Compilation.Language);
+
     /// <summary>Gets the compilation.</summary>
     public Compilation Compilation { get; } = compilation;
 

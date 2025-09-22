@@ -24,6 +24,9 @@ public readonly struct Language
     /// <summary>F#.</summary>
     public static readonly Language FSharp = new(nameof(FSharp));
 
+    /// <summary>All Roslyn based languages.</summary>
+    public static readonly ImmutableArray<Language> RoslynBased = [CSharp, FSharp];
+
     /// <summary>All languages.</summary>
     public static readonly ImmutableArray<Language> All = [CSharp, FSharp, VisualBasic];
 
