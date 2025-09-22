@@ -30,7 +30,7 @@ public sealed class UseInVBContextOnly() : MsBuildProjectFileAnalyzer(Rule.UseIn
 
     private static bool InVBContext(MsBuildProject project) => project.FileType switch
     {
-        ProjectFileType.ProjectFile => project.Path.Extension.IsMatch(Language.CSharp.ProjectFile),
+        ProjectFileType.ProjectFile => project.Path.Extension.IsMatch(Language.VisualBasic.ProjectFile),
         ProjectFileType.DirectoryBuild => project.Path.Directory.Files($"*{Language.VisualBasic.ProjectFile}").Any(),
         _ => false,
     };
