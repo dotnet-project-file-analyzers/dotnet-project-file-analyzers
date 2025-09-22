@@ -20,9 +20,9 @@ public abstract class MsBuildProjectFileAnalyzer(
     /// Defines to which <see cref="Language"/>s the rule is applicable.
     /// </summary>
     /// <remarks>
-    /// Default is <see cref="ProjectFileTypes.All"/>.
+    /// Default is <see cref="Language.All"/>.
     /// </remarks>
-    public virtual ImmutableArray<Language> ApplicableLanguages => [.. Language.All];
+    public virtual ImmutableArray<Language> ApplicableLanguages { get; } = [..Language.All];
 
     /// <summary>Indicates that the rule will not be executed once an import could not be resolved (default is true).</summary>
     public virtual bool DisableOnFailingImport => true;
@@ -32,6 +32,7 @@ public abstract class MsBuildProjectFileAnalyzer(
         => context.RegisterProjectFileAction(c =>
         {
             if (ApplicableTo.Contains(c.File.FileType)
+                && ApplicableLanguages.Contains(c.File.Language)
                 && !(c.File.HasFailingImport && DisableOnFailingImport)
                 && !IsProjectFileWithinSdk(c))
             {

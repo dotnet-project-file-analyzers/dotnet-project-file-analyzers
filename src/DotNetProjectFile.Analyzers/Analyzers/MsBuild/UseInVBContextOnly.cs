@@ -18,22 +18,12 @@ public sealed class UseInVBContextOnly() : MsBuildProjectFileAnalyzer(Rule.UseIn
     ];
 
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile_DirectoryBuild;
+    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
-    {
-        if (!InVBContext(context.File))
-        {
-            Walk(context.File, context);
-        }
-    }
+    /// <inheritdoc />
+    public override ImmutableArray<Language> ApplicableLanguages { get; } = [.. Language.All.Except([Language.VisualBasic])];
 
-    private static bool InVBContext(MsBuildProject project) => project.FileType switch
-    {
-        ProjectFileType.ProjectFile => project.Path.Extension.IsMatch(Language.VisualBasic.ProjectFile),
-        ProjectFileType.DirectoryBuild => project.Path.Directory.Files($"*{Language.VisualBasic.ProjectFile}").Any(),
-        _ => false,
-    };
+    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context) => Walk(context.File, context);
 
     private void Walk(Node node, ProjectFileAnalysisContext<MsBuildProject> context)
     {
