@@ -25,10 +25,10 @@ public readonly struct Language
     public static readonly Language FSharp = new(nameof(FSharp));
 
     /// <summary>All Roslyn based languages.</summary>
-    public static readonly ImmutableArray<Language> RoslynBased = [CSharp, FSharp];
+    public static IReadOnlyCollection<Language> RoslynBased { get; } = [CSharp, FSharp];
 
     /// <summary>All languages.</summary>
-    public static readonly ImmutableArray<Language> All = [CSharp, FSharp, VisualBasic];
+    public static IReadOnlyCollection<Language> All { get; } = [CSharp, FSharp, VisualBasic];
 
     /// <summary>Gets the MSBuild project file extenion for the language.</summary>
     public string? ProjectFile => Id switch
@@ -57,18 +57,22 @@ public readonly struct Language
         ? new(id!)
         : throw new FormatException($"'{str}' is not a valid language");
 
-    private static readonly FrozenDictionary<string, string?> lookup = Init()
-        .ToFrozenDictionary(StringComparer.OrdinalIgnoreCase);
-
-    private static IEnumerable<KeyValuePair<string, string?>> Init()
+    private static readonly FrozenDictionary<string, string?> lookup = new Dictionary<string, string?>()
     {
-        yield return new KeyValuePair<string, string?>(string.Empty, null);
+        [string.Empty] = null,
 
-        foreach (var lang in All)
-        {
-            yield return new KeyValuePair<string, string?>(lang.Id, lang.Id);
-            yield return new KeyValuePair<string, string?>(lang.Name, lang.Id);
-            yield return new KeyValuePair<string, string?>(lang.ProjectFile!, lang.Id);
-        }
+        ["C#"] = nameof(CSharp),
+        [".csproj"] = nameof(CSharp),
+        [nameof(CSharp)] = nameof(CSharp),
+
+        ["F#"] = nameof(FSharp),
+        [".fsproj"] = nameof(FSharp),
+        [nameof(FSharp)] = nameof(FSharp),
+
+        ["VB"] = nameof(VisualBasic),
+        ["VB.NET"] = nameof(VisualBasic),
+        [".vbproj"] = nameof(VisualBasic),
+        [nameof(VisualBasic)] = nameof(VisualBasic),
     }
+    .ToFrozenDictionary(StringComparer.OrdinalIgnoreCase);
 }

@@ -22,7 +22,7 @@ public abstract class MsBuildProjectFileAnalyzer(
     /// <remarks>
     /// Default is <see cref="ProjectFileTypes.All"/>.
     /// </remarks>
-    public virtual ImmutableArray<Language> ApplicableLanguages => Language.All;
+    public virtual ImmutableArray<Language> ApplicableLanguages => [.. Language.All];
 
     /// <summary>Indicates that the rule will not be executed once an import could not be resolved (default is true).</summary>
     public virtual bool DisableOnFailingImport => true;
