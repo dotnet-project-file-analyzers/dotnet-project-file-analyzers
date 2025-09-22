@@ -78,6 +78,8 @@
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v.1.8.0
+- Proj0029: C# only properties now only checked for project files. (FP)
+- Proj0030: VB.NET only properties now only checked for project files. (FP)
 - Proj0047: Label item groups that disable compilation items. (NEW RULE)
 - Proj0048: Language version should be set to an explicit version number. (NEW RULE)
 - Proj0219: Packable projects should be libraries. (NEW RULE)

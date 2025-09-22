@@ -57,6 +57,12 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
         => analyzer.ForInlineProject("inline.csproj", content).Build();
 
     [Pure]
+    public static ProjectAnalyzerVerifyContext ForInlineVbproj(
+       this DiagnosticAnalyzer analyzer,
+       [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+       => analyzer.ForInlineProject("inline.vbproj", content).Build();
+
+    [Pure]
     public static ProjectAnalyzerVerifyContext ForProject(this DiagnosticAnalyzer analyzer, string fileName)
     {
         var name = Path.GetFileNameWithoutExtension(fileName);

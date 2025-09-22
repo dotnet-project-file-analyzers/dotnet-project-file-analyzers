@@ -40,6 +40,7 @@ public sealed partial class Project : Node, ProjectFile
 
     public AdditionalText? AdditionalText { get; }
 
+
     public bool IsLegacy => Element.Name.NamespaceName is { Length: > 0 };
 
     /// <summary>Returns true if any import is failing.</summary>
@@ -48,6 +49,8 @@ public sealed partial class Project : Node, ProjectFile
     public string? Sdk => Attribute();
 
     public IOFile Path { get; }
+
+    public Language Language => Language.Parse(Path.Extension);
 
     public ProjectFileType FileType => Path.GetProjectFileType();
 
