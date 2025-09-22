@@ -31,11 +31,11 @@ public class Guards
         <Project Sdk="Microsoft.NET.Sdk">
         
           <PropertyGroup>
-            <TargetFramework>netstandard2.0</TargetFramework>
+            <TargetFramework>net8.0</TargetFramework>
             <OutputType>Library</OutputType>
             <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
             <CheckForOverflowUnderflow>true</CheckForOverflowUnderflow>
-            W<Nullable>enable</Nullable>
+            <Nullable>enable</Nullable>
           </PropertyGroup>
         
         </Project>

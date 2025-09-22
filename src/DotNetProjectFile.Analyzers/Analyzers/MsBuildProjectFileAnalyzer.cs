@@ -32,7 +32,7 @@ public abstract class MsBuildProjectFileAnalyzer(
         => context.RegisterProjectFileAction(c =>
         {
             if (ApplicableTo.Contains(c.File.FileType)
-                && ApplicableLanguages.Contains(c.File.Language)
+                && (ApplicableLanguages.Contains(c.File.Language) || c.File.Language == Language.None)
                 && !(c.File.HasFailingImport && DisableOnFailingImport)
                 && !IsProjectFileWithinSdk(c))
             {

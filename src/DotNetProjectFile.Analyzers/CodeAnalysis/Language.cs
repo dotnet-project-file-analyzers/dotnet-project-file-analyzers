@@ -5,7 +5,7 @@ namespace DotNetProjectFile.CodeAnalysis;
 /// <summary>
 /// Represents a language that is supported by the .NET project file analyzers.
 /// </summary>
-public readonly struct Language
+public readonly struct Language : IEquatable<Language>
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private readonly string Id;
@@ -58,12 +58,22 @@ public readonly struct Language
     public static Language Parse(string? str)
         => lookup.TryGetValue((str ?? string.Empty).Trim().Replace(" ", string.Empty), out var id)
         ? new(id!)
-        : throw new FormatException($"'{str}' is not a valid language");
+        : None;
+
+    /// <inheritdoc />
+    public override bool Equals(object? obj) => obj is Language other && Equals(other);
+
+    /// <inheritdoc />
+    public bool Equals(Language other) => Id == other.Id;
+
+    /// <summary>Return true when the languages are equal.</summary>
+    public static bool operator ==(Language left, Language right) => left.Equals(right);
+
+    /// <summary>Return true when the languages are different.</summary>
+    public static bool operator !=(Language left, Language right) => !(left == right);
 
     private static readonly FrozenDictionary<string, string?> lookup = new Dictionary<string, string?>()
     {
-        [string.Empty] = null,
-
         ["C#"] = nameof(CSharp),
         [".csproj"] = nameof(CSharp),
         [nameof(CSharp)] = nameof(CSharp),
