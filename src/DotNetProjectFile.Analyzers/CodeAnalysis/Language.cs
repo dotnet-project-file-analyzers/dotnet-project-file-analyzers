@@ -48,6 +48,9 @@ public readonly struct Language
         _ => Id ?? string.Empty,
     };
 
+    /// <summary>Indicates that a language is Roslyn based.</summary>
+    public bool IsRoslynBased => Id is nameof(CSharp) or nameof(VisualBasic);
+
     /// <inheritdoc />
     public override string ToString() => Name;
 
