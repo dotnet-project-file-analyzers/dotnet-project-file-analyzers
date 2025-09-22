@@ -66,7 +66,7 @@ public static class ProjectFileTypes
     public static ProjectFileType GetProjectFileType(this IOFile file) => file switch
     {
         _ when file.Name.IsMatch(".net.csproj") => ProjectFileType.SDK,
-        _ when Languages.All.Any(lang => file.Extension.IsMatch(lang.ProjectFile)) => ProjectFileType.ProjectFile,
+        _ when Languages.All.Any(lang => file.Extension.IsMatch(lang.ProjectFileExtension)) => ProjectFileType.ProjectFile,
         _ when file.Name.IsMatch("Directory.Build.props")
             || file.Name.IsMatch("Directory.Build.targets") => ProjectFileType.DirectoryBuild,
         _ when file.Name.IsMatch("Directory.Packages.props") => ProjectFileType.DirectoryPackages,

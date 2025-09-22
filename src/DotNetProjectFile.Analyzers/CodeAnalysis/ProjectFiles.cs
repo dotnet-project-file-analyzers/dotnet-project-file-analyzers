@@ -75,7 +75,7 @@ public sealed partial class ProjectFiles
                 return file;
             }
 
-            var extension = Language.Parse(context.Compilation.Language).ProjectFile;
+            var extension = Language.Parse(context.Compilation.Language).ProjectFileExtension;
 
             return extension is null || context.Compilation.AssemblyName is not { Length: > 0 } name
                 ? null
@@ -140,7 +140,7 @@ public sealed partial class ProjectFiles
             || file.Extension.IsMatch(".globalconfig");
 
         public static bool MsBuild(IOFile file)
-            => Languages.All.Any(lang => file.Extension.IsMatch(lang.ProjectFile))
+            => Languages.All.Any(lang => file.Extension.IsMatch(lang.ProjectFileExtension))
             || file.Extension.IsMatch(".props");
 
         public static bool Resource(IOFile file) => file.Extension.IsMatch(".resx");
