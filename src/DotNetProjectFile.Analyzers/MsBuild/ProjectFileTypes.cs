@@ -55,7 +55,9 @@ public static class ProjectFileTypes
     {
         _ when file.Name.IsMatch(".net.csproj") => ProjectFileType.SDK,
         _ when file.Extension.IsMatch(".csproj")
-            || file.Extension.IsMatch(".vbproj") => ProjectFileType.ProjectFile,
+            || file.Extension.IsMatch(".vbproj")
+            || file.Extension.IsMatch(".fsproj")
+            || file.Extension.IsMatch(".cblproj") => ProjectFileType.ProjectFile,
         _ when file.Name.IsMatch("Directory.Build.props")
             || file.Name.IsMatch("Directory.Build.targets") => ProjectFileType.DirectoryBuild,
         _ when file.Name.IsMatch("Directory.Packages.props") => ProjectFileType.DirectoryPackages,
@@ -63,4 +65,7 @@ public static class ProjectFileTypes
             || file.Extension.IsMatch(".targets") => ProjectFileType.Props,
         _ => ProjectFileType.None,
     };
+
+    public static ProjectLanguage GetProjectLanguage(this IOFile file)
+        => Languages.Parse(file.Extension);
 }
