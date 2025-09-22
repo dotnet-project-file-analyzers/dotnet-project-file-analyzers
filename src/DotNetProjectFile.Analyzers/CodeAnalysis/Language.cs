@@ -60,6 +60,9 @@ public readonly struct Language : IEquatable<Language>
     /// <inheritdoc />
     public bool Equals(Language other) => Id == other.Id;
 
+    /// <inheritdoc />
+    public override int GetHashCode() => Id is null ? 0 : Id.GetHashCode();
+
     /// <summary>Return true when the languages are equal.</summary>
     public static bool operator ==(Language left, Language right) => left.Equals(right);
 
