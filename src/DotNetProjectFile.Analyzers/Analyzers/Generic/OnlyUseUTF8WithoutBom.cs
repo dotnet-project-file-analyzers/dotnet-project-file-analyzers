@@ -50,6 +50,8 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
 
         return !path.Contains("/bin/")
             && !path.Contains("/obj/")
+            && !path.Contains("/.vs/")
+            && !path.Contains("/.git/")
             && !file.Name.IsMatch("CompatibilitySuppressions.xml");
     }
 }
