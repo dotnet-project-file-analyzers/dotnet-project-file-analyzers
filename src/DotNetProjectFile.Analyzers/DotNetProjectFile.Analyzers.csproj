@@ -83,6 +83,7 @@ v.1.8.0
 - Proj0047: Label item groups that disable compilation items. (NEW RULE)
 - Proj0048: Language version should be set to an explicit version number. (NEW RULE)
 - Proj0219: Packable projects should be libraries. (NEW RULE)
+- Proj0811: Directory.Build.props and Directory.Packages.props should be in the same dirctory. (NEW RULE)
 - Proj1200: Detect native (linux) .so files. (FP)
 - Proj1300: Avoid project references to executables. (NEW RULE)
 - Proj1301: Project references of packable targets should be packable. (NEW RULE)
