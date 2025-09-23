@@ -86,6 +86,7 @@ v.1.8.0
 - Proj1300: Avoid project references to executables. (NEW RULE)
 - Proj1301: Project references of packable targets should be packable. (NEW RULE)
 - Proj1302: Avoid project references to test projects. (NEW RULE)
+- Proj3000: Exclude .vs and .git directories from BOM checking. (FP)
 - Proj5000: Use SLNX solution files. (NEW RULE)
 - Proj5001: Remove SLN solution files. (NEW RULE)
 - Proj5005: Omit Project ID's. (NEW RULE)
