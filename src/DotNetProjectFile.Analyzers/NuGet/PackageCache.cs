@@ -78,6 +78,9 @@ public static class PackageCache
         return result;
     }
 
+    /// <remarks>
+    /// See: https://learn.microsoft.com/nuget/create-packages/native-files-in-net-packages.
+    /// </remarks>
     private static Package? GetPackageInternal(string name, string? version)
     {
         var cacheDir = GetDirectory();
