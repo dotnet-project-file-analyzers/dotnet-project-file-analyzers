@@ -1152,7 +1152,7 @@ public static partial class Rule
 
     public static DiagnosticDescriptor AllignDirectoryBuildAndPackages => New(
         id: 0811,
-        title: "Directory.Build.props and Directory.Packages.props should be in the same dirctory",
+        title: "Directory.Build.props and Directory.Packages.props should be in the same directory",
         message: "The imported {0} and {1} are not in the same directory",
         description:
             "To prevent confusion, the Directory.Build.props and Directory.Packages.props " +
