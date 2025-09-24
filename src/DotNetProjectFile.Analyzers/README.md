@@ -50,7 +50,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0046** Update statements should change state](https://dotnet-project-file-analyzers.github.io/rules/Proj0046.html)
 * [**Proj0047** Label item groups that disable compliation items](https://dotnet-project-file-analyzers.github.io/rules/Proj0047.html)
 * [**Proj0048** Language version should be set to an explicit version number](https://dotnet-project-file-analyzers.github.io/rules/Proj0048.html)
-
+ 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)
 * [**Proj0201** Define the project version explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0201.html)
@@ -124,6 +124,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0808** Define global package reference only in Directory.Packages.props](https://dotnet-project-file-analyzers.github.io/rules/Proj0808.html)
 * [**Proj0809** Global package references are meant for private assets only](https://dotnet-project-file-analyzers.github.io/rules/Proj0809.html)
 * [**Proj0810** Remove unused package versions](https://dotnet-project-file-analyzers.github.io/rules/Proj0810.html)
+* [**Proj0811** Directory.Build.props and Directory.Packages.props should be in the same directory](https://dotnet-project-file-analyzers.github.io/rules/Proj0811.html)
 
 ### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1000.html)

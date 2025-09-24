@@ -1150,6 +1150,16 @@ public static partial class Rule
         tags: ["noise", "SDK"],
         category: Category.CPM);
 
+    public static DiagnosticDescriptor AllignDirectoryBuildAndPackages => New(
+        id: 0811,
+        title: "Directory.Build.props and Directory.Packages.props should be in the same directory",
+        message: "The imported {0} and {1} are not in the same directory",
+        description:
+            "To prevent confusion, the Directory.Build.props and Directory.Packages.props " +
+            "imported by a MS build project file, should be in the same directory.",
+        tags: ["build", "import", "CPM"],
+        category: Category.Clarity);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",
