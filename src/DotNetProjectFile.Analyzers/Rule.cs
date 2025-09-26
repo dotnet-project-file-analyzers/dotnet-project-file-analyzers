@@ -202,7 +202,7 @@ public static partial class Rule
     public static DiagnosticDescriptor UseForwardSlashesInPaths => New(
         id: 0023,
         title: "Use forward slashes in paths",
-        message: "<{0} {1}> contains backward slashes",
+        message: "<{0}> contains backward slashes",
         description:
             "The use of forward slashes is preferred as they work both for UNIX and" +
             "Windows. This is not true for backward slashes.",

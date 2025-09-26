@@ -1,5 +1,6 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.UseForwardSlashesInPaths"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseForwardSlashesInPaths() : MsBuildProjectFileAnalyzer(Rule.UseForwardSlashesInPaths)
 {
@@ -14,7 +15,7 @@ public sealed class UseForwardSlashesInPaths() : MsBuildProjectFileAnalyzer(Rule
             .SelectMany(AsProps)
             .Where(WithBackSlash))
         {
-            context.ReportDiagnostic(Descriptor, prop.Node, prop.Node.LocalName, prop.Property);
+            context.ReportDiagnostic(Descriptor, prop.Node, $"{prop.Node.LocalName} {prop.Property}".Trim());
         }
     }
 
@@ -22,7 +23,8 @@ public sealed class UseForwardSlashesInPaths() : MsBuildProjectFileAnalyzer(Rule
 
     private static IEnumerable<Prop> AsProps(Node node) => node switch
     {
-        Import import => [new Prop(import, nameof(Import.Project), import.Attribute(nameof(import.Project)))],
+        Import import => [new(import, nameof(Import.Project), import.Attribute(nameof(import.Project)))],
+        DockerfileContext docker => [new(docker, string.Empty, docker.Value)],
         _ => AsPropsGeneric(node),
     };
 
