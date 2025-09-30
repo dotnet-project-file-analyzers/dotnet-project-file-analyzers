@@ -81,6 +81,7 @@ v.1.8.0
 - Proj0023: Report on backward slashes in DockerfileContext. (FN)
 - Proj0029: C# only properties now only checked for project files. (FP)
 - Proj0030: VB.NET only properties now only checked for project files. (FP)
+- Proj0036: <None Remove=""> is valid for hiding the documentation file. (FP)
 - Proj0047: Label item groups that disable compilation items. (NEW RULE)
 - Proj0048: Language version should be set to an explicit version number. (NEW RULE)
 - Proj0219: Packable projects should be libraries. (NEW RULE)
