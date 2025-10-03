@@ -77,7 +77,9 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v.1.8.0
+v1.8.0
+- Added support for F# projects when using DotNetProjectFile.Analyzers.Sdk.
+- Added support for Visual Cobol projects when using DotNetProjectFile.Analyzers.Sdk.
 - Proj0023: Report on backward slashes in DockerfileContext. (FN)
 - Proj0029: C# only properties now only checked for project files. (FP)
 - Proj0030: VB.NET only properties now only checked for project files. (FP)
