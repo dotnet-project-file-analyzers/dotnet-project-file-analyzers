@@ -8,8 +8,6 @@ namespace DotNetProjectFile.Analyzers;
 /// </summary>
 public abstract class MsBuildProjectFileAnalyzer : ProjectFileAnalyzer<MsBuildProject>
 {
-    private readonly FrozenSet<ProjectLanguage> supportedSdkLanguage;
-
     protected MsBuildProjectFileAnalyzer(
         DiagnosticDescriptor primaryDiagnostic,
         params DiagnosticDescriptor[] supportedDiagnostics)
