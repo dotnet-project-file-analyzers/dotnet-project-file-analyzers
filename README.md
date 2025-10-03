@@ -42,23 +42,6 @@ An example configuration with the default severities of the main branch of the a
 ### SDK
 To use the SDK, follow the instructions [here](https://dotnet-project-file-analyzers.github.io/sdk).
 
-## Additional files
-To fully benefit from these analyzers it is recommended to add the project file
-(and RESX, and imported projects/props) as additional files.
-
-To add a project file:
-
-``` XML
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <AdditionalFiles Include="*.??proj" Visible="false" />
-	<AdditionalFiles Include="*.resx" />
-  </ItemGroup>
-
-</Project>
-```
-
 To add a props file:
 
 ``` XML
