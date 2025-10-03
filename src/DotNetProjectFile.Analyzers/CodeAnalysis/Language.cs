@@ -1,10 +1,12 @@
 using System.Collections.Frozen;
+using System.ComponentModel;
 
 namespace DotNetProjectFile.CodeAnalysis;
 
 /// <summary>
 /// Represents a language that is supported by the .NET project file analyzers.
 /// </summary>
+[TypeConverter(typeof(LanguageTypeConverter))]
 public readonly struct Language : IEquatable<Language>
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
@@ -40,6 +42,13 @@ public readonly struct Language : IEquatable<Language>
         nameof(FSharp),
         name: "F#",
         xxproj: ".fsproj",
+        roslynBased: false);
+
+    /// <summary>Visual Cobol</summary>
+    public static readonly Language VisualCobol = new(
+        nameof(VisualCobol),
+        name: "Visual Cobol",
+        xxproj: ".cblproj",
         roslynBased: false);
 
     /// <summary>Gets the name of the language.</summary>

@@ -34,7 +34,7 @@
     <PackageProjectUrl>https://dotnet-project-file-analyzers.github.io</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
-    <PackageTags>Code Analysis;Project files;project file;dotnet;csproj;vbproj;resx;MS Build;resources;analyser;analyzer;analysis</PackageTags>
+    <PackageTags>Code Analysis;Project files;project file;dotnet;csproj;vbproj;resx;fsproj;cblproj;MS Build;resources;analyser;analyzer;analysis</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>logo_128x128.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
@@ -54,7 +54,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Props and targets">
-    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.25" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.39" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.2" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
@@ -77,7 +77,9 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v.1.8.0
+v1.8.0
+- Added support for F# projects when using DotNetProjectFile.Analyzers.Sdk.
+- Added support for Visual Cobol projects when using DotNetProjectFile.Analyzers.Sdk.
 - Proj0023: Report on backward slashes in DockerfileContext. (FN)
 - Proj0029: C# only properties now only checked for project files. (FP)
 - Proj0030: VB.NET only properties now only checked for project files. (FP)

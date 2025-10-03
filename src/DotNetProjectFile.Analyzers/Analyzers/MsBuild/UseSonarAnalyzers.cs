@@ -9,7 +9,7 @@ public sealed class UseSonarAnalyzers() : MsBuildProjectFileAnalyzer(Rule.UseSon
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (Include(context.Compilation.Options.Language) is not { } include) { return; }
+        if (Include(context.File.Language) is not { } include) { return; }
 
         if (context.File
             .Walk()
@@ -20,10 +20,19 @@ public sealed class UseSonarAnalyzers() : MsBuildProjectFileAnalyzer(Rule.UseSon
         }
     }
 
-    private static string? Include(string language) => language switch
+    private static string? Include(Language language)
     {
-        LanguageNames.CSharp => "SonarAnalyzer.CSharp",
-        LanguageNames.VisualBasic => "SonarAnalyzer.VisualBasic",
-        _ => null,
-    };
+        if (language == Language.CSharp)
+        {
+            return "SonarAnalyzer.CSharp";
+        }
+        else if (language == Language.VisualBasic)
+        {
+            return "SonarAnalyzer.VisualBasic";
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
