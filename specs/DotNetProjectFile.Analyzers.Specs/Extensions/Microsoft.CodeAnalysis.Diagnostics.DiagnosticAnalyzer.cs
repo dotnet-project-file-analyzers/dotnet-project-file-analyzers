@@ -33,9 +33,14 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
 
     [Pure]
     public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject(
+        this DiagnosticAnalyzer analyzer,
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+        => analyzer.ForInlineProject(".net.csproj", content);
+
+    [Pure]
+    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject(
         this DiagnosticAnalyzer analyzer)
-        => analyzer.ForInlineProject(
-            ".net.csproj",
+        => analyzer.ForInlineSdkProject(
             """
             <Project Sdk="Microsoft.NET.Sdk">
 
