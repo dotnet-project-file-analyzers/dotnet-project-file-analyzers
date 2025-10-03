@@ -45,21 +45,21 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
             <Project Sdk="Microsoft.NET.Sdk">
 
                 <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                    <TargetFramework>net9.0</TargetFramework>
                 </PropertyGroup>
 
                 <ItemGroup>
-                <AdditionalFiles Include="**/*.slnx" />
-                <AdditionalFiles Include="**/*.csproj" />
-                <AdditionalFiles Include="**/*.vbproj" />
-                <AdditionalFiles Include="**/*.fsproj" />
-                <AdditionalFiles Include="**/*.cblproj" />
-                <AdditionalFiles Include="**/*.props" />
-                <AdditionalFiles Include="**/*.targets" />
+                    <AdditionalFiles Include="**/*.slnx" />
+                    <AdditionalFiles Include="**/*.csproj" />
+                    <AdditionalFiles Include="**/*.vbproj" />
+                    <AdditionalFiles Include="**/*.fsproj" />
+                    <AdditionalFiles Include="**/*.cblproj" />
+                    <AdditionalFiles Include="**/*.props" />
+                    <AdditionalFiles Include="**/*.targets" />
                 </ItemGroup>
 
                 <ItemGroup>
-                <PackageReference Include="DotNetProjectFile.Analyzers.Sdk" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
+                    <PackageReference Include="DotNetProjectFile.Analyzers.Sdk" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
                 </ItemGroup>
 
             </Project>
