@@ -78,6 +78,9 @@ public static class PackageCache
         return result;
     }
 
+    /// <remarks>
+    /// See: https://learn.microsoft.com/nuget/create-packages/native-files-in-net-packages.
+    /// </remarks>
     private static Package? GetPackageInternal(string name, string? version)
     {
         var cacheDir = GetDirectory();
@@ -123,7 +126,7 @@ public static class PackageCache
             Version = versionDir.Name,
             Directory = versionDir,
             HasAnalyzerDll = HasDllFiles("analyzers"),
-            HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes"),
+            HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes") || HasNativeFiles(),
             HasDependencies = nuspec?.Metadata?.Dependencies?.SelectMany(d => d.Dependencies ?? [])?.Any() is true,
             IsDevelopmentDependency = nuspec?.Metadata?.DevelopmentDependency,
             LicenseExpression = licenseExpression,
@@ -136,6 +139,10 @@ public static class PackageCache
         bool HasDllFiles(string subDir)
             => versionDir.SubDirectory(subDir) is { Exists: true } dir
             && dir.Files("./**/*.dll").Any();
+
+        bool HasNativeFiles()
+            => versionDir.SubDirectory("runtimes") is { Exists: true } dir
+            && dir.Files("./**/native/*.so").Any();
     }
 
     private static IODirectory? GetVersionDirectory(IODirectory packageDir, string? versionLabel)

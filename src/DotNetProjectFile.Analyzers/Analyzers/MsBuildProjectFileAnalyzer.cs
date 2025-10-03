@@ -13,10 +13,6 @@ public abstract class MsBuildProjectFileAnalyzer : ProjectFileAnalyzer<MsBuildPr
         params DiagnosticDescriptor[] supportedDiagnostics)
         : base(primaryDiagnostic, supportedDiagnostics)
     {
-        supportedSdkLanguage = GetType()
-            .GetCustomAttributes<SdkAnalyzerAttribute>()
-            .SelectMany(static attr => attr.Languages)
-            .ToFrozenSet();
     }
 
     /// <summary>
@@ -27,6 +23,14 @@ public abstract class MsBuildProjectFileAnalyzer : ProjectFileAnalyzer<MsBuildPr
     /// </remarks>
     public virtual IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.All;
 
+    /// <summary>
+    /// Defines to which <see cref="Language"/>s the rule is applicable.
+    /// </summary>
+    /// <remarks>
+    /// Default is <see cref="Languages.All"/>.
+    /// </remarks>
+    public virtual ImmutableArray<Language> ApplicableLanguages { get; } = Languages.All;
+
     /// <summary>Indicates that the rule will not be executed once an import could not be resolved (default is true).</summary>
     public virtual bool DisableOnFailingImport => true;
 
@@ -35,6 +39,7 @@ public abstract class MsBuildProjectFileAnalyzer : ProjectFileAnalyzer<MsBuildPr
         => context.RegisterProjectFileAction(c =>
         {
             if (ApplicableTo.Contains(c.File.FileType)
+                && (ApplicableLanguages.Contains(c.File.Language) || c.File.Language == Language.None)
                 && !(c.File.HasFailingImport && DisableOnFailingImport)
                 && (!IsProjectFileWithinSdk(c) || IsSupportedSdkProject(c)))
             {
@@ -44,11 +49,11 @@ public abstract class MsBuildProjectFileAnalyzer : ProjectFileAnalyzer<MsBuildPr
 
     private bool IsSupportedSdkProject(in ProjectFileAnalysisContext project)
         => project.File.FileType is ProjectFileType.ProjectFile
-        && supportedSdkLanguage.Contains(project.File.Language);
+        && ApplicableLanguages.Contains(project.File.Language);
 
     /// <remarks>
     /// We do not want to analyze the project files witin the context of the SDK
-    /// as that is that would lead pt projects being analyzed multiple times and
+    /// as that would lead to projects being analyzed multiple times and
     /// potentially even to projects being analyzed that are not part of the
     /// solution.
     /// </remarks>

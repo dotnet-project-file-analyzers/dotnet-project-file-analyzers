@@ -40,9 +40,7 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
 
         if (bom[0] is 0xEF && bom[1] is 0xBB && bom[2] is 0xBF)
         {
-            var span = new TextSpan(0, 1);
-            var line = new LinePositionSpan(new(0, 0), new(0, 1));
-            context.ReportDiagnostic(Descriptor, Location.Create(context.File.Path.ToString(), span, line));
+            context.ReportDiagnostic(Descriptor, context.File.Path.AsLocation());
         }
     }
 
@@ -52,6 +50,8 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
 
         return !path.Contains("/bin/")
             && !path.Contains("/obj/")
+            && !path.Contains("/.vs/")
+            && !path.Contains("/.git/")
             && !file.Name.IsMatch("CompatibilitySuppressions.xml");
     }
 }

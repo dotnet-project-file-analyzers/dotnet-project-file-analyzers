@@ -1,9 +1,6 @@
 using CodeAnalysis.TestTools.Contexts;
-using DotNetProjectFile;
-using Specs.TestTools;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Security.Cryptography;
 
 namespace Microsoft.CodeAnalysis.Diagnostics;
 
@@ -19,18 +16,18 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
     [Pure]
     public static InlineProjectAnalyzerVerifyContextBuilder ForInlineProject(
         this DiagnosticAnalyzer analyzer,
-        ProjectLanguage language,
+        Language language,
         [StringSyntax(StringSyntaxAttribute.Xml)] string content)
     {
-        if (language.IsSupportedByRoslyn())
+        if (language.IsRoslynBased)
         {
-            return analyzer.ForInlineProject($"inline{language.GetExtension()}", content);
+            return analyzer.ForInlineProject($"inline{language.ProjectFileExtension}", content);
         }
         else
         {
             return analyzer
                 .ForInlineSdkProject()
-                .WithFile($"inline/inline{language.GetExtension()}", content);
+                .WithFile($"inline/inline{language.ProjectFileExtension}", content);
         }
     }
 
@@ -75,25 +72,25 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
     public static InlineProjectAnalyzerVerifyContextBuilder ForInlineCsproj(
         this DiagnosticAnalyzer analyzer,
         [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-        => analyzer.ForInlineProject(ProjectLanguage.CSharp, content);
+        => analyzer.ForInlineProject(Language.CSharp, content);
 
     [Pure]
     public static InlineProjectAnalyzerVerifyContextBuilder ForInlineVbproj(
         this DiagnosticAnalyzer analyzer,
         [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-        => analyzer.ForInlineProject(ProjectLanguage.VisualBasic, content);
+        => analyzer.ForInlineProject(Language.VisualBasic, content);
 
     [Pure]
     public static InlineProjectAnalyzerVerifyContextBuilder ForInlineFsproj(
         this DiagnosticAnalyzer analyzer,
         [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-        => analyzer.ForInlineProject(ProjectLanguage.FSharp, content);
+        => analyzer.ForInlineProject(Language.FSharp, content);
 
     [Pure]
     public static InlineProjectAnalyzerVerifyContextBuilder ForInlineCblproj(
         this DiagnosticAnalyzer analyzer,
         [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-        => analyzer.ForInlineProject(ProjectLanguage.VisualCobol, content);
+        => analyzer.ForInlineProject(Language.VisualCobol, content);
 
     [Pure]
     public static ProjectAnalyzerVerifyContext ForProject(this DiagnosticAnalyzer analyzer, string fileName)

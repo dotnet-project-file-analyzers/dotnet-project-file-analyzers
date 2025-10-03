@@ -202,7 +202,7 @@ public static partial class Rule
     public static DiagnosticDescriptor UseForwardSlashesInPaths => New(
         id: 0023,
         title: "Use forward slashes in paths",
-        message: "<{0} {1}> contains backward slashes",
+        message: "<{0}> contains backward slashes",
         description:
             "The use of forward slashes is preferred as they work both for UNIX and" +
             "Windows. This is not true for backward slashes.",
@@ -1149,6 +1149,16 @@ public static partial class Rule
             "adding noise to the Directory.Packages.props file.",
         tags: ["noise", "SDK"],
         category: Category.CPM);
+
+    public static DiagnosticDescriptor AllignDirectoryBuildAndPackages => New(
+        id: 0811,
+        title: "Directory.Build.props and Directory.Packages.props should be in the same directory",
+        message: "The imported {0} and {1} are not in the same directory",
+        description:
+            "To prevent confusion, the Directory.Build.props and Directory.Packages.props " +
+            "imported by a MS build project file, should be in the same directory.",
+        tags: ["build", "import", "CPM"],
+        category: Category.Clarity);
 
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,

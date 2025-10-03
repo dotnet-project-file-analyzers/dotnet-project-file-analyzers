@@ -19,8 +19,7 @@ public sealed partial class Project : Node, ProjectFile
         AdditionalText = additionalText;
         WarningPragmas = WarningPragmas.New(this);
         FileType = path.GetProjectFileType();
-        Language = path.GetProjectLanguage();
-        LanguageName = Language.GetName();
+        Language = CodeAnalysis.Language.Parse(path.Extension);
     }
 
     public MsBuildProject? DirectoryBuildProps => Path.Directory
@@ -43,6 +42,7 @@ public sealed partial class Project : Node, ProjectFile
 
     public AdditionalText? AdditionalText { get; }
 
+
     public bool IsLegacy => Element.Name.NamespaceName is { Length: > 0 };
 
     /// <summary>Returns true if any import is failing.</summary>
@@ -54,9 +54,7 @@ public sealed partial class Project : Node, ProjectFile
 
     public ProjectFileType FileType { get; }
 
-    public ProjectLanguage Language { get; }
-
-    public string? LanguageName { get; }
+    public Language Language { get; }
 
     public SourceText Text { get; }
 

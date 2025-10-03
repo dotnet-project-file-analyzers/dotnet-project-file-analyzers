@@ -77,13 +77,21 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v.1.7.2
+v.1.8.0
+- Proj0023: Report on backward slashes in DockerfileContext. (FN)
+- Proj0029: C# only properties now only checked for project files. (FP)
+- Proj0030: VB.NET only properties now only checked for project files. (FP)
 - Proj0047: Label item groups that disable compilation items. (NEW RULE)
 - Proj0048: Language version should be set to an explicit version number. (NEW RULE)
 - Proj0219: Packable projects should be libraries. (NEW RULE)
+- Proj0811: Directory.Build.props and Directory.Packages.props should be in the same directory. (NEW RULE)
+- Proj1200: Detect native (linux) .so files. (FP)
 - Proj1300: Avoid project references to executables. (NEW RULE)
 - Proj1301: Project references of packable targets should be packable. (NEW RULE)
 - Proj1302: Avoid project references to test projects. (NEW RULE)
+- Proj3000: Exclude .vs and .git directories from BOM checking. (FP)
+- Proj5000: Use SLNX solution files. (NEW RULE)
+- Proj5001: Remove SLN solution files. (NEW RULE)
 - Proj5005: Omit Project ID's. (NEW RULE)
 ]]>
     </ToBeReleased>

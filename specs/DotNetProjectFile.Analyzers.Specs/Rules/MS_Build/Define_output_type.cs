@@ -11,10 +11,10 @@ public class Reports
        .HasIssue(
            Issue.WRN("Proj0010", "Define the <OutputType> node explicitly"));
 
-    [TestCase(ProjectLanguage.CSharp)]
-    [TestCase(ProjectLanguage.FSharp)]
-    [TestCase(ProjectLanguage.VisualBasic)]
-    public void on_no_output_type_for_various_languages(ProjectLanguage language)
+    [TestCase(nameof(Language.CSharp))]
+    [TestCase(nameof(Language.FSharp))]
+    [TestCase(nameof(Language.VisualBasic))]
+    public void on_no_output_type_for_various_languages(Language language)
         => new DefineOutputType()
         .ForInlineProject(language, """
             <Project Sdk="Microsoft.NET.Sdk">

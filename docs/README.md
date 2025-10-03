@@ -174,6 +174,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0808** Define global package reference only in Directory.Packages.props](rules/Proj0808.md)
 * [**Proj0809** Global package references are meant for private assets only](rules/Proj0809.md)
 * [**Proj0810** Remove unused package versions](rules/Proj0810.md)
+* [**Proj0811** Directory.Build.props and Directory.Packages.props should be in the same directory](rules/Proj0811.md)
 
 ### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
@@ -224,6 +225,8 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj4051** Use equals sign for key-value assignments](rules/Proj4051.md)
 
 ## SLNX
+* [**Proj5000** Use SLNX solution files](rules/Proj5000.md)
+* [**Proj5001** Remove SLN solution files](rules/Proj5001.md)
 * [**Proj5005** Omit Project ID's](rules/Proj5005.md)
 
 ## Sonar integration
