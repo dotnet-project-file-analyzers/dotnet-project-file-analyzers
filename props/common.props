@@ -20,10 +20,10 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
-  <ItemGroup>
+  <!--<ItemGroup>
     <AdditionalFiles Include="../../props/common.props" Link="Properties/common.props" />
     <AdditionalFiles Include="*.csproj" Visible="false" />
-  </ItemGroup>
+  </ItemGroup>-->
 
   <ItemGroup Label="Analyzer configuration">
     <GlobalAnalyzerConfigFiles Include="../../analyzers-config.ini" />

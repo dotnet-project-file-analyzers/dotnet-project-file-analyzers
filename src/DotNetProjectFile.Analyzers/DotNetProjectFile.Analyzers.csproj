@@ -44,8 +44,9 @@
 
   <ItemGroup Label="Package files">
     <None Update="tools/*.ps1" Pack="true" PackagePath="/" />
-    <None Include="$(OutputPath)/DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
     <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
+    <None Include="$(OutputPath)/DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
+    <None Include="build/DotNetProjectFile.Analyzers.props" Pack="true" PackagePath="/build/" />
     <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
@@ -80,6 +81,7 @@ ToBeDecided:
 v1.8.0
 - Added support for F# projects when using DotNetProjectFile.Analyzers.Sdk.
 - Added support for Visual Cobol projects when using DotNetProjectFile.Analyzers.Sdk.
+- Automatically add the project file to the additional files. (BUG)
 - Proj0023: Report on backward slashes in DockerfileContext. (FN)
 - Proj0029: C# only properties now only checked for project files. (FP)
 - Proj0030: VB.NET only properties now only checked for project files. (FP)

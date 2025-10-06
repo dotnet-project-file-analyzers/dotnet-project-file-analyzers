@@ -1333,6 +1333,17 @@ public static partial class Rule
         tags: ["XML", "comment", "code"],
         category: Category.Noise);
 
+    public static DiagnosticDescriptor LogAdditionalFile => New(
+      id: 9900,
+      title: "Logs additional files",
+      message: "'{0}' is an additional file",
+      description:
+          "To log the additional files currently available.",
+      tags: ["code analysis", "debugging"],
+      category: Category.Debugging,
+      severity: DiagnosticSeverity.Warning,
+      isEnabled: true);
+
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
     public static DiagnosticDescriptor New(

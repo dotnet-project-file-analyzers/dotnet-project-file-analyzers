@@ -32,9 +32,9 @@
   </PropertyGroup>
 
   <ItemGroup Label="Package files">
+    <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
     <None Include="DotNetProjectFile.Analyzers.Sdk.props" Pack="true" PackagePath="/build/" />
     <None Include="DotNetProjectFile.Analyzers.Sdk.targets" Pack="true" PackagePath="/build/" />
-    <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
     <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
