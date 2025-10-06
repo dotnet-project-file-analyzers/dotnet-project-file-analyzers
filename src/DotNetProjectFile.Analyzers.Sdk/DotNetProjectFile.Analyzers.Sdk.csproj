@@ -43,16 +43,17 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.7.1</Version>
+    <Version>1.8.0</Version>
     <ToBeReleased>
       <![CDATA[
-v1.8.0
-- Added support for F# projects when using DotNetProjectFile.Analyzers.Sdk.
-- Added support for Visual Cobol projects when using DotNetProjectFile.Analyzers.Sdk.
+v1.8.*
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.8.0
+- Added support for F# projects when using DotNetProjectFile.Analyzers.Sdk.
+- Added support for Visual Cobol projects when using DotNetProjectFile.Analyzers.Sdk.
 v1.5.10.1
 - Exclude generated stuff in /bin/ and /object/. (FP)
 v1.5.10

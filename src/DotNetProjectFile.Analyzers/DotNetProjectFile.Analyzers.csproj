@@ -73,11 +73,15 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.7.1</Version>
+    <Version>1.8.0</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+]]>
+    </ToBeReleased>
+    <PackageReleaseNotes>
+      <![CDATA[
 v1.8.0
 - Added support for F# projects when using DotNetProjectFile.Analyzers.Sdk.
 - Added support for Visual Cobol projects when using DotNetProjectFile.Analyzers.Sdk.
@@ -97,10 +101,6 @@ v1.8.0
 - Proj5000: Use SLNX solution files. (NEW RULE)
 - Proj5001: Remove SLN solution files. (NEW RULE)
 - Proj5005: Omit Project ID's. (NEW RULE)
-]]>
-    </ToBeReleased>
-    <PackageReleaseNotes>
-      <![CDATA[
 v1.7.1
 - Proj0045: Convention-based MSBuild file names should use correct casing. (NEW RULE)
 - Proj0046: Update statements should change state. (NEW RULE)
