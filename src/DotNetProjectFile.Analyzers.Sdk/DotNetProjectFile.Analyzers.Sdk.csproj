@@ -32,9 +32,9 @@
   </PropertyGroup>
 
   <ItemGroup Label="Package files">
+    <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
     <None Include="DotNetProjectFile.Analyzers.Sdk.props" Pack="true" PackagePath="/build/" />
     <None Include="DotNetProjectFile.Analyzers.Sdk.targets" Pack="true" PackagePath="/build/" />
-    <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
     <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
@@ -43,16 +43,17 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.7.1</Version>
+    <Version>1.8.0</Version>
     <ToBeReleased>
       <![CDATA[
-v1.8.0
-- Added support for F# projects when using DotNetProjectFile.Analyzers.Sdk.
-- Added support for Visual Cobol projects when using DotNetProjectFile.Analyzers.Sdk.
+v1.8.*
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.8.0
+- Added support for F# projects when using DotNetProjectFile.Analyzers.Sdk.
+- Added support for Visual Cobol projects when using DotNetProjectFile.Analyzers.Sdk.
 v1.5.10.1
 - Exclude generated stuff in /bin/ and /object/. (FP)
 v1.5.10

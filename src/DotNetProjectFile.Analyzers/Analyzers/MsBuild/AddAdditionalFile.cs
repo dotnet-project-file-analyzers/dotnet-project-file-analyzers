@@ -1,5 +1,6 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.AddAdditionalFile"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class AddAdditionalFile() : MsBuildProjectFileAnalyzer(Rule.AddAdditionalFile)
 {
@@ -9,6 +10,7 @@ public sealed class AddAdditionalFile() : MsBuildProjectFileAnalyzer(Rule.AddAdd
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (!context.File.IsAdditional(context.Options.AdditionalFiles))
