@@ -42,18 +42,6 @@ An example configuration with the default severities of the main branch of the a
 ### SDK
 To use the SDK, follow the instructions [here](https://dotnet-project-file-analyzers.github.io/sdk).
 
-To add a props file:
-
-``` XML
-<Project>
-
-  <ItemGroup>
-    <AdditionalFiles Include="../props/{file_name}" Link="Properties/{file_name}" />
-	<AdditionalFiles Include="*.resx" />
-  </ItemGroup>
-
-</Project>
-```
 ## Community
 * [LinkedIn](https://www.linkedin.com/company/dotnet-project-file-analyzers)
 
