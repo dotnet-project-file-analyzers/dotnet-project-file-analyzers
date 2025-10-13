@@ -64,7 +64,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="2.0.5" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="2.0.6" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
