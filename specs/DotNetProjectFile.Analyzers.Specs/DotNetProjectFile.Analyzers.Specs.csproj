@@ -52,7 +52,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="AwesomeAssertions.Analyzers" Version="9.0.6" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="AwesomeAssertions.Analyzers" Version="9.0.7" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Include="NUnit.Analyzers" Version="4.10.0" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
