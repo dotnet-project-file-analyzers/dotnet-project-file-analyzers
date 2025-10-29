@@ -7,7 +7,7 @@ public sealed class ProjectReferenceIncludeShouldExist() : MsBuildProjectFileAna
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {

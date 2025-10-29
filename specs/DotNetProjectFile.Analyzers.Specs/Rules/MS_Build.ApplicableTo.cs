@@ -1,5 +1,3 @@
-using Specs.TestTools;
-
 namespace Rules.MS_Build;
 
 public class ApplicableTo

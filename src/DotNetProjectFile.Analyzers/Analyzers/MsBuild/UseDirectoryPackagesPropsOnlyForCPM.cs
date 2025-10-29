@@ -5,7 +5,7 @@ public sealed class UseDirectoryPackagesPropsOnlyForCPM()
     : MsBuildProjectFileAnalyzer(Rule.OnlyUseDirectoryPackagesPropsForCPM)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.DirectoryPackages;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.DirectoryPackages;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {

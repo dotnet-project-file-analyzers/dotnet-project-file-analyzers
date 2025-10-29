@@ -1,5 +1,3 @@
-using System;
-
 namespace DotNetProjectFile.MsBuild;
 
 public static class ProjectFileTypes

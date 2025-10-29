@@ -1,5 +1,3 @@
-using DotNetProjectFile;
-
 namespace Rules.MS_Build.Define_output_type;
 
 public class Reports

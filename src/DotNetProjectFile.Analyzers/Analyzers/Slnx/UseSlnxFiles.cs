@@ -5,7 +5,7 @@ namespace DotNetProjectFile.Analyzers.Slnx;
 public sealed class UseSlnxFiles() : MsBuildProjectFileAnalyzer(Rule.SLNX.UseSlnxFiles, Rule.SLNX.RemoveSlnFiles)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.SDK;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.SDK;
 
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;

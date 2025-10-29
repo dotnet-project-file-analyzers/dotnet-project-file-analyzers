@@ -5,7 +5,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class ExcludePrivateAssetDependencies() : MsBuildProjectFileAnalyzer(Rule.ExcludePrivateAssetDependencies)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;

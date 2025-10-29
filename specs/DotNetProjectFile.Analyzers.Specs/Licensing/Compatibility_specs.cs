@@ -1,6 +1,4 @@
 using DotNetProjectFile.Licensing;
-using DotNetProjectFile.NuGet;
-using DotNetProjectFile.NuGet.Packaging;
 using System.Collections.Immutable;
 
 namespace Licensing.Compatibility_specs;

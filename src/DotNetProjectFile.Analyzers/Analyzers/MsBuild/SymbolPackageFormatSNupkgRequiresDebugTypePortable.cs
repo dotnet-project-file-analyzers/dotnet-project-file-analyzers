@@ -5,7 +5,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class SymbolPackageFormatSNupkgRequiresDebugTypePortable()
     : MsBuildProjectFileAnalyzer(Rule.SymbolPackageFormatSNupkgRequiresDebugTypePortable)
 {
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
     {
