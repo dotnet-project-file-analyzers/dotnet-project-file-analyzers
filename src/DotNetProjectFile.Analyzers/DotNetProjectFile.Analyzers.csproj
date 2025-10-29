@@ -78,6 +78,8 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+v1.8.1
+- Proj0812: Remove redudent packages references that are globally referenced (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>

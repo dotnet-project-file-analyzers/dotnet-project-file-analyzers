@@ -125,6 +125,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0809** Global package references are meant for private assets only](https://dotnet-project-file-analyzers.github.io/rules/Proj0809.html)
 * [**Proj0810** Remove unused package versions](https://dotnet-project-file-analyzers.github.io/rules/Proj0810.html)
 * [**Proj0811** Directory.Build.props and Directory.Packages.props should be in the same directory](https://dotnet-project-file-analyzers.github.io/rules/Proj0811.html)
+* [**Proj0812** Remove redudent packages references that are globally referenced](https://dotnet-project-file-analyzers.github.io/rules/Proj0812.html)
 
 ### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1000.html)
