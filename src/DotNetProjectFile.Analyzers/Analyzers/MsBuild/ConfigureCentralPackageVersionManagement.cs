@@ -5,7 +5,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class ConfigureCentralPackageVersionManagement() : MsBuildProjectFileAnalyzer(Rule.ConfigureCentralPackageVersionManagement)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile_DirectoryPackages;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile_DirectoryPackages;
 
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)

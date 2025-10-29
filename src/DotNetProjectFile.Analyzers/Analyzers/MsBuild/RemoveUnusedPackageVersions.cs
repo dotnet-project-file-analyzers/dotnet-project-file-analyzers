@@ -10,7 +10,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class RemoveUnusedPackageVersions() : MsBuildProjectFileAnalyzer(Rule.RemoveUnusedPackageVersions)
 {
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.SDK;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.SDK;
 
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)

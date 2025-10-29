@@ -8,7 +8,7 @@ public sealed class ConventionBasedMsBuildFilesNamesShouldHaveCorrectCasing()
     : MsBuildProjectFileAnalyzer(Rule.ConventionBasedMsBuildFilesNamesShouldHaveCorectCasing)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.SDK;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.SDK;
 
     /// <inheritdoc />
     public override bool DisableOnFailingImport => true;

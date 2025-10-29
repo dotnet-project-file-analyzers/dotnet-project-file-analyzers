@@ -1,5 +1,3 @@
-using AwesomeAssertions;
-
 namespace Rules.MS_Build.Use_Sonar_analyzers;
 
 public class Reports

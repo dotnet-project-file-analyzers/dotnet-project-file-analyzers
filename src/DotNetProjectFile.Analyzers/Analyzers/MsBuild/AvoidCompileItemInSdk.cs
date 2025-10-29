@@ -4,7 +4,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class AvoidCompileItemInSdk() : MsBuildProjectFileAnalyzer(Rule.AvoidCompileItemInSdk)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.SDK;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.SDK;
 
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;

@@ -1,7 +1,5 @@
 using DotNetProjectFile.IO;
 using DotNetProjectFile.Licensing;
-using DotNetProjectFile.NuGet.Packaging;
-using DotNetProjectFile.NuGet;
 using System.Collections.Frozen;
 using System.Collections.Immutable;
 using System.IO;

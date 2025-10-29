@@ -5,7 +5,7 @@ public sealed class GenerateApiCompatibilitySuppressionFile()
     : MsBuildProjectFileAnalyzer(Rule.GenerateApiCompatibilitySuppressionFile)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {

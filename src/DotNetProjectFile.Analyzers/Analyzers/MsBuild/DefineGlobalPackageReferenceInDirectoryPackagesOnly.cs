@@ -6,7 +6,7 @@ public sealed class DefineGlobalPackageReferenceInDirectoryPackagesOnly()
     : MsBuildProjectFileAnalyzer(Rule.DefineGlobalPackageReferenceInDirectoryPackagesOnly)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.AllExceptDirectoryPackages;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.AllExceptDirectoryPackages;
 
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;

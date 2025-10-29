@@ -1,5 +1,3 @@
-using DotNetProjectFile.Licensing;
-
 namespace Rules.MS_Build.Use_CDATA_for_large_texts;
 
 public class Reports

@@ -14,7 +14,7 @@ public sealed class LanguageVersionShouldBeExplicitVersionNumber() : MsBuildProj
     }.ToFrozenSet(StringComparer.OrdinalIgnoreCase);
 
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)

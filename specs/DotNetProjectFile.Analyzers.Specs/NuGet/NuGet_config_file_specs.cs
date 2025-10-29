@@ -1,5 +1,4 @@
 using DotNetProjectFile.NuGet.Packaging;
-using Specs.TestTools;
 
 namespace NuGet.NuGet_config_file_specs;
 

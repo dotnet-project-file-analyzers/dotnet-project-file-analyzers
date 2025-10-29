@@ -1,27 +1,20 @@
-using System.Collections.Frozen;
-using System.Reflection;
-
 namespace DotNetProjectFile.Analyzers;
 
 /// <summary>
 /// Base for <see cref="DiagnosticAnalyzer"/>s to analyze MS Build project files.
 /// </summary>
-public abstract class MsBuildProjectFileAnalyzer : ProjectFileAnalyzer<MsBuildProject>
+public abstract class MsBuildProjectFileAnalyzer(
+    DiagnosticDescriptor primaryDiagnostic,
+    params DiagnosticDescriptor[] supportedDiagnostics)
+    : ProjectFileAnalyzer<MsBuildProject>(primaryDiagnostic, supportedDiagnostics)
 {
-    protected MsBuildProjectFileAnalyzer(
-        DiagnosticDescriptor primaryDiagnostic,
-        params DiagnosticDescriptor[] supportedDiagnostics)
-        : base(primaryDiagnostic, supportedDiagnostics)
-    {
-    }
-
     /// <summary>
     /// Defines to which <see cref="ProjectFileType"/>s the rule is applicable.
     /// </summary>
     /// <remarks>
     /// Default is <see cref="ProjectFileTypes.All"/>.
     /// </remarks>
-    public virtual IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.All;
+    public virtual ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.All;
 
     /// <summary>
     /// Defines to which <see cref="Language"/>s the rule is applicable.

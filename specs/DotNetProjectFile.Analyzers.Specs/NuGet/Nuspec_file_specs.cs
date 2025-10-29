@@ -1,7 +1,4 @@
 using DotNetProjectFile.NuGet.Packaging;
-using Specs.TestTools;
-using System.IO;
-using System.Xml.Serialization;
 
 namespace NuGet.Nuspec_file_specs;
 

@@ -1,6 +1,3 @@
-using Grammr;
-using Grammr.Syntax;
-
 namespace DotNetProjectFile.Xml;
 
 /// <summary>A read-only list of nodes.</summary>

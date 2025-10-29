@@ -1,5 +1,3 @@
-using Microsoft.CodeAnalysis.Text;
-
 namespace DotNetProjectFile.Analyzers.Generic;
 
 /// <summary>Implements <see cref="Rule.OnlyUseUTF8WithoutBom"/>.</summary>
