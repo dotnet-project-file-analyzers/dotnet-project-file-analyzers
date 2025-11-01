@@ -1162,7 +1162,7 @@ public static partial class Rule
 
     public static DiagnosticDescriptor RemoveRedundentReferencesForGloballyReferenced => New(
         id: 0812,
-        title: "Remove redudent packages references that are globally referenced",
+        title: "Remove redundant packages references that are globally referenced",
         message: "Remove redundent reference '{0}'",
         description:
             "Importing packages ",
