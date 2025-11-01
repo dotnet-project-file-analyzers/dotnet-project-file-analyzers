@@ -4,7 +4,7 @@ public class Reports
 {
     [Test]
     public void on_redundant_included() => new RemoveredundantReferencesForGloballyReferenced()
-            .ForProject("RemoveredundantReferencesForGloballyReferenced.cs")
+            .ForProject("RemoveRedundantReferencesForGloballyReferenced.cs")
             .HasIssue(
                 Issue.WRN("Proj0812", "Remove redundant reference 'DotNetProjectFile.Analyzers'").WithSpan(07, 04, 07, 62));
 }
