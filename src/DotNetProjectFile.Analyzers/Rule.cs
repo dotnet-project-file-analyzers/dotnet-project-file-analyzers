@@ -1160,7 +1160,7 @@ public static partial class Rule
         tags: ["build", "import", "CPM"],
         category: Category.Clarity);
 
-    public static DiagnosticDescriptor RemoveRedundentReferencesForGloballyReferenced => New(
+    public static DiagnosticDescriptor RemoveredundantReferencesForGloballyReferenced => New(
         id: 0812,
         title: "Remove redundant packages references that are globally referenced",
         message: "Remove redundant reference '{0}'",

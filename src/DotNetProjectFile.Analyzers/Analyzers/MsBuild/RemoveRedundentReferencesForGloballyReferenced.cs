@@ -1,8 +1,8 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <summary>Implements <see cref="Rule.RemoveRedundentReferencesForGloballyReferenced" />.</summary>
+/// <summary>Implements <see cref="Rule.RemoveredundantReferencesForGloballyReferenced" />.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class RemoveRedundentReferencesForGloballyReferenced() : MsBuildProjectFileAnalyzer(Rule.RemoveRedundentReferencesForGloballyReferenced)
+public sealed class RemoveredundantReferencesForGloballyReferenced() : MsBuildProjectFileAnalyzer(Rule.RemoveredundantReferencesForGloballyReferenced)
 {
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
