@@ -175,6 +175,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0809** Global package references are meant for private assets only](rules/Proj0809.md)
 * [**Proj0810** Remove unused package versions](rules/Proj0810.md)
 * [**Proj0811** Directory.Build.props and Directory.Packages.props should be in the same directory](rules/Proj0811.md)
+* [**Proj0812** Remove redundant packages references that are globally referenced](rules/Proj0812.md)
 
 ### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)

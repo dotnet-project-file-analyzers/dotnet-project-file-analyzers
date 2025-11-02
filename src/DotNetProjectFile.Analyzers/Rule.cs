@@ -1160,6 +1160,15 @@ public static partial class Rule
         tags: ["build", "import", "CPM"],
         category: Category.Clarity);
 
+    public static DiagnosticDescriptor RemoveRedundantReferencesForGloballyReferenced => New(
+        id: 0812,
+        title: "Remove redundant packages references that are globally referenced",
+        message: "Remove redundant reference '{0}'",
+        description:
+            "Importing packages ",
+        tags: ["package", "import", "duplicate"],
+        category: Category.Clarity);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",
