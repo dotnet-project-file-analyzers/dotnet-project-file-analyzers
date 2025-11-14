@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -60,12 +60,15 @@
   </ItemGroup>
 
   <ItemGroup Label="Roslyn dependencies">
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="[4.10.0,)" ExcludeAssets="runtime" />
+    <PackageReference ExcludeAssets="runtime" Include="Microsoft.CodeAnalysis.Common" Version="[4.10.0,)"  />
+    <PackageReference ExcludeAssets="runtime" Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="[4.10.0,)" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
     <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="2.0.7" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference PrivateAssets="all" ExcludeAssets="runtime" Include="Qowaiv.Analyzers.CSharp" Version="2.0.6" />
+    <PackageReference PrivateAssets="all" ExcludeAssets="runtime" Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" />
   </ItemGroup>
 
   <ItemGroup>
