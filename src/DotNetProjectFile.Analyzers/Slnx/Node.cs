@@ -13,17 +13,17 @@ public abstract class Node : XmlAnalysisNode
     protected static readonly char[] SemicolonSeparated = [';'];
 
     /// <summary>Initializes a new instance of the <see cref="Node"/> class.</summary>
-    protected Node(XElement element, Node? parent, Solution? solution)
+    protected Node(XElement element, Node? parent, SolutionFile? solution)
     {
         Element = element;
         Parent = parent;
-        Solution = solution ?? (this as Solution) ?? throw new ArgumentNullException(nameof(solution));
+        Solution = solution ?? (this as SolutionFile) ?? throw new ArgumentNullException(nameof(solution));
         Children = [.. element.Elements().Select(Create)];
         Locations = XmlPositions.New(element).Locations(Solution);
         Depth = element.Depth();
     }
 
-    public Solution Solution { get; }
+    public SolutionFile Solution { get; }
 
     public XElement Element { get; }
 

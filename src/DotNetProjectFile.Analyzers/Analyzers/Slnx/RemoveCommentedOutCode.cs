@@ -6,7 +6,7 @@ namespace DotNetProjectFile.Analyzers.Slnx;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class RemoveCommentedOutCode() : SolutionFileAnalyzer(Rule.RemoveCommentedOutCode)
 {
-    private static readonly CommentChecker<Solution> Checker = new(Rule.RemoveCommentedOutCode, CommentChecker.ContainsXml);
+    private static readonly CommentChecker<SolutionFile> Checker = new(Rule.RemoveCommentedOutCode, CommentChecker.ContainsXml);
 
     /// <inheritdoc />
     protected override void Register(SolutionFileAnalysisContext context)

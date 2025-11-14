@@ -13,7 +13,7 @@ public sealed partial class ProjectFiles
     private readonly FileCache<IniFile> IniFiles = new();
     private readonly FileCache<MsBuildProject> MsBuildProjects = new();
     private readonly FileCache<Resource> ResourceFiles = new();
-    private readonly FileCache<Solution> SolutionFiles = new();
+    private readonly FileCache<SolutionFile> SolutionFiles = new();
 
     public GitIgnoreSyntax? GitIgnoreFile(IOFile file)
         => GitIgnoredFiles.TryGetOrUpdate(file, Create_GitIgnoreFile);
@@ -35,14 +35,14 @@ public sealed partial class ProjectFiles
     public Resource? ResourceFile(IOFile file)
         => ResourceFiles.TryGetOrUpdate(file, Create_ResourceFile);
 
-    public Solution? SolutionFile(AdditionalText text)
+    public SolutionFile? SolutionFile(AdditionalText text)
     {
         var path = IOFile.Parse(text.Path);
-        return SolutionFiles.TryGetOrUpdate(path, _ => Solution.Load(text, Global));
+        return SolutionFiles.TryGetOrUpdate(path, _ => Slnx.SolutionFile.Load(text, Global));
     }
 
-    public Solution? SolutionFile(IOFile file)
-        => SolutionFiles.TryGetOrUpdate(file, _ => Solution.Load(file, Global));
+    public SolutionFile? SolutionFile(IOFile file)
+        => SolutionFiles.TryGetOrUpdate(file, _ => Slnx.SolutionFile.Load(file, Global));
 
     public MsBuildProject? UpdateMsBuildProject(CompilationAnalysisContext context)
     {
@@ -107,11 +107,11 @@ public sealed partial class ProjectFiles
             : null;
     }
 
-    public Solution? UpdateSolutionFile(AdditionalFileAnalysisContext context)
+    public SolutionFile? UpdateSolutionFile(AdditionalFileAnalysisContext context)
     {
         var file = IOFile.Parse(context.AdditionalFile.Path);
         return Is.Solution(file)
-            ? SolutionFiles.TryGetOrUpdate(file, _ => Solution.Load(context.AdditionalFile, this))
+            ? SolutionFiles.TryGetOrUpdate(file, _ => Slnx.SolutionFile.Load(context.AdditionalFile, this))
             : null;
     }
 

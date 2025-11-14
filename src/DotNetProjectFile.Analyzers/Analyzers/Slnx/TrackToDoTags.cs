@@ -6,7 +6,7 @@ namespace DotNetProjectFile.Analyzers.Slnx;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class TrackToDoTags() : SolutionFileAnalyzer(Rule.TrackToDoTags)
 {
-    private readonly ToDoChecker<Solution> Checker = new(Rule.TrackToDoTags, _ => null);
+    private readonly ToDoChecker<SolutionFile> Checker = new(Rule.TrackToDoTags, _ => null);
 
     /// <inheritdoc />
     protected override void Register(SolutionFileAnalysisContext context)

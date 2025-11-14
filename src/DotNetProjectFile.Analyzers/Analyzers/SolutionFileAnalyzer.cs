@@ -8,7 +8,7 @@ namespace DotNetProjectFile.Analyzers;
 public abstract class SolutionFileAnalyzer(
     DiagnosticDescriptor primaryDiagnostic,
     params DiagnosticDescriptor[] supportedDiagnostics)
-    : ProjectFileAnalyzer<Solution>(primaryDiagnostic, supportedDiagnostics)
+    : ProjectFileAnalyzer<SolutionFile>(primaryDiagnostic, supportedDiagnostics)
 {
     /// <summary>Registers the analyzer for all SLNX solution files.</summary>
     protected override void Register(AnalysisContext context)

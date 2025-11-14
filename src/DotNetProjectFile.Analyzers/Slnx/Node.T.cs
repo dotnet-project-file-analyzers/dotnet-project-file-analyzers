@@ -1,6 +1,6 @@
 namespace DotNetProjectFile.Slnx;
 
-public abstract class Node<T>(XElement element, Node? parent, Solution? solution)
+public abstract class Node<T>(XElement element, Node? parent, SolutionFile? solution)
     : Node(element, parent, solution)
 {
     public sealed override object? Val => Value;
