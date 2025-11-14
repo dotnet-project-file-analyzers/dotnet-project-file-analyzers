@@ -3,14 +3,14 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.MsBuild;
 
-public sealed partial class Project : Node, ProjectFile
+public sealed partial class MsBuildProject : Node, ProjectFile
 {
-    private Project(IOFile path, SourceText text, ProjectFiles projectFiles, AdditionalText? additionalText)
+    private MsBuildProject(IOFile path, SourceText text, ProjectFiles projectFiles, AdditionalText? additionalText)
         : this(path, text, XDocument.Parse(text.ToString(), LoadOptions), projectFiles, additionalText)
     {
     }
 
-    private Project(IOFile path, SourceText text, XDocument document, ProjectFiles projectFiles, AdditionalText? additionalText)
+    private MsBuildProject(IOFile path, SourceText text, XDocument document, ProjectFiles projectFiles, AdditionalText? additionalText)
         : base(document.Root, null, null)
     {
         Path = path;
@@ -42,6 +42,7 @@ public sealed partial class Project : Node, ProjectFile
 
     public AdditionalText? AdditionalText { get; }
 
+    public override string LocalName => "Project";
 
     public bool IsLegacy => Element.Name.NamespaceName is { Length: > 0 };
 
@@ -79,14 +80,14 @@ public sealed partial class Project : Node, ProjectFile
     /// Should only be used to register project files. In other cases
     /// <see cref="Walk()" /> and <see cref="WalkBackward()"/> should be used.
     /// </remarks>
-    public IEnumerable<Project> ImportsAndSelf()
-        => Walk().OfType<Project>().Distinct();
+    public IEnumerable<MsBuildProject> ImportsAndSelf()
+        => Walk().OfType<MsBuildProject>().Distinct();
 
     /// <summary>Gets Directory.Build.targets, self, Directory.Packages.props, and Directory.Build.props).</summary>
     /// <remarks>
     /// If the *.props are null, or higher in the type hierarchy they are skipped.
     /// </remarks>
-    private IEnumerable<Project> SelfAndDirectoryProps()
+    private IEnumerable<MsBuildProject> SelfAndDirectoryProps()
     {
         if (DirectoryBuildTargets is { } targets && FileType < ProjectFileType.DirectoryBuild)
         {
@@ -105,7 +106,7 @@ public sealed partial class Project : Node, ProjectFile
         }
     }
 
-    public static Project Load(IOFile file, ProjectFiles projects)
+    public static MsBuildProject Load(IOFile file, ProjectFiles projects)
     {
         using var reader = file.TryOpenText();
         return new(
@@ -115,7 +116,7 @@ public sealed partial class Project : Node, ProjectFile
             additionalText: null);
     }
 
-    public static Project Load(AdditionalText text, ProjectFiles projects)
+    public static MsBuildProject Load(AdditionalText text, ProjectFiles projects)
         => new(
             path: IOFile.Parse(text.Path),
             text: text.GetText()!,
