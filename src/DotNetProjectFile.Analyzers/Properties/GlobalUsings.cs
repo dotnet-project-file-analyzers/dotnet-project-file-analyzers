@@ -21,4 +21,4 @@ global using IniFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileA
 global using MsBuildProject = DotNetProjectFile.MsBuild.Project;
 global using ProjectFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.MsBuild.Project>;
 global using ResourceFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.Resx.Resource>;
-global using SolutionFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.Slnx.Solution>;
+global using SolutionFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.Slnx.SolutionFile>;

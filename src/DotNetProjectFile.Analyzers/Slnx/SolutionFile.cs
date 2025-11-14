@@ -2,14 +2,14 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Slnx;
 
-public sealed class Solution : Node, ProjectFile
+public sealed class SolutionFile : Node, ProjectFile
 {
-    private Solution(IOFile path, SourceText text, ProjectFiles projectFiles, AdditionalText? additionalText)
+    private SolutionFile(IOFile path, SourceText text, ProjectFiles projectFiles, AdditionalText? additionalText)
        : this(path, text, XDocument.Parse(text.ToString(), LoadOptions), projectFiles, additionalText)
     {
     }
 
-    private Solution(IOFile path, SourceText text, XDocument document, ProjectFiles projectFiles, AdditionalText? additionalText)
+    private SolutionFile(IOFile path, SourceText text, XDocument document, ProjectFiles projectFiles, AdditionalText? additionalText)
         : base(document.Root, null, null)
     {
         Path = path;
@@ -18,6 +18,8 @@ public sealed class Solution : Node, ProjectFile
         AdditionalText = additionalText;
         WarningPragmas = WarningPragmas.New(this);
     }
+
+    public override string LocalName => "Solution";
 
     public AdditionalText? AdditionalText { get; }
 
@@ -31,7 +33,7 @@ public sealed class Solution : Node, ProjectFile
 
     internal ProjectFiles ProjectFiles { get; }
 
-    public static Solution Load(IOFile file, ProjectFiles projects)
+    public static SolutionFile Load(IOFile file, ProjectFiles projects)
     {
         using var reader = file.TryOpenText();
         return new(
@@ -41,7 +43,7 @@ public sealed class Solution : Node, ProjectFile
             additionalText: null);
     }
 
-    public static Solution Load(AdditionalText text, ProjectFiles projects)
+    public static SolutionFile Load(AdditionalText text, ProjectFiles projects)
         => new(
             path: IOFile.Parse(text.Path),
             text: text.GetText()!,
