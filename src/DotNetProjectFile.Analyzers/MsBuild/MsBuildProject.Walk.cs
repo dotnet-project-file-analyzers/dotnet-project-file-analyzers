@@ -2,7 +2,7 @@ using DotNetProjectFile.Navigation;
 
 namespace DotNetProjectFile.MsBuild;
 
-public sealed partial class Project
+public sealed partial class MsBuildProject
 {
     /// <summary>Walks through all nodes.</summary>
     public IEnumerable<Node> Walk()

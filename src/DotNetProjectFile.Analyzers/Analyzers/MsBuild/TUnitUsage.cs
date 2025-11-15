@@ -30,7 +30,7 @@ public sealed class TUnitUsage() : MsBuildProjectFileAnalyzer(
         => Packages.TUnit.IsMatch(reference)
         || Packages.TUnit_Engine.IsMatch(reference);
 
-    private static XmlAnalysisNode GetOutputType(Project project)
+    private static XmlAnalysisNode GetOutputType(MsBuildProject project)
         => project.Property<OutputType>() is { } output && output.Project == project
         ? output
         : project;

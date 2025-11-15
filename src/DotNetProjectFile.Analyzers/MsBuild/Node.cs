@@ -17,13 +17,13 @@ public abstract class Node : XmlAnalysisNode
     {
         Element = element;
         Parent = parent;
-        Project = project ?? (this as Project) ?? throw new ArgumentNullException(nameof(project));
+        Project = project ?? (this as MsBuildProject) ?? throw new ArgumentNullException(nameof(project));
         Children = [.. element.Elements().Select(Create)];
         Locations = XmlPositions.New(element).Locations(Project);
         Depth = element.Depth();
     }
 
-    public Project Project { get; }
+    public MsBuildProject Project { get; }
 
     public XElement Element { get; }
 

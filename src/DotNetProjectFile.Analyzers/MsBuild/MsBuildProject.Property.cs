@@ -2,7 +2,7 @@ using DotNetProjectFile.Navigation;
 
 namespace DotNetProjectFile.MsBuild;
 
-public sealed partial class Project
+public sealed partial class MsBuildProject
 {
     public bool IsPackable()
         => isPackable
