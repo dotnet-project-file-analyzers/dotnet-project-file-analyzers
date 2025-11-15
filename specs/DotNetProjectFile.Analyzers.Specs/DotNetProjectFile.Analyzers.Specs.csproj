@@ -3,7 +3,7 @@
   <Import Project="../../props/common.props" />
   
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <IsTestProject>true</IsTestProject>
     <RootNamespace>Specs</RootNamespace>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
@@ -59,7 +59,6 @@
   <ItemGroup Label="Analyzer">
     <!-- #pragma warning disable Proj0014 -->
     <ProjectReference Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" PrivateAssets="all" ExcludeAssets="runtime" ReferenceOutputAssembly="false" OutputItemType="Analyzer" SetTargetFramework="TargetFramework=netstandard2.0" />
-    <ProjectReference Include="../Benchmarks/Benchmarks.csproj" />
   </ItemGroup>
 
 </Project>

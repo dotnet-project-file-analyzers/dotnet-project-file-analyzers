@@ -3,7 +3,7 @@
   <Import Project="../../props/common.props" />
   
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <OutputType>exe</OutputType>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <NoWarn>CA1822;RS1038;RS1041</NoWarn>
