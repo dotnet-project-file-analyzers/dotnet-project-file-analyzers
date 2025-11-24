@@ -56,7 +56,7 @@
 
   <ItemGroup Label="Props and targets">
     <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.39" PrivateAssets="all" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.3" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.4" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Roslyn dependencies">
