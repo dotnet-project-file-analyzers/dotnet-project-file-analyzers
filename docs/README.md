@@ -49,7 +49,7 @@ The source code can be found at GitHub: [github.com/dotnet-project-file-analyzer
 
 ## Issues and suggestions
 Issues (false positives, false negatives, etc.), and (rule) suggestions can be
-reported a the [GitHub repository](https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers/issues).
+reported to the [GitHub repository](https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers/issues).
 
 ## MS Build project file rules
 * [**Proj0001** MS Build project file could not be located](rules/Proj0001.md)
