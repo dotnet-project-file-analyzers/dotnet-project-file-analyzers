@@ -18,12 +18,12 @@ public class Loads
     <licenseUrl>https://licenses.nuget.org/MIT</licenseUrl>
     <icon>logo_128x128.png</icon>
     <readme>README.md</readme>
-    <projectUrl>https://www.github.com/Corniel/dotnet-project-file-analyzers</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</iconUrl>
+    <projectUrl>https://www.github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</projectUrl>
+    <iconUrl>https://raw.githubusercontent.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers/main/design/logo_128x128.png</iconUrl>
     <description>.NET project file analyzers</description>
     <copyright>Copyright © Corniel Nobel 2023-current</copyright>
     <tags>Code Analysis Project files csproj vbproj resx MS Build resources</tags>
-    <repository type=""git"" url=""https://www.github.com/Corniel/dotnet-project-file-analyzers"" commit=""cd0017da4a7eb2a2f765cbe821dcb14745e9aaeb"" />
+    <repository type=""git"" url=""https://www.github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers"" commit=""cd0017da4a7eb2a2f765cbe821dcb14745e9aaeb"" />
   </metadata>
 </package>");
 
