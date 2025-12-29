@@ -28,7 +28,7 @@ create a C# Project file with the name `.net.csproj`.
   
 </Project>
 ```
-*Download this example [`.net.csproj`](.net.csproj)*
+*Download this example [`.net.csproj`](./.net.csproj)*
 
 
 Most files in the directory of this SDK project will be included automatically.
