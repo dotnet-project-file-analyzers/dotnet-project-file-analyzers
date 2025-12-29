@@ -66,6 +66,6 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
 
     private static bool HasAlternativePackageVersioning(PackageReference reference)
         => reference.IncludeOrUpdate
-        is "MinVersion"
+        is "MinVer"
         or "NuGet.Versioning";
 }
