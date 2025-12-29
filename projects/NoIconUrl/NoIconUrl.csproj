@@ -13,8 +13,8 @@
     <Authors>Corniel Nobel; Wesley Baartman</Authors>
     <PackageId>DotNetProjectFile.Anayzers</PackageId>
     <PackageTags>analyzer; coolthings</PackageTags>
-    <RepositoryUrl>https://github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Corniel/dotnet-project-file-analyzers</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</PackageProjectUrl>
     <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
     <PackageReleaseNotes>
       v1.0.0
