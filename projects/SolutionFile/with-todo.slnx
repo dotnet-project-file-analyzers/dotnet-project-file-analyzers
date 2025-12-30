@@ -1,7 +1,0 @@
-<Solution>
-  <Folder Name="/Solution Items/">
-    <!-- TODO: Include as project -->
-    <File Path=".net.csproj" />
-  </Folder>
-  <Project Path="src/SolutionFile.csproj" />
-</Solution>

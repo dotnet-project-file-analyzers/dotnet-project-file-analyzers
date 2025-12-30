@@ -4,8 +4,13 @@ public class Reports
 {
     [Test]
     public void commented_out_XML() => new Slnx.RemoveCommentedOutCode()
-        .ForSdkProject("SolutionFile")
+        .ForInlineSlnx("""
+        <Solution>
+          <!-- .NET SDK only -->
+          <Project Path=".net.csproj" />
+          <!-- Project Path="src/SolutionFile.csproj" /-->
+        </Solution>
+        """)
         .HasIssue(Issue.WRN("Proj3002", "Remove the commented-out code")
-            .WithSpan(03, 06, 03, 47)
-            .WithPath("with-comment.slnx"));
+            .WithSpan(03, 06, 03, 47));
 }

@@ -135,44 +135,46 @@ public class Reports
 
     [Test]
     public void missing_hash() => new ThirdPartyLicenseCompliance()
-       .ForInlineCsproj(@$"
-<Project Sdk=""Microsoft.NET.Sdk"">
+       .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
+          <PropertyGroup>
+            <TargetFramework>net8.0</TargetFramework>
+          </PropertyGroup>
 
-  <ItemGroup>
-    <ThirdPartyLicense Include=""Qowaiv"" />
-  </ItemGroup>
+          <ItemGroup>
+            <ThirdPartyLicense Include="Qowaiv" />
+          </ItemGroup>
 
-</Project>")
-       .HasIssue(Issue.WRN("Proj0506", "Hash has not been specified")
+        </Project>
+        """)
+       .HasIssue(Issue.ERR("Proj0506", "Hash has not been specified")
        .WithSpan(07, 04, 07, 42));
 
     [TestCase("QED9yngU7o-Fy128_FSy0")] //   Too short
     [TestCase("QED9yngU7o-Fy128_FSy023")] // Too long
     [TestCase("QED9yngU7o%4Fy128FSy02")] //  Invalid character
     public void invalid_hash(string hash) => new ThirdPartyLicenseCompliance()
-       .ForInlineCsproj(@$"
-<Project Sdk=""Microsoft.NET.Sdk"">
+       .ForInlineCsproj($"""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
+          <PropertyGroup>
+            <TargetFramework>net8.0</TargetFramework>
+          </PropertyGroup>
 
-  <ItemGroup>
-    <ThirdPartyLicense Include=""Qowaiv"" Hash=""${hash}"" />
-  </ItemGroup>
+          <ItemGroup>
+            <ThirdPartyLicense Include="Qowaiv" Hash="${hash}" />
+          </ItemGroup>
 
-</Project>")
-       .HasIssue(Issue.WRN("Proj0506", "Hash is not valid")
+        </Project>
+        """)
+       .HasIssue(Issue.ERR("Proj0506", "Hash is not valid")
        .WithSpan(07, 04, 07, 51 + hash.Length));
 
     [Test]
     public void conditional() => new ThirdPartyLicenseCompliance()
        .ForInlineCsproj("""
-        < Project Sdk="Microsoft.NET.Sdk">
+        <Project Sdk="Microsoft.NET.Sdk">
 
             <PropertyGroup>
             <TargetFramework>net8.0</TargetFramework>
