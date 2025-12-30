@@ -124,6 +124,68 @@ public class Reports_on_missing
 public class Guards
 {
     [Test]
+    public void Missing_version_when_using_MinVersion() => new DefinePackageInfo()
+       .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+          <TargetFramework>net8.0</TargetFramework>
+          <Authors>.NET Project Files Analyzer community</Authors>
+          <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
+          <Description>Some package</Description>
+          <PackageLicenseExpression>MIT</PackageLicenseExpression>
+          <PackageIcon>logo_128x128.png</PackageIcon>
+          <PackageIconUrl>https://raw.githubusercontent.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
+          <PackageId>Unit.Test</PackageId>
+          <PackageProjectUrl>https://dotnet-project-file-analyzers.github.io</PackageProjectUrl>
+          <PackageReadmeFile>README.md</PackageReadmeFile>
+          <PackageReleaseNotes>Not yet.</PackageReleaseNotes>
+          <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+          <PackageTags>Unit Test</PackageTags>
+          <ProductName>Unit Test</ProductName>
+          <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
+        </PropertyGroup>
+
+        <ItemGroup>
+          <PackageReference Include="MinVer" Version="6.1.0" PrivateAssets="All" />
+        </ItemGroup>
+
+        </Project>
+        """)
+        .HasNoIssues();
+
+    [Test]
+    public void Missing_version_when_using_NuGetVersioning() => new DefinePackageInfo()
+       .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net8.0</TargetFramework>
+            <Authors>.NET Project Files Analyzer community</Authors>
+            <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
+            <Description>Some package</Description>
+            <PackageLicenseExpression>MIT</PackageLicenseExpression>
+            <PackageIcon>logo_128x128.png</PackageIcon>
+            <PackageIconUrl>https://raw.githubusercontent.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
+            <PackageId>Unit.Test</PackageId>
+            <PackageProjectUrl>https://dotnet-project-file-analyzers.github.io</PackageProjectUrl>
+            <PackageReadmeFile>README.md</PackageReadmeFile>
+            <PackageReleaseNotes>Not yet.</PackageReleaseNotes>
+            <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+            <PackageTags>Unit Test</PackageTags>
+            <ProductName>Unit Test</ProductName>
+            <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
+          </PropertyGroup>
+
+          <ItemGroup>
+            <PackageReference Include="NuGet.Versioning" Version="7.0.1" PrivateAssets="All" />
+          </ItemGroup>
+
+        </Project>
+        """)
+        .HasNoIssues();
+
+    [Test]
     public void Test_project()
         => new DefinePackageInfo()
        .ForProject("TestProject.cs")

@@ -27,7 +27,10 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
 
         var available = context.File.Walk().Select(n => n.GetType()).ToImmutableHashSet();
 
-        Analyze(context, available, Rule.DefineVersion, typeof(DotNetProjectFile.MsBuild.Version), typeof(VersionPrefix));
+        if (!HasAlternativePackageVersioning(context))
+        {
+            Analyze(context, available, Rule.DefineVersion, typeof(DotNetProjectFile.MsBuild.Version), typeof(VersionPrefix));
+        }
         Analyze(context, available, Rule.DefineDescription, typeof(Description), typeof(PackageDescription));
         Analyze(context, available, Rule.DefineAuthors, typeof(Authors));
         Analyze(context, available, Rule.DefineTags, typeof(PackageTags));
@@ -55,4 +58,14 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
             context.ReportDiagnostic(descriptor, context.File);
         }
     }
+
+    private static bool HasAlternativePackageVersioning(ProjectFileAnalysisContext context) => context
+        .File.Walk()
+        .OfType<PackageReference>()
+        .Any(HasAlternativePackageVersioning);
+
+    private static bool HasAlternativePackageVersioning(PackageReference reference)
+        => reference.IncludeOrUpdate
+        is "MinVer"
+        or "NuGet.Versioning";
 }
