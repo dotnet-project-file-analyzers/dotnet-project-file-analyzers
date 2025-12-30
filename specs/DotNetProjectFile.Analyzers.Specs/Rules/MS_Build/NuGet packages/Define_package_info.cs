@@ -7,6 +7,7 @@ public class Reports_on_missing
        => new DefinePackageInfo()
        .ForProject("NoPackageInfo.cs")
        .HasIssues(
+           Issue.INF("Proj0214", "Define the <PackageId> node explicitly or define the <IsPackable> node with value 'false'"),
            Issue.WRN("Proj0201", "Define the <Version> or <VersionPrefix> node explicitly or define the <IsPackable> node with value 'false'"),
            Issue.WRN("Proj0202", "Define the <Description> or <PackageDescription> node explicitly or define the <IsPackable> node with value 'false'"),
            Issue.WRN("Proj0203", "Define the <Authors> node explicitly or define the <IsPackable> node with value 'false'"),
@@ -19,7 +20,6 @@ public class Reports_on_missing
            Issue.WRN("Proj0210", "Define the <PackageLicenseExpression> or <PackageLicenseFile> node explicitly or define the <IsPackable> node with value 'false'"),
            Issue.WRN("Proj0212", "Define the <PackageIcon> node explicitly or define the <IsPackable> node with value 'false'"),
            Issue.WRN("Proj0213", "Define the <PackageIconUrl> node explicitly or define the <IsPackable> node with value 'false'"),
-           Issue.WRN("Proj0214", "Define the <PackageId> node explicitly or define the <IsPackable> node with value 'false'"),
            Issue.WRN("Proj0216", "Define the <ProductName> node explicitly or define the <IsPackable> node with value 'false'"),
            Issue.WRN("Proj0217", "Define the <PackageRequireLicenseAcceptance> node explicitly or define the <IsPackable> node with value 'false'"));
 

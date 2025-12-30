@@ -14,9 +14,9 @@ public class Reports
         => new Resx.EmbedValidResourceFiles()
         .ForProject("ResxNoHeaders.cs")
         .HasIssues(
-            Issue.WRN("Proj2000", @"Resource file misses <resheader name=""resmimetype""> with value ""text/microsoft-resx""."),
-            Issue.WRN("Proj2000", @"Resource file misses <resheader name=""reader""> with value ""System.Resources.ResXResourceReader""."),
-            Issue.WRN("Proj2000", @"Resource file misses <resheader name=""writer""> with value ""System.Resources.ResXResourceWriter""."));
+            Issue.ERR("Proj2000", """Resource file misses <resheader name="resmimetype"> with value "text/microsoft-resx"."""),
+            Issue.ERR("Proj2000", """Resource file misses <resheader name="reader"> with value "System.Resources.ResXResourceReader"."""),
+            Issue.ERR("Proj2000", """Resource file misses <resheader name="writer"> with value "System.Resources.ResXResourceWriter"."""));
 }
 
 public class Guards

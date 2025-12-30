@@ -99,36 +99,38 @@ public class Reports
 
     [Test]
     public void missing_include() => new ThirdPartyLicenseCompliance()
-     .ForInlineCsproj(@$"
-<Project Sdk=""Microsoft.NET.Sdk"">
+     .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
+          <PropertyGroup>
+            <TargetFramework>net8.0</TargetFramework>
+          </PropertyGroup>
 
-  <ItemGroup>
-    <ThirdPartyLicense Update=""Qowaiv"" Hash=""QED9yngU7o+Fy128_FSy0w"" />
-  </ItemGroup>
+          <ItemGroup>
+            <ThirdPartyLicense Update="Qowaiv" Hash="QED9yngU7o+Fy128_FSy0w" />
+          </ItemGroup>
 
-</Project>")
-     .HasIssue(Issue.WRN("Proj0505", "Include has not been specified")
+        </Project>
+        """)
+     .HasIssue(Issue.ERR("Proj0505", "Include has not been specified")
      .WithSpan(07, 04, 07, 71));
 
     [Test]
     public void invalid_glob() => new ThirdPartyLicenseCompliance()
-       .ForInlineCsproj(@$"
-<Project Sdk=""Microsoft.NET.Sdk"">
+        .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
+          <PropertyGroup>
+            <TargetFramework>net8.0</TargetFramework>
+          </PropertyGroup>
 
-  <ItemGroup>
-    <ThirdPartyLicense Include=""Qowaiv["" Hash=""QED9yngU7o+Fy128_FSy0w"" />
-  </ItemGroup>
+          <ItemGroup>
+            <ThirdPartyLicense Include="Qowaiv[" Hash="QED9yngU7o+Fy128_FSy0w" />
+          </ItemGroup>
 
-</Project>")
-       .HasIssue(Issue.WRN("Proj0505", "Include is not valid GLOB pattern")
+        </Project>
+        """)
+       .HasIssue(Issue.ERR("Proj0505", "Include is not valid GLOB pattern")
        .WithSpan(07, 04, 07, 73));
 
     [Test]
@@ -169,19 +171,20 @@ public class Reports
 
     [Test]
     public void conditional() => new ThirdPartyLicenseCompliance()
-       .ForInlineCsproj(@$"
-<Project Sdk=""Microsoft.NET.Sdk"">
+       .ForInlineCsproj("""
+        < Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
+            <PropertyGroup>
+            <TargetFramework>net8.0</TargetFramework>
+            </PropertyGroup>
 
-  <ItemGroup Condition=""$(TargetFramework) == 'net8.0'"">
-    <ThirdPartyLicense Include=""Qowaiv"" Hash=""QED9yngU7o+Fy128_FSy0w"" />
-  </ItemGroup>
+            <ItemGroup Condition="$(TargetFramework) == 'net8.0'">
+            <ThirdPartyLicense Include="Qowaiv" Hash="QED9yngU7o+Fy128_FSy0w" />
+            </ItemGroup>
 
-</Project>")
-       .HasIssue(Issue.WRN("Proj0507", "The <ThirdPartyLicense> can not be conditional")
+        </Project>
+        """)
+       .HasIssue(Issue.ERR("Proj0507", "The <ThirdPartyLicense> can not be conditional")
        .WithSpan(07, 04, 07, 72));
 }
 
