@@ -37,32 +37,72 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
         [StringSyntax(StringSyntaxAttribute.Xml)] string content)
         => analyzer.ForInlineProject(".net.csproj", content);
 
+    /// <remarks>
+    /// Includes a copy of DotNetProjectFile.Analyzers.Sdk.props.
+    /// </remarks>
     [Pure]
     public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject(
         this DiagnosticAnalyzer analyzer)
-        => analyzer.ForInlineSdkProject(
-            """
+        => analyzer.ForInlineSdkProject("""
             <Project Sdk="Microsoft.NET.Sdk">
+              <PropertyGroup>
+                <!-- The TargetFramework may be overridden, but has a fine default. -->
+                <TargetFramework>net8.0</TargetFramework>
+                <LangVersion>latest</LangVersion>
+                <IsPackable>false</IsPackable>
+                <IsPublishable>false</IsPublishable>
+              </PropertyGroup>
 
-                <PropertyGroup>
-                    <TargetFramework>net9.0</TargetFramework>
-                </PropertyGroup>
+              <!-- We do not want to enable default items here. -->
+              <PropertyGroup>
+                <EnableDefaultItems>false</EnableDefaultItems>
+              </PropertyGroup>
 
-                <ItemGroup>
-                    <AdditionalFiles Include="**/*.slnx" />
-                    <AdditionalFiles Include="**/*.csproj" />
-                    <AdditionalFiles Include="**/*.vbproj" />
-                    <AdditionalFiles Include="**/*.fsproj" />
-                    <AdditionalFiles Include="**/*.cblproj" />
-                    <AdditionalFiles Include="**/*.props" />
-                    <AdditionalFiles Include="**/*.targets" />
-                </ItemGroup>
+              <!-- The bin is just noise here, so move it a temp location. -->
+              <PropertyGroup>
+                <OutputPath>$([System.IO.Path]::GetTempPath())/.net/bin</OutputPath>
+                <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj</IntermediateOutputPath>
+              </PropertyGroup>
 
-                <ItemGroup>
-                    <PackageReference Include="DotNetProjectFile.Analyzers.Sdk" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
-                </ItemGroup>
+              <ItemGroup Label="Add without showing">
+                <AdditionalFiles Visible="false" Include="$(MSBuildProjectFile)" />
+                <AdditionalFiles Visible="false" Include="**/*.csproj" />
+                <AdditionalFiles Visible="false" Include="**/*.props" />
+                <AdditionalFiles Visible="false" Include="**/*.targets" />
+                <AdditionalFiles Visible="false" Include="**/*.slnx" />
+                <AdditionalFiles Visible="false" Include="**/*.vbproj" />
+                <AdditionalFiles Visible="false" Include="**/*.fsproj" />
+                <AdditionalFiles Visible="false" Include="**/*.cblproj" />
+              </ItemGroup>
+
+              <ItemGroup Label="Exclude generated stuff">
+                <AdditionalFiles Remove="**/bin/**" />
+                <AdditionalFiles Remove="**/obj/**" />
+              </ItemGroup>
+
+              <ItemGroup>
+                <AdditionalFiles Include=".*config" />
+                <AdditionalFiles Include=".git*" />
+                <AdditionalFiles Include=".github/**" />
+                <AdditionalFiles Include="*.config" />
+                <AdditionalFiles Include="*.ini" />
+                <AdditionalFiles Include="*.json" />
+                <AdditionalFiles Include="*.md" />
+                <AdditionalFiles Include="*.props" />
+                <AdditionalFiles Include="*.targets" />
+                <AdditionalFiles Include="*.txt" />
+                <AdditionalFiles Include="*.yaml" />
+                <AdditionalFiles Include="*.yml" />
+                <AdditionalFiles Include="props/*.props" />
+                <AdditionalFiles Include="props/*.targets" />
+              </ItemGroup>
+
+              <ItemGroup>
+                <None Include="**/TestResults/**" />
+              </ItemGroup>
 
             </Project>
+            
             """);
 
     [Pure]

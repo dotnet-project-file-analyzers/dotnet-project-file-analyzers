@@ -3,7 +3,7 @@
   <Import Project="../../props/common.props" />
   
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <IsTestProject>true</IsTestProject>
     <RootNamespace>Specs</RootNamespace>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
@@ -20,17 +20,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis" Version="4.14.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="4.14.0" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="4.14.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis" Version="5.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="5.0.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.MSBuild" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup Label="Test tools">
     <PackageReference Include="AwesomeAssertions" Version="9.3.0" />
-    <PackageReference Include="CodeAnalysis.TestTools" Version="3.0.1" />
-    <PackageReference Include="NuGet.Common" Version="6.14.0" />
-    <PackageReference Include="NuGet.Frameworks" Version="6.14.0" />
-    <PackageReference Include="NuGet.Packaging" Version="6.14.0" />
+    <PackageReference Include="CodeAnalysis.TestTools" Version="4.0.0" />
+    <PackageReference Include="NuGet.Common" Version="7.0.1" />
+    <PackageReference Include="NuGet.Frameworks" Version="7.0.1" />
+    <PackageReference Include="NuGet.Packaging" Version="7.0.1" />
     <PackageReference Include="NUnit" Version="4.4.0" />
     <PackageReference Include="Verify" Version="31.5.0" />
     <PackageReference Include="Verify.NUnit" Version="31.5.0" />
@@ -39,8 +39,8 @@
   <ItemGroup Label="Build tools">
     <PackageReference Include="coverlet.collector" Version="6.0.4" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.Build.Locator" Version="1.10.2" PrivateAssets="all" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.Build.Tasks.Core" Version="17.14.28" PrivateAssets="all" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.0" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.Build.Tasks.Core" Version="18.0.2" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" PrivateAssets="all" />
     <PackageReference Include="NUnit3TestAdapter" Version="5.2.0" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
