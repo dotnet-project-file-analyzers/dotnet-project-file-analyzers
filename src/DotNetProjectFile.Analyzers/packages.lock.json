@@ -39,9 +39,9 @@
       },
       "Microsoft.Sbom.Targets": {
         "type": "Direct",
-        "requested": "[4.1.3, )",
-        "resolved": "4.1.3",
-        "contentHash": "ItQp7LZ5irnDYoyYkxOxuik9mULFviFQOgGJ1j5A7a2EAJK9bidT1aT65xg48Opcjao/BKJWOtJUnik2g3grLg=="
+        "requested": "[4.1.5, )",
+        "resolved": "4.1.5",
+        "contentHash": "i5z+cNu/cOcdO0AgFB8aXk8w6In2H+haaDfSgd9ImvQIK+rSHavHZIogVoAZLL8jLwYx4bAcs5b7EyuMMG4mQQ=="
       },
       "NETStandard.Library": {
         "type": "Direct",
@@ -60,9 +60,9 @@
       },
       "Qowaiv.Analyzers.CSharp": {
         "type": "Direct",
-        "requested": "[2.0.6, )",
-        "resolved": "2.0.6",
-        "contentHash": "uNtEBAOmaqh6ghml5BGXG8HW09kX4Boih93mYrfWp76sw5zB9z395Ogr/lHlEZTTJBxzVQglHUno+4/YDWjSJQ=="
+        "requested": "[2.0.7, )",
+        "resolved": "2.0.7",
+        "contentHash": "OgL/+oDq8By74jK8C2slWgQAZbD5mC16wIs+Oz2inD2lf7aAgOEfhguET+f0q1LFVfW0cPrDfa5lUAYSOkkhBg=="
       },
       "SonarAnalyzer.CSharp": {
         "type": "Direct",
