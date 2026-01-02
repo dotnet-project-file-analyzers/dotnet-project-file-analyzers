@@ -17,6 +17,10 @@
     <RestoreLockedMode>true</RestoreLockedMode>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include=" Qowaiv " Version=" 7.4.5 " />
+  </ItemGroup>
+
   <ItemGroup Label="Analyzers">
     <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.2.2" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
