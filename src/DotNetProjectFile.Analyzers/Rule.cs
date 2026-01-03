@@ -1352,6 +1352,15 @@ public static partial class Rule
         tags: ["XML", "leading", "trailing", "whitespace", "trim"],
         category: Category.Noise);
 
+    public static DiagnosticDescriptor CompilerVisibleProperties => New(
+        id: 9999,
+        title: "Log properties visible to the compiler",
+        message: "{0} = {1}",
+        description: "Debug rule to show values of compiler visible properties",
+        tags: ["Debug", "CompilerVisibleProperty"],
+        category: Category.Debugging,
+        isEnabled: false);
+
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
     public static DiagnosticDescriptor New(

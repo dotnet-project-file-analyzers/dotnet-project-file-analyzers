@@ -12,6 +12,7 @@
     <CompilerVisibleProperty Include="LangVersion" />
     <CompilerVisibleProperty Include="MSBuildProjectFile" />
     <CompilerVisibleProperty Include="MSBuildThisFileDirectory" />
+    <CompilerVisibleProperty Include="NETCoreSdkVersion" />
     <CompilerVisibleProperty Include="PackageLicenseExpression" />
     <CompilerVisibleProperty Include="Platform" />
     <CompilerVisibleProperty Include="SolutionDir" />
