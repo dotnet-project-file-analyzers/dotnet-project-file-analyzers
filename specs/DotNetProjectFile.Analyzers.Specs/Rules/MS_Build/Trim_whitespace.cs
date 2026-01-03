@@ -3,7 +3,7 @@ namespace Specs.Rules.MS_Build.Trim_whitespace;
 public class Reports
 {
     [Test]
-    public void whitespace_arround_attribute_assignment() => new TrimWhitespace()
+    public void whitespace_around_attribute_assignment() => new TrimWhitespace()
         .ForInlineCsproj("""
         <Project Sdk="Microsoft.NET.Sdk">
 
