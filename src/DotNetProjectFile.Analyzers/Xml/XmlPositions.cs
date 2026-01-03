@@ -18,7 +18,7 @@ public sealed record XmlPositions
     [Pure]
     public XmlLocations Locations(ProjectFile file) => new() { File = file, Positions = this };
 
-    /// <summary>Create new XML postions based on a <see cref="XElement"/>.</summary>
+    /// <summary>Create new XML positions based on a <see cref="XElement"/>.</summary>
     [Pure]
     public static XmlPositions New(XElement element)
     {
