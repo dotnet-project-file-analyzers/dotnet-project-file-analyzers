@@ -1342,6 +1342,16 @@ public static partial class Rule
         tags: ["XML", "comment", "code"],
         category: Category.Noise);
 
+    public static DiagnosticDescriptor TrimWhitespace => New(
+        id: 3003,
+        title: "Trim whitespace",
+        message: "Remove {0} whitespace",
+        description:
+            "Leading or trailing insignificant whitespace can cause syntax " +
+            "errors or make the comparing of file changes harder.",
+        tags: ["XML", "leading", "trailing", "whitespace", "trim"],
+        category: Category.Noise);
+
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.
     public static DiagnosticDescriptor New(

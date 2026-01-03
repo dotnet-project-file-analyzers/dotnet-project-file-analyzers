@@ -81,7 +81,8 @@ ToBeDecided:
 v1.8.1
 - Trim MSBuild attribute values. (FP/FN)
 - Proj0201: <Version> is not required when using NuGet.Versioning or MinVer. (FP)
-- Proj0812: Remove redundant packages references that are globally referenced (NEW RULE)
+- Proj0812: Remove redundant packages references that are globally referenced. (NEW RULE)
+* Proj3003: Trim whitespace. (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>

@@ -13,6 +13,12 @@
         "requested": "[1.2.2, )",
         "resolved": "1.2.2",
         "contentHash": "nibkccSVGPl5BiKrev2JjbzH6HqOsRFxKops4Z8k9BzngV+mEtjAPKaX/otFSKTVkFdrLnfhZgW3imip8UBJVw=="
+      },
+      "Qowaiv": {
+        "type": "Direct",
+        "requested": "[7.4.5, )",
+        "resolved": "7.4.5",
+        "contentHash": "i6mt4r93YjuPb7q5FOvcmBX+oHh/J4K/JAtZeHGG9qLLBqS7DiSMsV2n/2dDlRHyNFcljXf73C0Kn7nZM6NFXw=="
       }
     }
   }
