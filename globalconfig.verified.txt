@@ -136,6 +136,7 @@ dotnet_diagnostic.Proj2100.severity = warning    # Indent XML files
 dotnet_diagnostic.Proj3000.severity = warning    # Ony use UTF-8 encoding without BOM
 dotnet_diagnostic.Proj3001.severity = warning    # Track uses of "TODO" tags
 dotnet_diagnostic.Proj3002.severity = warning    # Remove commented-out code
+dotnet_diagnostic.Proj3003.severity = warning    # Trim whitespace
 dotnet_diagnostic.Proj4000.severity = none       # Invalid INI file
 dotnet_diagnostic.Proj4001.severity = none       # Invalid INI Header
 dotnet_diagnostic.Proj4002.severity = none       # Invalid INI key-value pair
