@@ -3,16 +3,31 @@ using System.Xml;
 
 namespace DotNetProjectFile.Xml;
 
+/// <summary>
+/// Represents positions of the parts that make an XML attribute.
+/// </summary>
 public sealed record AttributesPositions
 {
+    /// <summary>THe full span.</summary>
     public LinePositionSpan FullSpan { get; init; }
 
+    /// <summary>The span containing the attribute name.</summary>
+    /// <remarks>
+    /// This includes the namespace if specified.
+    /// </remarks>
     public LinePositionSpan Name { get; init; }
 
+    /// <summary>The span containing the <c>=</c> sign.</summary>
     public LinePositionSpan Assignment { get; init; }
 
+    /// <summary>The value of the attribute.</summary>
+    /// <remarks>
+    /// The surrounding (double) qoutes are excluded.
+    /// </remarks>
     public LinePositionSpan Value { get; init; }
 
+    /// <summary>Creates new <see cref="AttributesPositions"/>.</summary>
+    [Pure]
     public static AttributesPositions New(XAttribute attribute, SourceText text)
     {
         var info = attribute.LinePosition();
