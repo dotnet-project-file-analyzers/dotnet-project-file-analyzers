@@ -38,6 +38,31 @@ public class Reports
             new("Proj1001", "Use MessagePackAnalyzer to analyze StreamJsonRpc"));
 }
 
+
+public class Guards_
+{
+    [Test]
+    public void non_trimmed_values() => new UseAnalyzersForPackages()
+        .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
+
+          <ItemGroup>
+            <PackageReference Include="Serilog" Version="4.3.0" />
+          </ItemGroup>
+
+          <ItemGroup>
+            <PackageReference Include="SerilogAnalyzer " Version="0.15.0" PrivateAssets="all" />
+          </ItemGroup>
+
+        </Project>
+        """)
+        .HasNoIssues();
+}
+
 #if RELEASE
 [TestFixture(Ignore = "Build has difficulties resolving (some) NuGet packages")]
 #endif

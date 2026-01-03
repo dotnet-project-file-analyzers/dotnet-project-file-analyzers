@@ -85,7 +85,7 @@ public abstract class Node : XmlAnalysisNode
 
     /// <summary>Gets the <see cref="string"/> value of an attribute.</summary>
     public string? Attribute([CallerMemberName] string? propertyName = null)
-        => Element.Attribute(propertyName)?.Value;
+        => Element.Attribute(propertyName)?.Value?.Trim();
 
     /// <summary>Gets the <see cref="string"/> value of a child element.</summary>
     public string? Child([CallerMemberName] string? propertyName = null)
