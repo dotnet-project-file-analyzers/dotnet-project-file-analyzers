@@ -66,7 +66,7 @@ public sealed record XmlPositions
         };
     }
 
-    /// <summary>Create new XML postions based on a <see cref="XComment"/>.</summary>
+    /// <summary>Create new XML positions based on a <see cref="XComment"/>.</summary>
     [Pure]
     public static XmlPositions New(XComment comment)
     {
