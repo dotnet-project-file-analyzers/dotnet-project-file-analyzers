@@ -1347,8 +1347,9 @@ public static partial class Rule
         title: "Trim whitespace",
         message: "Remove {0} whitespace",
         description:
-            "??",
-        tags: ["XML", "whitespace", "trim"],
+            "Leading or trailing isignificant whitespace can cause syntax " +
+            "errors or making the comparing of file changes harder.",
+        tags: ["XML", "leading", "trailing", "whitespace", "trim"],
         category: Category.Noise);
 
 #pragma warning disable S107 // Methods should not have too many parameters
