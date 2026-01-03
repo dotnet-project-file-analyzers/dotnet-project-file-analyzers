@@ -29,7 +29,7 @@ public sealed class SolutionFile : Node, ProjectFile
 
     public WarningPragmas WarningPragmas { get; }
 
-    public IEnumerable<Project> Projects => Children.OfType<Project>();
+    public IEnumerable<SlnxProject> Projects => Children.OfType<SlnxProject>();
 
     internal ProjectFiles ProjectFiles { get; }
 
