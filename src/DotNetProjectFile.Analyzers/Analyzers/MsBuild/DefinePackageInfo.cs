@@ -34,7 +34,11 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
         Analyze(context, available, Rule.DefineDescription, typeof(Description), typeof(PackageDescription));
         Analyze(context, available, Rule.DefineAuthors, typeof(Authors));
         Analyze(context, available, Rule.DefineTags, typeof(PackageTags));
-        Analyze(context, available, Rule.DefineRepositoryUrl, typeof(RepositoryUrl));
+
+        if (!HasSourceLinkEnabled(context))
+        {
+            Analyze(context, available, Rule.DefineRepositoryUrl, typeof(RepositoryUrl));
+        }
         Analyze(context, available, Rule.DefineUrl, typeof(PackageProjectUrl));
         Analyze(context, available, Rule.DefineCopyright, typeof(Copyright));
         Analyze(context, available, Rule.DefineReleaseNotes, typeof(PackageReleaseNotes));
@@ -63,6 +67,9 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
         .File.Walk()
         .OfType<PackageReference>()
         .Any(HasAlternativePackageVersioning);
+
+    private static bool HasSourceLinkEnabled(ProjectFileAnalysisContext context)
+        => context.Options.GetSdkVersion() >= SdkVersion.NET8;
 
     private static bool HasAlternativePackageVersioning(PackageReference reference)
         => reference.IncludeOrUpdate
