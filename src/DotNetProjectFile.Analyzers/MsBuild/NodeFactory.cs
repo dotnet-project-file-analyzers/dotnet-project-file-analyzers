@@ -1,6 +1,7 @@
+using DotNetProjectFile.Slnx;
 using System.Linq.Expressions;
 using System.Reflection;
-using CtorFunc = System.Func<System.Xml.Linq.XElement, DotNetProjectFile.MsBuild.Node, DotNetProjectFile.MsBuild.Project, DotNetProjectFile.MsBuild.Node>;
+using CtorFunc = System.Func<System.Xml.Linq.XElement, DotNetProjectFile.MsBuild.Node, DotNetProjectFile.MsBuild.MsBuildProject, DotNetProjectFile.MsBuild.Node>;
 
 namespace DotNetProjectFile.MsBuild;
 
@@ -48,7 +49,14 @@ internal sealed class NodeFactory
         .GetTypes()
         .Select(GetValidNodeCtor)
         .OfType<ConstructorInfo>()
-        .ToDictionary(ci => ci.DeclaringType.Name, GenerateCtor);
+        .ToDictionary(Key, GenerateCtor);
+
+    /// <summary>Lookup can not (easily) access the LocalName (override).</summary>
+    private static string Key(ConstructorInfo ci) => ci.DeclaringType.Name switch
+    {
+        nameof(MsBuildProject) => "Project",
+        var name => name,
+    };
 
     [Pure]
     private ConstructorInfo? GetValidNodeCtor(Type type)
