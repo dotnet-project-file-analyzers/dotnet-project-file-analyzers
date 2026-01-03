@@ -214,6 +214,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj3000** Only use UTF-8 without BOM](rules/Proj3000.md)
 * [**Proj3001** Track uses of "TODO" tags](rules/Proj3001.md)
 * [**Proj3002** Remove commented-out code](rules/Proj3002.md)
+* [**Proj3003** Trim whitespace](rules/Proj3003.md)
 
 ## INI
 * [**Proj4000** Invalid INI file](rules/Proj4000.md)
