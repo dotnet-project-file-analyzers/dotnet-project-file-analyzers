@@ -29,7 +29,7 @@ public sealed partial class ProjectFiles
         var path = IOFile.Parse(text.Path);
         if (path.GetProjectFileType() is ProjectFileType.None) return null;
 
-        return MsBuildProjects.TryGetOrUpdate(path, _ => MsBuild.Project.Load(text, Global));
+        return MsBuildProjects.TryGetOrUpdate(path, _ => MsBuild.MsBuildProject.Load(text, Global));
     }
 
     public Resource? ResourceFile(IOFile file)
@@ -95,7 +95,7 @@ public sealed partial class ProjectFiles
     {
         var file = IOFile.Parse(context.AdditionalFile.Path);
         return Is.MsBuild(file)
-            ? MsBuildProjects.TryGetOrUpdate(file, _ => MsBuild.Project.Load(context.AdditionalFile, this))
+            ? MsBuildProjects.TryGetOrUpdate(file, _ => MsBuild.MsBuildProject.Load(context.AdditionalFile, this))
             : null;
     }
 
@@ -127,7 +127,7 @@ public sealed partial class ProjectFiles
         => new(IniFileSyntax.Parse(Syntax.SyntaxTree.Load(file.OpenRead())));
 
     private MsBuildProject Create_MsBuildProject(IOFile file)
-       => MsBuild.Project.Load(file, this);
+       => MsBuild.MsBuildProject.Load(file, this);
 
     private Resource Create_ResourceFile(IOFile file)
         => Resource.Load(file, this);

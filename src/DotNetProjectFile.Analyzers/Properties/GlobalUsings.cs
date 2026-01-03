@@ -18,7 +18,6 @@ global using System.Linq;
 global using System.Threading;
 global using System.Xml.Linq;
 global using IniFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.Ini.IniFile>;
-global using MsBuildProject = DotNetProjectFile.MsBuild.Project;
-global using ProjectFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.MsBuild.Project>;
+global using ProjectFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.MsBuild.MsBuildProject>;
 global using ResourceFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.Resx.Resource>;
 global using SolutionFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.Slnx.SolutionFile>;
