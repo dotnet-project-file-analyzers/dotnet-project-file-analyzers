@@ -68,7 +68,6 @@ public class Guards_
 #endif
 public class Guards
 {
-
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     [TestCase("PackagesWithAnalyzers.cs")]
