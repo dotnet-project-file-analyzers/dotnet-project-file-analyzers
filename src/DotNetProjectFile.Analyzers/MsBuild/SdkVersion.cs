@@ -7,7 +7,14 @@ namespace DotNetProjectFile.MsBuild;
 public readonly record struct SdkVersion(int Major, int Minor, int Patch) : IComparable<SdkVersion>
 {
     public static readonly SdkVersion None;
+
+    /// <summary>The .NET 8.0 SDK.</summary>
     public static readonly SdkVersion NET8 = new(8, 0, 0);
+
+    /// <summary>The .NET 9.0 SDK.</summary>
+    public static readonly SdkVersion NET9 = new(9, 0, 0);
+
+    /// <summary>The .NET 10.0 SDK.</summary>
     public static readonly SdkVersion NET10 = new(10, 0, 0);
 
     public bool IsNone => this == None;
