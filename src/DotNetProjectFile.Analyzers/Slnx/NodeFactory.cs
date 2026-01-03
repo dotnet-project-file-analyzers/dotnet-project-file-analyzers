@@ -48,7 +48,14 @@ internal sealed class NodeFactory
         .GetTypes()
         .Select(GetValidNodeCtor)
         .OfType<ConstructorInfo>()
-        .ToDictionary(ci => ci.DeclaringType.Name, GenerateCtor);
+        .ToDictionary(Key, GenerateCtor);
+
+    /// <summary>Lookup can not (easily) access the LocalName (override).</summary>
+    private static string Key(ConstructorInfo ci) => ci.DeclaringType.Name switch
+    {
+        nameof(SlnxProject) => "Project",
+        var name => name,
+    };
 
     [Pure]
     private ConstructorInfo? GetValidNodeCtor(Type type)
