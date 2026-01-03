@@ -97,7 +97,9 @@ public partial class Rules
         .Where(f => f.PropertyType == typeof(DiagnosticDescriptor))
         .Select(f => f.GetValue(null))
         .OfType<DiagnosticDescriptor>()
-        .Select(d => new Rule(d));
+        .Select(d => new Rule(d))
+        // Rules 9000 and above are DEBUG only rules
+        .Where(d => int.Parse(d.Descriptor.Id[4..]) < 9000);
 
     private static readonly FileInfo Docs_Readme = new("../../../../../docs/README.md");
     private static readonly FileInfo Package_Readme = new("../../../../../src/DotNetProjectFile.Analyzers/README.md");
