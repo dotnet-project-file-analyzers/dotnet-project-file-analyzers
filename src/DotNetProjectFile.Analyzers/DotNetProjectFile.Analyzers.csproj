@@ -82,6 +82,7 @@ v1.8.1
 - Trim MSBuild attribute values. (FP/FN)
 - Proj0201: <Version> is not required when using NuGet.Versioning or MinVer. (FP)
 - Proj0205: Define <RepositoryUrl> is not needed for SDK's 8.0 and up. (FP)
+- Proj0808: Define CPM related configuration only in Directory.Packages.props. (EXTENDED RULE)
 - Proj0812: Remove redundant packages references that are globally referenced. (NEW RULE)
 * Proj3003: Trim whitespace. (NEW RULE)
 ]]>

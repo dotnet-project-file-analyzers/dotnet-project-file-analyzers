@@ -122,7 +122,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0805** Define version for PackageReference](https://dotnet-project-file-analyzers.github.io/rules/Proj0805.html)
 * [**Proj0806** VersionOverride should change the version](https://dotnet-project-file-analyzers.github.io/rules/Proj0806.html)
 * [**Proj0807** Use Directory.Packages.props only for Central Package Management](https://dotnet-project-file-analyzers.github.io/rules/Proj0807.html)
-* [**Proj0808** Define global package reference only in Directory.Packages.props](https://dotnet-project-file-analyzers.github.io/rules/Proj0808.html)
+* [**Proj0808** Define CPM related configuration only in Directory.Packages.props](https://dotnet-project-file-analyzers.github.io/rules/Proj0808.html)
 * [**Proj0809** Global package references are meant for private assets only](https://dotnet-project-file-analyzers.github.io/rules/Proj0809.html)
 * [**Proj0810** Remove unused package versions](https://dotnet-project-file-analyzers.github.io/rules/Proj0810.html)
 * [**Proj0811** Directory.Build.props and Directory.Packages.props should be in the same directory](https://dotnet-project-file-analyzers.github.io/rules/Proj0811.html)
