@@ -20,6 +20,10 @@ public readonly record struct LanguageVersion(int Major, int Minor = 0) : ICompa
 
     public static readonly LanguageVersion Preview = new(int.MaxValue, 3);
 
+    public static readonly LanguageVersion CS10 = new(10);
+
+    public static readonly LanguageVersion CS11 = new(11);
+
     public static readonly LanguageVersion CS12 = new(12);
 
     public static readonly LanguageVersion CS13 = new(13);

@@ -27,6 +27,8 @@ public sealed class PreferLatestLanguageVersion() : MsBuildProjectFileAnalyzer(R
 
     private static LanguageVersion CSharp(SdkVersion sdk) => sdk switch
     {
+        _ when sdk >= SdkVersion.NET6 => LanguageVersion.CS10,
+        _ when sdk >= SdkVersion.NET7 => LanguageVersion.CS11,
         _ when sdk >= SdkVersion.NET8 => LanguageVersion.CS12,
         _ when sdk >= SdkVersion.NET9 => LanguageVersion.CS13,
         _ when sdk >= SdkVersion.NET10 => LanguageVersion.CS14,
@@ -35,9 +37,7 @@ public sealed class PreferLatestLanguageVersion() : MsBuildProjectFileAnalyzer(R
 
     private static LanguageVersion VisualBasic(SdkVersion sdk) => sdk switch
     {
-        _ when sdk >= SdkVersion.NET8 => LanguageVersion.VB16_9,
-
-        // .NET 10 did not release a new VB.NET language version
+        _ when sdk >= SdkVersion.NET6 => LanguageVersion.VB16_9,
         _ when sdk >= SdkVersion.NET9 => LanguageVersion.VB17_13,
         _ => new(1),
     };
