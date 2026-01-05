@@ -1,3 +1,5 @@
+using ProjectReference = DotNetProjectFile.MsBuild.ProjectReference;
+
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 /// <summary>Guards project reference compliance.</summary>>

@@ -15,6 +15,7 @@ public class Reports
     public void files_with_UTF8_BOM() => new OnlyUseUTF8WithoutBom()
         .ForProject("MultipleEncodings.cs")
         .HasIssues(
+            Issue.WRN("Proj3000", "This file is using UTF-8 encoding with BOM").WithPath("UTF8-bom.cs"),
             Issue.WRN("Proj3000", "This file is using UTF-8 encoding with BOM").WithPath("utf8-bom.css"),
             Issue.WRN("Proj3000", "This file is using UTF-8 encoding with BOM").WithPath("file.utf8-bom"));
 }
@@ -29,7 +30,9 @@ public class Does_not_crash
 
         new OnlyUseUTF8WithoutBom()
             .ForProject("MultipleEncodings.cs")
-            .HasIssue(Issue.WRN("Proj3000", "This file is using UTF-8 encoding with BOM").WithPath("file.utf8-bom"));
+            .HasIssues(
+                Issue.WRN("Proj3000", "This file is using UTF-8 encoding with BOM").WithPath("UTF8-bom.cs"),
+                Issue.WRN("Proj3000", "This file is using UTF-8 encoding with BOM").WithPath("file.utf8-bom"));
     }
 }
 
