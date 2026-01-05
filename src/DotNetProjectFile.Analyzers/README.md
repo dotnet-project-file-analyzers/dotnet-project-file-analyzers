@@ -50,6 +50,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0046** Update statements should change state](https://dotnet-project-file-analyzers.github.io/rules/Proj0046.html)
 * [**Proj0047** Label item groups that disable compliation items](https://dotnet-project-file-analyzers.github.io/rules/Proj0047.html)
 * [**Proj0048** Language version should be set to an explicit version number](https://dotnet-project-file-analyzers.github.io/rules/Proj0048.html)
+* [**Proj0049** Prefer the latest released language version](https://dotnet-project-file-analyzers.github.io/rules/Proj0049.html)
  
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)

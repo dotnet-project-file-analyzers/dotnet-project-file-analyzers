@@ -466,6 +466,16 @@ public static partial class Rule
         tags: ["Compile", "Build"],
         category: Category.Reliability);
 
+    public static DiagnosticDescriptor PreferLatestLanguageVersion => New(
+       id: 0049,
+       title: "Prefer the latest released language version",
+       message: "Use <LangVersion>{0}</LangVersion> supported by the .NET {1} SDK",
+       description:
+           "To benefit from the latest language features, use the latest " +
+           "released version of the language.",
+       tags: ["Compile", "Build"],
+       category: Category.Reliability);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",

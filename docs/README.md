@@ -100,6 +100,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0046** Update statements should change state](rules/Proj0046.md)
 * [**Proj0047** Label item groups that disable compilation items](rules/Proj0047.md)
 * [**Proj0048** Language version should be set to an explicit version number](rules/Proj0048.md)
+* [**Proj0049** Prefer the latest released language version](rules/Proj0049.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)

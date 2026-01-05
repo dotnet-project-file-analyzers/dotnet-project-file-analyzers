@@ -10,6 +10,7 @@ internal static class AnalyzerOptionsExtensions
             ? value
             : null;
 
+    /// <summary>Gets the NETCoreSdkVersion property.</summary>
     [Pure]
     public static SdkVersion GetSdkVersion(this AnalyzerOptions options)
     {
