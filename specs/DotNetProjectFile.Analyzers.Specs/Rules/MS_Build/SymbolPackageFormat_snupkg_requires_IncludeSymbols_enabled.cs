@@ -10,12 +10,12 @@ public class Reports
           <PropertyGroup>
             <TargetFramework>net8.0</TargetFramework>
             <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-            <DebugType>embedded</DebugType>
+            <DebugType>portable</DebugType>
           </PropertyGroup>
 
         </Project>
         """)
-        .HasIssues(Issue.WRN("Proj0220", "The <SymbolPackageFormat> 'snupkg' requires <DebugType> to have the value 'portable'")
+        .HasIssues(Issue.WRN("Proj0220", "The <IncludeSymbols> must be 'true' when package format is 'snupkg'")
         .WithSpan(04, 04, 04, 53));
 
     [Test]
@@ -26,14 +26,14 @@ public class Reports
           <PropertyGroup>
             <TargetFramework>net8.0</TargetFramework>
             <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-            <DebugType>embedded</DebugType>
+            <DebugType>portable</DebugType>
             <IncludeSymbols>false</IncludeSymbols>
           </PropertyGroup>
         
         </Project>
         """)
-        .HasIssues(Issue.WRN("Proj0220", "The <SymbolPackageFormat> 'snupkg' requires <DebugType> to have the value 'portable'")
-        .WithSpan(05, 04, 05, 35));
+        .HasIssues(Issue.WRN("Proj0220", "The <IncludeSymbols> must be 'true' when package format is 'snupkg'")
+        .WithSpan(06, 04, 06, 42));
 }
 
 public class Guards

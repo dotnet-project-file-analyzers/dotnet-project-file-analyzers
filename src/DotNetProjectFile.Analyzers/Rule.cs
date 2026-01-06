@@ -713,7 +713,7 @@ public static partial class Rule
     public static DiagnosticDescriptor SymbolPackageFormatSNupkgRequiresIncludeSymbolsToBeEnabled => New(
         id: 0220,
         title: "Symbol package format snupkg requires include symbols to be enabled",
-        message: "The <IncludeSymbols> must be 'true' when package format is snupkg",
+        message: "The <IncludeSymbols> must be 'true' when package format is 'snupkg'",
         description:
             "To ensure that symbol packages are created <IncludeSymbols> should " +
             "be set to 'true'.",
