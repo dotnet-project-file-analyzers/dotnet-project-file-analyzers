@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -88,7 +88,7 @@ v1.8.1
 - Proj0205: Define <RepositoryUrl> is not needed for SDK's 8.0 and up. (FP)
 - Proj0808: Define CPM related configuration only in Directory.Packages.props. (EXTENDED RULE)
 - Proj0812: Remove redundant packages references that are globally referenced. (NEW RULE)
-* Proj3003: Trim whitespace. (NEW RULE)
+- Proj3003: Trim whitespace. (NEW RULE)
 v1.8.0
 - Added support for F# projects when using DotNetProjectFile.Analyzers.Sdk.
 - Added support for Visual Cobol projects when using DotNetProjectFile.Analyzers.Sdk.
