@@ -73,7 +73,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0217** Define requiring license acceptance explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0217.html)
 * [**Proj0218** Symbol package format snupkg requires debug type portable](https://dotnet-project-file-analyzers.github.io/rules/Proj0218.html)
 * [**Proj0219** Packable projects should be libraries](https://dotnet-project-file-analyzers.github.io/rules/Proj0219.html)
-* [**Proj0220** Symbol package format snupkg requires include symboles to be enabled](https://dotnet-project-file-analyzers.github.io/rules/Proj0220.html)
+* [**Proj0220** Symbol package format snupkg requires include symbols to be enabled](https://dotnet-project-file-analyzers.github.io/rules/Proj0220.html)
 * [**Proj0240** Enable package validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0240.html)
 * [**Proj0241** Enable package baseline validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0241.html)
 * [**Proj0242** Generate NuGet packages conditionally](https://dotnet-project-file-analyzers.github.io/rules/Proj0242.html)
