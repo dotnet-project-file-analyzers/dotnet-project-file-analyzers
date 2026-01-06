@@ -710,6 +710,16 @@ public static partial class Rule
         tags: ["NuGet", "package"],
         category: Category.Bug);
 
+    public static DiagnosticDescriptor SymbolPackageFormatSNupkgRequiresIncludeSymbolsToBeEnabled => New(
+        id: 0220,
+        title: "Symbol package format snupkg requires include symboles to be enabled",
+        message: "The <IncludeSymbols> must be 'true' when package format is snupkg",
+        description:
+            "To ensure that symbol packages are created <IncludeSymbols> should " +
+            "be set to 'true'.",
+        tags: ["Configuration", "NuGet", "package", "symbols"],
+        category: Category.Configuration);
+
     public static DiagnosticDescriptor EnablePackageValidation => New(
         id: 0240,
         title: "Enable package validation",
