@@ -1,39 +1,39 @@
-namespace Rules.MS_Build.SymbolPackageFormat_snupkg_requires_DebugType_portable;
+namespace Rules.MS_Build.SymbolPackageFormat_snupkg_requires_IncludeSymbols_enabled;
 
 public class Reports
 {
     [Test]
-    public void on_not_defined_debug_type() => new SymbolPackageFormatSNupkgSetup()
+    public void on_not_defined_IncludeSymbols() => new SymbolPackageFormatSNupkgSetup()
         .ForInlineCsproj("""
         <Project Sdk="Microsoft.NET.Sdk">
 
           <PropertyGroup>
             <TargetFramework>net8.0</TargetFramework>
             <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-            <IncludeSymbols>true</IncludeSymbols>
+            <DebugType>portable</DebugType>
           </PropertyGroup>
 
         </Project>
         """)
-        .HasIssues(Issue.WRN("Proj0218", "The <SymbolPackageFormat> 'snupkg' requires <DebugType> to have the value 'portable'")
+        .HasIssues(Issue.WRN("Proj0220", "The <IncludeSymbols> must be 'true' when package format is 'snupkg'")
         .WithSpan(04, 04, 04, 53));
 
     [Test]
-    public void on_different_debug_type() => new SymbolPackageFormatSNupkgSetup()
+    public void on_IncludeSymbols_false() => new SymbolPackageFormatSNupkgSetup()
         .ForInlineCsproj("""
         <Project Sdk="Microsoft.NET.Sdk">
-
+        
           <PropertyGroup>
             <TargetFramework>net8.0</TargetFramework>
             <SymbolPackageFormat>snupkg</SymbolPackageFormat>
-            <DebugType>embedded</DebugType>
-            <IncludeSymbols>true</IncludeSymbols>
+            <DebugType>portable</DebugType>
+            <IncludeSymbols>false</IncludeSymbols>
           </PropertyGroup>
-
+        
         </Project>
         """)
-        .HasIssues(Issue.WRN("Proj0218", "The <SymbolPackageFormat> 'snupkg' requires <DebugType> to have the value 'portable'")
-        .WithSpan(05, 04, 05, 35));
+        .HasIssues(Issue.WRN("Proj0220", "The <IncludeSymbols> must be 'true' when package format is 'snupkg'")
+        .WithSpan(06, 04, 06, 42));
 }
 
 public class Guards

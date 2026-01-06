@@ -2,8 +2,9 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 
 /// <summary>Implements <see cref="Rule.SymbolPackageFormatSNupkgRequiresDebugTypePortable"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class SymbolPackageFormatSNupkgRequiresDebugTypePortable()
-    : MsBuildProjectFileAnalyzer(Rule.SymbolPackageFormatSNupkgRequiresDebugTypePortable)
+public sealed class SymbolPackageFormatSNupkgSetup() : MsBuildProjectFileAnalyzer(
+    Rule.SymbolPackageFormatSNupkgRequiresDebugTypePortable,
+    Rule.SymbolPackageFormatSNupkgRequiresIncludeSymbolsToBeEnabled)
 {
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
@@ -12,10 +13,16 @@ public sealed class SymbolPackageFormatSNupkgRequiresDebugTypePortable()
         if (context.File.Property<SymbolPackageFormat>() is { Value: SymbolPackageFormat.Kind.snupkg } format)
         {
             var debugType = context.File.Property<DebugType>();
+            var includeSymbols = context.File.Property<IncludeSymbols>();
 
             if (debugType?.Value is not DebugType.Kind.portable)
             {
-                context.ReportDiagnostic(Descriptor, (XmlAnalysisNode?)debugType ?? format);
+                context.ReportDiagnostic(Rule.SymbolPackageFormatSNupkgRequiresDebugTypePortable, (XmlAnalysisNode?)debugType ?? format);
+            }
+
+            if (includeSymbols?.Value is not true)
+            {
+                context.ReportDiagnostic(Rule.SymbolPackageFormatSNupkgRequiresIncludeSymbolsToBeEnabled, (XmlAnalysisNode?)includeSymbols ?? format);
             }
         }
     }

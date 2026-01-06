@@ -123,6 +123,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0217** Define requiring license acceptance explicitly](rules/Proj0217.md)
 * [**Proj0218** Symbol package format snupkg requires debug type portable](rules/Proj0218.md)
 * [**Proj0219** Packable projects should be libraries](rules/Proj0219.md)
+* [**Proj0220** Symbol package format snupkg requires include symbols to be enabled](rules/Proj0220.md)
 * [**Proj0240** Enable package validation](rules/Proj0240.md)
 * [**Proj0241** Enable package baseline validation](rules/Proj0241.md)
 * [**Proj0242** Generate NuGet packages conditionally](rules/Proj0242.md)
