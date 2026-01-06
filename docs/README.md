@@ -172,7 +172,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0805** Define version for PackageReference](rules/Proj0805.md)
 * [**Proj0806** VersionOverride should change the version](rules/Proj0806.md)
 * [**Proj0807** Use Directory.Packages.props only for Central Package Management](rules/Proj0807.md)
-* [**Proj0808** Define global package reference only in Directory.Packages.props](rules/Proj0808.md)
+* [**Proj0808** Define CPM related configuration only in Directory.Packages.props](rules/Proj0808.md)
 * [**Proj0809** Global package references are meant for private assets only](rules/Proj0809.md)
 * [**Proj0810** Remove unused package versions](rules/Proj0810.md)
 * [**Proj0811** Directory.Build.props and Directory.Packages.props should be in the same directory](rules/Proj0811.md)

@@ -1129,14 +1129,14 @@ public static partial class Rule
         tags: ["Bug"],
         category: Category.CPM);
 
-    public static DiagnosticDescriptor DefineGlobalPackageReferenceInDirectoryPackagesOnly => New(
+    public static DiagnosticDescriptor DefineCpmRelatedConfigInDirectoryPackages => New(
         id: 0808,
-        title: "Define global package reference only in Directory.Packages.props",
-        message: "The <GlobalPackageReference> should be defined in the Directory.Packages.props",
+        title: "Define CPM related configuration only in Directory.Packages.props",
+        message: "The <{0}> should be defined in the Directory.Packages.props",
         description:
             "The use of <GlobalPackageReference> is only useful " +
             "when defined in Directory.Packages.props.",
-        tags: ["Bug"],
+        tags: ["CPM"],
         category: Category.CPM);
 
     public static DiagnosticDescriptor GlobalPackageReferencesAreMeantForPrivateAssetsOnly => New(
@@ -1175,7 +1175,7 @@ public static partial class Rule
         title: "Remove redundant packages references that are globally referenced",
         message: "Remove redundant reference '{0}'",
         description:
-            "Importing packages ",
+            "Importing packages twice is only adding noise.",
         tags: ["package", "import", "duplicate"],
         category: Category.Clarity);
 
