@@ -18,9 +18,13 @@ public sealed class ProjectReferenceIncludeShouldExist() : MsBuildProjectFileAna
         {
             var include = node.Include ?? string.Empty;
 
-            if (include is not { Length: > 0 } || root.Files(include)?.Any() is false)
+            if (include is not { Length: > 0 } || root.Files(include)?.FirstOrDefault() is not { } existing)
             {
                 context.ReportDiagnostic(Descriptor, node, include, node.LocalName);
+            }
+            else if (existing.Name != include)
+            {
+                // too find casing differences
             }
         }
     }
