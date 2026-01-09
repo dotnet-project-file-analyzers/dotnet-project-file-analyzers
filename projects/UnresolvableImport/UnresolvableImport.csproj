@@ -3,7 +3,7 @@
   <Import Project="$(MSBuildThisFileDirectory)common.props" />
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
   <!-- TODO: should be reported on./ -->

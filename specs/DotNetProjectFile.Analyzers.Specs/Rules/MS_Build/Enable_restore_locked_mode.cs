@@ -10,7 +10,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
               </PropertyGroup>
             </Project>")
@@ -22,7 +22,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
                 <RestoreLockedMode>false</RestoreLockedMode>
               </PropertyGroup>
@@ -35,7 +35,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
                 <RestoreLockedMode>true</RestoreLockedMode>
               </PropertyGroup>
@@ -48,7 +48,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
               </PropertyGroup>
 
@@ -64,7 +64,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
                 <RestoreLockedMode Condition=""'$(ContinuousIntegrationBuild)' == 'true'"">false</RestoreLockedMode>
               </PropertyGroup>
@@ -166,7 +166,7 @@ public class Reports
         .ForInlineCsproj(@$"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
               </PropertyGroup>
 
@@ -271,7 +271,7 @@ public class Reports
         .ForInlineCsproj(@$"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
                 <RestoreLockedMode Condition=""'$({variable})' {(expectTrue ? "== 'true'" : "!= ''")}"">true</RestoreLockedMode>
               </PropertyGroup>
@@ -294,7 +294,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
               </PropertyGroup>
             </Project>")
         .HasNoIssues();
@@ -304,7 +304,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
               </PropertyGroup>
             </Project>")
@@ -315,7 +315,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
               </PropertyGroup>
 
@@ -330,7 +330,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
                 <RestoreLockedMode Condition=""'$(ContinuousIntegrationBuild)' == 'true'"">true</RestoreLockedMode>
               </PropertyGroup>
@@ -361,7 +361,7 @@ public class Guards
         .ForInlineCsproj(@$"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
               </PropertyGroup>
 
@@ -395,7 +395,7 @@ public class Guards
         .ForInlineCsproj(@$"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
                 <RestoreLockedMode Condition=""'$({variable})' {(expectTrue ? "== 'true'" : "!= ''")}"">true</RestoreLockedMode>
               </PropertyGroup>

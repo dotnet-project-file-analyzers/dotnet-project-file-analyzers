@@ -7,7 +7,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
               </PropertyGroup>
             </Project>")
         .HasIssue(
@@ -18,7 +18,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
               </PropertyGroup>
             </Project>")
@@ -30,7 +30,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile></RestorePackagesWithLockFile>
               </PropertyGroup>
             </Project>")
@@ -51,7 +51,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
               </PropertyGroup>
             </Project>")

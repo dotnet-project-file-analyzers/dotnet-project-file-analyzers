@@ -8,7 +8,7 @@ public class Reports
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <EnablePackageValidation>true</EnablePackageValidation>
   </PropertyGroup>
 
@@ -23,7 +23,7 @@ public class Reports
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <EnablePackageValidation>true</EnablePackageValidation>
     <ApiCompatEnableRuleAttributesMustMatch>false</ApiCompatEnableRuleAttributesMustMatch>
   </PropertyGroup>
@@ -49,7 +49,7 @@ public class Guards
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <EnablePackageValidation>true</EnablePackageValidation>
     <ApiCompatEnableRuleAttributesMustMatch>true</ApiCompatEnableRuleAttributesMustMatch>
   </PropertyGroup>
@@ -64,7 +64,7 @@ public class Guards
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ApiCompatEnableRuleAttributesMustMatch>false</ApiCompatEnableRuleAttributesMustMatch>
   </PropertyGroup>
 

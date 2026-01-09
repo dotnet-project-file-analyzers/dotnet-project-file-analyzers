@@ -47,7 +47,7 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
             <Project Sdk="Microsoft.NET.Sdk">
               <PropertyGroup>
                 <!-- The TargetFramework may be overridden, but has a fine default. -->
-                <TargetFramework>net8.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <LangVersion>latest</LangVersion>
                 <IsPackable>false</IsPackable>
                 <IsPublishable>false</IsPublishable>
