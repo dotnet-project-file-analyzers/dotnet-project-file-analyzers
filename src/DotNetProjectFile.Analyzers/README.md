@@ -10,7 +10,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0006** Add additional files to improve static code analysis](https://dotnet-project-file-analyzers.github.io/rules/Proj0006.html)
 * [**Proj0007** Remove empty nodes](https://dotnet-project-file-analyzers.github.io/rules/Proj0007.html)
 * [**Proj0008** Remove folder nodes](https://dotnet-project-file-analyzers.github.io/rules/Proj0008.html)
-* [**Proj0009** Use the TragetFramework node for a single target framework](https://dotnet-project-file-analyzers.github.io/rules/Proj0009.html)
+* [**Proj0009** Use the TargetFramework node for a single target framework](https://dotnet-project-file-analyzers.github.io/rules/Proj0009.html)
 * [**Proj0010** Define OutputType explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0010.html)
 * [**Proj0011** Define properties once](https://dotnet-project-file-analyzers.github.io/rules/Proj0011.html)
 * [**Proj0012** Reassign properties with different value](https://dotnet-project-file-analyzers.github.io/rules/Proj0012.html)
