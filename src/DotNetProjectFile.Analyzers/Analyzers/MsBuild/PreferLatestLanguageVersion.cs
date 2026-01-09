@@ -29,9 +29,9 @@ public sealed class PreferLatestLanguageVersion() : MsBuildProjectFileAnalyzer(R
     {
         _ when sdk >= SdkVersion.NET10 => LanguageVersion.CS14,
         _ when sdk >= SdkVersion.NET9 => LanguageVersion.CS13,
-        _ when sdk >= SdkVersion.NET6 => LanguageVersion.CS10,
         _ when sdk >= SdkVersion.NET8 => LanguageVersion.CS12,
         _ when sdk >= SdkVersion.NET7 => LanguageVersion.CS11,
+        _ when sdk >= SdkVersion.NET6 => LanguageVersion.CS10,
         _ => new(1),
     };
 
