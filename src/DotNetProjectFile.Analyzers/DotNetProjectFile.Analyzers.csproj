@@ -82,7 +82,7 @@ ToBeDecided:
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
-v1.8.1.1
+v1.8.2
 - Proj0049: Prefers latest version. (FP)
 v1.8.1
 - Trim MSBuild attribute values. (FP/FN)
