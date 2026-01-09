@@ -129,7 +129,7 @@ public class Guards
         <Project Sdk="Microsoft.NET.Sdk">
 
           <PropertyGroup>
-          <TargetFramework>net8.0</TargetFramework>
+          <TargetFramework>net10.0</TargetFramework>
           <Authors>.NET Project Files Analyzer community</Authors>
           <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
           <Description>Some package</Description>
@@ -160,7 +160,7 @@ public class Guards
         <Project Sdk="Microsoft.NET.Sdk">
 
           <PropertyGroup>
-            <TargetFramework>net8.0</TargetFramework>
+            <TargetFramework>net10.0</TargetFramework>
             <Authors>.NET Project Files Analyzer community</Authors>
             <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
             <Description>Some package</Description>

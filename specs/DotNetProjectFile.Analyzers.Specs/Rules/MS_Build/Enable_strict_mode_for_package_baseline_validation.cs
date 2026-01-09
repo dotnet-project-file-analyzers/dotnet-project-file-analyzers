@@ -8,7 +8,7 @@ public class Reports
             <Project Sdk=""Microsoft.NET.Sdk"">
 
               <PropertyGroup>
-                <TargetFramework>net8.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <EnablePackageValidation>true</EnablePackageValidation>
                 <PackageValidationBaselineName>DotNetProjectFile.Analyzers</PackageValidationBaselineName>
                 <PackageValidationBaselineVersion>1.5.0</PackageValidationBaselineVersion>
@@ -25,7 +25,7 @@ public class Reports
             <Project Sdk=""Microsoft.NET.Sdk"">
 
               <PropertyGroup>
-                <TargetFramework>net8.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <EnablePackageValidation>true</EnablePackageValidation>
                 <PackageValidationBaselineName>DotNetProjectFile.Analyzers</PackageValidationBaselineName>
                 <PackageValidationBaselineVersion>1.5.0</PackageValidationBaselineVersion>
@@ -52,7 +52,7 @@ public class Guards
             <Project Sdk=""Microsoft.NET.Sdk"">
 
               <PropertyGroup>
-                <TargetFramework>net8.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <EnablePackageValidation>true</EnablePackageValidation>
                 <PackageValidationBaselineName>DotNetProjectFile.Analyzers</PackageValidationBaselineName>
                 <PackageValidationBaselineVersion>1.5.0</PackageValidationBaselineVersion>
@@ -69,7 +69,7 @@ public class Guards
             <Project Sdk=""Microsoft.NET.Sdk"">
 
               <PropertyGroup>
-                <TargetFramework>net8.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <PackageValidationBaselineName>DotNetProjectFile.Analyzers</PackageValidationBaselineName>
                 <PackageValidationBaselineVersion>1.5.0</PackageValidationBaselineVersion>
                 <EnableStrictModeForBaselineValidation>false</EnableStrictModeForBaselineValidation>

@@ -8,7 +8,7 @@ public class Reports
             <Project Sdk="Microsoft.NET.Sdk">
 
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
               </PropertyGroup>
 
             </Project>
@@ -29,7 +29,7 @@ public class Reports
             <Project Sdk="Microsoft.NET.Sdk">
 
                 <PropertyGroup>
-                    <TargetFramework>net9.0</TargetFramework>
+                    <TargetFramework>net10.0</TargetFramework>
                     <LangVersion>{langVersion}</LangVersion>
                 </PropertyGroup>
 
@@ -46,7 +46,7 @@ public class Guards
             <Project Sdk="Microsoft.NET.Sdk">
 
                 <PropertyGroup>
-                    <TargetFramework>net9.0</TargetFramework>
+                    <TargetFramework>net10.0</TargetFramework>
                     <LangVersion>13</LangVersion>
                 </PropertyGroup>
 

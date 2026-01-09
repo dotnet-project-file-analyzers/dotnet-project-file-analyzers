@@ -8,7 +8,7 @@ public class Reports
 <Project Sdk=""Microsoft.NET.Sdk"">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <OutputType>library</OutputType>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
@@ -27,7 +27,7 @@ public class Reports
 <Project Sdk=""Microsoft.NET.Sdk"">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 
@@ -45,7 +45,7 @@ public class Reports
 <Project Sdk=""Microsoft.NET.Sdk"">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <OutputType>exe</OutputType>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>

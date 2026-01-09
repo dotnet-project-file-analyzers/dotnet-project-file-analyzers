@@ -7,7 +7,7 @@ public class Reports
         => new DefineSingleTargetFramework()
         .ForProject("TargetFrameworksSingle.cs")
         .HasIssues(
-            Issue.WRN("Proj0009", "Use the <TargetFramework> node instead").WithSpan(3, 4, 3, 47));
+            Issue.WRN("Proj0009", "Use the <TargetFramework> node instead").WithSpan(3, 4, 3, 48));
 }
 
 public class Guards

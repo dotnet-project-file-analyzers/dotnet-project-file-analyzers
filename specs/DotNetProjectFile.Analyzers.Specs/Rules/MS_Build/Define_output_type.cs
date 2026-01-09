@@ -17,7 +17,7 @@ public class Reports
         .ForInlineProject(language, """
             <Project Sdk="Microsoft.NET.Sdk">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
               </PropertyGroup>
             </Project>
             """)
@@ -41,7 +41,7 @@ public class Guards
         .ForInlineFsproj("""
             <Project Sdk="Microsoft.NET.Sdk">
                 <PropertyGroup>
-                    <TargetFramework>net9.0</TargetFramework>
+                    <TargetFramework>net10.0</TargetFramework>
                     <OutputType>Exe</OutputType>
                 </PropertyGroup>
             </Project>
