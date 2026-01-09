@@ -379,7 +379,7 @@ v1.0.2
 - Proj0006: Add additional files to improve static code analysis. (NEW RULE)
 - Proj0007: Remove empty nodes. (NEW RULE)
 - Proj0008: Remove folder nodes. (NEW RULE)
-- Proj0009: Use the TragetFramework node for a single target framework. (NEW RULE)
+- Proj0009: Use the TargetFramework node for a single target framework. (NEW RULE)
 - Proj1000: Use the .NET project file analyzers. (NEW RULE)
 v1.0.1
 - Proj0002: Added Microsoft.CodeAnalysis.Analyzers as analyzer to add. (FN)

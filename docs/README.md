@@ -60,7 +60,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0006** Add additional files to improve static code analysis](rules/Proj0006.md)
 * [**Proj0007** Remove empty nodes](rules/Proj0007.md)
 * [**Proj0008** Remove folder nodes](rules/Proj0008.md)
-* [**Proj0009** Use the TragetFramework node for a single target framework](rules/Proj0009.md)
+* [**Proj0009** Use the TargetFramework node for a single target framework](rules/Proj0009.md)
 * [**Proj0010** Define OutputType explicitly](rules/Proj0010.md)
 * [**Proj0011** Define properties once](rules/Proj0011.md)
 * [**Proj0012** Reassign properties with different value](rules/Proj0012.md)
