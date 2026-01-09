@@ -73,7 +73,7 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.8.1</Version>
+    <Version>1.8.2</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
@@ -82,8 +82,11 @@ ToBeDecided:
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.8.2
+- Proj0049: Prefers latest version. (FP)
 v1.8.1
 - Trim MSBuild attribute values. (FP/FN)
+- Proj0049: Prefer the latest released language version. (NEW RULE)
 - Proj0201: <Version> is not required when using NuGet.Versioning or MinVer. (FP)
 - Proj0205: Define <RepositoryUrl> is not needed for SDK's 8.0 and up. (FP)
 - Proj0220: Symbol package format snupkg requires include symbols to be enabled (NEW RULE)
