@@ -30,6 +30,12 @@ public readonly record struct LanguageVersion(int Major, int Minor = 0) : ICompa
 
     public static readonly LanguageVersion CS14 = new(14);
 
+    public static readonly LanguageVersion FS6 = new(6, 0);
+    public static readonly LanguageVersion FS7 = new(7, 0);
+    public static readonly LanguageVersion FS8 = new(8, 0);
+    public static readonly LanguageVersion FS9 = new(9, 0);
+    public static readonly LanguageVersion FS10 = new(10, 0);
+
     public static readonly LanguageVersion VB16_9 = new(16, 9);
     public static readonly LanguageVersion VB17_13 = new(17, 13);
 
