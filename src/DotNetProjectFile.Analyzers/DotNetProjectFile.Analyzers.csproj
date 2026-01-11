@@ -4,7 +4,6 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <LangVersion>13</LangVersion>
     <OutputType>Library</OutputType>
     <RootNamespace>DotNetProjectFile</RootNamespace>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
@@ -78,6 +77,8 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+v1.8.3
+- Proj0049: Prefer the latest released language version for F#. (EXTEND RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
