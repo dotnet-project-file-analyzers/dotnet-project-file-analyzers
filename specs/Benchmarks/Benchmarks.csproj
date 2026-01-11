@@ -4,7 +4,6 @@
   
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <LangVersion>14</LangVersion>
     <OutputType>exe</OutputType>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
     <NoWarn>CA1822;RS1038;RS1041</NoWarn>
