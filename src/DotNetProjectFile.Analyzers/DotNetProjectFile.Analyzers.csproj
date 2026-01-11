@@ -78,6 +78,8 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+v1.8.3
+- Proj0219: Packable projects could be .NET CLI tools too. (FP)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
