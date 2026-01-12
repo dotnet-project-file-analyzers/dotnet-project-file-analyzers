@@ -40,7 +40,7 @@
     <PackageReference Include="coverlet.collector" Version="6.0.4" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.Build.Tasks.Core" Version="18.0.2" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.0.1" PrivateAssets="all" />
-    <PackageReference Include="NUnit3TestAdapter" Version="6.0.1" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="NUnit3TestAdapter" Version="6.1.0" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Test projects">
