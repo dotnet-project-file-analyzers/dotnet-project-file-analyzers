@@ -84,7 +84,7 @@ public readonly record struct LanguageVersion(int Major, int Minor = 0) : ICompa
     private static LanguageVersion Explicit(string s)
     {
         var parts = s.Split('.');
-        return new(Parses(0), Parses(1);
+        return new(Parses(0), Parses(1));
 
         int Parses(int index) => parts.Length > index && int.TryParse(parts[index], out int nr) ? nr : 0;
     }
