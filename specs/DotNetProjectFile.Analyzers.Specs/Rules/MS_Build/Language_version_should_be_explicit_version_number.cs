@@ -40,17 +40,19 @@ public class Reports
 
 public class Guards
 {
-    [Test]
-    public void with_version() => new LanguageVersionShouldBeExplicitVersionNumber()
-       .ForInlineCsproj("""
-            <Project Sdk="Microsoft.NET.Sdk">
+    [TestCase("13")]
+    [TestCase("13.0")]
+    [TestCase("14")]
+    public void with_version(string langVersion) => new LanguageVersionShouldBeExplicitVersionNumber()
+       .ForInlineCsproj($"""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-                <PropertyGroup>
-                    <TargetFramework>net10.0</TargetFramework>
-                    <LangVersion>13</LangVersion>
-                </PropertyGroup>
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <LangVersion>{langVersion}</LangVersion>
+          </PropertyGroup>
 
-            </Project>
+        </Project>
         """)
         .HasNoIssues();
 
