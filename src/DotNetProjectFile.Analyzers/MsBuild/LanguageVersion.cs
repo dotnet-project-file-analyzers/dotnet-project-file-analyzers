@@ -1,5 +1,6 @@
 using System.ComponentModel;
 using System.Globalization;
+using System.IO;
 
 namespace DotNetProjectFile.MsBuild;
 
@@ -70,19 +71,20 @@ public readonly record struct LanguageVersion(int Major, int Minor = 0) : ICompa
 
     public static bool operator >=(LanguageVersion left, LanguageVersion right) => left.CompareTo(right) >= 0;
 
-    public static LanguageVersion Parse(string? s)
+    public static LanguageVersion Parse(string? s) => (s ?? string.Empty).Trim().ToUpperInvariant() switch
     {
-        s ??= string.Empty;
-        s = s.Trim().ToUpperInvariant();
+        "" /*............*/ => None,
+        "DEFAULT" /*.....*/ => Default,
+        "LATEST" /*......*/ => Latest,
+        "LATESTMAJOR" /*.*/ => LatestMajor,
+        "PREVIEW" /*.....*/ => Preview,
+        var str /*.......*/ => Explicit(str),
+    };
 
-        if (s == string.Empty) return None;
-        if (s is "DEFAULT") return Default;
-        if (s is "LATEST") return Latest;
-        if (s is "LATESTMAJOR") return LatestMajor;
-        if (s is "PREVIEW") return Preview;
-
+    private static LanguageVersion Explicit(string s)
+    {
         var parts = s.Split('.');
-        return new(Parses(0), Parses(1));
+        return new(Parses(0), Parses(1);
 
         int Parses(int index) => parts.Length > index && int.TryParse(parts[index], out int nr) ? nr : 0;
     }

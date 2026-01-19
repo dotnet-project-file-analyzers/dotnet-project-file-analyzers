@@ -11,7 +11,7 @@ internal sealed class TypeConverters
         {
             if (value is { })
             {
-                return (T?)Get(classType, propertyName!).ConvertFromString(value);
+                return (T?)Get(classType, propertyName!).ConvertFromInvariantString(value);
             }
         }
         catch
