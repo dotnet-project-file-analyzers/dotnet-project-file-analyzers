@@ -7,6 +7,7 @@ public class Parses
     [TestCase("13", 13, 0)]
     [TestCase("13.0", 13, 0)]
     [TestCase("14.0", 14, 0)]
+    [TestCase("14.0.7", 14, 0)]
     public void Explicit_versions(string input, int major, int minor)
     {
         var expected = new LanguageVersion(major, minor);
