@@ -1,6 +1,5 @@
+using DotNetProjectFile.Conversion;
 using System.ComponentModel;
-using System.Globalization;
-using System.IO;
 
 namespace DotNetProjectFile.MsBuild;
 
@@ -8,7 +7,7 @@ namespace DotNetProjectFile.MsBuild;
 /// <remarks>
 /// See: https://learn.microsoft.com/en-us/dotnet/core/versions.
 /// </remarks>
-[TypeConverter(typeof(Converter))]
+[TypeConverter(typeof(LanguageVersionConverter))]
 public readonly record struct LanguageVersion(int Major, int Minor = 0) : IComparable<LanguageVersion>
 {
     public static readonly LanguageVersion None;
@@ -87,16 +86,5 @@ public readonly record struct LanguageVersion(int Major, int Minor = 0) : ICompa
         return new(Parses(0), Parses(1));
 
         int Parses(int index) => parts.Length > index && int.TryParse(parts[index], out int nr) ? nr : 0;
-    }
-
-    private sealed class Converter : TypeConverter
-    {
-        public override bool CanConvertFrom(ITypeDescriptorContext context, Type sourceType)
-            => sourceType == typeof(string);
-
-        public override object ConvertFrom(ITypeDescriptorContext context, CultureInfo culture, object value)
-            => value is string str
-            ? Parse(str)
-            : None;
     }
 }
