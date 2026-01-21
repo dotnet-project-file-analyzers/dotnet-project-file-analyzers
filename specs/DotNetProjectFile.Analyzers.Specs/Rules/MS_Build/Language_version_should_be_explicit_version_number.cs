@@ -15,42 +15,44 @@ public class Reports
        """)
         .HasIssues(Issue.WRN("Proj0048", "Define <LangVersion> with an explicit version number").WithSpan(0, 0, 0, 32));
 
-    [TestCase("", 39)]
-    [TestCase("latest", 45)]
-    [TestCase("Latest", 45)]
-    [TestCase("latestMajor", 50)]
-    [TestCase("LatestMajor", 50)]
-    [TestCase("default", 46)]
-    [TestCase("Default", 46)]
-    [TestCase("preview", 46)]
-    [TestCase("Preview", 46)]
+    [TestCase("", 31)]
+    [TestCase("latest", 37)]
+    [TestCase("Latest", 37)]
+    [TestCase("latestMajor", 42)]
+    [TestCase("LatestMajor", 42)]
+    [TestCase("default", 38)]
+    [TestCase("Default", 38)]
+    [TestCase("preview", 38)]
+    [TestCase("Preview", 38)]
     public void on_illegal(string langVersion, int endPos) => new LanguageVersionShouldBeExplicitVersionNumber()
        .ForInlineCsproj($"""
-            <Project Sdk="Microsoft.NET.Sdk">
+        <Project Sdk="Microsoft.NET.Sdk">
 
-                <PropertyGroup>
-                    <TargetFramework>net10.0</TargetFramework>
-                    <LangVersion>{langVersion}</LangVersion>
-                </PropertyGroup>
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <LangVersion>{langVersion}</LangVersion>
+          </PropertyGroup>
 
-            </Project>
+        </Project>
         """)
-        .HasIssues(Issue.WRN("Proj0048", "Define <LangVersion> with an explicit version number").WithSpan(4, 12, 4, endPos));
+        .HasIssues(Issue.WRN("Proj0048", "Define <LangVersion> with an explicit version number").WithSpan(4, 04, 4, endPos));
 }
 
 public class Guards
 {
-    [Test]
-    public void with_version() => new LanguageVersionShouldBeExplicitVersionNumber()
-       .ForInlineCsproj("""
-            <Project Sdk="Microsoft.NET.Sdk">
+    [TestCase("13")]
+    [TestCase("13.0")]
+    [TestCase("14")]
+    public void with_version(string langVersion) => new LanguageVersionShouldBeExplicitVersionNumber()
+       .ForInlineCsproj($"""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-                <PropertyGroup>
-                    <TargetFramework>net10.0</TargetFramework>
-                    <LangVersion>13</LangVersion>
-                </PropertyGroup>
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <LangVersion>{langVersion}</LangVersion>
+          </PropertyGroup>
 
-            </Project>
+        </Project>
         """)
         .HasNoIssues();
 

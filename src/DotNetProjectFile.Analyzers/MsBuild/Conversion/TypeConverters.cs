@@ -1,3 +1,4 @@
+using DotNetProjectFile.Conversion;
 using System.ComponentModel;
 using System.Reflection;
 
@@ -11,7 +12,7 @@ internal sealed class TypeConverters
         {
             if (value is { })
             {
-                return (T?)Get(classType, propertyName!).ConvertFromString(value);
+                return (T?)Get(classType, propertyName!).ConvertFromInvariantString(value);
             }
         }
         catch
@@ -56,6 +57,8 @@ internal sealed class TypeConverters
     private readonly Dictionary<Type, TypeConverter> TypeStore = new()
     {
         [typeof(string)] = new StringConverter(),
+        [typeof(bool)] = new BooleanConverter(),
+        [typeof(LanguageVersion)] = new LanguageVersionConverter(),
     };
 
     private readonly object locker = new();

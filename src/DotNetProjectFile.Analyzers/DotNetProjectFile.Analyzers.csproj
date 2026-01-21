@@ -72,18 +72,19 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.8.2</Version>
+    <Version>1.8.3</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v1.8.3
-- Proj0049: Prefer the latest released language version for F#. (EXTEND RULE)
-- Proj0219: Packable projects could be .NET CLI tools too. (FP)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.8.3
+- Proj0048: LanguageVersion converter could not be resolved runtime. (BUG)
+- Proj0049: Prefer the latest released language version for F#. (EXTEND RULE)
+- Proj0219: Packable projects could be .NET CLI tools too. (FP)
 v1.8.2
 - Proj0049: Prefers latest version. (FP)
 v1.8.1
