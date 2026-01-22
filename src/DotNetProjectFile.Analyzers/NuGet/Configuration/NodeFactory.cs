@@ -14,13 +14,11 @@ internal sealed class NodeFactory
     {
         CtorArgumentTypes = GetCtorParameterTypes();
         CtorArgumentExpressions = [.. CtorArgumentTypes.Select(x => Expression.Parameter(x))];
-        CaseSensitive = BuildCtorMap();
-        CaseInsensitive = new Dictionary<string, CtorFunc>(CaseSensitive, StringComparer.OrdinalIgnoreCase);
+        CaseInsensitive = BuildCtorMap();
     }
 
     private readonly Type[] CtorArgumentTypes;
     private readonly ParameterExpression[] CtorArgumentExpressions;
-    private readonly Dictionary<string, CtorFunc> CaseSensitive;
     private readonly Dictionary<string, CtorFunc> CaseInsensitive;
 
     [Pure]
@@ -30,10 +28,7 @@ internal sealed class NodeFactory
         : new Unknown(element, parent, configFile);
 
     [Pure]
-    private Dictionary<string, CtorFunc> Lookup(XElement element)
-        => element.Depth() >= 2
-        ? CaseInsensitive
-        : CaseSensitive;
+    private Dictionary<string, CtorFunc> Lookup(XElement element) => CaseInsensitive;
 
     [Pure]
     private static Type[] GetCtorParameterTypes()
@@ -48,7 +43,7 @@ internal sealed class NodeFactory
         .GetTypes()
         .Select(GetValidNodeCtor)
         .OfType<ConstructorInfo>()
-        .ToDictionary(Key, GenerateCtor);
+        .ToDictionary(Key, GenerateCtor, StringComparer.OrdinalIgnoreCase);
 
     /// <summary>Lookup can not (easily) access the LocalName (override).</summary>
     private static string Key(ConstructorInfo ci) => ci.DeclaringType.Name switch

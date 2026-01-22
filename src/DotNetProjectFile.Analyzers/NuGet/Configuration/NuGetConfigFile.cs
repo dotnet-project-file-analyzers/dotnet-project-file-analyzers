@@ -30,6 +30,8 @@ public sealed class NuGetConfigFile : Node, ProjectFile
     /// <inheritdoc />
     public WarningPragmas WarningPragmas { get; }
 
+    public Nodes<PackageSources> PackageSources => new(Children);
+
     public static NuGetConfigFile Load(IOFile file)
     {
         using var reader = file.TryOpenText();

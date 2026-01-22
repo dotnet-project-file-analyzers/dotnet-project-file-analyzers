@@ -106,6 +106,14 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
             """);
 
     [Pure]
+    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineNuGetConfig(
+        this DiagnosticAnalyzer analyzer,
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+        => analyzer
+        .ForInlineSdkProject()
+        .WithFile("NuGet.config", content);
+
+    [Pure]
     public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSlnx(
         this DiagnosticAnalyzer analyzer,
         [StringSyntax(StringSyntaxAttribute.Xml)] string content)

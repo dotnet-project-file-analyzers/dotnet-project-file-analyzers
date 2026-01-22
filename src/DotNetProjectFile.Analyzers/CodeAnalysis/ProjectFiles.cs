@@ -166,7 +166,7 @@ public sealed partial class ProjectFiles
             => Languages.All.Any(lang => file.Extension.IsMatch(lang.ProjectFileExtension))
             || file.Extension.IsMatch(".props");
 
-        public static bool NuGetConfig(IOFile file) => file.Extension.IsMatch("NuGet.config");
+        public static bool NuGetConfig(IOFile file) => file.Name.IsMatch("NuGet.config");
 
         public static bool Resource(IOFile file) => file.Extension.IsMatch(".resx");
 
