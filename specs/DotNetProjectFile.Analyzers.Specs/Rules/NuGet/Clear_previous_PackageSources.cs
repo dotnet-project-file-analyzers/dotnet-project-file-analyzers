@@ -3,7 +3,16 @@ namespace Specs.Rules.NuGet.Clear_previous_PackageSources;
 public class Reports
 {
     [Test]
-    public void Faulty_indented() => new DotNetProjectFile.Analyzers.NuGetConfig.ClearPreviousPackageSources()
+    public void missing_packageSources() => new DotNetProjectFile.Analyzers.NuGetConfig.ClearPreviousPackageSources()
+        .ForInlineNuGetConfig("""
+        <configuration>
+        </configuration>
+        """)
+        .HasIssue(Issue.WRN("Proj0301", "Clear previous defined package sources")
+            .WithSpan(01, 02, 03, 19));
+
+    [Test]
+    public void missing_clear() => new DotNetProjectFile.Analyzers.NuGetConfig.ClearPreviousPackageSources()
         .ForInlineNuGetConfig("""
         <configuration>
           <packageSources>
@@ -11,7 +20,7 @@ public class Reports
           </packageSources>
         </configuration>
         """)
-        .HasIssue(Issue.WRN("Proj0601", "Clear previous defined package sources")
+        .HasIssue(Issue.WRN("Proj0301", "Clear previous defined package sources")
             .WithSpan(01, 02, 03, 19));
 }
 

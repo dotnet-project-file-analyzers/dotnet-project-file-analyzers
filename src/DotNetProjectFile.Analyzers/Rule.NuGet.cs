@@ -7,10 +7,13 @@ public static partial class Rule
     public static class NuGet
     {
         public static DiagnosticDescriptor ClearPreviousPackageSources => New(
-            id: 0601,
+            id: 0301,
             title: "Clear previous defined package sources",
             message: "Clear previous defined package sources",
-            description: "A INI header should have the format [<Header>]",
+            description:
+                "To prevent supply chain attacks no package sources should be " +
+                "inheritted from globally defined sources that could contain " +
+                "malicious sources.",
             tags: ["NuGet"],
             category: Category.Security);
     }
