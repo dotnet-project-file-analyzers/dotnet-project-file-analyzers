@@ -2,7 +2,7 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.NuGet.Configuration;
 
-/// <summary>Rerpresents the (root of a) NuGet configuration file.</summary>
+/// <summary>Represents the (root of a) NuGet configuration file.</summary>
 public sealed class NuGetConfigFile : Node, ProjectFile
 {
     private NuGetConfigFile(IOFile path, SourceText text, AdditionalText? additionalText)
