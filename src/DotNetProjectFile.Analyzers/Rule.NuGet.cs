@@ -12,7 +12,7 @@ public static partial class Rule
             message: "Clear previous defined package sources",
             description:
                 "To prevent supply chain attacks no package sources should be " +
-                "inheritted from globally defined sources that could contain " +
+                "inherited from globally defined sources that could contain " +
                 "malicious sources.",
             tags: ["NuGet"],
             category: Category.Security);
