@@ -20,7 +20,7 @@ public class Reports
           </packageSources>
         </configuration>
         """)
-        .HasIssue(Issue.WRN("Proj0301", "Clear previous defined package sources")
+        .HasIssue(Issue.WRN("Proj0301", "Clear previously defined package sources")
             .WithSpan(01, 02, 03, 19));
 }
 
