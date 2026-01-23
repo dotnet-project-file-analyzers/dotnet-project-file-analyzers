@@ -9,7 +9,7 @@ public static partial class Rule
         public static DiagnosticDescriptor ClearPreviousPackageSources => New(
             id: 0301,
             title: "Clear previously defined package sources",
-            message: "Clear previous defined package sources",
+            message: "Clear previously defined package sources",
             description:
                 "To prevent supply chain attacks no package sources should be " +
                 "inherited from globally defined sources that could contain " +
