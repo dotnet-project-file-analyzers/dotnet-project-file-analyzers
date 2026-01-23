@@ -219,7 +219,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj3003** Trim whitespace](rules/Proj3003.md)
 
 ## NuGet configuration
-* [**Proj0301** Clear previous defined package sources](rules/Proj0301.md)
+* [**Proj0301** Clear previously defined package sources](rules/Proj0301.md)
 
 ## INI
 * [**Proj4000** Invalid INI file](rules/Proj4000.md)
