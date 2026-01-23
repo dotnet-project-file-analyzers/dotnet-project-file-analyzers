@@ -27,7 +27,7 @@ public class Reports
 public class Guards
 {
     [Test]
-    public void Cleared_packageSrouces() => new DotNetProjectFile.Analyzers.NuGetConfig.ClearPreviousPackageSources()
+    public void Cleared_packageSources() => new DotNetProjectFile.Analyzers.NuGetConfig.ClearPreviousPackageSources()
         .ForInlineNuGetConfig("""
         <configuration>
           <packageSources>
