@@ -9,7 +9,7 @@ public class Reports
         </configuration>
         """)
         .HasIssue(Issue.WRN("Proj0301", "Clear previously defined package sources")
-            .WithSpan(01, 02, 03, 19));
+            .WithSpan(00, 00, 00, 14));
 
     [Test]
     public void missing_clear() => new DotNetProjectFile.Analyzers.NuGetConfig.ClearPreviousPackageSources()
