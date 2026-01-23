@@ -9,11 +9,6 @@ public class Reports
           <packageSources>
             <add key="NuGet" value="https://api.nuget.org/v3/index.json" />
           </packageSources>
-          <packageSourceMapping>
-            <packageSource key="NuGet">
-              <package pattern="*" />
-            </packageSource>
-          </packageSourceMapping>
         </configuration>
         """)
         .HasIssue(Issue.WRN("Proj0601", "Clear previous defined package sources")
@@ -30,11 +25,6 @@ public class Guards
             <clear />
             <add key="NuGet" value="https://api.nuget.org/v3/index.json" />
           </packageSources>
-          <packageSourceMapping>
-            <packageSource key="NuGet">
-              <package pattern="*" />
-            </packageSource>
-          </packageSourceMapping>
         </configuration>
         """)
         .HasNoIssues();
