@@ -218,6 +218,9 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj3002** Remove commented-out code](rules/Proj3002.md)
 * [**Proj3003** Trim whitespace](rules/Proj3003.md)
 
+## NuGet configuration
+* [**Proj0301** Clear previously defined package sources](rules/Proj0301.md)
+
 ## INI
 * [**Proj4000** Invalid INI file](rules/Proj4000.md)
 * [**Proj4001** Invalid INI header](rules/Proj4001.md)

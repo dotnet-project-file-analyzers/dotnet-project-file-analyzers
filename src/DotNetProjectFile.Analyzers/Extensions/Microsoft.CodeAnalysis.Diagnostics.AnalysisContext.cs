@@ -51,6 +51,18 @@ internal static class AnalysisContextExtensions
         });
     }
 
+    /// <summary>Registers an action on <see cref="NuGetConfigFileAnalysisContext"/>.</summary>
+    public static void RegisterNuGetConfigFileAction(this AnalysisContext context, Action<NuGetConfigFileAnalysisContext> action)
+    {
+        context.RegisterAdditionalFileAction(c =>
+        {
+            if (ProjectFiles.Global.UpdateNugetConfigFile(c) is { } config)
+            {
+                action.Invoke(new(config, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+            }
+        });
+    }
+
     /// <summary>Registers an action on <see cref="ProjectFileAnalysisContext"/>.</summary>
     public static void RegisterResourceFileAction(this AnalysisContext context, Action<ResourceFileAnalysisContext> action)
     {
