@@ -54,7 +54,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Props and targets">
-    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.39" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="2.0.1" PrivateAssets="all" ExcludeAssets="runtime" />
     <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.5" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
