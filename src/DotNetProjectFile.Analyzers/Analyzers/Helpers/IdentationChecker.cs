@@ -44,7 +44,7 @@ internal sealed class IdentationChecker<TFile>(
         if (!ProperlyIndented(element) && !ClosingTagAfterTextWithSpacePreservation(node.Element))
         {
             var name = start ? node.LocalName : '/' + node.LocalName;
-            context.ReportDiagnostic(Descriptor, start ? node.Locations.StartElement : node.Locations.EndElement, name);
+            context.ReportDiagnostic(Descriptor, start ? node.Locations.StartElement : node.Locations.EndElement, node.Element.Name.LocalName);
         }
 
         bool ProperlyIndented(LinePositionSpan element)
