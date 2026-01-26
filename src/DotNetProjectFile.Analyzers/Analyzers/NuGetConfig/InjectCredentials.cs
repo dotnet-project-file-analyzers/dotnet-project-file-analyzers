@@ -9,14 +9,17 @@ public sealed class InjectCredentials() : NuGetConfigFileAnalyzer(Rule.NuGet.Inj
     /// <inheritdoc />
     protected override void Register(NuGetConfigFileAnalysisContext context)
     {
-        foreach (var credentials in context.File.Children.OfType<PackageCredentials>())
+        foreach (var credentials in context.File.Children.OfType<PackageSourceCredentials>())
         {
-            foreach (var section in credentials.Children.OfType<Add>().Where(a => "ClearTextPassword".IsMatch(a.Key)))
+            foreach (var section in credentials.Children)
             {
-                if (section.Value is { Length: > 2 } value && !IsPlaceholder(value))
+                foreach (var add in section.Children.OfType<Add>().Where(a => "ClearTextPassword".IsMatch(a.Key)))
                 {
-                    var att = AttributesPositions.New(section.Element.Attribute("value"), context.File.Text);
-                    context.ReportDiagnostic(Descriptor, context.File.GetLocation(att.Value));
+                    if (add.Value is { Length: > 2 } value && !IsPlaceholder(value))
+                    {
+                        var att = AttributesPositions.New(add.Element.Attribute("value"), context.File.Text);
+                        context.ReportDiagnostic(Descriptor, context.File.GetLocation(att.Value));
+                    }
                 }
             }
         }

@@ -19,8 +19,8 @@ public class Reports
         </configuration>
         """)
         .HasIssues(
-            Issue.WRN("Proj0302", "Use a placeholder to inject the password instead").WithSpan(04, 00, 04, 14),
-            Issue.WRN("Proj0302", "Use a placeholder to inject the password instead").WithSpan(08, 00, 08, 14));
+            Issue.WRN("Proj0302", "Use a placeholder to inject the password instead").WithSpan(04, 42, 04, 52),
+            Issue.WRN("Proj0302", "Use a placeholder to inject the password instead").WithSpan(08, 42, 08, 66));
 }
 
 public class Guards
