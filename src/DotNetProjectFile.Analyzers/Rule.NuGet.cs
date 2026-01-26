@@ -37,5 +37,16 @@ public static partial class Rule
                "themeselves are part of the codebase.",
            tags: ["NuGet"],
            category: Category.Security);
+
+        public static DiagnosticDescriptor DefineMappingForMultipleSources => New(
+            id: 0303,
+            title: "Define mappings for multiple sources",
+            message: "Source '{0}' lacks a dedicated mapping",
+            description:
+                "Credentials should not be exposed in repositories for obvious " +
+                "reasons. Therefor they should be injected into file that " +
+                "themeselves are part of the codebase.",
+            tags: ["NuGet"],
+            category: Category.Security);
     }
 }
