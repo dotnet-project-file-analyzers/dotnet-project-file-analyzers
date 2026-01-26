@@ -16,9 +16,9 @@ public sealed class UseInCSharpContextOnly() : MsBuildProjectFileAnalyzer(Rule.U
     /// <inheritdoc />
     public override ImmutableArray<Language> ApplicableLanguages { get; } = Languages.All.Remove(Language.CSharp);
 
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context) => Walk(context.File, context);
+    protected override void Register(ProjectFileAnalysisContext context) => Walk(context.File, context);
 
-    private void Walk(Node node, ProjectFileAnalysisContext<MsBuildProject> context)
+    private void Walk(Node node, ProjectFileAnalysisContext context)
     {
         if (CSharpOnly.Contains(node.GetType()))
         {

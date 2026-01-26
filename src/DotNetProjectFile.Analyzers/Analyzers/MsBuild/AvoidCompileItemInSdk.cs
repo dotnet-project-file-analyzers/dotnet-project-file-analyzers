@@ -10,7 +10,7 @@ public sealed class AvoidCompileItemInSdk() : MsBuildProjectFileAnalyzer(Rule.Av
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var compile in context.File.ItemGroups
             .Children<Compile>(c => c.IncludeAndUpdate.Any()))

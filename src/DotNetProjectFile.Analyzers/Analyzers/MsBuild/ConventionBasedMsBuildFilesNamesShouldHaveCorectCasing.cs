@@ -14,7 +14,7 @@ public sealed class ConventionBasedMsBuildFilesNamesShouldHaveCorrectCasing()
     public override bool DisableOnFailingImport => true;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var file in Files(context.File.Path.Directory))
         {
