@@ -78,7 +78,7 @@
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.8.4
-- Proj0300: Configure NuGet explictly (NEW RULE)
+- Proj0300: Configure NuGet explicitly (NEW RULE)
 - Proj0301: Clear previously defined package sources (NEW RULE)
 ]]>
     </ToBeReleased>
@@ -247,7 +247,7 @@ v1.4.8
 - Proj0029: Use C# specific properties only when applicable. (NEW RULE)
 - Proj0030: Use VB.NET specific properties only when applicable. (NEW RULE)
 - Proj0031: Adopt preferred casing of nodes. (NEW RULE)
-- Proj0216: Define the product name explictly. (NEW RULE)
+- Proj0216: Define the product name explicitly. (NEW RULE)
 - Support Directory.Build.targets.
 - Automatically add the project file to the additional files.
 v1.4.7

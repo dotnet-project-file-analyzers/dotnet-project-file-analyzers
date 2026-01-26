@@ -169,7 +169,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj3003** Trim whitespace](https://dotnet-project-file-analyzers.github.io/rules/Proj3003.html)
 
 ## NuGet configuration
-* [**Proj0300** Configure NuGet explictly](https://dotnet-project-file-analyzers.github.io/rules/Proj0300.html)
+* [**Proj0300** Configure NuGet explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0300.html)
 * [**Proj0301** Clear previously defined package sources](https://dotnet-project-file-analyzers.github.io/rules/Proj0301.html)
 
 ## INI
