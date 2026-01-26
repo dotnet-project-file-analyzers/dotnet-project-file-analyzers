@@ -24,7 +24,7 @@ public sealed class InjectCredentials() : NuGetConfigFileAnalyzer(Rule.NuGet.Inj
 
     private static bool IsPlaceholder(string value)
         => value[0] is '%'
-        && value[^1] is '&'
+        && value[^1] is '%'
         && value[1..^2].All(IsPlaceholder);
 
     private static bool IsPlaceholder(char c)
