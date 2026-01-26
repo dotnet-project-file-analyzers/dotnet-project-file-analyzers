@@ -8,7 +8,7 @@ public sealed class NuGetSecurityAuditShouldReportModerateAndUp() : MsBuildProje
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         var property = context.File.Property<NuGetAuditLevel>();
         var level = property?.Value ?? NuGetAuditLevel.Kind.Low;

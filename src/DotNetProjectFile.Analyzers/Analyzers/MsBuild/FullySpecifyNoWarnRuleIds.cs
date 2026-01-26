@@ -8,7 +8,7 @@ public sealed class FullySpecifyNoWarnRuleIds() : MsBuildProjectFileAnalyzer(Rul
     public override bool DisableOnFailingImport => true;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var noWarn in context.File.PropertyGroups.Children<NoWarn>())
         {
