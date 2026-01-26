@@ -13,7 +13,7 @@ public sealed class ThirdPartyLicenseCompliance() : MsBuildProjectFileAnalyzer(
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var license in context.File.Project.ItemGroups
             .Children<ThirdPartyLicense>(n => n.Project == context.File.Project))

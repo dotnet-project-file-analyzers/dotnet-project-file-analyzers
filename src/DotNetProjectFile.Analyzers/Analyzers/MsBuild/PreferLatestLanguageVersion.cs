@@ -10,7 +10,7 @@ public sealed class PreferLatestLanguageVersion() : MsBuildProjectFileAnalyzer(R
     public override ImmutableArray<Language> ApplicableLanguages { get; } = [Language.CSharp, Language.VisualBasic, Language.FSharp];
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         if (context.Options.GetSdkVersion() is not { IsNone: false } sdkVersion ||
             context.File.Property<LangVersion>()?.Value is not { IsNone: true } langVersion) return;

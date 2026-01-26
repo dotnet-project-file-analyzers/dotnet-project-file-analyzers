@@ -8,7 +8,7 @@ public sealed class SymbolPackageFormatSNupkgSetup() : MsBuildProjectFileAnalyze
 {
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         if (context.File.Property<SymbolPackageFormat>() is { Value: SymbolPackageFormat.Kind.snupkg } format)
         {

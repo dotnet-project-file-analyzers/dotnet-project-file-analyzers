@@ -8,7 +8,7 @@ public sealed class UnresolvableImport() : MsBuildProjectFileAnalyzer(Rule.Unres
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var import in context.File.Imports.Where(i => i.Value is null))
         {

@@ -7,6 +7,6 @@ public sealed class TrimWhitespace() : MsBuildProjectFileAnalyzer(Rule.TrimWhite
     private readonly WhitespaceChecker<MsBuildProject> Checker = new(Rule.TrimWhitespace);
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
         => Checker.Check(context.File, context.File.Text, context);
 }

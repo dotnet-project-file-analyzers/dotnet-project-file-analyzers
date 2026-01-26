@@ -7,7 +7,7 @@ public sealed class MigrateAwayFromBinaryFormatter() : MsBuildProjectFileAnalyze
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var node in context.File.PropertyGroups
             .Children<EnableUnsafeBinaryFormatterSerialization>(p => p.Val is true))
