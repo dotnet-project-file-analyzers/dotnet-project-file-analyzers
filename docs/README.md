@@ -219,6 +219,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj3003** Trim whitespace](rules/Proj3003.md)
 
 ## NuGet configuration
+* [**Proj0300** Configure NuGet explicitly](rules/Proj0300.md)
 * [**Proj0301** Clear previously defined package sources](rules/Proj0301.md)
 * [**Proj0302** Credentials should be injected](rules/Proj0302.md)
 
