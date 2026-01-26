@@ -1,6 +1,6 @@
 namespace DotNetProjectFile.Analyzers.NuGetConfig;
 
-/// <summary>Implements <see cref="Rule.NuGet.ConfigureNuGetExplictly"/>.</summary>
+/// <summary>Implements <see cref="Rule.NuGet.ConfigureNuGetExplicitly"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ConfigureNuGetExplictly() : MsBuildProjectFileAnalyzer(Rule.NuGet.ConfigureNuGetExplictly)
 {
