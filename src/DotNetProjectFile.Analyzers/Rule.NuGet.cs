@@ -41,11 +41,10 @@ public static partial class Rule
         public static DiagnosticDescriptor DefineMappingForMultipleSources => New(
             id: 0303,
             title: "Define mappings for multiple sources",
-            message: "Source '{0}' lacks a dedicated mapping",
+            message: "Source '{0}' lacks a defined mapping",
             description:
-                "Credentials should not be exposed in repositories for obvious " +
-                "reasons. Therefor they should be injected into file that " +
-                "themeselves are part of the codebase.",
+                "To prevent supply chain attacks mappings should be defined per " +
+                "source. By doing so, TODO",
             tags: ["NuGet"],
             category: Category.Security);
     }
