@@ -25,6 +25,13 @@ public static class ProjectFileTypes
         ProjectFileType.DirectoryBuild
     ];
 
+    /// <summary>Project files and .net.csproj SDK.</summary>
+    public static readonly ImmutableArray<ProjectFileType> ProjectFile_SDK =
+    [
+        ProjectFileType.ProjectFile,
+        ProjectFileType.SDK
+    ];
+
     /// <summary>Project files and Directory.Packages.props.</summary>
     public static readonly ImmutableArray<ProjectFileType> ProjectFile_DirectoryPackages =
     [
