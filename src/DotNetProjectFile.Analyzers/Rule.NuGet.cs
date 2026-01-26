@@ -16,5 +16,16 @@ public static partial class Rule
                 "malicious sources.",
             tags: ["NuGet"],
             category: Category.Security);
+
+        public static DiagnosticDescriptor InjectCredentials => New(
+           id: 0302,
+           title: "Credentials should be injected",
+           message: "Use a placeholder to inject the password instead",
+           description:
+               "Credentials should not be exposed in repositories for obvious " +
+               "reasons. Therefor they should be injected into file that " +
+               "themeselves are part of the codebase.",
+           tags: ["NuGet"],
+           category: Category.Security);
     }
 }
