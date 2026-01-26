@@ -18,8 +18,9 @@ public class Reports
           </packageSourceCredentials>
         </configuration>
         """)
-        .HasIssue(Issue.WRN("Proj0301", "Clear previously defined package sources")
-            .WithSpan(00, 00, 00, 14));
+        .HasIssues(
+            Issue.WRN("Proj0302", "Use a placeholder to inject the password instead").WithSpan(04, 00, 04, 14),
+            Issue.WRN("Proj0302", "Use a placeholder to inject the password instead").WithSpan(08, 00, 08, 14));
 }
 
 public class Guards

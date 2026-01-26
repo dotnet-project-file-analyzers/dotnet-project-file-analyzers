@@ -17,7 +17,7 @@ public static partial class Rule
             tags: ["NuGet"],
             category: Category.Security);
 
-        public static DiagnosticDescriptor CredentialsShouldBeInjected => New(
+        public static DiagnosticDescriptor InjectCredentials => New(
            id: 0302,
            title: "Credentials should be injected",
            message: "Use a placeholder to inject the password instead",
