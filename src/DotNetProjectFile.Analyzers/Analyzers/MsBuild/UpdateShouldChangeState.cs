@@ -1,4 +1,3 @@
-
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 /// <summary>Implements <see cref="Rule.UpdateShouldChangeState"/>.</summary>

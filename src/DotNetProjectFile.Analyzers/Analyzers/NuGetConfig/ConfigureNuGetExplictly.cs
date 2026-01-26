@@ -11,7 +11,7 @@ public sealed class ConfigureNuGetExplicitly() : MsBuildProjectFileAnalyzer(Rule
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile_SDK;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         var dir = context.File.Path.Directory;
 
