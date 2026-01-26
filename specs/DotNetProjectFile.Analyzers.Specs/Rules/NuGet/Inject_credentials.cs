@@ -29,7 +29,7 @@ public class Guards
     [TestCase("")]
     [TestCase("1")]
     [TestCase("12")]
-    public void passwords_considered_to_short_or_placeholders(string password) => new DotNetProjectFile.Analyzers.NuGetConfig.ClearPreviousPackageSources()
+    public void passwords_considered_to_short_or_placeholders(string password) => new DotNetProjectFile.Analyzers.NuGetConfig.InjectCredentials()
         .ForInlineNuGetConfig($"""
         <configuration>
           <packageSourceCredentials>

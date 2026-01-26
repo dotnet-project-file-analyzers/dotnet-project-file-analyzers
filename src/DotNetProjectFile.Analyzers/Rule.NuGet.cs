@@ -23,8 +23,8 @@ public static partial class Rule
            message: "Use a placeholder to inject the password instead",
            description:
                "Credentials should not be exposed in repositories for obvious " +
-                "reasons. Therefor they should be injected into file that " +
-                "themeselves are part of the codebase.",
+               "reasons. Therefor they should be injected into file that " +
+               "themeselves are part of the codebase.",
            tags: ["NuGet"],
            category: Category.Security);
     }

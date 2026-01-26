@@ -82,6 +82,7 @@ dotnet_diagnostic.Proj0250.severity = warning    # Generate API compatibility su
 dotnet_diagnostic.Proj0251.severity = warning    # Enable API compatibility attribute checks
 dotnet_diagnostic.Proj0252.severity = warning    # Enable API compatibility parameter name checks
 dotnet_diagnostic.Proj0301.severity = warning    # Clear previously defined package sources
+dotnet_diagnostic.Proj0302.severity = warning    # Credentials should be injected
 dotnet_diagnostic.Proj0400.severity = warning    # Define the project publishability explicitly
 dotnet_diagnostic.Proj0401.severity = warning    # Only publish executables
 dotnet_diagnostic.Proj0450.severity = warning    # Test projects should not be packable
