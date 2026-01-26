@@ -11,7 +11,7 @@ public sealed class TUnitUsage() : MsBuildProjectFileAnalyzer(
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         if (context.File.Walk().OfType<PackageReference>().None(IsTUnit)) { return; }
 

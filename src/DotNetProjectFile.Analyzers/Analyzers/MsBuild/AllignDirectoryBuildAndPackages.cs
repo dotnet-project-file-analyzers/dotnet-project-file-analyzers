@@ -11,7 +11,7 @@ public sealed class AllignDirectoryBuildAndPackages() : MsBuildProjectFileAnalyz
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         if (context.File.DirectoryBuildProps is { } build
             && context.File.DirectoryPackagesProps is { } packages

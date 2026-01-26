@@ -9,7 +9,7 @@ public sealed class UpdateShouldChangeState() : MsBuildProjectFileAnalyzer(Rule.
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var action in context.File.Project.ItemGroups
             .Children<Node>(WithoutChanges))
