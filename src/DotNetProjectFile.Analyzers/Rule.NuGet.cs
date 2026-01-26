@@ -6,7 +6,7 @@ public static partial class Rule
 {
     public static class NuGet
     {
-        public static DiagnosticDescriptor ConfigureNuGetExplictly => New(
+        public static DiagnosticDescriptor ConfigureNuGetExplicitly => New(
             id: 0300,
             title: "Configure NuGet explicitly",
             message: "A NuGet.config file could not be resolved",
