@@ -77,6 +77,9 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+v1.8.4
+- Proj0301: Clear previously defined package sources (NEW RULE)
+- Proj0302: Credentials should be injected (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
