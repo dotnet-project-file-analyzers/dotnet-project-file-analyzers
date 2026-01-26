@@ -27,7 +27,6 @@ public class Guards
 {
     [TestCase("%CI_USER_TOKEN%")]
     [TestCase("%123%")]
-    //[TestCase("")] // TODO remove?
     [TestCase("1")]
     [TestCase("12")]
     public void passwords_considered_to_short_or_placeholders(string password) => new DotNetProjectFile.Analyzers.NuGetConfig.InjectCredentials()
