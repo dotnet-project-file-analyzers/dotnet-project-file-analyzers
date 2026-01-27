@@ -42,7 +42,7 @@ public class Reports
         
         </configuration>
         """)
-        .HasIssue(Issue.WRN("Proj0303", " Source 'nuget.org' lacks a defined mapping").WithSpan(05, 04, 05, 71));
+        .HasIssue(Issue.WRN("Proj0303", "Source 'nuget.org' lacks a defined mapping").WithSpan(05, 04, 05, 71));
 }
 
 public class Guards
