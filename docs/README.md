@@ -222,6 +222,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0300** Configure NuGet explicitly](rules/Proj0300.md)
 * [**Proj0301** Clear previously defined package sources](rules/Proj0301.md)
 * [**Proj0302** Credentials should be injected](rules/Proj0302.md)
+* [**Proj0303** Define mappings for multiple sources](rules/Proj0303.md)
 
 ## INI
 * [**Proj4000** Invalid INI file](rules/Proj4000.md)
