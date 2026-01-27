@@ -81,6 +81,7 @@ v1.8.4
 - Proj0300: Configure NuGet explicitly (NEW RULE)
 - Proj0301: Clear previously defined package sources (NEW RULE)
 - Proj0302: Credentials should be injected (NEW RULE)
+- Proj0303: Define mappings for multiple sources (NEW RULE)
 - Proj1700: Indent XML for NuGet.config files. (EXTEND RULE)
 - Proj1702: Omit XML declaration for NuGet.config files. (EXTEND RULE)
 - Proj3003: Trim whitespace (NuGet.confg). (EXTEND RULE)
