@@ -12,7 +12,7 @@ providing both a custom `.props` and a `.targets` MS Build file.
 
 ## .net.csproj
 So how does it work? At the root level of your solution (most likely the
-directory containing the [Git](https://en.wikipedia.org/wiki/Git) repo), you
+root directory of the [Git](https://en.wikipedia.org/wiki/Git) repo), you
 create a C# Project file with the name `.net.csproj`.
 
 ``` xml
@@ -30,6 +30,11 @@ create a C# Project file with the name `.net.csproj`.
 ```
 *Download this example [`.net.csproj`](./.net.csproj)*
 
+## How does it work?
+By adding the `.net.csproj` to your build (most likely by adding the project to
+a `.slnx`/`.sln` solution file) the analyzers can both detect files (like
+`.slnx` files, and the `NuGet.config`) that are not directly bound to a single
+proj file, and analyze them once (via the `.net.csproj`).
 
 Most files in the directory of this SDK project will be included automatically.
 This includes configuration, text, and markdown files. It will not contain any
