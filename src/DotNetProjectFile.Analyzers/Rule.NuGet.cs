@@ -40,7 +40,7 @@ public static partial class Rule
 
         public static DiagnosticDescriptor DefineMappingForMultipleSources => New(
             id: 0303,
-            title: "Define mappings for multiple sources",
+            title: "Define a mapping for each packageSource in packageSourceMapping",
             message: "Source '{0}' lacks a defined mapping",
             description:
                 "To prevent supply chain attacks mappings should be defined per " +
