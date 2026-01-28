@@ -1,5 +1,7 @@
 #pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
+using Grammr.Text;
+
 namespace DotNetProjectFile;
 
 public static partial class Rule
@@ -40,11 +42,12 @@ public static partial class Rule
 
         public static DiagnosticDescriptor DefineMappingForMultipleSources => New(
             id: 0303,
-            title: "Define a mapping for each packageSource in packageSourceMapping",
-            message: "Source '{0}' lacks a defined mapping",
+            title: "Define a mapping for each package source",
+            message: "The <packageSource> '{0}' lacks a <packageSourceMapping>",
             description:
-                "To prevent supply chain attacks mappings should be defined per " +
-                "source. By doing so, TODO",
+                "To prevent supply chain attacks each <packageSource> should " +
+                "have its own <packageSourceMapping>. By doing so, the origin " +
+                "of packages is predictable.",
             tags: ["NuGet"],
             category: Category.Security);
     }
