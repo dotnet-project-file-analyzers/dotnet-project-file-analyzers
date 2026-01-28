@@ -16,7 +16,7 @@ public class Reports
         </configuration>
         """)
         .HasIssues(
-            Issue.WRN("Proj0303", "The <packageSource> 'Internals' lacks a <packageSourceMapping>").WithSpan(04, 04, 04, 112),
+            Issue.WRN("Proj0303", "The <packageSource key="Internals"> lacks in <packageSourceMapping>").WithSpan(04, 04, 04, 112),
             Issue.WRN("Proj0303", "The <packageSource> 'nuget.org' lacks a <packageSourceMapping>").WithSpan(05, 04, 05, 71));
 
     [Test]
