@@ -43,7 +43,7 @@ public static partial class Rule
         public static DiagnosticDescriptor DefineMappingForMultipleSources => New(
             id: 0303,
             title: "Define a mapping for each package source",
-            message: "The <packageSource> '{0}' lacks a <packageSourceMapping>",
+            message: "The <packageSource key=\"{0}\" lacks in <packageSourceMapping>",
             description:
                 "To prevent supply chain attacks each <packageSource> should " +
                 "have its own <packageSourceMapping>. By doing so, the origin " +
