@@ -32,6 +32,8 @@ public sealed class NuGetConfigFile : Node, ProjectFile
 
     public Nodes<PackageSources> PackageSources => new(Children);
 
+    public Nodes<PackageSourceMapping> PackageSourceMappings => new(Children);
+
     public static NuGetConfigFile Load(IOFile file)
     {
         using var reader = file.TryOpenText();

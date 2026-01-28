@@ -1,5 +1,7 @@
 #pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
+using Grammr.Text;
+
 namespace DotNetProjectFile;
 
 public static partial class Rule
@@ -37,5 +39,16 @@ public static partial class Rule
                "themeselves are part of the codebase.",
            tags: ["NuGet"],
            category: Category.Security);
+
+        public static DiagnosticDescriptor DefineMappingForMultipleSources => New(
+            id: 0303,
+            title: "Define a mapping for each package source",
+            message: "The <packageSource key=\"{0}\"> is missing a <packageSourceMapping>",
+            description:
+                "To prevent supply chain attacks each <packageSource> should " +
+                "have its own <packageSourceMapping>. By doing so, the origin " +
+                "of packages is predictable.",
+            tags: ["NuGet"],
+            category: Category.Security);
     }
 }
