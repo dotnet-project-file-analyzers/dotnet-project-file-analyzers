@@ -1,9 +1,9 @@
-namespace Specs.Rules.NuGet.Define_mapping_for_multiple_sources;
+namespace Specs.Rules.NuGet.Handle_package_source_mappings;
 
 public class Reports
 {
     [Test]
-    public void missing_mappings() => new DotNetProjectFile.Analyzers.NuGetConfig.DefineMappingForMultipleSources()
+    public void missing_mappings() => new DotNetProjectFile.Analyzers.NuGetConfig.HandlePackageSourceMappings()
         .ForInlineNuGetConfig("""
         <configuration>
 
@@ -20,7 +20,7 @@ public class Reports
             Issue.WRN("Proj0303", """The <packageSource key="nuget.org"> is missing a <packageSourceMapping>""").WithSpan(05, 04, 05, 71));
 
     [Test]
-    public void missing_mapping_and_extra() => new DotNetProjectFile.Analyzers.NuGetConfig.DefineMappingForMultipleSources()
+    public void missing_mapping_and_extra() => new DotNetProjectFile.Analyzers.NuGetConfig.HandlePackageSourceMappings()
         .ForInlineNuGetConfig("""
         <configuration>
         
@@ -43,12 +43,34 @@ public class Reports
         </configuration>
         """)
         .HasIssue(Issue.WRN("Proj0303", """The <packageSource key="nuget.org"> is missing a <packageSourceMapping>""").WithSpan(05, 04, 05, 71));
+
+    [Test]
+    public void duplicate_mappings() => new DotNetProjectFile.Analyzers.NuGetConfig.HandlePackageSourceMappings()
+        .ForInlineNuGetConfig("""
+        <configuration>
+        
+          <packageSources>
+            <clear />
+            <add key="nuget.org" value="https://api.nuget.org/v3/index.json" />
+          </packageSources>
+        
+          <packageSourceMapping>
+            <packageSource key="nuget.org">
+              <package pattern="Company.*" />
+              <package pattern="Company.*" />
+              <package pattern="*" />
+            </packageSource>
+          </packageSourceMapping>
+        
+        </configuration>
+        """)
+        .HasIssue(Issue.WRN("Proj0304", "The mapping 'Company.*' is not unique").WithSpan(10, 06, 10, 37));
 }
 
 public class Guards
 {
     [Test]
-    public void Single_source() => new DotNetProjectFile.Analyzers.NuGetConfig.DefineMappingForMultipleSources()
+    public void Single_source() => new DotNetProjectFile.Analyzers.NuGetConfig.HandlePackageSourceMappings()
         .ForInlineNuGetConfig("""
         <configuration>
         
@@ -62,7 +84,7 @@ public class Guards
         .HasNoIssues();
 
     [Test]
-    public void mapped_packageSources() => new DotNetProjectFile.Analyzers.NuGetConfig.DefineMappingForMultipleSources()
+    public void mapped_packageSources() => new DotNetProjectFile.Analyzers.NuGetConfig.HandlePackageSourceMappings()
        .ForInlineNuGetConfig("""
         <configuration>
 

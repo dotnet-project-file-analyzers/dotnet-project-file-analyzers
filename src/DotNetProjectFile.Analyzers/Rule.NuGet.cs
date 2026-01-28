@@ -50,5 +50,15 @@ public static partial class Rule
                 "of packages is predictable.",
             tags: ["NuGet"],
             category: Category.Security);
+
+        public static DiagnosticDescriptor PackageSourceMappingsShouldBeUnique => New(
+            id: 0304,
+            title: "Package source mappings should be unique",
+            message: "The mapping '{0}' is not unique",
+            description:
+                "The first package source mapping that matches serves the package. " +
+                "Therefor, a second mapping with the same pattern will never match.",
+            tags: ["NuGet"],
+            category: Category.Bug);
     }
 }
