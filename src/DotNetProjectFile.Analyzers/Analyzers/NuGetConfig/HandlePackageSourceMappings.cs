@@ -4,18 +4,21 @@ namespace DotNetProjectFile.Analyzers.NuGetConfig;
 
 /// <summary>Implements
 /// <see cref="Rule.NuGet.DefineMappingForMultipleSources"/>,
-/// <see cref="Rule.NuGet.PackageSourceMappingsShouldBeUnique"/>.
+/// <see cref="Rule.NuGet.PackageSourceMappingsShouldBeUnique"/>,
+/// <see cref="Rule.NuGet.LastMappingCatchesAll"/>.
 /// </summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class HandlePackageSourceMappings() : NuGetConfigFileAnalyzer(
     Rule.NuGet.DefineMappingForMultipleSources,
-    Rule.NuGet.PackageSourceMappingsShouldBeUnique)
+    Rule.NuGet.PackageSourceMappingsShouldBeUnique,
+    Rule.NuGet.LastMappingCatchesAll)
 {
     /// <inheritdoc />
     protected override void Register(NuGetConfigFileAnalysisContext context)
     {
         var keys = new Dictionary<string, Add>();
         var patterns = new HashSet<string>();
+        NuGet.Configuration.Node last = context.File;
 
         foreach (var add in context.File.PackageSources.Children<Add>())
         {
@@ -31,10 +34,11 @@ public sealed class HandlePackageSourceMappings() : NuGetConfigFileAnalyzer(
         {
             foreach (var package in source.Packages)
             {
-                if (package.Pattern is { Length: > 0} pattern && !patterns.Add(pattern))
+                if (package.Pattern is { Length: > 0 } pattern && !patterns.Add(pattern))
                 {
                     context.ReportDiagnostic(Rule.NuGet.PackageSourceMappingsShouldBeUnique, package, pattern);
                 }
+                last = package;
             }
             if (source.Key is { Length: > 0 } key)
             {
@@ -49,5 +53,15 @@ public sealed class HandlePackageSourceMappings() : NuGetConfigFileAnalyzer(
                 context.ReportDiagnostic(Rule.NuGet.DefineMappingForMultipleSources, kvp.Value, kvp.Key);
             }
         }
+
+        if (LacksCatchAllMapping(keysCount, last))
+        {
+            context.ReportDiagnostic(Rule.NuGet.LastMappingCatchesAll, last);
+        }
     }
+
+    private static bool LacksCatchAllMapping(int keysCount, NuGet.Configuration.Node last) 
+        // only true if either multiple keys or at least one package defined.
+        => (keysCount >= 2 || last is not NuGetConfigFile)
+        && last is not Package { Pattern: "*" };
 }
