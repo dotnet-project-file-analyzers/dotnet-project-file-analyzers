@@ -63,11 +63,12 @@ public static partial class Rule
 
         public static DiagnosticDescriptor LastMappingCatchesAll => New(
             id: 0305,
-            title: "Package source mappings should be unique",
-            message: "The last mapping should be * to match all",
+            title: "Last source map should map all packages",
+            message: "The last mapping should be '*' to match all",
             description:
-                "The first package source mapping that matches serves the package. " +
-                "Therefor, a second mapping with the same pattern will never match.",
+                "Mappings are processed in ascending order, firt to match serves. " +
+                "To ensure all packages can be served by at least one package, " +
+                "the last on should be a match all (*).",
             tags: ["NuGet"],
             category: Category.Bug);
     }

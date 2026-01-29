@@ -224,6 +224,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0302** Credentials should be injected](rules/Proj0302.md)
 * [**Proj0303** Define a mapping for each package source](rules/Proj0303.md)
 * [**Proj0304** Package source mappings should be unique](rules/Proj0304.md)
+* [**Proj0305** Last source map should map all packages](rules/Proj0305.md)
 
 ## INI
 * [**Proj4000** Invalid INI file](rules/Proj4000.md)
