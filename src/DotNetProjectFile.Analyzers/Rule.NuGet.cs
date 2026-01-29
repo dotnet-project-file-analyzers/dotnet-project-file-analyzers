@@ -66,9 +66,9 @@ public static partial class Rule
             title: "Last source map should map all packages",
             message: "The last mapping should be '*' to match all",
             description:
-                "Mappings are processed in ascending order, firt to match serves. " +
+                "Mappings are processed in ascending order, first to match serves. " +
                 "To ensure all packages can be served by at least one package, " +
-                "the last on should be a match all (*).",
+                "the last one should be a match all (*).",
             tags: ["NuGet"],
             category: Category.Bug);
     }
