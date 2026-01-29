@@ -18,7 +18,7 @@ public class Reports
         .HasIssues(
             Issue.WRN("Proj0303", """The <packageSource key="Internals"> is missing a <packageSourceMapping>""").WithSpan(04, 04, 04, 112),
             Issue.WRN("Proj0303", """The <packageSource key="nuget.org"> is missing a <packageSourceMapping>""").WithSpan(05, 04, 05, 71),
-            Issue.WRN("Proj0305", "The last mapping should be * to match all").WithSpan(00, 00, 00, 14));
+            Issue.WRN("Proj0305", "The last mapping should be '*' to match all").WithSpan(00, 00, 00, 14));
 
     [Test]
     public void missing_mapping_and_extra() => new DotNetProjectFile.Analyzers.NuGetConfig.HandlePackageSourceMappings()
@@ -90,7 +90,7 @@ public class Reports
 
         </configuration>
         """)
-       .HasIssue(Issue.WRN("Proj0305", "The last mapping should be * to match all").WithSpan(14, 06, 14, 36));
+       .HasIssue(Issue.WRN("Proj0305", "The last mapping should be '*' to match all").WithSpan(14, 06, 14, 36));
 
     [Test]
     public void Maps_all_is_not_last_for_multiple_keys() => new DotNetProjectFile.Analyzers.NuGetConfig.HandlePackageSourceMappings()
@@ -116,7 +116,7 @@ public class Reports
 
         </configuration>
         """)
-       .HasIssue(Issue.WRN("Proj0305", "The last mapping should be * to match all").WithSpan(15, 06, 15, 36));
+       .HasIssue(Issue.WRN("Proj0305", "The last mapping should be '*' to match all").WithSpan(15, 06, 15, 36));
 
     [Test]
     public void Maps_all_is_not_last_for_single_key() => new DotNetProjectFile.Analyzers.NuGetConfig.HandlePackageSourceMappings()
@@ -136,7 +136,7 @@ public class Reports
 
         </configuration>
         """)
-     .HasIssue(Issue.WRN("Proj0305", "The last mapping should be * to match all").WithSpan(09, 06, 09, 36));
+     .HasIssue(Issue.WRN("Proj0305", "The last mapping should be '*' to match all").WithSpan(09, 06, 09, 36));
 }
 
 public class Guards
