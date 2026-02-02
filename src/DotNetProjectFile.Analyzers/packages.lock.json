@@ -10,9 +10,9 @@
       },
       "DotNet.ReproducibleBuilds": {
         "type": "Direct",
-        "requested": "[2.0.1, )",
-        "resolved": "2.0.1",
-        "contentHash": "8rbExxnDIsdpJ16tmX7jwXZYA864OXQhAvQRPX+LLaxDPI1eCTWg6AZP85dJrOLv1Ib9fp0KGKY+zHgnSBSamQ=="
+        "requested": "[2.0.2, )",
+        "resolved": "2.0.2",
+        "contentHash": "VaHoEN6YHp0jXucxm67vfuRy8zo9ufiKSuaZ4ZudRi8xmWcEFMKxfCsg2nvYNvdISFTURDu+IHqADGh53+Bamw=="
       },
       "Microsoft.CodeAnalysis.Analyzers": {
         "type": "Direct",
