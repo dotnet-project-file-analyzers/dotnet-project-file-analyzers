@@ -48,7 +48,7 @@ should be scanned. In the most common scenario one `.net.csproj` is placed in
 root directory of the repository, and included in the `.slnx`/`.sln` solution
 file that is used to build the project in the pipe line.
 
-In a [monorepo](https://en.wikipedia.org/wiki/Monorepo) scenario is more common
+In a [monorepo](https://en.wikipedia.org/wiki/Monorepo) scenario it is more common
 to have a seperate `.net.csproj` per seperate build.
 
 ## Enable analyzers for .net.csproj
