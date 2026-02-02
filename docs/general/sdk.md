@@ -51,7 +51,8 @@ file that is used to build the project in the pipe line.
 In a [monorepo](https://en.wikipedia.org/wiki/Monorepo) scenario is more common
 to have a seperate `.net.csproj` per seperate build.
 
-Those analyzers can be included with:
+## Enable analyzers for .net.csproj
+The .NET project file analyzers can be included to the `.net.csproj` by adding
 
 ``` xml
 <ItemGroup>
@@ -59,8 +60,14 @@ Those analyzers can be included with:
 </ItemGroup>
 ```
 
-This can be in the `.net.csproj` file, but it is advised to do this in the
- `Directory.Build.props` file instead.
+However, it it is advised to add the in in the `Directory.Build.props` file, or
+`Directory.Packages.props`. In the latter case using a `<GlobalPackageReference>`:
+
+``` xml
+<ItemGroup Label="Analyzers">
+  <GlobalPackageReference Include="DotNetProjectFile.Analyzers" Version="1.8.3" />
+</ItemGroup>
+```
 
 The SDK project can - on top of the analysis - also act as a replacement of
 the `Solution Items` folder (and other folders) that contain a lot of
