@@ -31,18 +31,25 @@ create a C# Project file with the name `.net.csproj`.
 *Download this example [`.net.csproj`](./.net.csproj)*
 
 ## How does it work?
-By adding the `.net.csproj` to your build (most likely by adding the project to
-a `.slnx`/`.sln` solution file) the analyzers can both detect files (like
-`.slnx` files, and the `NuGet.config`) that are not directly bound to a single
-proj file, and analyze them once (via the `.net.csproj`).
+Due to the `DotNetProjectFile.Analyzers.Sdk` included, the `.net.csproj`
+includes a set of files that can be analyzed (such as `*.fsharp`, `*.slnx`,
+`NuGet.config`, and others). It does this by scanning the file system
+recursively.
 
-Most files in the directory of this SDK project will be included automatically.
-This includes configuration, text, and markdown files. It will not contain any
-`<Compile>` items unless explicitly added. The SDK project is not intended to
-contain `<Compile>` items, and the binary output is hidden for that reason.
+It will not contain any `<Compile>` items unless explicitly added. The SDK
+project is not intended to contain `<Compile>` items, and the binary output is
+hidden for that reason.
 
 All automatically included files and files added as `<AdditionalFiles>` are
 analyzed by the appropriate .NET Project File Analyzers.
+
+Where to put the `.net.csproj` file therefore depends on which (sub) directories
+should be scanned. In the most common scenario one `.net.csproj` is places in
+root directory of the repository, and includes in the `.slnx`/`.sln` solution
+file that is used to build the project in the pipe line.
+
+In a [monorepo](https://en.wikipedia.org/wiki/Monorepo) scenario is more common
+to have a seperate `.net.csproj` per seperate build.oj`).
 
 Those analyzers can be included with:
 
