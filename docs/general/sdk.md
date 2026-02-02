@@ -28,7 +28,7 @@ A `.net.csproj` MS Build file, is a project file that looks like this:
 ```
 *Download this example [`.net.csproj`](./.net.csproj)*
 
-"WDue to the `DotNetProjectFile.Analyzers.Sdk` included, the `.net.csproj`
+Due to the `DotNetProjectFile.Analyzers.Sdk` included, the `.net.csproj`
 includes a set of files that can be analyzed (such as `*.fsharp`, `*.slnx`,
 `NuGet.config`, and others). It does this by scanning the file system
 recursively.
