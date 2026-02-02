@@ -62,7 +62,7 @@ public sealed class HandlePackageSourceMappings() : NuGetConfigFileAnalyzer(
 
     private static bool LacksCatchAllMapping(int keysCount, NuGet.Configuration.Node last)
     {
-        // no package specified and single (or none) package sources specfied.
+        // no package specified and single (or none) package sources specified.
         if (keysCount <= 1 && last is NuGetConfigFile) return false;
 
         // Given that there is a Package source it should contain 1 and it should be *.
