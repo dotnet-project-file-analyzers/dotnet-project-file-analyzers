@@ -11,9 +11,7 @@ multiple projects to be analyzed. It applies a *trick* also used by the
 providing both a custom `.props` and a `.targets` MS Build file.
 
 ## .net.csproj
-So how does it work? At the root level of your solution (most likely the
-root directory of the [Git](https://en.wikipedia.org/wiki/Git) repo), you
-create a C# Project file with the name `.net.csproj`.
+A `.net.csproj` MS Build file, is a project file that looks like this:
 
 ``` xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -30,8 +28,7 @@ create a C# Project file with the name `.net.csproj`.
 ```
 *Download this example [`.net.csproj`](./.net.csproj)*
 
-## How does it work?
-Due to the `DotNetProjectFile.Analyzers.Sdk` included, the `.net.csproj`
+"WDue to the `DotNetProjectFile.Analyzers.Sdk` included, the `.net.csproj`
 includes a set of files that can be analyzed (such as `*.fsharp`, `*.slnx`,
 `NuGet.config`, and others). It does this by scanning the file system
 recursively.
