@@ -49,7 +49,7 @@ root directory of the repository, and includes in the `.slnx`/`.sln` solution
 file that is used to build the project in the pipe line.
 
 In a [monorepo](https://en.wikipedia.org/wiki/Monorepo) scenario is more common
-to have a seperate `.net.csproj` per seperate build.oj`).
+to have a seperate `.net.csproj` per seperate build.
 
 Those analyzers can be included with:
 
