@@ -65,7 +65,7 @@ public sealed class HandlePackageSourceMappings() : NuGetConfigFileAnalyzer(
         // no package specified and single (or none) package sources specfied.
         if (keysCount <= 1 && last is NuGetConfigFile) return false;
 
-        // Given that ther is a Package source it should contain 1 and it should be *.
+        // Given that there is a Package source it should contain 1 and it should be *.
         return !(last.Parent is PackageSource package
             && package.Packages.Count is 1
             && last is Package { Pattern: "*" });
