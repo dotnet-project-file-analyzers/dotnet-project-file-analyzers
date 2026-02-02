@@ -44,7 +44,7 @@ All automatically included files and files added as `<AdditionalFiles>` are
 analyzed by the appropriate .NET Project File Analyzers.
 
 Where to put the `.net.csproj` file therefore depends on which (sub) directories
-should be scanned. In the most common scenario one `.net.csproj` is places in
+should be scanned. In the most common scenario one `.net.csproj` is placed in
 root directory of the repository, and includes in the `.slnx`/`.sln` solution
 file that is used to build the project in the pipe line.
 
