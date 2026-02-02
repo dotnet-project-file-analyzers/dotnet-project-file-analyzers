@@ -60,7 +60,7 @@ The .NET project file analyzers can be included to the `.net.csproj` by adding
 </ItemGroup>
 ```
 
-However, it it is advised to add the in in the `Directory.Build.props` file, or
+However, it is advised to add the reference in the `Directory.Build.props` file, or
 `Directory.Packages.props`. In the latter case using a `<GlobalPackageReference>`:
 
 ``` xml
