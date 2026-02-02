@@ -60,5 +60,16 @@ public static partial class Rule
                 "Therefor, a second mapping with the same pattern will never match.",
             tags: ["NuGet"],
             category: Category.Bug);
+
+        public static DiagnosticDescriptor LastMappingCatchesAll => New(
+            id: 0305,
+            title: "Last source map should map all packages",
+            message: "The last mapping should be '*' to match all",
+            description:
+                "Mappings are processed in ascending order, first to match serves. " +
+                "To ensure all packages can be served by at least one package, " +
+                "the last one should be a match all (*).",
+            tags: ["NuGet"],
+            category: Category.Bug);
     }
 }
