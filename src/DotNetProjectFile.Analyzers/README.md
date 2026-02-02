@@ -111,7 +111,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0508** Order third-party licenses alphabetically](https://dotnet-project-file-analyzers.github.io/rules/Proj0508.html)
 * [**Proj0509** NuGet package cache could not be resolved](https://dotnet-project-file-analyzers.github.io/rules/Proj0509.html)
 
-## .NET Project File Analyzers SDK
+## .NET project file analyzers SDK
 * [**Proj0700** Avoid defining &lt;Compile&gt; items in SDK project](https://dotnet-project-file-analyzers.github.io/rules/Proj0700.html)
 
 ### Central Package Management

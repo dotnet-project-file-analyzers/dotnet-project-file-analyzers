@@ -161,7 +161,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0508** Order third-party licenses alphabetically](rules/Proj0508.md)
 * [**Proj0509** NuGet package cache could not be resolved](rules/Proj0509.md)
 
-### .NET Project File Analyzers SDK
+### .NET project file analyzers SDK
 * [**Proj0700** Avoid defining &lt;Compile&gt; items in SDK project](rules/Proj0700.md)
 
 ### Central Package Management

@@ -3,7 +3,7 @@ permalink: /sdk
 nav_order: 2
 ---
 
-# .NET Project File Analyzers SDK
+# .NET project file analyzers SDK
 [![DotNetProjectFile.Analyzers.Sdk](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers.Sdk)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers.Sdk)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers.Sdk)
 .NET Project File Analyzers ships with its own SDK. This allows files shared by
 multiple projects to be analyzed. It applies a *trick* also used by the
@@ -41,7 +41,7 @@ project is not intended to contain `<Compile>` items, and the binary output is
 hidden for that reason.
 
 All automatically included files and files added as `<AdditionalFiles>` are
-analyzed by the appropriate .NET Project File Analyzers.
+analyzed by the appropriate .NET project file analyzers.
 
 Where to put the `.net.csproj` file therefore depends on which (sub) directories
 should be scanned. In the most common scenario one `.net.csproj` is placed in
