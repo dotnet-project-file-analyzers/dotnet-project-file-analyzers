@@ -60,8 +60,14 @@ public sealed class HandlePackageSourceMappings() : NuGetConfigFileAnalyzer(
         }
     }
 
-    private static bool LacksCatchAllMapping(int keysCount, NuGet.Configuration.Node last) 
-        // only true if either multiple keys or at least one package defined.
-        => (keysCount >= 2 || last is not NuGetConfigFile)
-        && last is not Package { Pattern: "*" };
+    private static bool LacksCatchAllMapping(int keysCount, NuGet.Configuration.Node last)
+    {
+        // no package specified and single (or none) package sources specfied.
+        if (keysCount <= 1 && last is NuGetConfigFile) return false;
+
+        // Given that ther is a Package source it should contain 1 and it should be *.
+        return !(last.Parent is PackageSource package
+            && package.Packages.Count is 1
+            && last is Package { Pattern: "*" });
+    }
 }

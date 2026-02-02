@@ -65,7 +65,9 @@ public class Reports
         
         </configuration>
         """)
-        .HasIssue(Issue.WRN("Proj0304", "The mapping 'Company.*' is not unique").WithSpan(10, 06, 10, 37));
+        .HasIssues(
+            Issue.WRN("Proj0304", "The mapping 'Company.*' is not unique" /*.*/).WithSpan(10, 06, 10, 37),
+            Issue.WRN("Proj0305", "The last mapping should be '*' to match all").WithSpan(11, 06, 11, 29));
 
     [Test]
     public void Lacking_maps_all() => new DotNetProjectFile.Analyzers.NuGetConfig.HandlePackageSourceMappings()
