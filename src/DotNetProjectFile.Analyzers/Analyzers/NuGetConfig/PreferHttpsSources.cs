@@ -15,5 +15,5 @@ public sealed class PreferHttpsSources() : NuGetConfigFileAnalyzer(Rule.NuGet.Pr
         }
     }
 
-    private static bool StartsWithHttp(Add add) => (add.Key ?? string.Empty).StartsWith("http://");
+    private static bool StartsWithHttp(Add add) => (add.Value ?? string.Empty).StartsWith("http://");
 }

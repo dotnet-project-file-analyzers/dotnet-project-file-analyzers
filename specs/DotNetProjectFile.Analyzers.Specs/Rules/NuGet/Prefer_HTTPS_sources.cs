@@ -7,11 +7,11 @@ public class Reports
         .ForInlineNuGetConfig("""
         <configuration>
           <packageSources>
-            <add key="NuGet" value="http://api.nuget.org/v3/index.json" />
+            <add key="NuGet" value="http://api.nuget.org/v3/index.json" allowInsecureConnections="true" />
           </packageSources>
         </configuration>
         """)
-        .HasIssue(Issue.WRN("Proj0306", "Clear previously defined package sources"));
+        .HasIssue(Issue.WRN("Proj0306", "Prefer the HTTPS protocol for package sources"));
 }
 
 public class Guards
