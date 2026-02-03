@@ -71,5 +71,16 @@ public static partial class Rule
                 "least one package, the last one should be a match all (*).",
             tags: ["NuGet"],
             category: Category.Bug);
+
+        public static DiagnosticDescriptor PreferHttpsSources => New(
+            id: 0306,
+            title: "Prefer the HTTPS protocol for package sources",
+            message: "Prefer the HTTPS protocol for package sources",
+            description:
+                "HTTPS encrypts all data, making it unreadable to third parties, " +
+                "whereas HTTP transmits unencrypted. HTTPS ensures data cannot " +
+                "be modified or corrupted during transfer without being detected.",
+            tags: ["NuGet"],
+            category: Category.Security);
     }
 }
