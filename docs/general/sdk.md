@@ -32,7 +32,7 @@ than normal projects:
 `.net.csproj` includes top level files and as such provides a solid alternative to "Solution items".
 
 ## .net.csproj
-A `.net.csproj` MS Build file, is a project file that looks like this:
+A `.net.csproj` project file looks like this:
 
 ``` xml
 <Project Sdk="Microsoft.NET.Sdk">
