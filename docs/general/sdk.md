@@ -23,7 +23,7 @@ than normal projects:
    which (sub) directories should be scanned, experiment a little to see what
    works for you. The needs of a large [monorepo](https://en.wikipedia.org/wiki/Monorepo) with many solutions and projects differ from those of a small repository with a single solution and just a few projects.
 2. The `.net.csproj` project has a PackageReference to [![DotNetProjectFile.Analyzers.Sdk](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers.Sdk)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers.Sdk)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers.Sdk).
-   It automatically includes files it can analyse. Those, and files included as
+   It automatically includes files it can analyze. Those, and files included as
    `<AdditionalFiles>` are analyzed by the appropriate .NET project file analyzers.
  
  Although the `.net.csproj` is not supposed to contain `<Compile>` items, the
