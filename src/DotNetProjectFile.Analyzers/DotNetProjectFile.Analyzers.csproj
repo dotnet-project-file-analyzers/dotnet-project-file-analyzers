@@ -72,12 +72,16 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.8.3</Version>
+    <Version>1.9.0</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v1.8.4
+]]>
+    </ToBeReleased>
+    <PackageReleaseNotes>
+      <![CDATA[
+v1.9.0
 - Proj0300: Configure NuGet explicitly (NEW RULE)
 - Proj0301: Clear previously defined package sources (NEW RULE)
 - Proj0302: Credentials should be injected (NEW RULE)
@@ -87,10 +91,6 @@ v1.8.4
 - Proj1700: Indent XML for NuGet.config files. (EXTEND RULE)
 - Proj1702: Omit XML declaration for NuGet.config files. (EXTEND RULE)
 - Proj3003: Trim whitespace (NuGet.confg). (EXTEND RULE)
-]]>
-    </ToBeReleased>
-    <PackageReleaseNotes>
-      <![CDATA[
 v1.8.3
 - Proj0048: LanguageVersion converter could not be resolved runtime. (BUG)
 - Proj0049: Prefer the latest released language version for F#. (EXTEND RULE)
