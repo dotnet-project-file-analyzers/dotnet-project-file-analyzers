@@ -13,7 +13,7 @@ commonly a `*.csproj` file), and hook on to Roslyn when that project is built.
 For files that are shared amongst multiple projects that does not work.
 
 ## How does it work?
-To analyse those files that are share a trick is needed: A special project
+To analyse those files that are shared a trick is needed: A special project
 named `.net.csproj`. It obtains it's powers because it is a little different
 than normal projects:
 
