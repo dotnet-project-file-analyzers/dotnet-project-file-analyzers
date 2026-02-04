@@ -10,7 +10,7 @@ nav_order: 2
 ## Why the .NET project file analyzers SDK?
 The .NET project file analyzers work by bounding files to a project (most
 commonly a `*.csproj` file), and hook on to Roslyn when that project is built.
-For files that are shared amongst multible projects that does not work.
+For files that are shared amongst multiple projects that does not work.
 
 ## How does it work?
 To analyse those files that are share a trick is needed: A special project
