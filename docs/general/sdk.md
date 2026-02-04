@@ -5,10 +5,34 @@ nav_order: 2
 
 # .NET project file analyzers SDK
 [![DotNetProjectFile.Analyzers.Sdk](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers.Sdk)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers.Sdk)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers.Sdk)
-.NET Project File Analyzers ships with its own SDK. This allows files shared by
-multiple projects to be analyzed. It applies a *trick* also used by the
-[Microsoft.NET.Test.Sdk](https://www.nuget.org/packages/Microsoft.NET.Test.Sdk);
-providing both a custom `.props` and a `.targets` MS Build file.
+.NET project file analyzers ships with its own SDK.
+
+## Why the .NET project file analyzers SDK?
+The .NET project file analyzers work by bounding files to a project (most
+commonly a `*.csproj` file), and hook on to Roslyn when that project is built.
+For files that are shared amongst multible projects that does not work.
+
+## How does it work?
+To analyse those files that are share a trick is needed: A special project
+named `.net.csproj`. It obtains it's powers because it is a little different
+than normal projects:
+
+1. The `.net.csproj` file is typically placed in a parent directory common to
+   all other projects. This could be the root of your repo, the same directory
+   as your solution(s), or somewhere in between. Placement really depends on
+   which (sub) directories should be scanned, experiment a little to see what
+   works for you. The needs are different for a big [monorepo](https://en.wikipedia.org/wiki/Monorepo)
+   with a lot of solutions and projects, compared to a small repo with 1
+   solution with 3 projects.
+
+2. The `.net.csproj` project has a PackageReference to [![DotNetProjectFile.Analyzers.Sdk](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers.Sdk)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers.Sdk)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers.Sdk).
+   It automatically includes files it can analyse. Those, and files included as
+   `<AdditionalFiles>` are analyzed by the appropriate .NET project file analyzers.
+ 
+ Although the `.net.csproj` is not supposed to contain `<Compile>` items, the
+ compiler still generates output. Since that output is useless, it is hidden.
+
+`.net.csproj` includes top level files and as such provides a solid alternative to "Solution items".
 
 ## .net.csproj
 A `.net.csproj` MS Build file, is a project file that looks like this:
@@ -28,26 +52,6 @@ A `.net.csproj` MS Build file, is a project file that looks like this:
 ```
 *Download this example [`.net.csproj`](./.net.csproj)*
 
-Due to the `DotNetProjectFile.Analyzers.Sdk` included, the `.net.csproj`
-includes a set of files that can be analyzed (such as `*.fsharp`, `*.slnx`,
-`NuGet.config`, and others). It does this by scanning the file system
-recursively.
-
-It will not contain any `<Compile>` items unless explicitly added. The SDK
-project is not intended to contain `<Compile>` items, and the binary output is
-hidden for that reason.
-
-All automatically included files and files added as `<AdditionalFiles>` are
-analyzed by the appropriate .NET project file analyzers.
-
-Where to put the `.net.csproj` file therefore depends on which (sub) directories
-should be scanned. In the most common scenario one `.net.csproj` is placed in
-root directory of the repository, and included in the `.slnx`/`.sln` solution
-file that is used to build the project in the pipeline.
-
-In a [monorepo](https://en.wikipedia.org/wiki/Monorepo) scenario it is more common
-to have a separate `.net.csproj` per separate build.
-
 ## Enable analyzers for .net.csproj
 The .NET project file analyzers can be included to the `.net.csproj` by adding
 
@@ -65,8 +69,3 @@ However, it is advised to add the reference in the `Directory.Build.props` file,
   <GlobalPackageReference Include="DotNetProjectFile.Analyzers" Version="1.8.3" />
 </ItemGroup>
 ```
-
-The SDK project can - on top of the analysis - also act as a replacement of
-the `Solution Items` folder (and other folders) that contain a lot of
-solution files. This should improve the maintainabillity of the `.slnx`
-solution too.
