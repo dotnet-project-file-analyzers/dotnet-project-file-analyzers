@@ -1,1 +1,1 @@
-# .NET Project File Analyzers SDK
+# .NET project file analyzers SDK
