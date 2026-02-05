@@ -33,7 +33,7 @@
     <PackageProjectUrl>https://dotnet-project-file-analyzers.github.io</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <Description>.NET project file analyzers</Description>
-    <PackageTags>Code Analysis;Project files;project file;dotnet;csproj;vbproj;resx;fsproj;cblproj;MS Build;resources;analyser;analyzer;analysis</PackageTags>
+    <PackageTags>Code Analysis;Project files;project file;dotnet;csproj;vbproj;resx;fsproj;cblproj;MS Build;resources;analyzer;analyzer;analysis</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>logo_128x128.png</PackageIcon>
     <PackageIconUrl>https://raw.githubusercontent.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
@@ -372,7 +372,7 @@ v1.0.7
 - Proj0214: Define the NuGet project ID explicitly. (NEW RULE)
 v1.0.6
 - Proj0010: Define OutputType explicitly. (NEW RULE)
-- Proj1001: Reported dependency with missing analyser is now nearest name match. (FP)
+- Proj1001: Reported dependency with missing analyzer is now nearest name match. (FP)
 - Proj1001: Added 14 new package specific analyzers. (FN)
 - Prop2000: Embed valid resource files. (NEW RULE)
 - Prop2001: Define data in a resource file. (NEW RULE)

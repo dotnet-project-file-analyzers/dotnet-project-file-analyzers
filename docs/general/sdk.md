@@ -8,15 +8,15 @@ nav_order: 2
 .NET project file analyzers ships with its own SDK.
 
 ## Why the .NET project file analyzers SDK?
-The .NET project file analyzers work by bounding files to a project (most
+The .NET project file analyzers work by linking files to a project (most
 commonly a `*.csproj` file), and hook on to Roslyn when that project is built.
-For files that are shared amongst multiple projects that does not work. It
-also allows files bound to F# (and other non-Roslyn) projects to be analyzed.
+
+For files that can not be linked to a single project to build, this approach
+does not work, and that is where the `.net.csproj` project comes in handy.
 
 ## How does it work?
-To analyse those files that are shared a trick is needed: A special project
-named `.net.csproj`. It obtains it's powers because it is a little different
-than normal projects:
+The `.net.csproj` acts as proxy for all files not linked to a single project.
+It obtains it's powers because it is a little different from normal projects:
 
 1. The `.net.csproj` file is typically placed in a parent directory common to
    all other projects. This could be the root of your repo, the same directory
@@ -30,7 +30,8 @@ than normal projects:
  Although the `.net.csproj` is not supposed to contain `<Compile>` items, the
  compiler still generates output. Since that output is useless, it is hidden.
 
-`.net.csproj` includes top level files and as such provides a solid alternative to "Solution items".
+`.net.csproj` includes top level files and as such provides a solid alternative
+to a `Solution items` folder.
 
 ## .net.csproj
 A `.net.csproj` project file looks like this:
