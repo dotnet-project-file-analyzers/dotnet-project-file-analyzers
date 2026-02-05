@@ -16,7 +16,7 @@ does not work, and that is where the `.net.csproj` project comes in handy.
 
 ## How does it work?
 The `.net.csproj` acts as proxy for all files not linked to a single project.
-It obtains it's powers because it is a little different from normal projects:
+It obtains its powers because it is a little different from normal projects:
 
 1. The `.net.csproj` file is typically placed in a parent directory common to
    all other projects. This could be the root of your repo, the same directory
