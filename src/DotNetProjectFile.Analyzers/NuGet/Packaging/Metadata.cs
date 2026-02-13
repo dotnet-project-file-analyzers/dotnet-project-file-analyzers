@@ -19,7 +19,6 @@ public sealed record Metadata
     [XmlElement("developmentDependency")]
     public bool? DevelopmentDependency { get; init; }
 
-    [XmlArray("dependencies")]
-    [XmlArrayItem("group")]
-    public NuspecDependencies[] Dependencies { get; init; } = [];
+    [XmlElement("dependencies")]
+    public NuspecDependencies? Dependencies { get; init; }
 }

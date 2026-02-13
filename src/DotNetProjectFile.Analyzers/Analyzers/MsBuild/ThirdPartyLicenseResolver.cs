@@ -142,9 +142,8 @@ file static class Extensions
         => package.LicenseExpression is not { Length: > 0 }
         && package.LicenseFile is not { Length: > 0 };
 
-    public static IEnumerable<PackageVersionInfo> TransitiveDependencies(this Package package)
-        => package.NuSpec?.Metadata?.Dependencies?
-            .SelectMany(d => d.Dependencies ?? [])
-            .Select(d => d.Info)
-        ?? [];
+    public static IEnumerable<PackageVersionInfo> TransitiveDependencies(this Package package) =>
+    [
+        .. package.NuSpec?.Metadata?.Dependencies?.All.Select(d => d.Info) ?? [],
+    ];
 }
