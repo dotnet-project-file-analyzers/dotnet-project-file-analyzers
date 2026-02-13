@@ -37,7 +37,6 @@ public class Guards
           </PropertyGroup>
 
           <ItemGroup>
-            <PackageReference Include="Qowaiv" Version="7.4.7" />
             <PackageReference Include="xunit" Version="2.9.3" />
           </ItemGroup>
 
