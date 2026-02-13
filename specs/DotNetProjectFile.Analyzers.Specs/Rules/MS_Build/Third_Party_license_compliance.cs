@@ -188,33 +188,35 @@ public class Reports
         """)
        .HasIssue(Issue.ERR("Proj0507", "The <ThirdPartyLicense> can not be conditional")
        .WithSpan(07, 04, 07, 72));
+
+    [Test]
+    public void transient_dependencies_with_custom_license() => new ThirdPartyLicenseResolver().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
+
+          <ItemGroup>
+            <PackageReference Include="MongoDB.Driver.Core" Version="2.30.0" />
+          </ItemGroup>
+
+          <ItemGroup Label="Custom licenses">
+            <ThirdPartyLicense Include="MongoDB.Libmongocrypt" Hash="H+71D1Qif9a+jKUWZKrMdQ" />
+            <ThirdPartyLicense Include="Snappier" Hash="v2I091CLKicpyApWDF77iQ" />
+          </ItemGroup>
+
+        </Project>
+        """)
+   .HasIssues(
+       Issue.WRN("Proj0500", "The SharpCompress (0.30.1) transitive package in MongoDB.Driver.Core is shipped without an explicitly defined license"),
+       Issue.WRN("Proj0501", "The AWSSDK.Core ([3.7.100.14, 4.0.0)) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"),
+       Issue.WRN("Proj0501", "The AWSSDK.SecurityToken (3.7.100.14) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"));
+
 }
 
 public class Guards
 {
-    [Test]
-    public void transient_dependencies_with_custom_license() => new ThirdPartyLicenseResolver()
-    .ForInlineCsproj(@"
-<Project Sdk=""Microsoft.NET.Sdk"">
-
-    <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include=""MongoDB.Driver.Core"" Version=""2.30.0"" />
-  </ItemGroup>
-
-  <ItemGroup Label=""Custom licenses"">
-    <ThirdPartyLicense Include=""MongoDB.Libmongocrypt"" Hash=""H+71D1Qif9a+jKUWZKrMdQ"" />
-    <ThirdPartyLicense Include=""Snappier"" Hash=""v2I091CLKicpyApWDF77iQ"" />
-  </ItemGroup>
-
-</Project>")
-    .HasIssues(
-        Issue.WRN("Proj0500", "The SharpCompress (0.30.1) transitive package in MongoDB.Driver.Core is shipped without an explicitly defined license"),
-        Issue.WRN("Proj0501", "The AWSSDK.SecurityToken (3.7.100.14) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"));
-
     [Test]
     public void license_urls() => new ThirdPartyLicenseResolver()
       .ForInlineCsproj(@"

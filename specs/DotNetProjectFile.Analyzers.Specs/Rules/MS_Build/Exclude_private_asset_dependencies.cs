@@ -13,37 +13,51 @@ public class Reports
 public class Guards
 {
     [Test]
-    public void native_asssets() => new ExcludePrivateAssetDependencies()
-        .ForInlineCsproj("""
-<Project Sdk="Microsoft.NET.Sdk">
+    public void native_asssets() => new ExcludePrivateAssetDependencies().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-  </PropertyGroup>
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="3.116.1" />
-  </ItemGroup>
+          <ItemGroup>
+            <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="3.116.1" />
+          </ItemGroup>
 
-</Project>
-""").
-        HasNoIssues();
-
+        </Project>
+        """)
+        .HasNoIssues();
 
     [Test]
-    public void previously_reported_NuGet_Protocol() => new ExcludePrivateAssetDependencies()
-        .ForInlineCsproj(@"
-            <Project Sdk=""Microsoft.NET.Sdk"">
+    public void not_grouped_dependencies() => new ExcludePrivateAssetDependencies().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-              </PropertyGroup>
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
 
-              <ItemGroup>
-                <PackageReference Include=""NuGet.Protocol"" Version=""6.13.1"" />
-              </ItemGroup>
+          <ItemGroup>
+            <PackageReference Include="xunit" Version="2.9.3" />
+          </ItemGroup>
 
-            </Project>")
+        </Project>
+        """)
+        .HasNoIssues();
+
+    [Test]
+    public void previously_reported_NuGet_Protocol() => new ExcludePrivateAssetDependencies().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
+
+          <ItemGroup>
+            <PackageReference Include="NuGet.Protocol" Version="6.13.1" />
+          </ItemGroup>
+
+        </Project>
+        """)
         .HasNoIssues();
 
     [Test]
