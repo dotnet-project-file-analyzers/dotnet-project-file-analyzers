@@ -1,5 +1,6 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.GenerateSbom"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class GenerateSbom() : MsBuildProjectFileAnalyzer(Rule.GenerateSbom)
 {
@@ -15,7 +16,8 @@ public sealed class GenerateSbom() : MsBuildProjectFileAnalyzer(Rule.GenerateSbo
 
         var property = context.File.Property<GenerateSBOM>();
         var registered = context.File
-           .Walk().OfType<PackageReference>()
+           .Walk().OfType<PackageReferenceBase>()
+           .Where(p => p is PackageReference or GlobalPackageReference)
            .Any(NuGet.Packages.Microsoft_Sbom_Targets.IsMatch);
 
         if (property is { })

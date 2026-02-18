@@ -78,6 +78,7 @@
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.*
+- Proj0243: Support <GlobalPackageReference> as a source. (FP)
 - Proj1200: Support nuspec not grouped dependencies in the metadata. (FP)
 ]]>
     </ToBeReleased>
