@@ -11,7 +11,7 @@ public class Reports
 <Project Sdk=""Microsoft.NET.Sdk"">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -27,7 +27,7 @@ public class Reports
 <Project Sdk=""Microsoft.NET.Sdk"">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -47,7 +47,7 @@ public class Reports
 <Project Sdk=""Microsoft.NET.Sdk"">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
@@ -65,7 +65,7 @@ public class Reports
 <Project Sdk=""Microsoft.NET.Sdk"">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -82,7 +82,7 @@ public class Reports
 <Project Sdk=""Microsoft.NET.Sdk"">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -99,124 +99,131 @@ public class Reports
 
     [Test]
     public void missing_include() => new ThirdPartyLicenseCompliance()
-     .ForInlineCsproj(@$"
-<Project Sdk=""Microsoft.NET.Sdk"">
+     .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
 
-  <ItemGroup>
-    <ThirdPartyLicense Update=""Qowaiv"" Hash=""QED9yngU7o+Fy128_FSy0w"" />
-  </ItemGroup>
+          <ItemGroup>
+            <ThirdPartyLicense Update="Qowaiv" Hash="QED9yngU7o+Fy128_FSy0w" />
+          </ItemGroup>
 
-</Project>")
-     .HasIssue(Issue.WRN("Proj0505", "Include has not been specified")
+        </Project>
+        """)
+     .HasIssue(Issue.ERR("Proj0505", "Include has not been specified")
      .WithSpan(07, 04, 07, 71));
 
     [Test]
     public void invalid_glob() => new ThirdPartyLicenseCompliance()
-       .ForInlineCsproj(@$"
-<Project Sdk=""Microsoft.NET.Sdk"">
+        .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
 
-  <ItemGroup>
-    <ThirdPartyLicense Include=""Qowaiv["" Hash=""QED9yngU7o+Fy128_FSy0w"" />
-  </ItemGroup>
+          <ItemGroup>
+            <ThirdPartyLicense Include="Qowaiv[" Hash="QED9yngU7o+Fy128_FSy0w" />
+          </ItemGroup>
 
-</Project>")
-       .HasIssue(Issue.WRN("Proj0505", "Include is not valid GLOB pattern")
+        </Project>
+        """)
+       .HasIssue(Issue.ERR("Proj0505", "Include is not valid GLOB pattern")
        .WithSpan(07, 04, 07, 73));
 
     [Test]
     public void missing_hash() => new ThirdPartyLicenseCompliance()
-       .ForInlineCsproj(@$"
-<Project Sdk=""Microsoft.NET.Sdk"">
+       .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
 
-  <ItemGroup>
-    <ThirdPartyLicense Include=""Qowaiv"" />
-  </ItemGroup>
+          <ItemGroup>
+            <ThirdPartyLicense Include="Qowaiv" />
+          </ItemGroup>
 
-</Project>")
-       .HasIssue(Issue.WRN("Proj0506", "Hash has not been specified")
+        </Project>
+        """)
+       .HasIssue(Issue.ERR("Proj0506", "Hash has not been specified")
        .WithSpan(07, 04, 07, 42));
 
     [TestCase("QED9yngU7o-Fy128_FSy0")] //   Too short
     [TestCase("QED9yngU7o-Fy128_FSy023")] // Too long
     [TestCase("QED9yngU7o%4Fy128FSy02")] //  Invalid character
     public void invalid_hash(string hash) => new ThirdPartyLicenseCompliance()
-       .ForInlineCsproj(@$"
-<Project Sdk=""Microsoft.NET.Sdk"">
+       .ForInlineCsproj($"""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
 
-  <ItemGroup>
-    <ThirdPartyLicense Include=""Qowaiv"" Hash=""${hash}"" />
-  </ItemGroup>
+          <ItemGroup>
+            <ThirdPartyLicense Include="Qowaiv" Hash="${hash}" />
+          </ItemGroup>
 
-</Project>")
-       .HasIssue(Issue.WRN("Proj0506", "Hash is not valid")
+        </Project>
+        """)
+       .HasIssue(Issue.ERR("Proj0506", "Hash is not valid")
        .WithSpan(07, 04, 07, 51 + hash.Length));
 
     [Test]
     public void conditional() => new ThirdPartyLicenseCompliance()
-       .ForInlineCsproj(@$"
-<Project Sdk=""Microsoft.NET.Sdk"">
+       .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
+            <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            </PropertyGroup>
 
-  <ItemGroup Condition=""$(TargetFramework) == 'net8.0'"">
-    <ThirdPartyLicense Include=""Qowaiv"" Hash=""QED9yngU7o+Fy128_FSy0w"" />
-  </ItemGroup>
+            <ItemGroup Condition="$(TargetFramework) == 'net8.0'">
+            <ThirdPartyLicense Include="Qowaiv" Hash="QED9yngU7o+Fy128_FSy0w" />
+            </ItemGroup>
 
-</Project>")
-       .HasIssue(Issue.WRN("Proj0507", "The <ThirdPartyLicense> can not be conditional")
+        </Project>
+        """)
+       .HasIssue(Issue.ERR("Proj0507", "The <ThirdPartyLicense> can not be conditional")
        .WithSpan(07, 04, 07, 72));
+
+    [Test]
+    public void transient_dependencies_with_custom_license() => new ThirdPartyLicenseResolver().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
+
+          <ItemGroup>
+            <PackageReference Include="MongoDB.Driver.Core" Version="2.30.0" />
+          </ItemGroup>
+
+          <ItemGroup Label="Custom licenses">
+            <ThirdPartyLicense Include="MongoDB.Libmongocrypt" Hash="H+71D1Qif9a+jKUWZKrMdQ" />
+            <ThirdPartyLicense Include="Snappier" Hash="v2I091CLKicpyApWDF77iQ" />
+          </ItemGroup>
+
+        </Project>
+        """)
+   .HasIssues(
+       Issue.WRN("Proj0500", "The SharpCompress (0.30.1) transitive package in MongoDB.Driver.Core is shipped without an explicitly defined license"),
+       Issue.WRN("Proj0501", "The AWSSDK.Core ([3.7.100.14, 4.0.0)) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"),
+       Issue.WRN("Proj0501", "The AWSSDK.SecurityToken (3.7.100.14) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"));
+
 }
 
 public class Guards
 {
-    [Test]
-    public void transient_dependencies_with_custom_license() => new ThirdPartyLicenseResolver()
-    .ForInlineCsproj(@"
-<Project Sdk=""Microsoft.NET.Sdk"">
-
-    <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include=""MongoDB.Driver.Core"" Version=""2.30.0"" />
-  </ItemGroup>
-
-  <ItemGroup Label=""Custom licenses"">
-    <ThirdPartyLicense Include=""MongoDB.Libmongocrypt"" Hash=""H+71D1Qif9a+jKUWZKrMdQ"" />
-    <ThirdPartyLicense Include=""Snappier"" Hash=""v2I091CLKicpyApWDF77iQ"" />
-  </ItemGroup>
-
-</Project>")
-    .HasIssues(
-        Issue.WRN("Proj0500", "The SharpCompress (0.30.1) transitive package in MongoDB.Driver.Core is shipped without an explicitly defined license"),
-        Issue.WRN("Proj0501", "The AWSSDK.SecurityToken (3.7.100.14) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"));
-
     [Test]
     public void license_urls() => new ThirdPartyLicenseResolver()
       .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
 
     <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     </PropertyGroup>
 
   <ItemGroup>
@@ -232,7 +239,7 @@ public class Guards
 <Project Sdk=""Microsoft.NET.Sdk"">
 
     <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     </PropertyGroup>
 
   <ItemGroup>
@@ -252,7 +259,7 @@ public class Guards
 <Project Sdk=""Microsoft.NET.Sdk"">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>

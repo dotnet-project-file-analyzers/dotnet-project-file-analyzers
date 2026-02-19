@@ -14,7 +14,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     Rule.PackageCacheCouldNotBeResolved)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
@@ -142,9 +142,8 @@ file static class Extensions
         => package.LicenseExpression is not { Length: > 0 }
         && package.LicenseFile is not { Length: > 0 };
 
-    public static IEnumerable<PackageVersionInfo> TransitiveDependencies(this Package package)
-        => package.NuSpec?.Metadata?.Dependencies?
-            .SelectMany(d => d.Dependencies ?? [])
-            .Select(d => d.Info)
-        ?? [];
+    public static IEnumerable<PackageVersionInfo> TransitiveDependencies(this Package package) =>
+    [
+        .. package.NuSpec?.Metadata?.Dependencies?.All.Select(d => d.Info) ?? [],
+    ];
 }

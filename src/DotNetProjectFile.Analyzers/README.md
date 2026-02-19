@@ -10,7 +10,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0006** Add additional files to improve static code analysis](https://dotnet-project-file-analyzers.github.io/rules/Proj0006.html)
 * [**Proj0007** Remove empty nodes](https://dotnet-project-file-analyzers.github.io/rules/Proj0007.html)
 * [**Proj0008** Remove folder nodes](https://dotnet-project-file-analyzers.github.io/rules/Proj0008.html)
-* [**Proj0009** Use the TragetFramework node for a single target framework](https://dotnet-project-file-analyzers.github.io/rules/Proj0009.html)
+* [**Proj0009** Use the TargetFramework node for a single target framework](https://dotnet-project-file-analyzers.github.io/rules/Proj0009.html)
 * [**Proj0010** Define OutputType explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0010.html)
 * [**Proj0011** Define properties once](https://dotnet-project-file-analyzers.github.io/rules/Proj0011.html)
 * [**Proj0012** Reassign properties with different value](https://dotnet-project-file-analyzers.github.io/rules/Proj0012.html)
@@ -50,6 +50,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0046** Update statements should change state](https://dotnet-project-file-analyzers.github.io/rules/Proj0046.html)
 * [**Proj0047** Label item groups that disable compliation items](https://dotnet-project-file-analyzers.github.io/rules/Proj0047.html)
 * [**Proj0048** Language version should be set to an explicit version number](https://dotnet-project-file-analyzers.github.io/rules/Proj0048.html)
+* [**Proj0049** Prefer the latest released language version](https://dotnet-project-file-analyzers.github.io/rules/Proj0049.html)
  
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)
@@ -72,6 +73,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0217** Define requiring license acceptance explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0217.html)
 * [**Proj0218** Symbol package format snupkg requires debug type portable](https://dotnet-project-file-analyzers.github.io/rules/Proj0218.html)
 * [**Proj0219** Packable projects should be libraries](https://dotnet-project-file-analyzers.github.io/rules/Proj0219.html)
+* [**Proj0220** Symbol package format snupkg requires include symbols to be enabled](https://dotnet-project-file-analyzers.github.io/rules/Proj0220.html)
 * [**Proj0240** Enable package validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0240.html)
 * [**Proj0241** Enable package baseline validation](https://dotnet-project-file-analyzers.github.io/rules/Proj0241.html)
 * [**Proj0242** Generate NuGet packages conditionally](https://dotnet-project-file-analyzers.github.io/rules/Proj0242.html)
@@ -109,7 +111,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0508** Order third-party licenses alphabetically](https://dotnet-project-file-analyzers.github.io/rules/Proj0508.html)
 * [**Proj0509** NuGet package cache could not be resolved](https://dotnet-project-file-analyzers.github.io/rules/Proj0509.html)
 
-## .NET Project File Analyzers SDK
+## .NET project file analyzers SDK
 * [**Proj0700** Avoid defining &lt;Compile&gt; items in SDK project](https://dotnet-project-file-analyzers.github.io/rules/Proj0700.html)
 
 ### Central Package Management
@@ -121,10 +123,11 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0805** Define version for PackageReference](https://dotnet-project-file-analyzers.github.io/rules/Proj0805.html)
 * [**Proj0806** VersionOverride should change the version](https://dotnet-project-file-analyzers.github.io/rules/Proj0806.html)
 * [**Proj0807** Use Directory.Packages.props only for Central Package Management](https://dotnet-project-file-analyzers.github.io/rules/Proj0807.html)
-* [**Proj0808** Define global package reference only in Directory.Packages.props](https://dotnet-project-file-analyzers.github.io/rules/Proj0808.html)
+* [**Proj0808** Define CPM related configuration only in Directory.Packages.props](https://dotnet-project-file-analyzers.github.io/rules/Proj0808.html)
 * [**Proj0809** Global package references are meant for private assets only](https://dotnet-project-file-analyzers.github.io/rules/Proj0809.html)
 * [**Proj0810** Remove unused package versions](https://dotnet-project-file-analyzers.github.io/rules/Proj0810.html)
 * [**Proj0811** Directory.Build.props and Directory.Packages.props should be in the same directory](https://dotnet-project-file-analyzers.github.io/rules/Proj0811.html)
+* [**Proj0812** Remove redundant packages references that are globally referenced](https://dotnet-project-file-analyzers.github.io/rules/Proj0812.html)
 
 ### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1000.html)
@@ -163,6 +166,15 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj3000** Only use UTF-8 without BOM](https://dotnet-project-file-analyzers.github.io/rules/Proj3000.html)
 * [**Proj3001** Track uses of "TODO" tags](https://dotnet-project-file-analyzers.github.io/rules/Proj3001.html)
 * [**Proj3002** Remove commented-out code](https://dotnet-project-file-analyzers.github.io/rules/Proj3002.html)
+* [**Proj3003** Trim whitespace](https://dotnet-project-file-analyzers.github.io/rules/Proj3003.html)
+
+## NuGet configuration
+* [**Proj0300** Configure NuGet explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0300.html)
+* [**Proj0301** Clear previously defined package sources](https://dotnet-project-file-analyzers.github.io/rules/Proj0301.html)
+* [**Proj0302** Credentials should be injected](https://dotnet-project-file-analyzers.github.io/rules/Proj0302.html)
+* [**Proj0303** Define a mapping for each package source](https://dotnet-project-file-analyzers.github.io/rules/Proj0303.html)
+* [**Proj0304** Package source mappings should be unique](https://dotnet-project-file-analyzers.github.io/rules/Proj0304.html)
+* [**Proj0305** Last source map should map all packages](https://dotnet-project-file-analyzers.github.io/rules/Proj0305.html)
 
 ## INI
 * [**Proj4000** Invalid INI file](https://dotnet-project-file-analyzers.github.io/rules/Proj4000.html)

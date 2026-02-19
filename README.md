@@ -3,7 +3,7 @@
 
 ![.NET project file analyzers logo](design/logo_128x128.png)
 # .NET project file analyzers
-Contains 140+ [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/)
+Contains 150+ [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/)
 (static code) [diagnostic analyzers](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.diagnostics.diagnosticanalyzer)
 that report issues on .NET project files.
 
@@ -42,35 +42,6 @@ An example configuration with the default severities of the main branch of the a
 ### SDK
 To use the SDK, follow the instructions [here](https://dotnet-project-file-analyzers.github.io/sdk).
 
-## Additional files
-To fully benefit from these analyzers it is recommended to add the project file
-(and RESX, and imported projects/props) as additional files.
-
-To add a project file:
-
-``` XML
-<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <AdditionalFiles Include="*.??proj" Visible="false" />
-	<AdditionalFiles Include="*.resx" />
-  </ItemGroup>
-
-</Project>
-```
-
-To add a props file:
-
-``` XML
-<Project>
-
-  <ItemGroup>
-    <AdditionalFiles Include="../props/{file_name}" Link="Properties/{file_name}" />
-	<AdditionalFiles Include="*.resx" />
-  </ItemGroup>
-
-</Project>
-```
 ## Community
 * [LinkedIn](https://www.linkedin.com/company/dotnet-project-file-analyzers)
 

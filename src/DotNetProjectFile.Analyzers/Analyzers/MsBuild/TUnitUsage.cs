@@ -8,10 +8,10 @@ public sealed class TUnitUsage() : MsBuildProjectFileAnalyzer(
     Rule.TUnitTestProjectMustBeExe,
     Rule.TUnitTestProjectShouldNotIncludeSdk)
 {
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         if (context.File.Walk().OfType<PackageReference>().None(IsTUnit)) { return; }
 
@@ -30,7 +30,7 @@ public sealed class TUnitUsage() : MsBuildProjectFileAnalyzer(
         => Packages.TUnit.IsMatch(reference)
         || Packages.TUnit_Engine.IsMatch(reference);
 
-    private static XmlAnalysisNode GetOutputType(Project project)
+    private static XmlAnalysisNode GetOutputType(MsBuildProject project)
         => project.Property<OutputType>() is { } output && output.Project == project
         ? output
         : project;

@@ -5,7 +5,7 @@ public sealed class EnableStrictModeForPackageRuntimeCompatibilityValidation()
     : MsBuildProjectFileAnalyzer(Rule.EnableStrictModeForPackageRuntimeCompatibilityValidation)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {

@@ -11,7 +11,7 @@ public class Project_contains
         => new NodeReporter()
         .ForProject("ChooseWhen.cs")
         .HasIssues(
-            Issue.WRN("Proj9999", "Found TargetFrameworks").WithSpan(03, 4, 03, 54),
+            Issue.WRN("Proj9999", "Found TargetFrameworks").WithSpan(03, 4, 03, 55),
             Issue.WRN("Proj9999", "Found Nullable")/*....*/.WithSpan(04, 4, 04, 31),
             Issue.WRN("Proj9999", "Found NuGetAudit")/*..*/.WithSpan(10, 8, 10, 37),
             Issue.WRN("Proj9999", "Found NuGetAudit")/*..*/.WithSpan(18, 8, 18, 38),

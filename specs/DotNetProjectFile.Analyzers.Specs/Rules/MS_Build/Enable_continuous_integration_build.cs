@@ -10,7 +10,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
               </PropertyGroup>
             </Project>")
         .HasIssue(
@@ -21,7 +21,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild>false</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -33,7 +33,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -53,7 +53,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(CI)' == 'true'"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -73,7 +73,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(TF_BUILD)' == 'true'"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -93,7 +93,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(GITHUB_ACTIONS)' == 'true'"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -113,7 +113,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(APPVEYOR)' == 'true'"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -133,7 +133,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(TRAVIS)' == 'true'"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -153,7 +153,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(CIRCLECI)' == 'true'"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -173,7 +173,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(CODEBUILD_BUILD_ID)' != ''"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -193,7 +193,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(BUILD_ID)' != ''"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -213,7 +213,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(TEAMCITY_VERSION)' != ''"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -233,7 +233,7 @@ public class Reports
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(JB_SPACE_API_URL)' != ''"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -277,7 +277,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
               </PropertyGroup>
 
               <ItemGroup>
@@ -292,7 +292,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(CI)' == 'true'"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -304,7 +304,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(TF_BUILD)' == 'true'"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -316,7 +316,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(GITHUB_ACTIONS)' == 'true'"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -328,7 +328,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(APPVEYOR)' == 'true'"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -340,7 +340,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(TRAVIS)' == 'true'"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -352,7 +352,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(CIRCLECI)' == 'true'"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -364,7 +364,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(CODEBUILD_BUILD_ID)' != ''"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -376,7 +376,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(BUILD_ID)' != ''"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -388,7 +388,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(TEAMCITY_VERSION)' != ''"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")
@@ -400,7 +400,7 @@ public class Guards
         .ForInlineCsproj(@"
             <Project Sdk=""Microsoft.NET.Sdk"">
               <PropertyGroup>
-                <TargetFramework>net9.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
                 <ContinuousIntegrationBuild Condition=""'$(JB_SPACE_API_URL)' != ''"">true</ContinuousIntegrationBuild>
               </PropertyGroup>
             </Project>")

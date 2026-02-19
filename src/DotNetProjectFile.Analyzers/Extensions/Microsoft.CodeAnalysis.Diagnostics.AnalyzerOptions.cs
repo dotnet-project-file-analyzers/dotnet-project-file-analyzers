@@ -9,4 +9,12 @@ internal static class AnalyzerOptionsExtensions
             .TryGetValue($"build_property.{propertyName}", out var value)
             ? value
             : null;
+
+    /// <summary>Gets the NETCoreSdkVersion property.</summary>
+    [Pure]
+    public static SdkVersion GetSdkVersion(this AnalyzerOptions options)
+    {
+        var version = options.GetMsBuildProperty("NETCoreSdkVersion");
+        return SdkVersion.Parse(version ?? string.Empty);
+    }
 }

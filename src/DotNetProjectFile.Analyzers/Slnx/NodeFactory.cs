@@ -1,6 +1,6 @@
 using System.Linq.Expressions;
 using System.Reflection;
-using CtorFunc = System.Func<System.Xml.Linq.XElement, DotNetProjectFile.Slnx.Node, DotNetProjectFile.Slnx.Solution, DotNetProjectFile.Slnx.Node>;
+using CtorFunc = System.Func<System.Xml.Linq.XElement, DotNetProjectFile.Slnx.Node, DotNetProjectFile.Slnx.SolutionFile, DotNetProjectFile.Slnx.Node>;
 
 namespace DotNetProjectFile.Slnx;
 
@@ -24,7 +24,7 @@ internal sealed class NodeFactory
     private readonly Dictionary<string, CtorFunc> CaseInsensitive;
 
     [Pure]
-    public Node Create(XElement element, Node parent, Solution project)
+    public Node Create(XElement element, Node parent, SolutionFile project)
         => Lookup(element).TryGetValue(element.Name.LocalName, out var con)
         ? con(element, parent, project)
         : new Unknown(element, parent, project);
@@ -48,7 +48,14 @@ internal sealed class NodeFactory
         .GetTypes()
         .Select(GetValidNodeCtor)
         .OfType<ConstructorInfo>()
-        .ToDictionary(ci => ci.DeclaringType.Name, GenerateCtor);
+        .ToDictionary(Key, GenerateCtor);
+
+    /// <summary>Lookup can not (easily) access the LocalName (override).</summary>
+    private static string Key(ConstructorInfo ci) => ci.DeclaringType.Name switch
+    {
+        nameof(SlnxProject) => "Project",
+        var name => name,
+    };
 
     [Pure]
     private ConstructorInfo? GetValidNodeCtor(Type type)

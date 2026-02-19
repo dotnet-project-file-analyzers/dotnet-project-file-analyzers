@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
@@ -12,8 +12,8 @@
     <Authors>Corniel Nobel; Wesley Baartman</Authors>
     <PackageId>DotNetProjectFile.Anayzers</PackageId>
     <PackageTags>analyzer; coolthings</PackageTags>
-    <RepositoryUrl>https://github.com/Corniel/dotnet-project-file-analyzers</RepositoryUrl>
-    <PackageProjectUrl>https://github.com/Corniel/dotnet-project-file-analyzers</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</PackageProjectUrl>
     <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
     <PackageReleaseNotes>
       <![CDATA[
@@ -27,7 +27,7 @@ v1.0.0
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageIcon>logo_128x128.png</PackageIcon>
-    <PackageIconUrl>https://raw.githubusercontent.com/Corniel/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 

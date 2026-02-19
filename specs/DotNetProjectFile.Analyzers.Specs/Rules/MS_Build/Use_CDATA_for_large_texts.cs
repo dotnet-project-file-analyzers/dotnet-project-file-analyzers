@@ -1,5 +1,3 @@
-using DotNetProjectFile.Licensing;
-
 namespace Rules.MS_Build.Use_CDATA_for_large_texts;
 
 public class Reports
@@ -25,7 +23,7 @@ public class Guards
 <Project Sdk=""Microsoft.NET.Sdk"">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <PackageReleaseNotes>Handled by GitHub Releases</PackageReleaseNotes>
   </PropertyGroup>
 

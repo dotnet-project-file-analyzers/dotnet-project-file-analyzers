@@ -3,12 +3,12 @@ namespace Rules.MS_Build.Packables_should_be_libraries;
 public class Reports
 {
     [Test]
-    public void on_not_alphabetical_order() => new PackablesShouldBeLibraries()
+    public void on_EXE_output() => new PackablesShouldBeLibraries()
        .ForInlineCsproj("""
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <OutputType>exe</OutputType>
     <IsPackable>true</IsPackable>
   </PropertyGroup>
@@ -22,6 +22,23 @@ public class Reports
 
 public class Guards
 {
+    [Test]
+    public void on_EXE_output_packed_as_tool() => new PackablesShouldBeLibraries()
+       .ForInlineCsproj("""
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>exe</OutputType>
+    <IsPackable>true</IsPackable>
+    <PackAsTool>true</PackAsTool>
+  </PropertyGroup>
+
+</Project>
+""")
+        .HasIssues(
+            Issue.ERR("CS5001", "Program does not contain a static 'Main' method suitable for an entry point"));
+
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     public void Projects_without_issues(string project) => new OrderPackageVersionsAlphabetically()

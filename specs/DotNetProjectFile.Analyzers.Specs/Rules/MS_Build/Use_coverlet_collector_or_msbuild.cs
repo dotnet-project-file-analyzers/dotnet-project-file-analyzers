@@ -7,7 +7,7 @@ public class Reports
         .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include=""coverlet.collector"" Version=""6.0.0"" PrivateAssets=""all"" />
@@ -26,7 +26,7 @@ public class Guards
         .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include=""coverlet.collector"" Version=""6.0.0"" PrivateAssets=""all"" />
@@ -39,7 +39,7 @@ public class Guards
     .ForInlineCsproj(@"
 <Project Sdk=""Microsoft.NET.Sdk"">
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include=""coverlet.msbuild"" Version=""6.0.0"" PrivateAssets=""all"" />

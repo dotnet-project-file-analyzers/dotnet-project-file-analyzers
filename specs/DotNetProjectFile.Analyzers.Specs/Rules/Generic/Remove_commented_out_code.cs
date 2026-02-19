@@ -8,7 +8,7 @@ public class Reports
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <!-- ImplicitUsings>enable</ImplicitUsings -->
   </PropertyGroup>
 
@@ -41,7 +41,7 @@ public class Guards
 
   <PropertyGroup>
     <!-- Only .NET 8.0 will work -->    
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
 </Project>
@@ -56,7 +56,7 @@ public class Guards
 
   <PropertyGroup>
     <!-- TODO add .NET 9.0 too -->    
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
 </Project>

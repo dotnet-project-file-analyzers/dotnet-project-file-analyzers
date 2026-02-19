@@ -12,8 +12,9 @@ public sealed partial class ProjectFiles
     private readonly FileCache<GitIgnoreSyntax> GitIgnoredFiles = new();
     private readonly FileCache<IniFile> IniFiles = new();
     private readonly FileCache<MsBuildProject> MsBuildProjects = new();
+    private readonly FileCache<NuGet.Configuration.NuGetConfigFile> NuGetConfigFiles = new();
     private readonly FileCache<Resource> ResourceFiles = new();
-    private readonly FileCache<Solution> SolutionFiles = new();
+    private readonly FileCache<SolutionFile> SolutionFiles = new();
 
     public GitIgnoreSyntax? GitIgnoreFile(IOFile file)
         => GitIgnoredFiles.TryGetOrUpdate(file, Create_GitIgnoreFile);
@@ -29,20 +30,31 @@ public sealed partial class ProjectFiles
         var path = IOFile.Parse(text.Path);
         if (path.GetProjectFileType() is ProjectFileType.None) return null;
 
-        return MsBuildProjects.TryGetOrUpdate(path, _ => MsBuild.Project.Load(text, Global));
+        return MsBuildProjects.TryGetOrUpdate(path, _ => MsBuild.MsBuildProject.Load(text, Global));
+    }
+
+    public NuGet.Configuration.NuGetConfigFile? NuGetConfigFile(IOFile file)
+       => NuGetConfigFiles.TryGetOrUpdate(file, Create_NuGetConfigFile);
+
+    public NuGet.Configuration.NuGetConfigFile? NuGetConfigFile(AdditionalText text)
+    {
+        var path = IOFile.Parse(text.Path);
+        if (path.GetProjectFileType() is ProjectFileType.None) return null;
+
+        return NuGetConfigFiles.TryGetOrUpdate(path, _ => NuGet.Configuration.NuGetConfigFile.Load(text));
     }
 
     public Resource? ResourceFile(IOFile file)
         => ResourceFiles.TryGetOrUpdate(file, Create_ResourceFile);
 
-    public Solution? SolutionFile(AdditionalText text)
+    public SolutionFile? SolutionFile(AdditionalText text)
     {
         var path = IOFile.Parse(text.Path);
-        return SolutionFiles.TryGetOrUpdate(path, _ => Solution.Load(text, Global));
+        return SolutionFiles.TryGetOrUpdate(path, _ => Slnx.SolutionFile.Load(text, Global));
     }
 
-    public Solution? SolutionFile(IOFile file)
-        => SolutionFiles.TryGetOrUpdate(file, _ => Solution.Load(file, Global));
+    public SolutionFile? SolutionFile(IOFile file)
+        => SolutionFiles.TryGetOrUpdate(file, _ => Slnx.SolutionFile.Load(file, Global));
 
     public MsBuildProject? UpdateMsBuildProject(CompilationAnalysisContext context)
     {
@@ -95,7 +107,7 @@ public sealed partial class ProjectFiles
     {
         var file = IOFile.Parse(context.AdditionalFile.Path);
         return Is.MsBuild(file)
-            ? MsBuildProjects.TryGetOrUpdate(file, _ => MsBuild.Project.Load(context.AdditionalFile, this))
+            ? MsBuildProjects.TryGetOrUpdate(file, _ => MsBuild.MsBuildProject.Load(context.AdditionalFile, this))
             : null;
     }
 
@@ -107,11 +119,19 @@ public sealed partial class ProjectFiles
             : null;
     }
 
-    public Solution? UpdateSolutionFile(AdditionalFileAnalysisContext context)
+    public NuGet.Configuration.NuGetConfigFile? UpdateNugetConfigFile(AdditionalFileAnalysisContext context)
+    {
+        var file = IOFile.Parse(context.AdditionalFile.Path);
+        return Is.NuGetConfig(file)
+            ? NuGetConfigFiles.TryGetOrUpdate(file, _ => NuGet.Configuration.NuGetConfigFile.Load(context.AdditionalFile))
+            : null;
+    }
+
+    public SolutionFile? UpdateSolutionFile(AdditionalFileAnalysisContext context)
     {
         var file = IOFile.Parse(context.AdditionalFile.Path);
         return Is.Solution(file)
-            ? SolutionFiles.TryGetOrUpdate(file, _ => Solution.Load(context.AdditionalFile, this))
+            ? SolutionFiles.TryGetOrUpdate(file, _ => Slnx.SolutionFile.Load(context.AdditionalFile, this))
             : null;
     }
 
@@ -127,7 +147,10 @@ public sealed partial class ProjectFiles
         => new(IniFileSyntax.Parse(Syntax.SyntaxTree.Load(file.OpenRead())));
 
     private MsBuildProject Create_MsBuildProject(IOFile file)
-       => MsBuild.Project.Load(file, this);
+       => MsBuild.MsBuildProject.Load(file, this);
+
+    private NuGet.Configuration.NuGetConfigFile Create_NuGetConfigFile(IOFile file)
+       => NuGet.Configuration.NuGetConfigFile.Load(file);
 
     private Resource Create_ResourceFile(IOFile file)
         => Resource.Load(file, this);
@@ -142,6 +165,8 @@ public sealed partial class ProjectFiles
         public static bool MsBuild(IOFile file)
             => Languages.All.Any(lang => file.Extension.IsMatch(lang.ProjectFileExtension))
             || file.Extension.IsMatch(".props");
+
+        public static bool NuGetConfig(IOFile file) => file.Name.IsMatch("NuGet.config");
 
         public static bool Resource(IOFile file) => file.Extension.IsMatch(".resx");
 

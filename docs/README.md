@@ -49,7 +49,7 @@ The source code can be found at GitHub: [github.com/dotnet-project-file-analyzer
 
 ## Issues and suggestions
 Issues (false positives, false negatives, etc.), and (rule) suggestions can be
-reported a the [GibHub repository](https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers/issues).
+reported to the [GitHub repository](https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers/issues).
 
 ## MS Build project file rules
 * [**Proj0001** MS Build project file could not be located](rules/Proj0001.md)
@@ -60,7 +60,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0006** Add additional files to improve static code analysis](rules/Proj0006.md)
 * [**Proj0007** Remove empty nodes](rules/Proj0007.md)
 * [**Proj0008** Remove folder nodes](rules/Proj0008.md)
-* [**Proj0009** Use the TragetFramework node for a single target framework](rules/Proj0009.md)
+* [**Proj0009** Use the TargetFramework node for a single target framework](rules/Proj0009.md)
 * [**Proj0010** Define OutputType explicitly](rules/Proj0010.md)
 * [**Proj0011** Define properties once](rules/Proj0011.md)
 * [**Proj0012** Reassign properties with different value](rules/Proj0012.md)
@@ -100,6 +100,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0046** Update statements should change state](rules/Proj0046.md)
 * [**Proj0047** Label item groups that disable compilation items](rules/Proj0047.md)
 * [**Proj0048** Language version should be set to an explicit version number](rules/Proj0048.md)
+* [**Proj0049** Prefer the latest released language version](rules/Proj0049.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
@@ -122,6 +123,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0217** Define requiring license acceptance explicitly](rules/Proj0217.md)
 * [**Proj0218** Symbol package format snupkg requires debug type portable](rules/Proj0218.md)
 * [**Proj0219** Packable projects should be libraries](rules/Proj0219.md)
+* [**Proj0220** Symbol package format snupkg requires include symbols to be enabled](rules/Proj0220.md)
 * [**Proj0240** Enable package validation](rules/Proj0240.md)
 * [**Proj0241** Enable package baseline validation](rules/Proj0241.md)
 * [**Proj0242** Generate NuGet packages conditionally](rules/Proj0242.md)
@@ -159,7 +161,7 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0508** Order third-party licenses alphabetically](rules/Proj0508.md)
 * [**Proj0509** NuGet package cache could not be resolved](rules/Proj0509.md)
 
-### .NET Project File Analyzers SDK
+### .NET project file analyzers SDK
 * [**Proj0700** Avoid defining &lt;Compile&gt; items in SDK project](rules/Proj0700.md)
 
 ### Central Package Management
@@ -171,10 +173,11 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj0805** Define version for PackageReference](rules/Proj0805.md)
 * [**Proj0806** VersionOverride should change the version](rules/Proj0806.md)
 * [**Proj0807** Use Directory.Packages.props only for Central Package Management](rules/Proj0807.md)
-* [**Proj0808** Define global package reference only in Directory.Packages.props](rules/Proj0808.md)
+* [**Proj0808** Define CPM related configuration only in Directory.Packages.props](rules/Proj0808.md)
 * [**Proj0809** Global package references are meant for private assets only](rules/Proj0809.md)
 * [**Proj0810** Remove unused package versions](rules/Proj0810.md)
 * [**Proj0811** Directory.Build.props and Directory.Packages.props should be in the same directory](rules/Proj0811.md)
+* [**Proj0812** Remove redundant packages references that are globally referenced](rules/Proj0812.md)
 
 ### Analyzers
 * [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
@@ -213,6 +216,15 @@ reported a the [GibHub repository](https://github.com/dotnet-project-file-analyz
 * [**Proj3000** Only use UTF-8 without BOM](rules/Proj3000.md)
 * [**Proj3001** Track uses of "TODO" tags](rules/Proj3001.md)
 * [**Proj3002** Remove commented-out code](rules/Proj3002.md)
+* [**Proj3003** Trim whitespace](rules/Proj3003.md)
+
+## NuGet configuration
+* [**Proj0300** Configure NuGet explicitly](rules/Proj0300.md)
+* [**Proj0301** Clear previously defined package sources](rules/Proj0301.md)
+* [**Proj0302** Credentials should be injected](rules/Proj0302.md)
+* [**Proj0303** Define a mapping for each package source](rules/Proj0303.md)
+* [**Proj0304** Package source mappings should be unique](rules/Proj0304.md)
+* [**Proj0305** Last source map should map all packages](rules/Proj0305.md)
 
 ## INI
 * [**Proj4000** Invalid INI file](rules/Proj4000.md)

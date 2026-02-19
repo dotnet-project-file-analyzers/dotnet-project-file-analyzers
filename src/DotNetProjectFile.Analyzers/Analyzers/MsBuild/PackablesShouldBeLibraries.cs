@@ -5,14 +5,19 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class PackablesShouldBeLibraries() : MsBuildProjectFileAnalyzer(Rule.PackablesShouldBeLibraries)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.File.IsPackable() && context.File.GetOutputType() != OutputType.Kind.Library)
-        {
-            context.ReportDiagnostic(Descriptor, context.File);
-        }
+        if (!context.File.IsPackable() ||
+            context.File.GetOutputType() == OutputType.Kind.Library ||
+            IsTool(context.File, context.File.GetOutputType())) return;
+
+        context.ReportDiagnostic(Descriptor, context.File);
     }
+
+    private static bool IsTool(MsBuildProject project, OutputType.Kind outputType)
+        => outputType == OutputType.Kind.Exe
+        && project.Property<PackAsTool>()?.Value is true;
 }

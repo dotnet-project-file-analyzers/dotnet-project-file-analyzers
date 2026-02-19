@@ -1,8 +1,6 @@
 using CodeAnalysis.TestTools.Contexts;
-using Specs.TestTools;
 using System.Diagnostics.CodeAnalysis;
 using System.IO;
-using System.Security.Cryptography;
 
 namespace Microsoft.CodeAnalysis.Diagnostics;
 
@@ -16,51 +14,136 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
         => new(analyzer, fileName, content);
 
     [Pure]
+    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineProject(
+        this DiagnosticAnalyzer analyzer,
+        Language language,
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+    {
+        if (language.IsRoslynBased)
+        {
+            return analyzer.ForInlineProject($"inline{language.ProjectFileExtension}", content);
+        }
+        else
+        {
+            return analyzer
+                .ForInlineSdkProject()
+                .WithFile($"inline/inline{language.ProjectFileExtension}", content);
+        }
+    }
+
+    [Pure]
     public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject(
         this DiagnosticAnalyzer analyzer,
-        string content)
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
         => analyzer.ForInlineProject(".net.csproj", content);
 
+    /// <remarks>
+    /// Includes a copy of DotNetProjectFile.Analyzers.Sdk.props.
+    /// </remarks>
     [Pure]
     public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject(
         this DiagnosticAnalyzer analyzer)
         => analyzer.ForInlineSdkProject("""
-<Project Sdk="Microsoft.NET.Sdk">
+            <Project Sdk="Microsoft.NET.Sdk">
+              <PropertyGroup>
+                <!-- The TargetFramework may be overridden, but has a fine default. -->
+                <TargetFramework>net10.0</TargetFramework>
+                <LangVersion>latest</LangVersion>
+                <IsPackable>false</IsPackable>
+                <IsPublishable>false</IsPublishable>
+              </PropertyGroup>
 
-  <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-  </PropertyGroup>
+              <!-- We do not want to enable default items here. -->
+              <PropertyGroup>
+                <EnableDefaultItems>false</EnableDefaultItems>
+              </PropertyGroup>
 
-  <ItemGroup>
-    <AdditionalFiles Include="*.slnx" />
-  </ItemGroup>
+              <!-- The bin is just noise here, so move it a temp location. -->
+              <PropertyGroup>
+                <OutputPath>$([System.IO.Path]::GetTempPath())/.net/bin</OutputPath>
+                <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj</IntermediateOutputPath>
+              </PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="DotNetProjectFile.Analyzers.Sdk" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
-  </ItemGroup>
+              <ItemGroup Label="Add without showing">
+                <AdditionalFiles Visible="false" Include="$(MSBuildProjectFile)" />
+                <AdditionalFiles Visible="false" Include="**/*.csproj" />
+                <AdditionalFiles Visible="false" Include="**/*.props" />
+                <AdditionalFiles Visible="false" Include="**/*.targets" />
+                <AdditionalFiles Visible="false" Include="**/*.slnx" />
+                <AdditionalFiles Visible="false" Include="**/*.vbproj" />
+                <AdditionalFiles Visible="false" Include="**/*.fsproj" />
+                <AdditionalFiles Visible="false" Include="**/*.cblproj" />
+              </ItemGroup>
 
-</Project>
-""");
+              <ItemGroup Label="Exclude generated stuff">
+                <AdditionalFiles Remove="**/bin/**" />
+                <AdditionalFiles Remove="**/obj/**" />
+              </ItemGroup>
+
+              <ItemGroup>
+                <AdditionalFiles Include=".*config" />
+                <AdditionalFiles Include=".git*" />
+                <AdditionalFiles Include=".github/**" />
+                <AdditionalFiles Include="*.config" />
+                <AdditionalFiles Include="*.ini" />
+                <AdditionalFiles Include="*.json" />
+                <AdditionalFiles Include="*.md" />
+                <AdditionalFiles Include="*.props" />
+                <AdditionalFiles Include="*.targets" />
+                <AdditionalFiles Include="*.txt" />
+                <AdditionalFiles Include="*.yaml" />
+                <AdditionalFiles Include="*.yml" />
+                <AdditionalFiles Include="props/*.props" />
+                <AdditionalFiles Include="props/*.targets" />
+              </ItemGroup>
+
+              <ItemGroup>
+                <None Include="**/TestResults/**" />
+              </ItemGroup>
+
+            </Project>
+            
+            """);
 
     [Pure]
-    public static ProjectAnalyzerVerifyContext ForInlineSlnx(
-        this DiagnosticAnalyzer analyzer,
-        string content)
-        => analyzer.ForInlineSdkProject()
-        .WithFile("inline.slnx", content)
-        .Build();
-
-    [Pure]
-    public static ProjectAnalyzerVerifyContext ForInlineCsproj(
+    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineNuGetConfig(
         this DiagnosticAnalyzer analyzer,
         [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-        => analyzer.ForInlineProject("inline.csproj", content).Build();
+        => analyzer
+        .ForInlineSdkProject()
+        .WithFile("NuGet.config", content);
 
     [Pure]
-    public static ProjectAnalyzerVerifyContext ForInlineVbproj(
-       this DiagnosticAnalyzer analyzer,
-       [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-       => analyzer.ForInlineProject("inline.vbproj", content).Build();
+    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSlnx(
+        this DiagnosticAnalyzer analyzer,
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+        => analyzer
+        .ForInlineSdkProject()
+        .WithFile("inline.slnx", content);
+
+    [Pure]
+    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineCsproj(
+        this DiagnosticAnalyzer analyzer,
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+        => analyzer.ForInlineProject(Language.CSharp, content);
+
+    [Pure]
+    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineVbproj(
+        this DiagnosticAnalyzer analyzer,
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+        => analyzer.ForInlineProject(Language.VisualBasic, content);
+
+    [Pure]
+    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineFsproj(
+        this DiagnosticAnalyzer analyzer,
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+        => analyzer.ForInlineProject(Language.FSharp, content);
+
+    [Pure]
+    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineCblproj(
+        this DiagnosticAnalyzer analyzer,
+        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+        => analyzer.ForInlineProject(Language.VisualCobol, content);
 
     [Pure]
     public static ProjectAnalyzerVerifyContext ForProject(this DiagnosticAnalyzer analyzer, string fileName)

@@ -17,7 +17,7 @@ public class Can_be_determined
             <Project Sdk=""Microsoft.NET.Sdk"">
 
               <PropertyGroup>
-                <TargetFramework>net8.0</TargetFramework>
+                <TargetFramework>net10.0</TargetFramework>
               </PropertyGroup>
 
               <ItemGroup>
@@ -36,7 +36,7 @@ public class Can_be_determined
     {
         public Dictionary<string, LicenseExpression> Detected { get; } = new(StringComparer.OrdinalIgnoreCase);
 
-        protected override void Register(ProjectFileAnalysisContext<DotNetProjectFile.MsBuild.Project> context)
+        protected override void Register(ProjectFileAnalysisContext<DotNetProjectFile.MsBuild.MsBuildProject> context)
         {
             var references = context.File.ItemGroups
                 .Children<PackageReferenceBase>()

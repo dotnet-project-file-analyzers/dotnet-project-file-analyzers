@@ -72,7 +72,7 @@ public class Locates
         /// <remarks>This behavior can be improved on.</remarks>
         [Test]
         public void with_attributes()
-           => XmlPositions.New(XElement.Parse(@"<elm Id=""SomeId"" />", Options))
+           => XmlPositions.New(XElement.Parse("""<elm Id="SomeId" />""", Options))
            .Should().Be(new XmlPositions
            {
                StartElement = new(new(00, 00), new(00, 05)),
@@ -82,10 +82,11 @@ public class Locates
         /// <remarks>This behavior can be improved on.</remarks>
         [Test]
         public void with_child()
-           => XmlPositions.New(XElement.Parse(
-    @"<elm>
-  <child>value</child>
-</elm>", Options))
+            => XmlPositions.New(XElement.Parse("""
+                <elm>
+                  <child>value</child>
+                </elm>
+                """, Options))
            .Should().Be(new XmlPositions
            {
                StartElement = new(new(00, 00), new(00, 04)),
@@ -94,10 +95,11 @@ public class Locates
 
         [Test]
         public void self_closing_with_attributes()
-            => XmlPositions.New(XElement.Parse(
-                @"<Project>
-  <Compile Include=""../common/Code.cs"" />
-</Project>", Options).Elements().First())
+            => XmlPositions.New(XElement.Parse("""
+                <Project>
+                  <Compile Include="../common/Code.cs" />
+                </Project>
+                """, Options).Elements().First())
             .Should().Be(new XmlPositions
             {
                 StartElement = new(new(01, 02), new(01, 41)),

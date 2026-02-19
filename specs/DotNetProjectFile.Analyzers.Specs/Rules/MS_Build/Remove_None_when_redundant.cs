@@ -6,11 +6,9 @@ public class Reports
     public void on_not_alphabetical_order() => new RemoveNoneWhenRedundant()
        .ForInlineCsproj("""
         <Project Sdk="Microsoft.NET.Sdk">
-
-            <PropertyGroup>
-            <TargetFramework>net8.0</TargetFramework>
-            </PropertyGroup>
-
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
             <ItemGroup>
             <None Include="*" />
             <None Remove="License.md" />

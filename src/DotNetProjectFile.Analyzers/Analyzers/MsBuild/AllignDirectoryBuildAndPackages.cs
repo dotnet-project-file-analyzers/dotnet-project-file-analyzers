@@ -5,13 +5,13 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class AllignDirectoryBuildAndPackages() : MsBuildProjectFileAnalyzer(Rule.AllignDirectoryBuildAndPackages)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         if (context.File.DirectoryBuildProps is { } build
             && context.File.DirectoryPackagesProps is { } packages

@@ -19,7 +19,7 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
     Rule.DefinePackageRequireLicenseAcceptance)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
@@ -27,11 +27,18 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
 
         var available = context.File.Walk().Select(n => n.GetType()).ToImmutableHashSet();
 
-        Analyze(context, available, Rule.DefineVersion, typeof(DotNetProjectFile.MsBuild.Version), typeof(VersionPrefix));
+        if (!HasAlternativePackageVersioning(context))
+        {
+            Analyze(context, available, Rule.DefineVersion, typeof(DotNetProjectFile.MsBuild.Version), typeof(VersionPrefix));
+        }
         Analyze(context, available, Rule.DefineDescription, typeof(Description), typeof(PackageDescription));
         Analyze(context, available, Rule.DefineAuthors, typeof(Authors));
         Analyze(context, available, Rule.DefineTags, typeof(PackageTags));
-        Analyze(context, available, Rule.DefineRepositoryUrl, typeof(RepositoryUrl));
+
+        if (!HasSourceLinkEnabled(context))
+        {
+            Analyze(context, available, Rule.DefineRepositoryUrl, typeof(RepositoryUrl));
+        }
         Analyze(context, available, Rule.DefineUrl, typeof(PackageProjectUrl));
         Analyze(context, available, Rule.DefineCopyright, typeof(Copyright));
         Analyze(context, available, Rule.DefineReleaseNotes, typeof(PackageReleaseNotes));
@@ -55,4 +62,17 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
             context.ReportDiagnostic(descriptor, context.File);
         }
     }
+
+    private static bool HasAlternativePackageVersioning(ProjectFileAnalysisContext context) => context
+        .File.Walk()
+        .OfType<PackageReference>()
+        .Any(HasAlternativePackageVersioning);
+
+    private static bool HasSourceLinkEnabled(ProjectFileAnalysisContext context)
+        => context.Options.GetSdkVersion() >= SdkVersion.NET8;
+
+    private static bool HasAlternativePackageVersioning(PackageReference reference)
+        => reference.IncludeOrUpdate
+        is "MinVer"
+        or "NuGet.Versioning";
 }

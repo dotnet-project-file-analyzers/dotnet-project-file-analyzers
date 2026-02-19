@@ -1,5 +1,6 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.GenerateSbom"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class GenerateSbom() : MsBuildProjectFileAnalyzer(Rule.GenerateSbom)
 {
@@ -7,7 +8,7 @@ public sealed class GenerateSbom() : MsBuildProjectFileAnalyzer(Rule.GenerateSbo
     private static readonly string Package = $"Register the NuGet package '{NuGet.Packages.Microsoft_Sbom_Targets.Name}'";
 
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     protected override void Register(ProjectFileAnalysisContext context)
     {
@@ -15,7 +16,8 @@ public sealed class GenerateSbom() : MsBuildProjectFileAnalyzer(Rule.GenerateSbo
 
         var property = context.File.Property<GenerateSBOM>();
         var registered = context.File
-           .Walk().OfType<PackageReference>()
+           .Walk().OfType<PackageReferenceBase>()
+           .Where(p => p is not PackageVersion)
            .Any(NuGet.Packages.Microsoft_Sbom_Targets.IsMatch);
 
         if (property is { })

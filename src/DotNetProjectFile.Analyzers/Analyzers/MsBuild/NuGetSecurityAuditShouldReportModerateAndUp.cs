@@ -5,10 +5,10 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class NuGetSecurityAuditShouldReportModerateAndUp() : MsBuildProjectFileAnalyzer(Rule.NuGetSecurityAuditShouldReportModerateAndUp)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         var property = context.File.Property<NuGetAuditLevel>();
         var level = property?.Value ?? NuGetAuditLevel.Kind.Low;

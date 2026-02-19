@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+     <GlobalPackageReference Include="DotNetProjectFile.Analyzers" Vesion="1.8.0" />
+  </ItemGroup>
+</Project>

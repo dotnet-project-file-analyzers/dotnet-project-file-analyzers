@@ -466,6 +466,16 @@ public static partial class Rule
         tags: ["Compile", "Build"],
         category: Category.Reliability);
 
+    public static DiagnosticDescriptor PreferLatestLanguageVersion => New(
+       id: 0049,
+       title: "Prefer the latest released language version",
+       message: "Use <LangVersion>{0}</LangVersion> supported by the .NET {1} SDK",
+       description:
+           "To benefit from the latest language features, use the latest " +
+           "released version of the language.",
+       tags: ["Compile", "Build"],
+       category: Category.Reliability);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
@@ -699,6 +709,16 @@ public static partial class Rule
         description: "Packing projects other than libraries is most likely a mistake.",
         tags: ["NuGet", "package"],
         category: Category.Bug);
+
+    public static DiagnosticDescriptor SymbolPackageFormatSNupkgRequiresIncludeSymbolsToBeEnabled => New(
+        id: 0220,
+        title: "Symbol package format snupkg requires include symbols to be enabled",
+        message: "The <IncludeSymbols> must be 'true' when package format is 'snupkg'",
+        description:
+            "To ensure that symbol packages are created <IncludeSymbols> should " +
+            "be set to 'true'.",
+        tags: ["Configuration", "NuGet", "package", "symbols"],
+        category: Category.Configuration);
 
     public static DiagnosticDescriptor EnablePackageValidation => New(
         id: 0240,
@@ -1119,14 +1139,14 @@ public static partial class Rule
         tags: ["Bug"],
         category: Category.CPM);
 
-    public static DiagnosticDescriptor DefineGlobalPackageReferenceInDirectoryPackagesOnly => New(
+    public static DiagnosticDescriptor DefineCpmRelatedConfigInDirectoryPackages => New(
         id: 0808,
-        title: "Define global package reference only in Directory.Packages.props",
-        message: "The <GlobalPackageReference> should be defined in the Directory.Packages.props",
+        title: "Define CPM related configuration only in Directory.Packages.props",
+        message: "The <{0}> should be defined in the Directory.Packages.props",
         description:
             "The use of <GlobalPackageReference> is only useful " +
             "when defined in Directory.Packages.props.",
-        tags: ["Bug"],
+        tags: ["CPM"],
         category: Category.CPM);
 
     public static DiagnosticDescriptor GlobalPackageReferencesAreMeantForPrivateAssetsOnly => New(
@@ -1160,12 +1180,21 @@ public static partial class Rule
         tags: ["build", "import", "CPM"],
         category: Category.Clarity);
 
+    public static DiagnosticDescriptor RemoveRedundantReferencesForGloballyReferenced => New(
+        id: 0812,
+        title: "Remove redundant packages references that are globally referenced",
+        message: "Remove redundant reference '{0}'",
+        description:
+            "Importing packages twice is only adding noise.",
+        tags: ["package", "import", "duplicate"],
+        category: Category.Clarity);
+
     public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
         id: 1000,
         title: "Use the .NET project file analyzers",
         message: "Use the .NET project file analyzers",
         description: "To improve the code quality of .NET project files.",
-        tags: ["roslyn", "analyzer", "cbproj", "vbproj"],
+        tags: ["roslyn", "analyzer", "csproj", "vbproj", "fsproj", "cblproj"],
         category: Category.CodeQuality,
         isEnabled: false);
 
@@ -1332,6 +1361,25 @@ public static partial class Rule
             "follow the code that should be executed.",
         tags: ["XML", "comment", "code"],
         category: Category.Noise);
+
+    public static DiagnosticDescriptor TrimWhitespace => New(
+        id: 3003,
+        title: "Trim whitespace",
+        message: "Remove {0} whitespace",
+        description:
+            "Leading or trailing insignificant whitespace can cause syntax " +
+            "errors or make the comparing of file changes harder.",
+        tags: ["XML", "leading", "trailing", "whitespace", "trim"],
+        category: Category.Noise);
+
+    public static DiagnosticDescriptor CompilerVisibleProperties => New(
+        id: 9999,
+        title: "Log properties visible to the compiler",
+        message: "{0} = {1}",
+        description: "Debug rule to show values of compiler visible properties",
+        tags: ["Debug", "CompilerVisibleProperty"],
+        category: Category.Debugging,
+        isEnabled: false);
 
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.

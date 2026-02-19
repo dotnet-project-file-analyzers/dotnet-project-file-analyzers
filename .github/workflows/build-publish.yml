@@ -27,7 +27,7 @@ jobs:
       - name: Setup dotnet
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '9.0.300'
+          dotnet-version: '10.0.101'
 
       - name: Build
         run: dotnet build dotnet-project-file-analyzers.slnx -c Release

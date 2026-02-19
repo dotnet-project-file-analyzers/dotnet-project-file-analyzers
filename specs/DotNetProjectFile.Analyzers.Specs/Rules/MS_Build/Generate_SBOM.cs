@@ -29,4 +29,21 @@ public class Guards
     public void Projects_without_issues(string project) => new GenerateSbom()
         .ForProject(project)
         .HasNoIssues();
+
+    [TestCase]
+    public void global_package_reference() => new GenerateSbom().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <GenerateSBOM>true</GenerateSBOM>
+          </PropertyGroup>
+
+          <ItemGroup>
+            <GlobalPackageReference Include="Microsoft.Sbom.Targets" Version="4.1.5" />
+          </ItemGroup>
+
+        </Project>
+        """)
+        .HasNoIssues();
 }

@@ -6,10 +6,10 @@ public sealed class UseCoverletCollectorOrMsBuild()
     : MsBuildProjectFileAnalyzer(Rule.UseCoverletCollectorOrMsBuild)
 {
     /// <inheritdoc />
-    public override IReadOnlyCollection<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         var collector = context.File
             .Walk()
