@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Test tools">
-    <PackageReference Include="AwesomeAssertions" Version="9.3.0" />
+    <PackageReference Include="AwesomeAssertions" Version="9.4.0" />
     <PackageReference Include="CodeAnalysis.TestTools" Version="4.0.0" />
     <PackageReference Include="NuGet.Common" Version="7.0.1" />
     <PackageReference Include="NuGet.Frameworks" Version="7.0.1" />
