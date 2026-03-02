@@ -60,9 +60,9 @@
       },
       "Qowaiv.Analyzers.CSharp": {
         "type": "Direct",
-        "requested": "[2.0.7, )",
-        "resolved": "2.0.7",
-        "contentHash": "OgL/+oDq8By74jK8C2slWgQAZbD5mC16wIs+Oz2inD2lf7aAgOEfhguET+f0q1LFVfW0cPrDfa5lUAYSOkkhBg=="
+        "requested": "[2.1.0, )",
+        "resolved": "2.1.0",
+        "contentHash": "t3UvKsRR0X6/d8k5H5ItVHaN0zPjKmfm8AFAKIYw/msCI5JipurNbBWA0HbfqzL8dIvMJt5LNgks49/is9NIcw=="
       },
       "SonarAnalyzer.CSharp": {
         "type": "Direct",
