@@ -31,11 +31,12 @@ public class RunAll
         => AnalyzersContext!.GetDiagnosticsAsync();
 
     private static readonly DiagnosticAnalyzer[] Analyzers =
-        typeof(MsBuildProjectFileAnalyzer).Assembly
-            .GetTypes()
-            .Where(t => !t.IsAbstract && t.IsAssignableTo(typeof(DiagnosticAnalyzer)))
-            .Select(t => (DiagnosticAnalyzer)Activator.CreateInstance(t)!)
-            .ToArray();
+    [
+        .. typeof(MsBuildProjectFileAnalyzer).Assembly
+        .GetTypes()
+        .Where(t => !t.IsAbstract && t.IsAssignableTo(typeof(DiagnosticAnalyzer)))
+        .Select(t => (DiagnosticAnalyzer)Activator.CreateInstance(t)!)
+    ];
 
     private static readonly Dictionary<string, FileInfo> Files = new()
     {
