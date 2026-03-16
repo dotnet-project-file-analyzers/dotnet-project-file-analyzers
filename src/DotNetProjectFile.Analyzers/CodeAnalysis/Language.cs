@@ -44,7 +44,7 @@ public readonly struct Language : IEquatable<Language>
         xxproj: ".fsproj",
         roslynBased: false);
 
-    /// <summary>Visual Cobol</summary>
+    /// <summary>Visual Cobol.</summary>
     public static readonly Language VisualCobol = new(
         nameof(VisualCobol),
         name: "Visual Cobol",
