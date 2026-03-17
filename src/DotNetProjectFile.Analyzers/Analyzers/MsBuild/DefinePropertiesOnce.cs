@@ -1,18 +1,17 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.DefinePropertiesOnce"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class DefinePropertiesOnce() : MsBuildProjectFileAnalyzer(Rule.DefinePropertiesOnce)
 {
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var props = new HashSet<Node>(new PropertyComparer());
 
-        foreach (var prop in context.File.PropertyGroups.Children<Node>())
+        foreach (var prop in context.File.PropertyGroups.Children<Node>().Where(p => !props.Add(p)))
         {
-            if (!props.Add(prop))
-            {
-                context.ReportDiagnostic(Descriptor, prop, prop.LocalName);
-            }
+            context.ReportDiagnostic(Descriptor, prop, prop.LocalName);
         }
     }
 
