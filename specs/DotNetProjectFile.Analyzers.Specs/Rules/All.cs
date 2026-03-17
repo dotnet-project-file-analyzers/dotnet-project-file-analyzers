@@ -14,6 +14,7 @@ public class Guards
             IgnoredDiagnostics = DiagnosticIds.Empty.AddRange(
                 "CS8019", // Unnecessary using directive.
                 "CS8933", // The using directive appeared previously as global using
+                "CS9335", // Hidden code
 
                 // Default disabled
                 "Proj0037",
