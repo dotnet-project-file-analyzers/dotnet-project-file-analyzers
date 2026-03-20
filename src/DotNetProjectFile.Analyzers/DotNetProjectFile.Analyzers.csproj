@@ -46,6 +46,7 @@
     <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
     <None Include="$(OutputPath)/DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
     <None Include="build/DotNetProjectFile.Analyzers.props" Pack="true" PackagePath="/build/" />
+    <None Include="build/DotNetProjectFile.Analyzers.targets" Pack="true" PackagePath="/build/" />
     <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
@@ -69,6 +70,13 @@
 
   <ItemGroup>
     <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="build\DotNetProjectFile.Analyzers.targets">
+      <PackagePath>/build/</PackagePath>
+      <Pack>true</Pack>
+    </None>
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">

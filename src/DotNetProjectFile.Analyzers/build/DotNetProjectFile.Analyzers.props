@@ -1,5 +1,9 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
+  <PropertyGroup>
+    <SonarCloudIntegration>true</SonarCloudIntegration>
+  </PropertyGroup>
+  
   <!-- Non-compiling files to analyze. -->
   <ItemGroup>
     <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
@@ -19,19 +23,6 @@
     <CompilerVisibleProperty Include="PackageLicenseExpression" />
     <CompilerVisibleProperty Include="Platform" />
     <CompilerVisibleProperty Include="SolutionDir" />
-  </ItemGroup>
-
-  <!--
-    SonarCloud can pick up issues report on files others than compiling files
-    if they are reported as <Content>. To reduce noise and overhead, copying
-    to output is disabled and visibility is false.
-  -->
-  <ItemGroup Condition="'$(SonarCloudIntegration)' == 'true'">
-    <Content Include="**/*.??proj" CopyToOutputDirectory="never" Visible="false" />
-    <Content Include="**/*.config" CopyToOutputDirectory="never" Visible="false" />
-    <Content Include="**/*.props" CopyToOutputDirectory="never" Visible="false" />
-    <Content Include="**/*.resx" CopyToOutputDirectory="never" Visible="false" />
-    <Content Include="**/*.slnx" CopyToOutputDirectory="never" Visible="false" />
   </ItemGroup>
 
 </Project>
