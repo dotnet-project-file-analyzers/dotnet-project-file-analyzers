@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -70,13 +70,6 @@
 
   <ItemGroup>
     <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" ExcludeAssets="runtime" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="build\DotNetProjectFile.Analyzers.targets">
-      <PackagePath>/build/</PackagePath>
-      <Pack>true</Pack>
-    </None>
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
