@@ -220,9 +220,6 @@ pip-log.txt
 .mr.developer.cfg
 nuget/packages/
 
-# Exclude build folder at root level
-!/build
-
 artifacts
 
 # TypeScript (only needed for debugging)
