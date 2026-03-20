@@ -13,7 +13,7 @@ SonarCloud scans your code for issues and provides an online dashboard for track
 
 ## The Problem
 
-SonarCloud's analyzer runs during builds (e.g. as part of a PR check), but by default it does not pick up warnings reported on `.??proj` and `.props` files. As a result:
+SonarCloud's analyzer runs during builds (e.g. as part of a PR check), but by default it does not pick up warnings reported on files SonarCloud does not have analyzers for, such as `.??proj` and `.props` files. As a result:
 
 - Warnings from this analyzer will **not** appear in SonarCloud reports.
 - They will **not** generate pull request comments.
@@ -25,19 +25,9 @@ SonarCloud's analyzer runs during builds (e.g. as part of a PR check), but by de
 
 There is no native solution for this yet. The workaround is to register the relevant file types as `<Content>` items in MSBuild. SonarCloud treats content files as analyzable, so warnings on them will surface in reports and PR annotations.
 
-### Basic example
-
-```xml
-<ItemGroup>
-  <Content Include="*.??proj" CopyToOutputDirectory="Never"/>
-  <Content Include="../../props/common.props" CopyToOutputDirectory="Never" Link="Properties/common.props"/>
-  <Content Include="../../Directory.Packages.props" CopyToOutputDirectory="Never" Link="Properties/Directory.Packages.props"/>
-</ItemGroup>
-```
-
 ### Recommended implementation
 
-For broader coverage with minimal noise, use a conditioned `ItemGroup` driven by a `SonarCloudIntegration` property. This keeps the entries out of regular builds and hides them from Solution Explorer.
+It is recommended to use a conditioned `ItemGroup` driven by a `SonarCloudIntegration` property. Be aware that `<Content>` might alter the output. `SonarCloudIntegration` should always be enabled, unless this leads to issues such as undesired altered output of the resulting build.
 
 ```xml
 <!--
