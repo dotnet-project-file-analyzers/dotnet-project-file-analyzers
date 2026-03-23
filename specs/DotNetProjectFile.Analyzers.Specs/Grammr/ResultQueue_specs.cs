@@ -34,8 +34,8 @@ public class Adds
         ]);
     }
 
-    internal static ResultQueue New() => new();
+    private static ResultQueue New() => new();
 
-    internal static Result Successful(int length) => Result.Successful(null, TokenStream.From("0123456789").Add(new(0, length), null));
+    private static Result Successful(int length) => Result.Successful(null, TokenStream.From("0123456789").Add(new(0, length), null));
 }
 
