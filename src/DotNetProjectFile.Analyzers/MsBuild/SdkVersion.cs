@@ -43,7 +43,7 @@ public readonly record struct SdkVersion(int Major, int Minor, int Patch) : ICom
     /// <summary><![CDATA[Returns true if left <= right.]]></summary>
     public static bool operator <=(SdkVersion left, SdkVersion right) => left.CompareTo(right) <= 0;
 
-    /// <summary><![CDATA[Returns true if left < right.]]></summary>
+    /// <summary><![CDATA[Returns true if left > right.]]></summary>
     public static bool operator >(SdkVersion left, SdkVersion right) => left.CompareTo(right) > 0;
 
     /// <summary><![CDATA[Returns true if left >= right.]]></summary>
