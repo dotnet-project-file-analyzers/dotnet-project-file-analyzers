@@ -13,7 +13,7 @@ internal sealed class NodeFactory
     public NodeFactory()
     {
         CtorArgumentTypes = GetCtorParameterTypes();
-        CtorArgumentExpressions = CtorArgumentTypes.Select(x => Expression.Parameter(x)).ToArray();
+        CtorArgumentExpressions = [.. CtorArgumentTypes.Select(x => Expression.Parameter(x))];
         CaseSensitive = BuildCtorMap();
         CaseInsensitive = new Dictionary<string, CtorFunc>(CaseSensitive, StringComparer.OrdinalIgnoreCase);
     }
