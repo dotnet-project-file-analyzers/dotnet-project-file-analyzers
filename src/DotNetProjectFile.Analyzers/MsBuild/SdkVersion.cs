@@ -7,7 +7,7 @@ namespace DotNetProjectFile.MsBuild;
 public readonly record struct SdkVersion(int Major, int Minor, int Patch) : IComparable<SdkVersion>
 {
     public static readonly SdkVersion None;
-    
+
     /// <summary>The .NET 7.0 SDK.</summary>
     public static readonly SdkVersion NET6 = new(6, 0, 0);
 

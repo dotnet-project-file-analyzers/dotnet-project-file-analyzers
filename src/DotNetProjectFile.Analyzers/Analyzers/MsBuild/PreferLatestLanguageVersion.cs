@@ -12,7 +12,7 @@ public sealed class PreferLatestLanguageVersion() : MsBuildProjectFileAnalyzer(R
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Options.GetSdkVersion() is not { IsNone: false } sdkVersion ||
+        if (context.Props.NETCoreSdkVersion is not { IsNone: false } sdkVersion ||
             context.File.Property<LangVersion>()?.Value is not { IsNone: true } langVersion) return;
 
         var advised = context.CompilationLanguage switch

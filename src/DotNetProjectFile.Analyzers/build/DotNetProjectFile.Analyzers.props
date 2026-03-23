@@ -12,6 +12,7 @@
   <!-- Common variable that should be resolvable. -->
   <ItemGroup>
     <CompilerVisibleProperty Include="Configuration" />
+    <CompilerVisibleProperty Include="IsTestProject" />
     <CompilerVisibleProperty Include="LangVersion" />
     <CompilerVisibleProperty Include="MSBuildProjectFile" />
     <CompilerVisibleProperty Include="MSBuildThisFileDirectory" />

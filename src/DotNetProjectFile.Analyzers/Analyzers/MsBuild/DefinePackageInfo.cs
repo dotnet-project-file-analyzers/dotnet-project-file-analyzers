@@ -69,7 +69,7 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
         .Any(HasAlternativePackageVersioning);
 
     private static bool HasSourceLinkEnabled(ProjectFileAnalysisContext context)
-        => context.Options.GetSdkVersion() >= SdkVersion.NET8;
+        => context.Props.NETCoreSdkVersion >= SdkVersion.NET8;
 
     private static bool HasAlternativePackageVersioning(PackageReference reference)
         => reference.IncludeOrUpdate
