@@ -1,6 +1,6 @@
 namespace DotNetProjectFile.Licensing;
 
-public sealed record OrLicenseExpression(LicenseExpression Left, LicenseExpression Right) : LicenseExpression()
+internal sealed record OrLicenseExpression(LicenseExpression Left, LicenseExpression Right) : LicenseExpression()
 {
     public override string Expression => $"({Left} OR {Right})";
 

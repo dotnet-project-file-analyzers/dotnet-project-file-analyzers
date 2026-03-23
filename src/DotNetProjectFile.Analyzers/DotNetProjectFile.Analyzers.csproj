@@ -63,8 +63,9 @@
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="2.1.0" PrivateAssets="all" ExcludeAssets="runtime" />
-    <PackageReference Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference PrivateAssets="all" Include="AsyncFixer" Version="2.1.0" ExcludeAssets="runtime" />
+    <PackageReference PrivateAssets="all" Include="Qowaiv.Analyzers.CSharp" Version="2.1.0" ExcludeAssets="runtime" />
+    <PackageReference PrivateAssets="all" Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup>

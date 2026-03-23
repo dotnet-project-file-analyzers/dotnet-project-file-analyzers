@@ -6,8 +6,9 @@ namespace DotNetProjectFile.MsBuild;
 /// </remarks>
 public readonly record struct SdkVersion(int Major, int Minor, int Patch) : IComparable<SdkVersion>
 {
+    /// <summary>Not set SDK version.</summary>
     public static readonly SdkVersion None;
-    
+
     /// <summary>The .NET 7.0 SDK.</summary>
     public static readonly SdkVersion NET6 = new(6, 0, 0);
 
@@ -36,14 +37,20 @@ public readonly record struct SdkVersion(int Major, int Minor, int Patch) : ICom
 
     private static int? Compares(int l, int r) => l == r ? null : l.CompareTo(r);
 
+    /// <summary><![CDATA[Returns true if left < right.]]></summary>
     public static bool operator <(SdkVersion left, SdkVersion right) => left.CompareTo(right) < 0;
 
+    /// <summary><![CDATA[Returns true if left <= right.]]></summary>
     public static bool operator <=(SdkVersion left, SdkVersion right) => left.CompareTo(right) <= 0;
 
+    /// <summary><![CDATA[Returns true if left < right.]]></summary>
     public static bool operator >(SdkVersion left, SdkVersion right) => left.CompareTo(right) > 0;
 
+    /// <summary><![CDATA[Returns true if left >= right.]]></summary>
     public static bool operator >=(SdkVersion left, SdkVersion right) => left.CompareTo(right) >= 0;
 
+    /// <summary>Parses a SDK version.</summary>
+    [Pure]
     public static SdkVersion Parse(string s)
     {
         var parts = s.Split('.', '-');

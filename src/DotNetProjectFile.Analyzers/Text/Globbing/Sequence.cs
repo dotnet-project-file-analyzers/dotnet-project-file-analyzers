@@ -1,5 +1,6 @@
 namespace DotNetProjectFile.Text.Globbing;
 
+[Inheritable]
 internal class Sequence(string options) : Segment
 {
     public string Options { get; } = options;

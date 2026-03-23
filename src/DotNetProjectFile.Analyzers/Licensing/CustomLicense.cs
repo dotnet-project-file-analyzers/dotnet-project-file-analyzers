@@ -3,7 +3,7 @@ using System.Text;
 
 namespace DotNetProjectFile.Licensing;
 
-public sealed record CustomLicense(string Hash) : LicenseExpression
+internal sealed record CustomLicense(string Hash) : LicenseExpression
 {
     [ThreadStatic]
     private static IncrementalHash? sha256;
