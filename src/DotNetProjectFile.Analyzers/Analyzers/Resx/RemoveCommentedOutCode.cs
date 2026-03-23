@@ -10,5 +10,5 @@ public sealed class RemoveCommentedOutCode() : ResourceFileAnalyzer(Rule.RemoveC
 
     /// <inheritdoc />
     protected override void Register(ResourceFileAnalysisContext context)
-        => Checker.Check(context.File, context.File.Text, context);
+        => Checker.Check(context.File, context);
 }

@@ -22,7 +22,7 @@ internal static class StringExtensions
 
         while (result.StartsWith(other))
         {
-            result = result.Substring(other.Length);
+            result = result[other.Length..];
         }
 
         return result;
@@ -39,7 +39,7 @@ internal static class StringExtensions
 
         while (result.EndsWith(other))
         {
-            result = result.Substring(0, str.Length - other.Length);
+            result = result[..(str.Length - other.Length)];
         }
 
         return result;

@@ -11,5 +11,5 @@ public sealed class RemoveCommentedOutCode() : MsBuildProjectFileAnalyzer(Rule.R
 
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
-        => Checker.Check(context.File, context.File.Text, context);
+        => Checker.Check(context.File, context);
 }

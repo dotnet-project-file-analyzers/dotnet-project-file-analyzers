@@ -100,7 +100,7 @@ public sealed class ResultQueue : IReadOnlyCollection<Result>
 
         public Result Current { get; private set; }
 
-        object IEnumerator.Current => Current;
+        readonly object IEnumerator.Current => Current;
 
         public bool MoveNext()
         {
@@ -111,9 +111,9 @@ public sealed class ResultQueue : IReadOnlyCollection<Result>
 
         public readonly void Dispose() { /* Nothing to dispose. */ }
 
-        public IEnumerator<Result> GetEnumerator() => this;
+        public readonly IEnumerator<Result> GetEnumerator() => this;
 
-        IEnumerator IEnumerable.GetEnumerator() => this;
+        readonly IEnumerator IEnumerable.GetEnumerator() => this;
 
         public void Reset() => throw new NotSupportedException();
     }

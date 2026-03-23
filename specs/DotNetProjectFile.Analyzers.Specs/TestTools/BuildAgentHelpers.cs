@@ -32,8 +32,8 @@ public static class BuildAgentHelpers
 
     private static void DisableAgent(BuildAgent agent)
     {
-        var reqs = agent.GetRequirements();
-        var vars = reqs.TrueValues.Concat(reqs.NonEmptyValues);
+        var (trues, notEmpties) = agent.GetRequirements();
+        var vars = trues.Concat(notEmpties);
 
         foreach (var name in vars)
         {
@@ -43,8 +43,8 @@ public static class BuildAgentHelpers
 
     private static void EnableAgent(BuildAgent agent)
     {
-        var reqs = agent.GetRequirements();
-        var vars = reqs.TrueValues.Concat(reqs.NonEmptyValues);
+        var (trues, notEmpties) = agent.GetRequirements();
+        var vars = trues.Concat(notEmpties);
 
         foreach (var name in vars)
         {

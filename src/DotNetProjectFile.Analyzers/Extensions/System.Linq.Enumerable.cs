@@ -78,7 +78,6 @@ internal static class EnumerableExtensions
     where TComparable : IComparable<TComparable>
     {
         var result = enumerable.First();
-        var resultValue = getValue(result);
 
         foreach (var item in enumerable.Skip(1))
         {
@@ -87,7 +86,6 @@ internal static class EnumerableExtensions
             if (value.CompareTo(value) < 0)
             {
                 result = item;
-                resultValue = value;
             }
         }
 

@@ -37,7 +37,7 @@ public struct Enumerator<T> : IEnumerator<T>, IEnumerable<T>
 
     /// <inheritdoc />
     [Pure]
-    public IEnumerator<T> GetEnumerator() => this;
+    public readonly IEnumerator<T> GetEnumerator() => this;
 
     /// <inheritdoc />
     [Pure]

@@ -7,7 +7,7 @@ namespace DotNetProjectFile.MsBuild;
 /// </summary>
 public static class NodeExtensions
 {
-    private static readonly Regex WhitespaceRegex = new Regex(@"\s+", RegexOptions.Compiled | RegexOptions.ExplicitCapture);
+    private static readonly Regex WhitespaceRegex = new(@"\s+", RegexOptions.Compiled | RegexOptions.ExplicitCapture);
 
     public static bool HasAnyCondition(this Node? node, params IEnumerable<string> conditions)
     {
@@ -30,7 +30,7 @@ public static class NodeExtensions
         return false;
 
         [return: NotNullIfNotNull(nameof(condition))]
-        string? NormalizeRegex(string? condition)
+        static string? NormalizeRegex(string? condition)
         {
             if (condition is null)
             {

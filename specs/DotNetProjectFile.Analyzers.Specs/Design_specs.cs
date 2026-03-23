@@ -202,7 +202,7 @@ public partial class Documents
             var name = file.ToString();
 
             var index = name.Replace('\\', '/').IndexOf("/docs/");
-            var shortName = name.Substring(index + 6);
+            var shortName = name[(index + 6)..];
             return !ExcludedFiles.Contains(shortName);
         });
 
@@ -328,4 +328,3 @@ public partial class Documents
     private static string? TryGetParent(in IOFile file)
         => TryGet(file, "parent");
 }
-
