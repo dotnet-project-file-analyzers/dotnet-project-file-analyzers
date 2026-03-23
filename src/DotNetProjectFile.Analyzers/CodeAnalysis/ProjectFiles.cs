@@ -149,7 +149,7 @@ public sealed partial class ProjectFiles
     private MsBuildProject Create_MsBuildProject(IOFile file)
        => MsBuild.MsBuildProject.Load(file, this);
 
-    private NuGet.Configuration.NuGetConfigFile Create_NuGetConfigFile(IOFile file)
+    private static NuGet.Configuration.NuGetConfigFile Create_NuGetConfigFile(IOFile file)
        => NuGet.Configuration.NuGetConfigFile.Load(file);
 
     private Resource Create_ResourceFile(IOFile file)

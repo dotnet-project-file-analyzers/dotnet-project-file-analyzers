@@ -2,6 +2,7 @@ using ProjectReference = DotNetProjectFile.MsBuild.ProjectReference;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.IncludeProjectReferencesOnce"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class IncludeProjectReferencesOnce() : MsBuildProjectFileAnalyzer(Rule.IncludeProjectReferencesOnce)
 {
@@ -19,7 +20,7 @@ public sealed class IncludeProjectReferencesOnce() : MsBuildProjectFileAnalyzer(
         {
             var key = Reference.New(reference);
 
-            if (references.TryGetValue(key, out var existing))
+            if (references.ContainsKey(key))
             {
                 context.ReportDiagnostic(Descriptor, reference, reference.Include);
             }
