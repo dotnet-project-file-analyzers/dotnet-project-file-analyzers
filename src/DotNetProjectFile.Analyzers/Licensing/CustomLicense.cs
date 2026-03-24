@@ -3,17 +3,26 @@ using System.Text;
 
 namespace DotNetProjectFile.Licensing;
 
-public sealed record CustomLicense(string Hash) : LicenseExpression
+public sealed record CustomLicense : LicenseExpression
 {
     [ThreadStatic]
     private static IncrementalHash? sha256;
 
+    private CustomLicense(string hash) => Hash = hash;
+
+    /// <summary>The SHA256 of the license text.</summary>
+    public string Hash { get; }
+
+    /// <inheritdoc />
     public override string Expression => "Custom";
 
+    /// <inheritdoc />
     public override bool SpdxCompliant => false;
 
+    /// <inheritdoc />
     public override bool CompatibleWith(LicenseExpression other) => false;
 
+    /// <summary>Creates a <see cref="CustomLicense"/> based on the license text.</summary>
     public static CustomLicense Create(string content)
     {
         sha256 ??= IncrementalHash.CreateHash(HashAlgorithmName.SHA256);

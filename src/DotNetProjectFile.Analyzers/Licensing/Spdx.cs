@@ -26,6 +26,6 @@ public static partial class Spdx
     {
         var asm = typeof(Spdx).Assembly;
         using var resource = asm.GetManifestResourceStream("DotNetProjectFile.Licensing.Generated.spdx_info.bin");
-        return SpdxLicenseInfo.ReadAllFromCompressed(resource).ToImmutableArray();
+        return [.. SpdxLicenseInfo.ReadAllFromCompressed(resource)];
     }
 }

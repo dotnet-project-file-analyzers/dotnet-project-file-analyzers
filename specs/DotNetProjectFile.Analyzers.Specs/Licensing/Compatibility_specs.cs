@@ -6,9 +6,9 @@ namespace Licensing.Compatibility_specs;
 public class Is
 {
     private static readonly ImmutableArray<LicenseExpression> All = Licenses.All;
-    private static readonly ImmutableArray<PermissiveLicense> Permissive = All.OfType<PermissiveLicense>().ToImmutableArray();
-    private static readonly ImmutableArray<CopyLeftLicense> CopyLeft = All.OfType<CopyLeftLicense>().ToImmutableArray();
-    private static readonly ImmutableArray<PropietaryLicense> Propietary = All.OfType<PropietaryLicense>().ToImmutableArray();
+    private static readonly ImmutableArray<PermissiveLicense> Permissive = [.. All.OfType<PermissiveLicense>()];
+    private static readonly ImmutableArray<CopyLeftLicense> CopyLeft = [.. All.OfType<CopyLeftLicense>()];
+    private static readonly ImmutableArray<PropietaryLicense> Propietary = [.. All.OfType<PropietaryLicense>()];
 
     public sealed class Compatible
     {

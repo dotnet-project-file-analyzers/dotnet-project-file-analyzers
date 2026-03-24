@@ -5,9 +5,10 @@ namespace Grammr.Parsers;
 
 internal sealed class Sequence(ImmutableArray<Parser> sequances) : Parser
 {
-    private readonly ImmutableArray<Parser> Sequances = sequances
-        .SelectMany(p => p is Sequence s ? s.Sequances : [p])
-        .ToImmutableArray();
+    private readonly ImmutableArray<Parser> Sequances =
+    [
+        .. sequances.SelectMany(p => p is Sequence s ? s.Sequances : [p])
+    ];
 
     /// <inheritdoc />
     public override ResultQueue Parse(TokenStream stream, ResultQueue queue)

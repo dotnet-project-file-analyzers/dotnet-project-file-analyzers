@@ -14,7 +14,6 @@ internal sealed class CommentChecker<TFile>(
 
     public void Check(
         XmlAnalysisNode node,
-        SourceText text,
         ProjectFileAnalysisContext<TFile> context)
     {
         foreach (var comment in node.Element
