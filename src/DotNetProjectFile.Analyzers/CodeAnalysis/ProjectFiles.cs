@@ -82,7 +82,7 @@ public sealed partial class ProjectFiles
 
         static string? GetBuildProjectFile(CompilationAnalysisContext context)
         {
-            if (context.Options.GetMsBuildProperty("MSBuildProjectFile") is { Length: > 0 } file)
+            if (new MsBuildProps(context.Options).MSBuildProjectFile is { Length: > 0 } file)
             {
                 return file;
             }

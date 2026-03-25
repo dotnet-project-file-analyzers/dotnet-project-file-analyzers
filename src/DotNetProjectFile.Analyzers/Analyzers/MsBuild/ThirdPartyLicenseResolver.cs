@@ -28,7 +28,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
             return;
         }
 
-        var projectLicense = Licenses.FromExpression(context.GetMsBuildProperty("PackageLicenseExpression"));
+        var projectLicense = Licenses.FromExpression(context.Props.PackageLicenseExpression);
 
         var licenses = context.File.WalkBackward()
             .OfType<ThirdPartyLicense>()
