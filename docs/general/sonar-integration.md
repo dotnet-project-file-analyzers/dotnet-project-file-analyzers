@@ -3,7 +3,7 @@ permalink: /sonar-integration
 nav_order: 5
 ---
 
-# SonarCloud Integration
+# SonarQube Integration
 
 > **Note:** This guide is verified for [SonarCloud](https://www.sonarsource.com/products/sonarcloud/). The approach may apply to other [SonarSource](https://www.sonarsource.com) products such as SonarQube, but this has not been verified.
 
