@@ -1,11 +1,11 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
   <!--
-    SonarCloud can pick up issues report on files others than compiling files
+    SonarQube can pick up issues report on files others than compiling files
     if they are reported as <Content>. To reduce noise and overhead, copying
     to output is disabled and visibility is false.
   -->
-  <ItemGroup Condition="'$(SonarCloudIntegration)' == 'true'">
+  <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true'">
     <Content Include="**/*.??proj" CopyToOutputDirectory="never" Visible="false" />
     <Content Include="**/*.config" CopyToOutputDirectory="never" Visible="false" />
     <Content Include="**/*.props" CopyToOutputDirectory="never" Visible="false" />
