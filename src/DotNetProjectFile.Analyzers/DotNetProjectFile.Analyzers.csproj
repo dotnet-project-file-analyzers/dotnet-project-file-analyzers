@@ -46,6 +46,7 @@
     <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
     <None Include="$(OutputPath)/DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
     <None Include="build/DotNetProjectFile.Analyzers.props" Pack="true" PackagePath="/build/" />
+    <None Include="build/DotNetProjectFile.Analyzers.targets" Pack="true" PackagePath="/build/" />
     <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
@@ -73,18 +74,19 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.9.0</Version>
+    <Version>1.10.0</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v1.*
-- Proj0243: Support <GlobalPackageReference> as a source. (FP)
-- Proj1200: Support nuspec not grouped dependencies in the metadata. (FP)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.10.0
+- Proj0243: Support <GlobalPackageReference> as a source. (FP)
+- Proj1200: Support nuspec not grouped dependencies in the metadata. (FP)
+- Add SonarQube integration.
 v1.9.0
 - Proj0300: Configure NuGet explicitly (NEW RULE)
 - Proj0301: Clear previously defined package sources (NEW RULE)

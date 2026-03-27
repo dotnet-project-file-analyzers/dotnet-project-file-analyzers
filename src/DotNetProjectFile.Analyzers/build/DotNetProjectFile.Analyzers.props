@@ -1,5 +1,9 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
+  <PropertyGroup>
+    <SonarQubeIntegration>true</SonarQubeIntegration>
+  </PropertyGroup>
+  
   <!-- Non-compiling files to analyze. -->
   <ItemGroup>
     <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
