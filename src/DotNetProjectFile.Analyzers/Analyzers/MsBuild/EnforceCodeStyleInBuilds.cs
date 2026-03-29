@@ -1,8 +1,8 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <summary>Implements <see cref="Rule.DefineIsPackable"/>..</summary>
+/// <summary>Implements <see cref="Rule.EnforceCodeStyleInBuilds"/>..</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class DefineIsPackable() : MsBuildProjectFileAnalyzer(Rule.DefineIsPackable)
+public sealed class EnforceCodeStyleInBuilds() : MsBuildProjectFileAnalyzer(Rule.EnforceCodeStyleInBuilds)
 {
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
@@ -10,8 +10,7 @@ public sealed class DefineIsPackable() : MsBuildProjectFileAnalyzer(Rule.DefineI
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.File.IsTestProject() &&
-            context.File.Property<IsPackable>() is null)
+        if (context.File.Property<EnforceCodeStyleInBuild>() is null)
         {
             context.ReportDiagnostic(Descriptor, context.File);
         }
