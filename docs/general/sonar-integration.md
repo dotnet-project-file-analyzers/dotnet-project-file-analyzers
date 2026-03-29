@@ -4,7 +4,7 @@ nav_order: 5
 ---
 
 # SonarQube Integration
-> **Note:** This guide is verified for [SonarQube Cloude](https://www.sonarsource.com/products/sonarqube/cloud/).
+> **Note:** This guide is verified for [SonarQube Cloud](https://www.sonarsource.com/products/sonarqube/cloud/).
   The approach may apply to other [SonarSource](https://www.sonarsource.com)
   products, but this has not been verified.
 
