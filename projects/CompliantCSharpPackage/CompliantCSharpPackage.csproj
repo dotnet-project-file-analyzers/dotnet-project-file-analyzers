@@ -7,6 +7,7 @@
     <NuGetAudit>true</NuGetAudit>
     <NuGetAuditMode>all</NuGetAuditMode>
     <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <IsPackable>true</IsPackable>
     <IsPublishable>false</IsPublishable>
     <DevelopmentDependency>true</DevelopmentDependency>

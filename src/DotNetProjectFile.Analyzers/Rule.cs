@@ -476,6 +476,16 @@ public static partial class Rule
        tags: ["Compile", "Build"],
        category: Category.Reliability);
 
+    public static DiagnosticDescriptor EnforceCodeStyleInBuilds => New(
+        id: 0050,
+        title: "Enforce code-style in builds",
+        message: "Set <EnforceCodeStyleInBuild> to 'true'",
+        description:
+            "Roslyn's code-style rules are only run during a build when <EnforceCodeStyleInBuild> " +
+            "is set to true. Otherwise the rules are only triggered when using Visual Studio.",
+        tags: ["configuration", "analyzers", "code style"],
+        category: Category.Configuration);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
