@@ -1,6 +1,6 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <summary>Implements <see cref="Rule.EnforceCodeStyleInBuilds"/>..</summary>
+/// <summary>Implements <see cref="Rule.EnforceCodeStyleInBuilds"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class EnforceCodeStyleInBuilds() : MsBuildProjectFileAnalyzer(Rule.EnforceCodeStyleInBuilds)
 {
