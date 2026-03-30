@@ -1,6 +1,6 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <summary>Implements <see cref="Rule.DefineIsPackable"/>..</summary>
+/// <summary>Implements <see cref="Rule.DefineIsPackable"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class DefineIsPackable() : MsBuildProjectFileAnalyzer(Rule.DefineIsPackable)
 {
