@@ -482,7 +482,7 @@ public static partial class Rule
         message: "Set <EnforceCodeStyleInBuild> to 'true'",
         description:
             "Roslyn's code-style rules are only run during a build when <EnforceCodeStyleInBuild> " +
-            "is set to true. Otherwise the rules are only triggered by Visual Studio.",
+            "is set to true. Otherwise the rules are only triggered when using Visual Studio.",
         tags: ["configuration", "analyzers", "code style"],
         category: Category.Configuration);
 
