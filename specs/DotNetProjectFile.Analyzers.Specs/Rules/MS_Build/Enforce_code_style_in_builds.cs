@@ -45,7 +45,7 @@ public class Guards
 
           <PropertyGroup>
             <TargetFramework>net10.0</TargetFramework>
-        <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
+          <EnforceCodeStyleInBuild>false</EnforceCodeStyleInBuild>
           </PropertyGroup>
 
         </Project>
