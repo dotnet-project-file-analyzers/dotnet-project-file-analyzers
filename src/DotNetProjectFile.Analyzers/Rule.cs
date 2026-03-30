@@ -483,7 +483,7 @@ public static partial class Rule
         description:
             "Roslyn's code-style rules are only run during a build when <EnforceCodeStyleInBuild> " +
             "is set to true. Otherwise the rules are only triggered by Visual Studio.",
-        tags: ["configration", "analyzers", "code style"],
+        tags: ["configuration", "analyzers", "code style"],
         category: Category.Configuration);
 
     public static DiagnosticDescriptor DefineIsPackable => New(
