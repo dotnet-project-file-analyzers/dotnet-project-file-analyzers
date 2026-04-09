@@ -88,6 +88,6 @@ public static class BuildAgentExtensions
             }
         }
 
-        return Inner().ToImmutableArray();
+        return [.. Inner()];
     }
 }

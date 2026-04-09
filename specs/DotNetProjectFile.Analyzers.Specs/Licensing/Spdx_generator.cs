@@ -110,11 +110,12 @@ public class Generator
                 texts.Add(manualFile.TryReadAllText());
             }
 
-            return texts
+            return
+            [.. texts
                 .OfType<string>()
                 .Select(str => str.Trim().Replace("\r\n", "\n"))
                 .Where(str => str.Length > 0)
-                .ToImmutableArray();
+            ];
         }
 
         string GetCurrentDirectoryPath([CallerFilePath] string? path = null)

@@ -40,9 +40,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
         : (IEnumerable<Package>)reference.ResolveCachedPackageDependencyTree();
 
     private static Analyzer[] GetAnalyzers(Language language)
-        => Analyzers
-        .Where(analyzer => analyzer.IsApplicable(language))
-        .ToArray();
+        => [.. Analyzers.Where(analyzer => analyzer.IsApplicable(language))];
 
     private static readonly Analyzer[] Analyzers =
     [

@@ -5,19 +5,21 @@ namespace Licensing.Design_specs;
 
 public class Is_defined
 {
-    private static readonly ImmutableArray<string> DeprecatedExpressions
-        = Licenses.All
+    private static readonly ImmutableArray<string> DeprecatedExpressions =
+    [
+        .. Licenses.All
         .OfType<SingleLicense>()
         .SelectMany(l => l.Deprecated)
         .Distinct()
-        .ToImmutableArray();
+    ];
 
-    private static readonly ImmutableArray<string> CompatibleExpressions
-        = Licenses.All
+    private static readonly ImmutableArray<string> CompatibleExpressions =
+    [
+        .. Licenses.All
         .OfType<CopyLeftLicense>()
         .SelectMany(l => l.Compatibilities)
         .Distinct()
-        .ToImmutableArray();
+    ];
 
     private static readonly ImmutableArray<string> BaseExpressions =
     [

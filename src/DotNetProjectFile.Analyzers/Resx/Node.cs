@@ -8,7 +8,7 @@ public partial class Node : XmlAnalysisNode
         Resource = resource ?? (this as Resource) ?? throw new ArgumentNullException(nameof(resource));
         Locations = XmlPositions.New(element).Locations(Resource);
         Depth = element.Ancestors().Count();
-        Children = Element.Elements().Select(Create).OfType<Node>().ToArray();
+        Children = [.. Element.Elements().Select(Create).OfType<Node>()];
     }
 
     public XElement Element { get; }
