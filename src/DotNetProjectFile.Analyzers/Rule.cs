@@ -1395,16 +1395,12 @@ public static partial class Rule
         bool isEnabled = true)
 #pragma warning restore S107 // Methods should not have too many parameters
     {
-        DiagnosticSeverity defaultSeverity;
-
-        if (severity.HasValue)
+        var defaultSeverity = category switch
         {
-            defaultSeverity = severity.Value;
-        }
-        else
-        {
-            defaultSeverity = category == Category.SyntaxError ? DiagnosticSeverity.Error : DiagnosticSeverity.Warning;
-        }
+            _ when severity is { } severity_ => severity_,
+            Category.SyntaxError => DiagnosticSeverity.Error,
+            _ => DiagnosticSeverity.Warning,
+        };
 
         return new(
             id: $"Proj{id:0000}",

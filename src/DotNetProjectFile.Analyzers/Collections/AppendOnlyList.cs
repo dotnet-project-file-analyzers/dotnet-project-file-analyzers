@@ -36,16 +36,9 @@ public readonly struct AppendOnlyList<T> : IReadOnlyList<T>
     /// </remarks>
     [Pure]
     public AppendOnlyList<T> Add(T? item)
-    {
-        if (item is null)
-        {
-            return this;
-        }
-        else
-        {
-            return AddSingle(item);
-        }
-    }
+        => item is null
+        ? this
+        : AddSingle(item);
 
     /// <summary>Adds multiple elements to the collection.</summary>
     /// <remarks>

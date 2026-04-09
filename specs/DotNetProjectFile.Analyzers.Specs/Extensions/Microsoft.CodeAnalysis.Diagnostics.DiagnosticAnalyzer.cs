@@ -18,18 +18,13 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
         this DiagnosticAnalyzer analyzer,
         Language language,
         [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-    {
-        if (language.IsRoslynBased)
-        {
-            return analyzer.ForInlineProject($"inline{language.ProjectFileExtension}", content);
-        }
-        else
-        {
-            return analyzer
-                .ForInlineSdkProject()
-                .WithFile($"inline/inline{language.ProjectFileExtension}", content);
-        }
-    }
+        
+        => language.IsRoslynBased
+        ? analyzer
+            .ForInlineProject($"inline{language.ProjectFileExtension}", content)
+        : analyzer
+            .ForInlineSdkProject()
+            .WithFile($"inline/inline{language.ProjectFileExtension}", content);
 
     [Pure]
     public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject(

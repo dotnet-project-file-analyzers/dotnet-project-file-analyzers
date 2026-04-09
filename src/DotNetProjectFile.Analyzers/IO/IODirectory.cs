@@ -186,24 +186,15 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
             {
                 // keep current.
             }
-            else if (part == "..")
-            {
-                if (enumerator is RootDirectory root)
-                {
-                    enumerator = root.Parent;
-                }
-                else
-                {
-                    enumerator = enumerator.Select(d => d.Parent!);
-                }
-            }
-            else if (part == "**")
-            {
-                enumerator = enumerator.Concat(enumerator.SelectMany(d => d.EnumerateDirectories("*", SearchOption.AllDirectories)));
-            }
             else
             {
-                enumerator = enumerator.Concat(enumerator.SelectMany(d => d.EnumerateDirectories(part, SearchOption.TopDirectoryOnly)));
+                enumerator = part switch
+                {
+                    ".." when enumerator is RootDirectory root => root.Parent,
+                    ".." => enumerator.Select(d => d.Parent!),
+                    "**" => enumerator.Concat(enumerator.SelectMany(d => d.EnumerateDirectories("*", SearchOption.AllDirectories))),
+                    _ => enumerator.Concat(enumerator.SelectMany(d => d.EnumerateDirectories(part, SearchOption.TopDirectoryOnly))),
+                };
             }
         }
 

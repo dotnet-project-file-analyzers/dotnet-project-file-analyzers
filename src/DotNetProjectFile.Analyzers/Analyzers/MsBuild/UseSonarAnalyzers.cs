@@ -20,19 +20,10 @@ public sealed class UseSonarAnalyzers() : MsBuildProjectFileAnalyzer(Rule.UseSon
         }
     }
 
-    private static string? Include(Language language)
+    private static string? Include(Language language) => language switch
     {
-        if (language == Language.CSharp)
-        {
-            return "SonarAnalyzer.CSharp";
-        }
-        else if (language == Language.VisualBasic)
-        {
-            return "SonarAnalyzer.VisualBasic";
-        }
-        else
-        {
-            return null;
-        }
-    }
+        _ when language == Language.CSharp => "SonarAnalyzer.CSharp",
+        _ when language == Language.VisualBasic => "SonarAnalyzer.VisualBasic",
+        _ => null,
+    };
 }

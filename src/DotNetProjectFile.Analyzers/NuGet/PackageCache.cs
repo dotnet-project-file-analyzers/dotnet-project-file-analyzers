@@ -35,14 +35,9 @@ public static class PackageCache
         // TODO: handle `globalPackagesFolder` given by `nuget.config`. Issue #319
         // TODO: handle `repositoryPath` given by `packages.config`. Issue #318
 
-        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-        {
-            return @"%userprofile%\.nuget\packages";
-        }
-        else
-        {
-            return @"~/.nuget/packages";
-        }
+        return RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
+            ? @"%userprofile%\.nuget\packages"
+            : @"~/.nuget/packages";
     }
 
     public static Package? GetPackage(string? name, string? version) => GetPackage(new(name!, version));

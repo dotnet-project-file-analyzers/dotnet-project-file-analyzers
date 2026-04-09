@@ -178,14 +178,9 @@ public static class Licenses
 
         // TODO: handle complex expressions: https://spdx.github.io/spdx-spec/v2-draft/using-SPDX-short-identifiers-in-source-files/#e4-representing-multiple-licenses
 
-        if (Lookup.TryGetValue(licenseExpression, out var result))
-        {
-            return result;
-        }
-        else
-        {
-            return Unknown;
-        }
+        return Lookup.TryGetValue(licenseExpression, out var result)
+            ? result
+            : Unknown;
     }
 
     /// <summary>Tries to resolve a license from the license URL.</summary>

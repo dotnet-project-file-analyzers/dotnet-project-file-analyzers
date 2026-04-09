@@ -31,23 +31,12 @@ public static class NodeExtensions
 
         [return: NotNullIfNotNull(nameof(condition))]
         static string? NormalizeRegex(string? condition)
-        {
-            if (condition is null)
-            {
-                return null;
-            }
-
-            return WhitespaceRegex.Replace(condition, string.Empty);
-        }
+            => condition is null
+            ? null
+            : WhitespaceRegex.Replace(condition, string.Empty);
     }
 
-    private static bool IsAnyCondition(string? condition, HashSet<string> conditions)
-    {
-        if (condition is null)
-        {
-            return false;
-        }
-
-        return conditions.Contains(condition);
-    }
+    private static bool IsAnyCondition(string? condition, HashSet<string> conditions) 
+        => condition is { }
+        && conditions.Contains(condition);
 }

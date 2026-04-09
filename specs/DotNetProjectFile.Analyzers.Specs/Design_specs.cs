@@ -303,18 +303,10 @@ public partial class Documents
     private static Dictionary<string, string> ParseHeader(in IOFile file)
         => ParseHeader(file.ReadAllText());
 
-    private static string? TryGet(in IOFile file, string key)
-    {
-        var header = ParseHeader(file);
-        if (header.TryGetValue(key, out var result))
-        {
-            return result;
-        }
-        else
-        {
-            return null;
-        }
-    }
+    private static string? TryGet(in IOFile file, string key) 
+        => ParseHeader(file).TryGetValue(key, out var result)
+        ? result
+        : null;
 
     private static string? TryGetPermalink(in IOFile file)
         => TryGet(file, "permalink");

@@ -118,14 +118,9 @@ public class Generator
         }
 
         string GetCurrentDirectoryPath([CallerFilePath] string? path = null)
-        {
-            if (path is { Length: > 0 })
-            {
-                return Path.GetDirectoryName(path) ?? Directory.GetCurrentDirectory();
-            }
-
-            return Directory.GetCurrentDirectory();
-        }
+            => path is { Length: > 0 }
+            ? Path.GetDirectoryName(path) ?? Directory.GetCurrentDirectory()
+            : Directory.GetCurrentDirectory();
 
         IODirectory GetCurrentDirectory([CallerFilePath] string? path = null)
             => IODirectory.Parse(GetCurrentDirectoryPath(path));

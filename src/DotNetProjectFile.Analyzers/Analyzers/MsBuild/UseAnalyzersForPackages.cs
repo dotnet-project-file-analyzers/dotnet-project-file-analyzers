@@ -35,18 +35,9 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
     }
 
     private static IEnumerable<Package> GetAllReferencedPackages(PackageReferenceBase reference)
-    {
-        var rootPackage = reference.ResolvePackage();
-
-        if (rootPackage?.IsAnalyzerOnly == true)
-        {
-            return [rootPackage];
-        }
-        else
-        {
-            return reference.ResolveCachedPackageDependencyTree();
-        }
-    }
+        => reference.ResolvePackage() is { IsAnalyzerOnly: true } rootPackage
+        ? [rootPackage]
+        : (IEnumerable<Package>)reference.ResolveCachedPackageDependencyTree();
 
     private static Analyzer[] GetAnalyzers(Language language)
         => Analyzers
@@ -86,14 +77,8 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
             => Language is null || Language.Value == compilationLanguage;
 
         public bool IsAnalyzerFor(Package pkg)
-        {
-            if (pkg.IsAnalyzerOnly)
-            {
-                return false;
-            }
-
-            return IsAnalyzerFor(pkg.Name);
-        }
+            => !pkg.IsAnalyzerOnly
+            && IsAnalyzerFor(pkg.Name);
 
         public bool IsAnalyzerFor(string name)
             => name.StartsWith(Match, StringComparison.OrdinalIgnoreCase)
