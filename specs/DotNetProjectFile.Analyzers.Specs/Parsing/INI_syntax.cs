@@ -11,7 +11,7 @@ public class Parses
     {
         var syntax = Parse.Syntax("[My Header]");
 
-        syntax.Sections.Should().HaveCount(1);
+        syntax.Sections.Should().ContainSingle();
         syntax.Sections[0].Header.Should().BeEquivalentTo(new { Text = "My Header" });
     }
 
@@ -22,7 +22,7 @@ public class Parses
 [MyHeader]
 mykey = 3.14");
 
-        syntax.Sections.Should().HaveCount(1);
+        syntax.Sections.Should().ContainSingle();
         syntax.Sections[0].Header.Should().BeEquivalentTo(new { Text = "MyHeader" });
         syntax.Sections[0].Kvps.Should().BeEquivalentTo([new { Key = "mykey", Value = "3.14" }]);
     }
@@ -156,7 +156,7 @@ public class Parses_with_errors
         public void issue_251()
         {
             var syntax = Parse.Syntax(new FileInfo("../../../Parsing/Examples/bug_00251.ini"));
-            syntax.GetDiagnostics().Should().HaveCount(1);
+            syntax.GetDiagnostics().Should().ContainSingle();
         }
     }
 
