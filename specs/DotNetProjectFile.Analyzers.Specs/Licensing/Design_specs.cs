@@ -30,19 +30,13 @@ public class Is_defined
 
     [TestCaseSource(nameof(DeprecatedExpressions))]
     public void Deprecated(string expressionName)
-    {
-        Licenses.FromExpression(expressionName).Should().NotBe(Licenses.Unknown);
-    }
+        => Licenses.FromExpression(expressionName).Should().NotBe(Licenses.Unknown);
 
     [TestCaseSource(nameof(CompatibleExpressions))]
     public void Compatibilities(string expressionName)
-    {
-        Licenses.FromExpression(expressionName).Should().NotBe(Licenses.Unknown);
-    }
+        => Licenses.FromExpression(expressionName).Should().NotBe(Licenses.Unknown);
 
     [TestCaseSource(nameof(BaseExpressions))]
     public void BaseLicenses(string expressionName)
-    {
-        Licenses.FromExpression(expressionName).Should().NotBe(Licenses.Unknown);
-    }
+        => Licenses.FromExpression(expressionName).Should().NotBe(Licenses.Unknown);
 }

@@ -14,15 +14,11 @@ public class Is
     {
         [TestCaseSource(typeof(Is), nameof(All))]
         public void Any_with_self(LicenseExpression license)
-        {
-            license.CompatibleWith(license).Should().BeTrue();
-        }
+            => license.CompatibleWith(license).Should().BeTrue();
 
         [TestCaseSource(typeof(Is), nameof(All))]
         public void Any_with_self_reparsed(LicenseExpression license)
-        {
-            license.CompatibleWith(license.Expression).Should().BeTrue();
-        }
+            => license.CompatibleWith(license.Expression).Should().BeTrue();
 
         [TestCaseSource(typeof(Is), nameof(Permissive))]
         public void Permissive_with_all(LicenseExpression permissive)
@@ -56,9 +52,7 @@ public class Is
 
         [TestCaseSource(typeof(Is), nameof(CopyLeft))]
         public void Copy_left_with_unknown(LicenseExpression copyLeft)
-        {
-            copyLeft.CompatibleWith(Licenses.Unknown).Should().BeFalse();
-        }
+            => copyLeft.CompatibleWith(Licenses.Unknown).Should().BeFalse();
     }
 
     [TestCase("GPL-3.0", "GPL-3.0-only", true)]

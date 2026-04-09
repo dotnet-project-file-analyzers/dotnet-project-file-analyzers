@@ -55,16 +55,12 @@ public partial class Rules
     }
 
     [TestCaseSource(nameof(AllRules))]
-    public void are_mentioned_in_docs_README(Rule rule)
-    {
-        Docs_Readme_Text
-            .Contains($"(rules/{rule.Id}.md)")
-            .Should().BeTrue(because: $"Rule {rule.Id} should be mentioned");
-    }
+    public void are_mentioned_in_docs_README(Rule rule) => Docs_Readme_Text
+        .Contains($"(rules/{rule.Id}.md)")
+        .Should().BeTrue(because: $"Rule {rule.Id} should be mentioned");
 
     [TestCaseSource(nameof(AllRules))]
-    public void are_mentioned_in_README_package(Rule rule)
-        => Package_Readme_Text
+    public void are_mentioned_in_README_package(Rule rule) => Package_Readme_Text
         .Contains($"]({rule.HelpLinkUri})")
         .Should().BeTrue(because: $"Rule {rule} should be mentioned");
 
@@ -207,22 +203,17 @@ public partial class Documents
         });
 
     private static IEnumerable<IOFile> RuleFiles
-        => IODirectory.Parse("../../../../../docs/rules/")
-        .Files("*.md")!;
+        => IODirectory.Parse("../../../../../docs/rules/").Files("*.md")!;
 
     private static IEnumerable<IOFile> NavigationFiles
-    => IODirectory.Parse("../../../../../docs/navigation/")
-    .Files("*.md")!;
+        => IODirectory.Parse("../../../../../docs/navigation/").Files("*.md")!;
 
     private static IEnumerable<IOFile> MarkdownFiles
-        => Files
-        .Where(static file => file.Extension.ToLowerInvariant() == ".md");
+        => Files.Where(static file => file.Extension.ToLowerInvariant() == ".md");
 
     [TestCaseSource(nameof(MarkdownFiles))]
     public void Have_permalink(IOFile file)
-    {
-        TryGetPermalink(file).Should().NotBeNullOrWhiteSpace();
-    }
+        => TryGetPermalink(file).Should().NotBeNullOrWhiteSpace();
 
     [TestCaseSource(nameof(MarkdownFiles))]
     public void Have_unique_permalink(IOFile file)
@@ -244,15 +235,11 @@ public partial class Documents
 
     [TestCaseSource(nameof(RuleFiles))]
     public void Correct_permalink_for_rules(IOFile file)
-    {
-        TryGetPermalink(file).Should().Be($"/rules/{file.NameWithoutExtension}");
-    }
+        => TryGetPermalink(file).Should().Be($"/rules/{file.NameWithoutExtension}");
 
     [TestCaseSource(nameof(RuleFiles))]
     public void Correct_ancestor_for_rules(IOFile file)
-    {
-        TryGetAncestor(file).Should().BeOneOf("MSBuild", "Rules");
-    }
+        => TryGetAncestor(file).Should().BeOneOf("MSBuild", "Rules");
 
     [TestCaseSource(nameof(RuleFiles))]
     public void Correct_parent_for_rules(IOFile file)
