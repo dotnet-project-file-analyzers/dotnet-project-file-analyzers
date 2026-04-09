@@ -19,7 +19,7 @@ public sealed partial class MsBuildProject : Node, ProjectFile
         AdditionalText = additionalText;
         WarningPragmas = WarningPragmas.New(this);
         FileType = path.GetProjectFileType();
-        Language = CodeAnalysis.Language.Parse(path.Extension);
+        Language = Language.Parse(path.Extension);
     }
 
     public MsBuildProject? DirectoryBuildProps => Path.Directory
