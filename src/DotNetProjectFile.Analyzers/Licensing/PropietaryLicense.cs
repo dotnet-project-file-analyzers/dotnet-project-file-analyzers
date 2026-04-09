@@ -8,14 +8,13 @@ public sealed record PropietaryLicense : SingleLicense
         string? baseLicense = null,
         ImmutableArray<string>? deprecated = null,
         bool spdxCompliant = false)
-        : base(
+    : base(
         identifier: identifier,
         baseLicense: baseLicense,
         deprecated: deprecated ?? [],
         spdxCompliant: spdxCompliant)
-    {
-        this.compatibleWith = compatibleWith ?? (other => other == this);
-    }
+
+        => this.compatibleWith = compatibleWith ?? (other => other == this);
 
     private readonly Func<LicenseExpression, bool> compatibleWith;
 

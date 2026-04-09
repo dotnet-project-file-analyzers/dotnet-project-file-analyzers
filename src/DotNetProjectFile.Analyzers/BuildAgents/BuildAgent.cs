@@ -45,17 +45,12 @@ public static class BuildAgentExtensions
     {
         var (trueVars, nonEmptyVars) = agent.GetRequirements();
 
-        if (trueVars.Any(static v => Environment.GetEnvironmentVariable(v) != "true"))
+        return agent switch
         {
-            return false;
-        }
-
-        if (nonEmptyVars.Any(static v => string.IsNullOrEmpty(Environment.GetEnvironmentVariable(v))))
-        {
-            return false;
-        }
-
-        return true;
+            _ when trueVars.Any(static v => Environment.GetEnvironmentVariable(v) != "true") => false,
+            _ when nonEmptyVars.Any(static v => string.IsNullOrEmpty(Environment.GetEnvironmentVariable(v))) => false,
+            _ => true,
+        };
     }
 
     public static ImmutableArray<BuildAgent> GetActive()
@@ -64,14 +59,9 @@ public static class BuildAgentExtensions
             .Where(x => x != BuildAgent.Local && x.IsActive())
             .ToImmutableArray();
 
-        if (reallyActive.Length > 0)
-        {
-            return reallyActive;
-        }
-
-        return EnumCache.GetValues<BuildAgent>()
-            .Where(x => x != BuildAgent.Local)
-            .ToImmutableArray();
+        return reallyActive.Length > 0
+            ? reallyActive
+            : [.. EnumCache.GetValues<BuildAgent>().Where(x => x != BuildAgent.Local)];
     }
 
     public static ImmutableArray<string> GetActiveAllowedConditions()
@@ -98,6 +88,6 @@ public static class BuildAgentExtensions
             }
         }
 
-        return Inner().ToImmutableArray();
+        return [.. Inner()];
     }
 }

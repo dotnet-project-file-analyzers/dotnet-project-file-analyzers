@@ -1,6 +1,4 @@
 using DotNetProjectFile.NuGet.Packaging;
-using FastSerialization;
-using System.Xml.Serialization;
 
 namespace NuGet.Nuspec_file_specs;
 
@@ -97,7 +95,7 @@ public class Loads
                         new()
                         {
                             TargetFramework = ".NETFramework4.7.2",
-                            Dependencies = [new() { Id = "NuGet.Common", Version ="6.13.1", Exclude = "Build,Analyzers" } ], 
+                            Dependencies = [new() { Id = "NuGet.Common", Version ="6.13.1", Exclude = "Build,Analyzers" } ],
                         },
                     ],
                     Dependencies = null!,

@@ -28,9 +28,9 @@ public sealed partial class ProjectFiles
     public MsBuildProject? MsBuildProject(AdditionalText text)
     {
         var path = IOFile.Parse(text.Path);
-        if (path.GetProjectFileType() is ProjectFileType.None) return null;
-
-        return MsBuildProjects.TryGetOrUpdate(path, _ => MsBuild.MsBuildProject.Load(text, Global));
+        return path.GetProjectFileType() is ProjectFileType.None
+            ? null
+            : MsBuildProjects.TryGetOrUpdate(path, _ => MsBuild.MsBuildProject.Load(text, Global));
     }
 
     public NuGet.Configuration.NuGetConfigFile? NuGetConfigFile(IOFile file)
@@ -39,9 +39,9 @@ public sealed partial class ProjectFiles
     public NuGet.Configuration.NuGetConfigFile? NuGetConfigFile(AdditionalText text)
     {
         var path = IOFile.Parse(text.Path);
-        if (path.GetProjectFileType() is ProjectFileType.None) return null;
-
-        return NuGetConfigFiles.TryGetOrUpdate(path, _ => NuGet.Configuration.NuGetConfigFile.Load(text));
+        return path.GetProjectFileType() is ProjectFileType.None
+            ? null
+            : NuGetConfigFiles.TryGetOrUpdate(path, _ => NuGet.Configuration.NuGetConfigFile.Load(text));
     }
 
     public Resource? ResourceFile(IOFile file)
@@ -64,21 +64,20 @@ public sealed partial class ProjectFiles
         }
 
         // If it is amongst the additional files, do not look further.
-        if (context.Options.AdditionalFiles
+        return context.Options.AdditionalFiles
             .Select(a => IOFile.Parse(a.Path))
-            .FirstOrDefault(f => f.Name.IsMatch(file)) is { HasValue: true } additional)
-        {
-            return MsBuildProject(additional);
-        }
+            .FirstOrDefault(f => f.Name.IsMatch(file)) is { HasValue: true } additional
 
-        return context.Compilation?.Assembly?.Locations
-            .Select(l => IOFile.Parse(l.SourceTree?.FilePath))
-            .Where(file => file.HasValue)
-            .SelectMany(file => file.Directory.AncestorsAndSelf())
-            .Distinct()
-            .Select(dir => MsBuildProject(dir.File(file)))
-            .OfType<MsBuildProject>()
-            .FirstOrDefault();
+            ? MsBuildProject(additional)
+
+            : context.Compilation?.Assembly?.Locations
+                .Select(l => IOFile.Parse(l.SourceTree?.FilePath))
+                .Where(file => file.HasValue)
+                .SelectMany(file => file.Directory.AncestorsAndSelf())
+                .Distinct()
+                .Select(dir => MsBuildProject(dir.File(file)))
+                .OfType<MsBuildProject>()
+                .FirstOrDefault();
 
         static string? GetBuildProjectFile(CompilationAnalysisContext context)
         {

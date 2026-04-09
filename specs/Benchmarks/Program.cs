@@ -4,10 +4,8 @@ namespace Benchmarks;
 
 public static class Program
 {
-    public static void Main(string[] args)
-    {
-        BenchmarkRunner.Run<Licensing.Hashing>();
-    }
+    public static void Main()
+        => BenchmarkRunner.Run<Licensing.Hashing>();
 
     public static void All()
     {

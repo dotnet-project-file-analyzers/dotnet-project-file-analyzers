@@ -10,7 +10,7 @@ public abstract class Parser
     public Syntax.Tree Parse(TokenStream stream)
     {
         var outcome = Parse(stream, new()).Outcome;
-        return new((outcome.Node as Syntax.Node)!, outcome.Stream, outcome.Message);
+        return new(outcome.Node!, outcome.Stream, outcome.Message);
     }
 
     /// <summary>Tokenizes the source span.</summary>

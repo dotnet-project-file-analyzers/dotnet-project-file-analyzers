@@ -1,10 +1,8 @@
 namespace DotNetProjectFile.Parsing.Internal;
 
-internal sealed class And : Grammar
+internal sealed class And(Grammar left, Grammar right) : Grammar
 {
-    private readonly ImmutableArray<Grammar> Sequence;
-
-    public And(Grammar left, Grammar right) => Sequence =
+    private readonly ImmutableArray<Grammar> Sequence =
     [
         ..left is And l ? l.Sequence : [left],
         ..right is And r ? r.Sequence : [right],

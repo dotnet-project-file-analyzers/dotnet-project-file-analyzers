@@ -8,30 +8,24 @@ public sealed record CopyLeftLicense : SingleLicense
         ImmutableArray<string>? deprecated = null,
         ImmutableArray<string>? compatibilities = null,
         bool spdxCompliant = true)
-        : base(
-            identifier: identifier,
-            baseLicense: baseLicense,
-            deprecated: deprecated ?? [],
-            spdxCompliant: spdxCompliant)
-    {
-        Compatibilities = compatibilities ?? [];
-    }
+    : base(
+        identifier: identifier,
+        baseLicense: baseLicense,
+        deprecated: deprecated ?? [],
+        spdxCompliant: spdxCompliant)
+
+    => Compatibilities = compatibilities ?? [];
 
     public ImmutableArray<string> Compatibilities { get; }
 
-    public override bool CompatibleWith(LicenseExpression other)
+    public override bool CompatibleWith(LicenseExpression other) => other switch
     {
-        if (other.Expression == Expression || Compatibilities.Contains(other.Expression))
-        {
-            return true;
-        }
+        _ when other.Expression == Expression
+            || Compatibilities.Contains(other.Expression) => true,
 
-        return other switch
-        {
-            // NB: the inversion of the `and` and `or` are intentional.
-            AndLicenseExpression e => CompatibleWith(e.Left) || CompatibleWith(e.Right),
-            OrLicenseExpression e => CompatibleWith(e.Left) && CompatibleWith(e.Right),
-            _ => false, // All other cases.
-        };
-    }
+        // NB: the inversion of the `and` and `or` are intentional.
+        AndLicenseExpression e => CompatibleWith(e.Left) || CompatibleWith(e.Right),
+        OrLicenseExpression e => CompatibleWith(e.Left) && CompatibleWith(e.Right),
+        _ => false, // All other cases.
+    };
 }

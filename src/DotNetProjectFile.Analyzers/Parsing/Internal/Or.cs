@@ -1,10 +1,8 @@
 namespace DotNetProjectFile.Parsing.Internal;
 
-internal sealed class Or : Grammar
+internal sealed class Or(Grammar left, Grammar right) : Grammar
 {
-    private readonly ImmutableArray<Grammar> Options;
-
-    public Or(Grammar left, Grammar right) => Options =
+    private readonly ImmutableArray<Grammar> Options =
     [
         ..left is Or l ? l.Options : [left],
         ..right is Or r ? r.Options : [right],

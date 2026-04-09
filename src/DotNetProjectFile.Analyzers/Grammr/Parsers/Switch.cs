@@ -4,9 +4,8 @@ namespace Grammr.Parsers;
 
 internal sealed class Switch(ImmutableArray<Parser> options) : Parser
 {
-    private readonly ImmutableArray<Parser> Options = options
-        .SelectMany(p => p is Switch s ? s.Options : [p])
-        .ToImmutableArray();
+    private readonly ImmutableArray<Parser> Options
+        = [.. options.SelectMany(p => p is Switch s ? s.Options : [p])];
 
     /// <inheritdoc />
     public override ResultQueue Parse(TokenStream stream, ResultQueue queue)

@@ -102,7 +102,7 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
 
         var firstFileName = Path.Combine(dir, files[0].Name);
         var fileInfo = new FileInfo(firstFileName);
-        
+
         return ProjectFileAnalyzersDiagnosticAnalyzerExtensions.ForTestProject(analyzer, fileInfo);
     }
 

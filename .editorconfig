@@ -21,4 +21,10 @@ indent_size = 2
 vsspell_section_id = main
 vsspell_ignored_words_main = File:dictionary.dic
 
-dotnet_diagnostic.IDE1006.severity = none # IDE1006: Naming Styles
+csharp_space_after_cast = false
+csharp_style_expression_bodied_constructors = true
+csharp_style_expression_bodied_methods = true
+csharp_style_expression_bodied_operators = true
+csharp_style_expression_bodied_properties = true
+csharp_style_expression_bodied_indexers = true
+csharp_style_expression_bodied_accessors = true

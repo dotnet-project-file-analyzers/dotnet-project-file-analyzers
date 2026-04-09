@@ -25,8 +25,8 @@ internal sealed class Repeat(Grammar grammar, int min, int max) : Grammar
             i += next.State == Matching.NoMatch ? 0 : 1;
         }
 
+        // We have infinite matches with length 0.
         var inRange = (i >= Minimum && i <= Maximum)
-            // We have infinite matches with length 0.
             || (next.State == Matching.EoF && Grammar.Match(next).State == Matching.EoF);
 
         return next.State switch

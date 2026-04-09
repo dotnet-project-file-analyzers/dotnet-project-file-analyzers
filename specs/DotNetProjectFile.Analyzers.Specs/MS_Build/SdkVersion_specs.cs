@@ -16,7 +16,7 @@ public class Parses
 public class Compares
 {
     [Test]
-    public void Less_then() 
+    public void Less_then()
         => (SdkVersion.NET8 < SdkVersion.NET10).Should().BeTrue();
 
     [Test]

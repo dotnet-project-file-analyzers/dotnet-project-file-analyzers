@@ -104,6 +104,7 @@ public sealed record XmlPositions
         {
             // Length of '<!--' is 4 and should be subtracted.
             StartElement = new(start.Expand(-4), start),
+
             // Length of '-->' is 3 and should be subtracted.
             EndElement = new(end.Expand(-3), end),
         };

@@ -10,17 +10,12 @@ public static partial class Spdx
     private static readonly FrozenDictionary<string, SpdxLicenseInfo> Lookup
         = Licenses.ToFrozenDictionary(x => x.Id, x => x);
 
-    public static SpdxLicenseInfo? TryGetLicense(string? id)
+    public static SpdxLicenseInfo? TryGetLicense(string? id) => id switch
     {
-        if (id is not { Length: > 0 })
-        {
-            return null;
-        }
-
-        return Lookup.TryGetValue(id, out var license)
-            ? license
-            : null;
-    }
+        not { Length: > 0 } => null,
+        _ when Lookup.TryGetValue(id, out var license) => license,
+        _ => null,
+    };
 
     private static ImmutableArray<SpdxLicenseInfo> ReadFromResources()
     {

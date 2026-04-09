@@ -41,21 +41,12 @@ public sealed class ItemGroupShouldBeUniform() : MsBuildProjectFileAnalyzer(Rule
         }
     }
 
-    private static bool CombinationIsAllowed(Type first, Type second)
+    private static bool CombinationIsAllowed(Type first, Type second) => (first, second) switch
     {
-        if (first == second)
-        {
-            return true;
-        }
-        else if (Allowed.TryGetValue(first, out var allowed))
-        {
-            return allowed.Contains(second);
-        }
-        else
-        {
-            return false;
-        }
-    }
+        _ when first == second => true,
+        _ when Allowed.TryGetValue(first, out var allowed) => allowed.Contains(second),
+        _ => false,
+    };
 
     private static IReadOnlyDictionary<Type, IReadOnlyCollection<Type>> GenerateAllowList()
     {

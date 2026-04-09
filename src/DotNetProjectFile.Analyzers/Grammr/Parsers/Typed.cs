@@ -12,7 +12,7 @@ public sealed class Typed : Parser
 
         if (!Transformers.TryGetValue(type, out var transformer))
         {
-            var ctor = type.GetConstructor([typeof(Grammr.Syntax.Node)]);
+            var ctor = type.GetConstructor([typeof(Syntax.Node)]);
 
             transformer = (node) => node is null ? null : (Syntax.Node?)ctor.Invoke([node]);
             Transformers[type] = transformer;

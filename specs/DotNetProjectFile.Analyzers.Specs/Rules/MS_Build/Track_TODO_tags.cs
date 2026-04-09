@@ -3,7 +3,7 @@ namespace Rules.MS_Build.Track_TODO_tags;
 public class Reports
 {
     [Test]
-    public void TODOs_and_FIXMEs_in_MS_BUILD() => new DotNetProjectFile.Analyzers.MsBuild.TrackToDoTags()
+    public void TODOs_and_FIXMEs_in_MS_BUILD() => new TrackToDoTags()
         .ForProject("ToDo.cs")
         .HasIssues(
             Issue.WRN("Proj3001", @"Complete the task associated to this ""Fixme"" comment").WithSpan(08, 54, 10, 02).WithPath("ToDo.csproj"),
@@ -12,7 +12,7 @@ public class Reports
             Issue.WRN("Proj3001", @"Complete the task associated to this ""to-do"" comment").WithSpan(16, 56, 18, 02).WithPath("ToDo.csproj"));
 
     [Test]
-    public void TODOs_and_FIXMEs_in_RESX() => new DotNetProjectFile.Analyzers.Resx.TrackToDoTags()
+    public void TODOs_and_FIXMEs_in_RESX() => new Resx.TrackToDoTags()
         .ForProject("ToDo.cs")
         .HasIssues(
             Issue.WRN("Proj3001", @"Complete the task associated to this ""TODO"" comment").WithSpan(14, 06, 14, 36).WithPath("Resources.resx"),

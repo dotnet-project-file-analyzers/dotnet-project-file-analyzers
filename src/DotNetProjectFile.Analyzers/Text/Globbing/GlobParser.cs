@@ -57,15 +57,10 @@ internal static class GlobParser
         {
             span++;
 
-            if (span.Predicate(c => c != ']' && c != '[') is { } match &&
-                span.Skip(match.Length).StartsWith(']') is { })
-            {
-                return match;
-            }
-            else
-            {
-                return null;
-            }
+            return span.Predicate(c => c != ']' && c != '[') is { } match
+                && span.Skip(match.Length).StartsWith(']') is { }
+                ? match
+                : null;
         }
         else
         {
