@@ -15,25 +15,24 @@ internal static class CachedProjectLoader
         private readonly Random rnd = new(file.GetHashCode());
         
         private readonly Lock locker = new();
-        private Project? value;
 
         public Project Value
         {
             get
             {
-                if (value is { })
+                if (field is { })
                 {
-                    return value;
+                    return field;
                 }
 
                 lock (locker)
                 {
-                    if (value is not { })
+                    if (field is not { })
                     {
-                        value = TryLoad();
+                        field = TryLoad();
                     }
 
-                    return value;
+                    return field;
                 }
             }
         }
