@@ -36,7 +36,7 @@ public static class NodeExtensions
             : WhitespaceRegex.Replace(condition, string.Empty);
     }
 
-    private static bool IsAnyCondition(string? condition, HashSet<string> conditions) 
+    private static bool IsAnyCondition(string? condition, HashSet<string> conditions)
         => condition is { }
         && conditions.Contains(condition);
 }

@@ -13,7 +13,7 @@ internal static class CachedProjectLoader
     {
         // Used for exponential back-off when IO exceptions occur due to conflicts in file access.
         private readonly Random rnd = new(file.GetHashCode());
-        
+
         private readonly Lock locker = new();
 
         public Project Value

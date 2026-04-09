@@ -104,7 +104,7 @@ public partial class Rules
     private readonly string Docs_Readme_Text = Docs_Readme.OpenText().ReadToEnd();
     private readonly string Package_Readme_Text = Package_Readme.OpenText().ReadToEnd();
     private readonly string Root_Readme_Text = Root_Readme.OpenText().ReadToEnd();
-    
+
     [GeneratedRegex(@"Contains (?<amount>[0-9]+0)\+ \[Roslyn\]")]
     private static partial Regex AmountPattern();
 
@@ -290,7 +290,7 @@ public partial class Documents
     private static Dictionary<string, string> ParseHeader(in IOFile file)
         => ParseHeader(file.ReadAllText());
 
-    private static string? TryGet(in IOFile file, string key) 
+    private static string? TryGet(in IOFile file, string key)
         => ParseHeader(file).TryGetValue(key, out var result)
         ? result
         : null;

@@ -18,7 +18,7 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
         this DiagnosticAnalyzer analyzer,
         Language language,
         [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-        
+
         => language.IsRoslynBased
         ? analyzer
             .ForInlineProject($"inline{language.ProjectFileExtension}", content)
