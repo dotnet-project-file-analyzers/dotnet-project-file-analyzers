@@ -34,7 +34,6 @@ public static class PackageCache
 
         // TODO: handle `globalPackagesFolder` given by `nuget.config`. Issue #319
         // TODO: handle `repositoryPath` given by `packages.config`. Issue #318
-
         return RuntimeInformation.IsOSPlatform(OSPlatform.Windows)
             ? @"%userprofile%\.nuget\packages"
             : @"~/.nuget/packages";
@@ -143,7 +142,6 @@ public static class PackageCache
     private static IODirectory? GetVersionDirectory(IODirectory packageDir, string? versionLabel)
     {
         // TODO: resolve version to a suitable fixed version when floating version is provided. Issue #320
-
         if (versionLabel is { })
         {
             var exactVersionDir = packageDir.SubDirectory(versionLabel);

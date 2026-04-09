@@ -5,7 +5,6 @@ using System.Text;
 namespace DotNetProjectFile.Licensing;
 
 // Based on https://spdx.org/licenses/
-
 public static class Licenses
 {
     /// <summary>An unknown (unresolvable) license.</summary>
@@ -177,7 +176,6 @@ public static class Licenses
         }
 
         // TODO: handle complex expressions: https://spdx.github.io/spdx-spec/v2-draft/using-SPDX-short-identifiers-in-source-files/#e4-representing-multiple-licenses
-
         return Lookup.TryGetValue(licenseExpression, out var result)
             ? result
             : Unknown;
@@ -244,7 +242,6 @@ public static class Licenses
 
         // Matching logic is loosely based on the logic used by Licensee: https://github.com/licensee/licensee
         // Licensee is the library used by GitHub for determining the license.
-
         foreach (var pair in LicenseTextLookup)
         {
             var modelNgrams = pair.Key;
