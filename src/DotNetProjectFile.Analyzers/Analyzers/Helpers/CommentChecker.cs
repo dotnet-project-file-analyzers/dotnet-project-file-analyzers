@@ -1,4 +1,3 @@
-using Microsoft.CodeAnalysis.Text;
 using System.Text.RegularExpressions;
 
 namespace DotNetProjectFile.Analyzers.Helpers;

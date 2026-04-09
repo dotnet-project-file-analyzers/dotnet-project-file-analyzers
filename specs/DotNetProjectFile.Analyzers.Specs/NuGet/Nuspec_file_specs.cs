@@ -1,6 +1,4 @@
 using DotNetProjectFile.NuGet.Packaging;
-using FastSerialization;
-using System.Xml.Serialization;
 
 namespace NuGet.Nuspec_file_specs;
 
