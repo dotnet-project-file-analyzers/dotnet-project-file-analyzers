@@ -2,15 +2,23 @@
 
   <!--
     SonarQube can pick up issues report on files others than compiling files
-    if they are reported as <Content>. To reduce noise and overhead, copying
-    to output is disabled and visibility is false.
+    if they are reported as <Content>.
+    
+    * Exclude="@(Content)" 
+      Prevents <Content> from being added twice.
+      
+    * CopyToOutputDirectory="never"
+      Ensures that <Content> only added to satisfy SonarQube is not copied.
+    
+    * Visible="false"
+      Prevents from <Content> being shown it he IDE that was included by the user.
   -->
   <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true'">
-    <Content Include="**/*.??proj" CopyToOutputDirectory="never" Visible="false" />
-    <Content Include="**/*.config" CopyToOutputDirectory="never" Visible="false" />
-    <Content Include="**/*.props" CopyToOutputDirectory="never" Visible="false" />
-    <Content Include="**/*.resx" CopyToOutputDirectory="never" Visible="false" />
-    <Content Include="**/*.slnx" CopyToOutputDirectory="never" Visible="false" />
+    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Include="**/*.??proj" />
+    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Include="**/*.config" />
+    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Include="**/*.props" />
+    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Include="**/*.resx" />
+    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Include="**/*.slnx" />
   </ItemGroup>
 
 </Project>
