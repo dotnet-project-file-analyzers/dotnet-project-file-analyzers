@@ -8,7 +8,7 @@
       Prevents <Content> from being added twice.
       
     * CopyToOutputDirectory="never"
-      Ensures that <Content> only added to satisfy SonarQube is not copied.
+      Ensures that <Content> only included to satisfy SonarQube is not copied.
     
     * Visible="false"
       Prevents from <Content> being shown it he IDE that was included by the user.
