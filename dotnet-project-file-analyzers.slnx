@@ -4,4 +4,5 @@
   <Project Path="specs/DotNetProjectFile.Analyzers.Specs/DotNetProjectFile.Analyzers.Specs.csproj" />
   <Project Path="src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.csproj" />
   <Project Path="src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" />
+  <Project Path="src/DotNetProjectFile.Fixers/DotNetProjectFile.Fixers.csproj" Id="d6c5822e-6a72-40a2-991f-d47402d15677" />
 </Solution>

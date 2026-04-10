@@ -1,13 +1,14 @@
 using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.Text;
+using System.IO;
 using System.Threading.Tasks;
 
 namespace DotNetProjectFile.CodeFixes;
 
 public sealed class RemoveBomHeader : CodeFixProvider
 {
-    public sealed override ImmutableArray<string> FixableDiagnosticIds => [Rule.OnlyUseUTF8WithoutBom.Id];
+    public sealed override ImmutableArray<string> FixableDiagnosticIds => ["Proj3000"];
 
     public override Task RegisterCodeFixesAsync(CodeFixContext context)
     {
@@ -26,7 +27,7 @@ public sealed class RemoveBomHeader : CodeFixProvider
 
     private static async Task<Document> UpdateDocument(Document document)
     {
-        using var stream = IOFile.Parse(document.FilePath).OpenRead();
+        using var stream = new FileInfo(document.FilePath).OpenRead();
         if (stream is { Length: > 3, CanRead: true, CanSeek: true })
         {
             stream.Position = 3;
