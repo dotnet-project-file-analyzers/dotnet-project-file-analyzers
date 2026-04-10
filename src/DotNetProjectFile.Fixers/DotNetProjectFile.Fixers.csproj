@@ -1,0 +1,88 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../props/common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <OutputType>Library</OutputType>
+    <RootNamespace>DotNetProjectFile</RootNamespace>
+    <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <DevelopmentDependency>true</DevelopmentDependency>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+    <IsPackable>true</IsPackable>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GenerateSBOM>true</GenerateSBOM>
+  </PropertyGroup>
+
+  <!-- We want to document the code but we do not need to ship it. -->
+  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(ContinuousIntegrationBuild)' == 'true'">
+    <RestoreLockedMode>true</RestoreLockedMode>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package settings">
+    <RepositoryType>git</RepositoryType>
+    <PackageId>DotNetProjectFile.Fixers</PackageId>
+    <PackageProjectUrl>https://dotnet-project-file-analyzers.github.io</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
+    <Description>.NET project file fixers</Description>
+    <PackageTags>Code Analysis;Project files;project file;dotnet;csproj;vbproj;resx;fsproj;cblproj;MS Build;resources;analyzer;analyzer;analysis</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>logo_128x128.png</PackageIcon>
+    <PackageIconUrl>https://raw.githubusercontent.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers/main/design/logo_128x128.png</PackageIconUrl>
+    <SuppressDependenciesWhenPacking>true</SuppressDependenciesWhenPacking>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup Label="Package files">
+    <None Update="tools/*.ps1" Pack="true" PackagePath="/" />
+    <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
+    <None Include="$(OutputPath)/DotNetProjectFile.Fixers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
+    <None Include="README.md" Pack="true" PackagePath="" />
+  </ItemGroup>
+
+  <ItemGroup Label="Props and targets">
+    <PackageReference Include="DotNet.ReproducibleBuilds" Version="2.0.2" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.5" PrivateAssets="all" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <ItemGroup Label="Roslyn dependencies">
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="[4.10.0,)" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="[4.10.0,)" PrivateAssets="all" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="[4.10.0,)" />
+  </ItemGroup>
+
+  <ItemGroup Label="Analyzers">
+    <PackageReference PrivateAssets="all" Include="AsyncFixer" Version="2.1.0" ExcludeAssets="runtime" />
+    <PackageReference PrivateAssets="all" Include="Qowaiv.Analyzers.CSharp" Version="2.2.0" ExcludeAssets="runtime" />
+    <PackageReference PrivateAssets="all" Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" ExcludeAssets="runtime" />
+  </ItemGroup>
+
+  <PropertyGroup Label="Version and release notes">
+    <Version>1.10.0.5</Version>
+    <ToBeReleased>
+      <![CDATA[
+ToBeDecided:
+- Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+v1.11.0
+- Proj0050 Enforce code-style in builds. (NEW RULE)
+]]>
+    </ToBeReleased>
+    <PackageReleaseNotes>
+      <![CDATA[
+]]>
+    </PackageReleaseNotes>
+  </PropertyGroup>
+
+</Project>
