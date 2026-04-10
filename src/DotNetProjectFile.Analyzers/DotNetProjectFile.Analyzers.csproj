@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -81,6 +81,7 @@ ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.11.0
 - Proj0050 Enforce code-style in builds. (NEW RULE)
+- Proj0306 Avoid local package sources. (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
