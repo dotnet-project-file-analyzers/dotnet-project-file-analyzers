@@ -1,7 +1,6 @@
 using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.Text;
-using System.IO;
 using System.Threading.Tasks;
 
 namespace DotNetProjectFile.CodeFixes;
@@ -17,7 +16,7 @@ public sealed class RemoveBomHeader : CodeFixProvider
             context.RegisterCodeFix(
                 CodeAction.Create(
                     "Remove UTF-8 BOM header",
-                    t => UpdateDocument(context.Document, t),
+                    _ => UpdateDocument(context.Document),
                     "Proj3000.Fix"),
                 diagnostic);
         }
@@ -25,16 +24,17 @@ public sealed class RemoveBomHeader : CodeFixProvider
         return Task.CompletedTask;
     }
 
-    private static async Task<Document> UpdateDocument(Document document, CancellationToken token)
+    private static async Task<Document> UpdateDocument(Document document)
     {
-        using var file = IOFile.Parse(document.FilePath).OpenRead();
-        var stream = new MemoryStream();
-        _ = await file.ReadAsync(new byte[3], 0, 3, token);
-        await file.CopyToAsync(stream);
-        stream.Position = 0;
-        return document.WithText(SourceText.From(stream));
+        using var stream = IOFile.Parse(document.FilePath).OpenRead();
+        if (stream is { Length: > 3, CanRead: true, CanSeek: true })
+        {
+            stream.Position = 3;
+            return document.WithText(SourceText.From(stream));
+        }
+        else return document;
     }
 
     /// <inheritdoc />
-    public sealed override FixAllProvider? GetFixAllProvider() => null;
+    public sealed override FixAllProvider? GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;
 }
