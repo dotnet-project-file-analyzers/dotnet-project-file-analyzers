@@ -60,9 +60,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Roslyn dependencies">
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="[4.10.0,)" PrivateAssets="all" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="[4.10.0,)"  PrivateAssets="all" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="[4.10.0,)" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="[4.10.0,)" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">
@@ -78,6 +76,7 @@
   <PropertyGroup Label="Version and release notes">
     <Version>1.11.0</Version>
     <Version>1.10.0.0001</Version>
+    <Version>1.10.0.5</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
