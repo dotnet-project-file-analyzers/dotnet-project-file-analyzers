@@ -80,7 +80,8 @@
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.11.0
-- Proj0050 Enforce code-style in builds. (NEW RULE)
+- Proj0050: Enforce code-style in builds. (NEW RULE)
+- SonarQube integration should not add <Content> twice. (BUG)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
