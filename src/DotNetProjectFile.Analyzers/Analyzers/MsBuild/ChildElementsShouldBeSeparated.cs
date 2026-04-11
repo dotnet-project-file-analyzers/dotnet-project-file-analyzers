@@ -21,17 +21,15 @@ public sealed class ChildElementsShouldBeSeparated()
         List<Block> blocks =
         [
             new Block(0, context.File.Locations.Start, BlockType.Root),
-
+            .. context.File.Children.Select(NodeBlock),
             new Block(context.File.Locations.End, context.File.Locations.End, BlockType.Root),
-
-            .. project.Element
-                .DescendantNodes()
-                .OfType<XComment>()
-                .Select(x => new XmlComment(x, context.File))
-                .Select(CommentBlock),
-
-            .. context.File.Children.Select(NodeBlock)
         ];
+
+        blocks.AddRange(project.Element
+            .DescendantNodes()
+            .OfType<XComment>()
+            .Select(x => new XmlComment(x, context.File))
+            .Select(CommentBlock).Where(c => blocks.None(b => b.Intersect(c))));
 
         blocks.Sort();
 
@@ -79,6 +77,10 @@ public sealed class ChildElementsShouldBeSeparated()
     private readonly record struct Block(int Start, int End, BlockType Type) : IComparable<Block>
     {
         public int CompareTo(Block other) => Start.CompareTo(other.Start);
+
+        public bool Intersect(Block other)
+            => other.End >= Start
+            && other.Start <= End;
     }
 }
 

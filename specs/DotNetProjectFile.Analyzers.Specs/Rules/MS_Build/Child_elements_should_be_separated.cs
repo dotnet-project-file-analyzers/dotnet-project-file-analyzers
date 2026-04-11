@@ -47,4 +47,18 @@ public class Guards
         </Project>
         """)
         .HasNoIssues();
+
+    [Test]
+    public void Comments_within_child_elements() => new ChildElementsShouldBeSeparated()
+        .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <!-- comments within child elements. -->
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
+
+        </Project>
+        """)
+        .HasNoIssues();
 }
