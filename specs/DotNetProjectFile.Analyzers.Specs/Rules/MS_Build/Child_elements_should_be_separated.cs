@@ -27,7 +27,9 @@ public class Reports
         
         </Project>
         """)
-        .HasNoIssues();
+        .HasIssues(
+            Issue.WRN("Proj1703", "Insert empty line").WithSpan(05, 0, 06, 0),
+            Issue.WRN("Proj1703", "Remove empty line").WithSpan(13, 0, 14, 0));
 }
 
 public class Guards

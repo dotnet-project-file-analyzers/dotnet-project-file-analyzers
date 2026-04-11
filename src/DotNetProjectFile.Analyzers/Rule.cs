@@ -1333,20 +1333,22 @@ public static partial class Rule
         tags: ["XML", "CDATA"],
         category: Category.Formatting);
 
-    public static DiagnosticDescriptor ChildElementsShouldBeSeparated => New(
-        id: 1702,
-        title: "Use <![CDATA[ for large texts",
-        message: "Block from {0} to {1}",
-        description: "To improve readability, large texts should be CDATA.",
-        tags: ["XML", "CDATA"],
-        category: Category.Formatting);
-
     public static DiagnosticDescriptor OmitXmlDeclarations => New(
         id: 1702,
         title: "Omit XML declarations",
         message: "Remove the XML declaration as it is redundant",
         description: "The XML declaration is redundant for MS Build project files.",
         tags: ["XML", "declaration"],
+        category: Category.Formatting);
+
+    public static DiagnosticDescriptor ChildElementsShouldBeSeparated => New(
+        id: 1703,
+        title: "MSBuild child elements should be separated by an empty line",
+        message: "{0} empty line",
+        description:
+            "To improve readability, MSBuild child elemements shoudl be " +
+            "separated by empty lines.",
+        tags: ["XML", "MSBuild"],
         category: Category.Formatting);
 
     public static DiagnosticDescriptor OnlyUseUTF8WithoutBom => New(

@@ -40,12 +40,18 @@ public sealed class ChildElementsShouldBeSeparated()
             var (prev, curr) = (blocks[i], blocks[i + 1]);
 
             var space = Space(prev.Type, curr.Type);
+            var delta = (space - (curr.Start - prev.End)) switch
+            {
+                < 0 => "Remove",
+                > 0 => "Insert",
+                _ => null,
+            };
 
-            if (space != curr.Start - prev.End)
+            if (delta is { })
             {
                 var line = new LinePositionSpan(new(prev.End, 0), new(prev.End + 1, 0));
                 var location = Location.Create(project.Path.ToString(), project.Text.TextSpan(line), line);
-                context.ReportDiagnostic(Descriptor, location, "x", "y");
+                context.ReportDiagnostic(Descriptor, location, delta);
             }
         }
     }
