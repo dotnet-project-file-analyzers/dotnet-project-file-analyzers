@@ -1333,7 +1333,7 @@ public static partial class Rule
         tags: ["XML", "CDATA"],
         category: Category.Formatting);
 
-    public static DiagnosticDescriptor ChildElementsShouldBeSeperated => New(
+    public static DiagnosticDescriptor ChildElementsShouldBeSeparated => New(
         id: 1702,
         title: "Use <![CDATA[ for large texts",
         message: "Block from {0} to {1}",

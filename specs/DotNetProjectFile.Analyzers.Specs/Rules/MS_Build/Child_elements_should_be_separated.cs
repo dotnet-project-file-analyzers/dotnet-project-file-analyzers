@@ -1,9 +1,9 @@
-namespace Rules.MS_Build.Child_elements_should_be_seperated;
+namespace Rules.MS_Build.Child_elements_should_be_separated;
 
 public class Reports
 {
     [Test]
-    public void violations() => new ChildElementsShouldBeSeperated()
+    public void violations() => new ChildElementsShouldBeSeparated()
         .ForInlineCsproj("""
         <Project Sdk="Microsoft.NET.Sdk">
         
@@ -33,7 +33,7 @@ public class Reports
 public class Guards
 {
     [Test]
-    public void XML_declaration() => new ChildElementsShouldBeSeperated()
+    public void XML_declaration() => new ChildElementsShouldBeSeparated()
         .ForInlineCsproj("""
         <?xml version="1.0" encoding="UTF-8"?>
         <Project Sdk="Microsoft.NET.Sdk">

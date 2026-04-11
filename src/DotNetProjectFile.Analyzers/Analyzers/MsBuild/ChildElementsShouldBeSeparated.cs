@@ -2,10 +2,10 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <summary>Implements <see cref="Rule.ChildElementsShouldBeSeperated"/>.</summary>
+/// <summary>Implements <see cref="Rule.ChildElementsShouldBeSeparated"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class ChildElementsShouldBeSeperated()
-    : MsBuildProjectFileAnalyzer(Rule.ChildElementsShouldBeSeperated)
+public sealed class ChildElementsShouldBeSeparated()
+    : MsBuildProjectFileAnalyzer(Rule.ChildElementsShouldBeSeparated)
 {
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.AllExceptDirectoryPackages;

@@ -140,7 +140,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj1700** Indent XML](https://dotnet-project-file-analyzers.github.io/rules/Proj1700.html)
 * [**Proj1701** Use CDATA for large texts](https://dotnet-project-file-analyzers.github.io/rules/Proj1701.html)
 * [**Proj1702** Omit XML declarations](https://dotnet-project-file-analyzers.github.io/rules/Proj1702.html)
-* [**Proj1703** MSBuild child elements should be seperated by an empty line](https://dotnet-project-file-analyzers.github.io/rules/Proj1703.html)
+* [**Proj1703** MSBuild child elements should be separated by an empty line](https://dotnet-project-file-analyzers.github.io/rules/Proj1703.html)
 
 ### Design
 * [**Proj1300** Avoid project references to executables](https://dotnet-project-file-analyzers.github.io/rules/Proj1300.html)
