@@ -2,24 +2,11 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <summary>Implements <see cref="Rule.SeperateBlocksWithSingleWhiteLine"/>.</summary>
+/// <summary>Implements <see cref="Rule.ChildElementsShouldBeSeperated"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class SeperateBlocksWithSingleWhiteLine()
-    : MsBuildProjectFileAnalyzer(Rule.SeperateBlocksWithSingleWhiteLine)
+public sealed class ChildElementsShouldBeSeperated()
+    : MsBuildProjectFileAnalyzer(Rule.ChildElementsShouldBeSeperated)
 {
-    private enum BlockType
-    {
-        Root,
-        Comment,
-        Block,
-        Import,
-    }
-
-    private readonly record struct Block(int Start, int End, BlockType Type) : IComparable<Block>
-    {
-        public int CompareTo(Block other) => Start.CompareTo(other.Start);
-    }
-
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.AllExceptDirectoryPackages;
 
@@ -74,6 +61,19 @@ public sealed class SeperateBlocksWithSingleWhiteLine()
     private static Block CommentBlock(XmlComment x) => new(x.Locations.Start, x.Locations.End, BlockType.Comment);
 
     private static Block NodeBlock(Node n) => new(n.Locations.Start, n.Locations.End, n is Import ? BlockType.Import : BlockType.Block);
+
+    private enum BlockType
+    {
+        Root,
+        Comment,
+        Block,
+        Import,
+    }
+
+    private readonly record struct Block(int Start, int End, BlockType Type) : IComparable<Block>
+    {
+        public int CompareTo(Block other) => Start.CompareTo(other.Start);
+    }
 }
 
 file static class Extensions

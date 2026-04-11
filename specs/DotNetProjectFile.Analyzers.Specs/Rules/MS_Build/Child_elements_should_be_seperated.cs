@@ -1,0 +1,48 @@
+namespace Rules.MS_Build.Child_elements_should_be_seperated;
+
+public class Reports
+{
+    [Test]
+    public void violations() => new ChildElementsShouldBeSeperated()
+        .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+        
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <EnablePackageValidation>true</EnablePackageValidation>
+          </PropertyGroup>
+          <PropertyGroup>
+            <ImplicitUsings>false</ImplicitUsings>
+          </PropertyGroup>
+        
+          <!-- Comments should be ingored -->
+          <ItemGroup>
+            <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.8.0" PrivateAssets="all" />
+          </ItemGroup>
+
+
+         <ItemGroup>
+            <PackageReference Update="DotNetProjectFile.Analyzers" Version="1.10.0" />
+          </ItemGroup>
+        
+        </Project>
+        """)
+        .HasNoIssues();
+}
+
+public class Guards
+{
+    [Test]
+    public void XML_declaration() => new ChildElementsShouldBeSeperated()
+        .ForInlineCsproj("""
+        <?xml version="1.0" encoding="UTF-8"?>
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
+
+        </Project>
+        """)
+        .HasNoIssues();
+}
