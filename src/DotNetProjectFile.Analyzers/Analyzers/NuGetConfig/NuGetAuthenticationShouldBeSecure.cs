@@ -2,9 +2,9 @@ using DotNetProjectFile.NuGet.Configuration;
 
 namespace DotNetProjectFile.Analyzers.NuGetConfig;
 
-/// <summary>Implements <see cref="Rule.NuGet.InjectCredentials"/>.</summary>
+/// <summary>Implements <see cref="Rule.NuGet.NuGetAuthenticationShouldBeSecure"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class InjectCredentials() : NuGetConfigFileAnalyzer(Rule.NuGet.InjectCredentials)
+public sealed class NuGetAuthenticationShouldBeSecure() : NuGetConfigFileAnalyzer(Rule.NuGet.NuGetAuthenticationShouldBeSecure)
 {
     /// <inheritdoc />
     protected override void Register(NuGetConfigFileAnalysisContext context)

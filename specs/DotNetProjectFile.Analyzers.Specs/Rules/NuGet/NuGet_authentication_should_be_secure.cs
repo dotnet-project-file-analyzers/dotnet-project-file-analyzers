@@ -1,9 +1,9 @@
-namespace Specs.Rules.NuGet.Inject_credentials;
+namespace Specs.Rules.NuGet.NuGet_authentication_should_be_secure;
 
 public class Reports
 {
     [Test]
-    public void exposed_passwords() => new DotNetProjectFile.Analyzers.NuGetConfig.InjectCredentials()
+    public void exposed_passwords() => new DotNetProjectFile.Analyzers.NuGetConfig.NuGetAuthenticationShouldBeSecure()
         .ForInlineNuGetConfig("""
         <configuration>
           <packageSourceCredentials>
@@ -29,7 +29,7 @@ public class Guards
     [TestCase("%123%")]
     [TestCase("1")]
     [TestCase("12")]
-    public void passwords_considered_to_short_or_placeholders(string password) => new DotNetProjectFile.Analyzers.NuGetConfig.InjectCredentials()
+    public void passwords_considered_to_short_or_placeholders(string password) => new DotNetProjectFile.Analyzers.NuGetConfig.NuGetAuthenticationShouldBeSecure()
         .ForInlineNuGetConfig($"""
         <configuration>
           <packageSourceCredentials>
