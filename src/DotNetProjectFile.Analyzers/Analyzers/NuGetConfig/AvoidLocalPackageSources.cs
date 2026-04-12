@@ -17,5 +17,6 @@ public sealed class AvoidLocalPackageSources() : NuGetConfigFileAnalyzer(Rule.Nu
 
     private static bool IsLocal(Add add)
         => add.Value is { Length: > 0 } value
-        && !value.StartsWith("http");
+        && (!Uri.TryCreate(value, UriKind.Absolute, out var url)
+        || !url.Scheme.StartsWith("http"));
 }
