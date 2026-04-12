@@ -19,11 +19,17 @@ public sealed record ProjectReferenceInfo
         _ => ProjectReferenceConflict.None,
     };
 
+    [Pure]
     public static ProjectReferenceInfo Create(MsBuildProject project) => new()
     {
         Path = project.Path,
         OutputType = project.GetOutputType(),
         IsPackable = project.IsPackable(),
-        IsTestProject = project.IsTestProject(),
+        IsTestProject = project.IsTestProject()
+            || project.Walk().OfType<PackageReference>().Any(IsTestSdk),
     };
+
+    [Pure]
+    private static bool IsTestSdk(PackageReference reference) 
+        => reference.Include is "Microsoft.NET.Test.Sdk";
 }
