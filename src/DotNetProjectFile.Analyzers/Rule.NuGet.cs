@@ -34,7 +34,7 @@ public static partial class Rule
         public static DiagnosticDescriptor NuGetAuthenticationShouldBeSecure => New(
             id: 0302,
             title: "NuGet authentication should be secure",
-            message: "Use a placeholder to inject the password instead",
+            message: "Use an environment variable instead of a plain text password",
             description:
                 "NuGet authentication should use secure, externalized credentials. " +
                 "Storing credentials securely prevents accidental exposure in " +

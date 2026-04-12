@@ -92,7 +92,7 @@ v1.10.0
 v1.9.0
 - Proj0300: Configure NuGet explicitly (NEW RULE)
 - Proj0301: Clear previously defined package sources (NEW RULE)
-- Proj0302: Credentials should be injected (NEW RULE)
+- Proj0302: NuGet authentication should be secure (NEW RULE)
 - Proj0303: Define a mapping for each package source (NEW RULE)
 - Proj0304: Package source mappings should be unique (NEW RULE)
 - Proj0305: Last source map should map all packages (NEW RULE)
