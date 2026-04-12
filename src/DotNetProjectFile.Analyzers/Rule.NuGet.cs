@@ -76,7 +76,7 @@ public static partial class Rule
             message: "Remove this local package source",
             description:
                 "Package sources should be verifiable and reliable. " +
-                "A local package source is most likely nown of those.",
+                "A local package source is most likely neither of those.",
             tags: ["NuGet"],
             category: Category.Security);
     }
