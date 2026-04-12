@@ -1,9 +1,9 @@
-namespace Specs.Rules.NuGet.Inject_credentials;
+namespace Specs.Rules.NuGet.NuGet_authentication_should_be_secure;
 
 public class Reports
 {
     [Test]
-    public void exposed_passwords() => new DotNetProjectFile.Analyzers.NuGetConfig.InjectCredentials()
+    public void exposed_passwords() => new DotNetProjectFile.Analyzers.NuGetConfig.NuGetAuthenticationShouldBeSecure()
         .ForInlineNuGetConfig("""
         <configuration>
           <packageSourceCredentials>
@@ -19,8 +19,8 @@ public class Reports
         </configuration>
         """)
         .HasIssues(
-            Issue.WRN("Proj0302", "Use a placeholder to inject the password instead").WithSpan(04, 42, 04, 53),
-            Issue.WRN("Proj0302", "Use a placeholder to inject the password instead").WithSpan(08, 42, 08, 66));
+            Issue.WRN("Proj0302", "Use an environment variable instead of a plain text password").WithSpan(04, 42, 04, 53),
+            Issue.WRN("Proj0302", "Use an environment variable instead of a plain text password").WithSpan(08, 42, 08, 66));
 }
 
 public class Guards
@@ -29,7 +29,7 @@ public class Guards
     [TestCase("%123%")]
     [TestCase("1")]
     [TestCase("12")]
-    public void passwords_considered_to_short_or_placeholders(string password) => new DotNetProjectFile.Analyzers.NuGetConfig.InjectCredentials()
+    public void passwords_considered_too_short_or_placeholders(string password) => new DotNetProjectFile.Analyzers.NuGetConfig.NuGetAuthenticationShouldBeSecure()
         .ForInlineNuGetConfig($"""
         <configuration>
           <packageSourceCredentials>
