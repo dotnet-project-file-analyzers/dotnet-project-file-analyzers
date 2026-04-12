@@ -49,8 +49,7 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
     private static string GetHash(string content)
     {
         var input = Encoding.UTF8.GetBytes(content);
-        using var md5 = MD5.Create();
-        var output = md5.ComputeHash(input);
+        var output = SHA1.HashData(input);
         var str = Convert.ToHexString(output);
         return str;
     }
