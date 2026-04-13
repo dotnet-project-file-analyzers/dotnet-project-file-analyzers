@@ -65,7 +65,7 @@
 
   <ItemGroup Label="Analyzers">
     <PackageReference PrivateAssets="all" Include="AsyncFixer" Version="2.1.0" ExcludeAssets="runtime" />
-    <PackageReference PrivateAssets="all" Include="Qowaiv.Analyzers.CSharp" Version="2.2.0" ExcludeAssets="runtime" />
+    <PackageReference PrivateAssets="all" Include="Qowaiv.Analyzers.CSharp" Version="2.3.0" ExcludeAssets="runtime" />
     <PackageReference PrivateAssets="all" Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" ExcludeAssets="runtime" />
   </ItemGroup>
 
@@ -81,8 +81,9 @@ ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.11.0
 - Proj0050: Enforce code-style in builds. (NEW RULE)
-- Proj1300: Determine IsTestProject also via context.Props. (FP)
 - Proj0306: Avoid local package sources. (NEW RULE)
+- Proj1300: Determine IsTestProject also via context.Props. (FP)
+- Proj1703: MSBuild child elements should be separated by an empty line. (NEW RULE)
 - SonarQube integration should not add <Content> twice. (BUG)
 ]]>
     </ToBeReleased>
