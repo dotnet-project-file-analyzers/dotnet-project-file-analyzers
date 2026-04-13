@@ -1346,7 +1346,7 @@ public static partial class Rule
         title: "MSBuild child elements should be separated by an empty line",
         message: "{0} empty line",
         description:
-            "To improve readability, MSBuild child elemements shoudl be " +
+            "To improve readability, MSBuild child elements should be " +
             "separated by empty lines.",
         tags: ["XML", "MSBuild"],
         category: Category.Formatting);
