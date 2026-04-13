@@ -73,5 +73,15 @@ public static partial class Rule
                 "least one package, the last one should be a match all (*).",
             tags: ["NuGet"],
             category: Category.Bug);
+
+        public static DiagnosticDescriptor AvoidLocalPackageSources => New(
+            id: 0306,
+            title: "Avoid local package sources",
+            message: "Remove this local package source",
+            description:
+                "Package sources should be verifiable and reliable. " +
+                "A local package source is most likely neither of those.",
+            tags: ["NuGet"],
+            category: Category.Security);
     }
 }
