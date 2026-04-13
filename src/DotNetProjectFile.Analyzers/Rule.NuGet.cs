@@ -1,5 +1,9 @@
 #pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
+using Grammr.Lexers;
+using Grammr.Text;
+using System.Net;
+
 namespace DotNetProjectFile;
 
 public static partial class Rule
@@ -27,16 +31,16 @@ public static partial class Rule
             tags: ["NuGet"],
             category: Category.Security);
 
-        public static DiagnosticDescriptor InjectCredentials => New(
-           id: 0302,
-           title: "Credentials should be injected",
-           message: "Use a placeholder to inject the password instead",
-           description:
-               "Credentials should not be exposed in repositories for obvious " +
-               "reasons. Therefor they should be injected into file that " +
-               "themeselves are part of the codebase.",
-           tags: ["NuGet"],
-           category: Category.Security);
+        public static DiagnosticDescriptor NuGetAuthenticationShouldBeSecure => New(
+            id: 0302,
+            title: "NuGet authentication should be secure",
+            message: "Use an environment variable instead of a plain text password",
+            description:
+                "NuGet authentication should use secure, externalized credentials. " +
+                "Storing credentials securely prevents accidental exposure in " +
+                "source control and reduces the risk of unauthorized access.",
+            tags: ["NuGet"],
+            category: Category.Security);
 
         public static DiagnosticDescriptor DefineMappingForMultipleSources => New(
             id: 0303,
@@ -69,5 +73,15 @@ public static partial class Rule
                 "least one package, the last one should be a match all (*).",
             tags: ["NuGet"],
             category: Category.Bug);
+
+        public static DiagnosticDescriptor AvoidLocalPackageSources => New(
+            id: 0306,
+            title: "Avoid local package sources",
+            message: "Remove this local package source",
+            description:
+                "Package sources should be verifiable and reliable. " +
+                "A local package source is most likely neither of those.",
+            tags: ["NuGet"],
+            category: Category.Security);
     }
 }
