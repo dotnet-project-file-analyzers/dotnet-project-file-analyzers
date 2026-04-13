@@ -196,6 +196,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj1701** Use CDATA for large texts](rules/Proj1701.md)
 * [**Proj1702** Omit XML declarations](rules/Proj1702.md)
 * [**Proj1703** MSBuild child elements should be separated by an empty line](rules/Proj1703.md)
+
 ### Other
 * [**Proj1100** Avoid using Moq](rules/Proj1100.md)
 * [**Proj1101** Package references should have stable versions](rules/Proj1101.md)
