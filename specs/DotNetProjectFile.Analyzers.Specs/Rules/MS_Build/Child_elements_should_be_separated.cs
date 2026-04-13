@@ -15,7 +15,7 @@ public class Reports
             <ImplicitUsings>false</ImplicitUsings>
           </PropertyGroup>
         
-          <!-- Comments should be ingored -->
+          <!-- Comments should be ignored -->
           <ItemGroup>
             <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.8.0" PrivateAssets="all" />
           </ItemGroup>
