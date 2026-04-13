@@ -136,6 +136,7 @@ dotnet_diagnostic.Proj1302.severity = warning    # Avoid project references to t
 dotnet_diagnostic.Proj1700.severity = warning    # Indent XML files
 dotnet_diagnostic.Proj1701.severity = warning    # Use <![CDATA[ for large texts
 dotnet_diagnostic.Proj1702.severity = warning    # Omit XML declarations
+dotnet_diagnostic.Proj1703.severity = warning    # MSBuild child elements should be separated by an empty line
 dotnet_diagnostic.Proj2000.severity = error      # Embed valid resource files
 dotnet_diagnostic.Proj2001.severity = warning    # Define data in a resource file
 dotnet_diagnostic.Proj2002.severity = warning    # Sort resource file values alphabetically
