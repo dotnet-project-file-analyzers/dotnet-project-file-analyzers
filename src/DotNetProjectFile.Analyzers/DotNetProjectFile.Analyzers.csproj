@@ -65,7 +65,7 @@
 
   <ItemGroup Label="Analyzers">
     <PackageReference PrivateAssets="all" Include="AsyncFixer" Version="2.1.0" ExcludeAssets="runtime" />
-    <PackageReference PrivateAssets="all" Include="Qowaiv.Analyzers.CSharp" Version="2.2.0" ExcludeAssets="runtime" />
+    <PackageReference PrivateAssets="all" Include="Qowaiv.Analyzers.CSharp" Version="2.3.0" ExcludeAssets="runtime" />
     <PackageReference PrivateAssets="all" Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" ExcludeAssets="runtime" />
   </ItemGroup>
 
@@ -82,6 +82,7 @@ ToBeDecided:
 v1.11.0
 - Proj0050: Enforce code-style in builds. (NEW RULE)
 - Proj1703: MSBuild child elements should be separated by an empty line. (NEW RULE)
+- Proj0306: Avoid local package sources. (NEW RULE)
 - SonarQube integration should not add <Content> twice. (BUG)
 ]]>
     </ToBeReleased>
@@ -94,7 +95,7 @@ v1.10.0
 v1.9.0
 - Proj0300: Configure NuGet explicitly (NEW RULE)
 - Proj0301: Clear previously defined package sources (NEW RULE)
-- Proj0302: Credentials should be injected (NEW RULE)
+- Proj0302: NuGet authentication should be secure (NEW RULE)
 - Proj0303: Define a mapping for each package source (NEW RULE)
 - Proj0304: Package source mappings should be unique (NEW RULE)
 - Proj0305: Last source map should map all packages (NEW RULE)

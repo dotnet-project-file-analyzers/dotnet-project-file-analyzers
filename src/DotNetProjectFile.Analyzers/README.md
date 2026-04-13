@@ -173,10 +173,11 @@ The package contains analyzers that analyze .NET project files.
 ## NuGet configuration
 * [**Proj0300** Configure NuGet explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0300.html)
 * [**Proj0301** Clear previously defined package sources](https://dotnet-project-file-analyzers.github.io/rules/Proj0301.html)
-* [**Proj0302** Credentials should be injected](https://dotnet-project-file-analyzers.github.io/rules/Proj0302.html)
+* [**Proj0302** NuGet authentication should be secure](https://dotnet-project-file-analyzers.github.io/rules/Proj0302.html)
 * [**Proj0303** Define a mapping for each package source](https://dotnet-project-file-analyzers.github.io/rules/Proj0303.html)
 * [**Proj0304** Package source mappings should be unique](https://dotnet-project-file-analyzers.github.io/rules/Proj0304.html)
 * [**Proj0305** Last source map should map all packages](https://dotnet-project-file-analyzers.github.io/rules/Proj0305.html)
+* [**Proj0306** Avoid local package sources](https://dotnet-project-file-analyzers.github.io/rules/Proj0306.html)
 
 ## INI
 * [**Proj4000** Invalid INI file](https://dotnet-project-file-analyzers.github.io/rules/Proj4000.html)
