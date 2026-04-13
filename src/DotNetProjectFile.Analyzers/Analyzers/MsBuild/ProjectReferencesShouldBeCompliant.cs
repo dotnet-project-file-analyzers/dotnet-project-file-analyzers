@@ -15,6 +15,11 @@ public sealed class ProjectReferencesShouldBeCompliant() : MsBuildProjectFileAna
     {
         var root = context.File.Path.Directory;
         var info = ProjectReferenceInfo.Create(context.File);
+        info = info with
+        {
+            IsPackable = context.Props.IsPackable ?? info.IsPackable,
+            IsTestProject = context.Props.IsTestProject ?? info.IsTestProject,
+        };
 
         foreach (var reference in context.File.Walk()
             .OfType<ProjectReference>()
