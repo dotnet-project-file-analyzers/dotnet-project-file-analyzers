@@ -1,5 +1,6 @@
 using DotNetProjectFile.Ini;
 using Microsoft.CodeAnalysis.Text;
+using System.Xml;
 
 namespace DotNetProjectFile.MsBuild;
 
@@ -108,22 +109,48 @@ public sealed partial class MsBuildProject : Node, ProjectFile
         }
     }
 
-    public static MsBuildProject Load(IOFile file, ProjectFiles projects)
+    /// <summary>Loads an MSBuild project from file.</summary>
+    /// <remarks>
+    /// Returns null if the files does not contain valid XML.
+    /// </remarks>
+    [Pure]
+    public static MsBuildProject? Load(IOFile file, ProjectFiles projects)
     {
-        using var reader = file.TryOpenText();
-        return new(
-            path: file,
-            text: SourceText.From(reader.ReadToEnd()),
-            projectFiles: projects,
-            additionalText: null);
+        try
+        {
+            using var reader = file.TryOpenText();
+            return new(
+                path: file,
+                text: SourceText.From(reader.ReadToEnd()),
+                projectFiles: projects,
+                additionalText: null);
+        }
+        catch (XmlException)
+        {
+            return null;
+        }
     }
 
-    public static MsBuildProject Load(AdditionalText text, ProjectFiles projects)
-        => new(
-            path: IOFile.Parse(text.Path),
-            text: text.GetText()!,
-            projectFiles: projects,
-            additionalText: text);
+    /// <summary>Loads an MSBuild project from file.</summary>
+    /// <remarks>
+    /// Returns null if the files does not contain valid XML.
+    /// </remarks>
+    [Pure]
+    public static MsBuildProject? Load(AdditionalText text, ProjectFiles projects)
+    {
+        try
+        {
+            return new(
+                path: IOFile.Parse(text.Path),
+                text: text.GetText()!,
+                projectFiles: projects,
+                additionalText: text);
+        }
+        catch (XmlException)
+        {
+            return null;
+        }
+    }
 
     private static readonly LoadOptions LoadOptions = LoadOptions.PreserveWhitespace | LoadOptions.SetLineInfo;
 }
