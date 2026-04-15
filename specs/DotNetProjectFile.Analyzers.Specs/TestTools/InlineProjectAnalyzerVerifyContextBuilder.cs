@@ -9,6 +9,7 @@ namespace Specs.TestTools;
 
 internal sealed class InlineProjectAnalyzerVerifyContextBuilder
 {
+    private static readonly Lock Locker = new();
     private readonly DiagnosticAnalyzer Analyzer;
     private readonly ImmutableArray<FileDefinition> Files;
     private readonly Lazy<string> Hash;
@@ -110,7 +111,6 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
         }
     }
 
-    private static readonly Lock Locker = new Lock();
 
     private sealed record FileDefinition
     {
