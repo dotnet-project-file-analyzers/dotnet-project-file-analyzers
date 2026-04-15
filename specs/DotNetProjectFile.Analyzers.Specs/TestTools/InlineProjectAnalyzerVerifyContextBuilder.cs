@@ -3,16 +3,18 @@ using System.Collections.Immutable;
 using System.Globalization;
 using System.IO;
 using System.Security.Cryptography;
+using System.Threading;
 
 namespace Specs.TestTools;
 
 internal sealed class InlineProjectAnalyzerVerifyContextBuilder
 {
-    private readonly DiagnosticAnalyzer analyzer;
-    private readonly ImmutableArray<FileDefinition> files;
-    private readonly Lazy<string> hash;
-    private readonly Lazy<ProjectAnalyzerVerifyContext> ctx;
-
+    private static readonly Lock Locker = new();
+    private readonly DiagnosticAnalyzer Analyzer;
+    private readonly ImmutableArray<FileDefinition> Files;
+    private readonly Lazy<string> Hash;
+    private readonly Lazy<ProjectAnalyzerVerifyContext> Ctx;
+    
     public InlineProjectAnalyzerVerifyContextBuilder(
         DiagnosticAnalyzer analyzer,
         string file,
@@ -25,32 +27,32 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
         DiagnosticAnalyzer analyzer,
         ImmutableArray<FileDefinition> files)
     {
-        this.analyzer = analyzer;
-        this.files = files;
-        this.hash = new(() =>
-        {
-            var sb = new StringBuilder();
-            for (var i = 0; i < files.Length; i++)
-            {
-                var file = files[i];
+        Analyzer = analyzer;
+        Files = files;
+        Hash = new(() => GetHash(files));
+        Ctx = new(BuildInternal);
+    }
 
-                sb.AppendLine(i.ToString(CultureInfo.InvariantCulture));
-                sb.AppendLine(file.Name);
-                sb.AppendLine(file.Content);
-                sb.AppendLine();
-            }
-            var content = sb.ToString();
-            var h = GetHash(content);
-            return h;
-        });
-        this.ctx = new(BuildInternal);
+    private static string GetHash(ImmutableArray<FileDefinition> files)
+    {
+        var sb = new StringBuilder();
+        for (var i = 0; i < files.Length; i++)
+        {
+            var file = files[i];
+
+            sb.AppendLine(i.ToString(CultureInfo.InvariantCulture));
+            sb.AppendLine(file.Name);
+            sb.AppendLine(file.Content);
+            sb.AppendLine();
+        }
+        var content = sb.ToString();
+        return GetHash(content);
     }
 
     private static string GetHash(string content)
     {
         var input = Encoding.UTF8.GetBytes(content);
-        using var md5 = MD5.Create();
-        var output = md5.ComputeHash(input);
+        var output = SHA1.HashData(input);
         var str = Convert.ToHexString(output);
         return str;
     }
@@ -58,7 +60,7 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
     public InlineProjectAnalyzerVerifyContextBuilder WithFile(string name, string? content = null)
     {
         var file = ToFile(name, content);
-        return new(analyzer, files.Add(file));
+        return new(Analyzer, Files.Add(file));
     }
 
     private static FileDefinition ToFile(string name, string? content)
@@ -75,36 +77,40 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
     }
 
     public ProjectAnalyzerVerifyContext Build()
-        => ctx.Value;
+        => Ctx.Value;
 
     private ProjectAnalyzerVerifyContext BuildInternal()
     {
-        if (files.Length <= 0)
+        if (Files.Length <= 0)
         {
             throw new InvalidOperationException("Requires at least 1 file.");
         }
 
-        var tempDir = Path.Combine(Path.GetTempPath(), "dotnet-project-file-analyzer/tests");
-        var dir = Path.Combine(tempDir, hash.Value);
-        Directory.CreateDirectory(dir);
-
-        foreach (var file in files)
+        lock (Locker)
         {
-            var fileName = Path.Combine(dir, file.Name);
-            var fileDir = Path.GetDirectoryName(fileName);
-            Directory.CreateDirectory(fileDir!);
+            var tempDir = Path.Combine(Path.GetTempPath(), "dotnet-project-file-analyzer/tests");
+            var dir = Path.Combine(tempDir, Hash.Value);
+            Directory.CreateDirectory(dir);
 
-            if (!File.Exists(fileName) || GetHash(File.ReadAllText(fileName).Trim()) != file.Hash)
+            foreach (var file in Files)
             {
-                File.WriteAllText(fileName, file.Content);
+                var fileName = Path.Combine(dir, file.Name);
+                var fileDir = Path.GetDirectoryName(fileName);
+                Directory.CreateDirectory(fileDir!);
+
+                if (!File.Exists(fileName) || GetHash(File.ReadAllText(fileName).Trim()) != file.Hash)
+                {
+                    File.WriteAllText(fileName, file.Content);
+                }
             }
+
+            var firstFileName = Path.Combine(dir, Files[0].Name);
+            var fileInfo = new FileInfo(firstFileName);
+
+            return ProjectFileAnalyzersDiagnosticAnalyzerExtensions.ForTestProject(Analyzer, fileInfo);
         }
-
-        var firstFileName = Path.Combine(dir, files[0].Name);
-        var fileInfo = new FileInfo(firstFileName);
-
-        return ProjectFileAnalyzersDiagnosticAnalyzerExtensions.ForTestProject(analyzer, fileInfo);
     }
+
 
     private sealed record FileDefinition
     {
