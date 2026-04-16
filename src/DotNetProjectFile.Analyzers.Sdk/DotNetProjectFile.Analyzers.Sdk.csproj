@@ -46,7 +46,8 @@
     <Version>1.11.0</Version>
     <ToBeReleased>
       <![CDATA[
-v1.*
+v1.12.0
+- Set <IncludeBuildOutput>false</IncludeBuildOutput>.
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
