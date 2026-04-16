@@ -19,6 +19,13 @@
     <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj</IntermediateOutputPath>
   </PropertyGroup>
 
+  <!-- Explicitly include .globalconfig file(s) -->
+  <ItemGroup>
+    <GlobalAnalyzerConfigFiles
+      Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig', '$(MSBuildThisFileDirectory)..'))"
+      Exclude="$(GlobalAnalyzerConfigFiles)" />
+  </ItemGroup>
+
   <ItemGroup Label="Add without showing">
     <AdditionalFiles Visible="false" Include="$(MSBuildProjectFile)" />
     <AdditionalFiles Visible="false" Include="**/*.csproj" />

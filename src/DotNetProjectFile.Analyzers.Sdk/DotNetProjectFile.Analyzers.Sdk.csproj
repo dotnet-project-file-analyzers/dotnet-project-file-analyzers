@@ -46,7 +46,8 @@
     <Version>1.11.0</Version>
     <ToBeReleased>
       <![CDATA[
-v1.*
+v1.11.0
+- Explicitaly include .globalconfig file(s). (BUG)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
