@@ -79,6 +79,8 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+v1.*
+- FileCache gracefully handles gone and unparsable content. (BUG)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>

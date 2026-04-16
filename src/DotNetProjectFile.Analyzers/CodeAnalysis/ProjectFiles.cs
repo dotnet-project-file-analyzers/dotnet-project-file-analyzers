@@ -145,7 +145,7 @@ public sealed partial class ProjectFiles
     private static IniFile Create_IniFile(IOFile file)
         => new(IniFileSyntax.Parse(Syntax.SyntaxTree.Load(file.OpenRead())));
 
-    private MsBuildProject Create_MsBuildProject(IOFile file)
+    private MsBuildProject? Create_MsBuildProject(IOFile file)
        => MsBuild.MsBuildProject.Load(file, this);
 
     private static NuGet.Configuration.NuGetConfigFile Create_NuGetConfigFile(IOFile file)

@@ -18,22 +18,25 @@ public sealed class FileCache<T>() where T : class
     /// <remarks>
     /// Uses the cased version if possible, otherwise creates/updates the file.
     /// </remarks>
-    public T? TryGetOrUpdate(IOFile file, Func<IOFile, T> create)
+    public T? TryGetOrUpdate(IOFile path, Func<IOFile, T?> create) => path switch
     {
-        if (!file.HasValue || !file.Exists)
-        {
-            return default;
-        }
-        else if (Lookup.TryGetValue(file, out var entry) && entry.Version == file.LastWriteTimeUtc)
-        {
-            return entry.Value;
-        }
-        else
-        {
-            entry = new(file.LastWriteTimeUtc, create(file));
-            Lookup[file] = entry;
-            return entry.Value;
-        }
+        _ when !path.HasValue || !path.Exists => Remove(path),
+        _ when Lookup.TryGetValue(path, out var entry) && entry.Version == path.LastWriteTimeUtc => entry.Value,
+        _ when create(path) is { } file => Update(path, file),
+        _ => Remove(path),
+    };
+
+    private T Update(IOFile path, T file)
+    {
+        Lookup[path] = new(path.LastWriteTimeUtc, file);
+        return file;
+    }
+
+    /// <summary>Remove, as we can not longer resolve it.</summary>
+    private T? Remove(IOFile path)
+    {
+        Lookup.TryRemove(path, out _);
+        return default;
     }
 
     private readonly record struct Entry(DateTime? Version, T Value);
