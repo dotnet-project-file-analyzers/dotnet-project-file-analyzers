@@ -20,7 +20,7 @@ public sealed class BuildActionsShouldHaveSingleTask() : MsBuildProjectFileAnaly
     }
 
     [Pure]
-    private static bool HasMutlpleTasks(BuildAction node)
+    private static bool HasMultipleTasks(BuildAction node)
         => node.Include.Count
         + node.Remove.Count
         + node.Update.Count
