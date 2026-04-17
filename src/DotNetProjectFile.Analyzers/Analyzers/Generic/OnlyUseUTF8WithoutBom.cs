@@ -46,10 +46,11 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
     {
         var path = file.ToString("/");
 
-        return !path.Contains("/bin/")
-            && !path.Contains("/obj/")
-            && !path.Contains("/.vs/")
-            && !path.Contains("/.git/")
-            && !file.Name.IsMatch("CompatibilitySuppressions.xml");
+        return !(path.Contains("/bin/")
+            || path.Contains("/obj/")
+            || path.Contains("/.vs/")
+            || path.Contains("/.git/")
+            || file.Name.IsMatch("CompatibilitySuppressions.xml")
+            || file.Extension is ".user");
     }
 }
