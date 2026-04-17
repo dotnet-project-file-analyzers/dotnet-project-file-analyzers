@@ -3,7 +3,7 @@ namespace Rules.MS_Build.Build_actions_should_have_single_task;
 public class Reports
 {
     [Test]
-    public void multple_tasks() => new BuildActionsShouldHaveSingleTask()
+    public void multiple_tasks() => new BuildActionsShouldHaveSingleTask()
         .ForInlineCsproj("""
         <Project Sdk="Microsoft.NET.Sdk">
 
