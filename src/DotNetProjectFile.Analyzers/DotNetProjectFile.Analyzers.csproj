@@ -82,6 +82,7 @@ ToBeDecided:
 v1.12.0
 - Proj0021: Exclude is a filter on a task, and should be ignored. (FP)
 - Proj3000: Exclude *.user files. (FP)
+- Explicitly include .globalconfig file(s). (BUG)
 - FileCache gracefully handles gone and unparsable content. (BUG)
 ]]>
     </ToBeReleased>

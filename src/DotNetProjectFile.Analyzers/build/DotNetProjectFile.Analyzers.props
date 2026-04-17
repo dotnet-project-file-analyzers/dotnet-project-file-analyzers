@@ -3,6 +3,13 @@
   <PropertyGroup>
     <SonarQubeIntegration>true</SonarQubeIntegration>
   </PropertyGroup>
+
+  <!-- Explicitly include .globalconfig file(s) -->
+  <ItemGroup>
+    <GlobalAnalyzerConfigFiles
+      Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig', '$(MSBuildThisFileDirectory)'))"
+      Exclude="$(GlobalAnalyzerConfigFiles)" />
+  </ItemGroup>
   
   <!-- Non-compiling files to analyze. -->
   <ItemGroup>
