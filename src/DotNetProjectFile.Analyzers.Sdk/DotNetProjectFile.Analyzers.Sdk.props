@@ -46,7 +46,7 @@
   
   <!-- Directory.Packages.props -->
   <ItemGroup Condition="'$(ImportDirectoryPackagesProps)' == 'true'">
-    <AdditionalFiles Update="$(DirectoryPackagesPropsPath)"  Link="$(_DirectoryPackagesPropsFile)" />
+    <AdditionalFiles Update="$(DirectoryPackagesPropsPath)" Link="$(_DirectoryPackagesPropsFile)" />
   </ItemGroup>
 
   <ItemGroup>
