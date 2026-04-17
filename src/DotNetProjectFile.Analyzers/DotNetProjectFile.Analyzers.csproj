@@ -79,7 +79,8 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v1.*
+v1.12.0
+- Proj0021: Exclude is filter on a task, and should be ingored. (FP)
 - FileCache gracefully handles gone and unparsable content. (BUG)
 ]]>
     </ToBeReleased>
