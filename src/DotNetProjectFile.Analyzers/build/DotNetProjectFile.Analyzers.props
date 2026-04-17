@@ -20,6 +20,22 @@
     <AdditionalFiles Include="**/nuget.config" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(ImportDirectoryBuildProps)' == 'true'">
+    <AdditionalFiles Include="$(DirectoryBuildPropsPath)" Visible="false" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(ImportDirectoryBuildTargets)' == 'true'">
+    <AdditionalFiles Include="$(DirectoryBuildTargetsPath)" Visible="false" />
+  </ItemGroup>
+  
+  <ItemGroup Condition="'$(ImportDirectoryPackagesProps)' == 'true'">
+    <AdditionalFiles Include="$(DirectoryPackagesPropsPath)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotNetProjectFile.Analyzers.Sdk" PrivateAssets="all" />
+  </ItemGroup>
+
   <!-- Common variable that should be resolvable. -->
   <ItemGroup>
     <CompilerVisibleProperty Include="Configuration" />

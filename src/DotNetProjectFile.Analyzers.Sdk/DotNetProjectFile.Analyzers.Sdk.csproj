@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -48,6 +48,9 @@
       <![CDATA[
 v1.12.0
 - Set <IncludeBuildOutput>false</IncludeBuildOutput>.
+- Include Directory.Build.props from ancestor paths.
+- Include Directory.Build.targets from ancestor paths.
+- Include Directory.Packages.props from ancestor paths.
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>

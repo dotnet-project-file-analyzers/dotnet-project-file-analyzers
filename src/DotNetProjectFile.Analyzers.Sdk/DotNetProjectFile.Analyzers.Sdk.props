@@ -23,8 +23,6 @@
   <ItemGroup Label="Add without showing">
     <AdditionalFiles Visible="false" Include="$(MSBuildProjectFile)" />
     <AdditionalFiles Visible="false" Include="**/*.csproj" />
-    <AdditionalFiles Visible="false" Include="**/*.props" />
-    <AdditionalFiles Visible="false" Include="**/*.targets" />
     <AdditionalFiles Visible="false" Include="**/*.slnx" />
     <AdditionalFiles Visible="false" Include="**/*.vbproj" />
     <AdditionalFiles Visible="false" Include="**/*.fsproj" />
@@ -36,6 +34,19 @@
     <AdditionalFiles Remove="**/obj/**" />
   </ItemGroup>
 
+
+  <ItemGroup Condition="'$(ImportDirectoryBuildProps)' == 'true'">
+    <AdditionalFiles Update="$(DirectoryBuildPropsPath)" Link="$(_DirectoryBuildPropsFile)" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(ImportDirectoryBuildTargets)' == 'true'">
+    <AdditionalFiles Update="$(DirectoryBuildTargetsPath)" Link="$(_DirectoryBuildTargetsFile)" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(ImportDirectoryPackagesProps)' == 'true'">
+    <AdditionalFiles Update="$(DirectoryPackagesPropsPath)"  Link="$(_DirectoryPackagesPropsFile)" />
+  </ItemGroup>
+
   <ItemGroup>
     <AdditionalFiles Include=".*config" />
     <AdditionalFiles Include=".git*" />
@@ -44,8 +55,6 @@
     <AdditionalFiles Include="*.ini" />
     <AdditionalFiles Include="*.json" />
     <AdditionalFiles Include="*.md" />
-    <AdditionalFiles Include="*.props" />
-    <AdditionalFiles Include="*.targets" />
     <AdditionalFiles Include="*.txt" />
     <AdditionalFiles Include="*.yaml" />
     <AdditionalFiles Include="*.yml" />
