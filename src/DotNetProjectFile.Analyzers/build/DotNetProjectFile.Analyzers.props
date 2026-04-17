@@ -20,14 +20,17 @@
     <AdditionalFiles Include="**/nuget.config" />
   </ItemGroup>
 
+  <!-- Directory.Build.props -->
   <ItemGroup Condition="'$(ImportDirectoryBuildProps)' == 'true'">
     <AdditionalFiles Include="$(DirectoryBuildPropsPath)" Visible="false" />
   </ItemGroup>
 
+  <!-- Directory.Build.targets -->
   <ItemGroup Condition="'$(ImportDirectoryBuildTargets)' == 'true'">
     <AdditionalFiles Include="$(DirectoryBuildTargetsPath)" Visible="false" />
   </ItemGroup>
-  
+
+  <!-- Directory.Packages.props -->
   <ItemGroup Condition="'$(ImportDirectoryPackagesProps)' == 'true'">
     <AdditionalFiles Include="$(DirectoryPackagesPropsPath)" />
   </ItemGroup>

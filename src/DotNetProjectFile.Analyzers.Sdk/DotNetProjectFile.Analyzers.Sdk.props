@@ -34,15 +34,17 @@
     <AdditionalFiles Remove="**/obj/**" />
   </ItemGroup>
 
-
+  <!-- Directory.Build.props -->
   <ItemGroup Condition="'$(ImportDirectoryBuildProps)' == 'true'">
     <AdditionalFiles Update="$(DirectoryBuildPropsPath)" Link="$(_DirectoryBuildPropsFile)" />
   </ItemGroup>
 
+  <!-- Directory.Build.targets -->
   <ItemGroup Condition="'$(ImportDirectoryBuildTargets)' == 'true'">
     <AdditionalFiles Update="$(DirectoryBuildTargetsPath)" Link="$(_DirectoryBuildTargetsFile)" />
   </ItemGroup>
-
+  
+  <!-- Directory.Packages.props -->
   <ItemGroup Condition="'$(ImportDirectoryPackagesProps)' == 'true'">
     <AdditionalFiles Update="$(DirectoryPackagesPropsPath)"  Link="$(_DirectoryPackagesPropsFile)" />
   </ItemGroup>
