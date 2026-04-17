@@ -14,10 +14,39 @@
   <!-- Non-compiling files to analyze. -->
   <ItemGroup>
     <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
+    <AdditionalFiles Include="**/*.props" />
+    <AdditionalFiles Include="**/*.targets" />
     <AdditionalFiles Include="**/*.resx" />
     <AdditionalFiles Include="**/NuGet.config" />
     <AdditionalFiles Include="**/Nuget.config" />
     <AdditionalFiles Include="**/nuget.config" />
+  </ItemGroup>
+
+  <!-- Directory.Build.props -->
+  <ItemGroup Condition="'$(ImportDirectoryBuildProps)' == 'true'">
+    <AdditionalFiles
+      Include="$(DirectoryBuildPropsPath)"
+      Exclude="$(AdditionalFiles)"
+      Visible="false" />
+    <CompilerVisibleProperty Include="DirectoryBuildPropsPath" />
+  </ItemGroup>
+
+  <!-- Directory.Build.targets -->
+  <ItemGroup Condition="'$(ImportDirectoryBuildTargets)' == 'true'">
+    <AdditionalFiles
+      Include="$(DirectoryBuildTargetsPath)"
+      Exclude="$(AdditionalFiles)"
+      Visible="false" />
+    <CompilerVisibleProperty Include="DirectoryBuildTargetsPath" />
+  </ItemGroup>
+
+  <!-- Directory.Packages.props -->
+  <ItemGroup Condition="'$(ImportDirectoryPackagesProps)' == 'true'">
+    <AdditionalFiles
+      Include="$(DirectoryPackagesPropsPath)"
+      Exclude="$(AdditionalFiles)"
+      Visible="false" />
+    <CompilerVisibleProperty Include="DirectoryPackagesPropsPath" />
   </ItemGroup>
 
   <!-- Common variable that should be resolvable. -->
