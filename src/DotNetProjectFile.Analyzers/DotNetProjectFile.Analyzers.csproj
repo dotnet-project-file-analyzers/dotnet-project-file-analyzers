@@ -65,7 +65,7 @@
 
   <ItemGroup Label="Analyzers">
     <PackageReference PrivateAssets="all" Include="AsyncFixer" Version="2.1.0" ExcludeAssets="runtime" />
-    <PackageReference PrivateAssets="all" Include="Qowaiv.Analyzers.CSharp" Version="2.3.0" ExcludeAssets="runtime" />
+    <PackageReference PrivateAssets="all" Include="Qowaiv.Analyzers.CSharp" Version="2.3.1" ExcludeAssets="runtime" />
     <PackageReference PrivateAssets="all" Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" ExcludeAssets="runtime" />
   </ItemGroup>
 
@@ -81,6 +81,7 @@ ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.12.0
 - Proj0021: Exclude is a filter on a task, and should be ignored. (FP)
+- Proj3000: Exclude *.user files. (FP)
 - FileCache gracefully handles gone and unparsable content. (BUG)
 ]]>
     </ToBeReleased>
