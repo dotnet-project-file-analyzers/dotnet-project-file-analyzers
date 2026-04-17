@@ -3,9 +3,39 @@ namespace Rules.MS_Build.Build_actions_should_have_single_task;
 public class Reports
 {
     [Test]
-    public void empty_nodes()
-        => new BuildActionsShouldHaveSingleTask()
-        .ForProject("MultipleBuildActionTasks.cs")
+    public void multiple_tasks() => new BuildActionsShouldHaveSingleTask()
+        .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <Nullable>enable</Nullable>
+          </PropertyGroup>
+
+          <ItemGroup>
+            <Compile Include="../common/Code.cs" />
+          </ItemGroup>
+
+          <ItemGroup>
+            <Content Update="README.md;../common/Code.cs" />
+          </ItemGroup>
+
+          <ItemGroup>
+            <None Include="../common/Code.cs;README.md" />
+          </ItemGroup>
+
+          <ItemGroup>
+            <AdditionalFiles Include="*.csproj;*.vbproj" Visible="false" />
+          </ItemGroup>
+
+          <ItemGroup>
+            <GlobalAnalyzerConfigFiles
+              Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig', '$(MSBuildThisFileDirectory)'))"
+              Exclude="$(GlobalAnalyzerConfigFiles)" />
+          </ItemGroup>
+
+        </Project>
+        """)
         .HasIssues(
             Issue.WRN("Proj0021", "The <Content> defines multiple tasks" /*...*/).WithSpan(12, 04, 12, 52),
             Issue.WRN("Proj0021", "The <None> defines multiple tasks" /*......*/).WithSpan(16, 04, 16, 50),
@@ -16,8 +46,7 @@ public class Reports
 public class Guards
 {
     [TestCase("CompliantCSharp.cs")]
-    public void Projects_with_analyzers(string project)
-         => new BuildActionsShouldHaveSingleTask()
+    public void compliant_projects(string project) => new BuildActionsShouldHaveSingleTask()
         .ForProject(project)
         .HasNoIssues();
 }
