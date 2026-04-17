@@ -23,20 +23,19 @@
   <!-- Directory.Build.props -->
   <ItemGroup Condition="'$(ImportDirectoryBuildProps)' == 'true'">
     <AdditionalFiles Include="$(DirectoryBuildPropsPath)" Visible="false" />
+    <CompilerVisibleProperty Include="DirectoryBuildPropsPath" />
   </ItemGroup>
 
   <!-- Directory.Build.targets -->
   <ItemGroup Condition="'$(ImportDirectoryBuildTargets)' == 'true'">
     <AdditionalFiles Include="$(DirectoryBuildTargetsPath)" Visible="false" />
+    <CompilerVisibleProperty Include="DirectoryBuildTargetsPath" />
   </ItemGroup>
 
   <!-- Directory.Packages.props -->
   <ItemGroup Condition="'$(ImportDirectoryPackagesProps)' == 'true'">
     <AdditionalFiles Include="$(DirectoryPackagesPropsPath)" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="DotNetProjectFile.Analyzers.Sdk" PrivateAssets="all" />
+    <CompilerVisibleProperty Include="DirectoryPackagesPropsPath" />
   </ItemGroup>
 
   <!-- Common variable that should be resolvable. -->
