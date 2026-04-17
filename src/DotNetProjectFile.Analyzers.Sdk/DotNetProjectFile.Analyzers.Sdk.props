@@ -22,7 +22,7 @@
   <!-- Explicitly include .globalconfig file(s) -->
   <ItemGroup>
     <GlobalAnalyzerConfigFiles
-      Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig', '$(MSBuildThisFileDirectory)..'))"
+      Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig', '$(MSBuildThisFileDirectory)'))"
       Exclude="$(GlobalAnalyzerConfigFiles)" />
   </ItemGroup>
 

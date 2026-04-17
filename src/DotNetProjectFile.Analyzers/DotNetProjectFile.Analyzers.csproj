@@ -79,7 +79,8 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v1.*
+v1.12.0
+- Explicitaly include .globalconfig file(s). (BUG)
 - FileCache gracefully handles gone and unparsable content. (BUG)
 ]]>
     </ToBeReleased>
