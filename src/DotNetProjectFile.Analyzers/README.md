@@ -131,7 +131,6 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0812** Remove redundant packages references that are globally referenced](https://dotnet-project-file-analyzers.github.io/rules/Proj0812.html)
 
 ### Analyzers
-* [**Proj1000** Use the .NET project file analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1000.html)
 * [**Proj1001** Use analyzers for packages](https://dotnet-project-file-analyzers.github.io/rules/Proj1001.html)
 * [**Proj1002** Use Microsoft's analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1002.html)
 * [**Proj1003** Use Sonar analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1003.html)

@@ -181,7 +181,6 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0812** Remove redundant packages references that are globally referenced](rules/Proj0812.md)
 
 ### Analyzers
-* [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
 * [**Proj1002** Use Microsoft's analyzers](rules/Proj1002.md)
 * [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)
