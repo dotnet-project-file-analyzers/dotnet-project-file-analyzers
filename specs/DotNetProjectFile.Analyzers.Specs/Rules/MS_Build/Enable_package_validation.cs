@@ -5,7 +5,15 @@ public class Reports
     [Test]
     public void on_missing_node()
        => new EnablePackageValidation()
-       .ForProject("EmptyProject.cs")
+       .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
+
+        </Project>
+        """)
        .HasIssue(
            Issue.WRN("Proj0240", "Define the <EnablePackageValidation> node with value 'true' or define the <IsPackable> node with value 'false' or define the <DevelopmentDependency> node with value 'true'"));
 
