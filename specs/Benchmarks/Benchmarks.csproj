@@ -1,7 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="../../props/common.props" />
-  
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <OutputType>exe</OutputType>

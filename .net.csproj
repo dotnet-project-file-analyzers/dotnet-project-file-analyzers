@@ -5,15 +5,12 @@
   <ItemGroup Label="Directories">
     <None Include="design/**" />
     <None Include="projects/common/**" />
+    <None Include="projects/Directory.Build.props" />
   </ItemGroup>
 
   <ItemGroup Label="Files">
     <None Include="dictionary.dic" />
     <None Include="docs/**/*" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Update="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <Import Project="src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.targets" />
