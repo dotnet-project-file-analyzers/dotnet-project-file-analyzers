@@ -11,6 +11,8 @@
   <ItemGroup Label="Files">
     <None Include="*.props" />
     <None Include="dictionary.dic" />
+    <None Include="props\build.props" />
+    <None Include="props\packages.props" />
     <None Include="docs/**/*" />
   </ItemGroup>
 
