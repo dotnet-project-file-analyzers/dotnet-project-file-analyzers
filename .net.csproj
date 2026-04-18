@@ -9,6 +9,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Files">
+    <None Include="*.props" />
     <None Include="dictionary.dic" />
     <None Include="docs/**/*" />
   </ItemGroup>

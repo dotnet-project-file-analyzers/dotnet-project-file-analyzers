@@ -4,7 +4,15 @@ public class Reports
 {
     [Test]
     public void project_files_not_additional() => new AddAdditionalFile()
-        .ForProject("EmptyProject.cs")
+        .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
+
+        </Project>
+        """)
         .HasIssue(
             Issue.WRN("Proj0006", "Add 'EmptyProject.csproj' to the additional files"));
 }

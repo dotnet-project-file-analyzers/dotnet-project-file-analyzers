@@ -36,10 +36,6 @@
     <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
-  <ItemGroup Label="Props and targets">
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.5" PrivateAssets="all" ExcludeAssets="runtime" />
-  </ItemGroup>
-
   <PropertyGroup Label="Version and release notes">
     <Version>1.11.0</Version>
     <ToBeReleased>

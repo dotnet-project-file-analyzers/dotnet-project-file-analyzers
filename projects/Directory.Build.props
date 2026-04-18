@@ -1,3 +1,7 @@
 <Project>
-  <!-- Nothing for the test projects -->
+
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+
 </Project>

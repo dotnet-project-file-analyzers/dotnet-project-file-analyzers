@@ -4,7 +4,15 @@ public class Reports
 {
     [Test]
     public void missing_analyzer_for_CSharp() => new UseSonarAnalyzers()
-        .ForProject("EmptyProject.cs")
+        .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
+
+        </Project>
+        """)
         .HasIssue(Issue.WRN("Proj1003", "Add SonarAnalyzer.CSharp"));
 
     [Test]
