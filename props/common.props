@@ -17,7 +17,7 @@
   <PropertyGroup Label="Package">
     <Authors>Corniel Nobel; Wesley Baartman</Authors>
     <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
-    <ProductName>.NET project file analyzers</ProductName>
+    <ProductName>.NET project File Analyzers</ProductName>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 

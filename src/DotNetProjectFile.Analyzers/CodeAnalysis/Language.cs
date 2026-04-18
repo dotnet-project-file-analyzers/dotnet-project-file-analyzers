@@ -3,9 +3,7 @@ using System.ComponentModel;
 
 namespace DotNetProjectFile.CodeAnalysis;
 
-/// <summary>
-/// Represents a language that is supported by the .NET project file analyzers.
-/// </summary>
+/// <summary>Represents a language that is supported by the .NET project file analyzers.</summary>
 [TypeConverter(typeof(LanguageTypeConverter))]
 public readonly struct Language : IEquatable<Language>
 {
@@ -76,7 +74,7 @@ public readonly struct Language : IEquatable<Language>
     public bool Equals(Language other) => Id == other.Id;
 
     /// <inheritdoc />
-    public override int GetHashCode() => Id is null ? 0 : Id.GetHashCode();
+    public override int GetHashCode() => Id?.GetHashCode() ?? 0;
 
     /// <summary>Return true when the languages are equal.</summary>
     public static bool operator ==(Language left, Language right) => left.Equals(right);

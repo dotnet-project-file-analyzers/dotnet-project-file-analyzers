@@ -32,7 +32,7 @@
     <PackageId>DotNetProjectFile.Analyzers</PackageId>
     <PackageProjectUrl>https://dotnet-project-file-analyzers.github.io</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
-    <Description>.NET project file analyzers</Description>
+    <Description>.NET Project File Analyzers</Description>
     <PackageTags>Code Analysis;Project files;project file;dotnet;csproj;vbproj;resx;fsproj;cblproj;MS Build;resources;analyzer;analyzer;analysis</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>logo_128x128.png</PackageIcon>
