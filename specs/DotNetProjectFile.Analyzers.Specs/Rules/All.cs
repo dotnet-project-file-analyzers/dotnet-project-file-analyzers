@@ -17,8 +17,7 @@ public class Guards
                 "CS9335", // Hidden code
 
                 // Default disabled
-                "Proj0037",
-                "Proj1000")
+                "Proj0037")
         };
 
         // Add the remaining analyzers.

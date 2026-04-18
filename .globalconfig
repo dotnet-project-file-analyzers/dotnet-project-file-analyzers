@@ -54,8 +54,6 @@ dotnet_diagnostic.IDE0270.severity  = warning    # Null check can be simplified 
 dotnet_diagnostic.IDE0290.severity  = warning    # Use primary constructor
 dotnet_diagnostic.IDE0340.severity  = warning    # Use unbound generic type
 
-dotnet_diagnostic.Proj1000.severity = none     # Use the .NET project file analyzers.
-
 dotnet_diagnostic.S100.severity  = none        # Properties should be named in PascalCase
 dotnet_diagnostic.S101.severity  = none        # Types should be named in PascalCase
 dotnet_diagnostic.S1121.severity = none        # Assignments should not be made from within sub-expressions
