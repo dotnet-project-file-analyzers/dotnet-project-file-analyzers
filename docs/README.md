@@ -1,4 +1,4 @@
-![.NET Project File aAalyzers logo](design/logo_128x128.png)
+![.NET Project File Analyzers logo](design/logo_128x128.png)
 # .NET Project File Analyzers
 is a [NuGet](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/) package
 containing [Roslyn](https://docs.microsoft.com/dotnet/csharp/roslyn-sdk/)
