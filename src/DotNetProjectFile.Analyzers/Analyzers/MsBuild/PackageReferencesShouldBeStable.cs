@@ -11,7 +11,7 @@ public sealed class PackageReferencesShouldBeStable() : MsBuildProjectFileAnalyz
     {
         foreach (var package in context.File.ItemGroups.Children<PackageReference>())
         {
-            if (package.ResolveVersionVerbose() is not { } resolved)
+            if (package.ResolveVersionVerbose(context.ManagePackageVersionsCentrally) is not { } resolved)
             {
                 continue;
             }

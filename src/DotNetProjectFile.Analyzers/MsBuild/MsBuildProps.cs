@@ -15,6 +15,9 @@ public sealed class MsBuildProps(AnalyzerOptions options)
     /// <summary>Indicates if the project is a test project.</summary>
     public bool? IsTestProject => Converts.String<bool>(Prop());
 
+    /// <summary>Indicates that CMP is enabled.</summary>
+    public bool? ManagePackageVersionsCentrally => Converts.String<bool>(Prop());
+
     /// <summary>Gets the .NET CoreSdk version.</summary>
     public SdkVersion NETCoreSdkVersion => SdkVersion.Parse(Prop() ?? string.Empty);
 

@@ -2,12 +2,14 @@ using DotNetProjectFile.NuGet;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.UseAnalyzersForPackages"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.UseAnalyzersForPackages)
 {
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var packageReferences = context.File
@@ -19,7 +21,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
 
         foreach (var reference in packageReferences)
         {
-            var tree = GetAllReferencedPackages(reference);
+            var tree = GetAllReferencedPackages(reference, context.ManagePackageVersionsCentrally);
 
             foreach (var pkg in tree)
             {
@@ -34,10 +36,10 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
         }
     }
 
-    private static IEnumerable<Package> GetAllReferencedPackages(PackageReferenceBase reference)
-        => reference.ResolvePackage() is { IsAnalyzerOnly: true } rootPackage
+    private static IEnumerable<Package> GetAllReferencedPackages(PackageReferenceBase reference, bool cpmEnabled)
+        => reference.ResolvePackage(cpmEnabled) is { IsAnalyzerOnly: true } rootPackage
         ? [rootPackage]
-        : (IEnumerable<Package>)reference.ResolveCachedPackageDependencyTree();
+        : (IEnumerable<Package>)reference.ResolveCachedPackageDependencyTree(cpmEnabled);
 
     private static Analyzer[] GetAnalyzers(Language language)
         => [.. Analyzers.Where(analyzer => analyzer.IsApplicable(language))];

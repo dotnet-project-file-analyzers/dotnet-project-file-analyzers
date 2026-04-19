@@ -53,6 +53,7 @@
     <CompilerVisibleProperty Include="IsPackable" />
     <CompilerVisibleProperty Include="IsTestProject" />
     <CompilerVisibleProperty Include="LangVersion" />
+    <CompilerVisibleProperty Include="ManagePackageVersionsCentrally" />
     <CompilerVisibleProperty Include="MSBuildProjectFile" />
     <CompilerVisibleProperty Include="MSBuildThisFileDirectory" />
     <CompilerVisibleProperty Include="NETCoreSdkVersion" />

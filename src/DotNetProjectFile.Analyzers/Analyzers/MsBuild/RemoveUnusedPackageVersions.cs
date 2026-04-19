@@ -15,8 +15,7 @@ public sealed class RemoveUnusedPackageVersions() : MsBuildProjectFileAnalyzer(R
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.File.DirectoryPackagesProps is not { } packages ||
-            packages.ManagePackageVersionsCentrally() is not true) { return; }
+        if (DirectoryPackagesProps(context) is not { } packages) { return; }
 
         var usages = PackageUsages(context);
 
@@ -45,4 +44,14 @@ public sealed class RemoveUnusedPackageVersions() : MsBuildProjectFileAnalyzer(R
         }
         return usages;
     }
+
+    /// <remarks>
+    /// If Directory.Packages.props exists, and CPM is enabled.
+    /// </remarks>
+    private static MsBuildProject? DirectoryPackagesProps(ProjectFileAnalysisContext context)
+        => context.File.DirectoryPackagesProps is { } packages
+        && (context.ManagePackageVersionsCentrally
+            || packages.Property<ManagePackageVersionsCentrally>() is { Value: true })
+            ? packages
+            : null;
 }

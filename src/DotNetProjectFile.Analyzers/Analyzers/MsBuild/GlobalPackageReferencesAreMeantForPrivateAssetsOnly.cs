@@ -12,14 +12,14 @@ public sealed class GlobalPackageReferencesAreMeantForPrivateAssetsOnly()
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var reference in context.File.ItemGroups
-            .Children<GlobalPackageReference>(NoPrivateAsset))
+            .Children<GlobalPackageReference>(r => NoPrivateAsset(r, context.ManagePackageVersionsCentrally)))
         {
             context.ReportDiagnostic(Descriptor, reference, reference.IncludeOrUpdate);
         }
     }
 
-    private static bool NoPrivateAsset(GlobalPackageReference reference)
-        => reference.ResolvePackage() is { } package
+    private static bool NoPrivateAsset(GlobalPackageReference reference, bool cpmEnabled)
+        => reference.ResolvePackage(cpmEnabled) is { } package
         && package.HasRuntimeDll
         && package.IsDevelopmentDependency is not true;
 }

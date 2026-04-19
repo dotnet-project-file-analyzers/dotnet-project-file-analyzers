@@ -33,14 +33,6 @@ public sealed partial class MsBuildProject
     public bool PackagesRestoredWithLockFile()
         => Property<RestorePackagesWithLockFile>()?.Value ?? MsBuildDefaults.RestorePackagesWithLockFile;
 
-    public bool? ManagePackageVersionsCentrally()
-        => managePackageVersionsCentrally
-        ??= Property<ManagePackageVersionsCentrally>()?.Value
-        ?? MsBuildDefaults.ManagePackageVersionsCentrally;
-
-    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private bool? managePackageVersionsCentrally;
-
     public OutputType.Kind GetOutputType()
         => Property<OutputType>()?.Value
         ?? Sdk switch

@@ -179,7 +179,8 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0810** Remove unused package versions](rules/Proj0810.md)
 * [**Proj0811** Directory.Build.props and Directory.Packages.props should be in the same directory](rules/Proj0811.md)
 * [**Proj0812** Remove redundant packages references that are globally referenced](rules/Proj0812.md)
-
+* [**Proj0813** Global package references only work when CPM is enabled](rules/Proj0813.md)
+ 
 ### Analyzers
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
 * [**Proj1002** Use Microsoft's analyzers](rules/Proj1002.md)

@@ -1,5 +1,6 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.EnableCentralPackageManagementCentrally"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class EnableCentralPackageManagementCentrally()
     : MsBuildProjectFileAnalyzer(Rule.EnableCentralPackageManagementCentrally)
@@ -7,6 +8,7 @@ public sealed class EnableCentralPackageManagementCentrally()
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var enabled in context.File.PropertyGroups

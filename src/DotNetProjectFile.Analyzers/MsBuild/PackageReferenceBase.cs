@@ -15,9 +15,9 @@ public abstract class PackageReferenceBase(XElement element, Node parent, MsBuil
 
     public virtual PackageVersionInfo Info => new(IncludeOrUpdate, Version);
 
-    public (Node Node, string Version)? ResolveVersionVerbose()
+    public (Node Node, string Version)? ResolveVersionVerbose(bool cpmEnabled)
     {
-        if (Project.ManagePackageVersionsCentrally() is true)
+        if (cpmEnabled)
         {
             if (this is PackageReference { VersionOverride: { Length: > 0 } selfVersionOverride })
             {
@@ -53,13 +53,13 @@ public abstract class PackageReferenceBase(XElement element, Node parent, MsBuil
     }
 
     /// <summary>Resolves the version taking CPM into account.</summary>
-    public string? ResolveVersion()
-        => ResolveVersionVerbose()?.Version;
+    public string? ResolveVersion(bool cpmEnabled)
+        => ResolveVersionVerbose(cpmEnabled)?.Version;
 
-    public Package? ResolvePackage()
-        => PackageCache.GetPackage(IncludeOrUpdate, ResolveVersion());
+    public Package? ResolvePackage(bool cpmEnabled)
+        => PackageCache.GetPackage(IncludeOrUpdate, ResolveVersion(cpmEnabled));
 
-    public HashSet<Package> ResolveCachedPackageDependencyTree()
+    public HashSet<Package> ResolveCachedPackageDependencyTree(bool cpmEnabled)
     {
         var result = new HashSet<Package>();
         var queue = new Queue<Package>();
@@ -75,7 +75,7 @@ public abstract class PackageReferenceBase(XElement element, Node parent, MsBuil
             return false;
         }
 
-        if (!Enqueue(ResolvePackage()))
+        if (!Enqueue(ResolvePackage(cpmEnabled)))
         {
             return result;
         }
