@@ -887,6 +887,39 @@ public static partial class Rule
         category: Category.Reliability,
         severity: DiagnosticSeverity.Warning);
 
+    public static DiagnosticDescriptor VersionShouldBeSemVerCompliant => New(
+        id: 0253,
+        title: "Versions should be compliant with Semantic Versioning",
+        message: "Version '{0}' does not comply with Semantic Versioning",
+        description:
+            "Versions should comply with Semantic Versioning to help clarifying " +
+            "the meaning of the (code) changes made",
+        tags: ["Configuration", "package", "compatibility", "semantic versioning"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning);
+
+    public static DiagnosticDescriptor VersionPrefixShouldBeSemVerCompliant => New(
+        id: 0254,
+        title: "Versions should be compliant with Semantic Versioning",
+        message: "VersionPrefix '{0}' does not comply with Semantic Versioning",
+        description:
+            "Versions should comply with Semantic Versioning to help clarifying " +
+            "the meaning of the (code) changes made",
+        tags: ["Configuration", "package", "compatibility", "semantic versioning"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning);
+
+    public static DiagnosticDescriptor VersionSuffixShouldBeSemVerCompliant => New(
+        id: 0255,
+        title: "Versions should be compliant with Semantic Versioning",
+        message: "VersionSuffix '{0}' does not comply with Semantic Versioning",
+        description:
+            "Versions should comply with Semantic Versioning to help clarifying " +
+            "the meaning of the (code) changes made",
+        tags: ["Configuration", "package", "compatibility", "semantic versioning"],
+        category: Category.Reliability,
+        severity: DiagnosticSeverity.Warning);
+
     public static DiagnosticDescriptor DefineIsPublishable => New(
         id: 0400,
         title: "Define the project publishability explicitly",
