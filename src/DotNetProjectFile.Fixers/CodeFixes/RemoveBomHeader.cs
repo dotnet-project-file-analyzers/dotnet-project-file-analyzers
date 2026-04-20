@@ -1,17 +1,23 @@
 using Microsoft.CodeAnalysis.CodeActions;
 using Microsoft.CodeAnalysis.CodeFixes;
 using Microsoft.CodeAnalysis.Text;
-using System.IO;
+using System.Diagnostics;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace DotNetProjectFile.CodeFixes;
 
 public sealed class RemoveBomHeader : CodeFixProvider
 {
+    private static readonly UTF8Encoding UTF8_no_BOM = new(encoderShouldEmitUTF8Identifier: false);
+
+    /// <inheritdoc />
     public sealed override ImmutableArray<string> FixableDiagnosticIds => ["Proj3000"];
 
+    /// <inheritdoc />
     public override Task RegisterCodeFixesAsync(CodeFixContext context)
     {
+        Debugger.Launch();
         if (context.Diagnostics.FirstOrDefault() is { } diagnostic)
         {
             context.RegisterCodeFix(
@@ -26,15 +32,7 @@ public sealed class RemoveBomHeader : CodeFixProvider
     }
 
     private static async Task<Document> UpdateDocument(Document document)
-    {
-        using var stream = new FileInfo(document.FilePath).OpenRead();
-        if (stream is { Length: > 3, CanRead: true, CanSeek: true })
-        {
-            stream.Position = 3;
-            return document.WithText(SourceText.From(stream));
-        }
-        else return document;
-    }
+        => document.WithText(SourceText.From(document.ToString(), UTF8_no_BOM));
 
     /// <inheritdoc />
     public sealed override FixAllProvider? GetFixAllProvider() => WellKnownFixAllProviders.BatchFixer;

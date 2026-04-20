@@ -74,9 +74,7 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.11.0</Version>
-    <Version>1.10.0.0001</Version>
-    <Version>1.10.0.5</Version>
+    <Version>1.11.0.1</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:

@@ -29,8 +29,8 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
     [Pure]
     public Location AsLocation()
     {
-        var span = new TextSpan(0, 1);
-        var line = new LinePositionSpan(new(0, 0), new(0, 1));
+        var span = new TextSpan(0, 20);
+        var line = new LinePositionSpan(new(0, 0), new(2, 1));
         return Location.Create(ToString(), span, line);
     }
 
