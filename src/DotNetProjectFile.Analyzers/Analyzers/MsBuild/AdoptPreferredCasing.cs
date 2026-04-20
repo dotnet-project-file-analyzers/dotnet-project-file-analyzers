@@ -6,6 +6,7 @@ public sealed class AdoptPreferredCasing() : MsBuildProjectFileAnalyzer(Rule.Ado
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context) => Walk(context.File, context);
 
     private void Walk(Node node, ProjectFileAnalysisContext context)

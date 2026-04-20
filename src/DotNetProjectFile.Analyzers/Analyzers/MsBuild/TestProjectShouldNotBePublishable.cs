@@ -4,6 +4,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class TestProjectShouldNotBePublishable()
     : MsBuildProjectFileAnalyzer(Rule.TestProjectShouldNotBePublishable)
 {
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (context.File.IsTestProject() && context.File.IsPublishable())

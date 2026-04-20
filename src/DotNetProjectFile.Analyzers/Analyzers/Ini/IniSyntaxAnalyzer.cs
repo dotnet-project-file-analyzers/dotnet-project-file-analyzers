@@ -6,6 +6,7 @@ public sealed class IniSyntaxAnalyzer() : IniFileAnalyzer(
     Rule.Ini.InvalidHeader,
     Rule.Ini.InvalidKeyValuePair)
 {
+    /// <inheritdoc />
     protected override void Register(IniFileAnalysisContext context)
     {
         foreach (var diagnostic in context.File.Syntax.GetDiagnostics())
