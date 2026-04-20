@@ -3,13 +3,13 @@ permalink: /sdk
 nav_order: 2
 ---
 
-# .NET project file analyzers SDK
+# .NET Project File Analyzers SDK
 [![DotNetProjectFile.Analyzers.Sdk](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers.Sdk)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers.Sdk)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers.Sdk)
 .NET project file analyzers ships with its own SDK.
 
-## Why the .NET project file analyzers SDK?
-The .NET project file analyzers work by linking files to a project (most
-commonly a `*.csproj` file), and hook on to Roslyn when that project is built.
+## Why the .NET Project File Analyzers SDK?
+.NET project file analyzers work by linking files to a project (most commonly
+a `*.csproj` file), and hook on to Roslyn when that project is built.
 
 For files that can not be linked to a single project to build, this approach
 does not work, and that is where the `.net.csproj` project comes in handy.
@@ -25,7 +25,8 @@ It obtains its powers because it is a little different from normal projects:
    works for you. The needs of a large [monorepo](https://en.wikipedia.org/wiki/Monorepo) with many solutions and projects differ from those of a small repository with a single solution and just a few projects.
 2. The `.net.csproj` project has a PackageReference to [![DotNetProjectFile.Analyzers.Sdk](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers.Sdk)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers.Sdk)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers.Sdk).
    It automatically includes files it can analyze. Those, and files included as
-   `<AdditionalFiles>` are analyzed by the appropriate .NET project file analyzers.
+   `<AdditionalFiles>` are analyzed by the appropriate .NET project file
+   analyzers.
  
  Although the `.net.csproj` is not supposed to contain `<Compile>` items, the
  compiler still generates output. Since that output is useless, it is hidden.
@@ -52,7 +53,7 @@ A `.net.csproj` project file looks like this:
 *Download this example [`.net.csproj`](./.net.csproj)*
 
 ## Enable analyzers for .net.csproj
-The .NET project file analyzers can be included to the `.net.csproj` by adding
+.NET project file analyzers can be included to the `.net.csproj` by adding
 
 ``` xml
 <ItemGroup>

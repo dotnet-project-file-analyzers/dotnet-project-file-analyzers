@@ -6,6 +6,7 @@ public sealed class RunNuGetSecurityAuditsAutomatically() : MsBuildProjectFileAn
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (context.File.NuGetAuditEnabled() is not true)

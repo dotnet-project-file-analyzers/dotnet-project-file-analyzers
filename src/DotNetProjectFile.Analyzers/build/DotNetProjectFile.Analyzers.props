@@ -8,7 +8,8 @@
   <ItemGroup>
     <GlobalAnalyzerConfigFiles
       Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig', '$(MSBuildThisFileDirectory)'))"
-      Exclude="$(GlobalAnalyzerConfigFiles)" />
+      Exclude="$(GlobalAnalyzerConfigFiles)"
+      Visible="false" />
   </ItemGroup>
   
   <!-- Non-compiling files to analyze. -->
@@ -17,11 +18,8 @@
     <AdditionalFiles Include="**/*.props" />
     <AdditionalFiles Include="**/*.targets" />
     <AdditionalFiles Include="**/*.resx" />
-    <AdditionalFiles Include="**/NuGet.config" />
-    <AdditionalFiles Include="**/Nuget.config" />
-    <AdditionalFiles Include="**/nuget.config" />
   </ItemGroup>
-
+  
   <!-- Directory.Build.props -->
   <ItemGroup Condition="'$(ImportDirectoryBuildProps)' == 'true'">
     <AdditionalFiles

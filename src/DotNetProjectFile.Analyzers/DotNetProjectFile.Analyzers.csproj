@@ -32,7 +32,7 @@
     <PackageId>DotNetProjectFile.Analyzers</PackageId>
     <PackageProjectUrl>https://dotnet-project-file-analyzers.github.io</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
-    <Description>.NET project file analyzers</Description>
+    <Description>.NET Project File Analyzers</Description>
     <PackageTags>Code Analysis;Project files;project file;dotnet;csproj;vbproj;resx;fsproj;cblproj;MS Build;resources;analyzer;analyzer;analysis</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>logo_128x128.png</PackageIcon>
@@ -82,6 +82,7 @@ ToBeDecided:
 v1.12.0
 - Proj0021: Exclude is a filter on a task, and should be ignored. (FP)
 - Proj0028: Conditions within <Target> are should be allowed. (FP)
+- Proj1000: Use the .NET project file analyzers. (DROPPED)
 - Proj3000: Exclude *.user files. (FP)
 - Explicitly include .globalconfig file(s). (BUG)
 - FileCache gracefully handles gone and unparsable content. (BUG)

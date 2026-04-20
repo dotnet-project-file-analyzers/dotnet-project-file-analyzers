@@ -50,7 +50,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Include=".*config" />
+    <!-- NuGet.config -->
+    <AdditionalFiles Include="$([MSBuild]::GetPathOfFileAbove('NuGet.config', '$(MSBuildThisFileDirectory)'))" />
+    <!-- .editorconfig -->
+    <AdditionalFiles Include="$([MSBuild]::GetPathOfFileAbove('.editorconfig', '$(MSBuildThisFileDirectory)'))" />
+    <!-- .globalconfig -->
+    <AdditionalFiles Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig', '$(MSBuildThisFileDirectory)'))" />
     <AdditionalFiles Include=".git*" />
     <AdditionalFiles Include=".github/**" />
     <AdditionalFiles Include="*.config" />

@@ -17,13 +17,9 @@
   <PropertyGroup Label="Package">
     <Authors>Corniel Nobel; Wesley Baartman</Authors>
     <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
-    <ProductName>.NET project file analyzers</ProductName>
+    <ProductName>.NET project File Analyzers</ProductName>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
-
-  <ItemGroup Label="Analyzer configuration">
-    <GlobalAnalyzerConfigFiles Include="../../analyzers-config.ini" />
-  </ItemGroup>
 
   <ItemGroup Label="Analyzers">
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="5.3.0" PrivateAssets="all" ExcludeAssets="runtime" />

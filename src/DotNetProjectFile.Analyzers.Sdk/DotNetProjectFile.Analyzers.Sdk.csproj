@@ -22,7 +22,7 @@
     <RepositoryType>git</RepositoryType>
     <PackageProjectUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</PackageProjectUrl>
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
-    <Description>.NET project file analyzers SDK</Description>
+    <Description>.NET Project File Analyzers SDK</Description>
     <PackageTags>SDK;Code Analysis;Project files;project file;csproj;vbproj;resx;MS Build;resources;analyzer;analyzer;analysis</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageIcon>logo_128x128.png</PackageIcon>
@@ -51,6 +51,7 @@ v1.12.0
 - Include Directory.Build.props from ancestor paths.
 - Include Directory.Build.targets from ancestor paths.
 - Include Directory.Packages.props from ancestor paths.
+- Include NuGet.config from ancestor paths.
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>

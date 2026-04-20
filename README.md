@@ -1,8 +1,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/LICENSE.md)
 [![Code of Conduct](https://img.shields.io/badge/%E2%9D%A4-code%20of%20conduct-blue.svg?style=flat)](https://github.com/Corniel/dotnet-project-files-analyzers/blob/main/CODE_OF_CONDUCT.md)
 
-![.NET project file analyzers logo](design/logo_128x128.png)
-# .NET project file analyzers
+![.NET Project File Analyzers logo](design/logo_128x128.png)
+# .NET Project File Analyzers
 Contains 150+ [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/)
 (static code) [diagnostic analyzers](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.diagnostics.diagnosticanalyzer)
 that report issues on .NET project files.

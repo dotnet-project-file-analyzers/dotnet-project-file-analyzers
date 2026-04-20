@@ -7,6 +7,7 @@ public sealed class VersionOverrideShouldChangeVersion()
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile_Props;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (context.File.ManagePackageVersionsCentrally() is not true) return;

@@ -1199,15 +1199,6 @@ public static partial class Rule
         tags: ["package", "import", "duplicate"],
         category: Category.Clarity);
 
-    public static DiagnosticDescriptor UseDotNetProjectFileAnalyzers => New(
-        id: 1000,
-        title: "Use the .NET project file analyzers",
-        message: "Use the .NET project file analyzers",
-        description: "To improve the code quality of .NET project files.",
-        tags: ["roslyn", "analyzer", "csproj", "vbproj", "fsproj", "cblproj"],
-        category: Category.CodeQuality,
-        isEnabled: false);
-
     public static DiagnosticDescriptor UseAnalyzersForPackages => New(
         id: 1001,
         title: "Use analyzers for packages",

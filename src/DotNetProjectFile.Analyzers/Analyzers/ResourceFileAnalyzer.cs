@@ -11,6 +11,7 @@ public abstract class ResourceFileAnalyzer(
     : ProjectFileAnalyzer<Resource>(primaryDiagnostic, supportedDiagnostics)
 {
     /// <summary>Registers the analyzer for all RESX resource files.</summary>
+    /// <inheritdoc />
     protected override void Register(AnalysisContext context)
         => context.RegisterResourceFileAction(Register);
 }

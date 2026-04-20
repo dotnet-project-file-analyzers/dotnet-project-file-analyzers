@@ -28,6 +28,7 @@ public abstract class MsBuildProjectFileAnalyzer(
     public virtual bool DisableOnFailingImport => true;
 
     /// <summary>Registers the analyzer for all MS Build projects files.</summary>
+    /// <inheritdoc />
     protected override void Register(AnalysisContext context)
         => context.RegisterProjectFileAction(c =>
         {

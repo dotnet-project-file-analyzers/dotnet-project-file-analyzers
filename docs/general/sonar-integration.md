@@ -26,7 +26,7 @@ analyzers for, such as `.csproj` and `.props` files. As a result:
 ## Workaround: Register files as `<Content>`
 What does work, is registering all files that are analyzed as `<Content>` for
 MSBuild. By doing so, SonarQube will report analysis on these files. To make
-life easier, the .NET Project File Analyzers do this automatically for:
+life easier, the .NET Project File Analyzers package does this automatically for:
 - `**/*.??proj`
 - `**/*.config`
 - `**/*.props`

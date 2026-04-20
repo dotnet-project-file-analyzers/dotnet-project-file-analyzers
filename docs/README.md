@@ -1,5 +1,5 @@
-![.NET project file analyzers logo](design/logo_128x128.png)
-# .NET project file analyzers
+![.NET Project File Analyzers logo](design/logo_128x128.png)
+# .NET Project File Analyzers
 is a [NuGet](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/) package
 containing [Roslyn](https://docs.microsoft.com/dotnet/csharp/roslyn-sdk/)
 (static code) [analyzers](https://docs.microsoft.com/dotnet/api/microsoft.codeanalysis.diagnostics.diagnosticanalyzer)
@@ -162,7 +162,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0508** Order third-party licenses alphabetically](rules/Proj0508.md)
 * [**Proj0509** NuGet package cache could not be resolved](rules/Proj0509.md)
 
-### .NET project file analyzers SDK
+### .NET Project File Analyzers SDK
 * [**Proj0700** Avoid defining &lt;Compile&gt; items in SDK project](rules/Proj0700.md)
 
 ### Central Package Management
@@ -181,7 +181,6 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0812** Remove redundant packages references that are globally referenced](rules/Proj0812.md)
 
 ### Analyzers
-* [**Proj1000** Use the .NET project file analyzers](rules/Proj1000.md)
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
 * [**Proj1002** Use Microsoft's analyzers](rules/Proj1002.md)
 * [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)
@@ -244,8 +243,9 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj5001** Remove SLN solution files](rules/Proj5001.md)
 * [**Proj5005** Omit Project ID's](rules/Proj5005.md)
 
-## Sonar integration
-By default, results by .NET project file analyzers are not added to Sonar's reporting. Read [here](general/sonar-integration.md) how to configure this correctly.
+## SonarCube integration
+By default, results by .NET project file analyzers are included in SonarCube
+reports. Read [here](general/sonar-integration.md) more about how this works.
 
 ## License
-.NET project file analyzers is licensed under [MIT](LICENSE.MD).
+.NET Project File Analyzers is licensed under [MIT](LICENSE.MD).

@@ -43,7 +43,7 @@ public static class IOPath
         return code;
     }
 
-    internal static string ToString(string[] parts, string? format, IFormatProvider? formatProvider) => format switch
+    internal static string ToString(string[] parts, string? format, IFormatProvider? _) => format switch
     {
         "/" => string.Join("/", parts),
         "\\" => string.Join("\\", parts),

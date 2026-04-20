@@ -23,6 +23,7 @@ public sealed class UseInVBContextOnly() : MsBuildProjectFileAnalyzer(Rule.UseIn
     /// <inheritdoc />
     public override ImmutableArray<Language> ApplicableLanguages { get; } = Languages.All.Remove(Language.VisualBasic);
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context) => Walk(context.File, context);
 
     private void Walk(Node node, ProjectFileAnalysisContext context)
