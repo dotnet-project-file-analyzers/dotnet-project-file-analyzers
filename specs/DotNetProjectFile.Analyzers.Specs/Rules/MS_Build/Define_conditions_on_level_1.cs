@@ -8,8 +8,8 @@ public class Reports
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net9.0;net462</TargetFrameworks>
-    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">net9.0</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' == 'Windows_NT'">net10.0;net462</TargetFrameworks>
+    <TargetFrameworks Condition="'$(OS)' != 'Windows_NT'">net10.0</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'1' == '1'">
@@ -17,7 +17,7 @@ public class Reports
   </PropertyGroup>
 
   <Choose>
-    <When Condition="'$(TargetFramework)'=='net9.0'">
+    <When Condition="'$(TargetFramework)'=='net10.0'">
       <PropertyGroup>
         <IsPackable>true</IsPackable>
       </PropertyGroup>
@@ -52,5 +52,22 @@ public class Guards
     public void Projects_without_issues(string project)
          => new DefineConditionsOnLevel1()
         .ForProject(project)
+        .HasNoIssues();
+
+    [Test]
+    public void conditions_within_target() => new DefineConditionsOnLevel1()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+
+              <Target Name="Some Name" DependsOnTargets="ResolveReferences">
+                <Error Condition="'@(TargetFramework)' != 'net10.0'" Text="Only .NET 10 i" />
+              </Target>
+
+            </Project>
+            """)
         .HasNoIssues();
 }
