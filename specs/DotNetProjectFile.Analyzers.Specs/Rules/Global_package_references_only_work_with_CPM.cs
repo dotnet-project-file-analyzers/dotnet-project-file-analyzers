@@ -18,7 +18,7 @@ public class Reports
         </Project>
         """)
         .HasIssue(
-            Issue.WRN("Proj0813", "Global package reference 'NuGet.Versioning' is ignored as CMP is disabled").WithSpan(7, 4, 7, 73));
+            Issue.WRN("Proj0813", "Global package reference 'NuGet.Versioning' is ignored as CPM is disabled").WithSpan(7, 4, 7, 73));
 }
 
 public class Guards
