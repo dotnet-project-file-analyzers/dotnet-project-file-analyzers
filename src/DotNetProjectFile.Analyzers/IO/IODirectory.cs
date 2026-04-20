@@ -21,13 +21,15 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
 
     internal IODirectory(string[] paths) => _parts = paths;
 
-    public bool HasValue => Parts.Length != 0;
+    /// <summary>Indicates that directory does not repersents <see cref="Empty"/>.</summary>
+    public bool HasValue => Parts is { Length: > -0 };
 
     /// <summary>Creates a <see cref="DirectoryInfo"/> based on the path.</summary>
     public DirectoryInfo? Info
     {
         get
         {
+            if (!HasValue) return null;
             try
             {
                 return new(ToString());
@@ -71,12 +73,11 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
         }
     }
 
+    /// <summary>Gets the parent directory.</summary>
     public IODirectory Parent
-#pragma warning disable S2365 // Properties should not make collection or array copies
         => HasValue
-        ? new(Parts.Take(Parts.Length - 1).ToArray())
+        ? new([.. Parts.Take(Parts.Length - 1)])
         : throw new InvalidOperationException("Path is empty");
-#pragma warning restore S2365 // Properties should not make collection or array copies
 
     /// <summary>Creates a new sub directory.</summary>
     public IODirectory SubDirectory(params string[] paths)
@@ -84,6 +85,7 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
             ? new(IOPath.Split(paths))
             : new(IOPath.Split(_parts.Concat(paths)));
 
+    /// <summary>Gets the sub directories.</summary>
     public IEnumerable<IODirectory>? SubDirectories(string path = ".")
     {
         try

@@ -1,9 +1,5 @@
 #pragma warning disable SA1118 // Parameter should not span multiple lines: readability for descriptions.
 
-using Grammr.Lexers;
-using Grammr.Text;
-using System.Net;
-
 namespace DotNetProjectFile;
 
 public static partial class Rule

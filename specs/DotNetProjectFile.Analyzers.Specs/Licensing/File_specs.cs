@@ -1,4 +1,3 @@
-using DotNetProjectFile.Diagnostics;
 using DotNetProjectFile.Licensing;
 using DotNetProjectFile.MsBuild;
 using DotNetProjectFile.NuGet;

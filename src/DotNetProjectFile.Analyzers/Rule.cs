@@ -2,7 +2,7 @@
 
 namespace DotNetProjectFile;
 
-public static partial class Rule
+internal static partial class Rule
 {
     public static DiagnosticDescriptor ProjectFileCouldNotBeLocated => New(
         id: 0001,

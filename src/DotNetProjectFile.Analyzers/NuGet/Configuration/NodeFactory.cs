@@ -23,12 +23,9 @@ internal sealed class NodeFactory
 
     [Pure]
     public Node Create(XElement element, Node parent, NuGetConfigFile configFile)
-        => Lookup(element).TryGetValue(element.Name.LocalName, out var con)
+        => CaseInsensitive.TryGetValue(element.Name.LocalName, out var con)
         ? con(element, parent, configFile)
         : new Unknown(element, parent, configFile);
-
-    [Pure]
-    private Dictionary<string, CtorFunc> Lookup(XElement element) => CaseInsensitive;
 
     [Pure]
     private static Type[] GetCtorParameterTypes()
