@@ -7,7 +7,7 @@ public sealed class UseVersionOnlyWithoutCpm()
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.File.ManagePackageVersionsCentrally() is true)
+        if (context.ManagePackageVersionsCentrally)
         {
             foreach (var reference in context.File.ItemGroups
                 .Children<PackageReference>(r => r.Version is { Length: > 0 }))

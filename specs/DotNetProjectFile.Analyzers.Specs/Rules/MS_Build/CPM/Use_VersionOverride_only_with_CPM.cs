@@ -3,9 +3,20 @@ namespace Rules.MS_Build.Use_VersionOverride_only_with_CPM;
 public class Reports
 {
     [Test]
-    public void project_with_VersionOverride_without_CPM()
-        => new UseVersionOverrideOnlyWithCpm()
-        .ForProject("MisuseVersionOverride.cs")
+    public void project_with_VersionOverride_without_CPM() => new UseVersionOverrideOnlyWithCpm()
+        .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
+
+          <ItemGroup Label="Version is also added to satisfy Buildalizer">
+            <PackageReference Include="Qowaiv" Version="7.0.3" VersionOverride="7.0.4" />
+          </ItemGroup>
+
+        </Project>
+        """)
         .HasIssue(Issue.WRN("Proj0803", "Use Version instead of VersionOverride when CPM is not enabled")
         .WithSpan(07, 04, 07, 81));
 }
@@ -13,15 +24,13 @@ public class Reports
 public class Guards
 {
     [Test]
-    public void project_with_VersionOverride_with_CPM_enabled()
-       => new UseVersionOverrideOnlyWithCpm()
+    public void project_with_VersionOverride_with_CPM_enabled() => new UseVersionOverrideOnlyWithCpm()
        .ForProject("UseCPM.cs")
        .HasNoIssues();
 
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
-    public void Projects_without_VersionOverride(string project)
-         => new UseVersionOverrideOnlyWithCpm()
+    public void Projects_without_VersionOverride(string project) => new UseVersionOverrideOnlyWithCpm()
         .ForProject(project)
         .HasNoIssues();
 }

@@ -1,5 +1,6 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.EnableCentralPackageManagementCentrally"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class EnableCentralPackageManagementCentrally()
     : MsBuildProjectFileAnalyzer(Rule.EnableCentralPackageManagementCentrally)

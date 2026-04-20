@@ -10,7 +10,7 @@ public sealed class ConfigureCentralPackageVersionManagement() : MsBuildProjectF
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.File.ManagePackageVersionsCentrally() is null)
+        if (context.File.Property<ManagePackageVersionsCentrally>() is not { Value: { } })
         {
             context.ReportDiagnostic(Descriptor, context.File.Locations.StartElement);
         }

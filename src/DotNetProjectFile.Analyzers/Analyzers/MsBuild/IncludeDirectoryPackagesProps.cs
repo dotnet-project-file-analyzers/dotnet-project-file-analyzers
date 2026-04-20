@@ -10,7 +10,7 @@ public sealed class IncludeDirectoryPackagesProps() : MsBuildProjectFileAnalyzer
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.File.ManagePackageVersionsCentrally().GetValueOrDefault()
+        if (context.ManagePackageVersionsCentrally
             && context.File.DirectoryPackagesProps is null)
         {
             context.ReportDiagnostic(Descriptor, context.File.Locations.StartElement);

@@ -10,7 +10,7 @@ public sealed class VersionOverrideShouldChangeVersion()
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.File.ManagePackageVersionsCentrally() is not true) return;
+        if (!context.ManagePackageVersionsCentrally) return;
 
         foreach (var @override in context.File.ItemGroups
             .Children<PackageReference>(r => r.VersionOverride is { Length: > 0 }))

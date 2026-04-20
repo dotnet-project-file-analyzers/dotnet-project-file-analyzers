@@ -11,7 +11,7 @@ public sealed class DefinePackageReferenceVersion()
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var versions = context.File.ManagePackageVersionsCentrally() is true
+        var versions = context.ManagePackageVersionsCentrally
             ? PackageVersions(context.File)
             : [];
 

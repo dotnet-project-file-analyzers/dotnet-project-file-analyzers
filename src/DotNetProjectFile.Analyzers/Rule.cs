@@ -1199,6 +1199,15 @@ public static partial class Rule
         tags: ["package", "import", "duplicate"],
         category: Category.Clarity);
 
+    public static DiagnosticDescriptor GlobalPackageReferencesOnlyWorkWithCpm => New(
+    id: 0813,
+    title: "Global package references only work when CPM is enabled",
+    message: "Global package reference '{0}' is ignored as CPM is disabled",
+    description:
+        "To benefit from <GlobalPackageReference>'s, CPM has to be enabled.",
+    tags: ["package", "import"],
+    category: Category.Bug);
+
     public static DiagnosticDescriptor UseAnalyzersForPackages => New(
         id: 1001,
         title: "Use analyzers for packages",

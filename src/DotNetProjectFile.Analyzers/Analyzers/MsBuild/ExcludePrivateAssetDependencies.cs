@@ -14,20 +14,20 @@ public sealed class ExcludePrivateAssetDependencies() : MsBuildProjectFileAnalyz
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var reference in context.File.ItemGroups
-            .Children<PackageReference>(ShoudBePrivateAssets))
+            .Children<PackageReference>(r => ShoudBePrivateAssets(r, context.ManagePackageVersionsCentrally)))
         {
             context.ReportDiagnostic(Descriptor, reference, reference.IncludeOrUpdate);
         }
     }
 
-    private static bool ShoudBePrivateAssets(PackageReference reference)
+    private static bool ShoudBePrivateAssets(PackageReference reference, bool cpmEnabled)
     {
         if (reference.PrivateAssets.IsMatch("all"))
         {
             return false;
         }
 
-        if (reference.ResolvePackage() is { } package)
+        if (reference.ResolvePackage(cpmEnabled) is { } package)
         {
             if (package.IsDevelopmentDependency is true)
             {
