@@ -6,6 +6,7 @@ public sealed class ReassignPropertiesWithDifferentValue() : MsBuildProjectFileA
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var properties = new Dictionary<Prop, Node>();

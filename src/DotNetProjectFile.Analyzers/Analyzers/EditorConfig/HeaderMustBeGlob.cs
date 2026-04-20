@@ -6,6 +6,7 @@ namespace DotNetProjectFile.Analyzers.EditorConfig;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class HeaderMustBeGlob() : IniFileAnalyzer(Rule.Ini.HeaderMustBeGlob)
 {
+    /// <inheritdoc />
     protected override void Register(IniFileAnalysisContext context)
     {
         if (!context.File.Path.Name.IsMatch(".editorconfig")) return;

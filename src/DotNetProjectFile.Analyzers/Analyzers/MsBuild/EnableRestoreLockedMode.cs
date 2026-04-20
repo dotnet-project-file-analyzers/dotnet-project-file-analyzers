@@ -8,6 +8,7 @@ public sealed class EnableRestoreLockedMode() : MsBuildProjectFileAnalyzer(Rule.
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var project = context.File;

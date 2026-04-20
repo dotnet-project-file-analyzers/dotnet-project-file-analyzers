@@ -8,7 +8,6 @@ public sealed class UseVersionOverrideOnlyWithCpm()
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
 
-    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (context.ManagePackageVersionsCentrally) return;

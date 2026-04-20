@@ -14,6 +14,7 @@ public sealed class DefineCpmRelatedConfigInDirectoryPackages()
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc/>
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var cpmNode in context.File.DescendantsAndSelf().Where(IsCpm))

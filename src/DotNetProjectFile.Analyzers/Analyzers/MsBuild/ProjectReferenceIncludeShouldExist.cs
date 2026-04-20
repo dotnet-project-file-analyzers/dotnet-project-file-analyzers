@@ -9,6 +9,7 @@ public sealed class ProjectReferenceIncludeShouldExist() : MsBuildProjectFileAna
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var root = context.File.Path.Directory;

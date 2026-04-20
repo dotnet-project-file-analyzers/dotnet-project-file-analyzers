@@ -9,6 +9,7 @@ public sealed class IncludeProjectReferencesOnce() : MsBuildProjectFileAnalyzer(
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var references = new Dictionary<Reference, ProjectReference>();

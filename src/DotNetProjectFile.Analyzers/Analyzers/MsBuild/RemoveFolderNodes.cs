@@ -6,6 +6,7 @@ public sealed class RemoveFolderNodes() : MsBuildProjectFileAnalyzer(Rule.Remove
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var folder in context.File.ItemGroups.Children<Folder>())

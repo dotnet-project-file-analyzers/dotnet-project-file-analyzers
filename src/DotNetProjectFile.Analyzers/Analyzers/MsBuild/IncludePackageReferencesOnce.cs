@@ -3,6 +3,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class IncludePackageReferencesOnce() : MsBuildProjectFileAnalyzer(Rule.IncludePackageReferencesOnce)
 {
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var references = new Dictionary<Reference, PackageReference>();

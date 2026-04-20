@@ -11,6 +11,7 @@ public abstract class NuGetConfigFileAnalyzer(
     : ProjectFileAnalyzer<NuGetConfigFile>(primaryDiagnostic, supportedDiagnostics)
 {
     /// <summary>Registers the analyzer for all SLNX solution files.</summary>
+    /// <inheritdoc />
     protected override void Register(AnalysisContext context)
         => context.RegisterNuGetConfigFileAction(Register);
 }
