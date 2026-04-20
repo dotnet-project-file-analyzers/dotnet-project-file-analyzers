@@ -37,7 +37,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Build tools">
-    <PackageReference PrivateAssets="all" Include="coverlet.collector" Version="8.0.1" />
+    <PackageReference PrivateAssets="all" Include="coverlet.collector" Version="10.0.0" />
     <PackageReference PrivateAssets="all" Include="Microsoft.Build.Tasks.Core" Version="18.4.0" />
     <PackageReference PrivateAssets="all" Include="Microsoft.NET.Test.Sdk" Version="18.4.0" />
     <PackageReference PrivateAssets="all" Include="NUnit3TestAdapter" Version="6.2.0" />
