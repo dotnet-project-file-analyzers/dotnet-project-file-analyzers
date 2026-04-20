@@ -10,6 +10,7 @@ public sealed class GenerateSbom() : MsBuildProjectFileAnalyzer(Rule.GenerateSbo
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (!context.File.IsPackable() || context.File.IsTestProject()) return;

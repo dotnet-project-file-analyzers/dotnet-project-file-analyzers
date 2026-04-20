@@ -4,6 +4,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class UseVersionOverrideOnlyWithCpm()
     : MsBuildProjectFileAnalyzer(Rule.UseVersionOverrideOnlyWithCpm)
 {
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (context.File.ManagePackageVersionsCentrally() is not true)

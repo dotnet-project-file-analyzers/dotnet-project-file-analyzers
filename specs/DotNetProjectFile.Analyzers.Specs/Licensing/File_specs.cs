@@ -1,4 +1,3 @@
-using DotNetProjectFile.Diagnostics;
 using DotNetProjectFile.Licensing;
 using DotNetProjectFile.MsBuild;
 using DotNetProjectFile.NuGet;
@@ -36,13 +35,11 @@ public class Can_be_determined
     {
         public Dictionary<string, LicenseExpression> Detected { get; } = new(StringComparer.OrdinalIgnoreCase);
 
-        protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+        protected override void Register(ProjectFileAnalysisContext context)
         {
-            var references = context.File.ItemGroups
+            foreach (var reference in context.File.ItemGroups
                 .Children<PackageReferenceBase>()
-                .ToArray();
-
-            foreach (var reference in references)
+                .ToArray())
             {
                 if (PackageCache.GetPackage(reference.IncludeOrUpdate, reference.Version) is { } pkg)
                 {

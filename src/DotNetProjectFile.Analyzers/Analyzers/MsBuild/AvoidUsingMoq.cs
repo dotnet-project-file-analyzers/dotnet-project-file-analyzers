@@ -6,6 +6,7 @@ public sealed class AvoidUsingMoq() : MsBuildProjectFileAnalyzer(Rule.AvoidUsing
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var reported = false;

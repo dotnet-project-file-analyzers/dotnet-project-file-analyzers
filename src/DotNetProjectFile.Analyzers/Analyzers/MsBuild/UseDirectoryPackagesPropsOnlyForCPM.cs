@@ -7,6 +7,7 @@ public sealed class UseDirectoryPackagesPropsOnlyForCPM()
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.DirectoryPackages;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         Walk(context.File);

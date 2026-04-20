@@ -6,6 +6,7 @@ public sealed class AvoidGeneratePackageOnBuildWhenNotPackable() : MsBuildProjec
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (IsPotentiallyPackable(context)) return;

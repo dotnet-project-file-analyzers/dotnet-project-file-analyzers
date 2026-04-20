@@ -4,6 +4,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class OverrideTargetFrameworksWithTargetFrameworks()
     : MsBuildProjectFileAnalyzer(Rule.OverrideTargetFrameworksWithTargetFrameworks)
 {
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var tfm in context.File.PropertyGroups.

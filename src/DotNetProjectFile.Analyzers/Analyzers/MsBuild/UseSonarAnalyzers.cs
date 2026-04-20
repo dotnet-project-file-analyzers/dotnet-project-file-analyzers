@@ -7,6 +7,7 @@ public sealed class UseSonarAnalyzers() : MsBuildProjectFileAnalyzer(Rule.UseSon
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (Include(context.File.Language) is not { } include) { return; }

@@ -6,6 +6,7 @@ public sealed class DefineIsPublishable() : MsBuildProjectFileAnalyzer(Rule.Defi
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (!context.File.IsTestProject() &&

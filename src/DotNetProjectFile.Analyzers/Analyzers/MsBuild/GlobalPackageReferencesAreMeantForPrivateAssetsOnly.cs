@@ -9,6 +9,7 @@ public sealed class GlobalPackageReferencesAreMeantForPrivateAssetsOnly()
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc/>
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var reference in context.File.ItemGroups

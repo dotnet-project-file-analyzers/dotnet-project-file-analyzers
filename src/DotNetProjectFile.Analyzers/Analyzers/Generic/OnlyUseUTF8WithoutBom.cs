@@ -4,6 +4,7 @@ namespace DotNetProjectFile.Analyzers.Generic;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFile>(Rule.OnlyUseUTF8WithoutBom)
 {
+    /// <inheritdoc />
     protected override void Register(AnalysisContext context)
     {
         context.RegisterCompilationAction(c =>
@@ -26,6 +27,7 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
         });
     }
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext<ProjectTextFile> context)
     {
         if (!context.File.Path.Exists) { return; }

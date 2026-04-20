@@ -7,6 +7,7 @@ public sealed class EnableCentralPackageManagementCentrally()
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var enabled in context.File.PropertyGroups
