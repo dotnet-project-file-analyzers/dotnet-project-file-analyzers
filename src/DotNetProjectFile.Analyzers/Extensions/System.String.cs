@@ -4,48 +4,56 @@ namespace System;
 
 internal static class StringExtensions
 {
-    public static bool Contains(this string? str, string value, StringComparison comparisonType)
-        => str is { } && str.IndexOf(value, comparisonType) != -1;
-
-    /// <summary>Matches both strings ignoring casting.</summary>
-    public static bool IsMatch(this string? str, string? other)
-        => string.Equals(str, other, StringComparison.OrdinalIgnoreCase);
-
-    public static string TrimStart(this string str, string? other)
+    extension(string? str)
     {
-        if (other is not { Length: > 0 })
-        {
-            return str;
-        }
+        public string? NullIfEmpty() => str is { Length: 0 } ? null : str;
 
-        var result = str;
+        public bool Contains(string value, StringComparison comparisonType)
+            => str is { } && str.IndexOf(value, comparisonType) != -1;
 
-        while (result.StartsWith(other))
-        {
-            result = result[other.Length..];
-        }
+        /// <summary>Matches both strings ignoring casting.</summary>
+        public bool IsMatch(string? other)
+            => string.Equals(str, other, StringComparison.OrdinalIgnoreCase);
 
-        return result;
+        /// <inheritdoc cref="NGramsCollection.Create(string?, int)" />
+        public NGramsCollection GetNGrams(int n)
+            => NGramsCollection.Create(str, n);
     }
 
-    public static string TrimEnd(this string str, string? other)
+    extension(string str)
     {
-        if (other is not { Length: > 0 })
+        public string TrimStart(string? other)
         {
-            return str;
+            if (other is not { Length: > 0 })
+            {
+                return str;
+            }
+
+            var result = str;
+
+            while (result.StartsWith(other))
+            {
+                result = result[other.Length..];
+            }
+
+            return result;
         }
 
-        var result = str;
-
-        while (result.EndsWith(other))
+        public string TrimEnd(string? other)
         {
-            result = result[..(str.Length - other.Length)];
-        }
+            if (other is not { Length: > 0 })
+            {
+                return str;
+            }
 
-        return result;
+            var result = str;
+
+            while (result.EndsWith(other))
+            {
+                result = result[..(str.Length - other.Length)];
+            }
+
+            return result;
+        }
     }
-
-    /// <inheritdoc cref="NGramsCollection.Create(string?, int)" />
-    public static NGramsCollection GetNGrams(this string? str, int n)
-        => NGramsCollection.Create(str, n);
 }
