@@ -1202,7 +1202,7 @@ public static partial class Rule
     public static DiagnosticDescriptor GlobalPackageReferencesOnlyWorkWithCpm => New(
     id: 0813,
     title: "Global package references only work when CPM is enabled",
-    message: "Global package reference '{0}' is ignored as CMP is disabled",
+    message: "Global package reference '{0}' is ignored as CPM is disabled",
     description:
         "To benefit from <GlobalPackageReference>'s, CPM has to be enabled.",
     tags: ["package", "import"],
