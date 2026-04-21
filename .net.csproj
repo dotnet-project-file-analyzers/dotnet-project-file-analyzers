@@ -1,6 +1,6 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.props" />
+  <Import Project="src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.props" />
 
   <ItemGroup Label="Directories">
     <None Include="design/**" />
@@ -14,8 +14,9 @@
 
   <ItemGroup>
     <PackageReference Update="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Update="Newtonsoft.Json" Version="*" />
   </ItemGroup>
 
-  <Import Project="src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.targets" />
+  <Import Project="src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.targets" />
 
 </Project>
