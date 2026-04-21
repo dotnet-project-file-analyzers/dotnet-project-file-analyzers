@@ -89,6 +89,8 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0250** Generate API compatibility suppression file](https://dotnet-project-file-analyzers.github.io/rules/Proj0250.html)
 * [**Proj0251** Enable API compatibility attribute checks](https://dotnet-project-file-analyzers.github.io/rules/Proj0251.html)
 * [**Proj0252** Enable API compatibility parameter name checks](https://dotnet-project-file-analyzers.github.io/rules/Proj0252.html)
+* [**Proj0253** Versions should be compliant with Semantic Versioning](https://dotnet-project-file-analyzers.github.io/rules/Proj0253.html)
+* [**Proj0254** Version prefixes should be compliant with Semantic Versioning](https://dotnet-project-file-analyzers.github.io/rules/Proj0254.html)
 * [**Proj0600** Avoid generating packages on build if not packable](https://dotnet-project-file-analyzers.github.io/rules/Proj0600.html)
 
 ### Publishing
