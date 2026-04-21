@@ -10,14 +10,13 @@ public sealed class VersionSuffixShouldBeSemVerCompliant() : MsBuildProjectFileA
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var version in context.File.PropertyGroups.Children<VersionSuffix>(NotSemantic))
+        foreach (var version in context.File.PropertyGroups.Children<VersionSuffix>(c => !IsSemantic(c)))
         {
             context.ReportDiagnostic(Descriptor, version, version.Element.Value);
         }
     }
 
-    private static bool NotSemantic(VersionSuffix version)
-        => version.Value is not { } val
-        || SemVer.TryParse($"1.2.3-{val}") is not null
-        || SemVer.TryParse($"1.2.3+{val}") is not null;
+    private static bool IsSemantic(VersionSuffix version)
+        => SemVer.TryParse($"1.2.3-{version.Value}") is not null
+        || SemVer.TryParse($"1.2.3+{version.Value}") is not null;
 }
