@@ -4,8 +4,7 @@ nav_order: 2
 ---
 
 # .NET Project File Analyzers SDK
-[![DotNetProjectFile.Analyzers.Sdk](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers.Sdk)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers.Sdk)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers.Sdk)
-.NET project file analyzers ships with its own SDK.
+The .NET Project File Analyzers ships with its own SDK.
 
 ## Why the .NET Project File Analyzers SDK?
 .NET project file analyzers work by linking files to a project (most commonly
@@ -22,14 +21,15 @@ It obtains its powers because it is a little different from normal projects:
    all other projects. This could be the root of your repo, the same directory
    as your solution(s), or somewhere in between. Placement really depends on
    which (sub) directories should be scanned, experiment a little to see what
-   works for you. The needs of a large [monorepo](https://en.wikipedia.org/wiki/Monorepo) with many solutions and projects differ from those of a small repository with a single solution and just a few projects.
-2. The `.net.csproj` project has a PackageReference to [![DotNetProjectFile.Analyzers.Sdk](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers.Sdk)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers.Sdk)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers.Sdk).
+   works for you. The needs of a large [monorepo](https://en.wikipedia.org/wiki/Monorepo)
+   with many solutions and projects differ from those of a small repository
+   with a single solution and just a few projects.
+2. The `.net.csproj` project has a PackageReference to [![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers.Sdk)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers).
    It automatically includes files it can analyze. Those, and files included as
    `<AdditionalFiles>` are analyzed by the appropriate .NET project file
    analyzers.
- 
- Although the `.net.csproj` is not supposed to contain `<Compile>` items, the
- compiler still generates output. Since that output is useless, it is hidden.
+3. The build output has been disabled, and adding `<Compile>` items to the
+   `.net.csproj` will not result in any dll or executable.
 
 `.net.csproj` includes top level files and as such provides a solid alternative
 to a `Solution items` folder.
@@ -40,32 +40,25 @@ A `.net.csproj` project file looks like this:
 ``` xml
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-  </PropertyGroup>
-
   <ItemGroup>
-   <PackageReference Include="DotNetProjectFile.Analyzers.Sdk" Version="*" PrivateAssets="all" />
+   <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" />
   </ItemGroup>
   
 </Project>
 ```
 *Download this example [`.net.csproj`](./.net.csproj)*
 
-## Enable analyzers for .net.csproj
-.NET project file analyzers can be included to the `.net.csproj` by adding
-
-``` xml
-<ItemGroup>
-  <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" />
-</ItemGroup>
-```
-
-However, it is advised to add the reference in the `Directory.Build.props` file, or
+## Central Package Management
+It is advised to add the reference in the `Directory.Build.props` file, or
 `Directory.Packages.props`. In the latter case using a `<GlobalPackageReference>`:
 
 ``` xml
 <ItemGroup Label="Analyzers">
-  <GlobalPackageReference Include="DotNetProjectFile.Analyzers" Version="1.8.3" />
+  <GlobalPackageReference Include="DotNetProjectFile.Analyzers" Version="1.12.0" />
 </ItemGroup>
+```
+
+In that case the `.net.csproj` can be a small as this:
+``` xml
+<Project Sdk="Microsoft.NET.Sdk" />
 ```
