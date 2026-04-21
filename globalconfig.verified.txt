@@ -84,7 +84,6 @@ dotnet_diagnostic.Proj0251.severity = warning    # Enable API compatibility attr
 dotnet_diagnostic.Proj0252.severity = warning    # Enable API compatibility parameter name checks
 dotnet_diagnostic.Proj0253.severity = warning    # Versions should be compliant with Semantic Versioning
 dotnet_diagnostic.Proj0254.severity = warning    # Version prefixes should be compliant with Semantic Versioning
-dotnet_diagnostic.Proj0255.severity = warning    # Version suffixes should be compliant with Semantic Versioning
 dotnet_diagnostic.Proj0300.severity = warning    # Configure NuGet explicitly
 dotnet_diagnostic.Proj0301.severity = warning    # Clear previously defined package sources
 dotnet_diagnostic.Proj0302.severity = warning    # NuGet authentication should be secure

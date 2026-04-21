@@ -68,7 +68,7 @@ public sealed record SemVer()
     public static SemVer? TryParse(string? s) => s switch
     {
         null or "" => null,
-        _ when Pattern.Match(s) is { Success: true } match => new()
+        _ when Pattern.Match(s.Trim()) is { Success: true } match => new()
         {
             Major = BigInteger.Parse(match.Groups[nameof(Major)].Value),
             Minor = BigInteger.Parse(match.Groups[nameof(Minor)].Value),
