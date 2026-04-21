@@ -9,6 +9,9 @@ public sealed class MsBuildProps(AnalyzerOptions options)
     /// <summary>Gets the MSBuild project file that currently is being build.</summary>
     public string? MSBuildProjectFile => Prop();
 
+    /// <summary>Indicates that the .NET analyzers are enabled.</summary>
+    public bool? EnableNETAnalyzers => Converts.String<bool>(Prop());
+
     /// <summary>Indicates if the project is a packable.</summary>
     public bool? IsPackable => Converts.String<bool>(Prop());
 

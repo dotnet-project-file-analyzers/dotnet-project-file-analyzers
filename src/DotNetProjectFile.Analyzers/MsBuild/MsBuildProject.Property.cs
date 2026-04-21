@@ -18,9 +18,6 @@ public sealed partial class MsBuildProject
     public bool IsTestProject()
         => Property<IsTestProject>()?.Value ?? MsBuildDefaults.IsTestProject;
 
-    public bool NETAnalyzersEnabled()
-        => Property<EnableNETAnalyzers>()?.Value ?? MsBuildDefaults.EnableNETAnalyzers;
-
     public bool? NuGetAuditEnabled()
         => Property<NuGetAudit>()?.Value ?? MsBuildDefaults.NuGetAudit;
 

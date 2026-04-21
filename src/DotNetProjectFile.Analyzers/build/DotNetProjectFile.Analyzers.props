@@ -50,6 +50,7 @@
   <!-- Common variable that should be resolvable. -->
   <ItemGroup>
     <CompilerVisibleProperty Include="Configuration" />
+    <CompilerVisibleProperty Include="EnableNETAnalyzers" />
     <CompilerVisibleProperty Include="IsPackable" />
     <CompilerVisibleProperty Include="IsTestProject" />
     <CompilerVisibleProperty Include="LangVersion" />
