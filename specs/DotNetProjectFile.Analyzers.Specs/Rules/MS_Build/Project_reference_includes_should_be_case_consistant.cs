@@ -1,5 +1,6 @@
-namespace Rules.MS_Build.Project_reference_include_should_have_right_casing;
+namespace Rules.MS_Build.Project_reference_includes_should_be_case_consistant;
 
+#if Is_Windows
 public class Reports
 {
     [Test]
@@ -9,6 +10,7 @@ public class Reports
             .WRN("Proj0051", "The casing of './foo.csproj' of differs from the file 'FOO.csproj' on disk")
             .WithSpan(07, 04, 07, 47));
 }
+#endif
 
 public class Guards
 {
