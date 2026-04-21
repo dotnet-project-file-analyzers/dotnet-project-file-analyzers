@@ -3,7 +3,7 @@
 
 ![.NET Project File Analyzers logo](design/logo_128x128.png)
 # .NET Project File Analyzers
-Contains 150+ [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/)
+Contains 160+ [Roslyn](https://docs.microsoft.com/en-us/dotnet/csharp/roslyn-sdk/)
 (static code) [diagnostic analyzers](https://docs.microsoft.com/en-us/dotnet/api/microsoft.codeanalysis.diagnostics.diagnosticanalyzer)
 that report issues on .NET project files.
 

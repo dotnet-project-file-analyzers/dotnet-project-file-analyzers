@@ -298,7 +298,7 @@ public static partial class Rule
     public static DiagnosticDescriptor ProjectReferenceIncludeShouldExist => New(
         id: 0033,
         title: "Project reference includes should exist",
-        message: "The Include '{0}' of <{1}> does not exist",
+        message: "The Include '{0}' of <ProjectReference> does not exist",
         description:
             "Project reference include statements that do not include any file, are most likely bugs.",
         tags: ["dependencies", "dependency"],
@@ -485,6 +485,18 @@ public static partial class Rule
             "is set to true. Otherwise the rules are only triggered when using Visual Studio.",
         tags: ["configuration", "analyzers", "code style"],
         category: Category.Configuration);
+
+    public static DiagnosticDescriptor ProjectReferenceMustBeCaseConsistent => New(
+        id: 0051,
+        title: "Project reference must be case-consistent with the file system",
+        message: "The casing of '{0}' of differs from the file '{1}' on disk",
+        description:
+            "Project references must maintain case-consistency with the file " +
+            "system. Because UNIX - like systems treat casing as significant, " +
+            "Include paths must be an exact match to avoid issues during cross - " +
+            "platform builds.",
+        tags: ["dependencies", "dependency", "file system", "UNIX", "case-consistent"],
+        category: Category.Bug);
 
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
