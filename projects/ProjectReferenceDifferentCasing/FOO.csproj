@@ -4,8 +4,4 @@
     <TargetFramework>net10.0</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="./foo.csproj" />
-  </ItemGroup>
-  
 </Project>
