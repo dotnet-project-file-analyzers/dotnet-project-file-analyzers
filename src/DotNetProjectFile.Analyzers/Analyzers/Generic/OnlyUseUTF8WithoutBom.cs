@@ -52,6 +52,7 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
             || path.Contains("/obj/")
             || path.Contains("/.vs/")
             || path.Contains("/.git/")
+            || path.Contains("/.nuget/")
             || file.Name.IsMatch("CompatibilitySuppressions.xml")
             || file.Extension is ".user");
     }

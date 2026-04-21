@@ -192,6 +192,9 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
         writer.Write(content ?? string.Empty);
     }
 
+    /// <summary>Represents the different parts of the file path.</summary>
+    public string[] ToArray() => [.. Parts];
+
     /// <inheritdoc />
     public int CompareTo(IOFile other) => string.Compare(ToString(), other.ToString(), true);
 

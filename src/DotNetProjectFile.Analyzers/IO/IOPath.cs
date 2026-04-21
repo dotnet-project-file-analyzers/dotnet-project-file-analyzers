@@ -18,6 +18,31 @@ public static class IOPath
     private static readonly char[] StartTrimCharacters = [' ', '\t', '\n', '\r'];
     private static readonly char[] EndTrimCharacters = [.. StartTrimCharacters, .. Separators];
 
+    /// <summary>Checks if the selector and the file have the same casing.</summary>
+    /// <returns>
+    /// null if the same, else the part of file that matches the selector except for the casing.
+    /// </returns>
+    [Pure]
+    public static string? CaseCompare(IOFile file, IOFile selector)
+    {
+        var same = true;
+        var parts = new List<string>();
+
+        var (fil, sel) = (file.ToArray(), selector.ToArray());
+        var (f, s) = (fil.Length, sel.Length);
+
+        while (f-- > 0 && s-- > 0)
+        {
+            if (sel[s] is not ".")
+            {
+                same &= sel[s] == fil[f];
+                parts.Insert(0, fil[f]);
+            }
+        }
+
+        return same ? null : string.Join("/", parts);
+    }
+
     internal static bool Equals(string[] self, string[] other, bool caseSensitive)
     {
         if (self.Length != other.Length) { return false; }

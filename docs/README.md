@@ -102,6 +102,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0048** Language version should be set to an explicit version number](rules/Proj0048.md)
 * [**Proj0049** Prefer the latest released language version](rules/Proj0049.md)
 * [**Proj0050** Enforce code-style in builds](rules/Proj0050.md)
+* [**Proj0051** Project reference must be case-consistent with the file system](rules/Proj0051.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)

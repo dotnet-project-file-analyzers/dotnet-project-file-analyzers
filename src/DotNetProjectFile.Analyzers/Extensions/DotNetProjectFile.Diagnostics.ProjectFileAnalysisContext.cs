@@ -9,5 +9,12 @@ internal static class DotNetProjectFile
             => context.Props.ManagePackageVersionsCentrally
             ?? context.File.Property<ManagePackageVersionsCentrally>()?.Value
             ?? MsBuildDefaults.ManagePackageVersionsCentrally;
+
+        /// <summary>Indicates that the .NET analyzers are enabled.</summary>
+        public bool EnableNETAnalyzers
+            => context.Props.EnableNETAnalyzers
+             ?? context.File.Property<EnableNETAnalyzers>()?.Value
+            ?? MsBuildDefaults.EnableNETAnalyzers;
+
     }
 }
