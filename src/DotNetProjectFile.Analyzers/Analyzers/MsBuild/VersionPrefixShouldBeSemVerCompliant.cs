@@ -10,14 +10,12 @@ public sealed class VersionPrefixShouldBeSemVerCompliant() : MsBuildProjectFileA
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var version in context.File.PropertyGroups.Children<VersionPrefix>(c => !IsSemantic(c)))
+        foreach (var version in context.File.PropertyGroups.Children<VersionPrefix>(NotSemantic))
         {
             context.ReportDiagnostic(Descriptor, version, version.Element.Value);
         }
     }
 
-    private static bool IsSemantic(VersionPrefix version)
-        => version.Value is { } sv
-        && sv.PreRelease is null
-        && sv.BuildMetadata is null;
+    private static bool NotSemantic(VersionPrefix version)
+        => version.Value is not { PreRelease: null, BuildMetadata: null };
 }

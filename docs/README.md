@@ -140,7 +140,6 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0252** Enable API compatibility parameter name checks](rules/Proj0252.md)
 * [**Proj0253** Versions should be compliant with Semantic Versioning](rules/Proj0253.md)
 * [**Proj0254** Version prefixes should be compliant with Semantic Versioning](rules/Proj0254.md)
-* [**Proj0255** Version suffixes should be compliant with Semantic Versioning](rules/Proj0255.md)
 * [**Proj0600** Avoid generating packages on build if not packable](rules/Proj0600.md)
 
 ### Publishing

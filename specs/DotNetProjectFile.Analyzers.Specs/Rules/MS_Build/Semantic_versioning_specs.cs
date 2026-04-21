@@ -37,27 +37,6 @@ public class Reports
         """)
        .HasIssue(
            Issue.WRN("Proj0254", $"VersionPrefix '{version}' does not comply with Semantic Versioning"));
-
-    [TestCase("12")]
-    [TestCase("3.1415")]
-    [TestCase("1.2.3")]
-    [TestCase("1.2.3.4")]
-    [TestCase("1.1.0-rc.1")]
-    [TestCase("1.1.0+e471d15")]
-    [TestCase("1.1.0-rc.1+e471d15")]
-    public void non_semantic_version_suffix(string version) => new VersionSuffixShouldBeSemVerCompliant()
-       .ForInlineCsproj($"""
-        <Project Sdk="Microsoft.NET.Sdk">
-
-          <PropertyGroup>
-            <TargetFramework>net10.0</TargetFramework>
-            <VersionSuffix>{version}</VersionSuffix>
-          </PropertyGroup>
-
-        </Project>
-        """)
-       .HasIssue(
-           Issue.WRN("Proj0255", $"VersionSuffix '{version}' does not comply with Semantic Versioning"));
 }
 
 public class Guards
@@ -86,22 +65,6 @@ public class Guards
           <PropertyGroup>
             <TargetFramework>net10.0</TargetFramework>
             <VersionPrefix>1.2.3</VersionPrefix>
-          </PropertyGroup>
-
-        </Project>
-        """)
-       .HasNoIssues();
-
-    [TestCase("rc.1")]
-    [TestCase("e471d15")]
-    [TestCase("rc.1+e471d15")]
-    public void semantic_version_suffix(string version) => new VersionSuffixShouldBeSemVerCompliant()
-       .ForInlineCsproj($"""
-        <Project Sdk="Microsoft.NET.Sdk">
-
-          <PropertyGroup>
-            <TargetFramework>net10.0</TargetFramework>
-            <VersionSuffix>{version}</VersionSuffix>
           </PropertyGroup>
 
         </Project>
