@@ -6,8 +6,8 @@ public class Reports
     public void case_mismatch() => new ProjectReferenceChecker()
         .ForProject("ProjectReferenceDifferentCasing.cs")
         .HasIssue(Issue
-            .WRN("Proj0051", "The Include './foo.csproj' of <ProjectReference> does not exist")
-            .WithSpan(08, 04, 08, 47));
+            .WRN("Proj0051", "The casing of './foo.csproj' of differs from the file 'FOO.csproj' on disk")
+            .WithSpan(07, 04, 07, 47));
 }
 
 public class Guards

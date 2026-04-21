@@ -26,11 +26,9 @@ public sealed class ProjectReferenceChecker() : MsBuildProjectFileAnalyzer(
 
             if (include is { Length: > 0 } && root.Files(include)?.FirstOrNone() is { Exists: true } existing)
             {
-                var org = IOFile.Parse(include);
-
-                if (!org.Equals(existing, true))
+                if (IOPath.CaseCompare(existing, IOFile.Parse(include)) is { } casing)
                 {
-                    context.ReportDiagnostic(Rule.ProjectReferenceIncludeDifferentCasing, node, org, existing);
+                    context.ReportDiagnostic(Rule.ProjectReferenceIncludeDifferentCasing, node, include, casing);
                 }
             }
             else
