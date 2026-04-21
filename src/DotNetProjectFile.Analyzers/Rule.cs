@@ -486,15 +486,16 @@ public static partial class Rule
         tags: ["configuration", "analyzers", "code style"],
         category: Category.Configuration);
 
-    public static DiagnosticDescriptor ProjectReferenceIncludeDifferentCasing => New(
+    public static DiagnosticDescriptor ProjectReferenceMustBeCaseConsistent => New(
         id: 0051,
-        title: "Project reference includes should have identical casing",
+        title: "Project reference must be case-consistent with the file system",
         message: "The casing of '{0}' of differs from the file '{1}' on disk",
         description:
-            "Project references where the casing is different from the file on " +
-            "disk, might work on local systems, but might be unresolvable on " +
-            "the build server.",
-        tags: ["dependencies", "dependency"],
+            "Project references must maintain case-consistency with the file " +
+            "system. Because UNIX - like systems treat casing as significant, " +
+            "Include paths must be an exact match to avoid issues during cross - " +
+            "platform builds.",
+        tags: ["dependencies", "dependency", "file system", "UNIX", "case-consistent"],
         category: Category.Bug);
 
     public static DiagnosticDescriptor DefineIsPackable => New(

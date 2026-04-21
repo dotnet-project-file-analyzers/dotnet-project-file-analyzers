@@ -2,12 +2,12 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 
 /// <summary>
 /// Implments <see cref="Rule.ProjectReferenceIncludeShouldExist"/>
-/// and <see cref="Rule.ProjectReferenceIncludeDifferentCasing"/>
+/// and <see cref="Rule.ProjectReferenceMustBeCaseConsistent"/>
 /// .</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class ProjectReferenceChecker() : MsBuildProjectFileAnalyzer(
     Rule.ProjectReferenceIncludeShouldExist,
-    Rule.ProjectReferenceIncludeDifferentCasing)
+    Rule.ProjectReferenceMustBeCaseConsistent)
 {
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
@@ -28,7 +28,7 @@ public sealed class ProjectReferenceChecker() : MsBuildProjectFileAnalyzer(
             {
                 if (IOPath.CaseCompare(existing, IOFile.Parse(include)) is { } casing)
                 {
-                    context.ReportDiagnostic(Rule.ProjectReferenceIncludeDifferentCasing, node, include, casing);
+                    context.ReportDiagnostic(Rule.ProjectReferenceMustBeCaseConsistent, node, include, casing);
                 }
             }
             else
