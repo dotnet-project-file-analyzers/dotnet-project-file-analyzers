@@ -138,6 +138,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj1001** Use analyzers for packages](https://dotnet-project-file-analyzers.github.io/rules/Proj1001.html)
 * [**Proj1002** Use Microsoft's analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1002.html)
 * [**Proj1003** Use Sonar analyzers](https://dotnet-project-file-analyzers.github.io/rules/Proj1003.html)
+* [**Proj1004** .NET Project File Analyzers SDK not longer requires separate package](https://dotnet-project-file-analyzers.github.io/rules/Proj1004.html)
 
 ### Formatting
 * [**Proj1700** Indent XML](https://dotnet-project-file-analyzers.github.io/rules/Proj1700.html)

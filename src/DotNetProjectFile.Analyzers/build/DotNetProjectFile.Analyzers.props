@@ -4,6 +4,10 @@
     <SonarQubeIntegration>true</SonarQubeIntegration>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <IsDotNetProjectFileSdk Condition="$(MSBuildProjectFile) == '.net.csproj'">true</IsDotNetProjectFileSdk>
+  </PropertyGroup>
+
   <!-- Explicitly include .globalconfig file(s) -->
   <ItemGroup>
     <GlobalAnalyzerConfigFiles
@@ -11,7 +15,7 @@
       Exclude="$(GlobalAnalyzerConfigFiles)"
       Visible="false" />
   </ItemGroup>
-  
+
   <!-- Non-compiling files to analyze. -->
   <ItemGroup>
     <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
@@ -19,7 +23,7 @@
     <AdditionalFiles Include="**/*.targets" />
     <AdditionalFiles Include="**/*.resx" />
   </ItemGroup>
-  
+
   <!-- Directory.Build.props -->
   <ItemGroup Condition="'$(ImportDirectoryBuildProps)' == 'true'">
     <AdditionalFiles

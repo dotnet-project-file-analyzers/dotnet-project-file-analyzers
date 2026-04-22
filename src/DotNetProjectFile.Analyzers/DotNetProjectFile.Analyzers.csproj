@@ -12,14 +12,14 @@
     <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)'=='Release'">
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
     <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <GenerateSBOM>true</GenerateSBOM>
   </PropertyGroup>
 
   <!-- We want to document the code but we do not need to ship it. -->
-  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
@@ -84,9 +84,11 @@ v1.12.0
 - Proj0028: Conditions within <Target> are should be allowed. (FP)
 - Proj0253: Versions should be compliant with Semantic Versioning (NEW RULE)
 - Proj0254: Version prefixes should be compliant with Semantic Versioning (NEW RULE)
+- Proj0051: Project reference must be case-consistent with the file system. (NEW RULE)
 - Proj0813: Global package references only work when CPM is enabled. (NEW RULE)
 - Proj1000: Use the .NET project file analyzers. (DROPPED)
 - Proj1002: Take actual MSBuild value into account. (FP)
+- Proj1004: .NET Project File Analyzers SDK not longer requires separate package (NEW RULE)
 - Proj3000: Exclude *.user files and .nuget directory. (FP)
 - Explicitly include .globalconfig file(s). (BUG)
 - FileCache gracefully handles gone and unparsable content. (BUG)
