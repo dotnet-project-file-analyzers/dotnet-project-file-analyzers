@@ -4,8 +4,8 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <IncludeBuildOutput>false</IncludeBuildOutput>
-    <OutputPath>$([System.IO.Path]::GetTempPath())/.net/bin</OutputPath>
-    <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj</IntermediateOutputPath>
+    <OutputPath>$([System.IO.Path]::GetTempPath())/.net/bin/</OutputPath>
+    <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj/</IntermediateOutputPath>
     <IsPackable>false</IsPackable>
     <IsPublishable>false</IsPublishable>
     <!-- There should never be a need to sign the .net.csproj output. -->
