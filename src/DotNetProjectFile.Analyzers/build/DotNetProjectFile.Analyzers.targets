@@ -30,7 +30,6 @@
     <Warning
       Condition="@(PackageReference->AnyHaveMetadataValue('Identity', 'DotNetProjectFile.Analyzers.Sdk'))"
       Code="Proj1004"
-      Subcategory="Obsolete"
       Text="The package reference to DotNetProjectFile.Analyzers.Sdk can be removed"
       HelpLink="https://dotnet-project-file-analyzers.github.io/rules/Proj1004.html" />
   </Target>
