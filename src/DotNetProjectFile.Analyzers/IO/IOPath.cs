@@ -33,7 +33,8 @@ public static class IOPath
 
         while (f-- > 0 && s-- > 0)
         {
-            if (sel[s] is not ".")
+            if (sel[s] is "..") break;
+            else if (sel[s] is not ".")
             {
                 same &= sel[s] == fil[f];
                 parts.Insert(0, fil[f]);
