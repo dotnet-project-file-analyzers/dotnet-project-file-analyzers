@@ -39,13 +39,18 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
     public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject(
         this DiagnosticAnalyzer analyzer)
         => analyzer.ForInlineSdkProject("""
-            <Project Sdk="Microsoft.NET.Sdk">
+            <Project>
+
+              <!-- Set some defaults that ensure predictable (non) outcome -->
               <PropertyGroup>
-                <!-- The TargetFramework may be overridden, but has a fine default. -->
-                <TargetFramework>net10.0</TargetFramework>
-                <LangVersion>latest</LangVersion>
+                <TargetFrameworks>netstandard2.0</TargetFrameworks>
+                <IncludeBuildOutput>false</IncludeBuildOutput>
+                <OutputPath>$([System.IO.Path]::GetTempPath())/.net/bin</OutputPath>
+                <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj</IntermediateOutputPath>
                 <IsPackable>false</IsPackable>
                 <IsPublishable>false</IsPublishable>
+                <!-- There should never be a need to sign the .net.csproj output. -->
+                <SignAssembly>false</SignAssembly>
               </PropertyGroup>
 
               <!-- We do not want to enable default items here. -->
@@ -53,17 +58,14 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
                 <EnableDefaultItems>false</EnableDefaultItems>
               </PropertyGroup>
 
-              <!-- The bin is just noise here, so move it a temp location. -->
               <PropertyGroup>
-                <OutputPath>$([System.IO.Path]::GetTempPath())/.net/bin</OutputPath>
-                <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj</IntermediateOutputPath>
+                <!-- Sonar Analyzers are not needed -->
+                <NoWarn>$(NoWarn);Proj1003</NoWarn>
               </PropertyGroup>
 
               <ItemGroup Label="Add without showing">
                 <AdditionalFiles Visible="false" Include="$(MSBuildProjectFile)" />
                 <AdditionalFiles Visible="false" Include="**/*.csproj" />
-                <AdditionalFiles Visible="false" Include="**/*.props" />
-                <AdditionalFiles Visible="false" Include="**/*.targets" />
                 <AdditionalFiles Visible="false" Include="**/*.slnx" />
                 <AdditionalFiles Visible="false" Include="**/*.vbproj" />
                 <AdditionalFiles Visible="false" Include="**/*.fsproj" />
@@ -75,16 +77,32 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
                 <AdditionalFiles Remove="**/obj/**" />
               </ItemGroup>
 
+              <!-- Directory.* files should be visiable in the .net.csproj -->
               <ItemGroup>
-                <AdditionalFiles Include=".*config" />
+                <!-- Directory.Build.props -->
+                <AdditionalFiles
+                  Condition="'$(ImportDirectoryBuildProps)' == 'true'"
+                  Update="$(DirectoryBuildPropsPath)"
+                  Link="$(_DirectoryBuildPropsFile)" />
+                <!-- Directory.Build.targets -->
+                <AdditionalFiles
+                  Condition="'$(ImportDirectoryBuildTargets)' == 'true'"
+                  Update="$(DirectoryBuildTargetsPath)"
+                  Link="$(_DirectoryBuildTargetsFile)" />
+                <!-- Directory.Packages.props -->
+                <AdditionalFiles
+                   Condition="'$(ImportDirectoryPackagesProps)' == 'true'"
+                  Update="$(DirectoryPackagesPropsPath)"
+                  Link="$(_DirectoryPackagesPropsFile)" />
+              </ItemGroup>
+
+              <ItemGroup>
                 <AdditionalFiles Include=".git*" />
                 <AdditionalFiles Include=".github/**" />
                 <AdditionalFiles Include="*.config" />
                 <AdditionalFiles Include="*.ini" />
                 <AdditionalFiles Include="*.json" />
                 <AdditionalFiles Include="*.md" />
-                <AdditionalFiles Include="*.props" />
-                <AdditionalFiles Include="*.targets" />
                 <AdditionalFiles Include="*.txt" />
                 <AdditionalFiles Include="*.yaml" />
                 <AdditionalFiles Include="*.yml" />
@@ -92,12 +110,7 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
                 <AdditionalFiles Include="props/*.targets" />
               </ItemGroup>
 
-              <ItemGroup>
-                <None Include="**/TestResults/**" />
-              </ItemGroup>
-
             </Project>
-            
             """);
 
     [Pure]
