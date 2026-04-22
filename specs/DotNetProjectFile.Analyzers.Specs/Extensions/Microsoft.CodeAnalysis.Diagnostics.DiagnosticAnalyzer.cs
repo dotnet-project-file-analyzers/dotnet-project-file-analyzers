@@ -39,18 +39,14 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
     public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject(
         this DiagnosticAnalyzer analyzer)
         => analyzer.ForInlineSdkProject("""
-            <Project>
+            <Project Sdk="Microsoft.NET.Sdk">
 
               <!-- Set some defaults that ensure predictable (non) outcome -->
               <PropertyGroup>
                 <TargetFrameworks>netstandard2.0</TargetFrameworks>
+                <IsDotNetProjectFileSdk>true</IsDotNetProjectFileSdk>
                 <IncludeBuildOutput>false</IncludeBuildOutput>
-                <OutputPath>$([System.IO.Path]::GetTempPath())/.net/bin</OutputPath>
-                <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj</IntermediateOutputPath>
-                <IsPackable>false</IsPackable>
-                <IsPublishable>false</IsPublishable>
-                <!-- There should never be a need to sign the .net.csproj output. -->
-                <SignAssembly>false</SignAssembly>
+                <BaseOutputPath>$([System.IO.Path]::GetTempPath())/.net/</BaseOutputPath>
               </PropertyGroup>
 
               <!-- We do not want to enable default items here. -->
@@ -58,57 +54,40 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
                 <EnableDefaultItems>false</EnableDefaultItems>
               </PropertyGroup>
 
-              <PropertyGroup>
-                <!-- Sonar Analyzers are not needed -->
-                <NoWarn>$(NoWarn);Proj1003</NoWarn>
-              </PropertyGroup>
-
-              <ItemGroup Label="Add without showing">
-                <AdditionalFiles Visible="false" Include="$(MSBuildProjectFile)" />
-                <AdditionalFiles Visible="false" Include="**/*.csproj" />
-                <AdditionalFiles Visible="false" Include="**/*.slnx" />
-                <AdditionalFiles Visible="false" Include="**/*.vbproj" />
-                <AdditionalFiles Visible="false" Include="**/*.fsproj" />
-                <AdditionalFiles Visible="false" Include="**/*.cblproj" />
+               <ItemGroup>
+                <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
+                <AdditionalFiles Include="**/*.props" />
+                <AdditionalFiles Include="**/*.targets" />
+                <AdditionalFiles Include="**/*.resx" />
               </ItemGroup>
 
-              <ItemGroup Label="Exclude generated stuff">
-                <AdditionalFiles Remove="**/bin/**" />
-                <AdditionalFiles Remove="**/obj/**" />
-              </ItemGroup>
+            <ItemGroup Label="Add without showing">
+              <AdditionalFiles Visible="false" Include="$(MSBuildProjectFile)" />
+              <AdditionalFiles Visible="false" Include="**/*.csproj" />
+              <AdditionalFiles Visible="false" Include="**/*.slnx" />
+              <AdditionalFiles Visible="false" Include="**/*.vbproj" />
+              <AdditionalFiles Visible="false" Include="**/*.fsproj" />
+              <AdditionalFiles Visible="false" Include="**/*.cblproj" />
+            </ItemGroup>
 
-              <!-- Directory.* files should be visiable in the .net.csproj -->
-              <ItemGroup>
-                <!-- Directory.Build.props -->
-                <AdditionalFiles
-                  Condition="'$(ImportDirectoryBuildProps)' == 'true'"
-                  Update="$(DirectoryBuildPropsPath)"
-                  Link="$(_DirectoryBuildPropsFile)" />
-                <!-- Directory.Build.targets -->
-                <AdditionalFiles
-                  Condition="'$(ImportDirectoryBuildTargets)' == 'true'"
-                  Update="$(DirectoryBuildTargetsPath)"
-                  Link="$(_DirectoryBuildTargetsFile)" />
-                <!-- Directory.Packages.props -->
-                <AdditionalFiles
-                   Condition="'$(ImportDirectoryPackagesProps)' == 'true'"
-                  Update="$(DirectoryPackagesPropsPath)"
-                  Link="$(_DirectoryPackagesPropsFile)" />
-              </ItemGroup>
+            <ItemGroup Label="Exclude generated stuff">
+              <AdditionalFiles Remove="**/bin/**" />
+              <AdditionalFiles Remove="**/obj/**" />
+            </ItemGroup>
 
-              <ItemGroup>
-                <AdditionalFiles Include=".git*" />
-                <AdditionalFiles Include=".github/**" />
-                <AdditionalFiles Include="*.config" />
-                <AdditionalFiles Include="*.ini" />
-                <AdditionalFiles Include="*.json" />
-                <AdditionalFiles Include="*.md" />
-                <AdditionalFiles Include="*.txt" />
-                <AdditionalFiles Include="*.yaml" />
-                <AdditionalFiles Include="*.yml" />
-                <AdditionalFiles Include="props/*.props" />
-                <AdditionalFiles Include="props/*.targets" />
-              </ItemGroup>
+            <ItemGroup>
+              <AdditionalFiles Include=".git*" />
+              <AdditionalFiles Include=".github/**" />
+              <AdditionalFiles Include="*.config" />
+              <AdditionalFiles Include="*.ini" />
+              <AdditionalFiles Include="*.json" />
+              <AdditionalFiles Include="*.md" />
+              <AdditionalFiles Include="*.txt" />
+              <AdditionalFiles Include="*.yaml" />
+              <AdditionalFiles Include="*.yml" />
+              <AdditionalFiles Include="props/*.props" />
+              <AdditionalFiles Include="props/*.targets" />
+            </ItemGroup>
 
             </Project>
             """);
