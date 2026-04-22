@@ -3,8 +3,29 @@ namespace Rules.MS_Build.Exclude_private_asset_dependencies;
 public class Reports
 {
     [Test]
-    public void private_assets_not_being_private() => new ExcludePrivateAssetDependencies()
-        .ForProject("PrivateAssets.cs")
+    public void private_assets_not_being_private() => new ExcludePrivateAssetDependencies().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <Nullable>enable</Nullable>
+          </PropertyGroup>
+
+          <ItemGroup Label="Compliant">
+            <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="3.3.4" PrivateAssets="All" />
+            <PackageReference Include="Qowaiv" Version="6.4.4" />
+            <PackageReference Include="Qowaiv.Analyzers.CSharp" Version="2.0.1">
+              <PrivateAssets>all</PrivateAssets>
+            </PackageReference>
+          </ItemGroup>
+
+          <ItemGroup Label="Non-compliant">
+            <PackageReference Include="coverlet.collector" Version="6.0.2" />
+            <PackageReference Include="NUnit.Analyzers" Version="4.3.0" IncludeAssets="runtime; build; native; contentfiles; analyzers; buildtransitive" />
+          </ItemGroup>
+
+        </Project>
+        """)
         .HasIssues(
             Issue.WRN("Proj1200", @"Mark the package reference ""coverlet.collector"" as a private asset" /*.*/).WithSpan(16, 04, 16, 069),
             Issue.WRN("Proj1200", @"Mark the package reference ""NUnit.Analyzers"" as a private asset" /*....*/).WithSpan(17, 04, 17, 147));

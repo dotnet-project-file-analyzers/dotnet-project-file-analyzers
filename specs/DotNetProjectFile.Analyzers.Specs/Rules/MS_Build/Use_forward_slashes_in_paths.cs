@@ -3,8 +3,30 @@ namespace Rules.Use_forward_slashes_in_paths;
 public class Reports
 {
     [Test]
-    public void backward_slashes() => new UseForwardSlashesInPaths()
-       .ForProject("BackwardSlashes.cs")
+    public void backward_slashes() => new UseForwardSlashesInPaths().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <Import Project="..\props\simple.props" />
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <DockerfileContext>..\..</DockerfileContext>
+          </PropertyGroup>
+
+          <ItemGroup>
+            <Compile Include="..\common\Code.cs" Link="Include\Code.cs" />
+          </ItemGroup>
+
+          <ItemGroup>
+            <Folder Include="SomeFolder\Child" />
+          </ItemGroup>
+
+          <ItemGroup>
+            <None Remove="Files\*" />
+          </ItemGroup>
+
+        </Project>
+        """)
        .HasIssues(
            Issue.WRN("Proj0023", "<Import Project> contains backward slashes" /*....*/).WithSpan(02, 2, 02, 44),
            Issue.WRN("Proj0023", "<DockerfileContext> contains backward slashes" /*.*/).WithSpan(06, 4, 06, 48),
