@@ -6,6 +6,10 @@ public class IO_Path
 {
     [TestCase("TEMP/my_file.cs", "my_file.cs", null)]
     [TestCase("TEMP/my_file.cs", "./my_file.cs", null)]
+    [TestCase(
+        "code/qowaiv-analyzers/src/Qowaiv.CodeAnalysis.CSharp/Qowaiv.CodeAnalysis.CSharp.csproj",
+        /*...........*/ "../../src/Qowaiv.CodeAnalysis.CSharp/Qowaiv.CodeAnalysis.CSharp.csproj",
+        null)]
     [TestCase("TEMP/MY_FILE.cs", "./my_file.cs", "MY_FILE.cs")]
     [TestCase("TEMP/test/path/my_file.cs", "./test/../TEST/Path/My_file.cs", "test/path/my_file.cs")]
     public void CaseCompare(string file, string selector, string? compare)
