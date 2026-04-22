@@ -36,7 +36,7 @@
     <AdditionalFiles Remove="**/obj/**" />
   </ItemGroup>
 
-  <!-- Directory.* files should be visiable in the .net.csproj -->
+  <!-- Directory.* files should be visible in the .net.csproj -->
   <ItemGroup>
     <!-- Directory.Build.props -->
     <AdditionalFiles
