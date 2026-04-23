@@ -58,9 +58,12 @@ public class Reports
             new("Proj1001", "Use ZeroFormatter.Analyzer to analyze ZeroFormatter"),
 
             // Transitive.
-            new("Proj1001", "Use SerilogAnalyzer to analyze Libplanet"),
+#if Is_Windows // are resolvable on the build.
+            new("Proj1001", "Use MessagePackAnalyzer to analyze StreamJsonRpc"),
             new("Proj1001", "Use MessagePackAnalyzer to analyze Microsoft.ServiceHub.Framework"),
-            new("Proj1001", "Use MessagePackAnalyzer to analyze StreamJsonRpc"));
+#endif
+            new("Proj1001", "Use SerilogAnalyzer to analyze Libplanet"));
+  
 }
 
 public class Guards
