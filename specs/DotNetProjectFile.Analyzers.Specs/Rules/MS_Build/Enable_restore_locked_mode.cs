@@ -300,7 +300,7 @@ public class Guards
 
     [Test]
     public void on_lock_files_undefined() => new EnableRestoreLockedMode().ForInlineCsproj("""
-        <Project Sdk=""Microsoft.NET.Sdk"">
+        <Project Sdk="Microsoft.NET.Sdk">
           <PropertyGroup>
             <TargetFramework>net10.0</TargetFramework>
           </PropertyGroup>
