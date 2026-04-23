@@ -6,26 +6,17 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
 {
     /// <inheritdoc />
     protected override void Register(AnalysisContext context)
-    {
-        context.RegisterCompilationAction(c =>
+        => context.RegisterCompilationAction(c =>
         {
             if (ProjectFiles.Global.UpdateMsBuildProject(c) is { } msbuild)
             {
-                foreach (var file in msbuild.Path.Directory.Files("**/*")?
-                    .Where(Include)
-                    .Select(f => new ProjectTextFile(f))
-                    .Where(f => !f.IsAdditional(c.Options.AdditionalFiles)) ?? [])
+                foreach (var file in Walk(msbuild.Path.Directory)
+                    .Select(f => new ProjectTextFile(f)))
                 {
                     Register(new ProjectFileAnalysisContext<ProjectTextFile>(file, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             }
         });
-
-        context.RegisterAdditionalFileAction(c =>
-        {
-            Register(new ProjectFileAnalysisContext<ProjectTextFile>(new(IOFile.Parse(c.AdditionalFile.Path)), c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
-        });
-    }
 
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext<ProjectTextFile> context)
@@ -44,16 +35,29 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
         }
     }
 
-    private static bool Include(IOFile file)
+    private static IEnumerable<IOFile> Walk(IODirectory directory)
     {
-        var path = file.ToString("/");
+        foreach (var file in directory.Files()?.Where(f => !Exclude(f)) ?? [])
+        {
+            yield return file;
+        }
 
-        return !(path.Contains("/bin/")
-            || path.Contains("/obj/")
-            || path.Contains("/.vs/")
-            || path.Contains("/.git/")
-            || path.Contains("/.nuget/")
-            || file.Name.IsMatch("CompatibilitySuppressions.xml")
-            || file.Extension is ".user");
+        foreach (var sub in directory.SubDirectories()?.Where(d => !Exclude(d)) ?? [])
+        {
+            foreach (var child in Walk(sub))
+                yield return child;
+        }
     }
+
+    private static bool Exclude(IODirectory dir)
+        => dir.Name
+        is "bin"
+        or "obj"
+        or ".vs"
+        or ".git"
+        or ".nuget";
+
+    private static bool Exclude(IOFile file)
+        => file.Name.IsMatch("CompatibilitySuppressions.xml")
+        || file.Extension is ".user";
 }

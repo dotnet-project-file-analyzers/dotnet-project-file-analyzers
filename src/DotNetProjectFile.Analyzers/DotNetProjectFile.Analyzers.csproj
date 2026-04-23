@@ -79,6 +79,8 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+v.13.0
+- Proj3000: Drop difference between additional and regular files. (FP)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
