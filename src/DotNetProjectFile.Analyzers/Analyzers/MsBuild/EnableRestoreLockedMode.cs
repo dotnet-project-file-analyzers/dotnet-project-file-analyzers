@@ -13,7 +13,8 @@ public sealed class EnableRestoreLockedMode() : MsBuildProjectFileAnalyzer(Rule.
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var project = context.File;
-        if (context.RestoreLockedMode || !project.PackagesRestoredWithLockFile()) return;
+
+        if (context.Props.RestoreLockedMode is false || !project.PackagesRestoredWithLockFile()) return;
 
         var nodes = context.File.Properties<RestoreLockedMode>().ToImmutableArray();
 

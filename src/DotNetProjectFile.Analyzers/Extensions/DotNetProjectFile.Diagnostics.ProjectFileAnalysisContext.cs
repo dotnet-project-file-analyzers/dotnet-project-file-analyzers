@@ -13,14 +13,7 @@ internal static class DotNetProjectFile
         /// <summary>Indicates that the .NET analyzers are enabled.</summary>
         public bool EnableNETAnalyzers
             => context.Props.EnableNETAnalyzers
-             ?? context.File.Property<EnableNETAnalyzers>()?.Value
+            ?? context.File.Property<EnableNETAnalyzers>()?.Value
             ?? MsBuildDefaults.EnableNETAnalyzers;
-
-        /// <summary>Indicates that restore is run in locked mode.</summary>
-        public bool RestoreLockedMode
-            => context.Props.RestoreLockedMode
-             ?? context.File.Property<RestoreLockedMode>()?.Value
-            ?? MsBuildDefaults.RestoreLockedMode;
-
     }
 }
