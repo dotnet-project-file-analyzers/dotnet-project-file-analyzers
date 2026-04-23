@@ -43,8 +43,14 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.11.0</Version>
+    <Version>1.12.0</Version>
     <ToBeReleased>
+      <![CDATA[
+v1.*
+- ?
+]]>
+    </ToBeReleased>
+    <PackageReleaseNotes>
       <![CDATA[
 v1.12.0
 - Set <IncludeBuildOutput>false</IncludeBuildOutput>.
@@ -52,10 +58,6 @@ v1.12.0
 - Include Directory.Build.targets from ancestor paths.
 - Include Directory.Packages.props from ancestor paths.
 - Include NuGet.config from ancestor paths.
-]]>
-    </ToBeReleased>
-    <PackageReleaseNotes>
-      <![CDATA[
 v1.9.0
 - Added support for F# projects when using DotNetProjectFile.Analyzers.Sdk.
 - Added support for Visual Cobol projects when using DotNetProjectFile.Analyzers.Sdk.
