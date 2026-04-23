@@ -28,7 +28,8 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
                 var requiredAnalyzers = analyzers.Where(analyzer => analyzer.IsAnalyzerFor(pkg));
                 var missingAnalyzers = requiredAnalyzers.Where(analyzer => packageReferences.None(analyzer.IsMatch));
 
-                foreach (var analyzer in missingAnalyzers)
+                // Exclude packages that ship the analyzer themselves
+                foreach (var analyzer in missingAnalyzers.Where(a => tree.None(p => a.IsMatch(p))))
                 {
                     context.ReportDiagnostic(Descriptor, reference, analyzer.Name, reference.IncludeOrUpdate);
                 }
@@ -86,5 +87,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
                 || name[Match.Length] == '.');
 
         public bool IsMatch(PackageReferenceBase reference) => reference.Include.IsMatch(Name);
+
+        public bool IsMatch(Package reference) => reference.Name.IsMatch(Name);
     }
 }
