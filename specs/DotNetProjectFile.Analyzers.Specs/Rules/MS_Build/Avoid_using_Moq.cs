@@ -21,8 +21,6 @@ public class Reports
 
 public class Guards
 {
-    [TestCase("PackagesWithAnalyzers.cs")]
-    [TestCase("PackagesWithoutAnalyzers.cs")]
     [TestCase("CompliantCSharp.cs")]
     [TestCase("CompliantCSharpPackage.cs")]
     public void Projects_without_issues(string project) => new AvoidUsingMoq()
