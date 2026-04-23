@@ -156,9 +156,6 @@ ClientBin/
 *.pfx
 *.publishsettings
 
-# RIA/Silverlight projects
-Generated_Code/
-
 # Backup & report files from converting an old project file to a newer
 # Visual Studio version. Backup files are not needed, because we have git ;-)
 _UpgradeReport_Files/
@@ -183,31 +180,6 @@ Desktop.ini
 
 # Recycle Bin used on file shares
 $RECYCLE.BIN/
-
-# Mac crap
-.DS_Store
-
-
-#############
-## Python
-#############
-
-*.py[co]
-
-# Packages
-*.egg
-*.egg-info
-dist/
-build/
-eggs/
-parts/
-var/
-sdist/
-develop-eggs/
-.installed.cfg
-
-# Installer logs
-pip-log.txt
 
 # Unit test / coverage reports
 .coverage
