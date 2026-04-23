@@ -82,6 +82,7 @@ ToBeDecided:
 v1.12.0
 - Proj0021: Exclude is a filter on a task, and should be ignored. (FP)
 - Proj0028: Conditions within <Target> are should be allowed. (FP)
+- Proj0044: Check <RestoreLockedMode> also via MSBuild visible properties. (FP)
 - Proj0253: Versions should be compliant with Semantic Versioning (NEW RULE)
 - Proj0254: Version prefixes should be compliant with Semantic Versioning (NEW RULE)
 - Proj0051: Project reference must be case-consistent with the file system. (NEW RULE)

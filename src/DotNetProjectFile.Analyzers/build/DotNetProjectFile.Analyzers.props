@@ -64,6 +64,7 @@
     <CompilerVisibleProperty Include="NETCoreSdkVersion" />
     <CompilerVisibleProperty Include="PackageLicenseExpression" />
     <CompilerVisibleProperty Include="Platform" />
+    <CompilerVisibleProperty Include="RestoreLockedMode" />
     <CompilerVisibleProperty Include="SolutionDir" />
   </ItemGroup>
 

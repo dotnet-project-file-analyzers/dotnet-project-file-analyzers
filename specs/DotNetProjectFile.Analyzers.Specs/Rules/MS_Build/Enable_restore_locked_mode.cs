@@ -6,71 +6,76 @@ namespace Rules.MS_Build.Enable_restore_locked_mode;
 public class Reports
 {
     [Test]
-    public void on_missing() => new EnableRestoreLockedMode()
-        .ForInlineCsproj(@"
-            <Project Sdk=""Microsoft.NET.Sdk"">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-              </PropertyGroup>
-            </Project>")
-        .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(0, 0, 0, 32));
+    public void on_missing() => new EnableRestoreLockedMode().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+          </PropertyGroup>
+        </Project>
+        """)
+        .HasIssue(Issue
+            .WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled")
+            .WithSpan(0, 0, 0, 32));
 
     [Test]
-    public void on_false() => new EnableRestoreLockedMode()
-        .ForInlineCsproj(@"
-            <Project Sdk=""Microsoft.NET.Sdk"">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-                <RestoreLockedMode>false</RestoreLockedMode>
-              </PropertyGroup>
-            </Project>")
-        .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 60));
+    public void on_false() => new EnableRestoreLockedMode().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+            <RestoreLockedMode>false</RestoreLockedMode>
+          </PropertyGroup>
+        </Project>
+        """)
+        .HasIssue(Issue
+            .WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled")
+            .WithSpan(4, 04, 4, 48));
 
     [Test]
-    public void on_unconditially_true() => new EnableRestoreLockedMode()
-        .ForInlineCsproj(@"
-            <Project Sdk=""Microsoft.NET.Sdk"">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-                <RestoreLockedMode>true</RestoreLockedMode>
-              </PropertyGroup>
-            </Project>")
-        .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 59));
+    public void on_unconditially_true() => new EnableRestoreLockedMode().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+            <RestoreLockedMode>true</RestoreLockedMode>
+          </PropertyGroup>
+        </Project>
+        """)
+        .HasIssue(Issue
+            .WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled")
+        .WithSpan(4, 04, 4, 47));
 
     [Test]
-    public void on_conditionally_level_1_false() => new EnableRestoreLockedMode()
-        .ForInlineCsproj(@"
-            <Project Sdk=""Microsoft.NET.Sdk"">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-              </PropertyGroup>
+    public void on_conditionally_level_1_false() => new EnableRestoreLockedMode().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+          </PropertyGroup>
 
-              <PropertyGroup Condition=""'$(ContinuousIntegrationBuild)' == 'true'"">
-                <RestoreLockedMode>false</RestoreLockedMode>
-              </PropertyGroup>
-            </Project>")
-        .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(7, 16, 7, 60));
+          <PropertyGroup Condition="'$(ContinuousIntegrationBuild)' == 'true'">
+            <RestoreLockedMode>false</RestoreLockedMode>
+          </PropertyGroup>
+        </Project>
+        """)
+        .HasIssue(Issue
+            .WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled")
+            .WithSpan(7, 04, 7, 48));
 
     [Test]
-    public void on_conditionally_level_2_false() => new EnableRestoreLockedMode()
-        .ForInlineCsproj(@"
-            <Project Sdk=""Microsoft.NET.Sdk"">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-                <RestoreLockedMode Condition=""'$(ContinuousIntegrationBuild)' == 'true'"">false</RestoreLockedMode>
-              </PropertyGroup>
-            </Project>")
-        .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled").WithSpan(4, 16, 4, 114));
+    public void on_conditionally_level_2_false() => new EnableRestoreLockedMode().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+            <RestoreLockedMode Condition="'$(ContinuousIntegrationBuild)' == 'true'">false</RestoreLockedMode>
+          </PropertyGroup>
+        </Project>
+        """)
+        .HasIssue(Issue
+            .WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled")
+            .WithSpan(4, 04, 4, 102));
 
     [TestCase(BuildAgent.AnyCI, "TF_BUILD", true)]
     [TestCase(BuildAgent.AnyCI, "GITHUB_ACTIONS", true)]
@@ -162,18 +167,21 @@ public class Reports
     [TestCase(BuildAgent.JetBrainsSpace, "CODEBUILD_BUILD_ID", false)]
     [TestCase(BuildAgent.JetBrainsSpace, "BUILD_ID", false)]
     [TestCase(BuildAgent.JetBrainsSpace, "TEAMCITY_VERSION", false)]
-    public void on_conditionally_agent_environment_variable_level_1_true(BuildAgent agent, string variable, bool expectTrue) => agent.Run(analyzer => analyzer
-        .ForInlineCsproj(@$"
-            <Project Sdk=""Microsoft.NET.Sdk"">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-              </PropertyGroup>
+    public void on_conditionally_agent_environment_variable_level_1_true(BuildAgent agent, string variable, bool expectTrue)
+        => agent.Run(analyzer => analyzer.ForInlineCsproj($"""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-              <PropertyGroup Condition=""'$({variable})' {(expectTrue ? "== 'true'" : "!= ''")}"">
-                <RestoreLockedMode>true</RestoreLockedMode>
-              </PropertyGroup>
-            </Project>")
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+          </PropertyGroup>
+
+          <PropertyGroup Condition="'$({variable})' {(expectTrue ? "== 'true'" : "!= ''")}">
+            <RestoreLockedMode>true</RestoreLockedMode>
+          </PropertyGroup>
+
+        </Project>
+        """)
         .HasIssue(
             Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled")));
 
@@ -267,17 +275,18 @@ public class Reports
     [TestCase(BuildAgent.JetBrainsSpace, "CODEBUILD_BUILD_ID", false)]
     [TestCase(BuildAgent.JetBrainsSpace, "BUILD_ID", false)]
     [TestCase(BuildAgent.JetBrainsSpace, "TEAMCITY_VERSION", false)]
-    public void on_conditionally_agent_environment_variable_level_2_true(BuildAgent agent, string variable, bool expectTrue) => agent.Run(analyzer => analyzer
-        .ForInlineCsproj(@$"
-            <Project Sdk=""Microsoft.NET.Sdk"">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-                <RestoreLockedMode Condition=""'$({variable})' {(expectTrue ? "== 'true'" : "!= ''")}"">true</RestoreLockedMode>
-              </PropertyGroup>
-            </Project>")
-        .HasIssue(
-            Issue.WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled")));
+    public void on_conditionally_agent_environment_variable_level_2_true(BuildAgent agent, string variable, bool expectTrue)
+        => agent.Run(analyzer => analyzer.ForInlineCsproj($"""
+        <Project Sdk="Microsoft.NET.Sdk">
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+            <RestoreLockedMode Condition="'$({variable})' {(expectTrue ? "== 'true'" : "!= ''")}">true</RestoreLockedMode>
+          </PropertyGroup>
+        </Project>
+        """)
+        .HasIssue(Issue
+            .WRN("Proj0044", "Define the <RestoreLockedMode> node with value 'true' when <ContinuousIntegrationBuild> is enabled")));
 }
 
 [NonParallelizable]
@@ -290,51 +299,51 @@ public class Guards
         .HasNoIssues();
 
     [Test]
-    public void on_lock_files_undefined() => new EnableRestoreLockedMode()
-        .ForInlineCsproj(@"
-            <Project Sdk=""Microsoft.NET.Sdk"">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-              </PropertyGroup>
-            </Project>")
+    public void on_lock_files_undefined() => new EnableRestoreLockedMode().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
+        </Project>
+        """)
         .HasNoIssues();
 
     [Test]
-    public void on_lock_files_disabled() => new EnableRestoreLockedMode()
-        .ForInlineCsproj(@"
-            <Project Sdk=""Microsoft.NET.Sdk"">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
-              </PropertyGroup>
-            </Project>")
+    public void on_lock_files_disabled() => new EnableRestoreLockedMode().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <RestorePackagesWithLockFile>false</RestorePackagesWithLockFile>
+          </PropertyGroup>
+        </Project>
+        """)
         .HasNoIssues();
 
     [Test]
-    public void on_conditionally_level_1_true() => new EnableRestoreLockedMode()
-        .ForInlineCsproj(@"
-            <Project Sdk=""Microsoft.NET.Sdk"">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-              </PropertyGroup>
+    public void on_conditionally_level_1_true() => new EnableRestoreLockedMode().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+          </PropertyGroup>
 
-              <PropertyGroup Condition=""'$(ContinuousIntegrationBuild)' == 'true'"">
-                <RestoreLockedMode>true</RestoreLockedMode>
-              </PropertyGroup>
-            </Project>")
+          <PropertyGroup Condition="'$(ContinuousIntegrationBuild)' == 'true'">
+            <RestoreLockedMode>true</RestoreLockedMode>
+          </PropertyGroup>
+        </Project>
+        """)
         .HasNoIssues();
 
     [Test]
-    public void on_conditionally_level_2_true() => new EnableRestoreLockedMode()
-        .ForInlineCsproj(@"
-            <Project Sdk=""Microsoft.NET.Sdk"">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-                <RestoreLockedMode Condition=""'$(ContinuousIntegrationBuild)' == 'true'"">true</RestoreLockedMode>
-              </PropertyGroup>
-            </Project>")
+    public void on_conditionally_level_2_true() => new EnableRestoreLockedMode().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+            <RestoreLockedMode Condition="'$(ContinuousIntegrationBuild)' == 'true'">true</RestoreLockedMode>
+          </PropertyGroup>
+        </Project>
+        """)
         .HasNoIssues();
 
     [TestCase(BuildAgent.AnyCI, "CI", true)]
@@ -357,18 +366,19 @@ public class Guards
     [TestCase(BuildAgent.Local, "BUILD_ID", false)]
     [TestCase(BuildAgent.Local, "TEAMCITY_VERSION", false)]
     [TestCase(BuildAgent.Local, "JB_SPACE_API_URL", false)]
-    public void on_conditionally_agent_environment_variable_level_1_true(BuildAgent agent, string variable, bool expectTrue) => agent.Run(analyzer => analyzer
-        .ForInlineCsproj(@$"
-            <Project Sdk=""Microsoft.NET.Sdk"">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-              </PropertyGroup>
+    public void on_conditionally_agent_environment_variable_level_1_true(BuildAgent agent, string variable, bool expectTrue)
+        => agent.Run(analyzer => analyzer.ForInlineCsproj($"""
+        <Project Sdk="Microsoft.NET.Sdk">
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+          </PropertyGroup>
 
-              <PropertyGroup Condition=""'$({variable})' {(expectTrue ? "== 'true'" : "!= ''")}"">
-                <RestoreLockedMode>true</RestoreLockedMode>
-              </PropertyGroup>
-            </Project>")
+          <PropertyGroup Condition="'$({variable})' {(expectTrue ? "== 'true'" : "!= ''")}">
+            <RestoreLockedMode>true</RestoreLockedMode>
+          </PropertyGroup>
+        </Project>
+        """)
         .HasNoIssues());
 
     [TestCase(BuildAgent.AnyCI, "CI", true)]
@@ -391,15 +401,16 @@ public class Guards
     [TestCase(BuildAgent.Local, "BUILD_ID", false)]
     [TestCase(BuildAgent.Local, "TEAMCITY_VERSION", false)]
     [TestCase(BuildAgent.Local, "JB_SPACE_API_URL", false)]
-    public void on_conditionally_agent_environment_variable_level_2_true(BuildAgent agent, string variable, bool expectTrue) => agent.Run(analyzer => analyzer
-        .ForInlineCsproj(@$"
-            <Project Sdk=""Microsoft.NET.Sdk"">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
-                <RestoreLockedMode Condition=""'$({variable})' {(expectTrue ? "== 'true'" : "!= ''")}"">true</RestoreLockedMode>
-              </PropertyGroup>
-            </Project>")
+    public void on_conditionally_agent_environment_variable_level_2_true(BuildAgent agent, string variable, bool expectTrue)
+        => agent.Run(analyzer => analyzer.ForInlineCsproj($"""
+         <Project Sdk="Microsoft.NET.Sdk">
+           <PropertyGroup>
+             <TargetFramework>net10.0</TargetFramework>
+             <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+             <RestoreLockedMode Condition="'$({variable})' {(expectTrue ? "== 'true'" : "!= ''")}">true</RestoreLockedMode>
+           </PropertyGroup>
+         </Project>
+         """)
         .HasNoIssues());
 }
 
