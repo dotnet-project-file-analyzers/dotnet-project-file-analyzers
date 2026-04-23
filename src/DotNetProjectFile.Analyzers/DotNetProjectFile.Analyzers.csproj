@@ -87,7 +87,7 @@ v1.12.0
 - Proj0051: Project reference must be case-consistent with the file system. (NEW RULE)
 - Proj0813: Global package references only work when CPM is enabled. (NEW RULE)
 - Proj1000: Use the .NET project file analyzers. (DROPPED)
-- Proj1001: Take transent dependencies also into account when checking for analyzers. (FP)
+- Proj1001: Take transient dependencies into account when checking for analyzers. (FP)
 - Proj1002: Take actual MSBuild value into account. (FP)
 - Proj1004: .NET Project File Analyzers SDK not longer requires separate package (NEW RULE)
 - Proj3000: Exclude *.user files and .nuget directory. (FP)
