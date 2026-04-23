@@ -5,6 +5,7 @@ namespace Rules.Helpers.CommentChecker_specs;
 public class Detects_commented_out_XML
 {
     [TestCase(""" PackageReference Include="System.Text.Json"" Version="9.0.0" /""")]
+    [TestCase("""ItemGroup""")]
     public void with_replaced_tags(string comment)
         => CommentChecker.ContainsXml(comment).Should().NotBeNull();
 
@@ -14,4 +15,11 @@ public class Detects_commented_out_XML
     [TestCase("""Somewhere <br> in my text""")]
     public void containing_XML_tags(string comment)
         => CommentChecker.ContainsXml(comment).Should().NotBeNull();
+}
+
+public class Guards
+{
+    [TestCase(""" SingleWord """)]
+    public void containing_single_word_with_spacing(string comment)
+        => CommentChecker.ContainsXml(comment).Should().BeNull();
 }

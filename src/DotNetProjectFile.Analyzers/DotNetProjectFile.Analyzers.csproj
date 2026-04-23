@@ -90,6 +90,7 @@ v1.12.0
 - Proj1002: Take actual MSBuild value into account. (FP)
 - Proj1004: .NET Project File Analyzers SDK not longer requires separate package (NEW RULE)
 - Proj3000: Exclude *.user files and .nuget directory. (FP)
+- Proj3002: Exclude <!-- SingleWord --> comments. (FP)
 - Explicitly include .globalconfig file(s). (BUG)
 - FileCache gracefully handles gone and unparsable content. (BUG)
 ]]>

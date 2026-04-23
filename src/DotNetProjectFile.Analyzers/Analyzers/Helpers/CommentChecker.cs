@@ -30,14 +30,21 @@ internal sealed class CommentChecker<TFile>(
 
 public static class CommentChecker
 {
-    public static string? ContainsXml(string comment)
-        => Tag.IsMatch(comment)
-        || Tag.IsMatch($"<{comment.Trim()}>")
-        ? comment
-        : null;
+    public static string? ContainsXml(string comment) => comment switch
+    {
+        not { Length: > 0 } => null,
+        _ when SingleWord.IsMatch(comment) => null,
+        _ when Tag.IsMatch(comment)
+            || Tag.IsMatch($"<{comment.Trim()}>") => comment,
+        _ => null,
+    };
+
+    private static readonly Regex SingleWord = new(@"^\s+[A-Z]+\s+$", Options, TimeSpan.FromSeconds(1));
 
     private static readonly Regex Tag = new(
         @"<(?<Tag>[A-Z]\w+)(\s+(?<Attr>[A-Z]\w+)\s*=\s*"".*"")*\s*\/?>",
-        RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Singleline | RegexOptions.Compiled,
+        Options,
         TimeSpan.FromSeconds(10));
+
+    private const RegexOptions Options = RegexOptions.IgnoreCase | RegexOptions.CultureInvariant | RegexOptions.Singleline | RegexOptions.Compiled;
 }
