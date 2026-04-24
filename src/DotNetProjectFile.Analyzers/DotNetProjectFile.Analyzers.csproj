@@ -74,7 +74,7 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.12.0</Version>
+    <Version>1.12.1</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
@@ -85,6 +85,8 @@ v.13.0
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.12.1
+- Proj3000: Ignore Additional File status when checking for UTF8-BOM. (FP)
 v1.12.0
 - Proj0021: Exclude is a filter on a task, and should be ignored. (FP)
 - Proj0028: Conditions within <Target> are should be allowed. (FP)
