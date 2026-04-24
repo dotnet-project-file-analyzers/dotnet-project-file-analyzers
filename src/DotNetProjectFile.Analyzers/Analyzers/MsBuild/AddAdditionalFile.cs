@@ -5,7 +5,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class AddAdditionalFile() : MsBuildProjectFileAnalyzer(Rule.AddAdditionalFile)
 {
     /// <inheritdoc />
-    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile_Props;
+    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.All;
 
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
