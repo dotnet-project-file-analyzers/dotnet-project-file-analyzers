@@ -73,6 +73,11 @@
     <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AdditionalFiles Include="$(MSBuildThisFileFullPath)" />
+    <AdditionalFiles Include="../../props/common.props" />
+  </ItemGroup>
+
   <PropertyGroup Label="Version and release notes">
     <Version>1.12.2</Version>
     <ToBeReleased>
