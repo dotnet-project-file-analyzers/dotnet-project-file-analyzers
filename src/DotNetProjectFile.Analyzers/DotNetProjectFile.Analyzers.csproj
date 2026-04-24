@@ -75,13 +75,12 @@
 
   <PropertyGroup Label="Version and release notes">
     <Version>1.12.1</Version>
-    <Version>1.11.0</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v.13.0
-- Proj3000: Drop difference between additional and regular files. (FP)
+- Proj1004: NET Project File Analyzers SDK not longer requires separate package. (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
@@ -104,10 +103,6 @@ v1.12.0
 - Proj3002: Exclude <!-- SingleWord --> comments. (FP)
 - Explicitly include .globalconfig file(s). (BUG)
 - FileCache gracefully handles gone and unparsable content. (BUG)
-]]>
-    </ToBeReleased>
-    <PackageReleaseNotes>
-      <![CDATA[
 v1.11.0
 - Proj0050: Enforce code-style in builds. (NEW RULE)
 - Proj0306: Avoid local package sources. (NEW RULE)
