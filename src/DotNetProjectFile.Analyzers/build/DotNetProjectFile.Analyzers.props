@@ -1,14 +1,20 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <PropertyGroup>
-    <SonarQubeIntegration>true</SonarQubeIntegration>
-  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileDirectory)AdditionalFiles.props" />
+  <Import Project="$(MSBuildThisFileDirectory)CompilerVisible.props" />
 
   <PropertyGroup>
+    <SonarQubeIntegration>true</SonarQubeIntegration>
     <IsDotNetProjectFileSdk Condition="$(MSBuildProjectFile) == '.net.csproj'">true</IsDotNetProjectFileSdk>
   </PropertyGroup>
 
-  <!-- Explicitly include .globalconfig file(s) -->
+  <!--
+    Explicitly include .globalconfig file(s)
+    
+    For some strange reason, .globalconfig seems sometimes not be included
+    automatically. As we advise to configure the severity of rules there, the
+    least we can do is ensure that those preferences are taken into account.
+    -->
   <ItemGroup>
     <GlobalAnalyzerConfigFiles
       Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig', '$(MSBuildThisFileDirectory)'))"
@@ -16,56 +22,29 @@
       Visible="false" />
   </ItemGroup>
 
-  <!-- Non-compiling files to analyze. -->
+  <!-- Extend the additional files for the .net.csproj -->
+  <Import
+     Condition="$(IsDotNetProjectFileSdk) == 'true'"
+     Project="$(MSBuildThisFileDirectory)AdditionalFiles.Sdk.props" />
+
+  <Import
+     Condition="$(IsDotNetProjectFileSdk) == 'true'"
+     Project="$(MSBuildThisFileDirectory)DotNetProjectFile.Analyzers.Sdk.props" />
+
+
+  <!--
+    Remove what is most likely in the .gitignore
+    
+    It is put here, because both the .net.csproj additonal files as the regular
+    set has been added, and can therfor safely be filtered.
+    -->
   <ItemGroup>
-    <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
-    <AdditionalFiles Include="**/*.props" />
-    <AdditionalFiles Include="**/*.targets" />
-    <AdditionalFiles Include="**/*.resx" />
+    <AdditionalFiles Remove="**/bin/**" />
+    <AdditionalFiles Remove="**/obj/**" />
+    <AdditionalFiles Remove="**/.git/**" />
+    <AdditionalFiles Remove="**/.nuget/**" />
+    <AdditionalFiles Remove="**/.vs/**" />
   </ItemGroup>
 
-  <!-- Directory.Build.props -->
-  <ItemGroup Condition="'$(ImportDirectoryBuildProps)' == 'true'">
-    <AdditionalFiles
-      Include="$(DirectoryBuildPropsPath)"
-      Exclude="$(AdditionalFiles)"
-      Visible="false" />
-    <CompilerVisibleProperty Include="DirectoryBuildPropsPath" />
-  </ItemGroup>
-
-  <!-- Directory.Build.targets -->
-  <ItemGroup Condition="'$(ImportDirectoryBuildTargets)' == 'true'">
-    <AdditionalFiles
-      Include="$(DirectoryBuildTargetsPath)"
-      Exclude="$(AdditionalFiles)"
-      Visible="false" />
-    <CompilerVisibleProperty Include="DirectoryBuildTargetsPath" />
-  </ItemGroup>
-
-  <!-- Directory.Packages.props -->
-  <ItemGroup Condition="'$(ImportDirectoryPackagesProps)' == 'true'">
-    <AdditionalFiles
-      Include="$(DirectoryPackagesPropsPath)"
-      Exclude="$(AdditionalFiles)"
-      Visible="false" />
-    <CompilerVisibleProperty Include="DirectoryPackagesPropsPath" />
-  </ItemGroup>
-
-  <!-- Common variable that should be resolvable. -->
-  <ItemGroup>
-    <CompilerVisibleProperty Include="Configuration" />
-    <CompilerVisibleProperty Include="EnableNETAnalyzers" />
-    <CompilerVisibleProperty Include="IsPackable" />
-    <CompilerVisibleProperty Include="IsTestProject" />
-    <CompilerVisibleProperty Include="LangVersion" />
-    <CompilerVisibleProperty Include="ManagePackageVersionsCentrally" />
-    <CompilerVisibleProperty Include="MSBuildProjectFile" />
-    <CompilerVisibleProperty Include="MSBuildThisFileDirectory" />
-    <CompilerVisibleProperty Include="NETCoreSdkVersion" />
-    <CompilerVisibleProperty Include="PackageLicenseExpression" />
-    <CompilerVisibleProperty Include="Platform" />
-    <CompilerVisibleProperty Include="RestoreLockedMode" />
-    <CompilerVisibleProperty Include="SolutionDir" />
-  </ItemGroup>
 
 </Project>
