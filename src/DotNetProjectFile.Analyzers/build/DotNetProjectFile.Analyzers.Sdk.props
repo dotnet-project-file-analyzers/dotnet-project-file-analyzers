@@ -1,0 +1,41 @@
+<Project>
+
+  <!--
+    We do not want to enable default items here. This is core to the working of
+    the .net.cspoj. Otherwise, all child compilation items (and more) will be
+    included, which will breaking the project completely.
+    -->
+  <PropertyGroup>
+    <EnableDefaultItems>false</EnableDefaultItems>
+  </PropertyGroup>
+
+  <!--
+    A .net.csproj file is a proxy to provide additional files shared amongst
+    the solution (SLNX/SLN) to Roslyn. All setup that involves its compilation
+    are irrelevent to its users. The defaults provided here should be
+    sufficient and not be overriden in acutal .net.csproj files.s
+    -->
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <BaseOutputPath>$([System.IO.Path]::GetTempPath())/.net/</BaseOutputPath>
+    <IsPackable>false</IsPackable>
+    <IsPublishable>false</IsPublishable>
+    <!-- There should never be a need to sign the .net.csproj output. -->
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <!-- Sonar Analyzers are not needed -->
+    <NoWarn>$(NoWarn);Proj1003</NoWarn>
+  </PropertyGroup>
+
+  <!--
+    By inclduing TestResults, the SolutionExplorer View allows developers to
+    remove these result within their IDE.
+    -->
+  <ItemGroup>
+    <None Include="**/TestResults/**" />
+  </ItemGroup>
+
+</Project>

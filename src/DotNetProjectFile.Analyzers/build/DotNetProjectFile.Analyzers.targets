@@ -21,10 +21,6 @@
     <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Include="**/*.slnx" />
   </ItemGroup>
 
-  <Import
-    Condition="$(IsDotNetProjectFileSdk) == 'true'"
-    Project="$(MSBuildThisFileDirectory)DotNetProjectFile.Analyzers.Sdk.targets" />
-
   <!--To inform users the SDK package is not longer needed. -->
   <Target Name="Obsolete" BeforeTargets="ResolvePackageAssets">
     <Warning
