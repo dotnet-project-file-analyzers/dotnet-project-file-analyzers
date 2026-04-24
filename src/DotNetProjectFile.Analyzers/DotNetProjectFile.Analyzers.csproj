@@ -73,14 +73,19 @@
     <PackageReference Include="PolySharp" Version="1.15.0" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
+  <ItemGroup>
+    <AdditionalFiles Include="$(MSBuildThisFileFullPath)" />
+    <AdditionalFiles Include="../../props/common.props" />
+  </ItemGroup>
+
   <PropertyGroup Label="Version and release notes">
     <Version>1.12.1</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v.13.0
-- Proj3000: Drop difference between additional and regular files. (FP)
+v1.13.0
+- Proj0006: Enable Additional file detection again. (UPDATE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
