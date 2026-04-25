@@ -3,7 +3,7 @@
   <!--
     We do not want to enable default items here. This is core to the working of
     the .net.csproj. Otherwise, all child compilation items (and more) will be
-    included, which will breaking the project completely.
+    included, which will break the project completely.
     -->
   <PropertyGroup>
     <EnableDefaultItems>false</EnableDefaultItems>
