@@ -24,7 +24,7 @@ It obtains its powers because it is a little different from normal projects:
    works for you. The needs of a large [monorepo](https://en.wikipedia.org/wiki/Monorepo)
    with many solutions and projects differ from those of a small repository
    with a single solution and just a few projects.
-2. The `.net.csproj` project has a PackageReference to [![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers.Sdk)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers).
+2. The `.net.csproj` project has a PackageReference to [![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers).
    It automatically includes files it can analyze. Those, and files included as
    `<AdditionalFiles>` are analyzed by the appropriate .NET project file
    analyzers.
@@ -50,7 +50,8 @@ A `.net.csproj` project file looks like this:
 
 ## Central Package Management
 It is advised to add the reference in the `Directory.Build.props` file, or
-`Directory.Packages.props`. In the latter case using a `<GlobalPackageReference>`:
+`Directory.Packages.props` when [rules/Proj0800.md](Central Package Management)
+is enabled. In the latter case using a `<GlobalPackageReference>`:
 
 ``` xml
 <ItemGroup Label="Analyzers">
