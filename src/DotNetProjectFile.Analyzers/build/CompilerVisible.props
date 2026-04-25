@@ -3,7 +3,7 @@
   <!-- 
     Common variable that should be resolvable.
    
-    These variables a read by the analyzers to make decisions aobut them.
+    These variables are read by the analyzers to make decisions about them.
   -->
   <ItemGroup>
     <CompilerVisibleProperty Include="Configuration" />
