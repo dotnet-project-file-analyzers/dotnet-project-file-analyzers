@@ -21,7 +21,7 @@
     <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Include="**/*.slnx" />
   </ItemGroup>
 
-  <!--To inform users the SDK package is not longer needed. -->
+  <!--To inform users the SDK package is no longer needed. -->
   <Target Name="Obsolete" BeforeTargets="ResolvePackageAssets">
     <Warning
       Condition="@(PackageReference->AnyHaveMetadataValue('Identity', 'DotNetProjectFile.Analyzers.Sdk'))"
