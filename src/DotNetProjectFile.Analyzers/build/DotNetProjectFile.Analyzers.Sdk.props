@@ -12,7 +12,7 @@
   <!--
     A .net.csproj file is a proxy to provide additional files shared amongst
     the solution (SLNX/SLN) to Roslyn. All setup that involves its compilation
-    are irrelevent to its users. The defaults provided here should be
+    Is irrelevant to its users. The defaults provided here should be
     sufficient and not be overriden in acutal .net.csproj files.s
     -->
   <PropertyGroup>
