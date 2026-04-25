@@ -36,7 +36,7 @@
     Remove what is most likely in the .gitignore
     
     It is put here, because both the .net.csproj additonal files as the regular
-    set has been added, and can therfor safely be filtered.
+    set has been added, and can therefor safely be filtered.
     -->
   <ItemGroup>
     <AdditionalFiles Remove="**/bin/**" />
@@ -45,6 +45,5 @@
     <AdditionalFiles Remove="**/.nuget/**" />
     <AdditionalFiles Remove="**/.vs/**" />
   </ItemGroup>
-
 
 </Project>
