@@ -43,7 +43,7 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
 
               <!-- Set some defaults that ensure predictable (non) outcome -->
               <PropertyGroup>
-                <TargetFrameworks>netstandard2.0</TargetFrameworks>
+                <TargetFramework>netstandard2.0</TargetFramework>
                 <IsDotNetProjectFileSdk>true</IsDotNetProjectFileSdk>
                 <IncludeBuildOutput>false</IncludeBuildOutput>
                 <BaseOutputPath>$([System.IO.Path]::GetTempPath())/.net/</BaseOutputPath>
