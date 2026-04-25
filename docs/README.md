@@ -188,6 +188,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj1001** Use analyzers for packages](rules/Proj1001.md)
 * [**Proj1002** Use Microsoft's analyzers](rules/Proj1002.md)
 * [**Proj1003** Use Sonar analyzers](rules/Proj1003.md)
+* [**Proj1004** .NET Project File Analyzers SDK no longer requires separate package](rules/Proj1004.md)
 
 ### Design
 * [**Proj1300** Avoid project references to executables](rules/Proj1300.md)
