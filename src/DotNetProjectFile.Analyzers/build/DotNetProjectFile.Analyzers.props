@@ -35,7 +35,7 @@
   <!--
     Remove what is most likely in the .gitignore
     
-    It is put here, because both the .net.csproj additonal files as the regular
+    It is put here, because both the .net.csproj additonal files as well as the regular
     set has been added, and can therefor safely be filtered.
     -->
   <ItemGroup>
