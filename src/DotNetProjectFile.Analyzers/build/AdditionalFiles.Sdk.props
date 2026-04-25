@@ -1,29 +1,5 @@
 <Project>
 
-  <ItemGroup Label="Add without showing">
-    <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.??proj" />
-    <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.slnx" />
-  </ItemGroup>
-
-  <!-- Directory.* files should be visible in the .net.csproj -->
-  <ItemGroup>
-    <!-- Directory.Build.props -->
-    <AdditionalFiles
-      Condition="'$(ImportDirectoryBuildProps)' == 'true'"
-      Update="$(DirectoryBuildPropsPath)"
-      Link="$(_DirectoryBuildPropsFile)" />
-    <!-- Directory.Build.targets -->
-    <AdditionalFiles
-      Condition="'$(ImportDirectoryBuildTargets)' == 'true'"
-      Update="$(DirectoryBuildTargetsPath)"
-      Link="$(_DirectoryBuildTargetsFile)" />
-    <!-- Directory.Packages.props -->
-    <AdditionalFiles
-       Condition="'$(ImportDirectoryPackagesProps)' == 'true'"
-      Update="$(DirectoryPackagesPropsPath)"
-      Link="$(_DirectoryPackagesPropsFile)" />
-  </ItemGroup>
-
   <ItemGroup>
     <!-- NuGet.config -->
     <AdditionalFiles Include="$([MSBuild]::GetPathOfFileAbove('NuGet.config', '$(MSBuildThisFileDirectory)'))" />
@@ -40,8 +16,43 @@
     <AdditionalFiles Include="*.txt" />
     <AdditionalFiles Include="*.yaml" />
     <AdditionalFiles Include="*.yml" />
-    <AdditionalFiles Include="props/*.props" />
-    <AdditionalFiles Include="props/*.targets" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.??proj" />
+    <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.slnx" />
+    <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.props" />
+    <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.targets" />
+  </ItemGroup>
+
+  <!-- Directory.* files should be visible in the .net.csproj -->
+  <ItemGroup>
+    <!-- Directory.Build.props -->
+    <AdditionalFiles
+      Condition="'$(ImportDirectoryBuildProps)' == 'true'"
+      Update="$(DirectoryBuildPropsPath)"
+      Link="$(_DirectoryBuildPropsFile)"
+      Visible ="true" />
+    <!-- Directory.Build.targets -->
+    <AdditionalFiles
+      Condition="'$(ImportDirectoryBuildTargets)' == 'true'"
+      Update="$(DirectoryBuildTargetsPath)"
+      Link="$(_DirectoryBuildTargetsFile)"
+      Visible ="true" />
+    <!-- Directory.Packages.props -->
+    <AdditionalFiles
+      Condition="'$(ImportDirectoryPackagesProps)' == 'true'"
+      Update="$(DirectoryPackagesPropsPath)"
+      Link="$(_DirectoryPackagesPropsFile)"
+      Visible ="true" />
+  </ItemGroup>
+
+  <!-- Make visible -->
+  <ItemGroup>
+    <AdditionalFiles Visible ="true" Update="*.props" />
+    <AdditionalFiles Visible ="true" Update="*.targets" />
+    <AdditionalFiles Visible ="true" Update="props/*.props" />
+    <AdditionalFiles Visible ="true" Update="props/*.targets" />
   </ItemGroup>
 
   <ItemGroup>
