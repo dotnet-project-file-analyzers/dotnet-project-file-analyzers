@@ -31,7 +31,7 @@
   </PropertyGroup>
 
   <!--
-    By inclduing TestResults, the SolutionExplorer View allows developers to
+    By including TestResults, the SolutionExplorer View allows developers to
     remove these result within their IDE.
     -->
   <ItemGroup>
