@@ -133,7 +133,7 @@ public class Guards
           </PropertyGroup>
 
           <ItemGroup>
-            <PackageReference PrivateAssets="all" Include="xunit.runner.visualstudio" Version="3.1.5" />
+            <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" />
           </ItemGroup>
 
         </Project>
