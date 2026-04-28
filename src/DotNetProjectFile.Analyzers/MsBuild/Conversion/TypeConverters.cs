@@ -8,12 +8,11 @@ public static class TypeConverters
 {
     public static T? TryConvert<T>(string? value)
     {
-        var type = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
         try
         {
             if (value is { Length: > 0 })
             {
-                return (T?)Get(type).ConvertFromInvariantString(value);
+                return (T?)Get(typeof(T)).ConvertFromInvariantString(value);
             }
         }
         catch
@@ -24,9 +23,12 @@ public static class TypeConverters
     }
 
     public static TypeConverter Get(Type type)
-        => TypeStore.TryGetValue(type, out var custom)
-        ? custom
-        : TypeDescriptor.GetConverter(type);
+    {
+        var not_null = Nullable.GetUnderlyingType(type) ?? type;
+        return TypeStore.TryGetValue(not_null, out var custom)
+            ? custom
+            : TypeDescriptor.GetConverter(not_null);
+    }
 
     private static readonly FrozenDictionary<Type, TypeConverter> TypeStore = new Dictionary<Type, TypeConverter>()
     {
