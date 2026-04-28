@@ -19,7 +19,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
 
         var analyzers = GetAnalyzers(context.File.Language);
 
-        foreach (var reference in packageReferences)
+        foreach (var reference in packageReferences.Where(r => r is PackageReference { PrivateAssets: not { Length: > 0 } }))
         {
             var tree = GetAllReferencedPackages(reference, context.ManagePackageVersionsCentrally);
 

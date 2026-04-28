@@ -81,6 +81,8 @@ ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v.13.0
 - Proj3000: Drop difference between additional and regular files. (FP)
+v1.12.2
+- Proj1001: Exclude private assets. (FP)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
