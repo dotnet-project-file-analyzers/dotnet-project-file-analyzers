@@ -125,7 +125,7 @@ public class Guards
        .HasNoIssues();
 
     [Test]
-    public void xunit_runner_visualstuidio_as_private_asset() => new UseAnalyzersForPackages().ForInlineCsproj("""
+    public void xunit_runner_visualstudio_as_private_asset() => new UseAnalyzersForPackages().ForInlineCsproj("""
         <Project Sdk="Microsoft.NET.Sdk">
 
           <PropertyGroup>
