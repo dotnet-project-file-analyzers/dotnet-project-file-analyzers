@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Sibling.txt" />
+    <None Include="$(MSBuildProjectDirectory)Sibling.txt" />
+    <None Include="$(MSBuildThisFileDirectory)Sub/SubChild.txt" />
+    <None Include="$(MSBuildThisFileDirectory)../common/Code.cs" />
+    <None Include="$(MSBuildThisFileDirectory)*.txt" />
+  </ItemGroup>
+
+</Project>
