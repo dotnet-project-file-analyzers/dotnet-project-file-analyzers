@@ -8,11 +8,12 @@ public static class TypeConverters
 {
     public static T? TryConvert<T>(string? value)
     {
+        var type = Nullable.GetUnderlyingType(typeof(T)) ?? typeof(T);
         try
         {
             if (value is { Length: > 0 })
             {
-                return (T?)Get(typeof(T)).ConvertFromInvariantString(value);
+                return (T?)Get(type).ConvertFromInvariantString(value);
             }
         }
         catch
