@@ -84,8 +84,6 @@ v.13.0
 - Proj3000: Drop difference between additional and regular files. (FP)
 v1.12.2
 - Proj0201: Exclude Microsoft.NET.Sdk.Web projects. (FP)
-- Proj1004: NET Project File Analyzers SDK not longer requires separate package. (NEW RULE)
-- Proj1004: NET Project File Analyzers SDK no longer requires separate package. (NEW RULE)
 - Proj1004: .NET Project File Analyzers SDK no longer requires separate package. (NEW RULE)
 ]]>
     </ToBeReleased>
