@@ -125,6 +125,22 @@ public class Guards
        .HasNoIssues();
 
     [Test]
+    public void xunit_runner_visualstudio_as_private_asset() => new UseAnalyzersForPackages().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
+
+          <ItemGroup>
+            <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5" />
+          </ItemGroup>
+
+        </Project>
+        """)
+      .HasNoIssues();
+
+    [Test]
     public void xunit_v3_as_analyzer_is_included() => new UseAnalyzersForPackages().ForInlineCsproj("""
         <Project Sdk="Microsoft.NET.Sdk">
 

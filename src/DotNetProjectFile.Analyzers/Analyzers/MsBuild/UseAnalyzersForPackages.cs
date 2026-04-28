@@ -1,4 +1,5 @@
 using DotNetProjectFile.NuGet;
+using System.Collections.Frozen;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
@@ -15,11 +16,11 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
         var packageReferences = context.File
             .Walk()
             .OfType<PackageReferenceBase>()
-            .Where(p => p is not PackageVersion && !string.IsNullOrWhiteSpace(p.IncludeOrUpdate));
+            .Where(p => p is not PackageVersion && p.IncludeOrUpdate is { Length: > 0 });
 
         var analyzers = GetAnalyzers(context.File.Language);
 
-        foreach (var reference in packageReferences)
+        foreach (var reference in packageReferences.Where(r => !Excluded.Contains(r.IncludeOrUpdate)))
         {
             var tree = GetAllReferencedPackages(reference, context.ManagePackageVersionsCentrally);
 
@@ -42,7 +43,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
         ? [rootPackage]
         : (IEnumerable<Package>)reference.ResolveCachedPackageDependencyTree(cpmEnabled);
 
-    private static Analyzer[] GetAnalyzers(Language language)
+    private static ImmutableArray<Analyzer> GetAnalyzers(Language language)
         => [.. Analyzers.Where(analyzer => analyzer.IsApplicable(language))];
 
     private static readonly Analyzer[] Analyzers =
@@ -71,6 +72,12 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
         new Analyzer("xunit.analyzers", "xunit"),
         new Analyzer("ZeroFormatter.Analyzer", "ZeroFormatter"),
     ];
+
+    private static readonly FrozenSet<string> Excluded = new HashSet<string>
+    {
+        "xunit.runner.visualstudio",
+    }
+    .ToFrozenSet(StringComparer.OrdinalIgnoreCase);
 
     private sealed record Analyzer(string Name, string Match, Language? Language = null)
     {
