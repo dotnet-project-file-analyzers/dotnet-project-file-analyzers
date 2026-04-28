@@ -4,19 +4,15 @@ using System.ComponentModel;
 
 namespace DotNetProjectFile.MsBuild.Conversion;
 
-internal sealed class TypeConverters
+public static class TypeConverters
 {
-    public T? TryConvert<T>(string? value)
+    public static T? TryConvert<T>(string? value)
     {
         try
         {
             if (value is { Length: > 0 })
             {
-                var converter = TypeStore.TryGetValue(typeof(T), out var custom)
-                    ? custom
-                    : TypeDescriptor.GetConverter(typeof(T));
-
-                return (T?)converter.ConvertFromInvariantString(value);
+                return (T?)Get(typeof(T)).ConvertFromInvariantString(value);
             }
         }
         catch
@@ -26,7 +22,12 @@ internal sealed class TypeConverters
         return default;
     }
 
-    private readonly FrozenDictionary<Type, TypeConverter> TypeStore = new Dictionary<Type, TypeConverter>()
+    public static TypeConverter Get(Type type)
+        => TypeStore.TryGetValue(type, out var custom)
+        ? custom
+        : TypeDescriptor.GetConverter(type);
+
+    private static readonly FrozenDictionary<Type, TypeConverter> TypeStore = new Dictionary<Type, TypeConverter>()
     {
         [typeof(string)] = new StringConverter(),
         [typeof(bool)] = new BooleanConverter(),
