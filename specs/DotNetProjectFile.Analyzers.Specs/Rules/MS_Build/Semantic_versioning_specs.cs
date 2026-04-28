@@ -41,6 +41,7 @@ public class Reports
 
 public class Guards
 {
+    [TestCase("1.0.0")]
     [TestCase("3.14.1596")]
     [TestCase("1.1.0-rc.1+e471d15")]
     public void semantic_version(string version) => new VersionShouldBeSemVerCompliant()

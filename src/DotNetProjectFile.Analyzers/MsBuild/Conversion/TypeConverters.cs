@@ -1,18 +1,22 @@
 using DotNetProjectFile.Conversion;
+using System.Collections.Frozen;
 using System.ComponentModel;
-using System.Reflection;
 
 namespace DotNetProjectFile.MsBuild.Conversion;
 
 internal sealed class TypeConverters
 {
-    public T? TryConvert<T>(string? value, Type classType, string propertyName)
+    public T? TryConvert<T>(string? value)
     {
         try
         {
-            if (value is { })
+            if (value is { Length: > 0 })
             {
-                return (T?)Get(classType, propertyName!).ConvertFromInvariantString(value);
+                var converter = TypeStore.TryGetValue(typeof(T), out var custom)
+                    ? custom
+                    : TypeDescriptor.GetConverter(typeof(T));
+
+                return (T?)converter.ConvertFromInvariantString(value);
             }
         }
         catch
@@ -22,44 +26,14 @@ internal sealed class TypeConverters
         return default;
     }
 
-    public TypeConverter Get(Type classType, string propertyName)
-    {
-        var property = classType.GetProperty(propertyName);
-
-        if (PropertyStore.TryGetValue(property, out TypeConverter converter))
-        {
-            return converter;
-        }
-
-        lock (locker)
-        {
-            if (!PropertyStore.TryGetValue(property, out converter))
-            {
-                if (property.GetCustomAttribute<TypeConverterAttribute>(true) is { } attr)
-                {
-                    converter = (TypeConverter)Activator.CreateInstance(Type.GetType(attr.ConverterTypeName));
-                }
-                else if (!TypeStore.TryGetValue(property.PropertyType, out converter))
-                {
-                    var type = Nullable.GetUnderlyingType(property.PropertyType)
-                        ?? property.PropertyType;
-
-                    converter = TypeDescriptor.GetConverter(type);
-                    TypeStore[property.PropertyType] = converter;
-                }
-                PropertyStore[property] = converter;
-            }
-        }
-        return converter;
-    }
-
-    private readonly Dictionary<PropertyInfo, TypeConverter> PropertyStore = [];
-    private readonly Dictionary<Type, TypeConverter> TypeStore = new()
+    private readonly FrozenDictionary<Type, TypeConverter> TypeStore = new Dictionary<Type, TypeConverter>()
     {
         [typeof(string)] = new StringConverter(),
         [typeof(bool)] = new BooleanConverter(),
+        [typeof(IOFile)] = new IOFileConverter(),
+        [typeof(IODirectory)] = new IODirectoryConverter(),
         [typeof(LanguageVersion)] = new LanguageVersionConverter(),
-    };
-
-    private readonly object locker = new();
+        [typeof(SemVer)] = new SemVerConverter(),
+    }
+    .ToFrozenDictionary();
 }

@@ -74,7 +74,7 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.12.1</Version>
+    <Version>1.12.1-beta004</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
@@ -87,6 +87,8 @@ v1.12.2
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.12.2
+- Proj0253/4: Fix runtime TypeConverter resolvement. (FP)
 v1.12.1
 - Proj3000: Ignore Additional File status when checking for UTF8-BOM. (FP)
 v1.12.0
