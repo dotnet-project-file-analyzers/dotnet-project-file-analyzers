@@ -86,10 +86,8 @@ public abstract class Node : XmlAnalysisNode
 
     internal Node Create(XElement element) => Factory.Create(element, this, ConfigFile);
 
-    protected T? Convert<T>(string? value, [CallerMemberName] string? propertyName = null)
-        => Converters.TryConvert<T>(value, GetType(), propertyName!);
+    protected T? Convert<T>(string? value)
+        => TypeConverters.TryConvert<T>(value);
 
     IEnumerable<XmlAnalysisNode> XmlAnalysisNode.Children() => Children;
-
-    private static readonly TypeConverters Converters = new();
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace DotNetProjectFile.IO;
 
 /// <summary>Represents an (IO) file.</summary>
-[TypeConverter(typeof(Conversion.IOFileTypeConverter))]
+[TypeConverter(typeof(Conversion.IOFileConverter))]
 public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IOFile>
 {
     /// <summary>Represents none/an empty path.</summary>

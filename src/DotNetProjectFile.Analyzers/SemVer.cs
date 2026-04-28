@@ -10,7 +10,7 @@ namespace DotNetProjectFile;
 /// <remarks>
 /// See: https://semver.org/.
 /// </remarks>
-[TypeConverter(typeof(Converter))]
+[TypeConverter(typeof(Conversion.SemVerConverter))]
 public sealed record SemVer()
 {
     /// <summary>Initializes a new instance of the <see cref="SemVer"/> class.</summary>
@@ -83,19 +83,4 @@ public sealed record SemVer()
         @"^(?<Major>0|[1-9][0-9]*)\.(?<Minor>0|[1-9][0-9]*)\.(?<Patch>0|[1-9][0-9]*)(?:-(?<PreRelease>(?:0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9][0-9]*|[0-9]*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+(?<BuildMetadata>[0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$",
         RegexOptions.CultureInvariant | RegexOptions.Compiled,
         TimeSpan.FromSeconds(1));
-
-    private sealed class Converter : TypeConverter
-    {
-        /// <inheritdoc />
-        public override bool CanConvertFrom(ITypeDescriptorContext? context, Type sourceType)
-            => sourceType == typeof(string) || base.CanConvertFrom(context, sourceType);
-
-        /// <inheritdoc />
-        public override object? ConvertFrom(ITypeDescriptorContext? context, CultureInfo? culture, object? value) => value switch
-        {
-            null => null,
-            string str => TryParse(str),
-            _ => base.ConvertFrom(context, culture, value),
-        };
-    }
 }

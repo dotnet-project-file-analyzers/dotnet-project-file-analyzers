@@ -4,7 +4,7 @@ using System.Globalization;
 namespace DotNetProjectFile.Conversion;
 
 /// <summary>Implements a <see cref="TypeConverter"/> for <see cref="IOFile"/>.</summary>
-internal sealed class IOFileTypeConverter : TypeConverter
+internal sealed class IOFileConverter : TypeConverter
 {
     /// <inheritdoc />
     public override bool CanConvertFrom(ITypeDescriptorContext? context, Type sourceType)
