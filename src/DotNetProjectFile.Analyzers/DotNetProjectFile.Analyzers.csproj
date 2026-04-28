@@ -74,20 +74,21 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.12.1</Version>
+    <Version>1.12.2</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v.13.0
 - Proj3000: Drop difference between additional and regular files. (FP)
-v1.12.2
-- Proj0201: Exclude Microsoft.NET.Sdk.Web projects. (FP)
-- Proj1001: Exclude private assets. (FP)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.12.2
+- Proj0201: Exclude Microsoft.NET.Sdk.Web projects. (FP)
+- Proj1001: Exclude xunit.runner.visualstudio. (FP)
+- Proj0253/4: Fix runtime TypeConverter resolvement. (FP)
 v1.12.1
 - Proj3000: Ignore Additional File status when checking for UTF8-BOM. (FP)
 v1.12.0

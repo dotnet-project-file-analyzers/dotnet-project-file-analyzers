@@ -7,7 +7,7 @@ using System.IO;
 namespace DotNetProjectFile.IO;
 
 /// <summary>Represents an (IO) directory.</summary>
-[TypeConverter(typeof(Conversion.IODirectoryTypeConverter))]
+[TypeConverter(typeof(Conversion.IODirectoryConverter))]
 public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, IComparable<IODirectory>
 {
     /// <summary>Represents none/an empty path.</summary>

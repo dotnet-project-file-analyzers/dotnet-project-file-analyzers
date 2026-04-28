@@ -16,6 +16,7 @@ public class Parses
     public void With_trimming_whitespace(string str)
         => SemVer.TryParse(str).Should().Be(new SemVer(3, 1, 41596));
 
+    [TestCase("1.0.0", 1, 0, 0)]
     [TestCase("1.2.0", 1, 2, 0)]
     [TestCase("1.2.9", 1, 2, 9)]
     [TestCase("2.71828.182845904", 2, 71828, 182845904)]
