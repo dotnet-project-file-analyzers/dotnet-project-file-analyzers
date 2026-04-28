@@ -24,7 +24,9 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (!context.File.IsPackable() || context.File.IsTestProject()) return;
+        if (!context.File.IsPackable()
+            || context.File.IsTestProject()
+            || context.File.Sdk is "Microsoft.NET.Sdk.Web") return;
 
         var available = context.File.Walk().Select(n => n.GetType()).ToImmutableHashSet();
 
