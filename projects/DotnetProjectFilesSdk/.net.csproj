@@ -1,21 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <Import Project="../../src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.props" />
-
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-  </PropertyGroup>
+  
+  <Import Project="../../src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.props" />
   
   <ItemGroup Label="Directories">
     <None Include="design/**" />
     <None Include="props/**" />
     <None Include="projects/common/**" />
+    <!-- This is included as normally you get it elsewhere -->
+    <AdditionalFiles Include="../../src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.props" />
   </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Update="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
-  </ItemGroup>
-
-  <Import Project="../../src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.targets" />
-  
 </Project>

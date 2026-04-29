@@ -1,0 +1,24 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <!-- 
+    Common variable that should be resolvable.
+   
+    These variables are read by the analyzers to make decisions about them.
+  -->
+  <ItemGroup>
+    <CompilerVisibleProperty Include="Configuration" />
+    <CompilerVisibleProperty Include="EnableNETAnalyzers" />
+    <CompilerVisibleProperty Include="IsPackable" />
+    <CompilerVisibleProperty Include="IsTestProject" />
+    <CompilerVisibleProperty Include="LangVersion" />
+    <CompilerVisibleProperty Include="ManagePackageVersionsCentrally" />
+    <CompilerVisibleProperty Include="MSBuildProjectFile" />
+    <CompilerVisibleProperty Include="MSBuildThisFileDirectory" />
+    <CompilerVisibleProperty Include="NETCoreSdkVersion" />
+    <CompilerVisibleProperty Include="PackageLicenseExpression" />
+    <CompilerVisibleProperty Include="Platform" />
+    <CompilerVisibleProperty Include="RestoreLockedMode" />
+    <CompilerVisibleProperty Include="SolutionDir" />
+  </ItemGroup>
+
+</Project>

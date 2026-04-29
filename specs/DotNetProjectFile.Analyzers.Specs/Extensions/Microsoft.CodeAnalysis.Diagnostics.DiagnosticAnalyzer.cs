@@ -40,12 +40,13 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
         this DiagnosticAnalyzer analyzer)
         => analyzer.ForInlineSdkProject("""
             <Project Sdk="Microsoft.NET.Sdk">
+
+              <!-- Set some defaults that ensure predictable (non) outcome -->
               <PropertyGroup>
-                <!-- The TargetFramework may be overridden, but has a fine default. -->
-                <TargetFramework>net10.0</TargetFramework>
-                <LangVersion>latest</LangVersion>
-                <IsPackable>false</IsPackable>
-                <IsPublishable>false</IsPublishable>
+                <TargetFramework>netstandard2.0</TargetFramework>
+                <IsDotNetProjectFileSdk>true</IsDotNetProjectFileSdk>
+                <IncludeBuildOutput>false</IncludeBuildOutput>
+                <BaseOutputPath>$([System.IO.Path]::GetTempPath())/.net/</BaseOutputPath>
               </PropertyGroup>
 
               <!-- We do not want to enable default items here. -->
@@ -53,51 +54,42 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
                 <EnableDefaultItems>false</EnableDefaultItems>
               </PropertyGroup>
 
-              <!-- The bin is just noise here, so move it a temp location. -->
-              <PropertyGroup>
-                <OutputPath>$([System.IO.Path]::GetTempPath())/.net/bin</OutputPath>
-                <IntermediateOutputPath>$([System.IO.Path]::GetTempPath())/.net/obj</IntermediateOutputPath>
-              </PropertyGroup>
-
-              <ItemGroup Label="Add without showing">
-                <AdditionalFiles Visible="false" Include="$(MSBuildProjectFile)" />
-                <AdditionalFiles Visible="false" Include="**/*.csproj" />
-                <AdditionalFiles Visible="false" Include="**/*.props" />
-                <AdditionalFiles Visible="false" Include="**/*.targets" />
-                <AdditionalFiles Visible="false" Include="**/*.slnx" />
-                <AdditionalFiles Visible="false" Include="**/*.vbproj" />
-                <AdditionalFiles Visible="false" Include="**/*.fsproj" />
-                <AdditionalFiles Visible="false" Include="**/*.cblproj" />
+               <ItemGroup>
+                <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
+                <AdditionalFiles Include="**/*.props" />
+                <AdditionalFiles Include="**/*.targets" />
+                <AdditionalFiles Include="**/*.resx" />
               </ItemGroup>
 
-              <ItemGroup Label="Exclude generated stuff">
-                <AdditionalFiles Remove="**/bin/**" />
-                <AdditionalFiles Remove="**/obj/**" />
-              </ItemGroup>
+            <ItemGroup Label="Add without showing">
+              <AdditionalFiles Visible="false" Include="$(MSBuildProjectFile)" />
+              <AdditionalFiles Visible="false" Include="**/*.csproj" />
+              <AdditionalFiles Visible="false" Include="**/*.slnx" />
+              <AdditionalFiles Visible="false" Include="**/*.vbproj" />
+              <AdditionalFiles Visible="false" Include="**/*.fsproj" />
+              <AdditionalFiles Visible="false" Include="**/*.cblproj" />
+            </ItemGroup>
 
-              <ItemGroup>
-                <AdditionalFiles Include=".*config" />
-                <AdditionalFiles Include=".git*" />
-                <AdditionalFiles Include=".github/**" />
-                <AdditionalFiles Include="*.config" />
-                <AdditionalFiles Include="*.ini" />
-                <AdditionalFiles Include="*.json" />
-                <AdditionalFiles Include="*.md" />
-                <AdditionalFiles Include="*.props" />
-                <AdditionalFiles Include="*.targets" />
-                <AdditionalFiles Include="*.txt" />
-                <AdditionalFiles Include="*.yaml" />
-                <AdditionalFiles Include="*.yml" />
-                <AdditionalFiles Include="props/*.props" />
-                <AdditionalFiles Include="props/*.targets" />
-              </ItemGroup>
+            <ItemGroup Label="Exclude generated stuff">
+              <AdditionalFiles Remove="**/bin/**" />
+              <AdditionalFiles Remove="**/obj/**" />
+            </ItemGroup>
 
-              <ItemGroup>
-                <None Include="**/TestResults/**" />
-              </ItemGroup>
+            <ItemGroup>
+              <AdditionalFiles Include=".git*" />
+              <AdditionalFiles Include=".github/**" />
+              <AdditionalFiles Include="*.config" />
+              <AdditionalFiles Include="*.ini" />
+              <AdditionalFiles Include="*.json" />
+              <AdditionalFiles Include="*.md" />
+              <AdditionalFiles Include="*.txt" />
+              <AdditionalFiles Include="*.yaml" />
+              <AdditionalFiles Include="*.yml" />
+              <AdditionalFiles Include="props/*.props" />
+              <AdditionalFiles Include="props/*.targets" />
+            </ItemGroup>
 
             </Project>
-            
             """);
 
     [Pure]
