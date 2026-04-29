@@ -22,6 +22,24 @@ public class Reports
             Issue.WRN("Proj0022", "The Include 'missing.editor' of <EditorConfgFiles> does not exist" /*....*/).WithSpan(12, 04, 12, 49),
             Issue.WRN("Proj0022", "The Include 'missing.config' of <GlobalAnalyzerConfigFiles> does not exist").WithSpan(13, 04, 13, 58)
         );
+
+    [Test]
+    public void msbuild_property_with_missing_file() => new BuildActionIncludeShouldExist()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+
+              <ItemGroup>
+                <None Include="$(MSBuildThisFileDirectory)Missing.txt" />
+              </ItemGroup>
+
+            </Project>
+            """)
+        .HasIssue(Issue
+            .WRN("Proj0022", "The Include '$(MSBuildThisFileDirectory)Missing.txt' of <None> does not exist"));
 }
 
 public class Guards
@@ -30,5 +48,10 @@ public class Guards
     public void Projects_with_analyzers(string project)
          => new BuildActionIncludeShouldExist()
         .ForProject(project)
+        .HasNoIssues();
+
+    [Test]
+    public void Build_action_with_msbuild_property() => new BuildActionIncludeShouldExist()
+        .ForProject("BuildActionWithMsBuildProperty.cs")
         .HasNoIssues();
 }

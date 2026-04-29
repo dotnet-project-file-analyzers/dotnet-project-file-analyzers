@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="$(MSBuildThisFileDirectory)Sibling.csproj" />
+    <ProjectReference Include="$(MSBuildProjectDirectory)Sibling.csproj" />
+    <ProjectReference Include="$(MSBuildThisFileDirectory)Sub/SubChild.csproj" />
+  </ItemGroup>
+
+</Project>

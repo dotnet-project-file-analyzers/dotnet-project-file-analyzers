@@ -18,15 +18,14 @@ public sealed class ProjectReferenceChecker() : MsBuildProjectFileAnalyzer(
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var root = context.File.Path.Directory;
-
         foreach (var node in context.File.Walk().OfType<ProjectReference>())
         {
             var include = node.Include ?? string.Empty;
+            var (root, literal) = context.Resolve(node, include);
 
-            if (include is { Length: > 0 } && root.Files(include)?.FirstOrNone() is { Exists: true } existing)
+            if (include is { Length: > 0 } && root.Files(literal)?.FirstOrNone() is { Exists: true } existing)
             {
-                if (IOPath.CaseCompare(existing, IOFile.Parse(include)) is { } casing)
+                if (IOPath.CaseCompare(existing, IOFile.Parse(literal)) is { } casing)
                 {
                     context.ReportDiagnostic(Rule.ProjectReferenceMustBeCaseConsistent, node, include, casing);
                 }
