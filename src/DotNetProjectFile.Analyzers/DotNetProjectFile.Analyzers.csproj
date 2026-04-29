@@ -79,7 +79,9 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v.13.0
+v.13.0.0
+- Proj1005: Suppress NuGet issues per package. (NEW RULE)
+- Proj1006: Suppress NuGet audit issues via NuGetAuditSuppress. (NEW RULE)
 - Proj3000: Drop difference between additional and regular files. (FP)
 ]]>
     </ToBeReleased>

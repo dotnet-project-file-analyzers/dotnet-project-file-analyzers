@@ -1270,6 +1270,22 @@ public static partial class Rule
         tags: ["roslyn", "analyzer", "Sonar"],
         category: Category.CodeQuality);
 
+    public static DiagnosticDescriptor SuppressNuGetIssuesPerPackage => New(
+        id: 1005,
+        title: "Suppress NuGet issues per package",
+        message: "Solve issue {0} or suppress it on the reported package",
+        description: "TODO",
+        tags: ["NuGet", "suppression"],
+        category: Category.CodeQuality);
+
+    public static DiagnosticDescriptor SuppressNuGetAuditIssuesViaNuGetAuditSuppress => New(
+       id: 1006,
+       title: "Suppress NuGet audit issues via NuGetAuditSuppress",
+       message: "Solve issue {0} or suppress it using <NuGetAuditSuppress>",
+       description: "TODO",
+       tags: ["NuGet", "suppression"],
+       category: Category.CodeQuality);
+
     public static DiagnosticDescriptor AvoidUsingMoq => New(
         id: 1100,
         title: "Avoid using Moq",
