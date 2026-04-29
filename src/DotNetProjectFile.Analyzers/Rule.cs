@@ -1284,7 +1284,7 @@ public static partial class Rule
        message: "Solve issue {0} or suppress it using <NuGetAuditSuppress>",
        description: "TODO",
        tags: ["NuGet", "suppression"],
-       category: Category.CodeQuality);
+       category: Category.Security);
 
     public static DiagnosticDescriptor AvoidUsingMoq => New(
         id: 1100,
