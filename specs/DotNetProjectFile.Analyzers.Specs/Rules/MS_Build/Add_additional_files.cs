@@ -17,7 +17,7 @@ public class Guards
         .ForProject(project)
         .HasNoIssues();
 
-    [Test, Ignore("Should be fixed with mergining the SDK ")]
+    [Test, Ignore("Should be fixed with merging the SDK ")]
     public void Directory_Build_props_not_being_added() => new AddAdditionalFile()
         .ForProject("WithDirectoryBuildProps.cs")
         .HasNoIssues();
