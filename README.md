@@ -11,10 +11,9 @@ that report issues on .NET project files.
 The full documentation can be found [here](docs/README.md).
 
 ## Installation
-| Packages                                                                                         | NuGet                                                                                                                                                                                                                                                                    |
+| Package                                                                                          | NuGet                                                                                                                                                                                                                                                                    |
 |--------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |[DotNetProjectFile.Analyzers](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/)        | [![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers/)                     |
-|[DotNetProjectFile.Analyzers.Sdk](https://www.nuget.org/packages/DotNetProjectFile.Analyzers.Sdk/)| [![DotNetProjectFile.Analyzers.Sdk](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers.Sdk)![DotNetProjectFile.Analyzers.Sdk](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers.Sdk)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers.Sdk/) |
 
 ### Analyzers
 To use the analyzers, you must include the analyzer NuGet package in your project file:

@@ -1,6 +1,6 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <Import Project="src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.props" />
+  <Import Project="src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.props" />
 
   <ItemGroup Label="Directories">
     <None Include="design/**" />
@@ -12,10 +12,24 @@
     <None Include="docs/**/*" />
   </ItemGroup>
 
+  <!-- Do not analyze the projects. -->
   <ItemGroup>
-    <PackageReference Update="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
+    <AdditionalFiles Remove="projects/**.*" />
   </ItemGroup>
 
-  <Import Project="src/DotNetProjectFile.Analyzers.Sdk/DotNetProjectFile.Analyzers.Sdk.targets" />
+  <!--
+  <ItemGroup Label="Analyzer">
+    [! #pragma warning disable Proj0014 -]
+    <ProjectReference
+      Include="src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
+      PrivateAssets="all"
+      ExcludeAssets="runtime"
+      ReferenceOutputAssembly="false"
+      OutputItemType="Analyzer"
+      SetTargetFramework="TargetFramework=netstandard2.0" />
+  </ItemGroup>
+  -->
+
+  <Import Project="src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.targets" />
 
 </Project>

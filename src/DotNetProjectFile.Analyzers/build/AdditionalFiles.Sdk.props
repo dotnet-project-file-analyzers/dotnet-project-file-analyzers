@@ -1,0 +1,62 @@
+<Project>
+
+  <ItemGroup>
+    <!-- NuGet.config -->
+    <AdditionalFiles Include="$([MSBuild]::GetPathOfFileAbove('NuGet.config', '$(MSBuildThisFileDirectory)'))" />
+    <!-- .editorconfig -->
+    <AdditionalFiles Include="$([MSBuild]::GetPathOfFileAbove('.editorconfig', '$(MSBuildThisFileDirectory)'))" />
+    <!-- .globalconfig -->
+    <AdditionalFiles Include="$(GlobalAnalyzerConfigFiles)" />
+    <AdditionalFiles Include=".git*" />
+    <AdditionalFiles Include=".github/**" />
+    <AdditionalFiles Include="*.config" />
+    <AdditionalFiles Include="*.ini" />
+    <AdditionalFiles Include="*.json" />
+    <AdditionalFiles Include="*.md" />
+    <AdditionalFiles Include="*.txt" />
+    <AdditionalFiles Include="*.yaml" />
+    <AdditionalFiles Include="*.yml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.??proj" />
+    <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.slnx" />
+    <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.props" />
+    <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.targets" />
+  </ItemGroup>
+
+  <!-- Directory.* files should be visible in the .net.csproj -->
+  <ItemGroup>
+    <!-- Directory.Build.props -->
+    <AdditionalFiles
+      Condition="'$(ImportDirectoryBuildProps)' == 'true'"
+      Update="$(DirectoryBuildPropsPath)"
+      Link="$(_DirectoryBuildPropsFile)"
+      Visible ="true" />
+    <!-- Directory.Build.targets -->
+    <AdditionalFiles
+      Condition="'$(ImportDirectoryBuildTargets)' == 'true'"
+      Update="$(DirectoryBuildTargetsPath)"
+      Link="$(_DirectoryBuildTargetsFile)"
+      Visible ="true" />
+    <!-- Directory.Packages.props -->
+    <AdditionalFiles
+      Condition="'$(ImportDirectoryPackagesProps)' == 'true'"
+      Update="$(DirectoryPackagesPropsPath)"
+      Link="$(_DirectoryPackagesPropsFile)"
+      Visible ="true" />
+  </ItemGroup>
+
+  <!-- Make visible -->
+  <ItemGroup>
+    <AdditionalFiles Visible ="true" Update="*.props" />
+    <AdditionalFiles Visible ="true" Update="*.targets" />
+    <AdditionalFiles Visible ="true" Update="props/*.props" />
+    <AdditionalFiles Visible ="true" Update="props/*.targets" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="**/TestResults/**" />
+  </ItemGroup>
+
+</Project>
