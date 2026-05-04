@@ -5,11 +5,11 @@ public sealed class OutputType(XElement element, Node parent, MsBuildProject pro
 {
     public enum Kind
     {
-        Library,
-        Exe,
-        Module,
-        WinExe,
-        WinMdObj,
-        AppContainerExe,
+        Library = 0,
+        Exe = 1,
+        Module = 2,
+        WinExe = 3,
+        WinMdObj = 4,
+        AppContainerExe = 5,
     }
 }

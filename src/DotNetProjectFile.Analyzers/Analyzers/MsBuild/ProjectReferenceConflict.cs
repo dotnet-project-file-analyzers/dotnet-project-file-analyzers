@@ -6,4 +6,5 @@ public enum ProjectReferenceConflict
     IsExe,
     IsNotPackable,
     IsTestProject,
+    IsBenchmarkProject,
 }
