@@ -5,7 +5,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class FullySpecifyNoWarnRuleIds() : MsBuildProjectFileAnalyzer(Rule.FullySpecifyNoWarnRuleIds)
 {
     /// <inheritdoc />
-    public override bool DisableOnFailingImport => true;
+    public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
@@ -19,6 +19,5 @@ public sealed class FullySpecifyNoWarnRuleIds() : MsBuildProjectFileAnalyzer(Rul
         }
     }
 
-    private static bool NotFullySpecified(string ruleId)
-        => int.TryParse(ruleId, out _);
+    private static bool NotFullySpecified(string ruleId) => ruleId.All(char.IsDigit);
 }

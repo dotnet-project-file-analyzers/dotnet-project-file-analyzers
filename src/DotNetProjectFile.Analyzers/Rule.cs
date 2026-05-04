@@ -1269,6 +1269,28 @@ public static partial class Rule
         tags: ["roslyn", "analyzer", "Sonar"],
         category: Category.CodeQuality);
 
+    public static DiagnosticDescriptor SuppressNuGetIssuesPerPackage => New(
+        id: 1005,
+        title: "Suppress NuGet issues per package",
+        message: "Solve issue {0} or suppress it on the reported package",
+        description:
+            "As the raised issues are reported on a specific dependency, it " +
+            "is best to suppress it on that specific dependency only " +
+            "(assuming it is safe to do so).",
+        tags: ["NuGet", "suppression"],
+        category: Category.CodeQuality);
+
+    public static DiagnosticDescriptor SuppressNuGetAdvisoriesPerVulnerability => New(
+        id: 1006,
+        title: "Suppress NuGet advisories per vulnerability",
+        message: "Solve issue {0} or suppress it using <NuGetAuditSuppress>",
+        description:
+            "As the raised advisories are reported on a specific vulnerability, it " +
+            "is best to suppress it on that specific vulnerability only (assuming " +
+            "it is safe to do so) using <NuGetAuditSuppress>.",
+        tags: ["NuGet", "suppression"],
+        category: Category.Security);
+
     public static DiagnosticDescriptor AvoidUsingMoq => New(
         id: 1100,
         title: "Avoid using Moq",
