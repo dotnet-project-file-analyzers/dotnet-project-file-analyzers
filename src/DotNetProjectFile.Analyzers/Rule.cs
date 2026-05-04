@@ -1274,9 +1274,9 @@ public static partial class Rule
         title: "Suppress NuGet issues per package",
         message: "Solve issue {0} or suppress it on the reported package",
         description:
-            "As the raised issues are reported on a speciffic dependency, it " +
-            "is best to nsuppress is on that speciffic denpendency only " +
-            "(asuming it is safe to do so).",
+            "As the raised issues are reported on a specific dependency, it " +
+            "is best to suppress it on that specific dependency only " +
+            "(assuming it is safe to do so).",
         tags: ["NuGet", "suppression"],
         category: Category.CodeQuality);
 
