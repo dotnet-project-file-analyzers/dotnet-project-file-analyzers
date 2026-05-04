@@ -79,11 +79,15 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.12.2</Version>
+    <Version>1.13.0</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+]]>
+    </ToBeReleased>
+    <PackageReleaseNotes>
+      <![CDATA[
 v1.13.0
 - Proj0006: Enable Additional file detection again. (UPDATE)
 - Proj1004: .NET Project File Analyzers SDK no longer requires separate package. (NEW RULE)
@@ -93,10 +97,6 @@ v1.13.0
 - Proj1006: Suppress NuGet advisories per vulnerability. (NEW RULE)
 - Proj1007: Non-Roslyn languages require .NET Project File Analyzers SDK. (NEW RULE)
 - Proj3000: Drop difference between additional and regular files. (FP)
-]]>
-    </ToBeReleased>
-    <PackageReleaseNotes>
-      <![CDATA[
 v1.12.2
 - Proj0201: Exclude Microsoft.NET.Sdk.Web projects. (FP)
 - Proj1001: Exclude xunit.runner.visualstudio. (FP)
