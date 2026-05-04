@@ -1285,8 +1285,8 @@ public static partial class Rule
         title: "Suppress NuGet advisories per vulnerability",
         message: "Solve issue {0} or suppress it using <NuGetAuditSuppress>",
         description:
-            "As the raised advisories are reported on a speciffic vulnerability, it " +
-            "is best to suppress is on that speciffic vulnerability only (asuming " +
+            "As the raised advisories are reported on a specific vulnerability, it " +
+            "is best to suppress it on that specific vulnerability only (assuming " +
             "it is safe to do so) using <NuGetAuditSuppress>.",
         tags: ["NuGet", "suppression"],
         category: Category.Security);
