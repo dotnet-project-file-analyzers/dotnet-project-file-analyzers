@@ -1,12 +1,17 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="../../src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.props"/>
+  
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <Import Project="../../src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.targets"/>
+
+  <!-- These are normally Included by the package. Adding them here reduces noise in the tests. -->
   <ItemGroup>
-    <AdditionalFiles Include="*.csproj" Visible="false" />
+    <AdditionalFiles Include="../../src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.*" />
   </ItemGroup>
 
 </Project>

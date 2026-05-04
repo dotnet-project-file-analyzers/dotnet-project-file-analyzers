@@ -7,13 +7,10 @@ public class On
         .ForSdkProject("DotnetProjectFilesSdk")
         .HasNoIssues();
 
-    /// <remarks>Imported files can be ignored.</remarks>>
     [Test]
     public void Project_not_available_as_additional() => new AddAdditionalFile()
         .ForSdkProject("DotnetProjectFilesSdk")
-        .HasIssues(
-            Issue.WRN("Proj0006", "Add 'DotNetProjectFile.Analyzers.Sdk.props' to the additional files"),
-            Issue.WRN("Proj0006", "Add 'DotNetProjectFile.Analyzers.Sdk.targets' to the additional files"));
+        .HasNoIssues();
 
     [Test]
     public void Unresolved_Project() => new GuardUnsupported()

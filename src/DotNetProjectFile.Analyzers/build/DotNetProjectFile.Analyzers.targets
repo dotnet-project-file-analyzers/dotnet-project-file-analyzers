@@ -21,4 +21,13 @@
     <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Include="**/*.slnx" />
   </ItemGroup>
 
+  <!--To inform users the SDK package is no longer needed. -->
+  <Target Name="Obsolete" BeforeTargets="ResolvePackageAssets">
+    <Warning
+      Condition="@(PackageReference->AnyHaveMetadataValue('Identity', 'DotNetProjectFile.Analyzers.Sdk'))"
+      Code="Proj1004"
+      Text="The package reference to DotNetProjectFile.Analyzers.Sdk can be removed"
+      HelpLink="https://dotnet-project-file-analyzers.github.io/rules/Proj1004.html" />
+  </Target>
+
 </Project>
