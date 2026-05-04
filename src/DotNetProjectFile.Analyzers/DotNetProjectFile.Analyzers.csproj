@@ -91,7 +91,7 @@ v1.13.0
 - Proj1303: Avoid project references to benchmark projects. (NEW RULE)
 v.13.0.0
 - Proj1005: Suppress NuGet issues per package. (NEW RULE)
-- Proj1006: Suppress NuGet audit issues via NuGetAuditSuppress. (NEW RULE)
+- Proj1006: Suppress NuGet advisories per vulnerability. (NEW RULE)
 - Proj3000: Drop difference between additional and regular files. (FP)
 ]]>
     </ToBeReleased>

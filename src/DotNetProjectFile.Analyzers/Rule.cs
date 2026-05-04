@@ -1273,17 +1273,23 @@ public static partial class Rule
         id: 1005,
         title: "Suppress NuGet issues per package",
         message: "Solve issue {0} or suppress it on the reported package",
-        description: "TODO",
+        description:
+            "As the raised issues are reported on a speciffic dependency, it " +
+            "is best to nsuppress is on that speciffic denpendency only " +
+            "(asuming it is safe to do so).",
         tags: ["NuGet", "suppression"],
         category: Category.CodeQuality);
 
-    public static DiagnosticDescriptor SuppressNuGetAuditIssuesViaNuGetAuditSuppress => New(
-       id: 1006,
-       title: "Suppress NuGet audit issues via NuGetAuditSuppress",
-       message: "Solve issue {0} or suppress it using <NuGetAuditSuppress>",
-       description: "TODO",
-       tags: ["NuGet", "suppression"],
-       category: Category.Security);
+    public static DiagnosticDescriptor SuppressNuGetSAdvisoriesPerVulnerability => New(
+        id: 1006,
+        title: "Suppress NuGet advisories per vulnerability",
+        message: "Solve issue {0} or suppress it using <NuGetAuditSuppress>",
+        description:
+            "As the raised advisories are reported on a speciffic vulnerability, it " +
+            "is best to suppress is on that speciffic vulnerability only (asuming " +
+            "it is safe to do so) using <NuGetAuditSuppress>.",
+        tags: ["NuGet", "suppression"],
+        category: Category.Security);
 
     public static DiagnosticDescriptor AvoidUsingMoq => New(
         id: 1100,

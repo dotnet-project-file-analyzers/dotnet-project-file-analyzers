@@ -11,5 +11,9 @@ public sealed class PackageReference(XElement element, Node parent, MsBuildProje
 
     public string? PrivateAssets => Attribute() ?? Child();
 
+    public IEnumerable<string> NoWarn => (Attribute() ?? Child())?
+        .Split(SemicolonSeparated, StringSplitOptions.RemoveEmptyEntries).Select(id => id.Trim())
+        ?? [];
+
     public override PackageVersionInfo Info => new(IncludeOrUpdate, VersionOrVersionOverride);
 }
