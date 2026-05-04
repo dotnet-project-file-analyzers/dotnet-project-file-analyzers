@@ -45,8 +45,7 @@
     <None Update="tools/*.ps1" Pack="true" PackagePath="/" />
     <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
     <None Include="$(OutputPath)/DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
-    <None Include="build/DotNetProjectFile.Analyzers.props" Pack="true" PackagePath="/build/" />
-    <None Include="build/DotNetProjectFile.Analyzers.targets" Pack="true" PackagePath="/build/" />
+    <None Include="build/*.*" Pack="true" PackagePath="/build/" />
     <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
@@ -79,7 +78,7 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.13.0</Version>
+    <Version>1.13.1</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
@@ -88,6 +87,8 @@ ToBeDecided:
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.13.1
+- Add missing props and targets to package. (BUG)
 v1.13.0
 - Proj0006: Enable Additional file detection again. (UPDATE)
 - Proj1004: .NET Project File Analyzers SDK no longer requires separate package. (NEW RULE)
