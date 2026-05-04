@@ -191,6 +191,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj1004** .NET Project File Analyzers SDK no longer requires separate package](rules/Proj1004.md)
 * [**Proj1005** Suppress NuGet issues per package](rules/Proj1005.md)
 * [**Proj1006** Suppress NuGet advisories per vulnerability](rules/Proj1006.md)
+* [**Proj1007** Non-Roslyn languages require .NET Project File Analyzers SDK](rules/Proj1007.md)
 
 ### Design
 * [**Proj1300** Avoid project references to executables](rules/Proj1300.md)

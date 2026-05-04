@@ -141,6 +141,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj1004** .NET Project File Analyzers SDK not longer requires separate package](https://dotnet-project-file-analyzers.github.io/rules/Proj1004.html)
 * [**Proj1005** Suppress NuGet issues per package](https://dotnet-project-file-analyzers.github.io/rules/Proj1005.html)
 * [**Proj1006** Suppress NuGet advisories per vulnerability](https://dotnet-project-file-analyzers.github.io/rules/Proj1006.html)
+* [**Proj1007** Non-Roslyn languages require .NET Project File Analyzers SDK](https://dotnet-project-file-analyzers.github.io/rules/Proj1007.html)
 
 ### Formatting
 * [**Proj1700** Indent XML](https://dotnet-project-file-analyzers.github.io/rules/Proj1700.html)
