@@ -89,6 +89,7 @@ v1.13.0
 - Proj1004: .NET Project File Analyzers SDK no longer requires separate package. (NEW RULE)
 - Proj1300: Benchmark projects may depend on everything. (FP)
 - Proj1303: Avoid project references to benchmark projects. (NEW RULE)
+- Proj1007: Non-Roslyn languages require .NET Project File Analyzers SDK. (NEW RULE)
 - Proj3000: Drop difference between additional and regular files. (FP)
 ]]>
     </ToBeReleased>

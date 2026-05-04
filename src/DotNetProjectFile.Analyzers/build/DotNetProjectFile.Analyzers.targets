@@ -1,5 +1,9 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
+  <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.csproj' or '$(MSBuildProjectExtension)' == '.vbproj'">
+    <IsRoslynBased>true</IsRoslynBased>
+  </PropertyGroup>
+  
   <!--
     SonarQube can pick up issues report on files others than compiling files
     if they are reported as <Content>.
@@ -22,12 +26,21 @@
   </ItemGroup>
 
   <!--To inform users the SDK package is no longer needed. -->
-  <Target Name="Obsolete" BeforeTargets="ResolvePackageAssets">
+  <Target Name="Proj1004" BeforeTargets="ResolvePackageAssets">
     <Warning
       Condition="@(PackageReference->AnyHaveMetadataValue('Identity', 'DotNetProjectFile.Analyzers.Sdk'))"
       Code="Proj1004"
       Text="The package reference to DotNetProjectFile.Analyzers.Sdk can be removed"
       HelpLink="https://dotnet-project-file-analyzers.github.io/rules/Proj1004.html" />
+  </Target>
+
+  <!--To inform users to use .net.csproj for not Roslyn-based languages such as F#. -->
+  <Target Name="Proj1007" BeforeTargets="ResolvePackageAssets">
+    <Warning
+      Condition="'$(IsRoslynBased)' != 'true' and $([MSBuild]::GetPathOfFileAbove('.net.csproj', '$(MSBuildThisFileDirectory)')) == ''"
+      Code="Proj1007"
+      Text="Use .net.csproj to analyze this project"
+      HelpLink="https://dotnet-project-file-analyzers.github.io/rules/Proj1007.html" />
   </Target>
 
 </Project>
