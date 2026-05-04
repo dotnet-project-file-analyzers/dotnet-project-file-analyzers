@@ -86,7 +86,7 @@ ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.13.0
 - Proj0006: Enable Additional file detection again. (UPDATE)
-- Proj1300: Bbencmark projectsmay depend on everthing. (FP)
+- Proj1300: Benchmark projects may depend on everything. (FP)
 - Proj1303: Avoid project references to bencmark projects. (NEW RULE)
 - Proj3000: Drop difference between additional and regular files. (FP)
 ]]>
