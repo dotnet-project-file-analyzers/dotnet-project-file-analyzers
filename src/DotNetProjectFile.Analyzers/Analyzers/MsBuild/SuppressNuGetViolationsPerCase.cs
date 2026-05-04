@@ -2,7 +2,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 
 /// <summary>
 /// Implements <see cref="Rule.SuppressNuGetIssuesPerPackage"/>
-/// and <see cref="Rule.SuppressNuGetSAdvisoriesPerVulnerability"/>.
+/// and <see cref="Rule.SuppressNuGetAdvisoriesPerVulnerability"/>.
 /// </summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class SuppressNuGetViolationsPerCase() : MsBuildProjectFileAnalyzer(
