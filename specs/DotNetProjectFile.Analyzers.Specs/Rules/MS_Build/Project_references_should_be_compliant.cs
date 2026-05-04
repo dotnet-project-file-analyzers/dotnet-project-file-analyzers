@@ -70,7 +70,7 @@ public class Detects_conflicts
 
 public class Detects_no_conflicts_for
 {
-    public class Benchmarsk_projects
+    public class Benchmark_projects
     {
         [TestCase(OutputType.Kind.Library, true, false)]
         [TestCase(OutputType.Kind.Library, false, true)]
