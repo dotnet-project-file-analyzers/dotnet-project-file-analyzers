@@ -45,6 +45,6 @@ public sealed class SuppressNuGetViolationsPerCase() : MsBuildProjectFileAnalyze
 
     private static DiagnosticDescriptor? Advisory(string ruleId)
         => ruleId.ToUpperInvariant() is "NU1901" or "NU1902" or "NU1903" or "NU1904"
-        ? Rule.SuppressNuGetSAdvisoriesPerVulnerability
+        ? Rule.SuppressNuGetAdvisoriesPerVulnerability
         : null;
 }
