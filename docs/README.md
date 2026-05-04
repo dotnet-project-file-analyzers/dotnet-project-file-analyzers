@@ -193,6 +193,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj1300** Avoid project references to executables](rules/Proj1300.md)
 * [**Proj1301** Project references of packable targets should be packable](rules/Proj1301.md)
 * [**Proj1302** Avoid project references to test projects](rules/Proj1302.md)
+* [**Proj1303** Avoid project references to benchmark projects](rules/Proj1303.md)
 
 ### Formatting
 * [**Proj1700** Indent XML](rules/Proj1700.md)

@@ -1350,6 +1350,14 @@ public static partial class Rule
         tags: ["project", "reference", "design"],
         category: Category.Design);
 
+    public static DiagnosticDescriptor AvoidBenchmarkProjectDependencies => New(
+        id: 1303,
+        title: "Avoid project references to benchmark projects",
+        message: "Remove the project reference to benchmark project {0}",
+        description: "Benchmark projects should not be referenced by other projects",
+        tags: ["project", "reference", "design"],
+        category: Category.Design);
+
     public static DiagnosticDescriptor IndentXml => New(
         id: 1700,
         title: "Indent XML files",

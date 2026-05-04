@@ -5,7 +5,8 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class ProjectReferencesShouldBeCompliant() : MsBuildProjectFileAnalyzer(
     Rule.AvoidExecutableDependencies,
     Rule.DependentProjectsShouldBePackable,
-    Rule.AvoidTestProjectDependencies)
+    Rule.AvoidTestProjectDependencies,
+    Rule.AvoidBenchmarkProjectDependencies)
 {
     /// <inheritdoc />
     public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
@@ -33,6 +34,7 @@ public sealed class ProjectReferencesShouldBeCompliant() : MsBuildProjectFileAna
                     ProjectReferenceConflict.IsExe => Rule.AvoidExecutableDependencies,
                     ProjectReferenceConflict.IsNotPackable => Rule.DependentProjectsShouldBePackable,
                     ProjectReferenceConflict.IsTestProject => Rule.AvoidTestProjectDependencies,
+                    ProjectReferenceConflict.IsBenchmarkProject => Rule.AvoidBenchmarkProjectDependencies,
                     _ => null,
                 };
 
