@@ -1280,7 +1280,7 @@ public static partial class Rule
         tags: ["NuGet", "suppression"],
         category: Category.CodeQuality);
 
-    public static DiagnosticDescriptor SuppressNuGetSAdvisoriesPerVulnerability => New(
+    public static DiagnosticDescriptor SuppressNuGetAdvisoriesPerVulnerability => New(
         id: 1006,
         title: "Suppress NuGet advisories per vulnerability",
         message: "Solve issue {0} or suppress it using <NuGetAuditSuppress>",
