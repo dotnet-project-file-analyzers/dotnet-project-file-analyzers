@@ -7,7 +7,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class SuppressNuGetViolationsPerCase() : MsBuildProjectFileAnalyzer(
     Rule.SuppressNuGetIssuesPerPackage,
-    Rule.SuppressNuGetSAdvisoriesPerVulnerability)
+    Rule.SuppressNuGetAdvisoriesPerVulnerability)
 {
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
