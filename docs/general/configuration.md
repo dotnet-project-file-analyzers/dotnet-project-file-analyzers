@@ -85,3 +85,46 @@ In a MS Build project file this would look like:
 ```
 
 It is worth to point out that the `#pragma warning restore` is optional.
+
+Alternativally, for MS Build project file analyzers, it is also possible to
+suppress specific warnings by addding a `NoWarn` attribute or `<NoWarn>`
+child node. It should be noted that MSBuild disallows for certain nodes, such
+as `<PropertyGroup>` (and its children) and other level-1 nodes.
+
+### Attribute
+``` xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <Folder Include="First" />
+  </ItemGroup>
+
+``` xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <Folder Include="First" NoWarn="Proj0008" />
+  </ItemGroup>
+  
+</Project>
+```
+
+### Node
+``` xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <Folder Include="First" />
+  </ItemGroup>
+
+``` xml
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <Folder Include="First">
+      <NoWarn>Proj0008</NoWarn>
+    </Folder>
+  </ItemGroup>
+  
+</Project>
+```

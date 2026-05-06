@@ -46,10 +46,10 @@
   </ItemGroup>
 
   <ItemGroup Label="Test projects">
-    <None  Visible="true" Include="../../projects/*/*.csproj" Link="Projects/C#/%(Filename)%(Extension)" />
-    <None  Visible="true" Include="../../projects/*/*.vbproj" Link="Projects/VB/%(Filename)%(Extension)" />
-    <None  Visible="true" Include="../../projects/*/*.resx" Link="Projects/RESX/%(Filename)%(Extension)" />
-    <None  Visible="true" Include="../../projects/*/*.props" Link="Projects/Props/%(Directory)/%(Filename)%(Extension)" />
+    <None Visible="true" Include="../../projects/*/*.csproj" Link="Projects/C#/%(Filename)%(Extension)" />
+    <None Visible="true" Include="../../projects/*/*.vbproj" Link="Projects/VB/%(Filename)%(Extension)" />
+    <None Visible="true" Include="../../projects/*/*.resx" Link="Projects/RESX/%(Filename)%(Extension)" />
+    <None Visible="true" Include="../../projects/*/*.props" Link="Projects/Props/%(Directory)/%(Filename)%(Extension)" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzers">

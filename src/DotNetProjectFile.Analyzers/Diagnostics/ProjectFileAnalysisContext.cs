@@ -37,10 +37,18 @@ public readonly struct ProjectFileAnalysisContext<TFile>(
 
     /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, XmlAnalysisNode node, params object?[]? messageArgs)
-        => ReportDiagnostic(
-            descriptor,
-            node.Element.Parent is null ? node.Locations.StartElement : node.Locations.FullSpan,
-            messageArgs);
+    {
+#pragma warning disable S3215 // "interface" instances should not be cast to concrete types
+        // Having a different overload should fix support most issues, not all, and currently
+        // adding NoWarn to the interface is not worth it.
+        if (NoWarn(node as Node, descriptor)) return;
+#pragma warning restore S3215 // "interface" instances should not be cast to concrete types
+
+        ReportDiagnostic(
+           descriptor,
+           node.Element.Parent is null ? node.Locations.StartElement : node.Locations.FullSpan,
+           messageArgs);
+    }
 
     /// <summary>Reports a diagnostic about the project file.</summary>
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, ProjectFile file, LinePositionSpan span, params object?[]? messageArgs)
@@ -60,4 +68,8 @@ public readonly struct ProjectFileAnalysisContext<TFile>(
             Report(diagnostic);
         }
     }
+
+    private static bool NoWarn(Node? node, DiagnosticDescriptor descriptor)
+        => node is not null
+        && (node.NoWarn.Contains(descriptor.Id) || NoWarn(node.Parent, descriptor));
 }
