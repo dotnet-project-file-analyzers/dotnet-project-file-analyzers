@@ -86,5 +86,9 @@ public abstract class Node : XmlAnalysisNode
     protected T? Convert<T>(string? value)
         => TypeConverters.TryConvert<T>(value);
 
+    /// <inheritdoc />
+    XmlAnalysisNode? XmlAnalysisNode.Parent => Parent;
+
+    /// <inheritdoc />
     IEnumerable<XmlAnalysisNode> XmlAnalysisNode.Children() => Children;
 }

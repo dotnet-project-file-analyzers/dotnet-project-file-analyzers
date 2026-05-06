@@ -27,12 +27,14 @@ public abstract class Node : XmlAnalysisNode
 
     public XElement Element { get; }
 
+    /// <summary>The parent node (only null for <see cref="MsBuildProject"/>).</summary>
     public Node? Parent { get; }
 
     public int Depth { get; }
 
     public XmlLocations Locations { get; }
 
+    /// <summary>The <see cref="object"/> value of the node.</summary>
     public virtual object? Val => Element.Value;
 
     /// <summary>Gets the local name of the <see cref="Node"/>.</summary>
@@ -41,7 +43,13 @@ public abstract class Node : XmlAnalysisNode
     /// <summary>Gets the label of the node.</summary>
     public string? Label => Attribute();
 
+    /// <summary>The condition under which the node is evaluated.</summary>
     public virtual string? Condition => Attribute();
+
+    /// <summary>The diagnostic ID's that should be ignored.</summary>
+    public IEnumerable<string> NoWarn => (Attribute() ?? Child())?
+        .Split(SemicolonSeparated, StringSplitOptions.RemoveEmptyEntries).Select(id => id.Trim())
+        ?? [];
 
     public IEnumerable<string> Conditions()
         => AncestorsAndSelf()
@@ -50,8 +58,6 @@ public abstract class Node : XmlAnalysisNode
 
     /// <summary>Get the line info.</summary>
     public IXmlLineInfo LineInfo => Element;
-
-    public int Length => ToString().Length;
 
     /// <summary>Represents the node as an <see cref="string"/>.</summary>
     /// <remarks>
@@ -93,8 +99,12 @@ public abstract class Node : XmlAnalysisNode
 
     internal Node Create(XElement element) => Factory.Create(element, this, Project);
 
-    protected T? Convert<T>(string? value)
+    protected static T? Convert<T>(string? value)
         => TypeConverters.TryConvert<T>(value);
 
+    /// <inheritdoc />
+    XmlAnalysisNode? XmlAnalysisNode.Parent => Parent;
+
+    /// <inheritdoc />
     IEnumerable<XmlAnalysisNode> XmlAnalysisNode.Children() => Children;
 }
