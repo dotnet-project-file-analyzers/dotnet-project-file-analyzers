@@ -81,7 +81,6 @@ public class Guards
 
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <OutputType>library</OutputType>
     <IsTestProject>true</IsTestProject>
   </PropertyGroup>
 

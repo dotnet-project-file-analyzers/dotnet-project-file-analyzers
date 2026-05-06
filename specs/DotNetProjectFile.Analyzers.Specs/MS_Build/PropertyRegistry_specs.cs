@@ -9,8 +9,13 @@ internal static class Fixture
     public static readonly IOFile EntryFile = IOFile.Parse(@"C:\repo\src\App\App.csproj");
     public static readonly PropertyRegistry Registry = new(ContainingFile, EntryFile);
 
-    public static readonly string ThisDir = $@"C:\repo\src\Lib{IOPath.Separator}";
-    public static readonly string ProjectDir = @"C:\repo\src\App";
+    public static readonly string ThisDir = Norm(@"C:\repo\src\Lib") + IOPath.Separator;
+    public static readonly string ProjectDir = Norm(@"C:\repo\src\App");
+
+    /// <summary>Normalises backslashes in a path literal to the current platform's separator.
+    /// Lets test fixtures stay readable as Windows-style strings while running cleanly on
+    /// Linux/Mac CI where <c>IOFile</c> uses forward slashes.</summary>
+    public static string Norm(string path) => path.Replace('\\', IOPath.Separator);
 }
 
 public class Lookup_reserved_per_file_properties
@@ -29,7 +34,7 @@ public class Lookup_reserved_per_file_properties
 
     [Test]
     public void MSBuildThisFileFullPath_returns_full_path()
-        => Fixture.Registry.Lookup("MSBuildThisFileFullPath").Should().Be(@"C:\repo\src\Lib\Lib.csproj");
+        => Fixture.Registry.Lookup("MSBuildThisFileFullPath").Should().Be(Fixture.Norm(@"C:\repo\src\Lib\Lib.csproj"));
 
     [Test]
     public void MSBuildThisFileName_returns_name_without_extension()
@@ -59,7 +64,7 @@ public class Lookup_reserved_per_project_properties
 
     [Test]
     public void MSBuildProjectFullPath_returns_full_path()
-        => Fixture.Registry.Lookup("MSBuildProjectFullPath").Should().Be(@"C:\repo\src\App\App.csproj");
+        => Fixture.Registry.Lookup("MSBuildProjectFullPath").Should().Be(Fixture.Norm(@"C:\repo\src\App\App.csproj"));
 
     [Test]
     public void MSBuildProjectName_returns_name_without_extension()
@@ -81,12 +86,12 @@ public class Lookup_distinguishes_anchors_when_files_differ
     [Test]
     public void This_file_directory_anchors_to_containing_file()
         => Registry.Lookup("MSBuildThisFileDirectory")
-            .Should().Be($@"C:\repo{IOPath.Separator}");
+            .Should().Be(Fixture.Norm(@"C:\repo") + IOPath.Separator);
 
     [Test]
     public void Project_directory_anchors_to_entry_file()
         => Registry.Lookup("MSBuildProjectDirectory")
-            .Should().Be(@"C:\repo\src\App");
+            .Should().Be(Fixture.Norm(@"C:\repo\src\App"));
 
     [Test]
     public void This_file_name_uses_containing_file()
@@ -247,9 +252,9 @@ public class Substitute_known_properties
     public void Multiple_separated_properties()
     {
         var result = Fixture.Registry.Substitute(
-            "$(MSBuildThisFileDirectory)..\\$(MSBuildProjectName)\\file.txt");
+            "$(MSBuildThisFileDirectory)../$(MSBuildProjectName)/file.txt");
 
-        result.Substituted.Should().Be(Fixture.ThisDir + "..\\App\\file.txt");
+        result.Substituted.Should().Be(Fixture.ThisDir + "../App/file.txt");
         result.Unresolved.Should().BeEmpty();
     }
 
@@ -401,7 +406,7 @@ public class Substitute_edge_cases
 
         var result = registry.Substitute("$(MSBuildThisFileDirectory)file.txt");
 
-        result.Substituted.Should().StartWith(@"C:\$(Foo)\");
+        result.Substituted.Should().StartWith(Fixture.Norm(@"C:\$(Foo)\"));
         result.Unresolved.Should().BeEmpty();
     }
 }
