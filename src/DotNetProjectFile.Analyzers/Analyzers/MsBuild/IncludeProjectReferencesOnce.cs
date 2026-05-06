@@ -14,12 +14,11 @@ public sealed class IncludeProjectReferencesOnce() : MsBuildProjectFileAnalyzer(
     {
         var references = new Dictionary<Reference, ProjectReference>();
 
-        foreach (var reference in context.File
-            .Walk()
-            .OfType<ProjectReference>()
+        foreach (var reference in context.EnabledItems<ProjectReference>()
             .Where(r => r.Include is { Length: > 0 }))
         {
-            var key = Reference.New(reference);
+            var (root, literal) = context.Resolve(reference, reference.Include!);
+            var key = new Reference(root.File(literal), Conditions.ToString(reference));
 
             if (references.ContainsKey(key))
             {
@@ -32,9 +31,5 @@ public sealed class IncludeProjectReferencesOnce() : MsBuildProjectFileAnalyzer(
         }
     }
 
-    private record struct Reference(IOFile File, string Condition)
-    {
-        public static Reference New(ProjectReference r)
-            => new(r.Project.Path.Directory.File(r.Include!), Conditions.ToString(r));
-    }
+    private record struct Reference(IOFile File, string Condition);
 }

@@ -14,11 +14,9 @@ public sealed class TestProjectsRequireSdk() : MsBuildProjectFileAnalyzer(
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var isTest = context.File.IsTestProject();
-        var hasSdk = context.File
-            .Walk().OfType<PackageReference>()
+        var hasSdk = context.EnabledItems<PackageReference>()
             .Any(Packages.Microsoft_NET_Test_Sdk.IsMatch);
-        var hasTUnit = context.File
-            .Walk().OfType<PackageReference>()
+        var hasTUnit = context.EnabledItems<PackageReference>()
             .Any(r => Packages.TUnit.IsMatch(r) || Packages.TUnit_Engine.IsMatch(r));
 
         var hasSdkOrTUnit = hasSdk || hasTUnit;

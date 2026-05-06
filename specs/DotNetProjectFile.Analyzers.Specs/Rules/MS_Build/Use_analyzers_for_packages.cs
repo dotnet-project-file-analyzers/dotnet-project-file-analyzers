@@ -158,6 +158,23 @@ public class Guards
       .HasNoIssues();
 
     [Test]
+    public void Package_inside_false_condition_does_not_require_analyzer() => new UseAnalyzersForPackages().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <NuGetAudit>false</NuGetAudit>
+          </PropertyGroup>
+
+          <ItemGroup Condition="'a' == 'b'">
+            <PackageReference Include="NUnit" Version="4.5.1" />
+          </ItemGroup>
+
+        </Project>
+        """)
+        .HasNoIssues();
+
+    [Test]
     public void Projects_with_included_analyzers() => new UseAnalyzersForPackages().ForInlineCsproj("""
         <Project Sdk="Microsoft.NET.Sdk">
 

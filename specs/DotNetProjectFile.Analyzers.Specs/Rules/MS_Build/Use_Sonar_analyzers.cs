@@ -92,3 +92,22 @@ public class Guards
         """)
         .HasNoIssues();
 }
+
+public class Reports_when_only_added_inside_false_condition
+{
+    [Test]
+    public void analyzer_inside_false_condition_item_group_is_treated_as_missing() => new UseSonarAnalyzers().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
+
+          <ItemGroup Condition="'a' == 'b'">
+            <PackageReference Include="SonarAnalyzer.CSharp" Version="10.6.0.109712" PrivateAssets="all" />
+          </ItemGroup>
+
+        </Project>
+        """)
+        .HasIssue(Issue.WRN("Proj1003", "Add SonarAnalyzer.CSharp"));
+}

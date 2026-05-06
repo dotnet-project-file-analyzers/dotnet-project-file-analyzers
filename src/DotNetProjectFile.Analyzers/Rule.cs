@@ -497,6 +497,23 @@ public static partial class Rule
         tags: ["dependencies", "dependency", "file system", "UNIX", "case-consistent"],
         category: Category.Bug);
 
+    public static DiagnosticDescriptor MsBuildPropertyCouldNotBeResolved => New(
+        id: 0052,
+        title: "MSBuild property could not be resolved by the analyzer",
+        message: "The MSBuild property '$({0})' referenced in '{1}' could not be resolved",
+        description:
+            "Properties referenced via $(...) in path expressions are resolved " +
+            "by the analyzer when they are reserved (e.g. <c>MSBuildThisFileDirectory</c>), " +
+            "registered via <CompilerVisibleProperty>, or unconditionally defined " +
+            "in <PropertyGroup>. Otherwise the reference is silently skipped (no " +
+            "false-positive diagnostic on the path-existence rule). Enabling this " +
+            "informational rule surfaces those skipped references so they can be " +
+            "registered or refactored.",
+        tags: ["Configuration", "MSBuild", "property"],
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Info,
+        isEnabled: false);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",

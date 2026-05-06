@@ -22,8 +22,7 @@ public sealed class ProjectReferencesShouldBeCompliant() : MsBuildProjectFileAna
             IsTestProject = context.Props.IsTestProject ?? info.IsTestProject,
         };
 
-        foreach (var reference in context.File.Walk()
-            .OfType<ProjectReference>()
+        foreach (var reference in context.EnabledItems<ProjectReference>()
             .Where(r => r.Include is { Length: > 0 }))
         {
             if (context.File.ProjectFiles.MsBuildProject(root.File(reference.Include!)) is { } project)

@@ -176,7 +176,10 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
     [Pure]
     private IEnumerable<T>? Iterate<T>(string path, Func<DirectoryInfo, string, IEnumerable<T>> enumerate)
     {
-        // We do not support variables yet.
+        // Defensive: callers should resolve MSBuild property references via PropertyRegistry
+        // before reaching the file walker. Any $( surviving here represents either an
+        // unresolved property name or a malformed reference; in both cases we cannot derive
+        // a valid file system path and skip silently rather than risk a false-positive match.
         if (path.Contains("$(") || Info is null) return null;
 
         IEnumerable<DirectoryInfo> enumerator = new RootDirectory(Info);

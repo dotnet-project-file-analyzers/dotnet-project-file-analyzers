@@ -8,9 +8,7 @@ public sealed class IncludePackageReferencesOnce() : MsBuildProjectFileAnalyzer(
     {
         var references = new Dictionary<Reference, PackageReference>();
 
-        foreach (var reference in context.File
-            .Walk()
-            .OfType<PackageReference>()
+        foreach (var reference in context.EnabledItems<PackageReference>()
             .Where(p => p.Include is { Length: > 0 }))
         {
             var key = Reference.New(reference);

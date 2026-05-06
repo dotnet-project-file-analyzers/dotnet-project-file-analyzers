@@ -19,4 +19,19 @@ public class Guards
          => new AvoidGeneratePackageOnBuildWhenNotPackable()
         .ForProject(project)
         .HasNoIssues();
+
+    [Test]
+    public void Generate_on_build_inside_false_condition_does_not_fire() => new AvoidGeneratePackageOnBuildWhenNotPackable()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+                <IsPackable>false</IsPackable>
+              </PropertyGroup>
+              <PropertyGroup Condition="'a' == 'b'">
+                <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+              </PropertyGroup>
+            </Project>
+            """)
+        .HasNoIssues();
 }

@@ -12,10 +12,10 @@ public sealed class DefinePackageReferenceVersion()
     protected override void Register(ProjectFileAnalysisContext context)
     {
         var versions = context.ManagePackageVersionsCentrally
-            ? PackageVersions(context.File)
+            ? PackageVersions(context)
             : [];
 
-        foreach (var reference in context.File.ItemGroups.Children<PackageReference>(WithoutVersion))
+        foreach (var reference in context.EnabledItems<PackageReference>().Where(WithoutVersion))
         {
             context.ReportDiagnostic(Descriptor, reference, reference.IncludeOrUpdate);
         }
@@ -26,13 +26,11 @@ public sealed class DefinePackageReferenceVersion()
             && !versions.Contains(r.IncludeOrUpdate);
     }
 
-    private static ImmutableHashSet<string> PackageVersions(MsBuildProject project) =>
+    private static ImmutableHashSet<string> PackageVersions(ProjectFileAnalysisContext context) =>
     [
-        .. project
-        .Walk()
-        .OfType<PackageVersion>()
-        .Where(r => r.Version is { Length: > 0 })
-        .Where(r => r.IncludeOrUpdate is { Length: > 0 })
-        .Select(r => r.IncludeOrUpdate)
+        .. context.EnabledItems<PackageVersion>()
+            .Where(r => r.Version is { Length: > 0 })
+            .Where(r => r.IncludeOrUpdate is { Length: > 0 })
+            .Select(r => r.IncludeOrUpdate)
     ];
 }

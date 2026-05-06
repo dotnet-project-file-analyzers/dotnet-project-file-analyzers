@@ -47,3 +47,26 @@ public class Guards
         """)
         .HasNoIssues();
 }
+
+public class Reports_when_sbom_only_registered_inside_false_condition
+{
+    [Test]
+    public void Sbom_package_inside_false_condition_is_treated_as_unregistered() => new GenerateSbom()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+
+              <PropertyGroup>
+                <IsPackable>true</IsPackable>
+                <TargetFramework>net10.0</TargetFramework>
+                <GenerateSBOM>true</GenerateSBOM>
+              </PropertyGroup>
+
+              <ItemGroup Condition="'a' == 'b'">
+                <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.5" />
+              </ItemGroup>
+
+            </Project>
+            """)
+        .HasIssue(Issue
+            .WRN("Proj0243", "Register the NuGet package 'Microsoft.Sbom.Targets' or define the <IsPackable> node with value 'false'"));
+}

@@ -11,7 +11,7 @@ public sealed class AvoidGeneratePackageOnBuildWhenNotPackable() : MsBuildProjec
     {
         if (IsPotentiallyPackable(context)) return;
 
-        foreach (var node in context.File.Walk().OfType<GeneratePackageOnBuild>())
+        foreach (var node in context.EnabledItems<GeneratePackageOnBuild>())
         {
             context.ReportDiagnostic(Descriptor, node);
         }

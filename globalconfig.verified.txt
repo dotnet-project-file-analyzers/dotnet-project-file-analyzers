@@ -49,6 +49,7 @@ dotnet_diagnostic.Proj0048.severity = warning    # Language version should be se
 dotnet_diagnostic.Proj0049.severity = warning    # Prefer the latest released language version
 dotnet_diagnostic.Proj0050.severity = warning    # Enforce code-style in builds
 dotnet_diagnostic.Proj0051.severity = warning    # Project reference must be case-consistent with the file system
+dotnet_diagnostic.Proj0052.severity = none       # MSBuild property could not be resolved by the analyzer
 dotnet_diagnostic.Proj0200.severity = warning    # Define the project packability explicitly
 dotnet_diagnostic.Proj0201.severity = warning    # Define the project version explicitly
 dotnet_diagnostic.Proj0202.severity = warning    # Define the project description explicitly

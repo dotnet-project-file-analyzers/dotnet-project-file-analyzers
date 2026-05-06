@@ -12,9 +12,7 @@ public sealed class UseSonarAnalyzers() : MsBuildProjectFileAnalyzer(Rule.UseSon
     {
         if (Include(context.File.Language) is not { } include) { return; }
 
-        if (context.File
-            .Walk()
-            .OfType<PackageReferenceBase>()
+        if (context.EnabledItems<PackageReferenceBase>()
             .None(p => p is not PackageVersion && p.Include.IsMatch(include)))
         {
             context.ReportDiagnostic(Descriptor, context.File, include);

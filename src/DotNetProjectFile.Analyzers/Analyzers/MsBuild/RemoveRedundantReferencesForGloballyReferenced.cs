@@ -10,14 +10,12 @@ public sealed class RemoveRedundantReferencesForGloballyReferenced() : MsBuildPr
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.File.Walk()
-            .OfType<GlobalPackageReference>()
+        if (context.EnabledItems<GlobalPackageReference>()
             .Where(r => r.Include is { Length: > 0 })
             .Select(r => r.Include)
             .ToImmutableHashSet(StringComparer.OrdinalIgnoreCase) is not { Count: > 0 } globals) return;
 
-        foreach (var reference in context.File.Walk()
-            .OfType<PackageReference>()
+        foreach (var reference in context.EnabledItems<PackageReference>()
             .Where(r => globals.Contains(r.Include)))
         {
             context.ReportDiagnostic(Descriptor, reference, reference.Include);

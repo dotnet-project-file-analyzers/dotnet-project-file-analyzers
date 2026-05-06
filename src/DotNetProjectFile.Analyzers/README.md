@@ -53,6 +53,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0049** Prefer the latest released language version](https://dotnet-project-file-analyzers.github.io/rules/Proj0049.html)
 * [**Proj0050** Enforce code-style in builds](https://dotnet-project-file-analyzers.github.io/rules/Proj0050.html)
 * [**Proj0051** Project reference must be case-consistent with the file system](https://dotnet-project-file-analyzers.github.io/rules/Proj0051.html)
+* [**Proj0052** MSBuild property could not be resolved by the analyzer](https://dotnet-project-file-analyzers.github.io/rules/Proj0052.html)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)

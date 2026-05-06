@@ -9,6 +9,31 @@ public class Reports
         .HasIssue(Issue
             .WRN("Proj0051", "The casing of './foo.csproj' of differs from the file 'FOO.csproj' on disk")
             .WithSpan(07, 04, 07, 47));
+
+    [Test]
+    public void msbuild_property_case_mismatch() => new ProjectReferenceChecker()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+
+              <ItemGroup>
+                <ProjectReference Include="$(MSBuildThisFileDirectory)SIBLING.csproj" />
+              </ItemGroup>
+
+            </Project>
+            """)
+        .WithFile("Sibling.csproj", """
+            <Project Sdk="Microsoft.NET.Sdk">
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+            </Project>
+            """)
+        .HasIssue(Issue
+            .WRN("Proj0051", "The casing of '$(MSBuildThisFileDirectory)SIBLING.csproj' of differs from the file 'Sibling.csproj' on disk"));
 }
 #endif
 

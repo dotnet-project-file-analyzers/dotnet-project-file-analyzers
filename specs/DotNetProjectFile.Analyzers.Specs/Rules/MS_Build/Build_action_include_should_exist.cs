@@ -22,6 +22,24 @@ public class Reports
             Issue.WRN("Proj0022", "The Include 'missing.editor' of <EditorConfgFiles> does not exist" /*....*/).WithSpan(12, 04, 12, 49),
             Issue.WRN("Proj0022", "The Include 'missing.config' of <GlobalAnalyzerConfigFiles> does not exist").WithSpan(13, 04, 13, 58)
         );
+
+    [Test]
+    public void msbuild_property_with_missing_file() => new BuildActionIncludeShouldExist()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+
+              <ItemGroup>
+                <None Include="$(MSBuildThisFileDirectory)Missing.txt" />
+              </ItemGroup>
+
+            </Project>
+            """)
+        .HasIssue(Issue
+            .WRN("Proj0022", "The Include '$(MSBuildThisFileDirectory)Missing.txt' of <None> does not exist"));
 }
 
 public class Guards
@@ -31,4 +49,67 @@ public class Guards
          => new BuildActionIncludeShouldExist()
         .ForProject(project)
         .HasNoIssues();
+
+    [Test]
+    public void Build_action_with_msbuild_property() => new BuildActionIncludeShouldExist()
+        .ForProject("BuildActionWithMsBuildProperty.cs")
+        .HasNoIssues();
+
+    [Test]
+    public void Item_inside_false_condition_item_group_does_not_fire() => new BuildActionIncludeShouldExist()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+              <ItemGroup Condition="'a' == 'b'">
+                <None Include="Missing.txt" />
+              </ItemGroup>
+            </Project>
+            """)
+        .HasNoIssues();
+
+    [Test]
+    public void Bare_relative_path_in_Directory_Build_props_resolves_against_csproj_directory()
+        => new BuildActionIncludeShouldExist()
+            .ForInlineProject("Inner/inline.csproj", """
+                <Project Sdk="Microsoft.NET.Sdk">
+                  <PropertyGroup>
+                    <TargetFramework>net10.0</TargetFramework>
+                  </PropertyGroup>
+                </Project>
+                """)
+            .WithFile("Directory.Build.props", """
+                <Project>
+                  <ItemGroup>
+                    <None Include="Sibling.txt" />
+                  </ItemGroup>
+                </Project>
+                """)
+            .WithFile("Inner/Sibling.txt", string.Empty)
+            .HasNoIssues();
+}
+
+public class PathResolutionFromImportedFiles
+{
+    [Test]
+    public void Bare_relative_path_in_Directory_Build_props_does_not_resolve_against_props_directory()
+        => new BuildActionIncludeShouldExist()
+            .ForInlineProject("Inner/inline.csproj", """
+                <Project Sdk="Microsoft.NET.Sdk">
+                  <PropertyGroup>
+                    <TargetFramework>net10.0</TargetFramework>
+                  </PropertyGroup>
+                </Project>
+                """)
+            .WithFile("Directory.Build.props", """
+                <Project>
+                  <ItemGroup>
+                    <None Include="OnlyNextToProps.txt" />
+                  </ItemGroup>
+                </Project>
+                """)
+            .WithFile("OnlyNextToProps.txt", string.Empty)
+            .HasIssue(Issue
+                .WRN("Proj0022", "The Include 'OnlyNextToProps.txt' of <None> does not exist"));
 }
