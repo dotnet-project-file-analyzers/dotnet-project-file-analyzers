@@ -2,11 +2,18 @@
 
   <ItemGroup>
     <!-- NuGet.config -->
-    <AdditionalFiles Include="$([MSBuild]::GetPathOfFileAbove('NuGet.config', '$(MSBuildThisFileDirectory)'))" />
+    <AdditionalFiles
+      Include="$([MSBuild]::GetPathOfFileAbove('NuGet.config', '$(MSBuildThisFileDirectory)'))"
+      Link="NuGet.config"/>
+
     <!-- .editorconfig -->
-    <AdditionalFiles Include="$([MSBuild]::GetPathOfFileAbove('.editorconfig', '$(MSBuildThisFileDirectory)'))" />
+    <AdditionalFiles
+      Include="$([MSBuild]::GetPathOfFileAbove('.editorconfig', '$(MSBuildThisFileDirectory)'))"
+      Link=".editorconfig" />
+    
     <!-- .globalconfig -->
     <AdditionalFiles Include="$(GlobalAnalyzerConfigFiles)" />
+    
     <AdditionalFiles Include=".git*" />
     <AdditionalFiles Include=".github/**" />
     <AdditionalFiles Include="*.config" />
@@ -24,29 +31,7 @@
     <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.props" />
     <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.targets" />
   </ItemGroup>
-
-  <!-- Directory.* files should be visible in the .net.csproj -->
-  <ItemGroup>
-    <!-- Directory.Build.props -->
-    <AdditionalFiles
-      Condition="'$(ImportDirectoryBuildProps)' == 'true'"
-      Update="$(DirectoryBuildPropsPath)"
-      Link="$(_DirectoryBuildPropsFile)"
-      Visible ="true" />
-    <!-- Directory.Build.targets -->
-    <AdditionalFiles
-      Condition="'$(ImportDirectoryBuildTargets)' == 'true'"
-      Update="$(DirectoryBuildTargetsPath)"
-      Link="$(_DirectoryBuildTargetsFile)"
-      Visible ="true" />
-    <!-- Directory.Packages.props -->
-    <AdditionalFiles
-      Condition="'$(ImportDirectoryPackagesProps)' == 'true'"
-      Update="$(DirectoryPackagesPropsPath)"
-      Link="$(_DirectoryPackagesPropsFile)"
-      Visible ="true" />
-  </ItemGroup>
-
+  
   <!-- Make visible -->
   <ItemGroup>
     <AdditionalFiles Visible ="true" Update="*.props" />
@@ -55,8 +40,6 @@
     <AdditionalFiles Visible ="true" Update="props/*.targets" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="**/TestResults/**" />
-  </ItemGroup>
+  <Import Project="$(MSBuildThisFileDirectory)None.Sdk.props" />
 
 </Project>

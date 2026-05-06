@@ -1,0 +1,26 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+  <ItemGroup>
+
+    <None Include="**/TestResults/**" />
+    
+    <!-- Directory.Build.props -->
+    <None
+      Condition="'$(ImportDirectoryBuildProps)' == 'true'"
+      Include="$(DirectoryBuildPropsPath)"
+      Link="$(_DirectoryBuildPropsFile)" />
+    
+    <!-- Directory.Build.targets -->
+    <None
+      Condition="'$(ImportDirectoryBuildTargets)' == 'true'"
+      Include="$(DirectoryBuildTargetsPath)"
+      Link="$(_DirectoryBuildTargetsFile)" />
+    
+    <!-- Directory.Packages.props -->
+    <None
+      Condition="'$(ImportDirectoryPackagesProps)' == 'true'"
+      Include="$(DirectoryPackagesPropsPath)"
+      Link="$(_DirectoryPackagesPropsFile)" />
+  </ItemGroup>
+
+</Project>
