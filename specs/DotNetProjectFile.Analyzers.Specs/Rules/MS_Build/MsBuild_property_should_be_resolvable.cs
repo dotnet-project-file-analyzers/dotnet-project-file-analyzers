@@ -83,6 +83,40 @@ public class Guards
         .HasNoIssues();
 
     [Test]
+    public void user_defined_property_only_in_conditional_group_is_treated_as_unresolved() => new MsBuildPropertyShouldBeResolvable()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+              <PropertyGroup Condition="'a' == 'a'">
+                <MyConditionalDir>some/path</MyConditionalDir>
+              </PropertyGroup>
+              <ItemGroup>
+                <ProjectReference Include="$(MyConditionalDir)/Foo.csproj" />
+              </ItemGroup>
+            </Project>
+            """)
+        .HasIssue(Issue.INF("Proj0052",
+            "The MSBuild property '$(MyConditionalDir)' referenced in '$(MyConditionalDir)/Foo.csproj' could not be resolved"));
+
+    [Test]
+    public void user_defined_property_in_conditional_child_of_unconditional_group_is_treated_as_unresolved() => new MsBuildPropertyShouldBeResolvable()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+                <MyConditionalProp Condition="'a' == 'a'">some/path</MyConditionalProp>
+              </PropertyGroup>
+              <ItemGroup>
+                <ProjectReference Include="$(MyConditionalProp)/Foo.csproj" />
+              </ItemGroup>
+            </Project>
+            """)
+        .HasIssue(Issue.INF("Proj0052",
+            "The MSBuild property '$(MyConditionalProp)' referenced in '$(MyConditionalProp)/Foo.csproj' could not be resolved"));
+
+    [Test]
     public void include_without_property_reference_does_not_fire() => new MsBuildPropertyShouldBeResolvable()
         .ForInlineCsproj("""
             <Project Sdk="Microsoft.NET.Sdk">
