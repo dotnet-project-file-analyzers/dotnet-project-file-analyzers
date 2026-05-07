@@ -11,9 +11,13 @@ public sealed class UseCoverletCollectorOrMsBuild()
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var collector = context.EnabledItems<PackageReference>()
+        var collector = context.File
+            .Walk()
+            .OfType<PackageReference>()
             .LastOrDefault(r => r.Include == NuGet.Packages.coverlet_collector.Name);
-        var msBuild = context.EnabledItems<PackageReference>()
+        var msBuild = context.File
+            .Walk()
+            .OfType<PackageReference>()
             .LastOrDefault(r => r.Include == NuGet.Packages.coverlet_msbuild.Name);
 
         if (collector is { } && msBuild is { })

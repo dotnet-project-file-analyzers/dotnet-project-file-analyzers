@@ -18,7 +18,7 @@ public sealed class ProjectReferenceChecker() : MsBuildProjectFileAnalyzer(
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var node in context.EnabledItems<ProjectReference>())
+        foreach (var node in context.File.Walk().OfType<ProjectReference>())
         {
             var include = node.Include ?? string.Empty;
             var (root, literal) = context.Resolve(node, include);

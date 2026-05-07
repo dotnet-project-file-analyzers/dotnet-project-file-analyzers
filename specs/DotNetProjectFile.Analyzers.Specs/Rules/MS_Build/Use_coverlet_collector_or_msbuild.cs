@@ -52,21 +52,4 @@ public class Guards
     public void Projects_with_analyzers(string project) => new UseCoverletCollectorOrMsBuild()
         .ForProject(project)
         .HasNoIssues();
-
-    [Test]
-    public void One_package_inside_false_condition_does_not_count_as_both_present() => new UseCoverletCollectorOrMsBuild()
-        .ForInlineCsproj("""
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-              </PropertyGroup>
-              <ItemGroup>
-                <PackageReference Include="coverlet.collector" Version="6.0.0" PrivateAssets="all" />
-              </ItemGroup>
-              <ItemGroup Condition="'a' == 'b'">
-                <PackageReference Include="coverlet.msbuild" Version="6.0.0" PrivateAssets="all" />
-              </ItemGroup>
-            </Project>
-            """)
-        .HasNoIssues();
 }

@@ -14,7 +14,9 @@ public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(R
     {
         if (!context.File.IsPackable() || context.File.IsTestProject()) return;
 
-        foreach (var icon in context.EnabledItems<PackageIcon>()
+        foreach (var icon in context.File
+            .Walk()
+            .OfType<PackageIcon>()
             .Where(i => i.Value is { Length: > 0 }))
         {
             var info = ResolveImage(icon, icon.Value!, context);

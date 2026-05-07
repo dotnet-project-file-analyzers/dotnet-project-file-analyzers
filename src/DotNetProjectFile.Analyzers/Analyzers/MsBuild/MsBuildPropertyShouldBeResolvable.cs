@@ -13,12 +13,12 @@ public sealed class MsBuildPropertyShouldBeResolvable() : MsBuildProjectFileAnal
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var reference in context.EnabledItems<ProjectReference>())
+        foreach (var reference in context.File.Walk().OfType<ProjectReference>())
         {
             ReportUnresolved(context, reference, reference.Include);
         }
 
-        foreach (var action in context.EnabledItems<BuildAction>())
+        foreach (var action in context.File.Walk().OfType<BuildAction>())
         {
             foreach (var include in action.Include)
             {

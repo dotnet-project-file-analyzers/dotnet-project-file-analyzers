@@ -13,7 +13,9 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var packageReferences = context.EnabledItems<PackageReferenceBase>()
+        var packageReferences = context.File
+            .Walk()
+            .OfType<PackageReferenceBase>()
             .Where(p => p is not PackageVersion && p.IncludeOrUpdate is { Length: > 0 });
 
         var analyzers = GetAnalyzers(context.File.Language);

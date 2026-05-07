@@ -20,21 +20,4 @@ public class Guards
          => new IncludePackageReferencesOnce()
         .ForProject(project)
         .HasNoIssues();
-
-    [Test]
-    public void Duplicate_inside_false_condition_item_group_does_not_fire() => new IncludePackageReferencesOnce()
-        .ForInlineCsproj("""
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-              </PropertyGroup>
-              <ItemGroup>
-                <PackageReference Include="Qowaiv" Version="7.0.0" />
-              </ItemGroup>
-              <ItemGroup Condition="'a' == 'b'">
-                <PackageReference Include="Qowaiv" Version="7.0.0" />
-              </ItemGroup>
-            </Project>
-            """)
-        .HasNoIssues();
 }

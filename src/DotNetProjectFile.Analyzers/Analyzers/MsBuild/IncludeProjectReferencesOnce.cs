@@ -14,7 +14,9 @@ public sealed class IncludeProjectReferencesOnce() : MsBuildProjectFileAnalyzer(
     {
         var references = new Dictionary<Reference, ProjectReference>();
 
-        foreach (var reference in context.EnabledItems<ProjectReference>()
+        foreach (var reference in context.File
+            .Walk()
+            .OfType<ProjectReference>()
             .Where(r => r.Include is { Length: > 0 }))
         {
             var (root, literal) = context.Resolve(reference, reference.Include!);

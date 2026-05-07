@@ -503,12 +503,11 @@ public static partial class Rule
         message: "The MSBuild property '$({0})' referenced in '{1}' could not be resolved",
         description:
             "Properties referenced via $(...) in path expressions are resolved " +
-            "by the analyzer when they are reserved (e.g. <c>MSBuildThisFileDirectory</c>), " +
-            "registered via <CompilerVisibleProperty>, or unconditionally defined " +
-            "in <PropertyGroup>. Otherwise the reference is silently skipped (no " +
-            "false-positive diagnostic on the path-existence rule). Enabling this " +
-            "informational rule surfaces those skipped references so they can be " +
-            "registered or refactored.",
+            "when they are reserved (e.g. MSBuildThisFileDirectory), registered " +
+            "via <CompilerVisibleProperty>, or unconditionally defined in " +
+            "<PropertyGroup>. References that resolve to none of those are " +
+            "skipped silently; this informational rule surfaces them so they " +
+            "can be registered or refactored.",
         tags: ["Configuration", "MSBuild", "property"],
         category: Category.Configuration,
         severity: DiagnosticSeverity.Info,

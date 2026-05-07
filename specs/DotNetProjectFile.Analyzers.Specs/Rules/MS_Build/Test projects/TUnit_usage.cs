@@ -73,21 +73,4 @@ public class Guards
     public void non_test_project(string project) => new TUnitUsage()
         .ForProject(project)
         .HasNoIssues();
-
-    [Test]
-    public void TUnit_inside_false_condition_does_not_trigger_TUnit_specific_rules() => new TUnitUsage()
-        .ForInlineCsproj(@"
-<Project Sdk=""Microsoft.NET.Sdk"">
-
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <IsTestProject>true</IsTestProject>
-  </PropertyGroup>
-
-  <ItemGroup Condition=""'a' == 'b'"">
-    <PackageReference Include=""TUnit"" Version=""0.13.20"" PrivateAssets=""all"" />
-  </ItemGroup>
-
-</Project>")
-        .HasNoIssues();
 }

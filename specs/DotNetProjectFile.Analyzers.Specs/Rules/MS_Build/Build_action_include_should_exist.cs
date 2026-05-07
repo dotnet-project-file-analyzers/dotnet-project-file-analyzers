@@ -56,20 +56,6 @@ public class Guards
         .HasNoIssues();
 
     [Test]
-    public void Item_inside_false_condition_item_group_does_not_fire() => new BuildActionIncludeShouldExist()
-        .ForInlineCsproj("""
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-              </PropertyGroup>
-              <ItemGroup Condition="'a' == 'b'">
-                <None Include="Missing.txt" />
-              </ItemGroup>
-            </Project>
-            """)
-        .HasNoIssues();
-
-    [Test]
     public void Bare_relative_path_in_Directory_Build_props_resolves_against_csproj_directory()
         => new BuildActionIncludeShouldExist()
             .ForInlineProject("Inner/inline.csproj", """

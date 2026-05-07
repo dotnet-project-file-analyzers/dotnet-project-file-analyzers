@@ -88,56 +88,6 @@ public class Build_action_include_should_exist
             .HasNoIssues();
 }
 
-public class Property_group_condition_in_imported_file
-{
-    [Test]
-    public void Condition_referencing_MSBuildThisFileDirectory_evaluates_against_props_directory()
-        => new BuildActionIncludeShouldExist()
-            .ForInlineProject("Inner/inline.csproj", """
-                <Project Sdk="Microsoft.NET.Sdk">
-                  <PropertyGroup>
-                    <TargetFramework>net10.0</TargetFramework>
-                  </PropertyGroup>
-                  <ItemGroup>
-                    <None Include="$(MarkerFile)" />
-                  </ItemGroup>
-                </Project>
-                """)
-            .WithFile("Directory.Build.props", """
-                <Project>
-                  <PropertyGroup Condition="Exists('$(MSBuildThisFileDirectory)PropsAnchor.marker')">
-                    <MarkerFile>Resolved.txt</MarkerFile>
-                  </PropertyGroup>
-                </Project>
-                """)
-            .WithFile("PropsAnchor.marker", string.Empty)
-            .WithFile("Inner/Resolved.txt", string.Empty)
-            .HasNoIssues();
-
-    [Test]
-    public void Conditionally_defined_property_in_props_is_resolved_when_consumed_in_csproj()
-        => new BuildActionIncludeShouldExist()
-            .ForInlineProject("Inner/inline.csproj", """
-                <Project Sdk="Microsoft.NET.Sdk">
-                  <PropertyGroup>
-                    <TargetFramework>net10.0</TargetFramework>
-                  </PropertyGroup>
-                  <ItemGroup>
-                    <None Include="$(SomeName)" />
-                  </ItemGroup>
-                </Project>
-                """)
-            .WithFile("Directory.Build.props", """
-                <Project>
-                  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'inline'">
-                    <SomeName>Resolved.txt</SomeName>
-                  </PropertyGroup>
-                </Project>
-                """)
-            .WithFile("Inner/Resolved.txt", string.Empty)
-            .HasNoIssues();
-}
-
 public class Imported_targets_file
 {
     [Test]

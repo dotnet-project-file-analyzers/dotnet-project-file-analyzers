@@ -83,20 +83,6 @@ public class Guards
         .HasNoIssues();
 
     [Test]
-    public void unresolved_property_inside_false_condition_does_not_fire() => new MsBuildPropertyShouldBeResolvable()
-        .ForInlineCsproj("""
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-              </PropertyGroup>
-              <ItemGroup Condition="'a' == 'b'">
-                <ProjectReference Include="$(SomeUnknownProperty)/Foo.csproj" />
-              </ItemGroup>
-            </Project>
-            """)
-        .HasNoIssues();
-
-    [Test]
     public void include_without_property_reference_does_not_fire() => new MsBuildPropertyShouldBeResolvable()
         .ForInlineCsproj("""
             <Project Sdk="Microsoft.NET.Sdk">

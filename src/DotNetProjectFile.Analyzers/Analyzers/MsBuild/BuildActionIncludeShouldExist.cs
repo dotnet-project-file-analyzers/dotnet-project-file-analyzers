@@ -12,7 +12,7 @@ public sealed class BuildActionIncludeShouldExist() : MsBuildProjectFileAnalyzer
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var node in context.EnabledItems<BuildAction>())
+        foreach (var node in context.File.Walk().OfType<BuildAction>())
         {
             foreach (var include in node.Include.Where(i => context.Files(node, i)?.Any() == false))
             {

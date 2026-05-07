@@ -18,23 +18,6 @@ public class Guards
          => new IncludeProjectReferencesOnce()
         .ForProject(project)
         .HasNoIssues();
-
-    [Test]
-    public void Duplicate_inside_false_condition_item_group_does_not_fire() => new IncludeProjectReferencesOnce()
-        .ForInlineCsproj("""
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-              </PropertyGroup>
-              <ItemGroup>
-                <ProjectReference Include="../EmptyNodes/EmptyNodes.csproj" />
-              </ItemGroup>
-              <ItemGroup Condition="'a' == 'b'">
-                <ProjectReference Include="../EmptyNodes/EmptyNodes.csproj" />
-              </ItemGroup>
-            </Project>
-            """)
-        .HasNoIssues();
 }
 
 public class Reports_across_files

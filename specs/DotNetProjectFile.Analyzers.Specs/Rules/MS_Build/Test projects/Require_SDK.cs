@@ -27,19 +27,4 @@ public class Guards
          => new TestProjectsRequireSdk()
         .ForProject(project)
         .HasNoIssues();
-
-    [Test]
-    public void Sdk_inside_false_condition_is_treated_as_missing() => new TestProjectsRequireSdk()
-        .ForInlineCsproj("""
-            <Project Sdk="Microsoft.NET.Sdk">
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <IsTestProject>true</IsTestProject>
-              </PropertyGroup>
-              <ItemGroup Condition="'a' == 'b'">
-                <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" PrivateAssets="all" />
-              </ItemGroup>
-            </Project>
-            """)
-        .HasIssue(Issue.WRN("Proj0452", @"Include <PackageReference Include=""Microsoft.NET.Test.Sdk"" PrivateAssets =""all"" />"));
 }
