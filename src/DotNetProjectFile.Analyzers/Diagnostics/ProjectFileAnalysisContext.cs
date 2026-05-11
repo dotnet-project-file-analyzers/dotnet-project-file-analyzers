@@ -39,7 +39,7 @@ public readonly struct ProjectFileAnalysisContext<TFile>(
     public void ReportDiagnostic(DiagnosticDescriptor descriptor, XmlAnalysisNode node, params object?[]? messageArgs)
     {
 #pragma warning disable S3215 // "interface" instances should not be cast to concrete types
-        // Having a different overload should fix support most issues, not all, and currently
+        // Having a different overload should fix most issues, if not all, and currently
         // adding NoWarn to the interface is not worth it.
         if (NoWarn(node as Node, descriptor)) return;
 #pragma warning restore S3215 // "interface" instances should not be cast to concrete types
