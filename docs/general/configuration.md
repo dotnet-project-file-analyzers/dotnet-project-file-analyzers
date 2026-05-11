@@ -88,7 +88,7 @@ It is worth to point out that the `#pragma warning restore` is optional.
 
 Alternatively, for MS Build project file analyzers, it is also possible to
 suppress specific warnings by addding a `NoWarn` attribute or `<NoWarn>`
-child node. It should be noted that MSBuild disallows for certain nodes, such
+child node. It should be noted that MSBuild disallows it for certain nodes, such
 as `<PropertyGroup>` (and its children) and other level-1 nodes.
 
 ### Attribute
