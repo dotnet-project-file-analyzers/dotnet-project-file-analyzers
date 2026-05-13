@@ -22,6 +22,9 @@ public sealed class XmlComment(XComment comment, ProjectFile project) : XmlAnaly
     public int Depth => 1;
 
     /// <inheritdoc />
+    XmlAnalysisNode? XmlAnalysisNode.Parent => Project as XmlAnalysisNode;
+
+    /// <inheritdoc />
     [Pure]
     public IEnumerable<XmlAnalysisNode> Children() => [];
 }

@@ -23,5 +23,9 @@ public partial class Node : XmlAnalysisNode
 
     public IReadOnlyList<Node> Children { get; }
 
+    /// <inheritdoc />
+    XmlAnalysisNode? XmlAnalysisNode.Parent => Resource;
+
+    /// <inheritdoc />
     IEnumerable<XmlAnalysisNode> XmlAnalysisNode.Children() => Children;
 }
