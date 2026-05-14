@@ -49,7 +49,7 @@ public sealed partial class MsBuildProject
 
     /// <remarks>
     /// Walk in reversed order trough the nodes.
-    /// Skip ItemGroups as they can not contain properties.
+    /// Skip ItemGroups and Target as they can not contain properties.
     /// </remarks>
     private static TNode? Read<TNode>(Node node, ProjectTrace trace) where TNode : Node
     {
