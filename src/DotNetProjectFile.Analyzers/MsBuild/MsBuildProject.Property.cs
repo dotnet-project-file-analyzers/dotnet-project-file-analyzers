@@ -64,7 +64,7 @@ public sealed partial class MsBuildProject
         {
             return value;
         }
-        else if (node is not ItemGroup)
+        else if (node is not ItemGroup and not Target)
         {
             for (var i = node.Children.Count - 1; i >= 0; i--)
             {
