@@ -46,4 +46,30 @@ public class Guards
         </Project>
         """)
         .HasNoIssues();
+
+    [TestCase]
+    public void when_non_property_nodes_also_exist() => new GenerateSbom().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <GenerateSBOM>true</GenerateSBOM>
+          </PropertyGroup>
+
+          <ItemGroup>
+            <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.5" />
+          </ItemGroup>
+
+          <Target Name="GenerateSbomOnPublish" AfterTargets="Publish">
+            <GenerateSBOM
+              BuildDropPath="$(PublishDir)"
+              PackageName="$(MSBuildProjectName)"
+              PackageVersion="$(Version)"
+              PackageSupplier="Example"
+              NamespaceBaseUri="https://example.com/sbom" />
+          </Target>
+
+        </Project>
+        """)
+        .HasNoIssues();
 }

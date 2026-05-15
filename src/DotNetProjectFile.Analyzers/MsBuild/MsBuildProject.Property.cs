@@ -49,7 +49,7 @@ public sealed partial class MsBuildProject
 
     /// <remarks>
     /// Walk in reversed order trough the nodes.
-    /// Skip ItemGroups as they can not contain properties.
+    /// Skip ItemGroups and Target as they can not contain properties.
     /// </remarks>
     private static TNode? Read<TNode>(Node node, ProjectTrace trace) where TNode : Node
     {
@@ -64,7 +64,7 @@ public sealed partial class MsBuildProject
         {
             return value;
         }
-        else if (node is not ItemGroup)
+        else if (node is not ItemGroup and not Target)
         {
             for (var i = node.Children.Count - 1; i >= 0; i--)
             {
