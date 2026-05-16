@@ -39,7 +39,25 @@ public class Reports
             </Project>
             """)
         .HasIssue(Issue
-            .WRN("Proj0022", "The Include '$(MSBuildThisFileDirectory)Missing.txt' of <None> does not exist"));
+            .WRN("Proj0022", "The Include '$(MSBuildThisFileDirectory)Missing.txt' of <None> does not exist (resolved to 'Missing.txt')"));
+
+    [Test]
+    public void glob_pattern_with_msbuild_property_includes_resolved_suffix() => new BuildActionIncludeShouldExist()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+
+              <ItemGroup>
+                <None Include="$(MSBuildThisFileDirectory)*.nonexistent" />
+              </ItemGroup>
+
+            </Project>
+            """)
+        .HasIssue(Issue
+            .WRN("Proj0022", "The Include '$(MSBuildThisFileDirectory)*.nonexistent' of <None> does not match any files (resolved to '*.nonexistent')"));
 }
 
 public class Guards

@@ -25,7 +25,43 @@ public class Reports
             </Project>
             """)
         .HasIssue(Issue
-            .WRN("Proj0033", "The Include '$(MSBuildThisFileDirectory)Missing.csproj' of <ProjectReference> does not exist"));
+            .WRN("Proj0033", "The Include '$(MSBuildThisFileDirectory)Missing.csproj' of <ProjectReference> does not exist (resolved to 'Missing.csproj')"));
+
+    [Test]
+    public void multiple_resolvable_properties_in_include_combine_in_resolved_suffix() => new ProjectReferenceChecker()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+
+              <ItemGroup>
+                <ProjectReference Include="$(MSBuildThisFileDirectory)Sub/$(MSBuildThisFileName)Missing.csproj" />
+              </ItemGroup>
+
+            </Project>
+            """)
+        .HasIssue(Issue
+            .WRN("Proj0033", "The Include '$(MSBuildThisFileDirectory)Sub/$(MSBuildThisFileName)Missing.csproj' of <ProjectReference> does not exist (resolved to 'Sub/inlineMissing.csproj')"));
+
+    [Test]
+    public void mixed_resolvable_and_unresolved_properties_suppress_the_resolved_suffix() => new ProjectReferenceChecker()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+
+              <ItemGroup>
+                <ProjectReference Include="$(MSBuildThisFileDirectory)$(UnknownProp)Foo.csproj" />
+              </ItemGroup>
+
+            </Project>
+            """)
+        .HasIssue(Issue
+            .WRN("Proj0033", "The Include '$(MSBuildThisFileDirectory)$(UnknownProp)Foo.csproj' of <ProjectReference> does not exist"));
 }
 
 public class Guards

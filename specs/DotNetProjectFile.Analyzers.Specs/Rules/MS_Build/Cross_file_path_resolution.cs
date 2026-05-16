@@ -1,8 +1,8 @@
 namespace Rules.MS_Build.Cross_file_path_resolution;
 
-// Integration tests guarding the dual-anchor distinction (#546):
-// $(MSBuildThisFile*) resolves against the file the reference lives in;
-// $(MSBuildProject*) and bare relative paths resolve against the entry-point .csproj.
+// Integration tests for the dual-anchor resolution rule (issue 546):
+// MSBuildThisFile family properties resolve against the file the reference lives in;
+// MSBuildProject family properties and bare relative paths resolve against the entry-point project file.
 
 public class Build_action_include_should_exist
 {

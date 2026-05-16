@@ -56,21 +56,72 @@ internal static class DotNetProjectFile
             var (root, literal) = context.Resolve(node, include);
             return root.Files(literal);
         }
+
+        /// <summary>Returns <c> (resolved to '&lt;path&gt;')</c> when <paramref name="include"/> has resolvable MSBuild property references; empty otherwise.</summary>
+        /// <remarks>
+        /// The resolved path is project-relative (anchored at <c>context.File.Path.Directory</c>) so
+        /// diagnostic messages stay deterministic across machines and operating systems. Returns empty
+        /// when the literal does not change under substitution, or when any property reference is
+        /// unresolved (those cases are surfaced by the path-existence rules and by <c>Proj9000</c>).
+        /// </remarks>
+        public string ResolvedSuffix(Node node, string include)
+        {
+            if (string.IsNullOrEmpty(include)) return string.Empty;
+            var (substituted, unresolved) = context.Substitute(node, include);
+
+            // Suppress the suffix on partial substitution: showing a half-resolved path
+            // next to half-literal $(...) tokens would mix idioms and obscure the
+            // unresolved-property diagnostic that Proj9000 already surfaces separately.
+            if (unresolved.Count > 0 || string.Equals(substituted, include, StringComparison.Ordinal)) return string.Empty;
+
+            var relative = ProjectRelative(context.File.Path.Directory, substituted);
+            return $" (resolved to '{relative}')";
+        }
+    }
+
+    /// <summary>Returns <paramref name="substituted"/> rewritten as a forward-slash path relative to <paramref name="projectDirectory"/>; the unchanged input when not under the project.</summary>
+    /// <remarks>
+    /// <c>OrdinalIgnoreCase</c> defends against the Windows case-insensitive filesystem;
+    /// on Linux MSBuild already resolves paths with exact casing.
+    /// </remarks>
+    [Pure]
+    private static string ProjectRelative(IODirectory projectDirectory, string substituted)
+    {
+        var normalized = substituted.Replace('\\', '/');
+        var projectDir = projectDirectory.ToString().Replace('\\', '/').TrimEnd('/') + '/';
+        return normalized.StartsWith(projectDir, StringComparison.OrdinalIgnoreCase)
+            ? normalized[projectDir.Length..]
+            : normalized;
     }
 
     /// <summary>Returns the last unconditionally-included <c>&lt;PropertyGroup&gt;</c> value for <paramref name="propertyName"/>, or <see langword="null"/> if undefined.</summary>
     /// <remarks>
-    /// Conditional <c>&lt;PropertyGroup&gt;</c> and conditional individual properties are skipped:
-    /// the conservative choice without a condition evaluator is to scan only the
+    /// <c>&lt;PropertyGroup&gt;</c> elements nested inside a <c>&lt;Target&gt;</c> are skipped:
+    /// MSBuild evaluates those only when the target runs, so their values are not part of the
+    /// statically-analyzable property set. This mirrors the <c>Target</c> exclusion applied in
+    /// <c>MsBuildProject.Read&lt;TNode&gt;</c>.
+    /// Conditional <c>&lt;PropertyGroup&gt;</c> and conditional individual properties are also
+    /// skipped: the conservative choice without a condition evaluator is to scan only the
     /// definitively-included groups.
     /// </remarks>
     [Pure]
     private static string? ScanUserDefinedProperty(MsBuildProject project, string propertyName)
         => project.PropertyGroups
+            .Where(g => !IsInsideTarget(g))
             .Where(g => string.IsNullOrEmpty(g.Condition))
             .SelectMany(g => g.Children)
             .Where(c => string.IsNullOrEmpty(c.Condition)
                 && string.Equals(c.Element.Name.LocalName, propertyName, StringComparison.OrdinalIgnoreCase))
             .Select(c => c.Element.Value)
             .LastOrDefault();
+
+    [Pure]
+    private static bool IsInsideTarget(Node node)
+    {
+        for (var ancestor = node.Parent; ancestor is not null; ancestor = ancestor.Parent)
+        {
+            if (ancestor is Target) return true;
+        }
+        return false;
+    }
 }

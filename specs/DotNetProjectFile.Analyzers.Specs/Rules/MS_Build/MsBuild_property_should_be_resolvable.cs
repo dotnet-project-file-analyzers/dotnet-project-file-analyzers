@@ -14,7 +14,7 @@ public class Reports
               </ItemGroup>
             </Project>
             """)
-        .HasIssue(Issue.INF("Proj0052",
+        .HasIssue(Issue.NONE("Proj9000",
             "The MSBuild property '$(SomeUnknownProperty)' referenced in '$(SomeUnknownProperty)/Foo.csproj' could not be resolved"));
 
     [Test]
@@ -29,7 +29,7 @@ public class Reports
               </ItemGroup>
             </Project>
             """)
-        .HasIssue(Issue.INF("Proj0052",
+        .HasIssue(Issue.NONE("Proj9000",
             "The MSBuild property '$(MyCustomProp)' referenced in '$(MyCustomProp)/Foo.txt' could not be resolved"));
 
     [Test]
@@ -45,9 +45,9 @@ public class Reports
             </Project>
             """)
         .HasIssues(
-            Issue.INF("Proj0052",
+            Issue.NONE("Proj9000",
                 "The MSBuild property '$(FirstUnknown)' referenced in '$(FirstUnknown)/$(SecondUnknown)/Foo.csproj' could not be resolved"),
-            Issue.INF("Proj0052",
+            Issue.NONE("Proj9000",
                 "The MSBuild property '$(SecondUnknown)' referenced in '$(FirstUnknown)/$(SecondUnknown)/Foo.csproj' could not be resolved"));
 }
 
@@ -97,7 +97,7 @@ public class Guards
               </ItemGroup>
             </Project>
             """)
-        .HasIssue(Issue.INF("Proj0052",
+        .HasIssue(Issue.NONE("Proj9000",
             "The MSBuild property '$(MyConditionalDir)' referenced in '$(MyConditionalDir)/Foo.csproj' could not be resolved"));
 
     [Test]
@@ -113,7 +113,7 @@ public class Guards
               </ItemGroup>
             </Project>
             """)
-        .HasIssue(Issue.INF("Proj0052",
+        .HasIssue(Issue.NONE("Proj9000",
             "The MSBuild property '$(MyConditionalProp)' referenced in '$(MyConditionalProp)/Foo.csproj' could not be resolved"));
 
     [Test]
@@ -129,4 +129,24 @@ public class Guards
             </Project>
             """)
         .HasNoIssues();
+
+    [Test]
+    public void user_defined_property_only_in_target_nested_property_group_is_treated_as_unresolved() => new MsBuildPropertyShouldBeResolvable()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+              <Target Name="SetMyTargetProp" BeforeTargets="Build">
+                <PropertyGroup>
+                  <MyTargetProp>computed/at/build</MyTargetProp>
+                </PropertyGroup>
+              </Target>
+              <ItemGroup>
+                <ProjectReference Include="$(MyTargetProp)/Foo.csproj" />
+              </ItemGroup>
+            </Project>
+            """)
+        .HasIssue(Issue.NONE("Proj9000",
+            "The MSBuild property '$(MyTargetProp)' referenced in '$(MyTargetProp)/Foo.csproj' could not be resolved"));
 }

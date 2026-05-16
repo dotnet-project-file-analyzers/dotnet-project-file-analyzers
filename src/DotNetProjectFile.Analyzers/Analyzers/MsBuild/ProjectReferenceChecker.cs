@@ -32,7 +32,7 @@ public sealed class ProjectReferenceChecker() : MsBuildProjectFileAnalyzer(
             }
             else
             {
-                context.ReportDiagnostic(Rule.ProjectReferenceIncludeShouldExist, node, include);
+                context.ReportDiagnostic(Rule.ProjectReferenceIncludeShouldExist, node, include, context.ResolvedSuffix(node, include));
             }
         }
     }

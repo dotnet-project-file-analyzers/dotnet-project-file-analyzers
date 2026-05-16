@@ -103,7 +103,6 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0049** Prefer the latest released language version](rules/Proj0049.md)
 * [**Proj0050** Enforce code-style in builds](rules/Proj0050.md)
 * [**Proj0051** Project reference must be case-consistent with the file system](rules/Proj0051.md)
-* [**Proj0052** MSBuild property could not be resolved by the analyzer](rules/Proj0052.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)

@@ -205,7 +205,13 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
 
         var last = parts[^1];
 
+        // Skip directories that do not exist: when an MSBuild include resolves to a path
+        // under a sibling directory that has not been created on disk (e.g. a typo or a
+        // refactor leftover in <ProjectReference Include="..."/>), DirectoryInfo.EnumerateFiles
+        // throws DirectoryNotFoundException. Filtering here lets the analyzer report the
+        // missing-file diagnostic instead of crashing.
         return enumerator
+            .Where(d => d.Exists)
             .SelectMany(d => enumerate(d, last));
     }
 

@@ -7,7 +7,7 @@ namespace DotNetProjectFile.MsBuild;
 /// <remarks>
 /// <c>MSBuildThisFile*</c> resolves against <paramref name="containingFile"/> (the file the
 /// reference textually appears in); <c>MSBuildProject*</c> resolves against <paramref name="entryFile"/>
-/// (the project being analysed). Reserved properties take precedence over the
+/// (the project being analyzed). Reserved properties take precedence over the
 /// <paramref name="userDefinedLookup"/> delegate. Property names are matched case-insensitively.
 /// <c>$(MSBuildThisFileDirectory)</c> includes a trailing separator;
 /// <c>$(MSBuildProjectDirectory)</c> does not, matching MSBuild.
