@@ -4,3 +4,14 @@ updates:
     directory: "/" # Checks the entire repository
     schedule:
       interval: "weekly"
+    cooldown: # Defines a cooldown period for dependency updates, allowing updates to be delayed for a configurable number of days. The cooldown option is only available for version updates, not security updates. https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#cooldown-
+      semver-patch-days: 7
+      semver-minor-days: 21
+      semver-major-days: 31
+
+  - package-ecosystem: "github-actions" # Required
+    directory: "/" # Required (or directories). Location of package manifests. You must define the location of the package manifests for each package manager. For GitHub Actions, you do not need to set the directory to /.github/workflows. Configuring the key to / automatically instructs Dependabot to search the /.github/workflows directory, as well as the action.yml / action.yaml file from the root directory
+    schedule:
+      interval: "weekly"
+    cooldown: # Defines a cooldown period for dependency updates, allowing updates to be delayed for a configurable number of days. The cooldown option is only available for version updates, not security updates. https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#cooldown-
+      default-days: 31 # GitHub Actions doesn't support the SemVer cooldown (https://github.com/dependabot/dependabot-core/issues/14628) https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#configuration-of-cooldown
