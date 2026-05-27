@@ -42,7 +42,11 @@ An example configuration with the default severities of the main branch of the a
 To use the SDK, follow the instructions [here](https://dotnet-project-file-analyzers.github.io/sdk).
 
 ## Community
-* [LinkedIn](https://www.linkedin.com/company/dotnet-project-file-analyzers)
+These analyzers are built and maintained by the Open Source Community.
+
+[![Main contributors](https://contrib.rocks/image?repo=dotnet-project-file-analyzers/dotnet-project-file-analyzers)](https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers/graphs/contributors)
+
+The .NET Project File Analzyers community is also active on [LinkedIn](https://www.linkedin.com/company/dotnet-project-file-analyzers).
 
 ## Reference an analyzer from a project
 For debugging/development purposes, it can be useful to reference the analyzer
