@@ -6,7 +6,7 @@ updates:
       interval: "weekly"
     cooldown: # Defines a cooldown period for dependency updates, allowing updates to be delayed for a configurable number of days. The cooldown option is only available for version updates, not security updates. https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#cooldown-
       semver-patch-days: 7
-      semver-minor-days: 21
+      semver-minor-days: 7
       semver-major-days: 31
 
   - package-ecosystem: "github-actions"
