@@ -4,3 +4,14 @@ updates:
     directory: "/" # Checks the entire repository
     schedule:
       interval: "weekly"
+    cooldown: # Defines a cooldown period for dependency updates, allowing updates to be delayed for a configurable number of days. The cooldown option is only available for version updates, not security updates. https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#cooldown-
+      semver-patch-days: 7
+      semver-minor-days: 7
+      semver-major-days: 31
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    cooldown: # Defines a cooldown period for dependency updates, allowing updates to be delayed for a configurable number of days. The cooldown option is only available for version updates, not security updates. https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#cooldown-
+      default-days: 31 # GitHub Actions doesn't support the SemVer cooldown (https://github.com/dependabot/dependabot-core/issues/14628) https://docs.github.com/en/code-security/reference/supply-chain-security/dependabot-options-reference#configuration-of-cooldown
