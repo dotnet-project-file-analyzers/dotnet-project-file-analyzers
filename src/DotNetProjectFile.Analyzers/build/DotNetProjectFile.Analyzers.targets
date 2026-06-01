@@ -15,14 +15,17 @@
       Ensures that <Content> only included to satisfy SonarQube is not copied.
     
     * Visible="false"
-      Prevents from <Content> being shown it he IDE that was included by the user.
+      Prevents <Content> from being shown in the IDE that was included by the user.
+      
+    * Pack="false"
+      Prevents <Content> from being added to NuGet packages.
   -->
   <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true'">
-    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Include="**/*.??proj" />
-    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Include="**/*.config" />
-    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Include="**/*.props" />
-    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Include="**/*.resx" />
-    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Include="**/*.slnx" />
+    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Pack="false" Include="**/*.??proj" />
+    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Pack="false" Include="**/*.config" />
+    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Pack="false" Include="**/*.props" />
+    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Pack="false" Include="**/*.resx" />
+    <Content Exclude="@(Content)" CopyToOutputDirectory="never" Visible="false" Pack="false" Include="**/*.slnx" />
   </ItemGroup>
 
   <!--To inform users the SDK package is no longer needed. -->
