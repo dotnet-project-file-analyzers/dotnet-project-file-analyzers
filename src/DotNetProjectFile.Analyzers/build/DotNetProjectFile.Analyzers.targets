@@ -15,7 +15,7 @@
       Ensures that <Content> only included to satisfy SonarQube is not copied.
     
     * Visible="false"
-      Prevents <Content> from being shown it he IDE that was included by the user.
+      Prevents <Content> from being shown in the IDE that was included by the user.
       
     * Pack="false"
       Prevents <Content> from being added to NuGet packages.
