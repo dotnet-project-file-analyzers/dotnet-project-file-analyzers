@@ -78,18 +78,18 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.14.0</Version>
+    <Version>1.14.1</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v1.*
-- Ignore <Target> nodes when reading properties. (BUG)
-- <Content> to improve the SonarQube experience should not be packed. (BUG)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.14.1
+- Ignore <Target> nodes when reading properties. (BUG)
+- <Content> to improve the SonarQube experience should not be packed. (BUG)
 v1.14.0
 - .net.csproj shows Directory.*, .globalconfig, and .editorconfig files. (BUG)
 - Extend suppression by the use of NoWarn attributes and nodes.
