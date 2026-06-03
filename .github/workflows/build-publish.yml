@@ -26,8 +26,6 @@ jobs:
 
       - name: Setup dotnet
         uses: actions/setup-dotnet@v5.2.0
-        with:
-          dotnet-version: '10.0.101'
 
       - name: Build
         run: dotnet build dotnet-project-file-analyzers.slnx -c Release
@@ -61,6 +59,9 @@ jobs:
       contents: write
     needs: build
     steps:
+      - name: Setup dotnet
+        uses: actions/setup-dotnet@v5.2.0
+
       - name: Download Artifact
         uses: actions/download-artifact@v4
         with:
