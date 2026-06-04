@@ -21,7 +21,7 @@ To use the analyzers, you must include the analyzer NuGet package in your projec
 <Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" ExcudeAssets="runtime" />
+    <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
 </Project>
