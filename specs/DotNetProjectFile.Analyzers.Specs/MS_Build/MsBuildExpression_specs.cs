@@ -7,9 +7,9 @@ public class Parsing
     [TestCase("   $(Trim)  ", "$(Trim)")]
     [TestCase("$(With a $ insight)")]
     [TestCase("$(MyVariable)")]
+    [TestCase("""$([System.DateTime]::UtcNow.ToString("yyyy-MM-dd"))""")]
     public void Text(string str, string? expected = null)
         => MsBuildExpression.TryParse(str).ToString().Should().Be(expected ?? str);
-
 
     [TestCase("$(One) Two $(Three) $(Four", "$(One)", "$(Three)")]
     public void All(string str, params string[] parsed)
