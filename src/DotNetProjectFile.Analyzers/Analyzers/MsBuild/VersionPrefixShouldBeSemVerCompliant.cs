@@ -12,10 +12,11 @@ public sealed class VersionPrefixShouldBeSemVerCompliant() : MsBuildProjectFileA
     {
         foreach (var version in context.File.PropertyGroups.Children<VersionPrefix>(NotSemantic))
         {
-            context.ReportDiagnostic(Descriptor, version, version.Element.Value);
+            context.ReportDiagnostic(Descriptor, version, version.Text);
         }
     }
 
     private static bool NotSemantic(VersionPrefix version)
-        => version.Value is not { PreRelease: null, BuildMetadata: null };
+        => version.Value is not { PreRelease: null, BuildMetadata: null }
+        && MsBuildVariable.ParseAll(version.Text).None();
 }

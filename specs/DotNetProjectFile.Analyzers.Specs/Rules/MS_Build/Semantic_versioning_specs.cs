@@ -71,4 +71,34 @@ public class Guards
         </Project>
         """)
        .HasNoIssues();
+
+   [Test]
+    public void version_containing_variable() => new VersionShouldBeSemVerCompliant()
+       .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <BuildalyzerVersion>8.0.0</BuildalyzerVersion>
+            <Version>$(BuildalyzerVersion)</Version>
+          </PropertyGroup>
+
+        </Project>
+        """)
+       .HasNoIssues();
+
+    [Test]
+    public void version_prefix_containing_variable() => new VersionPrefixShouldBeSemVerCompliant()
+       .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <BuildalyzerVersion>8.0.0</BuildalyzerVersion>
+            <VersionPrefix>$(BuildalyzerVersion)</VersionPrefix>
+          </PropertyGroup>
+
+        </Project>
+        """)
+       .HasNoIssues();
 }
