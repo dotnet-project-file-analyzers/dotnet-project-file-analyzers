@@ -20,5 +20,5 @@ public sealed class VersionShouldBeSemVerCompliant() : MsBuildProjectFileAnalyze
 
     private static bool NotSemantic(Version version)
         => version is { Value: null }
-        && MsBuildVariable.ParseAll(version.Text).None();
+        && MsBuildExpression.ParseAll(version.Text).None();
 }

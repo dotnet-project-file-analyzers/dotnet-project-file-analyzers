@@ -18,5 +18,5 @@ public sealed class VersionPrefixShouldBeSemVerCompliant() : MsBuildProjectFileA
 
     private static bool NotSemantic(VersionPrefix version)
         => version.Value is not { PreRelease: null, BuildMetadata: null }
-        && MsBuildVariable.ParseAll(version.Text).None();
+        && MsBuildExpression.ParseAll(version.Text).None();
 }
