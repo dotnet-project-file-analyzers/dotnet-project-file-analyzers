@@ -14,9 +14,11 @@ public sealed class VersionShouldBeSemVerCompliant() : MsBuildProjectFileAnalyze
     {
         foreach (var version in context.File.PropertyGroups.Children<Version>(NotSemantic))
         {
-            context.ReportDiagnostic(Descriptor, version, version.Element.Value);
+            context.ReportDiagnostic(Descriptor, version, version.Text);
         }
     }
 
-    private static bool NotSemantic(Version version) => version is { Value: null };
+    private static bool NotSemantic(Version version)
+        => version is { Value: null }
+        && MsBuildExpression.ParseAll(version.Text).None();
 }
