@@ -15,6 +15,8 @@
   <!-- Do not analyze the projects. -->
   <ItemGroup>
     <AdditionalFiles Remove="projects/**.*" />
+    <AdditionalFiles Remove="src\DotNetProjectFile.Analyzers\**" />
+    <None Remove="src\DotNetProjectFile.Analyzers\**" />
   </ItemGroup>
 
   <!--
