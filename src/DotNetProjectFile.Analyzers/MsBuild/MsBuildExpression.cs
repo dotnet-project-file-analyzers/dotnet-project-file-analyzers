@@ -24,15 +24,21 @@ public readonly struct MsBuildExpression
 
     public static IEnumerable<MsBuildExpression> ParseAll(string str)
     {
-        var start = -1;
+        const int NONE = -1;
+        var start = NONE;
         var level = 0;
         for (var i = 0; i < str.Length; i++)
         {
             var ch = str[i];
 
-            if (ch is '$')
+            // A $ not followed by a (
+            if (start is not NONE && i - start is 1 && ch is not '(')
             {
-                start = start is -1 ? i : start;
+                start = NONE;
+            }
+            else if (ch is '$')
+            {
+                start = start is NONE ? i : start;
             }
             else if (ch is '(')
             {
@@ -41,13 +47,15 @@ public readonly struct MsBuildExpression
             else if (ch is ')')
             {
                 level--;
-                if (level is 0 && start is not -1)
+                if (level is 0 && start is not NONE)
                 {
-                    yield return new(str[(start + 2)..i]);
-                    start = -1;
+                    if (i - start > 2)
+                    {
+                        yield return new(str[(start + 2)..i]);
+                    }
+                    start = NONE;
                 }
             }
         }
-        yield break;
     }
 }

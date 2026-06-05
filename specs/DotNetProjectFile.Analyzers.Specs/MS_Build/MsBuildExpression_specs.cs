@@ -6,6 +6,7 @@ public class Parsing
 {
     [TestCase("   $(Trim)  ", "$(Trim)")]
     [TestCase("$(With a $ insight)")]
+    [TestCase("$(B)")]
     [TestCase("$(MyVariable)")]
     [TestCase("""$([System.DateTime]::UtcNow.ToString("yyyy-MM-dd"))""")]
     public void Text(string str, string? expected = null)
@@ -18,6 +19,9 @@ public class Parsing
 
     [TestCase("$")]
     [TestCase("$$(Double)")]
+    [TestCase("$()")]
+    [TestCase("$ABC(D)")]
+    [TestCase("$))(A)")]
     [TestCase("$(NoClosing")]
     [TestCase("(NoClosingDolar)")]
     public void Fails(string str)
