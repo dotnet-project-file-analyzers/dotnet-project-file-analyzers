@@ -23,8 +23,9 @@ public sealed class PreferAttributesOverElements() : MsBuildProjectFileAnalyzer(
         }
     }
 
-    private static bool Applicable(Node node)
-        => node is not PropertyGroup;
+    private static bool Applicable(Node node) => node
+        is not PropertyGroup
+        and not ItemDefinitionGroup;
 
     private static bool CanBeAttribute(Node node)
         => node.Element.Attributes().None()

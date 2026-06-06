@@ -37,6 +37,12 @@ public class Reports
         	  </CustomItem>
            </ItemGroup>
 
+           <ItemDefinitionGroup>
+             <Content>
+              <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+             </Content>
+           </ItemDefinitionGroup>
+
          </Project>
         """")
        .HasIssues(
