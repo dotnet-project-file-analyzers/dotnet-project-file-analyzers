@@ -497,6 +497,14 @@ public static partial class Rule
         tags: ["dependencies", "dependency", "file system", "UNIX", "case-consistent"],
         category: Category.Bug);
 
+    public static DiagnosticDescriptor PreferAttributesOverElements => New(
+        id: 0052,
+        title: "Prefer attributes over elements",
+        message: "Consider <{0}> as an attribute",
+        description: "Attributes are more concise and readable than elements for (simple) values.",
+        tags: ["Clearity", "Readabillity"],
+        category: Category.Formatting);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
