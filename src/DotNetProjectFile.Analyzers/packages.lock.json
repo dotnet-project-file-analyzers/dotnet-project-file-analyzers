@@ -66,9 +66,9 @@
       },
       "SonarAnalyzer.CSharp": {
         "type": "Direct",
-        "requested": "[10.26.0.140279, )",
-        "resolved": "10.26.0.140279",
-        "contentHash": "n6+KDAbvKCJs0oYIQlxFdsmvcj1YSJ7TiqEd5jYq58T1s1Q4bwymFMeVFGDUyDKqSH9YO/7Fobvm0u9WJ7MaRQ=="
+        "requested": "[10.27.0.140913, )",
+        "resolved": "10.27.0.140913",
+        "contentHash": "cxk12QjN9io1SjN36B1QO+9dRf+ek2CGfQGsOWtHBojE35cKchKJod48raxZwe47jHhzmAUO4AJSh7+hF0GS4g=="
       },
       "StyleCop.Analyzers.Unstable": {
         "type": "Direct",

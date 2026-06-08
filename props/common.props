@@ -23,7 +23,7 @@
 
   <ItemGroup Label="Analyzers">
     <PackageReference Include="Microsoft.CodeAnalysis.Analyzers" Version="5.3.0" PrivateAssets="all" ExcludeAssets="runtime" />
-    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.26.0.140279" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="SonarAnalyzer.CSharp" Version="10.27.0.140913" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Custom licenses">
