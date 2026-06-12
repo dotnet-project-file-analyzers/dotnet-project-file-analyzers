@@ -78,18 +78,19 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.14.1</Version>
+    <Version>1.15.0</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v1.*
-- Proj0253, Proj0254: Ignore version containing an MSBuild variable. (FP)
-- Hide folders only containing invisible <Content>. (BUG)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.15.0
+- Proj0052: Prefer attributes over elements. (NEW RULE)
+- Proj0253, Proj0254: Ignore version containing an MSBuild variable. (FP)
+- Hide folders only containing invisible <Content>. (BUG)
 v1.14.1
 - Ignore <Target> nodes when reading properties. (BUG)
 - <Content> to improve the SonarQube experience should not be packed. (BUG)
