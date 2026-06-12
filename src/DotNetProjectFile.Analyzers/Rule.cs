@@ -502,7 +502,7 @@ public static partial class Rule
         title: "Prefer attributes over elements",
         message: "Consider <{0}> as an attribute",
         description: "Attributes are more concise and readable than elements for (simple) values.",
-        tags: ["Clearity", "Readabillity"],
+        tags: ["Clearity", "Readability"],
         category: Category.Formatting);
 
     public static DiagnosticDescriptor DefineIsPackable => New(
