@@ -11,7 +11,7 @@ public class Suppresses
           </PropertyGroup>
 
           <ItemGroup>
-            <Folder Include="SomeFolder\" NoWarn="Proj0008" />
+            <Folder Include="SomeFolder/" NoWarn="Proj0008" />
           </ItemGroup>
 
           <ItemGroup>
@@ -31,7 +31,7 @@ public class Suppresses
           </PropertyGroup>
 
           <ItemGroup>
-            <Folder Include="SomeFolder\">
+            <Folder Include="SomeFolder/">
               <NoWarn>Proj0008</NoWarn>
             </Folder>
           </ItemGroup>
