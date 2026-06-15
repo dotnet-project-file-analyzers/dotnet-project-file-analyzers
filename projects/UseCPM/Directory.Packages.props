@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageVersion Include="Qowaiv" Version="7.4.2" />
+    <PackageVersion Include="Qowaiv" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>

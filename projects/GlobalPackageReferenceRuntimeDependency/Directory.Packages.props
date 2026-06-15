@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <GlobalPackageReference Include="Qowaiv" Version="7.2.3" />
+    <GlobalPackageReference Include="Qowaiv" Version="8.0.0" />
   </ItemGroup>
   
   <ItemGroup>
