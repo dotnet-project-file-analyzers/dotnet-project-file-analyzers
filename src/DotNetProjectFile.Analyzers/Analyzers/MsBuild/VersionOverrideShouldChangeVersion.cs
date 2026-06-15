@@ -23,7 +23,7 @@ public sealed class VersionOverrideShouldChangeVersion()
         }
     }
 
-    private static PackageVersion CpmVersion(ProjectFileAnalysisContext context, PackageReference @override)
+    private static PackageVersion? CpmVersion(ProjectFileAnalysisContext context, PackageReference @override)
         => context.File
             .WalkBackward()
             .OfType<PackageVersion>()

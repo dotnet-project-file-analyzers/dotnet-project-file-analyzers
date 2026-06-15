@@ -6,12 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Qowaiv" VersionOverride="7.0.4" />
+    <PackageReference Include="Qowaiv" VersionOverride="8.0.0" />
     <PackageReference Include="System.Text.Json" VersionOverride="8.0.4" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="../common/Code.cs" />
   </ItemGroup>
 
 </Project>
