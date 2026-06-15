@@ -9,7 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Qowaiv" Version="5.0.1" />
-    <PackageReference Include="Qowaiv" Version="7.0.4" />
+    <PackageReference Include="Qowaiv" Version="8.0.0" />
     <PackageReference Update="Qowaiv" Version="6.4.1" />
     <PackageReference Update="Qowaiv" Version="6.4.2" />
   </ItemGroup>

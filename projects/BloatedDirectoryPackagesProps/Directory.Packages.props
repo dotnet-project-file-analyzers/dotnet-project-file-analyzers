@@ -10,7 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageVersion Include="Qowaiv" Version="7.0.0" />
+    <PackageVersion Include="Qowaiv" Version="8.0.0" />
     <PackageVersion Include="PolySharp" Version="1.14.1" />
   </ItemGroup>
   

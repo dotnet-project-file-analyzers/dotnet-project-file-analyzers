@@ -16,7 +16,7 @@ public class Reports
 
               <ItemGroup>
                 <GlobalPackageReference Include="DotNetProjectFile.Analyzers" Version="1.8.0" />
-                <PackageVersion Include="Qowaiv" Version="7.4.7" />
+                <PackageVersion Include="Qowaiv" Version="8.0.0" />
               </ItemGroup>
 
             </Project>

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup Label="VersionOverride is also added to satisfy Buildalizer">
-    <PackageReference Include="Qowaiv" Version="7.0.3" VersionOverride="7.0.4" />
+    <PackageReference Include="Qowaiv" Version="8.0.0" VersionOverride="7.0.4" />
   </ItemGroup>
 
   <ItemGroup Label="Compliant package references">
