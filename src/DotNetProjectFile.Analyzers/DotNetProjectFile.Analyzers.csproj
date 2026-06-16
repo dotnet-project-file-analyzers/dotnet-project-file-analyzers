@@ -28,6 +28,7 @@
   </PropertyGroup>
 
   <PropertyGroup Label="Package settings">
+    <IncludeBuildOutput>false</IncludeBuildOutput>
     <RepositoryType>git</RepositoryType>
     <PackageId>DotNetProjectFile.Analyzers</PackageId>
     <PackageProjectUrl>https://dotnet-project-file-analyzers.github.io</PackageProjectUrl>
