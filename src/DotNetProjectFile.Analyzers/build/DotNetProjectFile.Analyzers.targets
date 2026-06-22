@@ -33,9 +33,15 @@
       Include="@(None)"
       CopyToOutputDirectory="never"
       Visible="false"
-      Pack="$('%(None.Pack)'.ToUpper() == 'TRUE' ? 'true' : 'false')"
+      SonarQubeContent="true"
       Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))" />
   </ItemGroup>
+
+  <Target Name="_StripSonarContent" BeforeTargets="GenerateNuspec" Condition="'$(IsPacking)' == 'true'">
+    <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true'">
+      <Content Remove="@(Content->WithMetadataValue('SonarQubeContent','true'))" />
+    </ItemGroup>
+  </Target>
 
   <!--To inform users the SDK package is no longer needed. -->
   <Target Name="Proj1004" BeforeTargets="ResolvePackageAssets">
