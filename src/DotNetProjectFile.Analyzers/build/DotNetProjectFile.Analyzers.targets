@@ -21,7 +21,7 @@
     * Pack="false"
       Prevents <Content> from being added to NuGet packages.
       
-    * Link="$([System.String]::Copy('%(FullPath)').Replace('\', '_').Replace('/', '_'))"
+    * Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))"
       Flattens the file structure of the content file to work arround a
       Visual Studio limitation: github.com/dotnet/project-system/issues/5859
   -->
@@ -30,11 +30,11 @@
        Include="**/*.??proj;**/*.config;**/*.props;**/*.targets;**/*.resx;**/*.slnx"
        Exclude="@(None);@(Content);**/bin/**/*;**/obj/**/*" />
     <Content
-       Include="@(None)"
-       CopyToOutputDirectory="never"
-       Visible="false"
-	     Pack="%(None.Pack)"
-       Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('\', '_'))" />
+      Include="@(None)"
+      CopyToOutputDirectory="never"
+      Visible="false"
+      Pack="$([System.String]::Equals('%(None.Pack)', 'true', System.StringComparison.OrdinalIgnoreCase) ? 'true' : 'false')"
+      Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))" />
   </ItemGroup>
 
   <!--To inform users the SDK package is no longer needed. -->
