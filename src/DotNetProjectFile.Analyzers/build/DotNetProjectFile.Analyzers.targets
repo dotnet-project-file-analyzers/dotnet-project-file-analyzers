@@ -33,7 +33,7 @@
       Include="@(None)"
       CopyToOutputDirectory="never"
       Visible="false"
-      Pack="$([System.String]::Equals('%(None.Pack)', 'true', System.StringComparison.OrdinalIgnoreCase) ? 'true' : 'false')"
+      Pack="$('%(None.Pack)'.ToUpper() == 'TRUE' ? 'true' : 'false')"
       Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))" />
   </ItemGroup>
 
