@@ -37,7 +37,7 @@
       Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))" />
   </ItemGroup>
 
-  <Target Name="_StripSonarContent" BeforeTargets="_GetPackageFiles" Condition="'$(IsPacking)' == 'true'">
+  <Target Name="_StripSonarContent" BeforeTargets="_GetPackageFiles">
     <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true'">
       <Content Remove="@(Content->WithMetadataValue('SonarQubeContent','true'))" />
     </ItemGroup>
