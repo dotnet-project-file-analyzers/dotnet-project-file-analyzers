@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -89,7 +89,7 @@ ToBeDecided:
     <PackageReleaseNotes>
       <![CDATA[
 v1.15.1
-- Pack .targets and .props when explicitly configures in <None>. (BUG)
+- Pack .targets and .props when explicitly configured in <None>. (BUG)
 v1.15.0
 - Proj0052: Prefer attributes over elements. (NEW RULE)
 - Proj0253, Proj0254: Ignore version containing an MSBuild variable. (FP)
