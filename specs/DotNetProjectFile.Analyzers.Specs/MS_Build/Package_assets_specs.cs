@@ -191,9 +191,200 @@ public class Builds
                         Visible = "false",
                         SonarQubeContent = "true",
                     },
-                }
-                );
+                });
     }
+
+    [Test]
+    public void Package()
+    {
+        using var ctx = BuildalyzerContext.ForProject("CompliantCSharpPackage/CompliantCSharpPackage.csproj");
+
+        var options = new EnvironmentOptions() { DesignTime = false };
+        options.Arguments.Add("-p:GeneratePackageOnBuild=true");
+
+        var result = ctx.Analyzer.Build().Results.Single();
+
+        result.Should().HaveProperties(new()
+        {
+            ["SonarQubeIntegration"] = "true"
+        })
+
+            .And.HaveCompilerVisibleProperties(
+                "Configuration",
+                "EnableNETAnalyzers",
+                "IsPackable",
+                "IsTestProject",
+                "LangVersion",
+                "ManagePackageVersionsCentrally",
+                "MSBuildProjectFile",
+                "MSBuildThisFileDirectory",
+                "NETCoreSdkVersion",
+                "PackageLicenseExpression",
+                "Platform",
+                "RestoreLockedMode",
+                "SolutionDir")
+
+            .And.HaveItems(
+                "AdditionalFiles",
+                new()
+                {
+                    ItemSpec = """CompliantCSharpPackage.csproj""",
+                    Metadata = new Meta { Visible = "false" },
+                },
+                new() { ItemSpec = "Messages.resx" })
+
+            .And.HaveItems(
+                "Content",
+                new()
+                {
+                    ItemSpec = """../../design/logo_128x128.png""",
+                    Metadata = new Meta
+                    {
+                        Link = "logo_128x128.png",
+                    },
+                },
+                 new()
+                 {
+                     ItemSpec = """../../design/logo_128x128.png""",
+                     Metadata = new Meta
+                     {
+                         CopyToOutputDirectory = "never",
+                         Link = ".._.._design_logo_128x128.png",
+                         PackagePath = "/",
+                         Pack = "true",
+                         Visible = "false",
+                         SonarQubeContent = "true",
+                     },
+                 },
+                new()
+                {
+                    ItemSpec = ".editorconfig",
+                    Metadata = new Meta
+                    {
+                        CopyToOutputDirectory = "never",
+                        Link = ".editorconfig",
+                        Visible = "false",
+                        SonarQubeContent = "true",
+                    },
+                },
+                new()
+                {
+                    ItemSpec = ".globalconfig",
+                    Metadata = new Meta
+                    {
+                        CopyToOutputDirectory = "never",
+                        Link = ".globalconfig",
+                        Visible = "false",
+                        SonarQubeContent = "true",
+                    },
+                },
+                new()
+                {
+                    ItemSpec = """build\CompliantCSharpPackage.props""",
+                    Metadata = new Meta
+                    {
+                        CopyToOutputDirectory = "never",
+                        Link = "build_CompliantCSharpPackage.props",
+                        Visible = "false",
+                        SonarQubeContent = "true",
+                    },
+                },
+                new()
+                {
+                    ItemSpec = """build\CompliantCSharpPackage.props""",
+                    Metadata = new Meta
+                    {
+                        CopyToOutputDirectory = "never",
+                        Link = "build_CompliantCSharpPackage.props",
+                        PackagePath = "/build/",
+                        Visible = "false",
+                        Pack = "true",
+                        SonarQubeContent = "true",
+                    },
+                },
+                new()
+                {
+                    ItemSpec = """build\CompliantCSharpPackage.targets""",
+                    Metadata = new Meta
+                    {
+                        CopyToOutputDirectory = "never",
+                        Link = "build_CompliantCSharpPackage.targets",
+                        Visible = "false",
+                        SonarQubeContent = "true",
+                    },
+                },
+                new()
+                {
+                    ItemSpec = """build\CompliantCSharpPackage.targets""",
+                    Metadata = new Meta
+                    {
+                        CopyToOutputDirectory = "never",
+                        Link = "build_CompliantCSharpPackage.targets",
+                        PackagePath = "/build/",
+                        Visible = "false",
+                        Pack = "true",
+                        SonarQubeContent = "true",
+                    },
+                },
+                new()
+                {
+                    ItemSpec = """CompliantCSharpPackage.csproj""",
+                    Metadata = new Meta
+                    {
+                        CopyToOutputDirectory = "never",
+                        Link = "CompliantCSharpPackage.csproj",
+                        Visible = "false",
+                        SonarQubeContent = "true",
+                    },
+                },
+                new()
+                {
+                    ItemSpec = """Messages.resx""",
+                    Metadata = new Meta
+                    {
+                        CopyToOutputDirectory = "never",
+                        Link = "Messages.resx",
+                        Visible = "false",
+                        SonarQubeContent = "true",
+                    },
+                },
+                new()
+                {
+                    ItemSpec = """packages.lock.json""",
+                    Metadata = new Meta
+                    {
+                        CopyToOutputDirectory = "never",
+                        Link = "packages.lock.json",
+                        Visible = "false",
+                        SonarQubeContent = "true",
+                    },
+                },
+                new()
+                {
+                    ItemSpec = """README.md""",
+                    Metadata = new Meta
+                    {
+                        CopyToOutputDirectory = "never",
+                        Link = "README.md",
+                        Visible = "false",
+                        SonarQubeContent = "true",
+                    },
+                },
+                new()
+                {
+                    ItemSpec = """README.md""",
+                    Metadata = new Meta
+                    {
+                        CopyToOutputDirectory = "never",
+                        Link = "README.md",
+                        PackagePath = "",
+                        Pack = "true",
+                        Visible = "false",
+                        SonarQubeContent = "true",
+                    },
+                });
+    }
+
 
     [Test]
     public void Does_not_add_content_with_SonarQubeIntegration_disabled()
