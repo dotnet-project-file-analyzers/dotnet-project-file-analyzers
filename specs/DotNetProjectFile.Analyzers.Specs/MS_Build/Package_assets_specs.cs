@@ -40,7 +40,6 @@ public class Builds
                     ItemSpec = """CompliantCSharpPackage.csproj""",
                     Metadata = new Meta { Visible = "false" },
                 },
-                new () { ItemSpec = "Messages.nl.resx" },
                 new () { ItemSpec = "Messages.resx" })
 
             .And.HaveItems(
@@ -53,6 +52,19 @@ public class Builds
                         Link = "logo_128x128.png",
                     },
                 },
+                 new()
+                 {
+                     ItemSpec = """../../design/logo_128x128.png""",
+                     Metadata = new Meta
+                     {
+                         CopyToOutputDirectory = "never",
+                         Link = ".._.._design_logo_128x128.png",
+                         PackagePath = "/",
+                         Pack = "true",
+                         Visible = "false",
+                         SonarQubeContent = "true",
+                     },
+                 },
                 new()
                 {
                     ItemSpec = ".editorconfig",
@@ -136,17 +148,6 @@ public class Builds
                 },
                 new()
                 {
-                    ItemSpec = """Messages.nl.resx""",
-                    Metadata = new Meta
-                    {
-                        CopyToOutputDirectory = "never",
-                        Link = "Messages.nl.resx",
-                        Visible = "false",
-                        SonarQubeContent = "true",
-                    },
-                },
-                new()
-                {
                     ItemSpec = """Messages.resx""",
                     Metadata = new Meta
                     {
@@ -166,7 +167,32 @@ public class Builds
                         Visible = "false",
                         SonarQubeContent = "true",
                     },
-                });
+                },
+                new()
+                {
+                    ItemSpec = """README.md""",
+                    Metadata = new Meta
+                    {
+                        CopyToOutputDirectory = "never",
+                        Link = "README.md",
+                        Visible = "false",
+                        SonarQubeContent = "true",
+                    },
+                },
+                new()
+                {
+                    ItemSpec = """README.md""",
+                    Metadata = new Meta
+                    {
+                        CopyToOutputDirectory = "never",
+                        Link = "README.md",
+                        PackagePath = "",
+                        Pack = "true",
+                        Visible = "false",
+                        SonarQubeContent = "true",
+                    },
+                }
+                );
     }
 
     [Test]
