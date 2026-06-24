@@ -54,19 +54,6 @@ public class Builds
                         Link = "logo_128x128.png",
                     },
                 },
-                 new()
-                 {
-                     ItemSpec = """../../design/logo_128x128.png""",
-                     Metadata = new Meta
-                     {
-                         CopyToOutputDirectory = "never",
-                         Link = ".._.._design_logo_128x128.png",
-                         PackagePath = "/",
-                         Pack = "true",
-                         Visible = "false",
-                         SonarQubeContent = "true",
-                     },
-                 },
                 new()
                 {
                     ItemSpec = ".editorconfig",

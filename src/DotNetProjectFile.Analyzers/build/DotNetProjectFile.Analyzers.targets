@@ -3,7 +3,7 @@
   <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.csproj' or '$(MSBuildProjectExtension)' == '.vbproj'">
     <IsRoslynBased>true</IsRoslynBased>
   </PropertyGroup>
-  
+
   <!--
     SonarQube can pick up issues report on files others than compiling files
     if they are reported as <Content>.
@@ -18,7 +18,7 @@
       Prevents <Content> from being added to NuGet packages.
       
     * SonarQubeContent = true
-      Prevents <None> and <AdditionalFiles> overriding existing <Content>
+      Make tracable that is has been added due to the SonarQubeIntegration.
       
     * Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))"
       Flattens the file structure of the content file to work arround a
@@ -27,6 +27,7 @@
   <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true'">
     <Content
       Include="@(None);@(AdditionalFiles)"
+      Exclude="@(Content)"
       CopyToOutputDirectory="never"
       Visible="false"
       SonarQubeContent="true"
