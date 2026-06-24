@@ -73,7 +73,7 @@ v1.0.0
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="../../design/logo_128x128.png" />
+    <Content Include="../../design/logo_128x128.png" />
   </ItemGroup>
 
   <ItemGroup>

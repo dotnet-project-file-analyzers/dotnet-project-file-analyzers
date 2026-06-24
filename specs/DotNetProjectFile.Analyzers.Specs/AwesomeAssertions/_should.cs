@@ -1,3 +1,4 @@
+using Buildalyzer;
 using DotNetProjectFile.Parsing;
 
 namespace AwesomeAssertions;
@@ -5,11 +6,14 @@ namespace AwesomeAssertions;
 internal static class DotNetProjectFIleAwesomeAssertionsExtensions
 {
     [Pure]
-    public static ParserAssertions Should(this Parser parser) => new(parser);
+    public static ParserAssertions Should(this Parser subject) => new(subject);
 
     [Pure]
-    public static DiagnosticAnalyzerAssertions Should(this DiagnosticAnalyzer analyzer) => new(analyzer);
+    public static DiagnosticAnalyzerAssertions Should(this DiagnosticAnalyzer subject) => new(subject);
 
     [Pure]
-    public static DiagnosticsAssertions Should(this IEnumerable<Diagnostic> diagnostics) => new(diagnostics);
+    public static DiagnosticsAssertions Should(this IEnumerable<Diagnostic> subject) => new(subject);
+    [Pure]
+    public static AnalyzerResultAssertions Should(this IAnalyzerResult subject) => new(subject);
+
 }
