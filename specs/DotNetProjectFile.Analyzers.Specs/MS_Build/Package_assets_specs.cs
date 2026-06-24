@@ -1,4 +1,5 @@
 using Buildalyzer.Environment;
+using System.IO;
 using Meta = Specs.TestTools.ProjectItem.Meta;
 using ProjectItem = Specs.TestTools.ProjectItem;
 
@@ -202,7 +203,18 @@ public class Builds
         var options = new EnvironmentOptions() { DesignTime = false };
         options.Arguments.Add("-p:GeneratePackageOnBuild=true");
 
-        var result = ctx.Analyzer.Build().Results.Single();
+        var result = ctx.Analyzer.Build(options).Results.Single();
+
+        var package = Path.Combine(ctx.Location.Directory!.FullName, "bin/Debug/CompliantCSharpPackage.1.0.0.nupkg");
+
+        var entries = Nupkg.Read(new(package));
+
+
+        entries.Should().Contain(
+            "logo_128x128.png",
+            "README.md",
+            "build/CompliantCSharpPackage.props",
+            "build/CompliantCSharpPackage.targets");
 
         result.Should().HaveProperties(new()
         {
