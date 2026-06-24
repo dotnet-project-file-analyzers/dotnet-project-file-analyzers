@@ -7,41 +7,31 @@
   <!--
     SonarQube can pick up issues report on files others than compiling files
     if they are reported as <Content>.
-    
-    * Exclude="@(None);@(Content);**/bin/**/*;**/obj/**/*" 
-      Prevents <Content> from being added twice, or content being added in the
-      bin and obj folders.
       
-    * CopyToOutputDirectory="never"
+    * CopyToOutputDirectory = never
       Ensures that <Content> only included to satisfy SonarQube is not copied.
     
-    * Visible="false"
+    * Visible = false
       Prevents <Content> from being shown in the IDE that was included by the user.
       
-    * Pack="false"
+    * Pack = false
       Prevents <Content> from being added to NuGet packages.
+      
+    * SonarQubeContent = true
+      Prevents <None> and <AdditionalFiles> overriding existing <Content>
       
     * Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))"
       Flattens the file structure of the content file to work arround a
       Visual Studio limitation: github.com/dotnet/project-system/issues/5859
   -->
   <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true'">
-    <None
-       Include="**/*.??proj;**/*.config;**/*.props;**/*.targets;**/*.resx;**/*.slnx"
-       Exclude="@(None);@(Content);**/bin/**/*;**/obj/**/*" />
     <Content
-      Include="@(None)"
+      Include="@(None);@(AdditionalFiles)"
       CopyToOutputDirectory="never"
       Visible="false"
       SonarQubeContent="true"
       Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))" />
   </ItemGroup>
-
-  <Target Name="_StripSonarContent" BeforeTargets="_GetPackageFiles">
-    <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true'">
-      <Content Remove="@(Content->WithMetadataValue('SonarQubeContent','true'))" />
-    </ItemGroup>
-  </Target>
 
   <!--To inform users the SDK package is no longer needed. -->
   <Target Name="Proj1004" BeforeTargets="ResolvePackageAssets">
