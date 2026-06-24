@@ -209,7 +209,6 @@ public class Builds
 
         var entries = Nupkg.Read(new(package));
 
-
         entries.Should().Contain(
             "logo_128x128.png",
             "README.md",
