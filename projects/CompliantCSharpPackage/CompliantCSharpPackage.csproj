@@ -1,8 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="../../src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.props" />
+
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
-    <LangVersion>12</LangVersion>
+    <LangVersion>14.0</LangVersion>
     <OutputType>Library</OutputType>
     <NuGetAudit>true</NuGetAudit>
     <NuGetAuditMode>all</NuGetAuditMode>
@@ -30,8 +32,8 @@
     <Description>Awesome library</Description>
     <ProductName>Awesome Library.NET</ProductName>
     <Authors>Corniel Nobel; Wesley Baartman</Authors>
-    <PackageId>DotNetProjectFile.Anayzers</PackageId>
-    <PackageTags>analyzer; coolthings</PackageTags>
+    <PackageId>CompliantCSharpPackage</PackageId>
+    <PackageTags>analyzer; cool things</PackageTags>
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <PackageProjectUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</PackageProjectUrl>
     <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
@@ -51,18 +53,17 @@ v1.0.0
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
   </PropertyGroup>
 
+  <ItemGroup Label="Package files">
+    <None Include="build/*.*" Pack="true" PackagePath="/build/" />
+  </ItemGroup>
+
   <ItemGroup Label="Analyzers">
-    <PackageReference Include="DotNetProjectFile.Analyzers" Version="1.5.10.1" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference PrivateAssets="all" Include="SonarAnalyzer.CSharp" Version="10.27.0.140913" />
   </ItemGroup>
 
   <ItemGroup Label="Build Tools">
-    <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.25" PrivateAssets="all" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="*" PrivateAssets="all" ExcludeAssets="runtime" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <AdditionalFiles Include="*.csproj" Visible="false" />
-    <AdditionalFiles Include="*.resx" />
+    <PackageReference PrivateAssets="all" Include="DotNet.ReproducibleBuilds" Version="2.0.5" />
+    <PackageReference PrivateAssets="all" Include="Microsoft.Sbom.Targets" Version="4.1.5" />
   </ItemGroup>
 
   <ItemGroup>
@@ -78,5 +79,7 @@ v1.0.0
   <ItemGroup>
     <Compile Include="../common/Code.cs" />
   </ItemGroup>
+
+  <Import Project="../../src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.targets" />
 
 </Project>
