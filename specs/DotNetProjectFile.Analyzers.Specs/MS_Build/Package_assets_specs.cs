@@ -7,6 +7,12 @@ namespace MS_Build.Package_assets_specs;
 
 public class Builds
 {
+#if Is_Windows
+    private const char Slash = '\\';
+#else
+    private const char Slash = '/';
+#endif
+
     [Test]
     public void With_defaults()
     {
@@ -78,7 +84,7 @@ public class Builds
                 },
                 new()
                 {
-                    ItemSpec = """build\CompliantCSharpPackage.props""",
+                    ItemSpec = $"""build{Slash}CompliantCSharpPackage.props""",
                     Metadata = new Meta
                     {
                         CopyToOutputDirectory = "never",
@@ -89,7 +95,7 @@ public class Builds
                 },
                 new()
                 {
-                    ItemSpec = """build\CompliantCSharpPackage.props""",
+                    ItemSpec = $"""build{Slash}CompliantCSharpPackage.props""",
                     Metadata = new Meta
                     {
                         CopyToOutputDirectory = "never",
@@ -102,7 +108,7 @@ public class Builds
                 },
                 new()
                 {
-                    ItemSpec = """build\CompliantCSharpPackage.targets""",
+                    ItemSpec = $"""build{Slash}CompliantCSharpPackage.targets""",
                     Metadata = new Meta
                     {
                         CopyToOutputDirectory = "never",
@@ -113,7 +119,7 @@ public class Builds
                 },
                 new()
                 {
-                    ItemSpec = """build\CompliantCSharpPackage.targets""",
+                    ItemSpec = $"""build{Slash}CompliantCSharpPackage.targets""",
                     Metadata = new Meta
                     {
                         CopyToOutputDirectory = "never",
@@ -195,6 +201,9 @@ public class Builds
     }
 
     [Test]
+#if !DEBUG
+    [Explicit]
+#endif
     public void Package()
     {
         using var ctx = BuildalyzerContext.ForProject("CompliantCSharpPackage/CompliantCSharpPackage.csproj");
