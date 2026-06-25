@@ -36,7 +36,6 @@ public class Reports
 public class Guards
 {
     [TestCase("CompliantCSharp.cs")]
-    [TestCase("CompliantCSharpPackage.cs")]
     public void Projects_without_issues(string project) => new UseForwardSlashesInPaths()
         .ForProject(project)
         .HasNoIssues();

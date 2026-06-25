@@ -82,6 +82,9 @@ v1.0.0
     <AdditionalFiles Include="*.slnx" />
   </ItemGroup>
   
+  <ItemGroup>
+    <ThirdPartyLicense Include="SonarAnalyzer.CSharp" Hash="IBM9yngU7omFyJOMSFSy0w" />
+  </ItemGroup>
 
   <Import Project="../../src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.targets" />
 
