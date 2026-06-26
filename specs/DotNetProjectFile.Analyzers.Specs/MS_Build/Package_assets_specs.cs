@@ -204,13 +204,14 @@ public class Builds
     public void Package()
     {
         using var ctx = BuildalyzerContext.ForProject("CompliantCSharpPackage/CompliantCSharpPackage.csproj");
-
         var options = new EnvironmentOptions() { DesignTime = false };
+        
         options.Arguments.Add("-p:GeneratePackageOnBuild=true");
+        options.Arguments.Add("-p:Configuration=RELEASE");
 
         ctx.Analyzer.Build(options);
 
-        var package = Path.Combine(ctx.Location.Directory!.FullName, "bin/Debug/CompliantCSharpPackage.1.0.0.nupkg");
+        var package = Path.Combine(ctx.Location.Directory!.FullName, "bin/Release/CompliantCSharpPackage.1.0.0.nupkg");
         var payload = Nupkg.Read(new(package)).Where(e => !Ignore(e));
 
         payload.Should().BeEquivalentTo(
