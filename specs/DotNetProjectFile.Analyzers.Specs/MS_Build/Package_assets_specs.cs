@@ -5,6 +5,8 @@ using ProjectItem = Specs.TestTools.ProjectItem;
 
 namespace MS_Build.Package_assets_specs;
 
+[NonParallelizable] // these tests all build the shared CompliantCSharpPackage fixture (BuildalyzerContext
+// wipes its bin/obj), so running them in parallel races the pack and intermittently loses the nupkg.
 public class Builds
 {
 #if Is_Windows
@@ -201,9 +203,6 @@ public class Builds
     }
 
     [Test]
-#if !DEBUG
-    [Explicit(reason: "nupkg can not be resolved at the build server")]
-#endif
     public void Package()
     {
         using var ctx = BuildalyzerContext.ForProject("CompliantCSharpPackage/CompliantCSharpPackage.csproj");
@@ -212,11 +211,15 @@ public class Builds
         options.Arguments.Add("-p:GeneratePackageOnBuild=true");
         options.Arguments.Add("-p:Configuration=RELEASE");
 
-        ctx.Analyzer.Build(options);
+        var result = ctx.Analyzer.Build(options).Results.Single();
+        result.Succeeded.Should().BeTrue("the package build must succeed before its output can be inspected");
 
-        var package = new DirectoryInfo(Path.Combine(ctx.Location.Directory!.FullName, "../artifacts"))
-            .EnumerateFiles("*.nupkg", SearchOption.AllDirectories)
-            .First();
+        var artifacts = new DirectoryInfo(Path.Combine(ctx.Location.Directory!.FullName, "../artifacts"));
+        var packages = artifacts.Exists
+            ? artifacts.EnumerateFiles("*.nupkg", SearchOption.AllDirectories).ToArray()
+            : Array.Empty<FileInfo>();
+        packages.Should().ContainSingle("a single nupkg should be produced under {0}", artifacts.FullName);
+        var package = packages.Single();
 
         var payload = Nupkg.Read(package).Where(e => !Ignore(e));
 
