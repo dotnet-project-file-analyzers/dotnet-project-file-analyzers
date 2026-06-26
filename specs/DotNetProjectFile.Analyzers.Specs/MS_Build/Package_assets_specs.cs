@@ -211,7 +211,7 @@ public class Builds
 
         ctx.Analyzer.Build(options);
 
-        var package = Path.Combine(ctx.Location.Directory!.FullName, "artifacts/CompliantCSharpPackage.1.0.0.nupkg");
+        var package = Path.Combine(ctx.Location.Directory!.FullName, "../artifacts/CompliantCSharpPackage.1.0.0.nupkg");
         var payload = Nupkg.Read(new(package)).Where(e => !Ignore(e));
 
         payload.Should().BeEquivalentTo(
