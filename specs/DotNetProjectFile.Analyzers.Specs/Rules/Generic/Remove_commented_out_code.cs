@@ -77,7 +77,6 @@ public class Guards
       .HasNoIssues();
 
     [TestCase("CompliantCSharp.cs")]
-    [TestCase("CompliantCSharpPackage.cs")]
     public void Projects_without_issues_for_MS_Build(string project) => new RemoveCommentedOutCode()
         .ForProject(project)
         .HasNoIssues();

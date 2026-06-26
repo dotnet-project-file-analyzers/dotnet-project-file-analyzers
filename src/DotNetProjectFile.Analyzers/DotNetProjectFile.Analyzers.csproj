@@ -79,7 +79,7 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.15.0</Version>
+    <Version>1.15.1</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
@@ -88,6 +88,8 @@ ToBeDecided:
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.15.1
+- Pack .targets and .props when explicitly configured in <None>. (BUG)
 v1.15.0
 - Proj0052: Prefer attributes over elements. (NEW RULE)
 - Proj0253, Proj0254: Ignore version containing an MSBuild variable. (FP)
@@ -465,6 +467,7 @@ v1.0.0
 - Proj1001: Use analyzers for packages. (NEW RULE)
 ]]>
     </PackageReleaseNotes>
+
   </PropertyGroup>
 
 </Project>

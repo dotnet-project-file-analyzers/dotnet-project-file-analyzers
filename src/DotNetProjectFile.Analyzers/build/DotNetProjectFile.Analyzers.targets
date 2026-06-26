@@ -3,36 +3,45 @@
   <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.csproj' or '$(MSBuildProjectExtension)' == '.vbproj'">
     <IsRoslynBased>true</IsRoslynBased>
   </PropertyGroup>
-  
+
   <!--
     SonarQube can pick up issues report on files others than compiling files
     if they are reported as <Content>.
-    
-    * Exclude="@(Content);**/bin/**/*;**/obj/**/*" 
-      Prevents <Content> from being added twice, or content being added in the
-      bin and obj folders.
       
-    * CopyToOutputDirectory="never"
+    * CopyToOutputDirectory = never
       Ensures that <Content> only included to satisfy SonarQube is not copied.
     
-    * Visible="false"
+    * Visible = false
       Prevents <Content> from being shown in the IDE that was included by the user.
       
-    * Link="$([System.Guid]::NewGuid())"
+    * Pack = false
+      Prevents <Content> from being added to NuGet packages.
+      
+    * SonarQubeContent = true
+      Make tracable that is has been added due to the SonarQubeIntegration.
+      
+    * Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))"
       Flattens the file structure of the content file to work arround a
       Visual Studio limitation: github.com/dotnet/project-system/issues/5859
-      
-    * Pack="false"
-      Prevents <Content> from being added to NuGet packages.
   -->
   <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true'">
-    <Content Exclude="@(Content);**/bin/**/*;**/obj/**/*" CopyToOutputDirectory="never" Visible="false" Pack="false" Link="$([System.Guid]::NewGuid())" Include="**/*.??proj" />
-    <Content Exclude="@(Content);**/bin/**/*;**/obj/**/*" CopyToOutputDirectory="never" Visible="false" Pack="false" Link="$([System.Guid]::NewGuid())" Include="**/*.config" />
-    <Content Exclude="@(Content);**/bin/**/*;**/obj/**/*" CopyToOutputDirectory="never" Visible="false" Pack="false" Link="$([System.Guid]::NewGuid())" Include="**/*.props" />
-    <Content Exclude="@(Content);**/bin/**/*;**/obj/**/*" CopyToOutputDirectory="never" Visible="false" Pack="false" Link="$([System.Guid]::NewGuid())" Include="**/*.targets" />
-    <Content Exclude="@(Content);**/bin/**/*;**/obj/**/*" CopyToOutputDirectory="never" Visible="false" Pack="false" Link="$([System.Guid]::NewGuid())" Include="**/*.resx" />
-    <Content Exclude="@(Content);**/bin/**/*;**/obj/**/*" CopyToOutputDirectory="never" Visible="false" Pack="false" Link="$([System.Guid]::NewGuid())" Include="**/*.slnx" />
+    <Content
+      Include="@(None);@(AdditionalFiles)"
+      Exclude="@(Content)"
+      CopyToOutputDirectory="never"
+      Visible="false"
+      SonarQubeContent="true"
+      Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))" />
   </ItemGroup>
+
+  <!--
+    Prevents the content added by the SonarQube integretation being added to packages.
+  -->
+  <Target Name="_StripSonarQubeContent" BeforeTargets="_GetPackageFiles">
+    <ItemGroup>
+      <Content Remove="@(Content->WithMetadataValue('SonarQubeContent','true'))" />
+    </ItemGroup>
+  </Target>
 
   <!--To inform users the SDK package is no longer needed. -->
   <Target Name="Proj1004" BeforeTargets="ResolvePackageAssets">

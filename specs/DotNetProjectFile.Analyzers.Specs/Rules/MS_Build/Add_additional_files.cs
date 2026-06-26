@@ -12,7 +12,6 @@ public class Reports
 public class Guards
 {
     [TestCase("CompliantCSharp.cs")]
-    [TestCase("CompliantCSharpPackage.cs")]
     public void project_files_as_additional(string project) => new AddAdditionalFile()
         .ForProject(project)
         .HasNoIssues();

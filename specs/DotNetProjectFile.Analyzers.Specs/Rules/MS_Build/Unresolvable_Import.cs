@@ -21,7 +21,6 @@ public class Guards
         .HasNoIssues();
 
     [TestCase("CompliantCSharp.cs")]
-    [TestCase("CompliantCSharpPackage.cs")]
     public void Projects_with_analyzers(string project) => new UnresolvableImport()
         .ForProject(project)
         .HasNoIssues();

@@ -1,5 +1,4 @@
 using System.IO;
-using System.IO.Compression;
 
 namespace Specs.NuGet_package_specs;
 
@@ -11,13 +10,10 @@ public class Contains
     [TestCaseSource(nameof(Packages))]
     public void Entries(FileInfo file)
     {
-        using var archive = ZipFile.OpenRead(file.FullName);
-
-        var entries = archive.Entries.Select(e => e.FullName).Where(e => !e.EndsWith(".psmdcp"));
+        var entries = Nupkg.Read(file);
 
         foreach (var e in entries)
             Console.WriteLine(e);
-
 
         entries.Should().BeEquivalentTo(
             // NuSpec
