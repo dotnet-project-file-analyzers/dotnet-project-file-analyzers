@@ -176,7 +176,10 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
     [Pure]
     private IEnumerable<T>? Iterate<T>(string path, Func<DirectoryInfo, string, IEnumerable<T>> enumerate)
     {
-        // We do not support variables yet.
+        // Defensive: callers should resolve MSBuild property references via PropertyRegistry
+        // before reaching the file walker. Any $( surviving here represents either an
+        // unresolved property name or a malformed reference; in both cases we cannot derive
+        // a valid file system path and skip silently rather than risk a false-positive match.
         if (path.Contains("$(") || Info is null) return null;
 
         IEnumerable<DirectoryInfo> enumerator = new RootDirectory(Info);
@@ -202,7 +205,13 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
 
         var last = parts[^1];
 
+        // Skip directories that do not exist: when an MSBuild include resolves to a path
+        // under a sibling directory that has not been created on disk (e.g. a typo or a
+        // refactor leftover in <ProjectReference Include="..."/>), DirectoryInfo.EnumerateFiles
+        // throws DirectoryNotFoundException. Filtering here lets the analyzer report the
+        // missing-file diagnostic instead of crashing.
         return enumerator
+            .Where(d => d.Exists)
             .SelectMany(d => enumerate(d, last));
     }
 

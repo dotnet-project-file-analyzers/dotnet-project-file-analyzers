@@ -12,13 +12,11 @@ public sealed class BuildActionIncludeShouldExist() : MsBuildProjectFileAnalyzer
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var root = context.File.Path.Directory;
-
         foreach (var node in context.File.Walk().OfType<BuildAction>())
         {
-            foreach (var include in node.Include.Where(i => root.Files(i)?.Any() == false))
+            foreach (var include in node.Include.Where(i => context.Files(node, i)?.Any() == false))
             {
-                context.ReportDiagnostic(Descriptor, node, include, node.LocalName, Ending(include));
+                context.ReportDiagnostic(Descriptor, node, include, node.LocalName, Ending(include), context.ResolvedSuffix(node, include));
             }
         }
     }

@@ -19,7 +19,7 @@ public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(R
             .OfType<PackageIcon>()
             .Where(i => i.Value is { Length: > 0 }))
         {
-            var info = Resolve(icon.Value!, context.File);
+            var info = ResolveImage(icon, icon.Value!, context);
 
             if (info is null)
             {
@@ -41,17 +41,18 @@ public sealed class ProvideCompliantPackageIcon() : MsBuildProjectFileAnalyzer(R
         }
     }
 
-    private static ImageInfo? Resolve(string iconValue, MsBuildProject project)
+    private static ImageInfo? ResolveImage(Node iconNode, string iconValue, ProjectFileAnalysisContext context)
     {
-        var file = project.Path.Directory.File(iconValue);
+        var (root, literal) = context.Resolve(iconNode, iconValue);
+        var file = root.File(literal);
 
-        if (!file.Exists && project
-        .Walk()
+        if (!file.Exists && context.File
+            .Walk()
             .OfType<BuildAction>()
             .SelectMany(a => a.IncludeAndUpdate)
             .FirstOrDefault(a => a.EndsWith(iconValue)) is { } action)
         {
-            file = project.Path.Directory.File(action);
+            file = context.File.Path.Directory.File(action);
         }
 
         try
