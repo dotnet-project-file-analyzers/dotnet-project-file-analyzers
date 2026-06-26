@@ -201,9 +201,6 @@ public class Builds
     }
 
     [Test]
-#if !DEBUG
-    [Explicit]
-#endif
     public void Package()
     {
         using var ctx = BuildalyzerContext.ForProject("CompliantCSharpPackage/CompliantCSharpPackage.csproj");
@@ -214,14 +211,25 @@ public class Builds
         ctx.Analyzer.Build(options);
 
         var package = Path.Combine(ctx.Location.Directory!.FullName, "bin/Debug/CompliantCSharpPackage.1.0.0.nupkg");
+        var payload = Nupkg.Read(new(package)).Where(e => !Ignore(e));
 
-        Nupkg.Read(new(package)).Should().Contain([
-            "logo_128x128.png",
+        payload.Should().BeEquivalentTo(
+            "[Content_Types].xml",
             "README.md",
+            "logo_128x128.png",
             "build/CompliantCSharpPackage.props",
-            "build/CompliantCSharpPackage.targets"]);
-    }
+            "build/CompliantCSharpPackage.targets",
+            "content/logo_128x128.png",
+            "contentFiles/any/net10.0/logo_128x128.png",
+            "lib/net10.0/CompliantCSharpPackage.dll",
+            "lib/net10.0/CompliantCSharpPackage.xml");
 
+        // NuGet and SBOM scaffolding filtered out so the assertion pins the actual payload.
+        static bool Ignore(string e)
+            => e.StartsWith("_rels/", StringComparison.Ordinal)
+            || e.StartsWith("_manifest/", StringComparison.Ordinal)
+            || e.EndsWith(".nuspec", StringComparison.Ordinal);
+    }
 
     [Test]
     public void Does_not_add_content_with_SonarQubeIntegration_disabled()

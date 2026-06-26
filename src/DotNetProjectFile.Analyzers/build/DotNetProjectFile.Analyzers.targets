@@ -34,6 +34,15 @@
       Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))" />
   </ItemGroup>
 
+  <!--
+    Prevents the content added by the SonarQube integretation being added to packages.
+  -->
+  <Target Name="_StripSonarQubeContent" BeforeTargets="_GetPackageFiles">
+    <ItemGroup>
+      <Content Remove="@(Content->WithMetadataValue('SonarQubeContent','true'))" />
+    </ItemGroup>
+  </Target>
+
   <!--To inform users the SDK package is no longer needed. -->
   <Target Name="Proj1004" BeforeTargets="ResolvePackageAssets">
     <Warning
