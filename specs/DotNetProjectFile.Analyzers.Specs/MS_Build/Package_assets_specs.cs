@@ -201,6 +201,9 @@ public class Builds
     }
 
     [Test]
+#if !DEBUG
+    [Explicit(reason: "nupkg can not be resolved at the build server")]
+#endif
     public void Package()
     {
         using var ctx = BuildalyzerContext.ForProject("CompliantCSharpPackage/CompliantCSharpPackage.csproj");
