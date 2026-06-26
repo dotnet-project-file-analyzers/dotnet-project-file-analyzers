@@ -30,6 +30,7 @@ public sealed class BuildalyzerContext : IDisposable
         Manager = new AnalyzerManager(options ?? new AnalyzerManagerOptions { LogWriter = new StringWriter() });
         Analyzer = Manager.GetProject(IOPath.Parse(Location.FullName))!;
         DebugMode(ref InDebugMode);
+        DeleteSubDirectory("artifacts");
         DeleteSubDirectory("bin");
         DeleteSubDirectory("obj");
     }
