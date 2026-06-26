@@ -32,7 +32,7 @@
     <PackageTags>analyzer; cool things</PackageTags>
     <RepositoryUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</RepositoryUrl>
     <PackageProjectUrl>https://github.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers</PackageProjectUrl>
-	<PackageOutputPath>artifacts</PackageOutputPath>
+	<PackageOutputPath>bin/artifacts</PackageOutputPath>
     <Copyright>Copyright © Corniel Nobel 2023-current</Copyright>
     <PackageReleaseNotes>
       <![CDATA[
