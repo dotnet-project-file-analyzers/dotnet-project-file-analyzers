@@ -57,6 +57,24 @@ public class TryGetOrUpdate
     }
 
     [Test]
+    public async Task Updates_existing_entry_when_length_changes_but_write_time_is_equal()
+    {
+        using var file = await TempFile.CreateText("Hello, World!");
+        var stamp = File.GetLastWriteTimeUtc(file.Path);
+
+        var cache = new FileCache<Entry>();
+        cache.TryGetOrUpdate(IOFile.Parse(file.Path), p => new Entry());
+        cache.Count.Should().Be(1);
+
+        await File.WriteAllTextAsync(file.Path, "Hello, World! Extended.");
+        File.SetLastWriteTimeUtc(file.Path, stamp);
+
+        var result = cache.TryGetOrUpdate(IOFile.Parse(file.Path), p => new Entry(17));
+        cache.Count.Should().Be(1);
+        result.Should().Be(new Entry(17));
+    }
+
+    [Test]
     public async Task Remove_existing_entry_when_transform_fails()
     {
         using var file = await TempFile.CreateText("Hello, World!");
