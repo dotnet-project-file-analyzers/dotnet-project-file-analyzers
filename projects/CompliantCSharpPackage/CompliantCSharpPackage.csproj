@@ -80,6 +80,8 @@ v1.0.0
   </ItemGroup>
 
   <ItemGroup>
+    <!-- This is not needed but should not add it twice -->
+    <AdditionalFiles Include="*.resx" />
     <AdditionalFiles Include="*.slnx" />
   </ItemGroup>
   
