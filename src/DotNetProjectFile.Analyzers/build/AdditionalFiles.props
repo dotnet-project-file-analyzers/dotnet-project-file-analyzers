@@ -2,8 +2,14 @@
 
   <!-- Non-compiling files to analyze. -->
   <ItemGroup>
-    <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
-    <AdditionalFiles Include="**/*.resx" />
+    <AdditionalFiles
+      Include="$(MSBuildProjectFile)"
+      Exclude="$(AdditionalFiles)"
+      Visible="false" />
+    <AdditionalFiles
+      Include="**/*.resx"
+      Exclude="$(AdditionalFiles)"
+      Visible="false" />
   </ItemGroup>
 
   <!-- Directory.Build.props -->
