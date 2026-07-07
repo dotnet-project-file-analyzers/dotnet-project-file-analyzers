@@ -84,6 +84,7 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+- Skip SonarQube <Content> when building inside Visual Studio. (BUG)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
