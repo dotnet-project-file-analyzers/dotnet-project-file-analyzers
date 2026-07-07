@@ -29,8 +29,12 @@
     * Condition '$(BuildingInsideVisualStudio)' != 'true'
       Visual Studio does not run SonarQube analysis, and its project tree
       crashes on the linked items when they arrive as a project update (#842).
+
+    * Condition '$(BuildingByReSharper)' != 'true'
+      Set by Rider and ReSharper for all their builds. Rider's solution view
+      hides the real files when the invisible linked duplicates are present.
   -->
-  <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true' and '$(BuildingInsideVisualStudio)' != 'true'">
+  <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true' and '$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
     <Content
       Include="@(None);@(AdditionalFiles)"
       Exclude="@(Content)"
