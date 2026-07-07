@@ -79,18 +79,18 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.15.1</Version>
+    <Version>1.15.2</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v1.*
-- Add <EmbeddedResource> to <AdditionalFiles> once. (BUG)
-- Improve file cache. 
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.15.2
+- Add <EmbeddedResource> to <AdditionalFiles> once. (BUG)
+- Improve file cache. 
 v1.15.1
 - Pack .targets and .props when explicitly configured in <None>. (BUG)
 v1.15.0
