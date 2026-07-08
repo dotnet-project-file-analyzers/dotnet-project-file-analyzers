@@ -1,5 +1,3 @@
-using Microsoft.CodeAnalysis.Text;
-
 namespace Grammr;
 
 [DebuggerDisplay("{Formatter.Format(ToString())}")]
@@ -16,8 +14,6 @@ public readonly struct Token(int start, int length, Source source, string? kind)
     public int End => Start + Length;
 
     public ReadOnlySpan<char> Span => Source.AsSpan(Start, Length);
-
-    public LinePositionSpan LinePositionSpan { get; }
 
     /// <inheritdoc />
     [Pure]

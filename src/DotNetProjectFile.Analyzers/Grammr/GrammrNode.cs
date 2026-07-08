@@ -30,7 +30,10 @@ public abstract class GrammrNode(SliceSpan span, GrammrTree tree)
     }
 
     /// <summary>Gets the line position span of the node.</summary>
-    public LinePositionSpan LinePositionSpan => SourceTree.SourceText.Lines.GetLinePositionSpan(TextSpan);
+    public LinePositionSpan LinePositionSpan => Spans[TextSpan];
+
+    /// <summary>Gets a helper to resolve <see cref="LinePositionSpan"/>s.</summary>
+    public LinePositionSpans Spans => new(SourceTree);
 
     /// <summary>Gets the full span of the node.</summary>
     public ReadOnlySpan<char> FullSpan

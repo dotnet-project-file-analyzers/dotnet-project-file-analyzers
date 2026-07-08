@@ -12,7 +12,7 @@ internal static partial class IniFileParser
     private static readonly Lexer comment = (line_comment("#") | line_comment(";")).optional;
 
     private static readonly Lexer colon = ch(':', Kind.ColonToken);
-    private static readonly Lexer equals = ch('=', Kind.ColonToken);
+    private static readonly Lexer equals = ch('=', Kind.EqualsToken);
     private static readonly Lexer assign = equals | colon;
 
     private static readonly Lexer header = reg(@"^\[[^[\]]+\]", Kind.HeaderToken);
@@ -120,7 +120,7 @@ internal static partial class IniFileParser
         else return null;
     }
 
-    private static IniKey? Value(ref SourceReader reader, GrammrTree tree)
+    private static IniValue? Value(ref SourceReader reader, GrammrTree tree)
     {
         var read = reader;
 
@@ -141,6 +141,7 @@ internal static partial class IniFileParser
     internal static class Kind
     {
         public const string ColonToken = nameof(ColonToken);
+        public const string EqualsToken = nameof(EqualsToken);
         public const string HeaderToken = nameof(HeaderToken);
         public const string KeyToken = nameof(KeyToken);
         public const string ValueToken = nameof(ValueToken);
