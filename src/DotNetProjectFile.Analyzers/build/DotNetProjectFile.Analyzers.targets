@@ -25,8 +25,16 @@
     * Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))"
       Flattens the file structure of the content file to work arround a
       Visual Studio limitation: github.com/dotnet/project-system/issues/5859
+
+    * Condition '$(BuildingInsideVisualStudio)' != 'true'
+      Visual Studio does not run SonarQube analysis, and its project tree
+      crashes on the linked items when they arrive as a project update (#842).
+
+    * Condition '$(BuildingByReSharper)' != 'true'
+      Set by Rider and ReSharper for all their builds. Rider's solution view
+      hides the real files when the invisible linked duplicates are present.
   -->
-  <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true'">
+  <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true' and '$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
     <Content
       Include="@(None);@(AdditionalFiles)"
       Exclude="@(Content)"

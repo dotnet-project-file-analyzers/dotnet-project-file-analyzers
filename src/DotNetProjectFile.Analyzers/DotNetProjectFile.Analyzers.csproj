@@ -89,6 +89,7 @@ ToBeDecided:
     <PackageReleaseNotes>
       <![CDATA[
 v1.15.2
+- Skip SonarQube <Content> when building inside Visual Studio, Rider, or ReSharper. (BUG)
 - Add <EmbeddedResource> to <AdditionalFiles> once. (BUG)
 - Improve file cache. 
 v1.15.1

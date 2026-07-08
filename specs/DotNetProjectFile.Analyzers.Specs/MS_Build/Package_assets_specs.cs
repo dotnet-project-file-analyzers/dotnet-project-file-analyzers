@@ -242,6 +242,48 @@ public class Builds
     }
 
     [Test]
+    public void Does_not_add_content_when_building_inside_Visual_Studio()
+    {
+        using var ctx = BuildalyzerContext.ForProject("CompliantCSharpPackage/CompliantCSharpPackage.csproj");
+
+        var options = new EnvironmentOptions() { DesignTime = false };
+        options.Arguments.Add("-p:BuildingInsideVisualStudio=true");
+
+        var build = ctx.Analyzer.Build(options);
+
+        var result = build.Results.Single();
+
+        result.Should().HaveItems(
+            "Content",
+            new ProjectItem()
+            {
+                ItemSpec = """../../design/logo_128x128.png""",
+                Metadata = new Meta { Link = "logo_128x128.png" },
+            });
+    }
+
+    [Test]
+    public void Does_not_add_content_when_building_by_ReSharper()
+    {
+        using var ctx = BuildalyzerContext.ForProject("CompliantCSharpPackage/CompliantCSharpPackage.csproj");
+
+        var options = new EnvironmentOptions() { DesignTime = false };
+        options.Arguments.Add("-p:BuildingByReSharper=true");
+
+        var build = ctx.Analyzer.Build(options);
+
+        var result = build.Results.Single();
+
+        result.Should().HaveItems(
+            "Content",
+            new ProjectItem()
+            {
+                ItemSpec = """../../design/logo_128x128.png""",
+                Metadata = new Meta { Link = "logo_128x128.png" },
+            });
+    }
+
+    [Test]
     public void Does_not_add_content_with_SonarQubeIntegration_disabled()
     {
         using var ctx = BuildalyzerContext.ForProject("CompliantCSharpPackage/CompliantCSharpPackage.csproj");
