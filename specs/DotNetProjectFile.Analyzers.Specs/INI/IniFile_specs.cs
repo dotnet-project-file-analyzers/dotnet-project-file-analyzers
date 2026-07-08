@@ -1,5 +1,4 @@
 using DotNetProjectFile.Ini;
-using Xamples;
 
 namespace Specs.INI.IniFile_specs;
 

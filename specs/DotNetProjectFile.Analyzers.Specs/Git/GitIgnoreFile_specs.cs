@@ -1,5 +1,4 @@
 using DotNetProjectFile.Git;
-using Xamples;
 
 namespace Specs.Git.GitIgnoreFile_specs;
 
