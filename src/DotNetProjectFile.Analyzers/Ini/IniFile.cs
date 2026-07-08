@@ -1,5 +1,6 @@
 using Grammr;
 using Microsoft.CodeAnalysis.Text;
+using static DotNetProjectFile.Ini.IniFileParser;
 
 namespace DotNetProjectFile.Ini;
 
@@ -27,6 +28,12 @@ public sealed class IniFile(int count, GrammrTree tree)
             .Where(kvp => kvp.Key.IsMatch("root"))
             .Select(kvp => kvp.Value.IsMatch("true"))
             .LastOrDefault();
+
+    public override IEnumerable<Diagnostic> GetDiagnostics() =>
+    [
+        .. base.GetDiagnostics(),
+        .. Tokens.WhereOfKind(Kind.Unparsable).Select(t => Issue(Rule.Ini.Invalid, t, $"'{Formatter.Format(t.Span[0])}' is unexpected")),
+    ];
 
     public static IniFile? Load(IOFile file)
     {

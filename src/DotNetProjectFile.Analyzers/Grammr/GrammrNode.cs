@@ -4,7 +4,7 @@ using Microsoft.CodeAnalysis.Text;
 namespace Grammr;
 
 [DebuggerDisplay("{FullSpan.ToString()}")]
-public abstract class GrammrNode(SliceSpan span, GrammrTree tree)
+public abstract partial class GrammrNode(SliceSpan span, GrammrTree tree)
 {
     /// <summary>Gets the parent of the node.</summary>
     public GrammrNode? Parent { get; internal set; }

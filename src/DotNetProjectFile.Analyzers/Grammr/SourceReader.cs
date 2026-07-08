@@ -100,7 +100,7 @@ public ref struct SourceReader(Source source, TokenStream? stream = null)
                     return token;
                 }
             }
-            return null;
+            return lexers.IsOptional ? default(Token) : null;
         }
         if (lexer.Match(this) is { } length)
         {

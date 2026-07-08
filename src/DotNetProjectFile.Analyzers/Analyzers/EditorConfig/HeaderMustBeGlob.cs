@@ -1,4 +1,5 @@
 using DotNetProjectFile.Ini;
+using Grammr;
 
 namespace DotNetProjectFile.Analyzers.EditorConfig;
 
@@ -15,7 +16,7 @@ public sealed class HeaderMustBeGlob() : IniFileAnalyzer(Rule.Ini.HeaderMustBeGl
             .OfType<IniHeader>()
             .Where(h => h.Text is { Length: > 0 } && Glob.TryParse(h.Text) is null))
         {
-            var span = header.Tokens.First(t => t.Kind == IniFileParser.Kind.HeaderToken);
+            var span = header.Tokens.OfKind(IniFileParser.Kind.HeaderText);
             context.ReportDiagnostic(Descriptor, context.File, header.Spans[span], header.Text);
         }
     }

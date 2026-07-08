@@ -1,5 +1,6 @@
 namespace DotNetProjectFile.Analyzers.Ini;
 
+/// <summary>Implements <see cref="Rule.Ini.EmptySection"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class EmptySection() : IniFileAnalyzer(Rule.Ini.EmptySection)
 {

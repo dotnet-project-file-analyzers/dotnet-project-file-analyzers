@@ -29,6 +29,21 @@ public static class Shared
     /// </remarks>
     public const bool Chain = true;
 
+    /// <summary>Syntaxic sugar.</summary>
+    /// <remarks>
+    /// This allows:
+    /// <code>
+    /// <![CDATA[
+    /// if (Choise
+    ///     || reader.Emit(..)
+    ///     || reader.Emit(..))
+    /// ]]>
+    /// </code>
+    ///
+    /// This should help with the outlining and therfor the readability of the code.
+    /// </remarks>
+    public const bool Choise = false;
+
     /// <summary>Indicates the end of the stream.</summary>
     public static readonly Lexer eos = new EndOfStream();
 

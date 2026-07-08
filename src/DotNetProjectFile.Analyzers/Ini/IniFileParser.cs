@@ -12,12 +12,19 @@ internal static partial class IniFileParser
     private static readonly Lexer comment = (line_comment("#") | line_comment(";")).optional;
 
     private static readonly Lexer colon = ch(':', Kind.ColonToken);
-    private static readonly Lexer equals = ch('=', Kind.EqualsToken);
+    private static readonly Lexer equals = ch('=', Kind.EqualToken);
     private static readonly Lexer assign = equals | colon;
 
-    private static readonly Lexer header = reg(@"^\[[^[\]]+\]", Kind.HeaderToken);
     private static readonly Lexer key = reg(@"^[a-zA-Z0-9_\-\.]+", Kind.KeyToken);
     private static readonly Lexer value = reg(@"^[^=:^\s#;][^\s#;]*", Kind.ValueToken);
+
+    private static readonly Lexer header_start = ch('[', Kind.HeaderStart);
+    private static readonly Lexer header_end = ch(']', Kind.HeaderEnd);
+    private static readonly Lexer header_text = match(IsHeaderText, Kind.HeaderText);
+
+    private static readonly Lexer unparsable = line(Kind.Unparsable).optional;
+
+    private static bool IsHeaderText(char c, int _) => c is not ']' and not '\n' and not '\r';
 
     public static IniFile Parse(GrammrTree tree)
     {
@@ -38,12 +45,9 @@ internal static partial class IniFileParser
                 AddSection(reader, tree);
                 iniHeader = h;
             }
-            else
-            {
-                reader.Cons(ws);
-                reader.Cons(comment);
-                reader.Cons(eol);
-            }
+            else _ = Choise
+                || WhitespaceOrComment(ref reader)
+                || UnparsableLine(ref reader);
         }
 
         AddSection(reader, tree);
@@ -74,9 +78,12 @@ internal static partial class IniFileParser
 
         if (Chain
             && read.Keep(space)
-            && read.Keep(header)
+            && read.Keep(header_start)
+            && read.Keep(header_text.optional)
+            && read.Keep(header_end.optional)
             && read.Keep(space)
             && read.Keep(comment)
+            && read.Keep(unparsable)
             && read.Keep(end))
         {
             var span = SliceSpan.Delta(read.Stream, reader.Stream);
@@ -92,8 +99,12 @@ internal static partial class IniFileParser
 
         if (Chain
             && Key(ref read, tree) is { } k
-            && read.Keep(assign)
-            && Value(ref read, tree) is { } v)
+            && read.Keep(assign.optional)
+            && Value(ref read, tree) is var v
+            && read.Keep(space)
+            && read.Keep(comment)
+            && read.Keep(unparsable)
+            && read.Keep(end))
         {
             var span = SliceSpan.Delta(read.Stream, reader.Stream);
             reader = read;
@@ -127,9 +138,7 @@ internal static partial class IniFileParser
         if (Chain
             && read.Keep(space)
             && read.Keep(value)
-            && read.Keep(space)
-            && read.Keep(comment)
-            && read.Keep(end))
+            && read.Keep(space))
         {
             var span = SliceSpan.Delta(read.Stream, reader.Stream);
             reader = read;
@@ -138,12 +147,36 @@ internal static partial class IniFileParser
         else return null;
     }
 
+    private static bool WhitespaceOrComment(ref SourceReader reader)
+    {
+        var read = reader;
+        if (Chain
+            && read.Cons(ws)
+        && read.Cons(comment)
+        && read.Cons(eol))
+        {
+            reader = read;
+            return true;
+        }
+        else return false;
+    }
+
+    private static bool UnparsableLine(ref SourceReader reader)
+    {
+        reader.Keep(unparsable);
+        reader.Keep(eol);
+        return true;
+    }
+
     internal static class Kind
     {
         public const string ColonToken = nameof(ColonToken);
-        public const string EqualsToken = nameof(EqualsToken);
-        public const string HeaderToken = nameof(HeaderToken);
+        public const string EqualToken = nameof(EqualToken);
+        public const string HeaderStart = nameof(HeaderStart);
+        public const string HeaderEnd = nameof(HeaderEnd);
+        public const string HeaderText = nameof(HeaderText);
         public const string KeyToken = nameof(KeyToken);
         public const string ValueToken = nameof(ValueToken);
+        public const string Unparsable = nameof(Unparsable);
     }
 }
