@@ -122,6 +122,7 @@ public class Regex
     [TestCase("x as first", "x")]
     [TestCase("y as first", "y")]
     [TestCase("z as first", "z")]
+    [TestCase("xxxyzzy as first", "xxxyzzy")]
     public void Parses(string src, string match)
         => lexer.Should().Match(match, from: src);
 
@@ -136,10 +137,9 @@ public class Regex
 
 public class Line
 {
-    [TestCase("//", "//")]
-    [TestCase("// some comment\n", "// some comment")]
-    [TestCase("// some comment\r\n", "// some comment")]
-    [TestCase("// some comment \n", "// some comment ")]
+    [TestCase("some text\n", /*...*/ "some text")]
+    [TestCase("some text\r\n", /*.*/ "some text")]
+    [TestCase("some text \n", /*..*/ "some text ")]
     public void Parses(string src, string match)
         => line().Should().Match(match, from: src);
 
@@ -181,6 +181,7 @@ public class Optional
     [TestCase("abc", "abc")]
     [TestCase("abcefdg", "abc")]
     [TestCase("abc ", "abc")]
+    [TestCase("xyz", "")]
     public void Matches(string src, string match)
         => lexer.Should().Match(match, from: src);
 
