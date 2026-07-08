@@ -2,15 +2,21 @@
 
   <!-- Non-compiling files to analyze. -->
   <ItemGroup>
-    <AdditionalFiles Include="$(MSBuildProjectFile)" Visible="false" />
-    <AdditionalFiles Include="**/*.resx" />
+    <AdditionalFiles
+      Include="$(MSBuildProjectFile)"
+      Exclude="@(AdditionalFiles)"
+      Visible="false" />
+    <AdditionalFiles
+      Include="**/*.resx"
+      Exclude="@(AdditionalFiles)"
+      Visible="false" />
   </ItemGroup>
 
   <!-- Directory.Build.props -->
   <ItemGroup Condition="'$(ImportDirectoryBuildProps)' == 'true'">
     <AdditionalFiles
       Include="$(DirectoryBuildPropsPath)"
-      Exclude="$(AdditionalFiles)"
+      Exclude="@(AdditionalFiles)"
       Visible="false" />
     <CompilerVisibleProperty Include="DirectoryBuildPropsPath" />
   </ItemGroup>
@@ -19,7 +25,7 @@
   <ItemGroup Condition="'$(ImportDirectoryBuildTargets)' == 'true'">
     <AdditionalFiles
       Include="$(DirectoryBuildTargetsPath)"
-      Exclude="$(AdditionalFiles)"
+      Exclude="@(AdditionalFiles)"
       Visible="false" />
     <CompilerVisibleProperty Include="DirectoryBuildTargetsPath" />
   </ItemGroup>
@@ -28,7 +34,7 @@
   <ItemGroup Condition="'$(ImportDirectoryPackagesProps)' == 'true'">
     <AdditionalFiles
       Include="$(DirectoryPackagesPropsPath)"
-      Exclude="$(AdditionalFiles)"
+      Exclude="@(AdditionalFiles)"
       Visible="false" />
     <CompilerVisibleProperty Include="DirectoryPackagesPropsPath" />
   </ItemGroup>
