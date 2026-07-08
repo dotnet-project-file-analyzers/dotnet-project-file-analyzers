@@ -116,8 +116,8 @@ public readonly struct IOFile : IEquatable<IOFile>, IFormattable, IComparable<IO
 
     public SourceText SourceText()
     {
-        using var stream = OpenRead();
-        return Microsoft.CodeAnalysis.Text.SourceText.From(stream);
+        using var reader = TryOpenRead();
+        return Microsoft.CodeAnalysis.Text.SourceText.From(reader);
     }
 
     /// <inheritdoc cref="FileInfo.OpenText()" />
