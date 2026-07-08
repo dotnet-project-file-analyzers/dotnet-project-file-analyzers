@@ -76,11 +76,8 @@ public readonly struct TokenStream : IReadOnlyList<Token>
     [Pure]
     public Enumerator GetEnumerator() => new(this);
 
-    public static implicit operator TokenStream(Source source) => new(0, Empty, source);
-
-    /// <summary>This ensures no (extra) allocations when the stream is not used.</summary>
-    [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private static readonly Info[] Empty = new Info[2];
+    /// <summary>Implicitly casts a <see cref="Grammr.Source"/> to a <see cref="TokenStream"/>.</summary>
+    public static implicit operator TokenStream(Source source) => new(0, [], source);
 
     /// <inheritdoc />
     [Pure]
