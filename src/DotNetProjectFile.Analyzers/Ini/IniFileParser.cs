@@ -17,7 +17,7 @@ internal static partial class IniFileParser
 
     private static readonly Lexer header = reg(@"^\[[^[\]]+\]", Kind.HeaderToken);
     private static readonly Lexer key = reg(@"^[a-zA-Z0-9_\-\.]+", Kind.KeyToken);
-    private static readonly Lexer value = reg(@"^[^=:^\s#;][^\s#;]*", Kind.HeaderToken);
+    private static readonly Lexer value = reg(@"^[^=:^\s#;][^\s#;]*", Kind.ValueToken);
 
     public static IniFile Parse(GrammrTree tree)
     {
