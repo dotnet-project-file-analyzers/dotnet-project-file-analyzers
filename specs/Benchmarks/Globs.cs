@@ -1,4 +1,4 @@
-using DotNetProjectFile.Text;
+using DotNetProjectFile.IO;
 
 namespace Benchmarks;
 

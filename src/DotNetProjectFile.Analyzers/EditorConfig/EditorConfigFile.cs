@@ -3,25 +3,19 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.EditorConfig;
 
-public sealed class EditorConfigFile(IniFileSyntax syntax) : ProjectFile
+public sealed class EditorConfigFile(IniFile syntax) : ProjectFile
 {
     /// <summary>INI syntax.</summary>
-    public IniFileSyntax Syntax { get; } = syntax;
+    public IniFile Syntax { get; } = syntax;
 
     /// <inheritdoc />
-    public IOFile Path => Syntax.SyntaxTree.Path;
+    public IOFile Path => Syntax.SourceTree.Path;
 
     /// <inheritdoc />
-    public SourceText Text => Syntax.SyntaxTree.SourceText;
+    public SourceText Text => Syntax.SourceTree.SourceText;
 
     /// <inheritdoc />
     public WarningPragmas WarningPragmas => WarningPragmas.None;
 
-    public bool IsRoot
-        => Syntax.Sections.FirstOrDefault() is { } section
-        && section.Header is null
-        && section.Kvps
-            .Where(kvp => kvp.Key.IsMatch("root"))
-            .Select(kvp => kvp.Value.IsMatch("true"))
-            .LastOrDefault();
+    public bool IsRoot => Syntax.IsRoot;
 }

@@ -63,7 +63,7 @@ public class Reports
             new("Proj1001", "Use MessagePackAnalyzer to analyze Microsoft.ServiceHub.Framework"),
 #endif
             new("Proj1001", "Use SerilogAnalyzer to analyze Libplanet"));
-  
+
 }
 
 public class Guards

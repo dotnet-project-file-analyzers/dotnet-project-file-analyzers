@@ -20,7 +20,7 @@ public class Parses
     [TestCase("1.2.0", 1, 2, 0)]
     [TestCase("1.2.9", 1, 2, 9)]
     [TestCase("2.71828.182845904", 2, 71828, 182845904)]
-    public void Major_Minor_Patch(string str, int major, int minor,  int patch)
+    public void Major_Minor_Patch(string str, int major, int minor, int patch)
         => SemVer.TryParse(str).Should().Be(new SemVer(major, minor, patch));
 
     [Test]
@@ -39,6 +39,6 @@ public class Parses
     [TestCase("01.3.3", "Leading zero for major")]
     [TestCase("1.03.3", "Leading zero for minor")]
     [TestCase("1.3.03", "Leading zero for path")]
-    public void Unsucessfully(string str, string because) 
+    public void Unsucessfully(string str, string because)
         => SemVer.TryParse(str).Should().BeNull(because);
 }

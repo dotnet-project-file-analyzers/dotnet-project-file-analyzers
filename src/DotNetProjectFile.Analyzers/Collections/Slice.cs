@@ -9,10 +9,13 @@ public readonly struct Slice<T>(int start, int size, IReadOnlyList<T> list) : IR
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private readonly IReadOnlyList<T> List = list;
 
+    /// <inheritdoc />
     public int Count { get; } = size;
 
+    /// <inheritdoc />
     public T this[int index] => List[index + Offset];
 
+    /// <summary>The offset.</summary>
     private int Offset { get; } = start;
 
     /// <inheritdoc cref="Enumerable.Skip{TSource}(IEnumerable{TSource}, int)" />

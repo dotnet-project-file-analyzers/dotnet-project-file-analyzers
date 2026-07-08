@@ -34,14 +34,10 @@ public sealed class NuGetConfigFile : Node, ProjectFile
 
     public Nodes<PackageSourceMapping> PackageSourceMappings => new(Children);
 
-    public static NuGetConfigFile Load(IOFile file)
-    {
-        using var reader = file.TryOpenText();
-        return new(
-            path: file,
-            text: SourceText.From(reader.ReadToEnd()),
-            additionalText: null);
-    }
+    public static NuGetConfigFile Load(IOFile file) => new(
+        path: file,
+        text: file.SourceText(),
+        additionalText: null);
 
     public static NuGetConfigFile Load(AdditionalText text) => new(
         path: IOFile.Parse(text.Path),

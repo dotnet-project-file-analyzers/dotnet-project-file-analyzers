@@ -72,9 +72,9 @@ public class Guards
         """)
        .HasNoIssues();
 
-   [Test]
+    [Test]
     public void version_containing_variable() => new VersionShouldBeSemVerCompliant()
-       .ForInlineCsproj("""
+        .ForInlineCsproj("""
         <Project Sdk="Microsoft.NET.Sdk">
 
           <PropertyGroup>
@@ -85,7 +85,7 @@ public class Guards
 
         </Project>
         """)
-       .HasNoIssues();
+        .HasNoIssues();
 
     [Test]
     public void version_prefix_containing_variable() => new VersionPrefixShouldBeSemVerCompliant()

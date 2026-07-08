@@ -10,7 +10,7 @@ public sealed class UseEqualsAssign() : IniFileAnalyzer(Rule.Ini.UseEqualsAssign
     {
         if (!context.File.Path.Name.IsMatch(".editorconfig")) return;
 
-        foreach (var colon in context.File.Syntax.Tokens.Where(t => t.Kind == TokenKind.ColonToken))
+        foreach (var colon in context.File.Tokens.Where(t => t.Kind == IniFileParser.Kind.ColonToken))
         {
             context.ReportDiagnostic(Descriptor, context.File, colon.LinePositionSpan);
         }

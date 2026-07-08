@@ -31,7 +31,7 @@ public class Converts
 public class Registered
 {
     private static IEnumerable<Type> Decorated
-        => typeof(DotNetProjectFile.Analyzers.MsBuildProjectFileAnalyzer)
+        => typeof(MsBuildProjectFileAnalyzer)
         .Assembly.GetTypes()
         .Where(t => t.GetCustomAttributes<TypeConverterAttribute>().Any());
 

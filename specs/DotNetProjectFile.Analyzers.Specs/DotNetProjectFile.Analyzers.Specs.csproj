@@ -18,6 +18,7 @@
   <ItemGroup Label="Project under test">
     <ProjectReference Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" />
     <ProjectReference Include="../Benchmarks/Benchmarks.csproj" />
+    <ProjectReference Include="..\TestData\TestData.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <Description>
+      By having a seperate test data/file project, data can be shared by the benchmarks and specs project.
+    </Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Files/*.*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" />
+  </ItemGroup>
+
+</Project>

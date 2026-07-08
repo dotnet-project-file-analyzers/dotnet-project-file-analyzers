@@ -28,8 +28,8 @@ public sealed class GuardUnsupported() : MsBuildProjectFileAnalyzer(
         }
     }
 
-    [ExcludeFromCodeCoverage/* Justification = "Analyzer ensure that this is called for other analyzers." */]
     /// <inheritdoc />
+    [ExcludeFromCodeCoverage/*(Justification = "Analyzer ensure that this is called for other analyzers.")*/]
     protected override void Register(ProjectFileAnalysisContext context)
     {
         // Empty.
