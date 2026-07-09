@@ -1,7 +1,7 @@
 <Solution>
   <Project Path=".net.csproj" />
-  <Project Path="specs/Benchmarks/Benchmarks.csproj" />
-  <Project Path="specs/DotNetProjectFile.Analyzers.Specs/DotNetProjectFile.Analyzers.Specs.csproj" />
-  <Project Path="specs/TestData/TestData.csproj" Id="0e58f812-cca4-4ff4-a618-69e1c8ea11a6" />
+  <Project Path="specs/Bench/Bench.csproj" />
+  <Project Path="specs/Specs/Specs.csproj" />
+  <Project Path="specs/TestData/TestData.csproj" />
   <Project Path="src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" />
 </Solution>
