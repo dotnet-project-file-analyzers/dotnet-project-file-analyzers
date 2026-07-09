@@ -191,7 +191,7 @@ public static partial class Rule
     public static DiagnosticDescriptor BuildActionIncludeShouldExist => New(
         id: 0022,
         title: "Build action includes should exist",
-        message: "The Include '{0}' of <{1}> does not {2}",
+        message: "The Include '{0}' of <{1}> does not {2}{3}",
         description:
             "Build action include statements that do not include any file, are most " +
             "likely a left over, or a bug.",
@@ -297,7 +297,7 @@ public static partial class Rule
     public static DiagnosticDescriptor ProjectReferenceIncludeShouldExist => New(
         id: 0033,
         title: "Project reference includes should exist",
-        message: "The Include '{0}' of <ProjectReference> does not exist",
+        message: "The Include '{0}' of <ProjectReference> does not exist{1}",
         description:
             "Project reference include statements that do not include any file, are most likely bugs.",
         tags: ["dependencies", "dependency"],
@@ -1462,6 +1462,23 @@ public static partial class Rule
             "errors or make the comparing of file changes harder.",
         tags: ["XML", "leading", "trailing", "whitespace", "trim"],
         category: Category.Noise);
+
+    public static DiagnosticDescriptor MsBuildPropertyCouldNotBeResolved => New(
+        id: 9000,
+        title: "MSBuild property could not be resolved by the analyzer",
+        message: "The MSBuild property '$({0})' referenced in '{1}' could not be resolved",
+        description:
+            "Properties referenced via $(...) in path expressions are resolved " +
+            "when they are reserved (e.g. MSBuildThisFileDirectory), registered " +
+            "via <CompilerVisibleProperty>, or unconditionally defined in " +
+            "<PropertyGroup>. References that resolve to none of those are " +
+            "skipped silently. This rule surfaces those skipped references " +
+            "for analyzer-internal diagnostic use; it is hidden and disabled " +
+            "by default.",
+        tags: ["Configuration", "MSBuild", "property"],
+        category: Category.Configuration,
+        severity: DiagnosticSeverity.Hidden,
+        isEnabled: false);
 
 #pragma warning disable S107 // Methods should not have too many parameters
     // it calls a ctor with even more arguments.

@@ -19,3 +19,13 @@ public class Guards
         .ForProject(project)
         .HasNoIssues();
 }
+
+public class Reports_across_files
+{
+    [Test]
+    public void Same_project_referenced_in_csproj_and_in_imported_props_is_flagged_as_duplicate()
+        => new IncludeProjectReferencesOnce()
+            .ForProject("DuplicateProjectReferenceAcrossFiles.cs")
+            .HasIssue(
+                Issue.WRN("Proj0014", "Project '../EmptyNodes/EmptyNodes.csproj' is already referenced").WithSpan(07, 04, 07, 66));
+}
