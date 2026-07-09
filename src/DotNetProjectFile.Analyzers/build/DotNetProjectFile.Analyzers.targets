@@ -1,6 +1,6 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <Import Project="$(MSBuildThisFileDirectory)AdditionalFiles.props" />
+  <Import Project="$(MSBuildThisFileDirectory)AdditionalFiles.targets" />
 
   <PropertyGroup Condition="'$(MSBuildProjectExtension)' == '.csproj' or '$(MSBuildProjectExtension)' == '.vbproj'">
     <IsRoslynBased>true</IsRoslynBased>
