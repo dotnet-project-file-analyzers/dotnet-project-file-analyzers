@@ -9,11 +9,11 @@ public class Reports
         .ForProject("IniSyntaxErrors.cs")
         .HasIssues(
             Issue.ERR("Proj4001", "']' is expected" /*........*/).WithSpan(02, 10, 03, 00),
-            Issue.ERR("Proj4002", "'=' or ':' is expected" /*.*/).WithSpan(03, 22, 03, 27),
-            Issue.ERR("Proj4002", "Value is missing" /*.......*/).WithSpan(04, 16, 04, 17),
-            Issue.ERR("Proj4002", "'=' or ':' is expected" /*.*/).WithSpan(10, 08, 10, 15),
-            Issue.ERR("Proj4001", "']' is unexpected" /*......*/).WithSpan(12, 01, 12, 02),
-            Issue.ERR("Proj4001", "'[' is unexpected" /*......*/).WithSpan(15, 01, 15, 02));
+            Issue.ERR("Proj4002", "'=' or ':' is expected" /*.*/).WithSpan(03, 21, 03, 22),
+            Issue.ERR("Proj4002", "Value is expected" /*......*/).WithSpan(04, 17, 05, 00),
+            Issue.ERR("Proj4002", "'=' or ':' is expected" /*.*/).WithSpan(10, 07, 10, 08),
+            Issue.ERR("Proj4000", "'=' is unexpected" /*......*/).WithSpan(10, 16, 10, 26),
+            Issue.ERR("Proj4001", "header text is missing" /*.*/).WithSpan(12, 01, 12, 02));
 }
 
 public class Guards

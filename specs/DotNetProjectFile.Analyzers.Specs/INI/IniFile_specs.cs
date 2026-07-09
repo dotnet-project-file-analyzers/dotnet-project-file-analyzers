@@ -112,7 +112,6 @@ public class Parses_with_issues
             .Should().HaveIssue(Issue.ERR("Proj4000", "'s' is unexpected"));
     }
 
-
     [Test]
     public void None_value_start()
     {
@@ -121,5 +120,15 @@ public class Parses_with_issues
 
         ini.GetDiagnostics()
             .Should().HaveIssue(Issue.ERR("Proj4000", "'@' is unexpected"));
+    }
+
+    [Test]
+    public void on_last_token()
+    {
+        var tree = Test.Tree("%");
+        var ini = IniFile.Parse(tree);
+
+        ini.GetDiagnostics()
+            .Should().HaveIssue(Issue.ERR("Proj4000", "'%' is unexpected").WithSpan(0, 0, 0, 1));
     }
 }

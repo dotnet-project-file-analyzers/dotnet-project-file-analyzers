@@ -15,9 +15,6 @@ public readonly struct Token(int start, int length, Source source, string? kind)
 
     public ReadOnlySpan<char> Span => Source.AsSpan(Start, Length);
 
-    [Pure]
-    public Token NextChar() => new(Start + Length, 1, Source, null);
-
     /// <inheritdoc />
     [Pure]
     public override string ToString() => Span.ToString();

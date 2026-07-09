@@ -44,6 +44,19 @@ public readonly struct TokenStream : IReadOnlyList<Token>
     /// <summary>Gets the tokens specifiec by the range.</summary>
     public Slice<Token> this[SliceSpan range] => new(range, this);
 
+    /// <summary>Gets the index of the token.</summary>
+    /// <remarks>
+    /// Uses binary search, as tokens should be in order.
+    /// </remarks>
+    /// <returns>
+    /// A not negative number if the token was found, otherwise a negative number.
+    /// </returns>
+    public int IndexOf(Token token)
+    {
+        var info = new Info(token.Start, token.Length, token.Kind);
+        return Array.BinarySearch(Tokens, 0, Count, info);
+    }
+
     /// <summary>Creates a new stream with the token added.</summary>
     /// <param name="token">
     /// The token to add.
@@ -89,7 +102,7 @@ public readonly struct TokenStream : IReadOnlyList<Token>
     [ExcludeFromCodeCoverage/*(Justification = "Only exists for backwards compatibillity reasons.")*/]
     IEnumerator<Token> IEnumerable<Token>.GetEnumerator() => GetEnumerator();
 
-    private readonly struct Info(int start, int length, string? kind)
+    private readonly struct Info(int start, int length, string? kind) : IComparable<Info>
     {
         public bool IsDefault => Length is 0;
 
@@ -100,6 +113,10 @@ public readonly struct TokenStream : IReadOnlyList<Token>
         public int Length { get; } = length;
 
         public int End => Start + Length;
+
+        /// <inheritdoc />
+        [Pure]
+        public int CompareTo(Info other) => Start.CompareTo(other.Start);
 
         /// <inheritdoc />
         [Pure]

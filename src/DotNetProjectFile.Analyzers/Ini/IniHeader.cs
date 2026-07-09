@@ -14,10 +14,10 @@ public sealed class IniHeader(SliceSpan span, GrammrTree tree) : GrammrNode(span
     public override IEnumerable<Diagnostic> GetDiagnostics() => this switch
     {
         _ when Tokens.HasNoneOfKind(Kind.HeaderText)
-            => [Issue(Rule.Ini.InvalidHeader, Tokens.OfKind(Kind.HeaderStart).NextChar(), "header text is missing")],
+            => IssueOnNext(Rule.Ini.InvalidHeader, Tokens.OfKind(Kind.HeaderStart), "header text is missing"),
 
         _ when Tokens.HasNoneOfKind(Kind.HeaderEnd)
-            => [Issue(Rule.Ini.InvalidHeader, Tokens.OfKind(Kind.HeaderText).NextChar(), "']' is expected")],
+            => IssueOnNext(Rule.Ini.InvalidHeader, Tokens.OfKind(Kind.HeaderText), "']' is expected"),
 
         _ => [],
     };

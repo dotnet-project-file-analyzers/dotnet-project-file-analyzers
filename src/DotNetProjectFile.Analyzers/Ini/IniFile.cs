@@ -32,7 +32,9 @@ public sealed class IniFile(int count, GrammrTree tree)
     public override IEnumerable<Diagnostic> GetDiagnostics() =>
     [
         .. base.GetDiagnostics(),
-        .. Tokens.WhereOfKind(Kind.Unparsable).Select(t => Issue(Rule.Ini.Invalid, t, $"'{Formatter.Format(t.Span[0])}' is unexpected")),
+        .. Tokens
+            .WhereOfKind(Kind.Unparsable)
+            .SelectMany(t => Issue(Rule.Ini.Invalid, t, $"'{Formatter.Format(t.Span[0])}' is unexpected")),
     ];
 
     public static IniFile? Load(IOFile file)

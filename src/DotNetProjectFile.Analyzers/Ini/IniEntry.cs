@@ -15,10 +15,10 @@ public sealed class IniEntry(SliceSpan span, GrammrTree tree) : GrammrNode(span,
     {
         _ when Tokens.WhereOfKind(Kind.EqualToken).None()
             && Tokens.WhereOfKind(Kind.ColonToken).None()
-            => [Issue(Rule.Ini.InvalidKeyValuePair, Tokens.OfKind(Kind.KeyToken).NextChar(), "'=' or ':' is expected")],
+            => IssueOnNext(Rule.Ini.InvalidKeyValuePair, Tokens.OfKind(Kind.KeyToken), "'=' or ':' is expected"),
 
         _ when Value is null
-            => [Issue(Rule.Ini.InvalidKeyValuePair, Tokens.OfAnyKind(Kind.EqualToken, Kind.ColonToken).NextChar(), "Value is expected")],
+            => IssueOnNext(Rule.Ini.InvalidKeyValuePair, Tokens.OfAnyKind(Kind.EqualToken, Kind.ColonToken), "Value is expected"),
 
         _ => [],
     };
