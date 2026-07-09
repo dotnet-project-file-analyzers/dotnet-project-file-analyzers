@@ -1,5 +1,3 @@
-using System.Text.RegularExpressions;
-
 namespace DotNetProjectFile.MsBuild;
 
 public readonly struct MsBuildExpression

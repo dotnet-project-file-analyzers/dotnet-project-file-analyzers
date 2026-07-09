@@ -1,5 +1,5 @@
 using DotNetProjectFile.Ini;
-using DotNetProjectFile.Text;
+using Grammr;
 
 namespace DotNetProjectFile.Analyzers.EditorConfig;
 
@@ -11,13 +11,13 @@ public sealed class HeaderMustBeGlob() : IniFileAnalyzer(Rule.Ini.HeaderMustBeGl
     {
         if (!context.File.Path.Name.IsMatch(".editorconfig")) return;
 
-        foreach (var header in context.File.Syntax.Sections
+        foreach (var header in context.File.Sections
             .Select(s => s.Header)
-            .OfType<HeaderSyntax>()
+            .OfType<IniHeader>()
             .Where(h => h.Text is { Length: > 0 } && Glob.TryParse(h.Text) is null))
         {
-            var span = header.Tokens.First(t => t.Kind == TokenKind.HeaderTextToken);
-            context.ReportDiagnostic(Descriptor, context.File, span.LinePositionSpan, header.Text);
+            var span = header.Tokens.OfKind(IniFileParser.Kind.HeaderText);
+            context.ReportDiagnostic(Descriptor, context.File, header.Spans[span], header.Text);
         }
     }
 }

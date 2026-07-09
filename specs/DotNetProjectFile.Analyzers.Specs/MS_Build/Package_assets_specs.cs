@@ -23,9 +23,9 @@ public class Builds
         var result = ctx.Analyzer.Build().Results.Single();
 
         result.Should().HaveProperties(new()
-            {
-                ["SonarQubeIntegration"] = "true"
-            })
+        {
+            ["SonarQubeIntegration"] = "true"
+        })
 
             .And.HaveCompilerVisibleProperties(
                 "Configuration",
@@ -206,7 +206,7 @@ public class Builds
     public void Package()
     {
         using var ctx = BuildalyzerContext.ForProject("CompliantCSharpPackage/CompliantCSharpPackage.csproj");
-        
+
         var options = new EnvironmentOptions() { DesignTime = false };
         options.Arguments.Add("-p:GeneratePackageOnBuild=true");
         options.Arguments.Add("-p:Configuration=RELEASE");

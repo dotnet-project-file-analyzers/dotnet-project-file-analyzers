@@ -11,12 +11,12 @@ analyzers.
 | CompliantVB    |  0.440 ms |  7.806 ms | 7.366 ms |
 | .NET analyzers | 73.621 ms | 73.621 ms | 0.586 ms |
 
-# Parsing INI files
-|     File |        Mean |        Speed |
-|---------:|------------:|-------------:|
-|   27 LoC |    35.71 us |   1,3 µs/LoC |
-|   36 LoC |    36.30 us |   1,0 µs/LoC |
-| 1220 LoC | 5,692.83 us |   4,7 µs/LoC |
+## Parsing INI files
+|     File | Mean       | Gen0     | Gen1     | Gen2     | Allocated  |      Speed |
+|---------:|-----------:|---------:|---------:|---------:|-----------:|-----------:|
+|   27 LoC |   7.611 us |   1.6861 |   0.0610 |        - |   20.70 KB | 282 ns/LoC |
+|   36 LoC |   7.957 us |   1.5411 |   0.0458 |        - |   18.91 KB | 221 ns/LoC |
+| 1220 LoC | 754.667 us | 272.4609 | 272.4609 | 272.4609 | 2168.57 KB | 619 ns/Loc |
 
 ## Parsing Globs
 The purpose was never speed, 
@@ -35,13 +35,13 @@ The purpose was never speed,
 | GlobExpressions_Glob | *.*                  | 134.49 ns |
 | DotNet_Globbing      | *.*                  | 207.82 ns |
 
-### Parsing .gitignore files
-|    File |      Mean |      Speed |
-|--------:|----------:|-----------:|
-|  50 LoC |  25.29 us | 506 ns/LoC |
-| 231 LoC | 107.77 us | 467 ns/LoC |
+## Parsing .gitignore files
+|    File | Mean     | Gen0    | Gen1   | Allocated |      Speed |
+|--------:|---------:|--------:|-------:|----------:|-----------:|
+| 344 LoC | 112.0 us |  9.2773 | 2.1973 | 114.00 KB | 326 ns/LoC |
+| 606 LoC | 222.7 us | 13.4277 | 4.3945 | 166.49 KB | 367 ns/LoC |
 
-### Licensing
+## Licensing
 | PrepareText            | Mean     |
 |----------------------- |---------:|
 | new StringBuilder()    | 1.495 us |
@@ -55,9 +55,9 @@ The purpose was never speed,
 | SHA1_Object                  | 1 | 1,996.1 ns | 14.38 ns | 13.45 ns | 0.3204 |   1.31 KB |
 | SHA1_Managed                 | 1 | 1,996.4 ns | 13.02 ns | 11.54 ns | 0.3204 |   1.31 KB |
 | SHA1_Incremental             | 1 | 1,956.1 ns |  9.35 ns |  8.74 ns | 0.3090 |   1.27 KB |
-| SHA256_Static                | 1 | 1,055.4 ns | 19.98 ns | 23.00 ns | 0.3185 |    1.3 KB |
+| SHA256_Static                | 1 | 1,055.4 ns | 19.98 ns | 23.00 ns | 0.3185 |   1.30 KB |
 | SHA256_Object                | 1 |   926.7 ns | 18.56 ns | 19.06 ns | 0.3319 |   1.36 KB |
 | SHA256_Managed               | 1 |   929.9 ns | 18.31 ns | 17.98 ns | 0.3319 |   1.36 KB |
-| SHA256_Incremental           | 1 |   868.8 ns |  7.77 ns |  6.88 ns | 0.3185 |    1.3 KB |
-| SHA256_Incremental_Truncated | 1 |   874.0 ns | 16.87 ns | 15.78 ns | 0.3185 |    1.3 KB |
+| SHA256_Incremental           | 1 |   868.8 ns |  7.77 ns |  6.88 ns | 0.3185 |   1.30 KB |
+| SHA256_Incremental_Truncated | 1 |   874.0 ns | 16.87 ns | 15.78 ns | 0.3185 |   1.30 KB |
 | SHA512_Incremental_Truncated | 1 | 1,140.4 ns | 15.56 ns | 12.99 ns | 0.3262 |   1.34 KB |

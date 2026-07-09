@@ -32,14 +32,14 @@ public class Contains
             "build/DotNetProjectFile.Analyzers.Sdk.props",
             "build/DotNetProjectFile.Analyzers.targets",
             "build/None.Sdk.props",
-            
+
             // tools
             "tools/install.ps1",
             "tools/uninstall.ps1",
 
             // Added by NuGet
             "[Content_Types].xml",
-            "_rels/.rels", 
+            "_rels/.rels",
             "_manifest/spdx_2.2/manifest.spdx.json",
             "_manifest/spdx_2.2/manifest.spdx.json.sha256");
     }

@@ -30,13 +30,8 @@
 
   <ItemGroup Label="Analyzer">
     <!-- #pragma warning disable Proj0014 -->
-    <ProjectReference
-      Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
-      PrivateAssets="all"
-      ExcludeAssets="runtime"
-      ReferenceOutputAssembly="false"
-      OutputItemType="Analyzer"
-      SetTargetFramework="TargetFramework=netstandard2.0" />
+    <ProjectReference Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" PrivateAssets="all" ExcludeAssets="runtime" ReferenceOutputAssembly="false" OutputItemType="Analyzer" SetTargetFramework="TargetFramework=netstandard2.0" />
+    <ProjectReference Include="..\TestData\TestData.csproj" />
   </ItemGroup>
 
 </Project>

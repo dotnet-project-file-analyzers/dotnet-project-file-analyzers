@@ -9,8 +9,8 @@ public static partial class Rule
         public static DiagnosticDescriptor Invalid => New(
            id: 4000,
            title: "Invalid INI file",
-           message: "File could not be parsed",
-           description: "A INI header should have the format [<Header>]",
+           message: "{0}",
+           description: "A part of the INI file could not be parsed.",
            tags: ["INI", "syntax error"],
            category: Category.SyntaxError,
            isEnabled: false);
@@ -19,7 +19,7 @@ public static partial class Rule
            id: 4001,
            title: "Invalid INI Header",
            message: "{0}",
-           description: "A INI header should have the format [<Header>]",
+           description: "A INI header should have the format [<Header>].",
            tags: ["INI", "syntax error"],
            category: Category.SyntaxError,
            isEnabled: false);

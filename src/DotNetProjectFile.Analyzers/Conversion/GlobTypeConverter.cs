@@ -1,4 +1,3 @@
-using DotNetProjectFile.Text;
 using System.ComponentModel;
 using System.Globalization;
 

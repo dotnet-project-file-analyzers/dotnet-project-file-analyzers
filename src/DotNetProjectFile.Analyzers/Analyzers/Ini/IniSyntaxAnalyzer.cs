@@ -9,7 +9,7 @@ public sealed class IniSyntaxAnalyzer() : IniFileAnalyzer(
     /// <inheritdoc />
     protected override void Register(IniFileAnalysisContext context)
     {
-        foreach (var diagnostic in context.File.Syntax.GetDiagnostics())
+        foreach (var diagnostic in context.File.GetDiagnostics())
         {
             context.ReportDiagnostic(diagnostic);
         }

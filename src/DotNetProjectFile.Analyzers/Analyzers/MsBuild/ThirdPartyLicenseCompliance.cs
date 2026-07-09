@@ -1,5 +1,3 @@
-using DotNetProjectFile.Text;
-
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 /// <summary>Validates the <see cref="ThirdPartyLicense"/> node.</summary>

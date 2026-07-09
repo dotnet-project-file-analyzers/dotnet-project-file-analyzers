@@ -14,7 +14,7 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
     private readonly ImmutableArray<FileDefinition> Files;
     private readonly Lazy<string> Hash;
     private readonly Lazy<ProjectAnalyzerVerifyContext> Ctx;
-    
+
     public InlineProjectAnalyzerVerifyContextBuilder(
         DiagnosticAnalyzer analyzer,
         string file,

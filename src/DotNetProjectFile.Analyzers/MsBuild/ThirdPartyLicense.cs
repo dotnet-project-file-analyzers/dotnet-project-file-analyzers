@@ -1,5 +1,4 @@
 using DotNetProjectFile.NuGet;
-using DotNetProjectFile.Text;
 
 namespace DotNetProjectFile.MsBuild;
 

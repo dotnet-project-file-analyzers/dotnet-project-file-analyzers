@@ -1,14 +1,18 @@
-using Grammr.Text;
-using Microsoft.CodeAnalysis.Text;
-
 namespace Grammr.Lexers;
 
-[DebuggerDisplay("EOL, Kind = {Kind}")]
-internal sealed class EndOfLine(string? kind) : Token(kind)
+internal sealed class EndOfLine() : Lexer(nameof(EndOfLine))
 {
     /// <inheritdoc />
     [Pure]
-    public override TextSpan? Match(SourceSpan source)
-        => source.StartsWith("\r\n")
-        ?? source.StartsWith('\n');
+    public override int? Match(SourceReader reader) => reader switch
+    {
+        { EOS: true } => null,
+        _ when reader.Span[0] is '\n' => 1,
+        _ when reader.Span.StartsWith("\r\n") => 2,
+        _ => null,
+    };
+
+    /// <inheritdoc />
+    [Pure]
+    public override string ToString() => "[eol]";
 }

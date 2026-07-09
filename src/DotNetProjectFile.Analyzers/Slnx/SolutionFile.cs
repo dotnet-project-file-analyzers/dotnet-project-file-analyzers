@@ -33,15 +33,11 @@ public sealed class SolutionFile : Node, ProjectFile
 
     internal ProjectFiles ProjectFiles { get; }
 
-    public static SolutionFile Load(IOFile file, ProjectFiles projects)
-    {
-        using var reader = file.TryOpenText();
-        return new(
-            path: file,
-            text: SourceText.From(reader.ReadToEnd()),
-            projectFiles: projects,
-            additionalText: null);
-    }
+    public static SolutionFile Load(IOFile file, ProjectFiles projects) => new(
+        path: file,
+        text: file.SourceText(),
+        projectFiles: projects,
+        additionalText: null);
 
     public static SolutionFile Load(AdditionalText text, ProjectFiles projects)
         => new(

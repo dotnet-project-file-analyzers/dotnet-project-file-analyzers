@@ -118,10 +118,9 @@ public sealed partial class MsBuildProject : Node, ProjectFile
     {
         try
         {
-            using var reader = file.TryOpenText();
             return new(
                 path: file,
-                text: SourceText.From(reader.ReadToEnd()),
+                text: file.SourceText(),
                 projectFiles: projects,
                 additionalText: null);
         }
