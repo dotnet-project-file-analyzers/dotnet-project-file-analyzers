@@ -7,7 +7,7 @@ public class Reports
     [Test]
     public void invalid_GLOBs() => new HeaderMustBeGlob()
         .ForProject("InvalidEditorConfigHeaders.cs")
-        .HasIssue(Issue.ERR("Proj4050", "Header [*.{cs,json}}] is not a valid GLOB").WithSpan(07, 00, 07, 14));
+        .HasIssue(Issue.ERR("Proj4050", "Header [*.{cs,json}}] is not a valid GLOB").WithSpan(07, 01, 07, 13));
 }
 
 public class Guards
