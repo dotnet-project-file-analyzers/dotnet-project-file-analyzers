@@ -151,9 +151,9 @@ internal static partial class IniFileParser
     {
         var read = reader;
         if (Chain
-            && read.Cons(ws)
-        && read.Cons(comment)
-        && read.Cons(eol))
+            && read.Keep(space)
+            && read.Keep(comment)
+            && read.Keep(eol))
         {
             reader = read;
             return true;

@@ -14,7 +14,10 @@ public class Parses
         var tree = Files.Tree(file);
         var ini = IniFile.Parse(tree);
         ini.Sections.SelectMany(s => s.Entries).Should().HaveCount(count);
+
+        ini.GetDiagnostics().Should().HaveNoIssues();
     }
+
     [Test]
     public void Leading_whitespace()
     {
@@ -25,6 +28,26 @@ public class Parses
             Key = new { Text = "root" },
             Value = new { Text = "true" },
         });
+
+        ini.GetDiagnostics().Should().HaveNoIssues();
+    }
+
+    [Test]
+    public void Starting_with_comment()
+    {
+        var tree = Test.Tree("""
+            # top-most EditorConfig file
+            root = true
+            """);
+
+        var ini = IniFile.Parse(tree);
+        ini.Sections.Single().Entries.Single().Should().BeEquivalentTo(new
+        {
+            Key = new { Text = "root" },
+            Value = new { Text = "true" },
+        });
+
+        ini.GetDiagnostics().Should().HaveNoIssues();
     }
 }
 public class Parses_with_issues
