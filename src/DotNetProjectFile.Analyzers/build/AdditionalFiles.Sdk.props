@@ -1,43 +1,61 @@
 <Project>
 
   <ItemGroup>
-    <!-- NuGet.config -->
+    
+    <!-- SDK -->
     <AdditionalFiles
-      Include="$([MSBuild]::GetPathOfFileAbove('NuGet.config', '$(MSBuildThisFileDirectory)'))"
-      Link="NuGet.config"/>
+      Include=".net.csproj"
+      AnalyzerType="SDK"
+      Visible="false"/>
 
     <!-- .editorconfig -->
     <AdditionalFiles
-      Include="$([MSBuild]::GetPathOfFileAbove('.editorconfig', '$(MSBuildThisFileDirectory)'))"
+      Include="$([MSBuild]::GetPathOfFileAbove('.editorconfig'))"
+      Exclude="@(AdditionalFiles)"
+      AnalyzerType="EditorConfig"
       Link=".editorconfig" />
+
+    <!-- globalconfig files -->
+    <AdditionalFiles
+      Include="@(GlobalAnalyzerConfigFiles)"
+      Exclude="@(AdditionalFiles)"
+      AnalyzerType="GlobalConfig" />
+
+    <!-- NuGet.config -->
+    <AdditionalFiles
+      Include="$([MSBuild]::GetPathOfFileAbove('NuGet.config'))"
+      AnalyzerType="NuGetConfig"
+      Link="NuGet.config" />
     
-    <!-- .globalconfig -->
-    <AdditionalFiles Include="$(GlobalAnalyzerConfigFiles)" />
-    
-    <AdditionalFiles Include=".git*" />
-    <AdditionalFiles Include=".github/**" />
-    <AdditionalFiles Include="*.config" />
-    <AdditionalFiles Include="*.ini" />
-    <AdditionalFiles Include="*.json" />
-    <AdditionalFiles Include="*.md" />
-    <AdditionalFiles Include="*.txt" />
-    <AdditionalFiles Include="*.yaml" />
-    <AdditionalFiles Include="*.yml" />
   </ItemGroup>
 
   <ItemGroup>
-    <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.??proj" />
-    <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.slnx" />
-    <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.props" />
-    <AdditionalFiles Visible="false" Exclude="$(AdditionalFiles)" Include="**/*.targets" />
+    <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="MSBuildProject" Include="**/*.??proj" />
+    <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="SLNX"           Include="**/*.slnx" />
+    <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="MSBuildProp"    Include="**/*.props" />
+    <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="MSBuildProp"    Include="**/*.targets" />
   </ItemGroup>
-  
+
   <!-- Make visible -->
   <ItemGroup>
-    <AdditionalFiles Visible ="true" Update="*.props" />
-    <AdditionalFiles Visible ="true" Update="*.targets" />
-    <AdditionalFiles Visible ="true" Update="props/*.props" />
-    <AdditionalFiles Visible ="true" Update="props/*.targets" />
+    <AdditionalFiles Visible="true" Update="*.props" />
+    <AdditionalFiles Visible="true" Update="*.targets" />
+    <AdditionalFiles Visible="true" Update="props/*.props" />
+    <AdditionalFiles Visible="true" Update="props/*.targets" />
+  </ItemGroup>
+
+  <!--
+    Remove what is most likely in the .gitignore
+    
+    It is put here, because both the .net.csproj additonal files as well as the regular
+    set has been added, and can therefor safely be filtered.
+    -->
+  <ItemGroup>
+    <AdditionalFiles Remove="**/bin/**" />
+    <AdditionalFiles Remove="**/obj/**" />
+    <AdditionalFiles Remove="**/.git/**" />
+    <AdditionalFiles Remove="**/.nuget/**" />
+    <AdditionalFiles Remove="**/.vs/**" />
   </ItemGroup>
 
   <Import Project="$(MSBuildThisFileDirectory)None.Sdk.props" />

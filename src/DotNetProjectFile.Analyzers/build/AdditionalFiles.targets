@@ -1,20 +1,26 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-  <!-- Non-compiling files to analyze. -->
   <ItemGroup>
+    <!-- Current project file -->  
     <AdditionalFiles
-      Include="$(MSBuildProjectFile)"
+      AnalyzerType="MSBuildProject"
+      Include="*.??proj"
       Exclude="@(AdditionalFiles)"
       Visible="false" />
+    
+    <!-- XML Resources -->
     <AdditionalFiles
+      AnalyzerType="RESX"
       Include="**/*.resx"
       Exclude="@(AdditionalFiles)"
       Visible="false" />
+
   </ItemGroup>
 
   <!-- Directory.Build.props -->
   <ItemGroup Condition="'$(ImportDirectoryBuildProps)' == 'true'">
     <AdditionalFiles
+      AnalyzerType="DirectoryBuildProps"
       Include="$(DirectoryBuildPropsPath)"
       Exclude="@(AdditionalFiles)"
       Visible="false" />
@@ -24,6 +30,7 @@
   <!-- Directory.Build.targets -->
   <ItemGroup Condition="'$(ImportDirectoryBuildTargets)' == 'true'">
     <AdditionalFiles
+      AnalyzerType="DirectoryBuildTargets"
       Include="$(DirectoryBuildTargetsPath)"
       Exclude="@(AdditionalFiles)"
       Visible="false" />
@@ -33,6 +40,7 @@
   <!-- Directory.Packages.props -->
   <ItemGroup Condition="'$(ImportDirectoryPackagesProps)' == 'true'">
     <AdditionalFiles
+      AnalyzerType="DirectoryPackagesProps"
       Include="$(DirectoryPackagesPropsPath)"
       Exclude="@(AdditionalFiles)"
       Visible="false" />

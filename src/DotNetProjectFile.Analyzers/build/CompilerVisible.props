@@ -1,10 +1,19 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
+  <!--
+    By making the AnalyzerType metadata visible for the compiler, MSBuild can
+    catagorize the file to analyze, and the Roslyn Analyzers can be triggered
+    based on the metadata, instead of file names and/or extensions.
+    -->
+  <ItemGroup>
+    <CompilerVisibleItemMetadata Include="AdditionalFiles" MetadataName="AnalyzerType" />
+  </ItemGroup>
+  
   <!-- 
     Common variable that should be resolvable.
    
     These variables are read by the analyzers to make decisions about them.
-  -->
+    -->
   <ItemGroup>
     <CompilerVisibleProperty Include="Configuration" />
     <CompilerVisibleProperty Include="EnableNETAnalyzers" />
