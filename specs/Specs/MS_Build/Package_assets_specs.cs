@@ -42,8 +42,7 @@ public class Builds
                 "RestoreLockedMode",
                 "SolutionDir")
 
-            .And.HaveItems(
-                "AdditionalFiles",
+            .And.HaveAdditionalFiles(
                 new()
                 {
                     ItemSpec = """CompliantCSharpPackage.csproj""",

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path=".net.csproj" />
+  <Project Path="AdditionalFilesProject/AdditionalFilesProject.csproj" />
+</Solution>

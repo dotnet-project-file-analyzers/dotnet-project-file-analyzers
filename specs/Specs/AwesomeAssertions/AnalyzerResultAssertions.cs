@@ -1,4 +1,5 @@
 using Buildalyzer;
+using System.Diagnostics;
 
 namespace AwesomeAssertions;
 
@@ -6,6 +7,7 @@ public sealed class AnalyzerResultAssertions(IAnalyzerResult subject)
 {
     public IAnalyzerResult Subject { get; } = subject;
 
+    [DebuggerStepThrough]
     public AndConstraint<AnalyzerResultAssertions> HaveProperties(Dictionary<string, string> expected)
     {
         var properties = Subject.Properties;
@@ -15,6 +17,7 @@ public sealed class AnalyzerResultAssertions(IAnalyzerResult subject)
         return new(this);
     }
 
+    [DebuggerStepThrough]
     public AndConstraint<AnalyzerResultAssertions> HaveCompilerVisibleProperties(params string[] expected)
     {
         var items = (Subject.Items.TryGetValue("CompilerVisibleProperty", out var actual) ? actual : [])
@@ -27,11 +30,14 @@ public sealed class AnalyzerResultAssertions(IAnalyzerResult subject)
         return new(this);
     }
 
+    [DebuggerStepThrough]
+    public AndConstraint<AnalyzerResultAssertions> HaveAdditionalFiles(params Specs.TestTools.ProjectItem[] expected)
+        => HaveItems("AdditionalFiles", expected);
+
+    [DebuggerStepThrough]
     public AndConstraint<AnalyzerResultAssertions> HaveItems(string name, params Specs.TestTools.ProjectItem[] expected)
     {
-        var items = (Subject.Items.TryGetValue(name, out var actual) ? actual : [])
-            .OrderBy(x => x.ItemSpec)
-            .ToArray();
+        var items = Subject.Items.OfType(name).ToArray();
 
         items.Should().BeEquivalentTo(expected);
 
