@@ -30,7 +30,7 @@ public class Reports
 
           <ItemGroup>
             <GlobalAnalyzerConfigFiles
-              Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig')"
+              Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig'))"
               Exclude="$(GlobalAnalyzerConfigFiles)" />
           </ItemGroup>
 
