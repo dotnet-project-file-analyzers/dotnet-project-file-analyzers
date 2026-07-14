@@ -4,7 +4,7 @@
     <!-- Current project file -->  
     <AdditionalFiles
       AnalyzerType="MSBuildProject"
-      Include="*.??proj"
+      Include="$(MSBuildProjectFullPath)"
       Exclude="@(AdditionalFiles)"
       Visible="false" />
     

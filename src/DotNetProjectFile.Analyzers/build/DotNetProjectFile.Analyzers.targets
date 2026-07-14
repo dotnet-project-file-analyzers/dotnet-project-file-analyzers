@@ -41,7 +41,7 @@
       CopyToOutputDirectory="never"
       Visible="false"
       SonarQubeContent="true"
-      Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))" />
+      Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_').Replace(':', '_'))" />
   </ItemGroup>
 
   <!--

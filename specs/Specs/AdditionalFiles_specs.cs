@@ -1,6 +1,5 @@
 using Buildalyzer;
-using DotNetProjectFile.IO;
-using System.IO;
+using static Specs.TestTools.TestPath;
 using Meta = Specs.TestTools.ProjectItem.Meta;
 using ProjectItem = Specs.TestTools.ProjectItem;
 
@@ -21,7 +20,7 @@ public class Resolves
 
             new ProjectItem()
             {
-                ItemSpec = "AdditionalFilesProject.csproj",
+                ItemSpec = Full("AdditionalFilesProject/AdditionalFilesProject.csproj"),
                 Metadata = new Meta
                 {
                     AnalyzerType = "MSBuildProject",
@@ -80,6 +79,7 @@ public class Resolves
                 Metadata = new Meta
                 {
                     AnalyzerType = "SDK",
+                    Visible = "false",
                 },
             },
             new ProjectItem
@@ -162,14 +162,5 @@ public class Resolves
 #if DEBUG
         ProjectItem.Generate(result.Items.OfType("AdditionalFiles"));
 #endif
-    }
-
-    private static string Relative(string path) => IOFile.Parse(path).ToString();
-
-    private static string Full(string path)
-    {
-        var dir = new DirectoryInfo("../../../../../projects");
-        var combined = Path.Combine(dir.FullName, path);
-        return IOFile.Parse(combined).ToString();
     }
 }
