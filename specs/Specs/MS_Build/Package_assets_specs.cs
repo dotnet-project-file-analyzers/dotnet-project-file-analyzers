@@ -40,7 +40,7 @@ public class Builds
             .And.HaveAdditionalFiles(
                 new()
                 {
-                    ItemSpec = "CompliantCSharpPackage.csproj",
+                    ItemSpec = Full("CompliantCSharpPackage/CompliantCSharpPackage.csproj"),
                     Metadata = new Meta
                     {
                         AnalyzerType = "MSBuildProject",
@@ -143,11 +143,11 @@ public class Builds
                 },
                 new()
                 {
-                    ItemSpec = "CompliantCSharpPackage.csproj",
+                    ItemSpec = Full("CompliantCSharpPackage/CompliantCSharpPackage.csproj"),
                     Metadata = new Meta
                     {
                         CopyToOutputDirectory = "never",
-                        Link = "CompliantCSharpPackage.csproj",
+                        Link = Full("CompliantCSharpPackage/CompliantCSharpPackage.csproj").Replace(':', '_').Replace('\\', '_').Replace('/', '_'),
                         Visible = "false",
                         SonarQubeContent = "true",
                         AnalyzerType = "MSBuildProject",
