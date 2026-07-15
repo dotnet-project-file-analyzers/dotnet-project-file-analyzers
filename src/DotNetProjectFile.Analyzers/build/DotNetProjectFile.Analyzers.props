@@ -16,8 +16,8 @@
     -->
   <ItemGroup>
     <GlobalAnalyzerConfigFiles
-      Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig', '$(MSBuildThisFileDirectory)'))"
-      Exclude="$(GlobalAnalyzerConfigFiles)"
+      Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig'))"
+      Exclude="@(GlobalAnalyzerConfigFiles)"
       Visible="false" />
   </ItemGroup>
 
@@ -29,20 +29,5 @@
   <Import
      Condition="$(IsDotNetProjectFileSdk) == 'true'"
      Project="$(MSBuildThisFileDirectory)DotNetProjectFile.Analyzers.Sdk.props" />
-
-
-  <!--
-    Remove what is most likely in the .gitignore
-    
-    It is put here, because both the .net.csproj additonal files as well as the regular
-    set has been added, and can therefor safely be filtered.
-    -->
-  <ItemGroup>
-    <AdditionalFiles Remove="**/bin/**" />
-    <AdditionalFiles Remove="**/obj/**" />
-    <AdditionalFiles Remove="**/.git/**" />
-    <AdditionalFiles Remove="**/.nuget/**" />
-    <AdditionalFiles Remove="**/.vs/**" />
-  </ItemGroup>
 
 </Project>

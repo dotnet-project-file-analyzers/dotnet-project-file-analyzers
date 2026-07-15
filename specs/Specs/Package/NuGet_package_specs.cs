@@ -10,38 +10,29 @@ public class Contains
     [TestCaseSource(nameof(Packages))]
     public void Entries(FileInfo file)
     {
-        var entries = Nupkg.Read(file);
+        var entries = Nupkg.Read(file).Order();
 
         foreach (var e in entries)
             Console.WriteLine(e);
 
         entries.Should().BeEquivalentTo(
-            // NuSpec
-            "DotNetProjectFile.Analyzers.nuspec",
-            "logo_128x128.png",
-            "README.md",
-
-            // Analyzer       
+            "_manifest/spdx_2.2/manifest.spdx.json",
+            "_manifest/spdx_2.2/manifest.spdx.json.sha256",
+            "_rels/.rels",
+            "[Content_Types].xml",
             "analyzers/DotNetProjectFile.Analyzers.dll",
-
-            // Build props and targets
-            "build/AdditionalFiles.props",
             "build/AdditionalFiles.Sdk.props",
-            "build/CompilerVisible.props",
+            "build/CompilerVisible.props", 
+            "build/AdditionalFiles.targets",
             "build/DotNetProjectFile.Analyzers.props",
             "build/DotNetProjectFile.Analyzers.Sdk.props",
             "build/DotNetProjectFile.Analyzers.targets",
             "build/None.Sdk.props",
-
-            // tools
+            "DotNetProjectFile.Analyzers.nuspec",
+            "logo_128x128.png",
+            "README.md",
             "tools/install.ps1",
-            "tools/uninstall.ps1",
-
-            // Added by NuGet
-            "[Content_Types].xml",
-            "_rels/.rels",
-            "_manifest/spdx_2.2/manifest.spdx.json",
-            "_manifest/spdx_2.2/manifest.spdx.json.sha256");
+            "tools/uninstall.ps1");
     }
 
 

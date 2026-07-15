@@ -1,5 +1,6 @@
 using Buildalyzer.Environment;
 using System.IO;
+using static Specs.TestTools.TestPath;
 using Meta = Specs.TestTools.ProjectItem.Meta;
 using ProjectItem = Specs.TestTools.ProjectItem;
 
@@ -9,12 +10,6 @@ namespace MS_Build.Package_assets_specs;
 // wipes its bin/obj), so running them in parallel races the pack and intermittently loses the nupkg.
 public class Builds
 {
-#if Is_Windows
-    private const char Slash = '\\';
-#else
-    private const char Slash = '/';
-#endif
-
     [Test]
     public void With_defaults()
     {
@@ -23,9 +18,9 @@ public class Builds
         var result = ctx.Analyzer.Build().Results.Single();
 
         result.Should().HaveProperties(new()
-        {
-            ["SonarQubeIntegration"] = "true"
-        })
+            {
+                ["SonarQubeIntegration"] = "true"
+            })
 
             .And.HaveCompilerVisibleProperties(
                 "Configuration",
@@ -42,12 +37,15 @@ public class Builds
                 "RestoreLockedMode",
                 "SolutionDir")
 
-            .And.HaveItems(
-                "AdditionalFiles",
+            .And.HaveAdditionalFiles(
                 new()
                 {
-                    ItemSpec = """CompliantCSharpPackage.csproj""",
-                    Metadata = new Meta { Visible = "false" },
+                    ItemSpec = Full("CompliantCSharpPackage/CompliantCSharpPackage.csproj"),
+                    Metadata = new Meta
+                    {
+                        AnalyzerType = "MSBuildProject",
+                        Visible = "false",
+                    },
                 },
                 new() { ItemSpec = "compliant-package.slnx" },
                 new() { ItemSpec = "Messages.resx" })
@@ -56,7 +54,7 @@ public class Builds
                 "Content",
                 new()
                 {
-                    ItemSpec = """../../design/logo_128x128.png""",
+                    ItemSpec = "../../design/logo_128x128.png",
                     Metadata = new Meta
                     {
                         Link = "logo_128x128.png",
@@ -86,7 +84,7 @@ public class Builds
                 },
                 new()
                 {
-                    ItemSpec = $"""build{Slash}CompliantCSharpPackage.props""",
+                    ItemSpec = Relative("build/CompliantCSharpPackage.props"),
                     Metadata = new Meta
                     {
                         CopyToOutputDirectory = "never",
@@ -97,7 +95,7 @@ public class Builds
                 },
                 new()
                 {
-                    ItemSpec = $"""build{Slash}CompliantCSharpPackage.props""",
+                    ItemSpec = Relative("build/CompliantCSharpPackage.props"),
                     Metadata = new Meta
                     {
                         CopyToOutputDirectory = "never",
@@ -110,7 +108,7 @@ public class Builds
                 },
                 new()
                 {
-                    ItemSpec = $"""build{Slash}CompliantCSharpPackage.targets""",
+                    ItemSpec = Relative("build/CompliantCSharpPackage.targets"),
                     Metadata = new Meta
                     {
                         CopyToOutputDirectory = "never",
@@ -121,7 +119,7 @@ public class Builds
                 },
                 new()
                 {
-                    ItemSpec = $"""build{Slash}CompliantCSharpPackage.targets""",
+                    ItemSpec = Relative("build/CompliantCSharpPackage.targets"),
                     Metadata = new Meta
                     {
                         CopyToOutputDirectory = "never",
@@ -145,18 +143,19 @@ public class Builds
                 },
                 new()
                 {
-                    ItemSpec = """CompliantCSharpPackage.csproj""",
+                    ItemSpec = Full("CompliantCSharpPackage/CompliantCSharpPackage.csproj"),
                     Metadata = new Meta
                     {
                         CopyToOutputDirectory = "never",
-                        Link = "CompliantCSharpPackage.csproj",
+                        Link = Full("CompliantCSharpPackage/CompliantCSharpPackage.csproj").Replace(':', '_').Replace('\\', '_').Replace('/', '_'),
                         Visible = "false",
                         SonarQubeContent = "true",
+                        AnalyzerType = "MSBuildProject",
                     },
                 },
                 new()
                 {
-                    ItemSpec = """Messages.resx""",
+                    ItemSpec = "Messages.resx",
                     Metadata = new Meta
                     {
                         CopyToOutputDirectory = "never",
@@ -167,7 +166,7 @@ public class Builds
                 },
                 new()
                 {
-                    ItemSpec = """packages.lock.json""",
+                    ItemSpec = "packages.lock.json",
                     Metadata = new Meta
                     {
                         CopyToOutputDirectory = "never",
@@ -178,7 +177,7 @@ public class Builds
                 },
                 new()
                 {
-                    ItemSpec = """README.md""",
+                    ItemSpec = "README.md",
                     Metadata = new Meta
                     {
                         CopyToOutputDirectory = "never",
@@ -189,7 +188,7 @@ public class Builds
                 },
                 new()
                 {
-                    ItemSpec = """README.md""",
+                    ItemSpec = "README.md",
                     Metadata = new Meta
                     {
                         CopyToOutputDirectory = "never",
@@ -257,7 +256,7 @@ public class Builds
             "Content",
             new ProjectItem()
             {
-                ItemSpec = """../../design/logo_128x128.png""",
+                ItemSpec = "../../design/logo_128x128.png",
                 Metadata = new Meta { Link = "logo_128x128.png" },
             });
     }
@@ -278,7 +277,7 @@ public class Builds
             "Content",
             new ProjectItem()
             {
-                ItemSpec = """../../design/logo_128x128.png""",
+                ItemSpec = "../../design/logo_128x128.png",
                 Metadata = new Meta { Link = "logo_128x128.png" },
             });
     }
@@ -299,7 +298,7 @@ public class Builds
             "Content",
             new ProjectItem()
             {
-                ItemSpec = """../../design/logo_128x128.png""",
+                ItemSpec = "../../design/logo_128x128.png",
                 Metadata = new Meta { Link = "logo_128x128.png" },
             });
     }

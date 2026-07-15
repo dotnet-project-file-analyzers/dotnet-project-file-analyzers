@@ -1,0 +1,11 @@
+<Project>
+
+  <PropertyGroup>
+    <Description>
+      <![CDATA[
+      Project to test the included props and targets by the package.
+      ]]>
+    </Description>
+  </PropertyGroup>
+
+</Project>

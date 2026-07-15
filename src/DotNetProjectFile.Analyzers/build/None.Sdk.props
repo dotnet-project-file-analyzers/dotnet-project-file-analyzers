@@ -2,6 +2,16 @@
 
   <ItemGroup>
 
+    <None Visible="true" Include=".git*" />
+    <None Visible="true" Include=".github/**" />
+    <None Visible="true" Include="*.config" />
+    <None Visible="true" Include="*.ini" />
+    <None Visible="true" Include="*.json" />
+    <None Visible="true" Include="*.md" />
+    <None Visible="true" Include="*.txt" />
+    <None Visible="true" Include="*.yaml" />
+    <None Visible="true" Include="*.yml" />
+
     <None Include="**/TestResults/**" />
     
     <!-- Directory.Build.props -->
