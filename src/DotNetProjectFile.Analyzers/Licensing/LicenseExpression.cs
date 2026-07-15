@@ -12,12 +12,9 @@ public abstract record LicenseExpression()
 
     public abstract bool CompatibleWith(LicenseExpression other);
 
+    public bool CompatibleWith(string other)
+        => CompatibleWith(Licenses.FromExpression(other));
+
     public sealed override string ToString()
         => Expression;
-}
-
-public static class LicenseExpressionExtensions
-{
-    public static bool CompatibleWith(this LicenseExpression license, string other)
-        => license.CompatibleWith(Licenses.FromExpression(other));
 }

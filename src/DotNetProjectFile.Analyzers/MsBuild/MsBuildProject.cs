@@ -19,7 +19,7 @@ public sealed partial class MsBuildProject : Node, ProjectFile
         ProjectFiles = projectFiles;
         AdditionalText = additionalText;
         WarningPragmas = WarningPragmas.New(this);
-        FileType = path.GetProjectFileType();
+        FileType = path.ProjectFileType;
         Language = Language.Parse(path.Extension);
     }
 
