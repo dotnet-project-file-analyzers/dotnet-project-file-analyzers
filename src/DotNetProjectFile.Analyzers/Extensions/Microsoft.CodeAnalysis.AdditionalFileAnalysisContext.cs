@@ -15,7 +15,10 @@ public static class AdditionalFileAnalysisContextExtensions
                 ? type
                 : AnalyzerType.None;
 
-        /// <summary>Applies if the analyzer type matches or if they not disagree and the predicate is true.</summary>
+        /// <summary>
+        /// Applies if the analyzer type matches; or has not been set and the
+        /// predicate is true.
+        /// </summary>
         public IOFile? Applies(Func<IOFile, bool> predicate, params AnalyzerType[] types)
         {
             var file = IOFile.Parse(context.AdditionalFile.Path);
