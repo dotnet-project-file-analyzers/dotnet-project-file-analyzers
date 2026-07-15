@@ -11,8 +11,7 @@
   
   <ItemGroup>
     <AdditionalFiles Include="*.csproj" Visible="false" />
-	<AdditionalFiles Include="*.resx" />
+	  <AdditionalFiles Include="*.resx" AnalyzerType="RESX" />
   </ItemGroup>
 
-  
 </Project>

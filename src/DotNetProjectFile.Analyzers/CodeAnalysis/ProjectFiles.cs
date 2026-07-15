@@ -95,49 +95,36 @@ public sealed partial class ProjectFiles
     }
 
     public IniFile? UpdateIniFile(AdditionalFileAnalysisContext context)
-    {
-        var file = IOFile.Parse(context.AdditionalFile.Path);
-        return Is.Ini(file)
-            ? IniFiles.TryGetOrUpdate(file, _ => Ini.IniFile.Load(context.AdditionalFile))
-            : null;
-    }
+        => context.Applies(Is.Ini, AnalyzerType.EditorConfig, AnalyzerType.GlobalConfig) is { } file
+        ? IniFiles.TryGetOrUpdate(file, _ => Ini.IniFile.Load(context.AdditionalFile))
+        : null;
 
     public MsBuildProject? UpdateMsBuildProject(AdditionalFileAnalysisContext context)
-    {
-        var file = IOFile.Parse(context.AdditionalFile.Path);
-        return Is.MsBuild(file)
-            ? MsBuildProjects.TryGetOrUpdate(file, _ => MsBuild.MsBuildProject.Load(context.AdditionalFile, this))
-            : null;
-    }
+        => context.Applies(
+            Is.MsBuild,
+            AnalyzerType.MSBuildProject,
+            AnalyzerType.MSBuildProp,
+            AnalyzerType.DirectoryBuildProps,
+            AnalyzerType.DirectoryBuildTargets,
+            AnalyzerType.DirectoryPackagesProps,
+            AnalyzerType.SDK) is { } file
+        ? MsBuildProjects.TryGetOrUpdate(file, _ => MsBuild.MsBuildProject.Load(context.AdditionalFile, this))
+        : null;
 
     public Resource? UpdateResourceFile(AdditionalFileAnalysisContext context)
-    {
-        var file = IOFile.Parse(context.AdditionalFile.Path);
-        return Is.Resource(file)
-            ? ResourceFiles.TryGetOrUpdate(file, _ => Resource.Load(context.AdditionalFile, this))
-            : null;
-    }
+        => context.Applies(Is.Resource, AnalyzerType.RESX) is { } file
+        ? ResourceFiles.TryGetOrUpdate(file, _ => Resource.Load(context.AdditionalFile, this))
+        : null;
 
     public NuGet.Configuration.NuGetConfigFile? UpdateNugetConfigFile(AdditionalFileAnalysisContext context)
-    {
-        var file = IOFile.Parse(context.AdditionalFile.Path);
-        return Is.NuGetConfig(file)
-            ? NuGetConfigFiles.TryGetOrUpdate(file, _ => NuGet.Configuration.NuGetConfigFile.Load(context.AdditionalFile))
-            : null;
-    }
+        => context.Applies(Is.NuGetConfig, AnalyzerType.NuGetConfig) is { } file
+        ? NuGetConfigFiles.TryGetOrUpdate(file, _ => NuGet.Configuration.NuGetConfigFile.Load(context.AdditionalFile))
+        : null;
 
     public SolutionFile? UpdateSolutionFile(AdditionalFileAnalysisContext context)
-    {
-        var file = IOFile.Parse(context.AdditionalFile.Path);
-        return Is.Solution(file)
-            ? SolutionFiles.TryGetOrUpdate(file, _ => Slnx.SolutionFile.Load(context.AdditionalFile, this))
-            : null;
-    }
-
-    public Resource? UpdateResourceFile(IOFile file)
-         => Is.Resource(file)
-            ? ResourceFiles.TryGetOrUpdate(file, _ => Resource.Load(file, this))
-            : null;
+        => context.Applies(Is.Solution, AnalyzerType.SLNX) is { } file
+        ? SolutionFiles.TryGetOrUpdate(file, _ => Slnx.SolutionFile.Load(context.AdditionalFile, this))
+        : null;
 
     private static GitIgnoreFile Create_GitIgnoreFile(IOFile file)
         => Git.GitIgnoreFile.Load(file)!;

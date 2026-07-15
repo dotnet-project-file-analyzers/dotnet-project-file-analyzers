@@ -16,7 +16,7 @@
     -->
   <ItemGroup>
     <GlobalAnalyzerConfigFiles
-      Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig'))"
+      Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig', $(MSBuildProjectDirectory)))"
       Exclude="@(GlobalAnalyzerConfigFiles)"
       Visible="false" />
   </ItemGroup>

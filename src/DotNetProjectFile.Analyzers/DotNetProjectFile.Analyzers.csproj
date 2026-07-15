@@ -84,8 +84,16 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v1.15.*
+v1.16.0
+- Proj0006: Skip detecting if RESX'es are additional files. (UPDATE)
 - Proj0052: Do not advise attributes in child nodes of the root. (FP)
+- Proj4000: Invalid INI file. (RE-ENABLE)
+- Proj4001: Invalid INI header. (RE-ENABLE)
+- Proj4002: Invalid INI key-value pair. (RE-ENABLE)
+- Proj4010: Sections should contain at least one key-value pair. (RE-ENABLE)
+- Proj4050: Header must be a GLOB. (RE-ENABLE)
+- Proj4051: Use equals sign for key-value assignments. (RE-ENABLE)
+- Primary select analyzers based on <AdditionalFiles AnalyzerType="{type}">.
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
