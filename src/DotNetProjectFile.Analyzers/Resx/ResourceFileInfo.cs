@@ -25,7 +25,7 @@ public sealed class ResourceFileInfo
     {
         var name = Info.Name[..(Name.Length - Culture.Name.Length - 1)];
 
-        var path = culture.IsInvariant()
+        var path = culture.IsInvariant
             ? Info.Directory.File($"{name}{Extension}")
             : Info.Directory.File($"{name}.{culture}{Extension}");
 

@@ -20,7 +20,7 @@ public abstract class Node : XmlAnalysisNode
         Solution = solution ?? (this as SolutionFile) ?? throw new ArgumentNullException(nameof(solution));
         Children = [.. element.Elements().Select(Create)];
         Locations = XmlPositions.New(element).Locations(Solution);
-        Depth = element.Depth();
+        Depth = element.Depth;
     }
 
     public SolutionFile Solution { get; }

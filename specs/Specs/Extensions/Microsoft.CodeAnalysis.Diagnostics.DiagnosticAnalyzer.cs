@@ -6,39 +6,37 @@ namespace Microsoft.CodeAnalysis.Diagnostics;
 
 internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
 {
-    [Pure]
-    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineProject(
-        this DiagnosticAnalyzer analyzer,
-        string fileName,
-        string content)
-        => new(analyzer, fileName, content);
+    extension(DiagnosticAnalyzer analyzer)
+    {
+        [Pure]
+        public InlineProjectAnalyzerVerifyContextBuilder ForInlineProject(
+            string fileName,
+            string content)
+            => new(analyzer, fileName, content);
 
-    [Pure]
-    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineProject(
-        this DiagnosticAnalyzer analyzer,
-        Language language,
-        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+        [Pure]
+        public InlineProjectAnalyzerVerifyContextBuilder ForInlineProject(
+            Language language,
+            [StringSyntax(StringSyntaxAttribute.Xml)] string content)
 
-        => language.IsRoslynBased
-        ? analyzer
-            .ForInlineProject($"inline{language.ProjectFileExtension}", content)
-        : analyzer
-            .ForInlineSdkProject()
-            .WithFile($"inline/inline{language.ProjectFileExtension}", content);
+            => language.IsRoslynBased
+            ? analyzer
+                .ForInlineProject($"inline{language.ProjectFileExtension}", content)
+            : analyzer
+                .ForInlineSdkProject()
+                .WithFile($"inline/inline{language.ProjectFileExtension}", content);
 
-    [Pure]
-    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject(
-        this DiagnosticAnalyzer analyzer,
-        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-        => analyzer.ForInlineProject(".net.csproj", content);
+        [Pure]
+        public InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject(
+            [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+            => analyzer.ForInlineProject(".net.csproj", content);
 
-    /// <remarks>
-    /// Includes a copy of DotNetProjectFile.Analyzers.Sdk.props.
-    /// </remarks>
-    [Pure]
-    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject(
-        this DiagnosticAnalyzer analyzer)
-        => analyzer.ForInlineSdkProject("""
+        /// <remarks>
+        /// Includes a copy of DotNetProjectFile.Analyzers.Sdk.props.
+        /// </remarks>
+        [Pure]
+        public InlineProjectAnalyzerVerifyContextBuilder ForInlineSdkProject()
+            => analyzer.ForInlineSdkProject("""
             <Project Sdk="Microsoft.NET.Sdk">
 
               <!-- Set some defaults that ensure predictable (non) outcome -->
@@ -92,97 +90,92 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
             </Project>
             """);
 
-    [Pure]
-    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineNuGetConfig(
-        this DiagnosticAnalyzer analyzer,
-        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-        => analyzer
-        .ForInlineSdkProject()
-        .WithFile("NuGet.config", content);
+        [Pure]
+        public InlineProjectAnalyzerVerifyContextBuilder ForInlineNuGetConfig(
+            [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+            => analyzer
+            .ForInlineSdkProject()
+            .WithFile("NuGet.config", content);
 
-    [Pure]
-    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineSlnx(
-        this DiagnosticAnalyzer analyzer,
-        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-        => analyzer
-        .ForInlineSdkProject()
-        .WithFile("inline.slnx", content);
+        [Pure]
+        public InlineProjectAnalyzerVerifyContextBuilder ForInlineSlnx(
+            [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+            => analyzer
+            .ForInlineSdkProject()
+            .WithFile("inline.slnx", content);
 
-    [Pure]
-    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineCsproj(
-        this DiagnosticAnalyzer analyzer,
-        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-        => analyzer.ForInlineProject(Language.CSharp, content);
+        [Pure]
+        public InlineProjectAnalyzerVerifyContextBuilder ForInlineCsproj(
+            [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+            => analyzer.ForInlineProject(Language.CSharp, content);
 
-    [Pure]
-    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineVbproj(
-        this DiagnosticAnalyzer analyzer,
-        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-        => analyzer.ForInlineProject(Language.VisualBasic, content);
+        [Pure]
+        public InlineProjectAnalyzerVerifyContextBuilder ForInlineVbproj(
+            [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+            => analyzer.ForInlineProject(Language.VisualBasic, content);
 
-    [Pure]
-    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineFsproj(
-        this DiagnosticAnalyzer analyzer,
-        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-        => analyzer.ForInlineProject(Language.FSharp, content);
+        [Pure]
+        public InlineProjectAnalyzerVerifyContextBuilder ForInlineFsproj(
+            [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+            => analyzer.ForInlineProject(Language.FSharp, content);
 
-    [Pure]
-    public static InlineProjectAnalyzerVerifyContextBuilder ForInlineCblproj(
-        this DiagnosticAnalyzer analyzer,
-        [StringSyntax(StringSyntaxAttribute.Xml)] string content)
-        => analyzer.ForInlineProject(Language.VisualCobol, content);
+        [Pure]
+        public InlineProjectAnalyzerVerifyContextBuilder ForInlineCblproj(
+            [StringSyntax(StringSyntaxAttribute.Xml)] string content)
+            => analyzer.ForInlineProject(Language.VisualCobol, content);
 
-    [Pure]
-    public static ProjectAnalyzerVerifyContext ForProject(this DiagnosticAnalyzer analyzer, string fileName)
-    {
-        var name = Path.GetFileNameWithoutExtension(fileName);
-        var extension = Path.GetExtension(fileName);
-        if (extension == ".sdk")
+        [Pure]
+        public ProjectAnalyzerVerifyContext ForProject(string fileName)
         {
-            return analyzer.ForSdkProject(name);
+            var name = Path.GetFileNameWithoutExtension(fileName);
+            var extension = Path.GetExtension(fileName);
+            if (extension == ".sdk")
+            {
+                return analyzer.ForSdkProject(name);
+            }
+            else
+            {
+                var file = new FileInfo($"../../../../../projects/{name}/{fileName}proj");
+                return ForTestProject(analyzer, file);
+            }
         }
-        else
+
+        [Pure]
+        public ProjectAnalyzerVerifyContext ForSdkProject(string name)
         {
-            var file = new FileInfo($"../../../../../projects/{name}/{fileName}proj");
+            var directory = new DirectoryInfo($"../../../../../projects/{name}");
+
+            var file = directory
+                .EnumerateFiles()
+                .First(f => ".net.csproj".Equals(f.Name, StringComparison.OrdinalIgnoreCase));
+
             return ForTestProject(analyzer, file);
         }
-    }
 
-    [Pure]
-    public static ProjectAnalyzerVerifyContext ForSdkProject(this DiagnosticAnalyzer analyzer, string name)
-    {
-        var directory = new DirectoryInfo($"../../../../../projects/{name}");
-
-        var file = directory
-            .EnumerateFiles()
-            .First(f => ".net.csproj".Equals(f.Name, StringComparison.OrdinalIgnoreCase));
-
-        return ForTestProject(analyzer, file);
-    }
-
-    [Pure]
-    public static ProjectAnalyzerVerifyContext ForTestProject(this DiagnosticAnalyzer analyzer, FileInfo file)
-    {
-        var project = CachedProjectLoader.Load(file);
-
-        if (project.MetadataReferences.Count == 0)
+        [Pure]
+        public ProjectAnalyzerVerifyContext ForTestProject(FileInfo file)
         {
-            throw new InvalidOperationException("Project could not be compiled.");
+            var project = CachedProjectLoader.Load(file);
+
+            if (project.MetadataReferences.Count == 0)
+            {
+                throw new InvalidOperationException("Project could not be compiled.");
+            }
+
+            var context = new ProjectAnalyzerVerifyContext(project).Add(analyzer);
+
+            return context with
+            {
+                IgnoredDiagnostics = DiagnosticIds.Empty.AddRange(
+                    "BC50001", // Unused import statement.
+
+                    "CS1701", // Assuming assembly reference.
+                    "CS8019", // Unnecessary using directive.
+                    "CS8933", // The using directive appeared previously as global using
+
+                    "??????"
+                ),
+            };
         }
-
-        var context = new ProjectAnalyzerVerifyContext(project).Add(analyzer);
-
-        return context with
-        {
-            IgnoredDiagnostics = DiagnosticIds.Empty.AddRange(
-                "BC50001", // Unused import statement.
-
-                "CS1701", // Assuming assembly reference.
-                "CS8019", // Unnecessary using directive.
-                "CS8933", // The using directive appeared previously as global using
-
-                "??????"
-            ),
-        };
     }
 }

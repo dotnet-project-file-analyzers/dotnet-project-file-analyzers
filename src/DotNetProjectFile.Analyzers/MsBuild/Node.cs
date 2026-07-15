@@ -20,7 +20,7 @@ public abstract class Node : XmlAnalysisNode
         Project = project ?? (this as MsBuildProject) ?? throw new ArgumentNullException(nameof(project));
         Children = [.. element.Elements().Select(Create)];
         Locations = XmlPositions.New(element).Locations(Project);
-        Depth = element.Depth();
+        Depth = element.Depth;
     }
 
     public MsBuildProject Project { get; }

@@ -33,6 +33,12 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
         Ctx = new(BuildInternal);
     }
 
+    public void HasNoIssues() => Build().HasNoIssues();
+
+    public void HasIssue(Issue issue) => Build().HasIssue(issue);
+
+    public void HasIssues(params Issue[] issues) => Build().HasIssues(issues);
+
     private static string GetHash(ImmutableArray<FileDefinition> files)
     {
         var sb = new StringBuilder();
@@ -120,20 +126,4 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
 
         public required string Hash { get; init; }
     }
-}
-
-internal static class InlineProjectAnalyzerVerifyContextBuilderExtensions
-{
-    public static void HasNoIssues(this InlineProjectAnalyzerVerifyContextBuilder builder)
-        => builder.Build().HasNoIssues();
-
-    public static void HasIssue(
-        this InlineProjectAnalyzerVerifyContextBuilder builder,
-        Issue issue)
-        => builder.Build().HasIssue(issue);
-
-    public static void HasIssues(
-        this InlineProjectAnalyzerVerifyContextBuilder builder,
-        params Issue[] issues)
-        => builder.Build().HasIssues(issues);
 }

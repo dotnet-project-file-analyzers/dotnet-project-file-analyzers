@@ -20,7 +20,7 @@ public abstract class Node : XmlAnalysisNode
         ConfigFile = configFile ?? (this as NuGetConfigFile) ?? throw new ArgumentNullException(nameof(configFile));
         Children = [.. element.Elements().Select(Create)];
         Locations = XmlPositions.New(element).Locations(ConfigFile);
-        Depth = element.Depth();
+        Depth = element.Depth;
     }
 
     public NuGetConfigFile ConfigFile { get; }

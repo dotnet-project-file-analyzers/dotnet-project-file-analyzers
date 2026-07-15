@@ -67,16 +67,19 @@ public static class ProjectFileTypes
         ProjectFileType.SDK,
     ];
 
-    /// <summary>Gets the <see cref="ProjectFileType"/> based on the file (name).</summary>
-    public static ProjectFileType GetProjectFileType(this IOFile file) => file switch
+    extension(IOFile file)
     {
-        _ when file.Name.IsMatch(".net.csproj") => ProjectFileType.SDK,
-        _ when Languages.All.Any(lang => file.Extension.IsMatch(lang.ProjectFileExtension)) => ProjectFileType.ProjectFile,
-        _ when file.Name.IsMatch("Directory.Build.props")
-            || file.Name.IsMatch("Directory.Build.targets") => ProjectFileType.DirectoryBuild,
-        _ when file.Name.IsMatch("Directory.Packages.props") => ProjectFileType.DirectoryPackages,
-        _ when file.Extension.IsMatch(".props")
-            || file.Extension.IsMatch(".targets") => ProjectFileType.Props,
-        _ => ProjectFileType.None,
-    };
+        /// <summary>Gets the <see cref="ProjectFileType"/> based on the file (name).</summary>
+        public ProjectFileType ProjectFileType => file switch
+        {
+            _ when file.Name.IsMatch(".net.csproj") => ProjectFileType.SDK,
+            _ when Languages.All.Any(lang => file.Extension.IsMatch(lang.ProjectFileExtension)) => ProjectFileType.ProjectFile,
+            _ when file.Name.IsMatch("Directory.Build.props")
+                || file.Name.IsMatch("Directory.Build.targets") => ProjectFileType.DirectoryBuild,
+            _ when file.Name.IsMatch("Directory.Packages.props") => ProjectFileType.DirectoryPackages,
+            _ when file.Extension.IsMatch(".props")
+                || file.Extension.IsMatch(".targets") => ProjectFileType.Props,
+            _ => ProjectFileType.None,
+        };
+    }
 }

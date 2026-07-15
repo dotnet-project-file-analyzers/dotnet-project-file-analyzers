@@ -52,7 +52,7 @@ public sealed class Resource : Node, ProjectFile
 
     public bool IsXml { get; }
 
-    public bool ForInvariantCulture => Culture.IsInvariant();
+    public bool ForInvariantCulture => Culture.IsInvariant;
 
     public bool Contains(string? name) => name is { } && lookup.ContainsKey(name);
 

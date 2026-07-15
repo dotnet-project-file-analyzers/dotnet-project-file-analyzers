@@ -2,71 +2,80 @@ namespace System.Linq;
 
 internal static class EnumerableExtensions
 {
-    [Pure]
-    public static bool None<T>(this IEnumerable<T> enumerable)
-        => !enumerable.Any();
-
-    [Pure]
-    public static bool None<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
-        => !enumerable.Any(predicate);
-
-    /// <summary>Takes all elements until (and including the first matching element).</summary>
-    [Pure]
-    public static IEnumerable<T> TakeUntil<T>(this IEnumerable<T> enumerable, Func<T, bool> predicate)
+    extension<T>(IEnumerable<T> enumerable)
     {
-        var match = false;
-
-        foreach (T element in enumerable)
+        [Pure]
+        public bool None()
         {
-            if (match)
-            {
-                break;
-            }
-            match = predicate(element);
+            using var enumerator = enumerable.GetEnumerator();
+            return !enumerator.MoveNext();
+        }
 
-            yield return element;
+        [Pure]
+        public bool None(Func<T, bool> predicate)
+            => !enumerable.Any(predicate);
+
+        /// <summary>Takes all elements until (and including the first matching element).</summary>
+        [Pure]
+        public IEnumerable<T> TakeUntil(Func<T, bool> predicate)
+        {
+            var match = false;
+
+            foreach (T element in enumerable)
+            {
+                if (match)
+                {
+                    break;
+                }
+                match = predicate(element);
+
+                yield return element;
+            }
+        }
+
+        [Pure]
+        public T MinBy<TComparable>(Func<T, TComparable> getValue)
+        where TComparable : IComparable<TComparable>
+        {
+            var result = enumerable.First();
+
+            foreach (var item in enumerable.Skip(1))
+            {
+                var value = getValue(item);
+
+                if (value.CompareTo(value) < 0)
+                {
+                    result = item;
+                }
+            }
+            return result;
         }
     }
 
-    /// <summary>Returns the first matching element, or null if no match was found.</summary>
-    [Pure]
-    public static T? FirstOrNone<T>(this IEnumerable<T> enumerable, Predicate<T> predicate) where T : struct
+    extension<T>(IEnumerable<T> enumerable) where T : struct
     {
-        foreach (var element in enumerable)
+        /// <summary>Returns the first matching element, or null if no match was found.</summary>
+        [Pure]
+        public T? FirstOrNone()
         {
-            if (predicate(element))
-            {
-                return element;
-            }
+            using var enumerator = enumerable.GetEnumerator();
+            return enumerator.MoveNext()
+                ? enumerator.Current
+                : null;
         }
-        return null;
-    }
 
-    /// <summary>Returns the first matching element, or null if no match was found.</summary>
-    [Pure]
-    public static T? FirstOrNone<T>(this IEnumerable<T> enumerable) where T : struct
-    {
-        using var enumerator = enumerable.GetEnumerator();
-        return enumerator.MoveNext()
-            ? enumerator.Current
-            : null;
-    }
-
-    [Pure]
-    public static T MinBy<T, TComparable>(this IEnumerable<T> enumerable, Func<T, TComparable> getValue)
-    where TComparable : IComparable<TComparable>
-    {
-        var result = enumerable.First();
-
-        foreach (var item in enumerable.Skip(1))
+        /// <summary>Returns the first matching element, or null if no match was found.</summary>
+        [Pure]
+        public T? FirstOrNone(Predicate<T> predicate)
         {
-            var value = getValue(item);
-
-            if (value.CompareTo(value) < 0)
+            foreach (var element in enumerable)
             {
-                result = item;
+                if (predicate(element))
+                {
+                    return element;
+                }
             }
+            return null;
         }
-        return result;
     }
 }

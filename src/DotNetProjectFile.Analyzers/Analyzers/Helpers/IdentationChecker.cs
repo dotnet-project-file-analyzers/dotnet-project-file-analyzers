@@ -70,6 +70,6 @@ internal sealed class IdentationChecker<TFile>(
         bool ClosingTagAfterTextWithSpacePreservation(XElement element)
             => !start
             && element.Elements().None()
-            && element.PreservesSpace();
+            && element.PreservesSpace;
     }
 }

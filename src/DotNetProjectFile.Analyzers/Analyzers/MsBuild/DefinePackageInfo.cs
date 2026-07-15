@@ -60,7 +60,7 @@ public sealed class DefinePackageInfo() : MsBuildProjectFileAnalyzer(
         DiagnosticDescriptor descriptor,
         params Type[] required)
     {
-        if (!required.Exists(available.Contains))
+        if (required.None(available.Contains))
         {
             context.ReportDiagnostic(descriptor, context.File);
         }

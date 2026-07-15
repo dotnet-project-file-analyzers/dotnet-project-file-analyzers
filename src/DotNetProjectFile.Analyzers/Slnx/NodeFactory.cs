@@ -31,7 +31,7 @@ internal sealed class NodeFactory
 
     [Pure]
     private Dictionary<string, CtorFunc> Lookup(XElement element)
-        => element.Depth() >= 2
+        => element.Depth >= 2
         ? CaseInsensitive
         : CaseSensitive;
 

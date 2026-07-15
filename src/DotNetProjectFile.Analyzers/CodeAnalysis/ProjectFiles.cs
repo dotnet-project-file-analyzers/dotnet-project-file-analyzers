@@ -28,7 +28,7 @@ public sealed partial class ProjectFiles
     public MsBuildProject? MsBuildProject(AdditionalText text)
     {
         var path = IOFile.Parse(text.Path);
-        return path.GetProjectFileType() is ProjectFileType.None
+        return path.ProjectFileType is ProjectFileType.None
             ? null
             : MsBuildProjects.TryGetOrUpdate(path, _ => MsBuild.MsBuildProject.Load(text, Global));
     }
@@ -39,7 +39,7 @@ public sealed partial class ProjectFiles
     public NuGet.Configuration.NuGetConfigFile? NuGetConfigFile(AdditionalText text)
     {
         var path = IOFile.Parse(text.Path);
-        return path.GetProjectFileType() is ProjectFileType.None
+        return path.ProjectFileType is ProjectFileType.None
             ? null
             : NuGetConfigFiles.TryGetOrUpdate(path, _ => NuGet.Configuration.NuGetConfigFile.Load(text));
     }

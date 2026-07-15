@@ -4,17 +4,20 @@ namespace AwesomeAssertions;
 
 internal static class FindsExtensions
 {
-    public static void HasNoIssues(this ProjectAnalyzerVerifyContext context)
-        => context.HasIssues();
-
-    public static void HasIssue(this ProjectAnalyzerVerifyContext context, Issue issue)
-        => context.HasIssues(issue);
-
-    public static void HasIssues(this ProjectAnalyzerVerifyContext context, params Issue[] issues)
+    extension(ProjectAnalyzerVerifyContext context)
     {
-        var diagnosics = Run.Sync(context.GetDiagnosticsAsync)
-            .Where(d => !context.IgnoredDiagnostics.Contains(d.Id));
+        public void HasNoIssues()
+            => context.HasIssues();
 
-        diagnosics.Should().HaveIssues(issues);
+        public void HasIssue(Issue issue)
+            => context.HasIssues(issue);
+
+        public void HasIssues(params Issue[] issues)
+        {
+            var diagnosics = Run.Sync(context.GetDiagnosticsAsync)
+                .Where(d => !context.IgnoredDiagnostics.Contains(d.Id));
+
+            diagnosics.Should().HaveIssues(issues);
+        }
     }
 }
