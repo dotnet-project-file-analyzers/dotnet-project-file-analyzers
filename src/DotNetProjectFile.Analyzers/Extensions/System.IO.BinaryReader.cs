@@ -4,6 +4,9 @@ namespace System.IO;
 
 internal static class BinaryReaderExtensions
 {
-    public static int ReadInt32BigEndian(this BinaryReader reader)
-        => BinaryPrimitives.ReadInt32BigEndian(reader.ReadBytes(sizeof(int)));
+    extension(BinaryReader reader)
+    {
+        public int ReadInt32BigEndian()
+            => BinaryPrimitives.ReadInt32BigEndian(reader.ReadBytes(sizeof(int)));
+    }
 }

@@ -2,8 +2,11 @@ namespace System.IO;
 
 public static class DotNetProjectFileAnalyzersFileInfoExtensions
 {
-    [Pure]
-    public static IDisposable Lock(this FileInfo file) => new FileLock(file);
+    extension(FileInfo file)
+    {
+        [Pure]
+        public IDisposable Lock() => new FileLock(file);
+    }
 
     private sealed class FileLock(FileInfo File) : IDisposable
     {

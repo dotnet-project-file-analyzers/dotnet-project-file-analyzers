@@ -4,6 +4,9 @@ namespace System.Xml;
 
 internal static class XmlLineInfoExtensions
 {
-    public static LinePosition LinePosition(this IXmlLineInfo info)
-        => new(info.LineNumber - 1, info.LinePosition - 1);
+    extension(IXmlLineInfo info)
+    {
+        public LinePosition LinePosition()
+            => new(info.LineNumber - 1, info.LinePosition - 1);
+    }
 }

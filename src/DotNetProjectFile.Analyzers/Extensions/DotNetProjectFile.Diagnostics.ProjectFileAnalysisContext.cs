@@ -1,6 +1,6 @@
 namespace DotNetProjectFile.Diagnostics;
 
-internal static class DotNetProjectFile
+internal static class ProjectFileAnalysisContextExtensions
 {
     extension(ProjectFileAnalysisContext context)
     {

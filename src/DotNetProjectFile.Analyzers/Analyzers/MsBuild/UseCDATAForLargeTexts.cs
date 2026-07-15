@@ -16,7 +16,7 @@ public sealed class UseCDATAForLargeTexts() : MsBuildProjectFileAnalyzer(Rule.Us
         {
             if (node is PackageReleaseNotes &&
                 LineCount(node) > 3 &&
-                !node.Element.ContainsCDATA())
+                !node.Element.ContainsCDATA)
             {
                 context.ReportDiagnostic(Descriptor, node.Locations.InnerSpan);
             }
