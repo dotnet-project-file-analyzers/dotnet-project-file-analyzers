@@ -37,6 +37,9 @@ public class Reports
         	  </CustomItem>
            </ItemGroup>
 
+           <!-- Skip level 1 elements -->
+           <ItemGroup />
+
            <ItemDefinitionGroup>
              <Content>
               <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

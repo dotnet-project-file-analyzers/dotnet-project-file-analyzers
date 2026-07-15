@@ -84,6 +84,8 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+v1.15.*
+- Proj0052: Do not advise attributes in child nodes of the root. (FP)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
