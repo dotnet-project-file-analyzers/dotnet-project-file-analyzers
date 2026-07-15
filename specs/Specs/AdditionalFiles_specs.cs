@@ -13,14 +13,13 @@ public class Resolves
         using var ctx = BuildalyzerContext.ForProject("AdditionalFilesProject/AdditionalFilesProject/AdditionalFilesProject.csproj");
 
         var result = ctx.Analyzer.Build().Results.Single();
-        
         Log(result);
 
         result.Should().HaveAdditionalFiles(
 
             new ProjectItem()
             {
-                ItemSpec = Full("AdditionalFilesProject/AdditionalFilesProject.csproj"),
+                ItemSpec = Full("AdditionalFilesProject/AdditionalFilesProject/AdditionalFilesProject.csproj"),
                 Metadata = new Meta
                 {
                     AnalyzerType = "MSBuildProject",
