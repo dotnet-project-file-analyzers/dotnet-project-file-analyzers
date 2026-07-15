@@ -84,6 +84,14 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+v1.16.0
+- Proj4000: Invalid INI file. (re-enable)
+- Proj4001: Invalid INI header. (re-enable)
+- Proj4002: Invalid INI key-value pair. (re-enable)
+- Proj4010: Sections should contain at least one key-value pair. (re-enable)
+- Proj4050: Header must be a GLOB. (re-enable)
+- Proj4051: Use equals sign for key-value assignments. (re-enable)
+- Primary select analyzers based on <AdditionalFiles AnalyzerType="{type}">.
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
