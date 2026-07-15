@@ -2,17 +2,20 @@ namespace System.Globalization;
 
 internal static class CultureInfoExtensions
 {
-    public static IEnumerable<CultureInfo> Ancestors(this CultureInfo culture)
+    extension(CultureInfo culture)
     {
-        var parent = culture.Parent;
-
-        while (!parent.IsInvariant())
+        public IEnumerable<CultureInfo> Ancestors()
         {
-            yield return parent;
-            parent = parent.Parent;
-        }
-        yield return CultureInfo.InvariantCulture;
-    }
+            var parent = culture.Parent;
 
-    public static bool IsInvariant(this CultureInfo culture) => culture == CultureInfo.InvariantCulture;
+            while (!parent.IsInvariant)
+            {
+                yield return parent;
+                parent = parent.Parent;
+            }
+            yield return CultureInfo.InvariantCulture;
+        }
+
+        public bool IsInvariant => culture == CultureInfo.InvariantCulture;
+    }
 }
