@@ -29,5 +29,7 @@ public enum AnalyzerType
 
     RESX,
 
+    SDK,
+
     SLNX,
 }

@@ -106,7 +106,8 @@ public sealed partial class ProjectFiles
             AnalyzerType.MSBuildProp,
             AnalyzerType.DirectoryBuildProps,
             AnalyzerType.DirectoryBuildTargets,
-            AnalyzerType.DirectoryPackagesProps) is { } file
+            AnalyzerType.DirectoryPackagesProps,
+            AnalyzerType.SDK) is { } file
         ? MsBuildProjects.TryGetOrUpdate(file, _ => MsBuild.MsBuildProject.Load(context.AdditionalFile, this))
         : null;
 
