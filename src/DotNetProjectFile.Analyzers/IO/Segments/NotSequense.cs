@@ -4,7 +4,7 @@ internal sealed class NotSequence(string options) : Sequence(options)
 {
     /// <inheritdoc />
     [Pure]
-    public override bool IsMatch(ReadOnlySpan<char> value, StringComparison comparison)
+    public override bool IsMatch(Chars value, StringComparison comparison)
         => value.Length is 1
         && !base.IsMatch(value, comparison);
 

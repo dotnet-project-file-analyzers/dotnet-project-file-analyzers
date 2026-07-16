@@ -87,6 +87,28 @@ public static class Shared
     /// </returns>
     public static Lexer str(string val, [CallerMemberName] string? kind = null) => new Str(val, kind);
 
+    /// <summary>Matches if the remaining source starts with a character in the specified range.</summary>
+    /// <param name="range">
+    /// The range (like "a-z").
+    /// </param>
+    /// <param name="kind">
+    /// The (optional) token kind.
+    /// </param>
+    /// <remarks>
+    /// Functional the second character in the string has no meaning, but it
+    /// allows to read as range in the way you would normally specify it.
+    /// </remarks>
+    /// <returns>
+    /// A new lexer.
+    /// </returns>
+    public static Lexer range(string range, [CallerMemberName] string? kind = null) => range.Length switch
+    {
+        3 when range[0] < range[2] && range[1] is '-'
+            => new CharRange(range[0], range[2], kind),
+
+        _ => throw new ArgumentOutOfRangeException(nameof(range), "Length must be two with the first character be before the second value."),
+    };
+
     /// <summary>Matches if the remaining source starts with the specified pattern.</summary>
     /// <param name="pattern">
     /// The expected pattern.

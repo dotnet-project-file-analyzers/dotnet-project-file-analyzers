@@ -4,11 +4,9 @@ internal sealed class Line(string? kind) : Lexer(kind)
 {
     /// <inheritdoc />
     [Pure]
-    public override int? Match(SourceReader reader)
+    public override int? Match(Chars span)
     {
-        if (reader.EOS) return null;
-
-        var span = reader.Span;
+        if (span.EOS) return null;
 
         var length = span.IndexOf('\n');
 

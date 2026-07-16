@@ -12,11 +12,11 @@ internal sealed class Group(Segment[] segments) : Segment
 
     /// <inheritdoc />
     [Pure]
-    public override bool IsMatch(ReadOnlySpan<char> value, StringComparison comparison)
+    public override bool IsMatch(Chars value, StringComparison comparison)
         => IsMatch(Segments.AsSpan(), value, comparison);
 
     [Pure]
-    private static bool IsMatch(ReadOnlySpan<Segment> segments, ReadOnlySpan<char> value, StringComparison comparison)
+    private static bool IsMatch(ReadOnlySpan<Segment> segments, Chars value, StringComparison comparison)
     {
         var (minLength, maxLength) = Lengths(segments);
         var buffer = value;

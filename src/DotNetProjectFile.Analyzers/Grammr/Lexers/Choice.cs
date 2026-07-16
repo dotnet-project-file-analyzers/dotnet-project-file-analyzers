@@ -25,6 +25,15 @@ internal sealed class Choice(IEnumerable<Lexer> lexers, bool isOptional = false)
     private static IEnumerable<Lexer> Flatten(Lexer l) => l is Choice s ? s.Lexers : [l];
 
     /// <inheritdoc />
+    public override int? Match(Chars span)
+    {
+        for (var i = 0; i < Lexers.Length; i++)
+            if (Lexers[i].Match(span) is { } length) return length;
+
+        return IsOptional ? 0 : null;
+    }
+
+    /// <inheritdoc />
     public override int? Match(SourceReader reader)
     {
         for (var i = 0; i < Lexers.Length; i++)

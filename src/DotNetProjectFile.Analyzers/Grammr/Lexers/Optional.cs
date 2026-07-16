@@ -9,6 +9,10 @@ internal sealed class Optional(Lexer lexer, string? kind) : Lexer(kind)
 
     /// <inheritdoc />
     [Pure]
+    public override int? Match(Chars span) => Lexer.Match(span) ?? 0;
+
+    /// <inheritdoc />
+    [Pure]
     public override int? Match(SourceReader reader) => Lexer.Match(reader) ?? 0;
 
     /// <inheritdoc />
