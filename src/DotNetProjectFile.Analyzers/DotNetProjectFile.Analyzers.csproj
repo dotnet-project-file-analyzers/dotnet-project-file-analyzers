@@ -86,6 +86,7 @@ ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.16.0
 - Proj0006: Skip detecting if RESX'es are additional files. (UPDATE)
+- Proj0052: Do not advise attributes in child nodes of the root. (FP)
 - Proj4000: Invalid INI file. (RE-ENABLE)
 - Proj4001: Invalid INI header. (RE-ENABLE)
 - Proj4002: Invalid INI key-value pair. (RE-ENABLE)
