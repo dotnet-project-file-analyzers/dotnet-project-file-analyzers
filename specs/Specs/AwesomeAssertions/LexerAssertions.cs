@@ -14,7 +14,7 @@ internal sealed class LexerAssertions(Lexer subject, AssertionChain? chain = nul
     [DebuggerStepThrough]
     public AndConstraint<LexerAssertions> Match(string match, string from, string because = "")
     {
-        var length = Subject.Match(new SourceReader(match));
+        var length = Subject.Match(new SourceReader(from));
 
         Assert
             .ForCondition(length is { })
