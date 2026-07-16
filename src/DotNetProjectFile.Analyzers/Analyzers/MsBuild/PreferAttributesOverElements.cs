@@ -29,6 +29,7 @@ public sealed class PreferAttributesOverElements() : MsBuildProjectFileAnalyzer(
 
     private static bool CanBeAttribute(Node node)
         => node.Depth >= 2
+        && node is not ItemGroup
         && node.Element.Attributes().None()
         && !node.Element.Value.Trim().Contains('\n');
 }
