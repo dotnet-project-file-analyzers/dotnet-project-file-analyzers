@@ -94,6 +94,27 @@ public class String
     public void Has_debug_display() => lexer.ToString().Should().Be("str(grammr)");
 }
 
+public class Range
+{
+    private readonly Lexer lexer = range("x-z");
+
+    [TestCase("xylophone", "x")]
+    [TestCase("ypsilon", "y")]
+    [TestCase("zebra", "z")]
+    public void Parses(string src, string match)
+            => lexer.Should().Match(match, from: src);
+
+    [TestCase("")]
+    [TestCase("Zebra")]
+    [TestCase("water")]
+    [TestCase("{character after z}")]
+    public void Does_not_match(string src)
+        => lexer.Should().NotMatch(src);
+
+    [Test]
+    public void Has_debug_display() => lexer.ToString().Should().Be("[x-z]");
+}
+
 public class Match
 {
     private readonly Lexer lexer = match(IsDigit);
