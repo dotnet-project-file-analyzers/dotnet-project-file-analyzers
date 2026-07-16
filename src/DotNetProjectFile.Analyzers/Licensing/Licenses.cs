@@ -16,8 +16,7 @@ public static class Licenses
     // Note that this list is not and will never be legal advice.
     public static readonly ImmutableArray<LicenseExpression> All =
     [
-        // TODO: the remainder of the recognized list.
-        Unknown,
+        Unknown, // TODO: the remainder of the recognized list.
         MIT,
         new PermissiveLicense("Apache-1.0"),
         new PermissiveLicense("Apache-1.1"),

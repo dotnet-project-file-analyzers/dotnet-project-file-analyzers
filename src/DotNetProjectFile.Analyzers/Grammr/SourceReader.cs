@@ -142,7 +142,7 @@ public ref struct SourceReader(Source source, TokenStream? stream = null)
     /// The pattern to match.
     /// </param>
     [Pure]
-    public Match Match(Regex pattern) => Source.Match(pattern, Start);
+    public readonly Match Match(Regex pattern) => Source.Match(pattern, Start);
 
     /// <inheritdoc />
     [Pure]
