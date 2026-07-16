@@ -18,5 +18,5 @@ internal abstract class Segment
 
     /// <inheritdoc cref="Glob.IsMatch(string, StringComparison)" />
     [Pure]
-    public abstract bool IsMatch(ReadOnlySpan<char> value, StringComparison comparison);
+    public abstract bool IsMatch(Chars value, StringComparison comparison);
 }

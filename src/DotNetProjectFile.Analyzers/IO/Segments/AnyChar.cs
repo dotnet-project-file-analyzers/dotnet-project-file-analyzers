@@ -10,7 +10,7 @@ internal sealed class AnyChar : Segment
 
     /// <inheritdoc />
     [Pure]
-    public override bool IsMatch(ReadOnlySpan<char> value, StringComparison comparison)
+    public override bool IsMatch(Chars value, StringComparison comparison)
         => value.Length == 1;
 
     /// <inheritdoc />

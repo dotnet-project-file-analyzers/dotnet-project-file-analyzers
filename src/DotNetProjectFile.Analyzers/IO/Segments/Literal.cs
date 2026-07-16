@@ -12,7 +12,7 @@ internal sealed class Literal(string text) : Segment
 
     /// <inheritdoc />
     [Pure]
-    public override bool IsMatch(ReadOnlySpan<char> value, StringComparison comparison)
+    public override bool IsMatch(Chars value, StringComparison comparison)
         => value.Equals(Text.AsSpan(), comparison);
 
     /// <inheritdoc />

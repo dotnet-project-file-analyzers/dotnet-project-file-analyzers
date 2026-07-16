@@ -13,7 +13,7 @@ internal class Sequence(string options) : Segment
 
     /// <inheritdoc />
     [Pure]
-    public override bool IsMatch(ReadOnlySpan<char> value, StringComparison comparison)
+    public override bool IsMatch(Chars value, StringComparison comparison)
     {
         if (value.Length != 1) return false;
 
