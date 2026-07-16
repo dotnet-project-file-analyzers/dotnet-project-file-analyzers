@@ -2,7 +2,7 @@ using DotNetProjectFile.BuildAgents;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <summary>Implements <see cref="Rule.EnableRestoreLockedMode"/></summary>
+/// <summary>Implements <see cref="Rule.EnableRestoreLockedMode"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class EnableRestoreLockedMode() : MsBuildProjectFileAnalyzer(Rule.EnableRestoreLockedMode)
 {

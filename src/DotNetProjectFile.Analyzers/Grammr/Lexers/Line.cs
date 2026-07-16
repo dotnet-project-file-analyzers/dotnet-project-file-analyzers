@@ -14,7 +14,6 @@ internal sealed class Line(string? kind) : Lexer(kind)
 
         if (length is -1)
             return span.Length;
-
         else if (length is not 0 && span[length - 1] == '\r')
             length--;
 

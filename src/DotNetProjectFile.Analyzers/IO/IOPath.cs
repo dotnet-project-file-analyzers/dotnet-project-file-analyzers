@@ -96,7 +96,6 @@ public static class IOPath
             {
                 // ignore.
             }
-            // resolve .. if possible.
             else if (part == ".." && splitted.Any() && splitted[^1] != "..")
             {
                 splitted.RemoveAt(splitted.Count - 1);
