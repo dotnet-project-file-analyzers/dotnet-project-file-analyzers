@@ -1,3 +1,4 @@
+#pragma warning disable S1192 // There are a lot of string literals here
 using DotNetProjectFile.Text;
 using System.Collections.Frozen;
 using System.Text;
