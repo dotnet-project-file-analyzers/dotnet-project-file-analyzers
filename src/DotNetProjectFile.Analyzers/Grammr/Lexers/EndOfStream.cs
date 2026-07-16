@@ -4,8 +4,8 @@ internal sealed class EndOfStream() : Lexer(nameof(EndOfStream))
 {
     /// <inheritdoc />
     [Pure]
-    public override int? Match(SourceReader reader)
-        => reader.EOS ? 0 : null;
+    public override int? Match(Chars span)
+        => span.EOS ? 0 : null;
 
     /// <inheritdoc />
     [Pure]

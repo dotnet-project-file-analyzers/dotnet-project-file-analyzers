@@ -18,6 +18,11 @@ internal sealed class Reg(Regex pattern, string? kind) : Lexer(kind)
 
     /// <inheritdoc />
     [Pure]
+    public override int? Match(Chars span)
+        => throw new NotSupportedException("Regex is not supported as it requires a lot of string allocations.");
+
+    /// <inheritdoc />
+    [Pure]
     public override int? Match(SourceReader reader)
         => reader.Match(Pattern) is { Success: true } match && match.Index == reader.Start
         ? match.Length

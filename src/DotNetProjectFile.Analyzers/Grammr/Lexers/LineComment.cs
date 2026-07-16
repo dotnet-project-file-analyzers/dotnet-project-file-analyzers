@@ -6,10 +6,8 @@ internal sealed class LineComment(string start, string? kind) : Lexer(kind)
 
     /// <inheritdoc />
     [Pure]
-    public override int? Match(SourceReader reader)
+    public override int? Match(Chars span)
     {
-        var span = reader.Span;
-
         if (!span.StartsWith(Start)) return null;
 
         var length = span.IndexOf('\n');

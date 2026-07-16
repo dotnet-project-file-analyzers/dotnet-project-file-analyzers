@@ -6,8 +6,8 @@ internal sealed class Str(string val, string? kind) : Lexer(kind)
 
     /// <inheritdoc />
     [Pure]
-    public override int? Match(SourceReader reader)
-        => reader.Span.StartsWith(Value)
+    public override int? Match(Chars span)
+        => span.StartsWith(Value)
         ? Value.Length
         : null;
 

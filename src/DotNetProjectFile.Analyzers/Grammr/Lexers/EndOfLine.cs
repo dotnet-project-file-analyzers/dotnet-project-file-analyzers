@@ -4,11 +4,11 @@ internal sealed class EndOfLine() : Lexer(nameof(EndOfLine))
 {
     /// <inheritdoc />
     [Pure]
-    public override int? Match(SourceReader reader) => reader switch
+    public override int? Match(Chars span) => span switch
     {
         { EOS: true } => null,
-        _ when reader.Span[0] is '\n' => 1,
-        _ when reader.Span.StartsWith("\r\n") => 2,
+        _ when span[0] is '\n' => 1,
+        _ when span.StartsWith("\r\n") => 2,
         _ => null,
     };
 

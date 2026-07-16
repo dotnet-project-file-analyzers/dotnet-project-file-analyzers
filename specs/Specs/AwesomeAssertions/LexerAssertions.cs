@@ -1,4 +1,5 @@
 using AwesomeAssertions.Execution;
+using Grammr;
 using Grammr.Lexers;
 using System.Diagnostics;
 
@@ -13,7 +14,7 @@ internal sealed class LexerAssertions(Lexer subject, AssertionChain? chain = nul
     [DebuggerStepThrough]
     public AndConstraint<LexerAssertions> Match(string match, string from, string because = "")
     {
-        var length = Subject.Match(new(from));
+        var length = Subject.Match(new SourceReader(match));
 
         Assert
             .ForCondition(length is { })
@@ -29,7 +30,7 @@ internal sealed class LexerAssertions(Lexer subject, AssertionChain? chain = nul
     [DebuggerStepThrough]
     public AndConstraint<LexerAssertions> NotMatch(string source, string because = "")
     {
-        var length = Subject.Match(new(source));
+        var length = Subject.Match(new SourceReader(source));
 
         Assert
             .ForCondition(length is null)

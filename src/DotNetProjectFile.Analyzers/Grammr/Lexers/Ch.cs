@@ -6,8 +6,8 @@ internal sealed class Ch(char val, string? kind) : Lexer(kind)
 
     /// <inheritdoc />
     [Pure]
-    public override int? Match(SourceReader reader)
-        => reader.EOS || reader[0] != Value ? null : 1;
+    public override int? Match(Chars span)
+        => span.EOS || span[0] != Value ? null : 1;
 
     /// <inheritdoc />
     [Pure]

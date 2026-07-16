@@ -7,7 +7,12 @@ public abstract class Lexer(string? kind)
 
     /// <summary>Tries to match, and returns the length of that match when succesful.</summary>
     [Pure]
-    public abstract int? Match(SourceReader reader);
+    public abstract int? Match(Chars span);
+
+    /// <inheritdoc cref="Match(Chars)" />
+    [Pure]
+    public virtual int? Match(SourceReader reader)
+        => Match(reader.Span);
 
     /// <summary>Makes the lexer optional, meaning it will match zero or one occurrence of the pattern.</summary>
     public virtual Lexer optional => field ??= new Optional(this, Kind);
