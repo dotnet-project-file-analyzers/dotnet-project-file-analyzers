@@ -51,7 +51,7 @@ public static class Shared
     /// <remarks>
     /// Matches on:
     /// * \n
-    /// * \r\n
+    /// * \r\n.
     /// </remarks>
     public static readonly Lexer eol = new EndOfLine();
 
@@ -59,7 +59,7 @@ public static class Shared
     /// <remarks>
     /// Matches on:
     /// * ' '
-    /// * \t
+    /// * \t.
     /// </remarks>
     public static readonly Lexer ws = new Predicates(IsWhitespace, "Whitespace");
 

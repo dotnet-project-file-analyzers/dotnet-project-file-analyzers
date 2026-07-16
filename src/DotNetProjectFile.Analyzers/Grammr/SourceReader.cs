@@ -137,7 +137,7 @@ public ref struct SourceReader(Source source, TokenStream? stream = null)
     /// </returns>
     public bool Keep(Lexer lexer) => Emit(lexer) is not null;
 
-    /// <summary>Matching the <see cref="Regex"/> pattern against the source starting at the current position</summary>
+    /// <summary>Matching the <see cref="Regex"/> pattern against the source starting at the current position.</summary>
     /// <param name="pattern">
     /// The pattern to match.
     /// </param>
