@@ -73,7 +73,7 @@
 
   <Target Name="ValidateGlobalAnalyzerConfigFiles" AfterTargets="PrepareForBuild;ResolveProjectReferences">
     <Warning
-      Condition="'@(GlobalAnalyzerConfigFiles)' == ''"
+      Condition="'@(GlobalAnalyzerConfigFiles->Exists())' == ''"
       Code="Proj4025"
       Text="No .globalconfig file was resolved. Please add such a file to configure static code analysis rules."
       HelpLink="https://dotnet-project-file-analyzers.github.io/rules/Proj4025.html" />
