@@ -78,6 +78,10 @@
     <AdditionalFiles Include="../../props/common.props" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Analyzers\Globalconfig\" />
+  </ItemGroup>
+
   <PropertyGroup Label="Version and release notes">
     <Version>1.15.2</Version>
     <ToBeReleased>
