@@ -31,6 +31,10 @@ public sealed class AnalyzerResultAssertions(IAnalyzerResult subject)
     }
 
     [DebuggerStepThrough]
+    public AndConstraint<AnalyzerResultAssertions> HaveContent(params Specs.TestTools.ProjectItem[] expected)
+        => HaveItems("Content", expected);
+
+    [DebuggerStepThrough]
     public AndConstraint<AnalyzerResultAssertions> HaveAdditionalFiles(params Specs.TestTools.ProjectItem[] expected)
         => HaveItems("AdditionalFiles", expected);
 

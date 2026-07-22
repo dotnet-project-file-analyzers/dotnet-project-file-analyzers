@@ -41,10 +41,12 @@ public sealed record ProjectItem
 
         private string? Get(string key) => Lookup.TryGetValue(key, out var val) ? val : null;
 
-        private void Set(string key, string? value)
+        public Meta Set(string key, string? value)
         {
             if (value is null) Lookup.Remove(key);
             else Lookup[key] = value;
+
+            return this;
         }
 
         public static implicit operator Dictionary<string, string>(Meta metadata) => metadata.Lookup;

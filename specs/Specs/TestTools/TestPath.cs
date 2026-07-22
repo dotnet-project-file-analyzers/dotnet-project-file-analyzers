@@ -5,6 +5,11 @@ namespace Specs.TestTools;
 
 public static class TestPath
 {
+    public static string Link(string path) => path
+        .Replace('/', '_')
+        .Replace('\\', '_')
+        .Replace(':', '_');
+
     public static string Relative(string path) => IOFile.Parse(path).ToString();
 
     public static string Full(string path)

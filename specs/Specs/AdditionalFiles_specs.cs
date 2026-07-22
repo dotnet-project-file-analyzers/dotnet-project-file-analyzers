@@ -173,10 +173,51 @@ public class Resolves
             });
     }
 
+    [Test]
+    public void For_Blazor_scoped_css()
+    {
+        using var ctx = BuildalyzerContext.ForProject("BlazorScopedCss/BlazorScopedCss.csproj");
+
+        var result = ctx.Analyzer.Build().Results.Single();
+        Log(result);
+
+        result.Should().HaveContent(
+             new ProjectItem
+             {
+                 ItemSpec = Full("BlazorScopedCss/BlazorScopedCss.csproj"),
+                 Metadata = new Meta
+                 {
+                     CopyToOutputDirectory = "never",
+                     Link = Link(Full("BlazorScopedCss/BlazorScopedCss.csproj")),
+                     Visible = "false",
+                     SonarQubeContent = "true",
+                     AnalyzerType = "MSBuildProject",
+                 },
+             },
+            new ProjectItem
+            {
+                ItemSpec = Relative("Components/Tree.razor"),
+                Metadata = new Meta().Set("ExcludeFromSingleFile", "true"),
+            }
+        );
+
+        result.Should().HaveAdditionalFiles(
+             new ProjectItem
+             {
+                 ItemSpec = Full("BlazorScopedCss/BlazorScopedCss.csproj"),
+                 Metadata = new Meta
+                 {
+                     Visible = "false",
+                     AnalyzerType = "MSBuildProject",
+                 },
+             }
+        );
+    }
+
     private static void Log(IAnalyzerResult result)
     {
 #if DEBUG
-        ProjectItem.Generate(result.Items.OfType("AdditionalFiles"));
+        ProjectItem.Generate(result.Items.OfType("Content"));
 #endif
     }
 }
