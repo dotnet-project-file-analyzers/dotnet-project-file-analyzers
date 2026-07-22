@@ -71,4 +71,23 @@
       HelpLink="https://dotnet-project-file-analyzers.github.io/rules/Proj1007.html" />
   </Target>
 
+  <Target Name="WarnOnImportPaths" BeforeTargets="PrepareForBuild">
+    
+    <!-- Use XML peek to select the XPath values -->
+    <XmlPeek
+      XmlInputPath="$(MSBuildProjectFullPath)"
+      Query="//*[local-name()='Import']/@Project">
+      <Output TaskParameter="Result" ItemName="ImportedProjects" />
+    </XmlPeek>
+
+    <ItemGroup>
+      <AdditionalFiles
+        AnalyzerType="MSBuildProp"
+        Include="@(ImportedProjects)"
+        Exclude="@(AdditionalFiles)"
+        Visible="false" />
+    </ItemGroup>
+
+  </Target>
+
 </Project>

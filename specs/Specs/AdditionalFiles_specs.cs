@@ -110,16 +110,6 @@ public class Resolves
             },
             new ProjectItem
             {
-                ItemSpec = Full("../.globalconfig"),
-                Metadata = new Meta
-                {
-                    Link = ".globalconfig",
-                    Visible = "false",
-                    AnalyzerType = "GlobalConfig",
-                },
-            },
-            new ProjectItem
-            {
                 ItemSpec = Full("../.editorconfig"),
                 Metadata = new Meta
                 {
@@ -129,11 +119,29 @@ public class Resolves
             },
             new ProjectItem
             {
+                ItemSpec = Full("../.globalconfig"),
+                Metadata = new Meta
+                {
+                    Link = ".globalconfig",
+                    AnalyzerType = "GlobalConfig",
+                },
+            },
+            new ProjectItem
+            {
                 ItemSpec = Full("../NuGet.config"),
                 Metadata = new Meta
                 {
                     Link = "NuGet.config",
                     AnalyzerType = "NuGetConfig",
+                },
+            },
+            new ProjectItem
+            {
+                ItemSpec = "copyright.props",
+                Metadata = new Meta
+                {
+                    Visible = "true",
+                    AnalyzerType = "MSBuildProp",
                 },
             },
             new ProjectItem
