@@ -60,4 +60,20 @@ public class Guards
         </Project>
         """)
         .HasNoIssues();
+
+    [Test]
+    public void on_development_dependency() => new SymbolPackageFormatSNupkgSetup()
+       .ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+            <IncludeSymbols>false</IncludeSymbols>
+            <DevelopmentDependency>true</DevelopmentDependency>
+          </PropertyGroup>
+
+        </Project>
+        """)
+       .HasNoIssues();
 }
