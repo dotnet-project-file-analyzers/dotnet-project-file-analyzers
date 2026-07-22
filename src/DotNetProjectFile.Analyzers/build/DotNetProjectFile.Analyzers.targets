@@ -33,11 +33,13 @@
     * Condition '$(BuildingByReSharper)' != 'true'
       Set by Rider and ReSharper for all their builds. Rider's solution view
       hides the real files when the invisible linked duplicates are present.
+      
+    * Exclude **/*.razor.css as it will break the Razor build.
   -->
   <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true' and '$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
     <Content
       Include="@(None);@(AdditionalFiles)"
-      Exclude="@(Content)"
+      Exclude="@(Content);**/*.razor.css"
       CopyToOutputDirectory="never"
       Visible="false"
       SonarQubeContent="true"
