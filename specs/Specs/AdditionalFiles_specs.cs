@@ -138,6 +138,15 @@ public class Resolves
             },
             new ProjectItem
             {
+                ItemSpec = "copyright.props",
+                Metadata = new Meta
+                {
+                    Visible = "true",
+                    AnalyzerType = "MSBuildProp",
+                },
+            },
+            new ProjectItem
+            {
                 ItemSpec = "Directory.Build.props",
                 Metadata = new Meta
                 {

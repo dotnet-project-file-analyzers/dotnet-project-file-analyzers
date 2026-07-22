@@ -1,5 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <Import Project="../copyright.props" />
   <Import Project="../../../src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.props" />
 
   <PropertyGroup>
