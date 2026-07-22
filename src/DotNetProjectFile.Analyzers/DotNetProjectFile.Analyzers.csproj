@@ -95,6 +95,7 @@ v1.16.0
 - Proj4050: Header must be a GLOB. (RE-ENABLE)
 - Proj4051: Use equals sign for key-value assignments. (RE-ENABLE)
 - Leave visibility of RESX files as is. (BUG)
+- Exclude **/*.razor.css from SonarQube intergration as it breaks the build. (BUG)
 - Primary select analyzers based on <AdditionalFiles AnalyzerType="{type}">.
 ]]>
     </ToBeReleased>
