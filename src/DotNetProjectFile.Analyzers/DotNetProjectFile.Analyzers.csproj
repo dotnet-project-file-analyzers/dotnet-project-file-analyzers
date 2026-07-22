@@ -93,6 +93,7 @@ v1.16.0
 - Proj4010: Sections should contain at least one key-value pair. (RE-ENABLE)
 - Proj4050: Header must be a GLOB. (RE-ENABLE)
 - Proj4051: Use equals sign for key-value assignments. (RE-ENABLE)
+- Leave visibility of RESX files as is. (BUG)
 - Primary select analyzers based on <AdditionalFiles AnalyzerType="{type}">.
 ]]>
     </ToBeReleased>

@@ -58,6 +58,15 @@ public class Resolves
                     Visible = "false",
                     Link = "Directory.Packages.props",
                 }
+            },
+
+            new ProjectItem
+            {
+                ItemSpec = "Resources.resx",
+                Metadata = new Meta
+                {
+                    AnalyzerType = "RESX",
+                },
             });
     }
 
