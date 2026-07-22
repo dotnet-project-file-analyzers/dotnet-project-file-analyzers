@@ -173,10 +173,24 @@ public class Resolves
             });
     }
 
+    [Test]
+    public void For_Blazor_scoped_css()
+    {
+        using var ctx = BuildalyzerContext.ForProject("BlazorScopedCss/BlazorScopedCss/BlazorScopedCss.csproj");
+
+        var result = ctx.Analyzer.Build().Results.Single();
+        Log(result);
+
+        result.Should().HaveAdditionalFiles(
+
+        );
+    }
+
     private static void Log(IAnalyzerResult result)
     {
 #if DEBUG
-        ProjectItem.Generate(result.Items.OfType("AdditionalFiles"));
+        //ProjectItem.Generate(result.Items.OfType("AdditionalFiles"));
+        ProjectItem.Generate(result.Items.OfType("Content"));
 #endif
     }
 }
