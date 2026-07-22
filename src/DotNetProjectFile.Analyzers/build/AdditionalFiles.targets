@@ -1,20 +1,23 @@
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
+  <!-- Current project file -->
   <ItemGroup>
-    <!-- Current project file -->  
     <AdditionalFiles
       AnalyzerType="MSBuildProject"
       Include="$(MSBuildProjectFullPath)"
       Exclude="@(AdditionalFiles)"
       Visible="false" />
-    
-    <!-- XML Resources -->
+  </ItemGroup>
+
+  <!--
+    XML Resources
+    Do not add them for the .net.csproj as they should be bound to a project file.
+    -->
+  <ItemGroup Condition="'$(IsDotNetProjectFileSdk)' != 'true'">
     <AdditionalFiles
       AnalyzerType="RESX"
       Include="**/*.resx"
-      Exclude="@(AdditionalFiles)"
-      Visible="false" />
-
+      Exclude="@(AdditionalFiles)" />
   </ItemGroup>
 
   <!-- Directory.Build.props -->
