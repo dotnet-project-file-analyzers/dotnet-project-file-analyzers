@@ -8,17 +8,29 @@ namespace DotNetProjectFile.Diagnostics;
 /// </typeparam>
 public readonly struct ProjectFileAnalysisContext<TFile>(
     TFile file,
+    AnalyzerType type,
     Compilation compilation,
     AnalyzerOptions options,
     CancellationToken cancellationToken,
     Action<Diagnostic> report)
     where TFile : ProjectFile
 {
+    [Obsolete("Set analyzertype")]
+    public ProjectFileAnalysisContext(
+        TFile file,
+        Compilation compilation,
+        AnalyzerOptions options,
+        CancellationToken cancellationToken,
+        Action<Diagnostic> report) : this(file, default, compilation, options, cancellationToken, report) { }
+
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private readonly Action<Diagnostic> Report = report;
 
     /// <summary>Gets the project file.</summary>
     public TFile File { get; } = file;
+
+    /// <summary>The type of the analyzer.</summary>
+    public AnalyzerType AnalyzerType { get; } = type;
 
     /// <summary>Gets the compilation language.</summary>
     public Language CompilationLanguage => Language.Parse(Compilation.Language);

@@ -45,7 +45,7 @@ internal static class AnalyzerRegistry
             {
                 if (ProjectFiles.Global.UpdateNugetConfigFile(c) is { } config)
                 {
-                    register(new(config, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(config, AnalyzerType.NuGetConfig, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
 
@@ -55,7 +55,7 @@ internal static class AnalyzerRegistry
             {
                 if (ProjectFiles.Global.UpdateResourceFile(c) is { IsXml: true } resource)
                 {
-                    register(new(resource, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(resource, AnalyzerType.RESX, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
 
@@ -65,7 +65,7 @@ internal static class AnalyzerRegistry
             {
                 if (ProjectFiles.Global.UpdateSolutionFile(c) is { } solution)
                 {
-                    register(new(solution, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(solution, AnalyzerType.SLNX, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
     }
