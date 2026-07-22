@@ -11,7 +11,7 @@ public sealed class EnableGenerateDocumentationFile() : MsBuildProjectFileAnalyz
     {
         if (!context.File.IsPackable()
             || context.File.IsTestProject()
-            || context.File.IsDevelopmentDependency()) return;
+            || context.IsDevelopmentDependency) return;
 
         var generateDocumentationFile = context.File.Property<GenerateDocumentationFile>();
         var documentationFile = context.File.Property<DocumentationFile>();
