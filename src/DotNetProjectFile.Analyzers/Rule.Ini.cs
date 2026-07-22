@@ -54,7 +54,7 @@ public static partial class Rule
         public static DiagnosticDescriptor UseEqualsAssign => New(
             id: 4051,
             title: "Use equals sign for key-value assignments",
-            message: "Use = instead",
+            message: "Use '=' instead",
             description: "In .editorconfig files instead of : use = as assignment sign.",
             tags: ["INI", ".editorconfig"],
             category: Category.Clarity);
