@@ -21,6 +21,12 @@
       Exclude="@(AdditionalFiles)"
       AnalyzerType="GlobalConfig" />
 
+    <AdditionalFiles
+      Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig', $(MSBuildProjectDirectory)))"
+      Exclude="@(AdditionalFiles)"
+      AnalyzerType="GlobalConfig"
+      Link=".globalconfig" />
+    
     <!-- NuGet.config -->
     <AdditionalFiles
       Include="$([MSBuild]::GetPathOfFileAbove('NuGet.config', $(MSBuildProjectDirectory)))"
