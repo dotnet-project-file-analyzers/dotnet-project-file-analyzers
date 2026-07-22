@@ -176,7 +176,7 @@ public class Resolves
     [Test]
     public void For_Blazor_scoped_css()
     {
-        using var ctx = BuildalyzerContext.ForProject("BlazorScopedCss/BlazorScopedCss/BlazorScopedCss.csproj");
+        using var ctx = BuildalyzerContext.ForProject("BlazorScopedCss/BlazorScopedCss.csproj");
 
         var result = ctx.Analyzer.Build().Results.Single();
         Log(result);
