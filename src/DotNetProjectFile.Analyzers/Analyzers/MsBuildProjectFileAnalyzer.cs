@@ -27,12 +27,11 @@ public abstract class MsBuildProjectFileAnalyzer(
     /// <summary>Indicates that the rule will not be executed once an import could not be resolved (default is true).</summary>
     public virtual bool DisableOnFailingImport => true;
 
-    /// <summary>Registers the analyzer for all MS Build projects files.</summary>
     /// <inheritdoc />
     protected override void Register(AnalysisContext context)
         => context.RegisterProjectFileAction(c =>
         {
-            if (ApplicableTo.Contains(c.File.FileType)
+            if (ApplicableTo.Contains(c.AnalyzerType)
                 && (ApplicableLanguages.Contains(c.File.Language) || c.File.Language == Language.None)
                 && !(c.File.HasFailingImport && DisableOnFailingImport)
                 && (!IsProjectFileWithinSdk(c) || IsSupportedSdkProject(c)))
