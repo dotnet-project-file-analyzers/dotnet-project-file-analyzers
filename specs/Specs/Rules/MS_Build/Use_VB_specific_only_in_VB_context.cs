@@ -24,14 +24,14 @@ public class Reports
         </Project>
         """)
         .HasIssues(
-            Issue.WRN("Proj0030", "The property <FrameworkPathOverride> is only applicable when using VB.NET and can therefor be removed" /*.*/).WithSpan(06, 4, 06, 29),
-            Issue.WRN("Proj0030", "The property <NoVBRuntimeReference> is only applicable when using VB.NET and can therefor be removed" /*..*/).WithSpan(07, 4, 07, 53),
-            Issue.WRN("Proj0030", "The property <OptionExplicit> is only applicable when using VB.NET and can therefor be removed" /*........*/).WithSpan(08, 4, 08, 39),
-            Issue.WRN("Proj0030", "The property <OptionInfer> is only applicable when using VB.NET and can therefor be removed" /*...........*/).WithSpan(09, 4, 09, 33),
-            Issue.WRN("Proj0030", "The property <OptionStrict> is only applicable when using VB.NET and can therefor be removed" /*..........*/).WithSpan(10, 4, 10, 35),
-            Issue.WRN("Proj0030", "The property <RemoveIntegerChecks> is only applicable when using VB.NET and can therefor be removed" /*...*/).WithSpan(11, 4, 11, 51),
-            Issue.WRN("Proj0030", "The property <VbcVerbosity> is only applicable when using VB.NET and can therefor be removed" /*..........*/).WithSpan(12, 4, 12, 40),
-            Issue.WRN("Proj0030", "The property <VbcToolPath> is only applicable when using VB.NET and can therefor be removed" /*...........*/).WithSpan(13, 4, 13, 19));
+            Issue.WRN("Proj0030", "The property <FrameworkPathOverride> is only applicable when using VB.NET and can therefore be removed" /*.*/).WithSpan(06, 4, 06, 29),
+            Issue.WRN("Proj0030", "The property <NoVBRuntimeReference> is only applicable when using VB.NET and can therefore be removed" /*..*/).WithSpan(07, 4, 07, 53),
+            Issue.WRN("Proj0030", "The property <OptionExplicit> is only applicable when using VB.NET and can therefore be removed" /*........*/).WithSpan(08, 4, 08, 39),
+            Issue.WRN("Proj0030", "The property <OptionInfer> is only applicable when using VB.NET and can therefore be removed" /*...........*/).WithSpan(09, 4, 09, 33),
+            Issue.WRN("Proj0030", "The property <OptionStrict> is only applicable when using VB.NET and can therefore be removed" /*..........*/).WithSpan(10, 4, 10, 35),
+            Issue.WRN("Proj0030", "The property <RemoveIntegerChecks> is only applicable when using VB.NET and can therefore be removed" /*...*/).WithSpan(11, 4, 11, 51),
+            Issue.WRN("Proj0030", "The property <VbcVerbosity> is only applicable when using VB.NET and can therefore be removed" /*..........*/).WithSpan(12, 4, 12, 40),
+            Issue.WRN("Proj0030", "The property <VbcToolPath> is only applicable when using VB.NET and can therefore be removed" /*...........*/).WithSpan(13, 4, 13, 19));
 }
 
 public class Guards
