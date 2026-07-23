@@ -1,8 +1,8 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <summary>Implements <see cref="Rule.AllignDirectoryBuildAndPackages"/>.</summary>
+/// <summary>Implements <see cref="Rule.AlignDirectoryBuildAndPackages"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class AllignDirectoryBuildAndPackages() : MsBuildProjectFileAnalyzer(Rule.AllignDirectoryBuildAndPackages)
+public sealed class AlignDirectoryBuildAndPackages() : MsBuildProjectFileAnalyzer(Rule.AlignDirectoryBuildAndPackages)
 {
     /// <inheritdoc />
     public override ImmutableArray<AnalyzerType> ApplicableTo => ProjectFileTypes.ProjectFile;

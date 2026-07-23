@@ -18,7 +18,7 @@ public static partial class Rule
            id: 4001,
            title: "Invalid INI Header",
            message: "{0}",
-           description: "A INI header should have the format [<Header>].",
+           description: "An INI header should have the format [<Header>].",
            tags: ["INI", "syntax error"],
            category: Category.SyntaxError);
 
@@ -26,7 +26,7 @@ public static partial class Rule
            id: 4002,
            title: "Invalid INI key-value pair",
            message: "{0}",
-           description: "A INI key-value pair should have the format <Key> ( : | = ) <Value>.",
+           description: "An INI key-value pair should have the format <Key> ( : | = ) <Value>.",
            tags: ["INI", "syntax error"],
            category: Category.SyntaxError);
 
@@ -47,7 +47,7 @@ public static partial class Rule
             description:
                 ".editorconfig files work on the premise that header texts are " +
                 "GLOB's matching files the key-value pairs of the section apply " +
-                "to. Therefor, they must be valid GLOBs.",
+                "to. Therefore, they must be valid GLOBs.",
             tags: [".editorconfig", "GLOB"],
             category: Category.SyntaxError);
 

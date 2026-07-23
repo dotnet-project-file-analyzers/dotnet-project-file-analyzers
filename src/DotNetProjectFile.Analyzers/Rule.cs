@@ -22,8 +22,8 @@ public static partial class Rule
 
     public static DiagnosticDescriptor DefineUsingsExplicit => New(
         id: 0003,
-        title: "Define usings explicit",
-        message: "Define usings explicit",
+        title: "Define usings explicitly",
+        message: "Define usings explicitly",
         description:
             "The included namespaces should be clear. To reduce the statements " +
             "per file, consider global using statements.",
@@ -45,9 +45,9 @@ public static partial class Rule
         title: "Define package reference assets as attributes",
         message: "Define package reference assets of '{0}' as attributes",
         description:
-            "To reduce security issues, NuGets security audit should be run on " +
-            "every build automatically.",
-        tags: ["security", "NuGet", "vulnerability"],
+            "When using the Assets attribute, each asset should be explicitly " +
+            "defined as an attribute rather than using child elements.",
+        tags: ["Configuration", "clarity"],
         category: Category.Clarity);
 
     public static DiagnosticDescriptor AddAdditionalFile => New(
@@ -236,7 +236,7 @@ public static partial class Rule
 
     public static DiagnosticDescriptor OverrideTargetFrameworksWithTargetFrameworks => New(
         id: 0027,
-        title: "Override <TargetFrameworks> with <TargetFrameworks>",
+        title: "Override <TargetFrameworks> with <TargetFramework>",
         message: "This <TargetFramework> will be ignored due to the earlier use of <TargetFrameworks>",
         description:
             "The <TargetFrameworks> node precedes <TargetFramework>. Hence, " +
@@ -250,14 +250,14 @@ public static partial class Rule
         message: "Move the condition to the parent <{0}>",
         description:
             "Both to keep lines short, and to group configuration that is bound " +
-            "to the some constraints, it best to define condtions on level 1.",
+            "to some constraints, it is best to define conditions on level 1.",
         tags: ["conditions"],
         category: Category.Reliability);
 
     public static DiagnosticDescriptor UseInCSharpContextOnly => New(
         id: 0029,
         title: "Use C# specific properties only when applicable",
-        message: "The property <{0}> is only applicable when using C# and can therefor be removed",
+        message: "The property <{0}> is only applicable when using C# and can therefore be removed",
         description:
             "Properties only applicable to C# are noise when none of " +
             "the involved targets is a C# target.",
@@ -267,7 +267,7 @@ public static partial class Rule
     public static DiagnosticDescriptor UseInVBContextOnly => New(
         id: 0030,
         title: "Use VB.NET specific properties only when applicable",
-        message: "The property <{0}> is only applicable when using VB.NET and can therefor be removed",
+        message: "The property <{0}> is only applicable when using VB.NET and can therefore be removed",
         description:
             "Properties only applicable to VB.NET are noise when none of " +
             "the involved targets is a VB.NET target.",
@@ -307,7 +307,7 @@ public static partial class Rule
         id: 0034,
         title: "Import statement could not be resolved",
         message: "The <Import> '{0}' could not be resolved by the analyzer",
-        description: "The .NET project file analyzer can (unfortunatly) not resolve all import statements.",
+        description: "The .NET project file analyzer can (unfortunately) not resolve all import statements.",
         tags: ["limitation"],
         category: Category.Bug);
 
@@ -326,7 +326,7 @@ public static partial class Rule
         id: 0036,
         title: "Remove None when redundant",
         message: "Remove <None> as it is redundant",
-        description: "Removing a <None> node has no effect on the build process, and is considered redudant.",
+        description: "Removing a <None> node has no effect on the build process, and is considered redundant.",
         tags: ["redundant"],
         category: Category.Noise);
 
@@ -335,8 +335,8 @@ public static partial class Rule
         title: "Exclude runtime when all assets are private",
         message: "ExcludeAssets should contain runtime when PrivateAssets=\"all\"",
         description:
-            "When a package reference with private assets should at least mark " +
-            "runtime as excluded. By doing so, it prevent unintended references " +
+            "When a package reference has private assets, runtime should at least be " +
+            "marked as excluded. By doing so, it prevents unintended references " +
             "to its code that would lead to runtime issues.",
         tags: ["bug"],
         category: Category.Bug,
@@ -357,7 +357,7 @@ public static partial class Rule
         title: "Treat all warnings as errors is considered a bad practice",
         message: "Treat all warnings as errors is considered a bad practice",
         description:
-            "How tempting this may feel to treat all warnings as erors, there " +
+            "How tempting this may feel to treat all warnings as errors, there " +
             "are objections to consider. Because such a policy might be " +
             "counterproductive.",
         tags: ["error", "warning", "TreatWarningsAsErrors"],
@@ -423,7 +423,7 @@ public static partial class Rule
         tags: ["security", "NuGet", "vulnerability"],
         category: Category.Security);
 
-    public static DiagnosticDescriptor ConventionBasedMsBuildFilesNamesShouldHaveCorectCasing => New(
+    public static DiagnosticDescriptor ConventionBasedMsBuildFilesNamesShouldHaveCorrectCasing => New(
         id: 0045,
         title: "Convention-based MSBuild file names should use correct casing",
         message: "The file {0} should be named {1}",
@@ -446,7 +446,7 @@ public static partial class Rule
 
     public static DiagnosticDescriptor LabelItemGroupsThatRemoveCompilationItems => New(
         id: 0047,
-        title: "Label item groups that remove compliation items",
+        title: "Label item groups that remove compilation items",
         message: "Add a label to this group as it removes items from compilation",
         description:
             "To ensure compilation item removal is intentional, <ItemGroup>'s " +
@@ -460,7 +460,7 @@ public static partial class Rule
         message: "Define <LangVersion> with an explicit version number",
         description:
             "To ensure the language version used by the compiler " +
-            "is not unintentionally changed, it is adviced to define " +
+            "is not unintentionally changed, it is advised to define " +
             "the `<LangVersion>` node with an explicit version number.",
         tags: ["Compile", "Build"],
         category: Category.Reliability);
@@ -502,7 +502,7 @@ public static partial class Rule
         title: "Prefer attributes over elements",
         message: "Consider <{0}> as an attribute",
         description: "Attributes are more concise and readable than elements for (simple) values.",
-        tags: ["Clearity", "Readability"],
+        tags: ["Clarity", "Readability"],
         category: Category.Formatting);
 
     public static DiagnosticDescriptor DefineIsPackable => New(
@@ -692,7 +692,7 @@ public static partial class Rule
         message: "The package icon '{0}' {1}",
         description:
             "To ensure the creation of well-formed packages, use an image that is " +
-            "128x128 and has a transparent background(PNG) for the best viewing results.",
+            "128x128 and has a transparent background (PNG) for the best viewing results.",
         tags: ["Configuration", "NuGet", "package", "image", "PNG"],
         category: Category.Configuration);
 
@@ -781,7 +781,7 @@ public static partial class Rule
         title: "Generate NuGet packages conditionally",
         message: "Add a condition to <GeneratePackageOnBuild>",
         description:
-            "To ensure that packages are not interdependently shipped in DEBUG " +
+            "To ensure that packages are not independently shipped in DEBUG " +
             "(or other) mode, a conditional statement should be defined.",
         tags: ["Configuration", "package", "compatibility"],
         category: Category.Bug,
@@ -943,7 +943,7 @@ public static partial class Rule
         title: "Only publish executables",
         message: "Only executables should be publishable",
         description:
-            "Runing dotnet publish on projects other then executables will not " +
+            "Running dotnet publish on projects other than executables will not " +
             "publish anything and is considered a mistake.",
         tags: ["IsPublishable", "library"],
         category: Category.Bug);
@@ -1007,7 +1007,7 @@ public static partial class Rule
     public static DiagnosticDescriptor PackageIncompatibleWithProjectLicense => New(
         id: 0502,
         title: "Only include packages compliant with project",
-        message: "The {0} ({1}) {2}package{5} is distributed as {3}, which is imcompatable with the {4} license of the project",
+        message: "The {0} ({1}) {2}package{5} is distributed as {3}, which is incompatible with the {4} license of the project",
         description:
             "To prevent legal issues do not rely on third-party references with " +
             "a custom defined license that has not been manually reviewed.",
@@ -1095,7 +1095,7 @@ public static partial class Rule
         message: "Avoid defining <GeneratePackageOnBuild> node explicitly when <IsPackable> is 'false'",
         description:
             "The <GeneratePackageOnBuild> option has no effect " +
-            "when <IsPackable> the node is disabled. " +
+            "when the <IsPackable> node is disabled. " +
             "Removing the <GeneratePackageOnBuild> " +
             "node will reduce noise.",
         tags: ["Configuration", "NuGet", "package"],
@@ -1143,7 +1143,7 @@ public static partial class Rule
         title: "Use VersionOverride only with Central Package Management enabled",
         message: "Use Version instead of VersionOverride when CPM is not enabled",
         description:
-            "When CPM is not enabled the use of <PackageReference VersionOveride /> " +
+            "When CPM is not enabled the use of <PackageReference VersionOverride /> " +
             "`has no effect, and is most likely a mistake.",
         tags: ["Maintainability"],
         category: Category.CPM);
@@ -1176,7 +1176,7 @@ public static partial class Rule
         message: "Remove VersionOverride or change it to a version different than defined by the CPM",
         description:
             "The use of VersionOverride on a <PackageReference> is only useful " +
-            "when it defines a different version then already defined by the CPM.",
+            "when it defines a different version than already defined by the CPM.",
         tags: ["Bug"],
         category: Category.CPM);
 
@@ -1186,7 +1186,7 @@ public static partial class Rule
         message: "As <{0}> is not about Central Package Management it should not be in Directory.Packages.props",
         description:
             "The use of VersionOverride on a <PackageReference> is only useful " +
-            "when it defines a different version then already defined by the CPM.",
+            "when it defines a different version than already defined by the CPM.",
         tags: ["Bug"],
         category: Category.CPM);
 
@@ -1221,7 +1221,7 @@ public static partial class Rule
         tags: ["noise", "SDK"],
         category: Category.CPM);
 
-    public static DiagnosticDescriptor AllignDirectoryBuildAndPackages => New(
+    public static DiagnosticDescriptor AlignDirectoryBuildAndPackages => New(
         id: 0811,
         title: "Directory.Build.props and Directory.Packages.props should be in the same directory",
         message: "The imported {0} and {1} are not in the same directory",
@@ -1254,7 +1254,7 @@ public static partial class Rule
         title: "Use analyzers for packages",
         message: "Use {0} to analyze {1}",
         description:
-            "Some NuGet packages come with there own/dedicated Roslyn analyzers; " +
+            "Some NuGet packages come with their own/dedicated Roslyn analyzers; " +
             "they just contain rules to improve the usage of those packages. " +
             "In order to get the best out of those NuGet packages, their " +
             "analyzer(s) should be used.",
@@ -1342,7 +1342,7 @@ public static partial class Rule
         message: "Remove either TUnit or Microsoft.NET.Test.Sdk as they can not be combined",
         description:
             "The use of the Microsoft.NET.Test.Sdk interferes with the working " +
-            "of TUnit, therefor they can not be combined.",
+            "of TUnit, therefore they can not be combined.",
         tags: ["TUnit", "unit", "test"],
         category: Category.Bug);
 
@@ -1424,7 +1424,7 @@ public static partial class Rule
 
     public static DiagnosticDescriptor OnlyUseUTF8WithoutBom => New(
         id: 3000,
-        title: "Ony use UTF-8 encoding without BOM",
+        title: "Only use UTF-8 encoding without BOM",
         message: "This file is using UTF-8 encoding with BOM",
         description:
             "The use of BOM for UTF-8 can cause systems to malfunction. This " +
