@@ -13,7 +13,7 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
                 foreach (var file in Walk(msbuild.Path.Directory)
                     .Select(f => new ProjectTextFile(f)))
                 {
-                    Register(new ProjectFileAnalysisContext<ProjectTextFile>(file, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    Register(new ProjectFileAnalysisContext<ProjectTextFile>(file, AnalyzerType.None, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             }
         });

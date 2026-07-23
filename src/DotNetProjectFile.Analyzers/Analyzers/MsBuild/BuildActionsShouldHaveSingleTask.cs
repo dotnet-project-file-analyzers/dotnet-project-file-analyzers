@@ -5,7 +5,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class BuildActionsShouldHaveSingleTask() : MsBuildProjectFileAnalyzer(Rule.BuildActionsShouldHaveSingleTask)
 {
     /// <inheritdoc />
-    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.AllExceptSDK;
+    public override ImmutableArray<AnalyzerType> ApplicableTo => ProjectFileTypes.AllExceptSDK;
 
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;

@@ -5,7 +5,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class PreferLatestLanguageVersion() : MsBuildProjectFileAnalyzer(Rule.PreferLatestLanguageVersion)
 {
     /// <inheritdoc />
-    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<AnalyzerType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     public override ImmutableArray<Language> ApplicableLanguages { get; } = [Language.CSharp, Language.VisualBasic, Language.FSharp];
 

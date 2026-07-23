@@ -16,6 +16,10 @@ public sealed class FileCache<T>() where T : class
     /// <inheritdoc cref="ICollection.Count" />
     public int Count => Lookup.Count;
 
+    /// <inheritdoc cref="TryGetOrUpdate(IOFile, Func{IOFile, T?})" />
+    public T? TryGetOrUpdate(AdditionalFileAnalysisContext context, Func<IOFile, T?> create)
+        => TryGetOrUpdate(context.AdditionalFile.Location, create);
+
     /// <summary>Tries to get the current file content for a specified file.</summary>
     /// <remarks>
     /// Returns the cached value when the file's last edit and length are unchanged,

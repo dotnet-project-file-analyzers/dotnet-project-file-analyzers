@@ -38,8 +38,8 @@
   <ItemGroup>
     <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="MSBuildProject" Include="**/*.??proj" />
     <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="SLNX"           Include="**/*.slnx" />
-    <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="MSBuildProp"    Include="**/*.props" />
-    <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="MSBuildProp"    Include="**/*.targets" />
+    <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="MSBuildProps"    Include="**/*.props" />
+    <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="MSBuildProps"    Include="**/*.targets" />
   </ItemGroup>
 
   <!-- Make visible -->

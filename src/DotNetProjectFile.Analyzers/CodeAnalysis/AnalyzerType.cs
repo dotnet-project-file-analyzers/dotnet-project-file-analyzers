@@ -11,25 +11,22 @@ public enum AnalyzerType
     /// <summary>None/not set/unparsable (default).</summary>
     None = 0,
 
-    DirectoryBuildProps,
-
-    DirectoryBuildTargets,
-
-    DirectoryPackagesProps,
-
-    EditorConfig,
-
-    GlobalConfig,
-
+    // MSBuild
     MSBuildProject,
+    MSBuildProps,
+    DirectoryBuildProps,
+    DirectoryBuildTargets,
+    DirectoryPackagesProps,
+    SDK,
 
-    MSBuildProp,
+    // INI
+    EditorConfig,
+    GlobalConfig,
+    INI,
 
     NuGetConfig,
 
     RESX,
-
-    SDK,
 
     SLNX,
 }

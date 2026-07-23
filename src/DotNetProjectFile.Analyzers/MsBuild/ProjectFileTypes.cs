@@ -3,83 +3,64 @@ namespace DotNetProjectFile.MsBuild;
 public static class ProjectFileTypes
 {
     /// <summary>Project files only.</summary>
-    public static readonly ImmutableArray<ProjectFileType> ProjectFile = [ProjectFileType.ProjectFile];
+    public static readonly ImmutableArray<AnalyzerType> ProjectFile = [AnalyzerType.MSBuildProject];
 
     /// <summary>.net.csproj SDK only.</summary>
-    public static readonly ImmutableArray<ProjectFileType> SDK = [ProjectFileType.SDK];
+    public static readonly ImmutableArray<AnalyzerType> SDK = [AnalyzerType.SDK];
 
     /// <summary>Directory.Packages.props only.</summary>
-    public static readonly ImmutableArray<ProjectFileType> DirectoryPackages = [ProjectFileType.DirectoryPackages];
+    public static readonly ImmutableArray<AnalyzerType> DirectoryPackages = [AnalyzerType.DirectoryPackagesProps];
 
     /// <summary>Project files and props/targets.</summary>
-    public static readonly ImmutableArray<ProjectFileType> ProjectFile_Props =
+    public static readonly ImmutableArray<AnalyzerType> ProjectFile_Props =
     [
-        ProjectFileType.ProjectFile,
-        ProjectFileType.Props
-    ];
-
-    /// <summary>Project files and Directory.Build.props.</summary>
-    public static readonly ImmutableArray<ProjectFileType> ProjectFile_DirectoryBuild =
-    [
-        ProjectFileType.ProjectFile,
-        ProjectFileType.DirectoryBuild
+        AnalyzerType.MSBuildProject,
+        AnalyzerType.MSBuildProps,
     ];
 
     /// <summary>Project files and .net.csproj SDK.</summary>
-    public static readonly ImmutableArray<ProjectFileType> ProjectFile_SDK =
+    public static readonly ImmutableArray<AnalyzerType> ProjectFile_SDK =
     [
-        ProjectFileType.ProjectFile,
-        ProjectFileType.SDK
+        AnalyzerType.MSBuildProject,
+        AnalyzerType.SDK
     ];
 
     /// <summary>Project files and Directory.Packages.props.</summary>
-    public static readonly ImmutableArray<ProjectFileType> ProjectFile_DirectoryPackages =
+    public static readonly ImmutableArray<AnalyzerType> ProjectFile_DirectoryPackages =
     [
-        ProjectFileType.ProjectFile,
-        ProjectFileType.DirectoryPackages
+        AnalyzerType.MSBuildProject,
+         AnalyzerType.DirectoryBuildProps,
+        AnalyzerType.DirectoryBuildTargets,
     ];
 
     /// <summary>All but Directory.Packages.props.</summary>
-    public static readonly ImmutableArray<ProjectFileType> AllExceptDirectoryPackages =
+    public static readonly ImmutableArray<AnalyzerType> AllExceptDirectoryPackages =
     [
-        ProjectFileType.ProjectFile,
-        ProjectFileType.Props,
-        ProjectFileType.DirectoryBuild,
-        ProjectFileType.SDK,
+        AnalyzerType.MSBuildProject,
+        AnalyzerType.MSBuildProps,
+        AnalyzerType.DirectoryBuildProps,
+        AnalyzerType.DirectoryBuildTargets,
+        AnalyzerType.SDK,
     ];
 
     /// <summary>All but .net.csproj SDK.</summary>
-    public static readonly ImmutableArray<ProjectFileType> AllExceptSDK =
+    public static readonly ImmutableArray<AnalyzerType> AllExceptSDK =
     [
-        ProjectFileType.ProjectFile,
-        ProjectFileType.Props,
-        ProjectFileType.DirectoryBuild,
-        ProjectFileType.DirectoryPackages,
+        AnalyzerType.MSBuildProject,
+        AnalyzerType.MSBuildProps,
+        AnalyzerType.DirectoryBuildProps,
+        AnalyzerType.DirectoryBuildTargets,
+        AnalyzerType.DirectoryPackagesProps,
     ];
 
     /// <summary>All.</summary>
-    public static readonly ImmutableArray<ProjectFileType> All =
+    public static readonly ImmutableArray<AnalyzerType> All =
     [
-        ProjectFileType.ProjectFile,
-        ProjectFileType.Props,
-        ProjectFileType.DirectoryBuild,
-        ProjectFileType.DirectoryPackages,
-        ProjectFileType.SDK,
+        AnalyzerType.MSBuildProject,
+        AnalyzerType.MSBuildProps,
+        AnalyzerType.DirectoryBuildProps,
+        AnalyzerType.DirectoryBuildTargets,
+        AnalyzerType.DirectoryPackagesProps,
+        AnalyzerType.SDK,
     ];
-
-    extension(IOFile file)
-    {
-        /// <summary>Gets the <see cref="ProjectFileType"/> based on the file (name).</summary>
-        public ProjectFileType ProjectFileType => file switch
-        {
-            _ when file.Name.IsMatch(".net.csproj") => ProjectFileType.SDK,
-            _ when Languages.All.Any(lang => file.Extension.IsMatch(lang.ProjectFileExtension)) => ProjectFileType.ProjectFile,
-            _ when file.Name.IsMatch("Directory.Build.props")
-                || file.Name.IsMatch("Directory.Build.targets") => ProjectFileType.DirectoryBuild,
-            _ when file.Name.IsMatch("Directory.Packages.props") => ProjectFileType.DirectoryPackages,
-            _ when file.Extension.IsMatch(".props")
-                || file.Extension.IsMatch(".targets") => ProjectFileType.Props,
-            _ => ProjectFileType.None,
-        };
-    }
 }

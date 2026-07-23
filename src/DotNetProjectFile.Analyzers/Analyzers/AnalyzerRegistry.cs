@@ -10,9 +10,9 @@ internal static class AnalyzerRegistry
         {
             context.RegisterAdditionalFileAction(c =>
             {
-                if (ProjectFiles.Global.UpdateMsBuildProject(c) is { IsLegacy: false } msbuild)
+                if (ProjectFiles.Global.UpdateMsBuildProject(c) is { File.IsLegacy: false } msbuild)
                 {
-                    register(new(msbuild, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(msbuild.File, msbuild.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
 
@@ -23,7 +23,7 @@ internal static class AnalyzerRegistry
                 {
                     foreach (var msbuild in entry.ImportsAndSelf().Where(x => !x.IsAdditional(c.Options.AdditionalFiles)))
                     {
-                        register(new(msbuild, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                        register(new(msbuild, AnalyzerTypes.MsBuild(msbuild.Path) ?? AnalyzerType.DirectoryBuildProps, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                     }
                 }
             });
@@ -35,7 +35,7 @@ internal static class AnalyzerRegistry
             {
                 if (ProjectFiles.Global.UpdateIniFile(c) is { } ini)
                 {
-                    register(new(ini, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(ini.File, ini.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
 
@@ -45,7 +45,7 @@ internal static class AnalyzerRegistry
             {
                 if (ProjectFiles.Global.UpdateNugetConfigFile(c) is { } config)
                 {
-                    register(new(config, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(config.File, config.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
 
@@ -53,9 +53,9 @@ internal static class AnalyzerRegistry
         public void RegisterResourceFileAction(Action<ResourceFileAnalysisContext> register)
             => context.RegisterAdditionalFileAction(c =>
             {
-                if (ProjectFiles.Global.UpdateResourceFile(c) is { IsXml: true } resource)
+                if (ProjectFiles.Global.UpdateResourceFile(c) is { File.IsXml: true } resource)
                 {
-                    register(new(resource, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(resource.File, resource.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
 
@@ -65,7 +65,7 @@ internal static class AnalyzerRegistry
             {
                 if (ProjectFiles.Global.UpdateSolutionFile(c) is { } solution)
                 {
-                    register(new(solution, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(solution.File, solution.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
     }

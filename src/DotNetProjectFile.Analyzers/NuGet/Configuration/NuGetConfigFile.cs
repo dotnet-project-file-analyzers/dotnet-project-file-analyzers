@@ -40,7 +40,7 @@ public sealed class NuGetConfigFile : Node, ProjectFile
         additionalText: null);
 
     public static NuGetConfigFile Load(AdditionalText text) => new(
-        path: IOFile.Parse(text.Path),
+        path: text.Location,
         text: text.GetText()!,
         additionalText: text);
 

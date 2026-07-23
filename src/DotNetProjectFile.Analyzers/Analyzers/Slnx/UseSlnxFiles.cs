@@ -5,7 +5,7 @@ namespace DotNetProjectFile.Analyzers.Slnx;
 public sealed class UseSlnxFiles() : MsBuildProjectFileAnalyzer(Rule.SLNX.UseSlnxFiles, Rule.SLNX.RemoveSlnFiles)
 {
     /// <inheritdoc />
-    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.SDK;
+    public override ImmutableArray<AnalyzerType> ApplicableTo => ProjectFileTypes.SDK;
 
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
@@ -13,7 +13,7 @@ public sealed class UseSlnxFiles() : MsBuildProjectFileAnalyzer(Rule.SLNX.UseSln
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Options.AdditionalFiles.None(f => IOFile.Parse(f.Path).Extension.IsMatch(".slnx")))
+        if (context.Options.AdditionalFiles.None(f => f.Location.Extension.IsMatch(".slnx")))
         {
             context.ReportDiagnostic(Rule.SLNX.UseSlnxFiles, context.File);
         }

@@ -41,7 +41,7 @@ public sealed class SolutionFile : Node, ProjectFile
 
     public static SolutionFile Load(AdditionalText text, ProjectFiles projects)
         => new(
-            path: IOFile.Parse(text.Path),
+            path: text.Location,
             text: text.GetText()!,
             projectFiles: projects,
             additionalText: text);

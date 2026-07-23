@@ -8,7 +8,7 @@ public sealed class TUnitUsage() : MsBuildProjectFileAnalyzer(
     Rule.TUnitTestProjectMustBeExe,
     Rule.TUnitTestProjectShouldNotIncludeSdk)
 {
-    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<AnalyzerType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
