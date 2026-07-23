@@ -114,6 +114,13 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
              .WithFile(".editorconfig", content);
 
         [Pure]
+        public InlineProjectAnalyzerVerifyContextBuilder ForInlineGlobalconfig(
+           [StringSyntax("Ini")] string content)
+           => analyzer
+           .ForInlineSdkProject()
+           .WithFile(".globalconfig", content);
+
+        [Pure]
         public InlineProjectAnalyzerVerifyContextBuilder ForInlineCsproj(
             [StringSyntax(StringSyntaxAttribute.Xml)] string content)
             => analyzer.ForInlineProject(Language.CSharp, content);

@@ -194,6 +194,9 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj4002** Invalid INI key-value pair](https://dotnet-project-file-analyzers.github.io/rules/Proj4002.html)
 * [**Proj4010** Sections should contain at least one key-value pair](https://dotnet-project-file-analyzers.github.io/rules/Proj4010.html)
 
+## .globalconfig
+* [**Proj4025** Remove section header](https://dotnet-project-file-analyzers.github.io/rules/Proj4025.html)
+
 ## .editorconfig
 * [**Proj4050** Header must be a GLOB](https://dotnet-project-file-analyzers.github.io/rules/Proj4050.html)
 * [**Proj4051** Use equals sign for key-value assignments](https://dotnet-project-file-analyzers.github.io/rules/Proj4051.html)

@@ -244,6 +244,9 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj4002** Invalid INI key-value pair](rules/Proj4002.md)
 * [**Proj4010** Sections should contain at least one key-value pair](rules/Proj4010.md)
 
+## .globalconfig
+* [**Proj4025** Remove section header](rules/Proj4025.md)
+
 ## .editorconfig
 * [**Proj4050** Header must be a GLOB](rules/Proj4050.md)
 * [**Proj4051** Use equals sign for key-value assignments](rules/Proj4051.md)

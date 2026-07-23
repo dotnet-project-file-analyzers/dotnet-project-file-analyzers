@@ -4,6 +4,8 @@ public static class IniFileTypes
 {
     public static readonly ImmutableArray<AnalyzerType> EditorConfig = [AnalyzerType.EditorConfig];
 
+    public static readonly ImmutableArray<AnalyzerType> GlobalConfig = [AnalyzerType.GlobalConfig];
+
     public static readonly ImmutableArray<AnalyzerType> EditorConfig_GlobalConfig =
     [
         AnalyzerType.EditorConfig,
