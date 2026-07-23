@@ -26,32 +26,12 @@ public sealed partial class ProjectFiles
         => MsBuildProjects.TryGetOrUpdate(file, Create_MsBuildProject);
 
     public MsBuildProject? MsBuildProject(AdditionalText text)
-    {
-        var path = text.Location;
-        return path.ProjectFileType is ProjectFileType.None
-            ? null
-            : MsBuildProjects.TryGetOrUpdate(path, _ => MsBuild.MsBuildProject.Load(text, Global));
-    }
-
-    public NuGet.Configuration.NuGetConfigFile? NuGetConfigFile(IOFile file)
-       => NuGetConfigFiles.TryGetOrUpdate(file, Create_NuGetConfigFile);
-
-    public NuGet.Configuration.NuGetConfigFile? NuGetConfigFile(AdditionalText text)
-    {
-        var path = text.Location;
-        return path.ProjectFileType is ProjectFileType.None
-            ? null
-            : NuGetConfigFiles.TryGetOrUpdate(path, _ => NuGet.Configuration.NuGetConfigFile.Load(text));
-    }
+        => AnalyzerTypes.MsBuild(text.Location) is { } type
+        ? MsBuildProjects.TryGetOrUpdate(text.Location, _ => MsBuild.MsBuildProject.Load(type, text, Global))
+        : null;
 
     public Resource? ResourceFile(IOFile file)
         => ResourceFiles.TryGetOrUpdate(file, Create_ResourceFile);
-
-    public SolutionFile? SolutionFile(AdditionalText text)
-        => SolutionFiles.TryGetOrUpdate(text.Location, _ => Slnx.SolutionFile.Load(text, Global));
-
-    public SolutionFile? SolutionFile(IOFile file)
-        => SolutionFiles.TryGetOrUpdate(file, _ => Slnx.SolutionFile.Load(file, Global));
 
     public MsBuildProject? UpdateMsBuildProject(CompilationAnalysisContext context)
     {
@@ -101,7 +81,7 @@ public sealed partial class ProjectFiles
             AnalyzerType.DirectoryPackagesProps,
             AnalyzerType.SDK) is { } type
 
-        && MsBuildProjects.TryGetOrUpdate(context, _ => MsBuild.MsBuildProject.Load(context.AdditionalFile, this)) is { } file
+        && MsBuildProjects.TryGetOrUpdate(context, _ => MsBuild.MsBuildProject.Load(type, context.AdditionalFile, this)) is { } file
             ? new(file, type)
             : null;
 
@@ -151,8 +131,6 @@ public sealed partial class ProjectFiles
     private MsBuildProject? Create_MsBuildProject(IOFile file)
        => MsBuild.MsBuildProject.Load(file, this);
 
-    private static NuGet.Configuration.NuGetConfigFile Create_NuGetConfigFile(IOFile file)
-       => NuGet.Configuration.NuGetConfigFile.Load(file);
 
     private Resource Create_ResourceFile(IOFile file)
         => Resource.Load(file, this);

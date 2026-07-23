@@ -8,7 +8,7 @@ public sealed class GenerateSbom() : MsBuildProjectFileAnalyzer(Rule.GenerateSbo
     private static readonly string Package = $"Register the NuGet package '{NuGet.Packages.Microsoft_Sbom_Targets.Name}'";
 
     /// <inheritdoc />
-    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<AnalyzerType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)

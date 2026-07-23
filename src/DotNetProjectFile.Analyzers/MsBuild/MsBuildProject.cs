@@ -6,12 +6,12 @@ namespace DotNetProjectFile.MsBuild;
 
 public sealed partial class MsBuildProject : Node, ProjectFile
 {
-    private MsBuildProject(IOFile path, SourceText text, ProjectFiles projectFiles, AdditionalText? additionalText)
-        : this(path, text, XDocument.Parse(text.ToString(), LoadOptions), projectFiles, additionalText)
+    private MsBuildProject(IOFile path, AnalyzerType type, SourceText text, ProjectFiles projectFiles, AdditionalText? additionalText)
+        : this(path, type, text, XDocument.Parse(text.ToString(), LoadOptions), projectFiles, additionalText)
     {
     }
 
-    private MsBuildProject(IOFile path, SourceText text, XDocument document, ProjectFiles projectFiles, AdditionalText? additionalText)
+    private MsBuildProject(IOFile path, AnalyzerType type, SourceText text, XDocument document, ProjectFiles projectFiles, AdditionalText? additionalText)
         : base(document.Root, null, null)
     {
         Path = path;
@@ -19,7 +19,7 @@ public sealed partial class MsBuildProject : Node, ProjectFile
         ProjectFiles = projectFiles;
         AdditionalText = additionalText;
         WarningPragmas = WarningPragmas.New(this);
-        FileType = path.ProjectFileType;
+        FileType = type;
         Language = Language.Parse(path.Extension);
     }
 
@@ -56,7 +56,7 @@ public sealed partial class MsBuildProject : Node, ProjectFile
 
     public IOFile Path { get; }
 
-    public ProjectFileType FileType { get; }
+    public AnalyzerType FileType { get; }
 
     public Language Language { get; }
 
@@ -92,18 +92,19 @@ public sealed partial class MsBuildProject : Node, ProjectFile
     /// </remarks>
     private IEnumerable<MsBuildProject> SelfAndDirectoryProps()
     {
-        if (DirectoryBuildTargets is { } targets && FileType < ProjectFileType.DirectoryBuild)
+        if (DirectoryBuildTargets is { } targets && FileType < AnalyzerType.DirectoryBuildTargets)
         {
             yield return targets;
         }
 
         yield return this;
 
-        if (DirectoryPackagesProps is { } pack && FileType < ProjectFileType.DirectoryPackages)
+        if (DirectoryPackagesProps is { } pack && FileType < AnalyzerType.DirectoryPackagesProps)
         {
             yield return pack;
         }
-        if (DirectoryBuildProps is { } props && FileType < ProjectFileType.DirectoryBuild)
+
+        if (DirectoryBuildProps is { } props && FileType < AnalyzerType.DirectoryBuildProps)
         {
             yield return props;
         }
@@ -118,11 +119,14 @@ public sealed partial class MsBuildProject : Node, ProjectFile
     {
         try
         {
-            return new(
-                path: file,
-                text: file.SourceText(),
-                projectFiles: projects,
-                additionalText: null);
+            return AnalyzerTypes.MsBuild(file) is { } type
+                ? new(
+                    type: type,
+                    path: file,
+                    text: file.SourceText(),
+                    projectFiles: projects,
+                    additionalText: null)
+                : null;
         }
         catch (XmlException)
         {
@@ -135,11 +139,12 @@ public sealed partial class MsBuildProject : Node, ProjectFile
     /// Returns null if the files does not contain valid XML.
     /// </remarks>
     [Pure]
-    public static MsBuildProject? Load(AdditionalText text, ProjectFiles projects)
+    public static MsBuildProject? Load(AnalyzerType type, AdditionalText text, ProjectFiles projects)
     {
         try
         {
             return new(
+                type: type,
                 path: text.Location,
                 text: text.GetText()!,
                 projectFiles: projects,
