@@ -2,24 +2,16 @@ using System.Globalization;
 
 namespace DotNetProjectFile.Resx;
 
-public sealed class ResourceFileInfo
+public sealed class ResourceFileInfo(IOFile info)
 {
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
-    private readonly IOFile Info;
-
-    public ResourceFileInfo(string fileName) : this(IOFile.Parse(fileName)) { }
-
-    public ResourceFileInfo(IOFile info)
-    {
-        Info = info;
-        Culture = TryCulture(Name);
-    }
+    private readonly IOFile Info = info;
 
     public string Name => Info.NameWithoutExtension;
 
     public string Extension => Info.Extension;
 
-    public CultureInfo Culture { get; }
+    public CultureInfo Culture { get; } = TryCulture(info.NameWithoutExtension);
 
     public ResourceFileInfo Satellite(CultureInfo culture)
     {

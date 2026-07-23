@@ -21,6 +21,8 @@ public enum AnalyzerType
 
     GlobalConfig,
 
+    INI,
+
     MSBuildProject,
 
     MSBuildProp,

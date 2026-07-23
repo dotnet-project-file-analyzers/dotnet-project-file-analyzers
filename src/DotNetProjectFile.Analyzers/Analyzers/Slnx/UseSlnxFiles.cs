@@ -13,7 +13,7 @@ public sealed class UseSlnxFiles() : MsBuildProjectFileAnalyzer(Rule.SLNX.UseSln
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        if (context.Options.AdditionalFiles.None(f => IOFile.Parse(f.Path).Extension.IsMatch(".slnx")))
+        if (context.Options.AdditionalFiles.None(f => f.Location.Extension.IsMatch(".slnx")))
         {
             context.ReportDiagnostic(Rule.SLNX.UseSlnxFiles, context.File);
         }

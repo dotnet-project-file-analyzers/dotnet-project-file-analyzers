@@ -1,3 +1,4 @@
+using DotNetProjectFile.Analyzers;
 using DotNetProjectFile.Git;
 using DotNetProjectFile.Ini;
 using DotNetProjectFile.Resx;
@@ -27,7 +28,7 @@ public sealed partial class ProjectFiles
 
     public MsBuildProject? MsBuildProject(AdditionalText text)
     {
-        var path = IOFile.Parse(text.Path);
+        var path = text.Location;
         return path.ProjectFileType is ProjectFileType.None
             ? null
             : MsBuildProjects.TryGetOrUpdate(path, _ => MsBuild.MsBuildProject.Load(text, Global));
@@ -38,7 +39,7 @@ public sealed partial class ProjectFiles
 
     public NuGet.Configuration.NuGetConfigFile? NuGetConfigFile(AdditionalText text)
     {
-        var path = IOFile.Parse(text.Path);
+        var path = text.Location;
         return path.ProjectFileType is ProjectFileType.None
             ? null
             : NuGetConfigFiles.TryGetOrUpdate(path, _ => NuGet.Configuration.NuGetConfigFile.Load(text));
@@ -48,10 +49,7 @@ public sealed partial class ProjectFiles
         => ResourceFiles.TryGetOrUpdate(file, Create_ResourceFile);
 
     public SolutionFile? SolutionFile(AdditionalText text)
-    {
-        var path = IOFile.Parse(text.Path);
-        return SolutionFiles.TryGetOrUpdate(path, _ => Slnx.SolutionFile.Load(text, Global));
-    }
+        => SolutionFiles.TryGetOrUpdate(text.Location, _ => Slnx.SolutionFile.Load(text, Global));
 
     public SolutionFile? SolutionFile(IOFile file)
         => SolutionFiles.TryGetOrUpdate(file, _ => Slnx.SolutionFile.Load(file, Global));
@@ -65,7 +63,7 @@ public sealed partial class ProjectFiles
 
         // If it is amongst the additional files, do not look further.
         return context.Options.AdditionalFiles
-            .Select(a => IOFile.Parse(a.Path))
+            .Select(a => a.Location)
             .FirstOrDefault(f => f.Name.IsMatch(file)) is { HasValue: true } additional
 
             ? MsBuildProject(additional)
@@ -94,11 +92,6 @@ public sealed partial class ProjectFiles
         }
     }
 
-    public IniFile? UpdateIniFile(AdditionalFileAnalysisContext context)
-        => context.Applies(Is.Ini, AnalyzerType.EditorConfig, AnalyzerType.GlobalConfig) is { } file
-        ? IniFiles.TryGetOrUpdate(file, _ => Ini.IniFile.Load(context.AdditionalFile))
-        : null;
-
     public MsBuildProject? UpdateMsBuildProject(AdditionalFileAnalysisContext context)
         => context.Applies(
             Is.MsBuild,
@@ -111,20 +104,47 @@ public sealed partial class ProjectFiles
         ? MsBuildProjects.TryGetOrUpdate(file, _ => MsBuild.MsBuildProject.Load(context.AdditionalFile, this))
         : null;
 
-    public Resource? UpdateResourceFile(AdditionalFileAnalysisContext context)
-        => context.Applies(Is.Resource, AnalyzerType.RESX) is { } file
-        ? ResourceFiles.TryGetOrUpdate(file, _ => Resource.Load(context.AdditionalFile, this))
-        : null;
+    public AnalyzerFileInfo<IniFile>? UpdateIniFile(AdditionalFileAnalysisContext context)
+        => context.AnyOf(
+            path => path switch
+            {
+                _ when path.Name.IsMatch(".editorconfig") => AnalyzerType.EditorConfig,
+                _ when path.Name.IsMatch(".globalconfig") => AnalyzerType.GlobalConfig,
+                _ when path.Extension.IsMatch(".ini") => AnalyzerType.INI,
+                _ => null,
+            },
+            [AnalyzerType.EditorConfig, AnalyzerType.GlobalConfig]) is { } type
 
-    public NuGet.Configuration.NuGetConfigFile? UpdateNugetConfigFile(AdditionalFileAnalysisContext context)
-        => context.Applies(Is.NuGetConfig, AnalyzerType.NuGetConfig) is { } file
-        ? NuGetConfigFiles.TryGetOrUpdate(file, _ => NuGet.Configuration.NuGetConfigFile.Load(context.AdditionalFile))
-        : null;
+        && IniFiles.TryGetOrUpdate(context, _ => Ini.IniFile.Load(context.AdditionalFile)) is { } file
+            ? new(file, type)
+            : null;
 
-    public SolutionFile? UpdateSolutionFile(AdditionalFileAnalysisContext context)
-        => context.Applies(Is.Solution, AnalyzerType.SLNX) is { } file
-        ? SolutionFiles.TryGetOrUpdate(file, _ => Slnx.SolutionFile.Load(context.AdditionalFile, this))
-        : null;
+    public AnalyzerFileInfo<Resource>? UpdateResourceFile(AdditionalFileAnalysisContext context)
+         => context.AnyOf(
+            path => path.Extension.IsMatch(".resx") ? AnalyzerType.RESX : null,
+            [AnalyzerType.RESX]) is { } type
+
+        && ResourceFiles.TryGetOrUpdate(context, _ => Resource.Load(context.AdditionalFile, this)) is { } file
+            ? new(file, type)
+            : null;
+
+    public AnalyzerFileInfo<NuGet.Configuration.NuGetConfigFile>? UpdateNugetConfigFile(AdditionalFileAnalysisContext context)
+         => context.AnyOf(
+            path => path.Name.IsMatch("NuGet.config") ? AnalyzerType.NuGetConfig : null,
+            [AnalyzerType.NuGetConfig]) is { } type
+
+        && NuGetConfigFiles.TryGetOrUpdate(context, _ => NuGet.Configuration.NuGetConfigFile.Load(context.AdditionalFile)) is { } file
+            ? new(file, type)
+            : null;
+
+    public AnalyzerFileInfo<SolutionFile>? UpdateSolutionFile(AdditionalFileAnalysisContext context)
+          => context.AnyOf(
+            path => path.Extension.IsMatch(".slnx") ? AnalyzerType.SLNX : null,
+            [AnalyzerType.SLNX]) is { } type
+
+        && SolutionFiles.TryGetOrUpdate(context, _ => Slnx.SolutionFile.Load(context.AdditionalFile, this)) is { } file
+            ? new(file, type)
+            : null;
 
     private static GitIgnoreFile Create_GitIgnoreFile(IOFile file)
         => Git.GitIgnoreFile.Load(file)!;
@@ -143,19 +163,8 @@ public sealed partial class ProjectFiles
 
     private static class Is
     {
-        public static bool Ini(IOFile file)
-            => file.Extension.IsMatch(".ini")
-            || file.Extension.IsMatch(".editorconfig")
-            || file.Extension.IsMatch(".globalconfig");
-
         public static bool MsBuild(IOFile file)
             => Languages.All.Any(lang => file.Extension.IsMatch(lang.ProjectFileExtension))
             || file.Extension.IsMatch(".props");
-
-        public static bool NuGetConfig(IOFile file) => file.Name.IsMatch("NuGet.config");
-
-        public static bool Resource(IOFile file) => file.Extension.IsMatch(".resx");
-
-        public static bool Solution(IOFile file) => file.Extension.IsMatch(".slnx");
     }
 }

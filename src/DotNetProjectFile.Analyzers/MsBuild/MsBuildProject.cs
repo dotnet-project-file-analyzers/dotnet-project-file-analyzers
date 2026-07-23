@@ -140,7 +140,7 @@ public sealed partial class MsBuildProject : Node, ProjectFile
         try
         {
             return new(
-                path: IOFile.Parse(text.Path),
+                path: text.Location,
                 text: text.GetText()!,
                 projectFiles: projects,
                 additionalText: text);

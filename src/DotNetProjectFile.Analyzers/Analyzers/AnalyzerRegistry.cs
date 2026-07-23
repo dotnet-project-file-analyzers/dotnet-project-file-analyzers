@@ -35,7 +35,7 @@ internal static class AnalyzerRegistry
             {
                 if (ProjectFiles.Global.UpdateIniFile(c) is { } ini)
                 {
-                    register(new(ini, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(ini.File, ini.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
 
@@ -45,7 +45,7 @@ internal static class AnalyzerRegistry
             {
                 if (ProjectFiles.Global.UpdateNugetConfigFile(c) is { } config)
                 {
-                    register(new(config, AnalyzerType.NuGetConfig, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(config.File, config.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
 
@@ -53,9 +53,9 @@ internal static class AnalyzerRegistry
         public void RegisterResourceFileAction(Action<ResourceFileAnalysisContext> register)
             => context.RegisterAdditionalFileAction(c =>
             {
-                if (ProjectFiles.Global.UpdateResourceFile(c) is { IsXml: true } resource)
+                if (ProjectFiles.Global.UpdateResourceFile(c) is { File.IsXml: true } resource)
                 {
-                    register(new(resource, AnalyzerType.RESX, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(resource.File, resource.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
 
@@ -65,7 +65,7 @@ internal static class AnalyzerRegistry
             {
                 if (ProjectFiles.Global.UpdateSolutionFile(c) is { } solution)
                 {
-                    register(new(solution, AnalyzerType.SLNX, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(solution.File, solution.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
     }
