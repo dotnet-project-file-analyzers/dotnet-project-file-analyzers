@@ -15,14 +15,6 @@ public readonly struct ProjectFileAnalysisContext<TFile>(
     Action<Diagnostic> report)
     where TFile : ProjectFile
 {
-    [Obsolete("Set analyzertype")]
-    public ProjectFileAnalysisContext(
-        TFile file,
-        Compilation compilation,
-        AnalyzerOptions options,
-        CancellationToken cancellationToken,
-        Action<Diagnostic> report) : this(file, default, compilation, options, cancellationToken, report) { }
-
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private readonly Action<Diagnostic> Report = report;
 

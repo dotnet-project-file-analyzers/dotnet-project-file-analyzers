@@ -84,7 +84,7 @@
 
     <ItemGroup>
       <AdditionalFiles
-        AnalyzerType="MSBuildProp"
+        AnalyzerType="MSBuildProps"
         Include="@(ImportedProjects)"
         Exclude="@(AdditionalFiles)"
         Visible="false" />

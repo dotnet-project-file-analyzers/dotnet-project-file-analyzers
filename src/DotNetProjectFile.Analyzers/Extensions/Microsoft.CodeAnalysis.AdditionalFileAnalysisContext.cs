@@ -15,7 +15,7 @@ public static class AdditionalFileAnalysisContextExtensions
                 ? type
                 : AnalyzerType.None;
 
-        public AnalyzerType? AnyOf(Func<IOFile, AnalyzerType?> predicate, AnalyzerType[] types)
+        public AnalyzerType? AnyOf(Func<IOFile, AnalyzerType?> predicate, params AnalyzerType[] types)
             => context.AnalyzerType switch
             {
                 var type when types.Contains(type) => type,

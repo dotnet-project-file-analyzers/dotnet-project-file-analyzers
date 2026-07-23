@@ -10,9 +10,9 @@ internal static class AnalyzerRegistry
         {
             context.RegisterAdditionalFileAction(c =>
             {
-                if (ProjectFiles.Global.UpdateMsBuildProject(c) is { IsLegacy: false } msbuild)
+                if (ProjectFiles.Global.UpdateMsBuildProject(c) is { File.IsLegacy: false } msbuild)
                 {
-                    register(new(msbuild, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(msbuild.File, msbuild.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
 
@@ -23,7 +23,7 @@ internal static class AnalyzerRegistry
                 {
                     foreach (var msbuild in entry.ImportsAndSelf().Where(x => !x.IsAdditional(c.Options.AdditionalFiles)))
                     {
-                        register(new(msbuild, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                        register(new(msbuild, AnalyzerTypes.MsBuild(msbuild.Path) ?? AnalyzerType.DirectoryBuildProps, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                     }
                 }
             });

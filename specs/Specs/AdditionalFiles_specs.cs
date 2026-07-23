@@ -141,7 +141,7 @@ public class Resolves
                 Metadata = new Meta
                 {
                     Visible = "true",
-                    AnalyzerType = "MSBuildProp",
+                    AnalyzerType = "MSBuildProps",
                 },
             },
             new ProjectItem
@@ -150,7 +150,7 @@ public class Resolves
                 Metadata = new Meta
                 {
                     Visible = "true",
-                    AnalyzerType = "MSBuildProp",
+                    AnalyzerType = "MSBuildProps",
                 },
             },
             new ProjectItem
@@ -159,7 +159,7 @@ public class Resolves
                 Metadata = new Meta
                 {
                     Visible = "true",
-                    AnalyzerType = "MSBuildProp",
+                    AnalyzerType = "MSBuildProps",
                 },
             },
             new ProjectItem
@@ -168,7 +168,7 @@ public class Resolves
                 Metadata = new Meta
                 {
                     Visible = "true",
-                    AnalyzerType = "MSBuildProp",
+                    AnalyzerType = "MSBuildProps",
                 },
             });
     }
