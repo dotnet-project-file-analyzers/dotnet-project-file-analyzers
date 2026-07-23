@@ -1,4 +1,4 @@
-namespace Rules.MS_Build.Define_usings_explicit;
+namespace Rules.MS_Build.Define_usings_explicitly;
 
 public class Reports
 {
@@ -14,7 +14,7 @@ public class Reports
         </Project>
         """)
         .HasIssue(
-            Issue.WRN("Proj0003", "Define usings explicit").WithSpan(4, 4, 4, 43));
+            Issue.WRN("Proj0003", "Define usings explicitly").WithSpan(4, 4, 4, 43));
 }
 
 public class Guards
