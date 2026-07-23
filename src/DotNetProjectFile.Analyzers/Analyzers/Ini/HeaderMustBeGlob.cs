@@ -3,14 +3,16 @@ using Grammr;
 
 namespace DotNetProjectFile.Analyzers.EditorConfig;
 
+/// <summary>Implements <see cref="Rule.Ini.HeaderMustBeGlob"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class HeaderMustBeGlob() : IniFileAnalyzer(Rule.Ini.HeaderMustBeGlob)
 {
     /// <inheritdoc />
+    public override ImmutableArray<AnalyzerType> ApplicableTo => IniFileTypes.EditorConfig;
+
+    /// <inheritdoc />
     protected override void Register(IniFileAnalysisContext context)
     {
-        if (!context.File.Path.Name.IsMatch(".editorconfig")) return;
-
         foreach (var header in context.File.Sections
             .Select(s => s.Header)
             .OfType<IniHeader>()
