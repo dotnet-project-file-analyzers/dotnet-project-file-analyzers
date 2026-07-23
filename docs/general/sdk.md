@@ -50,7 +50,7 @@ A `.net.csproj` project file looks like this:
 
 ## Central Package Management
 It is advised to add the reference in the `Directory.Build.props` file, or
-`Directory.Packages.props` when [rules/Proj0800.md](Central Package Management)
+`Directory.Packages.props` when [Central Package Management](rules/Proj0800.md)
 is enabled. In the latter case using a `<GlobalPackageReference>`:
 
 ``` xml
@@ -59,7 +59,7 @@ is enabled. In the latter case using a `<GlobalPackageReference>`:
 </ItemGroup>
 ```
 
-In that case the `.net.csproj` can be a small as this:
+In that case the `.net.csproj` can be as small as this:
 ``` xml
 <Project Sdk="Microsoft.NET.Sdk" />
 ```

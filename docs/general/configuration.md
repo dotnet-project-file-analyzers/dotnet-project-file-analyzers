@@ -62,13 +62,13 @@ An example of disabling rules `Proj0010` and `Proj0011` through the `.csproj` fi
     <NoWarn>Proj0010;Proj0011</NoWarn>
   </PropertyGroup>
   
-</PropertyGroup>
+</Project>
 ```
 
 ## Suppress specific warnings
 Adopted from C-style languages, it is possible to suppress
 individual violations and/or [false positives](https://en.wikipedia.org/wiki/False_positives_and_false_negatives).
-In a MS Build project file this would look like:
+In an MS Build project file this would look like:
 
 ``` xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -84,14 +84,15 @@ In a MS Build project file this would look like:
 </Project>
 ```
 
-It is worth to point out that the `#pragma warning restore` is optional.
+It is worth pointing out that the `#pragma warning restore` is optional.
 
 Alternatively, for MS Build project file analyzers, it is also possible to
-suppress specific warnings by addding a `NoWarn` attribute or `<NoWarn>`
+suppress specific warnings by adding a `NoWarn` attribute or `<NoWarn>`
 child node. It should be noted that MSBuild disallows it for certain nodes, such
 as `<PropertyGroup>` (and its children) and other level-1 nodes.
 
 ### Attribute
+**Before:**
 ``` xml
 <Project Sdk="Microsoft.NET.Sdk">
 
@@ -99,6 +100,10 @@ as `<PropertyGroup>` (and its children) and other level-1 nodes.
     <Folder Include="First" />
   </ItemGroup>
 
+</Project>
+```
+
+**After:**
 ``` xml
 <Project Sdk="Microsoft.NET.Sdk">
 
@@ -110,6 +115,7 @@ as `<PropertyGroup>` (and its children) and other level-1 nodes.
 ```
 
 ### Node
+**Before:**
 ``` xml
 <Project Sdk="Microsoft.NET.Sdk">
 
@@ -117,6 +123,10 @@ as `<PropertyGroup>` (and its children) and other level-1 nodes.
     <Folder Include="First" />
   </ItemGroup>
 
+</Project>
+```
+
+**After:**
 ``` xml
 <Project Sdk="Microsoft.NET.Sdk">
 

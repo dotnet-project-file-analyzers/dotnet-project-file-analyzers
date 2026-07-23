@@ -8,7 +8,7 @@ Microsoft provides [best practices](https://learn.microsoft.com/nuget/create-pac
 to give NuGet package authors a reference to create and publish high-quality
 packages.
 
-.NET project File Analyzers provides rules for most of them:
+.NET Project File Analyzers provides rules for most of them:
 
 | Rule                             | Recommendation
 |:--------------------------------:|----------------------------------------------
@@ -33,7 +33,7 @@ packages.
 |                                  | Consider setting up Source Link to automatically add source control metadata to your NuGet package and make your library easier to debug.
 |                                  | Do choose an open source license to make your package open source.
 | [Proj0243](../rules/Proj0243.md) | Generate a software bill of materials to be compliant with USA legislations.
-| [Proj0244](../rules/Proj0244.md) | Include source code documentation for public API's.
+| [Proj0244](../rules/Proj0244.md) | Include source code documentation for public APIs.
 
 ## Further reading
 * [learn.microsoft.com/nuget/reference/msbuild-targets](https://learn.microsoft.com/nuget/reference/msbuild-targets)
