@@ -55,7 +55,7 @@ public static partial class Rule
             message: "The mapping '{0}' is not unique",
             description:
                 "The first package source mapping that matches serves the package. " +
-                "Therefor, a second mapping with the same pattern will never match.",
+                "Therefore, a second mapping with the same pattern will never match.",
             tags: ["NuGet"],
             category: Category.Bug);
 

@@ -10,13 +10,13 @@ released ones. Check the [Release Notes](https://www.nuget.org/packages/DotNetPr
 to understand if the documented feature you want to use has been released.
 
 ## Purpose
-We consider all files in a project - so not only those who are compiled - part
+We consider all files in a project - so not only those that are compiled - part
 of the codebase. We strongly believe that all files should be easy to read,
 maintain, or to adjust. Our analyzers help with that. They spot noise, bugs,
 inconsistencies, incorrect formatting, and misusage.
 
 All rules come with a clear explanation on why the spotted issue is a bad
-practice, and how the code should be adjusted. We hope, that as a result,
+practice, and how the code should be adjusted. We hope that as a result,
 developers using our analyzers also learn a thing while working with them.
 
 ## Installation
@@ -54,7 +54,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 ## MS Build project file rules
 * [**Proj0001** MS Build project file could not be located](rules/Proj0001.md)
 * [**Proj0002** Upgrade legacy MS Build project files](rules/Proj0002.md)
-* [**Proj0003** Define usings explicit](rules/Proj0003.md)
+* [**Proj0003** Define usings explicitly](rules/Proj0003.md)
 * [**Proj0004** Run NuGet security audits automatically](rules/Proj0004.md)
 * [**Proj0005** Define package reference assets as attributes](rules/Proj0005.md)
 * [**Proj0006** Add additional files to improve static code analysis](rules/Proj0006.md)
@@ -78,7 +78,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0024** Order package versions alphabetically](rules/Proj0024.md)
 * [**Proj0025** Migrate from ruleset file to .globalconfig file](rules/Proj0025.md)
 * [**Proj0026** Remove IncludeAssets when redundant](rules/Proj0026.md)
-* [**Proj0027** Override &lt;TargetFrameworks&gt; with &lt;TargetFrameworks&gt;](rules/Proj0027.md)
+* [**Proj0027** Override &lt;TargetFrameworks&gt; with &lt;TargetFramework&gt;](rules/Proj0027.md)
 * [**Proj0028** Define conditions on level 1](rules/Proj0028.md)
 * [**Proj0029** Use C# specific properties only when applicable](rules/Proj0029.md)
 * [**Proj0030** Use VB.NET specific properties only when applicable](rules/Proj0030.md)
@@ -253,8 +253,8 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj5001** Remove SLN solution files](rules/Proj5001.md)
 * [**Proj5005** Omit Project ID's](rules/Proj5005.md)
 
-## SonarCube integration
-By default, results by .NET project file analyzers are included in SonarCube
+## SonarQube integration
+By default, results by .NET project file analyzers are included in SonarQube
 reports. Read [here](general/sonar-integration.md) more about how this works.
 
 ## License

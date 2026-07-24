@@ -56,7 +56,9 @@ public class Reports
   </ItemGroup>
 
 </Project>")
-        .HasIssue(Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI (1.4.4.533) package is distributed as GPL-3.0-only, which is imcompatable with the NOASSERTION license of the project")
+        .HasIssue(Issue.WRN(
+            "Proj0502",
+            "The SeeSharpTools.JY.GUI (1.4.4.533) package is distributed as GPL-3.0-only, which is incompatible with the NOASSERTION license of the project")
         .WithSpan(08, 04, 08, 75));
 
     [Test]
