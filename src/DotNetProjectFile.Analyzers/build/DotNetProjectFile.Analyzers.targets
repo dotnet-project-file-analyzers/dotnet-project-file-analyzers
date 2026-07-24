@@ -56,7 +56,7 @@
   </Target>
 
   <!--To inform users the SDK package is no longer needed. -->
-  <Target Name="Proj1004" BeforeTargets="ResolvePackageAssets">
+  <Target Name="Proj1004" AfterTargets="PrepareForBuild;ResolveProjectReferences">
     <Warning
       Condition="@(PackageReference->AnyHaveMetadataValue('Identity', 'DotNetProjectFile.Analyzers.Sdk'))"
       Code="Proj1004"
@@ -65,7 +65,7 @@
   </Target>
 
   <!--To inform users to use .net.csproj for not Roslyn-based languages such as F#. -->
-  <Target Name="Proj1007" BeforeTargets="ResolvePackageAssets">
+  <Target Name="Proj1007" AfterTargets="PrepareForBuild;ResolveProjectReferences">
     <Warning
       Condition="'$(IsRoslynBased)' != 'true' and $([MSBuild]::GetPathOfFileAbove('.net.csproj', '$(MSBuildThisFileDirectory)')) == ''"
       Code="Proj1007"
@@ -73,7 +73,14 @@
       HelpLink="https://dotnet-project-file-analyzers.github.io/rules/Proj1007.html" />
   </Target>
 
-  <Target Name="WarnOnImportPaths" BeforeTargets="PrepareForBuild">
+  <Target Name="ValidateGlobalAnalyzerConfigFiles" AfterTargets="PrepareForBuild;ResolveProjectReferences">
+    <Warning
+      Condition="'@(GlobalAnalyzerConfigFiles->Exists())' == ''"
+      Code="Proj4025"
+      Text="No .globalconfig file was resolved. Please add such a file to configure static code analysis rules."
+      HelpLink="https://dotnet-project-file-analyzers.github.io/rules/Proj4025.html" />
+
+  <Target Name="AddImportPaths" BeforeTargets="PrepareForBuild">
     
     <!-- Use XML peek to select the XPath values -->
     <XmlPeek
