@@ -2,12 +2,12 @@ using DotNetProjectFile.BuildAgents;
 
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
-/// <summary>Implements <see cref="Rule.EnableRestoreLockedMode"/></summary>
+/// <summary>Implements <see cref="Rule.EnableRestoreLockedMode"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class EnableRestoreLockedMode() : MsBuildProjectFileAnalyzer(Rule.EnableRestoreLockedMode)
 {
     /// <inheritdoc />
-    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<AnalyzerType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)

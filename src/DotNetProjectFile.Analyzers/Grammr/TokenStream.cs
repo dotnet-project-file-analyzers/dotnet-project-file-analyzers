@@ -29,7 +29,7 @@ public readonly struct TokenStream : IReadOnlyList<Token>
     public int Length => Count is 0 ? 0 : Tokens[Count - 1].End - Tokens[0].Start;
 
     /// <summary>Gets the span repesented by the tokens.</summary>
-    public ReadOnlySpan<char> Span => Source.AsSpan(Start, Length);
+    public Chars Span => Source.AsSpan(Start, Length);
 
     /// <inheritdoc />
     public Token this[int index]

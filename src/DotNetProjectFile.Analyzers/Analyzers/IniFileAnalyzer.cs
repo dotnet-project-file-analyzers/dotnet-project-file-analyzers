@@ -7,7 +7,21 @@ public abstract class IniFileAnalyzer(
     params DiagnosticDescriptor[] supportedDiagnostics)
     : ProjectFileAnalyzer<IniFile>(primaryDiagnostic, supportedDiagnostics)
 {
+    /// <summary>
+    /// Defines to which <see cref="AnalyzerType"/>s the rule is applicable.
+    /// </summary>
+    /// <remarks>
+    /// Default is <see cref="IniFileTypes.All"/>.
+    /// </remarks>
+    public virtual ImmutableArray<AnalyzerType> ApplicableTo => IniFileTypes.All;
+
     /// <inheritdoc />
-    protected sealed override void Register(AnalysisContext context)
-        => context.RegisterEditorConfigFileAction(Register);
+    protected override void Register(AnalysisContext context)
+        => context.RegisterEditorConfigFileAction(c =>
+        {
+            if (ApplicableTo.Contains(c.AnalyzerType))
+            {
+                Register(c);
+            }
+        });
 }

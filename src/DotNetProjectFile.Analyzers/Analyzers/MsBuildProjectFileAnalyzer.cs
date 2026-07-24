@@ -9,12 +9,12 @@ public abstract class MsBuildProjectFileAnalyzer(
     : ProjectFileAnalyzer<MsBuildProject>(primaryDiagnostic, supportedDiagnostics)
 {
     /// <summary>
-    /// Defines to which <see cref="ProjectFileType"/>s the rule is applicable.
+    /// Defines to which <see cref="AnalyzerType"/>s the rule is applicable.
     /// </summary>
     /// <remarks>
     /// Default is <see cref="ProjectFileTypes.All"/>.
     /// </remarks>
-    public virtual ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.All;
+    public virtual ImmutableArray<AnalyzerType> ApplicableTo => ProjectFileTypes.All;
 
     /// <summary>
     /// Defines to which <see cref="Language"/>s the rule is applicable.
@@ -27,12 +27,11 @@ public abstract class MsBuildProjectFileAnalyzer(
     /// <summary>Indicates that the rule will not be executed once an import could not be resolved (default is true).</summary>
     public virtual bool DisableOnFailingImport => true;
 
-    /// <summary>Registers the analyzer for all MS Build projects files.</summary>
     /// <inheritdoc />
     protected override void Register(AnalysisContext context)
         => context.RegisterProjectFileAction(c =>
         {
-            if (ApplicableTo.Contains(c.File.FileType)
+            if (ApplicableTo.Contains(c.AnalyzerType)
                 && (ApplicableLanguages.Contains(c.File.Language) || c.File.Language == Language.None)
                 && !(c.File.HasFailingImport && DisableOnFailingImport)
                 && (!IsProjectFileWithinSdk(c) || IsSupportedSdkProject(c)))
@@ -42,7 +41,7 @@ public abstract class MsBuildProjectFileAnalyzer(
         });
 
     private bool IsSupportedSdkProject(in ProjectFileAnalysisContext project)
-        => project.File.FileType is ProjectFileType.ProjectFile
+        => project.File.FileType is AnalyzerType.MSBuildProject
         && ApplicableLanguages.Contains(project.File.Language);
 
     /// <remarks>
@@ -52,6 +51,6 @@ public abstract class MsBuildProjectFileAnalyzer(
     /// solution.
     /// </remarks>
     private static bool IsProjectFileWithinSdk(in ProjectFileAnalysisContext context)
-        => context.File.FileType == ProjectFileType.ProjectFile
+        => context.File.FileType == AnalyzerType.MSBuildProject
         && context.Compilation.AssemblyName == ".net";
 }

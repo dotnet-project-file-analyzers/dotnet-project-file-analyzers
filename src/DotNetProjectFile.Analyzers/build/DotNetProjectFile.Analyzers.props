@@ -7,20 +7,6 @@
     <IsDotNetProjectFileSdk Condition="$(MSBuildProjectFile) == '.net.csproj'">true</IsDotNetProjectFileSdk>
   </PropertyGroup>
 
-  <!--
-    Explicitly include .globalconfig file(s)
-    
-    For some strange reason, .globalconfig seems sometimes not be included
-    automatically. As we advise to configure the severity of rules there, the
-    least we can do is ensure that those preferences are taken into account.
-    -->
-  <ItemGroup>
-    <GlobalAnalyzerConfigFiles
-      Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig'))"
-      Exclude="@(GlobalAnalyzerConfigFiles)"
-      Visible="false" />
-  </ItemGroup>
-
   <!-- Extend the additional files for the .net.csproj -->
   <Import
      Condition="$(IsDotNetProjectFileSdk) == 'true'"

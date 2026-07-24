@@ -1,3 +1,4 @@
+#pragma warning disable SYSLIB1045 // Convert to 'GeneratedRegexAttribute', but not here: we're testing the other path
 using Grammr;
 using System.Text.RegularExpressions;
 using static Grammr.Lexers.Shared;

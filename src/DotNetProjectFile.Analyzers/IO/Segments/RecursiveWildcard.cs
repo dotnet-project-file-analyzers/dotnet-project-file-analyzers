@@ -10,7 +10,7 @@ internal sealed class RecursiveWildcard : Segment
 
     /// <inheritdoc />
     [Pure]
-    public override bool IsMatch(ReadOnlySpan<char> value, StringComparison comparison)
+    public override bool IsMatch(Chars value, StringComparison comparison)
         => true;
 
     /// <inheritdoc />

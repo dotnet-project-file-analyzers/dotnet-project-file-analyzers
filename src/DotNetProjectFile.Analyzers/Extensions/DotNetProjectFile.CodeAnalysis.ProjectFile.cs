@@ -12,7 +12,6 @@ public static class ProjectFileExtensions
 
         [Pure]
         public bool IsAdditional(IEnumerable<AdditionalText> texts) => texts
-            .Select(f => IOFile.Parse(f.Path))
-            .Any(f => f.Equals(file.Path));
+            .Any(t => t.Location.Equals(file.Path));
     }
 }

@@ -33,10 +33,13 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
         Ctx = new(BuildInternal);
     }
 
+    [AssertionMethod]
     public void HasNoIssues() => Build().HasNoIssues();
 
+    [AssertionMethod]
     public void HasIssue(Issue issue) => Build().HasIssue(issue);
 
+    [AssertionMethod]
     public void HasIssues(params Issue[] issues) => Build().HasIssues(issues);
 
     private static string GetHash(ImmutableArray<FileDefinition> files)

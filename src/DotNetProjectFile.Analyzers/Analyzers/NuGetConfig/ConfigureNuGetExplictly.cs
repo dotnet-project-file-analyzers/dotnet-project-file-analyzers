@@ -8,7 +8,7 @@ public sealed class ConfigureNuGetExplicitly() : MsBuildProjectFileAnalyzer(Rule
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc />
-    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile_SDK;
+    public override ImmutableArray<AnalyzerType> ApplicableTo => ProjectFileTypes.ProjectFile_SDK;
 
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)

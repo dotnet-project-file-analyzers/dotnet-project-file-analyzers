@@ -5,7 +5,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 public sealed class PackablesShouldBeLibraries() : MsBuildProjectFileAnalyzer(Rule.PackablesShouldBeLibraries)
 {
     /// <inheritdoc />
-    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile;
+    public override ImmutableArray<AnalyzerType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)

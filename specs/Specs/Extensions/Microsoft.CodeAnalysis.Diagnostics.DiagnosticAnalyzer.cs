@@ -74,6 +74,8 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
             </ItemGroup>
 
             <ItemGroup>
+              <AdditionalFiles Include=".editorconfig" />
+              <AdditionalFiles Include=".globalconfig" />
               <AdditionalFiles Include=".git*" />
               <AdditionalFiles Include=".github/**" />
               <AdditionalFiles Include="*.config" />
@@ -103,6 +105,13 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
             => analyzer
             .ForInlineSdkProject()
             .WithFile("inline.slnx", content);
+
+        [Pure]
+        public InlineProjectAnalyzerVerifyContextBuilder ForInlineEditorconfig(
+             [StringSyntax("Ini")] string content)
+             => analyzer
+             .ForInlineSdkProject()
+             .WithFile(".editorconfig", content);
 
         [Pure]
         public InlineProjectAnalyzerVerifyContextBuilder ForInlineCsproj(

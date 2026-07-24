@@ -6,11 +6,11 @@ internal sealed class Predicates(Func<char, int, bool> predicate, string? kind) 
 
     /// <inheritdoc />
     [Pure]
-    public override int? Match(SourceReader reader)
+    public override int? Match(Chars span)
     {
         var length = 0;
 
-        while (length < reader.Span.Length && Predicate(reader.Span[length], length))
+        while (length < span.Length && Predicate(span[length], length))
             length++;
 
         return length is 0

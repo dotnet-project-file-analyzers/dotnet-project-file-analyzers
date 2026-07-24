@@ -1,5 +1,6 @@
 using AwesomeAssertions.Collections;
 using AwesomeAssertions.Execution;
+using System.Diagnostics;
 
 
 namespace AwesomeAssertions;
@@ -7,11 +8,14 @@ namespace AwesomeAssertions;
 internal sealed class DiagnosticsAssertions(IEnumerable<Diagnostic> actualValue)
     : GenericCollectionAssertions<Diagnostic>(actualValue, AssertionChain.GetOrCreate())
 {
+    [DebuggerStepThrough]
     public AndConstraint<DiagnosticsAssertions> HaveNoIssues() => HaveIssues();
 
+    [DebuggerStepThrough]
     public AndConstraint<DiagnosticsAssertions> HaveIssue(Issue issue)
         => HaveIssues(issue);
 
+    [DebuggerStepThrough]
     public AndConstraint<DiagnosticsAssertions> HaveIssues(params IEnumerable<Issue> issues)
     {
         var reported = Subject.Select(Issue.FromDiagnostic)

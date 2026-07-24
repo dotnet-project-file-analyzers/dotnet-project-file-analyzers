@@ -36,7 +36,7 @@ public abstract partial class GrammrNode(SliceSpan span, GrammrTree tree)
     public LinePositionSpans Spans => new(SourceTree);
 
     /// <summary>Gets the full span of the node.</summary>
-    public ReadOnlySpan<char> FullSpan
+    public Chars FullSpan
     {
         get
         {

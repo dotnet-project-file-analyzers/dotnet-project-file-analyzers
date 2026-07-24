@@ -5,7 +5,7 @@ public sealed class VersionOverrideShouldChangeVersion()
     : MsBuildProjectFileAnalyzer(Rule.VersionOverrideShouldChangeVersion)
 {
     /// <inheritdoc />
-    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.ProjectFile_Props;
+    public override ImmutableArray<AnalyzerType> ApplicableTo => ProjectFileTypes.ProjectFile_Props;
 
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)

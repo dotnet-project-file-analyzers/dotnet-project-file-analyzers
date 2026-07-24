@@ -14,7 +14,7 @@ public ref struct SourceReader(Source source, TokenStream? stream = null)
     public TokenStream Stream { get; set; } = stream ?? source;
 
     /// <summary>Gets the remaining span of the source starting at the current position of the reader.</summary>
-    public ReadOnlySpan<char> Span { get; private set; } = source.AsSpan(0, source.Length);
+    public Chars Span { get; private set; } = source.AsSpan(0, source.Length);
 
     /// <summary>Gets the start position of the reader in the source.</summary>
     public readonly int Start => Source.Length - Span.Length;
@@ -137,12 +137,12 @@ public ref struct SourceReader(Source source, TokenStream? stream = null)
     /// </returns>
     public bool Keep(Lexer lexer) => Emit(lexer) is not null;
 
-    /// <summary>Matching the <see cref="Regex"/> pattern against the source starting at the current position</summary>
+    /// <summary>Matching the <see cref="Regex"/> pattern against the source starting at the current position.</summary>
     /// <param name="pattern">
     /// The pattern to match.
     /// </param>
     [Pure]
-    public Match Match(Regex pattern) => Source.Match(pattern, Start);
+    public readonly Match Match(Regex pattern) => Source.Match(pattern, Start);
 
     /// <inheritdoc />
     [Pure]

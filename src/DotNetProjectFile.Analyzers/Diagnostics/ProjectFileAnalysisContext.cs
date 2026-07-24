@@ -8,6 +8,7 @@ namespace DotNetProjectFile.Diagnostics;
 /// </typeparam>
 public readonly struct ProjectFileAnalysisContext<TFile>(
     TFile file,
+    AnalyzerType type,
     Compilation compilation,
     AnalyzerOptions options,
     CancellationToken cancellationToken,
@@ -19,6 +20,9 @@ public readonly struct ProjectFileAnalysisContext<TFile>(
 
     /// <summary>Gets the project file.</summary>
     public TFile File { get; } = file;
+
+    /// <summary>The type of the analyzer.</summary>
+    public AnalyzerType AnalyzerType { get; } = type;
 
     /// <summary>Gets the compilation language.</summary>
     public Language CompilationLanguage => Language.Parse(Compilation.Language);

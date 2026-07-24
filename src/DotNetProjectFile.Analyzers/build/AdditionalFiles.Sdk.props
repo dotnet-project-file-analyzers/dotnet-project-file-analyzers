@@ -10,7 +10,7 @@
 
     <!-- .editorconfig -->
     <AdditionalFiles
-      Include="$([MSBuild]::GetPathOfFileAbove('.editorconfig'))"
+      Include="$([MSBuild]::GetPathOfFileAbove('.editorconfig', $(MSBuildProjectDirectory)))"
       Exclude="@(AdditionalFiles)"
       AnalyzerType="EditorConfig"
       Link=".editorconfig" />
@@ -21,9 +21,15 @@
       Exclude="@(AdditionalFiles)"
       AnalyzerType="GlobalConfig" />
 
+    <AdditionalFiles
+      Include="$([MSBuild]::GetPathOfFileAbove('.globalconfig', $(MSBuildProjectDirectory)))"
+      Exclude="@(AdditionalFiles)"
+      AnalyzerType="GlobalConfig"
+      Link=".globalconfig" />
+    
     <!-- NuGet.config -->
     <AdditionalFiles
-      Include="$([MSBuild]::GetPathOfFileAbove('NuGet.config'))"
+      Include="$([MSBuild]::GetPathOfFileAbove('NuGet.config', $(MSBuildProjectDirectory)))"
       AnalyzerType="NuGetConfig"
       Link="NuGet.config" />
     
@@ -32,8 +38,8 @@
   <ItemGroup>
     <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="MSBuildProject" Include="**/*.??proj" />
     <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="SLNX"           Include="**/*.slnx" />
-    <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="MSBuildProp"    Include="**/*.props" />
-    <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="MSBuildProp"    Include="**/*.targets" />
+    <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="MSBuildProps"    Include="**/*.props" />
+    <AdditionalFiles Visible="false" Exclude="@(AdditionalFiles)" AnalyzerType="MSBuildProps"    Include="**/*.targets" />
   </ItemGroup>
 
   <!-- Make visible -->

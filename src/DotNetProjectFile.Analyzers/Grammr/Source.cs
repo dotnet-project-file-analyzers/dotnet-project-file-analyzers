@@ -19,7 +19,7 @@ public sealed class Source(string text)
     /// The length of the span.
     /// </param>
     [Pure]
-    public ReadOnlySpan<char> AsSpan(int start, int length)
+    public Chars AsSpan(int start, int length)
         => Text.AsSpan(start, length);
 
     /// <summary>Tries to match the regular expression.</summary>

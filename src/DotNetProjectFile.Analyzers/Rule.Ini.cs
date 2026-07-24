@@ -12,8 +12,7 @@ public static partial class Rule
            message: "{0}",
            description: "A part of the INI file could not be parsed.",
            tags: ["INI", "syntax error"],
-           category: Category.SyntaxError,
-           isEnabled: false);
+           category: Category.SyntaxError);
 
         public static DiagnosticDescriptor InvalidHeader => New(
            id: 4001,
@@ -21,8 +20,7 @@ public static partial class Rule
            message: "{0}",
            description: "A INI header should have the format [<Header>].",
            tags: ["INI", "syntax error"],
-           category: Category.SyntaxError,
-           isEnabled: false);
+           category: Category.SyntaxError);
 
         public static DiagnosticDescriptor InvalidKeyValuePair => New(
            id: 4002,
@@ -30,8 +28,7 @@ public static partial class Rule
            message: "{0}",
            description: "A INI key-value pair should have the format <Key> ( : | = ) <Value>.",
            tags: ["INI", "syntax error"],
-           category: Category.SyntaxError,
-           isEnabled: false);
+           category: Category.SyntaxError);
 
         public static DiagnosticDescriptor EmptySection => New(
             id: 4010,
@@ -41,8 +38,7 @@ public static partial class Rule
                 "A Section in INI file groups key-value pairs. Having an empty " +
                 "section has no added value.",
             tags: ["INI", "noise"],
-            category: Category.Noise,
-            isEnabled: false);
+            category: Category.Noise);
 
         public static DiagnosticDescriptor HeaderMustBeGlob => New(
             id: 4050,
@@ -53,16 +49,14 @@ public static partial class Rule
                 "GLOB's matching files the key-value pairs of the section apply " +
                 "to. Therefor, they must be valid GLOBs.",
             tags: [".editorconfig", "GLOB"],
-            category: Category.SyntaxError,
-            isEnabled: false);
+            category: Category.SyntaxError);
 
         public static DiagnosticDescriptor UseEqualsAssign => New(
             id: 4051,
             title: "Use equals sign for key-value assignments",
-            message: "Use = instead",
+            message: "Use '=' instead",
             description: "In .editorconfig files instead of : use = as assignment sign.",
             tags: ["INI", ".editorconfig"],
-            category: Category.Clarity,
-            isEnabled: false);
+            category: Category.Clarity);
     }
 }

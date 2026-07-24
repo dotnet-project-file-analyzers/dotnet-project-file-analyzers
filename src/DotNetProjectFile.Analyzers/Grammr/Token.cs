@@ -13,7 +13,7 @@ public readonly struct Token(int start, int length, Source source, string? kind)
 
     public int End => Start + Length;
 
-    public ReadOnlySpan<char> Span => Source.AsSpan(Start, Length);
+    public Chars Span => Source.AsSpan(Start, Length);
 
     /// <inheritdoc />
     [Pure]

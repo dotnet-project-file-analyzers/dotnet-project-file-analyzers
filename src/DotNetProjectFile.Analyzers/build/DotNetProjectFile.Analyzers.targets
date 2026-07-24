@@ -33,11 +33,13 @@
     * Condition '$(BuildingByReSharper)' != 'true'
       Set by Rider and ReSharper for all their builds. Rider's solution view
       hides the real files when the invisible linked duplicates are present.
+      
+    * Exclude **/*.razor.css as it will break the Razor build.
   -->
   <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true' and '$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
     <Content
       Include="@(None);@(AdditionalFiles)"
-      Exclude="@(Content)"
+      Exclude="@(Content);**/*.razor.css"
       CopyToOutputDirectory="never"
       Visible="false"
       SonarQubeContent="true"
@@ -77,6 +79,24 @@
       Code="Proj4025"
       Text="No .globalconfig file was resolved. Please add such a file to configure static code analysis rules."
       HelpLink="https://dotnet-project-file-analyzers.github.io/rules/Proj4025.html" />
+
+  <Target Name="AddImportPaths" BeforeTargets="PrepareForBuild">
+    
+    <!-- Use XML peek to select the XPath values -->
+    <XmlPeek
+      XmlInputPath="$(MSBuildProjectFullPath)"
+      Query="//*[local-name()='Import']/@Project">
+      <Output TaskParameter="Result" ItemName="ImportedProjects" />
+    </XmlPeek>
+
+    <ItemGroup>
+      <AdditionalFiles
+        AnalyzerType="MSBuildProps"
+        Include="@(ImportedProjects)"
+        Exclude="@(AdditionalFiles)"
+        Visible="false" />
+    </ItemGroup>
+
   </Target>
 
 </Project>

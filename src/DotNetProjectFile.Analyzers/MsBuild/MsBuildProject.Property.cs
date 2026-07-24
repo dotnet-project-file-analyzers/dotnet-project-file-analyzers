@@ -24,9 +24,6 @@ public sealed partial class MsBuildProject
     public bool PackageValidationEnabled()
         => Property<EnablePackageValidation>()?.Value ?? MsBuildDefaults.EnablePackageValidation;
 
-    public bool IsDevelopmentDependency()
-        => Property<DevelopmentDependency>()?.Value ?? MsBuildDefaults.DevelopmentDependency;
-
     public bool PackagesRestoredWithLockFile()
         => Property<RestorePackagesWithLockFile>()?.Value ?? MsBuildDefaults.RestorePackagesWithLockFile;
 

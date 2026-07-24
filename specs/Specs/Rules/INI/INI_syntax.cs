@@ -6,7 +6,25 @@ public class Reports
 {
     [Test]
     public void errors() => new IniSyntaxAnalyzer()
-        .ForProject("IniSyntaxErrors.cs")
+        .ForInlineEditorconfig("""
+        root = true
+
+        [No Header
+        KeyWithoutAssignement Value
+        KeyWithoutValue =
+        Key1 = Value
+
+        # Section
+        [*]
+        Key2 = value # With comment
+        KeyWith Comment = #Comment
+
+        []
+        key = value
+
+        [[Header]
+        
+        """)
         .HasIssues(
             Issue.ERR("Proj4001", "']' is expected" /*........*/).WithSpan(02, 10, 03, 00),
             Issue.ERR("Proj4002", "'=' or ':' is expected" /*.*/).WithSpan(03, 21, 03, 22),

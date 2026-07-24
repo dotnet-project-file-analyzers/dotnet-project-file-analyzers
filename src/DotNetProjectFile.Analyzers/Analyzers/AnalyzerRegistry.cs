@@ -10,9 +10,9 @@ internal static class AnalyzerRegistry
         {
             context.RegisterAdditionalFileAction(c =>
             {
-                if (ProjectFiles.Global.UpdateMsBuildProject(c) is { IsLegacy: false } msbuild)
+                if (ProjectFiles.Global.UpdateMsBuildProject(c) is { File.IsLegacy: false } msbuild)
                 {
-                    register(new(msbuild, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(msbuild.File, msbuild.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
 
@@ -23,7 +23,7 @@ internal static class AnalyzerRegistry
                 {
                     foreach (var msbuild in entry.ImportsAndSelf().Where(x => !x.IsAdditional(c.Options.AdditionalFiles)))
                     {
-                        register(new(msbuild, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                        register(new(msbuild, AnalyzerTypes.MsBuild(msbuild.Path) ?? AnalyzerType.DirectoryBuildProps, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                     }
                 }
             });
@@ -31,27 +31,13 @@ internal static class AnalyzerRegistry
 
         /// <summary>Registers an register on <see cref="ProjectFileAnalysisContext"/>.</summary>
         public void RegisterEditorConfigFileAction(Action<IniFileAnalysisContext> register)
-        {
-            context.RegisterAdditionalFileAction(c =>
+            => context.RegisterAdditionalFileAction(c =>
             {
                 if (ProjectFiles.Global.UpdateIniFile(c) is { } ini)
                 {
-                    register(new(ini, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(ini.File, ini.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
-
-            // Fallback for detecting files that not have been added as additional files.
-            context.RegisterCompilationAction(c =>
-            {
-                if (ProjectFiles.Global.UpdateMsBuildProject(c) is { } msbuild)
-                {
-                    foreach (var config in msbuild.EditorConfigs().Where(x => !x.IsAdditional(c.Options.AdditionalFiles)))
-                    {
-                        register(new(config, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
-                    }
-                }
-            });
-        }
 
         /// <summary>Registers an register on <see cref="NuGetConfigFileAnalysisContext"/>.</summary>
         public void RegisterNuGetConfigFileAction(Action<NuGetConfigFileAnalysisContext> register)
@@ -59,37 +45,19 @@ internal static class AnalyzerRegistry
             {
                 if (ProjectFiles.Global.UpdateNugetConfigFile(c) is { } config)
                 {
-                    register(new(config, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(config.File, config.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
 
         /// <summary>Registers an register on <see cref="ProjectFileAnalysisContext"/>.</summary>
         public void RegisterResourceFileAction(Action<ResourceFileAnalysisContext> register)
-        {
-            context.RegisterAdditionalFileAction(c =>
+            => context.RegisterAdditionalFileAction(c =>
             {
-                if (ProjectFiles.Global.UpdateResourceFile(c) is { IsXml: true } resource)
+                if (ProjectFiles.Global.UpdateResourceFile(c) is { File.IsXml: true } resource)
                 {
-                    register(new(resource, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(resource.File, resource.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
-
-            // Fallback for detecting files that not have been added as additional files.
-            context.RegisterCompilationAction(c =>
-            {
-                if (ProjectFiles.Global.UpdateMsBuildProject(c) is { } msbuild)
-                {
-                    foreach (var file in msbuild.Path.Directory.Files("**/*.resx") ?? [])
-                    {
-                        if (ProjectFiles.Global.UpdateResourceFile(file) is { IsXml: true } resource
-                            && !resource.IsAdditional(c.Options.AdditionalFiles))
-                        {
-                            register(new(resource, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
-                        }
-                    }
-                }
-            });
-        }
 
         /// <summary>Registers an register on <see cref="SolutionFileAnalysisContext"/>.</summary>
         public void RegisterSolutionFileAction(Action<SolutionFileAnalysisContext> register)
@@ -97,7 +65,7 @@ internal static class AnalyzerRegistry
             {
                 if (ProjectFiles.Global.UpdateSolutionFile(c) is { } solution)
                 {
-                    register(new(solution, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    register(new(solution.File, solution.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             });
     }

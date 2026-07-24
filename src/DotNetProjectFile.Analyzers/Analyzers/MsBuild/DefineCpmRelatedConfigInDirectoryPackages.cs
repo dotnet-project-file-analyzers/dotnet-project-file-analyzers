@@ -8,13 +8,12 @@ public sealed class DefineCpmRelatedConfigInDirectoryPackages()
     : MsBuildProjectFileAnalyzer(Rule.DefineCpmRelatedConfigInDirectoryPackages)
 {
     /// <inheritdoc />
-    public override ImmutableArray<ProjectFileType> ApplicableTo => ProjectFileTypes.AllExceptDirectoryPackages;
+    public override ImmutableArray<AnalyzerType> ApplicableTo => ProjectFileTypes.AllExceptDirectoryPackages;
 
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc/>
-    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var cpmNode in context.File.DescendantsAndSelf().Where(IsCpm))
