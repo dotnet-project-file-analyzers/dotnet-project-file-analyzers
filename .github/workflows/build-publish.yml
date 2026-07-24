@@ -67,23 +67,12 @@ jobs:
         with:
           name: nupkg
 
-      - name: Create release notes
-        uses: johnyherangi/create-release-notes@main
-        id: create-release-notes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v3
         with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-          body: ${{ steps.create-release-notes.outputs.release-notes }}
-          draft: false
-          prerelease: ${{ contains(github.ref, '-') }}
+          tag_name: ${{ github.ref_name }}
+          generate_release_notes: true
+          prerelease: ${{ contains(github.ref_name, '-') }}
 
       - name: DotNet NuGet Push  
         run: dotnet nuget push "*.nupkg" --source ${{ env.NUGET_FEED}} --api-key ${{ env.NUGET_KEY }} --skip-duplicate --no-symbols    
