@@ -15,6 +15,12 @@ internal static class StringExtensions
         public bool IsMatch(string? other)
             => string.Equals(str, other, StringComparison.OrdinalIgnoreCase);
 
+        public bool IsMatchStart(string? value)
+            => str?.StartsWith(value, StringComparison.OrdinalIgnoreCase) is true;
+
+        public bool IsMatchEnd(string? value)
+            => str?.EndsWith(value, StringComparison.OrdinalIgnoreCase) is true;
+
         /// <inheritdoc cref="NGramsCollection.Create(string?, int)" />
         public NGramsCollection GetNGrams(int n)
             => NGramsCollection.Create(str, n);

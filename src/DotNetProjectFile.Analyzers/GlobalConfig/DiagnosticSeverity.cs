@@ -1,34 +1,34 @@
+using DotNetProjectFile.Ini;
+
 namespace DotNetProjectFile.GlobalConfig;
 
-public enum DiagnosticSeverity
+/// <summary>Represents a 'dotnet_analyzer_diagnostic.*.severity' entry.</summary>
+public sealed class DiagnosticSeverity(IniEntry entry)
 {
+    /// <summary>The entry in the INI file.</summary>
+    public IniEntry Entry { get; } = entry;
 
-    /// <summary>
-    /// Suppresses the diagnostic completely; it does not run, nor does it offer fixes.
-    /// </summary>
-    none = 0,
+    /// <summary>Gets the diagnostic ID.</summary>
+    public string DiagnosticId => Entry.Value!.Text![27..^9];
 
-    /// <summary>
-    /// The diagnostic is invisible to the user in the UI, but still triggers
-    /// the IDE to offer associated light-bulb code fixes.
-    /// </summary>
-    silent,
+    /// <summary>The raw string value of the entry.</summary>
+    public string? Value => Entry.Value?.Text;
 
-    /// <summary>
-    /// olations appear as messages/gray dots in the Error List and do not fail
-    /// the build.
-    /// </summary>
-    suggestion,
+    /// <summary>The parsed value of the entry.</summary>
+    public DiagnosticSeverityLevel? Level
+        => Enum.TryParse<DiagnosticSeverityLevel>(Value, ignoreCase: true, out var level)
+        ? level
+        : null;
 
-    /// <summary>
-    /// Violations appear in the Error List as a green squiggle but do not
-    /// fail the build.
-    /// </summary>
-    warning,
+    /// <summary>Creates a typed entry.</summary>
+    public static DiagnosticSeverity? Create(IniEntry entry)
+        => Matches(entry.Key?.Text)
+        ? new(entry)
+        : null;
 
-    /// <summary>
-    /// Violations appear in the Error List, cause command-line builds to fail,
-    /// and are marked with a red squiggle.
-    /// </summary>
-    error,
+    private static bool Matches(string? key)
+        => key is { }
+        && key.IsMatchStart("dotnet_analyzer_diagnostic.")
+        && key.IsMatchEnd(".severity");
+
 }
