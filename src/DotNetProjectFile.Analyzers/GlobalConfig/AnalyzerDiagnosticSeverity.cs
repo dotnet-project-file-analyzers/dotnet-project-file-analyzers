@@ -2,7 +2,7 @@ using DotNetProjectFile.Ini;
 
 namespace DotNetProjectFile.GlobalConfig;
 
-/// <summary>Represents a 'dotnet_analyzer_diagnostic.*.severity' entry.</summary>
+/// <summary>Represents a 'dotnet_diagnostic.*.severity' entry.</summary>
 public sealed class AnalyzerDiagnosticSeverity(IniEntry entry)
 {
     /// <summary>The entry in the INI file.</summary>
@@ -12,7 +12,7 @@ public sealed class AnalyzerDiagnosticSeverity(IniEntry entry)
     public IniKey Key => Entry.Key!;
 
     /// <summary>Gets the diagnostic ID.</summary>
-    public string DiagnosticId => Entry.Value!.Text![27..^9];
+    public string DiagnosticId => Entry.Value!.Text![18..^9];
 
     /// <summary>The raw string value of the entry.</summary>
     public string? Value => Entry.Value?.Text;
@@ -31,7 +31,7 @@ public sealed class AnalyzerDiagnosticSeverity(IniEntry entry)
 
     private static bool Matches(string? key)
         => key is { }
-        && key.IsMatchStart("dotnet_analyzer_diagnostic.")
+        && key.IsMatchStart("dotnet_diagnostic.")
         && key.IsMatchEnd(".severity");
 
 }

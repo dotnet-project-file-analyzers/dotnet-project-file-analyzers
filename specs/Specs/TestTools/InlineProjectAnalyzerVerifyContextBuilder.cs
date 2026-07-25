@@ -1,5 +1,6 @@
 using CodeAnalysis.TestTools.Contexts;
 using System.Collections.Immutable;
+using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Security.Cryptography;
@@ -34,12 +35,15 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
     }
 
     [AssertionMethod]
+    [DebuggerStepThrough]
     public void HasNoIssues() => Build().HasNoIssues();
 
     [AssertionMethod]
+    [DebuggerStepThrough]
     public void HasIssue(Issue issue) => Build().HasIssue(issue);
 
     [AssertionMethod]
+    [DebuggerStepThrough]
     public void HasIssues(params Issue[] issues) => Build().HasIssues(issues);
 
     private static string GetHash(ImmutableArray<FileDefinition> files)
