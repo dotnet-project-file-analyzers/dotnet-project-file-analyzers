@@ -159,6 +159,7 @@ dotnet_diagnostic.Proj4000.severity = error      # Invalid INI file
 dotnet_diagnostic.Proj4001.severity = error      # Invalid INI Header
 dotnet_diagnostic.Proj4002.severity = error      # Invalid INI key-value pair
 dotnet_diagnostic.Proj4010.severity = warning    # Sections should contain at least one key-value pair
+dotnet_diagnostic.Proj4025.severity = warning    # Remove section header
 dotnet_diagnostic.Proj4050.severity = error      # Header must be a GLOB
 dotnet_diagnostic.Proj4051.severity = warning    # Use equals sign for key-value assignments
 dotnet_diagnostic.Proj5000.severity = warning    # Use SLNX solution files

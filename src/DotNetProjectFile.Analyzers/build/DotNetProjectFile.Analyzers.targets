@@ -73,7 +73,7 @@
       HelpLink="https://dotnet-project-file-analyzers.github.io/rules/Proj1007.html" />
   </Target>
 
-  <Target Name="WarnOnImportPaths" BeforeTargets="PrepareForBuild">
+  <Target Name="ImportsAsAdditionalFiles" BeforeTargets="PrepareForBuild">
     
     <!-- Use XML peek to select the XPath values -->
     <XmlPeek

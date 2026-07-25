@@ -40,6 +40,17 @@ public static partial class Rule
             tags: ["INI", "noise"],
             category: Category.Noise);
 
+        public static DiagnosticDescriptor RemoveGlobalConfigHeader => New(
+            id: 4025,
+            title: "Remove section header",
+            message: "Remove section header",
+            description:
+                "A .globalconfig file strictly requires all key-value to sit at " +
+                "the root level; any section headers or glob patterns inside " +
+                "the file are ignored by the Roslyn compiler.",
+            tags: [".globalconfig", "header"],
+            category: Category.CodeSmell);
+
         public static DiagnosticDescriptor HeaderMustBeGlob => New(
             id: 4050,
             title: "Header must be a GLOB",
