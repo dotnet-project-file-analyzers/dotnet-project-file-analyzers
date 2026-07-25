@@ -15,42 +15,7 @@ public abstract class PackageReferenceBase(XElement element, Node parent, MsBuil
 
     public virtual PackageVersionInfo Info => new(IncludeOrUpdate, Version);
 
-    public (Node Node, string Version)? ResolveVersionVerbose(bool cpmEnabled)
-    {
-        if (cpmEnabled)
-        {
-            if (this is PackageReference { VersionOverride: { Length: > 0 } selfVersionOverride })
-            {
-                return (this, selfVersionOverride);
-            }
-
-            var versionOverrideNode = Project
-                .WalkBackward()
-                .OfType<PackageReference>()
-                .FirstOrDefault(p => p.IncludeOrUpdate == IncludeOrUpdate);
-
-            if (versionOverrideNode?.VersionOverride is { Length: > 0 } versionOverride)
-            {
-                return (versionOverrideNode, versionOverride);
-            }
-
-            var versionNode = Project
-                .WalkBackward()
-                .OfType<PackageVersion>()
-                .FirstOrDefault(v => v.Include == IncludeOrUpdate);
-
-            if (versionNode?.Version is { Length: > 0 } version)
-            {
-                return (versionNode, version);
-            }
-        }
-        else if (Version is { Length: > 0 })
-        {
-            return (this, Version);
-        }
-
-        return null;
-    }
+    public abstract (Node Node, string Version)? ResolveVersionVerbose(bool cpmEnabled);
 
     /// <summary>Resolves the version taking CPM into account.</summary>
     public string? ResolveVersion(bool cpmEnabled)

@@ -9,21 +9,13 @@ public sealed class PackageReferencesShouldBeStable() : MsBuildProjectFileAnalyz
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var package in context.File.ItemGroups.Children<PackageReference>())
+        foreach (var package in context.File.ItemGroups.Children<PackageReferenceBase>())
         {
-            if (package.ResolveVersionVerbose(context.ManagePackageVersionsCentrally) is not { } resolved)
-            {
-                continue;
-            }
-
-            if (IsUnstable(package, resolved.Version))
+            if (package.ResolveVersionVerbose(context.ManagePackageVersionsCentrally) is { } resolved
+                && resolved.Version.Contains('-'))
             {
                 context.ReportDiagnostic(Descriptor, resolved.Node, package.IncludeOrUpdate, resolved.Version);
             }
         }
     }
-
-    private static bool IsUnstable(PackageReference package, string version)
-        => version.Contains('-')
-        && !package.PrivateAssets.IsMatch("all");
 }
