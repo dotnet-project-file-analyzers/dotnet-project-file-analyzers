@@ -16,7 +16,7 @@ public abstract class IniFileAnalyzer(
     public virtual ImmutableArray<AnalyzerType> ApplicableTo => IniFileTypes.All;
 
     /// <inheritdoc />
-    protected override void Register(AnalysisContext context)
+    protected sealed override void Register(AnalysisContext context)
         => context.RegisterEditorConfigFileAction(c =>
         {
             if (ApplicableTo.Contains(c.AnalyzerType))

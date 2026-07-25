@@ -89,7 +89,7 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
             && IsAnalyzerFor(pkg.Name);
 
         public bool IsAnalyzerFor(string name)
-            => name.StartsWith(Match, StringComparison.OrdinalIgnoreCase)
+            => name.IsMatchStart(Match)
             && (name.Length == Match.Length
                 || name[Match.Length] == '.');
 

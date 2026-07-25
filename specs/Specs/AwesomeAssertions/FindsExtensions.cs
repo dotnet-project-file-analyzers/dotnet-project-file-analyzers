@@ -7,15 +7,15 @@ internal static class FindsExtensions
 {
     extension(ProjectAnalyzerVerifyContext context)
     {
-        [DebuggerStepThrough]
+        [DebuggerStepThrough, DebuggerHidden]
         public void HasNoIssues()
             => context.HasIssues();
 
-        [DebuggerStepThrough]
+        [DebuggerStepThrough, DebuggerHidden]
         public void HasIssue(Issue issue)
             => context.HasIssues(issue);
         
-        [DebuggerStepThrough]
+        [DebuggerStepThrough, DebuggerHidden]
         public void HasIssues(params Issue[] issues)
         {
             var diagnosics = Run.Sync(context.GetDiagnosticsAsync)
