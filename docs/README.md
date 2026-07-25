@@ -250,7 +250,8 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 ## .editorconfig
 * [**Proj4050** Header must be a GLOB](rules/Proj4050.md)
 * [**Proj4051** Use equals sign for key-value assignments](rules/Proj4051.md)
-
+* [**Proj4052** Use global configuration for Roslyn diagnostics](rules/Proj4052.md)
+ 
 ## SLNX
 * [**Proj5000** Use SLNX solution files](rules/Proj5000.md)
 * [**Proj5001** Remove SLN solution files](rules/Proj5001.md)
