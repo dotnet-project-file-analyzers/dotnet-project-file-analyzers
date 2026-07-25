@@ -3,10 +3,13 @@ using DotNetProjectFile.Ini;
 namespace DotNetProjectFile.GlobalConfig;
 
 /// <summary>Represents a 'dotnet_analyzer_diagnostic.*.severity' entry.</summary>
-public sealed class DiagnosticSeverity(IniEntry entry)
+public sealed class AnalyzerDiagnosticSeverity(IniEntry entry)
 {
     /// <summary>The entry in the INI file.</summary>
     public IniEntry Entry { get; } = entry;
+
+    /// <inheritdoc cref="IniEntry.Key" />
+    public IniKey Key => Entry.Key!;
 
     /// <summary>Gets the diagnostic ID.</summary>
     public string DiagnosticId => Entry.Value!.Text![27..^9];
@@ -21,7 +24,7 @@ public sealed class DiagnosticSeverity(IniEntry entry)
         : null;
 
     /// <summary>Creates a typed entry.</summary>
-    public static DiagnosticSeverity? Create(IniEntry entry)
+    public static AnalyzerDiagnosticSeverity? Create(IniEntry entry)
         => Matches(entry.Key?.Text)
         ? new(entry)
         : null;

@@ -69,5 +69,16 @@ public static partial class Rule
             description: "In .editorconfig files instead of : use = as assignment sign.",
             tags: ["INI", ".editorconfig"],
             category: Category.Clarity);
+
+        public static DiagnosticDescriptor UseGlobalConfigForRoslynDiagnostics => New(
+            id: 4052,
+            title: "Use global configuration for Roslyn diagnostics",
+            message: "Move entry {0} to the globalconfig",
+            description:
+                "Configuration entries intended to configure Roslyn " +
+                "should all be put in a the globalconfig (most " +
+                "likely a .globalconfig file).",
+            tags: ["INI", ".editorconfig", "globalconfig", "Roslyn", "diagnostics"],
+            category: Category.Clarity);
     }
 }
