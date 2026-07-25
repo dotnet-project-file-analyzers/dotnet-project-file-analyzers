@@ -35,15 +35,15 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
     }
 
     [AssertionMethod]
-    [DebuggerStepThrough]
+    [DebuggerStepThrough, DebuggerHidden]
     public void HasNoIssues() => Build().HasNoIssues();
 
     [AssertionMethod]
-    [DebuggerStepThrough]
+    [DebuggerStepThrough, DebuggerHidden]
     public void HasIssue(Issue issue) => Build().HasIssue(issue);
 
     [AssertionMethod]
-    [DebuggerStepThrough]
+    [DebuggerStepThrough, DebuggerHidden]
     public void HasIssues(params Issue[] issues) => Build().HasIssues(issues);
 
     private static string GetHash(ImmutableArray<FileDefinition> files)

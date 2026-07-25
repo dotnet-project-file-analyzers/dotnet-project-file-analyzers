@@ -5,7 +5,7 @@ namespace Specs.Rules.INI.Use_globalconfig_for_Roslyn_diagnostics;
 public class Reports
 {
     [Test]
-    public void empty_sections() => new UseGlobalConfigForRoslynDiagnostics()
+    public void dotnet_diagnostics_in_editorconfig() => new UseGlobalConfigForRoslynDiagnostics()
         .ForInlineEditorconfig("""
         root = true
 
@@ -23,8 +23,8 @@ public class Reports
 public class Guards
 {
     [Test]
-    public void empty_sections() => new UseGlobalConfigForRoslynDiagnostics()
-        .ForInlineEditorconfig("""
+    public void dotnet_diagnostics_in_globalconfig() => new UseGlobalConfigForRoslynDiagnostics()
+        .ForInlineGlobalconfig("""
         is_global = true
 
         dotnet_diagnostic.IDE0001.severity = warning
