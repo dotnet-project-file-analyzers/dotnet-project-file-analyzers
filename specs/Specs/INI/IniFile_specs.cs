@@ -1,6 +1,6 @@
 using DotNetProjectFile.Ini;
 
-namespace Specs.INI.IniFile_specs;
+namespace INI.IniFile_specs;
 
 public class Parses
 {

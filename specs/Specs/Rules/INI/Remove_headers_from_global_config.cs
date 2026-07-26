@@ -1,6 +1,6 @@
 using DotNetProjectFile.Analyzers.Ini;
 
-namespace Specs.Rules.INI.Remove_headers_from_global_config;
+namespace Rules.INI.Remove_headers_from_global_config;
 
 public class Reports
 {

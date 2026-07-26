@@ -1,6 +1,6 @@
 using DotNetProjectFile.MsBuild;
 
-namespace Specs.MS_Build.LanguageVersion_specs;
+namespace MS_Build.LanguageVersion_specs;
 
 public class Parses
 {

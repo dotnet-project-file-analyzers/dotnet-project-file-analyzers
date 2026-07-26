@@ -1,4 +1,4 @@
-namespace Specs.Rules.SLNX.Omit_project_Ids;
+namespace Rules.SLNX.Omit_project_Ids;
 
 public class Reports
 {

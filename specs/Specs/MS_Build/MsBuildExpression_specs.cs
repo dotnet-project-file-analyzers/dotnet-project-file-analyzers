@@ -1,6 +1,6 @@
 using DotNetProjectFile.MsBuild;
 
-namespace Specs.MsBuild.MsBuildExprssion_specs;
+namespace MsBuild.MsBuildExprssion_specs;
 
 public class Parsing
 {

@@ -1,6 +1,6 @@
 using DotNetProjectFile;
 
-namespace Specs.SemVer_specs;
+namespace SemVer_specs;
 
 public class Parses
 {

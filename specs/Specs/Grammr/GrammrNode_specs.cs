@@ -3,7 +3,7 @@ using Grammr;
 using Microsoft.CodeAnalysis.Text;
 using static Grammr.Lexers.Shared;
 
-namespace Specs.GrammrNode_specs;
+namespace GrammrNode_specs;
 
 public class Spans
 {

@@ -1,4 +1,4 @@
-namespace Specs.Grammr_Types_specs;
+namespace Grammr_Types_specs;
 
 public class Namespaces
 {
