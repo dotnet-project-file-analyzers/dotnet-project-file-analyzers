@@ -51,6 +51,17 @@ public static partial class Rule
             tags: [".globalconfig", "header"],
             category: Category.CodeSmell);
 
+        public static DiagnosticDescriptor SpecifyIsGlobal => New(
+            id: 4026,
+            title: "Specify is_global",
+            message: "{0} is_global",
+            description:
+                "For global configuration files not named `.globalconfig` is " +
+                "required to work properly, otherwise it is for the sake of " +
+                "clarity.",
+            tags: [".globalconfig", "header"],
+            category: Category.Clarity);
+
         public static DiagnosticDescriptor HeaderMustBeGlob => New(
             id: 4050,
             title: "Header must be a GLOB",
