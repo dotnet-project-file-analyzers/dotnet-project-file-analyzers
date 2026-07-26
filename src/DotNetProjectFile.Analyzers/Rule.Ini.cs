@@ -56,7 +56,7 @@ public static partial class Rule
             title: "Specify is_global",
             message: "{0} is_global",
             description:
-                "By explicitly set is_global = true, the settings are correctly " +
+                "By explicitly setting is_global = true, the settings are correctly " +
                 "applied globally across the entire project or solution, even if " +
                 "the file uses a custom name instead of .globalconfig.",
             tags: [".globalconfig", "header"],
