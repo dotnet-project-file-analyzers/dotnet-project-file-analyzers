@@ -9,6 +9,11 @@ public enum DiagnosticSeverityLevel
     none = 1,
 
     /// <summary>
+    /// The default severity of the rule is used.
+    /// </summary>
+    @default,
+
+    /// <summary>
     /// The diagnostic is invisible to the user in the UI, but still triggers
     /// the IDE to offer associated light-bulb code fixes.
     /// </summary>

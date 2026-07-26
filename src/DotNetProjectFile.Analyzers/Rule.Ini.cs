@@ -62,6 +62,28 @@ public static partial class Rule
             tags: [".globalconfig", "header"],
             category: Category.Clarity);
 
+        public static DiagnosticDescriptor UseValidSeverityLevel => New(
+            id: 4027,
+            title: "Use valid diagnostic severity value",
+            message: "diagnostic severity '{0}' is unknown",
+            description:
+                "By explicitly setting is_global = true, the settings are correctly " +
+                "applied globally across the entire project or solution, even if " +
+                "the file uses a custom name instead of .globalconfig.",
+            tags: [".globalconfig", "header"],
+            category: Category.Bug);
+
+        public static DiagnosticDescriptor UseExplicitSeverityLevel => New(
+            id: 4028,
+            title: "Use explicit diagnostic severity level",
+            message: "Use explicit diagnostic severity level",
+            description:
+                "By explicitly setting is_global = true, the settings are correctly " +
+                "applied globally across the entire project or solution, even if " +
+                "the file uses a custom name instead of .globalconfig.",
+            tags: [".globalconfig", "header"],
+            category: Category.Clarity);
+
         public static DiagnosticDescriptor HeaderMustBeGlob => New(
             id: 4050,
             title: "Header must be a GLOB",
