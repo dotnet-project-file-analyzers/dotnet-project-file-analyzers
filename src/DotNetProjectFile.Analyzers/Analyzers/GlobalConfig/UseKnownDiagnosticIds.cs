@@ -18,7 +18,7 @@ public sealed class UseKnownDiagnosticIds()
     {
         foreach (var entry in context.File.AnalyzerDiagnosticSeverities.Where(IsUknown))
         {
-            context.ReportDiagnostic(Descriptor, context.File, entry.Key.LinePositionSpan);
+            context.ReportDiagnostic(Descriptor, context.File, entry.Key.LinePositionSpan, entry.DiagnosticId);
         }
     }
 

@@ -83,17 +83,17 @@ public static partial class Rule
                 "the file uses a custom name instead of .globalconfig.",
             tags: [".globalconfig", "diagnostic", "severity"],
             category: Category.Clarity);
+
         public static DiagnosticDescriptor UseKnownDiagnosticIds => New(
             id: 4029,
             title: "Use valid diagnostic severity value",
-            message: "diagnostic analyzer rule '{0}' is unknown",
+            message: "Diagnostic analyzer rule '{0}' is unknown",
             description:
                 "The compiler requires standard severity keywords to parse .globalconfig " +
                 "files. Using invalid values typos prevents the rule from being " +
                 "applied as intended.",
             tags: [".globalconfig", "diagnostic", "severity"],
             category: Category.Bug);
-
 
         public static DiagnosticDescriptor HeaderMustBeGlob => New(
             id: 4050,

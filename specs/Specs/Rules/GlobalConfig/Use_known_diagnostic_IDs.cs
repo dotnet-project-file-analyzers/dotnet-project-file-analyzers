@@ -11,9 +11,9 @@ public class Reports
         dotnet_diagnostic.Proj00007.severity = warning
         """)
         .HasIssues(
-            Issue.WRN("Proj4026", "'Proj001' is an uknown rule").WithSpan(0000, 00, 00, 37),
-            Issue.WRN("Proj4026", "'Proj6666' is an uknown rule").WithSpan(001, 00, 01, 37),
-            Issue.WRN("Proj4026", "'Proj00007' is an uknown rule").WithSpan(02, 00, 02, 37));
+            Issue.WRN("Proj4029", "Diagnostic analyzer rule 'Proj001' is unknown").WithSpan(0000, 00, 00, 37),
+            Issue.WRN("Proj4029", "Diagnostic analyzer rule 'Proj6666' is unknown").WithSpan(001, 00, 01, 37),
+            Issue.WRN("Proj4029", "Diagnostic analyzer rule 'Proj00007' is unknown").WithSpan(02, 00, 02, 37));
 }
 
 public class Guards
