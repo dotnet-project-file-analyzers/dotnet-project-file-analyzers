@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -97,6 +97,7 @@ v1.16.0
 - Proj4026: Specify is_global. (NEW RULE)
 - Proj4027: Use valid diagnostic severity value. (NEW RULE)
 - Proj4028: Use explicit diagnostic severity level. (NEW RULE)
+- Proj4029: Use known diagnostic IDs. (NEW RULE)
 - Proj4050: Header must be a GLOB. (RE-ENABLE)
 - Proj4051: Use equals sign for key-value assignments. (RE-ENABLE)
 - Proj4052: Use global configuration for Roslyn diagnostics. (NEW RULE)

@@ -1,11 +1,11 @@
 using DotNetProjectFile.Analyzers.GlobalConfig;
 
-namespace Rules.GlobalConfig.Stick_to_known_analyzer_rules;
+namespace Rules.GlobalConfig.Use_known_diagnostic_IDs;
 
 public class Reports
 {
     [Test]
-    public void unknown_() => new StickToKnownAnalyzerRules().ForInlineGlobalconfig("""
+    public void unknown_ids() => new UseKnownDiagnosticIds().ForInlineGlobalconfig("""
         dotnet_diagnostic.Proj001.severity   = warning
         dotnet_diagnostic.Proj6666.severity  = warning
         dotnet_diagnostic.Proj00007.severity = warning
@@ -19,7 +19,7 @@ public class Reports
 public class Guards
 {
     [Test]
-    public void file_only_containing_key_value_pairs() => new StickToKnownAnalyzerRules().ForInlineGlobalconfig("""
+    public void known_ids() => new UseKnownDiagnosticIds().ForInlineGlobalconfig("""
         dotnet_diagnostic.Proj1001.severity = warning
         dotnet_diagnostic.Proj4000.severity = error
         """)

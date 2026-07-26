@@ -7,8 +7,8 @@ namespace DotNetProjectFile.Analyzers.GlobalConfig;
 
 /// <summary>Implements <see cref="Rule.Ini.SpecifyIsGlobal"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class StickToKnownAnalyzerRules()
-    : IniFileAnalyzer(Rule.Ini.SpecifyIsGlobal)
+public sealed class UseKnownDiagnosticIds()
+    : IniFileAnalyzer(Rule.Ini.UseKnownDiagnosticIds)
 {
     /// <inheritdoc />
     public override ImmutableArray<AnalyzerType> ApplicableTo => IniFileTypes.EditorConfig_GlobalConfig;
