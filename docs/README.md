@@ -246,6 +246,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 
 ## .globalconfig
 * [**Proj4025** Remove section header](rules/Proj4025.md)
+* [**Proj4026** Specify is_global](rules/Proj4026.md)
 
 ## .editorconfig
 * [**Proj4050** Header must be a GLOB](rules/Proj4050.md)

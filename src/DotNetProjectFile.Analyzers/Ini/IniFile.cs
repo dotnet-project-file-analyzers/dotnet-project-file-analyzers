@@ -12,6 +12,9 @@ public sealed class IniFile(int count, GrammrTree tree)
     /// <summary>Gets the INI sections.</summary>
     public GrammrNodes<IniSection> Sections => new(Children);
 
+    /// <summary>Gets the entries of te sections.</summary>
+    public GrammrNodes<IniEntry> Entries => new(Sections.SelectMany(c => c.Entries));
+
     /// <inheritdoc />
     public IOFile Path => SourceTree.Path;
 

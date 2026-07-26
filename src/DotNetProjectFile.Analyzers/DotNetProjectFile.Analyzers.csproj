@@ -94,6 +94,7 @@ v1.16.0
 - Proj4002: Invalid INI key-value pair. (RE-ENABLE)
 - Proj4010: Sections should contain at least one key-value pair. (RE-ENABLE)
 - Proj4025: Remove section header from .globalconfig. (NEW RULE)
+- Proj4026: Specify is_global. (NEW RULE)
 - Proj4050: Header must be a GLOB. (RE-ENABLE)
 - Proj4051: Use equals sign for key-value assignments. (RE-ENABLE)
 - Proj4052: Use global configuration for Roslyn diagnostics. (NEW RULE)

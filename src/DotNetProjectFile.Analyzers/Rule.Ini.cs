@@ -40,7 +40,7 @@ public static partial class Rule
             tags: ["INI", "noise"],
             category: Category.Noise);
 
-        public static DiagnosticDescriptor RemoveGlobalConfigHeader => New(
+        public static DiagnosticDescriptor RemoveSectionHeader => New(
             id: 4025,
             title: "Remove section header",
             message: "Remove section header",
@@ -50,6 +50,17 @@ public static partial class Rule
                 "the file are ignored by the Roslyn compiler.",
             tags: [".globalconfig", "header"],
             category: Category.CodeSmell);
+
+        public static DiagnosticDescriptor SpecifyIsGlobal => New(
+            id: 4026,
+            title: "Specify is_global",
+            message: "{0} is_global",
+            description:
+                "By explicitly setting is_global = true, the settings are correctly " +
+                "applied globally across the entire project or solution, even if " +
+                "the file uses a custom name instead of .globalconfig.",
+            tags: [".globalconfig", "header"],
+            category: Category.Clarity);
 
         public static DiagnosticDescriptor HeaderMustBeGlob => New(
             id: 4050,

@@ -1,11 +1,11 @@
 using DotNetProjectFile.Ini;
 
-namespace DotNetProjectFile.Analyzers.Ini;
+namespace DotNetProjectFile.Analyzers.GlobalConfig;
 
-/// <summary>Implements <see cref="Rule.Ini.RemoveGlobalConfigHeader"/>.</summary>
+/// <summary>Implements <see cref="Rule.Ini.RemoveSectionHeader"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class RemoveGlobalConfigHeader()
-    : IniFileAnalyzer(Rule.Ini.RemoveGlobalConfigHeader)
+public sealed class RemoveSectionHeader()
+    : IniFileAnalyzer(Rule.Ini.RemoveSectionHeader)
 {
     /// <inheritdoc />
     public override ImmutableArray<AnalyzerType> ApplicableTo => IniFileTypes.GlobalConfig;

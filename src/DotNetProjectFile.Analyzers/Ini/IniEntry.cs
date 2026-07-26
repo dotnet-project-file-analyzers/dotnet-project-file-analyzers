@@ -6,6 +6,8 @@ namespace DotNetProjectFile.Ini;
 
 public sealed class IniEntry(SliceSpan span, GrammrTree tree) : GrammrNode(span, tree)
 {
+    public IniSection Section => (IniSection)Parent!;
+
     public IniKey? Key => field ??= Children.OfType<IniKey>().SingleOrDefault();
 
     public IniValue? Value => field ??= Children.OfType<IniValue>().SingleOrDefault();

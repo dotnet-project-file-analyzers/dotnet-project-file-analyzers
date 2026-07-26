@@ -1,6 +1,6 @@
 using DotNetProjectFile.Analyzers.Ini;
 
-namespace Rules.INI.Use_globalconfig_for_Roslyn_diagnostics;
+namespace Rules.EditorConfig.Use_globalconfig_for_Roslyn_diagnostics;
 
 public class Reports
 {
