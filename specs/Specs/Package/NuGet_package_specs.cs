@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace Specs.NuGet_package_specs;
+namespace NuGet_package_specs;
 
 #if !DEBUG
 [Explicit]

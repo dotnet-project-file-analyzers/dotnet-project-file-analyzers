@@ -1,7 +1,7 @@
 using Grammr.Lexers;
 using static Grammr.Lexers.Shared;
 
-namespace Specs.Lexer_specs;
+namespace Lexer_specs;
 
 public class EndOfLine
 {

@@ -1,4 +1,4 @@
-namespace Specs.Rules.Global_package_references_only_work_with_CPM;
+namespace Rules.Global_package_references_only_work_with_CPM;
 
 public class Reports
 {

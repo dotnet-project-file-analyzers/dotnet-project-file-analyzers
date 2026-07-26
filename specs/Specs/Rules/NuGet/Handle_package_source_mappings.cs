@@ -1,4 +1,4 @@
-namespace Specs.Rules.NuGet.Handle_package_source_mappings;
+namespace Rules.NuGet.Handle_package_source_mappings;
 
 public class Reports
 {

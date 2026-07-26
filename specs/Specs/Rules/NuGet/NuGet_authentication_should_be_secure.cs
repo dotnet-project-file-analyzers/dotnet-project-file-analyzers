@@ -1,4 +1,4 @@
-namespace Specs.Rules.NuGet.NuGet_authentication_should_be_secure;
+namespace Rules.NuGet.NuGet_authentication_should_be_secure;
 
 public class Reports
 {

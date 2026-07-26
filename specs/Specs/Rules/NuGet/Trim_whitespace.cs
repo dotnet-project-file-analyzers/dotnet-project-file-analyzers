@@ -1,4 +1,4 @@
-namespace Specs.Rules.NuGet.Trim_whitespace;
+namespace Rules.NuGet.Trim_whitespace;
 
 public class Reports
 {

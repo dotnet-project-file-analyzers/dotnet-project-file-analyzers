@@ -1,4 +1,4 @@
-namespace Specs.Rules.MS_Build.Trim_whitespace;
+namespace Rules.MS_Build.Trim_whitespace;
 
 public class Reports
 {

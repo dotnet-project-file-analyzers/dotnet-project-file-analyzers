@@ -169,6 +169,20 @@ public partial class Rules
     };
 }
 
+public class Namespaces
+{
+    [TestCaseSource(nameof(Types))]
+    public void are_compliant(Type type)
+        => IsCompliant(type).Should().BeTrue();
+
+    private static bool IsCompliant(Type type)
+        => type.Namespace is null
+        || type.Namespace.StartsWith("Specs.TestTools")
+        || !type.Namespace.StartsWith("Specs");
+
+    private static Type[] Types => typeof(Namespaces).Assembly.GetTypes();
+}
+
 /// <remarks>Wrapper for better display of test resources in IDE.</remarks>
 public sealed record Rule(DiagnosticDescriptor Descriptor)
 {

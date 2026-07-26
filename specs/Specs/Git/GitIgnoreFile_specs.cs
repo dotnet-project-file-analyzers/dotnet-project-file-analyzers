@@ -1,6 +1,6 @@
 using DotNetProjectFile.Git;
 
-namespace Specs.Git.GitIgnoreFile_specs;
+namespace Git.GitIgnoreFile_specs;
 
 public class Parses
 {

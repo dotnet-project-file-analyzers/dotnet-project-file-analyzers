@@ -1,4 +1,4 @@
-namespace Specs.Rules.NuGet.Avoid_local_package_sources;
+namespace Rules.NuGet.Avoid_local_package_sources;
 
 public class Reports
 {

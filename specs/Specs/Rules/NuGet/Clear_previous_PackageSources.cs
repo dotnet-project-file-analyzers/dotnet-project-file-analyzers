@@ -1,4 +1,4 @@
-namespace Specs.Rules.NuGet.Clear_previous_PackageSources;
+namespace Rules.NuGet.Clear_previous_PackageSources;
 
 public class Reports
 {
