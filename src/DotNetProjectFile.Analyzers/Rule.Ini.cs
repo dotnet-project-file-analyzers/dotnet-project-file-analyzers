@@ -67,10 +67,10 @@ public static partial class Rule
             title: "Use valid diagnostic severity value",
             message: "diagnostic severity '{0}' is unknown",
             description:
-                "By explicitly setting is_global = true, the settings are correctly " +
-                "applied globally across the entire project or solution, even if " +
-                "the file uses a custom name instead of .globalconfig.",
-            tags: [".globalconfig", "header"],
+                "The compiler requires standard severity keywords to parse .globalconfig " +
+                "files. Using invalid values typos prevents the rule from being " +
+                "applied as intended.",
+            tags: [".globalconfig", "diagnostic", "severity"],
             category: Category.Bug);
 
         public static DiagnosticDescriptor UseExplicitSeverityLevel => New(
@@ -81,7 +81,7 @@ public static partial class Rule
                 "By explicitly setting is_global = true, the settings are correctly " +
                 "applied globally across the entire project or solution, even if " +
                 "the file uses a custom name instead of .globalconfig.",
-            tags: [".globalconfig", "header"],
+            tags: [".globalconfig", "diagnostic", "severity"],
             category: Category.Clarity);
 
         public static DiagnosticDescriptor HeaderMustBeGlob => New(
