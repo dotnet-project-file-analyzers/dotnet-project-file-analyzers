@@ -1,6 +1,6 @@
 using DotNetProjectFile.Analyzers.GlobalConfig;
 
-namespace Specs.Rules.GlobalConfig.Specify_is_global;
+namespace Rules.GlobalConfig.Specify_is_global;
 
 public class Reports
 {
