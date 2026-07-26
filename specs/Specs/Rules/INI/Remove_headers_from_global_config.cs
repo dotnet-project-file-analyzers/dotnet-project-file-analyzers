@@ -5,7 +5,7 @@ namespace Specs.Rules.INI.Remove_headers_from_global_config;
 public class Reports
 {
     [Test]
-    public void on_headers() => new RemoveGlobalConfigHeader().ForInlineGlobalconfig("""
+    public void on_headers() => new RemoveSectionHeader().ForInlineGlobalconfig("""
         is_global = true
         
         dotnet_diagnostic.CA1860.severity  = none       #  Prefer comparing 'Length' to 0 rather than using 'Any()'
@@ -20,7 +20,7 @@ public class Reports
 public class Guards
 {
     [Test]
-    public void file_only_containing_key_value_pairs() => new RemoveGlobalConfigHeader().ForInlineGlobalconfig("""
+    public void file_only_containing_key_value_pairs() => new RemoveSectionHeader().ForInlineGlobalconfig("""
         is_global = true
 
         dotnet_diagnostic.CA1860.severity  = none       #  Prefer comparing 'Length' to 0 rather than using 'Any()'

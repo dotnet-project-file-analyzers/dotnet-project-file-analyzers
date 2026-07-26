@@ -40,7 +40,7 @@ public static partial class Rule
             tags: ["INI", "noise"],
             category: Category.Noise);
 
-        public static DiagnosticDescriptor RemoveGlobalConfigHeader => New(
+        public static DiagnosticDescriptor RemoveSectionHeader => New(
             id: 4025,
             title: "Remove section header",
             message: "Remove section header",
