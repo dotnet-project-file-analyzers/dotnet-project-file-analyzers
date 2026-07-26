@@ -90,7 +90,7 @@ public static partial class Rule
             message: "Diagnostic analyzer rule '{0}' is unknown",
             description:
                 "The compiler requires standard severity keywords to parse .globalconfig " +
-                "files. Using invalid values typos prevents the rule from being " +
+                "files. Using invalid values prevents the rule from being " +
                 "applied as intended.",
             tags: [".globalconfig", "diagnostic", "severity"],
             category: Category.Bug);
