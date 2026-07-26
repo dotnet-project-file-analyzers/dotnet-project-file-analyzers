@@ -3,7 +3,7 @@ using Grammr;
 using System.Text.RegularExpressions;
 using static Grammr.Lexers.Shared;
 
-namespace Specs.SourceReader_specs;
+namespace SourceReader_specs;
 
 public class Consumes
 {

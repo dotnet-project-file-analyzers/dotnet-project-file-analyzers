@@ -1,4 +1,4 @@
-namespace Specs.Rules.MS_Build.Enforce_code_style_in_builds;
+namespace Rules.MS_Build.Enforce_code_style_in_builds;
 
 public class Reports
 {

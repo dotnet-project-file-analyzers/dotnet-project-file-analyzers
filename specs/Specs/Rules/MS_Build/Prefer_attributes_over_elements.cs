@@ -1,4 +1,4 @@
-namespace Specs.Rules.MS_Build.Prefer_attributes_over_elements;
+namespace Rules.MS_Build.Prefer_attributes_over_elements;
 
 public class Reports
 {

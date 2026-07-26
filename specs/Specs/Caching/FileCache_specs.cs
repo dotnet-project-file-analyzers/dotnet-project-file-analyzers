@@ -3,7 +3,7 @@ using DotNetProjectFile.IO;
 using System.IO;
 using VerifyTests;
 
-namespace Specs.Caching.FileCache_specs;
+namespace Caching.FileCache_specs;
 
 public class TryGetOrUpdate
 {
