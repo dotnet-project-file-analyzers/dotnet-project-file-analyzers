@@ -56,9 +56,9 @@ public static partial class Rule
             title: "Specify is_global",
             message: "{0} is_global",
             description:
-                "For global configuration files not named `.globalconfig` is " +
-                "required to work properly, otherwise it is for the sake of " +
-                "clarity.",
+                "By explicitly set is_global = true, the settings are correctly " +
+                "applied globally across the entire project or solution, even if " +
+                "the file uses a custom name instead of .globalconfig.",
             tags: [".globalconfig", "header"],
             category: Category.Clarity);
 
