@@ -10,7 +10,7 @@ public sealed class DiagnosticSeverities() : IniFileAnalyzer(
     Rule.Ini.UseExplicitSeverityLevel)
 {
     /// <inheritdoc />
-    public override ImmutableArray<AnalyzerType> ApplicableTo => IniFileTypes.GlobalConfig;
+    public override ImmutableArray<AnalyzerType> ApplicableTo => IniFileTypes.EditorConfig_GlobalConfig;
 
     /// <inheritdoc />
     protected override void Register(IniFileAnalysisContext context)
