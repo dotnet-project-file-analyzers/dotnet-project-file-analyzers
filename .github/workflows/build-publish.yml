@@ -68,7 +68,7 @@ jobs:
           name: nupkg
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v3
+        uses: softprops/action-gh-release@v3.0.1
         with:
           tag_name: ${{ github.ref_name }}
           generate_release_notes: true
