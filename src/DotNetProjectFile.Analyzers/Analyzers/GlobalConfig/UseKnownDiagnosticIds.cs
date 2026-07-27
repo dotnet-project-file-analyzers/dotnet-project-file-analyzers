@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace DotNetProjectFile.Analyzers.GlobalConfig;
 
-/// <summary>Implements <see cref="Rule.Ini.SpecifyIsGlobal"/>.</summary>
+/// <summary>Implements <see cref="Rule.Ini.UseKnownDiagnosticIds"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseKnownDiagnosticIds()
     : IniFileAnalyzer(Rule.Ini.UseKnownDiagnosticIds)

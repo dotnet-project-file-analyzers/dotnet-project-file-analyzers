@@ -3,7 +3,11 @@ using DotNetProjectFile.Ini;
 
 namespace DotNetProjectFile.Analyzers.GlobalConfig;
 
-/// <summary>Implements <see cref="Rule.Ini.SpecifyIsGlobal"/>.</summary>
+/// <summary>
+/// Implements
+/// <see cref="Rule.Ini.UseValidSeverityLevel"/> and
+/// <see cref="Rule.Ini.UseExplicitSeverityLevel"/>.
+/// </summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class DiagnosticSeverities() : IniFileAnalyzer(
     Rule.Ini.UseValidSeverityLevel,
