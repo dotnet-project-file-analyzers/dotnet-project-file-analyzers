@@ -505,6 +505,14 @@ public static partial class Rule
         tags: ["Clarity", "Readability"],
         category: Category.Formatting);
 
+    public static DiagnosticDescriptor RunAnalyzersDuringBuild => New(
+      id: 0053,
+      title: "Run analyzers during build",
+      message: "Run analyzers during build",
+      description: "Diagnostic analyzers give importent feedback that should not be ingored.",
+      tags: ["MSBuild", "analyzers"],
+      category: Category.CodeQuality);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",

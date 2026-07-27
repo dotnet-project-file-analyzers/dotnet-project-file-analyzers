@@ -24,6 +24,7 @@ public class Contains
             "build/AdditionalFiles.Sdk.props",
             "build/CompilerVisible.props", 
             "build/AdditionalFiles.targets",
+            "build/DotNetProjectFile.Analyzers.globalconfig",
             "build/DotNetProjectFile.Analyzers.props",
             "build/DotNetProjectFile.Analyzers.Sdk.props",
             "build/DotNetProjectFile.Analyzers.targets",

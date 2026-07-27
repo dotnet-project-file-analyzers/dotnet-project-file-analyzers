@@ -104,6 +104,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0050** Enforce code-style in builds](rules/Proj0050.md)
 * [**Proj0051** Project reference must be case-consistent with the file system](rules/Proj0051.md)
 * [**Proj0052** Prefer attributes over element](rules/Proj0052.md)
+* [**Proj0053** Run analyzers during build](rules/Proj0053.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
