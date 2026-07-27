@@ -1,0 +1,5 @@
+is_global = true
+global_level = -1 # To prevent this config taking presidence over local globalconfigs
+
+# Ensures that `dotnet_diagnostic.severity` will not affect this rule (dotnet_diagnostic.Proj4030.severity can be overridden though),
+dotnet_diagnostic.Proj4030.severity = warning # Use rule or catagory based scopes to update severities
