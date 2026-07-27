@@ -12,7 +12,7 @@ public sealed class AnalyzerDiagnosticSeverity(IniEntry entry)
     public IniKey Key => Entry.Key!;
 
     /// <summary>Gets the diagnostic ID.</summary>
-    public string DiagnosticId => Entry.Value!.Text![18..^9];
+    public string DiagnosticId => Entry.Key!.Text![18..^9];
 
     /// <summary>The raw string value of the entry.</summary>
     public string? Value => Entry.Value?.Text;

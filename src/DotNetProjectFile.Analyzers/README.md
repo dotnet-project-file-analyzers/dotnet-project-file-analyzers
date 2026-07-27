@@ -199,6 +199,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj4026** Specify is_global](https://dotnet-project-file-analyzers.github.io/rules/Proj4026.html)
 * [**Proj4027** Use valid diagnostic severity value](https://dotnet-project-file-analyzers.github.io/rules/Proj4027.html)
 * [**Proj4028** Use explicit diagnostic severity level](https://dotnet-project-file-analyzers.github.io/rules/Proj4028.html)
+* [**Proj4029** Use known diagnostic IDs](https://dotnet-project-file-analyzers.github.io/rules/Proj4029.html)
 
 ## .editorconfig
 * [**Proj4050** Header must be a GLOB](https://dotnet-project-file-analyzers.github.io/rules/Proj4050.html)
