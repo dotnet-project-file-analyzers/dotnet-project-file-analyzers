@@ -108,7 +108,7 @@ public static partial class Rule
         public static DiagnosticDescriptor AvoidGlobalDiagnosticSeverityConfiguration => New(
             id: 4031,
             title: "Avoid global diagnostic severity configuration",
-            message: "Use a more granular apprach to configure diagnostic severties",
+            message: "Use a more granular approach to configure diagnostic severities",
             description:
                 "Configuring all diagnostic rules at once is considered a bad " +
                 "practice. Choose specific rules/rule groups to configure instead.",
