@@ -2,6 +2,10 @@
 
   <Import Project="$(MSBuildThisFileDirectory)CompilerVisible.props" />
 
+  <ItemGroup>
+    <GlobalAnalyzerConfigFiles Include="$(MSBuildThisFileDirectory)DotNetProjectFile.globalconfig" />
+  </ItemGroup>
+
   <PropertyGroup>
     <SonarQubeIntegration>true</SonarQubeIntegration>
     <IsDotNetProjectFileSdk Condition="$(MSBuildProjectFile) == '.net.csproj'">true</IsDotNetProjectFileSdk>

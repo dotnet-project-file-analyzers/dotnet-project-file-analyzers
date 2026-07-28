@@ -99,6 +99,8 @@ v1.16.0
 - Proj4027: Use valid diagnostic severity value. (NEW RULE)
 - Proj4028: Use explicit diagnostic severity level. (NEW RULE)
 - Proj4029: Use known diagnostic IDs. (NEW RULE)
+- Proj4030: Avoid global diagnostic suppression. (NEW RULE)
+- Proj4031: Avoid global diagnostic severity configuration. (NEW RULE)
 - Proj4050: Header must be a GLOB. (RE-ENABLE)
 - Proj4051: Use equals sign for key-value assignments. (RE-ENABLE)
 - Proj4052: Use global configuration for Roslyn diagnostics. (NEW RULE)

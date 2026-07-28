@@ -85,15 +85,35 @@ public static partial class Rule
             category: Category.Clarity);
 
         public static DiagnosticDescriptor UseKnownDiagnosticIds => New(
-            id: 4029,
-            title: "Use valid diagnostic severity value",
-            message: "Diagnostic analyzer rule '{0}' is unknown",
+           id: 4029,
+           title: "Use valid diagnostic severity value",
+           message: "Diagnostic analyzer rule '{0}' is unknown",
+           description:
+               "The compiler requires standard severity keywords to parse .globalconfig " +
+               "files. Using invalid values prevents the rule from being " +
+               "applied as intended.",
+           tags: [".globalconfig", "diagnostic", "severity"],
+           category: Category.Bug);
+
+        public static DiagnosticDescriptor AvoidGlobalDiagnosticSuppression => New(
+            id: 4030,
+            title: "Avoid global diagnostic suppression",
+            message: "Use a more granular approach to suppress specific diagnostics",
             description:
-                "The compiler requires standard severity keywords to parse .globalconfig " +
-                "files. Using invalid values prevents the rule from being " +
-                "applied as intended.",
+                "Disabling all diagnostic rules at once is considered a bad " +
+                "practice. Choose specific rules/rule groups to disable instead.",
+            tags: [".globalconfig", "diagnostic", "severity", "suppression"],
+            category: Category.Design);
+
+        public static DiagnosticDescriptor AvoidGlobalDiagnosticSeverityConfiguration => New(
+            id: 4031,
+            title: "Avoid global diagnostic severity configuration",
+            message: "Use a more granular approach to configure diagnostic severities",
+            description:
+                "Configuring all diagnostic rules at once is considered a bad " +
+                "practice. Choose specific rules/rule groups to configure instead.",
             tags: [".globalconfig", "diagnostic", "severity"],
-            category: Category.Bug);
+            category: Category.Design);
 
         public static DiagnosticDescriptor HeaderMustBeGlob => New(
             id: 4050,

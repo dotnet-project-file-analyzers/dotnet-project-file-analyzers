@@ -137,6 +137,15 @@ public class Resolves
             },
             new ProjectItem
             {
+                ItemSpec = Full("../src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.globalconfig"),
+                Metadata = new Meta
+                {
+                    Link = "DotNetProjectFile.globalconfig",
+                    AnalyzerType = "GlobalConfig",
+                },
+            },
+            new ProjectItem
+            {
                 ItemSpec = "copyright.props",
                 Metadata = new Meta
                 {
@@ -217,7 +226,7 @@ public class Resolves
     private static void Log(IAnalyzerResult result)
     {
 #if DEBUG
-        ProjectItem.Generate(result.Items.OfType("Content"));
+        ProjectItem.Generate(result.Items.OfType("AdditionalFiles"));
 #endif
     }
 }

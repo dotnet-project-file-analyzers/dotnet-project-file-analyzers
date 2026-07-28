@@ -251,6 +251,8 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj4027** Use valid diagnostic severity value](rules/Proj4027.md)
 * [**Proj4028** Use explicit diagnostic severity level](rules/Proj4028.md)
 * [**Proj4029** Use known diagnostic IDs](rules/Proj4029.md)
+* [**Proj4030** Avoid global diagnostic suppression](rules/Proj4030.md)
+* [**Proj4031** Avoid global diagnostic severity configuration](rules/Proj4031.md)
 
 ## .editorconfig
 * [**Proj4050** Header must be a GLOB](rules/Proj4050.md)
