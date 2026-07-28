@@ -509,7 +509,7 @@ public static partial class Rule
       id: 0053,
       title: "Run analyzers during build",
       message: "Run analyzers during build",
-      description: "Diagnostic analyzers give importent feedback that should not be ingored.",
+      description: "Diagnostic analyzers give important feedback that should not be ignored.",
       tags: ["MSBuild", "analyzers"],
       category: Category.CodeQuality);
 
