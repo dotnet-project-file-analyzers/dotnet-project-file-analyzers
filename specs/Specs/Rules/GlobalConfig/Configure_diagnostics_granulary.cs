@@ -9,7 +9,7 @@ public class Reports
         dotnet_diagnostic.severity         = none
         dotnet_diagnostic.IDE0004.severity = none
         """)
-        .HasIssue(Issue.WRN("Proj4030", "Use a more granular apprach to suppress specific diagnostics").WithSpan(00, 00, 01, 00));
+        .HasIssue(Issue.WRN("Proj4030", "Use a more granular approach to suppress specific diagnostics").WithSpan(00, 00, 01, 00));
 
     [Test]
     public void global_configuration() => new ConfigureDiagnosticsGranulary().ForInlineGlobalconfig("""
