@@ -98,7 +98,7 @@ public static partial class Rule
         public static DiagnosticDescriptor AvoidGlobalDiagnosticSuppression => New(
             id: 4030,
             title: "Avoid global diagnostic suppression",
-            message: "Use a more granular apprach to suppress specific diagnostics",
+            message: "Use a more granular approach to suppress specific diagnostics",
             description:
                 "Disabling all diagnostic rules at once is considered a bad " +
                 "practice. Choose specific rules/rule groups to disable instead.",
