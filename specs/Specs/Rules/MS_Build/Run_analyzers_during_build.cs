@@ -3,7 +3,7 @@ namespace Rules.MS_Build.Run_analyzers_during_build;
 public class Reports
 {
     [Test]
-    public void when_dispabled() => new RunAnalyzersDuringBuild().ForInlineCsproj("""
+    public void when_disabled() => new RunAnalyzersDuringBuild().ForInlineCsproj("""
         <Project Sdk="Microsoft.NET.Sdk">
         
           <PropertyGroup>
