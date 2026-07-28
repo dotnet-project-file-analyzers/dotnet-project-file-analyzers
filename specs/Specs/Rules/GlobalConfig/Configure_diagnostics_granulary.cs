@@ -16,7 +16,7 @@ public class Reports
         dotnet_diagnostic.severity        = suggestion
         dotnet_diagnostic.CA1860.severity = default
         """)
-        .HasIssue(Issue.WRN("Proj4031", "Use a more granular apprach to configure diagnostic severties").WithSpan(00, 00, 01, 00));
+        .HasIssue(Issue.WRN("Proj4031", "Use a more granular approach to configure diagnostic severities").WithSpan(00, 00, 01, 00));
 }
 
 public class Guards
