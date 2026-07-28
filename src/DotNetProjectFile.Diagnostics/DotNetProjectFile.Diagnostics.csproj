@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.props" />
+  <Import Project="../../props/common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>library</OutputType>
+    <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Data/*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="5.3.0" />
+    <PackageReference Include="NuGet.Common" Version="7.6.0" />
+    <PackageReference Include="NuGet.Frameworks" Version="7.6.0" />
+    <PackageReference Include="NuGet.Packaging" Version="7.6.0" />
+    <PackageReference Include="NuGet.Protocol" Version="7.6.0" />
+    <PackageReference Include="Qowaiv" Version="8.1.0" />
+  </ItemGroup>
+
+  <ItemGroup Label="Development dependencies">
+    <PackageReference PrivateAssets="all" Include="AsyncFixer" Version="2.1.0" />
+    <PackageReference PrivateAssets="all" Include="Qowaiv.Analyzers.CSharp" Version="2.5.1" />
+    <PackageReference PrivateAssets="all" Include="Qowaiv.Diagnostics.Contracts" Version="2.1.0" />
+    <PackageReference PrivateAssets="all" Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" />
+  </ItemGroup>
+
+  <ItemGroup Label="Analyzer">
+    <ProjectReference
+      PrivateAssets="all"
+      OutputItemType="Analyzer"
+      Include="../DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
+      ReferenceOutputAssembly="false"
+      SetTargetFramework="TargetFramework=netstandard2.0" />
+  </ItemGroup>
+
+  <Import Project="../DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.targets" />
+
+</Project>
