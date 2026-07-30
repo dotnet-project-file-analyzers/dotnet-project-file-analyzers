@@ -5,7 +5,7 @@ namespace DotNetProjectFile.Analyzers.NuGetConfig;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class IndentXml : NuGetConfigFileAnalyzer
 {
-    private readonly IdentationChecker<NuGetConfigFile> Checker;
+    private readonly IndentationChecker<NuGetConfigFile> Checker;
 
     public IndentXml() : this(' ', 2) { }
 

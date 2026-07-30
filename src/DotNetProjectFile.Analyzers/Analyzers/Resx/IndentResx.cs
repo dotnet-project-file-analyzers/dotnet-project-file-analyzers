@@ -6,7 +6,7 @@ namespace DotNetProjectFile.Analyzers.Resx;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class IndentResx : ResourceFileAnalyzer
 {
-    private readonly IdentationChecker<Resource> Checker;
+    private readonly IndentationChecker<Resource> Checker;
 
     public IndentResx() : this(' ', 2) { }
 

@@ -2,7 +2,7 @@ using Microsoft.CodeAnalysis.Text;
 
 namespace DotNetProjectFile.Analyzers.Helpers;
 
-internal sealed class IdentationChecker<TFile>(
+internal sealed class IndentationChecker<TFile>(
     char ch,
     int repeat,
     DiagnosticDescriptor descriptor,
