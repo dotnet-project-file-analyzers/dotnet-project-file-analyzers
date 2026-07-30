@@ -1,3 +1,6 @@
+#pragma warning disable SYSLIB0021 // Type or member is obsolete: we use it to benchmark it
+#pragma warning disable S4790
+
 using System.Security.Cryptography;
 using System.Text;
 
@@ -69,7 +72,6 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
     [MemoryDiagnoser(true)]
     public class Hashing
     {
-#pragma warning disable SYSLIB0021 // Type or member is obsolete: we use it to benchmark it
         private static readonly SHA1 sha1 = SHA1.Create();
         private static readonly SHA1 sha1_managed = SHA1.Create();
         private static readonly IncrementalHash sha1_incremental = IncrementalHash.CreateHash(HashAlgorithmName.SHA1);
@@ -77,7 +79,6 @@ USE OR OTHER DEALINGS IN THE SOFTWARE.
         private static readonly SHA256 sha256_managed = SHA256.Create();
         private static readonly IncrementalHash sha256_incremental = IncrementalHash.CreateHash(HashAlgorithmName.SHA256);
         private static readonly IncrementalHash sha512_incremental = IncrementalHash.CreateHash(HashAlgorithmName.SHA512);
-#pragma warning restore SYSLIB0021 // Type or member is obsolete
 
         [Params(1)]
         public int N { get; set; }
