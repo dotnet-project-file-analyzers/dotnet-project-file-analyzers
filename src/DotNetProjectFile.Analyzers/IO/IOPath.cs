@@ -1,6 +1,3 @@
-#pragma warning disable CA2231 // Overload operator equals on overriding value type Equals
-#pragma warning disable S1210 // "Equals" and the comparison operators should be overridden when implementing "IComparable"
-
 using System.IO;
 
 namespace DotNetProjectFile.IO;

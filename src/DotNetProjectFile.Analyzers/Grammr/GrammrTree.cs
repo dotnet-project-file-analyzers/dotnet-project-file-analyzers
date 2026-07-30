@@ -42,5 +42,7 @@ public sealed class GrammrTree(IOFile path, SourceText text)
     /// The additional text load from.
     /// </param>
     [Pure]
-    public static GrammrTree Load(AdditionalText text) => new(IOFile.Parse(text.Path), text.GetText()!);
+    public static GrammrTree Load(AdditionalText text) => new(
+        IOFile.Parse(text.Path),
+        text.Text());
 }

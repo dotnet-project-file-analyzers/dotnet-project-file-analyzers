@@ -39,12 +39,11 @@ public sealed class SolutionFile : Node, ProjectFile
         projectFiles: projects,
         additionalText: null);
 
-    public static SolutionFile Load(AdditionalText text, ProjectFiles projects)
-        => new(
-            path: text.Location,
-            text: text.GetText()!,
-            projectFiles: projects,
-            additionalText: text);
+    public static SolutionFile Load(AdditionalText text, ProjectFiles projects) => new(
+        path: text.Location,
+        text: text.Text(),
+        projectFiles: projects,
+        additionalText: text);
 
     private static readonly LoadOptions LoadOptions = LoadOptions.PreserveWhitespace | LoadOptions.SetLineInfo;
 }

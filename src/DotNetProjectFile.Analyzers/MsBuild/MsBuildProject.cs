@@ -139,16 +139,18 @@ public sealed partial class MsBuildProject : Node, ProjectFile
     /// Returns null if the files does not contain valid XML.
     /// </remarks>
     [Pure]
-    public static MsBuildProject? Load(AnalyzerType type, AdditionalText text, ProjectFiles projects)
+    public static MsBuildProject? Load(AnalyzerType type, AdditionalText additional, ProjectFiles projects)
     {
         try
         {
-            return new(
-                type: type,
-                path: text.Location,
-                text: text.GetText()!,
-                projectFiles: projects,
-                additionalText: text);
+            return additional.GetText() is { } text
+                ? new(
+                    type: type,
+                    path: additional.Location,
+                    text: text,
+                    projectFiles: projects,
+                    additionalText: additional)
+                : null;
         }
         catch (XmlException)
         {

@@ -39,7 +39,10 @@ public static class PackageCache
             : @"~/.nuget/packages";
     }
 
-    public static Package? GetPackage(string? name, string? version) => GetPackage(new(name!, version));
+    public static Package? GetPackage(string? name, string? version)
+        => name is { } n
+        ? GetPackage(new(n, version))
+        : null;
 
     public static Package? GetPackage(PackageVersionInfo info)
     {

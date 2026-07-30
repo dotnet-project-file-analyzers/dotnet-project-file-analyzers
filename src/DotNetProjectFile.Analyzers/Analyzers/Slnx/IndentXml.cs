@@ -10,7 +10,7 @@ public sealed class IndentXml : SolutionFileAnalyzer
 
     public IndentXml() : this(' ', 2) { }
 
-    private readonly IdentationChecker<SolutionFile> Checker;
+    private readonly IndentationChecker<SolutionFile> Checker;
 
     /// <inheritdoc />
     protected override void Register(SolutionFileAnalysisContext context)

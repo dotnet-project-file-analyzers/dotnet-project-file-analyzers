@@ -3,7 +3,7 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class IndentXml : MsBuildProjectFileAnalyzer
 {
-    private readonly IdentationChecker<MsBuildProject> Checker;
+    private readonly IndentationChecker<MsBuildProject> Checker;
 
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;

@@ -41,7 +41,7 @@ public sealed class NuGetConfigFile : Node, ProjectFile
 
     public static NuGetConfigFile Load(AdditionalText text) => new(
         path: text.Location,
-        text: text.GetText()!,
+        text: text.Text(),
         additionalText: text);
 
     private static readonly LoadOptions LoadOptions = LoadOptions.PreserveWhitespace | LoadOptions.SetLineInfo;
