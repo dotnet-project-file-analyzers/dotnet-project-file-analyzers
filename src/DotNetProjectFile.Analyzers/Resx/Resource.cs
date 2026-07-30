@@ -59,7 +59,7 @@ public sealed class Resource : Node, ProjectFile
     public static Resource Load(AdditionalText text, ProjectFiles projectFiles)
     {
         var file = new ResourceFileInfo(text.Location);
-        var sourceText = text.GetText()!;
+        var sourceText = text.Text();
         var isXml = TryElement(sourceText, out var element);
         return new(file, element, sourceText, isXml, projectFiles);
     }

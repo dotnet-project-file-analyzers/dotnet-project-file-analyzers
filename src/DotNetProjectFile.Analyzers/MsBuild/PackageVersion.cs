@@ -4,5 +4,5 @@ public sealed class PackageVersion(XElement element, Node parent, MsBuildProject
     : PackageReferenceBase(element, parent, project)
 {
     public override (Node Node, string Version)? ResolveVersionVerbose(bool cpmEnabled)
-        => (this, Version!);
+        => Version is { Length: > 0 } v ? (this, v) : null;
 }
