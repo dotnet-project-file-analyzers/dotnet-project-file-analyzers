@@ -1,7 +1,7 @@
 using DotNetProjectFile.Diagnostics;
 using System.IO;
 
-namespace Specs.Diagnostics.AnalyzersInfo_specs;
+namespace Diagnostics.AnalyzersInfo_specs;
 
 public class Embedded
 {
