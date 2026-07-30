@@ -14,6 +14,10 @@ public sealed record DiagnosticCollection
     [JsonPropertyName("similar")]
     public ImmutableArray<ImmutableArray<DiagnosticId>> Similar { get; init; } = [];
 
+    /// <summary>Rules that contradict each other.</summary>
+    [JsonPropertyName("contradict")]
+    public ImmutableArray<ImmutableArray<DiagnosticId>> Contradict { get; init; } = [];
+
     [JsonPropertyName("packages")]
     public ImmutableArray<NugetPackage> Packages { get; init; } = [];
 
