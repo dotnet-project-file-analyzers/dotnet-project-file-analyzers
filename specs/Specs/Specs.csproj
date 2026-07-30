@@ -17,6 +17,7 @@
 
   <ItemGroup Label="Project under test">
     <ProjectReference Include="../../src/DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" />
+    <ProjectReference Include="../../src/DotNetProjectFile.Diagnostics/DotNetProjectFile.Diagnostics.csproj" />
   </ItemGroup>
 
   <ItemGroup Label="Test data">
@@ -34,9 +35,9 @@
   <ItemGroup Label="Test tools">
     <PackageReference Include="AwesomeAssertions" Version="9.4.0" />
     <PackageReference Include="CodeAnalysis.TestTools" Version="5.0.0" />
-    <PackageReference Include="NuGet.Common" Version="7.3.1" />
-    <PackageReference Include="NuGet.Frameworks" Version="7.3.1" />
-    <PackageReference Include="NuGet.Packaging" Version="7.3.1" />
+    <PackageReference Include="NuGet.Common" Version="7.6.0" />
+    <PackageReference Include="NuGet.Frameworks" Version="7.6.0" />
+    <PackageReference Include="NuGet.Packaging" Version="7.6.0" />
     <PackageReference Include="NUnit" Version="4.6.0" />
     <PackageReference Include="Verify" Version="31.16.2" />
     <PackageReference Include="Verify.NUnit" Version="31.16.2" />
