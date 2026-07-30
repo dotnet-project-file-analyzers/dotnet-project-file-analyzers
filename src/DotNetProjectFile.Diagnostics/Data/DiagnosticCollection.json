@@ -1,4 +1,15 @@
 {
+  "similar": [
+    [
+      "S6354",
+      "QW0001",
+      "FFS0001",
+      "FFS0002",
+      "FFS0003",
+      "FFS0004",
+      "FFS0004"
+    ]
+  ],
   "packages": [
     {
       "id": "Agoda.Analyzers",
