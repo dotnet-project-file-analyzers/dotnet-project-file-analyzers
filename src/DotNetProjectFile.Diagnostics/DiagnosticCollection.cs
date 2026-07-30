@@ -7,10 +7,13 @@ using System.Text.Json.Serialization;
 namespace DotNetProjectFile.Diagnostics;
 
 /// <summary>A collection of <see cref="NugetPackage"/>s.</summary>
-[DebuggerDisplay("Packages = {Packages.Length}, Rules = {Rules.Count()}")]
+[DebuggerDisplay("Packages = {Packages.Length}, Rules = {Count}")]
 public sealed record DiagnosticCollection
 {
-    [DebuggerBrowsable(DebuggerBrowsableState.RootHidden)]
+    /// <summary>Rules that are similar.</summary>
+    [JsonPropertyName("similar")]
+    public ImmutableArray<ImmutableArray<DiagnosticId>> Similar { get; init; } = [];
+
     [JsonPropertyName("packages")]
     public ImmutableArray<NugetPackage> Packages { get; init; } = [];
 
