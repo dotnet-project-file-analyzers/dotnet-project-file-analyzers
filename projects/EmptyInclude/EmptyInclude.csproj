@@ -23,6 +23,7 @@
 
   <ItemGroup Label="Ignores">
     <Compile Include="./../ignore/$(Configuration).doc" />
+	<AdditionalFiles Include="@(Compile)" />
   </ItemGroup>
 
 </Project>

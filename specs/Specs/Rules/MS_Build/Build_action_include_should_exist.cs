@@ -3,8 +3,7 @@ namespace Rules.MS_Build.Build_action_include_should_exist;
 public class Reports
 {
     [Test]
-    public void empty_includes()
-        => new BuildActionIncludeShouldExist()
+    public void empty_includes() => new BuildActionIncludeShouldExist()
         .ForProject("EmptyInclude.cs")
         .HasIssues(
             Issue.WRN("Proj0022", "The Include '*.txt' of <None> does not match any files" /*..........*/).WithSpan(08, 04, 08, 28),
@@ -15,8 +14,7 @@ public class Reports
         );
 
     [Test]
-    public void empty_includes_config_files()
-        => new BuildActionIncludeShouldExist()
+    public void empty_includes_config_files() => new BuildActionIncludeShouldExist()
         .ForProject("ConfigFilesExistence.cs")
         .HasIssues(
             Issue.WRN("Proj0022", "The Include 'missing.editor' of <EditorConfgFiles> does not exist" /*....*/).WithSpan(12, 04, 12, 49),
@@ -27,8 +25,7 @@ public class Reports
 public class Guards
 {
     [TestCase("CompliantCSharp.cs")]
-    public void Projects_with_analyzers(string project)
-         => new BuildActionIncludeShouldExist()
+    public void Projects_with_analyzers(string project) => new BuildActionIncludeShouldExist()
         .ForProject(project)
         .HasNoIssues();
 }

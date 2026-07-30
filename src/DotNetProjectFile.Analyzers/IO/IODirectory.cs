@@ -177,7 +177,9 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
     private IEnumerable<T>? Iterate<T>(string path, Func<DirectoryInfo, string, IEnumerable<T>> enumerate)
     {
         // We do not support variables yet.
-        if (path.Contains("$(") || Info is null) return null;
+        if (path.Contains("$(")
+            || path.Contains("@(")
+            || Info is null) return null;
 
         IEnumerable<DirectoryInfo> enumerator = new RootDirectory(Info);
         var parts = path.Split('/', '\\');
