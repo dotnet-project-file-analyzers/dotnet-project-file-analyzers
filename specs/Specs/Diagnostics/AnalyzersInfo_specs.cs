@@ -10,7 +10,7 @@ public class Embedded
     {
         var info = DiagnosticCollection.Embedded();
         info.Packages.Should().AllSatisfy(p => p.Rules.Should().NotBeEmpty(because: p.Id));
-        info.Count.Should().Be(7353);
+        info.Count.Should().Be(7354);
     }
 
     [Test]
