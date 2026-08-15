@@ -7,7 +7,7 @@ namespace DotNetProjectFile.Diagnostics.IO;
 /// Should always been used with a using statement.
 ///
 /// <code>
-/// using(var directory = new TemporaryDirectory()
+/// using(var directory = new TemporaryDirectory())
 /// {
 ///     // Do stuff.
 /// }
