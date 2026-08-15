@@ -1,5 +1,6 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.UseInCSharpContextOnly"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseInCSharpContextOnly() : MsBuildProjectFileAnalyzer(Rule.UseInCSharpContextOnly)
 {
@@ -21,7 +22,7 @@ public sealed class UseInCSharpContextOnly() : MsBuildProjectFileAnalyzer(Rule.U
 
     private void Walk(Node node, ProjectFileAnalysisContext context)
     {
-        if (CSharpOnly.Contains(node.GetType()))
+        if (CSharpOnly.Contains(node.GetType()) && !ExceptNullableForFSharp())
         {
             context.ReportDiagnostic(Descriptor, node, node.LocalName);
         }
@@ -30,5 +31,9 @@ public sealed class UseInCSharpContextOnly() : MsBuildProjectFileAnalyzer(Rule.U
         {
             Walk(child, context);
         }
+
+        bool ExceptNullableForFSharp()
+            => node is DotNetProjectFile.MsBuild.CSharp.Nullable
+            && context.File.Language == Language.FSharp;
     }
 }
