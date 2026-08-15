@@ -8,6 +8,9 @@ public sealed class EnforceCodeStyleInBuilds() : MsBuildProjectFileAnalyzer(Rule
     public override ImmutableArray<AnalyzerType> ApplicableTo => ProjectFileTypes.ProjectFile;
 
     /// <inheritdoc />
+    public override ImmutableArray<Language> ApplicableLanguages => Languages.RoslynBased;
+
+    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         if (context.File.Property<EnforceCodeStyleInBuild>() is null)
