@@ -74,4 +74,4 @@ Rule numbering: `Proj00xx` general, `Proj02xx` packaging, `Proj03xx` NuGet confi
 ## Gotchas
 
 * **Do not modify `.net.csproj`:** This file is exclusively for running Roslyn Analyzers. Agents must completely ignore and skip this file during development.
-* **Do not modify or read `src/DotNetProjectFile.Diagnostics/Data/`DiagnosticCollection.json`:** This file is huge, and is data about analyzers.
+* **Do not modify or read `src/DotNetProjectFile.Diagnostics/Data/DiagnosticCollection.json`:** This file is huge, and is data about analyzers.
