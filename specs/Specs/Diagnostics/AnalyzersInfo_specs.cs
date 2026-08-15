@@ -14,7 +14,7 @@ public class Embedded
     }
 
     [Test]
-    public void Contains_pakages()
+    public void Contains_packages()
     {
         var info = DiagnosticCollection.Embedded();
         var packages = info.Packages.Select(p => p.Id);
