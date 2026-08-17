@@ -22,30 +22,30 @@
 
   <!-- Directory.Build.props -->
   <ItemGroup Condition="'$(ImportDirectoryBuildProps)' == 'true'">
+    <AdditionalFiles Remove="$(DirectoryBuildPropsPath)" />
     <AdditionalFiles
       AnalyzerType="DirectoryBuildProps"
       Include="$(DirectoryBuildPropsPath)"
-      Exclude="@(AdditionalFiles)"
       Visible="false" />
     <CompilerVisibleProperty Include="DirectoryBuildPropsPath" />
   </ItemGroup>
 
   <!-- Directory.Build.targets -->
   <ItemGroup Condition="'$(ImportDirectoryBuildTargets)' == 'true'">
+    <AdditionalFiles Remove="$(DirectoryBuildTargetsPath)" />
     <AdditionalFiles
       AnalyzerType="DirectoryBuildTargets"
       Include="$(DirectoryBuildTargetsPath)"
-      Exclude="@(AdditionalFiles)"
       Visible="false" />
     <CompilerVisibleProperty Include="DirectoryBuildTargetsPath" />
   </ItemGroup>
 
   <!-- Directory.Packages.props -->
   <ItemGroup Condition="'$(ImportDirectoryPackagesProps)' == 'true'">
+    <AdditionalFiles Remove="$(DirectoryPackagesPropsPath)" />
     <AdditionalFiles
       AnalyzerType="DirectoryPackagesProps"
       Include="$(DirectoryPackagesPropsPath)"
-      Exclude="@(AdditionalFiles)"
       Visible="false" />
     <CompilerVisibleProperty Include="DirectoryPackagesPropsPath" />
   </ItemGroup>

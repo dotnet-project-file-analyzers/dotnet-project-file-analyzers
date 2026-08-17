@@ -79,7 +79,7 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.16.0</Version>
+    <Version>1.16.1</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
@@ -88,6 +88,8 @@ ToBeDecided:
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.16.1
+- Set analyzer type of Directory.Build.props, Directory.Build.targets, and Directory.Packages.props correctly. (BUG)
 v1.16.0
 - Proj0006: Skip detecting if RESX'es are additional files. (UPDATE)
 - Proj0022: Ignore MSBuild item expressions. (FP)
