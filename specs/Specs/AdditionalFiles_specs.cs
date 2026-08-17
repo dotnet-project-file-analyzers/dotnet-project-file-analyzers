@@ -86,8 +86,8 @@ public class Resolves
                 ItemSpec = ".net.csproj",
                 Metadata = new Meta
                 {
-                    AnalyzerType = "SDK",
                     Visible = "false",
+                    AnalyzerType = "SDK",
                 },
             },
             new ProjectItem
@@ -137,6 +137,33 @@ public class Resolves
             },
             new ProjectItem
             {
+                ItemSpec = Full("AdditionalFilesProject/Directory.Build.props"),
+                Metadata = new Meta
+                {
+                    Visible = "false",
+                    AnalyzerType = "DirectoryBuildProps",
+                },
+            },
+            new ProjectItem
+            {
+                ItemSpec = Full("AdditionalFilesProject/Directory.Build.targets"),
+                Metadata = new Meta
+                {
+                    Visible = "false",
+                    AnalyzerType = "DirectoryBuildTargets",
+                },
+            },
+            new ProjectItem
+            {
+                ItemSpec = Full("AdditionalFilesProject/Directory.Packages.props"),
+                Metadata = new Meta
+                {
+                    Visible = "false",
+                    AnalyzerType = "DirectoryPackagesProps",
+                },
+            },
+            new ProjectItem
+            {
                 ItemSpec = Full("../src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.globalconfig"),
                 Metadata = new Meta
                 {
@@ -147,33 +174,6 @@ public class Resolves
             new ProjectItem
             {
                 ItemSpec = "copyright.props",
-                Metadata = new Meta
-                {
-                    Visible = "true",
-                    AnalyzerType = "MSBuildProps",
-                },
-            },
-            new ProjectItem
-            {
-                ItemSpec = "Directory.Build.props",
-                Metadata = new Meta
-                {
-                    Visible = "true",
-                    AnalyzerType = "MSBuildProps",
-                },
-            },
-            new ProjectItem
-            {
-                ItemSpec = "Directory.Build.targets",
-                Metadata = new Meta
-                {
-                    Visible = "true",
-                    AnalyzerType = "MSBuildProps",
-                },
-            },
-            new ProjectItem
-            {
-                ItemSpec = "Directory.Packages.props",
                 Metadata = new Meta
                 {
                     Visible = "true",

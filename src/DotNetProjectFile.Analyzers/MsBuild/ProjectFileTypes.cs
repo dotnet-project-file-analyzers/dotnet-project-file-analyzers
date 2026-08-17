@@ -2,6 +2,17 @@ namespace DotNetProjectFile.MsBuild;
 
 public static class ProjectFileTypes
 {
+    /// <summary>All.</summary>
+    public static readonly ImmutableArray<AnalyzerType> All =
+    [
+        AnalyzerType.MSBuildProject,
+        AnalyzerType.MSBuildProps,
+        AnalyzerType.DirectoryBuildProps,
+        AnalyzerType.DirectoryBuildTargets,
+        AnalyzerType.DirectoryPackagesProps,
+        AnalyzerType.SDK,
+    ];
+
     /// <summary>Project files only.</summary>
     public static readonly ImmutableArray<AnalyzerType> ProjectFile = [AnalyzerType.MSBuildProject];
 
@@ -29,38 +40,15 @@ public static class ProjectFileTypes
     public static readonly ImmutableArray<AnalyzerType> ProjectFile_DirectoryPackages =
     [
         AnalyzerType.MSBuildProject,
-         AnalyzerType.DirectoryBuildProps,
+        AnalyzerType.DirectoryBuildProps,
         AnalyzerType.DirectoryBuildTargets,
     ];
 
     /// <summary>All but Directory.Packages.props.</summary>
-    public static readonly ImmutableArray<AnalyzerType> AllExceptDirectoryPackages =
-    [
-        AnalyzerType.MSBuildProject,
-        AnalyzerType.MSBuildProps,
-        AnalyzerType.DirectoryBuildProps,
-        AnalyzerType.DirectoryBuildTargets,
-        AnalyzerType.SDK,
-    ];
+    public static readonly ImmutableArray<AnalyzerType> AllExceptDirectoryPackages
+        = All.Remove(AnalyzerType.DirectoryPackagesProps);
 
     /// <summary>All but .net.csproj SDK.</summary>
-    public static readonly ImmutableArray<AnalyzerType> AllExceptSDK =
-    [
-        AnalyzerType.MSBuildProject,
-        AnalyzerType.MSBuildProps,
-        AnalyzerType.DirectoryBuildProps,
-        AnalyzerType.DirectoryBuildTargets,
-        AnalyzerType.DirectoryPackagesProps,
-    ];
-
-    /// <summary>All.</summary>
-    public static readonly ImmutableArray<AnalyzerType> All =
-    [
-        AnalyzerType.MSBuildProject,
-        AnalyzerType.MSBuildProps,
-        AnalyzerType.DirectoryBuildProps,
-        AnalyzerType.DirectoryBuildTargets,
-        AnalyzerType.DirectoryPackagesProps,
-        AnalyzerType.SDK,
-    ];
+    public static readonly ImmutableArray<AnalyzerType> AllExceptSDK
+        = All.Remove(AnalyzerType.SDK);
 }

@@ -8,7 +8,7 @@ public sealed class AvoidChangingCompilerTools() : MsBuildProjectFileAnalyzer(Ru
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc />
-    protected override void Register(ProjectFileAnalysisContext<MsBuildProject> context)
+    protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var property in context.File.PropertyGroups.Children<Node>(IsCompilerTool))
         {

@@ -9,9 +9,6 @@ public sealed class LabelItemGroupsThatRemoveCompilationItems()
     public override bool DisableOnFailingImport => false;
 
     /// <inheritdoc />
-    public override ImmutableArray<AnalyzerType> ApplicableTo => ProjectFileTypes.All;
-
-    /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
         foreach (var group in context.File.ItemGroups.Where(RequireLabel))
