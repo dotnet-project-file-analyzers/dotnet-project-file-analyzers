@@ -13,7 +13,6 @@ public sealed class UseInVBContextOnly() : MsBuildProjectFileAnalyzer(Rule.UseIn
         typeof(OptionInfer),
         typeof(OptionStrict),
         typeof(RemoveIntegerChecks),
-        typeof(VbcToolPath),
         typeof(VbcVerbosity),
     ];
 
