@@ -18,7 +18,6 @@ public class Reports
             <OptionStrict>On</OptionStrict>
             <RemoveIntegerChecks>true</RemoveIntegerChecks>
             <VbcVerbosity>Verbose</VbcVerbosity>
-            <VbcToolPath />
           </PropertyGroup>
 
         </Project>
@@ -30,8 +29,7 @@ public class Reports
             Issue.WRN("Proj0030", "The property <OptionInfer> is only applicable when using VB.NET and can therefore be removed" /*...........*/).WithSpan(09, 4, 09, 33),
             Issue.WRN("Proj0030", "The property <OptionStrict> is only applicable when using VB.NET and can therefore be removed" /*..........*/).WithSpan(10, 4, 10, 35),
             Issue.WRN("Proj0030", "The property <RemoveIntegerChecks> is only applicable when using VB.NET and can therefore be removed" /*...*/).WithSpan(11, 4, 11, 51),
-            Issue.WRN("Proj0030", "The property <VbcVerbosity> is only applicable when using VB.NET and can therefore be removed" /*..........*/).WithSpan(12, 4, 12, 40),
-            Issue.WRN("Proj0030", "The property <VbcToolPath> is only applicable when using VB.NET and can therefore be removed" /*...........*/).WithSpan(13, 4, 13, 19));
+            Issue.WRN("Proj0030", "The property <VbcVerbosity> is only applicable when using VB.NET and can therefore be removed" /*..........*/).WithSpan(12, 4, 12, 40));
 }
 
 public class Guards
