@@ -55,6 +55,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0051** Project reference must be case-consistent with the file system](https://dotnet-project-file-analyzers.github.io/rules/Proj0051.html)
 * [**Proj0052** Prefer attributes over element](https://dotnet-project-file-analyzers.github.io/rules/Proj0052.html)
 * [**Proj0053** Run analyzers during build](https://dotnet-project-file-analyzers.github.io/rules/Proj0053.html)
+* [**Proj0054** Avoid changing compiler tools](https://dotnet-project-file-analyzers.github.io/rules/Proj0054.html)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)

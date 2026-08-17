@@ -105,6 +105,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0051** Project reference must be case-consistent with the file system](rules/Proj0051.md)
 * [**Proj0052** Prefer attributes over element](rules/Proj0052.md)
 * [**Proj0053** Run analyzers during build](rules/Proj0053.md)
+* [**Proj0054** Avoid changing compiler tools](rules/Proj0054.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)

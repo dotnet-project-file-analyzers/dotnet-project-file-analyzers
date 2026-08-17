@@ -506,12 +506,22 @@ public static partial class Rule
         category: Category.Formatting);
 
     public static DiagnosticDescriptor RunAnalyzersDuringBuild => New(
-      id: 0053,
-      title: "Run analyzers during build",
-      message: "Run analyzers during build",
-      description: "Diagnostic analyzers give important feedback that should not be ignored.",
-      tags: ["MSBuild", "analyzers"],
-      category: Category.CodeQuality);
+        id: 0053,
+        title: "Run analyzers during build",
+        message: "Run analyzers during build",
+        description: "Diagnostic analyzers give important feedback that should not be ignored.",
+        tags: ["MSBuild", "analyzers"],
+        category: Category.CodeQuality);
+
+    public static DiagnosticDescriptor AvoidChangingCompilerTools => New(
+        id: 0054,
+        title: "Avoid changing compiler tools",
+        message: "Remove <{0}>",
+        description:
+            "Changing compiler tools can lead to unexpected behavior. Do not " +
+            "override the compiler tools within MSBuild files.",
+        tags: ["MSBuild", "compiler"],
+        category: Category.CodeQuality);
 
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
