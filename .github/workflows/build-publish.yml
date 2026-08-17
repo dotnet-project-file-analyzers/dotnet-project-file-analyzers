@@ -20,12 +20,12 @@ jobs:
       packages: write
       contents: write
     steps:
-      - uses: actions/checkout@v7.0.0
+      - uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v5.4.0
+        uses: actions/setup-dotnet@v6.0.0
 
       - name: Build
         run: dotnet build dotnet-project-file-analyzers.slnx -c Release
@@ -60,7 +60,7 @@ jobs:
     needs: build
     steps:
       - name: Setup dotnet
-        uses: actions/setup-dotnet@v5.4.0
+        uses: actions/setup-dotnet@v6.0.0
 
       - name: Download Artifact
         uses: actions/download-artifact@v8
@@ -68,7 +68,7 @@ jobs:
           name: nupkg
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v3.0.1
+        uses: softprops/action-gh-release@v3.0.2
         with:
           tag_name: ${{ github.ref_name }}
           generate_release_notes: true
