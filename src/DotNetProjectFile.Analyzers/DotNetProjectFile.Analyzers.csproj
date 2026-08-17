@@ -79,11 +79,15 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.15.2</Version>
+    <Version>1.16.0</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+]]>
+    </ToBeReleased>
+    <PackageReleaseNotes>
+      <![CDATA[
 v1.16.0
 - Proj0006: Skip detecting if RESX'es are additional files. (UPDATE)
 - Proj0022: Ignore MSBuild item expressions. (FP)
@@ -113,10 +117,6 @@ v1.16.0
 - Leave visibility of RESX files as is. (BUG)
 - Exclude **/*.razor.css from SonarQube intergration as it breaks the build. (BUG)
 - Primary select analyzers based on <AdditionalFiles AnalyzerType="{type}">.
-]]>
-    </ToBeReleased>
-    <PackageReleaseNotes>
-      <![CDATA[
 v1.15.2
 - Skip SonarQube <Content> when building inside Visual Studio, Rider, or ReSharper. (BUG)
 - Add <EmbeddedResource> to <AdditionalFiles> once. (BUG)
