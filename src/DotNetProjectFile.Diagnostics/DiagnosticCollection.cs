@@ -42,7 +42,13 @@ public sealed record DiagnosticCollection
     /// The stream to save to.
     /// </param>
     public void Save(Stream stream)
-        => JsonSerializer.Serialize(stream, this, options: Options);
+        => JsonSerializer.Serialize(stream, Save(), options: Options);
+
+    [Pure]
+    internal DiagnosticCollection Save() => this with { Packages = [.. Packages.Select(p => p.Save())] };
+
+    [Pure]
+    internal DiagnosticCollection Load() => this with { Packages = [.. Packages.Select(p => p.Load())] };
 
     /// <summary>Loads the collection from a JSON stream.</summary>
     /// <param name="stream">
@@ -50,7 +56,7 @@ public sealed record DiagnosticCollection
     /// </param>
     [Impure]
     public static DiagnosticCollection Load(Stream stream)
-        => JsonSerializer.Deserialize<DiagnosticCollection>(stream, Options)
+        => JsonSerializer.Deserialize<DiagnosticCollection>(stream, Options)?.Load()
         ?? throw new JsonException("Could not deserialize the analyzers info.");
 
     /// <summary>Gets the embedded (pre collected) collection.</summary>
