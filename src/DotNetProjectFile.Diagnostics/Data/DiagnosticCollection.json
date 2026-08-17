@@ -10182,11 +10182,11 @@
     },
     {
       "id": "FunFair.CodeAnalysis",
-      "v": "7.2.11.2216",
+      "v": "7.2.12.2288",
       "rules": [
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0001",
           "title": "Avoid use of DateTime methods",
@@ -10198,7 +10198,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0002",
           "title": "Avoid use of DateTime methods",
@@ -10210,7 +10210,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0003",
           "title": "Avoid use of DateTime methods",
@@ -10222,7 +10222,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0004",
           "title": "Avoid use of DateTime methods",
@@ -10234,7 +10234,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0005",
           "title": "Avoid use of DateTime methods",
@@ -10246,7 +10246,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0006",
           "title": "Avoid use of inline SQL statements",
@@ -10258,7 +10258,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0007",
           "title": "Avoid use of inline SQL statements",
@@ -10270,7 +10270,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0008",
           "title": "Don\u0027t disable warnings with #pragma warning disable",
@@ -10282,7 +10282,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0009",
           "title": "Avoid use of assert method without message",
@@ -10294,7 +10294,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0010",
           "title": "Avoid use of assert method without message",
@@ -10306,7 +10306,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0011",
           "title": "Structs should be read-only",
@@ -10318,7 +10318,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0012",
           "title": "Classes should be static, sealed or abstract",
@@ -10330,7 +10330,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0013",
           "title": "Test classes should be derived from TestBase",
@@ -10342,7 +10342,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0014",
           "title": "Avoid use of serializer without own JsonSerializerOptions parameter",
@@ -10354,7 +10354,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0015",
           "title": "Avoid use of deserializer without own JsonSerializerOptions parameter",
@@ -10366,7 +10366,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0016",
           "title": "Argument Exceptions should pass parameter name",
@@ -10378,7 +10378,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0017",
           "title": "Pass an inner exception when thrown from a catch clause",
@@ -10390,7 +10390,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0018",
           "title": "Avoid use of received without call count",
@@ -10402,7 +10402,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0019",
           "title": "ILogger parameters should be called \u0027logger\u0027",
@@ -10414,7 +10414,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0020",
           "title": "Parameters are out of order",
@@ -10426,7 +10426,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0021",
           "title": "Avoid use of received with zero call count",
@@ -10438,7 +10438,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0022",
           "title": "Don\u0027t use #nullable directive, make the change globally for the project",
@@ -10450,7 +10450,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0023",
           "title": "ILogger parameters on base classes should not be ILogger\u003C{0}\u003E but ILogger",
@@ -10462,7 +10462,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0024",
           "title": "ILogger parameters on leaf classes should not be ILogger but ILogger\u003C{0}\u003E",
@@ -10474,7 +10474,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0025",
           "title": "Should be using \u0027{0}\u0027 rather than \u0027{1}\u0027 with {2}",
@@ -10486,7 +10486,7 @@
         },
         {
           "f": "1.15.0.542",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0026",
           "title": "Use RemoteIpAddressRetriever instead of getting RemoteIpAddress directly from the HttpRequest",
@@ -10498,7 +10498,7 @@
         },
         {
           "f": "5.1.0.658",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0027",
           "title": "SuppressMessage must specify a Justification",
@@ -10510,7 +10510,7 @@
         },
         {
           "f": "5.1.0.658",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0028",
           "title": "Records should be sealed",
@@ -10522,7 +10522,7 @@
         },
         {
           "f": "5.2.0.740",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0029",
           "title": "MockBase\u003CT\u003E instances must be internal",
@@ -10534,7 +10534,7 @@
         },
         {
           "f": "5.2.0.740",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0030",
           "title": "MockBase\u003CT\u003E instances must be sealed",
@@ -10546,7 +10546,7 @@
         },
         {
           "f": "5.2.2.829",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0031",
           "title": "Avoid use of System.Collections.Concurrent.ConcurrentDictionary class",
@@ -10558,7 +10558,7 @@
         },
         {
           "f": "5.2.4.852",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0032",
           "title": "Avoid use of the built in AddOrUpdate methods",
@@ -10570,7 +10570,7 @@
         },
         {
           "f": "5.2.4.852",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0033",
           "title": "Avoid use of the built in GetOrAdd methods",
@@ -10582,7 +10582,7 @@
         },
         {
           "f": "5.2.5.869",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0034",
           "title": "Avoid use of reloadOnChange with value true",
@@ -10594,7 +10594,7 @@
         },
         {
           "f": "5.3.0.879",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0035",
           "title": "Fields in test classes should be read-only or const",
@@ -10606,7 +10606,7 @@
         },
         {
           "f": "5.3.0.879",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0036",
           "title": "Properties in test classes should be read-only or const",
@@ -10618,7 +10618,7 @@
         },
         {
           "f": "5.4.0.915",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0037",
           "title": "Use new Guid() with constant guids or Guid.TryParse everywhere else",
@@ -10630,7 +10630,7 @@
         },
         {
           "f": "5.5.0.926",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0038",
           "title": "Should have DebuggerDisplay attribute",
@@ -10642,7 +10642,7 @@
         },
         {
           "f": "5.6.0.956",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0039",
           "title": "Should be only one type per file",
@@ -10654,7 +10654,7 @@
         },
         {
           "f": "5.7.0.990",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0040",
           "title": "Should be in a file of the same name as the type",
@@ -10666,7 +10666,7 @@
         },
         {
           "f": "5.8.0.1196",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0041",
           "title": "Avoid use of System.Console class",
@@ -10678,7 +10678,7 @@
         },
         {
           "f": "5.9.0.1493",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0042",
           "title": "SuppressMessage must not have a TODO Justification",
@@ -10690,7 +10690,7 @@
         },
         {
           "f": "7.1.0.1124",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0043",
           "title": "Use System.StringComparer.Ordinal instead",
@@ -10702,7 +10702,7 @@
         },
         {
           "f": "7.1.0.1124",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0044",
           "title": "Use System.StringComparer.OrdinalIgnoreCase instead",
@@ -10714,7 +10714,7 @@
         },
         {
           "f": "7.1.23.1420",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0045",
           "title": "Use System.StringComparison.Ordinal instead",
@@ -10726,7 +10726,7 @@
         },
         {
           "f": "7.1.23.1420",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0046",
           "title": "Use System.StringComparison.OrdinalIgnoreCase instead",
@@ -10738,7 +10738,7 @@
         },
         {
           "f": "7.1.23.1420",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0047",
           "title": "Use System.StringComparison.Ordinal instead",
@@ -10750,7 +10750,7 @@
         },
         {
           "f": "7.1.23.1420",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0048",
           "title": "Use System.StringComparison.OrdinalIgnoreCase instead",
@@ -10762,7 +10762,7 @@
         },
         {
           "f": "7.2.0.1978",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0049",
           "title": "SuppressMessage is not permitted for this warning",
@@ -10774,7 +10774,7 @@
         },
         {
           "f": "7.2.1.2035",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0050",
           "title": "Prefer StringComparer.\u003Ctype\u003E.Equals over string.Equals with StringComparison",
@@ -10786,7 +10786,7 @@
         },
         {
           "f": "7.2.1.2035",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0051",
           "title": "Do not use InternalsVisibleTo",
@@ -10798,7 +10798,7 @@
         },
         {
           "f": "7.2.5.2129",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0052",
           "title": "Avoid direct use of Substitute.For\u003CT\u003E() in classes derived from TestBase",
@@ -10810,7 +10810,7 @@
         },
         {
           "f": "7.2.5.2129",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0053",
           "title": "Avoid direct use of Substitute.For\u003CILogger\u003CT\u003E\u003E() in classes derived from TestBase",
@@ -10822,7 +10822,7 @@
         },
         {
           "f": "7.2.5.2129",
-          "v": "7.2.11.2216",
+          "v": "7.2.12.2288",
           "lang": "C#",
           "id": "FFS0054",
           "title": "Avoid registering Substitute.For\u003CT\u003E() with IServiceCollection.AddSingleton\u003CT\u003E() in classes derived from TestBase",
@@ -12582,11 +12582,11 @@
     },
     {
       "id": "Meziantou.Analyzer",
-      "v": "3.0.147",
+      "v": "3.0.159",
       "rules": [
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0001",
           "title": "StringComparison is missing",
@@ -12598,7 +12598,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0002",
           "title": "IEqualityComparer\u003Cstring\u003E or IComparer\u003Cstring\u003E is missing",
@@ -12610,7 +12610,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0003",
           "title": "Add parameter name to improve readability",
@@ -12622,7 +12622,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0004",
           "title": "Use Task.ConfigureAwait",
@@ -12634,7 +12634,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0005",
           "title": "Use Array.Empty\u003CT\u003E()",
@@ -12646,7 +12646,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0006",
           "title": "Use String.Equals instead of equality operator",
@@ -12658,7 +12658,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0007",
           "title": "Add a comma after the last value",
@@ -12670,7 +12670,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0008",
           "title": "Add StructLayoutAttribute",
@@ -12682,7 +12682,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0009",
           "title": "Add regex evaluation timeout",
@@ -12694,7 +12694,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0010",
           "title": "Mark attributes with AttributeUsageAttribute",
@@ -12706,7 +12706,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0011",
           "title": "IFormatProvider is missing",
@@ -12718,7 +12718,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0012",
           "title": "Do not raise reserved exception type",
@@ -12730,7 +12730,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0013",
           "title": "Types should not extend System.ApplicationException",
@@ -12742,7 +12742,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0014",
           "title": "Do not raise System.ApplicationException type",
@@ -12754,7 +12754,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0015",
           "title": "Specify the parameter name in ArgumentException",
@@ -12766,7 +12766,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0016",
           "title": "Prefer using collection abstraction instead of implementation",
@@ -12778,7 +12778,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0017",
           "title": "Abstract types should not have public or internal constructors",
@@ -12790,7 +12790,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0018",
           "title": "Do not declare static members on generic types (deprecated; use CA1000 instead)",
@@ -12802,7 +12802,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0019",
           "title": "Use EventArgs.Empty",
@@ -12814,7 +12814,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0020",
           "title": "Use direct methods instead of LINQ methods",
@@ -12826,7 +12826,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0021",
           "title": "Use StringComparer.GetHashCode instead of string.GetHashCode",
@@ -12838,7 +12838,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0022",
           "title": "Return Task.FromResult instead of returning null",
@@ -12850,10 +12850,10 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0023",
-          "title": "Add RegexOptions.ExplicitCapture",
+          "title": "Use RegexOptions.ExplicitCapture or named groups",
           "desc": "",
           "url": "https://github.com/meziantou/Meziantou.Analyzer/blob/main/docs/Rules/MA0023.md",
           "tags": null,
@@ -12862,7 +12862,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0024",
           "title": "Use an explicit StringComparer when possible",
@@ -12874,7 +12874,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0025",
           "title": "Implement the functionality instead of throwing NotImplementedException",
@@ -12886,7 +12886,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0026",
           "title": "Fix TODO comment",
@@ -12898,7 +12898,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0027",
           "title": "Prefer rethrowing an exception implicitly",
@@ -12910,7 +12910,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0028",
           "title": "Optimize StringBuilder usage",
@@ -12922,7 +12922,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0029",
           "title": "Combine LINQ methods",
@@ -12934,7 +12934,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0030",
           "title": "Remove useless OrderBy call",
@@ -12946,7 +12946,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0031",
           "title": "Optimize Enumerable.Count() usage",
@@ -12958,7 +12958,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0032",
           "title": "Use an overload with a CancellationToken argument, even when no token is available in scope",
@@ -12970,7 +12970,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0033",
           "title": "Do not tag instance fields with ThreadStaticAttribute",
@@ -12994,7 +12994,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0035",
           "title": "Do not use dangerous threading methods",
@@ -13006,7 +13006,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0036",
           "title": "Make class static",
@@ -13018,7 +13018,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0037",
           "title": "Remove empty statement",
@@ -13030,7 +13030,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0038",
           "title": "Make method static (deprecated, use CA1822 instead)",
@@ -13042,7 +13042,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0039",
           "title": "Do not write your own certificate validation method",
@@ -13054,7 +13054,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0040",
           "title": "Forward the CancellationToken parameter to methods that take one",
@@ -13066,7 +13066,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0041",
           "title": "Make property static (deprecated, use CA1822 instead)",
@@ -13078,7 +13078,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0042",
           "title": "Do not use blocking calls when the calling method is async",
@@ -13090,7 +13090,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0043",
           "title": "Use nameof operator in ArgumentException",
@@ -13102,7 +13102,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0044",
           "title": "Remove useless ToString call",
@@ -13114,7 +13114,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0045",
           "title": "Do not use blocking calls, even when the calling method must become async",
@@ -13126,7 +13126,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0046",
           "title": "Use EventHandler\u003CT\u003E to declare events",
@@ -13138,7 +13138,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0047",
           "title": "Declare types in namespaces",
@@ -13150,7 +13150,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0048",
           "title": "File name must match type name",
@@ -13162,7 +13162,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0049",
           "title": "Type name should not match containing namespace",
@@ -13174,7 +13174,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0050",
           "title": "Validate arguments correctly in iterator methods",
@@ -13186,7 +13186,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0051",
           "title": "Method is too long",
@@ -13198,7 +13198,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0052",
           "title": "Replace constant Enum.ToString with nameof",
@@ -13210,7 +13210,7 @@
         },
         {
           "f": "1.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0053",
           "title": "Make class or record sealed",
@@ -13222,7 +13222,7 @@
         },
         {
           "f": "1.0.111",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0054",
           "title": "Embed the caught exception as innerException",
@@ -13234,7 +13234,7 @@
         },
         {
           "f": "1.0.114",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0055",
           "title": "Do not use finalizer",
@@ -13246,7 +13246,7 @@
         },
         {
           "f": "1.0.121",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0056",
           "title": "Do not call overridable members in constructor",
@@ -13258,7 +13258,7 @@
         },
         {
           "f": "1.0.124",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0057",
           "title": "Class name should end with \u0027Attribute\u0027",
@@ -13270,7 +13270,7 @@
         },
         {
           "f": "1.0.124",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0058",
           "title": "Class name should end with \u0027Exception\u0027",
@@ -13282,7 +13282,7 @@
         },
         {
           "f": "1.0.124",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0059",
           "title": "Class name should end with \u0027EventArgs\u0027",
@@ -13294,7 +13294,7 @@
         },
         {
           "f": "1.0.127",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0060",
           "title": "The return value of the method should be used",
@@ -13306,7 +13306,7 @@
         },
         {
           "f": "1.0.130",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0061",
           "title": "Method overrides should not change default values",
@@ -13318,7 +13318,7 @@
         },
         {
           "f": "1.0.135",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0062",
           "title": "Non-flags enums should not be marked with \u0022FlagsAttribute\u0022",
@@ -13330,7 +13330,7 @@
         },
         {
           "f": "1.0.138",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0063",
           "title": "Use Where before OrderBy",
@@ -13342,7 +13342,7 @@
         },
         {
           "f": "1.0.184",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0064",
           "title": "Avoid locking on publicly accessible instance",
@@ -13354,7 +13354,7 @@
         },
         {
           "f": "1.0.195",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0065",
           "title": "Default ValueType.Equals or HashCode is used for struct equality",
@@ -13366,7 +13366,7 @@
         },
         {
           "f": "1.0.195",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0066",
           "title": "Hash table unfriendly type is used in a hash table",
@@ -13378,7 +13378,7 @@
         },
         {
           "f": "1.0.244",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0067",
           "title": "Use Guid.Empty",
@@ -13390,7 +13390,7 @@
         },
         {
           "f": "1.0.253",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0068",
           "title": "Invalid parameter name for nullable attribute",
@@ -13402,7 +13402,7 @@
         },
         {
           "f": "1.0.259",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0069",
           "title": "Non-constant static fields should not be visible",
@@ -13414,7 +13414,7 @@
         },
         {
           "f": "1.0.262",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0070",
           "title": "Obsolete attributes should include explanations",
@@ -13426,7 +13426,7 @@
         },
         {
           "f": "1.0.330",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0071",
           "title": "Avoid using redundant else",
@@ -13438,7 +13438,7 @@
         },
         {
           "f": "1.0.361",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0072",
           "title": "Do not throw from a finally block",
@@ -13450,7 +13450,7 @@
         },
         {
           "f": "1.0.375",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0073",
           "title": "Avoid comparison with bool constant",
@@ -13462,7 +13462,7 @@
         },
         {
           "f": "1.0.370",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0074",
           "title": "Avoid implicit culture-sensitive methods",
@@ -13474,7 +13474,7 @@
         },
         {
           "f": "1.0.371",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0075",
           "title": "Do not use implicit culture-sensitive ToString",
@@ -13486,7 +13486,7 @@
         },
         {
           "f": "1.0.371",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0076",
           "title": "Do not use implicit culture-sensitive ToString in interpolated strings",
@@ -13498,7 +13498,7 @@
         },
         {
           "f": "1.0.395",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0077",
           "title": "A class that provides Equals(T) should implement IEquatable\u003CT\u003E",
@@ -13510,7 +13510,7 @@
         },
         {
           "f": "1.0.427",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0078",
           "title": "Use \u0027Cast\u0027 instead of \u0027Select\u0027 to cast",
@@ -13522,7 +13522,7 @@
         },
         {
           "f": "1.0.452",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0079",
           "title": "Forward the CancellationToken using .WithCancellation()",
@@ -13534,7 +13534,7 @@
         },
         {
           "f": "1.0.452",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0080",
           "title": "Use a cancellation token using .WithCancellation()",
@@ -13546,7 +13546,7 @@
         },
         {
           "f": "1.0.453",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0081",
           "title": "Method overrides should not omit params keyword",
@@ -13558,7 +13558,7 @@
         },
         {
           "f": "1.0.455",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0082",
           "title": "NaN should not be used in comparisons",
@@ -13570,7 +13570,7 @@
         },
         {
           "f": "1.0.456",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0083",
           "title": "ConstructorArgument parameters should exist in constructors",
@@ -13582,7 +13582,7 @@
         },
         {
           "f": "1.0.457",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0084",
           "title": "Local variables should not hide other symbols",
@@ -13594,7 +13594,7 @@
         },
         {
           "f": "1.0.458",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0085",
           "title": "Anonymous delegates should not be used to unsubscribe from Events",
@@ -13606,7 +13606,7 @@
         },
         {
           "f": "1.0.459",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0086",
           "title": "Do not throw from a finalizer",
@@ -13618,7 +13618,7 @@
         },
         {
           "f": "1.0.460",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0087",
           "title": "Parameters with [DefaultParameterValue] attributes should also be marked [Optional]",
@@ -13630,7 +13630,7 @@
         },
         {
           "f": "1.0.461",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0088",
           "title": "Use [DefaultParameterValue] instead of [DefaultValue]",
@@ -13642,7 +13642,7 @@
         },
         {
           "f": "1.0.462",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0089",
           "title": "Optimize string method usage",
@@ -13654,7 +13654,7 @@
         },
         {
           "f": "1.0.463",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0090",
           "title": "Remove empty else/finally block",
@@ -13666,7 +13666,7 @@
         },
         {
           "f": "1.0.464",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0091",
           "title": "Sender should be \u0027this\u0027 for instance events",
@@ -13678,7 +13678,7 @@
         },
         {
           "f": "1.0.464",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0092",
           "title": "Sender should be \u0027null\u0027 for static events",
@@ -13690,7 +13690,7 @@
         },
         {
           "f": "1.0.464",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0093",
           "title": "EventArgs should not be null when raising an event",
@@ -13702,7 +13702,7 @@
         },
         {
           "f": "1.0.465",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0094",
           "title": "A class that provides CompareTo(T) should implement IComparable\u003CT\u003E",
@@ -13714,7 +13714,7 @@
         },
         {
           "f": "1.0.465",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0095",
           "title": "A class that implements IEquatable\u003CT\u003E should override Equals(object)",
@@ -13726,7 +13726,7 @@
         },
         {
           "f": "1.0.465",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0096",
           "title": "A class that implements IComparable\u003CT\u003E should also implement IEquatable\u003CT\u003E",
@@ -13738,7 +13738,7 @@
         },
         {
           "f": "1.0.465",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0097",
           "title": "A class that implements IComparable\u003CT\u003E or IComparable should override comparison operators",
@@ -13750,7 +13750,7 @@
         },
         {
           "f": "1.0.466",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0098",
           "title": "Use indexer instead of LINQ methods",
@@ -13762,7 +13762,7 @@
         },
         {
           "f": "1.0.610",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0099",
           "title": "Use Explicit enum value instead of 0",
@@ -13774,7 +13774,7 @@
         },
         {
           "f": "1.0.613",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0100",
           "title": "Await task before disposing of resources",
@@ -13786,7 +13786,7 @@
         },
         {
           "f": "1.0.642",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0101",
           "title": "String contains an implicit end of line character",
@@ -13798,7 +13798,7 @@
         },
         {
           "f": "1.0.655",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0102",
           "title": "Make member readonly",
@@ -13810,7 +13810,7 @@
         },
         {
           "f": "1.0.667",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0103",
           "title": "Use SequenceEqual instead of equality operator",
@@ -13822,7 +13822,7 @@
         },
         {
           "f": "1.0.670",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0104",
           "title": "Do not create a type with a name from the BCL",
@@ -13834,7 +13834,7 @@
         },
         {
           "f": "1.0.677",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0105",
           "title": "Use the lambda parameters instead of using a closure",
@@ -13846,7 +13846,7 @@
         },
         {
           "f": "1.0.678",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0106",
           "title": "Avoid closure by using an overload with the \u0027factoryArgument\u0027 parameter",
@@ -13858,7 +13858,7 @@
         },
         {
           "f": "1.0.688",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0107",
           "title": "Do not use object.ToString",
@@ -13870,7 +13870,7 @@
         },
         {
           "f": "1.0.689",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0108",
           "title": "Remove redundant argument value",
@@ -13882,7 +13882,7 @@
         },
         {
           "f": "1.0.691",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0109",
           "title": "Consider adding an overload with a Span\u003CT\u003E or Memory\u003CT\u003E",
@@ -13894,7 +13894,7 @@
         },
         {
           "f": "1.0.697",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0110",
           "title": "Use the Regex source generator",
@@ -13906,7 +13906,7 @@
         },
         {
           "f": "1.0.711",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0111",
           "title": "Use string.Create instead of FormattableString",
@@ -13918,7 +13918,7 @@
         },
         {
           "f": "1.0.714",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0112",
           "title": "Use \u0027Count \u003E 0\u0027 instead of \u0027Any()\u0027",
@@ -13930,7 +13930,7 @@
         },
         {
           "f": "1.0.719",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0113",
           "title": "Use DateTime.UnixEpoch",
@@ -13942,7 +13942,7 @@
         },
         {
           "f": "1.0.719",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0114",
           "title": "Use DateTimeOffset.UnixEpoch",
@@ -13954,7 +13954,7 @@
         },
         {
           "f": "1.0.726",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0115",
           "title": "Unknown component parameter",
@@ -13966,7 +13966,7 @@
         },
         {
           "f": "1.0.737",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0116",
           "title": "Parameters with [SupplyParameterFromQuery] attributes should also be marked as [Parameter]",
@@ -13978,7 +13978,7 @@
         },
         {
           "f": "1.0.737",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0117",
           "title": "Parameters with [EditorRequired] attributes should also be marked as [Parameter]",
@@ -13990,7 +13990,7 @@
         },
         {
           "f": "1.0.737",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0118",
           "title": "[JSInvokable] methods must be public",
@@ -14002,7 +14002,7 @@
         },
         {
           "f": "1.0.737",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0119",
           "title": "JSRuntime must not be used in OnInitialized or OnInitializedAsync",
@@ -14014,7 +14014,7 @@
         },
         {
           "f": "1.0.737",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0120",
           "title": "Use InvokeVoidAsync when the returned value is not used",
@@ -14026,7 +14026,7 @@
         },
         {
           "f": "1.0.741",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0121",
           "title": "Do not overwrite parameter value",
@@ -14038,7 +14038,7 @@
         },
         {
           "f": "1.0.743",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0122",
           "title": "Parameters with [SupplyParameterFromQuery] attributes are only valid in routable components (@page)",
@@ -14050,7 +14050,7 @@
         },
         {
           "f": "1.0.744",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0123",
           "title": "Sequence number must be a constant",
@@ -14062,7 +14062,7 @@
         },
         {
           "f": "2.0.6",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0124",
           "title": "Microsoft.Extensions.Logging parameter type is not valid",
@@ -14074,7 +14074,7 @@
         },
         {
           "f": "2.0.6",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0125",
           "title": "The list of log parameter types contains an invalid type",
@@ -14086,7 +14086,7 @@
         },
         {
           "f": "2.0.6",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0126",
           "title": "The list of log parameter types contains a duplicate",
@@ -14098,7 +14098,7 @@
         },
         {
           "f": "2.0.9",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0127",
           "title": "Use String.Equals instead of is pattern",
@@ -14110,7 +14110,7 @@
         },
         {
           "f": "2.0.10",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0128",
           "title": "Use \u0027is\u0027 operator instead of SequenceEqual",
@@ -14122,7 +14122,7 @@
         },
         {
           "f": "2.0.20",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0129",
           "title": "Await task in using statement",
@@ -14134,7 +14134,7 @@
         },
         {
           "f": "2.0.35",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0130",
           "title": "GetType() should not be used on System.Type instances",
@@ -14146,7 +14146,7 @@
         },
         {
           "f": "2.0.36",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0131",
           "title": "ArgumentNullException.ThrowIfNull should not be used with non-nullable types",
@@ -14158,7 +14158,7 @@
         },
         {
           "f": "2.0.37",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0132",
           "title": "Do not convert implicitly to DateTimeOffset",
@@ -14170,7 +14170,7 @@
         },
         {
           "f": "2.0.38",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0133",
           "title": "Use DateTimeOffset instead of relying on the implicit conversion",
@@ -14182,7 +14182,7 @@
         },
         {
           "f": "2.0.41",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0134",
           "title": "Observe result of async calls",
@@ -14194,7 +14194,7 @@
         },
         {
           "f": "2.0.71",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0135",
           "title": "The log parameter has no configured type",
@@ -14206,7 +14206,7 @@
         },
         {
           "f": "2.0.101",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0136",
           "title": "Raw String contains an implicit end of line character",
@@ -14218,7 +14218,7 @@
         },
         {
           "f": "2.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0137",
           "title": "Use \u0027Async\u0027 suffix when a method returns an awaitable type",
@@ -14230,7 +14230,7 @@
         },
         {
           "f": "2.0.102",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0138",
           "title": "Do not use \u0027Async\u0027 suffix when a method does not return an awaitable type",
@@ -14242,7 +14242,7 @@
         },
         {
           "f": "2.0.104",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0139",
           "title": "Serilog parameter type is not valid",
@@ -14254,7 +14254,7 @@
         },
         {
           "f": "2.0.106",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0140",
           "title": "Both if and else branch have identical code",
@@ -14266,7 +14266,7 @@
         },
         {
           "f": "2.0.107",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0141",
           "title": "Use \u0027is not null\u0027 instead of \u0027!= null\u0027",
@@ -14278,7 +14278,7 @@
         },
         {
           "f": "2.0.107",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0142",
           "title": "Use \u0027is null\u0027 instead of \u0027== null\u0027",
@@ -14290,7 +14290,7 @@
         },
         {
           "f": "2.0.111",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0143",
           "title": "Primary constructor parameters should be readonly",
@@ -14302,7 +14302,7 @@
         },
         {
           "f": "2.0.113",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0144",
           "title": "Use System.OperatingSystem to check the current OS",
@@ -14314,7 +14314,7 @@
         },
         {
           "f": "2.0.117",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0145",
           "title": "Signature for [UnsafeAccessorAttribute] method is not valid",
@@ -14326,7 +14326,7 @@
         },
         {
           "f": "2.0.117",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0146",
           "title": "Name must be set explicitly on local functions",
@@ -14338,7 +14338,7 @@
         },
         {
           "f": "2.0.119",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0147",
           "title": "Avoid async void method for delegate",
@@ -14350,7 +14350,7 @@
         },
         {
           "f": "2.0.122",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0148",
           "title": "Use \u0027is\u0027 patterns instead of \u0027==\u0027 for constant values",
@@ -14362,7 +14362,7 @@
         },
         {
           "f": "2.0.122",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0149",
           "title": "Use \u0027is not\u0027 patterns instead of \u0027!=\u0027 for constant values",
@@ -14374,7 +14374,7 @@
         },
         {
           "f": "2.0.124",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0150",
           "title": "Do not call ToString() when the type falls back to object.ToString()",
@@ -14386,7 +14386,7 @@
         },
         {
           "f": "2.0.127",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0151",
           "title": "DebuggerDisplay must contain valid members",
@@ -14398,7 +14398,7 @@
         },
         {
           "f": "2.0.130",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0152",
           "title": "Use Unwrap instead of using await twice",
@@ -14410,7 +14410,7 @@
         },
         {
           "f": "2.0.132",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0153",
           "title": "Do not log symbols decorated with DataClassificationAttribute directly",
@@ -14422,7 +14422,7 @@
         },
         {
           "f": "2.0.145",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0154",
           "title": "Use langword in XML comment",
@@ -14434,7 +14434,7 @@
         },
         {
           "f": "2.0.149",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0155",
           "title": "Do not use async void methods",
@@ -14446,7 +14446,7 @@
         },
         {
           "f": "2.0.150",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0156",
           "title": "Use \u0027Async\u0027 suffix when a method returns IAsyncEnumerable\u003CT\u003E",
@@ -14458,7 +14458,7 @@
         },
         {
           "f": "2.0.150",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0157",
           "title": "Do not use \u0027Async\u0027 suffix when a method returns IAsyncEnumerable\u003CT\u003E",
@@ -14470,7 +14470,7 @@
         },
         {
           "f": "2.0.153",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0158",
           "title": "Use System.Threading.Lock",
@@ -14482,7 +14482,7 @@
         },
         {
           "f": "2.0.156",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0159",
           "title": "Use \u0027Order\u0027 instead of \u0027OrderBy\u0027",
@@ -14494,7 +14494,7 @@
         },
         {
           "f": "2.0.161",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0160",
           "title": "Use ContainsKey instead of TryGetValue",
@@ -14506,7 +14506,7 @@
         },
         {
           "f": "2.0.169",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0161",
           "title": "UseShellExecute must be explicitly set",
@@ -14518,7 +14518,7 @@
         },
         {
           "f": "2.0.169",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0162",
           "title": "Use Process.Start overload with ProcessStartInfo",
@@ -14530,7 +14530,7 @@
         },
         {
           "f": "2.0.169",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0163",
           "title": "UseShellExecute must be false when redirecting standard input or output",
@@ -14542,7 +14542,7 @@
         },
         {
           "f": "2.0.170",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0164",
           "title": "Use parentheses to make not pattern clearer",
@@ -14566,7 +14566,7 @@
         },
         {
           "f": "2.0.191",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0166",
           "title": "Forward the TimeProvider to methods that take one",
@@ -14578,7 +14578,7 @@
         },
         {
           "f": "2.0.191",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0167",
           "title": "Use an overload with a TimeProvider argument",
@@ -14590,7 +14590,7 @@
         },
         {
           "f": "2.0.197",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0168",
           "title": "Use readonly struct for in or ref readonly parameter",
@@ -14602,7 +14602,7 @@
         },
         {
           "f": "2.0.200",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0169",
           "title": "Use Equals method instead of operator",
@@ -14614,7 +14614,7 @@
         },
         {
           "f": "2.0.202",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0170",
           "title": "Type cannot be used as an attribute argument",
@@ -14626,7 +14626,7 @@
         },
         {
           "f": "2.0.209",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0171",
           "title": "Use \u0027is null\u0027 / \u0027is not null\u0027 instead of Nullable\u003CT\u003E.HasValue",
@@ -14638,7 +14638,7 @@
         },
         {
           "f": "2.0.212",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0172",
           "title": "Both sides of the logical operation are identical",
@@ -14650,7 +14650,7 @@
         },
         {
           "f": "2.0.214",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0173",
           "title": "Use LazyInitializer.EnsureInitialize",
@@ -14662,7 +14662,7 @@
         },
         {
           "f": "2.0.221",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0174",
           "title": "Record should use explicit \u0027class\u0027 keyword",
@@ -14674,7 +14674,7 @@
         },
         {
           "f": "2.0.221",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0175",
           "title": "Record should not use explicit \u0027class\u0027 keyword",
@@ -14686,7 +14686,7 @@
         },
         {
           "f": "2.0.224",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0176",
           "title": "Optimize guid creation",
@@ -14698,7 +14698,7 @@
         },
         {
           "f": "2.0.243",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0177",
           "title": "Use single-line XML comment syntax when possible",
@@ -14710,7 +14710,7 @@
         },
         {
           "f": "2.0.254",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0178",
           "title": "Use TimeSpan.Zero instead of TimeSpan.FromXXX(0)",
@@ -14722,7 +14722,7 @@
         },
         {
           "f": "2.0.261",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0179",
           "title": "Use Attribute.IsDefined instead of GetCustomAttribute(s)",
@@ -14734,7 +14734,7 @@
         },
         {
           "f": "2.0.263",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0180",
           "title": "ILogger type parameter should match containing type",
@@ -14746,7 +14746,7 @@
         },
         {
           "f": "2.0.267",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0181",
           "title": "Do not use cast",
@@ -14758,7 +14758,7 @@
         },
         {
           "f": "2.0.271",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0182",
           "title": "Avoid unused internal types",
@@ -14770,7 +14770,7 @@
         },
         {
           "f": "2.0.287",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0183",
           "title": "The format string should use placeholders",
@@ -14782,7 +14782,7 @@
         },
         {
           "f": "2.0.289",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0184",
           "title": "Do not use interpolated string without parameters",
@@ -14794,7 +14794,7 @@
         },
         {
           "f": "2.0.290",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0185",
           "title": "Simplify string.Create when all parameters are culture invariant",
@@ -14806,7 +14806,7 @@
         },
         {
           "f": "2.0.298",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0186",
           "title": "TryGetValue method should use [MaybeNullWhen(false)] on the value parameter",
@@ -14818,7 +14818,7 @@
         },
         {
           "f": "3.0.18",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0187",
           "title": "Use constructor injection instead of [Inject] attribute",
@@ -14830,7 +14830,7 @@
         },
         {
           "f": "3.0.22",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0188",
           "title": "Use System.TimeProvider instead of a custom time abstraction",
@@ -14842,7 +14842,7 @@
         },
         {
           "f": "3.0.23",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0189",
           "title": "Use InlineArray instead of fixed-size buffers",
@@ -14854,7 +14854,7 @@
         },
         {
           "f": "3.0.27",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0190",
           "title": "Use partial property instead of partial method for GeneratedRegex",
@@ -14866,7 +14866,7 @@
         },
         {
           "f": "3.0.40",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0191",
           "title": "Do not use the null-forgiving operator",
@@ -14878,7 +14878,7 @@
         },
         {
           "f": "3.0.46",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0192",
           "title": "Use HasFlag instead of bitwise checks",
@@ -14890,7 +14890,7 @@
         },
         {
           "f": "3.0.54",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0193",
           "title": "Use an overload with a MidpointRounding argument",
@@ -14902,7 +14902,7 @@
         },
         {
           "f": "3.0.57",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0194",
           "title": "Merge is expressions on the same value",
@@ -14914,7 +14914,7 @@
         },
         {
           "f": "3.0.59",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0195",
           "title": "Do not use static fields before they are initialized",
@@ -14926,7 +14926,7 @@
         },
         {
           "f": "3.0.73",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0196",
           "title": "Do not use inheritdoc on non-inheriting members",
@@ -14938,7 +14938,7 @@
         },
         {
           "f": "3.0.74",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0197",
           "title": "Add dedicated documentation on types",
@@ -14950,7 +14950,7 @@
         },
         {
           "f": "3.0.77",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0198",
           "title": "Specify cref for ambiguous inheritdoc on types",
@@ -14962,7 +14962,7 @@
         },
         {
           "f": "3.0.77",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0199",
           "title": "Do not use inheritdoc on types without inheritance source",
@@ -14974,7 +14974,7 @@
         },
         {
           "f": "3.0.85",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0200",
           "title": "Do not use empty property patterns with non-nullable value types",
@@ -14986,7 +14986,7 @@
         },
         {
           "f": "3.0.88",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0201",
           "title": "Do not use zero-valued enum flags in flag checks",
@@ -14998,7 +14998,7 @@
         },
         {
           "f": "3.0.92",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0202",
           "title": "Conditional compilation branches have identical code",
@@ -15010,7 +15010,7 @@
         },
         {
           "f": "3.0.105",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0203",
           "title": "Do not use return tag for void method",
@@ -15022,7 +15022,7 @@
         },
         {
           "f": "3.0.106",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0204",
           "title": "Remove unnecessary partial modifier",
@@ -15034,7 +15034,7 @@
         },
         {
           "f": "3.0.107",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0205",
           "title": "Use exclusive or operator",
@@ -15046,7 +15046,7 @@
         },
         {
           "f": "3.0.108",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0206",
           "title": "Remove unnecessary braces in type declaration",
@@ -15058,7 +15058,7 @@
         },
         {
           "f": "3.0.109",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0207",
           "title": "[FixedAddressValueType] fields must be static",
@@ -15070,7 +15070,7 @@
         },
         {
           "f": "3.0.109",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0208",
           "title": "[FixedAddressValueType] fields must be value types",
@@ -15082,7 +15082,7 @@
         },
         {
           "f": "3.0.115",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0209",
           "title": "Use in keyword for in parameter",
@@ -15094,7 +15094,7 @@
         },
         {
           "f": "3.0.115",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0210",
           "title": "Use in keyword to call the in overload",
@@ -15106,7 +15106,7 @@
         },
         {
           "f": "3.0.122",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0211",
           "title": "Use multi-line syntax for XML summary comments",
@@ -15118,7 +15118,7 @@
         },
         {
           "f": "3.0.125",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0212",
           "title": "Use MemoryMarshal.GetReference instead of indexing at 0",
@@ -15130,12 +15130,36 @@
         },
         {
           "f": "3.0.147",
-          "v": "3.0.147",
+          "v": "3.0.159",
           "lang": "C#",
           "id": "MA0213",
           "title": "Simplify negated boolean expression",
           "desc": "",
           "url": "https://github.com/meziantou/Meziantou.Analyzer/blob/main/docs/Rules/MA0213.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": false
+        },
+        {
+          "f": "3.0.156",
+          "v": "3.0.159",
+          "lang": "C#",
+          "id": "MA0214",
+          "title": "Use \u0027await\u0027 instead of returning the task",
+          "desc": "",
+          "url": "https://github.com/meziantou/Meziantou.Analyzer/blob/main/docs/Rules/MA0214.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": false
+        },
+        {
+          "f": "3.0.156",
+          "v": "3.0.159",
+          "lang": "C#",
+          "id": "MA0215",
+          "title": "Return the task instead of awaiting it",
+          "desc": "",
+          "url": "https://github.com/meziantou/Meziantou.Analyzer/blob/main/docs/Rules/MA0215.md",
           "tags": null,
           "level": "Info",
           "enabled": false
@@ -70110,11 +70134,11 @@
     },
     {
       "id": "Roslynator.Analyzers",
-      "v": "4.16.0",
+      "v": "4.16.1",
       "rules": [
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1001",
           "title": "Add braces (when expression spans over multiple lines)",
@@ -70126,7 +70150,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1002",
           "title": "Remove braces",
@@ -70138,7 +70162,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1002FadeOut",
           "title": "Remove braces",
@@ -70150,7 +70174,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1003",
           "title": "Add braces to if-else (when expression spans over multiple lines)",
@@ -70162,7 +70186,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1004",
           "title": "Remove braces from if-else",
@@ -70174,7 +70198,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1004FadeOut",
           "title": "Remove braces from if-else",
@@ -70186,7 +70210,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1005",
           "title": "Simplify nested using statement",
@@ -70198,7 +70222,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1005FadeOut",
           "title": "Simplify nested using statement",
@@ -70210,7 +70234,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1006",
           "title": "Merge \u0027else\u0027 with nested \u0027if\u0027",
@@ -70222,7 +70246,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1006FadeOut",
           "title": "Merge \u0027else\u0027 with nested \u0027if\u0027",
@@ -70234,7 +70258,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1007",
           "title": "Add braces",
@@ -70246,7 +70270,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1008",
           "title": "[deprecated] Use explicit type instead of \u0027var\u0027 (when the type is not obvious)",
@@ -70259,7 +70283,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1009",
           "title": "[deprecated] Use explicit type instead of \u0027var\u0027 (foreach variable)",
@@ -70272,7 +70296,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1010",
           "title": "[deprecated] Use \u0027var\u0027 instead of explicit type (when the type is obvious)",
@@ -70285,7 +70309,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1012",
           "title": "[deprecated] Use explicit type instead of \u0027var\u0027 (when the type is obvious)",
@@ -70298,7 +70322,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1013",
           "title": "Use predefined type",
@@ -70310,7 +70334,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1014",
           "title": "Use explicitly/implicitly typed array",
@@ -70346,7 +70370,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1015",
           "title": "Use nameof operator",
@@ -70358,7 +70382,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1015FadeOut",
           "title": "Use nameof operator",
@@ -70370,7 +70394,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1016",
           "title": "Use block body or expression body",
@@ -70442,7 +70466,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1018",
           "title": "Add/remove accessibility modifiers",
@@ -70466,7 +70490,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1019",
           "title": "Order modifiers",
@@ -70478,7 +70502,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1020",
           "title": "Simplify Nullable\u003CT\u003E to T?",
@@ -70490,7 +70514,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1021",
           "title": "Convert lambda expression body to expression body",
@@ -70502,7 +70526,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1021FadeOut",
           "title": "Convert lambda expression body to expression body",
@@ -70634,7 +70658,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1031",
           "title": "Remove unnecessary braces in switch section",
@@ -70646,7 +70670,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1031FadeOut",
           "title": "Remove unnecessary braces in switch section",
@@ -70658,7 +70682,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1032",
           "title": "Remove redundant parentheses",
@@ -70670,7 +70694,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1032FadeOut",
           "title": "Remove redundant parentheses",
@@ -70682,7 +70706,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1033",
           "title": "Remove redundant boolean literal",
@@ -70706,7 +70730,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1034",
           "title": "Remove redundant \u0027sealed\u0027 modifier",
@@ -70718,7 +70742,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1035",
           "title": "[deprecated] Remove redundant comma in initializer",
@@ -70730,7 +70754,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1036",
           "title": "[deprecated] Remove unnecessary blank line",
@@ -70754,7 +70778,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#;Visual Basic",
           "id": "RCS1037",
           "title": "Remove trailing white-space",
@@ -70766,7 +70790,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1038",
           "title": "[deprecated] Remove empty statement",
@@ -70778,7 +70802,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1039",
           "title": "Remove argument list from attribute",
@@ -70790,7 +70814,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1040",
           "title": "[deprecated] Remove empty \u0027else\u0027 clause",
@@ -70802,7 +70826,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1041",
           "title": "[deprecated] Remove empty initializer",
@@ -70814,7 +70838,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1042",
           "title": "Remove enum default underlying type",
@@ -70826,7 +70850,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1043",
           "title": "Remove \u0027partial\u0027 modifier from type with a single part",
@@ -70838,7 +70862,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1044",
           "title": "Remove original exception from throw statement",
@@ -70874,7 +70898,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1046",
           "title": "Asynchronous method name should end with \u0027Async\u0027",
@@ -70886,7 +70910,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1047",
           "title": "Non-asynchronous method name should not end with \u0027Async\u0027",
@@ -70898,7 +70922,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1047FadeOut",
           "title": "Non-asynchronous method name should not end with \u0027Async\u0027",
@@ -70910,7 +70934,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1048",
           "title": "Use lambda expression instead of anonymous method",
@@ -70922,7 +70946,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1048FadeOut",
           "title": "Use lambda expression instead of anonymous method",
@@ -70934,7 +70958,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1049",
           "title": "Simplify boolean comparison",
@@ -70946,7 +70970,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1049FadeOut",
           "title": "Simplify boolean comparison",
@@ -70958,7 +70982,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1050",
           "title": "Include/omit parentheses when creating new object",
@@ -70982,7 +71006,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1051",
           "title": "Add/remove parentheses from condition in conditional operator",
@@ -71006,7 +71030,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1052",
           "title": "Declare each attribute separately",
@@ -71042,7 +71066,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1055",
           "title": "Unnecessary semicolon at the end of declaration",
@@ -71054,7 +71078,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1056",
           "title": "Avoid usage of using alias directive",
@@ -71078,7 +71102,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1058",
           "title": "Use compound assignment",
@@ -71090,7 +71114,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1058FadeOut",
           "title": "Use compound assignment",
@@ -71102,7 +71126,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1059",
           "title": "Avoid locking on publicly accessible instance",
@@ -71114,7 +71138,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1060",
           "title": "Declare each type in separate file",
@@ -71126,7 +71150,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1061",
           "title": "Merge \u0027if\u0027 with nested \u0027if\u0027",
@@ -71138,7 +71162,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1061FadeOut",
           "title": "Merge \u0027if\u0027 with nested \u0027if\u0027",
@@ -71162,7 +71186,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1063",
           "title": "[deprecated] Avoid usage of do statement to create an infinite loop",
@@ -71174,7 +71198,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1064",
           "title": "[deprecated] Avoid usage of for statement to create an infinite loop",
@@ -71186,7 +71210,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1065",
           "title": "[deprecated] Avoid usage of while statement to create an infinite loop",
@@ -71198,7 +71222,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1066",
           "title": "[deprecated] Remove empty \u0027finally\u0027 clause",
@@ -71210,7 +71234,7 @@
         },
         {
           "f": "3.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1066FadeOut",
           "title": "[deprecated] Remove empty \u0027finally\u0027 clause",
@@ -71234,7 +71258,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1068",
           "title": "Simplify logical negation",
@@ -71246,7 +71270,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1069",
           "title": "Remove unnecessary case label",
@@ -71258,7 +71282,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1070",
           "title": "Remove redundant default switch section",
@@ -71270,7 +71294,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1071",
           "title": "Remove redundant base constructor call",
@@ -71282,7 +71306,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1072",
           "title": "[deprecated] Remove empty namespace declaration",
@@ -71294,7 +71318,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1073",
           "title": "Convert \u0027if\u0027 to \u0027return\u0027 statement",
@@ -71306,7 +71330,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1073FadeOut",
           "title": "Convert \u0027if\u0027 to \u0027return\u0027 statement",
@@ -71318,7 +71342,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1074",
           "title": "Remove redundant constructor",
@@ -71330,7 +71354,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1075",
           "title": "Avoid empty catch clause that catches System.Exception",
@@ -71354,7 +71378,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1077",
           "title": "Optimize LINQ method call",
@@ -71366,7 +71390,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1078",
           "title": "Use \u0022\u0022 or \u0027string.Empty\u0027",
@@ -71390,7 +71414,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1079",
           "title": "Throwing of new NotImplementedException",
@@ -71402,7 +71426,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1080",
           "title": "Use \u0027Count/Length\u0027 property instead of \u0027Any\u0027 method",
@@ -71414,7 +71438,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1081",
           "title": "Split variable declaration",
@@ -71450,7 +71474,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1084",
           "title": "Use coalesce expression instead of conditional expression",
@@ -71462,7 +71486,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1085",
           "title": "Use auto-implemented property",
@@ -71474,7 +71498,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1085FadeOut",
           "title": "Use auto-implemented property",
@@ -71522,7 +71546,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1089",
           "title": "Use --/\u002B\u002B operator instead of assignment",
@@ -71534,7 +71558,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1089FadeOut",
           "title": "Use --/\u002B\u002B operator instead of assignment",
@@ -71546,7 +71570,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1090",
           "title": "Add/remove \u0027ConfigureAwait(false)\u0027 call",
@@ -71570,7 +71594,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1091",
           "title": "[deprecated] Remove empty region",
@@ -71582,7 +71606,7 @@
         },
         {
           "f": "1.4.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1091FadeOut",
           "title": "[deprecated] Remove empty region",
@@ -71606,7 +71630,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1093",
           "title": "File contains no code",
@@ -71618,7 +71642,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1094",
           "title": "Declare using directive on top level",
@@ -71642,7 +71666,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1096",
           "title": "Use \u0027HasFlag\u0027 method or bitwise operator",
@@ -71666,7 +71690,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1097",
           "title": "Remove redundant \u0027ToString\u0027 call",
@@ -71678,7 +71702,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1098",
           "title": "Constant values should be placed on right side of comparisons",
@@ -71690,7 +71714,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1099",
           "title": "Default label should be the last label in a switch section",
@@ -71702,7 +71726,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1100",
           "title": "[deprecated] Format documentation summary on a single line",
@@ -71714,7 +71738,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1101",
           "title": "[deprecated] Format documentation summary on multiple lines",
@@ -71726,7 +71750,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1102",
           "title": "Make class static",
@@ -71738,7 +71762,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1103",
           "title": "Convert \u0027if\u0027 to assignment",
@@ -71750,7 +71774,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1104",
           "title": "Simplify conditional expression",
@@ -71774,7 +71798,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1105",
           "title": "Unnecessary interpolation",
@@ -71786,7 +71810,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1106",
           "title": "[deprecated] Remove empty destructor",
@@ -71798,7 +71822,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1107",
           "title": "Remove redundant \u0027ToCharArray\u0027 call",
@@ -71810,7 +71834,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1108",
           "title": "Add \u0027static\u0027 modifier to all partial class declarations",
@@ -71834,7 +71858,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1110",
           "title": "Declare type inside namespace",
@@ -71846,7 +71870,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1111",
           "title": "Add braces to switch section with multiple statements",
@@ -71858,7 +71882,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1112",
           "title": "Combine \u0027Enumerable.Where\u0027 method chain",
@@ -71870,7 +71894,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1112FadeOut",
           "title": "Combine \u0027Enumerable.Where\u0027 method chain",
@@ -71882,7 +71906,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1113",
           "title": "Use \u0027string.IsNullOrEmpty\u0027 method",
@@ -71894,7 +71918,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1114",
           "title": "Remove redundant delegate creation",
@@ -71906,7 +71930,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1114FadeOut",
           "title": "Remove redundant delegate creation",
@@ -71954,7 +71978,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1118",
           "title": "Mark local variable as const",
@@ -72014,7 +72038,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1123",
           "title": "Add parentheses when necessary",
@@ -72026,7 +72050,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1124",
           "title": "Inline local variable",
@@ -72038,7 +72062,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1124FadeOut",
           "title": "Inline local variable",
@@ -72062,7 +72086,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1126",
           "title": "Add braces to if-else",
@@ -72098,7 +72122,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1128",
           "title": "Use coalesce expression",
@@ -72110,7 +72134,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1129",
           "title": "Remove redundant field initialization",
@@ -72122,7 +72146,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1130",
           "title": "Bitwise operation on enum without Flags attribute",
@@ -72146,7 +72170,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1132",
           "title": "Remove redundant overriding member",
@@ -72158,7 +72182,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1133",
           "title": "Remove redundant Dispose/Close call",
@@ -72170,7 +72194,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1134",
           "title": "Remove redundant statement",
@@ -72182,7 +72206,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1135",
           "title": "Declare enum member with zero value (when enum has FlagsAttribute)",
@@ -72194,7 +72218,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1136",
           "title": "Merge switch sections with equivalent content",
@@ -72218,7 +72242,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1138",
           "title": "Add summary to documentation comment",
@@ -72230,7 +72254,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1139",
           "title": "Add summary element to documentation comment",
@@ -72242,7 +72266,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1140",
           "title": "Add exception to documentation comment",
@@ -72254,7 +72278,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1141",
           "title": "Add \u0027param\u0027 element to documentation comment",
@@ -72266,7 +72290,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1142",
           "title": "Add \u0027typeparam\u0027 element to documentation comment",
@@ -72278,7 +72302,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1143",
           "title": "Simplify coalesce expression",
@@ -72302,7 +72326,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1145",
           "title": "Remove redundant \u0027as\u0027 operator",
@@ -72314,7 +72338,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1146",
           "title": "Use conditional access",
@@ -72374,7 +72398,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1151",
           "title": "Remove redundant cast",
@@ -72410,7 +72434,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1154",
           "title": "Sort enum members",
@@ -72422,7 +72446,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1155",
           "title": "Use StringComparison when comparing strings",
@@ -72434,7 +72458,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1156",
           "title": "Use string.Length instead of comparison with empty string",
@@ -72446,7 +72470,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1157",
           "title": "Composite enum value contains undefined flag",
@@ -72458,7 +72482,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1158",
           "title": "Static member in generic type should use a type parameter",
@@ -72470,7 +72494,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1159",
           "title": "Use EventHandler\u003CT\u003E",
@@ -72482,7 +72506,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1160",
           "title": "Abstract type should not have public constructors",
@@ -72494,7 +72518,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1161",
           "title": "Enum should declare explicit values",
@@ -72506,7 +72530,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1162",
           "title": "Avoid chain of assignments",
@@ -72518,7 +72542,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1163",
           "title": "Unused parameter",
@@ -72530,7 +72554,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1164",
           "title": "Unused type parameter",
@@ -72542,7 +72566,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1165",
           "title": "Unconstrained type parameter checked for null",
@@ -72554,7 +72578,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1166",
           "title": "Value type object is never equal to null",
@@ -72578,7 +72602,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1168",
           "title": "Parameter name differs from base name",
@@ -72590,7 +72614,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1169",
           "title": "Make field read-only",
@@ -72602,7 +72626,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1170",
           "title": "Use read-only auto-implemented property",
@@ -72614,7 +72638,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1171",
           "title": "Simplify lazy initialization",
@@ -72626,7 +72650,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1172",
           "title": "Use \u0027is\u0027 operator instead of \u0027as\u0027 operator",
@@ -72638,7 +72662,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1173",
           "title": "Use coalesce expression instead of \u0027if\u0027",
@@ -72650,7 +72674,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1174",
           "title": "Remove redundant async/await",
@@ -72662,7 +72686,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1174FadeOut",
           "title": "Remove redundant async/await",
@@ -72674,7 +72698,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1175",
           "title": "Unused \u0027this\u0027 parameter",
@@ -72686,7 +72710,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1176",
           "title": "[deprecated] Use \u0027var\u0027 instead of explicit type (when the type is not obvious)",
@@ -72699,7 +72723,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1177",
           "title": "[deprecated] Use \u0027var\u0027 instead of explicit type (in foreach)",
@@ -72724,7 +72748,7 @@
         },
         {
           "f": "1.4.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1179",
           "title": "Unnecessary assignment",
@@ -72736,7 +72760,7 @@
         },
         {
           "f": "1.4.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1180",
           "title": "Inline lazy initialization",
@@ -72748,7 +72772,7 @@
         },
         {
           "f": "1.4.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1181",
           "title": "Convert comment to documentation comment",
@@ -72760,7 +72784,7 @@
         },
         {
           "f": "1.4.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1182",
           "title": "Remove redundant base interface",
@@ -72808,7 +72832,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1186",
           "title": "Use Regex instance instead of static method",
@@ -72820,7 +72844,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1187",
           "title": "Use constant instead of field",
@@ -72832,7 +72856,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1188",
           "title": "Remove redundant auto-property initialization",
@@ -72844,7 +72868,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1189",
           "title": "Add or remove region name",
@@ -72856,7 +72880,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1190",
           "title": "Join string expressions",
@@ -72868,7 +72892,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1191",
           "title": "Declare enum value as combination of names",
@@ -72880,7 +72904,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1192",
           "title": "Unnecessary usage of verbatim string literal",
@@ -72892,7 +72916,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1193",
           "title": "Overriding member should not change \u0027params\u0027 modifier",
@@ -72904,7 +72928,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1194",
           "title": "Implement exception constructors",
@@ -72916,7 +72940,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1195",
           "title": "Use ^ operator",
@@ -72928,7 +72952,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1196",
           "title": "Call extension method as instance method",
@@ -72940,7 +72964,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1197",
           "title": "Optimize StringBuilder.Append/AppendLine call",
@@ -72952,7 +72976,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1198",
           "title": "Avoid unnecessary boxing of value type",
@@ -72964,7 +72988,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1199",
           "title": "Unnecessary null check",
@@ -72976,7 +73000,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1200",
           "title": "Call \u0027Enumerable.ThenBy\u0027 instead of \u0027Enumerable.OrderBy\u0027",
@@ -72988,7 +73012,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1201",
           "title": "Use method chaining",
@@ -73000,7 +73024,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1202",
           "title": "Avoid NullReferenceException",
@@ -73012,7 +73036,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1203",
           "title": "Use AttributeUsageAttribute",
@@ -73024,7 +73048,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1204",
           "title": "Use EventArgs.Empty",
@@ -73036,7 +73060,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1205",
           "title": "Order named arguments according to the order of parameters",
@@ -73048,7 +73072,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1206",
           "title": "Use conditional access instead of conditional expression",
@@ -73060,7 +73084,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1207",
           "title": "Use anonymous function or method group",
@@ -73096,7 +73120,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1208",
           "title": "Reduce \u0027if\u0027 nesting",
@@ -73108,7 +73132,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1209",
           "title": "Order type parameter constraints",
@@ -73120,7 +73144,7 @@
         },
         {
           "f": "1.6.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1210",
           "title": "Return completed task instead of returning null",
@@ -73132,7 +73156,7 @@
         },
         {
           "f": "1.6.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1211",
           "title": "Remove unnecessary \u0027else\u0027",
@@ -73144,7 +73168,7 @@
         },
         {
           "f": "1.6.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1212",
           "title": "Remove redundant assignment",
@@ -73156,7 +73180,7 @@
         },
         {
           "f": "3.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1212FadeOut",
           "title": "Remove redundant assignment",
@@ -73168,7 +73192,7 @@
         },
         {
           "f": "1.7.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1213",
           "title": "Remove unused member declaration",
@@ -73180,7 +73204,7 @@
         },
         {
           "f": "1.7.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1214",
           "title": "Unnecessary interpolated string",
@@ -73192,7 +73216,7 @@
         },
         {
           "f": "1.7.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1214FadeOut",
           "title": "Unnecessary interpolated string",
@@ -73204,7 +73228,7 @@
         },
         {
           "f": "1.7.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1215",
           "title": "Expression is always equal to true/false",
@@ -73216,7 +73240,7 @@
         },
         {
           "f": "1.8.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1216",
           "title": "Unnecessary unsafe context",
@@ -73228,7 +73252,7 @@
         },
         {
           "f": "1.8.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1217",
           "title": "Convert interpolated string to concatenation",
@@ -73240,7 +73264,7 @@
         },
         {
           "f": "1.8.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1217FadeOut",
           "title": "Convert interpolated string to concatenation",
@@ -73252,7 +73276,7 @@
         },
         {
           "f": "1.9.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1218",
           "title": "Simplify code branching",
@@ -73276,7 +73300,7 @@
         },
         {
           "f": "1.9.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1220",
           "title": "Use pattern matching instead of combination of \u0027is\u0027 operator and cast operator",
@@ -73288,7 +73312,7 @@
         },
         {
           "f": "1.9.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1221",
           "title": "Use pattern matching instead of combination of \u0027as\u0027 operator and null check",
@@ -73300,7 +73324,7 @@
         },
         {
           "f": "1.9.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1222",
           "title": "Merge preprocessor directives",
@@ -73312,7 +73336,7 @@
         },
         {
           "f": "1.9.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1223",
           "title": "Mark publicly visible type with DebuggerDisplay attribute",
@@ -73324,7 +73348,7 @@
         },
         {
           "f": "1.9.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1224",
           "title": "Make method an extension method",
@@ -73336,7 +73360,7 @@
         },
         {
           "f": "1.9.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1225",
           "title": "Make class sealed",
@@ -73348,7 +73372,7 @@
         },
         {
           "f": "1.9.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1226",
           "title": "Add paragraph to documentation comment",
@@ -73360,7 +73384,7 @@
         },
         {
           "f": "2.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1227",
           "title": "Validate arguments correctly",
@@ -73372,7 +73396,7 @@
         },
         {
           "f": "2.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1228",
           "title": "Unused element in a documentation comment",
@@ -73396,7 +73420,7 @@
         },
         {
           "f": "2.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1229",
           "title": "Use async/await when necessary",
@@ -73408,7 +73432,7 @@
         },
         {
           "f": "2.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1230",
           "title": "Unnecessary explicit use of enumerator",
@@ -73420,7 +73444,7 @@
         },
         {
           "f": "2.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1231",
           "title": "Make parameter ref read-only",
@@ -73432,7 +73456,7 @@
         },
         {
           "f": "2.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1232",
           "title": "Order elements in documentation comment",
@@ -73444,7 +73468,7 @@
         },
         {
           "f": "2.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1233",
           "title": "Use short-circuiting operator",
@@ -73456,7 +73480,7 @@
         },
         {
           "f": "2.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1234",
           "title": "Duplicate enum value",
@@ -73468,7 +73492,7 @@
         },
         {
           "f": "2.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1235",
           "title": "Optimize method call",
@@ -73480,7 +73504,7 @@
         },
         {
           "f": "2.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1236",
           "title": "Use exception filter",
@@ -73492,7 +73516,7 @@
         },
         {
           "f": "2.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1237",
           "title": "[deprecated] Use bit shift operator",
@@ -73504,7 +73528,7 @@
         },
         {
           "f": "2.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1238",
           "title": "Avoid nested ?: operators",
@@ -73516,7 +73540,7 @@
         },
         {
           "f": "2.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1239",
           "title": "Use \u0027for\u0027 statement instead of \u0027while\u0027 statement",
@@ -73528,7 +73552,7 @@
         },
         {
           "f": "2.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1240",
           "title": "Operator is unnecessary",
@@ -73540,7 +73564,7 @@
         },
         {
           "f": "2.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1241",
           "title": "Implement non-generic counterpart",
@@ -73552,7 +73576,7 @@
         },
         {
           "f": "3.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1242",
           "title": "Do not pass non-read-only struct by read-only reference",
@@ -73564,7 +73588,7 @@
         },
         {
           "f": "3.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1243",
           "title": "Duplicate word in a comment",
@@ -73576,7 +73600,7 @@
         },
         {
           "f": "3.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1244",
           "title": "Simplify \u0027default\u0027 expression",
@@ -73600,7 +73624,7 @@
         },
         {
           "f": "3.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1246",
           "title": "Use element access",
@@ -73612,7 +73636,7 @@
         },
         {
           "f": "3.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1247",
           "title": "Fix documentation comment tag",
@@ -73648,7 +73672,7 @@
         },
         {
           "f": "3.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1248",
           "title": "Normalize null check",
@@ -73660,7 +73684,7 @@
         },
         {
           "f": "4.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1249",
           "title": "Unnecessary null-forgiving operator",
@@ -73672,7 +73696,7 @@
         },
         {
           "f": "4.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1250",
           "title": "Use implicit/explicit object creation",
@@ -73684,7 +73708,7 @@
         },
         {
           "f": "4.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1251",
           "title": "Remove unnecessary braces from record declaration",
@@ -73696,7 +73720,7 @@
         },
         {
           "f": "4.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1252",
           "title": "Normalize usage of infinite loop",
@@ -73708,7 +73732,7 @@
         },
         {
           "f": "4.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1253",
           "title": "Format documentation comment summary",
@@ -73720,7 +73744,7 @@
         },
         {
           "f": "4.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1254",
           "title": "Normalize format of enum flag value",
@@ -73732,7 +73756,7 @@
         },
         {
           "f": "4.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1255",
           "title": "Simplify argument null check",
@@ -73744,7 +73768,7 @@
         },
         {
           "f": "4.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1256",
           "title": "Invalid argument null check",
@@ -73756,7 +73780,7 @@
         },
         {
           "f": "4.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1257",
           "title": "Use enum field explicitly",
@@ -73768,7 +73792,7 @@
         },
         {
           "f": "4.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1258",
           "title": "Unnecessary enum flag",
@@ -73780,7 +73804,7 @@
         },
         {
           "f": "4.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1259",
           "title": "Remove empty syntax",
@@ -73792,7 +73816,7 @@
         },
         {
           "f": "4.5.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1260",
           "title": "Add/remove trailing comma",
@@ -73804,7 +73828,7 @@
         },
         {
           "f": "4.7.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1261",
           "title": "Resource can be disposed asynchronously",
@@ -73816,7 +73840,7 @@
         },
         {
           "f": "4.7.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1262",
           "title": "Unnecessary raw string literal",
@@ -73828,7 +73852,7 @@
         },
         {
           "f": "4.7.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1263",
           "title": "Invalid reference in a documentation comment",
@@ -73840,7 +73864,7 @@
         },
         {
           "f": "4.8.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1264",
           "title": "Use \u0027var\u0027 or explicit type",
@@ -73852,7 +73876,7 @@
         },
         {
           "f": "4.10.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1265",
           "title": "Remove redundant catch block",
@@ -73864,7 +73888,7 @@
         },
         {
           "f": "4.11.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1266",
           "title": "Use raw string literal",
@@ -73876,7 +73900,7 @@
         },
         {
           "f": "4.11.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1267",
           "title": "Use string interpolation instead of \u0027string.Concat\u0027",
@@ -73888,7 +73912,7 @@
         },
         {
           "f": "4.12.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1268",
           "title": "Simplify numeric comparison",
@@ -73924,7 +73948,7 @@
         },
         {
           "f": "4.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "ROS0003",
           "title": "Analyzer requires config option to be specified",
@@ -73938,11 +73962,11 @@
     },
     {
       "id": "Roslynator.CodeAnalysis.Analyzers",
-      "v": "4.16.0",
+      "v": "4.16.1",
       "rules": [
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS9001",
           "title": "Use pattern matching",
@@ -73954,7 +73978,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS9002",
           "title": "Use property SyntaxNode.SpanStart",
@@ -73966,7 +73990,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS9003",
           "title": "Unnecessary conditional access",
@@ -73978,7 +74002,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS9003FadeOut",
           "title": "Unnecessary conditional access",
@@ -73990,7 +74014,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS9004",
           "title": "Call \u0027Any\u0027 instead of accessing \u0027Count\u0027",
@@ -74002,7 +74026,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS9005",
           "title": "Unnecessary null check",
@@ -74014,7 +74038,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS9006",
           "title": "Use element access",
@@ -74026,7 +74050,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS9007",
           "title": "Use return value",
@@ -74038,7 +74062,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS9008",
           "title": "Call \u0027Last\u0027 instead of using []",
@@ -74050,7 +74074,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS9009",
           "title": "Unknown language name",
@@ -74062,7 +74086,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS9010",
           "title": "Specify ExportCodeRefactoringProviderAttribute.Name",
@@ -74074,7 +74098,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS9011",
           "title": "Specify ExportCodeFixProviderAttribute.Name",
@@ -74088,11 +74112,11 @@
     },
     {
       "id": "Roslynator.Formatting.Analyzers",
-      "v": "4.16.0",
+      "v": "4.16.1",
       "rules": [
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0001",
           "title": "Add blank line after embedded statement",
@@ -74104,7 +74128,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0002",
           "title": "Add blank line after #region",
@@ -74116,7 +74140,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0003",
           "title": "Add blank line after using directive list",
@@ -74140,7 +74164,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0005",
           "title": "Add blank line before #endregion",
@@ -74152,7 +74176,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0006",
           "title": "Add blank line before using directive list",
@@ -74164,7 +74188,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0007",
           "title": "Add blank line between accessors",
@@ -74176,7 +74200,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0008",
           "title": "Add blank line between closing brace and next statement",
@@ -74188,7 +74212,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0009",
           "title": "Add blank line between declaration and documentation comment",
@@ -74200,7 +74224,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0010",
           "title": "Add blank line between declarations",
@@ -74212,7 +74236,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0011",
           "title": "Add/remove blank line between single-line accessors",
@@ -74236,7 +74260,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0012",
           "title": "Add blank line between single-line declarations",
@@ -74248,7 +74272,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0013",
           "title": "Add blank line between single-line declarations of different kind",
@@ -74260,7 +74284,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0014",
           "title": "[deprecated] Add blank line between switch sections",
@@ -74272,7 +74296,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0015",
           "title": "Add/remove blank line between using directives",
@@ -74296,7 +74320,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0016",
           "title": "Put attribute list on its own line",
@@ -74308,7 +74332,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0020",
           "title": "Format accessor\u0027s braces on a single line or multiple lines",
@@ -74320,7 +74344,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0021",
           "title": "Format block\u0027s braces on a single line or multiple lines",
@@ -74332,7 +74356,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0022",
           "title": "[deprecated] Add new line after opening brace of empty block",
@@ -74344,7 +74368,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0023",
           "title": "Format type declaration\u0027s braces",
@@ -74356,7 +74380,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0024",
           "title": "Add new line after switch label",
@@ -74368,7 +74392,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0025",
           "title": "Put full accessor on its own line",
@@ -74380,7 +74404,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0027",
           "title": "Place new line after/before binary operator",
@@ -74404,7 +74428,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0028",
           "title": "Place new line after/before \u0027?:\u0027 operator",
@@ -74428,7 +74452,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0029",
           "title": "Put constructor initializer on its own line",
@@ -74440,7 +74464,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0030",
           "title": "Put embedded statement on its own line",
@@ -74452,7 +74476,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0031",
           "title": "Put enum member on its own line",
@@ -74464,7 +74488,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0032",
           "title": "Place new line after/before arrow token",
@@ -74488,7 +74512,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0033",
           "title": "Put statement on its own line",
@@ -74500,7 +74524,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0034",
           "title": "Put type parameter constraint on its own line",
@@ -74512,7 +74536,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0036",
           "title": "Remove blank line between single-line declarations of same kind",
@@ -74524,7 +74548,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0038",
           "title": "[deprecated] Remove blank line between using directives with same root namespace",
@@ -74536,7 +74560,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0039",
           "title": "Remove new line before base list",
@@ -74548,7 +74572,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0041",
           "title": "Remove new line between \u0027if\u0027 keyword and \u0027else\u0027 keyword",
@@ -74560,7 +74584,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0042",
           "title": "Put auto-accessors on a single line",
@@ -74572,7 +74596,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0043",
           "title": "[deprecated] Format accessor\u0027s braces on a single line when expression is on single line",
@@ -74584,7 +74608,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#;Visual Basic",
           "id": "RCS0044",
           "title": "Use carriage return \u002B linefeed as new line",
@@ -74596,7 +74620,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#;Visual Basic",
           "id": "RCS0045",
           "title": "Use linefeed as new line",
@@ -74608,7 +74632,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0046",
           "title": "Use spaces instead of tab",
@@ -74620,7 +74644,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0047",
           "title": "[deprecated] Wrap and indent each node in list",
@@ -74632,7 +74656,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0048",
           "title": "Put initializer on a single line",
@@ -74644,7 +74668,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0049",
           "title": "Add blank line after top comment",
@@ -74656,7 +74680,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0050",
           "title": "Add blank line before top declaration",
@@ -74668,7 +74692,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0051",
           "title": "Add/remove new line before \u0027while\u0027 in \u0027do\u0027 statement",
@@ -74692,7 +74716,7 @@
         },
         {
           "f": "1.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0052",
           "title": "Place new line after/before equals token",
@@ -74716,7 +74740,7 @@
         },
         {
           "f": "1.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0053",
           "title": "Fix formatting of a list",
@@ -74728,7 +74752,7 @@
         },
         {
           "f": "1.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0054",
           "title": "Fix formatting of a call chain",
@@ -74740,7 +74764,7 @@
         },
         {
           "f": "1.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0055",
           "title": "Fix formatting of a binary expression chain",
@@ -74752,7 +74776,7 @@
         },
         {
           "f": "1.1.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0056",
           "title": "A line is too long",
@@ -74764,7 +74788,7 @@
         },
         {
           "f": "4.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0057",
           "title": "Normalize whitespace at the beginning of a file",
@@ -74776,7 +74800,7 @@
         },
         {
           "f": "4.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0058",
           "title": "Normalize whitespace at the end of a file",
@@ -74788,7 +74812,7 @@
         },
         {
           "f": "4.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0059",
           "title": "Place new line after/before null-conditional operator",
@@ -74800,7 +74824,7 @@
         },
         {
           "f": "4.2.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0060",
           "title": "Add/remove line after file scoped namespace declaration",
@@ -74812,7 +74836,7 @@
         },
         {
           "f": "4.8.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0061",
           "title": "Add/remove blank line between switch sections",
@@ -74824,7 +74848,7 @@
         },
         {
           "f": "4.13.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0062",
           "title": "Put expression body on its own line",
@@ -74836,7 +74860,7 @@
         },
         {
           "f": "4.13.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0063",
           "title": "Remove unnecessary blank line",
@@ -74872,7 +74896,7 @@
         },
         {
           "f": "4.0.0",
-          "v": "4.16.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "ROS0003",
           "title": "Analyzer requires config option to be specified",
@@ -87645,11 +87669,11 @@
     },
     {
       "id": "xunit.analyzers",
-      "v": "1.27.0",
+      "v": "2.0.0",
       "rules": [
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1000",
           "title": "Test classes must be public",
@@ -87661,7 +87685,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1001",
           "title": "Fact methods cannot have parameters",
@@ -87673,7 +87697,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1002",
           "title": "Test methods cannot have multiple Fact or Theory attributes",
@@ -87685,7 +87709,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1003",
           "title": "Theory methods must have test data",
@@ -87697,7 +87721,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1004",
           "title": "Test methods should not be skipped",
@@ -87709,7 +87733,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1005",
           "title": "Fact methods should not have test data",
@@ -87721,7 +87745,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1006",
           "title": "Theory methods should have parameters",
@@ -87733,7 +87757,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1007",
           "title": "ClassData must point at a valid class",
@@ -87745,7 +87769,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1008",
           "title": "Test data attribute should only be used on a Theory",
@@ -87757,7 +87781,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1009",
           "title": "InlineData values must match the number of method parameters",
@@ -87769,7 +87793,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1010",
           "title": "The value is not convertible to the method parameter type",
@@ -87781,7 +87805,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1011",
           "title": "There is no matching method parameter",
@@ -87793,7 +87817,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1012",
           "title": "Null should only be used for nullable parameters",
@@ -87805,7 +87829,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1013",
           "title": "Public method should be marked as test",
@@ -87817,7 +87841,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1014",
           "title": "MemberData should use nameof operator for member name",
@@ -87829,7 +87853,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1015",
           "title": "MemberData must reference an existing member",
@@ -87841,7 +87865,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1016",
           "title": "MemberData must reference a public member",
@@ -87853,7 +87877,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1017",
           "title": "MemberData must reference a static member",
@@ -87865,7 +87889,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1018",
           "title": "MemberData must reference a valid member kind",
@@ -87877,7 +87901,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1019",
           "title": "MemberData must reference a member providing a valid data type",
@@ -87889,7 +87913,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1020",
           "title": "MemberData must reference a property with a public getter",
@@ -87901,7 +87925,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1021",
           "title": "MemberData should not have parameters if the referenced member is not a method",
@@ -87913,7 +87937,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1022",
           "title": "Theory methods cannot have a parameter array",
@@ -87925,7 +87949,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1023",
           "title": "Theory methods cannot have default parameter values",
@@ -87937,7 +87961,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1024",
           "title": "Test methods cannot have overloads",
@@ -87949,7 +87973,7 @@
         },
         {
           "f": "0.4.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1025",
           "title": "InlineData should be unique within the Theory it belongs to",
@@ -87961,7 +87985,7 @@
         },
         {
           "f": "0.6.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1026",
           "title": "Theory methods should use all of their parameters",
@@ -87973,7 +87997,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1027",
           "title": "Collection definition classes must be public",
@@ -87985,7 +88009,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1028",
           "title": "Test method must have valid return type",
@@ -87997,7 +88021,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1029",
           "title": "Local functions cannot be test functions",
@@ -88009,7 +88033,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1030",
           "title": "Do not call ConfigureAwait(false) in test method",
@@ -88021,7 +88045,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1031",
           "title": "Do not use blocking task operations in test method",
@@ -88033,7 +88057,7 @@
         },
         {
           "f": "1.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1032",
           "title": "Test classes cannot be nested within a generic class",
@@ -88045,7 +88069,7 @@
         },
         {
           "f": "1.0.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1033",
           "title": "Test classes decorated with \u0027Xunit.IClassFixture\u003CTFixture\u003E\u0027 or \u0027Xunit.ICollectionFixture\u003CTFixture\u003E\u0027 should add a constructor argument of type TFixture",
@@ -88057,7 +88081,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1034",
           "title": "Null should only be used for nullable parameters",
@@ -88069,7 +88093,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1035",
           "title": "The value is not convertible to the method parameter type",
@@ -88081,7 +88105,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1036",
           "title": "There is no matching method parameter",
@@ -88093,7 +88117,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1037",
           "title": "There are fewer theory data type arguments than required by the parameters of the test method",
@@ -88105,7 +88129,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1038",
           "title": "There are more theory data type arguments than allowed by the parameters of the test method",
@@ -88117,7 +88141,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1039",
           "title": "The type argument to theory data is not compatible with the type of the corresponding test method parameter",
@@ -88129,7 +88153,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1040",
           "title": "The type argument to theory data is nullable, while the type of the corresponding test method parameter is not",
@@ -88141,7 +88165,7 @@
         },
         {
           "f": "1.7.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1041",
           "title": "Fixture arguments to test classes must have fixture sources",
@@ -88153,7 +88177,7 @@
         },
         {
           "f": "1.7.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1042",
           "title": "The member referenced by the MemberData attribute returns untyped data rows",
@@ -88165,7 +88189,7 @@
         },
         {
           "f": "1.10.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1043",
           "title": "Constructors on classes derived from FactAttribute must be public when used on test methods",
@@ -88177,7 +88201,7 @@
         },
         {
           "f": "1.12.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1044",
           "title": "Avoid using TheoryData type arguments that are not serializable",
@@ -88189,7 +88213,7 @@
         },
         {
           "f": "1.12.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1045",
           "title": "Avoid using TheoryData type arguments that might not be serializable",
@@ -88201,7 +88225,7 @@
         },
         {
           "f": "1.12.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1046",
           "title": "Avoid using TheoryDataRow arguments that are not serializable",
@@ -88213,7 +88237,7 @@
         },
         {
           "f": "1.12.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1047",
           "title": "Avoid using TheoryDataRow arguments that might not be serializable",
@@ -88225,7 +88249,7 @@
         },
         {
           "f": "1.13.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1048",
           "title": "Avoid using \u0027async void\u0027 for test methods as it is deprecated in xUnit.net v3",
@@ -88237,7 +88261,7 @@
         },
         {
           "f": "1.13.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1049",
           "title": "Do not use \u0027async void\u0027 for test methods as it is no longer supported",
@@ -88249,7 +88273,7 @@
         },
         {
           "f": "1.14.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1050",
           "title": "The class referenced by the ClassData attribute returns untyped data rows",
@@ -88261,7 +88285,7 @@
         },
         {
           "f": "1.16.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1051",
           "title": "Calls to methods which accept CancellationToken should use TestContext.Current.CancellationToken",
@@ -88273,7 +88297,7 @@
         },
         {
           "f": "1.23.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1052",
           "title": "Avoid using \u0027TheoryData\u003C...\u003E\u0027 with types that implement \u0027ITheoryDataRow\u0027.",
@@ -88285,7 +88309,7 @@
         },
         {
           "f": "1.25.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit1053",
           "title": "The static member used as theory data must be statically initialized.",
@@ -88296,8 +88320,200 @@
           "enabled": true
         },
         {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1054",
+          "title": "Properties used for conditional skipping must be public, static, and return bool",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1054",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1055",
+          "title": "Conditional skipping cannot set both SkipUnless and SkipWhen",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1055",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1056",
+          "title": "Type must have a single public non-static constructor",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1056",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1057",
+          "title": "Type must be public or internal",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1057",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1058",
+          "title": "Generic collection definitions are not supported in Native AOT",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1058",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1059",
+          "title": "Test classes may not be decorated with ICollectionFixture\u003C\u003E",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1059",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1060",
+          "title": "Cultured test methods must have at least one culture",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1060",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1061",
+          "title": "Fact methods cannot be generic",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1061",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1062",
+          "title": "Theory methods cannot be generic in Native AOT",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1062",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1063",
+          "title": "Test classes cannot be an open generic type",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1063",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1064",
+          "title": "Theory parameter cannot use params modifier in Native AOT",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1064",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1065",
+          "title": "MemberData method is ambiguous",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1065",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1066",
+          "title": "MemberData parameter cannot use params modifier in Native AOT",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1066",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1067",
+          "title": "There is no matching MemberData method argument",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1067",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1068",
+          "title": "MemberData cannot point to an open generic type",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1068",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit1069",
+          "title": "Test methods with a Timeout should reference TestContext.Current.CancellationToken",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit1069",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2000",
           "title": "Constants and literals should be the expected argument",
@@ -88309,7 +88525,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2001",
           "title": "Do not use invalid equality check",
@@ -88321,7 +88537,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2002",
           "title": "Do not use null check on value type",
@@ -88333,7 +88549,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2003",
           "title": "Do not use equality check to test for null value",
@@ -88345,7 +88561,7 @@
         },
         {
           "f": "0.1.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2004",
           "title": "Do not use equality check to test for boolean conditions",
@@ -88357,7 +88573,7 @@
         },
         {
           "f": "0.2.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2005",
           "title": "Do not use identity check on value type",
@@ -88369,7 +88585,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2006",
           "title": "Do not use invalid string equality check",
@@ -88381,7 +88597,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2007",
           "title": "Do not use typeof expression to check the type",
@@ -88393,7 +88609,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2008",
           "title": "Do not use boolean check to match on regular expressions",
@@ -88405,7 +88621,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2009",
           "title": "Do not use boolean check to check for substrings",
@@ -88417,7 +88633,7 @@
         },
         {
           "f": "0.3.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2010",
           "title": "Do not use boolean check to check for string equality",
@@ -88429,7 +88645,7 @@
         },
         {
           "f": "0.4.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2011",
           "title": "Do not use empty collection check",
@@ -88441,7 +88657,7 @@
         },
         {
           "f": "0.6.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2012",
           "title": "Do not use boolean check to check if a value exists in a collection",
@@ -88453,7 +88669,7 @@
         },
         {
           "f": "0.6.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2013",
           "title": "Do not use equality check to check for collection size.",
@@ -88465,7 +88681,7 @@
         },
         {
           "f": "0.6.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2014",
           "title": "Do not use throws check to check for asynchronously thrown exception",
@@ -88477,7 +88693,7 @@
         },
         {
           "f": "0.6.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2015",
           "title": "Do not use typeof expression to check the exception type",
@@ -88489,7 +88705,7 @@
         },
         {
           "f": "0.6.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2016",
           "title": "Keep precision in the allowed range when asserting equality of doubles or decimals.",
@@ -88501,7 +88717,7 @@
         },
         {
           "f": "0.6.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2017",
           "title": "Do not use Contains() to check if a value exists in a collection",
@@ -88513,7 +88729,7 @@
         },
         {
           "f": "0.6.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2018",
           "title": "Do not compare an object\u0027s exact type to an abstract class or interface",
@@ -88537,7 +88753,7 @@
         },
         {
           "f": "1.2.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2020",
           "title": "Do not use always-failing boolean assertions",
@@ -88549,7 +88765,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2021",
           "title": "Async assertions should be awaited",
@@ -88561,7 +88777,7 @@
         },
         {
           "f": "1.5.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2022",
           "title": "Boolean assertions should not be negated",
@@ -88573,7 +88789,7 @@
         },
         {
           "f": "1.6.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2023",
           "title": "Do not use collection methods for single-item collections",
@@ -88585,7 +88801,7 @@
         },
         {
           "f": "1.7.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2024",
           "title": "Do not use boolean asserts for simple equality tests",
@@ -88597,7 +88813,7 @@
         },
         {
           "f": "1.7.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2025",
           "title": "The boolean assertion statement can be simplified",
@@ -88609,7 +88825,7 @@
         },
         {
           "f": "1.9.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2026",
           "title": "Comparison of sets must be done with IEqualityComparer",
@@ -88621,7 +88837,7 @@
         },
         {
           "f": "1.9.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2027",
           "title": "Comparison of sets to linear containers have undefined results",
@@ -88633,7 +88849,7 @@
         },
         {
           "f": "1.10.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2028",
           "title": "Do not use Assert.Empty or Assert.NotEmpty with problematic types",
@@ -88645,7 +88861,7 @@
         },
         {
           "f": "1.15.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2029",
           "title": "Do not use Assert.Empty to check if a value does not exist in a collection",
@@ -88657,7 +88873,7 @@
         },
         {
           "f": "1.16.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2030",
           "title": "Do not use Assert.NotEmpty to check if a value exists in a collection",
@@ -88669,7 +88885,7 @@
         },
         {
           "f": "1.16.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2031",
           "title": "Do not use Where clause with Assert.Single",
@@ -88681,7 +88897,7 @@
         },
         {
           "f": "1.17.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit2032",
           "title": "Type assertions based on \u0027assignable from\u0027 are confusingly named",
@@ -88692,8 +88908,20 @@
           "enabled": true
         },
         {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit2033",
+          "title": "Use the assertion return value instead of re-deriving it",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit2033",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
           "f": "0.8.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit3000",
           "title": "Classes which cross AppDomain boundaries must derive directly or indirectly from LongLivedMarshalByRefObject",
@@ -88705,7 +88933,7 @@
         },
         {
           "f": "0.8.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit3001",
           "title": "Classes that are marked as serializable (or created by the test framework at runtime) must have a public parameterless constructor",
@@ -88717,7 +88945,7 @@
         },
         {
           "f": "1.16.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit3002",
           "title": "Classes which are JSON serializable should not be tested for their concrete type",
@@ -88729,12 +88957,60 @@
         },
         {
           "f": "1.23.0",
-          "v": "1.27.0",
+          "v": "2.0.0",
           "lang": "C#",
           "id": "xUnit3003",
           "title": "Classes which extend FactAttribute (directly or indirectly) should provide a public constructor for source information",
           "desc": "",
           "url": "https://xunit.net/xunit.analyzers/rules/xUnit3003",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit3004",
+          "title": "The given type is missing a required interface implementation",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit3004",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit3005",
+          "title": "Type must have an appropriate non-obsolete public constructor",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit3005",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit3006",
+          "title": "Test case implementation must be serializable",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit3006",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.0",
+          "v": "2.0.0",
+          "lang": "C#",
+          "id": "xUnit3007",
+          "title": "Test case implementation might not be serializable",
+          "desc": "",
+          "url": "https://xunit.net/xunit.analyzers/rules/xUnit3007",
           "tags": null,
           "level": "Warning",
           "enabled": true
@@ -88928,5 +89204,5 @@
       ]
     }
   ],
-  "Count": 7354
+  "Count": 7377
 }
