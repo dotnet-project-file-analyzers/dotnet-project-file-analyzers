@@ -22,6 +22,12 @@ public sealed record NugetPackage : IComparable<NugetPackage>
     [JsonPropertyName("rules")]
     public ImmutableArray<DiagnosticInfo> Rules { get; init; } = [];
 
+    [Pure]
+    internal NugetPackage Save() => this with { Rules = [.. Rules.Select(r => r.Save(Version))] };
+
+    [Pure]
+    internal NugetPackage Load() => this with { Rules = [.. Rules.Select(r => r.Load(Version))] };
+
     /// <inheritdoc />
     [Pure]
     public int CompareTo(NugetPackage? other)

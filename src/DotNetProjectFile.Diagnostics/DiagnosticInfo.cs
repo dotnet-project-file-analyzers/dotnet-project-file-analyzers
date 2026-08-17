@@ -80,6 +80,12 @@ public sealed record DiagnosticInfo :
     [Pure]
     public DiagnosticInfo Update(DiagnosticInfo update) => update with { First = First };
 
+    [Pure]
+    internal DiagnosticInfo Save(NuGetVersion? version) => Version == version ? this with { Version = null } : this;
+
+    [Pure]
+    internal DiagnosticInfo Load(NuGetVersion? version) => this with { Version = Version ?? version };
+
     /// <inheritdoc />
     [Pure]
     public int CompareTo(DiagnosticInfo? other) => other switch
