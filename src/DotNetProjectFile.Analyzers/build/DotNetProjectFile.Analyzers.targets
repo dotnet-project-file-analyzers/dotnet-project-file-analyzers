@@ -67,7 +67,11 @@
   <!--To inform users to use .net.csproj for not Roslyn-based languages such as F#. -->
   <Target Name="Proj1007" BeforeTargets="ResolvePackageAssets">
     <Warning
-      Condition="'$(IsRoslynBased)' != 'true' and $([MSBuild]::GetPathOfFileAbove('.net.csproj', '$(MSBuildThisFileDirectory)')) == ''"
+      Condition="
+        '$(IsRoslynBased)' != 'true'
+        and $([MSBuild]::GetPathOfFileAbove('.net.csproj', '$(MSBuildThisFileDirectory)')) == ''
+        and '$(MSBuildProjectExtension)' != '.props'
+        and '$(MSBuildProjectExtension)' != '.targets'"
       Code="Proj1007"
       Text="Use .net.csproj to analyze this project"
       HelpLink="https://dotnet-project-file-analyzers.github.io/rules/Proj1007.html" />

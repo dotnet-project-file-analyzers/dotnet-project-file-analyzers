@@ -93,6 +93,7 @@ v1.16.0
 - Proj0053: Run analyzers during build. (NEW RULE)
 - Proj0220: Ignore SNUPKG setup for development dependencies. (FP)
 - Proj1002: Advise Microsoft's .NET analyzers for Roslyn based projects only. (FP)
+- Proj1007: Exclude targets and props as they could be imported files. (FP)
 - Proj1101: Report on unstable versions of development dependencies. (FN)
 - Proj4000: Invalid INI file. (RE-ENABLE)
 - Proj4001: Invalid INI header. (RE-ENABLE)
