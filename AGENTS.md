@@ -27,16 +27,17 @@ This is a **Roslyn analyzer package** (160+ diagnostics) for .NET project files 
 
 | Path | Purpose |
 |---|---|
-| `.net.csproj` | SDK | Allows `DotNetProjectFile.Analyzers` to run Roslyn Analyzers on MSBuild files. Ignore it. |
-| `src/DotNetProjectFile.Analyzers/` | Main analyzer library (`netstandard2.0`) |
-| `src/.../Analyzers/` | Analyzer implementations (MsBuild, Resx, Ini, NuGetConfig, Slnx, Generic) |
-| `src/.../Rule.cs` (+ partials) | All `DiagnosticDescriptor` definitions |
-| `src/.../build/` | MSBuild `.props`/`.targets` shipped in the NuGet package |
-| `specs/Specs/` | Unit tests (NUnit) |
-| `specs/TestData/` | Shared test data (embedded files) |
-| `specs/Bench/` | Benchmarks (BenchmarkDotNet) |
-| `projects/` | 120+ fixture projects used as test input data |
-| `props/common.props` | Shared MSBuild properties for all projects |
+| `.net.csproj`                        | SDK | Allows `DotNetProjectFile.Analyzers` to run Roslyn Analyzers on MSBuild files. Ignore it. |
+| `src/DotNetProjectFile.Analyzers/`   | Main analyzer library (`netstandard2.0`) |
+| `src/DotNetProjectFile.Diagnostics/` | Diagnostic metadata collection & NuGet package introspection (`net10.0`) |
+| `src/.../Analyzers/`                 | Analyzer implementations (MsBuild, Resx, Ini, NuGetConfig, Slnx, Generic) |
+| `src/.../Rule.cs` (+ partials)       | All `DiagnosticDescriptor` definitions |
+| `src/.../build/`                     | MSBuild `.props`/`.targets` shipped in the NuGet package |
+| `specs/Specs/`                       | Unit tests (NUnit) |
+| `specs/TestData/`                    | Shared test data (embedded files) |
+| `specs/Bench/`                       | Benchmarks (BenchmarkDotNet) |
+| `projects/`                          | 120+ fixture projects used as test input data |
+| `props/common.props`                 | Shared MSBuild properties for all projects |
 
 Rule numbering: `Proj00xx` general, `Proj02xx` packaging, `Proj03xx` NuGet config, `Proj05xx` licensing, `Proj08xx` CPM, `Proj17xx` formatting, `Proj2xxx` RESX, `Proj3xxx` generic, `Proj4xxx` INI/EditorConfig, `Proj5xxx` SLNX.
 
@@ -73,3 +74,4 @@ Rule numbering: `Proj00xx` general, `Proj02xx` packaging, `Proj03xx` NuGet confi
 ## Gotchas
 
 * **Do not modify `.net.csproj`:** This file is exclusively for running Roslyn Analyzers. Agents must completely ignore and skip this file during development.
+* **Do not modify or read `src/DotNetProjectFile.Diagnostics/Data/DiagnosticCollection.json`:** This file is huge, and is data about analyzers.
