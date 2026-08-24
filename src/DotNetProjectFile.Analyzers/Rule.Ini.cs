@@ -42,7 +42,7 @@ public static partial class Rule
 
         public static DiagnosticDescriptor DefineKeysOnce => New(
             id: 4011,
-            title: "Define key once",
+            title: "Define INI key once",
             message: "'{0}' has already been defined at line {1}",
             description:
                 "Within sections of an INI file, setting a key more than once " +
