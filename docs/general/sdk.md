@@ -41,7 +41,7 @@ A `.net.csproj` project file looks like this:
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference PrivateAssets="all" Include="DotNetProjectFile.Analyzers" Version="1.15.2" />
+    <PackageReference PrivateAssets="all" Include="DotNetProjectFile.Analyzers" Version="1.16.1" />
   </ItemGroup>
 
 </Project>
