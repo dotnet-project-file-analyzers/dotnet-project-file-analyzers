@@ -9,7 +9,7 @@ a `*.csproj` file) and hooking into Roslyn when that project is built. However,
 for files that are not linked to any single project—such as solution files,
 shared configuration files, or repository, this approach doesn't work.
 
-The `.net.csproj` file provides a solution: a dedicated proxy project that
+The `.net.csproj` file provides a solution: it is a dedicated proxy project that
 analyzes all such unlinked files in your repository.
 
 ## How the `.net.csproj` file Works
