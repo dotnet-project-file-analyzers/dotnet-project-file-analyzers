@@ -40,10 +40,14 @@ A `.net.csproj` project file looks like this:
 ``` xml
 <Project Sdk="Microsoft.NET.Sdk">
 
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
   <ItemGroup>
-   <PackageReference Include="DotNetProjectFile.Analyzers" Version="*" PrivateAssets="all" />
+    <PackageReference PrivateAssets="all" Include="DotNetProjectFile.Analyzers" Version="*" />
   </ItemGroup>
-  
+
 </Project>
 ```
 *Download this example [`.net.csproj`](./.net.csproj)*
@@ -61,5 +65,11 @@ is enabled. In the latter case using a `<GlobalPackageReference>`:
 
 In that case the `.net.csproj` can be as small as this:
 ``` xml
-<Project Sdk="Microsoft.NET.Sdk" />
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>
 ```

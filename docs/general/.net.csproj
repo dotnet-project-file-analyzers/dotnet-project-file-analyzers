@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotNetProjectFile.Analyzers.Sdk" Version="*" PrivateAssets="all" />
+    <PackageReference PrivateAssets="all" Include="DotNetProjectFile.Analyzers" Version="*" />
   </ItemGroup>
 
 </Project>
