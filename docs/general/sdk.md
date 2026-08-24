@@ -4,9 +4,13 @@ nav_order: 2
 ---
 
 # Using .NET Project File Analyzers on Shared Files
-.NET project file analyzers work by linking files to a project (most commonly a `*.csproj` file) and hooking into Roslyn when that project is built. However, for files that are not linked to any single project—such as solution files, shared configuration files, or repository, this approach doesn't work.
+.NET project file analyzers work by linking files to a project (most commonly
+a `*.csproj` file) and hooking into Roslyn when that project is built. However,
+for files that are not linked to any single project—such as solution files,
+shared configuration files, or repository, this approach doesn't work.
 
-The `.net.csproj` file provides a solution: a dedicated proxy project that analyzes all such unlinked files in your repository.
+The `.net.csproj` file provides a solution: a dedicated proxy project that
+analyzes all such unlinked files in your repository.
 
 ## How the `.net.csproj` file Works
 The `.net.csproj` file is a special proxy project that enables analysis of
@@ -16,8 +20,9 @@ detects and analyzes compatible files in the project's directory tree (such as
 files explicitly included.
 
 Placement of the `.net.csproj` file should be a parent directory common to all
-projects you want to analyze. In mono repos this most likely same directory of
-your solution file, otherwise the root of your repo is the most logical choice.
+projects you want to analyze. In a [monorepo](https://en.wikipedia.org/wiki/Monorepo)
+this most likely same directory of your solution file, otherwise the root of
+your repo is the most logical choice.
 
 The `.net.cspoj` file is configured to have no build output and not to
 automatically include `<Compile>` items.
@@ -52,7 +57,7 @@ is enabled. In the latter case using a `<GlobalPackageReference>`:
 
 ``` xml
 <ItemGroup Label="Analyzers">
-  <GlobalPackageReference Include="DotNetProjectFile.Analyzers" Version="1.12.0" />
+  <GlobalPackageReference Include="DotNetProjectFile.Analyzers" Version="1.15.2" />
 </ItemGroup>
 ```
 
