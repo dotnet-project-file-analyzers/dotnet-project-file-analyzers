@@ -6,7 +6,7 @@ nav_order: 2
 # Using .NET Project File Analyzers on Shared Files
 .NET project file analyzers work by linking files to a project (most commonly
 a `*.csproj` file) and hooking into Roslyn when that project is built. However,
-for files that are not linked to any single project—such as solution files,
+for files that are not linked to any single project, such as solution files,
 shared configuration files, or repository, this approach doesn't work.
 
 The `.net.csproj` file provides a solution: it is a dedicated proxy project that
