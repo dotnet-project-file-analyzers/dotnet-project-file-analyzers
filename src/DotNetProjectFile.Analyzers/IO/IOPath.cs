@@ -41,6 +41,16 @@ public static class IOPath
         return same ? null : string.Join("/", parts);
     }
 
+    /// <summary>Returns true if the path is fully qualified.</summary>
+    /// <remarks>
+    /// System.IO.Path.IsPathFullyQualified(string) does not exist in .NET standard 2.0.
+    /// </remarks>
+    [Pure]
+    public static bool IsFullyQualified(string? path)
+        => path is { Length: > 0 }
+        && Path.IsPathRooted(path)
+        && (path[0] is '/' || path.StartsWith(@"\\") || (path.Length >= 2 && path[1] is ':'));
+
     internal static bool Equals(string[] self, string[] other, bool caseSensitive)
     {
         if (self.Length != other.Length) { return false; }
