@@ -14,7 +14,7 @@ analyzes all such unlinked files in your repository.
 
 ## How the `.net.csproj` file Works
 The `.net.csproj` file is a special proxy project that enables analysis of
-repository-level files. It automatically includes The analyzer automatically
+repository-level files. It automatically includes the analyzers automatically
 detects and analyzes compatible files in the project's directory tree (such as
 `.csproj`, `.slnx`, `.editorconfig`, `NuGet.config`, etc.), along with any
 files explicitly included.
