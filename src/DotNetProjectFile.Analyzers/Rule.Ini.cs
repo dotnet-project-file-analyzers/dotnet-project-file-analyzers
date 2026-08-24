@@ -40,6 +40,16 @@ public static partial class Rule
             tags: ["INI", "noise"],
             category: Category.Noise);
 
+        public static DiagnosticDescriptor DefineKeysOnce => New(
+            id: 4011,
+            title: "Define INI key once",
+            message: "'{0}' has already been defined at line {1}",
+            description:
+                "Within sections of an INI file, setting a key more than once " +
+                "will result in overriding the current value and is considered a mistake.",
+            tags: ["INI", "key"],
+            category: Category.CodeSmell);
+
         public static DiagnosticDescriptor RemoveSectionHeader => New(
             id: 4025,
             title: "Remove section header",

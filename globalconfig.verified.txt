@@ -161,6 +161,7 @@ dotnet_diagnostic.Proj4000.severity = error      # Invalid INI file
 dotnet_diagnostic.Proj4001.severity = error      # Invalid INI Header
 dotnet_diagnostic.Proj4002.severity = error      # Invalid INI key-value pair
 dotnet_diagnostic.Proj4010.severity = warning    # Sections should contain at least one key-value pair
+dotnet_diagnostic.Proj4011.severity = warning    # Define INI key once
 dotnet_diagnostic.Proj4025.severity = warning    # Remove section header
 dotnet_diagnostic.Proj4026.severity = warning    # Specify is_global
 dotnet_diagnostic.Proj4027.severity = warning    # Use valid diagnostic severity value

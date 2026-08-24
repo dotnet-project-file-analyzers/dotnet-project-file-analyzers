@@ -84,6 +84,8 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+v1.17.0
+- Proj4011: Define keys once in an INI section. (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
