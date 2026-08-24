@@ -24,7 +24,7 @@ projects you want to analyze. In a [monorepo](https://en.wikipedia.org/wiki/Mono
 this most likely same directory of your solution file, otherwise the root of
 your repo is the most logical choice.
 
-The `.net.cspoj` file is configured to have no build output and not to
+The `.net.csproj` file is configured to have no build output and not to
 automatically include `<Compile>` items.
 
 `.net.csproj` includes top level files and as such provides a solid alternative
