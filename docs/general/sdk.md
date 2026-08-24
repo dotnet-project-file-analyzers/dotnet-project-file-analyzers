@@ -3,33 +3,24 @@ permalink: /sdk
 nav_order: 2
 ---
 
-# .NET Project File Analyzers SDK
-The .NET Project File Analyzers ships with its own SDK.
+# Using .NET Project File Analyzers on Shared Files
+.NET project file analyzers work by linking files to a project (most commonly a `*.csproj` file) and hooking into Roslyn when that project is built. However, for files that are not linked to any single project—such as solution files, shared configuration files, or repository, this approach doesn't work.
 
-## Why the .NET Project File Analyzers SDK?
-.NET project file analyzers work by linking files to a project (most commonly
-a `*.csproj` file), and hook on to Roslyn when that project is built.
+The `.net.csproj` file provides a solution: a dedicated proxy project that analyzes all such unlinked files in your repository.
 
-For files that can not be linked to a single project to build, this approach
-does not work, and that is where the `.net.csproj` project comes in handy.
+## How the `.net.csproj` file Works
+The `.net.csproj` file is a special proxy project that enables analysis of
+repository-level files. It automatically includes The analyzer automatically
+detects and analyzes compatible files in the project's directory tree (such as
+`.csproj`, `.slnx`, `.editorconfig`, `NuGet.config`, etc.), along with any
+files explicitly included.
 
-## How does it work?
-The `.net.csproj` acts as proxy for all files not linked to a single project.
-It obtains its powers because it is a little different from normal projects:
+Placement of the `.net.csproj` file should be a parent directory common to all
+projects you want to analyze. In mono repos this most likely same directory of
+your solution file, otherwise the root of your repo is the most logical choice.
 
-1. The `.net.csproj` file is typically placed in a parent directory common to
-   all other projects. This could be the root of your repo, the same directory
-   as your solution(s), or somewhere in between. Placement really depends on
-   which (sub) directories should be scanned, experiment a little to see what
-   works for you. The needs of a large [monorepo](https://en.wikipedia.org/wiki/Monorepo)
-   with many solutions and projects differ from those of a small repository
-   with a single solution and just a few projects.
-2. The `.net.csproj` project has a PackageReference to [![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/v/DotNetProjectFile.Analyzers)![DotNetProjectFile.Analyzers](https://img.shields.io/nuget/dt/DotNetProjectFile.Analyzers)](https://www.nuget.org/packages/DotNetProjectFile.Analyzers).
-   It automatically includes files it can analyze. Those, and files included as
-   `<AdditionalFiles>` are analyzed by the appropriate .NET project file
-   analyzers.
-3. The build output has been disabled, and adding `<Compile>` items to the
-   `.net.csproj` will not result in any dll or executable.
+The `.net.cspoj` file is configured to have no build output and not to
+automatically include `<Compile>` items.
 
 `.net.csproj` includes top level files and as such provides a solid alternative
 to a `Solution items` folder.
@@ -45,12 +36,14 @@ A `.net.csproj` project file looks like this:
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference PrivateAssets="all" Include="DotNetProjectFile.Analyzers" Version="*" />
+    <PackageReference PrivateAssets="all" Include="DotNetProjectFile.Analyzers" Version="1.15.2" />
   </ItemGroup>
 
 </Project>
 ```
-*Download this example [`.net.csproj`](./.net.csproj)*
+
+*Download this example [`.net.csproj`](.net.csproj)*
+
 
 ## Central Package Management
 It is advised to add the reference in the `Directory.Build.props` file, or
