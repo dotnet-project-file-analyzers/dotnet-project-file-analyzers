@@ -37,10 +37,9 @@ public static partial class Rule
 
         public static DiagnosticDescriptor FileShouldExist => New(
            id: 5006,
-           title: "Included files should ",
+           title: "Included files should exist",
            message: "Included file '{0}' does not exist",
-           description:
-               "?",
+           description: "Files included in a solution should exist on disk.",
            tags: [Tag.SLNX],
            category: Category.CodeSmell);
 

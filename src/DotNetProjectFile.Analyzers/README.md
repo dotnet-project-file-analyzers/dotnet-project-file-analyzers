@@ -215,3 +215,4 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj5000** Use SLNX solution files](https://dotnet-project-file-analyzers.github.io/rules/Proj5000.html)
 * [**Proj5001** Remove SLN solution files](https://dotnet-project-file-analyzers.github.io/rules/Proj5001.html)
 * [**Proj5005** Omit Project ID's](https://dotnet-project-file-analyzers.github.io/rules/Proj5005.html)
+* [**Proj5006** Included files should exist](https://dotnet-project-file-analyzers.github.io/rules/Proj5006.html)
