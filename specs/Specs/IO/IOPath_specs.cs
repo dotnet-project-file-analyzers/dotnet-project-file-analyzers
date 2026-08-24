@@ -15,10 +15,12 @@ public class IO_Path
     public void CaseCompare(string file, string selector, string? compare)
         => IOPath.CaseCompare(IOFile.Parse(file), IOFile.Parse(selector)).Should().Be(compare);
 
+    [TestCase("""/unix path""")]
+#if Is_Windows
     [TestCase("""C:\path\with\backward slashes""")]
     [TestCase("""C:/path/with/forward slashes""")]
     [TestCase("""\\server path""")]
-    [TestCase("""/unix path""")]
+#endif
     public void IsFullyQualified(string path)
         => IOPath.IsFullyQualified(path).Should().BeTrue();
 
