@@ -2,7 +2,7 @@ using DotNetProjectFile.Slnx;
 
 namespace DotNetProjectFile.Analyzers.Slnx;
 
-/// <summary>Implements <see cref="Rule.RemoveCommentedOutCode"/>.</summary>
+/// <summary>Implements <see cref="Rule.FileShouldExist"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class FileShouldExist() : SolutionFileAnalyzer(Rule.SLNX.FileShouldExist)
 {
