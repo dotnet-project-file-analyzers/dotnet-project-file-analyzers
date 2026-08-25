@@ -4970,7 +4970,7 @@
     },
     {
       "id": "DotNetProjectFile.Analyzers",
-      "v": "1.15.2",
+      "v": "1.16.1",
       "rules": [
         {
           "f": "1.0.0",
@@ -4998,7 +4998,7 @@
           "f": "1.0.0",
           "lang": "C#;Visual Basic",
           "id": "Proj0003",
-          "title": "Define usings explicit",
+          "title": "Define usings explicitly",
           "desc": "The included namespaces should be clear. To reduce the statements per file, consider global using statements.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0003.html",
           "tags": "Configuration;usings;global",
@@ -5021,9 +5021,9 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0005",
           "title": "Define package reference assets as attributes",
-          "desc": "To reduce security issues, NuGets security audit should be run on every build automatically.",
+          "desc": "When using the Assets attribute, each asset should be explicitly defined as an attribute rather than using child elements.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0005.html",
-          "tags": "security;NuGet;vulnerability",
+          "tags": "Configuration;clarity",
           "level": "Warning",
           "enabled": true
         },
@@ -5262,7 +5262,7 @@
           "f": "1.4.3",
           "lang": "C#;Visual Basic",
           "id": "Proj0027",
-          "title": "Override \u003CTargetFrameworks\u003E with \u003CTargetFrameworks\u003E",
+          "title": "Override \u003CTargetFrameworks\u003E with \u003CTargetFramework\u003E",
           "desc": "The \u003CTargetFrameworks\u003E node precedes \u003CTargetFramework\u003E. Hence, once the first has been used, the use of the latter has no effect.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0027.html",
           "tags": "TFM",
@@ -5274,7 +5274,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0028",
           "title": "Define conditions on level 1",
-          "desc": "Both to keep lines short, and to group configuration that is bound to the some constraints, it best to define condtions on level 1.",
+          "desc": "Both to keep lines short, and to group configuration that is bound to some constraints, it is best to define conditions on level 1.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0028.html",
           "tags": "conditions",
           "level": "Warning",
@@ -5307,7 +5307,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0031",
           "title": "Adopt preferred casing of nodes",
-          "desc": "MS Build is (mostly) case insensitive. To prevent issues, however, it is preferred to use the same casing consistently.",
+          "desc": "MS Build is (mostly) case-insensitive. To prevent issues, however, it is preferred to use the same casing consistently.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0031.html",
           "tags": "clarity;casing",
           "level": "Warning",
@@ -5340,7 +5340,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0034",
           "title": "Import statement could not be resolved",
-          "desc": "The .NET project file analyzer can (unfortunatly) not resolve all import statements.",
+          "desc": "The .NET project file analyzer can (unfortunately) not resolve all import statements.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0034.html",
           "tags": "limitation",
           "level": "Warning",
@@ -5362,7 +5362,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0036",
           "title": "Remove None when redundant",
-          "desc": "Removing a \u003CNone\u003E node has no effect on the build process, and is considered redudant.",
+          "desc": "Removing a \u003CNone\u003E node has no effect on the build process, and is considered redundant.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0036.html",
           "tags": "redundant",
           "level": "Warning",
@@ -5373,7 +5373,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0037",
           "title": "Exclude runtime when all assets are private",
-          "desc": "When a package reference with private assets should at least mark runtime as excluded. By doing so, it prevent unintended references to its code that would lead to runtime issues.",
+          "desc": "When a package reference has private assets, runtime should at least be marked as excluded. By doing so, it prevents unintended references to its code that would lead to runtime issues.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0037.html",
           "tags": "bug",
           "level": "Warning",
@@ -5395,7 +5395,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0039",
           "title": "Treat all warnings as errors is considered a bad practice",
-          "desc": "How tempting this may feel to treat all warnings as erors, there are objections to consider. Because such a policy might be counterproductive.",
+          "desc": "How tempting this may feel to treat all warnings as errors, there are objections to consider. Because such a policy might be counterproductive.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0039.html",
           "tags": "error;warning;TreatWarningsAsErrors",
           "level": "Warning",
@@ -5482,7 +5482,7 @@
           "f": "1.8.0",
           "lang": "C#;Visual Basic",
           "id": "Proj0047",
-          "title": "Label item groups that remove compliation items",
+          "title": "Label item groups that remove compilation items",
           "desc": "To ensure compilation item removal is intentional, \u003CItemGroup\u003E\u0027s containing \u003CRemove\u003E nodes should be labeled.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0047.html",
           "tags": "Compile;Build",
@@ -5494,7 +5494,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0048",
           "title": "Language version should be set to an explicit version number",
-          "desc": "To ensure the language version used by the compiler is not unintentionally changed, it is adviced to define the \u0060\u003CLangVersion\u003E\u0060 node with an explicit version number.",
+          "desc": "To ensure the language version used by the compiler is not unintentionally changed, it is advised to define the \u0060\u003CLangVersion\u003E\u0060 node with an explicit version number.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0048.html",
           "tags": "Compile;Build",
           "level": "Warning",
@@ -5540,7 +5540,29 @@
           "title": "Prefer attributes over elements",
           "desc": "Attributes are more concise and readable than elements for (simple) values.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0052.html",
-          "tags": "Clearity;Readability",
+          "tags": "Clarity;Readability",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.16.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj0053",
+          "title": "Run analyzers during build",
+          "desc": "Diagnostic analyzers give important feedback that should not be ignored.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0053.html",
+          "tags": "MSBuild;analyzers",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.16.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj0054",
+          "title": "Avoid changing compiler tools",
+          "desc": "Changing compiler tools can lead to unexpected behavior. Do not override the compiler tools within MSBuild files.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0054.html",
+          "tags": "MSBuild;compiler",
           "level": "Warning",
           "enabled": true
         },
@@ -5714,7 +5736,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0215",
           "title": "Provide a compliant NuGet package icon",
-          "desc": "To ensure the creation of well-formed packages, use an image that is 128x128 and has a transparent background(PNG) for the best viewing results.",
+          "desc": "To ensure the creation of well-formed packages, use an image that is 128x128 and has a transparent background (PNG) for the best viewing results.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0215.html",
           "tags": "Configuration;NuGet;package;image;PNG",
           "level": "Warning",
@@ -5802,7 +5824,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0242",
           "title": "Generate NuGet packages conditionally",
-          "desc": "To ensure that packages are not interdependently shipped in DEBUG (or other) mode, a conditional statement should be defined.",
+          "desc": "To ensure that packages are not independently shipped in DEBUG (or other) mode, a conditional statement should be defined.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0242.html",
           "tags": "Configuration;package;compatibility",
           "level": "Warning",
@@ -5989,7 +6011,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0304",
           "title": "Package source mappings should be unique",
-          "desc": "The first package source mapping that matches serves the package. Therefor, a second mapping with the same pattern will never match.",
+          "desc": "The first package source mapping that matches serves the package. Therefore, a second mapping with the same pattern will never match.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0304.html",
           "tags": "NuGet",
           "level": "Warning",
@@ -6033,7 +6055,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0401",
           "title": "Only publish executables",
-          "desc": "Runing dotnet publish on projects other then executables will not publish anything and is considered a mistake.",
+          "desc": "Running dotnet publish on projects other than executables will not publish anything and is considered a mistake.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0401.html",
           "tags": "IsPublishable;library",
           "level": "Warning",
@@ -6198,7 +6220,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0600",
           "title": "Avoid generating packages on build if not packable",
-          "desc": "The \u003CGeneratePackageOnBuild\u003E option has no effect when \u003CIsPackable\u003E the node is disabled. Removing the \u003CGeneratePackageOnBuild\u003E node will reduce noise.",
+          "desc": "The \u003CGeneratePackageOnBuild\u003E option has no effect when the \u003CIsPackable\u003E node is disabled. Removing the \u003CGeneratePackageOnBuild\u003E node will reduce noise.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0600.html",
           "tags": "Configuration;NuGet;package",
           "level": "Warning",
@@ -6253,7 +6275,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0803",
           "title": "Use VersionOverride only with Central Package Management enabled",
-          "desc": "When CPM is not enabled the use of \u003CPackageReference VersionOveride /\u003E \u0060has no effect, and is most likely a mistake.",
+          "desc": "When CPM is not enabled the use of \u003CPackageReference VersionOverride /\u003E \u0060has no effect, and is most likely a mistake.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0803.html",
           "tags": "Maintainability",
           "level": "Warning",
@@ -6286,7 +6308,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0806",
           "title": "VersionOverride should change the version",
-          "desc": "The use of VersionOverride on a \u003CPackageReference\u003E is only useful when it defines a different version then already defined by the CPM.",
+          "desc": "The use of VersionOverride on a \u003CPackageReference\u003E is only useful when it defines a different version than already defined by the CPM.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0806.html",
           "tags": "Bug",
           "level": "Warning",
@@ -6297,7 +6319,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj0807",
           "title": "Only use Directory.Packages.props for Central Package Management",
-          "desc": "The use of VersionOverride on a \u003CPackageReference\u003E is only useful when it defines a different version then already defined by the CPM.",
+          "desc": "The use of VersionOverride on a \u003CPackageReference\u003E is only useful when it defines a different version than already defined by the CPM.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0807.html",
           "tags": "Bug",
           "level": "Warning",
@@ -6386,7 +6408,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj1001",
           "title": "Use analyzers for packages",
-          "desc": "Some NuGet packages come with there own/dedicated Roslyn analyzers; they just contain rules to improve the usage of those packages. In order to get the best out of those NuGet packages, their analyzer(s) should be used.",
+          "desc": "Some NuGet packages come with their own/dedicated Roslyn analyzers; they just contain rules to improve the usage of those packages. In order to get the best out of those NuGet packages, their analyzer(s) should be used.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj1001.html",
           "tags": "roslyn;analyzer;NuGet",
           "level": "Warning",
@@ -6485,7 +6507,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj1104",
           "title": "TUnit conflicts with Microsoft.NET.Test.Sdk",
-          "desc": "The use of the Microsoft.NET.Test.Sdk interferes with the working of TUnit, therefor they can not be combined.",
+          "desc": "The use of the Microsoft.NET.Test.Sdk interferes with the working of TUnit, therefore they can not be combined.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj1104.html",
           "tags": "TUnit;unit;test",
           "level": "Warning",
@@ -6671,7 +6693,7 @@
           "f": "1.4.5",
           "lang": "C#;Visual Basic",
           "id": "Proj3000",
-          "title": "Ony use UTF-8 encoding without BOM",
+          "title": "Only use UTF-8 encoding without BOM",
           "desc": "The use of BOM for UTF-8 can cause systems to malfunction. This includes multiple web based files such as Javascript and CSS.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj3000.html",
           "tags": "encoding;UTF-8",
@@ -6716,33 +6738,33 @@
           "lang": "C#;Visual Basic",
           "id": "Proj4000",
           "title": "Invalid INI file",
-          "desc": "A INI header should have the format [\u003CHeader\u003E]",
+          "desc": "A part of the INI file could not be parsed.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4000.html",
           "tags": "INI;syntax error",
           "level": "Error",
-          "enabled": false
+          "enabled": true
         },
         {
           "f": "1.5.1",
           "lang": "C#;Visual Basic",
           "id": "Proj4001",
           "title": "Invalid INI Header",
-          "desc": "A INI header should have the format [\u003CHeader\u003E]",
+          "desc": "An INI header should have the format [\u003CHeader\u003E].",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4001.html",
           "tags": "INI;syntax error",
           "level": "Error",
-          "enabled": false
+          "enabled": true
         },
         {
           "f": "1.5.1",
           "lang": "C#;Visual Basic",
           "id": "Proj4002",
           "title": "Invalid INI key-value pair",
-          "desc": "A INI key-value pair should have the format \u003CKey\u003E ( : | = ) \u003CValue\u003E.",
+          "desc": "An INI key-value pair should have the format \u003CKey\u003E ( : | = ) \u003CValue\u003E.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4002.html",
           "tags": "INI;syntax error",
           "level": "Error",
-          "enabled": false
+          "enabled": true
         },
         {
           "f": "1.5.1",
@@ -6753,18 +6775,95 @@
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4010.html",
           "tags": "INI;noise",
           "level": "Warning",
-          "enabled": false
+          "enabled": true
+        },
+        {
+          "f": "1.16.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj4025",
+          "title": "Remove section header",
+          "desc": "A .globalconfig file strictly requires all key-value to sit at the root level; any section headers or glob patterns inside the file are ignored by the Roslyn compiler.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4025.html",
+          "tags": ".globalconfig;header",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.16.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj4026",
+          "title": "Specify is_global",
+          "desc": "By explicitly setting is_global = true, the settings are correctly applied globally across the entire project or solution, even if the file uses a custom name instead of .globalconfig.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4026.html",
+          "tags": ".globalconfig;header",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.16.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj4027",
+          "title": "Use valid diagnostic severity value",
+          "desc": "The compiler requires standard severity keywords to parse .globalconfig files. Using invalid values prevents the rule from being applied as intended.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4027.html",
+          "tags": ".globalconfig;diagnostic;severity",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.16.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj4028",
+          "title": "Use explicit diagnostic severity level",
+          "desc": "By explicitly setting is_global = true, the settings are correctly applied globally across the entire project or solution, even if the file uses a custom name instead of .globalconfig.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4028.html",
+          "tags": ".globalconfig;diagnostic;severity",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.16.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj4029",
+          "title": "Use valid diagnostic severity value",
+          "desc": "The compiler requires standard severity keywords to parse .globalconfig files. Using invalid values prevents the rule from being applied as intended.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4029.html",
+          "tags": ".globalconfig;diagnostic;severity",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.16.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj4030",
+          "title": "Avoid global diagnostic suppression",
+          "desc": "Disabling all diagnostic rules at once is considered a bad practice. Choose specific rules/rule groups to disable instead.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4030.html",
+          "tags": ".globalconfig;diagnostic;severity;suppression",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.16.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj4031",
+          "title": "Avoid global diagnostic severity configuration",
+          "desc": "Configuring all diagnostic rules at once is considered a bad practice. Choose specific rules/rule groups to configure instead.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4031.html",
+          "tags": ".globalconfig;diagnostic;severity",
+          "level": "Warning",
+          "enabled": true
         },
         {
           "f": "1.5.1",
           "lang": "C#;Visual Basic",
           "id": "Proj4050",
           "title": "Header must be a GLOB",
-          "desc": ".editorconfig files work on the premise that header texts are GLOB\u0027s matching files the key-value pairs of the section apply to. Therefor, they must be valid GLOBs.",
+          "desc": ".editorconfig files work on the premise that header texts are GLOB\u0027s matching files the key-value pairs of the section apply to. Therefore, they must be valid GLOBs.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4050.html",
           "tags": ".editorconfig;GLOB",
           "level": "Error",
-          "enabled": false
+          "enabled": true
         },
         {
           "f": "1.5.1",
@@ -6775,14 +6874,25 @@
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4051.html",
           "tags": "INI;.editorconfig",
           "level": "Warning",
-          "enabled": false
+          "enabled": true
+        },
+        {
+          "f": "1.16.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj4052",
+          "title": "Use global configuration for Roslyn diagnostics",
+          "desc": "Configuration entries intended to configure Roslyn should all be put in a the globalconfig (most likely a .globalconfig file).",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4052.html",
+          "tags": "INI;.editorconfig;globalconfig;Roslyn;diagnostics",
+          "level": "Warning",
+          "enabled": true
         },
         {
           "f": "1.8.0",
           "lang": "C#;Visual Basic",
           "id": "Proj5000",
           "title": "Use SLNX solution files",
-          "desc": "SLNX solution files are preferred over SLN files, for being lessverbose and easier to read.",
+          "desc": "SLNX solution files are preferred over SLN files, for being less verbose and easier to read.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj5000.html",
           "tags": "SLNX",
           "level": "Warning",
@@ -6793,7 +6903,7 @@
           "lang": "C#;Visual Basic",
           "id": "Proj5001",
           "title": "Remove SLN solution files",
-          "desc": "SLNX solution files are preferred over SLN files, for being lessverbose and easier to read. As a result, the old SLN files should be removed.",
+          "desc": "SLNX solution files are preferred over SLN files, for being less verbose and easier to read. As a result, the old SLN files should be removed.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj5001.html",
           "tags": "SLNX",
           "level": "Warning",
@@ -9601,7 +9711,7 @@
     },
     {
       "id": "FunFair.CodeAnalysis",
-      "v": "7.2.12.2288",
+      "v": "7.2.13.2323",
       "rules": [
         {
           "f": "1.15.0.542",
@@ -11816,7 +11926,7 @@
     },
     {
       "id": "Meziantou.Analyzer",
-      "v": "3.0.159",
+      "v": "3.0.177",
       "rules": [
         {
           "f": "1.0.102",
@@ -14184,6 +14294,28 @@
           "tags": null,
           "level": "Info",
           "enabled": false
+        },
+        {
+          "f": "3.0.163",
+          "lang": "C#",
+          "id": "MA0216",
+          "title": "Remove unnecessary closed modifier",
+          "desc": "",
+          "url": "https://github.com/meziantou/Meziantou.Analyzer/blob/main/docs/Rules/MA0216.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.0.176",
+          "lang": "C#",
+          "id": "MA0217",
+          "title": "Use a static lambda",
+          "desc": "",
+          "url": "https://github.com/meziantou/Meziantou.Analyzer/blob/main/docs/Rules/MA0217.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": false
         }
       ]
     },
@@ -14372,7 +14504,7 @@
     },
     {
       "id": "Microsoft.CodeAnalysis.Analyzers",
-      "v": "5.6.0",
+      "v": "5.9.0",
       "rules": [
         {
           "f": "1.0.0",
@@ -14989,7 +15121,7 @@
     },
     {
       "id": "Microsoft.CodeAnalysis.CSharp",
-      "v": "5.6.0",
+      "v": "5.9.0",
       "rules": [
         {
           "f": "5.3.0",
@@ -35716,6 +35848,17 @@
           "enabled": true
         },
         {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9328",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9328)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
           "f": "5.3.0",
           "lang": "C#",
           "id": "CS9329",
@@ -36124,6 +36267,7 @@
         },
         {
           "f": "5.6.0",
+          "v": "5.6.0",
           "lang": "C#",
           "id": "CS9367",
           "title": "",
@@ -36135,6 +36279,7 @@
         },
         {
           "f": "5.6.0",
+          "v": "5.6.0",
           "lang": "C#",
           "id": "CS9368",
           "title": "RequiresUnsafeAttribute is only valid under the updated memory safety rules.",
@@ -36242,12 +36387,188 @@
           "tags": "Compiler;Telemetry",
           "level": "Warning",
           "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9378",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9378)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9379",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9379)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9380",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9380)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9381",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9381)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9382",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9382)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9383",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9383)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9384",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9384)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9385",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9385)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9386",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9386)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9387",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9387)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9388",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9388)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9389",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9389)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9390",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9390)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9392",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9392)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9393",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9393)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "CS9394",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9394)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
         }
       ]
     },
     {
       "id": "Microsoft.CodeAnalysis.CSharp.CodeStyle",
-      "v": "5.6.0",
+      "v": "5.9.0",
       "rules": [
         {
           "f": "4.7.0",
@@ -37480,6 +37801,17 @@
           "desc": "",
           "url": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0391",
           "tags": "Telemetry;EnforceOnBuild_WhenExplicitlyEnabled",
+          "level": "Hidden",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "C#",
+          "id": "IDE0410",
+          "title": "Use labeled jump statement",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0410",
+          "tags": "Telemetry;EnforceOnBuild_Recommended;CustomSeverityConfigurable",
           "level": "Hidden",
           "enabled": true
         },
@@ -41183,7 +41515,7 @@
     },
     {
       "id": "Microsoft.CodeAnalysis.VisualBasic",
-      "v": "5.6.0",
+      "v": "5.9.0",
       "rules": [
         {
           "f": "5.3.0",
@@ -41198,6 +41530,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2001",
           "title": "",
@@ -41209,6 +41542,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2006",
           "title": "",
@@ -41220,6 +41554,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2007",
           "title": "Unrecognized command-line option",
@@ -41231,6 +41566,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2008",
           "title": "",
@@ -41253,6 +41589,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2011",
           "title": "",
@@ -41264,6 +41601,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2012",
           "title": "",
@@ -41286,6 +41624,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2015",
           "title": "",
@@ -41297,6 +41636,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2016",
           "title": "",
@@ -41308,6 +41648,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2017",
           "title": "",
@@ -41319,6 +41660,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2023",
           "title": "",
@@ -41341,6 +41683,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2029",
           "title": "",
@@ -41385,6 +41728,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2033",
           "title": "",
@@ -41396,6 +41740,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2034",
           "title": "Option /win32manifest ignored",
@@ -41407,6 +41752,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2038",
           "title": "The language name for /preferreduilang is invalid",
@@ -41418,6 +41764,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2042",
           "title": "",
@@ -41429,6 +41776,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2043",
           "title": "",
@@ -41440,6 +41788,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2044",
           "title": "",
@@ -41451,6 +41800,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2045",
           "title": "",
@@ -41462,6 +41812,7 @@
         },
         {
           "f": "5.3.0",
+          "v": "5.6.0",
           "lang": "Visual Basic",
           "id": "BC2046",
           "title": "",
@@ -57915,12 +58266,221 @@
           "tags": "Compiler;Telemetry",
           "level": "Warning",
           "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2001",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2001)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2006",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2006)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2007",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2007)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2008",
+          "title": "No source files specified",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2008)",
+          "tags": "Compiler;Telemetry",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2011",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2011)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2012",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2012)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2015",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2015)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2016",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2016)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2017",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2017)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2023",
+          "title": "Ignoring /noconfig option because it was specified in a response file",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2023)",
+          "tags": "Compiler;Telemetry",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2029",
+          "title": "Invalid name for a preprocessing symbol; not a valid identifier",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2029)",
+          "tags": "Compiler;Telemetry",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2033",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2033)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2034",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2034)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2038",
+          "title": "The language name is invalid",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2038)",
+          "tags": "Compiler;Telemetry",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2042",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2042)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2043",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2043)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2044",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2044)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2045",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2045)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "5.9.0",
+          "lang": "Visual Basic",
+          "id": "CS2046",
+          "title": "",
+          "desc": "",
+          "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS2046)",
+          "tags": "Compiler;Telemetry;NotConfigurable",
+          "level": "Error",
+          "enabled": true
         }
       ]
     },
     {
       "id": "Microsoft.CodeAnalysis.VisualBasic.CodeStyle",
-      "v": "5.6.0",
+      "v": "5.9.0",
       "rules": [
         {
           "f": "4.7.0",
@@ -64649,7 +65209,7 @@
     },
     {
       "id": "Roslynator.Analyzers",
-      "v": "4.16.1",
+      "v": "5.0.0",
       "rules": [
         {
           "f": "1.2.0",
@@ -64774,6 +65334,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1008",
           "title": "[deprecated] Use explicit type instead of \u0027var\u0027 (when the type is not obvious)",
@@ -64786,6 +65347,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1009",
           "title": "[deprecated] Use explicit type instead of \u0027var\u0027 (foreach variable)",
@@ -64798,6 +65360,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1010",
           "title": "[deprecated] Use \u0027var\u0027 instead of explicit type (when the type is obvious)",
@@ -64810,6 +65373,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1012",
           "title": "[deprecated] Use explicit type instead of \u0027var\u0027 (when the type is obvious)",
@@ -65226,6 +65790,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1035",
           "title": "[deprecated] Remove redundant comma in initializer",
@@ -65237,6 +65802,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1036",
           "title": "[deprecated] Remove unnecessary blank line",
@@ -65271,6 +65837,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1038",
           "title": "[deprecated] Remove empty statement",
@@ -65293,6 +65860,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1040",
           "title": "[deprecated] Remove empty \u0027else\u0027 clause",
@@ -65304,6 +65872,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1041",
           "title": "[deprecated] Remove empty initializer",
@@ -65642,6 +66211,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1063",
           "title": "[deprecated] Avoid usage of do statement to create an infinite loop",
@@ -65653,6 +66223,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1064",
           "title": "[deprecated] Avoid usage of for statement to create an infinite loop",
@@ -65664,6 +66235,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1065",
           "title": "[deprecated] Avoid usage of while statement to create an infinite loop",
@@ -65675,6 +66247,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1066",
           "title": "[deprecated] Remove empty \u0027finally\u0027 clause",
@@ -65686,6 +66259,7 @@
         },
         {
           "f": "3.0.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1066FadeOut",
           "title": "[deprecated] Remove empty \u0027finally\u0027 clause",
@@ -65753,6 +66327,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1072",
           "title": "[deprecated] Remove empty namespace declaration",
@@ -66025,6 +66600,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1091",
           "title": "[deprecated] Remove empty region",
@@ -66036,6 +66612,7 @@
         },
         {
           "f": "1.4.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1091FadeOut",
           "title": "[deprecated] Remove empty region",
@@ -66149,6 +66726,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1100",
           "title": "[deprecated] Format documentation summary on a single line",
@@ -66160,6 +66738,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1101",
           "title": "[deprecated] Format documentation summary on multiple lines",
@@ -66227,6 +66806,7 @@
         },
         {
           "f": "1.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1106",
           "title": "[deprecated] Remove empty destructor",
@@ -67073,6 +67653,7 @@
         },
         {
           "f": "1.3.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1176",
           "title": "[deprecated] Use \u0027var\u0027 instead of explicit type (when the type is not obvious)",
@@ -67085,6 +67666,7 @@
         },
         {
           "f": "1.3.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1177",
           "title": "[deprecated] Use \u0027var\u0027 instead of explicit type (in foreach)",
@@ -67820,6 +68402,7 @@
         },
         {
           "f": "2.2.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS1237",
           "title": "[deprecated] Use bit shift operator",
@@ -68234,7 +68817,7 @@
     },
     {
       "id": "Roslynator.CodeAnalysis.Analyzers",
-      "v": "4.16.1",
+      "v": "5.0.0",
       "rules": [
         {
           "f": "1.0.0",
@@ -68372,7 +68955,7 @@
     },
     {
       "id": "Roslynator.Formatting.Analyzers",
-      "v": "4.16.1",
+      "v": "5.0.0",
       "rules": [
         {
           "f": "1.0.0",
@@ -68532,6 +69115,7 @@
         },
         {
           "f": "1.0.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0014",
           "title": "[deprecated] Add blank line between switch sections",
@@ -68599,6 +69183,7 @@
         },
         {
           "f": "1.0.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0022",
           "title": "[deprecated] Add new line after opening brace of empty block",
@@ -68778,6 +69363,7 @@
         },
         {
           "f": "1.0.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0038",
           "title": "[deprecated] Remove blank line between using directives with same root namespace",
@@ -68822,6 +69408,7 @@
         },
         {
           "f": "1.0.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0043",
           "title": "[deprecated] Format accessor\u0027s braces on a single line when expression is on single line",
@@ -68866,6 +69453,7 @@
         },
         {
           "f": "1.0.0",
+          "v": "4.16.1",
           "lang": "C#",
           "id": "RCS0047",
           "title": "[deprecated] Wrap and indent each node in list",
@@ -70073,7 +70661,7 @@
     },
     {
       "id": "SonarAnalyzer.CSharp",
-      "v": "10.32.0.713",
+      "v": "10.33.0.1635",
       "rules": [
         {
           "f": "6.4.0.3347",
@@ -75693,7 +76281,7 @@
     },
     {
       "id": "SonarAnalyzer.VisualBasic",
-      "v": "10.32.0.713",
+      "v": "10.33.0.1635",
       "rules": [
         {
           "f": "6.4.0.3347",
@@ -82316,5 +82904,5 @@
       ]
     }
   ],
-  "Count": 7377
+  "Count": 7426
 }
