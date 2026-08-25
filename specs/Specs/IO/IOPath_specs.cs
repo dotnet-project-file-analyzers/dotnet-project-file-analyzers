@@ -15,6 +15,21 @@ public class IO_Path
     public void CaseCompare(string file, string selector, string? compare)
         => IOPath.CaseCompare(IOFile.Parse(file), IOFile.Parse(selector)).Should().Be(compare);
 
+    [TestCase("""/unix path""")]
+#if Is_Windows
+    [TestCase("""C:\path\with\backward slashes""")]
+    [TestCase("""C:/path/with/forward slashes""")]
+    [TestCase("""\\server path""")]
+#endif
+    public void IsFullyQualified(string path)
+        => IOPath.IsFullyQualified(path).Should().BeTrue();
+
+    [TestCase("current")]
+    [TestCase("./current")]
+    [TestCase("../parent")]
+    public void Is_not_FullyQualified(string path)
+        => IOPath.IsFullyQualified(path).Should().BeFalse();
+
 #if Is_Windows
     [Test]
     public void has_backslash_separator()
