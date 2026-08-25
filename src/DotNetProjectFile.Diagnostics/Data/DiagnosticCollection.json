@@ -1,142 +1,209 @@
 {
   "similar": [
-    [
-      "S6354",
-      "QW0001",
-      "FFS0001",
-      "FFS0002",
-      "FFS0003",
-      "FFS0004",
-      "FFS0004"
-    ],
-    [
-      "S3168",
-      "PH2096",
-      "AZF0001",
-      "MA0147",
-      "VSTHRD100",
-      "AsyncFixer003",
-      "AsyncFixer03"
-    ],
-    [
-      "S3216",
-      "RCS1090",
-      "MA0004",
-      "CA2007",
-      "VSTHRD111",
-      "CAC001"
-    ],
-    [
-      "S3260",
-      "MA0053",
-      "RCS1225",
-      "CA1852",
-      "QW0005"
-    ],
-    [
-      "IDE0044",
-      "RCS1169",
-      "CC0052",
-      "CC0074",
-      "MA0102"
-    ],
-    [
-      "CC0021",
-      "CC0108",
-      "RCS1015",
-      "MA0043",
-      "CA1507"
-    ],
-    [
-      "CC0048",
-      "CC0095",
-      "RCS1062",
-      "CA1834",
-      "MA0028"
-    ],
-    [
-      "S109",
-      "MEN010",
-      "BCC2004"
-    ],
-    [
-      "S2925",
-      "PH2020",
-      "AG0023"
-    ],
-    [
-      "PH2086",
-      "RG0007",
-      "MA0042",
-      "AG0033",
-      "AG0032",
-      "AsyncFixer02"
-    ],
-    [
-      "SA1124",
-      "AG0038",
-      "SA1123",
-      "AV2407"
-    ],
-    [
-      "RCS1037",
-      "CC0065",
-      "SA1028"
-    ],
-    [
-      "PH2098",
-      "CC0004"
-    ],
-    [
-      "PH2132",
-      "CC0037"
-    ],
-    [
-      "S1168",
-      "AV1135",
-      "AG0020",
-      "BCC3000"
-    ],
-    [
-      "BCC3001",
-      "AV1008",
-      "CA1052",
-      "MA0036"
-    ],
-    [
-      "IDE0021",
-      "IDE0022",
-      "IDE0023",
-      "IDE0025",
-      "IDE0026",
-      "CC0038"
-    ],
-    [
-      "CA2000",
-      "CC0022",
-      "CC0029"
-    ],
-    [
-      "AG0019",
-      "FFS0051"
-    ],
-    [
-      "S2629",
-      "CA2254",
-      "CA1848"
-    ],
-    [
-      "CA1068",
-      "MA0040",
-      "MA0032",
-      "RG0009"
-    ],
-    [
-      "S1699",
-      "MA0056",
-      "CA2214",
-      "CC0067"
-    ]
+    {
+      "desc": "Use a testable date/time provider.",
+      "rules": [
+        "S6354",
+        "QW0001",
+        "FFS0001",
+        "FFS0002",
+        "FFS0003",
+        "FFS0004",
+        "FFS0004"
+      ]
+    },
+    {
+      "desc": "Avoid async void methods and delegates.",
+      "rules": [
+        "S3168",
+        "PH2096",
+        "AZF0001",
+        "MA0147",
+        "VSTHRD100",
+        "AsyncFixer003",
+        "AsyncFixer03"
+      ]
+    },
+    {
+      "desc": "Configure task await behaviors.",
+      "rules": [
+        "S3216",
+        "RCS1090",
+        "MA0004",
+        "CA2007",
+        "VSTHRD111",
+        "CAC001"
+      ]
+    },
+    {
+      "desc": "Seal classes and types where appropriate.",
+      "rules": [
+        "S3260",
+        "MA0053",
+        "RCS1225",
+        "CA1852",
+        "QW0005"
+      ]
+    },
+    {
+      "desc": "Make fields and members read-only.",
+      "rules": [
+        "IDE0044",
+        "RCS1169",
+        "CC0052",
+        "CC0074",
+        "MA0102"
+      ]
+    },
+    {
+      "desc": "Use nameof operator instead of string literals.",
+      "rules": [
+        "CC0021",
+        "CC0108",
+        "RCS1015",
+        "MA0043",
+        "CA1507"
+      ]
+    },
+    {
+      "desc": "Optimize string formatting and builder usage.",
+      "rules": [
+        "CC0048",
+        "CC0095",
+        "RCS1062",
+        "CA1834",
+        "MA0028"
+      ]
+    },
+    {
+      "desc": "Avoid magic numbers.",
+      "rules": [
+        "S109",
+        "MEN010",
+        "BCC2004"
+      ]
+    },
+    {
+      "desc": "Avoid using Thread.Sleep.",
+      "rules": [
+        "S2925",
+        "PH2020",
+        "AG0023"
+      ]
+    },
+    {
+      "desc": "Avoid blocking calls on asynchronous tasks.",
+      "rules": [
+        "PH2086",
+        "RG0007",
+        "MA0042",
+        "AG0033",
+        "AG0032",
+        "AsyncFixer02"
+      ]
+    },
+    {
+      "desc": "Do not use #region directives.",
+      "rules": [
+        "SA1124",
+        "AG0038",
+        "SA1123",
+        "AV2407"
+      ]
+    },
+    {
+      "desc": "Remove trailing whitespace.",
+      "rules": [
+        "RCS1037",
+        "CC0065",
+        "SA1028"
+      ]
+    },
+    {
+      "desc": "Avoid empty catch blocks.",
+      "rules": [
+        "PH2098",
+        "CC0004"
+      ]
+    },
+    {
+      "desc": "Remove commented-out code.",
+      "rules": [
+        "S125",,
+        "PH2132",
+        "CC0037"
+      ]
+    },
+    {
+      "desc": "Return empty collections instead of null.",
+      "rules": [
+        "S1168",
+        "AV1135",
+        "AG0020",
+        "BCC3000"
+      ]
+    },
+    {
+      "desc": "Use static classes appropriately.",
+      "rules": [
+        "BCC3001",
+        "AV1008",
+        "CA1052",
+        "MA0036"
+      ]
+    },
+    {
+      "desc": "Use expression-bodied members where possible.",
+      "rules": [
+        "IDE0021",
+        "IDE0022",
+        "IDE0023",
+        "IDE0025",
+        "IDE0026",
+        "CC0038"
+      ]
+    },
+    {
+      "desc": "Properly dispose disposable objects.",
+      "rules": [
+        "CA2000",
+        "CC0022",
+        "CC0029"
+      ]
+    },
+    {
+      "desc": "Do not use InternalsVisibleTo attribute.",
+      "rules": [
+        "AG0019",
+        "FFS0051"
+      ]
+    },
+    {
+      "desc": "Optimize logging calls and use LoggerMessage templates.",
+      "rules": [
+        "S2629",
+        "CA2254",
+        "CA1848"
+      ]
+    },
+    {
+      "desc": "Properly pass and position CancellationToken parameters.",
+      "rules": [
+        "CA1068",
+        "MA0040",
+        "MA0032",
+        "RG0009"
+      ]
+    },
+    {
+      "desc": "Do not call overridable methods in constructors.",
+      "rules": [
+        "S1699",
+        "MA0056",
+        "CA2214",
+        "CC0067"
+      ]
+    }
   ],
   "contradict": [
     [
@@ -82903,6 +82970,5 @@
         }
       ]
     }
-  ],
-  "Count": 7426
+  ]
 }

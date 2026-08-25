@@ -12,7 +12,7 @@ public sealed record DiagnosticCollection
 {
     /// <summary>Rules that are similar.</summary>
     [JsonPropertyName("similar")]
-    public ImmutableArray<ImmutableArray<DiagnosticId>> Similar { get; init; } = [];
+    public ImmutableArray<SimarRules> Similar { get; init; } = [];
 
     /// <summary>Rules that contradict each other.</summary>
     [JsonPropertyName("contradict")]
@@ -22,6 +22,7 @@ public sealed record DiagnosticCollection
     public ImmutableArray<NugetPackage> Packages { get; init; } = [];
 
     /// <summary>The number of rules combined.</summary>
+    [JsonIgnore]
     public int Count => Rules.Count();
 
     /// <summary>All rules.</summary>
