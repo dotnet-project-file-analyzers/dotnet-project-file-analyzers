@@ -22,7 +22,7 @@ internal static partial class JsonFileParser
     private static readonly Lexer @false = str("false", Kind.False);
 
     private static readonly Lexer number = reg(@"^-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?", Kind.Number);
-    private static readonly Lexer stringLexer = reg(@"^""[^""\\\r\n]*(?:\\.[^""\\\r\n]*)*""", Kind.String);
+    private static readonly Lexer @string = reg(@"^""[^""\\\r\n]*(?:\\.[^""\\\r\n]*)*""", Kind.String);
 
     private static readonly Lexer unparsableLexer = reg(@"^.", Kind.Unparsable);
 
@@ -212,7 +212,7 @@ internal static partial class JsonFileParser
         var read = reader;
         if (Chain
             && read.Keep(ws)
-            && read.Keep(stringLexer))
+            && read.Keep(@string))
         {
             var span = SliceSpan.Delta(read.Stream, reader.Stream);
             reader = read;
