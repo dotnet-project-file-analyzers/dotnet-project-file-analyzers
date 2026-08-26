@@ -79,18 +79,19 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.16.1</Version>
+    <Version>1.17.0</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v1.17.0
-- Proj4011: Define keys once in an INI section. (NEW RULE)
-- Proj5006: Files included in an SLNX should exist. (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.17.0
+- Proj4011: Define keys once in an INI section. (NEW RULE)
+- Proj5006: Files included in an SLNX should exist. (NEW RULE)
+- Display Directory.Build.props, Directory.Build.targets, and Directory.Packages.props in .net.csproj again. (BUG)
 v1.16.1
 - Set analyzer type of Directory.Build.props, Directory.Build.targets, and Directory.Packages.props correctly. (BUG)
 v1.16.0
