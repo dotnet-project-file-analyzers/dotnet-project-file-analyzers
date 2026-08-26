@@ -3,6 +3,4 @@ using Grammr;
 
 namespace DotNetProjectFile.Json;
 
-public sealed class JsonUnparsable(SliceSpan span, GrammrTree tree) : GrammrNode(span, tree)
-{
-}
+public sealed class JsonUnparsable(SliceSpan span, GrammrTree tree) : GrammrNode(span, tree);

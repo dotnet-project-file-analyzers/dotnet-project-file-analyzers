@@ -52,19 +52,16 @@ internal static partial class JsonFileParser
     private static JsonValue? Value(ref SourceReader reader, GrammrTree tree)
     {
         _ = reader.Keep(ws);
-        return true switch
-        {
-            _ when Object(ref reader, tree) is { } obj => obj,
-            _ when Array(ref reader, tree) is { } arr => arr,
-            _ when String(ref reader, tree) is { } strNode => strNode,
-            _ when Number(ref reader, tree) is { } numNode => numNode,
-            _ when True(ref reader, tree) is { } boolNode => boolNode,
-            _ when False(ref reader, tree) is { } boolNode => boolNode,
-            _ => Null(ref reader, tree),
-        };
+        return Object(ref reader, tree)
+            ?? Array(ref reader, tree)
+            ?? String(ref reader, tree)
+            ?? Number(ref reader, tree)
+            ?? True(ref reader, tree)
+            ?? False(ref reader, tree)
+            ?? Null(ref reader, tree);
     }
 
-    private static JsonObject? Object(ref SourceReader reader, GrammrTree tree)
+    private static JsonValue? Object(ref SourceReader reader, GrammrTree tree)
     {
         var read = reader;
         if (Chain
@@ -72,8 +69,7 @@ internal static partial class JsonFileParser
             && read.Keep(lbrace))
         {
             var properties = new List<GrammrNode>();
-            while (Chain
-                && !read.EOS)
+            while (!read.EOS)
             {
                 _ = read.Keep(ws);
                 if (read.Keep(rbrace))
@@ -148,7 +144,7 @@ internal static partial class JsonFileParser
         return null;
     }
 
-    private static JsonArray? Array(ref SourceReader reader, GrammrTree tree)
+    private static JsonValue? Array(ref SourceReader reader, GrammrTree tree)
     {
         var read = reader;
         if (Chain
@@ -156,8 +152,7 @@ internal static partial class JsonFileParser
             && read.Keep(lbracket))
         {
             var items = new List<GrammrNode>();
-            while (Chain
-                && !read.EOS)
+            while (!read.EOS)
             {
                 _ = read.Keep(ws);
                 if (read.Keep(rbracket))
@@ -208,12 +203,10 @@ internal static partial class JsonFileParser
         return null;
     }
 
-    private static JsonString? String(ref SourceReader reader, GrammrTree tree)
+    private static JsonValue? String(ref SourceReader reader, GrammrTree tree)
     {
         var read = reader;
-        if (Chain
-            && read.Keep(ws)
-            && read.Keep(@string))
+        if (read.Keep(@string))
         {
             var span = SliceSpan.Delta(read.Stream, reader.Stream);
             reader = read;
@@ -222,12 +215,10 @@ internal static partial class JsonFileParser
         return null;
     }
 
-    private static JsonNumber? Number(ref SourceReader reader, GrammrTree tree)
+    private static JsonValue? Number(ref SourceReader reader, GrammrTree tree)
     {
         var read = reader;
-        if (Chain
-            && read.Keep(ws)
-            && read.Keep(number))
+        if (read.Keep(number))
         {
             var span = SliceSpan.Delta(read.Stream, reader.Stream);
             reader = read;
@@ -239,9 +230,7 @@ internal static partial class JsonFileParser
     private static JsonTrue? True(ref SourceReader reader, GrammrTree tree)
     {
         var read = reader;
-        if (Chain
-            && read.Keep(ws)
-            && read.Keep(@true))
+        if (read.Keep(@true))
         {
             var span = SliceSpan.Delta(read.Stream, reader.Stream);
             reader = read;
@@ -250,12 +239,10 @@ internal static partial class JsonFileParser
         return null;
     }
 
-    private static JsonFalse? False(ref SourceReader reader, GrammrTree tree)
+    private static JsonValue? False(ref SourceReader reader, GrammrTree tree)
     {
         var read = reader;
-        if (Chain
-            && read.Keep(ws)
-            && read.Keep(@false))
+        if (read.Keep(@false))
         {
             var span = SliceSpan.Delta(read.Stream, reader.Stream);
             reader = read;
@@ -264,12 +251,10 @@ internal static partial class JsonFileParser
         return null;
     }
 
-    private static JsonNull? Null(ref SourceReader reader, GrammrTree tree)
+    private static JsonValue? Null(ref SourceReader reader, GrammrTree tree)
     {
         var read = reader;
-        if (Chain
-            && read.Keep(ws)
-            && read.Keep(@null))
+        if (read.Keep(@null))
         {
             var span = SliceSpan.Delta(read.Stream, reader.Stream);
             reader = read;
