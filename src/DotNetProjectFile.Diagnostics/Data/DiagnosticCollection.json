@@ -129,7 +129,7 @@
     {
       "desc": "Remove commented-out code.",
       "rules": [
-        "S125",,
+        "S125",
         "PH2132",
         "CC0037"
       ]
@@ -5037,7 +5037,7 @@
     },
     {
       "id": "DotNetProjectFile.Analyzers",
-      "v": "1.16.1",
+      "v": "1.17.0",
       "rules": [
         {
           "f": "1.0.0",
@@ -6845,6 +6845,17 @@
           "enabled": true
         },
         {
+          "f": "1.17.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj4011",
+          "title": "Define INI key once",
+          "desc": "Within sections of an INI file, setting a key more than once will result in overriding the current value and is considered a mistake.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj4011.html",
+          "tags": "INI;key",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
           "f": "1.16.0",
           "lang": "C#;Visual Basic",
           "id": "Proj4025",
@@ -6984,6 +6995,17 @@
           "desc": "ID\u0027s are left-overs from the SLN format, and can safely be omitted.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj5005.html",
           "tags": "SLNX;ID",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.17.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj5006",
+          "title": "Included files should exist",
+          "desc": "Files included in a solution should exist on disk.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj5006.html",
+          "tags": "SLNX",
           "level": "Warning",
           "enabled": true
         },
@@ -11993,7 +12015,7 @@
     },
     {
       "id": "Meziantou.Analyzer",
-      "v": "3.0.177",
+      "v": "3.0.194",
       "rules": [
         {
           "f": "1.0.102",
@@ -14383,6 +14405,39 @@
           "tags": null,
           "level": "Info",
           "enabled": false
+        },
+        {
+          "f": "3.0.181",
+          "lang": "C#",
+          "id": "MA0218",
+          "title": "The language attribute is empty",
+          "desc": "",
+          "url": "https://github.com/meziantou/Meziantou.Analyzer/blob/main/docs/Rules/MA0218.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.0.181",
+          "lang": "C#",
+          "id": "MA0219",
+          "title": "Set the language attribute in XML comment",
+          "desc": "",
+          "url": "https://github.com/meziantou/Meziantou.Analyzer/blob/main/docs/Rules/MA0219.md",
+          "tags": null,
+          "level": "Hidden",
+          "enabled": true
+        },
+        {
+          "f": "3.0.182",
+          "lang": "C#",
+          "id": "MA0220",
+          "title": "The configured regular expression is not valid",
+          "desc": "",
+          "url": "https://github.com/meziantou/Meziantou.Analyzer/blob/main/docs/Rules/MA0220.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
         }
       ]
     },
@@ -63992,7 +64047,7 @@
     },
     {
       "id": "Qowaiv.Analyzers.CSharp",
-      "v": "2.5.1",
+      "v": "2.6.0",
       "rules": [
         {
           "f": "0.0.1",
@@ -64256,6 +64311,72 @@
           "desc": "Non-compliant GUID literals will lead to runtime errors.",
           "url": "https://github.com/Qowaiv/qowaiv-analyzers/blob/main/rules/QW0024.md",
           "tags": "Bug",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "QW0025",
+          "title": "Use compliant UUID literals",
+          "desc": "Non-compliant UUID literals will lead to runtime errors.",
+          "url": "https://github.com/Qowaiv/qowaiv-analyzers/blob/main/rules/QW0025.md",
+          "tags": "Bug",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "QW0026",
+          "title": "Provide UUID values",
+          "desc": "Non-compliant UUID literals will lead to runtime errors.",
+          "url": "https://github.com/Qowaiv/qowaiv-analyzers/blob/main/rules/QW0026.md",
+          "tags": "Bug",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "QW0027",
+          "title": "Create UUID\u0027s using Uuid.Parse or Uuid.Empty",
+          "desc": "Non-compliant UUID literals will lead to runtime errors.",
+          "url": "https://github.com/Qowaiv/qowaiv-analyzers/blob/main/rules/QW0027.md",
+          "tags": "Bug",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "QW0028",
+          "title": "Prefer strongly typed identifiers over GUID",
+          "desc": "To reduce primitive obsession, use strongly typed identifiers instead of GUID/UUID\u0027s.",
+          "url": "https://github.com/Qowaiv/qowaiv-analyzers/blob/main/rules/QW0028.md",
+          "tags": "primitive obsession;GUID;UUID;strongly typed;ID;identifier",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "QW0029",
+          "title": "Prefer strongly typed identifiers over primitives",
+          "desc": "To reduce primitive obsession, use strongly typed identifiers instead of primitives such as int\u0027s and string\u0027s.",
+          "url": "https://github.com/Qowaiv/qowaiv-analyzers/blob/main/rules/QW0029.md",
+          "tags": "primitive obsession;string;int;long;strongly typed;ID;identifier",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "QW0030",
+          "title": "Prefer single value objects over data annotations",
+          "desc": "To reduce primitive obsession, use single value objects instead of data annotations.",
+          "url": "https://github.com/Qowaiv/qowaiv-analyzers/blob/main/rules/QW0030.md",
+          "tags": "primitive obsession;SVO;data annotations",
           "level": "Warning",
           "enabled": true
         },
