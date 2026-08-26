@@ -1,6 +1,4 @@
-using DotNetProjectFile.CodeAnalysis;
 using Grammr;
-using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Text;
 using static DotNetProjectFile.Json.JsonFileParser;
 

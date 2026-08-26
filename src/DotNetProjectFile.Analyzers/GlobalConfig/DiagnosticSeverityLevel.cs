@@ -2,7 +2,6 @@ namespace DotNetProjectFile.GlobalConfig;
 
 public enum DiagnosticSeverityLevel
 {
-
     /// <summary>
     /// Suppresses the diagnostic completely; it does not run, nor does it offer fixes.
     /// </summary>

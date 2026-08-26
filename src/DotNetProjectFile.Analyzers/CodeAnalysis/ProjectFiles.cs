@@ -131,7 +131,6 @@ public sealed partial class ProjectFiles
     private MsBuildProject? Create_MsBuildProject(IOFile file)
        => MsBuild.MsBuildProject.Load(file, this);
 
-
     private Resource Create_ResourceFile(IOFile file)
         => Resource.Load(file, this);
 }
