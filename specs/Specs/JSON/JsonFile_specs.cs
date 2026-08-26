@@ -48,11 +48,11 @@ public class Parses
 
         var propBoolT = obj.Properties.ElementAt(2);
         propBoolT.Key!.Text.Should().Be(@"""bool_t""");
-        ((JsonBoolean)propBoolT.Value!).Value.Should().BeTrue();
+        propBoolT.Value.Should().BeOfType<JsonTrue>();
 
         var propBoolF = obj.Properties.ElementAt(3);
         propBoolF.Key!.Text.Should().Be(@"""bool_f""");
-        ((JsonBoolean)propBoolF.Value!).Value.Should().BeFalse();
+        propBoolF.Value.Should().BeOfType<JsonFalse>();
 
         var propNull = obj.Properties.ElementAt(4);
         propNull.Key!.Text.Should().Be(@"""null_v""");

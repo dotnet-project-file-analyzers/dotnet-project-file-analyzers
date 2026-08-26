@@ -24,7 +24,7 @@ internal static partial class JsonFileParser
     private static readonly Lexer number = reg(@"^-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?", Kind.Number);
     private static readonly Lexer @string = reg(@"^""[^""\\\r\n]*(?:\\.[^""\\\r\n]*)*""", Kind.String);
 
-    private static readonly Lexer unparsableLexer = reg(@"^.", Kind.Unparsable);
+    private static readonly Lexer unparsable = reg(@"^.", Kind.Unparsable);
 
     public static JsonFile Parse(GrammrTree tree)
     {
@@ -58,7 +58,8 @@ internal static partial class JsonFileParser
             _ when Array(ref reader, tree) is { } arr => arr,
             _ when String(ref reader, tree) is { } strNode => strNode,
             _ when Number(ref reader, tree) is { } numNode => numNode,
-            _ when Boolean(ref reader, tree) is { } boolNode => boolNode,
+            _ when True(ref reader, tree) is { } boolNode => boolNode,
+            _ when False(ref reader, tree) is { } boolNode => boolNode,
             _ => Null(ref reader, tree),
         };
     }
@@ -235,16 +236,30 @@ internal static partial class JsonFileParser
         return null;
     }
 
-    private static JsonBoolean? Boolean(ref SourceReader reader, GrammrTree tree)
+    private static JsonTrue? True(ref SourceReader reader, GrammrTree tree)
     {
         var read = reader;
         if (Chain
             && read.Keep(ws)
-            && (read.Keep(@true) || read.Keep(@false)))
+            && read.Keep(@true))
         {
             var span = SliceSpan.Delta(read.Stream, reader.Stream);
             reader = read;
-            return new JsonBoolean(span, tree);
+            return new JsonTrue(span, tree);
+        }
+        return null;
+    }
+
+    private static JsonFalse? False(ref SourceReader reader, GrammrTree tree)
+    {
+        var read = reader;
+        if (Chain
+            && read.Keep(ws)
+            && read.Keep(@false))
+        {
+            var span = SliceSpan.Delta(read.Stream, reader.Stream);
+            reader = read;
+            return new JsonFalse(span, tree);
         }
         return null;
     }
@@ -266,7 +281,7 @@ internal static partial class JsonFileParser
     private static JsonUnparsable? UnparsableToken(ref SourceReader reader, GrammrTree tree)
     {
         var read = reader;
-        if (read.Keep(unparsableLexer))
+        if (read.Keep(unparsable))
         {
             var span = SliceSpan.Delta(read.Stream, reader.Stream);
             reader = read;

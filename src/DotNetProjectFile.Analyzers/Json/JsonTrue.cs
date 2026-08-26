@@ -3,4 +3,4 @@ using Grammr;
 
 namespace DotNetProjectFile.Json;
 
-public sealed class JsonNull(SliceSpan span, GrammrTree tree) : JsonValue(span, tree);
+public sealed class JsonTrue(SliceSpan span, GrammrTree tree) : JsonValue(span, tree);
