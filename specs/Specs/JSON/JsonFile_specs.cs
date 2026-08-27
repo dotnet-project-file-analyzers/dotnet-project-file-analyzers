@@ -1,76 +1,79 @@
 using DotNetProjectFile.Json;
+using System.Diagnostics.CodeAnalysis;
 
 namespace JSON.JsonFile_specs;
 
 public class Parses
 {
-    [Test]
-    public void Simple_Object()
+    private static TNode Json<TNode>([StringSyntax(StringSyntaxAttribute.Json)] string json)
+        where TNode : JsonValue
     {
-        var tree = Test.Tree("""{"root": "true"}""");
-        var json = JsonFile.Parse(tree);
-
-        var obj = (JsonObject)json.Value!;
-        var prop = obj.Properties.Single();
-        prop.Key!.Text.Should().Be(@"""root""");
-        var val = (JsonString)prop.Value!;
-        val.Text.Should().Be(@"""true""");
-
-        json.GetDiagnostics().Should().HaveNoIssues();
+        var file = JsonFile.Parse(Test.Tree(json));
+        file.GetDiagnostics().Should().HaveNoIssues();
+        return (TNode)file.Value!;
     }
 
     [Test]
-    public void All_Types()
-    {
-        var tree = Test.Tree("""
+    public void valid_JSON_without_issues()
+        => JsonFile.Parse(Test.Tree("""
+        {
+          "str": "hello",
+          "num": -12.34e5,
+          "bool_t": true,
+          "bool_f": false,
+          "null_v": null,
+          "arr": [1, "two"],
+          "obj": {
+            "prop": 42,
+            "arr": [17, 42]
+          }
+        }
+        """)).GetDiagnostics().Should().HaveNoIssues();
+
+    [Test]
+    public void Array_nodes()
+        => Json<JsonArray>("[17, 42]").Items
+        .Should().HaveCount(2)
+        .And.AllBeOfType<JsonNumber>();
+
+    [Test]
+    public void Object_nodes()
+        => Json<JsonObject>("""
             {
-                "str": "hello",
-                "num": -12.34e5,
-                "bool_t": true,
-                "bool_f": false,
-                "null_v": null,
-                "arr": [1, "two"],
-                "obj": {}
+                "first": 17,
+                "second": true
             }
-            """);
-        var json = JsonFile.Parse(tree);
+            """)
+        .Properties.Should().HaveCount(2)
+        .And.AllBeOfType<JsonProperty>();
 
-        var obj = (JsonObject)json.Value!;
-        obj.Properties.Should().HaveCount(7);
+    [Test]
+    public void String_nodes()
+        => Json<JsonString>("\"Hello, world!\"")
+        .Text.Should().Be("Hello, world!");
 
-        var propStr = obj.Properties.ElementAt(0);
-        propStr.Key!.Text.Should().Be(@"""str""");
-        ((JsonString)propStr.Value!).Text.Should().Be(@"""hello""");
+    [TestCase("0")]
+    [TestCase("-13")]
+    [TestCase("0.42")]
+    [TestCase("-0.456")]
+    [TestCase("42234")]
+    [TestCase("1.456e5")]
+    [TestCase("14.56e+5")]
+    [TestCase("14.56e-5")]
+    public void Number_nodes(string json)
+       => Json<JsonNumber>(json).Text.Should().HaveLength(json.Length);
 
-        var propNum = obj.Properties.ElementAt(1);
-        propNum.Key!.Text.Should().Be(@"""num""");
-        ((JsonNumber)propNum.Value!).Text.Should().Be("-12.34e5");
+    [Test]
+    public void True_nodes()
+        => Json<JsonTrue>("true").Should().NotBeNull();
 
-        var propBoolT = obj.Properties.ElementAt(2);
-        propBoolT.Key!.Text.Should().Be(@"""bool_t""");
-        propBoolT.Value.Should().BeOfType<JsonTrue>();
+    [Test]
+    public void False_nodes()
+        => Json<JsonFalse>("false").Should().NotBeNull();
 
-        var propBoolF = obj.Properties.ElementAt(3);
-        propBoolF.Key!.Text.Should().Be(@"""bool_f""");
-        propBoolF.Value.Should().BeOfType<JsonFalse>();
-
-        var propNull = obj.Properties.ElementAt(4);
-        propNull.Key!.Text.Should().Be(@"""null_v""");
-        propNull.Value.Should().BeOfType<JsonNull>();
-
-        var propArr = obj.Properties.ElementAt(5);
-        propArr.Key!.Text.Should().Be(@"""arr""");
-        var arr = (JsonArray)propArr.Value!;
-        arr.Items.Should().HaveCount(2);
-        ((JsonNumber)arr.Items.ElementAt(0)).Text.Should().Be("1");
-        ((JsonString)arr.Items.ElementAt(1)).Text.Should().Be(@"""two""");
-
-        var propObj = obj.Properties.ElementAt(6);
-        propObj.Key!.Text.Should().Be(@"""obj""");
-        propObj.Value.Should().BeOfType<JsonObject>();
-
-        json.GetDiagnostics().Should().HaveNoIssues();
-    }
+    [Test]
+    public void Null_nodes()
+        => Json<JsonNull>("null").Should().NotBeNull();
 }
 
 public class Parses_with_issues
