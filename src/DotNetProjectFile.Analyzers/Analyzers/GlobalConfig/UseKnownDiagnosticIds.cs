@@ -35,7 +35,7 @@ public sealed class UseKnownDiagnosticIds()
         var ids = new HashSet<string>();
 
         foreach (var property in rules
-            .SelectMany(t => t.GetProperties(BindingFlags.Static|BindingFlags.Public))
+            .SelectMany(t => t.GetProperties(BindingFlags.Static | BindingFlags.Public))
             .Where(p => p.PropertyType == typeof(DiagnosticDescriptor)))
         {
             ids.Add(((DiagnosticDescriptor)property.GetValue(null)).Id);

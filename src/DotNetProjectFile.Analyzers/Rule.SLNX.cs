@@ -42,6 +42,5 @@ public static partial class Rule
            description: "Files included in a solution should exist on disk.",
            tags: [Tag.SLNX],
            category: Category.CodeSmell);
-
     }
 }

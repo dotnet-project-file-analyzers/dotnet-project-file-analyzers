@@ -39,5 +39,4 @@ public sealed class AnalyzerDiagnosticSeverity(IniEntry entry)
         => key is { }
         && key.IsMatchStart(Prefix)
         && key.IsMatchEnd(Suffix);
-
 }
