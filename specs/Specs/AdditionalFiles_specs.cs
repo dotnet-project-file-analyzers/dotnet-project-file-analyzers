@@ -15,6 +15,7 @@ public class Resolves
         var result = ctx.Analyzer.Build().Results.Single();
         Log(result);
 
+        result.Properties.Should().Contain(KeyValuePair.Create("IsDotNetProjectFileSdk", "false"));
         result.Should().HaveAdditionalFiles(
 
             new ProjectItem()
@@ -79,6 +80,7 @@ public class Resolves
 
         Log(result);
 
+        result.Properties.Should().Contain(KeyValuePair.Create("IsDotNetProjectFileSdk", "true"));
         result.Should().HaveAdditionalFiles(
 
             new ProjectItem
@@ -140,7 +142,7 @@ public class Resolves
                 ItemSpec = Full("AdditionalFilesProject/Directory.Build.props"),
                 Metadata = new Meta
                 {
-                    Visible = "false",
+                    Visible = "true",
                     AnalyzerType = "DirectoryBuildProps",
                 },
             },
@@ -149,7 +151,7 @@ public class Resolves
                 ItemSpec = Full("AdditionalFilesProject/Directory.Build.targets"),
                 Metadata = new Meta
                 {
-                    Visible = "false",
+                    Visible = "true",
                     AnalyzerType = "DirectoryBuildTargets",
                 },
             },
@@ -158,7 +160,7 @@ public class Resolves
                 ItemSpec = Full("AdditionalFilesProject/Directory.Packages.props"),
                 Metadata = new Meta
                 {
-                    Visible = "false",
+                    Visible = "true",
                     AnalyzerType = "DirectoryPackagesProps",
                 },
             },
