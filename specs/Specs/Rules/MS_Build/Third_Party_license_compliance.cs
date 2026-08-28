@@ -255,29 +255,97 @@ public class Reports
             Issue.WRN("Proj0503", "Add <ThirdPartyLicense Include=\"SonarAnalyzer.CSharp\" Hash=\"IBM9yngU7omFyJOMSFSy0w\" /> to accept the license"));
 
     [Test]
+    public void on_package_with_custom_license_in_props() => new ThirdPartyLicenseResolver()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+                <PackageLicenseExpression>MIT</PackageLicenseExpression>
+              </PropertyGroup>
+
+              <Import Project="extra.props" />
+
+            </Project>
+        """)
+        .WithFile("extra.props", """
+            <Project>
+
+              <ItemGroup>
+                <PackageReference Include="MongoDB.Driver.Core" Version="2.30.0" />
+                <PackageReference Include="SonarAnalyzer.CSharp" Version="10.31.0.145097" />
+                <PackageReference Include="SeeSharpTools.JY.GUI" Version="1.4.4.533" />
+              </ItemGroup>
+
+              <ItemGroup Label="Custom licenses">
+                <ThirdPartyLicense Include="MongoDB.Libmongocrypt" Hash="H+71D1Qif9a+jKUWZKrMdQ" />
+                <ThirdPartyLicense Include="Snappier" Hash="v2I091CLKicpyApWDF77iQ" />
+              </ItemGroup>
+
+            </Project>
+        """)
+        .HasIssues(
+            Issue.WRN("Proj0500", "The SharpCompress (0.30.1) transitive package in MongoDB.Driver.Core is shipped without an explicitly defined license"),
+            Issue.WRN("Proj0501", "The AWSSDK.Core ([3.7.100.14, 4.0.0)) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"),
+            Issue.WRN("Proj0501", "The AWSSDK.SecurityToken (3.7.100.14) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"),
+            Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI (1.4.4.533) package is distributed as GPL-3.0-only, which is incompatible with the NOASSERTION license of the project"),
+        Issue.WRN("Proj0503", "Add <ThirdPartyLicense Include=\"SonarAnalyzer.CSharp\" Hash=\"IBM9yngU7omFyJOMSFSy0w\" /> to accept the license"));
+
+    [Test]
     public void on_global_package_with_changed_custom_license() => new ThirdPartyLicenseResolver()
-    .ForInlineCsproj(@"
-        <Project Sdk=""Microsoft.NET.Sdk"">
+        .ForInlineCsproj(@"
+            <Project Sdk=""Microsoft.NET.Sdk"">
 
-          <PropertyGroup>
-            <TargetFramework>net10.0</TargetFramework>
-          </PropertyGroup>
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
 
-        </Project>")
-    .WithFile("Directory.Packages.props", """
-        <Project>
+            </Project>")
+        .WithFile("Directory.Packages.props", """
+            <Project>
 
-            <ItemGroup>
+              <PropertyGroup>
+                <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+              </PropertyGroup>
+
+              <ItemGroup>
                 <GlobalPackageReference Include="SonarAnalyzer.CSharp" Version="10.6.0.109712" />
-            </ItemGroup>
+              </ItemGroup>
     
-            <ItemGroup Label="Custom licenses">
+              <ItemGroup Label="Custom licenses">
                 <ThirdPartyLicense Include="SonarAnalyzer.CSharp" Hash="TESLAngU7omFyJOMSFSy0w" />
-            </ItemGroup>
+              </ItemGroup>
 
-        </Project>
-    """)
-    .HasIssue(Issue.WRN("Proj0504", "The license for SonarAnalyzer.CSharp has changed as its hash is now IBM9yngU7omFyJOMSFSy0w"));
+            </Project>
+        """)
+        .HasIssue(Issue.WRN("Proj0504", "The license for SonarAnalyzer.CSharp has changed as its hash is now IBM9yngU7omFyJOMSFSy0w"));
+
+    [Test]
+    public void on_package_with_changed_custom_license_in_props() => new ThirdPartyLicenseResolver()
+        .ForInlineCsproj(@"
+            <Project Sdk=""Microsoft.NET.Sdk"">
+
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+
+              <Import Project=""extra.props"" />
+
+            </Project>")
+        .WithFile("extra.props", """
+            <Project>
+
+              <ItemGroup>
+                <PackageReference Include="SonarAnalyzer.CSharp" Version="10.6.0.109712" />
+              </ItemGroup>
+    
+              <ItemGroup Label="Custom licenses">
+                <ThirdPartyLicense Include="SonarAnalyzer.CSharp" Hash="TESLAngU7omFyJOMSFSy0w" />
+              </ItemGroup>
+
+            </Project>
+            """)
+        .HasIssue(Issue.WRN("Proj0504", "The license for SonarAnalyzer.CSharp has changed as its hash is now IBM9yngU7omFyJOMSFSy0w"));
 }
 
 public class Guards
