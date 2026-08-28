@@ -84,6 +84,13 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+- Proj0500: Report on issues in prop files. (FN)
+- Proj0501: Report on issues in prop files. (FN)
+- Proj0502: Report on issues in prop files. (FN)
+- Proj0503: Report on issues in prop files. (FN)
+- Proj0504: Report on issues in prop files. (FN)
+- Proj0805: Report on issues in prop files. (FN)
+- Proj1200: Report on issues in prop files. (FN)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
