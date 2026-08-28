@@ -210,11 +210,17 @@ public class Reports
 
         </Project>
         """)
-   .HasIssues(
-       Issue.WRN("Proj0500", "The SharpCompress (0.30.1) transitive package in MongoDB.Driver.Core is shipped without an explicitly defined license"),
-       Issue.WRN("Proj0501", "The AWSSDK.Core ([3.7.100.14, 4.0.0)) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"),
-       Issue.WRN("Proj0501", "The AWSSDK.SecurityToken (3.7.100.14) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"));
+       .HasIssues(
+           Issue.WRN("Proj0500", "The SharpCompress (0.30.1) transitive package in MongoDB.Driver.Core is shipped without an explicitly defined license"),
+           Issue.WRN("Proj0501", "The AWSSDK.Core ([3.7.100.14, 4.0.0)) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"),
+           Issue.WRN("Proj0501", "The AWSSDK.SecurityToken (3.7.100.14) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"));
 
+    [Test]
+    public void on_GlobalPackageReference_with_custom_license()
+        => new ThirdPartyLicenseResolver()
+        .ForProject("CustomLicenseGlobalPackageReference.cs")
+        .HasIssues(
+            Issue.WRN("Proj0503", "Add <ThirdPartyLicense Include=\"SonarAnalyzer.CSharp\" Hash=\"IBM9yngU7omFyJOMSFSy0w\" /> to accept the license"));
 }
 
 public class Guards
