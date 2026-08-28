@@ -85,8 +85,8 @@
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.*
-- Proj055: Enable nullability analysis for C#. (NEW RULE)
-- Proj056: Enable nullability analysis for F#. (NEW RULE)
+- Proj0055: Enable nullability analysis for C#. (NEW RULE)
+- Proj0056: Enable nullability analysis for F#. (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>

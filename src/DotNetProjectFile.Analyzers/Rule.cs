@@ -528,7 +528,8 @@ public static partial class Rule
        title: "Enable nullability analysis for C#",
        message: "Enable nullability analysis",
        description:
-           "?",
+           "Nullability analysis can help prevent NullReferenceExceptions " +
+           "by identifying potential null-safety issues at compile time.",
        tags: ["MSBuild", "compiler"],
        category: Category.CodeQuality);
 
@@ -537,7 +538,8 @@ public static partial class Rule
        title: "Enable nullability analysis for F#",
        message: "Enable nullability analysis",
        description:
-           "?",
+           "Nullability analysis can help prevent null-safety issues " +
+           "by identifying potential null values at compile time.",
        tags: ["MSBuild", "compiler"],
        category: Category.CodeQuality);
 
