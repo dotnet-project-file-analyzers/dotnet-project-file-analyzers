@@ -130,6 +130,15 @@ public class Resolves
             },
             new ProjectItem
             {
+                ItemSpec = Full("../global.json"),
+                Metadata = new Meta
+                {
+                    Link = "global.json",
+                    AnalyzerType = "GlobalJson",
+                },
+            },
+            new ProjectItem
+            {
                 ItemSpec = Full("../NuGet.config"),
                 Metadata = new Meta
                 {
