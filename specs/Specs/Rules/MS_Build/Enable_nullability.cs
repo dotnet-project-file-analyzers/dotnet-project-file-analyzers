@@ -28,25 +28,13 @@ public class CSharp
             </Project>
             """)
             .HasIssues(Issue.WRN("Proj0055", "Enable nullability analysis").WithSpan(04, 04, 04, 33));
-
-        [Test]
-        public void on_warning_only() => new EnableNullabilityCSharp().ForInlineCsproj("""
-            <Project Sdk="Microsoft.NET.Sdk">
-            
-              <PropertyGroup>
-                <TargetFramework>net10.0</TargetFramework>
-                <Nullable>warnings</Nullable>
-              </PropertyGroup>
-            
-            </Project>
-            """)
-           .HasIssues(Issue.WRN("Proj0055", "Enable nullability analysis").WithSpan(04, 04, 04, 33));
     }
 
     public class Guards
     {
         [TestCase("enabled")]
         [TestCase("annotations")]
+        [TestCase("warnings")]
         public void when_enabled(string kind) => new EnableNullabilityCSharp().ForInlineCsproj($"""
             <Project Sdk="Microsoft.NET.Sdk">
             

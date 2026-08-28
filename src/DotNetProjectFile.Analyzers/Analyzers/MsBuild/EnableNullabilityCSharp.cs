@@ -16,9 +16,14 @@ public sealed class EnableNullabilityCSharp() : MsBuildProjectFileAnalyzer(Rule.
     {
         var prop = context.File.Property<Nullable>();
 
-        if (prop is null || prop.Value is not Nullable.Kind.Enabled and not Nullable.Kind.Annotations)
+        if (!Enabled(prop?.Value))
         {
             context.ReportDiagnostic(Descriptor, (Node?)prop ?? context.File);
         }
     }
+
+    private static bool Enabled(Nullable.Kind? kind) => kind
+        is Nullable.Kind.Enabled
+        or Nullable.Kind.Annotations
+        or Nullable.Kind.Warnings;
 }
