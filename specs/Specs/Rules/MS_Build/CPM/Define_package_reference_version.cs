@@ -8,13 +8,6 @@ public class Reports
        => new DefinePackageReferenceVersion()
        .ForProject("PackageReferenceWithoutVersion.cs")
        .HasNoIssues();
-
-    /// <remarks>Should report but the build crashes.</remarks>
-    [Test]
-    public void missing_versions_in_props()
-       => new DefinePackageReferenceVersion()
-       .ForProject("PackageReferenceWithoutVersion.cs")
-       .HasNoIssues();
 }
 
 public class Guards
