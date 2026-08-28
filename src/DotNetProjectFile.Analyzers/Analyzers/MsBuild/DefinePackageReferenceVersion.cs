@@ -15,7 +15,7 @@ public sealed class DefinePackageReferenceVersion()
             ? PackageVersions(context.File)
             : [];
 
-        foreach (var reference in context.File.ItemGroups.Children<PackageReference>(WithoutVersion))
+        foreach (var reference in context.File.WalkBackward().OfType<PackageReference>().Where(WithoutVersion))
         {
             context.ReportDiagnostic(Descriptor, reference, reference.IncludeOrUpdate);
         }

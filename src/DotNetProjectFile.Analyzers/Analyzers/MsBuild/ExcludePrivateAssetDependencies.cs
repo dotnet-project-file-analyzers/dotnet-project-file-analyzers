@@ -13,8 +13,8 @@ public sealed class ExcludePrivateAssetDependencies() : MsBuildProjectFileAnalyz
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var reference in context.File.ItemGroups
-            .Children<PackageReference>(r => ShoudBePrivateAssets(r, context.ManagePackageVersionsCentrally)))
+        foreach (var reference in context.File.WalkBackward().OfType<PackageReference>()
+            .Where(r => ShoudBePrivateAssets(r, context.ManagePackageVersionsCentrally)))
         {
             context.ReportDiagnostic(Descriptor, reference, reference.IncludeOrUpdate);
         }
