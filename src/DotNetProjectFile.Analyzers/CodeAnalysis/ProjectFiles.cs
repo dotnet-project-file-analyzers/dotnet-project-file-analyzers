@@ -24,6 +24,9 @@ public sealed partial class ProjectFiles
     public IniFile? IniFile(IOFile file)
         => IniFiles.TryGetOrUpdate(file, Create_IniFile);
 
+    public JsonFile? JsonFile(IOFile file)
+        => JsonFiles.TryGetOrUpdate(file, Create_JsonFile);
+
     public MsBuildProject? MsBuildProject(IOFile file)
         => MsBuildProjects.TryGetOrUpdate(file, Create_MsBuildProject);
 
@@ -103,7 +106,7 @@ public sealed partial class ProjectFiles
            AnalyzerType.Json,
            AnalyzerType.GlobalJson) is { } type
 
-       && JsonFiles.TryGetOrUpdate(context, _ => JsonFile.Load(context.AdditionalFile)) is { } file
+       && JsonFiles.TryGetOrUpdate(context, _ => Json.JsonFile.Load(context.AdditionalFile)) is { } file
            ? new(file, type)
            : null;
 
@@ -139,6 +142,8 @@ public sealed partial class ProjectFiles
 
     private static IniFile Create_IniFile(IOFile file)
         => Ini.IniFile.Load(file)!;
+
+    private static JsonFile? Create_JsonFile(IOFile file) => Json.JsonFile.Load(file)!;
 
     private MsBuildProject? Create_MsBuildProject(IOFile file)
        => MsBuild.MsBuildProject.Load(file, this);

@@ -4,7 +4,7 @@ namespace DotNetProjectFile;
 
 public static partial class Rule
 {
-    internal static class Json
+    public static class Json
     {
         public static DiagnosticDescriptor Invalid => New(
            id: 6000,
@@ -13,5 +13,13 @@ public static partial class Rule
            description: "A part of the JSON file could not be parsed.",
            tags: ["JSON", "syntax error"],
            category: Category.SyntaxError);
+
+        public static DiagnosticDescriptor GlobalJsonMustExist => New(
+            id: 6010,
+            title: "global.json should exist",
+            message: "global.json does not exist",
+            description: "?",
+            tags: ["?"],
+            category: Category.CodeQuality);
     }
 }

@@ -23,6 +23,12 @@ public sealed partial class MsBuildProject : Node, ProjectFile
         Language = Language.Parse(path.Extension);
     }
 
+    public Json.JsonFile? GlobalJson => Path.Directory
+        .AncestorsAndSelf()
+        .Select(dir => ProjectFiles.JsonFile(dir.File("global.json")))
+        .OfType<Json.JsonFile>()
+        .FirstOrDefault();
+
     public MsBuildProject? DirectoryBuildProps => Path.Directory
         .AncestorsAndSelf()
         .Select(dir => ProjectFiles.MsBuildProject(dir.File("Directory.Build.props")))
