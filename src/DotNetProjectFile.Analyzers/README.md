@@ -216,3 +216,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj5001** Remove SLN solution files](https://dotnet-project-file-analyzers.github.io/rules/Proj5001.html)
 * [**Proj5005** Omit Project ID's](https://dotnet-project-file-analyzers.github.io/rules/Proj5005.html)
 * [**Proj5006** Included files should exist](https://dotnet-project-file-analyzers.github.io/rules/Proj5006.html)
+
+## JSON
+* [**Proj6000** Invalid JSON file](https://dotnet-project-file-analyzers.github.io/rules/Proj6000.html)
+* [**Proj6010** global.json should exist](https://dotnet-project-file-analyzers.github.io/rules/Proj6010.html)

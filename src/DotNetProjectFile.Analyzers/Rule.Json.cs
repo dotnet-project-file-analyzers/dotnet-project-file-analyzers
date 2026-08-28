@@ -18,8 +18,11 @@ public static partial class Rule
             id: 6010,
             title: "global.json should exist",
             message: "global.json does not exist",
-            description: "?",
-            tags: ["?"],
+            description:
+                "To ensure a predictable .NET SDK version is used across " +
+                "different machines and environments, a global.json file should " +
+                "exist for every compiled project.",
+            tags: ["global.json", "configuration", "SDK"],
             category: Category.CodeQuality);
     }
 }

@@ -267,6 +267,10 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj5005** Omit Project ID's](rules/Proj5005.md)
 * [**Proj5006** Included files should exist](rules/Proj5006.md)
 
+## JSON
+* [**Proj6000** Invalid JSON file](rules/Proj6000.md)
+* [**Proj6010** global.json should exist](rules/Proj6010.md)
+
 ## SonarQube integration
 By default, results by .NET project file analyzers are included in SonarQube
 reports. Read [here](general/sonar-integration.md) more about how this works.
