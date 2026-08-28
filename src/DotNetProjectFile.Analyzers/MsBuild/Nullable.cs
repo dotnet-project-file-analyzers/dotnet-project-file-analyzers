@@ -15,7 +15,7 @@ public sealed class Nullable(XElement element, Node parent, MsBuildProject proje
         /// <summary>Nullability analysis enabled.</summary>
         Enabled,
 
-        /// <summary>Nullability analysis enabled.</summary>
+        /// <summary>Nullability analysis enabled without warning on assignements.</summary>
         Warnings,
 
         /// <summary>Maybe null support without warnings.</summary>
