@@ -23,7 +23,7 @@ public sealed class EnableNullabilityCSharp() : MsBuildProjectFileAnalyzer(Rule.
     }
 
     private static bool Enabled(Nullable.Kind? kind) => kind
-        is Nullable.Kind.Enabled
+        is Nullable.Kind.Enable
         or Nullable.Kind.Annotations
         or Nullable.Kind.Warnings;
 }

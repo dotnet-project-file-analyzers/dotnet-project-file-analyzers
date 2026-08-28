@@ -22,17 +22,17 @@ public class CSharp
             
               <PropertyGroup>
                 <TargetFramework>net10.0</TargetFramework>
-                <Nullable>disabled</Nullable>
+                <Nullable>disable</Nullable>
               </PropertyGroup>
             
             </Project>
             """)
-            .HasIssues(Issue.WRN("Proj0055", "Enable nullability analysis").WithSpan(04, 04, 04, 33));
+            .HasIssues(Issue.WRN("Proj0055", "Enable nullability analysis").WithSpan(04, 04, 04, 32));
     }
 
     public class Guards
     {
-        [TestCase("enabled")]
+        [TestCase("enable")]
         [TestCase("annotations")]
         [TestCase("warnings")]
         public void when_enabled(string kind) => new EnableNullabilityCSharp().ForInlineCsproj($"""
@@ -70,12 +70,12 @@ public class FSharp
             
               <PropertyGroup>
                 <TargetFramework>net10.0</TargetFramework>
-                <Nullable>disabled</Nullable>
+                <Nullable>disable</Nullable>
               </PropertyGroup>
             
             </Project>
             """)
-            .HasIssues(Issue.WRN("Proj0056", "Enable nullability analysis").WithSpan(04, 04, 04, 33));
+            .HasIssues(Issue.WRN("Proj0056", "Enable nullability analysis").WithSpan(04, 04, 04, 32));
     }
 
     public class Guards
@@ -86,7 +86,7 @@ public class FSharp
             
               <PropertyGroup>
                 <TargetFramework>net10.0</TargetFramework>
-                <Nullable>enabled</Nullable>
+                <Nullable>enable</Nullable>
               </PropertyGroup>
             
             </Project>

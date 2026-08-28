@@ -10,10 +10,10 @@ public sealed class Nullable(XElement element, Node parent, MsBuildProject proje
     public enum Kind
     {
         /// <summary>Nullability analysis disabled.</summary>
-        Disabled = 0,
+        Disable = 0,
 
         /// <summary>Nullability analysis enabled.</summary>
-        Enabled,
+        Enable,
 
         /// <summary>Nullability analysis enabled without warning on assignments.</summary>
         Warnings,
