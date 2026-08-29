@@ -18,6 +18,9 @@ public sealed partial class MsBuildProject
     public bool IsTestProject()
         => Property<IsTestProject>()?.Value ?? MsBuildDefaults.IsTestProject;
 
+    public bool IsAspireProject()
+        => Sdk?.StartsWith("Aspire.AppHost.Sdk/") ?? false;
+
     public bool? NuGetAuditEnabled()
         => Property<NuGetAudit>()?.Value ?? MsBuildDefaults.NuGetAudit;
 

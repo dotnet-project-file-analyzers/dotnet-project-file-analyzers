@@ -33,6 +33,14 @@ public class Detects_conflicts
 
             proj.ConflictsWith(dep).Should().Be(ProjectReferenceConflict.IsExe);
         }
+
+        [Test]
+        public void aspire_projects()
+        {
+            var proj = new ProjectReferenceInfo { IsAspireProject = false };
+            var dep = new ProjectReferenceInfo { OutputType = OutputType.Kind.Exe };
+            proj.ConflictsWith(dep).Should().Be(ProjectReferenceConflict.IsExe);
+        }
     }
 
     public class Non_test_projects
@@ -117,6 +125,17 @@ public class Detects_no_conflicts_for
             var proj = new ProjectReferenceInfo { IsTestProject = true };
             var dep = new ProjectReferenceInfo { OutputType = type };
 
+            proj.ConflictsWith(dep).Should().Be(ProjectReferenceConflict.None);
+        }
+    }
+
+    public class Aspire_project
+    {
+        [Test]
+        public void executable_for_aspire_project()
+        {
+            var proj = new ProjectReferenceInfo { IsAspireProject = true };
+            var dep = new ProjectReferenceInfo();
             proj.ConflictsWith(dep).Should().Be(ProjectReferenceConflict.None);
         }
     }
