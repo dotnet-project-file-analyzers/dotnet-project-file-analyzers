@@ -140,3 +140,11 @@ public class Detects_no_conflicts_for
         }
     }
 }
+public class Guards
+{
+    [Test]
+    public void Aspire_sdk() =>
+        new ProjectReferencesShouldBeCompliant()
+            .ForProject("AspireSdk.cs")
+            .HasNoIssues();
+}
