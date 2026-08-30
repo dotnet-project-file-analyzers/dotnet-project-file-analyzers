@@ -21,7 +21,7 @@ public sealed partial class MsBuildProject
     // Checks for exact match "Aspire.AppHost.Sdk" (no version)
     // and "Aspire.AppHost.Sdk/version" format.
     public bool IsAspireProject()
-        => Sdk?.StartsWith("Aspire.AppHost.Sdk", StringComparison.OrdinalIgnoreCase) ?? false;
+        => Sdk.IsMatchStart("Aspire.AppHost.Sdk");
 
     public bool? NuGetAuditEnabled()
         => Property<NuGetAudit>()?.Value ?? MsBuildDefaults.NuGetAudit;
