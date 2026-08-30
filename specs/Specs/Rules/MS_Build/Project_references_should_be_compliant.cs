@@ -138,13 +138,11 @@ public class Detects_no_conflicts_for
             var dep = new ProjectReferenceInfo();
             proj.ConflictsWith(dep).Should().Be(ProjectReferenceConflict.None);
         }
+
+        [Test]
+        public void Aspire_sdk() =>
+            new ProjectReferencesShouldBeCompliant()
+                .ForProject("AspireSdk.cs")
+                .HasNoIssues();
     }
-}
-public class Guards
-{
-    [Test]
-    public void Aspire_sdk() =>
-        new ProjectReferencesShouldBeCompliant()
-            .ForProject("AspireSdk.cs")
-            .HasNoIssues();
 }
