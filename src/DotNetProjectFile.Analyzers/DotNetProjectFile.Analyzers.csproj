@@ -91,6 +91,7 @@ ToBeDecided:
 - Proj0504: Report on issues in prop files. (FN)
 - Proj0805: Report on issues in prop files. (FN)
 - Proj1200: Report on issues in prop files. (FN)
+- Proj1300: Ignore Aspire projects. (FP)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
