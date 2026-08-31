@@ -2,8 +2,8 @@ namespace DotNetProjectFile.Analyzers.MsBuild;
 
 /// <summary>Implements <see cref="Rule.RemoveUnusedPackageVersions"/>.</summary>
 /// <remarks>
-/// This rule is triggered on the <see cref="ProjectFileType.SDK" /> only but
-/// analyzes the <see cref="ProjectFileType.DirectoryPackages" />. The reasoning
+/// This rule is triggered on the <see cref="AnalyzerType.SDK" /> only but
+/// analyzes the <see cref="AnalyzerType.DirectoryPackagesProps" />. The reasoning
 /// for this is, that it is by far the most conveniant way to ensure that we
 /// have all (relevant) MS Build files at our disposal.
 /// </remarks>
