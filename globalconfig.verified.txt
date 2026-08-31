@@ -176,3 +176,5 @@ dotnet_diagnostic.Proj5000.severity = warning    # Use SLNX solution files
 dotnet_diagnostic.Proj5001.severity = warning    # Remove SLN solution files
 dotnet_diagnostic.Proj5005.severity = warning    # Omit Project ID's
 dotnet_diagnostic.Proj5006.severity = warning    # Included files should exist
+dotnet_diagnostic.Proj6000.severity = error      # Invalid JSON file
+dotnet_diagnostic.Proj6010.severity = warning    # global.json should exist
