@@ -24,6 +24,10 @@ public enum AnalyzerType
     GlobalConfig,
     INI,
 
+    // JSON
+    GlobalJson,
+    Json,
+
     NuGetConfig,
 
     RESX,

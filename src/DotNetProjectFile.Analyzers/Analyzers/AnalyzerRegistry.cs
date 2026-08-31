@@ -39,6 +39,16 @@ internal static class AnalyzerRegistry
                 }
             });
 
+        /// <summary>Registers an register on <see cref="SolutionFileAnalysisContext"/>.</summary>
+        public void RegisterJsonFileAction(Action<JsonFileAnalysisContext> register)
+            => context.RegisterAdditionalFileAction(c =>
+            {
+                if (ProjectFiles.Global.UpdateJsonFile(c) is { } json)
+                {
+                    register(new(json.File, json.Type, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                }
+            });
+
         /// <summary>Registers an register on <see cref="NuGetConfigFileAnalysisContext"/>.</summary>
         public void RegisterNuGetConfigFileAction(Action<NuGetConfigFileAnalysisContext> register)
             => context.RegisterAdditionalFileAction(c =>
