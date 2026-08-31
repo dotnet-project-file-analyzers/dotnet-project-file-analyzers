@@ -56,6 +56,8 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0052** Prefer attributes over element](https://dotnet-project-file-analyzers.github.io/rules/Proj0052.html)
 * [**Proj0053** Run analyzers during build](https://dotnet-project-file-analyzers.github.io/rules/Proj0053.html)
 * [**Proj0054** Avoid changing compiler tools](https://dotnet-project-file-analyzers.github.io/rules/Proj0054.html)
+* [**Proj0055** Enable nullability analysis for C#](https://dotnet-project-file-analyzers.github.io/rules/Proj0055.html)
+* [**Proj0056** Enable nullability analysis for F#](https://dotnet-project-file-analyzers.github.io/rules/Proj0056.html)
 * [**Proj0057** Keep paths portable](https://dotnet-project-file-analyzers.github.io/rules/Proj0057.html)
 
 ### Packaging
@@ -217,3 +219,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj5001** Remove SLN solution files](https://dotnet-project-file-analyzers.github.io/rules/Proj5001.html)
 * [**Proj5005** Omit Project ID's](https://dotnet-project-file-analyzers.github.io/rules/Proj5005.html)
 * [**Proj5006** Included files should exist](https://dotnet-project-file-analyzers.github.io/rules/Proj5006.html)
+
+## JSON
+* [**Proj6000** Invalid JSON file](https://dotnet-project-file-analyzers.github.io/rules/Proj6000.html)
+* [**Proj6010** global.json should exist](https://dotnet-project-file-analyzers.github.io/rules/Proj6010.html)

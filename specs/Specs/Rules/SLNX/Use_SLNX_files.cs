@@ -5,15 +5,14 @@ namespace Rules.SLNX.Use_SLNX_files;
 public class Reports
 {
     [Test]
-    public void missing_SLNX() => new UseSlnxFiles()
-       .ForInlineSdkProject("""
-<Project Sdk="Microsoft.NET.Sdk">
+    public void missing_SLNX() => new UseSlnxFiles().ForInlineSdkProject("""
+        <Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-  </PropertyGroup>
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+          </PropertyGroup>
 
-</Project>
-""")
+        </Project>
+        """)
        .HasIssue(Issue.WRN("Proj5000", "Use a SLNX solution file instead"));
 }

@@ -523,7 +523,27 @@ public static partial class Rule
         tags: ["MSBuild", "compiler"],
         category: Category.CodeQuality);
 
-    public static DiagnosticDescriptor KeepPathsPortable => New(
+    public static DiagnosticDescriptor EnableNullabilityCSharp => New(
+       id: 0055,
+       title: "Enable nullability analysis for C#",
+       message: "Enable nullability analysis",
+       description:
+           "Nullability analysis can help prevent NullReferenceExceptions " +
+           "by identifying potential null-safety issues at compile time.",
+       tags: ["MSBuild", "compiler"],
+       category: Category.CodeQuality);
+
+    public static DiagnosticDescriptor EnableNullabilityFSharp => New(
+       id: 0056,
+       title: "Enable nullability analysis for F#",
+       message: "Enable nullability analysis",
+       description:
+           "Nullability analysis can help prevent null-safety issues " +
+           "by identifying potential null values at compile time.",
+       tags: ["MSBuild", "compiler"],
+       category: Category.CodeQuality);
+
+     public static DiagnosticDescriptor KeepPathsPortable => New(
         id: 0057,
         title: "Keep paths portable",
         message: "Make '{0}' a portalbe path",

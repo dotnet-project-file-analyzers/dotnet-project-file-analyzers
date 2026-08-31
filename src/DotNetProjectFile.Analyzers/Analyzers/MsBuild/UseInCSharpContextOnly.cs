@@ -8,7 +8,7 @@ public sealed class UseInCSharpContextOnly() : MsBuildProjectFileAnalyzer(Rule.U
     [
         typeof(DotNetProjectFile.MsBuild.CSharp.AllowUnsafeBlocks),
         typeof(DotNetProjectFile.MsBuild.CSharp.CheckForOverflowUnderflow),
-        typeof(DotNetProjectFile.MsBuild.CSharp.Nullable),
+        typeof(DotNetProjectFile.MsBuild.Nullable),
     ];
 
     /// <inheritdoc />
@@ -33,7 +33,7 @@ public sealed class UseInCSharpContextOnly() : MsBuildProjectFileAnalyzer(Rule.U
         }
 
         bool ExceptNullableForFSharp()
-            => node is DotNetProjectFile.MsBuild.CSharp.Nullable
+            => node is DotNetProjectFile.MsBuild.Nullable
             && context.File.Language == Language.FSharp;
     }
 }

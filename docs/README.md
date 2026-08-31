@@ -106,6 +106,8 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0052** Prefer attributes over element](rules/Proj0052.md)
 * [**Proj0053** Run analyzers during build](rules/Proj0053.md)
 * [**Proj0054** Avoid changing compiler tools](rules/Proj0054.md)
+* [**Proj0055** Enable nullability analysis for C#](rules/Proj0055.md)
+* [**Proj0056** Enable nullability analysis for F#](rules/Proj0056.md)
 * [**Proj0057** Keep paths portable](rules/Proj0057.md)
 
 ### Packaging
@@ -267,6 +269,10 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj5001** Remove SLN solution files](rules/Proj5001.md)
 * [**Proj5005** Omit Project ID's](rules/Proj5005.md)
 * [**Proj5006** Included files should exist](rules/Proj5006.md)
+
+## JSON
+* [**Proj6000** Invalid JSON file](rules/Proj6000.md)
+* [**Proj6010** global.json should exist](rules/Proj6010.md)
 
 ## SonarQube integration
 By default, results by .NET project file analyzers are included in SonarQube

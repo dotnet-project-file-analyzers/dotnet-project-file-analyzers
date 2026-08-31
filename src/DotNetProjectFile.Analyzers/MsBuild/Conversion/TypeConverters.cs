@@ -24,7 +24,7 @@ public static class TypeConverters
 
     public static TypeConverter Get(Type type)
     {
-        var not_null = Nullable.GetUnderlyingType(type) ?? type;
+        var not_null = System.Nullable.GetUnderlyingType(type) ?? type;
         return TypeStore.TryGetValue(not_null, out var custom)
             ? custom
             : TypeDescriptor.GetConverter(not_null);
