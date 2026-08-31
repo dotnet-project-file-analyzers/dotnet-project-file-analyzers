@@ -33,7 +33,7 @@ public sealed record NugetPackage : IComparable<NugetPackage>
     public int CompareTo(NugetPackage? other)
         => other is null
         ? +1
-        : Id.CompareTo(other.Id);
+        : Id.CompareTo(other.Id, StringComparison.Ordinal);
 
     /// <inheritdoc />
     [Pure]

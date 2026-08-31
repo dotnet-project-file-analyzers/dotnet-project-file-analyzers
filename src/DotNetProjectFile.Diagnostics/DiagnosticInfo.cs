@@ -3,6 +3,7 @@ using DotNetProjectFile.Diagnostics.Json;
 using Microsoft.CodeAnalysis;
 using NuGet.Versioning;
 using System.Collections.Immutable;
+using System.Globalization;
 using System.Text.Json.Serialization;
 
 namespace DotNetProjectFile.Diagnostics;
@@ -123,8 +124,8 @@ public sealed record DiagnosticInfo :
     public static DiagnosticInfo New(DiagnosticDescriptor descriptor) => new()
     {
         Id = new(descriptor.Id),
-        Title = descriptor.Title.ToString(),
-        Description = descriptor.Description.ToString(),
+        Title = descriptor.Title.ToString(CultureInfo.InvariantCulture),
+        Description = descriptor.Description.ToString(CultureInfo.InvariantCulture),
         CustomTags = [.. descriptor.CustomTags],
         DefaultSeverity = descriptor.DefaultSeverity,
         IsEnabledByDefault = descriptor.IsEnabledByDefault,
