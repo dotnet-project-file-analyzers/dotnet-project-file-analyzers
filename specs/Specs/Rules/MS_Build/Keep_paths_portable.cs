@@ -36,9 +36,26 @@ public class Reports
 
 public class Guards
 {
-    [TestCase("CompliantCSharp.cs")]
-    [TestCase("CompliantCSharpPackage.cs")]
-    public void Projects_without_issues(string project) => new KeepPathsPortable()
-        .ForProject(project)
-        .HasNoIssues();
+    [Test]
+    public void relative_paths() => new KeepPathsPortable().ForInlineCsproj("""
+        <Project Sdk="Microsoft.NET.Sdk">
+
+          <PropertyGroup>
+            <TargetFramework>net10.0</TargetFramework>
+            <PackageIcon>assets/icon.png</PackageIcon>
+            <PackageLicenseFile>licenses/license.txt</PackageLicenseFile>
+            <PackageOutputPath>../nupkg</PackageOutputPath>
+            <PackageReadmeFile>./docs.readme.md</PackageReadmeFile>
+            <PublishDir>publish</PublishDir>
+          </PropertyGroup>
+
+          <ItemGroup>
+            <Folder Include="myfolder\" />
+            <AdditionalFiles Include="files\myfile.txt" />
+            <None Include="files\none.txt" />
+          </ItemGroup>
+
+        </Project>
+        """)
+         .HasNoIssues();
 }
