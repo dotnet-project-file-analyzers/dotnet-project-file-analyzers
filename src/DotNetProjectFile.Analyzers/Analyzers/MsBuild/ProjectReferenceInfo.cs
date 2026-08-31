@@ -10,6 +10,8 @@ public sealed record ProjectReferenceInfo
 
     public bool IsTestProject { get; init; } = false;
 
+    public bool IsAspireProject { get; init; } = false;
+
     public bool IsBenchmarkProject { get; init; } = false;
 
     [Pure]
@@ -18,7 +20,7 @@ public sealed record ProjectReferenceInfo
         _ when IsBenchmarkProject => ProjectReferenceConflict.None,
         _ when dep.IsTestProject => ProjectReferenceConflict.IsTestProject,
         _ when IsPackable && !dep.IsPackable => ProjectReferenceConflict.IsNotPackable,
-        _ when !IsTestProject && dep.OutputType.IsExe() => ProjectReferenceConflict.IsExe,
+        _ when !IsTestProject && !IsAspireProject && dep.OutputType.IsExe() => ProjectReferenceConflict.IsExe,
         _ when !IsTestProject && dep.IsBenchmarkProject => ProjectReferenceConflict.IsBenchmarkProject,
         _ => ProjectReferenceConflict.None,
     };
@@ -31,6 +33,7 @@ public sealed record ProjectReferenceInfo
         IsPackable = project.IsPackable(),
         IsTestProject = project.IsTestProject()
             || project.Walk().OfType<PackageReference>().Any(IsTestSdk),
+        IsAspireProject = project.IsAspireProject(),
         IsBenchmarkProject = project.GetOutputType() is DotNetProjectFile.MsBuild.OutputType.Kind.Exe
             && project.Walk().OfType<PackageReference>().Any(IsBenchmarkDotNetReference)
             && project.Walk().OfType<PackageReference>().None(IsTestSdk),
