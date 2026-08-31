@@ -18,13 +18,13 @@ public readonly struct DiagnosticId(string val) : IEquatable<DiagnosticId>, ICom
 
     /// <summary>The (optional) prefix.</summary>
     public string? Prefix
-        => Pattern.Match(value) is { Success: true } match
+        => value is { Length: > 0 } && Pattern.Match(value) is { Success: true } match
         ? match.Groups[nameof(Prefix)].Value
         : null;
 
     /// <summary>The (optional) numeric value.</summary>
     public int? Numeric
-        => Pattern.Match(value) is { Success: true } m && int.TryParse(m.Groups[nameof(Numeric)].Value, out var n)
+        => value is { Length: > 0 } && Pattern.Match(value) is { Success: true } m && int.TryParse(m.Groups[nameof(Numeric)].Value, out var n)
         ? n
         : null;
 
