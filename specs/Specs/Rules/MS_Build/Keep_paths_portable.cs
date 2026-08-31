@@ -1,4 +1,4 @@
-namespace Rules.MS_Build.Keep_paths_portable;
+namespace Rules.MS_Build.Keep_paths_relative;
 
 public class Reports
 {
@@ -25,14 +25,14 @@ public class Reports
         </Project>
         """)
         .HasIssues(
-            Issue.WRN("Proj0057", "Make 'C:\\assets\\icon.png' a portable path"/*......*/).WithSpan(04, 04, 04, 49),
-            Issue.WRN("Proj0057", "Make 'C:\\licenses\\license.txt' a portable path"/*.*/).WithSpan(05, 04, 05, 68),
-            Issue.WRN("Proj0057", "Make 'C:\\nupkg\\' a portable path"/*...............*/).WithSpan(06, 04, 06, 52),
-            Issue.WRN("Proj0057", "Make 'C:\\docs\\readme.md' a portable path"/*.......*/).WithSpan(07, 04, 07, 60),
-            Issue.WRN("Proj0057", "Make 'C:\\publish\\' a portable path"/*.............*/).WithSpan(08, 04, 08, 40),
-            Issue.WRN("Proj0057", "Make 'C:\\folders\\myfolder\\' a portable path"/*...*/).WithSpan(12, 04, 12, 45),
-            Issue.WRN("Proj0057", "Make 'C:\\files\\myfile.txt' a portable path"/*.....*/).WithSpan(13, 04, 13, 53),
-            Issue.WRN("Proj0057", "Make 'C:\\files\\none.txt' a portable path"/*.......*/).WithSpan(14, 04, 14, 40));
+            Issue.WRN("Proj0057", "Make 'C:\\assets\\icon.png' a relative path"/*......*/).WithSpan(04, 04, 04, 49),
+            Issue.WRN("Proj0057", "Make 'C:\\licenses\\license.txt' a relative path"/*.*/).WithSpan(05, 04, 05, 68),
+            Issue.WRN("Proj0057", "Make 'C:\\nupkg\\' a relative path"/*...............*/).WithSpan(06, 04, 06, 52),
+            Issue.WRN("Proj0057", "Make 'C:\\docs\\readme.md' a relative path"/*.......*/).WithSpan(07, 04, 07, 60),
+            Issue.WRN("Proj0057", "Make 'C:\\publish\\' a relative path"/*.............*/).WithSpan(08, 04, 08, 40),
+            Issue.WRN("Proj0057", "Make 'C:\\folders\\myfolder\\' a relative path"/*...*/).WithSpan(12, 04, 12, 45),
+            Issue.WRN("Proj0057", "Make 'C:\\files\\myfile.txt' a relative path"/*.....*/).WithSpan(13, 04, 13, 53),
+            Issue.WRN("Proj0057", "Make 'C:\\files\\none.txt' a relative path"/*.......*/).WithSpan(14, 04, 14, 40));
 #else
 [Test]
     public void on_absolute_paths() => new KeepPathsPortable().ForInlineCsproj("""
@@ -56,14 +56,14 @@ public class Reports
         </Project>
         """)
         .HasIssues(
-            Issue.WRN("Proj0057", "Make '/assets/icon.png' a portable path"/*......*/).WithSpan(04, 04, 04, 47),
-            Issue.WRN("Proj0057", "Make '/licenses/license.txt' a portable path"/*.*/).WithSpan(05, 04, 05, 66),
-            Issue.WRN("Proj0057", "Make '/nupkg' a portable path"/*...............*/).WithSpan(06, 04, 06, 49),
-            Issue.WRN("Proj0057", "Make '/docs/readme.md' a portable path"/*.......*/).WithSpan(07, 04, 07, 58),
-            Issue.WRN("Proj0057", "Make '/publish' a portable path"/*.............*/).WithSpan(08, 04, 08, 37),
-            Issue.WRN("Proj0057", "Make '/folders/myfolder' a portable path"/*...*/).WithSpan(12, 04, 12, 42),
-            Issue.WRN("Proj0057", "Make '/files/myfile.txt' a portable path"/*.....*/).WithSpan(13, 04, 13, 51),
-            Issue.WRN("Proj0057", "Make '/files/none.txt' a portable path"/*.......*/).WithSpan(14, 04, 14, 38));
+            Issue.WRN("Proj0057", "Make '/assets/icon.png' a relative path"/*......*/).WithSpan(04, 04, 04, 47),
+            Issue.WRN("Proj0057", "Make '/licenses/license.txt' a relative path"/*.*/).WithSpan(05, 04, 05, 66),
+            Issue.WRN("Proj0057", "Make '/nupkg' a relative path"/*................*/).WithSpan(06, 04, 06, 49),
+            Issue.WRN("Proj0057", "Make '/docs/readme.md' a relative path"/*.......*/).WithSpan(07, 04, 07, 58),
+            Issue.WRN("Proj0057", "Make '/publish' a relative path"/*..............*/).WithSpan(08, 04, 08, 37),
+            Issue.WRN("Proj0057", "Make '/folders/myfolder' a relative path"/*.....*/).WithSpan(12, 04, 12, 42),
+            Issue.WRN("Proj0057", "Make '/files/myfile.txt' a relative path"/*.....*/).WithSpan(13, 04, 13, 51),
+            Issue.WRN("Proj0057", "Make '/files/none.txt' a relative path"/*.......*/).WithSpan(14, 04, 14, 38));
 #endif
 }
 
