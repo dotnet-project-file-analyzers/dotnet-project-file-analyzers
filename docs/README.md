@@ -106,6 +106,8 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0052** Prefer attributes over element](rules/Proj0052.md)
 * [**Proj0053** Run analyzers during build](rules/Proj0053.md)
 * [**Proj0054** Avoid changing compiler tools](rules/Proj0054.md)
+* [**Proj0055** Enable nullability analysis for C#](rules/Proj0055.md)
+* [**Proj0056** Enable nullability analysis for F#](rules/Proj0056.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
