@@ -12,7 +12,7 @@ public sealed record DiagnosticCollection
 {
     /// <summary>Rules that are similar.</summary>
     [JsonPropertyName("similar")]
-    public ImmutableArray<SimarRules> Similar { get; init; } = [];
+    public ImmutableArray<SimilarRules> Similar { get; init; } = [];
 
     /// <summary>Rules that contradict each other.</summary>
     [JsonPropertyName("contradict")]

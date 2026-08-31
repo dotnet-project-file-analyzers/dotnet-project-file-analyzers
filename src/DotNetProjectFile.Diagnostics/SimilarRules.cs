@@ -3,7 +3,7 @@ using System.Text.Json.Serialization;
 
 namespace DotNetProjectFile.Diagnostics;
 
-public sealed record SimarRules
+public sealed record SimilarRules
 {
     [JsonPropertyName("desc")]
     public required string Description { get; init; }
