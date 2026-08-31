@@ -35,18 +35,25 @@ public sealed class KeepPathsPortable() : MsBuildProjectFileAnalyzer(Rule.KeepPa
         GlobalAnalyzerConfigFiles item/*...*/ => item.IncludeAndUpdate,
         None item/*........................*/ => item.IncludeAndUpdate,
 
+        Folder item/*......................*/ => Any(item.Include),
         ProjectReference path/*............*/ => Any(path.Include),
 
         BaseIntermediateOutputPath path /*.*/ => Any(path.Text),
         BaseOutputPath path/*..............*/ => Any(path.Text),
+        CodeAnalysisRuleSet path/*.........*/ => Any(path.Text),
+        CscToolPath path/*.................*/ => Any(path.Text),
+        DockerfileContext path/*...........*/ => Any(path.Text),
         DocumentationFile path/*...........*/ => Any(path.Text),
+        DotnetFscCompilerPath path/*.......*/ => Any(path.Text),
         IntermediateOutputPath path/*......*/ => Any(path.Text),
         HintPath path/*....................*/ => Any(path.Text),
         OutputPath path/*..................*/ => Any(path.Text),
         PackageIcon path/*.................*/ => Any(path.Text),
+        PackageLicenseFile path/*..........*/ => Any(path.Text),
         PackageOutputPath path/*...........*/ => Any(path.Text),
         PackageReadmeFile path/*...........*/ => Any(path.Text),
         PublishDir path/*..................*/ => Any(path.Text),
+        VbcToolPath path/*.................*/ => Any(path.Text),
 
         _ => [],
     };
