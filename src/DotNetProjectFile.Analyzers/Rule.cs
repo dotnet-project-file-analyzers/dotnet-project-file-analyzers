@@ -546,7 +546,7 @@ public static partial class Rule
      public static DiagnosticDescriptor KeepPathsPortable => New(
         id: 0057,
         title: "Keep paths portable",
-        message: "Make '{0}' a portalbe path",
+        message: "Make '{0}' a portable path",
         description:
             "?",
         tags: ["MSBuild", "CI/CD"],
