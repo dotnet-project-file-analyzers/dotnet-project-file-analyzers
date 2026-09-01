@@ -79,7 +79,14 @@ public sealed record DiagnosticInfo :
     public string? Obsolete { get; init; }
 
     [Pure]
-    public DiagnosticInfo Update(DiagnosticInfo update) => update with { First = First };
+    public DiagnosticInfo Update(DiagnosticInfo update) => update with
+    {
+        First = First,
+        Title = update.Title.NullIfEmpty() ?? Title,
+        Description = update.Description.NullIfEmpty() ?? Description,
+        HelpLinkUri = update.HelpLinkUri.NullIfEmpty() ?? HelpLinkUri,
+        Obsolete = update.Obsolete.NullIfEmpty() ?? Obsolete,
+    };
 
     [Pure]
     internal DiagnosticInfo Save(NuGetVersion? version) => Version == version ? this with { Version = null } : this;
