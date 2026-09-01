@@ -81,6 +81,7 @@ public static class NuGetRepository
     [Pure]
     private static async ValueTask<ImmutableArray<DiagnosticInfo>> FetchDiagnostics(NugetPackage package, IEnumerable<FileInfo> dlls, CancellationToken cancellation)
     {
+        var context = new AnalyzerLoadContext();
         var assemblies = new List<Assembly>();
         var diagnostics = new List<DiagnosticInfo>();
 
@@ -93,7 +94,7 @@ public static class NuGetRepository
 
             try
             {
-                assemblies.Add(Assembly.Load(stream.ToArray()));
+                assemblies.Add(context.LoadAssemblyFromStream(stream));
             }
             catch (BadImageFormatException)
             {
@@ -101,50 +102,49 @@ public static class NuGetRepository
             }
         }
 
-        using (new AssemblyResolver(assemblies))
+        foreach (var assembly in assemblies)
         {
-            foreach (var assembly in assemblies)
+            Type[] types;
+
+            try
             {
-                Type[] types;
+                types = assembly.GetTypes();
+            }
+            catch (ReflectionTypeLoadException ex)
+            {
+                types = [.. ex.Types.OfType<Type>()];
+            }
+            catch
+            {
+                continue;
+            }
 
-                try
-                {
-                    types = assembly.GetTypes();
-                }
-                catch (ReflectionTypeLoadException ex)
-                {
-                    types = [.. ex.Types.OfType<Type>()];
-                }
-                catch
-                {
-                    continue;
-                }
+            var analyzers = types.Select(Analyzers).OfType<DiagnosticAnalyzer>();
 
-                var analyzers = types.Select(Analyzers).OfType<DiagnosticAnalyzer>();
+            foreach (var analyzer in analyzers)
+            {
+                var languages = analyzer.GetType().GetCustomAttribute<DiagnosticAnalyzerAttribute>()!.Languages;
+                var obsolete = analyzer
+                    .GetType()
+                    .GetCustomAttribute<ObsoleteAttribute>()?.Message;
 
-                foreach (var analyzer in analyzers)
+                foreach (var desc in SupportedDiagnostics(analyzer))
                 {
-                    var languages = analyzer.GetType().GetCustomAttribute<DiagnosticAnalyzerAttribute>()!.Languages;
-                    var obsolete = analyzer
-                        .GetType()
-                        .GetCustomAttribute<ObsoleteAttribute>()?.Message;
-
-                    foreach (var desc in SupportedDiagnostics(analyzer))
+                    var diagnostic = DiagnosticInfo.New(desc)
+                    with
                     {
-                        var diagnostic = DiagnosticInfo.New(desc)
-                        with
-                        {
-                            Version = package.Version,
-                            First = package.Version,
-                            Languages = [.. languages],
-                            Obsolete = obsolete,
-                        };
-                        diagnostics.Add(diagnostic);
-                    }
+                        Version = package.Version,
+                        First = package.Version,
+                        Languages = [.. languages],
+                        Obsolete = obsolete,
+                    };
+                    diagnostics.Add(diagnostic);
                 }
             }
-            return [.. diagnostics];
         }
+
+        context.Unload();
+        return [.. diagnostics];
 
         static bool IsDiagnosticAnalyzer(Type type)
             => !type.IsAbstract
