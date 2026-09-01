@@ -39,6 +39,7 @@ public class Define
 
         WRN("IDE0001"),
         WRN("IDE0002"),
+        WRN("IDE0003"),
         WRN("IDE0004"),
         WRN("IDE0005"),
         WRN("IDE0017"),
