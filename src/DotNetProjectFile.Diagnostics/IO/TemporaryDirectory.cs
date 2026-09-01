@@ -44,7 +44,11 @@ internal sealed class TemporaryDirectory : IDisposable
     {
         if (!IsDisposed)
         {
-            Root.Delete(true);
+            try
+            {
+                Root.Delete(true);
+            }
+            catch { /* Disposing should not fail. */ }
             IsDisposed = true;
         }
     }
