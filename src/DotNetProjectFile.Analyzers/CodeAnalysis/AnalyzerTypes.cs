@@ -21,4 +21,11 @@ public static class AnalyzerTypes
         _ when file.Extension.IsMatch(".ini") => AnalyzerType.INI,
         _ => null,
     };
+
+    public static AnalyzerType? Json(IOFile file) => file switch
+    {
+        _ when file.Name.IsMatch("global.json") => AnalyzerType.GlobalJson,
+        _ when file.Extension.IsMatch(".json") => AnalyzerType.Json,
+        _ => null,
+    };
 }

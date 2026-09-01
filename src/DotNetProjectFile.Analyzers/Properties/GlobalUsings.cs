@@ -19,6 +19,7 @@ global using System.Threading;
 global using System.Xml.Linq;
 global using Chars = System.ReadOnlySpan<char>;
 global using IniFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.Ini.IniFile>;
+global using JsonFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.Json.JsonFile>;
 global using NuGetConfigFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.NuGet.Configuration.NuGetConfigFile>;
 global using ProjectFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.MsBuild.MsBuildProject>;
 global using ResourceFileAnalysisContext = DotNetProjectFile.Diagnostics.ProjectFileAnalysisContext<DotNetProjectFile.Resx.Resource>;
