@@ -111,7 +111,11 @@ public static class NuGetRepository
                 {
                     types = assembly.GetTypes();
                 }
-                catch (ReflectionTypeLoadException)
+                catch (ReflectionTypeLoadException ex)
+                {
+                    types = [.. ex.Types.OfType<Type>()];
+                }
+                catch
                 {
                     continue;
                 }

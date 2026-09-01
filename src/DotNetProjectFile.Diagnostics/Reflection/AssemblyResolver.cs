@@ -14,7 +14,15 @@ internal sealed class AssemblyResolver : IDisposable
 
     [Pure]
     private Assembly? ResolveAssembly(object? sender, ResolveEventArgs args)
-        => Assemblies.FirstOrDefault(x => x.FullName == args.Name);
+    {
+        if (Assemblies.FirstOrDefault(x => x.FullName == args.Name) is { } match)
+        {
+            return match;
+        }
+
+        var requestedName = new AssemblyName(args.Name).Name;
+        return Assemblies.FirstOrDefault(x => x.GetName().Name == requestedName);
+    }
 
     public void Dispose()
         => AppDomain.CurrentDomain.AssemblyResolve -= ResolveAssembly;
