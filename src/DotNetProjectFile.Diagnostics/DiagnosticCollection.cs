@@ -16,7 +16,7 @@ public sealed record DiagnosticCollection
 
     /// <summary>Rules that contradict each other.</summary>
     [JsonPropertyName("contradict")]
-    public ImmutableArray<ImmutableArray<DiagnosticId>> Contradict { get; init; } = [];
+    public ImmutableArray<ContradictingRules> Contradict { get; init; } = [];
 
     [JsonPropertyName("packages")]
     public ImmutableArray<NugetPackage> Packages { get; init; } = [];

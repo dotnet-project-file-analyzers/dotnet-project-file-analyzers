@@ -206,85 +206,123 @@
     }
   ],
   "contradict": [
-    [
-      "IDE0007",
-      "IDE0008"
-    ],
-    [
-      "CC0084",
-      "CC0088"
-    ],
-    [
-      "CA1827",
-      "CA1860",
-      "MA0112"
-    ],
-    [
-      "SA1101",
-      "SX1101"
-    ],
-    [
-      "SA1309",
-      "SX1309"
-    ],
-    [
-      "MA0174",
-      "MA0175"
-    ],
-    [
-      "MSTEST0019",
-      "MSTEST0020"
-    ],
-    [
-      "RCS1001",
-      "RCS1002"
-    ],
-    [
-      "PH2045",
-      "MA0036",
-      "RCS1102"
-    ],
-    [
-      "SA1124",
-      "MEN006",
-      "PH2061"
-    ],
-    [
-      "RCS1174",
-      "RCS1229"
-    ],
-    [
-      "CC0048",
-      "RCS1217"
-    ],
-    [
-      "CC0038",
-      "RCS1016i"
-    ],
-    [
-      "CA1820",
-      "S3256"
-    ],
-    [
-      "CC0061",
-      "CC0072"
-    ],
-    [
-      "MA0137",
-      "MA0138"
-    ],
-    [
-      "RCS1046",
-      "RCS1047"
-    ],
-    [
-      "CA1827",
-      "CA1836"
-    ],
-    [
-      "CA1836",
-      "S1155"
-    ]
+    {
+      "rules": [
+        "IDE0007",
+        "IDE0008"
+      ]
+    },
+    {
+      "rules": [
+        "CC0084",
+        "CC0088"
+      ]
+    },
+    {
+      "rules": [
+        "CA1827",
+        "CA1860",
+        "MA0112"
+      ]
+    },
+    {
+      "rules": [
+        "SA1101",
+        "SX1101"
+      ]
+    },
+    {
+      "rules": [
+        "SA1309",
+        "SX1309"
+      ]
+    },
+    {
+      "rules": [
+        "MA0174",
+        "MA0175"
+      ]
+    },
+    {
+      "rules": [
+        "MSTEST0019",
+        "MSTEST0020"
+      ]
+    },
+    {
+      "rules": [
+        "RCS1001",
+        "RCS1002"
+      ]
+    },
+    {
+      "rules": [
+        "PH2045",
+        "MA0036",
+        "RCS1102"
+      ]
+    },
+    {
+      "rules": [
+        "SA1124",
+        "MEN006",
+        "PH2061"
+      ]
+    },
+    {
+      "rules": [
+        "RCS1174",
+        "RCS1229"
+      ]
+    },
+    {
+      "rules": [
+        "CC0048",
+        "RCS1217"
+      ]
+    },
+    {
+      "rules": [
+        "CC0038",
+        "RCS1016i"
+      ]
+    },
+    {
+      "rules": [
+        "CA1820",
+        "S3256"
+      ]
+    },
+    {
+      "rules": [
+        "CC0061",
+        "CC0072"
+      ]
+    },
+    {
+      "rules": [
+        "MA0137",
+        "MA0138"
+      ]
+    },
+    {
+      "rules": [
+        "RCS1046",
+        "RCS1047"
+      ]
+    },
+    {
+      "rules": [
+        "CA1827",
+        "CA1836"
+      ]
+    },
+    {
+      "rules": [
+        "CA1836",
+        "S1155"
+      ]
+    }
   ],
   "packages": [
     {
@@ -1680,6 +1718,597 @@
           "title": "Class can\u0027t be static",
           "desc": "Static class is bad practice. if you can\u0027t do without a static class, use singleton pattern.",
           "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "id": "CSharpGuidelinesAnalyzer",
+      "v": "3.8.5",
+      "rules": [
+        {
+          "f": "3.0.0",
+          "v": "3.3.0",
+          "lang": "C#",
+          "id": "AV0000",
+          "title": "Expression of nullable value type is checked for null or not-null",
+          "desc": "Internal analyzer that reports when an expression of type nullable value type is checked for null or not-null.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/7a66f7468da6ce1477753a02e416e04bc9a44e45/_pages/2200_FrameworkGuidelines.md#av0000",
+          "tags": null,
+          "level": "Hidden",
+          "enabled": false
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1000",
+          "title": "Type name contains the word \u0027and\u0027, which suggests it has multiple purposes",
+          "desc": "A class or interface should have a single purpose.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1000.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1008",
+          "title": "Class should not be static",
+          "desc": "Avoid static classes.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1008.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1010",
+          "title": "Member hides inherited member",
+          "desc": "Don\u0027t suppress compiler warnings using the new keyword.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1010.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1115",
+          "title": "Member or local function contains the word \u0027and\u0027, which suggests doing multiple things",
+          "desc": "A property, method or local function should do only one thing.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1115.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1130",
+          "title": "Return type in method signature should be an interface to an unchangeable collection",
+          "desc": "Return interfaces to unchangeable collections.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1130.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.2.0",
+          "lang": "C#",
+          "id": "AV1135",
+          "title": "Do not return null for strings, collections or tasks",
+          "desc": "Properties, arguments and return values representing strings, collections or tasks should never be null.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1135.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.0.0",
+          "lang": "C#",
+          "id": "AV1210",
+          "title": "Catch a specific exception instead of Exception, SystemException or ApplicationException",
+          "desc": "Don\u0027t swallow errors by catching generic exceptions.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1210.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1225",
+          "title": "Method that raises an event should be protected virtual and be named \u0027On\u0027 followed by event name",
+          "desc": "Use a protected virtual method to raise each event.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1225.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1235",
+          "title": "Argument for second parameter is null in event invocation",
+          "desc": "Don\u0027t pass null as the sender argument when raising an event.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1235.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1250",
+          "title": "Evaluate LINQ query before returning it",
+          "desc": "Evaluate the result of a LINQ expression before returning it.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1250.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1500",
+          "title": "Member or local function contains too many statements",
+          "desc": "Methods should not exceed a predefined number of statements.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1500.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1502",
+          "title": "Logical not operator is applied on a member which has a negation in its name",
+          "desc": "Avoid conditions with double negatives.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1502.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1505",
+          "title": "Namespace should match with assembly name",
+          "desc": "Name assemblies after their contained namespace.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1505.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.0.0",
+          "lang": "C#",
+          "id": "AV1506",
+          "title": "File should be named in Pascal casing without underscores or generic arity",
+          "desc": "Name a source file to the type it contains.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1506.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1507",
+          "title": "File contains multiple types",
+          "desc": "Limit the contents of a source code file to one type.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1507.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1522",
+          "title": "Assign each property, field, parameter or variable in a separate statement",
+          "desc": "Assign each variable in a separate statement.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1522.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1530",
+          "title": "Loop variable should not be written to in loop body",
+          "desc": "Don\u0027t change a loop variable inside a for loop.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1530.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1532",
+          "title": "Loop statement contains nested loop",
+          "desc": "Avoid nested loops.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1532.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1535",
+          "title": "Missing block in case or default clause of switch statement",
+          "desc": "Always add a block after the keywords if, else, do, while, for, foreach and case.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1535.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1536",
+          "title": "Non-exhaustive switch statement requires a default case clause",
+          "desc": "Always add a default block after the last case in a switch statement.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1536.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1537",
+          "title": "If-else-if construct should end with an unconditional else clause",
+          "desc": "Finish every if-else-if statement with an else clause.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1537.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1551",
+          "title": "Method overload should call another overload",
+          "desc": "Call the more overloaded method from other overloads.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1551.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.8.0",
+          "lang": "C#",
+          "id": "AV1553",
+          "title": "Do not use optional parameters with default value null for strings, collections or tasks",
+          "desc": "Only use optional parameters to replace overloads.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1553.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.8.0",
+          "lang": "C#",
+          "id": "AV1554",
+          "title": "Method contains optional parameter in type hierarchy",
+          "desc": "Do not use optional parameters in interface methods or their concrete implementations.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1554.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1555",
+          "title": "Avoid using non-(nullable-)boolean named arguments",
+          "desc": "Avoid using named arguments.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1555.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1561",
+          "title": "Signature contains too many parameters",
+          "desc": "Don\u0027t declare signatures with more than a predefined number of parameters.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1561.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.0.0",
+          "lang": "C#",
+          "id": "AV1562",
+          "title": "Do not declare a parameter as ref or out",
+          "desc": "Don\u0027t use ref or out parameters.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1562.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1564",
+          "title": "Parameter in public or internal member is of type bool or bool?",
+          "desc": "Avoid signatures that take a bool parameter.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1564.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1568",
+          "title": "Parameter value should not be overwritten in method body",
+          "desc": "Don\u0027t use parameters as temporary variables.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1568.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.8.0",
+          "lang": "C#",
+          "id": "AV1580",
+          "title": "Method argument calls a nested method",
+          "desc": "Write code that is easy to debug.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1580.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1704",
+          "title": "Identifier contains one or more digits in its name",
+          "desc": "Don\u0027t include numbers in variables, parameters and type members.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1704.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1706",
+          "title": "Identifier contains an abbreviation or is too short",
+          "desc": "Don\u0027t use abbreviations.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1706.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1708",
+          "title": "Type name contains term that should be avoided",
+          "desc": "Name types using nouns, noun phrases or adjective phrases.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1708.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1710",
+          "title": "Member name includes the name of its containing type",
+          "desc": "Don\u0027t repeat the name of a class or enumeration in its members.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1710.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1711",
+          "title": "Name members and local functions similarly to members of .NET Framework classes",
+          "desc": "Name members similarly to members of related .NET Framework classes.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1711.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1712",
+          "title": "Identifier name is difficult to read",
+          "desc": "Avoid short names or names that can be mistaken for other names.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1712.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": false
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1715",
+          "title": "Name of public or internal boolean identifier should start with a verb",
+          "desc": "Properly name properties.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1715.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": false
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1738",
+          "title": "Event handlers should be named according to the pattern \u0027(InstanceName)On(EventName)\u0027",
+          "desc": "Prefix an event handler with \u0022On\u0022.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1738.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1739",
+          "title": "Unused lambda parameter should be renamed to underscore(s)",
+          "desc": "Use an underscore for irrelevant lambda parameters.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1739.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1745",
+          "title": "Name of extension method container class should end with \u0027Extensions\u0027",
+          "desc": "Group extension methods in a class suffixed with Extensions.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1745.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV1755",
+          "title": "Name of async method should end with Async or TaskAsync",
+          "desc": "Postfix asynchronous methods with Async or TaskAsync.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1755.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.8.0",
+          "lang": "C#",
+          "id": "AV1840",
+          "title": "ValueTask should be awaited before assignment",
+          "desc": "Await ValueTask and ValueTask\u003CT\u003E directly and exactly once.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1840.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.0.0",
+          "lang": "C#",
+          "id": "AV2202",
+          "title": "Prefer language syntax over explicit calls to underlying implementations",
+          "desc": "Prefer language syntax over explicit calls to underlying implementations.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2202.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV2210",
+          "title": "Compiler warnings are not treated as errors",
+          "desc": "Build with the highest warning level.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2210.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "v": "2.6.1",
+          "lang": "C#",
+          "id": "AV2215",
+          "title": "Assembly-level attribute is missing or empty",
+          "desc": "Properly fill the attributes of the AssemblyInfo.cs file.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/master/Src/Guidelines/2200_FrameworkGuidelines.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.0.0",
+          "lang": "C#",
+          "id": "AV2220",
+          "title": "Simple query should be replaced by extension method call",
+          "desc": "Avoid LINQ query syntax for simple expressions.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2220.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV2230",
+          "title": "An expression is implicitly converted to dynamic",
+          "desc": "Only use the dynamic keyword when talking to a dynamic object.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2230.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV2235",
+          "title": "Call to Task.ContinueWith should be replaced with an await expression",
+          "desc": "Favor async/await over Task continuations.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2235.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV2305",
+          "title": "Missing XML comment for internally visible type, member or parameter",
+          "desc": "Document all public, protected and internal types and members.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2305.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV2310",
+          "title": "Code block should not contain inline comment",
+          "desc": "Avoid inline comments.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2310.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": false
+        },
+        {
+          "f": "2.6.0",
+          "lang": "C#",
+          "id": "AV2318",
+          "title": "Work-tracking TODO comment should be removed",
+          "desc": "Don\u0027t use comments for tracking work to be done later.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2318.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.3.0",
+          "lang": "C#",
+          "id": "AV2407",
+          "title": "Region should be removed",
+          "desc": "Do not use #region.",
+          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2407.md",
           "tags": null,
           "level": "Warning",
           "enabled": true
@@ -3339,597 +3968,6 @@
           "title": "CAC001",
           "desc": "",
           "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        }
-      ]
-    },
-    {
-      "id": "CSharpGuidelinesAnalyzer",
-      "v": "3.8.5",
-      "rules": [
-        {
-          "f": "3.0.0",
-          "v": "3.3.0",
-          "lang": "C#",
-          "id": "AV0000",
-          "title": "Expression of nullable value type is checked for null or not-null",
-          "desc": "Internal analyzer that reports when an expression of type nullable value type is checked for null or not-null.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/7a66f7468da6ce1477753a02e416e04bc9a44e45/_pages/2200_FrameworkGuidelines.md#av0000",
-          "tags": null,
-          "level": "Hidden",
-          "enabled": false
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1000",
-          "title": "Type name contains the word \u0027and\u0027, which suggests it has multiple purposes",
-          "desc": "A class or interface should have a single purpose.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1000.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1008",
-          "title": "Class should not be static",
-          "desc": "Avoid static classes.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1008.md",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1010",
-          "title": "Member hides inherited member",
-          "desc": "Don\u0027t suppress compiler warnings using the new keyword.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1010.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1115",
-          "title": "Member or local function contains the word \u0027and\u0027, which suggests doing multiple things",
-          "desc": "A property, method or local function should do only one thing.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1115.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1130",
-          "title": "Return type in method signature should be an interface to an unchangeable collection",
-          "desc": "Return interfaces to unchangeable collections.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1130.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.2.0",
-          "lang": "C#",
-          "id": "AV1135",
-          "title": "Do not return null for strings, collections or tasks",
-          "desc": "Properties, arguments and return values representing strings, collections or tasks should never be null.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1135.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.0.0",
-          "lang": "C#",
-          "id": "AV1210",
-          "title": "Catch a specific exception instead of Exception, SystemException or ApplicationException",
-          "desc": "Don\u0027t swallow errors by catching generic exceptions.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1210.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1225",
-          "title": "Method that raises an event should be protected virtual and be named \u0027On\u0027 followed by event name",
-          "desc": "Use a protected virtual method to raise each event.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1225.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1235",
-          "title": "Argument for second parameter is null in event invocation",
-          "desc": "Don\u0027t pass null as the sender argument when raising an event.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1235.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1250",
-          "title": "Evaluate LINQ query before returning it",
-          "desc": "Evaluate the result of a LINQ expression before returning it.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1250.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1500",
-          "title": "Member or local function contains too many statements",
-          "desc": "Methods should not exceed a predefined number of statements.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1500.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1502",
-          "title": "Logical not operator is applied on a member which has a negation in its name",
-          "desc": "Avoid conditions with double negatives.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1502.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1505",
-          "title": "Namespace should match with assembly name",
-          "desc": "Name assemblies after their contained namespace.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1505.md",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "3.0.0",
-          "lang": "C#",
-          "id": "AV1506",
-          "title": "File should be named in Pascal casing without underscores or generic arity",
-          "desc": "Name a source file to the type it contains.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1506.md",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1507",
-          "title": "File contains multiple types",
-          "desc": "Limit the contents of a source code file to one type.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1507.md",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1522",
-          "title": "Assign each property, field, parameter or variable in a separate statement",
-          "desc": "Assign each variable in a separate statement.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1522.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1530",
-          "title": "Loop variable should not be written to in loop body",
-          "desc": "Don\u0027t change a loop variable inside a for loop.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1530.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1532",
-          "title": "Loop statement contains nested loop",
-          "desc": "Avoid nested loops.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1532.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1535",
-          "title": "Missing block in case or default clause of switch statement",
-          "desc": "Always add a block after the keywords if, else, do, while, for, foreach and case.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1535.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1536",
-          "title": "Non-exhaustive switch statement requires a default case clause",
-          "desc": "Always add a default block after the last case in a switch statement.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1536.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1537",
-          "title": "If-else-if construct should end with an unconditional else clause",
-          "desc": "Finish every if-else-if statement with an else clause.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1537.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1551",
-          "title": "Method overload should call another overload",
-          "desc": "Call the more overloaded method from other overloads.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1551.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.8.0",
-          "lang": "C#",
-          "id": "AV1553",
-          "title": "Do not use optional parameters with default value null for strings, collections or tasks",
-          "desc": "Only use optional parameters to replace overloads.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1553.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.8.0",
-          "lang": "C#",
-          "id": "AV1554",
-          "title": "Method contains optional parameter in type hierarchy",
-          "desc": "Do not use optional parameters in interface methods or their concrete implementations.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1554.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1555",
-          "title": "Avoid using non-(nullable-)boolean named arguments",
-          "desc": "Avoid using named arguments.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1555.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1561",
-          "title": "Signature contains too many parameters",
-          "desc": "Don\u0027t declare signatures with more than a predefined number of parameters.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1561.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.0.0",
-          "lang": "C#",
-          "id": "AV1562",
-          "title": "Do not declare a parameter as ref or out",
-          "desc": "Don\u0027t use ref or out parameters.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1562.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1564",
-          "title": "Parameter in public or internal member is of type bool or bool?",
-          "desc": "Avoid signatures that take a bool parameter.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1564.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1568",
-          "title": "Parameter value should not be overwritten in method body",
-          "desc": "Don\u0027t use parameters as temporary variables.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1568.md",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "3.8.0",
-          "lang": "C#",
-          "id": "AV1580",
-          "title": "Method argument calls a nested method",
-          "desc": "Write code that is easy to debug.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1580.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1704",
-          "title": "Identifier contains one or more digits in its name",
-          "desc": "Don\u0027t include numbers in variables, parameters and type members.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1704.md",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1706",
-          "title": "Identifier contains an abbreviation or is too short",
-          "desc": "Don\u0027t use abbreviations.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1706.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1708",
-          "title": "Type name contains term that should be avoided",
-          "desc": "Name types using nouns, noun phrases or adjective phrases.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1708.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1710",
-          "title": "Member name includes the name of its containing type",
-          "desc": "Don\u0027t repeat the name of a class or enumeration in its members.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1710.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1711",
-          "title": "Name members and local functions similarly to members of .NET Framework classes",
-          "desc": "Name members similarly to members of related .NET Framework classes.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1711.md",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1712",
-          "title": "Identifier name is difficult to read",
-          "desc": "Avoid short names or names that can be mistaken for other names.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1712.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": false
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1715",
-          "title": "Name of public or internal boolean identifier should start with a verb",
-          "desc": "Properly name properties.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1715.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": false
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1738",
-          "title": "Event handlers should be named according to the pattern \u0027(InstanceName)On(EventName)\u0027",
-          "desc": "Prefix an event handler with \u0022On\u0022.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1738.md",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1739",
-          "title": "Unused lambda parameter should be renamed to underscore(s)",
-          "desc": "Use an underscore for irrelevant lambda parameters.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1739.md",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1745",
-          "title": "Name of extension method container class should end with \u0027Extensions\u0027",
-          "desc": "Group extension methods in a class suffixed with Extensions.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1745.md",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV1755",
-          "title": "Name of async method should end with Async or TaskAsync",
-          "desc": "Postfix asynchronous methods with Async or TaskAsync.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1755.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.8.0",
-          "lang": "C#",
-          "id": "AV1840",
-          "title": "ValueTask should be awaited before assignment",
-          "desc": "Await ValueTask and ValueTask\u003CT\u003E directly and exactly once.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/1840.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.0.0",
-          "lang": "C#",
-          "id": "AV2202",
-          "title": "Prefer language syntax over explicit calls to underlying implementations",
-          "desc": "Prefer language syntax over explicit calls to underlying implementations.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2202.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV2210",
-          "title": "Compiler warnings are not treated as errors",
-          "desc": "Build with the highest warning level.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2210.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "v": "2.6.1",
-          "lang": "C#",
-          "id": "AV2215",
-          "title": "Assembly-level attribute is missing or empty",
-          "desc": "Properly fill the attributes of the AssemblyInfo.cs file.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/master/Src/Guidelines/2200_FrameworkGuidelines.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.0.0",
-          "lang": "C#",
-          "id": "AV2220",
-          "title": "Simple query should be replaced by extension method call",
-          "desc": "Avoid LINQ query syntax for simple expressions.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2220.md",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV2230",
-          "title": "An expression is implicitly converted to dynamic",
-          "desc": "Only use the dynamic keyword when talking to a dynamic object.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2230.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV2235",
-          "title": "Call to Task.ContinueWith should be replaced with an await expression",
-          "desc": "Favor async/await over Task continuations.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2235.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV2305",
-          "title": "Missing XML comment for internally visible type, member or parameter",
-          "desc": "Document all public, protected and internal types and members.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2305.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV2310",
-          "title": "Code block should not contain inline comment",
-          "desc": "Avoid inline comments.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2310.md",
-          "tags": null,
-          "level": "Warning",
-          "enabled": false
-        },
-        {
-          "f": "2.6.0",
-          "lang": "C#",
-          "id": "AV2318",
-          "title": "Work-tracking TODO comment should be removed",
-          "desc": "Don\u0027t use comments for tracking work to be done later.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2318.md",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "3.3.0",
-          "lang": "C#",
-          "id": "AV2407",
-          "title": "Region should be removed",
-          "desc": "Do not use #region.",
-          "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/5.7.0/_rules/2407.md",
           "tags": null,
           "level": "Warning",
           "enabled": true
@@ -11308,6 +11346,742 @@
       ]
     },
     {
+      "id": "MSTest.Analyzers",
+      "v": "4.3.3",
+      "rules": [
+        {
+          "f": "3.2.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0001",
+          "title": "Explicitly enable or disable tests parallelization",
+          "desc": "By default, MSTest runs tests within the same assembly sequentially, which can lead to severe performance limitations. It is recommended to enable assembly attribute \u0027[Parallelize]\u0027 to run tests in parallel, or if the assembly is known to not be parallelizable, to use explicitly the assembly level attribute \u0027[DoNotParallelize]\u0027.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0001",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.2.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0002",
+          "title": "Test classes should have valid layout",
+          "desc": "Test classes, classes marked with the \u0027[TestClass]\u0027 attribute, should respect the following layout to be considered valid by MSTest:\r\n- it should be \u0027public\u0027 (or \u0027internal\u0027 if \u0027[assembly: DiscoverInternals]\u0027 attribute is set)\r\n- it should not be \u0027static\u0027 (except if it contains only \u0027AssemblyInitialize\u0027 and/or \u0027AssemblyCleanup\u0027 methods)\r\n- it should not be generic.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0002",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.2.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0003",
+          "title": "Test methods should have valid layout",
+          "desc": "Test methods, methods marked with the \u0027[TestMethod]\u0027 attribute, should respect the following layout to be considered valid by MSTest:\r\n- it should be \u0027public\u0027 (or \u0027internal\u0027 if \u0027[assembly: DiscoverInternals]\u0027 attribute is set)\r\n- it should not be \u0027static\u0027\r\n- it should may be generic as long as type parameters can be inferred and argument types are compatible\r\n- it should not be \u0027abstract\u0027\r\n- return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n- it should not be \u0027async void\u0027\r\n- it should not be a special method (finalizer, operator...).",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0003",
+          "tags": "EscalateToErrorInRecommended",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.2.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0004",
+          "title": "Public types should be test classes",
+          "desc": "It\u0027s considered a good practice to have only test classes marked public in a test project.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0004",
+          "tags": null,
+          "level": "Info",
+          "enabled": false
+        },
+        {
+          "f": "3.2.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0005",
+          "title": "Test context property should have valid layout",
+          "desc": "\u0027TestContext\u0027 should be a non-static property assigned in constructor or set by MSTest. To be set by MSTest, it should follow the layout:\r\n- it should be \u0027public\u0027 regardless of whether \u0027[assembly: DiscoverInternals]\u0027 attribute is set or not.\r\n- it should not be \u0027static\u0027\r\n- it should have a setter.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0005",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.2.0",
+          "v": "3.11.1",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0006",
+          "title": "Avoid \u0027[ExpectedException]\u0027",
+          "desc": "Prefer \u0027Assert.ThrowsExactly\u0027 or \u0027Assert.ThrowsExactlyAsync\u0027 over \u0027[ExpectedException]\u0027 as it ensures that only the expected call throws the expected exception. The assert APIs also provide more flexibility and allow you to assert extra properties of the exception.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0006",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0007",
+          "title": "[WorkItem] can only be set on methods marked with [TestMethod]",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0007",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0008",
+          "title": "TestInitialize method should have valid layout",
+          "desc": "Methods marked with \u0027[TestInitialize]\u0027 should follow the following layout to be valid:\r\n-it should be \u0027public\u0027\r\n-it should not be \u0027abstract\u0027\r\n-it should not be \u0027async void\u0027\r\n-it should not be \u0027static\u0027\r\n-it should not be a special method (finalizer, operator...).\r\n-it should not be generic\r\n-it should not take any parameter\r\n-return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n\r\nThe type declaring these methods should also respect the following rules:\r\n-The type should be a class\r\n-The class should be \u0027public\u0027 or \u0027internal\u0027 (if the test project is using the \u0027[DiscoverInternals]\u0027 attribute)\r\n-The class shouldn\u0027t be \u0027static\u0027\r\n-If the class is \u0027sealed\u0027, it should be marked with \u0027[TestClass]\u0027 (or a derived attribute).",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0008",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0009",
+          "title": "TestCleanup method should have valid layout",
+          "desc": "Methods marked with \u0027[TestCleanup]\u0027 should follow the following layout to be valid:\r\n-it should be \u0027public\u0027\r\n-it should not be \u0027abstract\u0027\r\n-it should not be \u0027async void\u0027\r\n-it should not be \u0027static\u0027\r\n-it should not be a special method (finalizer, operator...).\r\n-it should not be generic\r\n-it should not take any parameter\r\n-return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n\r\nThe type declaring these methods should also respect the following rules:\r\n-The type should be a class\r\n-The class should be \u0027public\u0027 or \u0027internal\u0027 (if the test project is using the \u0027[DiscoverInternals]\u0027 attribute)\r\n-The class shouldn\u0027t be \u0027static\u0027\r\n-If the class is \u0027sealed\u0027, it should be marked with \u0027[TestClass]\u0027 (or a derived attribute).",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0009",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0010",
+          "title": "ClassInitialize methods should have valid layout",
+          "desc": "Methods marked with \u0027[ClassInitialize]\u0027 should follow the following layout to be valid:\r\n-it can\u0027t be declared on a generic class without the \u0027InheritanceBehavior\u0027 mode is set\r\n-it should be \u0027public\u0027\r\n-it should be \u0027static\u0027\r\n-it should not be \u0027async void\u0027\r\n-it should not be a special method (finalizer, operator...).\r\n-it should not be generic\r\n-it should take one parameter of type \u0027TestContext\u0027\r\n-return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n-\u0027InheritanceBehavior.BeforeEachDerivedClass\u0027 attribute parameter should be specified if the class is \u0027abstract\u0027\r\n-\u0027InheritanceBehavior.BeforeEachDerivedClass\u0027 attribute parameter should not be specified if the class is \u0027sealed\u0027\r\n\r\nThe type declaring these methods should also respect the following rules:\r\n-The type should be a class\r\n-The class should be \u0027public\u0027 or \u0027internal\u0027 (if the test project is using the \u0027[DiscoverInternals]\u0027 attribute)\r\n-The class shouldn\u0027t be \u0027static\u0027\r\n-If the class is \u0027sealed\u0027, it should be marked with \u0027[TestClass]\u0027 (or a derived attribute)\r\n-the class should not be generic.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0010",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0011",
+          "title": "ClassCleanup methods should have valid layout",
+          "desc": "Methods marked with \u0027[ClassCleanup]\u0027 should follow the following layout to be valid:\r\n-it can\u0027t be declared on a generic class without the \u0027InheritanceBehavior\u0027 mode is set\r\n-it should be \u0027public\u0027\r\n-it should be \u0027static\u0027\r\n-it should not be \u0027async void\u0027\r\n-it should not be a special method (finalizer, operator...).\r\n-it should not be generic\r\n-it should either not take any parameter, or take a single parameter of type \u0027TestContext\u0027\r\n-return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n-\u0027InheritanceBehavior.BeforeEachDerivedClass\u0027 attribute parameter should be specified if the class is \u0027abstract\u0027\r\n-\u0027InheritanceBehavior.BeforeEachDerivedClass\u0027 attribute parameter should not be specified if the class is \u0027sealed\u0027\r\n\r\nThe type declaring these methods should also respect the following rules:\r\n-The type should be a class\r\n-The class should be \u0027public\u0027 or \u0027internal\u0027 (if the test project is using the \u0027[DiscoverInternals]\u0027 attribute)\r\n-The class shouldn\u0027t be \u0027static\u0027\r\n-If the class is \u0027sealed\u0027, it should be marked with \u0027[TestClass]\u0027 (or a derived attribute)\r\n-the class should not be generic.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0011",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0012",
+          "title": "AssemblyInitialize methods should have valid layout",
+          "desc": "Methods marked with \u0027[AssemblyInitialize]\u0027 should follow the following layout to be valid:\r\n-it can\u0027t be declared on a generic class\r\n-it should be \u0027public\u0027\r\n-it should be \u0027static\u0027\r\n-it should not be \u0027async void\u0027\r\n-it should not be a special method (finalizer, operator...).\r\n-it should not be generic\r\n-it should take one parameter of type \u0027TestContext\u0027\r\n-return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n\r\nThe type declaring these methods should also respect the following rules:\r\n-The type should be a class\r\n-The class should be \u0027public\u0027 or \u0027internal\u0027 (if the test project is using the \u0027[DiscoverInternals]\u0027 attribute)\r\n-The class shouldn\u0027t be \u0027static\u0027\r\n-The class should be marked with \u0027[TestClass]\u0027 (or a derived attribute)\r\n-the class should not be generic.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0012",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0013",
+          "title": "AssemblyCleanup methods should have valid layout",
+          "desc": "Methods marked with \u0027[AssemblyCleanup]\u0027 should follow the following layout to be valid:\r\n-it can\u0027t be declared on a generic class\r\n-it should be \u0027public\u0027\r\n-it should be \u0027static\u0027\r\n-it should not be \u0027async void\u0027\r\n-it should not be a special method (finalizer, operator...).\r\n-it should not be generic\r\n-it should either not take any parameter, or take a single parameter of type \u0027TestContext\u0027\r\n-return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n\r\nThe type declaring these methods should also respect the following rules:\r\n-The type should be a class\r\n-The class should be \u0027public\u0027 or \u0027internal\u0027 (if the test project is using the \u0027[DiscoverInternals]\u0027 attribute)\r\n-The class shouldn\u0027t be \u0027static\u0027\r\n-The class should be marked with \u0027[TestClass]\u0027 (or a derived attribute)\r\n-the class should not be generic.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0013",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0014",
+          "title": "DataRow should be valid",
+          "desc": "DataRow entry should have the following layout to be valid:\r\n- should only be set on a test method;\r\n- argument count should match method argument count;\r\n- argument type should match method argument type.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0014",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0015",
+          "title": "Test method should not be ignored",
+          "desc": "Test methods should not be ignored (marked with \u0027[Ignore]\u0027).",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0015",
+          "tags": "DisableInAllMode",
+          "level": "Info",
+          "enabled": false
+        },
+        {
+          "f": "3.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0016",
+          "title": "Test class should have test method",
+          "desc": "Test class should have at least one test method or be \u0027static\u0027 with method(s) marked by \u0027[AssemblyInitialize]\u0027 and/or \u0027[AssemblyCleanup]\u0027.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0016",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.4.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0017",
+          "title": "Assertion arguments should be passed in the correct order",
+          "desc": "\u0027Assert.AreEqual\u0027, \u0027Assert.AreNotEqual\u0027, \u0027Assert.AreSame\u0027 and \u0027Assert.AreNotSame\u0027 expects the expected value to be passed first and the actual value to be passed as second argument.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0017",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.6.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0018",
+          "title": "DynamicData should be valid",
+          "desc": "\u0027DynamicData\u0027 entry should have the following layout to be valid:\r\n- should only be set on a test method;\r\n- member should be defined on the type specified;\r\n- member should be a method if DynamicDataSourceType.Method is specified or a property otherwise.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0018",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.4.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0019",
+          "title": "Prefer TestInitialize methods over constructors",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0019",
+          "tags": "DisableInAllMode",
+          "level": "Info",
+          "enabled": false
+        },
+        {
+          "f": "3.4.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0020",
+          "title": "Prefer constructors over TestInitialize methods",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0020",
+          "tags": "DisableInAllMode",
+          "level": "Info",
+          "enabled": false
+        },
+        {
+          "f": "3.4.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0021",
+          "title": "Prefer \u0027Dispose\u0027 over TestCleanup methods",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0021",
+          "tags": "DisableInAllMode",
+          "level": "Info",
+          "enabled": false
+        },
+        {
+          "f": "3.4.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0022",
+          "title": "Prefer TestCleanup over \u0027Dispose\u0027 methods",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0022",
+          "tags": "DisableInAllMode",
+          "level": "Info",
+          "enabled": false
+        },
+        {
+          "f": "3.4.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0023",
+          "title": "Do not negate boolean assertions",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0023",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.4.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0024",
+          "title": "Do not store TestContext in a static member",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0024",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.4.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0025",
+          "title": "Use \u0027Assert.Fail\u0027 instead of an always-failing assert",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0025",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.5.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0026",
+          "title": "Avoid conditional access in assertions",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0026",
+          "tags": null,
+          "level": "Info",
+          "enabled": false
+        },
+        {
+          "f": "3.5.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0029",
+          "title": "Public methods should be test methods",
+          "desc": "Public methods should be test methods (marked with \u0060[TestMethod]\u0060).",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0029",
+          "tags": null,
+          "level": "Info",
+          "enabled": false
+        },
+        {
+          "f": "3.5.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0030",
+          "title": "Type containing \u0027[TestMethod]\u0027 should be marked with \u0027[TestClass]\u0027",
+          "desc": "Type containing \u0027[TestMethod]\u0027 should be marked with \u0027[TestClass]\u0027, otherwise the test method will be silently ignored.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0030",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.5.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0031",
+          "title": "\u0027System.ComponentModel.DescriptionAttribute\u0027 has no effect on test methods",
+          "desc": "\u0027System.ComponentModel.DescriptionAttribute\u0027 has no effect in the context of tests and you likely wanted to use \u0027Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute\u0027 instead.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0031",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.5.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0032",
+          "title": "Assertion condition is always true",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0032",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.6.0",
+          "v": "3.11.1",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0034",
+          "title": "Use \u0027ClassCleanupBehavior.EndOfClass\u0027 with the \u0027[ClassCleanup]\u0027",
+          "desc": "Without using  \u0027ClassCleanupBehavior.EndOfClass\u0027, the \u0027[ClassCleanup]\u0027 will by default be run at the end of the assembly and not at the end of the class.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0034",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.6.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0035",
+          "title": "\u0027[DeploymentItem]\u0027 can be specified only on test class or test method",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0035",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.6.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0036",
+          "title": "Do not use shadowing",
+          "desc": "Shadowing test members could cause testing issues (such as NRE).",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0036",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.7.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0037",
+          "title": "Use proper \u0027Assert\u0027 methods",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0037",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.8.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0038",
+          "title": "Don\u0027t use \u0027Assert.AreSame\u0027 or \u0027Assert.AreNotSame\u0027 with value types",
+          "desc": "Use \u0027Assert.AreEqual\u0027/\u0027Assert.AreNotEqual\u0027 instead of \u0027Assert.AreSame\u0027/\u0027Assert.AreNotSame\u0027 when comparing value types. Passing a value type to \u0027Assert.AreSame\u0027/\u0027Assert.AreNotSame\u0027 will be boxed (creating a new object). Because \u0027Assert.AreSame\u0027/\u0027Assert.AreNotSame\u0027 does the comparison by reference, \u0027Assert.AreSame\u0027 will fail when boxing happens, and \u0027Assert.AreNotSame\u0027 will always pass.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0038",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.8.0",
+          "v": "3.11.1",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0039",
+          "title": "Use newer methods to assert exceptions",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0039",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.8.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0040",
+          "title": "Do not assert inside \u0027async void\u0027 contexts",
+          "desc": "Do not assert inside \u0027async void\u0027 methods, local functions, or lambdas. Exceptions that are thrown in this context will be unhandled exceptions. When using VSTest under .NET Framework, they will be silently swallowed. When using Microsoft.Testing.Platform or VSTest under modern .NET, they may crash the process.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0040",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.8.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0041",
+          "title": "Use \u0027ConditionBaseAttribute\u0027 on test classes",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0041",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.9.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0042",
+          "title": "Avoid duplicated \u0027DataRow\u0027 entries",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0042",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.9.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0043",
+          "title": "Use retry attribute on test method or test class",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0043",
+          "tags": "EscalateToErrorInRecommended",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.10.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0044",
+          "title": "Prefer \u0027TestMethod\u0027 over \u0027DataTestMethod\u0027",
+          "desc": "\u0027DataTestMethodAttribute\u0027 is obsolete and provides no additional functionality over \u0027TestMethodAttribute\u0027. Use \u0027TestMethodAttribute\u0027 for all test methods, including parameterized tests.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0044",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.10.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0045",
+          "title": "Use \u0027CooperativeCancellation = true\u0027 with \u0027[Timeout]\u0027",
+          "desc": "Using \u0027[Timeout]\u0027 without explicitly setting \u0027CooperativeCancellation = true\u0027 is discouraged. In a future version, cooperative cancellation will become the default behavior. Set \u0027CooperativeCancellation = true\u0027 to opt into the recommended behavior and avoid breaking changes.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0045",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.10.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0046",
+          "title": "Use \u0027Assert\u0027 instead of \u0027StringAssert\u0027",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0046",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.10.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0048",
+          "title": "TestContext property cannot be accessed in this context",
+          "desc": "Some TestContext properties are only available during test execution and cannot be accessed in assembly initialize, class initialize, class cleanup, or assembly cleanup methods.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0048",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.10.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0049",
+          "title": "Flow TestContext.CancellationToken to async operations",
+          "desc": "When calling async methods that have overloads accepting a CancellationToken parameter, prefer using the overload with TestContext.CancellationToken to enable cooperative cancellation and respect test timeouts.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0049",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.10.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0050",
+          "title": "GlobalTestInitialize and GlobalTestCleanup methods should have valid layout",
+          "desc": "Methods marked with \u0027[GlobalTestInitialize]\u0027 or \u0027[GlobalTestCleanup]\u0027 should follow the following layout to be valid:\r\n-it can\u0027t be declared on a generic class\r\n-it should be \u0027public\u0027\r\n-it should be \u0027static\u0027\r\n-it should not be \u0027async void\u0027\r\n-it should not be a special method (finalizer, operator...).\r\n-it should not be generic\r\n-it should take one parameter of type \u0027TestContext\u0027\r\n-return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n\r\nThe type declaring these methods should also respect the following rules:\r\n-The type should be a class\r\n-The class should be \u0027public\u0027\r\n-The class should be marked with \u0027[TestClass]\u0027 (or a derived attribute)\r\n-the class should not be generic.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0050",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.11.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0051",
+          "title": "Assert.Throws should contain only a single statement/expression",
+          "desc": "Assert.Throws methods should contain only a single statement or expression. Multiple statements can be misleading - if the first statement throws, subsequent statements are never executed; if it doesn\u0027t throw, it should be moved outside the Assert.Throws.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0051",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.11.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0052",
+          "title": "Avoid passing an explicit \u0027DynamicDataSourceType\u0027 and use the default auto detect behavior",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0052",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.11.0",
+          "v": "3.11.1",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0053",
+          "title": "Avoid using Assert methods with format parameters",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0053",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.11.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0054",
+          "title": "Use TestContext.CancellationToken instead of TestContext.CancellationTokenSource.Token",
+          "desc": "TestContext.CancellationToken provides a more direct way to access the cancellation token compared to TestContext.CancellationTokenSource.Token.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0054",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "3.11.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0055",
+          "title": "Do not ignore the return value of string methods",
+          "desc": "Methods like Contains, StartsWith, and EndsWith return boolean values that indicate whether the condition was met. Ignoring these return values is likely a mistake.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0055",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.0.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0056",
+          "title": "TestMethodAttribute should set DisplayName correctly",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0056",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.0.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0057",
+          "title": "TestMethodAttribute derived class should propagate source information",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0057",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.1.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0058",
+          "title": "Do not use asserts in catch blocks",
+          "desc": "Using asserts in catch blocks is problematic because the test will pass even if no exception is thrown and the catch block is never executed. Use \u0027Assert.Throws\u0027, \u0027Assert.ThrowsExactly\u0027, \u0027Assert.ThrowsAsync\u0027 or \u0027Assert.ThrowsExactlyAsync\u0027 to verify that an exception is thrown, and then make additional assertions on the caught exception without using the try-catch block. The rule also flags \u0027throw new AssertFailedException(...)\u0027 and \u0027throw new AssertInconclusiveException(...)\u0027 (the desugared forms of \u0027Assert.Fail\u0027 and \u0027Assert.Inconclusive\u0027). \u0027Assert.Inconclusive\u0027 (and \u0027throw new AssertInconclusiveException(...)\u0027) is exempt when used inside a filtered catch (\u0027catch (...) when (...)\u0027), because demoting a caught failure to an Inconclusive outcome is the only use case that cannot be expressed without a catch block. For other intentional bypasses (for example, attaching a runtime-built message to the failure), suppress the diagnostic with \u0027#pragma warning disable MSTEST0058\u0027.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0058",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "4.1.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0059",
+          "title": "Do not use both \u0027[Parallelize]\u0027 and \u0027[DoNotParallelize]\u0027 attributes",
+          "desc": "An assembly should have either \u0027[Parallelize]\u0027 or \u0027[DoNotParallelize]\u0027 attribute, but not both. Having both attributes creates an ambiguous configuration. When both are present, \u0027[DoNotParallelize]\u0027 takes precedence and parallelization will be disabled.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0059",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.1.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0060",
+          "title": "Avoid duplicate test method attributes",
+          "desc": "A test method should be marked with exactly one attribute that is or inherits from \u0027TestMethodAttribute\u0027. When multiple such attributes are present, only the first one returned by reflection will be used.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0060",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.1.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0061",
+          "title": "Use \u0027[OSCondition]\u0027 attribute instead of \u0027RuntimeInformation.IsOSPlatform\u0027 calls with early return or \u0027Assert.Inconclusive\u0027",
+          "desc": "Test methods that use \u0027RuntimeInformation.IsOSPlatform\u0027 with early return or \u0027Assert.Inconclusive\u0027 should use the \u0027[OSCondition]\u0027 attribute instead. This attribute provides a more declarative and discoverable way to specify OS-specific test requirements.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0061",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "4.1.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0062",
+          "title": "Avoid using \u0027out\u0027 or \u0027ref\u0027 parameters in test methods",
+          "desc": "\u0027out\u0027 and \u0027ref\u0027 parameters add no value in test methods and they can safely be replaced by normal parameters.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0062",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.1.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0063",
+          "title": "Test classes should have valid constructors",
+          "desc": "Test classes must have a public constructor that is either parameterless or accepts a single TestContext parameter. This allows the test framework to instantiate the test class properly.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0063",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0064",
+          "title": "Prefer async assertion methods",
+          "desc": "When verifying exceptions from asynchronous code, use the async assertion methods instead of blocking the asynchronous operation with GetAwaiter().GetResult().",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0064",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0065",
+          "title": "Avoid Assert.AreEqual on collection types",
+          "desc": "\u0060Assert.AreEqual\u0060 and \u0060Assert.AreNotEqual\u0060 use \u0060EqualityComparer\u003CT\u003E.Default\u0060. For collection-like types this relies on the type\u0027s own equality semantics instead of comparing sequence elements, so \u0060Assert.AreSequenceEqual\u0060/\u0060Assert.AreNotSequenceEqual\u0060 or \u0060Assert.AreEquivalent\u0060/\u0060Assert.AreNotEquivalent\u0060 are usually the better fit.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0065",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0066",
+          "title": "\u0027[Ignore]\u0027 should specify a justification",
+          "desc": "An \u0027[Ignore]\u0027 attribute applied to a test method or test class should include a non-empty message explaining why the test or class is ignored. A justification message makes it easier to triage skipped tests, helps reviewers understand the intent, and prevents tests from being silently disabled forever.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0066",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0067",
+          "title": "Avoid synchronously blocking calls such as \u0027Thread.Sleep\u0027, \u0027Task.Wait\u0027, \u0027Task.WaitAll\u0027, \u0027Task.WaitAny\u0027 or \u0027Task\u003CTResult\u003E.Result\u0027 in test code",
+          "desc": "Synchronously blocking the current thread with \u0027Thread.Sleep\u0027, \u0027Task.Wait\u0027, \u0027Task.WaitAll\u0027, \u0027Task.WaitAny\u0027 or \u0027Task\u003CTResult\u003E.Result\u0027 inside test methods or test fixtures is a common source of flakiness and can also deadlock when the test framework runs tests on a SynchronizationContext that requires cooperative scheduling. Prefer \u0027await Task.Delay\u0027 for time-based waits and \u0027await\u0027 the task to observe its result.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0067",
+          "tags": null,
+          "level": "Info",
+          "enabled": false
+        },
+        {
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0068",
+          "title": "Use \u0027Assert\u0027 instead of \u0027CollectionAssert\u0027",
+          "desc": "",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0068",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0070",
+          "title": "\u0027[MemberCondition]\u0027 arguments should be valid",
+          "desc": "The members referenced by a \u0027[MemberCondition]\u0027 attribute must exist on the referenced type, be \u0027public static\u0027, return \u0027bool\u0027, and (for methods) be parameterless. The attribute throws at runtime when these rules are violated; this analyzer surfaces the same problems at build time so typos and refactors do not silently break test gating.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0070",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "MSTEST0071",
+          "title": "Test method should not specify a display name equal to its name",
+          "desc": "Setting a \u0027DisplayName\u0027 on a test method to a value that is identical to the method name is redundant because the method name is already used as the display name by default. The redundant \u0027DisplayName\u0027 can be removed without changing how the test is reported.",
+          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0071",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        }
+      ]
+    },
+    {
       "id": "Marten.Analyzers",
       "v": "1.5.0",
       "rules": [
@@ -12015,7 +12789,7 @@
     },
     {
       "id": "Meziantou.Analyzer",
-      "v": "3.0.194",
+      "v": "3.0.200",
       "rules": [
         {
           "f": "1.0.102",
@@ -59992,742 +60766,6 @@
       ]
     },
     {
-      "id": "MSTest.Analyzers",
-      "v": "4.3.3",
-      "rules": [
-        {
-          "f": "3.2.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0001",
-          "title": "Explicitly enable or disable tests parallelization",
-          "desc": "By default, MSTest runs tests within the same assembly sequentially, which can lead to severe performance limitations. It is recommended to enable assembly attribute \u0027[Parallelize]\u0027 to run tests in parallel, or if the assembly is known to not be parallelizable, to use explicitly the assembly level attribute \u0027[DoNotParallelize]\u0027.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0001",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "3.2.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0002",
-          "title": "Test classes should have valid layout",
-          "desc": "Test classes, classes marked with the \u0027[TestClass]\u0027 attribute, should respect the following layout to be considered valid by MSTest:\r\n- it should be \u0027public\u0027 (or \u0027internal\u0027 if \u0027[assembly: DiscoverInternals]\u0027 attribute is set)\r\n- it should not be \u0027static\u0027 (except if it contains only \u0027AssemblyInitialize\u0027 and/or \u0027AssemblyCleanup\u0027 methods)\r\n- it should not be generic.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0002",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.2.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0003",
-          "title": "Test methods should have valid layout",
-          "desc": "Test methods, methods marked with the \u0027[TestMethod]\u0027 attribute, should respect the following layout to be considered valid by MSTest:\r\n- it should be \u0027public\u0027 (or \u0027internal\u0027 if \u0027[assembly: DiscoverInternals]\u0027 attribute is set)\r\n- it should not be \u0027static\u0027\r\n- it should may be generic as long as type parameters can be inferred and argument types are compatible\r\n- it should not be \u0027abstract\u0027\r\n- return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n- it should not be \u0027async void\u0027\r\n- it should not be a special method (finalizer, operator...).",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0003",
-          "tags": "EscalateToErrorInRecommended",
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.2.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0004",
-          "title": "Public types should be test classes",
-          "desc": "It\u0027s considered a good practice to have only test classes marked public in a test project.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0004",
-          "tags": null,
-          "level": "Info",
-          "enabled": false
-        },
-        {
-          "f": "3.2.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0005",
-          "title": "Test context property should have valid layout",
-          "desc": "\u0027TestContext\u0027 should be a non-static property assigned in constructor or set by MSTest. To be set by MSTest, it should follow the layout:\r\n- it should be \u0027public\u0027 regardless of whether \u0027[assembly: DiscoverInternals]\u0027 attribute is set or not.\r\n- it should not be \u0027static\u0027\r\n- it should have a setter.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0005",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.2.0",
-          "v": "3.11.1",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0006",
-          "title": "Avoid \u0027[ExpectedException]\u0027",
-          "desc": "Prefer \u0027Assert.ThrowsExactly\u0027 or \u0027Assert.ThrowsExactlyAsync\u0027 over \u0027[ExpectedException]\u0027 as it ensures that only the expected call throws the expected exception. The assert APIs also provide more flexibility and allow you to assert extra properties of the exception.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0006",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0007",
-          "title": "[WorkItem] can only be set on methods marked with [TestMethod]",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0007",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0008",
-          "title": "TestInitialize method should have valid layout",
-          "desc": "Methods marked with \u0027[TestInitialize]\u0027 should follow the following layout to be valid:\r\n-it should be \u0027public\u0027\r\n-it should not be \u0027abstract\u0027\r\n-it should not be \u0027async void\u0027\r\n-it should not be \u0027static\u0027\r\n-it should not be a special method (finalizer, operator...).\r\n-it should not be generic\r\n-it should not take any parameter\r\n-return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n\r\nThe type declaring these methods should also respect the following rules:\r\n-The type should be a class\r\n-The class should be \u0027public\u0027 or \u0027internal\u0027 (if the test project is using the \u0027[DiscoverInternals]\u0027 attribute)\r\n-The class shouldn\u0027t be \u0027static\u0027\r\n-If the class is \u0027sealed\u0027, it should be marked with \u0027[TestClass]\u0027 (or a derived attribute).",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0008",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0009",
-          "title": "TestCleanup method should have valid layout",
-          "desc": "Methods marked with \u0027[TestCleanup]\u0027 should follow the following layout to be valid:\r\n-it should be \u0027public\u0027\r\n-it should not be \u0027abstract\u0027\r\n-it should not be \u0027async void\u0027\r\n-it should not be \u0027static\u0027\r\n-it should not be a special method (finalizer, operator...).\r\n-it should not be generic\r\n-it should not take any parameter\r\n-return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n\r\nThe type declaring these methods should also respect the following rules:\r\n-The type should be a class\r\n-The class should be \u0027public\u0027 or \u0027internal\u0027 (if the test project is using the \u0027[DiscoverInternals]\u0027 attribute)\r\n-The class shouldn\u0027t be \u0027static\u0027\r\n-If the class is \u0027sealed\u0027, it should be marked with \u0027[TestClass]\u0027 (or a derived attribute).",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0009",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0010",
-          "title": "ClassInitialize methods should have valid layout",
-          "desc": "Methods marked with \u0027[ClassInitialize]\u0027 should follow the following layout to be valid:\r\n-it can\u0027t be declared on a generic class without the \u0027InheritanceBehavior\u0027 mode is set\r\n-it should be \u0027public\u0027\r\n-it should be \u0027static\u0027\r\n-it should not be \u0027async void\u0027\r\n-it should not be a special method (finalizer, operator...).\r\n-it should not be generic\r\n-it should take one parameter of type \u0027TestContext\u0027\r\n-return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n-\u0027InheritanceBehavior.BeforeEachDerivedClass\u0027 attribute parameter should be specified if the class is \u0027abstract\u0027\r\n-\u0027InheritanceBehavior.BeforeEachDerivedClass\u0027 attribute parameter should not be specified if the class is \u0027sealed\u0027\r\n\r\nThe type declaring these methods should also respect the following rules:\r\n-The type should be a class\r\n-The class should be \u0027public\u0027 or \u0027internal\u0027 (if the test project is using the \u0027[DiscoverInternals]\u0027 attribute)\r\n-The class shouldn\u0027t be \u0027static\u0027\r\n-If the class is \u0027sealed\u0027, it should be marked with \u0027[TestClass]\u0027 (or a derived attribute)\r\n-the class should not be generic.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0010",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0011",
-          "title": "ClassCleanup methods should have valid layout",
-          "desc": "Methods marked with \u0027[ClassCleanup]\u0027 should follow the following layout to be valid:\r\n-it can\u0027t be declared on a generic class without the \u0027InheritanceBehavior\u0027 mode is set\r\n-it should be \u0027public\u0027\r\n-it should be \u0027static\u0027\r\n-it should not be \u0027async void\u0027\r\n-it should not be a special method (finalizer, operator...).\r\n-it should not be generic\r\n-it should either not take any parameter, or take a single parameter of type \u0027TestContext\u0027\r\n-return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n-\u0027InheritanceBehavior.BeforeEachDerivedClass\u0027 attribute parameter should be specified if the class is \u0027abstract\u0027\r\n-\u0027InheritanceBehavior.BeforeEachDerivedClass\u0027 attribute parameter should not be specified if the class is \u0027sealed\u0027\r\n\r\nThe type declaring these methods should also respect the following rules:\r\n-The type should be a class\r\n-The class should be \u0027public\u0027 or \u0027internal\u0027 (if the test project is using the \u0027[DiscoverInternals]\u0027 attribute)\r\n-The class shouldn\u0027t be \u0027static\u0027\r\n-If the class is \u0027sealed\u0027, it should be marked with \u0027[TestClass]\u0027 (or a derived attribute)\r\n-the class should not be generic.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0011",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0012",
-          "title": "AssemblyInitialize methods should have valid layout",
-          "desc": "Methods marked with \u0027[AssemblyInitialize]\u0027 should follow the following layout to be valid:\r\n-it can\u0027t be declared on a generic class\r\n-it should be \u0027public\u0027\r\n-it should be \u0027static\u0027\r\n-it should not be \u0027async void\u0027\r\n-it should not be a special method (finalizer, operator...).\r\n-it should not be generic\r\n-it should take one parameter of type \u0027TestContext\u0027\r\n-return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n\r\nThe type declaring these methods should also respect the following rules:\r\n-The type should be a class\r\n-The class should be \u0027public\u0027 or \u0027internal\u0027 (if the test project is using the \u0027[DiscoverInternals]\u0027 attribute)\r\n-The class shouldn\u0027t be \u0027static\u0027\r\n-The class should be marked with \u0027[TestClass]\u0027 (or a derived attribute)\r\n-the class should not be generic.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0012",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0013",
-          "title": "AssemblyCleanup methods should have valid layout",
-          "desc": "Methods marked with \u0027[AssemblyCleanup]\u0027 should follow the following layout to be valid:\r\n-it can\u0027t be declared on a generic class\r\n-it should be \u0027public\u0027\r\n-it should be \u0027static\u0027\r\n-it should not be \u0027async void\u0027\r\n-it should not be a special method (finalizer, operator...).\r\n-it should not be generic\r\n-it should either not take any parameter, or take a single parameter of type \u0027TestContext\u0027\r\n-return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n\r\nThe type declaring these methods should also respect the following rules:\r\n-The type should be a class\r\n-The class should be \u0027public\u0027 or \u0027internal\u0027 (if the test project is using the \u0027[DiscoverInternals]\u0027 attribute)\r\n-The class shouldn\u0027t be \u0027static\u0027\r\n-The class should be marked with \u0027[TestClass]\u0027 (or a derived attribute)\r\n-the class should not be generic.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0013",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0014",
-          "title": "DataRow should be valid",
-          "desc": "DataRow entry should have the following layout to be valid:\r\n- should only be set on a test method;\r\n- argument count should match method argument count;\r\n- argument type should match method argument type.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0014",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0015",
-          "title": "Test method should not be ignored",
-          "desc": "Test methods should not be ignored (marked with \u0027[Ignore]\u0027).",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0015",
-          "tags": "DisableInAllMode",
-          "level": "Info",
-          "enabled": false
-        },
-        {
-          "f": "3.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0016",
-          "title": "Test class should have test method",
-          "desc": "Test class should have at least one test method or be \u0027static\u0027 with method(s) marked by \u0027[AssemblyInitialize]\u0027 and/or \u0027[AssemblyCleanup]\u0027.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0016",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "3.4.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0017",
-          "title": "Assertion arguments should be passed in the correct order",
-          "desc": "\u0027Assert.AreEqual\u0027, \u0027Assert.AreNotEqual\u0027, \u0027Assert.AreSame\u0027 and \u0027Assert.AreNotSame\u0027 expects the expected value to be passed first and the actual value to be passed as second argument.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0017",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.6.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0018",
-          "title": "DynamicData should be valid",
-          "desc": "\u0027DynamicData\u0027 entry should have the following layout to be valid:\r\n- should only be set on a test method;\r\n- member should be defined on the type specified;\r\n- member should be a method if DynamicDataSourceType.Method is specified or a property otherwise.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0018",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.4.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0019",
-          "title": "Prefer TestInitialize methods over constructors",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0019",
-          "tags": "DisableInAllMode",
-          "level": "Info",
-          "enabled": false
-        },
-        {
-          "f": "3.4.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0020",
-          "title": "Prefer constructors over TestInitialize methods",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0020",
-          "tags": "DisableInAllMode",
-          "level": "Info",
-          "enabled": false
-        },
-        {
-          "f": "3.4.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0021",
-          "title": "Prefer \u0027Dispose\u0027 over TestCleanup methods",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0021",
-          "tags": "DisableInAllMode",
-          "level": "Info",
-          "enabled": false
-        },
-        {
-          "f": "3.4.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0022",
-          "title": "Prefer TestCleanup over \u0027Dispose\u0027 methods",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0022",
-          "tags": "DisableInAllMode",
-          "level": "Info",
-          "enabled": false
-        },
-        {
-          "f": "3.4.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0023",
-          "title": "Do not negate boolean assertions",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0023",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "3.4.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0024",
-          "title": "Do not store TestContext in a static member",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0024",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.4.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0025",
-          "title": "Use \u0027Assert.Fail\u0027 instead of an always-failing assert",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0025",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.5.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0026",
-          "title": "Avoid conditional access in assertions",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0026",
-          "tags": null,
-          "level": "Info",
-          "enabled": false
-        },
-        {
-          "f": "3.5.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0029",
-          "title": "Public methods should be test methods",
-          "desc": "Public methods should be test methods (marked with \u0060[TestMethod]\u0060).",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0029",
-          "tags": null,
-          "level": "Info",
-          "enabled": false
-        },
-        {
-          "f": "3.5.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0030",
-          "title": "Type containing \u0027[TestMethod]\u0027 should be marked with \u0027[TestClass]\u0027",
-          "desc": "Type containing \u0027[TestMethod]\u0027 should be marked with \u0027[TestClass]\u0027, otherwise the test method will be silently ignored.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0030",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.5.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0031",
-          "title": "\u0027System.ComponentModel.DescriptionAttribute\u0027 has no effect on test methods",
-          "desc": "\u0027System.ComponentModel.DescriptionAttribute\u0027 has no effect in the context of tests and you likely wanted to use \u0027Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute\u0027 instead.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0031",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.5.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0032",
-          "title": "Assertion condition is always true",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0032",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.6.0",
-          "v": "3.11.1",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0034",
-          "title": "Use \u0027ClassCleanupBehavior.EndOfClass\u0027 with the \u0027[ClassCleanup]\u0027",
-          "desc": "Without using  \u0027ClassCleanupBehavior.EndOfClass\u0027, the \u0027[ClassCleanup]\u0027 will by default be run at the end of the assembly and not at the end of the class.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0034",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "3.6.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0035",
-          "title": "\u0027[DeploymentItem]\u0027 can be specified only on test class or test method",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0035",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.6.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0036",
-          "title": "Do not use shadowing",
-          "desc": "Shadowing test members could cause testing issues (such as NRE).",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0036",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.7.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0037",
-          "title": "Use proper \u0027Assert\u0027 methods",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0037",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "3.8.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0038",
-          "title": "Don\u0027t use \u0027Assert.AreSame\u0027 or \u0027Assert.AreNotSame\u0027 with value types",
-          "desc": "Use \u0027Assert.AreEqual\u0027/\u0027Assert.AreNotEqual\u0027 instead of \u0027Assert.AreSame\u0027/\u0027Assert.AreNotSame\u0027 when comparing value types. Passing a value type to \u0027Assert.AreSame\u0027/\u0027Assert.AreNotSame\u0027 will be boxed (creating a new object). Because \u0027Assert.AreSame\u0027/\u0027Assert.AreNotSame\u0027 does the comparison by reference, \u0027Assert.AreSame\u0027 will fail when boxing happens, and \u0027Assert.AreNotSame\u0027 will always pass.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0038",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.8.0",
-          "v": "3.11.1",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0039",
-          "title": "Use newer methods to assert exceptions",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0039",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.8.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0040",
-          "title": "Do not assert inside \u0027async void\u0027 contexts",
-          "desc": "Do not assert inside \u0027async void\u0027 methods, local functions, or lambdas. Exceptions that are thrown in this context will be unhandled exceptions. When using VSTest under .NET Framework, they will be silently swallowed. When using Microsoft.Testing.Platform or VSTest under modern .NET, they may crash the process.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0040",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.8.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0041",
-          "title": "Use \u0027ConditionBaseAttribute\u0027 on test classes",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0041",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.9.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0042",
-          "title": "Avoid duplicated \u0027DataRow\u0027 entries",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0042",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.9.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0043",
-          "title": "Use retry attribute on test method or test class",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0043",
-          "tags": "EscalateToErrorInRecommended",
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.10.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0044",
-          "title": "Prefer \u0027TestMethod\u0027 over \u0027DataTestMethod\u0027",
-          "desc": "\u0027DataTestMethodAttribute\u0027 is obsolete and provides no additional functionality over \u0027TestMethodAttribute\u0027. Use \u0027TestMethodAttribute\u0027 for all test methods, including parameterized tests.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0044",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.10.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0045",
-          "title": "Use \u0027CooperativeCancellation = true\u0027 with \u0027[Timeout]\u0027",
-          "desc": "Using \u0027[Timeout]\u0027 without explicitly setting \u0027CooperativeCancellation = true\u0027 is discouraged. In a future version, cooperative cancellation will become the default behavior. Set \u0027CooperativeCancellation = true\u0027 to opt into the recommended behavior and avoid breaking changes.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0045",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "3.10.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0046",
-          "title": "Use \u0027Assert\u0027 instead of \u0027StringAssert\u0027",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0046",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "3.10.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0048",
-          "title": "TestContext property cannot be accessed in this context",
-          "desc": "Some TestContext properties are only available during test execution and cannot be accessed in assembly initialize, class initialize, class cleanup, or assembly cleanup methods.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0048",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.10.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0049",
-          "title": "Flow TestContext.CancellationToken to async operations",
-          "desc": "When calling async methods that have overloads accepting a CancellationToken parameter, prefer using the overload with TestContext.CancellationToken to enable cooperative cancellation and respect test timeouts.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0049",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "3.10.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0050",
-          "title": "GlobalTestInitialize and GlobalTestCleanup methods should have valid layout",
-          "desc": "Methods marked with \u0027[GlobalTestInitialize]\u0027 or \u0027[GlobalTestCleanup]\u0027 should follow the following layout to be valid:\r\n-it can\u0027t be declared on a generic class\r\n-it should be \u0027public\u0027\r\n-it should be \u0027static\u0027\r\n-it should not be \u0027async void\u0027\r\n-it should not be a special method (finalizer, operator...).\r\n-it should not be generic\r\n-it should take one parameter of type \u0027TestContext\u0027\r\n-return type should be \u0027void\u0027, \u0027Task\u0027 or \u0027ValueTask\u0027\r\n\r\nThe type declaring these methods should also respect the following rules:\r\n-The type should be a class\r\n-The class should be \u0027public\u0027\r\n-The class should be marked with \u0027[TestClass]\u0027 (or a derived attribute)\r\n-the class should not be generic.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0050",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.11.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0051",
-          "title": "Assert.Throws should contain only a single statement/expression",
-          "desc": "Assert.Throws methods should contain only a single statement or expression. Multiple statements can be misleading - if the first statement throws, subsequent statements are never executed; if it doesn\u0027t throw, it should be moved outside the Assert.Throws.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0051",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "3.11.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0052",
-          "title": "Avoid passing an explicit \u0027DynamicDataSourceType\u0027 and use the default auto detect behavior",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0052",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.11.0",
-          "v": "3.11.1",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0053",
-          "title": "Avoid using Assert methods with format parameters",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0053",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "3.11.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0054",
-          "title": "Use TestContext.CancellationToken instead of TestContext.CancellationTokenSource.Token",
-          "desc": "TestContext.CancellationToken provides a more direct way to access the cancellation token compared to TestContext.CancellationTokenSource.Token.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0054",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "3.11.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0055",
-          "title": "Do not ignore the return value of string methods",
-          "desc": "Methods like Contains, StartsWith, and EndsWith return boolean values that indicate whether the condition was met. Ignoring these return values is likely a mistake.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0055",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "4.0.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0056",
-          "title": "TestMethodAttribute should set DisplayName correctly",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0056",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "4.0.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0057",
-          "title": "TestMethodAttribute derived class should propagate source information",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0057",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "4.1.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0058",
-          "title": "Do not use asserts in catch blocks",
-          "desc": "Using asserts in catch blocks is problematic because the test will pass even if no exception is thrown and the catch block is never executed. Use \u0027Assert.Throws\u0027, \u0027Assert.ThrowsExactly\u0027, \u0027Assert.ThrowsAsync\u0027 or \u0027Assert.ThrowsExactlyAsync\u0027 to verify that an exception is thrown, and then make additional assertions on the caught exception without using the try-catch block. The rule also flags \u0027throw new AssertFailedException(...)\u0027 and \u0027throw new AssertInconclusiveException(...)\u0027 (the desugared forms of \u0027Assert.Fail\u0027 and \u0027Assert.Inconclusive\u0027). \u0027Assert.Inconclusive\u0027 (and \u0027throw new AssertInconclusiveException(...)\u0027) is exempt when used inside a filtered catch (\u0027catch (...) when (...)\u0027), because demoting a caught failure to an Inconclusive outcome is the only use case that cannot be expressed without a catch block. For other intentional bypasses (for example, attaching a runtime-built message to the failure), suppress the diagnostic with \u0027#pragma warning disable MSTEST0058\u0027.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0058",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "4.1.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0059",
-          "title": "Do not use both \u0027[Parallelize]\u0027 and \u0027[DoNotParallelize]\u0027 attributes",
-          "desc": "An assembly should have either \u0027[Parallelize]\u0027 or \u0027[DoNotParallelize]\u0027 attribute, but not both. Having both attributes creates an ambiguous configuration. When both are present, \u0027[DoNotParallelize]\u0027 takes precedence and parallelization will be disabled.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0059",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "4.1.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0060",
-          "title": "Avoid duplicate test method attributes",
-          "desc": "A test method should be marked with exactly one attribute that is or inherits from \u0027TestMethodAttribute\u0027. When multiple such attributes are present, only the first one returned by reflection will be used.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0060",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "4.1.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0061",
-          "title": "Use \u0027[OSCondition]\u0027 attribute instead of \u0027RuntimeInformation.IsOSPlatform\u0027 calls with early return or \u0027Assert.Inconclusive\u0027",
-          "desc": "Test methods that use \u0027RuntimeInformation.IsOSPlatform\u0027 with early return or \u0027Assert.Inconclusive\u0027 should use the \u0027[OSCondition]\u0027 attribute instead. This attribute provides a more declarative and discoverable way to specify OS-specific test requirements.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0061",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "4.1.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0062",
-          "title": "Avoid using \u0027out\u0027 or \u0027ref\u0027 parameters in test methods",
-          "desc": "\u0027out\u0027 and \u0027ref\u0027 parameters add no value in test methods and they can safely be replaced by normal parameters.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0062",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "4.1.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0063",
-          "title": "Test classes should have valid constructors",
-          "desc": "Test classes must have a public constructor that is either parameterless or accepts a single TestContext parameter. This allows the test framework to instantiate the test class properly.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0063",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "4.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0064",
-          "title": "Prefer async assertion methods",
-          "desc": "When verifying exceptions from asynchronous code, use the async assertion methods instead of blocking the asynchronous operation with GetAwaiter().GetResult().",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0064",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "4.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0065",
-          "title": "Avoid Assert.AreEqual on collection types",
-          "desc": "\u0060Assert.AreEqual\u0060 and \u0060Assert.AreNotEqual\u0060 use \u0060EqualityComparer\u003CT\u003E.Default\u0060. For collection-like types this relies on the type\u0027s own equality semantics instead of comparing sequence elements, so \u0060Assert.AreSequenceEqual\u0060/\u0060Assert.AreNotSequenceEqual\u0060 or \u0060Assert.AreEquivalent\u0060/\u0060Assert.AreNotEquivalent\u0060 are usually the better fit.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0065",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "4.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0066",
-          "title": "\u0027[Ignore]\u0027 should specify a justification",
-          "desc": "An \u0027[Ignore]\u0027 attribute applied to a test method or test class should include a non-empty message explaining why the test or class is ignored. A justification message makes it easier to triage skipped tests, helps reviewers understand the intent, and prevents tests from being silently disabled forever.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0066",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "4.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0067",
-          "title": "Avoid synchronously blocking calls such as \u0027Thread.Sleep\u0027, \u0027Task.Wait\u0027, \u0027Task.WaitAll\u0027, \u0027Task.WaitAny\u0027 or \u0027Task\u003CTResult\u003E.Result\u0027 in test code",
-          "desc": "Synchronously blocking the current thread with \u0027Thread.Sleep\u0027, \u0027Task.Wait\u0027, \u0027Task.WaitAll\u0027, \u0027Task.WaitAny\u0027 or \u0027Task\u003CTResult\u003E.Result\u0027 inside test methods or test fixtures is a common source of flakiness and can also deadlock when the test framework runs tests on a SynchronizationContext that requires cooperative scheduling. Prefer \u0027await Task.Delay\u0027 for time-based waits and \u0027await\u0027 the task to observe its result.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0067",
-          "tags": null,
-          "level": "Info",
-          "enabled": false
-        },
-        {
-          "f": "4.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0068",
-          "title": "Use \u0027Assert\u0027 instead of \u0027CollectionAssert\u0027",
-          "desc": "",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0068",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "4.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0070",
-          "title": "\u0027[MemberCondition]\u0027 arguments should be valid",
-          "desc": "The members referenced by a \u0027[MemberCondition]\u0027 attribute must exist on the referenced type, be \u0027public static\u0027, return \u0027bool\u0027, and (for methods) be parameterless. The attribute throws at runtime when these rules are violated; this analyzer surfaces the same problems at build time so typos and refactors do not silently break test gating.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0070",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "4.3.0",
-          "lang": "C#;Visual Basic",
-          "id": "MSTEST0071",
-          "title": "Test method should not specify a display name equal to its name",
-          "desc": "Setting a \u0027DisplayName\u0027 on a test method to a value that is identical to the method name is redundant because the method name is already used as the display name by default. The redundant \u0027DisplayName\u0027 can be removed without changing how the test is reported.",
-          "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0071",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        }
-      ]
-    },
-    {
       "id": "NSubstitute.Analyzers.CSharp",
       "v": "1.0.17",
       "rules": [
@@ -64438,6 +64476,463 @@
       ]
     },
     {
+      "id": "RG.CodeAnalyzer",
+      "v": "2.0.1",
+      "rules": [
+        {
+          "f": "1.0.0",
+          "lang": "C#",
+          "id": "RG0001",
+          "title": "Do not await inside a loop",
+          "desc": "Do not await inside a loop. Perform asynchronous operations in a batch instead.",
+          "url": "",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "1.0.1",
+          "lang": "C#",
+          "id": "RG0002",
+          "title": "Do not return Task from a method that disposes object",
+          "desc": "Do not return Task from a method that disposes an object. Mark method as async instead.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.2",
+          "lang": "C#",
+          "id": "RG0003",
+          "title": "Identifiers declared in Internal namespace must be internal",
+          "desc": "Identifiers declared in Internal namespace must be internal.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.3",
+          "lang": "C#",
+          "id": "RG0004",
+          "title": "Do not access private fields of another object directly",
+          "desc": "Do not access private fields of another object directly.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.3",
+          "lang": "C#",
+          "id": "RG0005",
+          "title": "Do not call Dispose() on static readonly fields",
+          "desc": "Do not call Dispose() on static readonly fields.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.3",
+          "lang": "C#",
+          "id": "RG0006",
+          "title": "Do not call Task.Wait() to invoke a Task",
+          "desc": "Do not call Task.Wait() to invoke a Task. Use await instead.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.3",
+          "lang": "C#",
+          "id": "RG0007",
+          "title": "Do not access Task\u003C\u003E.Result to invoke a Task",
+          "desc": "Do not access Task\u003C\u003E.Result to invoke a Task. Use await instead.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.5",
+          "lang": "C#",
+          "id": "RG0008",
+          "title": "Tuple element names must be in Pascal case",
+          "desc": "Tuple element names must be in Pascal case.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.6",
+          "lang": "C#",
+          "id": "RG0009",
+          "title": "Not using overload with CancellationToken",
+          "desc": "Not using overload with CancellationToken.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.12",
+          "lang": "C#",
+          "id": "RG0010",
+          "title": "Inferred type is obsolete",
+          "desc": "Inferred type is obsolete.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.13",
+          "lang": "C#",
+          "id": "RG0011",
+          "title": "Interfaces shouldn\u0027t derive from IDisposable",
+          "desc": "Interfaces shouldn\u0027t derive from IDisposable.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.14",
+          "lang": "C#",
+          "id": "RG0012",
+          "title": "Task is unresolved",
+          "desc": "Task is unresolved.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.18",
+          "lang": "C#",
+          "id": "RG0013",
+          "title": "\u0027with\u0027 shouldn\u0027t be used outside its record declaration",
+          "desc": "\u0027with\u0027 shouldn\u0027t be used outside its record declaration.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.20",
+          "lang": "C#",
+          "id": "RG0014",
+          "title": "Do not parse using Convert",
+          "desc": "Do not parse using Convert.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.21",
+          "lang": "C#",
+          "id": "RG0015",
+          "title": "Records should not contain set accessor",
+          "desc": "Records should not contain set accessor.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.21",
+          "lang": "C#",
+          "id": "RG0016",
+          "title": "Records should not contain mutable field",
+          "desc": "Records should not contain mutable field.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.21",
+          "lang": "C#",
+          "id": "RG0017",
+          "title": "Records should not contain mutable collection",
+          "desc": "Records should not contain mutable collection.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.21",
+          "lang": "C#",
+          "id": "RG0018",
+          "title": "Records should not contain reference to class or struct type",
+          "desc": "Records should not contain reference to class or struct type.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.21",
+          "lang": "C#",
+          "id": "RG0019",
+          "title": "Required record property should be initialized",
+          "desc": "Required record property should be initialized.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.26",
+          "lang": "C#",
+          "id": "RG0021",
+          "title": "Local variable is readonly",
+          "desc": "Local variables prefixed with an \u0027@\u0027 are readonly.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.26",
+          "lang": "C#",
+          "id": "RG0022",
+          "title": "Parameter is readonly",
+          "desc": "Parameters prefixed with an \u0027@\u0027 are readonly.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.26",
+          "lang": "C#",
+          "id": "RG0023",
+          "title": "Ref or out parameter cannot be readonly",
+          "desc": "Ref or out parameters cannot be readonly.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.26",
+          "lang": "C#",
+          "id": "RG0024",
+          "title": "In argument should be readonly",
+          "desc": "In argument should be readonly.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.27",
+          "lang": "C#",
+          "id": "RG0025",
+          "title": "Casting to an incompatible enum",
+          "desc": "Avoid casting to an incompatible enum.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.27",
+          "lang": "C#",
+          "id": "RG0026",
+          "title": "Possibly casting to an incompatible enum, some names have different value",
+          "desc": "Avoid casting to an enum which has different enum values for the same names.",
+          "url": "",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "1.0.27",
+          "lang": "C#",
+          "id": "RG0027",
+          "title": "Possibly casting to an incompatible enum, some values have different name",
+          "desc": "Avoid casting to an enum which has different enum names for the same value.",
+          "url": "",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        },
+        {
+          "f": "1.0.27",
+          "lang": "C#",
+          "id": "RG0028",
+          "title": "Required protobuf property should be initialized",
+          "desc": "All properties in protobuf message need to be initialized.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.27",
+          "lang": "C#",
+          "id": "RG0029",
+          "title": "Can only initialize one of properties in a OneOf case",
+          "desc": "Only one of properties in a OneOf case can be initialized.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.28",
+          "lang": "C#",
+          "id": "RG0030",
+          "title": "Argument must be locked",
+          "desc": "Argument must be locked before calling method annotated with [MustBeLocked] attribute.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.28",
+          "lang": "C#",
+          "id": "RG0031",
+          "title": "Do not use dynamic type",
+          "desc": "Do not use dynamic type.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.1",
+          "lang": "C#",
+          "id": "RG0032",
+          "title": "Static classes containing extension methods should have an \u0027Extensions\u0027 suffix",
+          "desc": "Static classes containing extension methods should have an \u0027Extensions\u0027 suffix.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.0.1",
+          "lang": "C#",
+          "id": "RG0033",
+          "title": "Use overload without CancellationToken if default or CancellationToken.None was supplied",
+          "desc": "Use overload without CancellationToken if default or CancellationToken.None was supplied.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.0.1",
+          "lang": "C#",
+          "id": "RG0034",
+          "title": "Service registered with Add{Lifetime} must have corresponding lifetime attribute",
+          "desc": "Services registered with AddSingleton, AddScoped, or AddTransient must have the corresponding lifetime attribute.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.1",
+          "lang": "C#",
+          "id": "RG0035",
+          "title": "Service with longer lifetime cannot depend on service with shorter lifetime",
+          "desc": "A service with a longer lifetime (Singleton \u003E Scoped \u003E Transient) cannot depend on a service with a shorter lifetime.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.1",
+          "lang": "C#",
+          "id": "RG0036",
+          "title": "DI implementation classes should be internal",
+          "desc": "Classes registered with dependency injection should be internal to hide implementation details.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.0.1",
+          "lang": "C#",
+          "id": "RG0037",
+          "title": "Usage is restricted to a specific namespace",
+          "desc": "Usage of symbol is restricted to a specific namespace.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.1",
+          "lang": "C#",
+          "id": "RG0038",
+          "title": "Pending justification for suppressing code analysis message",
+          "desc": "SuppressMessage attribute must have a non-empty Justification parameter.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.0.1",
+          "lang": "C#",
+          "id": "RG0039",
+          "title": "Nullable reference type is not enabled",
+          "desc": "Nullable reference type static analysis should be enabled to prevent null reference exceptions.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.1",
+          "lang": "C#",
+          "id": "RG0040",
+          "title": "Override method must call base method",
+          "desc": "When a base method is marked with [MustCallBase], all overriding methods must call the base implementation.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "2.0.1",
+          "lang": "C#",
+          "id": "RG0041",
+          "title": "Invalid use of [NeverAsync] attribute",
+          "desc": "The [NeverAsync] attribute can only be used on methods that return Task but do not use the async modifier and do not call async methods.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "2.0.1",
+          "lang": "C#",
+          "id": "RG0042",
+          "title": "Refactor expression-bodied property to auto-property with initializer",
+          "desc": "Expression-bodied properties that return constant or static readonly values can be refactored to auto-properties with initializers for better performance.",
+          "url": "",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
+        }
+      ]
+    },
+    {
       "id": "ReflectionAnalyzers",
       "v": "0.3.1",
       "rules": [
@@ -64934,463 +65429,6 @@
           "url": "https://github.com/DotNetAnalyzers/ReflectionAnalyzers/tree/master/documentation/REFL046.md",
           "tags": null,
           "level": "Warning",
-          "enabled": true
-        }
-      ]
-    },
-    {
-      "id": "RG.CodeAnalyzer",
-      "v": "2.0.1",
-      "rules": [
-        {
-          "f": "1.0.0",
-          "lang": "C#",
-          "id": "RG0001",
-          "title": "Do not await inside a loop",
-          "desc": "Do not await inside a loop. Perform asynchronous operations in a batch instead.",
-          "url": "",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "1.0.1",
-          "lang": "C#",
-          "id": "RG0002",
-          "title": "Do not return Task from a method that disposes object",
-          "desc": "Do not return Task from a method that disposes an object. Mark method as async instead.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.2",
-          "lang": "C#",
-          "id": "RG0003",
-          "title": "Identifiers declared in Internal namespace must be internal",
-          "desc": "Identifiers declared in Internal namespace must be internal.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.3",
-          "lang": "C#",
-          "id": "RG0004",
-          "title": "Do not access private fields of another object directly",
-          "desc": "Do not access private fields of another object directly.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.3",
-          "lang": "C#",
-          "id": "RG0005",
-          "title": "Do not call Dispose() on static readonly fields",
-          "desc": "Do not call Dispose() on static readonly fields.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.3",
-          "lang": "C#",
-          "id": "RG0006",
-          "title": "Do not call Task.Wait() to invoke a Task",
-          "desc": "Do not call Task.Wait() to invoke a Task. Use await instead.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.3",
-          "lang": "C#",
-          "id": "RG0007",
-          "title": "Do not access Task\u003C\u003E.Result to invoke a Task",
-          "desc": "Do not access Task\u003C\u003E.Result to invoke a Task. Use await instead.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.5",
-          "lang": "C#",
-          "id": "RG0008",
-          "title": "Tuple element names must be in Pascal case",
-          "desc": "Tuple element names must be in Pascal case.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.6",
-          "lang": "C#",
-          "id": "RG0009",
-          "title": "Not using overload with CancellationToken",
-          "desc": "Not using overload with CancellationToken.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.12",
-          "lang": "C#",
-          "id": "RG0010",
-          "title": "Inferred type is obsolete",
-          "desc": "Inferred type is obsolete.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.13",
-          "lang": "C#",
-          "id": "RG0011",
-          "title": "Interfaces shouldn\u0027t derive from IDisposable",
-          "desc": "Interfaces shouldn\u0027t derive from IDisposable.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.14",
-          "lang": "C#",
-          "id": "RG0012",
-          "title": "Task is unresolved",
-          "desc": "Task is unresolved.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.18",
-          "lang": "C#",
-          "id": "RG0013",
-          "title": "\u0027with\u0027 shouldn\u0027t be used outside its record declaration",
-          "desc": "\u0027with\u0027 shouldn\u0027t be used outside its record declaration.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.20",
-          "lang": "C#",
-          "id": "RG0014",
-          "title": "Do not parse using Convert",
-          "desc": "Do not parse using Convert.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.21",
-          "lang": "C#",
-          "id": "RG0015",
-          "title": "Records should not contain set accessor",
-          "desc": "Records should not contain set accessor.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.21",
-          "lang": "C#",
-          "id": "RG0016",
-          "title": "Records should not contain mutable field",
-          "desc": "Records should not contain mutable field.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.21",
-          "lang": "C#",
-          "id": "RG0017",
-          "title": "Records should not contain mutable collection",
-          "desc": "Records should not contain mutable collection.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.21",
-          "lang": "C#",
-          "id": "RG0018",
-          "title": "Records should not contain reference to class or struct type",
-          "desc": "Records should not contain reference to class or struct type.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.21",
-          "lang": "C#",
-          "id": "RG0019",
-          "title": "Required record property should be initialized",
-          "desc": "Required record property should be initialized.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.26",
-          "lang": "C#",
-          "id": "RG0021",
-          "title": "Local variable is readonly",
-          "desc": "Local variables prefixed with an \u0027@\u0027 are readonly.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.26",
-          "lang": "C#",
-          "id": "RG0022",
-          "title": "Parameter is readonly",
-          "desc": "Parameters prefixed with an \u0027@\u0027 are readonly.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.26",
-          "lang": "C#",
-          "id": "RG0023",
-          "title": "Ref or out parameter cannot be readonly",
-          "desc": "Ref or out parameters cannot be readonly.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.26",
-          "lang": "C#",
-          "id": "RG0024",
-          "title": "In argument should be readonly",
-          "desc": "In argument should be readonly.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.27",
-          "lang": "C#",
-          "id": "RG0025",
-          "title": "Casting to an incompatible enum",
-          "desc": "Avoid casting to an incompatible enum.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.27",
-          "lang": "C#",
-          "id": "RG0026",
-          "title": "Possibly casting to an incompatible enum, some names have different value",
-          "desc": "Avoid casting to an enum which has different enum values for the same names.",
-          "url": "",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "1.0.27",
-          "lang": "C#",
-          "id": "RG0027",
-          "title": "Possibly casting to an incompatible enum, some values have different name",
-          "desc": "Avoid casting to an enum which has different enum names for the same value.",
-          "url": "",
-          "tags": null,
-          "level": "Info",
-          "enabled": true
-        },
-        {
-          "f": "1.0.27",
-          "lang": "C#",
-          "id": "RG0028",
-          "title": "Required protobuf property should be initialized",
-          "desc": "All properties in protobuf message need to be initialized.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.27",
-          "lang": "C#",
-          "id": "RG0029",
-          "title": "Can only initialize one of properties in a OneOf case",
-          "desc": "Only one of properties in a OneOf case can be initialized.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.28",
-          "lang": "C#",
-          "id": "RG0030",
-          "title": "Argument must be locked",
-          "desc": "Argument must be locked before calling method annotated with [MustBeLocked] attribute.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.28",
-          "lang": "C#",
-          "id": "RG0031",
-          "title": "Do not use dynamic type",
-          "desc": "Do not use dynamic type.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "2.0.1",
-          "lang": "C#",
-          "id": "RG0032",
-          "title": "Static classes containing extension methods should have an \u0027Extensions\u0027 suffix",
-          "desc": "Static classes containing extension methods should have an \u0027Extensions\u0027 suffix.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.0.1",
-          "lang": "C#",
-          "id": "RG0033",
-          "title": "Use overload without CancellationToken if default or CancellationToken.None was supplied",
-          "desc": "Use overload without CancellationToken if default or CancellationToken.None was supplied.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.0.1",
-          "lang": "C#",
-          "id": "RG0034",
-          "title": "Service registered with Add{Lifetime} must have corresponding lifetime attribute",
-          "desc": "Services registered with AddSingleton, AddScoped, or AddTransient must have the corresponding lifetime attribute.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "2.0.1",
-          "lang": "C#",
-          "id": "RG0035",
-          "title": "Service with longer lifetime cannot depend on service with shorter lifetime",
-          "desc": "A service with a longer lifetime (Singleton \u003E Scoped \u003E Transient) cannot depend on a service with a shorter lifetime.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "2.0.1",
-          "lang": "C#",
-          "id": "RG0036",
-          "title": "DI implementation classes should be internal",
-          "desc": "Classes registered with dependency injection should be internal to hide implementation details.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.0.1",
-          "lang": "C#",
-          "id": "RG0037",
-          "title": "Usage is restricted to a specific namespace",
-          "desc": "Usage of symbol is restricted to a specific namespace.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "2.0.1",
-          "lang": "C#",
-          "id": "RG0038",
-          "title": "Pending justification for suppressing code analysis message",
-          "desc": "SuppressMessage attribute must have a non-empty Justification parameter.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.0.1",
-          "lang": "C#",
-          "id": "RG0039",
-          "title": "Nullable reference type is not enabled",
-          "desc": "Nullable reference type static analysis should be enabled to prevent null reference exceptions.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "2.0.1",
-          "lang": "C#",
-          "id": "RG0040",
-          "title": "Override method must call base method",
-          "desc": "When a base method is marked with [MustCallBase], all overriding methods must call the base implementation.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "2.0.1",
-          "lang": "C#",
-          "id": "RG0041",
-          "title": "Invalid use of [NeverAsync] attribute",
-          "desc": "The [NeverAsync] attribute can only be used on methods that return Task but do not use the async modifier and do not call async methods.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "2.0.1",
-          "lang": "C#",
-          "id": "RG0042",
-          "title": "Refactor expression-bodied property to auto-property with initializer",
-          "desc": "Expression-bodied properties that return constant or static readonly values can be refactored to auto-properties with initializers for better performance.",
-          "url": "",
-          "tags": null,
-          "level": "Info",
           "enabled": true
         }
       ]
@@ -81678,6 +81716,181 @@
       ]
     },
     {
+      "id": "ZeroFormatter.Analyzer",
+      "v": "1.1.1",
+      "rules": [
+        {
+          "f": "1.0.1",
+          "v": "1.0.5",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_ArrayNotSupport",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "Array does not support in ZeroFormatter(except byte[]) because Array have to deserialize all objects. You can use IList\u003CT\u003E instead of T[].",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.5",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_ClassNotSupportPublicField",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "Class\u0027s public field is not supported.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.1",
+          "v": "1.0.5",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_DictionaryNotSupport",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "Dictionary does not support in ZeroFormatter because Dictionary have to deserialize all objects. You can use IDictionary\u003CTK, TV\u003E, ILazyDictionary\u003CTK, TV\u003E instead of Dictionary.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.0",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_IndexAttributeDuplicate",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "IndexAttribute is not allow duplicate number.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.1",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_IndexIsTooLarge",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "MaxIndex is large. Index is size of binary, recommended to small.",
+          "url": "",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.0.1",
+          "v": "1.0.5",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_ListNotSupport",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "List does not support in ZeroFormatter because List have to deserialize all objects. You can use IList\u003CT\u003E instead of List.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.0",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_PublicPropertyMustBeVirtual",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "Public property\u0027s accessor must be virtual.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.0",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_PublicPropertyNeedsGetAndSetAccessor",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "Public property must needs both public/protected get and set accessor.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.0",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_PublicPropertyNeedsIndex",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "Public property must be marked with IndexAttribute or IgnoreFormatAttribute.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.4",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_StructIndexMustBeStartedWithZeroAndSequential",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "Struct needs full parameter constructor of index property types.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.0",
+          "v": "1.0.3",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_TypeMustBeClass",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "Type must be class.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.0",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_TypeMustBeZeroFormattable",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "Type must be marked with ZeroFormattableAttribute.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.2",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_TypeMustNeedsParameterlessConstructor",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "Type must needs parameterless constructor.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.7",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_UnionKeyDoesNotAllowMultipleKey",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "All Union subTypes must be inherited type.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "f": "1.0.7",
+          "lang": "C#",
+          "id": "ZeroFormatterAnalyzer_UnionTypeRequiresUnionKey",
+          "title": "Lint of ZeroFormattable Type.",
+          "desc": "Union class requires abstract [UnionKey]property.",
+          "url": "",
+          "tags": null,
+          "level": "Error",
+          "enabled": true
+        }
+      ]
+    },
+    {
       "id": "xunit.analyzers",
       "v": "2.0.0",
       "rules": [
@@ -82912,181 +83125,6 @@
           "url": "https://xunit.net/xunit.analyzers/rules/xUnit3007",
           "tags": null,
           "level": "Warning",
-          "enabled": true
-        }
-      ]
-    },
-    {
-      "id": "ZeroFormatter.Analyzer",
-      "v": "1.1.1",
-      "rules": [
-        {
-          "f": "1.0.1",
-          "v": "1.0.5",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_ArrayNotSupport",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "Array does not support in ZeroFormatter(except byte[]) because Array have to deserialize all objects. You can use IList\u003CT\u003E instead of T[].",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.5",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_ClassNotSupportPublicField",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "Class\u0027s public field is not supported.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.1",
-          "v": "1.0.5",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_DictionaryNotSupport",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "Dictionary does not support in ZeroFormatter because Dictionary have to deserialize all objects. You can use IDictionary\u003CTK, TV\u003E, ILazyDictionary\u003CTK, TV\u003E instead of Dictionary.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.0",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_IndexAttributeDuplicate",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "IndexAttribute is not allow duplicate number.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.1",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_IndexIsTooLarge",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "MaxIndex is large. Index is size of binary, recommended to small.",
-          "url": "",
-          "tags": null,
-          "level": "Warning",
-          "enabled": true
-        },
-        {
-          "f": "1.0.1",
-          "v": "1.0.5",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_ListNotSupport",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "List does not support in ZeroFormatter because List have to deserialize all objects. You can use IList\u003CT\u003E instead of List.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.0",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_PublicPropertyMustBeVirtual",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "Public property\u0027s accessor must be virtual.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.0",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_PublicPropertyNeedsGetAndSetAccessor",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "Public property must needs both public/protected get and set accessor.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.0",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_PublicPropertyNeedsIndex",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "Public property must be marked with IndexAttribute or IgnoreFormatAttribute.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.4",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_StructIndexMustBeStartedWithZeroAndSequential",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "Struct needs full parameter constructor of index property types.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.0",
-          "v": "1.0.3",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_TypeMustBeClass",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "Type must be class.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.0",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_TypeMustBeZeroFormattable",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "Type must be marked with ZeroFormattableAttribute.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.2",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_TypeMustNeedsParameterlessConstructor",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "Type must needs parameterless constructor.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.7",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_UnionKeyDoesNotAllowMultipleKey",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "All Union subTypes must be inherited type.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
-          "enabled": true
-        },
-        {
-          "f": "1.0.7",
-          "lang": "C#",
-          "id": "ZeroFormatterAnalyzer_UnionTypeRequiresUnionKey",
-          "title": "Lint of ZeroFormattable Type.",
-          "desc": "Union class requires abstract [UnionKey]property.",
-          "url": "",
-          "tags": null,
-          "level": "Error",
           "enabled": true
         }
       ]
