@@ -207,18 +207,21 @@
   ],
   "contradict": [
     {
+      "desc": "Use implicit or explicit types.",
       "rules": [
         "IDE0007",
         "IDE0008"
       ]
     },
     {
+      "desc": "Use String.Empty or empty string literals.",
       "rules": [
         "CC0084",
         "CC0088"
       ]
     },
     {
+      "desc": "Use Enumerable.Any or Count to check emptiness.",
       "rules": [
         "CA1827",
         "CA1860",
@@ -226,36 +229,42 @@
       ]
     },
     {
+      "desc": "Prefix local calls with 'this'.",
       "rules": [
         "SA1101",
         "SX1101"
       ]
     },
     {
+      "desc": "Begin field names with underscore.",
       "rules": [
         "SA1309",
         "SX1309"
       ]
     },
     {
+      "desc": "Use explicit 'class' keyword on records.",
       "rules": [
         "MA0174",
         "MA0175"
       ]
     },
     {
+      "desc": "Prefer constructors or TestInitialize methods.",
       "rules": [
         "MSTEST0019",
         "MSTEST0020"
       ]
     },
     {
+      "desc": "Use braces.",
       "rules": [
         "RCS1001",
         "RCS1002"
       ]
     },
     {
+      "desc": "Use static classes.",
       "rules": [
         "PH2045",
         "MA0036",
@@ -263,6 +272,7 @@
       ]
     },
     {
+      "desc": "Use region directives.",
       "rules": [
         "SA1124",
         "MEN006",
@@ -270,54 +280,63 @@
       ]
     },
     {
+      "desc": "Use redundant async/await.",
       "rules": [
         "RCS1174",
         "RCS1229"
       ]
     },
     {
+      "desc": "Use string interpolation or concatenation.",
       "rules": [
         "CC0048",
         "RCS1217"
       ]
     },
     {
+      "desc": "Use expression-bodied or block-bodied members.",
       "rules": [
         "CC0038",
         "RCS1016i"
       ]
     },
     {
+      "desc": "Test empty strings using length or IsNullOrEmpty.",
       "rules": [
         "CA1820",
         "S3256"
       ]
     },
     {
+      "desc": "Use 'Async' suffix on method names.",
       "rules": [
         "CC0061",
         "CC0072"
       ]
     },
     {
+      "desc": "Use 'Async' suffix on method names based on awaitable return type.",
       "rules": [
         "MA0137",
         "MA0138"
       ]
     },
     {
+      "desc": "Use 'Async' suffix on method names.",
       "rules": [
         "RCS1046",
         "RCS1047"
       ]
     },
     {
+      "desc": "Use Count or IsEmpty to check emptiness.",
       "rules": [
         "CA1827",
         "CA1836"
       ]
     },
     {
+      "desc": "Use Any or IsEmpty to check emptiness.",
       "rules": [
         "CA1836",
         "S1155"
