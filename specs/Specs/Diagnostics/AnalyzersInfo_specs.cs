@@ -10,7 +10,7 @@ public class Embedded
     {
         var info = DiagnosticCollection.Embedded();
         info.Packages.Should().AllSatisfy(p => p.Rules.Should().NotBeEmpty(because: p.Id));
-        info.Count.Should().Be(7437);
+        info.Count.Should().Be(7487);
     }
 
     [Test]
@@ -73,6 +73,7 @@ public class Embedded
             "MSTest.Analyzers",
             "NSubstitute.Analyzers.CSharp",
             "NSubstitute.Analyzers.VisualBasic",
+            "NuGet.CommandLine",
             "NUnit.Analyzers",
             "Octopus.Nevermore.Analyzers",
             "Philips.CodeAnalysis.DuplicateCodeAnalyzer",
