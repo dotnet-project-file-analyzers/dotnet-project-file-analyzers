@@ -34413,6 +34413,39 @@
         {
           "f": "3.8.0",
           "lang": "C#",
+          "id": "IDE0001",
+          "title": "Simplify name",
+          "desc": "Simplify name by removing unnecessary qualifiers.",
+          "url": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0001",
+          "tags": "Telemetry;EnforceOnBuild_HighlyRecommended;Unnecessary",
+          "level": "Hidden",
+          "enabled": true
+        },
+        {
+          "f": "3.8.0",
+          "lang": "C#",
+          "id": "IDE0002",
+          "title": "Simplify member access",
+          "desc": "Simplify member access by removing unnecessary qualifiers.",
+          "url": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0002",
+          "tags": "Telemetry;EnforceOnBuild_HighlyRecommended;Unnecessary",
+          "level": "Hidden",
+          "enabled": true
+        },
+        {
+          "f": "3.8.0",
+          "lang": "C#",
+          "id": "IDE0003",
+          "title": "Name can be simplified",
+          "desc": "Remove unnecessary member qualification.",
+          "url": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0003-ide0009",
+          "tags": "Telemetry;EnforceOnBuild_HighlyRecommended;Unnecessary",
+          "level": "Hidden",
+          "enabled": true
+        },
+        {
+          "f": "3.8.0",
+          "lang": "C#",
           "id": "IDE0004",
           "title": "Remove Unnecessary Cast",
           "url": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0004",
@@ -54604,6 +54637,39 @@
           "url": "https://github.com/dotnet/roslyn/issues/41640",
           "tags": "Telemetry;EnforceOnBuild_Never",
           "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.8.0",
+          "lang": "Visual Basic",
+          "id": "IDE0001",
+          "title": "Simplify name",
+          "desc": "Simplify name by removing unnecessary qualifiers.",
+          "url": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0001",
+          "tags": "Telemetry;EnforceOnBuild_HighlyRecommended;Unnecessary",
+          "level": "Hidden",
+          "enabled": true
+        },
+        {
+          "f": "3.8.0",
+          "lang": "Visual Basic",
+          "id": "IDE0002",
+          "title": "Simplify member access",
+          "desc": "Simplify member access by removing unnecessary qualifiers.",
+          "url": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0002",
+          "tags": "Telemetry;EnforceOnBuild_HighlyRecommended;Unnecessary",
+          "level": "Hidden",
+          "enabled": true
+        },
+        {
+          "f": "3.8.0",
+          "lang": "Visual Basic",
+          "id": "IDE0003",
+          "title": "Name can be simplified",
+          "desc": "Remove unnecessary member qualification.",
+          "url": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0003-ide0009",
+          "tags": "Telemetry;EnforceOnBuild_HighlyRecommended;Unnecessary",
+          "level": "Hidden",
           "enabled": true
         },
         {
