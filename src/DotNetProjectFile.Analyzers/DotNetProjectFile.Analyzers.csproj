@@ -84,9 +84,10 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-v1.*
+v1.18.0
 - Proj0055: Enable nullability analysis for C#. (NEW RULE)
 - Proj0056: Enable nullability analysis for F#. (NEW RULE)
+- Proj0057: Keep paths portable. (NEW RULE)
 - Proj0500: Report on issues in prop files. (FN)
 - Proj0501: Report on issues in prop files. (FN)
 - Proj0502: Report on issues in prop files. (FN)

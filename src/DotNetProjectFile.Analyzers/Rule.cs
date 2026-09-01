@@ -543,6 +543,15 @@ public static partial class Rule
        tags: ["MSBuild", "compiler"],
        category: Category.CodeQuality);
 
+    public static DiagnosticDescriptor KeepPathsPortable => New(
+        id: 0057,
+        title: "Keep paths portable",
+        message: "Make '{0}' a relative path",
+        description:
+            "?",
+        tags: ["MSBuild", "CI/CD"],
+        category: Category.Configuration);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
