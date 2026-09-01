@@ -89,15 +89,14 @@ public sealed record DiagnosticInfo :
     };
 
     [Pure]
-    internal DiagnosticInfo Save(NuGetVersion? version)
-        => this with
-        {
-            Version = Version == version ? null : Version,
-            Title = Title.NullIfEmpty(),
-            Description = Description.NullIfEmpty(),
-            HelpLinkUri = HelpLinkUri.NullIfEmpty(),
-            Obsolete = Obsolete.NullIfEmpty(),
-        };
+    internal DiagnosticInfo Save(NuGetVersion? version) => this with
+    {
+        Version = Version == version ? null : Version,
+        Title = Title.NullIfEmpty(),
+        Description = Description.NullIfEmpty(),
+        HelpLinkUri = HelpLinkUri.NullIfEmpty(),
+        Obsolete = Obsolete.NullIfEmpty(),
+    };
 
     [Pure]
     internal DiagnosticInfo Load(NuGetVersion? version) => this with { Version = Version ?? version };
