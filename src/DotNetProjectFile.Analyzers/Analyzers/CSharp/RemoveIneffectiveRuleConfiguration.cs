@@ -1,0 +1,82 @@
+using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+
+namespace DotNetProjectFile.Analyzers.CSharp;
+
+/// <summary>Implements <see cref="Rule.RemoveIneffectiveRuleConfiguration"/>.</summary>
+[DiagnosticAnalyzer(LanguageNames.CSharp)]
+public sealed class RemoveIneffectiveRuleConfiguration() : DiagnosticAnalyzer
+{
+    /// <inheritdoc />
+    public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [Rule.RemoveIneffectiveRuleConfiguration];
+
+    /// <inheritdoc />
+    public override void Initialize(AnalysisContext context)
+    {
+        context.ConfigureGeneratedCodeAnalysis(GeneratedCodeAnalysisFlags.None);
+        context.EnableConcurrentExecution();
+        context.RegisterSyntaxNodeAction(AnalyzePragmas, SyntaxKind.CompilationUnit);
+        context.RegisterSyntaxNodeAction(AnalyzeAttribute, SyntaxKind.Attribute);
+    }
+
+    private static void AnalyzePragmas(SyntaxNodeAnalysisContext context)
+    {
+        foreach (var code in context.Node.DescendantTrivia()
+            .Where(t => t.IsKind(SyntaxKind.PragmaWarningDirectiveTrivia))
+            .Select(t => t.GetStructure())
+            .OfType<PragmaWarningDirectiveTriviaSyntax>()
+            .SelectMany(p => p.ErrorCodes)
+            .OfType<IdentifierNameSyntax>()
+            .Where(code => RoslynRules.NotConfigurables.Contains(code.Identifier.Text)))
+        {
+            context.ReportDiagnostic(Diagnostic.Create(
+                Rule.RemoveIneffectiveRuleConfiguration,
+                code.GetLocation(),
+                code.Identifier.Text));
+        }
+    }
+
+    private static void AnalyzeAttribute(SyntaxNodeAnalysisContext context)
+    {
+        var attribute = (AttributeSyntax)context.Node;
+
+        if (IsSuppressMessage(attribute)
+            && CheckId(attribute) is { } checkId
+            && context.SemanticModel.GetConstantValue(checkId, context.CancellationToken) is { HasValue: true, Value: string id }
+            && RoslynRules.NotConfigurables.Contains(Trim(id)))
+        {
+            context.ReportDiagnostic(Diagnostic.Create(
+               Rule.RemoveIneffectiveRuleConfiguration,
+               checkId.GetLocation(),
+               Trim(id)));
+        }
+    }
+
+    private static ExpressionSyntax? CheckId(AttributeSyntax attribute) => attribute switch
+    {
+        _ when attribute.ArgumentList?.Arguments is not { Count: >= 2 }
+            => null,
+
+        _ when attribute.ArgumentList.Arguments.FirstOrDefault(a => a.NameColon?.Name.Identifier.Text.IsMatch(nameof(CheckId)) is true) is { } colon
+            => colon.Expression,
+
+        _ when attribute.ArgumentList.Arguments[1].NameEquals is null
+            => attribute.ArgumentList.Arguments[1].Expression,
+
+        _ => null,
+    };
+
+    private static bool IsSuppressMessage(AttributeSyntax attribute)
+        => attribute.Name.ToString() is { Length: > 0 } name
+        && (name is "SuppressMessage" or "SuppressMessageAttribute"
+            || name.EndsWith(".SuppressMessage")
+            || name.EndsWith(".SuppressMessageAttribute"));
+
+    private static string Trim(string id)
+    {
+        var index = id.IndexOf(':');
+        return index == -1
+            ? id
+            : id[..index];
+    }
+}

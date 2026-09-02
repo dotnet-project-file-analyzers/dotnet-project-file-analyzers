@@ -1346,6 +1346,16 @@ public static partial class Rule
         tags: ["NuGet", "suppression"],
         category: Category.Security);
 
+    public static DiagnosticDescriptor RemoveIneffectiveRuleConfiguration => New(
+        id: 1008,
+        title: "Remove ineffective rule configurations",
+        message: "Rule {0} is not-configurable and cannot be modified",
+        description:
+            "Configuring severity or suppression of non-configurable rules, " +
+            "are redundant and should be removed.",
+        tags: ["suppression", "severity", "warning", "error"],
+        category: Category.Configuration);
+
     public static DiagnosticDescriptor AvoidUsingMoq => New(
         id: 1100,
         title: "Avoid using Moq",

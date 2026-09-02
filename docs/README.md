@@ -198,6 +198,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj1005** Suppress NuGet issues per package](rules/Proj1005.md)
 * [**Proj1006** Suppress NuGet advisories per vulnerability](rules/Proj1006.md)
 * [**Proj1007** Non-Roslyn languages require .NET Project File Analyzers SDK](rules/Proj1007.md)
+* [**Proj1008** Remove ineffective rule configurations](rules/Proj1008.md)
 
 ### Design
 * [**Proj1300** Avoid project references to executables](rules/Proj1300.md)

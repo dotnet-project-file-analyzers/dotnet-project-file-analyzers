@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
   
@@ -52,13 +52,17 @@
     <PackageReference PrivateAssets="all" Include="NUnit3TestAdapter" Version="6.2.0" />
   </ItemGroup>
 
+  <ItemGroup Label="Test case C# files">
+    <None Include="Cases/*.*" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
   <ItemGroup Label="Test projects">
     <None Visible="true" Include="../../projects/*/*.csproj" Link="Projects/C#/%(Filename)%(Extension)" />
     <None Visible="true" Include="../../projects/*/*.vbproj" Link="Projects/VB/%(Filename)%(Extension)" />
     <None Visible="true" Include="../../projects/*/*.resx" Link="Projects/RESX/%(Filename)%(Extension)" />
     <None Visible="true" Include="../../projects/*/*.props" Link="Projects/Props/%(Directory)/%(Filename)%(Extension)" />
   </ItemGroup>
-
+  
   <ItemGroup Label="Analyzers">
     <PackageReference PrivateAssets="all" Include="AwesomeAssertions.Analyzers" Version="9.0.8" />
     <PackageReference PrivateAssets="all" Include="NUnit.Analyzers" Version="4.14.0" />

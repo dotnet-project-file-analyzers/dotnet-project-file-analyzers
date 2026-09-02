@@ -10,7 +10,7 @@ public sealed class FullySpecifyNoWarnRuleIds() : MsBuildProjectFileAnalyzer(Rul
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        foreach (var noWarn in context.File.PropertyGroups.Children<NoWarn>())
+        foreach (var noWarn in context.File.PropertyGroups.Children<WarnBase>())
         {
             foreach (var ruleId in noWarn.RuleIds.Where(NotFullySpecified))
             {
