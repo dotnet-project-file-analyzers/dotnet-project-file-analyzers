@@ -143,7 +143,8 @@ public class Define
         NON("SA1401"),
         NON("SA1407"),
         NON("SA1512"),
-        NON("SA1515"));
+        NON("SA1515"),
+        NON("RS1038", "VB.NET specific dependecty is not needed"));
 
         config.Save(new FileInfo("../../../../../.globalconfig"), false);
 
