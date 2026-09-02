@@ -1,3 +1,4 @@
+using AwesomeAssertions.Collections;
 using Buildalyzer;
 using Grammr;
 using Grammr.Lexers;
@@ -23,4 +24,13 @@ internal static class Shoulds
 
     [Pure]
     public static TokenAssertions Should(this Token? subject) => new(subject);
+}
+
+internal static class ShouldExpressions
+{
+    [CustomAssertion]
+    public static AndConstraint<StringCollectionAssertions<IEnumerable<string>>> BeSameSet(this StringCollectionAssertions assertions, IReadOnlySet<string> set)
+        => assertions
+            .HaveCount(set.Count)
+            .And.AllSatisfy(id => set.Contains(id));
 }
