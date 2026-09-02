@@ -66,13 +66,13 @@ public partial class Rules
 
     [TestCaseSource(nameof(Types))]
     public void defined_in_DotNetProjectFile_Analyzers_namespace(Type type)
-        => type.Namespace!.StartsWith("DotNetProjectFile.Analyzers.");
+        => type.Namespace.Should().StartWith("DotNetProjectFile.Analyzers.");
 
     [TestCaseSource(nameof(Types))]
     public void Has_supported_diagnostics(Type type)
         => ((DiagnosticAnalyzer)Activator.CreateInstance(type)!).SupportedDiagnostics.Should().NotBeEmpty();
 
-    [TestCaseSource(nameof(Types))]
+    [TestCaseSource(nameof(AdditionalFileTypes))]
     public void for_CSharp_and_VB(Type type)
         => type.GetCustomAttribute<DiagnosticAnalyzerAttribute>()!
         .Languages.Should().BeEquivalentTo("C#", "Visual Basic");
@@ -81,6 +81,11 @@ public partial class Rules
         = typeof(MsBuildProjectFileAnalyzer).Assembly
         .GetTypes()
         .Where(t => !t.IsAbstract && t.IsAssignableTo(typeof(DiagnosticAnalyzer)));
+
+    private static readonly IEnumerable<Type> AdditionalFileTypes
+        = typeof(MsBuildProjectFileAnalyzer).Assembly
+        .GetTypes()
+        .Where(t => !t.IsAbstract && t.Namespace?.Contains("CSharp") is false && t.IsAssignableTo(typeof(DiagnosticAnalyzer)));
 
     private static readonly IEnumerable<Rule> AllRules = GetRules(
     [
