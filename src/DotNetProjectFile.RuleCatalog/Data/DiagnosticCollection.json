@@ -57981,8 +57981,7 @@
       "v": "7.9.0",
       "rules": [
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1000",
           "title": "Unknown NuGet error",
@@ -57990,12 +57989,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1000",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1001",
           "title": "Invalid directory packages with version",
@@ -58003,12 +58000,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1001",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1002",
           "title": "Invalid centrally managed package",
@@ -58016,12 +58011,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1002",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1100",
           "title": "Unable to resolve dependency",
@@ -58029,12 +58022,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1100",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1101",
           "title": "Unable to find package",
@@ -58042,12 +58033,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1101",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1102",
           "title": "Unable to find fallback package version",
@@ -58055,12 +58044,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1102",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1103",
           "title": "Unable to find a stable package version",
@@ -58068,12 +58055,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1103",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1104",
           "title": "Project reference does not exist",
@@ -58081,12 +58066,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1104",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1105",
           "title": "Unable to read project information",
@@ -58094,12 +58077,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1105",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1106",
           "title": "Conflict resolution cannot resolve dependency",
@@ -58107,12 +58088,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1106",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1107",
           "title": "Version conflict detected for package",
@@ -58120,12 +58099,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1107",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1108",
           "title": "Cycle detected",
@@ -58133,12 +58110,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1108",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1201",
           "title": "Package is not compatible with project target framework",
@@ -58146,12 +58121,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1201",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1202",
           "title": "Package is not compatible with target framework",
@@ -58159,12 +58132,32 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1202",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU1301",
+          "title": "Failed to retrieve information from remote source",
+          "desc": "A network, timeout, or authentication error occurred while requesting package metadata from an HTTP feed.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1301",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU1401",
+          "title": "Missing floating version base",
+          "desc": "The floating version string format used in a package declaration is badly formed or references an invalid base tier.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1401",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1403",
           "title": "Package content hash validation failed",
@@ -58172,12 +58165,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1403",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1501",
           "title": "Dependency loop detected",
@@ -58185,12 +58176,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1501",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1502",
           "title": "Duplicate directory packages with version",
@@ -58198,12 +58187,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1502",
           "tags": "NuGet",
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1503",
           "title": "Skipping restoring project",
@@ -58211,12 +58198,54 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1503",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "5.10.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU1504",
+          "title": "Duplicate items in project file",
+          "desc": "The project file or central management file contains duplicate declarations for the exact same package identity.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1504",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "6.0.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU1505",
+          "title": "Duplicate PackageReference items",
+          "desc": "The project file contains duplicate PackageReference items.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1505",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "6.0.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU1506",
+          "title": "Duplicate PackageVersion items",
+          "desc": "The Directory.Packages.props file contains duplicate PackageVersion items.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1506",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "6.0.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU1507",
+          "title": "There are multiple package sources defined in your NuGet.Config, but Package Source Mapping is not enabled.",
+          "desc": "Package Source Mapping is recommended for security when using multiple package sources.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1507",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1601",
           "title": "Dependency was resolved to a higher version",
@@ -58224,12 +58253,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1601",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1602",
           "title": "Dependency was resolved to a lower version",
@@ -58237,12 +58264,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1602",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1603",
           "title": "Package dependency does not contain an exact version",
@@ -58254,8 +58279,7 @@
           "obsolete": "This rule has been dropped."
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1604",
           "title": "Project dependency does not contain an inclusive lower bound",
@@ -58263,12 +58287,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1604",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1605",
           "title": "Detected package downgrade",
@@ -58276,12 +58298,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1605",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1606",
           "title": "Warning-as-error: Detected package promotion",
@@ -58289,12 +58309,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1606",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1607",
           "title": "Package version is a prerelease version",
@@ -58302,12 +58320,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1607",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1608",
           "title": "Detected package version outside of dependency constraint",
@@ -58315,12 +58331,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1608",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1701",
           "title": "Package was restored using fallback target framework",
@@ -58328,12 +58342,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1701",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1801",
           "title": "Error reading package metadata",
@@ -58341,12 +58353,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1801",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1802",
           "title": "Insecure package source detected",
@@ -58354,12 +58364,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1802",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "6.8.0",
           "lang": "C#;Visual Basic",
           "id": "NU1900",
           "title": "Package vulnerability detected",
@@ -58367,12 +58375,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1900",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "6.8.0",
           "lang": "C#;Visual Basic",
           "id": "NU1901",
           "title": "Low severity package vulnerability detected",
@@ -58380,12 +58386,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1901",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "6.8.0",
           "lang": "C#;Visual Basic",
           "id": "NU1902",
           "title": "Moderate severity package vulnerability detected",
@@ -58393,12 +58397,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1902",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "6.8.0",
           "lang": "C#;Visual Basic",
           "id": "NU1903",
           "title": "High severity package vulnerability detected",
@@ -58406,12 +58408,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1903",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "6.8.0",
           "lang": "C#;Visual Basic",
           "id": "NU1904",
           "title": "Critical severity package vulnerability detected",
@@ -58419,12 +58419,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1904",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.6.0",
           "lang": "C#;Visual Basic",
           "id": "NU3000",
           "title": "Package signing error",
@@ -58432,12 +58430,76 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu3000",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.6.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU3008",
+          "title": "Package integrity check failed",
+          "desc": "The cryptographic hash value of the actual package files does not match the signature hash value recorded inside the file.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu3008",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.6.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU3018",
+          "title": "Certificate chain building failed",
+          "desc": "The signing certificate cannot be verified against a trusted local root certificate authority or structural anchor point.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu3018",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.6.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU3028",
+          "title": "Timestamp chain building failed",
+          "desc": "The certificate mapping the signing event timestamp anchor fails local authenticity verification or has expired.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu3028",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.6.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU3037",
+          "title": "Package signing certificate expired",
+          "desc": "The author or repository certificate used to wrap the package signature has aged past its explicitly designated validity lifecycle.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu3037",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU5000",
+          "title": "General package creation failure",
+          "desc": "An unclassified blocking error happened during the manifest packaging operation while generating the .nupkg file.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5000",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU5012",
+          "title": "Missing execution assembly dependencies",
+          "desc": "The packaging target discovers references that have not been accounted for inside the target dependency metadata block.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5012",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5048",
           "title": "PackageIconUrl is deprecated",
@@ -58445,12 +58507,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5048",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5100",
           "title": "Assembly outside of lib folder",
@@ -58458,12 +58518,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5100",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5101",
           "title": "Target file already exists",
@@ -58471,12 +58529,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5101",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5102",
           "title": "Invalid package type",
@@ -58484,12 +58540,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5102",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5103",
           "title": "Missing dependency version",
@@ -58497,12 +58551,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5103",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5104",
           "title": "A stable release of a package should not have a prerelease dependency",
@@ -58510,12 +58562,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5104",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5105",
           "title": "The package version is semver2 but the package was not marked as semver2",
@@ -58523,12 +58573,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5105",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5108",
           "title": "The folder name is invalid",
@@ -58536,12 +58584,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5108",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5109",
           "title": "The file name is invalid",
@@ -58549,12 +58595,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5109",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5110",
           "title": "Namespace of types in assembly does not match the package ID",
@@ -58562,12 +58606,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5110",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5111",
           "title": "Assembly with invalid name",
@@ -58575,12 +58617,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5111",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5115",
           "title": "Description is missing",
@@ -58588,12 +58628,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5115",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5118",
           "title": "The file is excluded",
@@ -58601,12 +58639,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5118",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5125",
           "title": "The license file is not found",
@@ -58614,12 +58650,10 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5125",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5128",
           "title": "Package does not contain lib or ref files for any target framework",
@@ -58627,8 +58661,7 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5128",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         }
       ]
     },
