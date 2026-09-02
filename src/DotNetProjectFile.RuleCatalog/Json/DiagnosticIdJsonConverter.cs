@@ -1,6 +1,6 @@
 using Qowaiv.Json;
 
-namespace DotNetProjectFile.Diagnostics.Json;
+namespace DotNetProjectFile.RuleCatalog.Json;
 
 internal sealed class DiagnosticIdJsonConverter : SvoJsonConverter<DiagnosticId>
 {

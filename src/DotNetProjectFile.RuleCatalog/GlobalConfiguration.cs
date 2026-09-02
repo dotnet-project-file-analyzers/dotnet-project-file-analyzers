@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace DotNetProjectFile.Diagnostics;
+namespace DotNetProjectFile.RuleCatalog;
 
 /// <summary>Represents (global) analyzer configuration.</summary>
 [DebuggerDisplay("Root = {Root}, Count = {Count}")]

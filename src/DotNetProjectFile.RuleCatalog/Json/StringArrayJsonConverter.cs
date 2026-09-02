@@ -2,7 +2,7 @@ using System.Collections.Immutable;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace DotNetProjectFile.Diagnostics.Json;
+namespace DotNetProjectFile.RuleCatalog.Json;
 
 internal sealed class StringArrayJsonConverter : JsonConverter<ImmutableArray<string>>
 {

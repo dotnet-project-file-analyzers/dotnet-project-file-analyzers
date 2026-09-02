@@ -2,7 +2,7 @@
 using Microsoft.CodeAnalysis;
 using System.Text;
 
-namespace DotNetProjectFile.Diagnostics;
+namespace DotNetProjectFile.RuleCatalog;
 
 /// <summary>Represents an entry that sets the dotnet_diagnostic severity.</summary>
 public sealed record GlobalConfigurationEntry() : IComparable<GlobalConfigurationEntry>

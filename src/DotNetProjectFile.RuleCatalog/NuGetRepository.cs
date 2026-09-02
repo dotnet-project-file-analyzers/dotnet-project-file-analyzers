@@ -1,5 +1,5 @@
-using DotNetProjectFile.Diagnostics.IO;
-using DotNetProjectFile.Diagnostics.Reflection;
+using DotNetProjectFile.RuleCatalog.IO;
+using DotNetProjectFile.RuleCatalog.Reflection;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 using NuGet.Common;
@@ -11,7 +11,7 @@ using System.Collections.Immutable;
 using System.IO;
 using System.Reflection;
 
-namespace DotNetProjectFile.Diagnostics;
+namespace DotNetProjectFile.RuleCatalog;
 
 /// <summary>NuGet Repository.</summary>
 /// <remarks>

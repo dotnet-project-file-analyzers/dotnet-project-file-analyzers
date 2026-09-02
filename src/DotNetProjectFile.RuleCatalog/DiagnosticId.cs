@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Text.Json.Serialization;
 using System.Text.RegularExpressions;
 
-namespace DotNetProjectFile.Diagnostics;
+namespace DotNetProjectFile.RuleCatalog;
 
 /// <summary>Represents the Id of the <see cref="Microsoft.CodeAnalysis.DiagnosticDescriptor"/>.</summary>
 [JsonConverter(typeof(Json.DiagnosticIdJsonConverter))]

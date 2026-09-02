@@ -1,6 +1,7 @@
-using DotNetProjectFile.Diagnostics;
+using DotNetProjectFile.RuleCatalog;
 using System.IO;
-using static DotNetProjectFile.Diagnostics.GlobalConfigurationEntry;
+using static DotNetProjectFile.RuleCatalog.GlobalConfigurationEntry;
+
 namespace GlobalConfig_specs;
 
 [Explicit]

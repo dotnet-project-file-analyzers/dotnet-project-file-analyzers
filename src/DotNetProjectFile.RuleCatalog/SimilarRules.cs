@@ -1,9 +1,9 @@
 using System.Collections.Immutable;
 using System.Text.Json.Serialization;
 
-namespace DotNetProjectFile.Diagnostics;
+namespace DotNetProjectFile.RuleCatalog;
 
-public sealed record ContradictingRules
+public sealed record SimilarRules
 {
     [JsonPropertyName("desc")]
     public required string Description { get; init; }

@@ -1,4 +1,4 @@
-namespace DotNetProjectFile.Diagnostics;
+namespace DotNetProjectFile.RuleCatalog;
 
 /// <summary>Severities used in the global configuration file.</summary>
 public enum GlobalConfigSeverity

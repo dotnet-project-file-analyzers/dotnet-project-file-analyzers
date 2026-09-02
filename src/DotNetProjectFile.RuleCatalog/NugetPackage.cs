@@ -3,7 +3,7 @@ using NuGet.Versioning;
 using System.Collections.Immutable;
 using System.Text.Json.Serialization;
 
-namespace DotNetProjectFile.Diagnostics;
+namespace DotNetProjectFile.RuleCatalog;
 
 /// <summary>Info about a NuGet package.</summary>
 [DebuggerDisplay("{ToString(),nq}, Count = {Rules.Length}")]

@@ -1,4 +1,4 @@
-namespace DotNetProjectFile.Diagnostics;
+namespace DotNetProjectFile.RuleCatalog;
 
 /// <summary>
 /// Collects <see cref="DiagnosticInfo"/> from <see cref="NugetPackage"/>s.

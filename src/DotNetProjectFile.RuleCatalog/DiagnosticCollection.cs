@@ -4,7 +4,7 @@ using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace DotNetProjectFile.Diagnostics;
+namespace DotNetProjectFile.RuleCatalog;
 
 /// <summary>A collection of <see cref="NugetPackage"/>s.</summary>
 [DebuggerDisplay("Packages = {Packages.Length}, Rules = {Count}")]
@@ -63,8 +63,8 @@ public sealed record DiagnosticCollection
     /// <summary>Gets the embedded (pre collected) collection.</summary>
     [Pure]
     public static DiagnosticCollection Embedded()
-        => Load(typeof(DiagnosticCollection).Assembly.GetManifestResourceStream("DotNetProjectFile.Diagnostics.Data.DiagnosticCollection.json")
-            ?? throw new FileNotFoundException("Embedded resource 'DotNetProjectFile.Diagnostics.Data.DiagnosticCollection.json' not found."));
+        => Load(typeof(DiagnosticCollection).Assembly.GetManifestResourceStream("DotNetProjectFile.RuleCatalog.Data.DiagnosticCollection.json")
+            ?? throw new FileNotFoundException("Embedded resource 'DotNetProjectFile.RuleCatalog.Data.DiagnosticCollection.json' not found."));
 
     private static readonly JsonSerializerOptions Options = new()
     {

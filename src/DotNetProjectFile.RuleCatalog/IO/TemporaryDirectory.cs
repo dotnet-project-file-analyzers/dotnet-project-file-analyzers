@@ -1,6 +1,6 @@
 using System.IO;
 
-namespace DotNetProjectFile.Diagnostics.IO;
+namespace DotNetProjectFile.RuleCatalog.IO;
 
 /// <summary>Represents a directory that lives during the lifetime of its scope.</summary>
 /// <remarks>

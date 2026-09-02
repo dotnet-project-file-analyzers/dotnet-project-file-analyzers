@@ -2,7 +2,7 @@ using System.IO;
 using System.Reflection;
 using System.Runtime.Loader;
 
-namespace DotNetProjectFile.Diagnostics.Reflection;
+namespace DotNetProjectFile.RuleCatalog.Reflection;
 
 internal sealed class AnalyzerLoadContext : AssemblyLoadContext
 {

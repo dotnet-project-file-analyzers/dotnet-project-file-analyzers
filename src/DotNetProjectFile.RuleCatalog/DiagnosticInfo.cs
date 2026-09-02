@@ -1,12 +1,12 @@
 #pragma warning disable S1210 // We only care about sorting
-using DotNetProjectFile.Diagnostics.Json;
+using DotNetProjectFile.RuleCatalog.Json;
 using Microsoft.CodeAnalysis;
 using NuGet.Versioning;
 using System.Collections.Immutable;
 using System.Globalization;
 using System.Text.Json.Serialization;
 
-namespace DotNetProjectFile.Diagnostics;
+namespace DotNetProjectFile.RuleCatalog;
 
 /// <summary>
 /// Represents <see cref="DiagnosticDescriptor"/> data combined with package,
