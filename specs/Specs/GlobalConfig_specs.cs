@@ -1,0 +1,152 @@
+using DotNetProjectFile.RuleCatalog;
+using System.IO;
+using static DotNetProjectFile.RuleCatalog.GlobalConfigurationEntry;
+
+namespace GlobalConfig_specs;
+
+[Explicit]
+public class Define
+{
+    [Test]
+    public void Solution_wide_preferences()
+    {
+        var config = GlobalConfiguration.New(true, DiagnosticCollection.Embedded().FromPackages(
+            "AsyncFixer",
+            "AwesomeAssertions.Analyzers",
+            "Microsoft.CodeAnalysis.Analyzers",
+            "Microsoft.CodeAnalysis.CSharp",
+            "Microsoft.CodeAnalysis.CSharp.CodeStyle",
+            "Microsoft.CodeAnalysis.NetAnalyzers",
+            "NUnit.Analyzers",
+            "Qowaiv.Analyzers.CSharp",
+            "SonarAnalyzer.CSharp",
+            "StyleCop.Analyzers.Unstable"))
+        .Override(
+        WRN("CA1069"),
+        WRN("CA1806"),
+        WRN("CA1816"),
+        WRN("CA1822"),
+        WRN("CA1825"),
+        WRN("CA2016"),
+        WRN("CA2211"),
+        WRN("CA2231"),
+        WRN("CA2254"),
+
+        NON("CA1860", "We prefer readability."),
+        SUG("CS1591"),
+
+        NON("IDE0130", "We do not care."),
+        NON("IDE1006", "Naming styles should be guarded by other rules."),
+
+        WRN("IDE0001"),
+        WRN("IDE0002"),
+        WRN("IDE0003"),
+        WRN("IDE0004"),
+        WRN("IDE0005"),
+        WRN("IDE0017"),
+        WRN("IDE0018"),
+        WRN("IDE0019"),
+        WRN("IDE0020"),
+        WRN("IDE0021"),
+        WRN("IDE0022"),
+        WRN("IDE0023"),
+        WRN("IDE0024"),
+        WRN("IDE0025"),
+        WRN("IDE0026"),
+        WRN("IDE0027"),
+        WRN("IDE0028"),
+        WRN("IDE0029"),
+        WRN("IDE0030"),
+        WRN("IDE0032"),
+        WRN("IDE0033"),
+        WRN("IDE0034"),
+        WRN("IDE0035"),
+        WRN("IDE0038"),
+        WRN("IDE0040"),
+        WRN("IDE0041"),
+        WRN("IDE0042"),
+        WRN("IDE0044"),
+        WRN("IDE0045"),
+        WRN("IDE0046"),
+        WRN("IDE0057"),
+        WRN("IDE0063"),
+        WRN("IDE0066"),
+        WRN("IDE0170"),
+        WRN("IDE0270"),
+        WRN("IDE0290"),
+        WRN("IDE0340"),
+
+        NON("S100"),
+        NON("S101"),
+        NON("S1121"),
+        NON("S2699"),
+        NON("S3376"),
+        NON("S4136"),
+
+        WRN("S107"),
+        WRN("S1144"),
+        WRN("S1185"),
+        WRN("S1479"),
+        WRN("S1858"),
+        WRN("S2302"),
+        WRN("S2342"),
+        WRN("S2436"),
+        WRN("S3215"),
+        WRN("S3218"),
+        WRN("S3257"),
+        WRN("S3776"),
+        WRN("S3925"),
+        WRN("S6354"),
+
+        NON("SA0001"),
+        NON("SA1001"),
+        NON("SA1101"),
+        NON("SA1127"),
+        NON("SA1128"),
+        NON("SA1200"),
+        NON("SA1201"),
+        NON("SA1202"),
+        NON("SA1203"),
+        NON("SA1204"),
+        NON("SA1208"),
+        NON("SA1214"),
+        NON("SA1300"),
+        NON("SA1302"),
+        NON("SA1304"),
+        NON("SA1306"),
+        NON("SA1307"),
+        NON("SA1308"),
+        NON("SA1309"),
+        NON("SA1310"),
+        NON("SA1311"),
+        NON("SA1313"),
+        NON("SA1402"),
+        NON("SA1501"),
+        NON("SA1502"),
+        NON("SA1503"),
+        NON("SA1513"),
+        NON("SA1519"),
+        NON("SA1520"),
+        NON("SA1600"),
+        NON("SA1601"),
+        NON("SA1602"),
+        NON("SA1611"),
+        NON("SA1615"),
+        NON("SA1618"),
+        NON("SA1623"),
+        NON("SA1633"),
+        NON("SA1636"),
+        NON("SA1637"),
+        NON("SA1640"),
+        NON("SA1649"),
+
+        NON("SA1401"),
+        NON("SA1407"),
+        NON("SA1512"),
+        NON("SA1515"));
+
+        config.Save(new FileInfo("../../../../../.globalconfig"), false);
+
+        config.Should().NotBeEmpty();
+    }
+}

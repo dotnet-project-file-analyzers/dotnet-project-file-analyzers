@@ -1,4 +1,4 @@
-namespace Diagnostics.NoWarn_specs;
+namespace RuleCatalog.NoWarn_specs;
 
 public class Suppresses
 {
