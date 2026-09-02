@@ -29,7 +29,7 @@ This is a **Roslyn analyzer package** (160+ diagnostics) for .NET project files 
 |---|---|
 | `.net.csproj`                        | SDK | Allows `DotNetProjectFile.Analyzers` to run Roslyn Analyzers on MSBuild files. Ignore it. |
 | `src/DotNetProjectFile.Analyzers/`   | Main analyzer library (`netstandard2.0`) |
-| `src/DotNetProjectFile.Diagnostics/` | Diagnostic metadata collection & NuGet package introspection (`net10.0`) |
+| `src/DotNetProjectFile.RuleCatalog/` | Rule metadata collection & NuGet package introspection (`net10.0`) |
 | `src/.../Analyzers/`                 | Analyzer implementations (MsBuild, Resx, Ini, NuGetConfig, Slnx, Generic) |
 | `src/.../Rule.cs` (+ partials)       | All `DiagnosticDescriptor` definitions |
 | `src/.../build/`                     | MSBuild `.props`/`.targets` shipped in the NuGet package |
@@ -69,9 +69,30 @@ Rule numbering: `Proj00xx` general, `Proj02xx` packaging, `Proj03xx` NuGet confi
 2. Implement the analyzer in the appropriate `Analyzers/` subdirectory.
 3. Add test fixture projects under `projects/` if needed.
 4. Add tests under `specs/Specs/` matching the source structure.
-5. Update `docs/` with the new rule documentation.
+5. Update `docs/` with the new rule documentation:
+   - Identify the category of the rule (e.g., `SLNX`, `MSBuild`, `Packaging`, `Publishing`, `Test projects`, `Licensing`, `Central Package Management`, `Resource file rules`, `Generic`, `NuGet configuration`, `INI`, `.globalconfig`, `.editorconfig`, `JSON`, `Analyzers`, `Other`, `Design`, `Formatting`).
+   - Create `docs/rules/ProjXXXX.md` where `ProjXXXX` is the rule ID:
+     - Use the exact Jekyll front matter template:
+       ```yaml
+       ---
+       parent: <CategoryName>
+       ancestor: Rules
+       permalink: /rules/ProjXXXX
+       ---
+       ```
+     - Use a title of the format `# ProjXXXX: Rule Name`.
+     - Provide a clear explanation of why the rule exists and how to address it.
+     - Include `## Non-compliant` and `## Compliant` code blocks showing examples of the bad practice and its fix.
+   - Update `docs/README.md`:
+     - Locate the correct category header in the document.
+     - Add the new rule link in sequential/numerical order:
+       `* [**ProjXXXX** Rule Name](rules/ProjXXXX.md)`
+   - Update `src/DotNetProjectFile.Analyzers/README.md`:
+     - Locate the correct category header in the document.
+     - Add the new rule link in sequential/numerical order:
+       `* [**ProjXXXX** Rule Name](https://dotnet-project-file-analyzers.github.io/rules/ProjXXXX.html)`
 
 ## Gotchas
 
 * **Do not modify `.net.csproj`:** This file is exclusively for running Roslyn Analyzers. Agents must completely ignore and skip this file during development.
-* **Do not modify or read `src/DotNetProjectFile.Diagnostics/Data/DiagnosticCollection.json`:** This file is huge, and is data about analyzers.
+* **Do not modify or read `src/DotNetProjectFile.RuleCatalog/Data/DiagnosticCollection.json`:** This file is huge, and is data about analyzers.
