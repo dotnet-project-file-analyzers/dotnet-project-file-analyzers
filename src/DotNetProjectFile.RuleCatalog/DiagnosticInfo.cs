@@ -78,6 +78,10 @@ public sealed record DiagnosticInfo :
     [JsonPropertyName("obsolete")]
     public string? Obsolete { get; init; }
 
+    /// <summary>True if the rule is not configurable (e.g. compiler errors).</summary>
+    [JsonIgnore]
+    public bool NotConfigurable => CustomTags.Contains("NotConfigurable");
+
     [Pure]
     public DiagnosticInfo Update(DiagnosticInfo update) => update with
     {
