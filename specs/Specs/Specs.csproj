@@ -53,7 +53,6 @@
   </ItemGroup>
 
   <ItemGroup Label="Test case C# files">
-    <!--Compile Remove="Cases/*.*" /-->
     <None Include="Cases/*.*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
