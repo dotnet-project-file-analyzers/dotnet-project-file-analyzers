@@ -38,4 +38,10 @@ public class Reports_not_configurable_rule_IDs_in
             Issue.WRN("Proj1008", "Rule SA1603 is not-configurable and cannot be modified").WithSpan(03, 00, 03, 36),
             Issue.WRN("Proj1008", "Rule CS1680 is not-configurable and cannot be modified").WithSpan(04, 00, 04, 36),
             Issue.WRN("Proj1008", "Rule CS1681 is not-configurable and cannot be modified").WithSpan(05, 00, 05, 36));
+
+    [Test]
+    public void CSharp_files() => new DotNetProjectFile.Analyzers.CSharp.RemoveIneffectiveRuleConfiguration()
+        .ForCS()
+        .AddSource("Cases/Remove_ineffective_rule_configuration.cs")
+        .Verify();
 }
