@@ -1348,7 +1348,7 @@ public static partial class Rule
 
     public static DiagnosticDescriptor RemoveConfigurationNotConfigurableRule => New(
         id: 1008,
-        title: "Remove rule configuration for not-configurable rule",
+        title: "Remove configuration for not-configurable rule",
         message: "Rule {0} is not-configurable and cannot be modified",
         description:
             "Configuring severity or suppression of non-configurable rules " +
