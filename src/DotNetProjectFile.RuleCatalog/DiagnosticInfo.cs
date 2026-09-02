@@ -93,14 +93,21 @@ public sealed record DiagnosticInfo :
     };
 
     [Pure]
-    internal DiagnosticInfo Save(NuGetVersion? version) => this with
+    internal DiagnosticInfo Save(NuGetVersion? version) => (this with
     {
         Version = Version == version ? null : Version,
         Title = Title.NullIfEmpty(),
         Description = Description.NullIfEmpty(),
         HelpLinkUri = HelpLinkUri.NullIfEmpty(),
         Obsolete = Obsolete.NullIfEmpty(),
-    };
+    }).Dropped();
+
+    /// <summary>Set a dropped message if applicable.</summary>
+    [Pure]
+    private DiagnosticInfo Dropped()
+        => Version is not null && Obsolete is null or "This rule is deprecated."
+        ? this with { Obsolete = "This rule has been dropped." }
+        : this;
 
     [Pure]
     internal DiagnosticInfo Load(NuGetVersion? version) => this with { Version = Version ?? version };
