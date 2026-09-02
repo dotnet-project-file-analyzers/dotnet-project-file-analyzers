@@ -1,9 +1,9 @@
 namespace Rules.Remove_ineffective_rule_configuration;
 
-public class Reports
+public class Reports_not_configurable_rule_IDs_in
 {
     [Test]
-    public void on_not_configurable_rule_IDs() => new RemoveIneffectiveRuleConfiguration().ForInlineCsproj("""
+    public void MSBuild_files() => new RemoveIneffectiveRuleConfiguration().ForInlineCsproj("""
         <Project Sdk="Microsoft.NET.Sdk">
 
           <PropertyGroup>
@@ -20,4 +20,22 @@ public class Reports
             Issue.WRN("Proj1008", "Rule SA1603 is not-configurable and cannot be modified").WithSpan(05, 04, 05, 52),
             Issue.WRN("Proj1008", "Rule CS1680 is not-configurable and cannot be modified").WithSpan(06, 04, 06, 67),
             Issue.WRN("Proj1008", "Rule CS1681 is not-configurable and cannot be modified").WithSpan(06, 04, 06, 67));
+
+    [Test]
+    public void GlobalConfig_files() => new DotNetProjectFile.Analyzers.GlobalConfig.RemoveIneffectiveRuleConfiguration().ForInlineGlobalconfig("""
+        is_global = true
+
+        dotnet_diagnostic.CS0016.severity   = none
+        dotnet_diagnostic.SA1603.severity   = warning
+        dotnet_diagnostic.CS1680.severity   = suggestion
+        dotnet_diagnostic.CS1681.severity   = error
+
+        dotnet_diagnostic.IDE1006.severity  = none
+        
+        """)
+        .HasIssues(
+            Issue.WRN("Proj1008", "Rule CS0016 is not-configurable and cannot be modified").WithSpan(02, 00, 02, 36),
+            Issue.WRN("Proj1008", "Rule SA1603 is not-configurable and cannot be modified").WithSpan(03, 00, 03, 36),
+            Issue.WRN("Proj1008", "Rule CS1680 is not-configurable and cannot be modified").WithSpan(04, 00, 04, 36),
+            Issue.WRN("Proj1008", "Rule CS1681 is not-configurable and cannot be modified").WithSpan(05, 00, 05, 36));
 }
