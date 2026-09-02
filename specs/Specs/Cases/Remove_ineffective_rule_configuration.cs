@@ -3,6 +3,8 @@ using System.Diagnostics.CodeAnalysis;
 #pragma warning disable S101
 #pragma warning disable CS1680 // Noncompliant {{Rule CS1680 is not-configurable and cannot be modified}}
 //                      ^^^^^^
+#pragma warning disable AK1001 // Noncompliant {{Rule AK1001 is does not longer exist}}
+//                      ^^^^^^
 
 [assembly: SuppressMessage("Category", "CS0016")] // Noncompliant {{Rule CS0016 is not-configurable and cannot be modified}}
 //                                     ^^^^^^^^

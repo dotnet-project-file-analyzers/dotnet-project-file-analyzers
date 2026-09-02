@@ -18,7 +18,7 @@ public sealed class RemoveIneffectiveRuleConfiguration() : MsBuildProjectFileAna
     {
         foreach (var node in context.File.DescendantsAndSelf().OfType<WarnBase>())
         {
-            foreach (var id in node.RuleIds.Where(RoslynRules.NotConfigurables.Contains))
+            foreach (var id in node.RuleIds)
             {
                 if (RoslynRules.NotConfigurables.Contains(id))
                 {
