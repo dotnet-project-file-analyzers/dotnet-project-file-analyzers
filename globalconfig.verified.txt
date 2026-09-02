@@ -135,6 +135,7 @@ dotnet_diagnostic.Proj1002.severity = warning    # Use Microsoft's .NET analyzer
 dotnet_diagnostic.Proj1003.severity = warning    # Use Sonar analyzers for packages
 dotnet_diagnostic.Proj1005.severity = warning    # Suppress NuGet issues per package
 dotnet_diagnostic.Proj1006.severity = warning    # Suppress NuGet advisories per vulnerability
+dotnet_diagnostic.Proj1008.severity = warning    # Remove ineffective rule configurations
 dotnet_diagnostic.Proj1100.severity = none       # Avoid using Moq
 dotnet_diagnostic.Proj1101.severity = warning    # Package references should have stable versions
 dotnet_diagnostic.Proj1102.severity = warning    # Use Coverlet Collector or MSBuild
