@@ -3,12 +3,20 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace DotNetProjectFile.Analyzers.CSharp;
 
-/// <summary>Implements <see cref="Rule.RemoveIneffectiveRuleConfiguration"/>.</summary>
+/// <summary>
+/// Implements
+/// <see cref="Rule.RemoveConfigurationNotConfigurableRule"/>
+/// <see cref="Rule.RemoveDroppedRuleConfiguration"/>
+/// .</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp)]
 public sealed class RemoveIneffectiveRuleConfiguration() : DiagnosticAnalyzer
 {
     /// <inheritdoc />
-    public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics => [Rule.RemoveIneffectiveRuleConfiguration];
+    public override ImmutableArray<DiagnosticDescriptor> SupportedDiagnostics =>
+    [
+        Rule.RemoveConfigurationNotConfigurableRule,
+        Rule.RemoveDroppedRuleConfiguration,
+    ];
 
     /// <inheritdoc />
     public override void Initialize(AnalysisContext context)
@@ -26,13 +34,9 @@ public sealed class RemoveIneffectiveRuleConfiguration() : DiagnosticAnalyzer
             .Select(t => t.GetStructure())
             .OfType<PragmaWarningDirectiveTriviaSyntax>()
             .SelectMany(p => p.ErrorCodes)
-            .OfType<IdentifierNameSyntax>()
-            .Where(code => RoslynRules.NotConfigurables.Contains(code.Identifier.Text)))
+            .OfType<IdentifierNameSyntax>())
         {
-            context.ReportDiagnostic(Diagnostic.Create(
-                Rule.RemoveIneffectiveRuleConfiguration,
-                code.GetLocation(),
-                code.Identifier.Text));
+            Report(context, code, code.Identifier.Text);
         }
     }
 
@@ -42,13 +46,27 @@ public sealed class RemoveIneffectiveRuleConfiguration() : DiagnosticAnalyzer
 
         if (IsSuppressMessage(attribute)
             && CheckId(attribute) is { } checkId
-            && context.SemanticModel.GetConstantValue(checkId, context.CancellationToken) is { HasValue: true, Value: string id }
-            && RoslynRules.NotConfigurables.Contains(Trim(id)))
+            && context.SemanticModel.GetConstantValue(checkId, context.CancellationToken) is { HasValue: true, Value: string id })
+        {
+            Report(context, checkId, Trim(id));
+        }
+    }
+
+    private static void Report(SyntaxNodeAnalysisContext context, SyntaxNode node, string id)
+    {
+        if (RoslynRules.NotConfigurables.Contains(id))
         {
             context.ReportDiagnostic(Diagnostic.Create(
-               Rule.RemoveIneffectiveRuleConfiguration,
-               checkId.GetLocation(),
-               Trim(id)));
+               Rule.RemoveConfigurationNotConfigurableRule,
+               node.GetLocation(),
+               id));
+        }
+        else if (RoslynRules.Dropped.Contains(id))
+        {
+            context.ReportDiagnostic(Diagnostic.Create(
+               Rule.RemoveDroppedRuleConfiguration,
+               node.GetLocation(),
+               id));
         }
     }
 

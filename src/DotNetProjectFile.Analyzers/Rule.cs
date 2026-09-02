@@ -1346,12 +1346,22 @@ public static partial class Rule
         tags: ["NuGet", "suppression"],
         category: Category.Security);
 
-    public static DiagnosticDescriptor RemoveIneffectiveRuleConfiguration => New(
+    public static DiagnosticDescriptor RemoveConfigurationNotConfigurableRule => New(
         id: 1008,
-        title: "Remove ineffective rule configurations",
+        title: "Remove rule configuration for not-configurable rule",
         message: "Rule {0} is not-configurable and cannot be modified",
         description:
-            "Configuring severity or suppression of non-configurable rules, " +
+            "Configuring severity or suppression of non-configurable rules " +
+            "are redundant and should be removed.",
+        tags: ["suppression", "severity", "warning", "error"],
+        category: Category.Configuration);
+
+    public static DiagnosticDescriptor RemoveDroppedRuleConfiguration => New(
+        id: 1009,
+        title: "Remove configuration for dropped rule",
+        message: "Rule {0} is does not longer exist",
+        description:
+            "Configuring severity or suppression of dropped rules " +
             "are redundant and should be removed.",
         tags: ["suppression", "severity", "warning", "error"],
         category: Category.Configuration);
