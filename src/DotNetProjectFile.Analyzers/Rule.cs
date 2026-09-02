@@ -1347,11 +1347,12 @@ public static partial class Rule
         category: Category.Security);
 
     public static DiagnosticDescriptor RemoveIneffectiveRuleConfiguration => New(
-        id: 1007,
-        title: "Remove Ineffective Rule Configurations",
+        id: 1008,
+        title: "Remove ineffective rule configurations",
         message: "Rule {0} is not-configurable and cannot be modified",
         description:
-            "?",
+            "Configuring severity or suppression of non-configurable rules, " +
+            "are redundant and should be removed.",
         tags: ["suppression", "severity", "warning", "error"],
         category: Category.Configuration);
 
