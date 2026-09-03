@@ -20,7 +20,7 @@ public class Reports_not_configurable_rule_IDs_in
             Issue.WRN("Proj1008", "Rule SA1603 is not-configurable and cannot be modified").WithSpan(05, 04, 05, 52),
             Issue.WRN("Proj1008", "Rule CS1680 is not-configurable and cannot be modified").WithSpan(06, 04, 06, 74),
             Issue.WRN("Proj1008", "Rule CS1681 is not-configurable and cannot be modified").WithSpan(06, 04, 06, 74),
-            Issue.WRN("Proj1009", "Rule AK1001 is does not longer exist").WithSpan(06, 04, 06, 74));
+            Issue.WRN("Proj1009", "Rule AK1001 does no longer exist").WithSpan(06, 04, 06, 74));
 
     [Test]
     public void GlobalConfig_files() => new DotNetProjectFile.Analyzers.GlobalConfig.RemoveIneffectiveRuleConfiguration().ForInlineGlobalconfig("""
