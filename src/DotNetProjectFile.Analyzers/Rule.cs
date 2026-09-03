@@ -1359,7 +1359,7 @@ public static partial class Rule
     public static DiagnosticDescriptor RemoveDroppedRuleConfiguration => New(
         id: 1009,
         title: "Remove configuration for dropped rule",
-        message: "Rule {0} is does not longer exist",
+        message: "Rule {0} does no longer exist",
         description:
             "Configuring severity or suppression of dropped rules " +
             "are redundant and should be removed.",
