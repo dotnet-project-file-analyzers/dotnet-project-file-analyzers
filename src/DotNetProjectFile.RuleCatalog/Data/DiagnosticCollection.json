@@ -824,7 +824,8 @@
           "url": "https://getakka.net/",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.1.2",
@@ -835,7 +836,8 @@
           "url": "https://getakka.net/articles/debugging/rules/AK1001.html",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.2.2",
@@ -916,7 +918,8 @@
           "url": "https://getakka.net/",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.1.2",
@@ -987,7 +990,8 @@
           "url": "https://getakka.net/",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.1.0",
@@ -998,7 +1002,8 @@
           "url": "https://getakka.net/",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.1.0",
@@ -1009,7 +1014,8 @@
           "url": "https://getakka.net/",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         }
       ]
     },
@@ -1128,7 +1134,8 @@
           "desc": "Await is the last statement of the method so you can return Task and await in the caller method.",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.1.0",
@@ -1149,7 +1156,8 @@
           "title": "Long running / blocking operations under an async method",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.1.0",
@@ -1170,7 +1178,8 @@
           "title": "Avoid fire \u0026 forget async methods",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.1.0",
@@ -1666,7 +1675,8 @@
           "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/7a66f7468da6ce1477753a02e416e04bc9a44e45/_pages/2200_FrameworkGuidelines.md#av0000",
           "tags": null,
           "level": "Hidden",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.6.0",
@@ -2162,7 +2172,8 @@
           "url": "https://github.com/dennisdoomen/CSharpGuidelines/blob/master/Src/Guidelines/2200_FrameworkGuidelines.md",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -2420,7 +2431,8 @@
           "title": "Value type to reference type conversion causing boxing allocation",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2430,7 +2442,8 @@
           "title": "Display class allocation to capture closure",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2440,7 +2453,8 @@
           "title": "Closure Allocation Source",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2450,7 +2464,8 @@
           "title": "Delegate on struct instance caused a boxing allocation",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2460,7 +2475,8 @@
           "title": "Possible allocation of reference type enumerator",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2471,7 +2487,8 @@
           "url": "http://msdn.microsoft.com/en-us/library/bb397696.aspx",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2481,7 +2498,8 @@
           "title": "Explicit new array type allocation",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2491,7 +2509,8 @@
           "title": "Explicit new reference type allocation",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2501,7 +2520,8 @@
           "title": "Implicit new array creation allocation",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2511,7 +2531,8 @@
           "title": "Array allocation for params parameter",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2521,7 +2542,8 @@
           "title": "Initializer reference type allocation",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2531,7 +2553,8 @@
           "title": "Lambda or anonymous method in a generic method allocates a delegate instance",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2541,7 +2564,8 @@
           "title": "Let clause induced allocation",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2551,7 +2575,8 @@
           "title": "Delegate allocation from a method group",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.9",
@@ -2561,7 +2586,8 @@
           "title": "Delegate allocation from a method group",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2572,7 +2598,8 @@
           "url": "http://msdn.microsoft.com/en-us/library/2839d5h5(v=vs.110).aspx",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0.6",
@@ -2582,7 +2609,8 @@
           "title": "Non-overridden virtual method call on value type",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         }
       ]
     },
@@ -3794,7 +3822,8 @@
           "title": "CAC001",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         }
       ]
     },
@@ -3811,7 +3840,8 @@
           "desc": "Classes with side-effects should not be used in non-Isolated tests.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -3822,7 +3852,8 @@
           "desc": "Static fields should not have client-specific or mutable data, otherwise they will not be safe in undifferentiated servers.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.8.0",
@@ -3833,7 +3864,8 @@
           "desc": "Classes marked as immutable or that implement interfaces marked immutable should be immutable.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.11.0",
@@ -3844,7 +3876,8 @@
           "desc": "Singletons should be marked with the [Immutable] attribute.",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.11.0",
@@ -3875,7 +3908,8 @@
           "desc": "Statics.Audited and Statics.Unaudited are mutually exclusive. Remove at least one of them.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.18.0",
@@ -3886,7 +3920,8 @@
           "desc": "Unnecessary static annotations should be removed to keep the code base clean",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.18.0",
@@ -3907,7 +3942,8 @@
           "desc": "The method being called has declared that this parameter cannot receive null, but a null value is being passed.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.32.0",
@@ -3918,7 +3954,8 @@
           "desc": "Singleton registrations must be known at compile-time; please make sure to reference the type\u0027s assembly.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.32.0",
@@ -3929,7 +3966,8 @@
           "desc": "All DI registrations must be known to static analyzers, to allow for thorough analysis.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.34.0",
@@ -3940,7 +3978,8 @@
           "desc": "Singletons.Audited and Singletons.Unaudited are mutually exclusive. Remove at least one of them.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.34.0",
@@ -3951,7 +3990,8 @@
           "desc": "Unnecessary static annotations should be removed to keep the code base clean",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.34.0",
@@ -3962,7 +4002,8 @@
           "desc": "Classes marked as singleton or that implement interfaces marked as a singleton should be marked immutable.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.34.0",
@@ -3983,7 +4024,8 @@
           "desc": "Can only use OldAndBrokenSingletonLocator to inject interfaces with the [Singleton] attribute.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.38.0",
@@ -4004,7 +4046,8 @@
           "desc": "Switch your feature definition to inherit D2L.LP.LaunchDarkly.FeatureDefinition, configure your feature for DI, and use one of the new IInstanceFlag/IOrgFlag/ICurrentOrgFlag interfaces instead",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.46.0",
@@ -4015,7 +4058,8 @@
           "desc": "Non-Singletons should not be marked with the [Singleton] attribute.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.47.0",
@@ -4036,7 +4080,8 @@
           "desc": "Switch your feature definition to inherit D2L.LP.LaunchDarkly.FeatureDefinition, configure your feature for DI, and use one of the new IInstanceFlag/IOrgFlag/ICurrentOrgFlag interfaces instead",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.54.0",
@@ -4047,7 +4092,8 @@
           "desc": "Type\u0027s members\u0027 allowed and used unaudited reasons must be a subset of the type\u0027s immutable exceptions.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.55.0",
@@ -4058,7 +4104,8 @@
           "desc": "Immutable exceptions must be a subset of all parent types\u0027 exceptions.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.55.0",
@@ -4089,7 +4136,8 @@
           "desc": "ImmutableGeneric can only be applied in an assembly where the generic type definition or one of its type arguments is declared.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.58.0",
@@ -4100,7 +4148,8 @@
           "desc": "ImmutableGeneric can only be applied to generic types.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.58.0",
@@ -4111,7 +4160,8 @@
           "desc": "ImmutableGeneric can only be applied to closed (fully bound) generic types.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.63.0",
@@ -4122,7 +4172,8 @@
           "desc": "ICorsHeaderAppender should not be used, as it can introduce security vulnerabilities.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.63.0",
@@ -4143,7 +4194,8 @@
           "desc": "Either an interface, base class or constraint indicates the generic argument must be immutable. Add [Immutable] to the generic argument in the class definintion.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.73.0",
@@ -4154,7 +4206,8 @@
           "desc": "A generic argument is marked [Immutable] but the type supplied was not immutable.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.74.0",
@@ -4265,7 +4318,8 @@
           "desc": "All injectable types need a public constructor in order to be activated.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.95.0",
@@ -4295,7 +4349,8 @@
           "desc": "Use the ContentPath property instead.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.103.0",
@@ -6196,7 +6251,8 @@
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj1000.html",
           "tags": "roslyn;analyzer;csproj;vbproj;fsproj;cblproj",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -6747,7 +6803,8 @@
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj9999.html",
           "tags": "Debug;CompilerVisibleProperty",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         }
       ]
     },
@@ -7186,7 +7243,8 @@
           "desc": "Call assertion is made using legacy Repeated class.",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         }
       ]
     },
@@ -7253,7 +7311,8 @@
           "desc": "Call assertion is made using legacy Repeated class.",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         }
       ]
     },
@@ -7269,7 +7328,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7279,7 +7339,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7289,7 +7350,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7299,7 +7361,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.16.0",
@@ -7309,7 +7372,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7319,7 +7383,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7329,7 +7394,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7339,7 +7405,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7349,7 +7416,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7359,7 +7427,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7369,7 +7438,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.16.0",
@@ -7379,7 +7449,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.16.0",
@@ -7389,7 +7460,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7399,7 +7471,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7409,7 +7482,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.16.0",
@@ -7419,7 +7493,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.12.0",
@@ -7429,7 +7504,8 @@
           "title": "Code Smell",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7439,7 +7515,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7449,7 +7526,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7459,7 +7537,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7469,7 +7548,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7479,7 +7559,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7489,7 +7570,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7499,7 +7581,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7509,7 +7592,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7519,7 +7603,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7529,7 +7614,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -7539,7 +7625,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7549,7 +7636,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7559,7 +7647,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7569,7 +7658,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7579,7 +7669,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7589,7 +7680,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7599,7 +7691,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7609,7 +7702,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7619,7 +7713,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7629,7 +7724,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7639,7 +7735,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7649,7 +7746,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7659,7 +7757,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7669,7 +7768,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7679,7 +7779,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7689,7 +7790,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7699,7 +7801,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7709,7 +7812,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7719,7 +7823,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7729,7 +7834,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7739,7 +7845,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7749,7 +7856,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7759,7 +7867,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7769,7 +7878,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7779,7 +7889,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7789,7 +7900,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7799,7 +7911,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7809,7 +7922,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7819,7 +7933,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7829,7 +7944,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7839,7 +7955,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7849,7 +7966,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7859,7 +7977,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -7869,7 +7988,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.11.2",
@@ -7879,7 +7999,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.11.0",
@@ -7889,7 +8010,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.28.0",
@@ -7935,7 +8057,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -7945,7 +8068,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -7955,7 +8079,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -7965,7 +8090,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -7975,7 +8101,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -7985,7 +8112,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -7995,7 +8123,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8005,7 +8134,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8015,7 +8145,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8025,7 +8156,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8035,7 +8167,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8045,7 +8178,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8055,7 +8189,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8065,7 +8200,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8075,7 +8211,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8085,7 +8222,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8095,7 +8233,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8105,7 +8244,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8115,7 +8255,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8125,7 +8266,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8135,7 +8277,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8145,7 +8288,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8155,7 +8299,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8165,7 +8310,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8175,7 +8321,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8185,7 +8332,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8195,7 +8343,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8205,7 +8354,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8215,7 +8365,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8225,7 +8376,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8235,7 +8387,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8245,7 +8398,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8255,7 +8409,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8265,7 +8420,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8275,7 +8431,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8285,7 +8442,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8295,7 +8453,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8305,7 +8464,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8315,7 +8475,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8325,7 +8486,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8335,7 +8497,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8345,7 +8508,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8355,7 +8519,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8365,7 +8530,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8375,7 +8541,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8385,7 +8552,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8395,7 +8563,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8405,7 +8574,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8415,7 +8585,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8425,7 +8596,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8435,7 +8607,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8445,7 +8618,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8455,7 +8629,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8465,7 +8640,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8475,7 +8651,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8485,7 +8662,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8495,7 +8673,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8505,7 +8684,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8515,7 +8695,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8525,7 +8706,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8535,7 +8717,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8545,7 +8728,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8555,7 +8739,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8565,7 +8750,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8575,7 +8761,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8585,7 +8772,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8595,7 +8783,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8605,7 +8794,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8615,7 +8805,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8625,7 +8816,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8635,7 +8827,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8645,7 +8838,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8655,7 +8849,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8665,7 +8860,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8675,7 +8871,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8685,7 +8882,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8695,7 +8893,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8705,7 +8904,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8715,7 +8915,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8725,7 +8926,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8735,7 +8937,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8745,7 +8948,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.20.0",
@@ -8755,7 +8959,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.20.0",
@@ -8765,7 +8970,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.25.0",
@@ -8775,7 +8981,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.25.0",
@@ -8785,7 +8992,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.25.0",
@@ -8795,7 +9003,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.25.0",
@@ -8805,7 +9014,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.25.0",
@@ -8815,7 +9025,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.25.0",
@@ -8825,7 +9036,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.25.0",
@@ -8835,7 +9047,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.26.0",
@@ -8845,7 +9058,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.26.0",
@@ -8855,7 +9069,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.26.0",
@@ -8865,7 +9080,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.26.0",
@@ -8875,7 +9091,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.26.0",
@@ -8885,7 +9102,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8895,7 +9113,8 @@
           "title": "Code Smell",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.17.3",
@@ -8914,7 +9133,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.8.0",
@@ -8924,7 +9144,8 @@
           "title": "Code Smell",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.10.0",
@@ -8934,7 +9155,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.10.0",
@@ -8944,7 +9166,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.10.0",
@@ -8954,7 +9177,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.10.0",
@@ -8964,7 +9188,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.5.0",
@@ -8974,7 +9199,8 @@
           "title": "POC analyzer",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.12.0",
@@ -8984,7 +9210,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -8994,7 +9221,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -9004,7 +9232,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -9014,7 +9243,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -9024,7 +9254,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.14.0",
@@ -9034,7 +9265,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.9.0",
@@ -9044,7 +9276,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.9.0",
@@ -9054,7 +9287,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.9.0",
@@ -9064,7 +9298,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.9.0",
@@ -9074,7 +9309,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.9.0",
@@ -9084,7 +9320,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.9.0",
@@ -9094,7 +9331,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.9.0",
@@ -9104,7 +9342,8 @@
           "title": "Simplify Assertion",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         }
       ]
     },
@@ -10206,7 +10445,8 @@
           "desc": "CacheAnalyzer for start \u0026 purge cache",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -10503,7 +10743,8 @@
           "desc": "Controls if Semantic models should be cached for syntax trees.\r\nThis can speed up analysis significantly but means Visual Studio uses more memory during compilation.",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.1.3",
@@ -10530,7 +10771,8 @@
           "url": "https://github.com/planetarium/libplanet/blob/main/Libplanet.Analyzers/rules/LAA1001.md",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.10.0",
@@ -10541,7 +10783,8 @@
           "url": "https://github.com/planetarium/libplanet/blob/main/Libplanet.Analyzers/rules/LAA1002.md",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.10.0",
@@ -10551,7 +10794,8 @@
           "title": "DebugMessageWhichShouldNotAppearToUsers",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         }
       ]
     },
@@ -10624,7 +10868,8 @@
           "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0006",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.3.0",
@@ -10890,7 +11135,8 @@
           "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0034",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.6.0",
@@ -10943,7 +11189,8 @@
           "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0039",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.8.0",
@@ -11081,7 +11328,8 @@
           "url": "https://learn.microsoft.com/dotnet/core/testing/mstest-analyzers/mstest0053",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.11.0",
@@ -11378,7 +11626,8 @@
           "url": "https://jokokko.github.io/masstransit.analyzers/rules/MassTransit1000",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.2.1",
@@ -11645,7 +11894,8 @@
           "desc": "Local variable declarations should use the preferred var style based on the configured type category rules.",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.3.9",
@@ -11692,7 +11942,8 @@
           "desc": "Invalid MessagePackObject definition.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -11703,7 +11954,8 @@
           "desc": "Public member must be marked with KeyAttribute or IgnoreMemberAttribute.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -11714,7 +11966,8 @@
           "desc": "Type must be marked with MessagePackObjectAttribute.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.1.80",
@@ -12272,7 +12525,8 @@
           "url": "https://github.com/meziantou/Meziantou.Analyzer/blob/master/docs/Rules/MA0034.md",
           "tags": null,
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.102",
@@ -13585,7 +13839,8 @@
           "url": "https://github.com/meziantou/Meziantou.Analyzer/blob/main/docs/Rules/MA0165.md",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.0.191",
@@ -14322,7 +14577,8 @@
           "desc": "Non-abstract sub-types of DiagnosticAnalyzer should be marked with DiagnosticAnalyzerAttribute(s). The argument to this attribute(s), if any, determine the supported languages for the analyzer. Analyzer types without this attribute will be ignored by the analysis engine.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -14352,7 +14608,8 @@
           "desc": "Diagnostic analyzer is marked as supporting only one language, but the analyzer assembly doesn\u0027t seem to refer to any language specific CodeAnalysis assemblies, and so is likely to work for more than one language. Consider adding an additional language argument to DiagnosticAnalyzerAttribute.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -14383,7 +14640,8 @@
           "desc": "If your diagnostic analyzer and it\u0027s reported diagnostics need to be localizable, then the supported DiagnosticDescriptors used for constructing the diagnostics must also be localizable. If so, then localizable argument(s) must be provided for parameter \u0027title\u0027 (and optionally \u0027description\u0027) to the diagnostic descriptor constructor to ensure that the descriptor is localizable.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -14404,7 +14662,8 @@
           "desc": "The author of this interface did not intend to have third party implementations of this interface and reserves the right to change it. Implementing this interface could therefore result in a source or binary compatibility issue with a future version of this interface.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -14415,7 +14674,8 @@
           "desc": "A CodeFixProvider that intends to support fix all occurrences must classify the registered code actions into equivalence classes by assigning it an explicit, non-null equivalence key which is unique for each kind of code action created by this fixer. This enables the FixAllProvider to fix all diagnostics in the required scope by applying code actions from this fixer that are in the equivalence class of the trigger code action.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -14426,7 +14686,8 @@
           "desc": "A CodeFixProvider that intends to support fix all occurrences must classify the registered code actions into equivalence classes by assigning it an explicit, non-null equivalence key which is unique for each kind of code action created by this fixer. This enables the FixAllProvider to fix all diagnostics in the required scope by applying code actions from this fixer that are in the equivalence class of the trigger code action.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -14457,7 +14718,8 @@
           "desc": "Many objects exposed by Roslyn are immutable. The return value from a method invocation on these objects should not be ignored.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.6.0",
@@ -14468,7 +14730,8 @@
           "desc": "The \u0027helpLinkUri\u0027 value is used to show information when this diagnostic in the error list. Every analyzer should have a helpLinkUri specified which points to a help page that does not change over time.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.6.0",
@@ -14479,7 +14742,8 @@
           "desc": "A CodeFixProvider should provide FixAll support to enable users to fix multiple instances of the underlying diagnostic with a single code fix. See documentation at https://github.com/dotnet/roslyn/blob/main/docs/analyzers/FixAllProvider.md for further details.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.6.0",
@@ -14490,7 +14754,8 @@
           "desc": "DiagnosticId for analyzers must be a non-null constant.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.6.0",
@@ -14501,7 +14766,8 @@
           "desc": "DiagnosticId for analyzers must be in specified format.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.6.0",
@@ -14512,7 +14778,8 @@
           "desc": "DiagnosticId must be unique across analyzers.",
           "tags": "CompilationEnd;Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.6.0",
@@ -14523,7 +14790,8 @@
           "desc": "Category for analyzers must be from the specified values.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.6.0",
@@ -14534,7 +14802,8 @@
           "desc": "Invalid entry in analyzer category and diagnostic ID range specification file.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.6.1",
@@ -14567,7 +14836,8 @@
           "desc": "Symbols should be compared for equality, not identity. Use an overload accepting an \u0027IEqualityComparer\u0027 and pass \u0027SymbolEqualityComparer\u0027.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.9.3",
@@ -14577,7 +14847,8 @@
           "title": "Configure generated code analysis",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.9.3",
@@ -14587,7 +14858,8 @@
           "title": "Enable concurrent execution",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -14597,7 +14869,8 @@
           "title": "Types marked with DiagnosticAnalyzerAttribute(s) should inherit from DiagnosticAnalyzer",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -14608,7 +14881,8 @@
           "desc": "The \u0027customTags\u0027 value is used as a way to enable specific actions and filters on diagnostic descriptors based on the specific values of the tags. Every Roslyn analyzer should have at least one tag from the \u0027WellKnownDiagnosticTags\u0027 class.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -14619,7 +14893,8 @@
           "desc": "DiagnosticId for analyzers should not use reserved IDs.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -14630,7 +14905,8 @@
           "desc": "\u0027GetSemanticModel\u0027 is an expensive method to invoke within a diagnostic analyzer because it creates a completely new semantic model, which does not share compilation data with the compiler or other analyzers. This incurs an additional performance cost during semantic analysis. Instead, consider registering a different analyzer action which allows used of a shared \u0027SemanticModel\u0027, such as \u0027RegisterOperationAction\u0027, \u0027RegisterSyntaxNodeAction\u0027, or \u0027RegisterSemanticModelAction\u0027.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.3.0",
@@ -14640,7 +14916,8 @@
           "title": "Define diagnostic title correctly",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.3.0",
@@ -14650,7 +14927,8 @@
           "title": "Define diagnostic message correctly",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.3.0",
@@ -14660,7 +14938,8 @@
           "title": "Define diagnostic description correctly",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.3.3",
@@ -14671,7 +14950,8 @@
           "desc": "Prefer \u0027syntax.IsKind(kind)\u0027 to \u0027syntax.Kind() == kind\u0027 when checking syntax kinds. Code using \u0027IsKind\u0027 is slightly more efficient at runtime, so consistent use of this form where applicable helps improve performance in complex analysis scenarios.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.3.4",
@@ -14702,7 +14982,8 @@
           "desc": "\u0027DiagnosticDescriptor\u0027 assigned to field is used to report a compilation end diagnostic, but the \u0027DiagnosticDescriptor\u0027 constructor used to initialize it does not pass in the required custom tag \u0022CompilationEnd\u0022. See documentation for \u0027WellKnownDiagnosticTags.CompilationEnd\u0027 for details.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.11.0",
@@ -14714,7 +14995,8 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/docs/roslyn-analyzers/rules/RS1038.md",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.11.0",
@@ -14746,7 +15028,8 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/docs/roslyn-analyzers/rules/RS1041.md",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.11.0",
@@ -14757,7 +15040,8 @@
           "desc": "The author of this interface has deprecated implementing this interface.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "4.14.0",
@@ -14768,7 +15052,8 @@
           "desc": "Using a \u0027file\u0027 type is not allowed for implementing analyzers, generators, or code fixers. This can break analyzer loading on some platforms.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -14780,7 +15065,8 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -14792,7 +15078,8 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -14804,7 +15091,8 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "CompilationEnd;Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -14816,7 +15104,8 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "CompilationEnd;Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -14828,7 +15117,8 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -14840,7 +15130,8 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "CompilationEnd;Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -14852,7 +15143,8 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "CompilationEnd;Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -14864,7 +15156,8 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "CompilationEnd;Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -14876,7 +15169,8 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         }
       ]
     },
@@ -34130,7 +34424,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9367)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.6.0",
@@ -34141,7 +34436,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(CS9368)",
           "tags": "Compiler;Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.6.0",
@@ -34850,7 +35146,8 @@
           "url": "https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0050",
           "tags": "Telemetry;EnforceOnBuild_Never;NotConfigurable",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.8.0",
@@ -35253,7 +35550,8 @@
           "url": "https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0190",
           "tags": "Telemetry;EnforceOnBuild_WhenExplicitlyEnabled",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "4.2.0",
@@ -36698,7 +36996,8 @@
           "url": "https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1801",
           "tags": "PortedFromFxCop;Telemetry;EnabledRuleInAggressiveMode",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.0.0",
@@ -37674,7 +37973,8 @@
           "url": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2109",
           "tags": "PortedFromFxCop;Telemetry;EnabledRuleInAggressiveMode",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.0.0",
@@ -37883,7 +38183,8 @@
           "url": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2229",
           "tags": "PortedFromFxCop;Telemetry;EnabledRuleInAggressiveMode",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.0.0",
@@ -39187,7 +39488,8 @@
           "url": "https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/il3000",
           "tags": "Telemetry;EnabledRuleInAggressiveMode",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.0.0",
@@ -39198,7 +39500,8 @@
           "url": "https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/il3001",
           "tags": "Telemetry;EnabledRuleInAggressiveMode",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         }
       ]
     },
@@ -39224,7 +39527,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2001)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39235,7 +39539,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2006)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39246,7 +39551,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2007)",
           "tags": "Compiler;Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39257,7 +39563,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2008)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39278,7 +39585,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2011)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39289,7 +39597,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2012)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39310,7 +39619,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2015)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39321,7 +39631,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2016)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39332,7 +39643,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2017)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39343,7 +39655,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2023)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39364,7 +39677,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2029)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39405,7 +39719,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2033)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39416,7 +39731,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2034)",
           "tags": "Compiler;Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39427,7 +39743,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2038)",
           "tags": "Compiler;Telemetry",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39438,7 +39755,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2042)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39449,7 +39767,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2043)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39460,7 +39779,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2044)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39471,7 +39791,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2045)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -39482,7 +39803,8 @@
           "url": "https://msdn.microsoft.com/query/roslyn.query?appId=roslyn\u0026k=k(BC2046)",
           "tags": "Compiler;Telemetry;NotConfigurable",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "5.3.0",
@@ -54899,7 +55221,8 @@
           "url": "https://docs.microsoft.com/dotnet/fundamentals/code-analysis/style-rules/ide0050",
           "tags": "Telemetry;EnforceOnBuild_Never;NotConfigurable",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.8.0",
@@ -55157,7 +55480,8 @@
           "title": "Possible SQL injection vulnerability.",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -55645,7 +55969,8 @@
           "url": "https://www.mongodb.com/docs/mongodb-analyzer/current/rules/#MALinq2002",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -55703,7 +56028,8 @@
           "title": "Moq: Cannot mock sealed class",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.0.6",
@@ -55724,7 +56050,8 @@
           "title": "Moq: Parameters for mocked interface",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.0.3.40797",
@@ -55734,7 +56061,8 @@
           "title": "Moq: No constructors with such parameters",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.0.4.43043",
@@ -55766,7 +56094,8 @@
           "title": "Moq: Bad callback signature",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.0.7",
@@ -57652,8 +57981,7 @@
       "v": "7.9.0",
       "rules": [
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1000",
           "title": "Unknown NuGet error",
@@ -57664,8 +57992,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1001",
           "title": "Invalid directory packages with version",
@@ -57676,8 +58003,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1002",
           "title": "Invalid centrally managed package",
@@ -57688,8 +58014,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1100",
           "title": "Unable to resolve dependency",
@@ -57700,8 +58025,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1101",
           "title": "Unable to find package",
@@ -57712,8 +58036,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1102",
           "title": "Unable to find fallback package version",
@@ -57724,8 +58047,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1103",
           "title": "Unable to find a stable package version",
@@ -57736,8 +58058,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1104",
           "title": "Project reference does not exist",
@@ -57748,8 +58069,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1105",
           "title": "Unable to read project information",
@@ -57760,8 +58080,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1106",
           "title": "Conflict resolution cannot resolve dependency",
@@ -57772,8 +58091,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1107",
           "title": "Version conflict detected for package",
@@ -57784,8 +58102,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1108",
           "title": "Cycle detected",
@@ -57796,8 +58113,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1201",
           "title": "Package is not compatible with project target framework",
@@ -57808,8 +58124,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1202",
           "title": "Package is not compatible with target framework",
@@ -57820,8 +58135,29 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU1301",
+          "title": "Failed to retrieve information from remote source",
+          "desc": "A network, timeout, or authentication error occurred while requesting package metadata from an HTTP feed.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1301",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU1401",
+          "title": "Missing floating version base",
+          "desc": "The floating version string format used in a package declaration is badly formed or references an invalid base tier.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1401",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1403",
           "title": "Package content hash validation failed",
@@ -57832,8 +58168,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1501",
           "title": "Dependency loop detected",
@@ -57844,8 +58179,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1502",
           "title": "Duplicate directory packages with version",
@@ -57856,8 +58190,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1503",
           "title": "Skipping restoring project",
@@ -57868,8 +58201,51 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "5.10.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU1504",
+          "title": "Duplicate items in project file",
+          "desc": "The project file or central management file contains duplicate declarations for the exact same package identity.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1504",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "6.0.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU1505",
+          "title": "Duplicate PackageReference items",
+          "desc": "The project file contains duplicate PackageReference items.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1505",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "6.0.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU1506",
+          "title": "Duplicate PackageVersion items",
+          "desc": "The Directory.Packages.props file contains duplicate PackageVersion items.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1506",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "6.0.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU1507",
+          "title": "There are multiple package sources defined in your NuGet.Config, but Package Source Mapping is not enabled.",
+          "desc": "Package Source Mapping is recommended for security when using multiple package sources.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1507",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1601",
           "title": "Dependency was resolved to a higher version",
@@ -57880,8 +58256,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1602",
           "title": "Dependency was resolved to a lower version",
@@ -57892,8 +58267,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1603",
           "title": "Package dependency does not contain an exact version",
@@ -57901,11 +58275,11 @@
           "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu1603",
           "tags": "NuGet",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1604",
           "title": "Project dependency does not contain an inclusive lower bound",
@@ -57916,8 +58290,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1605",
           "title": "Detected package downgrade",
@@ -57928,8 +58301,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1606",
           "title": "Warning-as-error: Detected package promotion",
@@ -57940,8 +58312,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1607",
           "title": "Package version is a prerelease version",
@@ -57952,8 +58323,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1608",
           "title": "Detected package version outside of dependency constraint",
@@ -57964,8 +58334,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1701",
           "title": "Package was restored using fallback target framework",
@@ -57976,8 +58345,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1801",
           "title": "Error reading package metadata",
@@ -57988,8 +58356,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU1802",
           "title": "Insecure package source detected",
@@ -58000,8 +58367,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "6.8.0",
           "lang": "C#;Visual Basic",
           "id": "NU1900",
           "title": "Package vulnerability detected",
@@ -58012,8 +58378,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "6.8.0",
           "lang": "C#;Visual Basic",
           "id": "NU1901",
           "title": "Low severity package vulnerability detected",
@@ -58024,8 +58389,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "6.8.0",
           "lang": "C#;Visual Basic",
           "id": "NU1902",
           "title": "Moderate severity package vulnerability detected",
@@ -58036,8 +58400,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "6.8.0",
           "lang": "C#;Visual Basic",
           "id": "NU1903",
           "title": "High severity package vulnerability detected",
@@ -58048,8 +58411,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "6.8.0",
           "lang": "C#;Visual Basic",
           "id": "NU1904",
           "title": "Critical severity package vulnerability detected",
@@ -58060,8 +58422,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.6.0",
           "lang": "C#;Visual Basic",
           "id": "NU3000",
           "title": "Package signing error",
@@ -58072,8 +58433,73 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.6.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU3008",
+          "title": "Package integrity check failed",
+          "desc": "The cryptographic hash value of the actual package files does not match the signature hash value recorded inside the file.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu3008",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.6.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU3018",
+          "title": "Certificate chain building failed",
+          "desc": "The signing certificate cannot be verified against a trusted local root certificate authority or structural anchor point.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu3018",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.6.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU3028",
+          "title": "Timestamp chain building failed",
+          "desc": "The certificate mapping the signing event timestamp anchor fails local authenticity verification or has expired.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu3028",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.6.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU3037",
+          "title": "Package signing certificate expired",
+          "desc": "The author or repository certificate used to wrap the package signature has aged past its explicitly designated validity lifecycle.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu3037",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU5000",
+          "title": "General package creation failure",
+          "desc": "An unclassified blocking error happened during the manifest packaging operation while generating the .nupkg file.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5000",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
+          "lang": "C#;Visual Basic",
+          "id": "NU5012",
+          "title": "Missing execution assembly dependencies",
+          "desc": "The packaging target discovers references that have not been accounted for inside the target dependency metadata block.",
+          "url": "https://learn.microsoft.com/en-us/nuget/reference/errors-and-warnings/nu5012",
+          "tags": "NuGet",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5048",
           "title": "PackageIconUrl is deprecated",
@@ -58084,8 +58510,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5100",
           "title": "Assembly outside of lib folder",
@@ -58096,8 +58521,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5101",
           "title": "Target file already exists",
@@ -58108,8 +58532,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5102",
           "title": "Invalid package type",
@@ -58120,8 +58543,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5103",
           "title": "Missing dependency version",
@@ -58132,8 +58554,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5104",
           "title": "A stable release of a package should not have a prerelease dependency",
@@ -58144,8 +58565,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5105",
           "title": "The package version is semver2 but the package was not marked as semver2",
@@ -58156,8 +58576,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5108",
           "title": "The folder name is invalid",
@@ -58168,8 +58587,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5109",
           "title": "The file name is invalid",
@@ -58180,8 +58598,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5110",
           "title": "Namespace of types in assembly does not match the package ID",
@@ -58192,8 +58609,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5111",
           "title": "Assembly with invalid name",
@@ -58204,8 +58620,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5115",
           "title": "Description is missing",
@@ -58216,8 +58631,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5118",
           "title": "The file is excluded",
@@ -58228,8 +58642,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5125",
           "title": "The license file is not found",
@@ -58240,8 +58653,7 @@
           "enabled": true
         },
         {
-          "f": "1.0.0",
-          "v": "6.12.0",
+          "f": "4.3.0",
           "lang": "C#;Visual Basic",
           "id": "NU5128",
           "title": "Package does not contain lib or ref files for any target framework",
@@ -59654,7 +60066,8 @@
           "desc": "SuppressMessage results in violations of codified coding guidelines.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -59665,7 +60078,8 @@
           "desc": "DataTestMethods are only executed with DataRows",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -59686,7 +60100,8 @@
           "desc": "DataTestMethods should have the same number of parameters of the DataRows, TestMethods should have no arguments",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -59822,7 +60237,8 @@
           "url": "https://github.com/Qowaiv/qowaiv-analyzers/blob/main/rules/QW0002.md",
           "tags": "Error",
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.0.2",
@@ -61293,7 +61709,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1014a",
           "tags": "Unnecessary",
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.1.0",
@@ -61304,7 +61721,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1014i",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61343,7 +61761,8 @@
           "title": "Convert block body to expression-body (or vice versa).",
           "tags": "Unnecessary;NotConfigurable",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.1.0",
@@ -61354,7 +61773,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1016a",
           "tags": null,
           "level": "Hidden",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.1.0",
@@ -61365,7 +61785,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1016b",
           "tags": null,
           "level": "Hidden",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.2.0",
@@ -61376,7 +61797,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1016i",
           "tags": null,
           "level": "Hidden",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61387,7 +61809,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1017",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61408,7 +61831,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1018i",
           "tags": "Unnecessary",
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61458,7 +61882,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1022",
           "tags": null,
           "level": "Hidden",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61468,7 +61893,8 @@
           "title": "Simplify lambda expression parameter list.",
           "tags": "Unnecessary",
           "level": "Hidden",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61479,7 +61905,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1023",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61490,7 +61917,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1024",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61501,7 +61929,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1025",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61512,7 +61941,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1026",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61523,7 +61953,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1027",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61534,7 +61965,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1028",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61545,7 +61977,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1029",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61556,7 +61989,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1030",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61614,7 +62048,8 @@
           "title": "Remove redundant boolean literal.",
           "tags": "Unnecessary",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61635,7 +62070,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1035",
           "tags": "Unnecessary",
           "level": "Hidden",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61646,7 +62082,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1036",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -61657,7 +62094,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1036a",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61678,7 +62116,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1038",
           "tags": "Unnecessary",
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61699,7 +62138,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1040",
           "tags": "Unnecessary",
           "level": "Hidden",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61710,7 +62150,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1041",
           "tags": "Unnecessary",
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61751,7 +62192,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1045",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -61762,7 +62204,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1045a",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61850,7 +62293,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1050i",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61871,7 +62315,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1051a",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61891,7 +62336,8 @@
           "title": "Merge local declaration with return statement.",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61901,7 +62347,8 @@
           "title": "Merge local declaration with return statement.",
           "tags": "Unnecessary",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -61932,7 +62379,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1057",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62001,7 +62449,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1062",
           "tags": "Unnecessary",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62012,7 +62461,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1063",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62023,7 +62473,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1064",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62034,7 +62485,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1065",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62045,7 +62497,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1066",
           "tags": "Unnecessary",
           "level": "Hidden",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -62055,7 +62508,8 @@
           "title": "[deprecated] Remove empty \u0027finally\u0027 clause",
           "tags": "Unnecessary;NotConfigurable",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62066,7 +62520,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1067",
           "tags": "Unnecessary",
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62117,7 +62572,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1072",
           "tags": "Unnecessary",
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62167,7 +62623,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1076",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62198,7 +62655,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1078i",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62239,7 +62697,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1082",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62250,7 +62709,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1083",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62290,7 +62750,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1086",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62301,7 +62762,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1087",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62312,7 +62774,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1088",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62352,7 +62815,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1090i",
           "tags": "Unnecessary",
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62363,7 +62827,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1091",
           "tags": null,
           "level": "Hidden",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.4.0",
@@ -62373,7 +62838,8 @@
           "title": "[deprecated] Remove empty region",
           "tags": "Unnecessary;NotConfigurable",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62384,7 +62850,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1092",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62414,7 +62881,8 @@
           "title": "Use C# 6.0 dictionary initializer.",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62435,7 +62903,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1096i",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62476,7 +62945,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1100",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62487,7 +62957,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1101",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62528,7 +62999,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1104a",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62549,7 +63021,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1106",
           "tags": "Unnecessary",
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62580,7 +63053,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1109",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",
@@ -62658,7 +63132,8 @@
           "title": "Replace yield/return statement with expression statement.",
           "tags": "Unnecessary",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -62668,7 +63143,8 @@
           "title": "Add break statement to switch section.",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -62678,7 +63154,8 @@
           "title": "Add return statement that returns default value.",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -62699,7 +63176,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1119",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -62710,7 +63188,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1120",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -62721,7 +63200,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1121",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -62731,7 +63211,8 @@
           "title": "Add missing semicolon.",
           "tags": null,
           "level": "Hidden",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -62770,7 +63251,8 @@
           "title": "Mark member as static.",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -62791,7 +63273,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1127",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -62801,7 +63284,8 @@
           "title": "Merge local declaration with assignment.",
           "tags": "Unnecessary;NotConfigurable",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -62841,7 +63325,8 @@
           "title": "Replace return with yield return.",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -62901,7 +63386,8 @@
           "title": "Add documentation comment to publicly visible type or member.",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -62971,7 +63457,8 @@
           "title": "Mark containing class as abstract.",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -63001,7 +63488,8 @@
           "title": "Remove inapplicable modifier.",
           "tags": "Unnecessary",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -63011,7 +63499,8 @@
           "title": "Remove unreachable code.",
           "tags": "Unnecessary",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -63021,7 +63510,8 @@
           "title": "Remove implementation from abstract member.",
           "tags": "Unnecessary",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -63032,7 +63522,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1150",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -63052,7 +63543,8 @@
           "title": "Member type must match overriden member type.",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -63063,7 +63555,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1153",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -63203,7 +63696,8 @@
           "title": "Overriding member cannot change access modifiers.",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.3.0",
@@ -63327,7 +63821,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1178",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.4.0",
@@ -63378,7 +63873,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1183",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.4.0",
@@ -63389,7 +63885,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1184",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.4.0",
@@ -63400,7 +63897,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1185",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.5.0",
@@ -63630,7 +64128,8 @@
           "title": "Convert anonymous function to method group (or vice versa).",
           "tags": "Unnecessary;NotConfigurable",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.1.0",
@@ -63641,7 +64140,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1207i",
           "tags": null,
           "level": "Hidden",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.5.0",
@@ -63789,7 +64289,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1219",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.9.0",
@@ -63889,7 +64390,8 @@
           "title": "Unused element in documentation comment.",
           "tags": "Unnecessary;NotConfigurable",
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.0.0",
@@ -63980,7 +64482,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS1237",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "2.2.0",
@@ -64061,7 +64564,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1246a",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.0.0",
@@ -64092,7 +64596,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1248a",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.1.0",
@@ -64103,7 +64608,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS1248i",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.1.0",
@@ -64324,7 +64830,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=ROS0001",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "4.0.0",
@@ -64335,7 +64842,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/",
           "tags": null,
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "4.0.0",
@@ -64517,7 +65025,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS0004",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -64598,7 +65107,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS0011i",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -64629,7 +65139,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0014",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -64650,7 +65161,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS0015i",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -64691,7 +65203,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0022",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -64742,7 +65255,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS0027i",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -64763,7 +65277,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS0028i",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -64814,7 +65329,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS0032i",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -64855,7 +65371,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0038",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -64896,7 +65413,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0043",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -64937,7 +65455,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/RCS0047",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -64988,7 +65507,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS0051i",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.1.0",
@@ -65009,7 +65529,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=RCS0052i",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.1.0",
@@ -65130,7 +65651,8 @@
           "url": "http://pihrt.net/roslynator/analyzer?id=ROS0001",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "4.0.0",
@@ -65141,7 +65663,8 @@
           "url": "https://josefpihrt.github.io/docs/roslynator/analyzers/",
           "tags": null,
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "4.0.0",
@@ -65188,7 +65711,8 @@
           "desc": "Use simplified null check that the C# compiler is aware of.",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.1.11",
@@ -65199,7 +65723,8 @@
           "desc": "Lack of user-defined message may complicate a post-mortem analysis when the code is in flux.",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.2.0",
@@ -65210,7 +65735,8 @@
           "desc": "No allocation contract checks are performed in two stages and are no-op if the assertion is not followed by \u0027?.Requires()\u0027 or \u0027?.Assert()\u0027 call.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.2.0",
@@ -65221,7 +65747,8 @@
           "desc": "Fluent API allows constructing custom assertion messages with no allocations if contract is not violated.",
           "tags": null,
           "level": "Info",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.2.1",
@@ -65503,7 +66030,8 @@
           "title": "A struct replaces \u0027this\u0027 with a new instance.",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.1.0",
@@ -65653,7 +66181,8 @@
           "title": "A [Flags] enum its values are not explicit powers of 2 and its values dont fit in the specified enum type.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.1.0",
@@ -66471,7 +67000,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-1145",
           "tags": "C#;MainSourceScope;TestSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.8.0.4636",
@@ -66631,7 +67161,8 @@
           "desc": "This rule is deprecated, and will eventually be removed.",
           "tags": "C#;MainSourceScope;TestSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule is deprecated."
         },
         {
           "f": "6.4.0.3347",
@@ -66753,7 +67284,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-1523",
           "tags": "C#;SonarWay;MainSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -66998,7 +67530,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-2053",
           "tags": "C#;MainSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -67233,7 +67766,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-2222",
           "tags": "C#;MainSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -67318,7 +67852,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-2255",
           "tags": "C#;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "8.16.0.25740",
@@ -67340,7 +67875,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-2259",
           "tags": "C#;MainSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -67362,7 +67898,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-2278",
           "tags": "C#;MainSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -67602,7 +68139,8 @@
           "desc": "This rule is deprecated, and will eventually be removed.",
           "tags": "C#;MainSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule is deprecated."
         },
         {
           "f": "6.4.0.3347",
@@ -67674,7 +68212,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-2583",
           "tags": "C#;MainSourceScope;TestSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -67686,7 +68225,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-2589",
           "tags": "C#;MainSourceScope;TestSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "8.19.0.28253",
@@ -68381,7 +68921,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-3329",
           "tags": "C#;MainSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.1.0.5212",
@@ -68803,7 +69344,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-3649",
           "tags": "C#;SonarWay;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -68815,7 +69357,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-3655",
           "tags": "C#;MainSourceScope;TestSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -68827,7 +69370,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-3693",
           "tags": "C#;MainSourceScope;TestSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -68957,7 +69501,8 @@
           "desc": "This rule is deprecated, and will eventually be removed.",
           "tags": "C#;MainSourceScope;TestSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule is deprecated."
         },
         {
           "f": "6.4.0.3347",
@@ -69019,7 +69564,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-3900",
           "tags": "C#;MainSourceScope;TestSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -69151,7 +69697,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-3949",
           "tags": "C#;MainSourceScope;TestSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -69193,7 +69740,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-3966",
           "tags": "C#;MainSourceScope;TestSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -69708,7 +70256,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-4158",
           "tags": "C#;MainSourceScope;TestSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.8.0.4636",
@@ -69779,7 +70328,8 @@
           "desc": "This rule is deprecated; use {rule:csharpsquid:S4200} instead.",
           "tags": "C#;MainSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule is deprecated; use S4200 instead."
         },
         {
           "f": "6.5.0.3766",
@@ -69861,7 +70411,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-4347",
           "tags": "C#;MainSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "8.16.0.25740",
@@ -69903,7 +70454,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-4432",
           "tags": "C#;MainSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.1.0.5212",
@@ -69995,7 +70547,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-4529",
           "tags": "C#;SonarWay;MainSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "8.54.0.63966",
@@ -70017,7 +70570,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-4564",
           "tags": "C#;MainSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule is deprecated; use S5753 instead."
         },
         {
           "f": "7.1.0.5212",
@@ -70079,7 +70633,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-4721",
           "tags": "C#;SonarWay;MainSourceScope;TestSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -70091,7 +70646,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-4784",
           "tags": "C#;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule is deprecated; use S2631 instead."
         },
         {
           "f": "7.9.0.7583",
@@ -70103,7 +70659,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-4787",
           "tags": "C#;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule is deprecated; use S4426, S5542, S5547 instead."
         },
         {
           "f": "7.9.0.7583",
@@ -70124,7 +70681,8 @@
           "desc": "This rule is deprecated, and will eventually be removed.",
           "tags": "C#;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -70136,7 +70694,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-4797",
           "tags": "C#;SonarWay;MainSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -70148,7 +70707,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-4817",
           "tags": "C#;SonarWay;MainSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -70160,7 +70720,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-4818",
           "tags": "C#;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -70172,7 +70733,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-4823",
           "tags": "C#;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -70184,7 +70746,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-4825",
           "tags": "C#;SonarWay;MainSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -70196,7 +70759,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-4829",
           "tags": "C#;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "8.1.0.13383",
@@ -70219,7 +70783,7 @@
           "tags": "C#;MainSourceScope",
           "level": "Warning",
           "enabled": true,
-          "obsolete": "This rule is deprecated."
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.17.0.9346",
@@ -70239,7 +70803,8 @@
           "desc": "This rule is deprecated, and will eventually be removed.",
           "tags": "C#;MainSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule is deprecated."
         },
         {
           "f": "8.22.0.31243",
@@ -70361,7 +70926,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-5773",
           "tags": "C#;MainSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "8.56.0.67649",
@@ -70813,7 +71379,8 @@
           "url": "https://rules.sonarsource.com/csharp/RSPEC-6781",
           "tags": "C#;MainSourceScope;TestSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "9.14.0.81108",
@@ -70863,7 +71430,8 @@
           "desc": "This rule is deprecated, and will eventually be removed.",
           "tags": "C#;MainSourceScope;TestSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule is deprecated."
         },
         {
           "f": "9.22.0.87781",
@@ -71109,7 +71677,8 @@
           "title": "File encoding calculator",
           "tags": "MainSourceScope;TestSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.6.0.3969",
@@ -71128,7 +71697,8 @@
           "title": "UCFG generator.",
           "tags": "MainSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "8.27.0.35380",
@@ -71462,7 +72032,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-1145",
           "tags": "Visual Basic;MainSourceScope;TestSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -71614,7 +72185,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-1523",
           "tags": "Visual Basic;SonarWay;MainSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -71766,7 +72338,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-2053",
           "tags": "Visual Basic;MainSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.7.0.7192",
@@ -71828,7 +72401,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-2222",
           "tags": "Visual Basic;MainSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "8.47.0.55603",
@@ -71860,7 +72434,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-2255",
           "tags": "Visual Basic;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "8.16.0.25740",
@@ -71882,7 +72457,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-2259",
           "tags": "Visual Basic;MainSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.17.0.9346",
@@ -72024,7 +72600,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-2353",
           "tags": "Visual Basic;MainSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.4.0.3347",
@@ -72194,7 +72771,8 @@
           "desc": "This rule is deprecated; use {rule:vbnet:S119} instead.",
           "tags": "Visual Basic;MainSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule is deprecated; use S119 instead."
         },
         {
           "f": "6.4.0.3347",
@@ -72234,7 +72812,8 @@
           "desc": "This rule is deprecated, and will eventually be removed.",
           "tags": "Visual Basic;MainSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule is deprecated."
         },
         {
           "f": "6.4.0.3347",
@@ -72276,7 +72855,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-2583",
           "tags": "Visual Basic;MainSourceScope;TestSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "9.8.0.76515",
@@ -72288,7 +72868,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-2589",
           "tags": "Visual Basic;MainSourceScope;TestSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "8.19.0.28253",
@@ -72390,7 +72971,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-3329",
           "tags": "Visual Basic;MainSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.7.0.7192",
@@ -72502,7 +73084,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-3655",
           "tags": "Visual Basic;MainSourceScope;TestSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.7.0.7192",
@@ -72514,7 +73097,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-3693",
           "tags": "Visual Basic;MainSourceScope;TestSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.7.0.7192",
@@ -72584,7 +73168,8 @@
           "desc": "This rule is deprecated, and will eventually be removed.",
           "tags": "Visual Basic;MainSourceScope;TestSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule is deprecated."
         },
         {
           "f": "7.7.0.7192",
@@ -72616,7 +73201,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-3900",
           "tags": "Visual Basic;MainSourceScope;TestSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.7.0.7192",
@@ -72678,7 +73264,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-3949",
           "tags": "Visual Basic;MainSourceScope;TestSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "9.4.0.72892",
@@ -72690,7 +73277,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-3966",
           "tags": "Visual Basic;MainSourceScope;TestSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.5.0.3766",
@@ -72815,7 +73403,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-4158",
           "tags": "Visual Basic;MainSourceScope;TestSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.7.0.7192",
@@ -72927,7 +73516,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-4529",
           "tags": "Visual Basic;SonarWay;MainSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "8.54.0.63966",
@@ -72989,7 +73579,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-4721",
           "tags": "Visual Basic;SonarWay;MainSourceScope;TestSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -73001,7 +73592,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-4784",
           "tags": "Visual Basic;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -73013,7 +73605,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-4787",
           "tags": "Visual Basic;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule is deprecated; use S5542, S5547 instead."
         },
         {
           "f": "7.9.0.7583",
@@ -73034,7 +73627,8 @@
           "desc": "This rule is deprecated, and will eventually be removed.",
           "tags": "Visual Basic;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -73046,7 +73640,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-4797",
           "tags": "Visual Basic;SonarWay;MainSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -73058,7 +73653,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-4817",
           "tags": "Visual Basic;SonarWay;MainSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -73070,7 +73666,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-4818",
           "tags": "Visual Basic;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -73082,7 +73679,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-4823",
           "tags": "Visual Basic;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -73094,7 +73692,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-4825",
           "tags": "Visual Basic;SonarWay;MainSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.0.7583",
@@ -73106,7 +73705,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-4829",
           "tags": "Visual Basic;MainSourceScope",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "8.1.0.13383",
@@ -73129,7 +73729,7 @@
           "tags": "Visual Basic;MainSourceScope",
           "level": "Warning",
           "enabled": true,
-          "obsolete": "This rule is deprecated."
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "7.9.1.7622",
@@ -73139,7 +73739,8 @@
           "desc": "This rule is deprecated, and will eventually be removed.",
           "tags": "Visual Basic;MainSourceScope",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule is deprecated."
         },
         {
           "f": "8.19.0.28253",
@@ -73221,7 +73822,8 @@
           "url": "https://rules.sonarsource.com/vbnet/RSPEC-5773",
           "tags": "Visual Basic;MainSourceScope;SonarWay",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "8.56.0.67649",
@@ -73547,7 +74149,8 @@
           "title": "File encoding calculator",
           "tags": "MainSourceScope;TestSourceScope;NotConfigurable",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "6.6.0.3969",
@@ -73690,7 +74293,8 @@
           "title": "Interpolated string is used for logging",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.1.0",
@@ -73700,7 +74304,8 @@
           "title": "Pass the event ID",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.1.0",
@@ -73710,7 +74315,8 @@
           "title": "Pass the exception",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "0.1.0",
@@ -73720,7 +74326,8 @@
           "title": "Interpolated string is used for logging",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         }
       ]
     },
@@ -73738,7 +74345,8 @@
           "url": "https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA0000Roslyn7446Workaround.md",
           "tags": null,
           "level": "Info",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.1.118",
@@ -75884,7 +76492,8 @@
           "url": "https://github.com/DotNetAnalyzers/StyleCopAnalyzers/blob/master/documentation/SA1652.md",
           "tags": null,
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -75935,7 +76544,8 @@
           "url": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1704",
           "tags": "PortedFromFxCop;Telemetry;EnabledRuleInAggressiveMode",
           "level": "Warning",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.3.3",
@@ -75947,7 +76557,8 @@
           "url": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1714",
           "tags": "PortedFromFxCop;Telemetry;EnabledRuleInAggressiveMode",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "3.3.3",
@@ -75959,7 +76570,8 @@
           "url": "https://learn.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1717",
           "tags": "PortedFromFxCop;Telemetry;EnabledRuleInAggressiveMode",
           "level": "Warning",
-          "enabled": false
+          "enabled": false,
+          "obsolete": "This rule has been dropped."
         }
       ]
     },
@@ -76152,7 +76764,8 @@
           "desc": "Array does not support in ZeroFormatter(except byte[]) because Array have to deserialize all objects. You can use IList\u003CT\u003E instead of T[].",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.5",
@@ -76173,7 +76786,8 @@
           "desc": "Dictionary does not support in ZeroFormatter because Dictionary have to deserialize all objects. You can use IDictionary\u003CTK, TV\u003E, ILazyDictionary\u003CTK, TV\u003E instead of Dictionary.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -76204,7 +76818,8 @@
           "desc": "List does not support in ZeroFormatter because List have to deserialize all objects. You can use IList\u003CT\u003E instead of List.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -76255,7 +76870,8 @@
           "desc": "Type must be class.",
           "tags": null,
           "level": "Error",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.0.0",
@@ -77202,7 +77818,8 @@
           "url": "https://xunit.github.io/xunit.analyzers/rules/xUnit2019",
           "tags": null,
           "level": "Hidden",
-          "enabled": true
+          "enabled": true,
+          "obsolete": "This rule has been dropped."
         },
         {
           "f": "1.2.0",

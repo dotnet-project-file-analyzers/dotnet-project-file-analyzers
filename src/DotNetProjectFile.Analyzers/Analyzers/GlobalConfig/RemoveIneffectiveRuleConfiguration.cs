@@ -3,9 +3,15 @@ using DotNetProjectFile.Ini;
 
 namespace DotNetProjectFile.Analyzers.GlobalConfig;
 
-/// <summary>Implements <see cref="Rule.RemoveIneffectiveRuleConfiguration"/>.</summary>
+/// <summary>
+/// Implements
+/// <see cref="Rule.RemoveConfigurationNotConfigurableRule"/>
+/// <see cref="Rule.RemoveDroppedRuleConfiguration"/>
+/// .</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class RemoveIneffectiveRuleConfiguration() : IniFileAnalyzer(Rule.RemoveIneffectiveRuleConfiguration)
+public sealed class RemoveIneffectiveRuleConfiguration() : IniFileAnalyzer(
+    Rule.RemoveConfigurationNotConfigurableRule,
+    Rule.RemoveDroppedRuleConfiguration)
 {
     /// <inheritdoc />
     public override ImmutableArray<AnalyzerType> ApplicableTo => IniFileTypes.EditorConfig_GlobalConfig;
@@ -13,10 +19,16 @@ public sealed class RemoveIneffectiveRuleConfiguration() : IniFileAnalyzer(Rule.
     /// <inheritdoc />
     protected override void Register(IniFileAnalysisContext context)
     {
-        foreach (var entry in context.File.AnalyzerDiagnosticSeverities
-            .Where(e => e.DiagnosticId is { Length: > 0 } id && RoslynRules.NotConfigurables.Contains(id)))
+        foreach (var entry in context.File.AnalyzerDiagnosticSeverities.Where(e => e.DiagnosticId is { Length: > 0 }))
         {
-            context.ReportDiagnostic(Descriptor, context.File, entry.Entry.Key!.LinePositionSpan, entry.DiagnosticId);
+            if (RoslynRules.NotConfigurables.Contains(entry.DiagnosticId))
+            {
+                context.ReportDiagnostic(Rule.RemoveConfigurationNotConfigurableRule, context.File, entry.Entry.Key!.LinePositionSpan, entry.DiagnosticId);
+            }
+            else if (RoslynRules.Dropped.Contains(entry.DiagnosticId))
+            {
+                context.ReportDiagnostic(Rule.RemoveDroppedRuleConfiguration, context.File, entry.Entry.Key!.LinePositionSpan, entry.DiagnosticId);
+            }
         }
     }
 }

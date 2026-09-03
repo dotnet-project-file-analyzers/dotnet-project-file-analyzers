@@ -78,6 +78,9 @@ public sealed record DiagnosticInfo :
     [JsonPropertyName("obsolete")]
     public string? Obsolete { get; init; }
 
+    [JsonIgnore]
+    public bool Dropped { get; init; }
+
     /// <summary>True if the rule is not configurable (e.g. compiler errors).</summary>
     [JsonIgnore]
     public bool NotConfigurable => CustomTags.Contains("NotConfigurable");
@@ -93,17 +96,29 @@ public sealed record DiagnosticInfo :
     };
 
     [Pure]
-    internal DiagnosticInfo Save(NuGetVersion? version) => this with
+    internal DiagnosticInfo Save(NuGetVersion? version) => (this with
     {
         Version = Version == version ? null : Version,
         Title = Title.NullIfEmpty(),
         Description = Description.NullIfEmpty(),
         HelpLinkUri = HelpLinkUri.NullIfEmpty(),
         Obsolete = Obsolete.NullIfEmpty(),
-    };
+    }).Drop();
+
+    /// <summary>Set a dropped message if applicable.</summary>
+    [Pure]
+    private DiagnosticInfo Drop()
+        => Version is not null && Obsolete is null or "This rule is deprecated."
+        ? this with { Obsolete = "This rule has been dropped." }
+        : this;
 
     [Pure]
-    internal DiagnosticInfo Load(NuGetVersion? version) => this with { Version = Version ?? version };
+    internal DiagnosticInfo Load(NuGetVersion? version)
+        => this with
+        {
+            Dropped = Version is { },
+            Version = Version ?? version,
+        };
 
     /// <inheritdoc />
     [Pure]
