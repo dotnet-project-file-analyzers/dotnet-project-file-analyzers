@@ -10,6 +10,8 @@ internal sealed class DiagnosticAnalyzersLoader : IDisposable
 {
     private readonly AssemblyLoadContext Context = new("AssemblyLoaderContext", isCollectible: true);
 
+    public DiagnosticAnalyzersLoader() => Context.Resolving += OnResolveDependency;
+
     public ImmutableArray<DiagnosticAnalyzer> Load(Stream stream)
     {
         try
@@ -22,6 +24,8 @@ internal sealed class DiagnosticAnalyzersLoader : IDisposable
             return [];
         }
     }
+
+    private static Assembly? OnResolveDependency(AssemblyLoadContext context, AssemblyName name) => null;
 
     private static DiagnosticAnalyzer? Analyzers(Type type)
     {
@@ -48,6 +52,7 @@ internal sealed class DiagnosticAnalyzersLoader : IDisposable
         if (!IsDisposed)
         {
             Context.Unload();
+            Context.Resolving -= OnResolveDependency;
             IsDisposed = true;
         }
     }

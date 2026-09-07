@@ -89,15 +89,11 @@ public static class NuGetRepository
             using var reader = dll.OpenRead();
 
             await reader.CopyToAsync(stream, cancellation);
+            stream.Position = 0;
 
             using var loader = new DiagnosticAnalyzersLoader();
 
             var analyzers = loader.Load(stream);
-
-            if(analyzers.Any())
-            {
-
-            }
 
             foreach (var analyzer in analyzers)
             {
