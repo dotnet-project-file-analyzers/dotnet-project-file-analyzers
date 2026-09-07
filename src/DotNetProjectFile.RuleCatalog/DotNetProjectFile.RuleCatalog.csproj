@@ -24,7 +24,7 @@
 
   <ItemGroup Label="Development dependencies">
     <PackageReference PrivateAssets="all" Include="AsyncFixer" Version="2.1.0" />
-    <PackageReference PrivateAssets="all" Include="Qowaiv.Analyzers.CSharp" Version="2.5.1" />
+    <PackageReference PrivateAssets="all" Include="Qowaiv.Analyzers.CSharp" Version="2.6.0" />
     <PackageReference PrivateAssets="all" Include="Qowaiv.Diagnostics.Contracts" Version="2.1.0" />
     <PackageReference PrivateAssets="all" Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" />
   </ItemGroup>
