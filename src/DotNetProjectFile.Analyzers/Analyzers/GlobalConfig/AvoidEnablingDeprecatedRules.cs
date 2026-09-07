@@ -3,9 +3,9 @@ using DotNetProjectFile.Ini;
 
 namespace DotNetProjectFile.Analyzers.GlobalConfig;
 
-/// <summary>Implements <see cref="Rule.AvoidEnablingObsoleteRules"/>.</summary>
+/// <summary>Implements <see cref="Rule.AvoidEnablingDeprecatedRules"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class AvoidEnablingObsoleteRules() : IniFileAnalyzer(Rule.AvoidEnablingObsoleteRules)
+public sealed class AvoidEnablingDeprecatedRules() : IniFileAnalyzer(Rule.AvoidEnablingDeprecatedRules)
 {
     /// <inheritdoc />
     public override ImmutableArray<AnalyzerType> ApplicableTo => IniFileTypes.EditorConfig_GlobalConfig;
@@ -13,12 +13,12 @@ public sealed class AvoidEnablingObsoleteRules() : IniFileAnalyzer(Rule.AvoidEna
     /// <inheritdoc />
     protected override void Register(IniFileAnalysisContext context)
     {
-        foreach (var entry in context.File.AnalyzerDiagnosticSeverities.Where(IsEnabledObsolete))
+        foreach (var entry in context.File.AnalyzerDiagnosticSeverities.Where(IsEnabledOrDeprecated))
         {
             context.ReportDiagnostic(Descriptor, context.File, entry.Key.LinePositionSpan, entry.DiagnosticId);
         }
     }
 
-    private static bool IsEnabledObsolete(AnalyzerDiagnosticSeverity entry)
-        => entry.Level >= DiagnosticSeverityLevel.silent && RoslynRules.Obsolete.Contains(entry.DiagnosticId);
+    private static bool IsEnabledOrDeprecated(AnalyzerDiagnosticSeverity entry)
+        => entry.Level >= DiagnosticSeverityLevel.silent && RoslynRules.Deprecated.Contains(entry.DiagnosticId);
 }

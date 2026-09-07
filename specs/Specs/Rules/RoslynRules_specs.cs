@@ -37,6 +37,6 @@ public class Sets_match_DiagnosticCollection_for
 #if DEBUG
         Console.WriteLine(string.Join(';', ids.Order()));
 #endif
-        RoslynRules.Obsolete.Should().BeSameSet(ids);
+        RoslynRules.Deprecated.Should().BeSameSet(ids);
     }
 }
