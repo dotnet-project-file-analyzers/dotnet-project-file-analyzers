@@ -137,6 +137,7 @@ dotnet_diagnostic.Proj1005.severity = warning    # Suppress NuGet issues per pac
 dotnet_diagnostic.Proj1006.severity = warning    # Suppress NuGet advisories per vulnerability
 dotnet_diagnostic.Proj1008.severity = warning    # Remove configuration for not-configurable rule
 dotnet_diagnostic.Proj1009.severity = warning    # Remove configuration for dropped rule
+dotnet_diagnostic.Proj1010.severity = warning    # Avoid enabling deprecated rules
 dotnet_diagnostic.Proj1100.severity = none       # Avoid using Moq
 dotnet_diagnostic.Proj1101.severity = warning    # Package references should have stable versions
 dotnet_diagnostic.Proj1102.severity = warning    # Use Coverlet Collector or MSBuild
