@@ -150,6 +150,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj1007** Non-Roslyn languages require .NET Project File Analyzers SDK](https://dotnet-project-file-analyzers.github.io/rules/Proj1007.html)
 * [**Proj1008** Remove configuration for not-configurable rule](https://dotnet-project-file-analyzers.github.io/rules/Proj1008.html)
 * [**Proj1009** Remove configuration for dropped rule](https://dotnet-project-file-analyzers.github.io/rules/Proj1009.html)
+* [**Proj1010** Avoid enabling deprecated rules](https://dotnet-project-file-analyzers.github.io/rules/Proj1010.html)
 
 ### Formatting
 * [**Proj1700** Indent XML](https://dotnet-project-file-analyzers.github.io/rules/Proj1700.html)

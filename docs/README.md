@@ -200,6 +200,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj1007** Non-Roslyn languages require .NET Project File Analyzers SDK](rules/Proj1007.md)
 * [**Proj1008** Remove configuration for not-configurable rule](rules/Proj1008.md)
 * [**Proj1009** Remove configuration for dropped rule](rules/Proj1009.md)
+* [**Proj1010** Avoid enabling deprecated rules](rules/Proj1010.md)
 
 ### Design
 * [**Proj1300** Avoid project references to executables](rules/Proj1300.md)
