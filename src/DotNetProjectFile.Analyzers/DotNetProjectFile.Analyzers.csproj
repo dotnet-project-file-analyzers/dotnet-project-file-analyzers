@@ -80,11 +80,15 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.17.0</Version>
+    <Version>1.18.0</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+]]>
+    </ToBeReleased>
+    <PackageReleaseNotes>
+      <![CDATA[
 v1.18.0
 - Proj0055: Enable nullability analysis for C#. (NEW RULE)
 - Proj0056: Enable nullability analysis for F#. (NEW RULE)
@@ -97,12 +101,9 @@ v1.18.0
 - Proj0805: Report on issues in prop files. (FN)
 - Proj1008: Remove configuration for not-configurable rule. (NEW RULE)
 - Proj1009: Remove configuration for dropped rule. (NEW RULE)
+- Proj1010: Avoid enabling deprecated rules. (NEW RULE)
 - Proj1200: Report on issues in prop files. (FN)
 - Proj1300: Ignore Aspire projects. (FP)
-]]>
-    </ToBeReleased>
-    <PackageReleaseNotes>
-      <![CDATA[
 v1.17.0
 - Proj4011: Define keys once in an INI section. (NEW RULE)
 - Proj5006: Files included in an SLNX should exist. (NEW RULE)

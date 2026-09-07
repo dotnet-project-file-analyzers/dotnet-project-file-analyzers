@@ -1376,7 +1376,6 @@ public static partial class Rule
         tags: [".globalconfig", "diagnostic", "deprecated"],
         category: Category.Configuration);
 
-
     public static DiagnosticDescriptor AvoidUsingMoq => New(
         id: 1100,
         title: "Avoid using Moq",

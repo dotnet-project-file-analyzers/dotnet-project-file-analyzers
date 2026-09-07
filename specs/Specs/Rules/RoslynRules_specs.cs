@@ -29,7 +29,7 @@ public class Sets_match_DiagnosticCollection_for
     }
 
     [Test]
-    public void Obsolete()
+    public void Deprecated()
     {
         var catalog = DotNetProjectFile.RuleCatalog.DiagnosticCollection.Embedded();
         var rules = catalog.Rules.Where(r => r is { Obsolete.Length: > 0, IsEnabledByDefault: false } ).ToArray();
