@@ -1366,6 +1366,17 @@ public static partial class Rule
         tags: ["suppression", "severity", "warning", "error"],
         category: Category.Configuration);
 
+    public static DiagnosticDescriptor AvoidEnablingObsoleteRules => New(
+          id: 1010,
+          title: "Avoid enabling obsolete rules",
+          message: "Rule {0} is obsolete and should not be enabled",
+          description:
+              "Enabling obsolete rules has no effect, as they are no longer " +
+              "evaluated by the compiler.",
+          tags: [".globalconfig", "diagnostic", "obsolete"],
+          category: Category.Configuration);
+
+
     public static DiagnosticDescriptor AvoidUsingMoq => New(
         id: 1100,
         title: "Avoid using Moq",
