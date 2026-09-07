@@ -16,20 +16,20 @@
       },
       "Microsoft.CodeAnalysis.Common": {
         "type": "Direct",
-        "requested": "[5.3.0, )",
-        "resolved": "5.3.0",
-        "contentHash": "uC0qk3jzTQY7i90ehfnCqaOZpBUGJyPMiHJ3c0jOb8yaPBjWzIhVdNxPbeVzI74DB0C+YgBKPLqUkgFZzua5Mg==",
+        "requested": "[5.9.0, )",
+        "resolved": "5.9.0",
+        "contentHash": "IYaIaUWdIx539AReKZOBEqTskFusZfCh/wFSPilDvCn5Say8MegLw2LONcSIcVy+v3Gzv53qYBspgvBGSErfbQ==",
         "dependencies": {
-          "Microsoft.CodeAnalysis.Analyzers": "5.3.0-2.25625.1"
+          "Microsoft.CodeAnalysis.Analyzers": "5.9.0-1.26328.17"
         }
       },
       "NuGet.Common": {
         "type": "Direct",
-        "requested": "[7.6.0, )",
-        "resolved": "7.6.0",
-        "contentHash": "uyXLqkbbZmkMvdHOR23l1EHW2hRmULtzoG3Ocj84VpGptnNfkODVboHGJfDfcn9Gi9oUNDs8/VjL4FZcST6zVg==",
+        "requested": "[7.9.0, )",
+        "resolved": "7.9.0",
+        "contentHash": "OWFEzHpwvgzSaHYmWzfbyTm6oBOy/BFSFEDk73zM9jiJaxdopYZ/DrqIQogaM3F+ZGTppBJffmzu5adetEI/YA==",
         "dependencies": {
-          "NuGet.Frameworks": "7.6.0"
+          "NuGet.Frameworks": "7.9.0"
         }
       },
       "NuGet.Frameworks": {

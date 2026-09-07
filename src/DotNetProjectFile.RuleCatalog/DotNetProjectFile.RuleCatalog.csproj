@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.props" />
   <Import Project="../../props/common.props" />
@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="5.3.0" />
-    <PackageReference Include="NuGet.Common" Version="7.6.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="5.9.0" />
+    <PackageReference Include="NuGet.Common" Version="7.9.0" />
     <PackageReference Include="NuGet.Frameworks" Version="7.9.0" />
     <PackageReference Include="NuGet.Packaging" Version="7.9.0" />
     <PackageReference Include="NuGet.Protocol" Version="7.9.0" />
