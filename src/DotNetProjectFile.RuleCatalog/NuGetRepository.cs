@@ -81,8 +81,6 @@ public static class NuGetRepository
     [Pure]
     private static async ValueTask<ImmutableArray<DiagnosticInfo>> FetchDiagnostics(NugetPackage package, IEnumerable<FileInfo> dlls, CancellationToken cancellation)
     {
-        var context = new AnalyzerLoadContext();
-        var assemblies = new List<Assembly>();
         var diagnostics = new List<DiagnosticInfo>();
 
         foreach (var dll in dlls)
@@ -92,34 +90,14 @@ public static class NuGetRepository
 
             await reader.CopyToAsync(stream, cancellation);
 
-            try
-            {
-                assemblies.Add(context.LoadAssemblyFromStream(stream));
-            }
-            catch (BadImageFormatException)
-            {
-                // Not a .NET dll.
-            }
-        }
+            using var loader = new DiagnosticAnalyzersLoader();
 
-        foreach (var assembly in assemblies)
-        {
-            Type[] types;
+            var analyzers = loader.Load(stream);
 
-            try
+            if(analyzers.Any())
             {
-                types = assembly.GetTypes();
-            }
-            catch (ReflectionTypeLoadException ex)
-            {
-                types = [.. ex.Types.OfType<Type>()];
-            }
-            catch
-            {
-                continue;
-            }
 
-            var analyzers = types.Select(Analyzers).OfType<DiagnosticAnalyzer>();
+            }
 
             foreach (var analyzer in analyzers)
             {
@@ -142,29 +120,7 @@ public static class NuGetRepository
                 }
             }
         }
-
-        context.Unload();
         return [.. diagnostics];
-
-        static bool IsDiagnosticAnalyzer(Type type)
-            => !type.IsAbstract
-            && type.IsAssignableTo(typeof(DiagnosticAnalyzer))
-            && type.GetConstructors().Any(c => c.GetParameters().Length is 0)
-            && type.GetCustomAttribute<DiagnosticAnalyzerAttribute>() is { };
-
-        static DiagnosticAnalyzer? Analyzers(Type type)
-        {
-            if (!IsDiagnosticAnalyzer(type)) return null;
-
-            try
-            {
-                return Activator.CreateInstance(type) as DiagnosticAnalyzer;
-            }
-            catch
-            {
-                return null;
-            }
-        }
 
         static IEnumerable<DiagnosticDescriptor> SupportedDiagnostics(DiagnosticAnalyzer analyzers)
         {
