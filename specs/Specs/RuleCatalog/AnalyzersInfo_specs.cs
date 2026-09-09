@@ -1,5 +1,4 @@
 using DotNetProjectFile.RuleCatalog;
-using DotNetProjectFile.RuleCatalog.Reflection;
 using NuGet.Versioning;
 using System.IO;
 using System.Reflection;
@@ -19,15 +18,6 @@ public class Embedded
 
 public class Collects
 {
-    [Test]
-    public void Aalyzers()
-    {
-        using var stream = new FileStream(typeof(DotNetProjectFile.Rule).Assembly.Location, FileMode.Open, FileAccess.Read);
-        using var loader = new DiagnosticAnalyzersLoader();
-        var analyzers = loader.Load(stream);
-        analyzers.Should().HaveCountGreaterThan(100);
-    }
-
     [Test]
     [Explicit("Long running process that alters the embedded resource")]
     public async Task New_rules()
@@ -57,7 +47,7 @@ public class Collects
                 ? existing.Update(rule)
                 : (rule with
                 {
-                    Version = version,
+                    First = version,
                     Languages = [LanguageNames.CSharp, LanguageNames.VisualBasic],
                 });
         }
@@ -65,7 +55,7 @@ public class Collects
         var updated = package with 
         {
             Version = version,
-            Rules = [.. rules.Values],
+            Rules = [.. rules.Values.Order()],
         };
 
         return collection with { Packages = collection.Packages.Replace(package, updated) };
@@ -80,5 +70,4 @@ public class Collects
             .Select(p => p.GetValue(null))
             .OfType<DiagnosticDescriptor>();
     }
-
 }

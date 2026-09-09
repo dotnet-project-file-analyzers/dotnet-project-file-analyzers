@@ -34,7 +34,7 @@ public static class DiagnosticCollector
             var versions = await NuGetRepository.NewVersions(package, cancellation);
             var updated = package;
 
-            foreach (var version in versions)
+            foreach (var version in versions.Order())
             {
                 updated = updated with { Version = version };
 

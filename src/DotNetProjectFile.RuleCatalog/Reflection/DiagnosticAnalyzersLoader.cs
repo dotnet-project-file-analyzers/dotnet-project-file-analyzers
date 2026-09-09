@@ -1,3 +1,4 @@
+using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.Diagnostics;
 using System.Collections.Immutable;
 using System.IO;
@@ -9,17 +10,54 @@ namespace DotNetProjectFile.RuleCatalog.Reflection;
 public sealed class DiagnosticAnalyzersLoader : IDisposable
 {
     private readonly AssemblyLoadContext Context = new("AssemblyLoaderContext", isCollectible: true);
+    private readonly DirectoryInfo Root;
 
-    public DiagnosticAnalyzersLoader() => Context.Resolving += OnResolveDependency;
+    public DiagnosticAnalyzersLoader(DirectoryInfo root)
+    {
+        Root = root;
+        Context.Resolving += OnResolveDependency;
+    }
 
-    public ImmutableArray<DiagnosticAnalyzer> Load(Stream stream)
+    public ImmutableArray<DiagnosticAnalyzer> Load()
+    {
+        foreach (var location in Root.GetDlls())
+        {
+            try
+            {
+                using var stream = location.OpenRead();
+                Context.LoadFromStream(stream);
+            }
+            catch (FileLoadException x) when (x.Message.EndsWith("Assembly with same name is already loaded"))
+            {
+                // It can occur that an assembly is already as a dependency.
+            }
+            catch (BadImageFormatException)
+            {
+                // No .NET dll
+            }
+        }
+
+        return
+        [
+            .. Context.Assemblies
+                .SelectMany(Types)
+                .Where(IsDiagnosticAnalyzer)
+                .Select(Analyzers)
+                .OfType<DiagnosticAnalyzer>()
+        ];
+    }
+
+    private static IEnumerable<Type> Types(Assembly assembly)
     {
         try
         {
-            var assembly = Context.LoadFromStream(stream);
-            return [.. assembly.GetTypes().Select(Analyzers).OfType<DiagnosticAnalyzer>()];
+            return assembly.GetTypes();
         }
-        catch (BadImageFormatException)
+        catch (ReflectionTypeLoadException x)
+        {
+            return x.Types.OfType<Type>();
+        }
+        catch (Exception)
         {
             return [];
         }
@@ -29,8 +67,6 @@ public sealed class DiagnosticAnalyzersLoader : IDisposable
 
     private static DiagnosticAnalyzer? Analyzers(Type type)
     {
-        if (!IsDiagnosticAnalyzer(type)) return null;
-
         try
         {
             return Activator.CreateInstance(type) as DiagnosticAnalyzer;
