@@ -85,12 +85,7 @@ public static class NuGetRepository
 
         foreach (var dll in dlls)
         {
-            using var stream = new MemoryStream();
-            using var reader = dll.OpenRead();
-
-            await reader.CopyToAsync(stream, cancellation);
-            stream.Position = 0;
-
+            using var stream = dll.OpenRead();
             using var loader = new DiagnosticAnalyzersLoader();
 
             var analyzers = loader.Load(stream);

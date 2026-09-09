@@ -6,7 +6,7 @@ using System.Runtime.Loader;
 
 namespace DotNetProjectFile.RuleCatalog.Reflection;
 
-internal sealed class DiagnosticAnalyzersLoader : IDisposable
+public sealed class DiagnosticAnalyzersLoader : IDisposable
 {
     private readonly AssemblyLoadContext Context = new("AssemblyLoaderContext", isCollectible: true);
 
