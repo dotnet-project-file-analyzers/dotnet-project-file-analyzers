@@ -14827,19 +14827,17 @@
     },
     {
       "id": "Microsoft.CodeAnalysis.Analyzers",
-      "v": "5.9.0",
+      "v": "4.14.0",
       "rules": [
         {
           "f": "1.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1001",
           "title": "Missing diagnostic analyzer attribute",
           "desc": "Non-abstract sub-types of DiagnosticAnalyzer should be marked with DiagnosticAnalyzerAttribute(s). The argument to this attribute(s), if any, determine the supported languages for the analyzer. Analyzer types without this attribute will be ignored by the analysis engine.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "1.0.0",
@@ -14862,15 +14860,13 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1004",
           "title": "Recommend adding language support to diagnostic analyzer",
           "desc": "Diagnostic analyzer is marked as supporting only one language, but the analyzer assembly doesn\u0027t seem to refer to any language specific CodeAnalysis assemblies, and so is likely to work for more than one language. Consider adding an additional language argument to DiagnosticAnalyzerAttribute.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "1.0.0",
@@ -14894,15 +14890,13 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1007",
           "title": "Provide localizable arguments to diagnostic descriptor constructor",
           "desc": "If your diagnostic analyzer and it\u0027s reported diagnostics need to be localizable, then the supported DiagnosticDescriptors used for constructing the diagnostics must also be localizable. If so, then localizable argument(s) must be provided for parameter \u0027title\u0027 (and optionally \u0027description\u0027) to the diagnostic descriptor constructor to ensure that the descriptor is localizable.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": false,
-          "obsolete": "This rule has been dropped."
+          "enabled": false
         },
         {
           "f": "1.0.0",
@@ -14916,39 +14910,33 @@
         },
         {
           "f": "1.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1009",
           "title": "Only internal implementations of this interface are allowed",
           "desc": "The author of this interface did not intend to have third party implementations of this interface and reserves the right to change it. Implementing this interface could therefore result in a source or binary compatibility issue with a future version of this interface.",
           "tags": null,
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "1.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1010",
           "title": "Create code actions should have a unique EquivalenceKey for FixAll occurrences support",
           "desc": "A CodeFixProvider that intends to support fix all occurrences must classify the registered code actions into equivalence classes by assigning it an explicit, non-null equivalence key which is unique for each kind of code action created by this fixer. This enables the FixAllProvider to fix all diagnostics in the required scope by applying code actions from this fixer that are in the equivalence class of the trigger code action.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "1.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1011",
           "title": "Use code actions that have a unique EquivalenceKey for FixAll occurrences support",
           "desc": "A CodeFixProvider that intends to support fix all occurrences must classify the registered code actions into equivalence classes by assigning it an explicit, non-null equivalence key which is unique for each kind of code action created by this fixer. This enables the FixAllProvider to fix all diagnostics in the required scope by applying code actions from this fixer that are in the equivalence class of the trigger code action.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "1.0.0",
@@ -14972,99 +14960,83 @@
         },
         {
           "f": "1.1.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1014",
           "title": "Do not ignore values returned by methods on immutable objects",
           "desc": "Many objects exposed by Roslyn are immutable. The return value from a method invocation on these objects should not be ignored.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "2.6.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1015",
           "title": "Provide non-null \u0027helpLinkUri\u0027 value to diagnostic descriptor constructor",
           "desc": "The \u0027helpLinkUri\u0027 value is used to show information when this diagnostic in the error list. Every analyzer should have a helpLinkUri specified which points to a help page that does not change over time.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": false,
-          "obsolete": "This rule has been dropped."
+          "enabled": false
         },
         {
           "f": "2.6.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1016",
           "title": "Code fix providers should provide FixAll support",
           "desc": "A CodeFixProvider should provide FixAll support to enable users to fix multiple instances of the underlying diagnostic with a single code fix. See documentation at https://github.com/dotnet/roslyn/blob/main/docs/analyzers/FixAllProvider.md for further details.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "2.6.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1017",
           "title": "DiagnosticId for analyzers must be a non-null constant",
           "desc": "DiagnosticId for analyzers must be a non-null constant.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "2.6.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1018",
           "title": "DiagnosticId for analyzers must be in specified format",
           "desc": "DiagnosticId for analyzers must be in specified format.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "2.6.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1019",
           "title": "DiagnosticId must be unique across analyzers",
           "desc": "DiagnosticId must be unique across analyzers.",
           "tags": "CompilationEnd;Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "2.6.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1020",
           "title": "Category for analyzers must be from the specified values",
           "desc": "Category for analyzers must be from the specified values.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": false,
-          "obsolete": "This rule has been dropped."
+          "enabled": false
         },
         {
           "f": "2.6.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1021",
           "title": "Invalid entry in analyzer category and diagnostic ID range specification file",
           "desc": "Invalid entry in analyzer category and diagnostic ID range specification file.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "2.6.1",
@@ -15090,129 +15062,107 @@
         },
         {
           "f": "2.9.3",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1024",
           "title": "Symbols should be compared for equality",
           "desc": "Symbols should be compared for equality, not identity. Use an overload accepting an \u0027IEqualityComparer\u0027 and pass \u0027SymbolEqualityComparer\u0027.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "2.9.3",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1025",
           "title": "Configure generated code analysis",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "2.9.3",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1026",
           "title": "Enable concurrent execution",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1027",
           "title": "Types marked with DiagnosticAnalyzerAttribute(s) should inherit from DiagnosticAnalyzer",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1028",
           "title": "Provide non-null \u0027customTags\u0027 value to diagnostic descriptor constructor",
           "desc": "The \u0027customTags\u0027 value is used as a way to enable specific actions and filters on diagnostic descriptors based on the specific values of the tags. Every Roslyn analyzer should have at least one tag from the \u0027WellKnownDiagnosticTags\u0027 class.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": false,
-          "obsolete": "This rule has been dropped."
+          "enabled": false
         },
         {
           "f": "3.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1029",
           "title": "Do not use reserved diagnostic IDs",
           "desc": "DiagnosticId for analyzers should not use reserved IDs.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1030",
           "title": "Do not invoke Compilation.GetSemanticModel() method within a diagnostic analyzer",
           "desc": "\u0027GetSemanticModel\u0027 is an expensive method to invoke within a diagnostic analyzer because it creates a completely new semantic model, which does not share compilation data with the compiler or other analyzers. This incurs an additional performance cost during semantic analysis. Instead, consider registering a different analyzer action which allows used of a shared \u0027SemanticModel\u0027, such as \u0027RegisterOperationAction\u0027, \u0027RegisterSyntaxNodeAction\u0027, or \u0027RegisterSemanticModelAction\u0027.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.3.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1031",
           "title": "Define diagnostic title correctly",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.3.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1032",
           "title": "Define diagnostic message correctly",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.3.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1033",
           "title": "Define diagnostic description correctly",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.3.3",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1034",
           "title": "Prefer \u0027IsKind\u0027 for checking syntax kinds",
           "desc": "Prefer \u0027syntax.IsKind(kind)\u0027 to \u0027syntax.Kind() == kind\u0027 when checking syntax kinds. Code using \u0027IsKind\u0027 is slightly more efficient at runtime, so consistent use of this form where applicable helps improve performance in complex analysis scenarios.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.3.4",
@@ -15236,19 +15186,16 @@
         },
         {
           "f": "3.3.4",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1037",
           "title": "Add \u0022CompilationEnd\u0022 custom tag to compilation end diagnostic descriptor",
           "desc": "\u0027DiagnosticDescriptor\u0027 assigned to field is used to report a compilation end diagnostic, but the \u0027DiagnosticDescriptor\u0027 constructor used to initialize it does not pass in the required custom tag \u0022CompilationEnd\u0022. See documentation for \u0027WellKnownDiagnosticTags.CompilationEnd\u0027 for details.",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.11.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1038",
           "title": "Compiler extensions should be implemented in assemblies with compiler-provided references",
@@ -15256,8 +15203,7 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/docs/roslyn-analyzers/rules/RS1038.md",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.11.0",
@@ -15281,7 +15227,6 @@
         },
         {
           "f": "3.11.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1041",
           "title": "Compiler extensions should be implemented in assemblies targeting netstandard2.0",
@@ -15289,36 +15234,30 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/docs/roslyn-analyzers/rules/RS1041.md",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.11.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1042",
           "title": "Implementations of this interface are not allowed",
           "desc": "The author of this interface has deprecated implementing this interface.",
           "tags": null,
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "4.14.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS1043",
           "title": "Do not use file types for implementing analyzers, generators, and code fixers",
           "desc": "Using a \u0027file\u0027 type is not allowed for implementing analyzers, generators, or code fixers. This can break analyzer loading on some platforms.",
           "tags": null,
           "level": "Error",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS2000",
           "title": "Add analyzer diagnostic IDs to analyzer release",
@@ -15326,12 +15265,10 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS2001",
           "title": "Ensure up-to-date entry for analyzer diagnostic IDs are added to analyzer release",
@@ -15339,12 +15276,10 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS2002",
           "title": "Do not add removed analyzer diagnostic IDs to unshipped analyzer release",
@@ -15352,12 +15287,10 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "CompilationEnd;Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS2003",
           "title": "Shipped diagnostic IDs that are no longer reported should have an entry in the \u0027Removed Rules\u0027 table in unshipped file",
@@ -15365,12 +15298,10 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "CompilationEnd;Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS2004",
           "title": "Diagnostic IDs marked as removed in analyzer release file should not be reported by analyzers",
@@ -15378,12 +15309,10 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS2005",
           "title": "Remove duplicate entries for diagnostic ID in the same analyzer release",
@@ -15391,12 +15320,10 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "CompilationEnd;Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS2006",
           "title": "Remove duplicate entries for diagnostic ID between analyzer releases",
@@ -15404,12 +15331,10 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "CompilationEnd;Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS2007",
           "title": "Invalid entry in analyzer release file",
@@ -15417,12 +15342,10 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "CompilationEnd;Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         },
         {
           "f": "3.0.0",
-          "v": "4.14.0",
           "lang": "C#;Visual Basic",
           "id": "RS2008",
           "title": "Enable analyzer release tracking",
@@ -15430,8 +15353,7 @@
           "url": "https://github.com/dotnet/roslyn/blob/main/src/RoslynAnalyzers/Microsoft.CodeAnalysis.Analyzers/ReleaseTrackingAnalyzers.Help.md",
           "tags": "Telemetry",
           "level": "Warning",
-          "enabled": true,
-          "obsolete": "This rule has been dropped."
+          "enabled": true
         }
       ]
     },
