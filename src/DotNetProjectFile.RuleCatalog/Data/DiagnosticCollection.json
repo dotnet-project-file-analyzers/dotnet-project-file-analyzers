@@ -4820,7 +4820,7 @@
     },
     {
       "id": "DotNetProjectFile.Analyzers",
-      "v": "1.17.0",
+      "v": "1.18.0",
       "rules": [
         {
           "f": "1.0.0",
@@ -6805,6 +6805,86 @@
           "level": "Warning",
           "enabled": false,
           "obsolete": "This rule has been dropped."
+        },
+        {
+          "lang": "C#;Visual Basic",
+          "id": "Proj0055",
+          "title": "Enable nullability analysis for C#",
+          "desc": "Nullability analysis can help prevent NullReferenceExceptions by identifying potential null-safety issues at compile time.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0055.html",
+          "tags": "MSBuild;compiler",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "lang": "C#;Visual Basic",
+          "id": "Proj0056",
+          "title": "Enable nullability analysis for F#",
+          "desc": "Nullability analysis can help prevent null-safety issues by identifying potential null values at compile time.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0056.html",
+          "tags": "MSBuild;compiler",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "lang": "C#;Visual Basic",
+          "id": "Proj0057",
+          "title": "Keep paths portable",
+          "desc": "?",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0057.html",
+          "tags": "MSBuild;CI/CD",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "lang": "C#;Visual Basic",
+          "id": "Proj1008",
+          "title": "Remove configuration for not-configurable rule",
+          "desc": "Configuring severity or suppression of non-configurable rules are redundant and should be removed.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj1008.html",
+          "tags": "suppression;severity;warning;error",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "lang": "C#;Visual Basic",
+          "id": "Proj1009",
+          "title": "Remove configuration for dropped rule",
+          "desc": "Configuring severity or suppression of dropped rules are redundant and should be removed.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj1009.html",
+          "tags": "suppression;severity;warning;error",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "lang": "C#;Visual Basic",
+          "id": "Proj1010",
+          "title": "Avoid enabling deprecated rules",
+          "desc": "Enabling deprecated rules has no effect, as they are no longer evaluated by the compiler.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj1010.html",
+          "tags": ".globalconfig;diagnostic;deprecated",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "lang": "C#;Visual Basic",
+          "id": "Proj6000",
+          "title": "Invalid JSON file",
+          "desc": "A part of the JSON file could not be parsed.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj6000.html",
+          "tags": "JSON;syntax error",
+          "level": "Error",
+          "enabled": true
+        },
+        {
+          "lang": "C#;Visual Basic",
+          "id": "Proj6010",
+          "title": "global.json should exist",
+          "desc": "To ensure a predictable .NET SDK version is used across different machines and environments, a global.json file should exist for every compiled project.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj6010.html",
+          "tags": "global.json;configuration;SDK",
+          "level": "Warning",
+          "enabled": true
         }
       ]
     },

@@ -93,6 +93,7 @@ public sealed record DiagnosticInfo :
         Description = update.Description.NullIfEmpty() ?? Description,
         HelpLinkUri = update.HelpLinkUri.NullIfEmpty() ?? HelpLinkUri,
         Obsolete = update.Obsolete.NullIfEmpty() ?? Obsolete,
+        Languages = update.Languages.IsDefault ? Languages : update.Languages,
     };
 
     [Pure]
