@@ -73,47 +73,35 @@ public static class NuGetRepository
             packageReader.ExtractFile(file, Path.Combine(dir.FullName, file), NullLogger.Instance);
         }
 
-        var folders = dir.GetDlls();
-
-        return [.. await FetchDiagnostics(package, folders, cancellation)];
+        return [.. await FetchDiagnostics(package, dir, cancellation)];
     }
 
     [Pure]
-    private static async ValueTask<ImmutableArray<DiagnosticInfo>> FetchDiagnostics(NugetPackage package, IEnumerable<FileInfo> dlls, CancellationToken cancellation)
+    private static async ValueTask<ImmutableArray<DiagnosticInfo>> FetchDiagnostics(NugetPackage package, DirectoryInfo dir, CancellationToken cancellation)
     {
+        using var loader = new DiagnosticAnalyzersLoader(dir);
         var diagnostics = new List<DiagnosticInfo>();
 
-        foreach (var dll in dlls)
+        var analyzers = loader.Load();
+
+        foreach (var analyzer in analyzers)
         {
-            using var stream = new MemoryStream();
-            using var reader = dll.OpenRead();
+            var languages = analyzer.GetType().GetCustomAttribute<DiagnosticAnalyzerAttribute>()!.Languages;
+            var obsolete = analyzer
+                .GetType()
+                .GetCustomAttribute<ObsoleteAttribute>()?.Message;
 
-            await reader.CopyToAsync(stream, cancellation);
-            stream.Position = 0;
-
-            using var loader = new DiagnosticAnalyzersLoader();
-
-            var analyzers = loader.Load(stream);
-
-            foreach (var analyzer in analyzers)
+            foreach (var desc in SupportedDiagnostics(analyzer))
             {
-                var languages = analyzer.GetType().GetCustomAttribute<DiagnosticAnalyzerAttribute>()!.Languages;
-                var obsolete = analyzer
-                    .GetType()
-                    .GetCustomAttribute<ObsoleteAttribute>()?.Message;
-
-                foreach (var desc in SupportedDiagnostics(analyzer))
+                var diagnostic = DiagnosticInfo.New(desc)
+                with
                 {
-                    var diagnostic = DiagnosticInfo.New(desc)
-                    with
-                    {
-                        Version = package.Version,
-                        First = package.Version,
-                        Languages = [.. languages],
-                        Obsolete = obsolete,
-                    };
-                    diagnostics.Add(diagnostic);
-                }
+                    Version = package.Version,
+                    First = package.Version,
+                    Languages = [.. languages],
+                    Obsolete = obsolete,
+                };
+                diagnostics.Add(diagnostic);
             }
         }
         return [.. diagnostics];

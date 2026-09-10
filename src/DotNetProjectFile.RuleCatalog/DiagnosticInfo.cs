@@ -93,24 +93,30 @@ public sealed record DiagnosticInfo :
         Description = update.Description.NullIfEmpty() ?? Description,
         HelpLinkUri = update.HelpLinkUri.NullIfEmpty() ?? HelpLinkUri,
         Obsolete = update.Obsolete.NullIfEmpty() ?? Obsolete,
+        Languages = Merge(update.Languages, Languages),
     };
 
+    private static ImmutableArray<string> Merge(ImmutableArray<string> update, ImmutableArray<string> current)
+    {
+        var merged = new HashSet<string>();
+        if (!update.IsDefault)
+            foreach (var v in update) merged.Add(v);
+
+        if (!current.IsDefault)
+            foreach (var v in current) merged.Add(v);
+
+        return [.. merged.Order()];
+    }
+
     [Pure]
-    internal DiagnosticInfo Save(NuGetVersion? version) => (this with
+    internal DiagnosticInfo Save(NuGetVersion? version) => this with
     {
         Version = Version == version ? null : Version,
         Title = Title.NullIfEmpty(),
         Description = Description.NullIfEmpty(),
         HelpLinkUri = HelpLinkUri.NullIfEmpty(),
         Obsolete = Obsolete.NullIfEmpty(),
-    }).Drop();
-
-    /// <summary>Set a dropped message if applicable.</summary>
-    [Pure]
-    private DiagnosticInfo Drop()
-        => Version is not null && Obsolete is null or "This rule is deprecated."
-        ? this with { Obsolete = "This rule has been dropped." }
-        : this;
+    };
 
     [Pure]
     internal DiagnosticInfo Load(NuGetVersion? version)

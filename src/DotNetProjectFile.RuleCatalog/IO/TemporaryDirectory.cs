@@ -25,16 +25,14 @@ internal sealed class TemporaryDirectory : IDisposable
     /// <summary>Gets the full name of the directory.</summary>
     public string FullName => Root.FullName;
 
-    /// <summary>Gets all files, from both the top- and subdirectories.</summary>
-    [Pure]
-    public IEnumerable<FileInfo> GetDlls() => Root.EnumerateFiles("*.dll", SearchOption.AllDirectories);
-
     /// <summary>Represents the temporary directory as <see cref="string" />.</summary>
     [Pure]
     public override string ToString() => Root.ToString();
 
     /// <summary>The underlying <see cref="DirectoryInfo" />.</summary>
     private readonly DirectoryInfo Root;
+
+    public static implicit operator DirectoryInfo(TemporaryDirectory dir) => dir.Root;
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
     private bool IsDisposed;
