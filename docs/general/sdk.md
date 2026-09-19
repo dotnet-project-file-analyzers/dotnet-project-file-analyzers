@@ -47,7 +47,7 @@ A `.net.csproj` project file looks like this:
 </Project>
 ```
 
-*Download this example [`.net.csproj`](.net.csproj)*
+*Download this example [`.net.csproj`](https://raw.githubusercontent.com/dotnet-project-file-analyzers/dotnet-project-file-analyzers/main/docs/general/.net.csproj)*
 
 
 ## Central Package Management
