@@ -234,6 +234,37 @@ public class Resolves
         );
     }
 
+    [Test]
+    public void For_Razor_Pages_scoped_css()
+    {
+        using var ctx = BuildalyzerContext.ForProject("RazorPagesScopedCss/RazorPagesScopedCss.csproj");
+
+        var result = ctx.Analyzer.Build().Results.Single();
+        Log(result);
+
+        result.Should().HaveContent(
+             new ProjectItem
+             {
+                 ItemSpec = Full("RazorPagesScopedCss/RazorPagesScopedCss.csproj"),
+                 Metadata = new Meta
+                 {
+                     CopyToOutputDirectory = "never",
+                     Link = Link(Full("RazorPagesScopedCss/RazorPagesScopedCss.csproj")),
+                     Visible = "false",
+                     SonarQubeContent = "true",
+                     AnalyzerType = "MSBuildProject",
+                 },
+             },
+            new ProjectItem
+            {
+                ItemSpec = Relative("Pages/Index.cshtml"),
+                Metadata = new Meta()
+                    .Set("ExcludeFromSingleFile", "true")
+                    .Set("CopyToPublishDirectory", "PreserveNewest"),
+            }
+        );
+    }
+
     private static void Log(IAnalyzerResult result)
     {
 #if DEBUG

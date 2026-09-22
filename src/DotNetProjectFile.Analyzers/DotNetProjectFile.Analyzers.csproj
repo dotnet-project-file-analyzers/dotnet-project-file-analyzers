@@ -104,6 +104,7 @@ v1.18.0
 - Proj1010: Avoid enabling deprecated rules. (NEW RULE)
 - Proj1200: Report on issues in prop files. (FN)
 - Proj1300: Ignore Aspire projects. (FP)
+- Exclude **/*.cshtml.css from SonarQube intergration as it breaks the Razor Pages build. (BUG)
 v1.17.0
 - Proj4011: Define keys once in an INI section. (NEW RULE)
 - Proj5006: Files included in an SLNX should exist. (NEW RULE)

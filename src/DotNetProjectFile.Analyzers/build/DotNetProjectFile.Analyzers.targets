@@ -34,12 +34,14 @@
       Set by Rider and ReSharper for all their builds. Rider's solution view
       hides the real files when the invisible linked duplicates are present.
       
-    * Exclude **/*.razor.css as it will break the Razor build.
+    * Exclude **/*.razor.css and **/*.cshtml.css as the Razor SDK discovers
+      scoped CSS in both <None> and <Content>, and reports RZ1007 when the
+      same file is found twice.
   -->
   <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true' and '$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
     <Content
       Include="@(None);@(AdditionalFiles)"
-      Exclude="@(Content);**/*.razor.css"
+      Exclude="@(Content);**/*.razor.css;**/*.cshtml.css"
       CopyToOutputDirectory="never"
       Visible="false"
       SonarQubeContent="true"
