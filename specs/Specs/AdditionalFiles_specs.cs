@@ -202,18 +202,6 @@ public class Resolves
         Log(result);
 
         result.Should().HaveContent(
-             new ProjectItem
-             {
-                 ItemSpec = Full("BlazorScopedCss/BlazorScopedCss.csproj"),
-                 Metadata = new Meta
-                 {
-                     CopyToOutputDirectory = "never",
-                     Link = Link(Full("BlazorScopedCss/BlazorScopedCss.csproj")),
-                     Visible = "false",
-                     SonarQubeContent = "true",
-                     AnalyzerType = "MSBuildProject",
-                 },
-             },
             new ProjectItem
             {
                 ItemSpec = Relative("Components/Tree.razor"),
@@ -243,18 +231,6 @@ public class Resolves
         Log(result);
 
         result.Should().HaveContent(
-             new ProjectItem
-             {
-                 ItemSpec = Full("RazorPagesScopedCss/RazorPagesScopedCss.csproj"),
-                 Metadata = new Meta
-                 {
-                     CopyToOutputDirectory = "never",
-                     Link = Link(Full("RazorPagesScopedCss/RazorPagesScopedCss.csproj")),
-                     Visible = "false",
-                     SonarQubeContent = "true",
-                     AnalyzerType = "MSBuildProject",
-                 },
-             },
             new ProjectItem
             {
                 ItemSpec = Relative("Pages/Index.cshtml"),
@@ -262,6 +238,18 @@ public class Resolves
                     .Set("ExcludeFromSingleFile", "true")
                     .Set("CopyToPublishDirectory", "PreserveNewest"),
             }
+        );
+
+        result.Should().HaveAdditionalFiles(
+             new ProjectItem
+             {
+                 ItemSpec = Full("RazorPagesScopedCss/RazorPagesScopedCss.csproj"),
+                 Metadata = new Meta
+                 {
+                     Visible = "false",
+                     AnalyzerType = "MSBuildProject",
+                 },
+             }
         );
     }
 

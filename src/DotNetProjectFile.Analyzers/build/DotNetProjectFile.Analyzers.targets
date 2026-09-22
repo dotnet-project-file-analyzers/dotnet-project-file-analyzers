@@ -7,55 +7,26 @@
   </PropertyGroup>
 
   <!--
-    SonarQube can pick up issues report on files others than compiling files
-    if they are reported as <Content>.
-      
-    * CopyToOutputDirectory = never
-      Ensures that <Content> only included to satisfy SonarQube is not copied.
-    
-    * Visible = false
-      Prevents <Content> from being shown in the IDE that was included by the user.
-      
-    * Pack = false
-      Prevents <Content> from being added to NuGet packages.
-      
-    * SonarQubeContent = true
-      Make tracable that is has been added due to the SonarQubeIntegration.
-      
-    * Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))"
-      Flattens the file structure of the content file to work arround a
-      Visual Studio limitation: github.com/dotnet/project-system/issues/5859
+    SonarScanner for .NET collects the files it analyzes from the item types
+    listed in $(SQAnalysisFileItemTypes). That list already contains <None> and
+    <Content>, but not <AdditionalFiles>, which is where this package registers
+    the project files, props, targets, RESX files, and configuration files it
+    reports issues on.
 
-    * Condition '$(BuildingInsideVisualStudio)' != 'true'
-      Visual Studio does not run SonarQube analysis, and its project tree
-      crashes on the linked items when they arrive as a project update (#842).
+    $(SQAdditionalAnalysisFileItemTypes) is the extension point to add item types
+    to that list. The targets of this package are imported by
+    Microsoft.Common.targets, which imports the scanner targets (via
+    $(CustomAfterMicrosoftCommonTargets)) at the very end, so this value is set
+    before the scanner resolves $(SQAnalysisFileItemTypes).
 
-    * Condition '$(BuildingByReSharper)' != 'true'
-      Set by Rider and ReSharper for all their builds. Rider's solution view
-      hides the real files when the invisible linked duplicates are present.
-      
-    * Exclude **/*.razor.css and **/*.cshtml.css as the Razor SDK discovers
-      scoped CSS in both <None> and <Content>, and reports RZ1007 when the
-      same file is found twice.
+    Registering the item type is preferred over copying every analyzed file into
+    <Content>: <Content> is consumed by the build itself, which made the files
+    show up while packing and publishing, broke scoped CSS discovery of the Razor
+    SDK, and polluted the project tree of Visual Studio and Rider.
   -->
-  <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true' and '$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
-    <Content
-      Include="@(None);@(AdditionalFiles)"
-      Exclude="@(Content);**/*.razor.css;**/*.cshtml.css"
-      CopyToOutputDirectory="never"
-      Visible="false"
-      SonarQubeContent="true"
-      Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_').Replace(':', '_'))" />
-  </ItemGroup>
-
-  <!--
-    Prevents the content added by the SonarQube integretation being added to packages.
-  -->
-  <Target Name="_StripSonarQubeContent" BeforeTargets="_GetPackageFiles">
-    <ItemGroup>
-      <Content Remove="@(Content->WithMetadataValue('SonarQubeContent','true'))" />
-    </ItemGroup>
-  </Target>
+  <PropertyGroup Condition="'$(SonarQubeIntegration)' == 'true'">
+    <SQAdditionalAnalysisFileItemTypes>$(SQAdditionalAnalysisFileItemTypes);AdditionalFiles</SQAdditionalAnalysisFileItemTypes>
+  </PropertyGroup>
 
   <!--To inform users the SDK package is no longer needed. -->
   <Target Name="Proj1004" BeforeTargets="ResolvePackageAssets">
