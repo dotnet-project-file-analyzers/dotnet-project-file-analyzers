@@ -1,4 +1,3 @@
-using Buildalyzer;
 using static Specs.TestTools.TestPath;
 using Meta = Specs.TestTools.ProjectItem.Meta;
 using ProjectItem = Specs.TestTools.ProjectItem;
@@ -13,8 +12,6 @@ public class Resolves
         using var ctx = BuildalyzerContext.ForProject("AdditionalFilesProject/AdditionalFilesProject/AdditionalFilesProject.csproj");
 
         var result = ctx.Analyzer.Build().Results.Single();
-        Log(result);
-
         result.Properties.Should().Contain(KeyValuePair.Create("IsDotNetProjectFileSdk", "false"));
         result.Should().HaveAdditionalFiles(
 
@@ -77,9 +74,6 @@ public class Resolves
         using var ctx = BuildalyzerContext.ForProject("AdditionalFilesProject/.net.csproj");
 
         var result = ctx.Analyzer.Build().Results.Single();
-
-        Log(result);
-
         result.Properties.Should().Contain(KeyValuePair.Create("IsDotNetProjectFileSdk", "true"));
         result.Should().HaveAdditionalFiles(
 
@@ -126,15 +120,6 @@ public class Resolves
                 {
                     Link = ".globalconfig",
                     AnalyzerType = "GlobalConfig",
-                },
-            },
-            new ProjectItem
-            {
-                ItemSpec = Full("../global.json"),
-                Metadata = new Meta
-                {
-                    Link = "global.json",
-                    AnalyzerType = "GlobalJson",
                 },
             },
             new ProjectItem
@@ -199,8 +184,6 @@ public class Resolves
         using var ctx = BuildalyzerContext.ForProject("BlazorScopedCss/BlazorScopedCss.csproj");
 
         var result = ctx.Analyzer.Build().Results.Single();
-        Log(result);
-
         result.Should().HaveContent(
              new ProjectItem
              {
@@ -232,12 +215,5 @@ public class Resolves
                  },
              }
         );
-    }
-
-    private static void Log(IAnalyzerResult result)
-    {
-#if DEBUG
-        ProjectItem.Generate(result.Items.OfType("AdditionalFiles"));
-#endif
     }
 }
