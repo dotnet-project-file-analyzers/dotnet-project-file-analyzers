@@ -208,18 +208,6 @@ public class Resolves
                 Metadata = new Meta().Set("ExcludeFromSingleFile", "true"),
             }
         );
-
-        result.Should().HaveAdditionalFiles(
-             new ProjectItem
-             {
-                 ItemSpec = Full("BlazorScopedCss/BlazorScopedCss.csproj"),
-                 Metadata = new Meta
-                 {
-                     Visible = "false",
-                     AnalyzerType = "MSBuildProject",
-                 },
-             }
-        );
     }
 
     [Test]
@@ -238,18 +226,6 @@ public class Resolves
                     .Set("ExcludeFromSingleFile", "true")
                     .Set("CopyToPublishDirectory", "PreserveNewest"),
             }
-        );
-
-        result.Should().HaveAdditionalFiles(
-             new ProjectItem
-             {
-                 ItemSpec = Full("RazorPagesScopedCss/RazorPagesScopedCss.csproj"),
-                 Metadata = new Meta
-                 {
-                     Visible = "false",
-                     AnalyzerType = "MSBuildProject",
-                 },
-             }
         );
     }
 

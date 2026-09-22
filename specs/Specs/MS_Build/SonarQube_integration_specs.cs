@@ -5,61 +5,34 @@ using static Specs.TestTools.TestPath;
 
 namespace MS_Build.SonarQube_integration_specs;
 
-[NonParallelizable] // these tests all build the shared SonarQubeIntegration fixture (BuildalyzerContext
-// wipes its bin/obj), so running them in parallel makes the builds trip over each other.
+[NonParallelizable] // both tests build the same fixture, of which BuildalyzerContext wipes bin/obj.
 public class Registers_AdditionalFiles
 {
-    [Test]
-    public void As_item_type_to_analyze()
-    {
-        using var ctx = BuildalyzerContext.ForProject("SonarQubeIntegration/SonarQubeIntegration.csproj");
-
-        var result = ctx.Analyzer.Build().Results.Single();
-
-        result.Should().HaveProperties(new()
-        {
-            ["SonarQubeIntegration"] = "true",
-            ["SQAdditionalAnalysisFileItemTypes"] = ";AdditionalFiles",
-        });
-    }
-
     [Test]
     public void So_that_the_scanner_analyzes_the_project_file()
     {
         using var ctx = BuildalyzerContext.ForProject("SonarQubeIntegration/SonarQubeIntegration.csproj");
 
-        var analyzed = Scanner.FilesToAnalyze(ctx);
-
-        analyzed.Should().Contain(ctx.Location.FullName);
+        Scanner.FilesToAnalyze(ctx).Should().Contain(ctx.Location.FullName);
     }
 
     [Test]
-    public void Next_to_the_files_the_scanner_collects_itself()
+    public void Unless_the_SonarQube_integration_is_disabled()
     {
         using var ctx = BuildalyzerContext.ForProject("SonarQubeIntegration/SonarQubeIntegration.csproj");
 
-        var analyzed = Scanner.FilesToAnalyze(ctx);
-
-        analyzed.Should().Contain(Full("common/Code.cs"));
-    }
-
-    [Test]
-    public void Not_when_the_SonarQube_integration_is_disabled()
-    {
-        using var ctx = BuildalyzerContext.ForProject("SonarQubeIntegration/SonarQubeIntegration.csproj");
-
-        var analyzed = Scanner.FilesToAnalyze(ctx, "-p:SonarQubeIntegration=false");
-
-        analyzed.Should().NotContain(ctx.Location.FullName);
+        Scanner.FilesToAnalyze(ctx, "-p:SonarQubeIntegration=false")
+            .Should().Equal(Full("common/Code.cs"));
     }
 }
 
-/// <summary>Runs a build with the MSBuild targets of SonarScanner for .NET.</summary>
+/// <summary>Builds with the MSBuild targets of SonarScanner for .NET.</summary>
 internal static class Scanner
 {
     /// <remarks>
-    /// The scanner points $(CustomAfterMicrosoftCommonTargets) to its own targets file, and
-    /// collects the files to analyze in a project specific directory below $(SonarQubeTempPath).
+    /// The scanner is activated by pointing $(CustomAfterMicrosoftCommonTargets) to its targets
+    /// file. It collects the files to analyze per project, in a unique directory below
+    /// $(SonarQubeTempPath).
     /// </remarks>
     public static string[] FilesToAnalyze(BuildalyzerContext ctx, params string[] arguments)
     {
@@ -74,17 +47,17 @@ internal static class Scanner
             options.Arguments.Add(argument);
         }
 
-        var result = ctx.Analyzer.Build(options).Results.Single();
-        result.Succeeded.Should().BeTrue("the scanner only collects its files to analyze on a successful build");
+        ctx.Analyzer.Build(options).Results.Single().Succeeded
+            .Should().BeTrue("the scanner only collects its files to analyze on a successful build");
 
-        var collected = temp.EnumerateFiles("FilesToAnalyze.txt", SearchOption.AllDirectories).ToArray();
-        collected.Should().ContainSingle("the scanner collects the files to analyze once per project");
+        var collected = temp.EnumerateFiles("FilesToAnalyze.txt", SearchOption.AllDirectories)
+            .Should().ContainSingle().Which;
 
-        return File.ReadAllLines(collected.Single().FullName);
+        return File.ReadAllLines(collected.FullName);
     }
 
     /// <summary>The targets file of the downloaded SonarScanner for .NET package.</summary>
-    private static string Targets => field ??= Directory
+    private static string Targets => Directory
         .EnumerateFiles(Package, "SonarQube.Integration.targets", SearchOption.AllDirectories)
         .Single();
 

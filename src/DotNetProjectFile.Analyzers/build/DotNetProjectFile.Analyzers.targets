@@ -7,22 +7,16 @@
   </PropertyGroup>
 
   <!--
-    SonarScanner for .NET collects the files it analyzes from the item types
-    listed in $(SQAnalysisFileItemTypes). That list already contains <None> and
-    <Content>, but not <AdditionalFiles>, which is where this package registers
-    the project files, props, targets, RESX files, and configuration files it
-    reports issues on.
+    SonarScanner for .NET collects the files it analyzes from the item types listed in
+    $(SQAnalysisFileItemTypes). That list contains <None> and <Content>, but not
+    <AdditionalFiles>, which is where this package registers the files it reports issues on.
+    $(SQAdditionalAnalysisFileItemTypes) is the extension point to add to that list.
 
-    $(SQAdditionalAnalysisFileItemTypes) is the extension point to add item types
-    to that list. The targets of this package are imported by
-    Microsoft.Common.targets, which imports the scanner targets (via
-    $(CustomAfterMicrosoftCommonTargets)) at the very end, so this value is set
-    before the scanner resolves $(SQAnalysisFileItemTypes).
+    Microsoft.Common.targets imports the targets of this package before it imports those of
+    the scanner (via $(CustomAfterMicrosoftCommonTargets)), so this value is set in time.
 
-    Registering the item type is preferred over copying every analyzed file into
-    <Content>: <Content> is consumed by the build itself, which made the files
-    show up while packing and publishing, broke scoped CSS discovery of the Razor
-    SDK, and polluted the project tree of Visual Studio and Rider.
+    Do not register the files as <Content> instead: the build consumes <Content> itself, which
+    broke packing, publishing, and the scoped CSS discovery of the Razor SDK.
   -->
   <PropertyGroup Condition="'$(SonarQubeIntegration)' == 'true'">
     <SQAdditionalAnalysisFileItemTypes>$(SQAdditionalAnalysisFileItemTypes);AdditionalFiles</SQAdditionalAnalysisFileItemTypes>
