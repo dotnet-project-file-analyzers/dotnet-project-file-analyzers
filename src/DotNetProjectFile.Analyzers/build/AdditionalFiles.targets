@@ -10,14 +10,24 @@
   </ItemGroup>
 
   <!--
-    XML Resources
     Do not add them for the .net.csproj as they should be bound to a project file.
+    
+    global.json
     -->
   <ItemGroup Condition="'$(IsDotNetProjectFileSdk)' != 'true'">
+    <AdditionalFiles
+      Include="$([MSBuild]::GetPathOfFileAbove('global.json', $(MSBuildProjectDirectory)))"
+      Exclude="@(AdditionalFiles)"
+      AnalyzerType="GlobalJson" />
+  
+  <!--
+    XML Resources
+    -->
     <AdditionalFiles
       AnalyzerType="RESX"
       Include="**/*.resx"
       Exclude="@(AdditionalFiles)" />
+    
   </ItemGroup>
 
   <!-- Directory.Build.props -->
