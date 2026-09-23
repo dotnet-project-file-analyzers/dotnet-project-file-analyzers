@@ -96,3 +96,5 @@ Rule numbering: `Proj00xx` general, `Proj02xx` packaging, `Proj03xx` NuGet confi
 
 * **Do not modify `.net.csproj`:** This file is exclusively for running Roslyn Analyzers. Agents must completely ignore and skip this file during development.
 * **Do not modify or read `src/DotNetProjectFile.RuleCatalog/Data/DiagnosticCollection.json`:** This file is huge, and is data about analyzers.
+* **Do not** commit, any change, or check the GIT history of this repo unless explictly asked.
+* Only run related tests, and never if you only changed documentation.

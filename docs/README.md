@@ -276,6 +276,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 ## JSON
 * [**Proj6000** Invalid JSON file](rules/Proj6000.md)
 * [**Proj6010** global.json should exist](rules/Proj6010.md)
+* [**Proj6011** Specify SDK version](rules/Proj6011.md)
 
 ## SonarQube integration
 By default, results by .NET project file analyzers are included in SonarQube
