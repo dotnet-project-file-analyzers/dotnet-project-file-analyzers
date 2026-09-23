@@ -79,6 +79,16 @@ public class Resolves
 
             new ProjectItem
             {
+                ItemSpec = Full("../global.json"),
+                Metadata = new Meta
+                {
+                    AnalyzerType = "GlobalJson",
+                    Link = "global.json",
+                },
+            },
+
+            new ProjectItem
+            {
                 ItemSpec = ".net.csproj",
                 Metadata = new Meta
                 {
