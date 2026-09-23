@@ -1,4 +1,3 @@
-using AwesomeAssertions.Execution;
 using Buildalyzer;
 using System.Diagnostics;
 using System.IO;
