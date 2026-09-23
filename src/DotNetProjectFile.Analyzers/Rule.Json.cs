@@ -24,5 +24,14 @@ public static partial class Rule
                 "exist for every compiled project.",
             tags: ["global.json", "configuration", "SDK"],
             category: Category.CodeQuality);
+
+        public static DiagnosticDescriptor SpecifySdkVersion => New(
+            id: 6011,
+            title: "Specify SDK version",
+            message: "No valid SDK version has been specified",
+            description:
+                "TODO",
+            tags: ["global.json", "configuration", "SDK"],
+            category: Category.CodeQuality);
     }
 }

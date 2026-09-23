@@ -54,8 +54,20 @@ public readonly struct ProjectFileAnalysisContext<TFile>(
            messageArgs);
     }
 
+    /// <summary>Reports a diagnostic about the JSON file.</summary>
+    public void ReportDiagnostic(
+        DiagnosticDescriptor descriptor,
+        Json.JsonFile file,
+        Json.JsonValue node,
+        params object?[]? messageArgs)
+        => ReportDiagnostic(descriptor, file, node.Spans[node.TextSpan], messageArgs);
+
     /// <summary>Reports a diagnostic about the project file.</summary>
-    public void ReportDiagnostic(DiagnosticDescriptor descriptor, ProjectFile file, LinePositionSpan span, params object?[]? messageArgs)
+    public void ReportDiagnostic(
+        DiagnosticDescriptor descriptor,
+        ProjectFile file,
+        LinePositionSpan span,
+        params object?[]? messageArgs)
         => ReportDiagnostic(descriptor, file.GetLocation(span), messageArgs);
 
     /// <summary>Reports a diagnostic about the project file.</summary>
