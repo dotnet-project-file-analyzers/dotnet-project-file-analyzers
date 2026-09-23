@@ -23,15 +23,23 @@ analyzers for, such as `.csproj` and `.props` files. As a result:
 - They will **not** generate pull request comments.
 - They risk going unnoticed and unresolved.
 
-## Workaround: Register files as `<Content>`
-What does work, is registering all files that are analyzed as `<Content>` for
-MSBuild. By doing so, SonarQube will report analysis on these files. To make
-life easier, the .NET Project File Analyzers package does this automatically for:
-- `**/*.??proj`
-- `**/*.config`
-- `**/*.props`
-- `**/*.resx`
-- `**/*.slnx`
+## Solution: Register `<AdditionalFiles>` as files to analyze
+SonarScanner for .NET collects the files it analyzes from the item types listed
+in `$(SQAnalysisFileItemTypes)`. That list contains `<Compile>`, `<Content>`,
+`<EmbeddedResource>`, and `<None>`, but not `<AdditionalFiles>` — which is
+exactly where this package registers the files it reports issues on.
 
-If adding these files as content leads to issues, this behaviour can be
-disabled by setting `<SonarQubeIntegration>` to `false`.
+To close that gap, the .NET Project File Analyzers package adds
+`AdditionalFiles` to `$(SQAdditionalAnalysisFileItemTypes)`, the extension point
+of the scanner for that list:
+
+``` XML
+<PropertyGroup>
+  <SQAdditionalAnalysisFileItemTypes>$(SQAdditionalAnalysisFileItemTypes);AdditionalFiles</SQAdditionalAnalysisFileItemTypes>
+</PropertyGroup>
+```
+
+As a result, SonarQube reports the issues found on files such as `.csproj`,
+`.props`, and `.targets`, without those files taking part in the build itself.
+
+This behaviour can be disabled by setting `<SonarQubeIntegration>` to `false`.

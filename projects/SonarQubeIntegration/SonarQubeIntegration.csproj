@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="../../src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="../common/Code.cs" />
+  </ItemGroup>
+
+  <Import Project="../../src/DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.targets" />
+
+</Project>

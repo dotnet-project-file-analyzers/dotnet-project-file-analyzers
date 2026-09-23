@@ -7,53 +7,20 @@
   </PropertyGroup>
 
   <!--
-    SonarQube can pick up issues report on files others than compiling files
-    if they are reported as <Content>.
-      
-    * CopyToOutputDirectory = never
-      Ensures that <Content> only included to satisfy SonarQube is not copied.
-    
-    * Visible = false
-      Prevents <Content> from being shown in the IDE that was included by the user.
-      
-    * Pack = false
-      Prevents <Content> from being added to NuGet packages.
-      
-    * SonarQubeContent = true
-      Make tracable that is has been added due to the SonarQubeIntegration.
-      
-    * Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_'))"
-      Flattens the file structure of the content file to work arround a
-      Visual Studio limitation: github.com/dotnet/project-system/issues/5859
+    SonarScanner for .NET collects the files it analyzes from the item types listed in
+    $(SQAnalysisFileItemTypes). That list contains <None> and <Content>, but not
+    <AdditionalFiles>, which is where this package registers the files it reports issues on.
+    $(SQAdditionalAnalysisFileItemTypes) is the extension point to add to that list.
 
-    * Condition '$(BuildingInsideVisualStudio)' != 'true'
-      Visual Studio does not run SonarQube analysis, and its project tree
-      crashes on the linked items when they arrive as a project update (#842).
+    Microsoft.Common.targets imports the targets of this package before it imports those of
+    the scanner (via $(CustomAfterMicrosoftCommonTargets)), so this value is set in time.
 
-    * Condition '$(BuildingByReSharper)' != 'true'
-      Set by Rider and ReSharper for all their builds. Rider's solution view
-      hides the real files when the invisible linked duplicates are present.
-      
-    * Exclude **/*.razor.css as it will break the Razor build.
+    Do not register the files as <Content> instead: the build consumes <Content> itself, which
+    broke packing, publishing, and the scoped CSS discovery of the Razor SDK.
   -->
-  <ItemGroup Condition="'$(SonarQubeIntegration)' == 'true' and '$(BuildingInsideVisualStudio)' != 'true' and '$(BuildingByReSharper)' != 'true'">
-    <Content
-      Include="@(None);@(AdditionalFiles)"
-      Exclude="@(Content);**/*.razor.css"
-      CopyToOutputDirectory="never"
-      Visible="false"
-      SonarQubeContent="true"
-      Link="$([System.String]::Copy('%(Identity)').Replace('\', '_').Replace('/', '_').Replace(':', '_'))" />
-  </ItemGroup>
-
-  <!--
-    Prevents the content added by the SonarQube integretation being added to packages.
-  -->
-  <Target Name="_StripSonarQubeContent" BeforeTargets="_GetPackageFiles">
-    <ItemGroup>
-      <Content Remove="@(Content->WithMetadataValue('SonarQubeContent','true'))" />
-    </ItemGroup>
-  </Target>
+  <PropertyGroup Condition="'$(SonarQubeIntegration)' == 'true'">
+    <SQAdditionalAnalysisFileItemTypes>$(SQAdditionalAnalysisFileItemTypes);AdditionalFiles</SQAdditionalAnalysisFileItemTypes>
+  </PropertyGroup>
 
   <!--To inform users the SDK package is no longer needed. -->
   <Target Name="Proj1004" BeforeTargets="ResolvePackageAssets">

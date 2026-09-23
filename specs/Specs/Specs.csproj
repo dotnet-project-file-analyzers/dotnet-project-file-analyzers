@@ -52,6 +52,16 @@
     <PackageReference PrivateAssets="all" Include="NUnit3TestAdapter" Version="6.2.0" />
   </ItemGroup>
 
+  <PropertyGroup>
+    <SonarScannerVersion>11.3.0</SonarScannerVersion>
+  </PropertyGroup>
+
+  <ItemGroup Label="SonarScanner for .NET">
+    <!-- Downloaded, not referenced: the specs run builds against the targets of the real scanner. -->
+    <PackageDownload Include="dotnet-sonarscanner" Version="[$(SonarScannerVersion)]" />
+    <AssemblyMetadata Include="SonarScanner" Value="$(NuGetPackageRoot)dotnet-sonarscanner/$(SonarScannerVersion)" />
+  </ItemGroup>
+
   <ItemGroup Label="Test case C# files">
     <None Include="Cases/*.*" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
