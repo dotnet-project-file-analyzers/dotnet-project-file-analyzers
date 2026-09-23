@@ -5,7 +5,7 @@ using System.IO;
 
 namespace AwesomeAssertions;
 
-public sealed class AnalyzerResultAssertions(IAnalyzerResult subject, AssertionChain? chain = null)
+public sealed class AnalyzerResultAssertions(IAnalyzerResult subject)
 {
     public IAnalyzerResult Subject { get; } = subject;
 
