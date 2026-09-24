@@ -9,7 +9,7 @@ public class Reports
         {
           "SDK": {
             "version": "10.0.400",
-            "rollForward": "latestPatch",
+            "rollForward": "LATESTPATCH",
             "allowPrerelease": false
           }
         }
@@ -28,12 +28,8 @@ public class Reports
         """)
         .HasIssue(Issue.WRN("Proj6012", "No valid SDK version roll-forward policy has been specified").WithSpan(03, 19, 03, 20));
 
-
-    /// <remarks>
-    /// The value version is not trimmed.
-    /// </remarks>
     [Test]
-    public void invalid_version() => new SpecifySdkRollForwardPolicy().ForInlineGlobalJson("""
+    public void invalid_value() => new SpecifySdkRollForwardPolicy().ForInlineGlobalJson("""
         {
           "sdk": {
             "version": "10.0.400",
@@ -43,6 +39,18 @@ public class Reports
         }
         """)
         .HasIssue(Issue.WRN("Proj6012", "No valid SDK version roll-forward policy has been specified").WithSpan(03, 19, 03, 29));
+
+    [Test]
+    public void int_string_value() => new SpecifySdkRollForwardPolicy().ForInlineGlobalJson("""
+        {
+          "sdk": {
+            "version": "10.0.400",
+            "rollForward": "1",
+            "allowPrerelease": false
+          }
+        }
+        """)
+        .HasIssue(Issue.WRN("Proj6012", "No valid SDK version roll-forward policy has been specified").WithSpan(03, 19, 03, 20));
 }
 
 public class Guards

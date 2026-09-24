@@ -18,6 +18,7 @@ public sealed class SpecifySdkRollForwardPolicy() : JsonFileAnalyzer(Rule.Json.S
             context.ReportDiagnostic(Descriptor, context.File, context.File.SdkNode?.Span ?? context.File.Spans[context.File.TextSpan]);
         }
         else if (node is not JsonString value
+            || int.TryParse(value.Text, out _)
             || !Enum.TryParse<RollForwardPolicy>(value.Text, ignoreCase: true, out var policy)
             || policy is RollForwardPolicy.None)
         {

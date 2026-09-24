@@ -28,7 +28,6 @@ public class Reports
         """)
         .HasIssue(Issue.WRN("Proj6011", "No valid SDK version has been specified").WithSpan(02, 15, 02, 17));
 
-
     /// <remarks>
     /// The value version is not trimmed.
     /// </remarks>
