@@ -35,5 +35,14 @@ public static partial class Rule
                 "to a predictable release across machines and environments.",
             tags: ["global.json", "configuration", "SDK"],
             category: Category.CodeQuality);
+
+        public static DiagnosticDescriptor SpecifySdkRollForwardPolicy => New(
+            id: 6012,
+            title: "Specify SDK version roll-forward policy",
+            message: "No valid SDK version roll-forward policy has been specified",
+            description:
+                "TODO",
+            tags: ["global.json", "configuration", "SDK"],
+            category: Category.CodeQuality);
     }
 }
