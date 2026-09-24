@@ -15,6 +15,17 @@ public class Resolves
         result.Properties.Should().Contain(KeyValuePair.Create("IsDotNetProjectFileSdk", "false"));
         result.Should().HaveAdditionalFiles(
 
+            new ProjectItem
+            {
+                ItemSpec = Full("../global.json"),
+                Metadata = new Meta
+                {
+                    AnalyzerType = "GlobalJson",
+                    Link = "global.json",
+                    Visible = "false",
+                },
+            },
+
             new ProjectItem()
             {
                 ItemSpec = Full("AdditionalFilesProject/AdditionalFilesProject/AdditionalFilesProject.csproj"),
@@ -76,16 +87,6 @@ public class Resolves
         var result = ctx.Analyzer.Build().Results.Single();
         result.Properties.Should().Contain(KeyValuePair.Create("IsDotNetProjectFileSdk", "true"));
         result.Should().HaveAdditionalFiles(
-
-            new ProjectItem
-            {
-                ItemSpec = Full("../global.json"),
-                Metadata = new Meta
-                {
-                    AnalyzerType = "GlobalJson",
-                    Link = "global.json",
-                },
-            },
 
             new ProjectItem
             {
@@ -195,18 +196,33 @@ public class Resolves
 
         var result = ctx.Analyzer.Build().Results.Single();
         result.Should().HaveContent(
-             new ProjectItem
-             {
-                 ItemSpec = Full("BlazorScopedCss/BlazorScopedCss.csproj"),
-                 Metadata = new Meta
-                 {
-                     CopyToOutputDirectory = "never",
-                     Link = Link(Full("BlazorScopedCss/BlazorScopedCss.csproj")),
-                     Visible = "false",
-                     SonarQubeContent = "true",
-                     AnalyzerType = "MSBuildProject",
-                 },
-             },
+
+
+            new ProjectItem
+            {
+                ItemSpec = Full("../global.json"),
+                Metadata = new Meta
+                {
+                    AnalyzerType = "GlobalJson",
+                    CopyToOutputDirectory = "never",
+                    Link = Link(Full("../global.json")),
+                    SonarQubeContent = "true",
+                    Visible = "false",
+                },
+            },
+
+            new ProjectItem
+            {
+                ItemSpec = Full("BlazorScopedCss/BlazorScopedCss.csproj"),
+                Metadata = new Meta
+                {
+                    CopyToOutputDirectory = "never",
+                    Link = Link(Full("BlazorScopedCss/BlazorScopedCss.csproj")),
+                    Visible = "false",
+                    SonarQubeContent = "true",
+                    AnalyzerType = "MSBuildProject",
+                },
+            },
             new ProjectItem
             {
                 ItemSpec = Relative("Components/Tree.razor"),
@@ -215,15 +231,26 @@ public class Resolves
         );
 
         result.Should().HaveAdditionalFiles(
-             new ProjectItem
-             {
-                 ItemSpec = Full("BlazorScopedCss/BlazorScopedCss.csproj"),
-                 Metadata = new Meta
-                 {
-                     Visible = "false",
-                     AnalyzerType = "MSBuildProject",
-                 },
-             }
+            new ProjectItem
+            {
+                ItemSpec = Full("../global.json"),
+                Metadata = new Meta
+                {
+                    AnalyzerType = "GlobalJson",
+                    Link = "global.json",
+                    Visible = "false",
+                },
+            },
+
+           new ProjectItem
+           {
+               ItemSpec = Full("BlazorScopedCss/BlazorScopedCss.csproj"),
+               Metadata = new Meta
+               {
+                   Visible = "false",
+                   AnalyzerType = "MSBuildProject",
+               },
+           }
         );
     }
 }

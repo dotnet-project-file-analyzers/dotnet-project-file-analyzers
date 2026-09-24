@@ -8,13 +8,6 @@
       AnalyzerType="SDK"
       Visible="false"/>
 
-    <!-- global.json -->
-    <AdditionalFiles
-      Include="$([MSBuild]::GetPathOfFileAbove('global.json', $(MSBuildProjectDirectory)))"
-      Exclude="@(AdditionalFiles)"
-      AnalyzerType="GlobalJson"
-      Link="global.json" />
-
     <!-- .editorconfig -->
     <AdditionalFiles
       Include="$([MSBuild]::GetPathOfFileAbove('.editorconfig', $(MSBuildProjectDirectory)))"

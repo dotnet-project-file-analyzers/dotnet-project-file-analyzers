@@ -24,5 +24,16 @@ public static partial class Rule
                 "exist for every compiled project.",
             tags: ["global.json", "configuration", "SDK"],
             category: Category.CodeQuality);
+
+        public static DiagnosticDescriptor SpecifySdkVersion => New(
+            id: 6011,
+            title: "Specify SDK version",
+            message: "No valid SDK version has been specified",
+            description:
+                "A global.json file should specify a valid .NET SDK version in " +
+                "its sdk.version property, so the SDK resolver can pin the SDK " +
+                "to a predictable release across machines and environments.",
+            tags: ["global.json", "configuration", "SDK"],
+            category: Category.CodeQuality);
     }
 }

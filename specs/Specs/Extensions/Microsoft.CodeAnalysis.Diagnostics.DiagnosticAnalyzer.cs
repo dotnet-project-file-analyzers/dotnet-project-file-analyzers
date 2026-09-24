@@ -121,6 +121,13 @@ internal static class ProjectFileAnalyzersDiagnosticAnalyzerExtensions
            .WithFile(".globalconfig", content);
 
         [Pure]
+        public InlineProjectAnalyzerVerifyContextBuilder ForInlineGlobalJson(
+            [StringSyntax(StringSyntaxAttribute.Json)] string content)
+            => analyzer
+            .ForInlineSdkProject()
+            .WithFile("global.json", content);
+
+        [Pure]
         public InlineProjectAnalyzerVerifyContextBuilder ForInlineCsproj(
             [StringSyntax(StringSyntaxAttribute.Xml)] string content)
             => analyzer.ForInlineProject(Language.CSharp, content);
