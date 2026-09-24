@@ -16,9 +16,10 @@
     -->
   <ItemGroup Condition="'$(IsDotNetProjectFileSdk)' != 'true'">
     <AdditionalFiles
+      AnalyzerType="GlobalJson"
       Include="$([MSBuild]::GetPathOfFileAbove('global.json', $(MSBuildProjectDirectory)))"
       Exclude="@(AdditionalFiles)"
-      AnalyzerType="GlobalJson" />
+      Visible="false" />
   
   <!--
     XML Resources

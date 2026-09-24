@@ -29,11 +29,14 @@ public class Reports
         .HasIssue(Issue.WRN("Proj6011", "No valid SDK version has been specified").WithSpan(02, 15, 02, 17));
 
 
+    /// <remarks>
+    /// The value version is not trimmed.
+    /// </remarks>
     [Test]
     public void invalid_version() => new SpecifySdkVersion().ForInlineGlobalJson("""
         {
           "sdk": {
-            "version": "no-version",
+            "version": " 10.0.400 ",
             "rollForward": "latestPatch",
             "allowPrerelease": false
           }

@@ -22,6 +22,7 @@ public class Resolves
                 {
                     AnalyzerType = "GlobalJson",
                     Link = "global.json",
+                    Visible = "false",
                 },
             },
 
@@ -237,6 +238,7 @@ public class Resolves
                 {
                     AnalyzerType = "GlobalJson",
                     Link = "global.json",
+                    Visible = "false",
                 },
             },
 

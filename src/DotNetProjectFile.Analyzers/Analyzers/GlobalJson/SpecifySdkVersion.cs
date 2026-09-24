@@ -17,7 +17,7 @@ public sealed class SpecifySdkVersion() : JsonFileAnalyzer(Rule.Json.SpecifySdkV
         {
             context.ReportDiagnostic(Descriptor, context.File, context.File.SdkNode?.Span ?? context.File.Spans[context.File.TextSpan]);
         }
-        else if (node is not JsonString value || SemVer.TryParse(value.Text) is null)
+        else if (node is not JsonString value || SemVer.TryParse(value.Text, trim: false) is null)
         {
             context.ReportDiagnostic(Descriptor, context.File, node);
         }
