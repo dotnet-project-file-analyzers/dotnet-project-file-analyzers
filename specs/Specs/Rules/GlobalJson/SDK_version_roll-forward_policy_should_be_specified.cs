@@ -50,7 +50,7 @@ public class Reports
           }
         }
         """)
-        .HasIssue(Issue.WRN("Proj6012", "No valid SDK version roll-forward policy has been specified").WithSpan(03, 19, 03, 20));
+        .HasIssue(Issue.WRN("Proj6012", "No valid SDK version roll-forward policy has been specified").WithSpan(03, 19, 03, 22));
 }
 
 public class Guards
