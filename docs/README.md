@@ -278,6 +278,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj6010** global.json should exist](rules/Proj6010.md)
 * [**Proj6011** Specify SDK version](rules/Proj6011.md)
 * [**Proj6012** Specify SDK version roll-forward policy](rules/Proj6012.md)
+* [**Proj6013** Disable SDK version roll-forward when using lock files](rules/Proj6013.md)
 
 ## SonarQube integration
 By default, results by .NET project file analyzers are included in SonarQube

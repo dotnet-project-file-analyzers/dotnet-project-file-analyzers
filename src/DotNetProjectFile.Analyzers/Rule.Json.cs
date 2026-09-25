@@ -47,12 +47,13 @@ public static partial class Rule
             tags: ["global.json", "configuration", "SDK"],
             category: Category.CodeQuality);
 
-        public static DiagnosticDescriptor DisableSpecifySdkRollForward => New(
+        public static DiagnosticDescriptor DisableSdkRollForwardWhenLocked => New(
             id: 6013,
-            title: "Disable SDK version roll-forward",
-            message: "Do not allow the SDK version to roll-forward",
+            title: "Disable SDK version roll-forward when using lock files",
+            message: "Disable the SDK version roll-forward",
             description:
-                "TODO",
+                "When a project uses lock files, the SDK version must be pinned " +
+                "exactly by setting the sdk.rollForward property to 'disable'.",
             tags: ["global.json", "configuration", "SDK"],
             category: Category.CodeQuality);
     }
