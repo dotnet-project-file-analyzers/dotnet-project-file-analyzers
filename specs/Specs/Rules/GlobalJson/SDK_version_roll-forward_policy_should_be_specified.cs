@@ -51,6 +51,19 @@ public class Reports
         }
         """)
         .HasIssue(Issue.WRN("Proj6012", "No valid SDK version roll-forward policy has been specified").WithSpan(03, 19, 03, 22));
+
+    [TestCase("patch, major", 33)]
+    [TestCase(" latestPatch ", 34)]
+    public void not_a_policy_name(string value, int end) => new SpecifySdkRollForwardPolicy().ForInlineGlobalJson($$"""
+        {
+          "sdk": {
+            "version": "10.0.400",
+            "rollForward": "{{value}}",
+            "allowPrerelease": false
+          }
+        }
+        """)
+        .HasIssue(Issue.WRN("Proj6012", "No valid SDK version roll-forward policy has been specified").WithSpan(03, 19, 03, end));
 }
 
 public class Guards
