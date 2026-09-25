@@ -17,7 +17,7 @@ public class Reports
         .HasIssue(Issue.WRN("Proj6011", "No valid SDK version has been specified"));
 
     [Test]
-    public void nummeric_value() => new SpecifySdkVersion().ForInlineGlobalJson("""
+    public void numeric_value() => new SpecifySdkVersion().ForInlineGlobalJson("""
         {
           "sdk": {
             "version": 10,
@@ -27,7 +27,6 @@ public class Reports
         }
         """)
         .HasIssue(Issue.WRN("Proj6011", "No valid SDK version has been specified").WithSpan(02, 15, 02, 17));
-
 
     /// <remarks>
     /// The value version is not trimmed.
@@ -48,7 +47,7 @@ public class Reports
 public class Guards
 {
     [Test]
-    public void Specfied_version() => new SpecifySdkVersion().ForInlineGlobalJson("""
+    public void Specified_version() => new SpecifySdkVersion().ForInlineGlobalJson("""
         {
           "sdk": {
             "version": "10.0.400",

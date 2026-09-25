@@ -227,3 +227,4 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj6000** Invalid JSON file](https://dotnet-project-file-analyzers.github.io/rules/Proj6000.html)
 * [**Proj6010** global.json should exist](https://dotnet-project-file-analyzers.github.io/rules/Proj6010.html)
 * [**Proj6011** Specify SDK version](https://dotnet-project-file-analyzers.github.io/rules/Proj6011.html)
+* [**Proj6012** Specify SDK version roll-forward policy](https://dotnet-project-file-analyzers.github.io/rules/Proj6012.html)

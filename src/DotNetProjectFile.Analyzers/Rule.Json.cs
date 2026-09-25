@@ -35,5 +35,16 @@ public static partial class Rule
                 "to a predictable release across machines and environments.",
             tags: ["global.json", "configuration", "SDK"],
             category: Category.CodeQuality);
+
+        public static DiagnosticDescriptor SpecifySdkRollForwardPolicy => New(
+            id: 6012,
+            title: "Specify SDK version roll-forward policy",
+            message: "No valid SDK version roll-forward policy has been specified",
+            description:
+                "A global.json file should specify a valid value for the " +
+                "sdk.rollForward property, so the .NET CLI behaves predictably " +
+                "when the requested SDK version is not installed.",
+            tags: ["global.json", "configuration", "SDK"],
+            category: Category.CodeQuality);
     }
 }
