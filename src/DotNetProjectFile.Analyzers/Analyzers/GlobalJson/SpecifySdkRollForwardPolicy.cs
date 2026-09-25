@@ -5,7 +5,9 @@ namespace DotNetProjectFile.Analyzers.GlobalJson;
 
 /// <summary>Implements <see cref="Rule.Json.SpecifySdkRollForwardPolicy"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class SpecifySdkRollForwardPolicy() : JsonFileAnalyzer(Rule.Json.SpecifySdkRollForwardPolicy)
+public sealed class SpecifySdkRollForwardPolicy() : JsonFileAnalyzer(
+    Rule.Json.SpecifySdkRollForwardPolicy,
+    Rule.Json.DisableSpecifySdkRollForward)
 {
     /// <inheritdoc />
     public override ImmutableArray<AnalyzerType> ApplicableTo => JsonFileTypes.GlobalJson;
@@ -23,6 +25,10 @@ public sealed class SpecifySdkRollForwardPolicy() : JsonFileAnalyzer(Rule.Json.S
             || policy is RollForwardPolicy.None)
         {
             context.ReportDiagnostic(Descriptor, context.File, node);
+        }
+        else if (policy is not RollForwardPolicy.Disable && context.Props.RestorePackagesWithLockFile is true)
+        {
+            context.ReportDiagnostic(Rule.Json.DisableSpecifySdkRollForward, context.File, node);
         }
     }
 }

@@ -46,5 +46,14 @@ public static partial class Rule
                 "when the requested SDK version is not installed.",
             tags: ["global.json", "configuration", "SDK"],
             category: Category.CodeQuality);
+
+        public static DiagnosticDescriptor DisableSpecifySdkRollForward => New(
+            id: 6013,
+            title: "Disable SDK version roll-forward",
+            message: "Do not allow the SDK version to roll-forward",
+            description:
+                "TODO",
+            tags: ["global.json", "configuration", "SDK"],
+            category: Category.CodeQuality);
     }
 }
