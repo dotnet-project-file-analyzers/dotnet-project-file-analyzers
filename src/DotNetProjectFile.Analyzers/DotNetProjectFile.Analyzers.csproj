@@ -47,7 +47,7 @@
     <None Include="../../design/logo_128x128.png" Pack="true" PackagePath="/" />
     <None Include="$(OutputPath)/DotNetProjectFile.Analyzers.dll" Pack="true" PackagePath="analyzers" Visible="false" />
     <None Include="build/*.*" Pack="true" PackagePath="/build/" />
-  
+    <None Include="README.md" Pack="true" PackagePath="" />
   </ItemGroup>
 
   <ItemGroup Label="Resource files">
