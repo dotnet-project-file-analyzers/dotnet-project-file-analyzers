@@ -56,5 +56,14 @@ public static partial class Rule
                 "exactly by setting the sdk.rollForward property to 'disable'.",
             tags: ["global.json", "configuration", "SDK"],
             category: Category.CodeQuality);
+
+        public static DiagnosticDescriptor RelyOnStableSdk => New(
+            id: 6014,
+            title: "TODO",
+            message: "?",
+            description:
+                "?",
+            tags: ["global.json", "configuration", "SDK"],
+            category: Category.CodeQuality);
     }
 }
