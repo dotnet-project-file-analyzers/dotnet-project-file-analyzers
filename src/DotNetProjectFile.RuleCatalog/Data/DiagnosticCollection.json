@@ -1,6 +1,13 @@
 {
   "similar": [
     {
+      "desc": "Mark assemblies with assembly version",
+      "rules": [
+        "CA1016",
+        "S3904"
+      ]
+    },
+    {
       "desc": "Use a testable date/time provider.",
       "rules": [
         "S6354",
