@@ -228,3 +228,4 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj6010** global.json should exist](https://dotnet-project-file-analyzers.github.io/rules/Proj6010.html)
 * [**Proj6011** Specify SDK version](https://dotnet-project-file-analyzers.github.io/rules/Proj6011.html)
 * [**Proj6012** Specify SDK version roll-forward policy](https://dotnet-project-file-analyzers.github.io/rules/Proj6012.html)
+* [**Proj6013** Disable SDK version roll-forward when using lock files](https://dotnet-project-file-analyzers.github.io/rules/Proj6013.html)

@@ -24,6 +24,9 @@ public sealed class MsBuildProps(AnalyzerOptions options)
     /// <summary>Indicates that CPM is enabled.</summary>
     public bool? ManagePackageVersionsCentrally => Converts.String<bool>(Prop());
 
+    /// <summary>Creates and enforces NuGet lock file (packages.lock.json).</summary>
+    public bool? RestorePackagesWithLockFile => Converts.String<bool>(Prop());
+
     /// <summary>Indicates that restore is run in locked mode.</summary>
     public bool? RestoreLockedMode => Converts.String<bool>(Prop());
 

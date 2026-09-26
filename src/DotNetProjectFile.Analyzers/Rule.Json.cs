@@ -46,5 +46,15 @@ public static partial class Rule
                 "when the requested SDK version is not installed.",
             tags: ["global.json", "configuration", "SDK"],
             category: Category.CodeQuality);
+
+        public static DiagnosticDescriptor DisableSdkRollForwardWhenLocked => New(
+            id: 6013,
+            title: "Disable SDK version roll-forward when using lock files",
+            message: "Disable the SDK version roll-forward",
+            description:
+                "When a project uses lock files, the SDK version must be pinned " +
+                "exactly by setting the sdk.rollForward property to 'disable'.",
+            tags: ["global.json", "configuration", "SDK"],
+            category: Category.CodeQuality);
     }
 }

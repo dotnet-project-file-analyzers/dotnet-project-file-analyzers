@@ -28,6 +28,7 @@
     <CompilerVisibleProperty Include="PackageLicenseExpression" />
     <CompilerVisibleProperty Include="Platform" />
     <CompilerVisibleProperty Include="RestoreLockedMode" />
+    <CompilerVisibleProperty Include="RestorePackagesWithLockFile" />
     <CompilerVisibleProperty Include="SolutionDir" />
   </ItemGroup>
 

@@ -186,3 +186,4 @@ dotnet_diagnostic.Proj6000.severity = error      # Invalid JSON file
 dotnet_diagnostic.Proj6010.severity = warning    # global.json should exist
 dotnet_diagnostic.Proj6011.severity = warning    # Specify SDK version
 dotnet_diagnostic.Proj6012.severity = warning    # Specify SDK version roll-forward policy
+dotnet_diagnostic.Proj6013.severity = warning    # Disable SDK version roll-forward when using lock files
