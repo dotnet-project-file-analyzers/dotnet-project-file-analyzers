@@ -61,7 +61,7 @@ public static partial class Rule
             id: 6014,
             title: "Specify stable SDK version",
             message: "Specify a stable SDK version",
-            description: "the usage pre-release .NET SDKs is strongly discouraged.",
+            description: "The usage of pre-release .NET SDKs is strongly discouraged.",
             tags: ["global.json", "configuration", "SDK", "pre-release"],
             category: Category.CodeQuality);
     }
