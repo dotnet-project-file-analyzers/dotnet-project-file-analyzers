@@ -10,7 +10,7 @@ public class Reports
       "sdk": {
         "version": "10.0.100-rc.2.25502.107",
         "allowPrerelease": true,
-        "rollForward": true
+        "rollForward": "latestMajor"
       }
     }
     """)
