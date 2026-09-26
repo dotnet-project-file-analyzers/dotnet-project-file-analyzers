@@ -15,23 +15,26 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
     private readonly ImmutableArray<FileDefinition> Files;
     private readonly Lazy<string> Hash;
     private readonly Lazy<ProjectAnalyzerVerifyContext> Ctx;
+    private readonly ImmutableDictionary<string, string> MSBuildProperties;
 
     public InlineProjectAnalyzerVerifyContextBuilder(
         DiagnosticAnalyzer analyzer,
         string file,
         string? content)
-        : this(analyzer, [ToFile(file, content)])
+        : this(analyzer, [ToFile(file, content)], [])
     {
     }
 
     private InlineProjectAnalyzerVerifyContextBuilder(
         DiagnosticAnalyzer analyzer,
-        ImmutableArray<FileDefinition> files)
+        ImmutableArray<FileDefinition> files,
+        ImmutableDictionary<string, string> buildProperties)
     {
         Analyzer = analyzer;
         Files = files;
         Hash = new(() => GetHash(files));
         Ctx = new(BuildInternal);
+        MSBuildProperties = buildProperties;
     }
 
     [AssertionMethod]
@@ -73,8 +76,11 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
     public InlineProjectAnalyzerVerifyContextBuilder WithFile(string name, string? content = null)
     {
         var file = ToFile(name, content);
-        return new(Analyzer, Files.Add(file));
+        return new(Analyzer, Files.Add(file), MSBuildProperties);
     }
+
+    public InlineProjectAnalyzerVerifyContextBuilder WithBuildProperty(string name, string value)
+        => new(Analyzer, Files, MSBuildProperties.SetItem(name, value));
 
     private static FileDefinition ToFile(string name, string? content)
     {
@@ -120,10 +126,10 @@ internal sealed class InlineProjectAnalyzerVerifyContextBuilder
             var firstFileName = Path.Combine(dir, Files[0].Name);
             var fileInfo = new FileInfo(firstFileName);
 
-            return ProjectFileAnalyzersDiagnosticAnalyzerExtensions.ForTestProject(Analyzer, fileInfo);
+            return ProjectFileAnalyzersDiagnosticAnalyzerExtensions
+                .ForTestProject(Analyzer, fileInfo) with { MSBuildProperties = MSBuildProperties };
         }
     }
-
 
     private sealed record FileDefinition
     {
