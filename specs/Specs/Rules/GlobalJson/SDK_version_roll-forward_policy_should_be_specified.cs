@@ -90,6 +90,7 @@ public class Guards
           }
         }
         """)
+        .WithBuildProperty("RestorePackagesWithLockFile", "false")
         .HasNoIssues();
 
     /// <remarks>
@@ -106,5 +107,6 @@ public class Guards
           }
         }
         """)
+        .WithBuildProperty("RestorePackagesWithLockFile", "true")
         .HasNoIssues();
 }
