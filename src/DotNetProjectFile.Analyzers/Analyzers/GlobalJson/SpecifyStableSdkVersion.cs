@@ -3,9 +3,9 @@ using DotNetProjectFile.Json;
 
 namespace DotNetProjectFile.Analyzers.GlobalJson;
 
-/// <summary>Implements <see cref="Rule.Json.RelyOnStableSdk"/>.</summary>
+/// <summary>Implements <see cref="Rule.Json.SpecifyStableSdkVersion"/>.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class RelyOnStableSdk() : JsonFileAnalyzer(Rule.Json.RelyOnStableSdk)
+public sealed class SpecifyStableSdkVersion() : JsonFileAnalyzer(Rule.Json.SpecifyStableSdkVersion)
 {
     /// <inheritdoc />
     public override ImmutableArray<AnalyzerType> ApplicableTo => JsonFileTypes.GlobalJson;

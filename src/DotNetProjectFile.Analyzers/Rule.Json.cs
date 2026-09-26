@@ -57,13 +57,12 @@ public static partial class Rule
             tags: ["global.json", "configuration", "SDK"],
             category: Category.CodeQuality);
 
-        public static DiagnosticDescriptor RelyOnStableSdk => New(
+        public static DiagnosticDescriptor SpecifyStableSdkVersion => New(
             id: 6014,
-            title: "TODO",
-            message: "?",
-            description:
-                "?",
-            tags: ["global.json", "configuration", "SDK"],
+            title: "Specify stable SDK version",
+            message: "Specify a stable SDK version",
+            description: "the usage pre-release .NET SDKs is strongly discouraged.",
+            tags: ["global.json", "configuration", "SDK", "pre-release"],
             category: Category.CodeQuality);
     }
 }
