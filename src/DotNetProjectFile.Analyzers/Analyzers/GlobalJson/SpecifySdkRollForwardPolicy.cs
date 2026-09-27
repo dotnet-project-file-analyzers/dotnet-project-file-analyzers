@@ -19,14 +19,11 @@ public sealed class SpecifySdkRollForwardPolicy() : JsonFileAnalyzer(
         {
             context.ReportDiagnostic(Rule.Json.SpecifySdkRollForwardPolicy, context.File, context.File.SdkNode?.Span ?? context.File.Spans[context.File.TextSpan]);
         }
-        else if (node is not JsonString value
-            || !value.Text.All(char.IsLetter)
-            || !Enum.TryParse<RollForwardPolicy>(value.Text, ignoreCase: true, out var policy)
-            || policy is RollForwardPolicy.None)
+        else if (context.File.SdkNode?.RollForwardPolicy is null or RollForwardPolicy.None)
         {
             context.ReportDiagnostic(Rule.Json.SpecifySdkRollForwardPolicy, context.File, node);
         }
-        else if (policy is not RollForwardPolicy.Disable && context.Props.RestorePackagesWithLockFile is true)
+        else if (context.File.SdkNode?.RollForwardPolicy is not RollForwardPolicy.Disable && context.Props.RestorePackagesWithLockFile is true)
         {
             context.ReportDiagnostic(Rule.Json.DisableSdkRollForwardWhenLocked, context.File, node);
         }

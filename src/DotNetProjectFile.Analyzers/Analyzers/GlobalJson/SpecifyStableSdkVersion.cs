@@ -18,9 +18,21 @@ public sealed class SpecifyStableSdkVersion() : JsonFileAnalyzer(Rule.Json.Speci
         {
             context.ReportDiagnostic(Descriptor, context.File, version);
         }
-        if (context.File.SdkNode?.AllowPrerelease is JsonTrue prerelease)
+
+        if (context.File.SdkNode!.AllowPrerelease is JsonTrue prerelease)
         {
             context.ReportDiagnostic(Descriptor, context.File, prerelease);
+        }
+        else if (context.File.SdkNode!.AllowPrerelease is not JsonFalse
+            && context.File.SdkNode!.RollForwardPolicy
+            is not RollForwardPolicy.Disable
+            and not RollForwardPolicy.Patch
+            and not RollForwardPolicy.LatestPatch)
+        {
+            context.ReportDiagnostic(
+                Descriptor,
+                context.File,
+                context.File.SdkNode!.AllowPrerelease ?? context.File.SdkNode!.Root);
         }
     }
 }
