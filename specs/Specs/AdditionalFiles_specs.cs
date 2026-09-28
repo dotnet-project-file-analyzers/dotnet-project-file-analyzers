@@ -1,4 +1,3 @@
-using Buildalyzer;
 using static Specs.TestTools.TestPath;
 using Meta = Specs.TestTools.ProjectItem.Meta;
 using ProjectItem = Specs.TestTools.ProjectItem;
@@ -13,10 +12,19 @@ public class Resolves
         using var ctx = BuildalyzerContext.ForProject("AdditionalFilesProject/AdditionalFilesProject/AdditionalFilesProject.csproj");
 
         var result = ctx.Analyzer.Build().Results.Single();
-        Log(result);
-
         result.Properties.Should().Contain(KeyValuePair.Create("IsDotNetProjectFileSdk", "false"));
         result.Should().HaveAdditionalFiles(
+
+            new ProjectItem
+            {
+                ItemSpec = Full("../global.json"),
+                Metadata = new Meta
+                {
+                    AnalyzerType = "GlobalJson",
+                    Link = "global.json",
+                    Visible = "false",
+                },
+            },
 
             new ProjectItem()
             {
@@ -77,9 +85,6 @@ public class Resolves
         using var ctx = BuildalyzerContext.ForProject("AdditionalFilesProject/.net.csproj");
 
         var result = ctx.Analyzer.Build().Results.Single();
-
-        Log(result);
-
         result.Properties.Should().Contain(KeyValuePair.Create("IsDotNetProjectFileSdk", "true"));
         result.Should().HaveAdditionalFiles(
 
@@ -126,15 +131,6 @@ public class Resolves
                 {
                     Link = ".globalconfig",
                     AnalyzerType = "GlobalConfig",
-                },
-            },
-            new ProjectItem
-            {
-                ItemSpec = Full("../global.json"),
-                Metadata = new Meta
-                {
-                    Link = "global.json",
-                    AnalyzerType = "GlobalJson",
                 },
             },
             new ProjectItem
@@ -199,9 +195,34 @@ public class Resolves
         using var ctx = BuildalyzerContext.ForProject("BlazorScopedCss/BlazorScopedCss.csproj");
 
         var result = ctx.Analyzer.Build().Results.Single();
-        Log(result);
-
         result.Should().HaveContent(
+
+
+            new ProjectItem
+            {
+                ItemSpec = Full("../global.json"),
+                Metadata = new Meta
+                {
+                    AnalyzerType = "GlobalJson",
+                    CopyToOutputDirectory = "never",
+                    Link = Link(Full("../global.json")),
+                    SonarQubeContent = "true",
+                    Visible = "false",
+                },
+            },
+
+            new ProjectItem
+            {
+                ItemSpec = Full("BlazorScopedCss/BlazorScopedCss.csproj"),
+                Metadata = new Meta
+                {
+                    CopyToOutputDirectory = "never",
+                    Link = Link(Full("BlazorScopedCss/BlazorScopedCss.csproj")),
+                    Visible = "false",
+                    SonarQubeContent = "true",
+                    AnalyzerType = "MSBuildProject",
+                },
+            },
             new ProjectItem
             {
                 ItemSpec = Relative("Components/Tree.razor"),
@@ -210,29 +231,27 @@ public class Resolves
         );
     }
 
-    [Test]
-    public void For_Razor_Pages_scoped_css()
-    {
-        using var ctx = BuildalyzerContext.ForProject("RazorPagesScopedCss/RazorPagesScopedCss.csproj");
-
-        var result = ctx.Analyzer.Build().Results.Single();
-        Log(result);
-
-        result.Should().HaveContent(
+        result.Should().HaveAdditionalFiles(
             new ProjectItem
             {
-                ItemSpec = Relative("Pages/Index.cshtml"),
-                Metadata = new Meta()
-                    .Set("ExcludeFromSingleFile", "true")
-                    .Set("CopyToPublishDirectory", "PreserveNewest"),
-            }
-        );
-    }
+                ItemSpec = Full("../global.json"),
+                Metadata = new Meta
+                {
+                    AnalyzerType = "GlobalJson",
+                    Link = "global.json",
+                    Visible = "false",
+                },
+            },
 
-    private static void Log(IAnalyzerResult result)
-    {
-#if DEBUG
-        ProjectItem.Generate(result.Items.OfType("AdditionalFiles"));
-#endif
+           new ProjectItem
+           {
+               ItemSpec = Full("BlazorScopedCss/BlazorScopedCss.csproj"),
+               Metadata = new Meta
+               {
+                   Visible = "false",
+                   AnalyzerType = "MSBuildProject",
+               },
+           }
+        );
     }
 }

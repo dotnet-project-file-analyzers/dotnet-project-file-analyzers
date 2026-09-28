@@ -10,8 +10,21 @@ public abstract class JsonFileAnalyzer(
     params DiagnosticDescriptor[] supportedDiagnostics)
     : ProjectFileAnalyzer<JsonFile>(primaryDiagnostic, supportedDiagnostics)
 {
-    /// <summary>Registers the analyzer for all SLNX solution files.</summary>
+    /// <summary>
+    /// Defines to which <see cref="AnalyzerType"/>s the rule is applicable.
+    /// </summary>
+    /// <remarks>
+    /// Default is <see cref="JsonFileTypes.All"/>.
+    /// </remarks>
+    public virtual ImmutableArray<AnalyzerType> ApplicableTo => JsonFileTypes.All;
+
     /// <inheritdoc />
-    protected override void Register(AnalysisContext context)
-        => context.RegisterJsonFileAction(Register);
+    protected sealed override void Register(AnalysisContext context)
+        => context.RegisterJsonFileAction(c =>
+        {
+            if (ApplicableTo.Contains(c.AnalyzerType))
+            {
+                Register(c);
+            }
+        });
 }

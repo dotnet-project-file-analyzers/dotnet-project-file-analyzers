@@ -39,6 +39,8 @@ public class Parses
     [TestCase("01.3.3", "Leading zero for major")]
     [TestCase("1.03.3", "Leading zero for minor")]
     [TestCase("1.3.03", "Leading zero for path")]
+    [TestCase(" 1.0.0", "Leading space without trimming")]
+    [TestCase("1.0.0 ", "Trailing space without trimming")]
     public void Unsucessfully(string str, string because)
-        => SemVer.TryParse(str).Should().BeNull(because);
+        => SemVer.TryParse(str, trim: false).Should().BeNull(because);
 }

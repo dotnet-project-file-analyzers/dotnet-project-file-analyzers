@@ -1,6 +1,13 @@
 {
   "similar": [
     {
+      "desc": "Mark assemblies with assembly version",
+      "rules": [
+        "CA1016",
+        "S3904"
+      ]
+    },
+    {
       "desc": "Use a testable date/time provider.",
       "rules": [
         "S6354",
@@ -346,7 +353,7 @@
   "packages": [
     {
       "id": "Agoda.Analyzers",
-      "v": "1.1.193",
+      "v": "1.1.203",
       "rules": [
         {
           "f": "1.0.52",
@@ -1220,7 +1227,7 @@
     },
     {
       "id": "AutoMapperAnalyzer.Analyzers",
-      "v": "2.30.107",
+      "v": "2.30.110",
       "rules": [
         {
           "f": "1.0.0",
@@ -1479,7 +1486,7 @@
     },
     {
       "id": "Bit.CodeAnalyzers",
-      "v": "10.5.0",
+      "v": "10.6.2",
       "rules": [
         {
           "f": "4.0.0",
@@ -3800,7 +3807,7 @@
     },
     {
       "id": "D2L.CodeStyle.Analyzers",
-      "v": "0.225.0",
+      "v": "0.227.0",
       "rules": [
         {
           "f": "0.1.0",
@@ -6864,6 +6871,39 @@
           "title": "global.json should exist",
           "desc": "To ensure a predictable .NET SDK version is used across different machines and environments, a global.json file should exist for every compiled project.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj6010.html",
+          "tags": "global.json;configuration;SDK",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.18.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj6011",
+          "title": "Specify SDK version",
+          "desc": "A global.json file should specify a valid .NET SDK version in its sdk.version property, so the SDK resolver can pin the SDK to a predictable release across machines and environments.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj6011.html",
+          "tags": "global.json;configuration;SDK",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.18.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj6012",
+          "title": "Specify SDK version roll-forward policy",
+          "desc": "A global.json file should specify a valid value for the sdk.rollForward property, so the .NET CLI behaves predictably when the requested SDK version is not installed.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj6012.html",
+          "tags": "global.json;configuration;SDK",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.18.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj6013",
+          "title": "Disable SDK version roll-forward when using lock files",
+          "desc": "When a project uses lock files, the SDK version must be pinned exactly by setting the sdk.rollForward property to \u0027disable\u0027.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj6013.html",
           "tags": "global.json;configuration;SDK",
           "level": "Warning",
           "enabled": true
@@ -10688,7 +10728,7 @@
     },
     {
       "id": "MSTest.Analyzers",
-      "v": "4.4.0",
+      "v": "4.4.1",
       "rules": [
         {
           "f": "3.2.0",
@@ -11716,7 +11756,7 @@
     },
     {
       "id": "Menees.Analyzers",
-      "v": "4.0.1",
+      "v": "4.0.2",
       "rules": [
         {
           "f": "1.0.0",
@@ -11963,7 +12003,7 @@
     },
     {
       "id": "MessagePackAnalyzer",
-      "v": "3.1.8",
+      "v": "3.1.10",
       "rules": [
         {
           "f": "1.0.0",
@@ -12213,7 +12253,7 @@
     },
     {
       "id": "Meziantou.Analyzer",
-      "v": "3.0.235",
+      "v": "3.0.290",
       "rules": [
         {
           "f": "1.0.102",
@@ -14333,6 +14373,7 @@
         },
         {
           "f": "3.0.125",
+          "v": "3.0.288",
           "lang": "C#",
           "id": "MA0212",
           "title": "Use MemoryMarshal.GetReference instead of indexing at 0",
@@ -14612,6 +14653,36 @@
           "tags": null,
           "level": "Info",
           "enabled": false
+        },
+        {
+          "f": "3.0.263",
+          "lang": "C#",
+          "id": "MA0240",
+          "title": "Do not use banned syntax",
+          "url": "https://github.com/meziantou/Meziantou.Analyzer/blob/main/docs/Rules/MA0240.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.0.263",
+          "lang": "C#",
+          "id": "MA0241",
+          "title": "The banned syntax entry is not valid",
+          "url": "https://github.com/meziantou/Meziantou.Analyzer/blob/main/docs/Rules/MA0241.md",
+          "tags": null,
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "3.0.288",
+          "lang": "C#",
+          "id": "MA0242",
+          "title": "Use a value factory to compute the value only when the key is not in the ConcurrentDictionary",
+          "url": "https://github.com/meziantou/Meziantou.Analyzer/blob/main/docs/Rules/MA0242.md",
+          "tags": null,
+          "level": "Info",
+          "enabled": true
         }
       ]
     },
@@ -56988,7 +57059,7 @@
     },
     {
       "id": "NUnit.Analyzers",
-      "v": "4.14.0",
+      "v": "4.15.0",
       "rules": [
         {
           "f": "0.2.0",
@@ -76829,7 +76900,7 @@
     },
     {
       "id": "xunit.analyzers",
-      "v": "2.0.0",
+      "v": "2.1.0",
       "rules": [
         {
           "f": "0.1.0",
@@ -77205,7 +77276,7 @@
           "f": "1.5.0",
           "lang": "C#",
           "id": "xUnit1037",
-          "title": "There are fewer theory data type arguments than required by the parameters of the test method",
+          "title": "There are fewer arguments than required by the parameters of the test method",
           "url": "https://xunit.net/xunit.analyzers/rules/xUnit1037",
           "tags": null,
           "level": "Error",
@@ -77215,7 +77286,7 @@
           "f": "1.5.0",
           "lang": "C#",
           "id": "xUnit1038",
-          "title": "There are more theory data type arguments than allowed by the parameters of the test method",
+          "title": "There are more arguments than allowed by the parameters of the test method",
           "url": "https://xunit.net/xunit.analyzers/rules/xUnit1038",
           "tags": null,
           "level": "Error",
@@ -77225,7 +77296,7 @@
           "f": "1.5.0",
           "lang": "C#",
           "id": "xUnit1039",
-          "title": "The type argument to theory data is not compatible with the type of the corresponding test method parameter",
+          "title": "The theory argument type is not compatible with the type of the corresponding test method parameter",
           "url": "https://xunit.net/xunit.analyzers/rules/xUnit1039",
           "tags": null,
           "level": "Error",
@@ -77235,7 +77306,7 @@
           "f": "1.5.0",
           "lang": "C#",
           "id": "xUnit1040",
-          "title": "The type argument to theory data is nullable, while the type of the corresponding test method parameter is not",
+          "title": "The theory argument type is nullable, while the type of the corresponding test method parameter is not",
           "url": "https://xunit.net/xunit.analyzers/rules/xUnit1040",
           "tags": null,
           "level": "Warning",

@@ -24,5 +24,45 @@ public static partial class Rule
                 "exist for every compiled project.",
             tags: ["global.json", "configuration", "SDK"],
             category: Category.CodeQuality);
+
+        public static DiagnosticDescriptor SpecifySdkVersion => New(
+            id: 6011,
+            title: "Specify SDK version",
+            message: "No valid SDK version has been specified",
+            description:
+                "A global.json file should specify a valid .NET SDK version in " +
+                "its sdk.version property, so the SDK resolver can pin the SDK " +
+                "to a predictable release across machines and environments.",
+            tags: ["global.json", "configuration", "SDK"],
+            category: Category.CodeQuality);
+
+        public static DiagnosticDescriptor SpecifySdkRollForwardPolicy => New(
+            id: 6012,
+            title: "Specify SDK version roll-forward policy",
+            message: "No valid SDK version roll-forward policy has been specified",
+            description:
+                "A global.json file should specify a valid value for the " +
+                "sdk.rollForward property, so the .NET CLI behaves predictably " +
+                "when the requested SDK version is not installed.",
+            tags: ["global.json", "configuration", "SDK"],
+            category: Category.CodeQuality);
+
+        public static DiagnosticDescriptor DisableSdkRollForwardWhenLocked => New(
+            id: 6013,
+            title: "Disable SDK version roll-forward when using lock files",
+            message: "Disable the SDK version roll-forward",
+            description:
+                "When a project uses lock files, the SDK version must be pinned " +
+                "exactly by setting the sdk.rollForward property to 'disable'.",
+            tags: ["global.json", "configuration", "SDK"],
+            category: Category.CodeQuality);
+
+        public static DiagnosticDescriptor SpecifyStableSdkVersion => New(
+            id: 6014,
+            title: "Specify stable SDK version",
+            message: "Specify a stable SDK version",
+            description: "The usage of pre-release .NET SDKs is strongly discouraged.",
+            tags: ["global.json", "configuration", "SDK", "pre-release"],
+            category: Category.CodeQuality);
     }
 }

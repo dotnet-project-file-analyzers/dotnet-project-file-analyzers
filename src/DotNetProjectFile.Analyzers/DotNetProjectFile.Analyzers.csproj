@@ -56,7 +56,7 @@
 
   <ItemGroup Label="Props and targets">
     <PackageReference Include="DotNet.ReproducibleBuilds" Version="2.0.5" PrivateAssets="all" ExcludeAssets="runtime" />
-    <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.5" PrivateAssets="all" ExcludeAssets="runtime" />
+    <PackageReference Include="Microsoft.Sbom.Targets" Version="4.1.12" PrivateAssets="all" ExcludeAssets="runtime" />
   </ItemGroup>
 
   <ItemGroup Label="Roslyn dependencies">
@@ -85,6 +85,11 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+v1.*
+- Proj6011: Specify SDK version. (NEW RULE)
+- Proj6012: Specify SDK version roll-forward policy. (NEW RULE)
+- Proj6013: Disable SDK version roll-forward when using lock files. (NEW RULE)
+- Proj6014: Specify stable SDK version. (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>

@@ -1,4 +1,4 @@
-namespace RuleCatalog.NoWarn_specs;
+namespace MS_Build.NoWarn_specs;
 
 public class Suppresses
 {

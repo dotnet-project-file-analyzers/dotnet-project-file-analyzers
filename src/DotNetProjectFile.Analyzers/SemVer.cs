@@ -64,10 +64,10 @@ public sealed record SemVer()
 
     /// <summary>Tries to parse a semantic version.</summary>
     [Pure]
-    public static SemVer? TryParse(string? s) => s switch
+    public static SemVer? TryParse(string? s, bool trim = true) => s switch
     {
         null or "" => null,
-        _ when Pattern.Match(s.Trim()) is { Success: true } match => new()
+        _ when Pattern.Match(trim ? s.Trim() : s) is { Success: true } match => new()
         {
             Major = BigInteger.Parse(match.Groups[nameof(Major)].Value),
             Minor = BigInteger.Parse(match.Groups[nameof(Minor)].Value),
