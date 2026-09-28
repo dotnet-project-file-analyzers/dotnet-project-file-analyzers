@@ -61,9 +61,9 @@
       },
       "Qowaiv": {
         "type": "Direct",
-        "requested": "[8.1.0, )",
-        "resolved": "8.1.0",
-        "contentHash": "FgzZDHn3JvBFGR1qI4HXa+NtMSXBUMvaHVly7IgD9DA94FExDq3+JIjnES6wESMqrwVXQ9qx77CiszK7qX8yEw=="
+        "requested": "[8.2.0, )",
+        "resolved": "8.2.0",
+        "contentHash": "AZCOoAEMpAHJWhDocBpKmRFkpRk5GB3c1WYntivF0JKNrewqyBKm85X7LickaeHNHi9QeBDOq012x1wa2psOhg=="
       },
       "Qowaiv.Analyzers.CSharp": {
         "type": "Direct",
