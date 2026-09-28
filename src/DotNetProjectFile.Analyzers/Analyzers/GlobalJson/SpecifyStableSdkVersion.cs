@@ -19,6 +19,11 @@ public sealed class SpecifyStableSdkVersion() : JsonFileAnalyzer(Rule.Json.Speci
             context.ReportDiagnostic(Descriptor, context.File, version);
         }
 
+        if (context.File.SdkNode is null)
+        {
+            return;
+        }
+
         if (context.File.SdkNode!.AllowPrerelease is JsonTrue prerelease)
         {
             context.ReportDiagnostic(Descriptor, context.File, prerelease);
