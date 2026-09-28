@@ -35,7 +35,7 @@ of the scanner for that list:
 
 ``` XML
 <PropertyGroup>
-  <SQAdditionalAnalysisFileItemTypes>$(SQAdditionalAnalysisFileItemTypes);AdditionalFiles</SQAdditionalAnalysisFileItemTypes>
+  <SQAdditionalAnalysisFileItemTypes>AdditionalFiles;AndroidEnvironment;AndroidJavaSource;AndroidResource;ApplicationDefinition;Build;ClCompile;ClInclude;Compile;Content;DeploymentExtensionConfiguration;EmbeddedResource;EntityDeploy;None;Page;PostDeploy;PRIResource;PreDeploy;RefactorLog;Resource;Script;ScriptCode;TypeScriptCompile;$(SQAdditionalAnalysisFileItemTypes)</SQAdditionalAnalysisFileItemTypes>
 </PropertyGroup>
 ```
 

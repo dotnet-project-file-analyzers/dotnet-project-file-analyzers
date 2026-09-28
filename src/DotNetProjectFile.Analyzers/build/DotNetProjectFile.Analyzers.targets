@@ -15,8 +15,7 @@
     Microsoft.Common.targets imports the targets of this package before it imports those of
     the scanner (via $(CustomAfterMicrosoftCommonTargets)), so this value is set in time.
 
-    Do not register the files as <Content> instead: the build consumes <Content> itself, which
-    broke packing, publishing, and the scoped CSS discovery of the Razor SDK.
+    We define the MSBuild property simiar to Sonar but add AdditionalFiles.
   -->
   <PropertyGroup Condition="'$(SonarQubeIntegration)' == 'true'">
     <SQAdditionalAnalysisFileItemTypes>AdditionalFiles;AndroidEnvironment;AndroidJavaSource;AndroidResource;ApplicationDefinition;Build;ClCompile;ClInclude;Compile;Content;DeploymentExtensionConfiguration;EmbeddedResource;EntityDeploy;None;Page;PostDeploy;PRIResource;PreDeploy;RefactorLog;Resource;Script;ScriptCode;TypeScriptCompile;$(SQAdditionalAnalysisFileItemTypes)</SQAdditionalAnalysisFileItemTypes>
