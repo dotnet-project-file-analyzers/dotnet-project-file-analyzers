@@ -1,7 +1,7 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
-public sealed class RemoveLegacyConfiguration() : MsBuildProjectFileAnalyzer(Rule.RemoveLegacyConfiguration)
+public sealed class RemoveLegacyNodes() : MsBuildProjectFileAnalyzer(Rule.RemoveLegacyNodes)
 {
     /// <inheritdoc />
     public override bool DisableOnFailingImport => false;
@@ -47,7 +47,7 @@ public sealed class RemoveLegacyConfiguration() : MsBuildProjectFileAnalyzer(Rul
             or UseIISExpress
             or UseVSToolPath)
         {
-            context.ReportDiagnostic(Descriptor, node);
+            context.ReportDiagnostic(Descriptor, node, node.LocalName);
         }
 
         foreach (var child in node.Children)
