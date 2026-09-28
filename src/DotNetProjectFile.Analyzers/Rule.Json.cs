@@ -56,5 +56,13 @@ public static partial class Rule
                 "exactly by setting the sdk.rollForward property to 'disable'.",
             tags: ["global.json", "configuration", "SDK"],
             category: Category.CodeQuality);
+
+        public static DiagnosticDescriptor SpecifyStableSdkVersion => New(
+            id: 6014,
+            title: "Specify stable SDK version",
+            message: "Specify a stable SDK version",
+            description: "The usage of pre-release .NET SDKs is strongly discouraged.",
+            tags: ["global.json", "configuration", "SDK", "pre-release"],
+            category: Category.CodeQuality);
     }
 }
