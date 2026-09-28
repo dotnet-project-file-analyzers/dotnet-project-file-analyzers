@@ -34,7 +34,7 @@ public class Reports
 public class Guards
 {
     [Test]
-    public void explictly_disabled() => new SpecifyStableSdkVersion().ForInlineGlobalJson("""
+    public void explicitly_disabled() => new SpecifyStableSdkVersion().ForInlineGlobalJson("""
     {
       "sdk": {
         "version": "10.0.401",
