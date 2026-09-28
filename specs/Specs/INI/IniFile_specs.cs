@@ -49,7 +49,45 @@ public class Parses
 
         ini.GetDiagnostics().Should().HaveNoIssues();
     }
+
+
+    [TestCase("")]
+    [TestCase(" # comment")]
+    [TestCase(" ; comment")]
+    [TestCase(" \r\n")]
+    [TestCase("\n")]
+    public void Value_with_spaces(string end)
+    {
+        var tree = Test.Tree($"root = value with spaces{end}");
+        var ini = IniFile.Parse(tree);
+
+        ini.Sections.Single().Entries.Single().Should().BeEquivalentTo(new
+        {
+            Key = new { Text = "root" },
+            Value = new { Text = "value with spaces" },
+        });
+        ini.GetDiagnostics().Should().HaveNoIssues();
+    }
+
+    [Test]
+    public void Comma_seperated_values()
+    {
+        var tree = Test.Tree("""
+            some_key = js, jsx, ts, tsx
+            """);
+
+        var ini = IniFile.Parse(tree);
+
+        ini.Sections.Single().Entries.Single().Should().BeEquivalentTo(new
+        {
+            Key = new { Text = "some_key" },
+            Value = new { Text = "js, jsx, ts, tsx" },
+        });
+
+        ini.GetDiagnostics().Should().HaveNoIssues();
+    }
 }
+
 public class Parses_with_issues
 {
     [Test]
@@ -100,16 +138,6 @@ public class Parses_with_issues
 
         ini.GetDiagnostics()
             .Should().HaveIssue(Issue.ERR("Proj4002", "Value is expected"));
-    }
-
-    [Test]
-    public void KVP_with_noise()
-    {
-        var tree = Test.Tree("root = value some noise");
-        var ini = IniFile.Parse(tree);
-
-        ini.GetDiagnostics()
-            .Should().HaveIssue(Issue.ERR("Proj4000", "'s' is unexpected"));
     }
 
     [Test]

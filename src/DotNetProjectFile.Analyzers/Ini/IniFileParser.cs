@@ -16,7 +16,7 @@ internal static partial class IniFileParser
     private static readonly Lexer assign = equals | colon;
 
     private static readonly Lexer key = reg(@"^[a-zA-Z0-9_\-\.]+", Kind.KeyToken);
-    private static readonly Lexer value = reg(@"^[^=:^\s#;][^\s#;]*", Kind.ValueToken);
+    private static readonly Lexer value = new ValueLexer();
 
     private static readonly Lexer header_start = ch('[', Kind.HeaderStart);
     private static readonly Lexer header_end = ch(']', Kind.HeaderEnd);
@@ -178,5 +178,24 @@ internal static partial class IniFileParser
         public const string KeyToken = nameof(KeyToken);
         public const string ValueToken = nameof(ValueToken);
         public const string Unparsable = nameof(Unparsable);
+    }
+
+    private sealed class ValueLexer() : Lexer(IniFileParser.Kind.ValueToken)
+    {
+        public override int? Match(Chars span)
+        {
+            int? match = null;
+            var i = 0;
+
+            while (i < span.Length)
+            {
+                var ch = span[i++];
+                // Break on line-ends and comment
+                if (ch is '\r' or '\n' or '#' or ';') break;
+                // trim end
+                if (ch is not ' ' and not '\t') match = i;
+            }
+            return match;
+        }
     }
 }
