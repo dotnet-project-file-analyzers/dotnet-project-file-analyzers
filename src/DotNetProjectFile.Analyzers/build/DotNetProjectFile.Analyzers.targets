@@ -19,7 +19,7 @@
     broke packing, publishing, and the scoped CSS discovery of the Razor SDK.
   -->
   <PropertyGroup Condition="'$(SonarQubeIntegration)' == 'true'">
-    <SQAdditionalAnalysisFileItemTypes>$(SQAdditionalAnalysisFileItemTypes);AdditionalFiles</SQAdditionalAnalysisFileItemTypes>
+    <SQAdditionalAnalysisFileItemTypes>AdditionalFiles;AndroidEnvironment;AndroidJavaSource;AndroidResource;ApplicationDefinition;Build;ClCompile;ClInclude;Compile;Content;DeploymentExtensionConfiguration;EmbeddedResource;EntityDeploy;None;Page;PostDeploy;PRIResource;PreDeploy;RefactorLog;Resource;Script;ScriptCode;TypeScriptCompile;$(SQAdditionalAnalysisFileItemTypes)</SQAdditionalAnalysisFileItemTypes>
   </PropertyGroup>
 
   <!--To inform users the SDK package is no longer needed. -->
