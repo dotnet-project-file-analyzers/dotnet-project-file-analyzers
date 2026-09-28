@@ -552,6 +552,15 @@ public static partial class Rule
         tags: ["MSBuild", "CI/CD"],
         category: Category.Configuration);
 
+    public static DiagnosticDescriptor RemoveLegacyConfiguration => New(
+        id: 0058,
+        title: "TODO",
+        message: "TODO",
+        description:
+            "?",
+        tags: ["MSBuild", "Legacy"],
+        category: Category.Noise);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",
