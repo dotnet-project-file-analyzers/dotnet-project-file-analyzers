@@ -5447,7 +5447,7 @@
           "enabled": true
         },
         {
-          "f": "999.99.9",
+          "f": "1.19.0",
           "lang": "C#;Visual Basic",
           "id": "Proj0058",
           "title": "Remove legacy project nodes",
@@ -6887,7 +6887,7 @@
           "enabled": true
         },
         {
-          "f": "999.99.9",
+          "f": "1.19.0",
           "lang": "C#;Visual Basic",
           "id": "Proj6011",
           "title": "Specify SDK version",
@@ -6898,7 +6898,7 @@
           "enabled": true
         },
         {
-          "f": "999.99.9",
+          "f": "1.19.0",
           "lang": "C#;Visual Basic",
           "id": "Proj6012",
           "title": "Specify SDK version roll-forward policy",
@@ -6909,7 +6909,7 @@
           "enabled": true
         },
         {
-          "f": "999.99.9",
+          "f": "1.19.0",
           "lang": "C#;Visual Basic",
           "id": "Proj6013",
           "title": "Disable SDK version roll-forward when using lock files",
@@ -6920,7 +6920,7 @@
           "enabled": true
         },
         {
-          "f": "999.99.9",
+          "f": "1.19.0",
           "lang": "C#;Visual Basic",
           "id": "Proj6014",
           "title": "Specify stable SDK version",

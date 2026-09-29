@@ -18,13 +18,14 @@ public class Embedded
 
 public class Collects
 {
-    private static readonly FileInfo File = new("../../../../../src/DotNetProjectFile.RuleCatalog/Data/DiagnosticCollection.json")
+    private static readonly FileInfo File = new("../../../../../src/DotNetProjectFile.RuleCatalog/Data/DiagnosticCollection.json");
     private static readonly NuGetVersion Placeholder = new(999, 99, 9);
 
     [TestCase("1.19.0")]
     [Explicit("Only run this just before shipping a new package")]
-    public async Task Set_DotNetProjectFile_Analyzers_version(NuGetVersion version)
+    public async Task Set_DotNetProjectFile_Analyzers_version(string v)
     {
+        var version = new NuGetVersion(v);
         var info = DiagnosticCollection.Embedded();
         info = await DiagnosticCollector.Collect(info);
 
@@ -32,7 +33,7 @@ public class Collects
         var updated = package with
         {
             Version = version,
-            Rules = [.. package.Rules.Select(r => r.Version == Placeholder ? r with { Version = version } : r)],
+            Rules = [.. package.Rules.Select(r => r.First == Placeholder ? r with { First = version } : r)],
         };
 
         info = info with { Packages = info.Packages.Replace(package, updated) };
