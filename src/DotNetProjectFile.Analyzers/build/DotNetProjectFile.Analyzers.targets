@@ -18,7 +18,8 @@
     We define the MSBuild property simiar to Sonar but add AdditionalFiles.
   -->
   <PropertyGroup Condition="'$(SonarQubeIntegration)' == 'true'">
-    <SQAdditionalAnalysisFileItemTypes>AdditionalFiles;AndroidEnvironment;AndroidJavaSource;AndroidResource;ApplicationDefinition;Build;ClCompile;ClInclude;Compile;Content;DeploymentExtensionConfiguration;EmbeddedResource;EntityDeploy;None;Page;PostDeploy;PRIResource;PreDeploy;RefactorLog;Resource;Script;ScriptCode;TypeScriptCompile;$(SQAdditionalAnalysisFileItemTypes)</SQAdditionalAnalysisFileItemTypes>
+    <!-- enabled the proposed mechanism -->
+    <SQAdditionalAnalysisFileItemTypes>$(SQAdditionalAnalysisFileItemTypes);AdditionalFiles</SQAdditionalAnalysisFileItemTypes>
   </PropertyGroup>
 
   <!--To inform users the SDK package is no longer needed. -->
