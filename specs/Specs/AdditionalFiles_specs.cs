@@ -42,11 +42,11 @@ public class Resolves
                 Metadata = new Meta
                 {
                     AnalyzerType = "DirectoryBuildProps",
-                    Visible= "false",
+                    Visible = "false",
                     Link = "Directory.Build.props",
                 }
             },
-            
+
             new ProjectItem()
             {
                 ItemSpec = Full("AdditionalFilesProject/Directory.Build.targets"),
@@ -196,39 +196,11 @@ public class Resolves
 
         var result = ctx.Analyzer.Build().Results.Single();
         result.Should().HaveContent(
-
-
-            new ProjectItem
-            {
-                ItemSpec = Full("../global.json"),
-                Metadata = new Meta
-                {
-                    AnalyzerType = "GlobalJson",
-                    CopyToOutputDirectory = "never",
-                    Link = Link(Full("../global.json")),
-                    SonarQubeContent = "true",
-                    Visible = "false",
-                },
-            },
-
-            new ProjectItem
-            {
-                ItemSpec = Full("BlazorScopedCss/BlazorScopedCss.csproj"),
-                Metadata = new Meta
-                {
-                    CopyToOutputDirectory = "never",
-                    Link = Link(Full("BlazorScopedCss/BlazorScopedCss.csproj")),
-                    Visible = "false",
-                    SonarQubeContent = "true",
-                    AnalyzerType = "MSBuildProject",
-                },
-            },
             new ProjectItem
             {
                 ItemSpec = Relative("Components/Tree.razor"),
                 Metadata = new Meta().Set("ExcludeFromSingleFile", "true"),
-            }
-        );
+            });
 
         result.Should().HaveAdditionalFiles(
             new ProjectItem

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.props" />
   <Import Project="../../props/common.props" />

@@ -7,7 +7,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <SonarQubeIntegration>true</SonarQubeIntegration>
+    <SonarQubeIntegration Condition="$(SonarQubeIntegration) == ''">true</SonarQubeIntegration>
     <IsDotNetProjectFileSdk>false</IsDotNetProjectFileSdk>
     <IsDotNetProjectFileSdk Condition="$(MSBuildProjectFile) == '.net.csproj'">true</IsDotNetProjectFileSdk>
   </PropertyGroup>

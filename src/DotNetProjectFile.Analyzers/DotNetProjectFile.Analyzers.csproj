@@ -92,6 +92,7 @@ v1.*
 - Proj6012: Specify SDK version roll-forward policy. (NEW RULE)
 - Proj6013: Disable SDK version roll-forward when using lock files. (NEW RULE)
 - Proj6014: Specify stable SDK version. (NEW RULE)
+- SonarQube support vial via $(SQAdditionalAnalysisFileItemTypes) instead of adding analyzed files via <Content>. (UPDATE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>

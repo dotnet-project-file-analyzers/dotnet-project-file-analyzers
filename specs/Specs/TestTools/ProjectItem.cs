@@ -34,8 +34,6 @@ public sealed record ProjectItem
         public string? CopyToOutputDirectory { get => Get(nameof(CopyToOutputDirectory)); init => Set(nameof(CopyToOutputDirectory), value); }
         public string? Link { get => Get(nameof(Link)); init => Set(nameof(Link), value); }
         public string? Visible { get => Get(nameof(Visible)); init => Set(nameof(Visible), value); }
-        public string? SonarQubeContent { get => Get(nameof(SonarQubeContent)); init => Set(nameof(SonarQubeContent), value); }
-
         public string? PackagePath { get => Get(nameof(PackagePath)); init => Set(nameof(PackagePath), value); }
         public string? Pack { get => Get(nameof(Pack)); init => Set(nameof(Pack), value); }
 
