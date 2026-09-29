@@ -70,7 +70,7 @@ public class Parses
     }
 
     [Test]
-    public void Comma_seperated_values()
+    public void Comma_separated_values()
     {
         var tree = Test.Tree("""
             some_key = js, jsx, ts, tsx
