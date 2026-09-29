@@ -23,11 +23,8 @@ public sealed class RemoveLegacyNodes() : MsBuildProjectFileAnalyzer(Rule.Remove
             or AssemblyFileVersion
             or AssemblyInformationalVersion
             or AssemblyProduct
-            or AssemblyTitle
-            or AssemblyVersion
             or BootstrapperPackage
             or FileAlignment
-            or HintPath
             or IISExpressSSLPort
             or Install
             or InstallFrom
@@ -41,7 +38,6 @@ public sealed class RemoveLegacyNodes() : MsBuildProjectFileAnalyzer(Rule.Remove
             or TargetFrameworkProfile
             or TargetFrameworkVersion
             or TargetPlatformIdentifier
-            or TargetPlatformMinVersion
             or TargetPlatformVersion
             or UseGlobalApplicationHostFile
             or UseIISExpress
