@@ -18,6 +18,31 @@ public class Embedded
 
 public class Collects
 {
+    private static readonly FileInfo File = new("../../../../../src/DotNetProjectFile.RuleCatalog/Data/DiagnosticCollection.json");
+    private static readonly NuGetVersion Placeholder = new(999, 99, 9);
+
+    [TestCase("1.19.0")]
+    [Explicit("Only run this just before shipping a new package")]
+    public async Task Set_DotNetProjectFile_Analyzers_version(string v)
+    {
+        var version = new NuGetVersion(v);
+        var info = DiagnosticCollection.Embedded();
+        info = await DiagnosticCollector.Collect(info);
+
+        var package = info.Packages.Single(p => p.Id == "DotNetProjectFile.Analyzers");
+        var updated = package with
+        {
+            Version = version,
+            Rules = [.. package.Rules.Select(r => r.First == Placeholder ? r with { First = version } : r)],
+        };
+
+        info = info with { Packages = info.Packages.Replace(package, updated) };
+
+        using var stream = new FileStream(File.FullName, FileMode.Create);
+        info.Save(stream);
+        info.Packages.Should().AllSatisfy(p => p.Rules.Should().NotBeEmpty(p.Id));
+    }
+
     [Test]
     [Explicit("Long running process that alters the embedded resource")]
     public async Task New_rules()
@@ -26,18 +51,13 @@ public class Collects
         info = await DiagnosticCollector.Collect(info);
         info = UpdateDotNetProjectFileAnalyzers(info);
 
-        var file = new DirectoryInfo("../../../../../src/DotNetProjectFile.RuleCatalog/Data/DiagnosticCollection.json");
-        using var stream = new FileStream(file.FullName, FileMode.Create);
-
+        using var stream = new FileStream(File.FullName, FileMode.Create);
         info.Save(stream);
         info.Packages.Should().AllSatisfy(p => p.Rules.Should().NotBeEmpty(p.Id));
     }
 
     private static DiagnosticCollection UpdateDotNetProjectFileAnalyzers(DiagnosticCollection collection)
     {
-        var version = new NuGetVersion(typeof(DotNetProjectFile.Rule).Assembly.GetName().Version!);
-        version = new(version.Major, version.Minor, version.Patch);
-
         var package = collection.Packages.Single(p => p.Id == "DotNetProjectFile.Analyzers");
         var rules = package.Rules.ToDictionary(r => r.Id, r => r);
 
@@ -47,14 +67,14 @@ public class Collects
                 ? existing.Update(rule)
                 : (rule with
                 {
-                    First = version,
+                    First = Placeholder,
                     Languages = [LanguageNames.CSharp, LanguageNames.VisualBasic],
                 });
         }
 
         var updated = package with 
         {
-            Version = version,
+            Version = Placeholder,
             Rules = [.. rules.Values.Order()],
         };
 

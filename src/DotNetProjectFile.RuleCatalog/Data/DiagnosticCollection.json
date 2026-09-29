@@ -4817,7 +4817,7 @@
     },
     {
       "id": "DotNetProjectFile.Analyzers",
-      "v": "1.18.0",
+      "v": "999.99.9",
       "rules": [
         {
           "f": "1.0.0",
@@ -5443,6 +5443,17 @@
           "desc": "?",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0057.html",
           "tags": "MSBuild;CI/CD",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.19.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj0058",
+          "title": "Remove legacy project nodes",
+          "desc": "Project files that predate the .NET SDK contain nodes that are not used by the SDK should be removed to reduce noise.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj0058.html",
+          "tags": "MSBuild;Legacy",
           "level": "Warning",
           "enabled": true
         },
@@ -6876,7 +6887,7 @@
           "enabled": true
         },
         {
-          "f": "1.18.0",
+          "f": "1.19.0",
           "lang": "C#;Visual Basic",
           "id": "Proj6011",
           "title": "Specify SDK version",
@@ -6887,7 +6898,7 @@
           "enabled": true
         },
         {
-          "f": "1.18.0",
+          "f": "1.19.0",
           "lang": "C#;Visual Basic",
           "id": "Proj6012",
           "title": "Specify SDK version roll-forward policy",
@@ -6898,13 +6909,24 @@
           "enabled": true
         },
         {
-          "f": "1.18.0",
+          "f": "1.19.0",
           "lang": "C#;Visual Basic",
           "id": "Proj6013",
           "title": "Disable SDK version roll-forward when using lock files",
           "desc": "When a project uses lock files, the SDK version must be pinned exactly by setting the sdk.rollForward property to \u0027disable\u0027.",
           "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj6013.html",
           "tags": "global.json;configuration;SDK",
+          "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.19.0",
+          "lang": "C#;Visual Basic",
+          "id": "Proj6014",
+          "title": "Specify stable SDK version",
+          "desc": "The usage of pre-release .NET SDKs is strongly discouraged.",
+          "url": "https://dotnet-project-file-analyzers.github.io/rules/Proj6014.html",
+          "tags": "global.json;configuration;SDK;pre-release",
           "level": "Warning",
           "enabled": true
         },
@@ -7038,7 +7060,7 @@
     },
     {
       "id": "Faithlife.Analyzers",
-      "v": "1.7.3",
+      "v": "1.8.0",
       "rules": [
         {
           "f": "1.0.0",
@@ -7290,6 +7312,16 @@
           "url": "https://github.com/Faithlife/FaithlifeAnalyzers/blob/-/docs/FL0026.md",
           "tags": null,
           "level": "Warning",
+          "enabled": true
+        },
+        {
+          "f": "1.8.0",
+          "lang": "C#",
+          "id": "FL0027",
+          "title": "Use static import for FormattableString.Invariant",
+          "url": "https://github.com/Faithlife/FaithlifeAnalyzers/blob/-/docs/FL0027.md",
+          "tags": null,
+          "level": "Info",
           "enabled": true
         }
       ]
@@ -66616,7 +66648,7 @@
     },
     {
       "id": "SonarAnalyzer.CSharp",
-      "v": "10.34.0.3385",
+      "v": "10.35.0.4138",
       "rules": [
         {
           "f": "6.4.0.3347",
@@ -71765,7 +71797,7 @@
     },
     {
       "id": "SonarAnalyzer.VisualBasic",
-      "v": "10.34.0.3385",
+      "v": "10.35.0.4138",
       "rules": [
         {
           "f": "6.4.0.3347",

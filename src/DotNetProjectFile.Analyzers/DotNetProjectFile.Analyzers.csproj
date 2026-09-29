@@ -80,12 +80,18 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.18.0</Version>
+    <Version>1.19.0</Version>
     <ToBeReleased>
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.*
+- ?
+]]>
+    </ToBeReleased>
+    <PackageReleaseNotes>
+      <![CDATA[
+v1.19.0
 - Proj0058: Remove legacy project nodes. (NEW RULE)
 - Proj4000: Values may contain spaces. (FP)
 - Proj6011: Specify SDK version. (NEW RULE)
@@ -93,10 +99,6 @@ v1.*
 - Proj6013: Disable SDK version roll-forward when using lock files. (NEW RULE)
 - Proj6014: Specify stable SDK version. (NEW RULE)
 - SonarQube support vial via $(SQAdditionalAnalysisFileItemTypes) instead of adding analyzed files via <Content>. (UPDATE)
-]]>
-    </ToBeReleased>
-    <PackageReleaseNotes>
-      <![CDATA[
 v1.18.0
 - Proj0055: Enable nullability analysis for C#. (NEW RULE)
 - Proj0056: Enable nullability analysis for F#. (NEW RULE)
