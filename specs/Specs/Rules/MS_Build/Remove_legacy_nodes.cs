@@ -66,8 +66,6 @@ public class Reports
             Issue.WRN("Proj0058", "Remove the legacy AssemblyFileVersion node"/*.............*/).WithSpan(09, 04, 09, 54),
             Issue.WRN("Proj0058", "Remove the legacy AssemblyInformationalVersion node"/*....*/).WithSpan(10, 04, 10, 70),
             Issue.WRN("Proj0058", "Remove the legacy AssemblyProduct node"/*.................*/).WithSpan(11, 04, 11, 46),
-            Issue.WRN("Proj0058", "Remove the legacy AssemblyTitle node"/*...................*/).WithSpan(12, 04, 12, 40),
-            Issue.WRN("Proj0058", "Remove the legacy AssemblyVersion node"/*.................*/).WithSpan(13, 04, 13, 46),
             Issue.WRN("Proj0058", "Remove the legacy FileAlignment node"/*...................*/).WithSpan(14, 04, 14, 38),
             Issue.WRN("Proj0058", "Remove the legacy IISExpressSSLPort node"/*...............*/).WithSpan(15, 04, 15, 48),
             Issue.WRN("Proj0058", "Remove the legacy Install node"/*.........................*/).WithSpan(16, 04, 16, 27),
@@ -83,11 +81,9 @@ public class Reports
             Issue.WRN("Proj0058", "Remove the legacy UseVSToolPath node"/*...................*/).WithSpan(26, 04, 26, 39),
             Issue.WRN("Proj0058", "Remove the legacy ProjectExtensions node"/*...............*/).WithSpan(29, 02, 29, 23),
             Issue.WRN("Proj0058", "Remove the legacy BootstrapperPackage node"/*.............*/).WithSpan(32, 04, 32, 65),
-            Issue.WRN("Proj0058", "Remove the legacy HintPath node"/*........................*/).WithSpan(37, 06, 37, 74),
             Issue.WRN("Proj0058", "Remove the legacy TargetFrameworkProfile node"/*..........*/).WithSpan(43, 06, 43, 61),
             Issue.WRN("Proj0058", "Remove the legacy TargetFrameworkVersion node"/*..........*/).WithSpan(44, 06, 44, 59),
             Issue.WRN("Proj0058", "Remove the legacy TargetPlatformIdentifier node"/*........*/).WithSpan(45, 06, 45, 62),
-            Issue.WRN("Proj0058", "Remove the legacy TargetPlatformMinVersion node"/*........*/).WithSpan(46, 06, 46, 71),
             Issue.WRN("Proj0058", "Remove the legacy TargetPlatformVersion node"/*...........*/).WithSpan(47, 06, 47, 65));
 }
 
