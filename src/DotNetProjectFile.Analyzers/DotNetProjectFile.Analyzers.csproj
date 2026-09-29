@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../../props/common.props" />
 
@@ -90,6 +90,7 @@ v1.*
 - Proj6012: Specify SDK version roll-forward policy. (NEW RULE)
 - Proj6013: Disable SDK version roll-forward when using lock files. (NEW RULE)
 - Proj6014: Specify stable SDK version. (NEW RULE)
+- SonarQube support vial via $(SQAdditionalAnalysisFileItemTypes) instead of adding analyzed files via <Content>. (UPDATE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
@@ -109,8 +110,6 @@ v1.18.0
 - Proj1010: Avoid enabling deprecated rules. (NEW RULE)
 - Proj1200: Report on issues in prop files. (FN)
 - Proj1300: Ignore Aspire projects. (FP)
-- Register <AdditionalFiles> with SonarQube via $(SQAdditionalAnalysisFileItemTypes) instead of adding them as <Content>. (UPDATE)
-- Do not break builds of projects with Razor Pages or Blazor scoped CSS. (BUG)
 v1.17.0
 - Proj4011: Define keys once in an INI section. (NEW RULE)
 - Proj5006: Files included in an SLNX should exist. (NEW RULE)
