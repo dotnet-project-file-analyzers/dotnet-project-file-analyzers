@@ -87,6 +87,7 @@ ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.*
 - Proj0058: Remove legacy project nodes. (NEW RULE)
+- Proj4000: Values may contain spaces. (FP)
 - Proj6011: Specify SDK version. (NEW RULE)
 - Proj6012: Specify SDK version roll-forward policy. (NEW RULE)
 - Proj6013: Disable SDK version roll-forward when using lock files. (NEW RULE)
