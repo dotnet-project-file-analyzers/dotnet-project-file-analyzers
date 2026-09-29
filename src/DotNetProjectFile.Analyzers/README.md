@@ -59,6 +59,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj0055** Enable nullability analysis for C#](https://dotnet-project-file-analyzers.github.io/rules/Proj0055.html)
 * [**Proj0056** Enable nullability analysis for F#](https://dotnet-project-file-analyzers.github.io/rules/Proj0056.html)
 * [**Proj0057** Keep paths portable](https://dotnet-project-file-analyzers.github.io/rules/Proj0057.html)
+* [**Proj0058** Remove legacy project nodes](https://dotnet-project-file-analyzers.github.io/rules/Proj0058.html)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](https://dotnet-project-file-analyzers.github.io/rules/Proj0200.html)

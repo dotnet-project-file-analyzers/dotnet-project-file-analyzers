@@ -552,6 +552,16 @@ public static partial class Rule
         tags: ["MSBuild", "CI/CD"],
         category: Category.Configuration);
 
+    public static DiagnosticDescriptor RemoveLegacyNodes => New(
+        id: 0058,
+        title: "Remove legacy project nodes",
+        message: "Remove the legacy {0} node",
+        description:
+            "Project files that predate the .NET SDK contain nodes that are " +
+            "not used by the SDK should be removed to reduce noise.",
+        tags: ["MSBuild", "Legacy"],
+        category: Category.Noise);
+
     public static DiagnosticDescriptor DefineIsPackable => New(
         id: 0200,
         title: "Define the project packability explicitly",

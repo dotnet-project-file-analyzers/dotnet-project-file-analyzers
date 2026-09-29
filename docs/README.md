@@ -109,6 +109,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj0055** Enable nullability analysis for C#](rules/Proj0055.md)
 * [**Proj0056** Enable nullability analysis for F#](rules/Proj0056.md)
 * [**Proj0057** Keep paths portable](rules/Proj0057.md)
+* [**Proj0058** Remove legacy project nodes](rules/Proj0058.md)
 
 ### Packaging
 * [**Proj0200** Define IsPackable explicitly](rules/Proj0200.md)
