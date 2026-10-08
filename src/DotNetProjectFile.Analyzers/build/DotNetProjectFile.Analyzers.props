@@ -12,6 +12,22 @@
     <IsDotNetProjectFileSdk Condition="$(MSBuildProjectFile) == '.net.csproj'">true</IsDotNetProjectFileSdk>
   </PropertyGroup>
 
+  <!--
+    SonarScanner for .NET collects the files it analyzes from the item types listed in
+    $(SQAnalysisFileItemTypes). That list contains <None> and <Content>, but not
+    <AdditionalFiles>, which is where this package registers the files it reports issues on.
+    $(SQAdditionalAnalysisFileItemTypes) is the extension point to add to that list.
+
+    Microsoft.Common.targets imports the props of this package before it imports those of
+    the scanner (via the Microsoft.Common.targets\ImportBefore hook), so this value is set in time.
+
+    We define the MSBuild property simiar to Sonar but add AdditionalFiles.
+  -->
+  <PropertyGroup Condition="'$(SonarQubeIntegration)' == 'true'">
+    <!-- enabled the proposed mechanism -->
+    <SQAdditionalAnalysisFileItemTypes>$(SQAdditionalAnalysisFileItemTypes);AdditionalFiles</SQAdditionalAnalysisFileItemTypes>
+  </PropertyGroup>
+
   <!-- Extend the additional files for the .net.csproj -->
   <Import
      Condition="$(IsDotNetProjectFileSdk) == 'true'"
