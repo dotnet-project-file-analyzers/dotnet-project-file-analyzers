@@ -91,6 +91,8 @@ v1.*
     </ToBeReleased>
     <PackageReleaseNotes>
       <![CDATA[
+v1.19.1
+- Set $(SQAdditionalAnalysisFileItemTypes) in the .props instead of the .target. (BUG)
 v1.19.0
 - Proj0058: Remove legacy project nodes. (NEW RULE)
 - Proj4000: Values may contain spaces. (FP)
