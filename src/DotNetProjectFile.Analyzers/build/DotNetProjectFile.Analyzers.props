@@ -18,8 +18,8 @@
     <AdditionalFiles>, which is where this package registers the files it reports issues on.
     $(SQAdditionalAnalysisFileItemTypes) is the extension point to add to that list.
 
-    Microsoft.Common.targets imports the targets of this package before it imports those of
-    the scanner (via $(CustomAfterMicrosoftCommonTargets)), so this value is set in time.
+    Microsoft.Common.targets imports the props of this package before it imports those of
+    the scanner (via the Microsoft.Common.targets\ImportBefore hook), so this value is set in time.
 
     We define the MSBuild property simiar to Sonar but add AdditionalFiles.
   -->
