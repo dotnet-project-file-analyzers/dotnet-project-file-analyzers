@@ -287,4 +287,4 @@ By default, results by .NET project file analyzers are included in SonarQube
 reports. Read [here](general/sonar-integration.md) more about how this works.
 
 ## License
-.NET Project File Analyzers is licensed under [MIT](LICENSE.MD).
+.NET Project File Analyzers is licensed under [MIT](../LICENSE.MD).
