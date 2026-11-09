@@ -13,5 +13,12 @@ public static class CommandBinder
             command.SetAction(execution);
             return command;
         }
+
+        /// <see cref="Command.SetAction(Func{ParseResult, CancellationToken, Task{int}})" />
+        public Command Bind(Func<ParseResult, CancellationToken, Task<int>> execution)
+        {
+            command.SetAction(execution);
+            return command;
+        }
     }
 }
