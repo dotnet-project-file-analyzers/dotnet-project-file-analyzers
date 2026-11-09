@@ -132,9 +132,10 @@ public static class PackageCache
     private static IODirectory? GetVersionDirectory(IODirectory packageDir, string? versionLabel)
     {
         // TODO: resolve version to a suitable fixed version when floating version is provided. Issue #320
-        versionLabel = LowerBound(versionLabel);
+        (versionLabel, var exclusive) = LowerBound(versionLabel);
 
-        if (versionLabel is { })
+        // An exclusive lower bound, such as (1.0, 2.0), excludes the version itself.
+        if (versionLabel is { } && !exclusive)
         {
             var exactVersionDir = packageDir.SubDirectory(versionLabel);
             if (exactVersionDir.Exists)
@@ -167,9 +168,10 @@ public static class PackageCache
                 .Directory;
 
             // Pick nearest version that is lower than the current version if available.
+            // For an exclusive lower bound, the bound itself is the nearest lower version.
             foundVersion ??= pairs
                 .OrderByDescending(pair => pair.Version)
-                .FirstOrNone(pair => pair.Version < version)?
+                .FirstOrNone(pair => pair.Version < version || (exclusive && pair.Version == version))?
                 .Directory;
         }
 
@@ -181,25 +183,26 @@ public static class PackageCache
     private static System.Version? TryParseVersion(string version)
         => System.Version.TryParse(version, out var parsed) ? parsed : null;
 
-    /// <summary>Gets the lower bound of a NuGet version range, such as [1.0, 2.0).</summary>
+    /// <summary>Gets the lower bound of a NuGet version range, such as [1.0, 2.0) or (1.0, 2.0).</summary>
     /// <remarks>
     /// NuGet resolves the lowest applicable version, which is the lower bound
-    /// (when restored). Plain versions (1.0) are a lower bound already.
-    /// ponytail: an exclusive lower bound, (1.0, 2.0), is treated as inclusive;
-    /// use NuGet.Versioning if that ever matters.
+    /// (when restored, and inclusive). Plain versions (1.0) are an inclusive
+    /// lower bound already. No lower bound, such as (, 2.0], gives null.
     /// </remarks>
-    private static string? LowerBound(string? versionLabel)
+    [Pure]
+    public static (string? Version, bool Exclusive) LowerBound(string? versionLabel)
     {
-        if (versionLabel?.Trim() is not { Length: > 0 } label) return null;
+        if (versionLabel?.Trim() is not { Length: > 0 } label) return (null, false);
 
-        if (label[0] is not '[' and not '(') return label;
+        if (label[0] is not '[' and not '(') return (label, false);
 
         var comma = label.IndexOf(',');
         var end = comma >= 0 ? comma : label.Length - 1;
         var lower = label.Substring(1, Math.Max(0, end - 1)).Trim();
 
-        // No lower bound, such as (, 2.0]: fall back to the highest version.
-        return lower is { Length: > 0 } ? lower : null;
+        return lower is { Length: > 0 }
+            ? (lower, label[0] == '(')
+            : (null, false);
     }
 
     private static NuSpecFile? TryLoadNuSpecFile(IODirectory directory, PackageVersionInfo info)

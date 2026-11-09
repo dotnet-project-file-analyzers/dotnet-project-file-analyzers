@@ -74,3 +74,16 @@ public class Dependencies_for
     public void all_when_framework_is_unknown()
         => Dependencies.For(["$(Tfm)"]).Select(d => d.Id).Should().BeEquivalentTo("Legacy", "Modern", "Fallback");
 }
+
+public class Lower_bound
+{
+    [TestCase("1.0.0", "1.0.0", false)]
+    [TestCase("[1.0.0]", "1.0.0", false)]
+    [TestCase("[1.0.0, 2.0)", "1.0.0", false)]
+    [TestCase("(1.0.0, 2.0)", "1.0.0", true)]
+    [TestCase("(1.0.0,)", "1.0.0", true)]
+    [TestCase("(, 2.0]", null, false)]
+    [TestCase("", null, false)]
+    public void of_version_range(string range, string? version, bool exclusive)
+        => PackageCache.LowerBound(range).Should().Be((version, exclusive));
+}
