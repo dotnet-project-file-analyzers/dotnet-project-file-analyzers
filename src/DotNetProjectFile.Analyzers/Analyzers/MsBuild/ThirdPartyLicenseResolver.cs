@@ -29,29 +29,32 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
         }
 
         var projectLicense = Licenses.FromExpression(context.Props.PackageLicenseExpression);
+        var targetFrameworks = GetTargetFrameworks(context);
+        var cpm = context.ManagePackageVersionsCentrally;
 
         var licenses = context.File.WalkBackward()
             .OfType<ThirdPartyLicense>()
             .Where(p => p.Include is { Length: > 0 })
             .ToArray();
 
-        var queue = new Queue<Dependency>();
-        var done = new HashSet<PackageVersionInfo>();
+        var requested = new HashSet<PackageVersionInfo>();
+        var resolved = new HashSet<PackageVersionInfo>();
+        var queue = new Queue<Dependency>(References(context.File, cpm).Where(r => requested.Add(r.Info)));
 
-        foreach (var reference in context.File.WalkBackward()
-            .OfType<PackageReferenceBase>()
-            .Where(r => r is { Info.Version.Length: > 0 } && done.Add(r.Info)))
-        {
-            queue.Enqueue(new(reference, reference.Info));
-        }
-
-        while (queue.Any())
+        while (queue.Count > 0)
         {
             var dependency = queue.Dequeue();
 
-            if (Report(dependency, projectLicense, licenses, context) is { } package)
+            // Different versions (ranges) can resolve to the same package: handle it only once.
+            if (PackageCache.GetPackage(dependency.Info) is not { } package
+                || !resolved.Add(new(package.Name, package.Version)))
             {
-                foreach (var transitive in package.TransitiveDependencies().Where(done.Add))
+                continue;
+            }
+
+            if (Report(dependency, package, projectLicense, licenses, context))
+            {
+                foreach (var transitive in package.TransitiveDependencies(targetFrameworks).Where(requested.Add))
                 {
                     queue.Enqueue(new(dependency.Node, transitive));
                 }
@@ -59,13 +62,31 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
         }
     }
 
-    private static Package? Report(Dependency dependency, LicenseExpression projectLicense, IReadOnlyCollection<ThirdPartyLicense> licenses, ProjectFileAnalysisContext context)
+    /// <summary>Only the packages referenced by the project; not all &lt;PackageVersion&gt;s defined for CPM.</summary>
+    private static IEnumerable<Dependency> References(MsBuildProject project, bool cpm)
     {
-        if (PackageCache.GetPackage(dependency.Info) is not { } package)
+        foreach (var reference in project.WalkBackward().OfType<PackageReferenceBase>().Where(r => r is not PackageVersion))
         {
-            return null;
+            if (reference.ResolveVersionVerbose(cpm) is { } version && reference.IncludeOrUpdate is { Length: > 0 } name)
+            {
+                // Report on the node that defines the version (such as <PackageVersion>).
+                yield return new(version.Node as PackageReferenceBase ?? reference, new(name, version.Version));
+            }
         }
+    }
 
+    /// <summary>The target framework of the (inner) build, or else the ones defined in the project file.</summary>
+    private static IReadOnlyCollection<string> GetTargetFrameworks(ProjectFileAnalysisContext context) => context switch
+    {
+        _ when context.Props.TargetFramework is { Length: > 0 } current => [current],
+        _ when context.File.Property<TargetFrameworks>()?.Value is { Count: > 0 } multiple => [.. multiple],
+        _ when context.File.Property<TargetFramework>()?.Value is { Length: > 0 } single => [single],
+        _ => [],
+    };
+
+    /// <returns>True if the transitive dependencies of the package should be analyzed too.</returns>
+    private static bool Report(Dependency dependency, Package package, LicenseExpression projectLicense, IReadOnlyCollection<ThirdPartyLicense> licenses, ProjectFileAnalysisContext context)
+    {
         if (package.LicenseExpression is not { Length: > 0 } &&
             package.LicenseFile is not { Length: > 0 } &&
             package.LicenseUrl is not { Length: > 0 })
@@ -78,7 +99,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
                 dependency.Format,
                 dependency.Parent);
 
-            return null;
+            return false;
         }
 
         if (package.UrlOnly() && package.License.IsUnknown)
@@ -124,7 +145,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
                 dependency.Parent);
         }
 
-        return package;
+        return true;
     }
 
     private readonly record struct Dependency(PackageReferenceBase Node, PackageVersionInfo Info)
@@ -143,8 +164,8 @@ file static class Extensions
         => package.LicenseExpression is not { Length: > 0 }
         && package.LicenseFile is not { Length: > 0 };
 
-    public static IEnumerable<PackageVersionInfo> TransitiveDependencies(this Package package) =>
+    public static IEnumerable<PackageVersionInfo> TransitiveDependencies(this Package package, IReadOnlyCollection<string> targetFrameworks) =>
     [
-        .. package.NuSpec?.Metadata?.Dependencies?.All.Select(d => d.Info) ?? [],
+        .. package.NuSpec?.Metadata?.Dependencies?.For(targetFrameworks).Where(d => d.Id is { Length: > 0 }).Select(d => d.Info) ?? [],
     ];
 }

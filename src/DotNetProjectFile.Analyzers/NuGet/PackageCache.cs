@@ -75,9 +75,6 @@ public static class PackageCache
         return result;
     }
 
-    /// <remarks>
-    /// See: https://learn.microsoft.com/nuget/create-packages/native-files-in-net-packages.
-    /// </remarks>
     private static Package? GetPackageInternal(string name, string? version)
     {
         var cacheDir = GetDirectory();
@@ -122,8 +119,6 @@ public static class PackageCache
             Name = name,
             Version = versionDir.Name,
             Directory = versionDir,
-            HasAnalyzerDll = HasDllFiles("analyzers"),
-            HasRuntimeDll = HasDllFiles("lib") || HasDllFiles("runtimes") || HasNativeFiles(),
             HasDependencies = nuspec?.Metadata?.Dependencies?.All.Any() is true,
             IsDevelopmentDependency = nuspec?.Metadata?.DevelopmentDependency,
             LicenseExpression = licenseExpression,
@@ -132,19 +127,13 @@ public static class PackageCache
             License = license,
             NuSpec = nuspec,
         };
-
-        bool HasDllFiles(string subDir)
-            => versionDir.SubDirectory(subDir) is { Exists: true } dir
-            && dir.Files("./**/*.dll").Any();
-
-        bool HasNativeFiles()
-            => versionDir.SubDirectory("runtimes") is { Exists: true } dir
-            && dir.Files("./**/native/*.so").Any();
     }
 
     private static IODirectory? GetVersionDirectory(IODirectory packageDir, string? versionLabel)
     {
         // TODO: resolve version to a suitable fixed version when floating version is provided. Issue #320
+        versionLabel = LowerBound(versionLabel);
+
         if (versionLabel is { })
         {
             var exactVersionDir = packageDir.SubDirectory(versionLabel);
@@ -190,15 +179,27 @@ public static class PackageCache
     private readonly record struct VersionLocation(IODirectory Directory, System.Version? Version);
 
     private static System.Version? TryParseVersion(string version)
+        => System.Version.TryParse(version, out var parsed) ? parsed : null;
+
+    /// <summary>Gets the lower bound of a NuGet version range, such as [1.0, 2.0).</summary>
+    /// <remarks>
+    /// NuGet resolves the lowest applicable version, which is the lower bound
+    /// (when restored). Plain versions (1.0) are a lower bound already.
+    /// ponytail: an exclusive lower bound, (1.0, 2.0), is treated as inclusive;
+    /// use NuGet.Versioning if that ever matters.
+    /// </remarks>
+    private static string? LowerBound(string? versionLabel)
     {
-        try
-        {
-            return new(version);
-        }
-        catch
-        {
-            return null;
-        }
+        if (versionLabel?.Trim() is not { Length: > 0 } label) return null;
+
+        if (label[0] is not '[' and not '(') return label;
+
+        var comma = label.IndexOf(',');
+        var end = comma >= 0 ? comma : label.Length - 1;
+        var lower = label.Substring(1, Math.Max(0, end - 1)).Trim();
+
+        // No lower bound, such as (, 2.0]: fall back to the highest version.
+        return lower is { Length: > 0 } ? lower : null;
     }
 
     private static NuSpecFile? TryLoadNuSpecFile(IODirectory directory, PackageVersionInfo info)
@@ -220,12 +221,13 @@ public static class PackageCache
 
     private static IEnumerable<IOFile> NuspecFiles(IODirectory directory, PackageVersionInfo info)
     {
+        // The global packages folder always contains {id}.nuspec (lower case).
+        yield return directory.File($"{info.Name.ToLowerInvariant()}.nuspec");
+
         if (info is { Version.Length: > 0 })
         {
-            yield return directory.File($"{info.Name.ToLowerInvariant()}.{info.Version.ToLowerInvariant()}.nuspec".ToLowerInvariant());
+            yield return directory.File($"{info.Name.ToLowerInvariant()}.{info.Version.ToLowerInvariant()}.nuspec");
         }
-
-        yield return directory.File($"{info.Name.ToLowerInvariant()}.nuspec".ToLowerInvariant());
 
         foreach (var file in directory.Files("*.nuspec") ?? [])
         {

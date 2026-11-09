@@ -1,10 +1,11 @@
-using System.Collections.Frozen;
-
 namespace DotNetProjectFile.Text;
 
 public sealed class NGramsCollection
 {
-    private NGramsCollection(int n, FrozenDictionary<string, int> entries, int count)
+    /// <summary>Each char takes 16 bits of the <see cref="ulong"/> key.</summary>
+    private const int MaxN = 4;
+
+    private NGramsCollection(int n, Dictionary<ulong, int> entries, int count)
     {
         N = n;
         Count = count;
@@ -15,14 +16,15 @@ public sealed class NGramsCollection
 
     public int Count { get; }
 
-    public FrozenDictionary<string, int> Entries { get; }
+    /// <summary>The n-grams (packed as <see cref="ulong"/>) and their occurrence counts.</summary>
+    public IReadOnlyDictionary<ulong, int> Entries { get; }
 
     /// <summary>
-    /// Gets the occurrence count of the given <paramref name="ngram"/>.
+    /// Gets the occurrence count of the given (packed) <paramref name="ngram"/>.
     /// </summary>
     /// <param name="ngram">The n-gram to search for.</param>
     /// <returns>The number of occurrences.</returns>
-    public int GetCount(string ngram)
+    public int GetCount(ulong ngram)
         => Entries.TryGetValue(ngram, out var cnt)
         ? cnt
         : 0;
@@ -31,29 +33,32 @@ public sealed class NGramsCollection
     /// Creates a new n-gram collection.
     /// </summary>
     /// <param name="str">The string to create the collection for.</param>
-    /// <param name="n">The size of the n-gram.</param>
+    /// <param name="n">The size of the n-gram (1 to 4).</param>
     /// <returns>The newly created collection.</returns>
     public static NGramsCollection Create(string? str, int n)
     {
+        if (n is < 1 or > MaxN) throw new ArgumentOutOfRangeException(nameof(n), n, $"n must be between 1 and {MaxN}.");
+
         str ??= string.Empty;
 
-        var result = new Dictionary<string, int>();
+        var result = new Dictionary<ulong, int>();
         var size = 0;
 
         for (var i = n; i < str.Length; i++)
         {
-            var qgram = str.Substring(i - n, n);
+            var key = 0UL;
 
-            if (!result.TryGetValue(qgram, out var count))
+            for (var j = i - n; j < i; j++)
             {
-                count = 0;
+                key = (key << 16) | str[j];
             }
 
-            result[qgram] = count + 1;
+            result.TryGetValue(key, out var count);
+            result[key] = count + 1;
             size++;
         }
 
-        return new(n, result.ToFrozenDictionary(), size);
+        return new(n, result, size);
     }
 }
 

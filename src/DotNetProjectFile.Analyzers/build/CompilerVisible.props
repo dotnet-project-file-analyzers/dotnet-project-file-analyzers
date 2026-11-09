@@ -30,6 +30,7 @@
     <CompilerVisibleProperty Include="RestoreLockedMode" />
     <CompilerVisibleProperty Include="RestorePackagesWithLockFile" />
     <CompilerVisibleProperty Include="SolutionDir" />
+    <CompilerVisibleProperty Include="TargetFramework" />
   </ItemGroup>
 
 </Project>

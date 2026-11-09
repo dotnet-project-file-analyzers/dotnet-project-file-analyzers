@@ -196,8 +196,9 @@ public readonly struct IODirectory : IEquatable<IODirectory>, IFormattable, ICom
                 {
                     ".." when enumerator is RootDirectory root => root.Parent,
                     ".." => enumerator.Select(d => d.Parent!),
-                    "**" => enumerator.Concat(enumerator.SelectMany(d => d.EnumerateDirectories("*", SearchOption.AllDirectories))),
-                    _ => enumerator.Concat(enumerator.SelectMany(d => d.EnumerateDirectories(part, SearchOption.TopDirectoryOnly))),
+                    // Each step enumerates its source only once; a named part replaces (not extends) the current set.
+                    "**" => enumerator.SelectMany(d => d.EnumerateDirectories("*", SearchOption.AllDirectories).Prepend(d)),
+                    _ => enumerator.SelectMany(d => d.EnumerateDirectories(part, SearchOption.TopDirectoryOnly)),
                 };
             }
         }
