@@ -15,41 +15,44 @@ public abstract class PackageReferenceBase(XElement element, Node parent, MsBuil
 
     public virtual PackageVersionInfo Info => new(IncludeOrUpdate, Version);
 
-    public abstract (Node Node, string Version)? ResolveVersionVerbose(bool cpmEnabled);
+    /// <param name="cpmEnabled">Indicates that CPM is enabled.</param>
+    /// <param name="lookup">Pass a shared lookup when resolving multiple references.</param>
+    public abstract (Node Node, string Version)? ResolveVersionVerbose(bool cpmEnabled, PackageVersionLookup? lookup = null);
 
     /// <summary>Resolves the version taking CPM into account.</summary>
-    public string? ResolveVersion(bool cpmEnabled)
-        => ResolveVersionVerbose(cpmEnabled)?.Version;
+    public string? ResolveVersion(bool cpmEnabled, PackageVersionLookup? lookup = null)
+        => ResolveVersionVerbose(cpmEnabled, lookup)?.Version;
 
-    public Package? ResolvePackage(bool cpmEnabled)
-        => PackageCache.GetPackage(IncludeOrUpdate, ResolveVersion(cpmEnabled));
+    public Package? ResolvePackage(bool cpmEnabled, PackageVersionLookup? lookup = null)
+        => PackageCache.GetPackage(IncludeOrUpdate, ResolveVersion(cpmEnabled, lookup));
 
-    public HashSet<Package> ResolveCachedPackageDependencyTree(bool cpmEnabled)
+    /// <summary>
+    /// Resolves the package and its transitive dependencies that apply to the <paramref name="targetFrameworks"/>.
+    /// </summary>
+    public IReadOnlyCollection<Package> ResolveCachedPackageDependencyTree(
+        bool cpmEnabled,
+        IReadOnlyCollection<string> targetFrameworks,
+        PackageVersionLookup? lookup = null)
     {
-        var result = new HashSet<Package>();
+        var result = new List<Package>();
+        var resolved = new HashSet<PackageVersionInfo>();
         var queue = new Queue<Package>();
 
-        bool Enqueue(Package? pkg)
+        void Enqueue(Package? pkg)
         {
-            if (pkg is { } && result.Add(pkg))
+            // Different versions (ranges) can resolve to the same package: handle it only once.
+            if (pkg is { } && resolved.Add(new(pkg.Name, pkg.Version)))
             {
+                result.Add(pkg);
                 queue.Enqueue(pkg);
-                return true;
             }
-
-            return false;
         }
 
-        if (!Enqueue(ResolvePackage(cpmEnabled)))
-        {
-            return result;
-        }
+        Enqueue(ResolvePackage(cpmEnabled, lookup));
 
         while (queue.Count > 0)
         {
-            var cur = queue.Dequeue();
-
-            foreach (var dep in cur.NuSpec?.Metadata?.Dependencies?.All ?? [])
+            foreach (var dep in queue.Dequeue().NuSpec?.Metadata?.Dependencies?.For(targetFrameworks) ?? [])
             {
                 Enqueue(PackageCache.GetPackage(dep.Id, dep.Version));
             }

@@ -10,7 +10,7 @@ namespace DotNetProjectFile.NuGet;
 
 public static class PackageCache
 {
-    private static readonly ConcurrentDictionary<PackageVersionInfo, Package?> cache = new();
+    private static readonly ConcurrentDictionary<PackageVersionInfo, Lazy<Package?>> cache = new();
     private static readonly Lazy<IODirectory> CacheDir = new(() => IODirectory.Parse(GetPathInternal()));
 
     public static IODirectory GetDirectory()
@@ -44,35 +44,30 @@ public static class PackageCache
         ? GetPackage(new(n, version))
         : null;
 
+    /// <remarks>
+    /// Only requests for the same package (version) wait for each other.
+    /// </remarks>
     public static Package? GetPackage(PackageVersionInfo info)
-    {
-        if (info is not { Name.Length: > 0 }) return null;
+        => info is { Name.Length: > 0 }
+        ? cache.GetOrAdd(info, i => new(() => Resolve(i))).Value
+        : null;
 
+    private static Package? Resolve(PackageVersionInfo info)
+    {
         // Directories have lower case names.
         var name = info.Name.ToLowerInvariant();
-        var version = info.Version?.ToLowerInvariant();
 
-        if (cache.TryGetValue(info, out var result))
+        if (GetPackageInternal(name, info.Version?.ToLowerInvariant()) is not { } package)
         {
-            return result;
+            return null;
         }
 
-        lock (cache)
-        {
-            if (!cache.TryGetValue(info, out result))
-            {
-                result = GetPackageInternal(name, version);
+        var resolved = new PackageVersionInfo(name, package.Version);
 
-                cache[info] = result;
-
-                if (result is { } && version != result.Version)
-                {
-                    cache[new(name, result.Version)] = result;
-                }
-            }
-        }
-
-        return result;
+        // Different versions (ranges) resolving to the same version share one instance.
+        return resolved == info
+            ? package
+            : cache.GetOrAdd(resolved, new Lazy<Package?>(() => package)).Value;
     }
 
     private static Package? GetPackageInternal(string name, string? version)

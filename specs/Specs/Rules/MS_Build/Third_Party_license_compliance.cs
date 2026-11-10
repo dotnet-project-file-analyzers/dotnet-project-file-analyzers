@@ -346,6 +346,36 @@ public class Reports
             </Project>
             """)
         .HasIssue(Issue.WRN("Proj0504", "The license for SonarAnalyzer.CSharp has changed as its hash is now IBM9yngU7omFyJOMSFSy0w"));
+
+    [Test]
+    public void on_package_reference_not_on_shared_CPM_package_version() => new ThirdPartyLicenseResolver()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+
+              <ItemGroup>
+                <PackageReference Include="SeeSharpTools.JY.GUI" />
+              </ItemGroup>
+
+            </Project>
+        """)
+        .WithFile("Directory.Packages.props", """
+            <Project>
+              <PropertyGroup>
+                <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+              </PropertyGroup>
+              <ItemGroup>
+                <PackageVersion Include="SeeSharpTools.JY.GUI" Version="1.4.4.533" />
+              </ItemGroup>
+            </Project>
+        """)
+        .HasIssue(Issue.WRN(
+            "Proj0502",
+            "The SeeSharpTools.JY.GUI (1.4.4.533) package is distributed as GPL-3.0-only, which is incompatible with the NOASSERTION license of the project")
+        .WithSpan(07, 08, 07, 59));
 }
 
 public class Guards

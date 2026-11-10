@@ -29,7 +29,7 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
         }
 
         var projectLicense = Licenses.FromExpression(context.Props.PackageLicenseExpression);
-        var targetFrameworks = GetTargetFrameworks(context);
+        var targetFrameworks = context.TargetFrameworks;
         var cpm = context.ManagePackageVersionsCentrally;
 
         var licenses = context.File.WalkBackward()
@@ -63,26 +63,22 @@ public sealed class ThirdPartyLicenseResolver() : MsBuildProjectFileAnalyzer(
     }
 
     /// <summary>Only the packages referenced by the project; not all &lt;PackageVersion&gt;s defined for CPM.</summary>
+    /// <remarks>
+    /// Reports on the reference, not on the &lt;PackageVersion&gt; that defines the version: that one is
+    /// shared by all projects, so it would get a (duplicate) diagnostic per project (and target framework).
+    /// </remarks>
     private static IEnumerable<Dependency> References(MsBuildProject project, bool cpm)
     {
+        var lookup = new PackageVersionLookup();
+
         foreach (var reference in project.WalkBackward().OfType<PackageReferenceBase>().Where(r => r is not PackageVersion))
         {
-            if (reference.ResolveVersionVerbose(cpm) is { } version && reference.IncludeOrUpdate is { Length: > 0 } name)
+            if (reference.ResolveVersion(cpm, lookup) is { } version && reference.IncludeOrUpdate is { Length: > 0 } name)
             {
-                // Report on the node that defines the version (such as <PackageVersion>).
-                yield return new(version.Node as PackageReferenceBase ?? reference, new(name, version.Version));
+                yield return new(reference, new(name, version));
             }
         }
     }
-
-    /// <summary>The target framework of the (inner) build, or else the ones defined in the project file.</summary>
-    private static IReadOnlyCollection<string> GetTargetFrameworks(ProjectFileAnalysisContext context) => context switch
-    {
-        _ when context.Props.TargetFramework is { Length: > 0 } current => [current],
-        _ when context.File.Property<TargetFrameworks>()?.Value is { Count: > 0 } multiple => [.. multiple],
-        _ when context.File.Property<TargetFramework>()?.Value is { Length: > 0 } single => [single],
-        _ => [],
-    };
 
     /// <returns>True if the transitive dependencies of the package should be analyzed too.</returns>
     private static bool Report(Dependency dependency, Package package, LicenseExpression projectLicense, IReadOnlyCollection<ThirdPartyLicense> licenses, ProjectFileAnalysisContext context)

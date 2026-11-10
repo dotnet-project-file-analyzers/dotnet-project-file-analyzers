@@ -13,16 +13,22 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
-        var packageReferences = context.File
+        PackageReferenceBase[] packageReferences =
+        [
+            .. context.File
             .Walk()
             .OfType<PackageReferenceBase>()
-            .Where(p => p is not PackageVersion && p.IncludeOrUpdate is { Length: > 0 });
+            .Where(p => p is not PackageVersion && p.IncludeOrUpdate is { Length: > 0 }),
+        ];
 
         var analyzers = GetAnalyzers(context.File.Language);
+        var cpm = context.ManagePackageVersionsCentrally;
+        var targetFrameworks = context.TargetFrameworks;
+        var lookup = new PackageVersionLookup();
 
         foreach (var reference in packageReferences.Where(r => !Excluded.Contains(r.IncludeOrUpdate)))
         {
-            var tree = GetAllReferencedPackages(reference, context.ManagePackageVersionsCentrally);
+            var tree = GetAllReferencedPackages(reference, cpm, targetFrameworks, lookup);
 
             foreach (var pkg in tree)
             {
@@ -38,10 +44,14 @@ public sealed class UseAnalyzersForPackages() : MsBuildProjectFileAnalyzer(Rule.
         }
     }
 
-    private static IEnumerable<Package> GetAllReferencedPackages(PackageReferenceBase reference, bool cpmEnabled)
-        => reference.ResolvePackage(cpmEnabled) is { IsAnalyzerOnly: true } rootPackage
+    private static IReadOnlyCollection<Package> GetAllReferencedPackages(
+        PackageReferenceBase reference,
+        bool cpmEnabled,
+        IReadOnlyCollection<string> targetFrameworks,
+        PackageVersionLookup lookup)
+        => reference.ResolvePackage(cpmEnabled, lookup) is { IsAnalyzerOnly: true } rootPackage
         ? [rootPackage]
-        : (IEnumerable<Package>)reference.ResolveCachedPackageDependencyTree(cpmEnabled);
+        : reference.ResolveCachedPackageDependencyTree(cpmEnabled, targetFrameworks, lookup);
 
     private static ImmutableArray<Analyzer> GetAnalyzers(Language language)
         => [.. Analyzers.Where(analyzer => analyzer.IsApplicable(language))];

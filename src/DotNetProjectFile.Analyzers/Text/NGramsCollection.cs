@@ -44,7 +44,7 @@ public sealed class NGramsCollection
         var result = new Dictionary<ulong, int>();
         var size = 0;
 
-        for (var i = n; i < str.Length; i++)
+        for (var i = n; i <= str.Length; i++)
         {
             var key = 0UL;
 
