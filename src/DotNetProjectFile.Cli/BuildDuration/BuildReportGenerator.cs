@@ -23,8 +23,12 @@ public sealed class BuildReportGenerator
         var progress = new BuildProgress(BuildTarget.Name, stopwatch);
         var phases = new PhaseCollector();
         var compilations = new CompilationCollector();
+        var info = ProcessStartInfo();
 
-        using var process = Process.Start(ProcessStartInfo())
+        // Log the command before anything else, so that the build can be reproduced.
+        await Console.Error.WriteLineAsync(Command(info));
+
+        using var process = Process.Start(info)
             ?? throw new InvalidOperationException("Could not start 'dotnet'.");
 
         var errors = ImmutableArray.CreateBuilder<string>();
@@ -145,4 +149,19 @@ public sealed class BuildReportGenerator
         info.Environment["DOTNET_CLI_UI_LANGUAGE"] = "en";
         return info;
     }
+
+    /// <summary>Gets the command to execute, as it can be run from a shell.</summary>
+    [Pure]
+    public string Command()
+        => Command(ProcessStartInfo());
+
+    [Pure]
+    private static string Command(ProcessStartInfo info)
+        => string.Join(' ', info.ArgumentList.Prepend(info.FileName).Select(Quote));
+
+    [Pure]
+    private static string Quote(string argument)
+        => argument.Length is 0 || argument.Any(c => char.IsWhiteSpace(c) || c is '"')
+        ? $"\"{argument.Replace("\"", "\\\"", StringComparison.Ordinal)}\""
+        : argument;
 }
