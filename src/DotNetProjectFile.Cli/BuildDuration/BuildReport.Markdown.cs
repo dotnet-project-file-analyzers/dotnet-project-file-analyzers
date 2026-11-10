@@ -14,36 +14,41 @@ public sealed partial record BuildReport
 
         sb.AppendLine("# Build duration").AppendLine();
 
-        List<string[]> measurements =
+        List<(string Name, TimeSpan Duration)> measurements =
         [
-            ["Total", TotalDuration.Format()],
-            ["Restore", RestoreDuration is { } restore ? restore.Format() : string.Empty],
+            ("Total", TotalDuration),
+            ("Restore", RestoreDuration ?? TimeSpan.Zero),
         ];
 
         if (HasRestores)
         {
-            measurements.Add(["NuGet restore", Cell(NuGetRestoreDuration)]);
+            measurements.Add(("NuGet restore", NuGetRestoreDuration));
         }
 
-        measurements.Add(["Build", BuildDuration is { } build ? build.Format() : string.Empty]);
+        measurements.Add(("Build", BuildDuration ?? TimeSpan.Zero));
 
-        if (GraphBuildDuration is not null)
+        if (GraphBuildDuration is { } graph)
         {
-            measurements.Add(["Graph build", Cell(GraphBuildDuration.Value)]);
+            measurements.Add(("Graph build", graph));
         }
 
-        measurements.Add(["Compilation", Cell(TotalCompilationDuration)]);
-        measurements.Add(["Analyzers", Cell(TotalAnalyzerDuration)]);
+        measurements.Add(("Compilation", TotalCompilationDuration));
+        measurements.Add(("Analyzers", TotalAnalyzerDuration));
 
         if (HasGenerators)
         {
-            measurements.Add(["Generators", Cell(TotalGeneratorDuration)]);
+            measurements.Add(("Generators", TotalGeneratorDuration));
         }
 
         Table(
             sb,
-            [new("Measurement"), new("Duration", Right: true)],
-            [.. measurements]);
+            [new("Measurement"), new("Duration", Right: true), new("%", Right: true)],
+            [.. measurements.Select(m => new[]
+            {
+                m.Name,
+                Cell(m.Duration),
+                PercentageCell(m.Duration, TotalDuration),
+            })]);
 
         var note = "Total is the duration of `dotnet build`. Besides restoring and building, it includes starting up, and evaluating the projects to restore. NuGet restore is the sum of the durations NuGet reported per project, and excludes evaluating the project graph. Depending on the number of MSBuild nodes, projects restore and compile in parallel, and analyzers and generators run concurrently, so the NuGet restore, compilation, analyzer, and generator totals can exceed the build duration.";
 
@@ -51,6 +56,8 @@ public sealed partial record BuildReport
         {
             note += " Graph build is the time MSBuild reported for constructing the static project graph, and is included in the build duration.";
         }
+
+        note += " The percentages show each row's share of the total of its table.";
 
         sb.AppendLine().AppendLine(note);
 
@@ -60,11 +67,16 @@ public sealed partial record BuildReport
 
             Table(
                 sb,
-                [new("Project"), new("Duration", Right: true)],
+                [new("Project"), new("Duration", Right: true), new("%", Right: true)],
                 [.. Restores
                     .OrderByDescending(restore => restore.Duration)
                     .ThenBy(restore => restore.Project, StringComparer.OrdinalIgnoreCase)
-                    .Select(restore => new[] { restore.Project, restore.Duration.Format() })]);
+                    .Select(restore => new[]
+                    {
+                        restore.Project,
+                        restore.Duration.Format(),
+                        PercentageCell(restore.Duration, NuGetRestoreDuration),
+                    })]);
         }
 
         if (frameworks.Length > 1)
@@ -76,6 +88,7 @@ public sealed partial record BuildReport
                 new("Target framework"),
                 new("Projects", Right: true),
                 new("Compilation", Right: true),
+                new("%", Right: true),
                 new("Analyzers", Right: true),
             };
 
@@ -90,12 +103,14 @@ public sealed partial record BuildReport
                 [.. frameworks.Select(framework =>
                 {
                     var compilations = For(framework).ToArray();
+                    var compilation = compilations.Select(c => c.Duration).Sum();
 
                     var cells = new List<string>
                     {
                         Display(framework),
                         compilations.Select(c => c.Project).Distinct(StringComparer.OrdinalIgnoreCase).Count().ToString(CultureInfo.InvariantCulture),
-                        compilations.Select(c => c.Duration).Sum().Format(),
+                        compilation.Format(),
+                        PercentageCell(compilation, TotalCompilationDuration),
                         Cell(compilations.Select(c => c.TotalAnalyzerDuration).Sum()),
                     };
 
@@ -115,6 +130,7 @@ public sealed partial record BuildReport
             new("Project"),
             new("Target framework"),
             new("Compilation", Right: true),
+            new("%", Right: true),
             new("Analyzers", Right: true),
         };
 
@@ -145,6 +161,7 @@ public sealed partial record BuildReport
                         count > 1 ? $"{c.Project} ({count}x)" : c.Project,
                         Display(c.TargetFramework),
                         c.Duration.Format(),
+                        PercentageCell(c.Duration, TotalCompilationDuration),
                         Cell(c.TotalAnalyzerDuration),
                     };
 
@@ -190,6 +207,7 @@ public sealed partial record BuildReport
         }
 
         columns.Add(new(perFramework ? "Total" : "Duration", Right: true));
+        columns.Add(new("%", Right: true));
 
         var rows = Compilations
             .SelectMany(c => c.Analyzers, (c, a) => (c.TargetFramework, Measurement: a))
@@ -217,6 +235,7 @@ public sealed partial record BuildReport
                 }
 
                 cells.Add(x.Total.Format());
+                cells.Add(PercentageCell(x.Total, TotalAnalyzerDuration));
 
                 return cells.ToArray();
             });
@@ -229,6 +248,7 @@ public sealed partial record BuildReport
         }
 
         total.Add(BoldCell(TotalAnalyzerDuration));
+        total.Add(BoldPercentageCell(TotalAnalyzerDuration, TotalAnalyzerDuration));
 
         Table(sb, [.. columns], [.. rows, [.. total]]);
     }
@@ -248,6 +268,7 @@ public sealed partial record BuildReport
         }
 
         columns.Add(new(perFramework ? "Total" : "Duration", Right: true));
+        columns.Add(new("%", Right: true));
 
         var rows = Compilations
             .SelectMany(c => c.Generators, (c, g) => (c.TargetFramework, Measurement: g))
@@ -268,6 +289,7 @@ public sealed partial record BuildReport
                 }
 
                 cells.Add(x.Total.Format());
+                cells.Add(PercentageCell(x.Total, TotalGeneratorDuration));
 
                 return cells.ToArray();
             });
@@ -280,6 +302,7 @@ public sealed partial record BuildReport
         }
 
         total.Add(BoldCell(TotalGeneratorDuration));
+        total.Add(BoldPercentageCell(TotalGeneratorDuration, TotalGeneratorDuration));
 
         Table(sb, [.. columns], [.. rows, [.. total]]);
     }
@@ -305,6 +328,25 @@ public sealed partial record BuildReport
     [Pure]
     private static string BoldCell(TimeSpan duration)
         => Cell(duration) is { Length: > 0 } cell ? $"**{cell}**" : string.Empty;
+
+    /// <summary>Returns the share of the total, or empty when not measured.</summary>
+    [Pure]
+    private static string PercentageCell(TimeSpan duration, TimeSpan total)
+    {
+        if (duration == TimeSpan.Zero || total == TimeSpan.Zero)
+        {
+            return string.Empty;
+        }
+
+        var percentage = Ratio.Between(duration, total).ToString("0.00%", CultureInfo.InvariantCulture);
+
+        return percentage == "0%" ? "<0.01%" : percentage;
+    }
+
+    /// <summary>Returns the share of the total, in bold, or empty when not measured.</summary>
+    [Pure]
+    private static string BoldPercentageCell(TimeSpan duration, TimeSpan total)
+        => PercentageCell(duration, total) is { Length: > 0 } cell ? $"**{cell}**" : string.Empty;
 
     private static void Table(StringBuilder sb, Column[] columns, string[][] rows)
     {
