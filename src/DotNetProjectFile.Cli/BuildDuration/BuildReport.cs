@@ -35,4 +35,13 @@ public sealed partial record BuildReport
 
     /// <summary>The total execution time of all analyzers.</summary>
     public TimeSpan TotalAnalyzerDuration => Compilations.Select(c => c.TotalAnalyzerDuration).Sum();
+
+    /// <summary>The total execution time of all generators.</summary>
+    public TimeSpan TotalGeneratorDuration => Compilations.Select(c => c.TotalGeneratorDuration).Sum();
+
+    /// <summary>Gets whether any generators have been measured.</summary>
+    [Pure]
+    public bool HasGenerators
+        => TotalGeneratorDuration != TimeSpan.Zero
+        || Compilations.Any(c => !c.Generators.IsDefaultOrEmpty);
 }

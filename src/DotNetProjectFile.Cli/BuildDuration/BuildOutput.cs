@@ -103,15 +103,26 @@ internal static partial class BuildOutput
     [GeneratedRegex(@"^\s*Total analyzer execution time: (?<t><[0-9.]+|\d+(?:\.\d+)?) seconds\. \(TaskId:\d+\)$", RegexOptions.CultureInvariant)]
     public static partial Regex AnalyzerTotal();
 
+    /// <summary>The total execution time of the generators of a compilation.</summary>
+    /// <example><c>Total generator execution time: 2.719 seconds. (TaskId:113)</c>.</example>
+    [GeneratedRegex(@"^\s*Total generator execution time: (?<t><[0-9.]+|\d+(?:\.\d+)?) seconds\. \(TaskId:\d+\)$", RegexOptions.CultureInvariant)]
+    public static partial Regex GeneratorTotal();
+
     /// <summary>The header of the analyzers, or of the generators, of a compilation.</summary>
     /// <example><c>Time (s)    %   Analyzer (TaskId:332)</c>.</example>
     [GeneratedRegex(@"^\s*Time \(s\)\s+%\s+(?<section>Analyzer|Generator) \(TaskId:\d+\)$", RegexOptions.CultureInvariant)]
-    public static partial Regex AnalyzerSection();
+    public static partial Regex SectionHeader();
 
     /// <summary>The execution time of an analyzer (assembly), or a generator.</summary>
     /// <example><c>0.293    2      SonarAnalyzer.CSharp.Rules.UnusedPrivateMember (S1144, S4487) (TaskId:332)</c>.</example>
     [GeneratedRegex(@"^\s*(?<t><[0-9.]+|\d+(?:\.\d+)?)\s+(?<p><1|\d+)\s+(?<name>\S.*?)\s+\(TaskId:\d+\)$", RegexOptions.CultureInvariant)]
-    public static partial Regex AnalyzerEntry();
+    public static partial Regex TimedEntry();
+
+    /// <summary>Gets whether a timed entry is the total of an assembly, instead of a single analyzer or generator.</summary>
+    /// <example><c>System.Text.Json.SourceGeneration, Version=10.0.15.3008, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51</c>.</example>
+    [Pure]
+    public static bool IsAssembly(string name)
+        => name.Contains(", Version=", StringComparison.Ordinal);
 
     /// <summary>The name of an analyzer entry, and the rules it reports, if any.</summary>
     /// <example><c>SonarAnalyzer.CSharp.Rules.UnusedPrivateMember (S1144, S4487)</c>.</example>

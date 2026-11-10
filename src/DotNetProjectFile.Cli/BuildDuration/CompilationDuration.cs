@@ -17,5 +17,13 @@ public sealed record CompilationDuration
     /// </remarks>
     public TimeSpan TotalAnalyzerDuration { get; init; }
 
+    /// <summary>The total execution time of the generators, as reported by the compiler.</summary>
+    /// <remarks>
+    /// Generators run concurrently, so this can exceed <see cref="Duration"/>.
+    /// </remarks>
+    public TimeSpan TotalGeneratorDuration { get; init; }
+
     public required ImmutableArray<AnalyzerDuration> Analyzers { get; init; }
+
+    public ImmutableArray<GeneratorDuration> Generators { get; init; } = [];
 }

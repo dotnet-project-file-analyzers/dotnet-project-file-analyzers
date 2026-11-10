@@ -29,12 +29,17 @@ public sealed partial record BuildReport
         measurements.Add(["Compilation", Cell(TotalCompilationDuration)]);
         measurements.Add(["Analyzers", Cell(TotalAnalyzerDuration)]);
 
+        if (HasGenerators)
+        {
+            measurements.Add(["Generators", Cell(TotalGeneratorDuration)]);
+        }
+
         Table(
             sb,
             [new("Measurement"), new("Duration", Right: true)],
             [.. measurements]);
 
-        var note = "Total is the duration of `dotnet build`. Besides restoring and building, it includes starting up, and evaluating the projects to restore. Depending on the number of MSBuild nodes, projects compile in parallel, and analyzers run concurrently, so the compilation and analyzer totals can exceed the build duration.";
+        var note = "Total is the duration of `dotnet build`. Besides restoring and building, it includes starting up, and evaluating the projects to restore. Depending on the number of MSBuild nodes, projects compile in parallel, and analyzers and generators run concurrently, so the compilation, analyzer, and generator totals can exceed the build duration.";
 
         if (GraphBuildDuration is not null)
         {
@@ -47,36 +52,92 @@ public sealed partial record BuildReport
         {
             sb.AppendLine().AppendLine("## Target frameworks").AppendLine();
 
+            var columns = new List<Column>
+            {
+                new("Target framework"),
+                new("Projects", Right: true),
+                new("Compilation", Right: true),
+                new("Analyzers", Right: true),
+            };
+
+            if (HasGenerators)
+            {
+                columns.Add(new("Generators", Right: true));
+            }
+
             Table(
                 sb,
-                [new("Target framework"), new("Projects", Right: true), new("Compilation", Right: true), new("Analyzers", Right: true)],
+                [.. columns],
                 [.. frameworks.Select(framework =>
                 {
                     var compilations = For(framework).ToArray();
 
-                    return new[]
+                    var cells = new List<string>
                     {
                         Display(framework),
                         compilations.Length.ToString(CultureInfo.InvariantCulture),
                         compilations.Select(c => c.Duration).Sum().Format(),
                         Cell(compilations.Select(c => c.TotalAnalyzerDuration).Sum()),
                     };
+
+                    if (HasGenerators)
+                    {
+                        cells.Add(Cell(compilations.Select(c => c.TotalGeneratorDuration).Sum()));
+                    }
+
+                    return cells.ToArray();
                 })]);
         }
 
         sb.AppendLine().AppendLine("## Compilations").AppendLine();
 
+        var compilationColumns = new List<Column>
+        {
+            new("Project"),
+            new("Target framework"),
+            new("Compilation", Right: true),
+            new("Analyzers", Right: true),
+        };
+
+        if (HasGenerators)
+        {
+            compilationColumns.Add(new("Generators", Right: true));
+        }
+
         Table(
             sb,
-            [new("Project"), new("Target framework"), new("Compilation", Right: true), new("Analyzers", Right: true)],
+            [.. compilationColumns],
             [.. Compilations
                 .OrderByDescending(c => c.Duration)
                 .ThenBy(c => c.Project, StringComparer.OrdinalIgnoreCase)
-                .Select(c => new[] { c.Project, Display(c.TargetFramework), c.Duration.Format(), Cell(c.TotalAnalyzerDuration) })]);
+                .Select(c =>
+                {
+                    var cells = new List<string>
+                    {
+                        c.Project,
+                        Display(c.TargetFramework),
+                        c.Duration.Format(),
+                        Cell(c.TotalAnalyzerDuration),
+                    };
+
+                    if (HasGenerators)
+                    {
+                        cells.Add(Cell(c.TotalGeneratorDuration));
+                    }
+
+                    return cells.ToArray();
+                })]);
 
         sb.AppendLine().AppendLine("## Analyzers").AppendLine();
 
         AnalyzersTable(sb, frameworks);
+
+        if (HasGenerators)
+        {
+            sb.AppendLine().AppendLine("## Generators").AppendLine();
+
+            GeneratorsTable(sb, frameworks);
+        }
 
         return sb.ToString();
     }
@@ -135,6 +196,57 @@ public sealed partial record BuildReport
         }
 
         total.Add(BoldCell(TotalAnalyzerDuration));
+
+        Table(sb, [.. columns], [.. rows, [.. total]]);
+    }
+
+    /// <remarks>
+    /// With multiple target frameworks, there is a column per target framework, and a total.
+    /// </remarks>
+    private void GeneratorsTable(StringBuilder sb, ImmutableArray<string> frameworks)
+    {
+        var perFramework = frameworks.Length > 1;
+
+        var columns = new List<Column> { new("Generator") };
+
+        if (perFramework)
+        {
+            columns.AddRange(frameworks.Select(f => new Column(Display(f), Right: true)));
+        }
+
+        columns.Add(new(perFramework ? "Total" : "Duration", Right: true));
+
+        var rows = Compilations
+            .SelectMany(c => c.Generators, (c, g) => (c.TargetFramework, Measurement: g))
+            .GroupBy(x => x.Measurement.Generator, StringComparer.Ordinal)
+            .Select(group => (Group: group, Total: group.Select(x => x.Measurement.Duration).Sum()))
+            .OrderByDescending(x => x.Total)
+            .ThenBy(x => x.Group.Key, StringComparer.Ordinal)
+            .Select(x =>
+            {
+                var cells = new List<string> { x.Group.Key };
+
+                if (perFramework)
+                {
+                    cells.AddRange(frameworks.Select(f => Cell(x.Group
+                        .Where(m => Same(m.TargetFramework, f))
+                        .Select(m => m.Measurement.Duration)
+                        .Sum())));
+                }
+
+                cells.Add(x.Total.Format());
+
+                return cells.ToArray();
+            });
+
+        var total = new List<string> { "**Total**" };
+
+        if (perFramework)
+        {
+            total.AddRange(frameworks.Select(f => BoldCell(For(f).Select(c => c.TotalGeneratorDuration).Sum())));
+        }
+
+        total.Add(BoldCell(TotalGeneratorDuration));
 
         Table(sb, [.. columns], [.. rows, [.. total]]);
     }

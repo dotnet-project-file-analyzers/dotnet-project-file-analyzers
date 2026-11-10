@@ -165,13 +165,29 @@ public sealed class CompilationCollector
             };
     }
 
+    /// <remarks>The rows of the assemblies are skipped, as they are the totals of the generators in them.</remarks>
+    private static GeneratorDuration? ToGeneratorDuration(string name, TimeSpan duration)
+    {
+        var generator = name.Trim();
+
+        return BuildOutput.IsAssembly(generator)
+            ? null
+            : new()
+            {
+                Generator = generator,
+                Duration = duration,
+            };
+    }
+
     /// <summary>A compilation that is running.</summary>
     private sealed class Compilation(string taskId, string context, TimeSpan started)
     {
         private readonly ImmutableArray<AnalyzerDuration>.Builder Analyzers = ImmutableArray.CreateBuilder<AnalyzerDuration>();
+        private readonly ImmutableArray<GeneratorDuration>.Builder Generators = ImmutableArray.CreateBuilder<GeneratorDuration>();
         private string? Name;
         private TimeSpan TotalAnalyzerDuration;
-        private bool InAnalyzerSection;
+        private TimeSpan TotalGeneratorDuration;
+        private MeasurementSection Section;
 
         public string TaskId { get; } = taskId;
 
@@ -183,31 +199,53 @@ public sealed class CompilationCollector
             {
                 Name = name;
             }
-            else if (BuildOutput.AnalyzerTotal().Match(message) is { Success: true } total)
+            else if (BuildOutput.AnalyzerTotal().Match(message) is { Success: true } analyzerTotal)
             {
-                TotalAnalyzerDuration += TimeSpan.ParseSeconds(total.Groups["t"].Value);
+                TotalAnalyzerDuration += TimeSpan.ParseSeconds(analyzerTotal.Groups["t"].Value);
             }
-            else if (BuildOutput.AnalyzerSection().Match(message) is { Success: true } section)
+            else if (BuildOutput.GeneratorTotal().Match(message) is { Success: true } generatorTotal)
             {
-                InAnalyzerSection = section.Groups["section"].Value == "Analyzer";
+                TotalGeneratorDuration += TimeSpan.ParseSeconds(generatorTotal.Groups["t"].Value);
             }
-            else if (InAnalyzerSection
-                && BuildOutput.AnalyzerEntry().Match(message) is { Success: true } entry
-                && ToAnalyzerDuration(entry.Groups["name"].Value, TimeSpan.ParseSeconds(entry.Groups["t"].Value)) is { } analyzer)
+            else if (BuildOutput.SectionHeader().Match(message) is { Success: true } header)
             {
-                Analyzers.Add(analyzer);
+                Section = header.Groups["section"].Value switch
+                {
+                    "Analyzer" => MeasurementSection.Analyzers,
+                    "Generator" => MeasurementSection.Generators,
+                    _ => MeasurementSection.None,
+                };
+            }
+            else if (Section != MeasurementSection.None
+                && BuildOutput.TimedEntry().Match(message) is { Success: true } entry)
+            {
+                var duration = TimeSpan.ParseSeconds(entry.Groups["t"].Value);
+                var entryName = entry.Groups["name"].Value;
+
+                if (Section == MeasurementSection.Analyzers && ToAnalyzerDuration(entryName, duration) is { } analyzer)
+                {
+                    Analyzers.Add(analyzer);
+                }
+                else if (Section == MeasurementSection.Generators && ToGeneratorDuration(entryName, duration) is { } generator)
+                {
+                    Generators.Add(generator);
+                }
             }
         }
 
         /// <remarks>
-        /// Compilations without a target framework, and without analyzers, are ignored. These
-        /// are the unnamed compilations of satellite assemblies.
+        /// Compilations without a target framework, and without analyzers or generators, are
+        /// ignored. These are the unnamed compilations of satellite assemblies.
         /// </remarks>
         public CompilationDuration? Measure(TimeSpan finished)
         {
             var name = Name is { } n ? BuildOutput.ProjectAndFramework().Match(n) : Match.Empty;
 
-            return !name.Success && Analyzers.Count == 0 && TotalAnalyzerDuration == TimeSpan.Zero
+            return !name.Success
+                && Analyzers.Count == 0
+                && Generators.Count == 0
+                && TotalAnalyzerDuration == TimeSpan.Zero
+                && TotalGeneratorDuration == TimeSpan.Zero
                 ? null
                 : new()
                 {
@@ -215,7 +253,9 @@ public sealed class CompilationCollector
                     TargetFramework = name.Success ? name.Groups["tfm"].Value : string.Empty,
                     Duration = finished - started,
                     TotalAnalyzerDuration = TotalAnalyzerDuration,
+                    TotalGeneratorDuration = TotalGeneratorDuration,
                     Analyzers = Analyzers.ToImmutable(),
+                    Generators = Generators.ToImmutable(),
                 };
         }
 
@@ -234,5 +274,13 @@ public sealed class CompilationCollector
 
             return name is not null && !BuildOutput.IsUnnamedCompilation(name) ? name : null;
         }
+    }
+
+    /// <summary>The section of the compiler output that timed entries are read from.</summary>
+    private enum MeasurementSection
+    {
+        None,
+        Analyzers,
+        Generators,
     }
 }
