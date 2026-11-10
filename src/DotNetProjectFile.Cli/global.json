@@ -1,9 +1,0 @@
-{
-  "sdk": {
-    "version": "11.0.100",
-    "rollForward": "disable"
-  },
-  "test": {
-    "runner": "Microsoft.Testing.Platform"
-  }
-}

@@ -94,7 +94,7 @@ public sealed partial record BuildReport
                     var cells = new List<string>
                     {
                         Display(framework),
-                        compilations.Length.ToString(CultureInfo.InvariantCulture),
+                        compilations.Select(c => c.Project).Distinct(StringComparer.OrdinalIgnoreCase).Count().ToString(CultureInfo.InvariantCulture),
                         compilations.Select(c => c.Duration).Sum().Format(),
                         Cell(compilations.Select(c => c.TotalAnalyzerDuration).Sum()),
                     };
@@ -123,6 +123,13 @@ public sealed partial record BuildReport
             compilationColumns.Add(new("Generators", Right: true));
         }
 
+        // A project can be compiled more than once for the same target framework, for
+        // instance when it is referenced both directly and as an analyzer with an
+        // explicit target framework.
+        var compiled = Compilations
+            .GroupBy(c => (Project: c.Project.ToUpperInvariant(), Framework: c.TargetFramework.ToUpperInvariant()))
+            .ToDictionary(group => group.Key, group => group.Count());
+
         Table(
             sb,
             [.. compilationColumns],
@@ -131,9 +138,11 @@ public sealed partial record BuildReport
                 .ThenBy(c => c.Project, StringComparer.OrdinalIgnoreCase)
                 .Select(c =>
                 {
+                    var count = compiled[(c.Project.ToUpperInvariant(), c.TargetFramework.ToUpperInvariant())];
+
                     var cells = new List<string>
                     {
-                        c.Project,
+                        count > 1 ? $"{c.Project} ({count}x)" : c.Project,
                         Display(c.TargetFramework),
                         c.Duration.Format(),
                         Cell(c.TotalAnalyzerDuration),
@@ -146,6 +155,11 @@ public sealed partial record BuildReport
 
                     return cells.ToArray();
                 })]);
+
+        if (compiled.Values.Any(count => count > 1))
+        {
+            sb.AppendLine().AppendLine("A project and target framework that is compiled more than once is marked with the number of compilations, like `(2x)`. That is usually wasted work, for example when the project is referenced both directly and as an analyzer with an explicit target framework.");
+        }
 
         sb.AppendLine().AppendLine("## Analyzers").AppendLine();
 
