@@ -90,6 +90,7 @@ public sealed class BuildReportGenerator
         {
             TotalDuration = stopwatch.Elapsed,
             RestoreDuration = phases.Restore,
+            Restores = phases.Restores,
             BuildDuration = phases.Build,
             GraphBuildDuration = phases.Graph,
             Compilations = compilations.Compilations,

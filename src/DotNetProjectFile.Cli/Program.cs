@@ -44,7 +44,7 @@ public static class Program
                 Arity = ArgumentArity.ZeroOrOne,
             };
 
-            public static readonly Command Cmd = new Command("build-duration", "Measures the duration of a non-incremental build, and of the Roslyn analyzers and source generators it runs.")
+            public static readonly Command Cmd = new Command("build-duration", "Measures the duration of a non-incremental build, its NuGet restore, and the Roslyn analyzers and source generators it runs.")
             {
                 Arguments = { BuildTarget },
                 Options = { TargetFramework, Configuration, MaxCpuCount, GraphBuild, Report },

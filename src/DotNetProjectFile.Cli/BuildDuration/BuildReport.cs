@@ -5,8 +5,11 @@ public sealed partial record BuildReport
     /// <summary>The (wall clock) duration of <c>dotnet build</c>.</summary>
     public required TimeSpan TotalDuration { get; init; }
 
-    /// <summary>The duration of the restore, if measured.</summary>
+    /// <summary>The duration of the restore phase, if measured.</summary>
     public TimeSpan? RestoreDuration { get; init; }
+
+    /// <summary>The durations NuGet reported for restoring the projects.</summary>
+    public ImmutableArray<RestoreDuration> Restores { get; init; } = [];
 
     /// <summary>The duration of the build phase (after the restore), if measured.</summary>
     public TimeSpan? BuildDuration { get; init; }
@@ -38,6 +41,14 @@ public sealed partial record BuildReport
 
     /// <summary>The total execution time of all generators.</summary>
     public TimeSpan TotalGeneratorDuration => Compilations.Select(c => c.TotalGeneratorDuration).Sum();
+
+    /// <summary>The total duration NuGet reported for restoring the projects.</summary>
+    /// <remarks>Projects restore in parallel, so this can exceed the restore phase.</remarks>
+    public TimeSpan NuGetRestoreDuration => Restores.Select(r => r.Duration).Sum();
+
+    /// <summary>Gets whether any NuGet restore durations have been measured.</summary>
+    [Pure]
+    public bool HasRestores => !Restores.IsDefaultOrEmpty;
 
     /// <summary>Gets whether any generators have been measured.</summary>
     [Pure]

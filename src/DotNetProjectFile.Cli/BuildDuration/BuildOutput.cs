@@ -50,6 +50,14 @@ internal static partial class BuildOutput
     [GeneratedRegex(@"^\s*Done Building Project ""(?<project>[^""]+)"" \((?<targets>.+)\)(?: -- FAILED)?\.$", RegexOptions.CultureInvariant)]
     public static partial Regex ProjectDone();
 
+    /// <summary>The duration NuGet reports for restoring a project.</summary>
+    /// <example>
+    /// <c>Restored C:\code\Qowaiv\Qowaiv.csproj (in 13,88 sec). (TaskId:45)</c>.
+    /// </example>
+    /// <remarks>The number is formatted with the current culture, so it can use a comma.</remarks>
+    [GeneratedRegex(@"^\s*Restored (?<project>.+?) \(in (?<t>\d+(?:[.,]\d+)?) (?<unit>ms|sec|min|hr)\)\.(?: \(TaskId:\d+\))?$", RegexOptions.CultureInvariant)]
+    public static partial Regex Restored();
+
     /// <summary>The start of a compiler task.</summary>
     /// <example><c>Task "Csc" (TaskId:332)</c>.</example>
     [GeneratedRegex(@"^\s*Task ""(?:Csc|Vbc)"" \(TaskId:\d+\)$", RegexOptions.CultureInvariant)]

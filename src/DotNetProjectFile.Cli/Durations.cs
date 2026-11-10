@@ -16,6 +16,23 @@ public static class Durations
             ? TimeSpan.FromSeconds(double.Parse(seconds[1..], CultureInfo.InvariantCulture) / 2)
             : TimeSpan.FromSeconds(double.Parse(seconds, CultureInfo.InvariantCulture));
 
+        /// <summary>Parses a duration like <c>26 ms</c> or <c>13,88 sec</c>.</summary>
+        /// <remarks>The number is formatted with the current culture, so it can use a comma.</remarks>
+        [Pure]
+        public static TimeSpan ParseDuration(string number, string unit)
+        {
+            var value = double.Parse(number.Replace(',', '.'), CultureInfo.InvariantCulture);
+
+            return unit switch
+            {
+                "ms" => TimeSpan.FromMilliseconds(value),
+                "sec" => TimeSpan.FromSeconds(value),
+                "min" => TimeSpan.FromMinutes(value),
+                "hr" => TimeSpan.FromHours(value),
+                _ => TimeSpan.Zero,
+            };
+        }
+
         [Pure]
         public string Clock()
             => duration.ToString(duration.TotalHours >= 1 ? @"h\:mm\:ss" : @"mm\:ss", CultureInfo.InvariantCulture);

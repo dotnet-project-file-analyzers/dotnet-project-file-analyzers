@@ -18,8 +18,14 @@ public sealed partial record BuildReport
         [
             ["Total", TotalDuration.Format()],
             ["Restore", RestoreDuration is { } restore ? restore.Format() : string.Empty],
-            ["Build", BuildDuration is { } build ? build.Format() : string.Empty],
         ];
+
+        if (HasRestores)
+        {
+            measurements.Add(["NuGet restore", Cell(NuGetRestoreDuration)]);
+        }
+
+        measurements.Add(["Build", BuildDuration is { } build ? build.Format() : string.Empty]);
 
         if (GraphBuildDuration is not null)
         {
@@ -39,7 +45,7 @@ public sealed partial record BuildReport
             [new("Measurement"), new("Duration", Right: true)],
             [.. measurements]);
 
-        var note = "Total is the duration of `dotnet build`. Besides restoring and building, it includes starting up, and evaluating the projects to restore. Depending on the number of MSBuild nodes, projects compile in parallel, and analyzers and generators run concurrently, so the compilation, analyzer, and generator totals can exceed the build duration.";
+        var note = "Total is the duration of `dotnet build`. Besides restoring and building, it includes starting up, and evaluating the projects to restore. NuGet restore is the sum of the durations NuGet reported per project, and excludes evaluating the project graph. Depending on the number of MSBuild nodes, projects restore and compile in parallel, and analyzers and generators run concurrently, so the NuGet restore, compilation, analyzer, and generator totals can exceed the build duration.";
 
         if (GraphBuildDuration is not null)
         {
@@ -47,6 +53,19 @@ public sealed partial record BuildReport
         }
 
         sb.AppendLine().AppendLine(note);
+
+        if (HasRestores)
+        {
+            sb.AppendLine().AppendLine("## NuGet restore").AppendLine();
+
+            Table(
+                sb,
+                [new("Project"), new("Duration", Right: true)],
+                [.. Restores
+                    .OrderByDescending(restore => restore.Duration)
+                    .ThenBy(restore => restore.Project, StringComparer.OrdinalIgnoreCase)
+                    .Select(restore => new[] { restore.Project, restore.Duration.Format() })]);
+        }
 
         if (frameworks.Length > 1)
         {
