@@ -6,6 +6,15 @@ public sealed partial record BuildReport
 {
     private const int MaxPadding = 80;
 
+    /// <summary>The format of a percentage, with a non-breaking space before the sign.</summary>
+    private const string PercentageFormat = "0.00" + Nbsp + "%";
+
+    /// <summary>A percentage that is too small to show with two decimals.</summary>
+    private const string NegligiblePercentage = "<0.01" + Nbsp + "%";
+
+    /// <summary>The output of <see cref="PercentageFormat"/> for a zero percentage.</summary>
+    private const string ZeroPercentage = "0.00" + Nbsp + "%";
+
     [Pure]
     public string ToMarkdown()
     {
@@ -338,9 +347,9 @@ public sealed partial record BuildReport
             return string.Empty;
         }
 
-        var percentage = Ratio.Between(duration, total).ToString("0.00%", CultureInfo.InvariantCulture);
+        var percentage = Ratio.Between(duration, total).ToString(PercentageFormat, CultureInfo.InvariantCulture);
 
-        return percentage == "0%" ? "<0.01%" : percentage;
+        return percentage == ZeroPercentage ? NegligiblePercentage : percentage;
     }
 
     /// <summary>Returns the share of the total, in bold, or empty when not measured.</summary>

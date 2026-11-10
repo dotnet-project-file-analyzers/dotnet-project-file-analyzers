@@ -48,8 +48,8 @@ public static class Durations
             var round = Math.Round((decimal)duration.TotalSeconds, 3);
 
             return round == 0
-                ? "<0.001 s"
-                : invariant($"{round:#,##0.000} s");
+                ? $"<0.001{Nbsp}s"
+                : invariant($"{round:#,##0.000}{Nbsp}s");
         }
     }
 
