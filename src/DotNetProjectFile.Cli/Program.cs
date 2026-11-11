@@ -39,7 +39,7 @@ public static class Program
 
             public static readonly Option<FileInfo> Report = new("--report")
             {
-                Description = "Also writes the report to a file. Without a path, it is written next to the solution or project, as <name>.build-duration.md.",
+                Description = "Also writes the report to a file. Without a path, it is written next to the solution or project, as <name>.durations.md.",
                 HelpName = "path",
                 Arity = ArgumentArity.ZeroOrOne,
             };
@@ -91,7 +91,7 @@ public static class Program
             [Pure]
             private static FileInfo ReportFile(FileInfo? path, FileInfo target)
             {
-                var name = $"{Path.GetFileNameWithoutExtension(target.Name)}.build-duration.md";
+                var name = $"{Path.GetFileNameWithoutExtension(target.Name)}.durations.md";
 
                 return path switch
                 {

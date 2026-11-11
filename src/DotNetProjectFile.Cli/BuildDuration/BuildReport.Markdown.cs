@@ -41,12 +41,12 @@ public sealed partial record BuildReport
             measurements.Add(("Graph build", graph));
         }
 
-        measurements.Add(("Compilation", TotalCompilationDuration));
-        measurements.Add(("Analyzers", TotalAnalyzerDuration));
+        measurements.Add(("Compilation (wall)", TotalCompilationDuration));
+        measurements.Add(("Analyzers (summed)", TotalAnalyzerDuration));
 
         if (HasGenerators)
         {
-            measurements.Add(("Generators", TotalGeneratorDuration));
+            measurements.Add(("Generators (summed)", TotalGeneratorDuration));
         }
 
         Table(
@@ -64,6 +64,18 @@ public sealed partial record BuildReport
         if (GraphBuildDuration is not null)
         {
             note += " Graph build is the time MSBuild reported for constructing the static project graph, and is included in the build duration.";
+        }
+
+        note += " Compilation is the wall clock time of compiling a project. Analyzer and generator times are the sums of the execution time of their callbacks, accumulated over concurrent threads, and include waiting for an analyzer that is already running. So those sums can exceed the compilation time of the same project, and are not a share of it.";
+
+        // Analyzer time is summed over concurrent threads. Once that sum approaches the wall clock of
+        // the compilation itself, comparing the two invites reading a saving into it that is not there.
+        var misleading = (TotalCompilationDuration > TimeSpan.Zero && TotalAnalyzerDuration >= TotalCompilationDuration)
+            || Compilations.Any(c => c.Duration > TimeSpan.Zero && c.TotalAnalyzerDuration >= c.Duration);
+
+        if (misleading)
+        {
+            note += " Where the analyzer sum comes close to or exceeds the compilation wall clock, do not take that difference for time saved by disabling analyzers: the sum is taken over concurrent threads, and compiling still has to start up, load its references, and emit its output.";
         }
 
         note += " The percentages show each row's share of the total of its table.";
@@ -96,14 +108,14 @@ public sealed partial record BuildReport
             {
                 new("Target framework"),
                 new("Projects", Right: true),
-                new("Compilation", Right: true),
+                new("Compilation (wall)", Right: true),
                 new("%", Right: true),
-                new("Analyzers", Right: true),
+                new("Analyzers (summed)", Right: true),
             };
 
             if (HasGenerators)
             {
-                columns.Add(new("Generators", Right: true));
+                columns.Add(new("Generators (summed)", Right: true));
             }
 
             Table(
@@ -138,14 +150,14 @@ public sealed partial record BuildReport
         {
             new("Project"),
             new("Target framework"),
-            new("Compilation", Right: true),
+            new("Compilation (wall)", Right: true),
             new("%", Right: true),
-            new("Analyzers", Right: true),
+            new("Analyzers (summed)", Right: true),
         };
 
         if (HasGenerators)
         {
-            compilationColumns.Add(new("Generators", Right: true));
+            compilationColumns.Add(new("Generators (summed)", Right: true));
         }
 
         // A project can be compiled more than once for the same target framework, for
