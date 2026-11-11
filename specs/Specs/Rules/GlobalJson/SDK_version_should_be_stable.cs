@@ -54,7 +54,7 @@ public class Guards
     public void disabled_via(string policy) => new SpecifyStableSdkVersion().ForInlineGlobalJson($$"""
     {
       "sdk": {
-        "version": "10.0.401",
+        "version": "11.0.100",
         "rollForward": "{{policy}}"
       }
     }

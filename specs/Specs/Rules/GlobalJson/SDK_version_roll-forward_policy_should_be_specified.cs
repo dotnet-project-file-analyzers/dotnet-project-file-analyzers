@@ -101,7 +101,7 @@ public class Guards
     public void disabled_with_lock_files() => new SpecifySdkRollForwardPolicy().ForInlineGlobalJson("""
         {
           "sdk": {
-            "version": "10.0.401",
+            "version": "11.0.100",
             "rollForward": "disable",
             "allowPrerelease": false
           }
