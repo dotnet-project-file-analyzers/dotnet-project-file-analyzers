@@ -3,7 +3,7 @@
   <Import Project="../../props/common.props" />
   
   <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
+    <TargetFramework>net11.0</TargetFramework>
     <IsTestProject>true</IsTestProject>
     <RootNamespace>Specs</RootNamespace>
     <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
