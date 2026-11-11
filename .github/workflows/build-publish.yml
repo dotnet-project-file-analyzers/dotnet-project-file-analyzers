@@ -29,6 +29,7 @@ jobs:
         with:
           global-json-file: global.json
           cache: true
+          cache-dependency-path: '**/packages.lock.json'
 
       - name: Build
         run: dotnet build dotnet-project-file-analyzers.slnx -c Release
