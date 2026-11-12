@@ -85,6 +85,7 @@
       <![CDATA[
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+- Proj4012: Comma separated values should not end with a comma. (NEW RULE)
 v1.*
 - Proj0022: Check existence of <Page>. (FN)
 ]]>
