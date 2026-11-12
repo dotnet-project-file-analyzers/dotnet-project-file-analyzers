@@ -18,6 +18,7 @@ dotnet_diagnostic.CA2254.severity   = warning    # Template should be a static e
 dotnet_diagnostic.CS1591.severity   = suggestion # Missing XML comment for publicly visible type or member
 
 dotnet_diagnostic.IDE0130.severity  = none       # Namespace does not match folder structure [Justification: We do not care.]
+dotnet_diagnostic.IDE0370.severity  = none       # Remove unnecessary suppressions [Justification: A lot of FPs and execution is slow.]
 dotnet_diagnostic.IDE1006.severity  = none       # Naming Styles [Justification: Naming styles should be guarded by other rules.]
 
 dotnet_diagnostic.IDE0001.severity  = warning    # Simplify name
