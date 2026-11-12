@@ -1,5 +1,6 @@
 namespace DotNetProjectFile.Analyzers.MsBuild;
 
+/// <summary>Implements <see cref="Rule.OnlyUseDirectoryPackagesPropsForCPM" />.</summary>
 [DiagnosticAnalyzer(LanguageNames.CSharp, LanguageNames.VisualBasic)]
 public sealed class UseDirectoryPackagesPropsOnlyForCPM()
     : MsBuildProjectFileAnalyzer(Rule.OnlyUseDirectoryPackagesPropsForCPM)
@@ -44,6 +45,8 @@ public sealed class UseDirectoryPackagesPropsOnlyForCPM()
 
         // Only self is allowed
         AdditionalFiles additional => additional.Include.Any(i => i.EndsWith("Directory.Packages.props")),
-        _ => false,
+
+        // Properties and Items containing "License"
+        _ => node.LocalName.Contains("License", StringComparison.OrdinalIgnoreCase),
     };
 }

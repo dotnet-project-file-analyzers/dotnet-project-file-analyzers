@@ -81,13 +81,18 @@
 
   <PropertyGroup Label="Version and release notes">
     <Version>1.19.0</Version>
+    <ToBeDecided>
+      <![CDATA[
+- Proj0037: Exclude runtime when all assets are private. (NEW RULE)
+]]>
+    </ToBeDecided>
     <ToBeReleased>
       <![CDATA[
-ToBeDecided:
-- Proj0037: Exclude runtime when all assets are private. (NEW RULE)
-- Proj4012: Comma separated values should not end with a comma. (NEW RULE)
 v1.*
-- Proj0022: Check existence of <Page>. (FN)
+- Proj0022: Check existange of <Page>. (FN)
+- Proj0807: Allow third party license file properties, such as <SixLaborsLicenseFile>. (FP)
+- Proj2003: Check existance of cultures in RESX file names. (FP)
+- Proj4012: Comma separated values should not end with a comma. (NEW RULE)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
