@@ -86,7 +86,8 @@
 ToBeDecided:
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
 v1.*
-- Proj0022: Check existence of <Page>. (FN)
+- Proj0022: Check existange of <Page>. (FN)
+- Proj2003: Check existance of cultures in RESX file names. (FP)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
