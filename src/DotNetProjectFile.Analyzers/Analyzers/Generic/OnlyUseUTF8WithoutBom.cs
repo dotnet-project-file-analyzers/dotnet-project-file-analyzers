@@ -55,7 +55,10 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
         or "obj"
         or ".vs"
         or ".git"
-        or ".nuget";
+        or ".nuget"
+        or ".sonar"
+        or "TestResults"
+        or "node_modules";
 
     private static bool Exclude(IOFile file)
         => file.Name.IsMatch("CompatibilitySuppressions.xml")
