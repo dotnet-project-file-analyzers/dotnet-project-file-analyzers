@@ -203,6 +203,7 @@ The package contains analyzers that analyze .NET project files.
 * [**Proj4002** Invalid INI key-value pair](https://dotnet-project-file-analyzers.github.io/rules/Proj4002.html)
 * [**Proj4010** Sections should contain at least one key-value pair](https://dotnet-project-file-analyzers.github.io/rules/Proj4010.html)
 * [**Proj4011** Define INI keys once](https://dotnet-project-file-analyzers.github.io/rules/Proj4011.html)
+* [**Proj4012** Comma separated values should not end with a comma](https://dotnet-project-file-analyzers.github.io/rules/Proj4012.html)
 
 ## .globalconfig
 * [**Proj4025** Remove section header](https://dotnet-project-file-analyzers.github.io/rules/Proj4025.html)

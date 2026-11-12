@@ -12,6 +12,27 @@ public class Reports
             Issue.WRN("Proj0807", "As <OutputType> is not about Central Package Management it should not be in Directory.Packages.props" /*.......*/).WithSpan(04, 04, 04, 36),
             Issue.WRN("Proj0807", "As <PackageReference> is not about Central Package Management it should not be in Directory.Packages.props" /*.*/).WithSpan(21, 04, 21, 64),
             Issue.WRN("Proj0807", "As <AdditionalFiles> is not about Central Package Management it should not be in Directory.Packages.props" /*..*/).WithSpan(26, 04, 26, 38));
+
+    [Test]
+    public void other_unknown_property()
+        => new UseDirectoryPackagesPropsOnlyForCPM()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+            </Project>
+            """)
+        .WithFile("Directory.Packages.props", """
+            <Project>
+              <PropertyGroup>
+                <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+                <SomeProperty>true</SomeProperty>
+              </PropertyGroup>
+            </Project>
+            """)
+        .HasIssue(
+            Issue.WRN("Proj0807", "As <SomeProperty> is not about Central Package Management it should not be in Directory.Packages.props").WithSpan(03, 04, 03, 37));
 }
 
 public class Guards
@@ -20,6 +41,26 @@ public class Guards
     public void proper_Directory_Packages_Props()
         => new UseDirectoryPackagesPropsOnlyForCPM()
         .ForProject("UseCPM.cs")
+        .HasNoIssues();
+
+    [Test]
+    public void third_party_license_file_property()
+        => new UseDirectoryPackagesPropsOnlyForCPM()
+        .ForInlineCsproj("""
+            <Project Sdk="Microsoft.NET.Sdk">
+              <PropertyGroup>
+                <TargetFramework>net10.0</TargetFramework>
+              </PropertyGroup>
+            </Project>
+            """)
+        .WithFile("Directory.Packages.props", """
+            <Project>
+              <PropertyGroup>
+                <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+                <SixLaborsLicenseFile>LICENSE-SIXLABORS.txt</SixLaborsLicenseFile>
+              </PropertyGroup>
+            </Project>
+            """)
         .HasNoIssues();
 
     [TestCase("CompliantCSharp.cs")]
