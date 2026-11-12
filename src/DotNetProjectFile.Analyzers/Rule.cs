@@ -1324,7 +1324,8 @@ public static partial class Rule
         message: "Use Microsoft's .NET analyzers by setting <EnableNETAnalyzers> to true",
         description: "Improve the code quality by adding Microsoft's Roslyn analyzers.",
         tags: ["roslyn", "analyzer", "Microsoft"],
-        category: Category.CodeQuality);
+        category: Category.CodeQuality,
+        isEnabled: false);
 
     public static DiagnosticDescriptor UseSonarAnalyzers => New(
         id: 1003,
