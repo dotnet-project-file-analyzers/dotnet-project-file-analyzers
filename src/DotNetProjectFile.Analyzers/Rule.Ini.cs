@@ -154,5 +154,15 @@ public static partial class Rule
                 "likely a .globalconfig file).",
             tags: ["INI", ".editorconfig", "globalconfig", "Roslyn", "diagnostics"],
             category: Category.Clarity);
+
+        public static DiagnosticDescriptor RemoveTrailingComma => New(
+            id: 4012,
+            title: "Comma separated values should not end with a comma",
+            message: "Remove trailing comma",
+            description:
+                "A trailing comma in a comma separated value is redundant " +
+                "and typically the result of a typo.",
+            tags: ["INI", ".editorconfig", ".globalconfig", "comma"],
+            category: Category.CodeSmell);
     }
 }

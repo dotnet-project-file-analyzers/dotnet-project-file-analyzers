@@ -253,6 +253,7 @@ reported to the [GitHub repository](https://github.com/dotnet-project-file-analy
 * [**Proj4002** Invalid INI key-value pair](rules/Proj4002.md)
 * [**Proj4010** Sections should contain at least one key-value pair](rules/Proj4010.md)
 * [**Proj4011** Define INI key once](rules/Proj4011.md)
+* [**Proj4012** Comma separated values should not end with a comma](rules/Proj4012.md)
 
 ## .globalconfig
 * [**Proj4025** Remove section header](rules/Proj4025.md)
