@@ -234,25 +234,32 @@ public static class Licenses
 
     public static LicenseExpression FromFile(IOFile? licenseFile)
     {
-        if (licenseFile is not { Exists: true } file)
+        if (licenseFile is not { } file)
         {
             return Unknown;
         }
 
-        var contentRaw = file.ReadAllText();
-        var content = PrepareLicenseText(contentRaw);
-        var contentNgrams = content.GetNGrams(LicenseTextLookupNGramSize);
-
-        // Matching logic is loosely based on the logic used by Licensee: https://github.com/licensee/licensee
-        // Licensee is the library used by GitHub for determining the license.
-        foreach (var (modelNgrams, license) in LicenseTextLookup.Value)
+        try
         {
-            if (contentNgrams.DiceSorensenCoefficientAtLeast(modelNgrams, 0.95f))
-            {
-                return license;
-            }
-        }
+            var contentRaw = file.ReadAllText();
+            var content = PrepareLicenseText(contentRaw);
+            var contentNgrams = content.GetNGrams(LicenseTextLookupNGramSize);
 
-        return CustomLicense.Create(content);
+            // Matching logic is loosely based on the logic used by Licensee: https://github.com/licensee/licensee
+            // Licensee is the library used by GitHub for determining the license.
+            foreach (var (modelNgrams, license) in LicenseTextLookup.Value)
+            {
+                if (contentNgrams.DiceSorensenCoefficientAtLeast(modelNgrams, 0.95f))
+                {
+                    return license;
+                }
+            }
+
+            return CustomLicense.Create(content);
+        }
+        catch
+        {
+            return Unknown;
+        }
     }
 }

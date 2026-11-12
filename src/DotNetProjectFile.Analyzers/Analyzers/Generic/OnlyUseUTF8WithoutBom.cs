@@ -21,9 +21,8 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext<ProjectTextFile> context)
     {
-        if (!context.File.Path.Exists) { return; }
-
-        using var reader = context.File.Path.TryOpenRead();
+        var path = context.File.Path;
+        using var reader = path.TryOpenRead();
 
         var bom = new byte[3];
 
@@ -31,7 +30,7 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
 
         if (bom[0] is 0xEF && bom[1] is 0xBB && bom[2] is 0xBF)
         {
-            context.ReportDiagnostic(Descriptor, context.File.Path.AsLocation());
+            context.ReportDiagnostic(Descriptor, path.AsLocation());
         }
     }
 
