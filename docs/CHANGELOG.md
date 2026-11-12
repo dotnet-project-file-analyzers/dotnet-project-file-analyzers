@@ -23,7 +23,7 @@ permalink: /CHANGELOG
 - Proj6012: Specify SDK version roll-forward policy. (NEW RULE)
 - Proj6013: Disable SDK version roll-forward when using lock files. (NEW RULE)
 - Proj6014: Specify stable SDK version. (NEW RULE)
-- SonarQube support vial via $(SQAdditionalAnalysisFileItemTypes) instead of adding analyzed files via <Content>. (UPDATE)
+- SonarQube support via $(SQAdditionalAnalysisFileItemTypes) instead of adding analyzed files via `<Content>`. (UPDATE)
 
 ## v1.18.0
 - Proj0055: Enable nullability analysis for C#. (NEW RULE)
