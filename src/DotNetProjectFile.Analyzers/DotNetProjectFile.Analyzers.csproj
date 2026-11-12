@@ -93,6 +93,8 @@ v1.*
 - Proj0807: Allow third party license file properties, such as <SixLaborsLicenseFile>. (FP)
 - Proj2003: Check existance of cultures in RESX file names. (FP)
 - Proj4012: Comma separated values should not end with a comma. (NEW RULE)
+- Proj0500, Proj0501, Proj0502, Proj0503, Proj0504, Proj0509: Improved performance.
+- Fixed bug in path resolution that could lead to false positives and false negatives in various analyzers.
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
