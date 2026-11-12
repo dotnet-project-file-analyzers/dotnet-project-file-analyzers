@@ -56,7 +56,7 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
         or ".vs"
         or ".git"
         or ".nuget"
-        or ".sonoar"
+        or ".sonar"
         or "TestResults"
         or "node_modules";
 
