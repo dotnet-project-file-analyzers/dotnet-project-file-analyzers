@@ -27,13 +27,14 @@ public static class Frameworks
         // Strip the platform: net8.0-windows => net8.0.
         if (s.IndexOf('-') is var dash and > 0) s = s[..dash];
 
+        // Strip the leading period: .netcoreapp3.0 => netcoreapp3.0.
+        s = s.TrimStart('.');
+
         return s switch
         {
-            _ when s.StartsWith(".netframework") => Create(NetFramework, s[".netframework".Length..]),
-            _ when s.StartsWith(".netstandard") => Create(NetStandard, s[".netstandard".Length..]),
-            _ when s.StartsWith(".netcoreapp") => Create(NetCoreApp, s[".netcoreapp".Length..]),
-            _ when s.StartsWith(NetStandard) => Create(NetStandard, s[NetStandard.Length..]),
-            _ when s.StartsWith(NetCoreApp) => Create(NetCoreApp, s[NetCoreApp.Length..]),
+            _ when s.StartsWith(NetFramework, StringComparison.OrdinalIgnoreCase) => Create(NetFramework, s[NetFramework.Length..]),
+            _ when s.StartsWith(NetStandard, StringComparison.OrdinalIgnoreCase) => Create(NetStandard, s[NetStandard.Length..]),
+            _ when s.StartsWith(NetCoreApp, StringComparison.OrdinalIgnoreCase) => Create(NetCoreApp, s[NetCoreApp.Length..]),
             _ when s.StartsWith("net") => Net(s[3..]),
             _ => null,
         };

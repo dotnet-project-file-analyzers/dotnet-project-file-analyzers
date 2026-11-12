@@ -11,6 +11,7 @@ public class Parses
     [TestCase(".NETCoreApp3.1", "netcoreapp", "3.1")]
     [TestCase("net472", "netframework", "4.7.2")]
     [TestCase("net48", "netframework", "4.8")]
+    [TestCase("netframework4.6.2", "netframework", "4.6.2")]
     [TestCase(".NETFramework4.6.2", "netframework", "4.6.2")]
     [TestCase("netstandard2.0", "netstandard", "2.0")]
     [TestCase(".NETStandard2.1", "netstandard", "2.1")]
