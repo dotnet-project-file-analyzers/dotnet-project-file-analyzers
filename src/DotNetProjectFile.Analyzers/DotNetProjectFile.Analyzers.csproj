@@ -80,7 +80,7 @@
   </ItemGroup>
 
   <PropertyGroup Label="Version and release notes">
-    <Version>1.19.0</Version>
+    <Version>1.20.0</Version>
     <ToBeDecided>
       <![CDATA[
 - Proj0037: Exclude runtime when all assets are private. (NEW RULE)
@@ -89,6 +89,12 @@
     <ToBeReleased>
       <![CDATA[
 v1.*
+- ?
+]]>
+    </ToBeReleased>
+    <PackageReleaseNotes>
+      <![CDATA[
+v1.20.0
 - Proj0022: Check existange of <Page>. (FN)
 - Proj0807: Allow third party license file properties, such as <SixLaborsLicenseFile>. (FP)
 - Proj1002: Disable check on <EnableNETAnalyzers> as it leads to Microsoft.CodeAnalysis.NetAnalyzers. (FP)
@@ -96,10 +102,6 @@ v1.*
 - Proj4012: Comma separated values should not end with a comma. (NEW RULE)
 - Proj0500, Proj0501, Proj0502, Proj0503, Proj0504, Proj0509: Improved performance.
 - Fixed bug in path resolution that could lead to false positives and false negatives in various analyzers.
-]]>
-    </ToBeReleased>
-    <PackageReleaseNotes>
-      <![CDATA[
 v1.19.1
 - Set $(SQAdditionalAnalysisFileItemTypes) in the .props instead of the .target. (BUG)
 v1.19.0
