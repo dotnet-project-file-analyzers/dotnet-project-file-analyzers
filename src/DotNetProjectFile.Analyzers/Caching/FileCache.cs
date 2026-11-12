@@ -72,18 +72,19 @@ public sealed class FileCache<T>() where T : class
         /// <summary>Reads the stamp from a single <see cref="IOFile"/>, or null if unreadable.</summary>
         public static Stamp? For(IOFile path)
         {
-            if (path.Info is { Exists: true } info)
+            if (path.Info is not { } info)
             {
-                try
-                {
-                    return new(info.LastWriteTimeUtc, info.Length);
-                }
-                catch
-                {
-                    return null;
-                }
+                return null;
             }
-            return null;
+
+            try
+            {
+                return new(info.LastWriteTimeUtc, info.Length);
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
 }
