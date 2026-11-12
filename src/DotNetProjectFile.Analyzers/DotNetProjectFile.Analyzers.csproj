@@ -89,9 +89,9 @@
     <ToBeReleased>
       <![CDATA[
 v1.*
-- ?
 - Proj0022: Check existange of <Page>. (FN)
 - Proj0807: Allow third party license file properties, such as <SixLaborsLicenseFile>. (FP)
+- Proj2003: Check existance of cultures in RESX file names. (FP)
 ]]>
     </ToBeReleased>
     <PackageReleaseNotes>
