@@ -100,15 +100,18 @@ public static class Licenses
 
     private static readonly FrozenDictionary<string, LicenseExpression> Lookup = CreateLookup();
 
-    private static readonly int LicenseTextLookupNGramSize = 2;
-    private static readonly FrozenDictionary<NGramsCollection, SingleLicense> LicenseTextLookup
-        = All
+    private const int LicenseTextLookupNGramSize = 2;
+
+    /// <remarks>
+    /// Lazy, as only packages that ship a license file need text matching,
+    /// and building the n-grams for all license texts is expensive.
+    /// </remarks>
+    private static readonly Lazy<(NGramsCollection NGrams, SingleLicense License)[]> LicenseTextLookup = new(()
+        => [.. All
         .OfType<SingleLicense>()
         .Where(license => license.BaseLicense is null)
         .SelectMany(license => (license.SpdxInfo?.LicenseTexts ?? []).Select(text => (Text: text, License: license)))
-        .ToFrozenDictionary(
-            pair => PrepareLicenseText(pair.Text).GetNGrams(LicenseTextLookupNGramSize),
-            pair => pair.License);
+        .Select(pair => (PrepareLicenseText(pair.Text).GetNGrams(LicenseTextLookupNGramSize), pair.License))]);
 
     private static readonly ImmutableArray<string> GenericLicenseUrlDomains =
     [
@@ -242,13 +245,11 @@ public static class Licenses
 
         // Matching logic is loosely based on the logic used by Licensee: https://github.com/licensee/licensee
         // Licensee is the library used by GitHub for determining the license.
-        foreach (var pair in LicenseTextLookup)
+        foreach (var (modelNgrams, license) in LicenseTextLookup.Value)
         {
-            var modelNgrams = pair.Key;
-
             if (contentNgrams.DiceSorensenCoefficientAtLeast(modelNgrams, 0.95f))
             {
-                return pair.Value;
+                return license;
             }
         }
 

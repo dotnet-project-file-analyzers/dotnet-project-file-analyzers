@@ -36,6 +36,9 @@ public sealed class MsBuildProps(AnalyzerOptions options)
     /// <summary>The Package license expression (such as MIT, etc...).</summary>
     public string? PackageLicenseExpression => Prop();
 
+    /// <summary>The target framework of the current (inner) build.</summary>
+    public string? TargetFramework => Prop();
+
     /// <summary>Gets the MS Build property.</summary>
     [Pure]
     private string? Prop([CallerMemberName] string? propertyName = null)

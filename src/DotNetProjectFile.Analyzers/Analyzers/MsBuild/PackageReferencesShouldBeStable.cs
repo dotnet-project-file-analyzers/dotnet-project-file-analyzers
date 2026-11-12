@@ -9,9 +9,12 @@ public sealed class PackageReferencesShouldBeStable() : MsBuildProjectFileAnalyz
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext context)
     {
+        var cpm = context.ManagePackageVersionsCentrally;
+        var lookup = new PackageVersionLookup();
+
         foreach (var package in context.File.ItemGroups.Children<PackageReferenceBase>())
         {
-            if (package.ResolveVersionVerbose(context.ManagePackageVersionsCentrally) is { } resolved
+            if (package.ResolveVersionVerbose(cpm, lookup) is { } resolved
                 && resolved.Version.Contains('-'))
             {
                 context.ReportDiagnostic(Descriptor, resolved.Node, package.IncludeOrUpdate, resolved.Version);

@@ -201,3 +201,6 @@ launchSettings.json
 *.received.txt
 *.received.json
 *.received.cs
+
+# Serena MCP
+.serena/
