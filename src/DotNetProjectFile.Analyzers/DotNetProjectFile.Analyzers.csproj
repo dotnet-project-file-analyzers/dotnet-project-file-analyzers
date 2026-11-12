@@ -91,7 +91,7 @@
 v1.*
 - Proj0022: Check existange of <Page>. (FN)
 - Proj0807: Allow third party license file properties, such as <SixLaborsLicenseFile>. (FP)
-- Proj1002: Disable by default as <EnableNETAnalyzers> leads to Microsoft.CodeAnalysis.NetAnalyzers. (FP)
+- Proj1002: Disable check on <EnableNETAnalyzers> as it leads to Microsoft.CodeAnalysis.NetAnalyzers. (FP)
 - Proj2003: Check existance of cultures in RESX file names. (FP)
 - Proj4012: Comma separated values should not end with a comma. (NEW RULE)
 ]]>
