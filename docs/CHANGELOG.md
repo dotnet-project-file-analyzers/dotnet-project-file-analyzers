@@ -1,3 +1,7 @@
+---
+permalink: /CHANGELOG
+---
+
 # Changelog
 
 ## v1.20.0
