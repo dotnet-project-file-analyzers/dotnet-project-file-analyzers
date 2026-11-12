@@ -20,6 +20,24 @@ public class Reports
             Issue.WRN("Proj0022", "The Include 'missing.editor' of <EditorConfgFiles> does not exist" /*....*/).WithSpan(12, 04, 12, 49),
             Issue.WRN("Proj0022", "The Include 'missing.config' of <GlobalAnalyzerConfigFiles> does not exist").WithSpan(13, 04, 13, 58)
         );
+
+    [Test]
+    public void non_existing_page() => new BuildActionIncludeShouldExist()
+        .ForInlineCsproj("""
+           <Project Sdk="Microsoft.NET.Sdk">
+
+            <PropertyGroup>
+              <TargetFramework>net11.0</TargetFramework>
+              <EnableDefaultPageItems>false</EnableDefaultPageItems>
+            </PropertyGroup>
+
+            <ItemGroup>
+              <Page Include="MainWindow.xaml" />
+            </ItemGroup>
+
+          </Project>
+          """)
+        .HasIssue(Issue.WRN("Proj0022", "The Include 'MainWindow.xaml' of <Page> does not exist").WithSpan(8, 04, 8, 38));
 }
 
 public class Guards
