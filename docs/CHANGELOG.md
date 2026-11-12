@@ -5,10 +5,10 @@ permalink: /CHANGELOG
 # Changelog
 
 ## v1.20.0
-- Proj0022: Check existange of <Page>. (FN)
-- Proj0807: Allow third party license file properties, such as <SixLaborsLicenseFile>. (FP)
-- Proj1002: Disable check on <EnableNETAnalyzers> as it leads to Microsoft.CodeAnalysis.NetAnalyzers. (FP)
-- Proj2003: Check existance of cultures in RESX file names. (FP)
+- Proj0022: Check existence of `<Page>`. (FN)
+- Proj0807: Allow third party license file properties, such as `<SixLaborsLicenseFile>`. (FP)
+- Proj1002: Disable check on `<EnableNETAnalyzers>` as it leads to Microsoft.CodeAnalysis.NetAnalyzers. (FP)
+- Proj2003: Check existence of cultures in RESX file names. (FP)
 - Proj4012: Comma separated values should not end with a comma. (NEW RULE)
 - Proj0500, Proj0501, Proj0502, Proj0503, Proj0504, Proj0509: Improved performance.
 - Fixed bug in path resolution that could lead to false positives and false negatives in various analyzers.
