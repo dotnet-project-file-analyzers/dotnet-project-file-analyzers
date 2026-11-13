@@ -1,92 +1,127 @@
+#pragma warning disable RS1035 // Do not use APIs banned for analyzers
+
 using System.IO;
+using Iterator = System.Collections.Generic.IEnumerator<string>;
 
 namespace DotNetProjectFile.IO;
 
-public sealed class IOFiles(string rootPath, string searchPattern = "*") : IEnumerable<FileInfo>
+public sealed class IOFiles(string root, IOMatch[] ignoreDirs) : IEnumerator<FileRef>, IEnumerable<FileRef>
 {
-    private readonly DirectoryInfo _root = new DirectoryInfo(rootPath);
-    private readonly string _searchPattern = searchPattern;
+    public static readonly IOMatch[] DefaultIgnores =
+    [
+        new IOMatches.LocalIs("bin"),
+        new IOMatches.LocalIs("obj"),
+        new IOMatches.LocalIs(".vs"),
+        new IOMatches.LocalIs(".git"),
+        new IOMatches.LocalIs(".nuget"),
+        new IOMatches.LocalIs(".sonar"),
+        new IOMatches.LocalIs("TestResults"),
+        new IOMatches.LocalIs("node_modules"),
+    ];
 
-    public Enumerator GetEnumerator() => new(_root, _searchPattern);
+    private readonly IOMatch[] IgnoreDirs = ignoreDirs;
 
-    IEnumerator<FileInfo> IEnumerable<FileInfo>.GetEnumerator() => GetEnumerator();
+    private readonly int Offset = root.Length + 1;
 
-    IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
+    private readonly Stack<Enumerators> Iterators = new([Enumerators.New(root)]);
 
-    public sealed class Enumerator(DirectoryInfo root, string searchPattern) : IEnumerator<FileInfo>
+    /// <inheritdoc />
+    public FileRef Current
     {
-        private readonly DirectoryInfo _root = root;
-        private readonly string _searchPattern = searchPattern;
-        private readonly Stack<IEnumerator<FileSystemInfo>> _iterators = new();
-        private bool _isInitialized;
-
-        public FileInfo Current { get; private set; } = null!;
-
-        object IEnumerator.Current => Current;
-
-        public bool MoveNext()
+        get
         {
-            if (!_isInitialized)
+            var iterator = Iterators.Peek();
+            return new FileRef(iterator.File, Offset);
+        }
+    }
+
+    /// <inheritdoc />
+    object IEnumerator.Current => Current;
+
+    /// <inheritdoc />
+    public bool MoveNext()
+    {
+        while (Iterators.Count > 0)
+        {
+            var iterator = Iterators.Peek();
+
+            if (MoveNext(iterator.Dirs, IgnoreDirs))
             {
-                _isInitialized = true;
-                if (!_root.Exists) return false;
-                PushDirectory(_root);
+                Iterators.Push(Enumerators.New(iterator.Dir));
             }
-
-            while (_iterators.Count > 0)
+            else if (iterator.Files.MoveNext())
             {
-                var currentIterator = _iterators.Peek();
+                return true;
+            }
+            else
+            {
+                Iterators.Pop().Dispose();
+            }
+        }
+        return false;
+    }
 
-                if (currentIterator.MoveNext())
-                {
-                    switch (currentIterator.Current)
-                    {
-                        case FileInfo file:
-                            Current = file;
-                            return true;
+    private bool MoveNext(Iterator iterator, IOMatch[] ignores)
+    {
+        while (iterator.MoveNext())
+        {
+            Chars full = iterator.Current.AsSpan()[Offset..];
+            var last = full.LastIndexOf('\\') + 1;
+            Chars name = full[last..];
 
-                        case DirectoryInfo subDir:
-                            PushDirectory(subDir);
-                            break;
-                    }
-                }
-                else
+            if (!Ignore(full, name)) return true;
+        }
+        return false;
+
+        bool Ignore(Chars full, Chars name)
+        {
+            foreach (var ignore in ignores)
+            {
+                if (ignore.Matches(full, name))
                 {
-                    // Current directory finished; pop and dispose its OS handle
-                    _iterators.Pop().Dispose();
+                    return true;
                 }
             }
-
-            Current = null!;
             return false;
         }
+    }
 
-        private void PushDirectory(DirectoryInfo dir)
+    void IDisposable.Dispose()
+    {
+        while (Iterators.Count > 0)
         {
-            try
-            {
-                // EnumerateFileSystemInfos yields both FileInfo and DirectoryInfo lazily
-                var enumerator = dir.EnumerateFileSystemInfos(_searchPattern).GetEnumerator();
-                _iterators.Push(enumerator);
-            }
-            catch (UnauthorizedAccessException) { }
-            catch (DirectoryNotFoundException) { }
+            Iterators.Pop().Dispose();
         }
+        GC.SuppressFinalize(this);
+    }
 
-        public void Reset() => throw new NotSupportedException();
+    /// <inheritdoc />
+    [DoesNotReturn]
+    public void Reset() => throw new NotSupportedException();
+
+    /// <inheritdoc />
+    public IEnumerator<FileRef> GetEnumerator() => this;
+
+    /// <inheritdoc />
+    IEnumerator IEnumerable.GetEnumerator() => this;
+
+    private readonly struct Enumerators(Iterator dirs, Iterator files) : IDisposable
+    {
+        public readonly Iterator Dirs = dirs;
+        public readonly Iterator Files = files;
+
+        public string Dir => Dirs.Current;
+
+        public string File => Files.Current;
+
+        public static Enumerators New(string root) => new(
+            Directory.EnumerateDirectories(root).GetEnumerator(),
+            Directory.EnumerateFiles(root).GetEnumerator());
 
         public void Dispose()
         {
-            DisposeIterators();
-            GC.SuppressFinalize(this);
-        }
-
-        private void DisposeIterators()
-        {
-            while (_iterators.Count > 0)
-            {
-                _iterators.Pop().Dispose();
-            }
+            Dirs.Dispose();
+            Files.Dispose();
         }
     }
 }
