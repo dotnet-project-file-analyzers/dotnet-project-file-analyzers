@@ -10,56 +10,36 @@ public sealed class OnlyUseUTF8WithoutBom() : ProjectFileAnalyzer<ProjectTextFil
         {
             if (ProjectFiles.Global.UpdateMsBuildProject(c) is { } msbuild)
             {
-                foreach (var file in Walk(msbuild.Path.Directory)
-                    .Select(f => new ProjectTextFile(f)))
+                foreach (var context in new IOFiles(msbuild.Path.Directory.ToString(), IOFiles.DefaultIgnores)
+                    .Where(HasBom)
+                    .Select(f => new ProjectTextFile(IOFile.Parse(f.FullName))))
                 {
-                    Register(new ProjectFileAnalysisContext<ProjectTextFile>(file, AnalyzerType.None, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
+                    Register(new ProjectFileAnalysisContext<ProjectTextFile>(context, AnalyzerType.None, c.Compilation, c.Options, c.CancellationToken, c.ReportDiagnostic));
                 }
             }
         });
 
     /// <inheritdoc />
     protected override void Register(ProjectFileAnalysisContext<ProjectTextFile> context)
+        => context.ReportDiagnostic(Descriptor, context.File.Path.AsLocation());
+
+    private static bool HasBom(FileRef file)
     {
-        var path = context.File.Path;
-        using var reader = path.TryOpenRead();
-
-        var bom = new byte[3];
-
-        _ = reader.Read(bom, 0, 3);
-
-        if (bom[0] is 0xEF && bom[1] is 0xBB && bom[2] is 0xBF)
+        try
         {
-            context.ReportDiagnostic(Descriptor, path.AsLocation());
+            var bom = new byte[3];
+            using var stream = file.OpenRead();
+            _ = stream.Read(bom, 0, 3);
+
+            return bom[0] is 0xEF
+                && bom[1] is 0xBB
+                && bom[2] is 0xBF
+                && !file.FullName.EndsWith("CompatibilitySuppressions.xml")
+                && !file.FullName.EndsWith(".user");
+        }
+        catch
+        {
+            return false;
         }
     }
-
-    private static IEnumerable<IOFile> Walk(IODirectory directory)
-    {
-        foreach (var file in directory.Files()?.Where(f => !Exclude(f)) ?? [])
-        {
-            yield return file;
-        }
-
-        foreach (var sub in directory.SubDirectories()?.Where(d => !Exclude(d)) ?? [])
-        {
-            foreach (var child in Walk(sub))
-                yield return child;
-        }
-    }
-
-    private static bool Exclude(IODirectory dir)
-        => dir.Name
-        is "bin"
-        or "obj"
-        or ".vs"
-        or ".git"
-        or ".nuget"
-        or ".sonar"
-        or "TestResults"
-        or "node_modules";
-
-    private static bool Exclude(IOFile file)
-        => file.Name.IsMatch("CompatibilitySuppressions.xml")
-        || file.Extension is ".user";
 }
