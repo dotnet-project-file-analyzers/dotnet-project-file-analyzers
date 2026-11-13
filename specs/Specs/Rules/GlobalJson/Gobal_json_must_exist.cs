@@ -31,7 +31,7 @@ public class Guards
         .WithFile("global.json", """
         {
           "sdk": {
-            "version": "10.0.400",
+            "version": "11.0.100",
             "rollForward": "latestPatch"
           }
         }
