@@ -5,7 +5,7 @@ using Iterator = System.Collections.Generic.IEnumerator<string>;
 
 namespace DotNetProjectFile.IO;
 
-public sealed class IOFiles(string root, IOMatch[] ignoreDirs) : IEnumerator<FileRef>, IEnumerable<FileRef>
+public sealed class IOFiles : IEnumerator<FileRef>, IEnumerable<FileRef>
 {
     public static readonly IOMatch[] DefaultIgnores =
     [
@@ -19,11 +19,21 @@ public sealed class IOFiles(string root, IOMatch[] ignoreDirs) : IEnumerator<Fil
         new IOMatches.LocalIs("node_modules"),
     ];
 
-    private readonly IOMatch[] IgnoreDirs = ignoreDirs;
 
-    private readonly int Offset = root.Length + 1;
+    public IOFiles(string root, IOMatch[] ignoreDirs)
+    {
+        Root = new DirectoryInfo(root).FullName;
+        IgnoreDirs = ignoreDirs;
+        Offset = Root.Length + 1;
+    }
 
-    private readonly Stack<Enumerators> Iterators = new([Enumerators.New(root)]);
+    private readonly string Root;
+
+    private readonly IOMatch[] IgnoreDirs;
+
+    private readonly int Offset;
+
+    private readonly Stack<Enumerators> Iterators = new([Enumerators.New(Root)]);
 
     /// <inheritdoc />
     public FileRef Current
