@@ -66,7 +66,7 @@ public sealed class IOFiles(string root, IOMatch[] ignoreDirs) : IEnumerator<Fil
         while (iterator.MoveNext())
         {
             Chars full = iterator.Current.AsSpan()[Offset..];
-            var last = full.LastIndexOf('\\') + 1;
+            var last = full.LastIndexOfAny('/', '\\') + 1;
             Chars name = full[last..];
 
             if (!Ignore(full, name)) return true;
