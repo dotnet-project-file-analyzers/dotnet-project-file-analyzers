@@ -19,21 +19,19 @@ public sealed class IOFiles : IEnumerator<FileRef>, IEnumerable<FileRef>
         new IOMatches.LocalIs("node_modules"),
     ];
 
-
     public IOFiles(string root, IOMatch[] ignoreDirs)
     {
-        Root = new DirectoryInfo(root).FullName;
+        root = new DirectoryInfo(root).FullName;
         IgnoreDirs = ignoreDirs;
-        Offset = Root.Length + 1;
+        Offset = root.Length + 1;
+        Iterators = new([Enumerators.New(root)]);
     }
-
-    private readonly string Root;
 
     private readonly IOMatch[] IgnoreDirs;
 
     private readonly int Offset;
 
-    private readonly Stack<Enumerators> Iterators = new([Enumerators.New(Root)]);
+    private readonly Stack<Enumerators> Iterators;
 
     /// <inheritdoc />
     public FileRef Current
