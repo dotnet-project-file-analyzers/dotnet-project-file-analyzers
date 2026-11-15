@@ -9,7 +9,13 @@
 
   <ItemGroup>
     <PackageReference Include="Qowaiv" Version="8.2.0" />
-    <PackageReference Include="System.CommandLine" Version="2.0.14" />
+    <PackageReference Include="System.CommandLine" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Label="Development dependencies">
+    <PackageReference PrivateAssets="all" Include="AsyncFixer" Version="2.1.0" />
+    <PackageReference PrivateAssets="all" Include="Qowaiv.Diagnostics.Contracts" Version="2.1.0" />
+    <PackageReference PrivateAssets="all" Include="StyleCop.Analyzers" Version="1.3.180" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,7 @@
 # custom additions
 packages/
 .nuget/
+.bdn/
 
 #################
 ## Eclipse

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="../DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.props" />
   <Import Project="../../props/common.props" />
@@ -15,27 +15,22 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="5.9.0" />
-    <PackageReference Include="NuGet.Common" Version="7.9.0" />
-    <PackageReference Include="NuGet.Frameworks" Version="7.9.0" />
-    <PackageReference Include="NuGet.Packaging" Version="7.9.0" />
-    <PackageReference Include="NuGet.Protocol" Version="7.9.0" />
+    <PackageReference Include="NuGet.Common" Version="8.0.0" />
+    <PackageReference Include="NuGet.Frameworks" Version="8.0.0" />
+    <PackageReference Include="NuGet.Packaging" Version="8.0.0" />
+    <PackageReference Include="NuGet.Protocol" Version="8.0.0" />
     <PackageReference Include="Qowaiv" Version="8.2.0" />
   </ItemGroup>
 
   <ItemGroup Label="Development dependencies">
     <PackageReference PrivateAssets="all" Include="AsyncFixer" Version="2.1.0" />
-    <PackageReference PrivateAssets="all" Include="Qowaiv.Analyzers.CSharp" Version="2.8.0" />
     <PackageReference PrivateAssets="all" Include="Qowaiv.Diagnostics.Contracts" Version="2.1.0" />
-    <PackageReference PrivateAssets="all" Include="StyleCop.Analyzers.Unstable" Version="1.2.0.556" />
+    <PackageReference PrivateAssets="all" Include="StyleCop.Analyzers" Version="1.3.180" />
+    <PackageReference Include="System.Security.Cryptography.Pkcs" Version="11.0.0" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzer">
-    <ProjectReference
-      PrivateAssets="all"
-      OutputItemType="Analyzer"
-      Include="../DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj"
-      ReferenceOutputAssembly="false"
-      SetTargetFramework="TargetFramework=netstandard2.0" />
+    <ProjectReference PrivateAssets="all" OutputItemType="Analyzer" Include="../DotNetProjectFile.Analyzers/DotNetProjectFile.Analyzers.csproj" ReferenceOutputAssembly="false" SetTargetFramework="TargetFramework=netstandard2.0" />
   </ItemGroup>
 
   <Import Project="../DotNetProjectFile.Analyzers/build/DotNetProjectFile.Analyzers.targets" />
