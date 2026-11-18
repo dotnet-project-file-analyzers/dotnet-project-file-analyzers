@@ -50,7 +50,7 @@ public class Guards
     public void Specified_version() => new SpecifySdkVersion().ForInlineGlobalJson("""
         {
           "sdk": {
-            "version": "10.0.400",
+            "version": "11.0.100",
             "rollForward": "latestPatch",
             "allowPrerelease": false
           }

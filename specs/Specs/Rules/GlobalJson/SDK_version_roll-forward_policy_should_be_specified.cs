@@ -8,7 +8,7 @@ public class Reports
     public void other_then_disable_with_lock_files() => new SpecifySdkRollForwardPolicy().ForInlineGlobalJson("""
         {
           "sdk": {
-            "version": "10.0.400",
+            "version": "11.0.100",
             "rollForward": "LATESTPATCH"
           }
         }
@@ -84,7 +84,7 @@ public class Guards
     public void Specified_policy() => new SpecifySdkRollForwardPolicy().ForInlineGlobalJson("""
         {
           "sdk": {
-            "version": "10.0.400",
+            "version": "11.0.100",
             "rollForward": "latestPatch",
             "allowPrerelease": false
           }

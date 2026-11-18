@@ -41,7 +41,7 @@ public class Guards
     public void explicitly_disabled() => new SpecifyStableSdkVersion().ForInlineGlobalJson("""
     {
       "sdk": {
-        "version": "10.0.401",
+        "version": "11.0.100",
         "allowPrerelease": false
       }
     }
