@@ -37,7 +37,9 @@ public class Reports
 
 </Project>")
        .HasIssues(
+#if !Is_Windows
             Issue.WRN("Proj0501", "The SimpleInjector ([4.0.0,5.0)) transitive package in SimpleInjector.Extensions.ExecutionContextScoping only contains a deprecated 'https://simpleinjector.org/license' license URL"),
+#endif
             Issue.WRN("Proj0501", "The SimpleInjector.Extensions.ExecutionContextScoping (4.0.0) package only contains a deprecated 'https://simpleinjector.org/license' license URL"),
             Issue.WRN("Proj0501", "The SshNet.Security.Cryptography ([1.3.0]) transitive package in Testcontainers only contains a deprecated 'https://github.com/sshnet/Cryptography/blob/master/LICENSE' license URL"));
 
@@ -212,7 +214,9 @@ public class Reports
         """)
        .HasIssues(
            Issue.WRN("Proj0500", "The SharpCompress (0.30.1) transitive package in MongoDB.Driver.Core is shipped without an explicitly defined license"),
+#if !Is_Windows
            Issue.WRN("Proj0501", "The AWSSDK.Core ([3.7.100.14, 4.0.0)) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"),
+#endif
            Issue.WRN("Proj0501", "The AWSSDK.SecurityToken (3.7.100.14) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"));
 
     [Test]
@@ -249,7 +253,9 @@ public class Reports
         """)
         .HasIssues(
             Issue.WRN("Proj0500", "The SharpCompress (0.30.1) transitive package in MongoDB.Driver.Core is shipped without an explicitly defined license"),
+#if !Is_Windows
             Issue.WRN("Proj0501", "The AWSSDK.Core ([3.7.100.14, 4.0.0)) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"),
+#endif
             Issue.WRN("Proj0501", "The AWSSDK.SecurityToken (3.7.100.14) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"),
             Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI (1.4.4.533) package is distributed as GPL-3.0-only, which is incompatible with the NOASSERTION license of the project"),
             Issue.WRN("Proj0503", "Add <ThirdPartyLicense Include=\"SonarAnalyzer.CSharp\" Hash=\"IBM9yngU7omFyJOMSFSy0w\" /> to accept the license"));
@@ -286,7 +292,9 @@ public class Reports
         """)
         .HasIssues(
             Issue.WRN("Proj0500", "The SharpCompress (0.30.1) transitive package in MongoDB.Driver.Core is shipped without an explicitly defined license"),
+#if !Is_Windows
             Issue.WRN("Proj0501", "The AWSSDK.Core ([3.7.100.14, 4.0.0)) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"),
+#endif
             Issue.WRN("Proj0501", "The AWSSDK.SecurityToken (3.7.100.14) transitive package in MongoDB.Driver.Core only contains a deprecated 'http://aws.amazon.com/apache2.0/' license URL"),
             Issue.WRN("Proj0502", "The SeeSharpTools.JY.GUI (1.4.4.533) package is distributed as GPL-3.0-only, which is incompatible with the NOASSERTION license of the project"),
         Issue.WRN("Proj0503", "Add <ThirdPartyLicense Include=\"SonarAnalyzer.CSharp\" Hash=\"IBM9yngU7omFyJOMSFSy0w\" /> to accept the license"));
