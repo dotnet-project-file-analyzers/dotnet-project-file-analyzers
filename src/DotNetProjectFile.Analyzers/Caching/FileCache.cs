@@ -34,7 +34,7 @@ public sealed class FileCache<T>() where T : class
     {
         var path = additional.Location;
 
-        if (!path.HasValue || additional.GetText(cancellationToken) is not { } text)
+        if (path is { HasValue: false } || additional.GetText(cancellationToken) is not { } text)
         {
             return Remove(path);
         }
