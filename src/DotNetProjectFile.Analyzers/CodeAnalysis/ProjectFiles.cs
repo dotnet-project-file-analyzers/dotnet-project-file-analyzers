@@ -32,7 +32,7 @@ public sealed partial class ProjectFiles
 
     public MsBuildProject? MsBuildProject(AdditionalText text)
         => AnalyzerTypes.MsBuild(text.Location) is { } type
-        ? MsBuildProjects.TryGetOrUpdate(text.Location, _ => MsBuild.MsBuildProject.Load(type, text, Global))
+        ? MsBuildProjects.TryGetOrUpdate(text, _ => MsBuild.MsBuildProject.Load(type, text, this))
         : null;
 
     public Resource? ResourceFile(IOFile file)
