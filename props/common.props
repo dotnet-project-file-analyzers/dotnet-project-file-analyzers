@@ -22,7 +22,7 @@
   </PropertyGroup>
 
   <ItemGroup Label="Analyzers">
-    <PackageReference PrivateAssets="all" Include="Microsoft.CodeAnalysis.Analyzers" Version="5.9.0" />
+    <PackageReference PrivateAssets="all" Include="Microsoft.CodeAnalysis.Analyzers" Version="5.12.0" />
     <PackageReference PrivateAssets="all" Include="Qowaiv.Analyzers.CSharp" Version="2.8.0" />
     <PackageReference PrivateAssets="all" Include="SonarAnalyzer.CSharp" Version="10.36.0.15337" />
   </ItemGroup>
